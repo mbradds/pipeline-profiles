@@ -96,6 +96,16 @@ const applyId = (data) => {
     return data
 }
 
+const createSeries = (gCompany) => {
+
+    var series = {}
+    series['data'] = gCompany
+    series['name'] = 'conditions by company'
+    series['colorByPoint'] = false
+
+    return series
+}
+
 const fillDrop = (column,dropName,value,data) => {
     const drop = getUnique(data, filterColumns = column)
     dynamicDropDown(dropName, drop.sort())
@@ -108,10 +118,59 @@ var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
 idData = applyId(githubData)
 console.log(idData)
 gCompany = groupBy(idData,column='Company')
+series = createSeries(gCompany)
 console.log(gCompany)
+console.log(series)
 //colors= ['#054169', '#FFBE4B', '#5FBEE6', '#559B37', '#FF821E', '#871455', '#8c8c96', '#42464B']
-//var customSeries = createSet(githubData,filterMap,colors);
-//yOptions = customSeries[1];
-//customSeries = customSeries[0]
 //fillDrop(column='Type',dropName='select_metric',value='Assets',data=githubData)
 
+
+const chart = new Highcharts.chart('container', {
+
+    chart: {
+        type: 'column', //line,bar,scatter,area,areaspline
+        zoomType: 'x', //allows the user to focus in on the x or y (x,y,xy)
+        borderColor: 'black',
+        borderWidth: 1,
+        animation: true,
+        events: {
+            load: function () {
+                this.credits.element.onclick = function () {
+                    window.open(
+                        'https://www.cer-rec.gc.ca/index-eng.html',
+                        '_blank' // <- This is what makes it open in a new window.
+                    );
+                }
+            }
+        }
+    },
+
+    scrollbar: {
+        enabled: true
+    },
+
+    credits: {
+        //enabled:false //gets rid of the "Highcharts logo in the bottom right"
+        text: 'Canada Energy Regulator',
+        href: 'https://www.cer-rec.gc.ca/index-eng.html'
+    },
+
+    plotOptions: {
+        series: {
+            pointWidth: 30,
+            stickyTracking: false,
+            connectNulls: false,
+            states: {
+                inactive: {
+                    opacity: 1
+                },
+                hover: {
+                    enabled: false
+                }
+            }
+        }
+    },
+
+    series: [series]
+
+})
