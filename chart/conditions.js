@@ -64,14 +64,14 @@ const groupBy = (data,column) => {
         result[current[column]].push(current);
         return result
     })
-    
+
     //return grouped
     hcGroup = []
     for (const [key, value] of Object.entries(grouped)) {
         if (Array.isArray(value)){
             hcGroup.push(
-                {'name':key,
-                 'y':grouped[key].length}
+                {'y':key,
+                 'x':grouped[key].length}
             )
             //grouped.name = grouped[key]
             //grouped.y = grouped[key].length
@@ -83,8 +83,11 @@ const groupBy = (data,column) => {
       }
     
     hcGroup.sort(function (a, b) {
-         return b.y - a.y;
+         return b.x - a.x;
        });
+    
+    //split the x and y data into categories and numeric data for a Highcharts bar
+    
     return hcGroup
 }
 
@@ -116,14 +119,17 @@ const fillDrop = (column,dropName,value,data) => {
 const url = 'https://raw.githubusercontent.com/mbradds/HighchartsData/master/conditions.json'
 var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
 idData = applyId(githubData)
-console.log(idData)
+//console.log(idData)
 gCompany = groupBy(idData,column='Company')
 series = createSeries(gCompany)
-console.log(gCompany)
-console.log(series)
+//console.log(gCompany)
+//console.log(series)
 //colors= ['#054169', '#FFBE4B', '#5FBEE6', '#559B37', '#FF821E', '#871455', '#8c8c96', '#42464B']
 //fillDrop(column='Type',dropName='select_metric',value='Assets',data=githubData)
 
+//This is how to create a sideways bar:
+//https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bar-basic
+//http://jsfiddle.net/d_paul/3sd4xj2k/
 
 const chart = new Highcharts.chart('container', {
 
@@ -155,6 +161,14 @@ const chart = new Highcharts.chart('container', {
         href: 'https://www.cer-rec.gc.ca/index-eng.html'
     },
 
+    xAxis: {
+        opposite: true
+    },
+
+    yAxis: {
+        opposite: true
+    },
+
     plotOptions: {
         series: {
             pointWidth: 30,
@@ -168,6 +182,11 @@ const chart = new Highcharts.chart('container', {
                     enabled: false
                 }
             }
+        },
+        bar: {
+            grouping: false,
+            shadow: false,
+            borderWidth: 0
         }
     },
 
