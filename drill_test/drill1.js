@@ -5,21 +5,6 @@ const getData = (Url) => {
     return Httpreq.responseText;
 };
 
-const dynamicDropDown = (id, optionsArray) => {
-
-    function addOption(id, text, select) {
-        select.options[select.options.length] = new Option(text);
-    }
-
-    const select = document.getElementById(id);
-    select.options.length = 0;
-
-    optionsArray.map((v, i) => {
-        addOption(id, optionsArray[i], select);
-    })
-
-}
-
 //gets the unique regions to populate the dropdown
 const getUnique = (items, filterColumns) => {
     if (Array.isArray(filterColumns)) {
@@ -56,7 +41,6 @@ const getUnique = (items, filterColumns) => {
     }
 }
 
-
 const groupBy = (data,column) => {
     result = {}
     grouped = data.reduce((result,current) => {
@@ -86,15 +70,7 @@ const groupBy = (data,column) => {
          return b.y - a.y;
        });
     
-    //split the x and y data into categories and numeric data for a Highcharts bar
-    var categories = [];
-    var data = [];
-    hcGroup.map((v,i)=>{
-        categories.push(v.name)
-        data.push(v.y)
-    })
-
-    return [categories,data]
+    return hcGroup
 }
 
 const applyId = (data) => {
@@ -105,39 +81,56 @@ const applyId = (data) => {
     return data
 }
 
-const createSeries = (gCompany) => {
+const groupBy2 = (data) => {
 
-    var series = {}
-    series['data'] = gCompany
-    series['name'] = 'conditions by company'
-    series['colorByPoint'] = false
+    companyResult = []
+    projectResult = []
+    var uniqueCompanies = getUnique(data,'Company')
+    uniqueCompanies.map((c,ic) => {
+        const company = data.filter(row => row.Company == c)
+        companyResult.push(
+            {
+                name: c, 
+                y: company.length,
+                drilldown: c
+            })
 
-    return series
-}
+        const project = getUnique(company,'Short Project Name')
+        
+        project.map((p,ip) => {
+            const project = company.filter(row => row['Short Project Name'] == p)
+            projectResult.push({
+                name: c,
+                id: c,
+                data: [{
+                    name: p,
+                    y: project.length,
+                    drilldown: p
+                }]
+            })
 
-const fillDrop = (column,dropName,value,data) => {
-    const drop = getUnique(data, filterColumns = column)
-    dynamicDropDown(dropName, drop.sort())
-    document.getElementById(dropName).value = value;
+        })
+        
+    })
+    // data.map((v,i) => {
+    //     false
+    // })
+
+    return [companyResult,projectResult]
+
 }
 
 
 const url = 'https://raw.githubusercontent.com/mbradds/HighchartsData/master/conditions.json'
 var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
 idData = applyId(githubData)
-//console.log(idData)
-var categories,data;
-[categories, data] = groupBy(idData,column='Company')
-// const seriesTest = {name:'conditions by company',
-// data:[{name:'NGTL',y:1745}],
-// colorByPoint:false}
 
-//colors= ['#054169', '#FFBE4B', '#5FBEE6', '#559B37', '#FF821E', '#871455', '#8c8c96', '#42464B']
-//fillDrop(column='Type',dropName='select_metric',value='Assets',data=githubData)
+//data = groupBy(idData,column='Short Project Name')
+//console.log(data)
+var companyResult,projectResult;
+[companyResult,projectResult] = groupBy2(idData)
+console.log(companyResult.length,projectResult.length)
 
-//This is how to create a sideways bar:
-//https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/bar-basic
-//http://jsfiddle.net/d_paul/3sd4xj2k/
 
 const chart = new Highcharts.chart('container', {
 
@@ -171,7 +164,7 @@ const chart = new Highcharts.chart('container', {
     },
 
     xAxis: {
-        categories: categories
+        type: 'category'
     },
 
     // yAxis: {
@@ -180,7 +173,6 @@ const chart = new Highcharts.chart('container', {
 
     plotOptions: {
         series: {
-            pointWidth: 5,
             stickyTracking: false,
             connectNulls: false,
             states: {
@@ -192,14 +184,46 @@ const chart = new Highcharts.chart('container', {
                 }
             }
         },
-        bar: {
-            grouping: false,
-            shadow: false,
-            borderWidth: 0
-        }
     },
 
-    series: [{
-        data: data
-    },]
+    series: [
+        {
+            name: 'CER Companies',
+            colorByPoint: false,
+            data: [
+                {
+                    name: 'NOVA',
+                    y: 1110,
+                    drilldown:'NOVA'
+                }
+            ]
+        }
+    ],
+    drilldown: {
+        series: [
+            {
+                name:'NOVA',
+                id:'NOVA',
+                data: [{
+                    name: 'Project 1',
+                    y: 400,
+                    drilldown: 'Project 1'
+                },{
+                    name: 'Project 2',
+                    y: 800,
+                    drilldown: 'Project 2'
+                }]
+            }, {
+                id: 'Project 1',
+                data: [{
+                    name: 'Category 1',
+                    y: 200
+                },{
+                    name: 'Category 2',
+                    y: 400
+                }]
+            }
+        ]
+    }
+
 })
