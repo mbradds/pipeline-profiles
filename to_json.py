@@ -28,10 +28,17 @@ def summary_measures(df):
     print('Companies: '+str(len(companies)))
     print('Projects: '+str(len(projects)))
 
+def test_filter(df):
+    df = df[df['Company']=='NOVA Gas Transmission Ltd.'].copy()
+    df = df[df['Short Project Name']=='Construct North Montney']
+    return df
+
 #link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
 #df = readCsv(link)
 df = readExcel('conditions.xlsx')
 summary_measures(df)
+nova = test_filter(df)
+print(nova['Theme(s)'].unique())
 
 #%%
 

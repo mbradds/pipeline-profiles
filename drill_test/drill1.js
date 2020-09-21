@@ -5,6 +5,7 @@ const getData = (Url) => {
     return Httpreq.responseText;
 };
 
+
 //gets the unique regions to populate the dropdown
 const getUnique = (items, filterColumns) => {
     if (Array.isArray(filterColumns)) {
@@ -41,38 +42,6 @@ const getUnique = (items, filterColumns) => {
     }
 }
 
-const groupBy = (data,column) => {
-    result = {}
-    grouped = data.reduce((result,current) => {
-        result[current[column]] = result[current[column]] || [];
-        result[current[column]].push(current);
-        return result
-    })
-
-    //return grouped
-    hcGroup = []
-    for (const [key, value] of Object.entries(grouped)) {
-        if (Array.isArray(value)){
-            hcGroup.push(
-                {'name':key,
-                 'y': parseInt(grouped[key].length)}
-            )
-            //grouped.name = grouped[key]
-            //grouped.y = grouped[key].length
-            //delete grouped[key]
-            //grouped[key] = grouped[key].length
-        } else {
-            delete grouped[key]
-        }
-      }
-    
-    hcGroup.sort(function (a, b) {
-         return b.y - a.y;
-       });
-    
-    return hcGroup
-}
-
 const applyId = (data) => {
     data =  data.map((v,i) => {
         v.id = v['Instrument Number']+'_'+v['Condition Number']
@@ -86,10 +55,11 @@ const applyId = (data) => {
 
 const groupBy2 = (data) => {
 
-    companyResult = []
-    projectResult = []
-    var uniqueCompanies = getUnique(data,'Company')
-    uniqueCompanies.map((c,ic) => {
+    var companyResult = []
+    var projectResult = []
+    var themeResult = []
+    const companies = getUnique(data,'Company')
+    companies.map((c,ic) => {
         const company = data.filter(row => row.Company == c)
         companyResult.push(
             {
@@ -98,16 +68,33 @@ const groupBy2 = (data) => {
                 drilldown: c
             })
 
-        const project = getUnique(company,'Short Project Name')
+        const projects = getUnique(company,'Short Project Name')
         const projectData = []
-        project.map((p,ip) => {
+        projects.map((p,ip) => {
 
             const project = company.filter(row => row['Short Project Name'] == p)
 
             projectData.push({
                 name: p,
-                y: project.length
-                //drilldown:p
+                y: project.length,
+                drilldown:p
+            })
+
+            const themes = getUnique(company,'Theme(s)')
+            const themeData = []
+            themes.map((t,it) => {
+                const theme = project.filter(row => row['Theme(s)'] == t)
+
+                themeData.push({
+                    name: t,
+                    y: theme.length
+                })
+            })
+
+            themeResult.push({
+                name: p,
+                id: p,
+                data: themeData
             })
 
         })
@@ -117,6 +104,7 @@ const groupBy2 = (data) => {
             id: c,
             data: projectData
         })
+
         
     })
 
@@ -125,7 +113,7 @@ const groupBy2 = (data) => {
             result.sort(function (a, b) {
                 return b.y - a.y;
             });
-        } else if (level == 'Project') {
+        } else if (level == 'Project' || level == 'Theme') {
             result.map((v,i)=> {
                 v.data.sort(function (a, b) {
                     return b.y - a.y;
@@ -137,21 +125,22 @@ const groupBy2 = (data) => {
 
     companyResult = sortResults(companyResult,'Company')
     projectResult = sortResults(projectResult,'Project')
-
-    return [companyResult,projectResult]
+    themeResult = sortResults(themeResult,'Theme')
+    return [companyResult,projectResult,themeResult]
 
 }
 
 
 const url = 'https://raw.githubusercontent.com/mbradds/HighchartsData/master/conditions.json'
+// var liveData = getData('http://www.cer-rec.gc.ca/open/conditions/conditions.csv')
+// console.log(liveData)
 var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
 idData = applyId(githubData)
 
 //data = groupBy(idData,column='Short Project Name')
 //console.log(data)
 var companyResult,projectResult;
-[companyResult,projectResult] = groupBy2(idData)
-console.log(projectResult)
+[companyResult,projectResult,themeResult] = groupBy2(idData)
 
 const chart = new Highcharts.chart('container', {
 
@@ -172,7 +161,14 @@ const chart = new Highcharts.chart('container', {
                     );
                 }
             },
+            drilldown: function(e) {
+                console.log(e.seriesOptions) //use this to calculate the summary measures that will populate the html
+            }
         }
+    },
+
+    title: {
+        text: null
     },
 
     plotOptions: {
@@ -202,9 +198,12 @@ const chart = new Highcharts.chart('container', {
         // max: 5,
     },
 
-    // yAxis: {
-    //     opposite: true
-    // },
+    yAxis: {
+        showEmpty: false,
+        title: {
+            text: 'Number of Conditions'
+        }
+    },
 
     series: [{
             name: 'Conditions by Company',
@@ -213,7 +212,7 @@ const chart = new Highcharts.chart('container', {
         }],
 
     drilldown: {
-        series: projectResult
+        series: projectResult.concat(themeResult)
     }
 
 })
