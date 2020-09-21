@@ -22,10 +22,16 @@ def readExcel(name):
     return df
 
 
+def summary_measures(df):
+    companies = df['Company'].unique()
+    projects = df['Short Project Name'].unique()
+    print('Companies: '+str(len(companies)))
+    print('Projects: '+str(len(projects)))
+
 #link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
 #df = readCsv(link)
 df = readExcel('conditions.xlsx')
-
+summary_measures(df)
 
 #%%
 

@@ -78,6 +78,9 @@ const applyId = (data) => {
         v.id = v['Instrument Number']+'_'+v['Condition Number']
         return v
     })
+    data = data.filter(row => row['Short Project Name'] !== 'SAM/COM')
+    //data = data.filter(row => row.Company == 'NOVA Gas Transmission Ltd.')
+
     return data
 }
 
@@ -96,25 +99,44 @@ const groupBy2 = (data) => {
             })
 
         const project = getUnique(company,'Short Project Name')
-        
+        const projectData = []
         project.map((p,ip) => {
+
             const project = company.filter(row => row['Short Project Name'] == p)
-            projectResult.push({
-                name: c,
-                id: c,
-                data: [{
-                    name: p,
-                    y: project.length,
-                    drilldown: p
-                }]
+
+            projectData.push({
+                name: p,
+                y: project.length
+                //drilldown:p
             })
 
         })
+
+        projectResult.push({
+            name: c,
+            id: c,
+            data: projectData
+        })
         
     })
-    // data.map((v,i) => {
-    //     false
-    // })
+
+    const sortResults = (result,level) => {
+        if (level == 'Company') {
+            result.sort(function (a, b) {
+                return b.y - a.y;
+            });
+        } else if (level == 'Project') {
+            result.map((v,i)=> {
+                v.data.sort(function (a, b) {
+                    return b.y - a.y;
+                });
+            })
+        }
+        return result
+    }
+
+    companyResult = sortResults(companyResult,'Company')
+    projectResult = sortResults(projectResult,'Project')
 
     return [companyResult,projectResult]
 
@@ -129,14 +151,14 @@ idData = applyId(githubData)
 //console.log(data)
 var companyResult,projectResult;
 [companyResult,projectResult] = groupBy2(idData)
-console.log(companyResult.length,projectResult.length)
-
+console.log(projectResult)
 
 const chart = new Highcharts.chart('container', {
 
     chart: {
         height: 800,
-        type: 'bar', //line,bar,scatter,area,areaspline
+        width: 1000,
+        type: 'bar', 
         zoomType: 'x', //allows the user to focus in on the x or y (x,y,xy)
         borderColor: 'black',
         borderWidth: 1,
@@ -149,12 +171,20 @@ const chart = new Highcharts.chart('container', {
                         '_blank' // <- This is what makes it open in a new window.
                     );
                 }
-            }
+            },
         }
     },
 
-    scrollbar: {
-        enabled: true
+    plotOptions: {
+        series: {
+            cropThreshold: 800, //solution to axis getting messed up on drillup: https://www.highcharts.com/forum/viewtopic.php?t=40702
+            pointWidth: 20,
+            events: {
+                legendItemClick: function () {
+                    return false; 
+                }
+            }
+        }
     },
 
     credits: {
@@ -164,66 +194,26 @@ const chart = new Highcharts.chart('container', {
     },
 
     xAxis: {
-        type: 'category'
+        type: 'category',
+        title: {
+            text: null
+        },
+        // min: 0,
+        // max: 5,
     },
 
     // yAxis: {
     //     opposite: true
     // },
 
-    plotOptions: {
-        series: {
-            stickyTracking: false,
-            connectNulls: false,
-            states: {
-                inactive: {
-                    opacity: 1
-                },
-                hover: {
-                    enabled: false
-                }
-            }
-        },
-    },
-
-    series: [
-        {
-            name: 'CER Companies',
+    series: [{
+            name: 'Conditions by Company',
             colorByPoint: false,
-            data: [
-                {
-                    name: 'NOVA',
-                    y: 1110,
-                    drilldown:'NOVA'
-                }
-            ]
-        }
-    ],
+            data: companyResult
+        }],
+
     drilldown: {
-        series: [
-            {
-                name:'NOVA',
-                id:'NOVA',
-                data: [{
-                    name: 'Project 1',
-                    y: 400,
-                    drilldown: 'Project 1'
-                },{
-                    name: 'Project 2',
-                    y: 800,
-                    drilldown: 'Project 2'
-                }]
-            }, {
-                id: 'Project 1',
-                data: [{
-                    name: 'Category 1',
-                    y: 200
-                },{
-                    name: 'Category 2',
-                    y: 400
-                }]
-            }
-        ]
+        series: projectResult
     }
 
 })
