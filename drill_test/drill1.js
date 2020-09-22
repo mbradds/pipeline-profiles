@@ -147,7 +147,7 @@ var companyResult,projectResult;
 const chart = new Highcharts.chart('container', {
 
     chart: {
-        height: 800,
+        height: 700,
         // width: 1000,
         type: 'bar', 
         zoomType: 'x', //allows the user to focus in on the x or y (x,y,xy)
@@ -164,7 +164,11 @@ const chart = new Highcharts.chart('container', {
                 }
             },
             drilldown: function(e) {
-                console.log(e.seriesOptions) //use this to calculate the summary measures that will populate the html
+                console.log('drilldown',e.seriesOptions) //use this to calculate the summary measures that will populate the html
+            },
+            drillup: function(e) {
+                //console.log(e.seriesOptions.data)
+                console.log('drillup',e.seriesOptions)
             }
         }
     },
@@ -219,30 +223,42 @@ const chart = new Highcharts.chart('container', {
 
 })
 
+
 var select_status = document.getElementById('select_status');
 select_status.addEventListener('change', (select_status) => {
     var status = select_status.target.value;
     var companyResult,projectResult;
     [companyResult,projectResult,themeResult] = groupBy(githubData,status=status)
-
+    
     chart.update({
 
-        series: [{
-            name: 'Conditions by Company',
-            colorByPoint: false,
+        series: {
             data: companyResult
-        }],
+        },
 
         drilldown: {
             series: projectResult.concat(themeResult)
         }
 
-    })
+    },true);
 
-    chart.xAxis[0].reset()
-    chart.yAxis[0].reset()
-    chart.reload()
     chart.redraw()
+
+    var ddCurrent = chart.series[0].userOptions.id; //gets the current level of the drilldown
+    var ddSeries = chart.options.drilldown.series;
+    console.log(chart.series)
+    if (ddCurrent === undefined) {
+        chart.series[0].setData(companyResult);
+    } else {
+        for (var i = 0, ie = ddSeries.length; i < ie; ++i) {
+            if (ddSeries[i].id === ddCurrent) {
+                chart.series[0].setData(ddSeries[i].data);
+            }
+        }
+    }
+
+    
+
 
     // how to update data after drilldown:
     // https://www.highcharts.com/forum/viewtopic.php?t=40389
