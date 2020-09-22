@@ -42,18 +42,23 @@ const getUnique = (items, filterColumns) => {
     }
 }
 
-const applyId = (data) => {
+const applyId = (data,status) => {
     data =  data.map((v,i) => {
         v.id = v['Instrument Number']+'_'+v['Condition Number']
         return v
     })
     data = data.filter(row => row['Short Project Name'] !== 'SAM/COM')
-    //data = data.filter(row => row.Company == 'NOVA Gas Transmission Ltd.')
+    
+    if (status !== 'All'){
+        data = data.filter(row => row['Condition Status'] == status)
+    }
 
     return data
 }
 
-const groupBy2 = (data) => {
+const groupBy = (data,status) => {
+
+    data = applyId(data,status)
 
     var companyResult = []
     var projectResult = []
@@ -67,7 +72,6 @@ const groupBy2 = (data) => {
                 y: company.length,
                 drilldown: c
             })
-
         const projects = getUnique(company,'Short Project Name')
         const projectData = []
         projects.map((p,ip) => {
@@ -132,25 +136,23 @@ const groupBy2 = (data) => {
 
 
 const url = 'https://raw.githubusercontent.com/mbradds/HighchartsData/master/conditions.json'
-// var liveData = getData('http://www.cer-rec.gc.ca/open/conditions/conditions.csv')
-// console.log(liveData)
 var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
-idData = applyId(githubData)
-
-//data = groupBy(idData,column='Short Project Name')
-//console.log(data)
 var companyResult,projectResult;
-[companyResult,projectResult,themeResult] = groupBy2(idData)
+[companyResult,projectResult,themeResult] = groupBy(githubData,status='All')
+//TODO: have a method that populates the initial chart descriptors, probably in groupBy and then
+//have another method that gets called on drilldown that updates descriptors and title.
+
+//TODO: look if the highhcarts data series can have object parameters for filtering.
 
 const chart = new Highcharts.chart('container', {
 
     chart: {
         height: 800,
-        width: 1000,
+        // width: 1000,
         type: 'bar', 
         zoomType: 'x', //allows the user to focus in on the x or y (x,y,xy)
-        borderColor: 'black',
-        borderWidth: 1,
+        //borderColor: 'black',
+        //borderWidth: 1,
         animation: true,
         events: {
             load: function () {
@@ -216,3 +218,33 @@ const chart = new Highcharts.chart('container', {
     }
 
 })
+
+var select_status = document.getElementById('select_status');
+select_status.addEventListener('change', (select_status) => {
+    var status = select_status.target.value;
+    var companyResult,projectResult;
+    [companyResult,projectResult,themeResult] = groupBy(githubData,status=status)
+
+    chart.update({
+
+        series: [{
+            name: 'Conditions by Company',
+            colorByPoint: false,
+            data: companyResult
+        }],
+
+        drilldown: {
+            series: projectResult.concat(themeResult)
+        }
+
+    })
+
+    chart.xAxis[0].reset()
+    chart.yAxis[0].reset()
+    chart.reload()
+    chart.redraw()
+
+    // how to update data after drilldown:
+    // https://www.highcharts.com/forum/viewtopic.php?t=40389
+    // http://jsfiddle.net/06oesrs1/
+});
