@@ -141,10 +141,12 @@ var companyResult,projectResult;
 [companyResult,projectResult,themeResult] = groupBy(githubData,status='All')
 //TODO: have a method that populates the initial chart descriptors, probably in groupBy and then
 //have another method that gets called on drilldown that updates descriptors and title.
-
 //TODO: look if the highhcarts data series can have object parameters for filtering.
 
-const chart = new Highcharts.chart('container', {
+const createChart = (seriesData,projectData,themeData) => {
+
+
+var chart = new Highcharts.chart('container', {
 
     chart: {
         height: 700,
@@ -214,22 +216,25 @@ const chart = new Highcharts.chart('container', {
     series: [{
             name: 'Conditions by Company',
             colorByPoint: false,
-            data: companyResult
+            data: seriesData
         }],
 
     drilldown: {
-        series: projectResult.concat(themeResult)
+        series: projectData.concat(themeData)
     }
 
 })
+return chart
+}
 
+var chart = createChart(companyResult,projectResult,themeResult)
 
 var select_status = document.getElementById('select_status');
 select_status.addEventListener('change', (select_status) => {
     var status = select_status.target.value;
     var companyResult,projectResult;
     [companyResult,projectResult,themeResult] = groupBy(githubData,status=status)
-    
+    var chart = createChart(companyResult,projectResult,themeResult)
     chart.update({
 
         series: {
@@ -256,9 +261,6 @@ select_status.addEventListener('change', (select_status) => {
             }
         }
     }
-
-    
-
 
     // how to update data after drilldown:
     // https://www.highcharts.com/forum/viewtopic.php?t=40389
