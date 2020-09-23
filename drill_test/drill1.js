@@ -56,14 +56,18 @@ const applyId = (data,status) => {
     return data
 }
 
-const groupBy = (data,status) => {
+const groupBy = (data,status,returnCounts=false) => {
+
+    var companyCount = null
+    var projectCount = null
 
     data = applyId(data,status)
-
     var companyResult = []
     var projectResult = []
     var themeResult = []
     const companies = getUnique(data,'Company')
+    companyCount = companies.length
+
     companies.map((c,ic) => {
         const company = data.filter(row => row.Company == c)
         companyResult.push(
@@ -73,6 +77,7 @@ const groupBy = (data,status) => {
                 drilldown: c
             })
         const projects = getUnique(company,'Short Project Name')
+        projectCount = projectCount + projects.length
         const projectData = []
         projects.map((p,ip) => {
 
@@ -124,27 +129,56 @@ const groupBy = (data,status) => {
                 });
             })
         }
+
         return result
     }
 
     companyResult = sortResults(companyResult,'Company')
     projectResult = sortResults(projectResult,'Project')
     themeResult = sortResults(themeResult,'Theme')
-    return [companyResult,projectResult,themeResult]
+
+    if (returnCounts) {
+        const counts = {'companies':companyCount,'projects':projectCount}
+        return [companyResult,projectResult,themeResult,counts]
+    } else {
+        return [companyResult,projectResult,themeResult]
+    }
 
 }
 
+const applySummary = (series,counts=false) => {
+
+    const conditionStatus = getUnique(series,'Condition Status')
+
+    statusCount = {}
+    conditionStatus.map((v,i) => {
+        currStatus = series.filter(row => row['Condition Status'] == v)
+        statusCount[v] = currStatus.length
+        console.log(currStatus.length)
+    })
+
+    document.getElementById('open_conditions_number').innerText = statusCount['In Progress']
+    document.getElementById('closed_conditions_number').innerText = statusCount['Closed']
+
+    if (counts) {
+        document.getElementById('companies_number').innerText = counts.companies
+        document.getElementById('projects_number').innerText = counts.projects
+    }
+
+    return statusCount
+}
 
 const url = 'https://raw.githubusercontent.com/mbradds/HighchartsData/master/conditions.json'
 var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
 var companyResult,projectResult;
-[companyResult,projectResult,themeResult] = groupBy(githubData,status='All')
+[companyResult,projectResult,themeResult,counts] = groupBy(githubData,status='All',returnCounts=true)
+var stat = applySummary(githubData,counts)
+console.log(stat)
 //TODO: have a method that populates the initial chart descriptors, probably in groupBy and then
 //have another method that gets called on drilldown that updates descriptors and title.
 //TODO: look if the highhcarts data series can have object parameters for filtering.
 
-const createChart = (seriesData,projectData,themeData) => {
-
+const createGraph = (companyResult,projectResult,themeResult) => {
 
 var chart = new Highcharts.chart('container', {
 
@@ -166,11 +200,11 @@ var chart = new Highcharts.chart('container', {
                 }
             },
             drilldown: function(e) {
-                console.log('drilldown',e.seriesOptions) //use this to calculate the summary measures that will populate the html
+                //console.log('drilldown',this.series[0].userOptions) //use this to calculate the summary measures that will populate the html
             },
             drillup: function(e) {
                 //console.log(e.seriesOptions.data)
-                console.log('drillup',e.seriesOptions)
+                //console.log('drillup',this.series[0])
             }
         }
     },
@@ -216,51 +250,56 @@ var chart = new Highcharts.chart('container', {
     series: [{
             name: 'Conditions by Company',
             colorByPoint: false,
-            data: seriesData
+            data: companyResult
         }],
 
     drilldown: {
-        series: projectData.concat(themeData)
+        series: projectResult.concat(themeResult)
     }
 
 })
 return chart
 }
 
-var chart = createChart(companyResult,projectResult,themeResult)
+var chart = createGraph(companyResult,projectResult,themeResult)
 
 var select_status = document.getElementById('select_status');
+// var currentStatus = select_status.options[select_status.selectedIndex].text;
+// console.log(currentStatus)
+
 select_status.addEventListener('change', (select_status) => {
     var status = select_status.target.value;
     var companyResult,projectResult;
     [companyResult,projectResult,themeResult] = groupBy(githubData,status=status)
-    var chart = createChart(companyResult,projectResult,themeResult)
-    chart.update({
 
-        series: {
-            data: companyResult
-        },
+    var chart = createGraph(companyResult,projectResult,themeResult)
 
-        drilldown: {
-            series: projectResult.concat(themeResult)
-        }
+    // chart.update({
 
-    },true);
+    //     series: {
+    //         data: companyResult
+    //     },
 
-    chart.redraw()
+    //     drilldown: {
+    //         series: projectResult.concat(themeResult)
+    //     }
 
-    var ddCurrent = chart.series[0].userOptions.id; //gets the current level of the drilldown
-    var ddSeries = chart.options.drilldown.series;
-    console.log(chart.series)
-    if (ddCurrent === undefined) {
-        chart.series[0].setData(companyResult);
-    } else {
-        for (var i = 0, ie = ddSeries.length; i < ie; ++i) {
-            if (ddSeries[i].id === ddCurrent) {
-                chart.series[0].setData(ddSeries[i].data);
-            }
-        }
-    }
+    // },true);
+
+    // chart.redraw()
+
+    // var ddCurrent = chart.series[0].userOptions.id; //gets the current level of the drilldown
+    // var ddSeries = chart.options.drilldown.series;
+    // console.log(chart.series)
+    // if (ddCurrent === undefined) {
+    //     chart.series[0].setData(companyResult);
+    // } else {
+    //     for (var i = 0, ie = ddSeries.length; i < ie; ++i) {
+    //         if (ddSeries[i].id === ddCurrent) {
+    //             chart.series[0].setData(ddSeries[i].data);
+    //         }
+    //     }
+    // }
 
     // how to update data after drilldown:
     // https://www.highcharts.com/forum/viewtopic.php?t=40389
