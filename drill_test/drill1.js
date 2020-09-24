@@ -47,6 +47,7 @@ const applyId = (data,status) => {
         v.id = v['Instrument Number']+'_'+v['Condition Number']
         return v
     })
+
     data = data.filter(row => row['Short Project Name'] !== 'SAM/COM')
     
     if (status !== 'All'){
@@ -56,10 +57,15 @@ const applyId = (data,status) => {
     return data
 }
 
+const themeFilter = (row,t) => {
+    return row['Theme(s)'] == t
+}
+
 const groupBy = (data,status,returnCounts=false) => {
 
     var companyCount = null
     var projectCount = null
+    var loopCount = 0
 
     data = applyId(data,status)
     var companyResult = []
@@ -69,7 +75,9 @@ const groupBy = (data,status,returnCounts=false) => {
     companyCount = companies.length
 
     companies.map((c,ic) => {
+
         const company = data.filter(row => row.Company == c)
+
         companyResult.push(
             {
                 name: c, 
@@ -92,8 +100,11 @@ const groupBy = (data,status,returnCounts=false) => {
             const themes = getUnique(company,'Theme(s)')
             const themeData = []
             themes.map((t,it) => {
-                const theme = project.filter(row => row['Theme(s)'] == t)
-
+                const theme = project.filter(row => row['Theme(s)'] == t) //all rows should go through here. Use this for sumamry counts
+                // const theme = project.filter(function(row){
+                //     loopCount = loopCount +1
+                //     return row['Theme(s)'] == t
+                // })
                 themeData.push({
                     name: t,
                     y: theme.length
@@ -154,7 +165,6 @@ const applySummary = (series,counts=false) => {
     conditionStatus.map((v,i) => {
         currStatus = series.filter(row => row['Condition Status'] == v)
         statusCount[v] = currStatus.length
-        console.log(currStatus.length)
     })
 
     document.getElementById('open_conditions_number').innerText = statusCount['In Progress']
@@ -165,15 +175,17 @@ const applySummary = (series,counts=false) => {
         document.getElementById('projects_number').innerText = counts.projects
     }
 
-    return statusCount
+    return statusCount //TODO: this function doesnt need to return anything
 }
+
 
 const url = 'https://raw.githubusercontent.com/mbradds/HighchartsData/master/conditions.json'
 var githubData = JSON.parse(JSON.stringify(JSON.parse(getData(url))));
 var companyResult,projectResult;
 [companyResult,projectResult,themeResult,counts] = groupBy(githubData,status='All',returnCounts=true)
 var stat = applySummary(githubData,counts)
-console.log(stat)
+console.log(companyResult,projectResult,themeResult)
+
 //TODO: have a method that populates the initial chart descriptors, probably in groupBy and then
 //have another method that gets called on drilldown that updates descriptors and title.
 //TODO: look if the highhcarts data series can have object parameters for filtering.
@@ -201,8 +213,10 @@ var chart = new Highcharts.chart('container', {
             },
             drilldown: function(e) {
                 //console.log('drilldown',this.series[0].userOptions) //use this to calculate the summary measures that will populate the html
+                //console.log(e)
             },
             drillup: function(e) {
+                //console.log(e)
                 //console.log(e.seriesOptions.data)
                 //console.log('drillup',this.series[0])
             }
@@ -271,7 +285,7 @@ select_status.addEventListener('change', (select_status) => {
     var status = select_status.target.value;
     var companyResult,projectResult;
     [companyResult,projectResult,themeResult] = groupBy(githubData,status=status)
-
+    var stat = applySummary(githubData,counts)
     var chart = createGraph(companyResult,projectResult,themeResult)
 
     // chart.update({

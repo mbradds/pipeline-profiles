@@ -1,0 +1,23 @@
+.my-container {
+  border: 5px solid grey;
+}
+/* This is useful for looking at the grid structure */
+.my-row {
+  border: 3px solid red;
+}
+.my-col {
+  border: 3px solid blue;
+}
+
+.cerlabel {
+    position: center;
+    font-family: Arial;
+    font-weight: bold;
+    color:#871455
+  } 
+
+
+  .padding-0{
+    padding-right:0;
+    padding-left:0;
+}
