@@ -54,28 +54,6 @@ const sortResults = (result, level) => {
   return result;
 };
 
-// const applySummary = (series, counts = false) => {
-//   const conditionStatus = getUnique(series, "Condition Status");
-
-//   statusCount = {};
-//   conditionStatus.map((v, i) => {
-//     currStatus = series.filter((row) => row["Condition Status"] == v);
-//     statusCount[v] = currStatus.length;
-//   });
-
-//   document.getElementById("open_conditions_number").innerText =
-//     statusCount["In Progress"];
-//   document.getElementById("closed_conditions_number").innerText =
-//     statusCount["Closed"];
-
-//   if (counts) {
-//     document.getElementById("companies_number").innerText = counts.companies;
-//     document.getElementById("projects_number").innerText = counts.projects;
-//   }
-
-//   return statusCount; //TODO: this function doesnt need to return anything
-// };
-
 const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
   document.getElementById("companies_number").innerText = companiesNum;
   document.getElementById("projects_number").innerText = projectsNum;
