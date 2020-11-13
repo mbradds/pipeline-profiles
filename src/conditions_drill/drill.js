@@ -35,7 +35,16 @@ const conditionsFilters = {
   "Project Status": "All",
   "Condition Status": "All",
   Company: "All",
-  "Condition Type": "All",
+  "Short Project Name": "All",
+  "Theme(s)": "All",
+};
+
+const conditionsFiltersDrill = {
+  "Project Status": "All",
+  "Condition Status": "All",
+  Company: "All",
+  "Short Project Name": "All",
+  "Theme(s)": "All",
 };
 
 const sortResults = (result, level) => {
@@ -144,7 +153,6 @@ const createConditionSeries = (data, filters) => {
   projects = sortResults(objectToList(projects, "Project"), "Project");
   var [themes, subThemes] = objectToList(themes, "Theme");
   themes = sortResults(themes, "Theme");
-
   // console.log(companies);
   // console.log(projects);
   // console.log(themes);
@@ -158,6 +166,71 @@ const createConditionSeries = (data, filters) => {
   return [seriesData, projects.concat(themes).concat(subThemes)];
 };
 
+const createLastSeries = (data, filters) => {
+  for (const [key, value] of Object.entries(filters)) {
+    if (value !== "All") {
+      data = data.filter((row) => row[key] == value);
+    }
+  }
+  data = applyId(data);
+  var categories = [];
+  var seriesEffective = {
+    name: "Condition Effective Date",
+    pointWidth: 20,
+    color: "#054169",
+    data: [],
+  };
+  var seriesSunset = {
+    name: "Condition Sunset Date",
+    pointWidth: 20,
+    color: "#FF821E",
+    data: [],
+  };
+  data.map((row, rowNum) => {
+    categories.push(row.id);
+    if (row["Sunset Date"] != null) {
+      seriesSunset.data.push({
+        name: row.id,
+        x: row["Sunset Date"],
+        x2: row["Sunset Date"] + 86400000 * 5,
+        y: rowNum,
+        color: "#FF821E",
+      });
+    }
+
+    seriesEffective.data.push({
+      name: row.id,
+      x: row["Effective Date"],
+      x2: row["Effective Date"] + 86400000 * 5,
+      y: rowNum,
+      color: "#054169",
+      onClickText: row["Condition"],
+    });
+  });
+
+  if (seriesSunset.data.length > 0) {
+    return [[seriesEffective].concat([seriesSunset]), categories];
+  } else {
+    return [[seriesEffective], categories];
+  }
+};
+
+const updateFiltersOnDrill = (level, name) => {
+  if (level == 1) {
+    conditionsFiltersDrill["Short Project Name"] = "All";
+    //console.log('top level')
+  } else if (level == 2) {
+    conditionsFiltersDrill.Company = name;
+    //console.log('update company ',name)
+  } else if (level == 3) {
+    conditionsFiltersDrill["Short Project Name"] = name;
+    //console.log('update project ',name)
+  } else if (level == 4) {
+    conditionsFiltersDrill["Theme(s)"] = name;
+    //console.log('update theme ',name)
+  }
+};
+
 //one pass timing
 var t0Single = performance.now();
 var [seriesData, drilldownSeries] = createConditionSeries(
@@ -166,6 +239,55 @@ var [seriesData, drilldownSeries] = createConditionSeries(
 );
 var t1Single = performance.now();
 console.log("Single Pass: " + (t1Single - t0Single) + " milliseconds.");
+var lastLevelContainer = document.getElementById("container-last");
+var drillContainer = document.getElementById("container-chart")
+
+var conditionTextContainer = document.getElementById("container_text")
+const setConditionText = (onClickText) => {
+    conditionTextContainer.innerText = onClickText
+}
+
+
+const createLastChart = (series, categories) => {
+  return new Highcharts.chart("container-last", {
+    chart: {
+      type: "xrange",
+      zoomType: "y",
+      animation: true,
+      height: 700,
+      width: 1000,
+    },
+    title: {
+      text: "",
+    },
+
+    xAxis: {
+      type: "datetime",
+    },
+
+    yAxis: {
+      title: {
+        text: "",
+      },
+      type: "category",
+      categories: categories,
+      reversed: true,
+      labels: {
+        events: {
+          click: function () {
+            //console.log(this.value);
+            //console.log(this)
+            //console.log(this.axis.pos,"y axis number")
+            console.log(this.axis.series[0].data[this.pos]['onClickText'])
+            //setConditionText(this.axis.series[0].data[this.pos]['onClickText'])
+          },
+        },
+      },
+    },
+    series: series,
+  });
+};
+
 
 const createGraph = (seriesData, drilldownSeries) => {
   var level = 1;
@@ -173,7 +295,7 @@ const createGraph = (seriesData, drilldownSeries) => {
     chart: {
       //height: 700,
       type: "bar",
-      zoomType: "x", 
+      zoomType: "x",
       animation: true,
       events: {
         load: function () {
@@ -185,26 +307,45 @@ const createGraph = (seriesData, drilldownSeries) => {
           };
         },
         drilldown: function (e) {
+          //console.log(e.seriesOptions.name,"drilldown")
           if (level < 4) {
             level++;
+            updateFiltersOnDrill(level, e.seriesOptions.name);
           }
           if (level == 4) {
             this.update({
               chart: { height: 75 },
-              xAxis: { visible: false},
-              yAxis: { visible: false},
+              xAxis: { visible: false },
+              yAxis: { visible: false },
             });
+            //make the last level chart container larger
+            lastLevelContainer.style.display = "block"
+            drillContainer.style.height = 75
+            lastLevelContainer.style.height = 700 - 75;
+            const [lastSeries, categories] = createLastSeries(
+              conditionsData,
+              conditionsFiltersDrill
+            );
+            createLastChart(lastSeries,categories)
           }
+          // updateFiltersOnDrill(level, e.seriesOptions.name);
+          console.log(conditionsFiltersDrill);
         },
         drillup: function (e) {
+          //console.log(e.seriesOptions.name,"drillup")
           if (level == 4) {
             this.update({
               chart: { height: 700 },
-              yAxis: { visible: true},
-              xAxis: { visible: true},
+              yAxis: { visible: true },
+              xAxis: { visible: true },
             });
+            //lastLevelContainer.style.height = 25;
+            //lastLevelContainer.style.display = "none"
           }
           level--;
+          updateFiltersOnDrill(level, e.seriesOptions.name);
+          lastLevelContainer.style.display = "none"
+          console.log(conditionsFiltersDrill);
         },
       },
     },
@@ -257,6 +398,7 @@ var chart = createGraph(seriesData, drilldownSeries);
 var select_status = document.getElementById("select_status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
+  conditionsFiltersDrill["Condition Status"] = select_status.target.value;
   var [seriesData, drilldownSeries, counts] = createConditionSeries(
     conditionsData,
     conditionsFilters

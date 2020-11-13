@@ -62,7 +62,6 @@ const createLastSeries = (data, filters) => {
     }
   }
   data = applyId(data);
-  var seriesName = data[0]["Short Project Name"] + " - " + data[0]["Theme(s)"];
   var categories = [];
   var seriesEffective = {
     name: "Condition Effective Date",
