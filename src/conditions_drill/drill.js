@@ -22,19 +22,7 @@ const getUnique = (items, filterColumns) => {
   return result;
 };
 
-const applyId = (data, status) => {
-  data = data.map((v) => {
-    v.id = v["Instrument Number"] + "_" + v["Condition Number"];
-    return v;
-  });
-  data = data.filter((row) => row["Short Project Name"] !== "SAM/COM");
-  if (status !== "All") {
-    data = data.filter((row) => row["Condition Status"] == status);
-  }
-  return data;
-};
-
-const applyId2 = (data) => {
+const applyId = (data) => {
   data = data.map((v) => {
     v.id = v["Instrument Number"] + "_" + v["Condition Number"];
     return v;
@@ -48,10 +36,6 @@ const conditionsFilters = {
   "Condition Status": "All",
   Company: "All",
   "Condition Type": "All",
-};
-
-const themeFilter = (row, t) => {
-  return row["Theme(s)"] == t;
 };
 
 const sortResults = (result, level) => {
@@ -70,113 +54,40 @@ const sortResults = (result, level) => {
   return result;
 };
 
-const applySummary = (series, counts = false) => {
-  const conditionStatus = getUnique(series, "Condition Status");
+// const applySummary = (series, counts = false) => {
+//   const conditionStatus = getUnique(series, "Condition Status");
 
-  statusCount = {};
-  conditionStatus.map((v, i) => {
-    currStatus = series.filter((row) => row["Condition Status"] == v);
-    statusCount[v] = currStatus.length;
-  });
+//   statusCount = {};
+//   conditionStatus.map((v, i) => {
+//     currStatus = series.filter((row) => row["Condition Status"] == v);
+//     statusCount[v] = currStatus.length;
+//   });
 
-  document.getElementById("open_conditions_number").innerText =
-    statusCount["In Progress"];
-  document.getElementById("closed_conditions_number").innerText =
-    statusCount["Closed"];
+//   document.getElementById("open_conditions_number").innerText =
+//     statusCount["In Progress"];
+//   document.getElementById("closed_conditions_number").innerText =
+//     statusCount["Closed"];
 
-  if (counts) {
-    document.getElementById("companies_number").innerText = counts.companies;
-    document.getElementById("projects_number").innerText = counts.projects;
-  }
+//   if (counts) {
+//     document.getElementById("companies_number").innerText = counts.companies;
+//     document.getElementById("projects_number").innerText = counts.projects;
+//   }
 
-  return statusCount; //TODO: this function doesnt need to return anything
+//   return statusCount; //TODO: this function doesnt need to return anything
+// };
+
+const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
+  document.getElementById("companies_number").innerText = companiesNum;
+  document.getElementById("projects_number").innerText = projectsNum;
 };
-
-const groupBy = (data, status, returnCounts = false) => {
-  var companyCount = null;
-  var projectCount = null;
-
-  data = applyId(data, status);
-  var companyResult = [];
-  var projectResult = [];
-  var themeResult = [];
-  const companies = getUnique(data, "Company");
-  companyCount = companies.length;
-
-  companies.map((c) => {
-    const company = data.filter((row) => row.Company == c);
-
-    companyResult.push({
-      name: c,
-      y: company.length,
-      drilldown: c,
-    });
-    const projects = getUnique(company, "Short Project Name");
-    projectCount = projectCount + projects.length;
-    const projectData = [];
-    projects.map((p) => {
-      const project = company.filter((row) => row["Short Project Name"] == p);
-
-      projectData.push({
-        name: p,
-        y: project.length,
-        drilldown: p,
-      });
-
-      const themes = getUnique(company, "Theme(s)");
-      const themeData = [];
-      themes.map((t, it) => {
-        const theme = project.filter((row) => row["Theme(s)"] == t); //all rows should go through here. Use this for sumamry counts
-        themeData.push({
-          name: t,
-          y: theme.length,
-        });
-      });
-
-      themeResult.push({
-        name: p,
-        id: p,
-        data: themeData,
-      });
-    });
-
-    projectResult.push({
-      name: c,
-      id: c,
-      data: projectData,
-    });
-  });
-
-  companyResult = sortResults(companyResult, "Company");
-  projectResult = sortResults(projectResult, "Project");
-  themeResult = sortResults(themeResult, "Theme");
-
-  var seriesData = [
-    {
-      name: "Conditions by Company",
-      colorByPoint: false,
-      data: companyResult,
-    },
-  ];
-
-  //return [seriesData, projectResult.concat(themeResult), counts];
-
-  if (returnCounts) {
-    const counts = { companies: companyCount, projects: projectCount };
-    return [seriesData, projectResult.concat(themeResult), counts];
-  } else {
-    return [seriesData, projectResult.concat(themeResult)];
-  }
-};
-
-
 
 //One pass series generation
 const createConditionSeries = (data, filters) => {
-  data = applyId2(data);
+  data = applyId(data);
 
   const objectToList = (obj, level) => {
     var unorderedSeries = [];
+
     if (level == "Company") {
       for (const [key, value] of Object.entries(obj)) {
         unorderedSeries.push({ name: key, y: value, drilldown: key });
@@ -189,14 +100,21 @@ const createConditionSeries = (data, filters) => {
         }
         unorderedSeries.push({ name: pName, id: pName, data: projData });
       }
-    } else if (level == "Theme"){
+    } else if (level == "Theme") {
+      var themeLevel = [];
       for (const [pName, pObj] of Object.entries(obj)) {
         var themeData = [];
         for (const [key, value] of Object.entries(pObj)) {
-          themeData.push({ name: key, y: value}); //could add another drilldown layer here.
+          themeData.push({ name: key, y: value, drilldown: pName + "_" + key }); //could add another drilldown layer here.
+          themeLevel.push({
+            name: key,
+            id: pName + "_" + key,
+            data: [{ name: key, y: value }],
+          });
         }
         unorderedSeries.push({ name: pName, id: pName, data: themeData });
       }
+      return [unorderedSeries, themeLevel];
     }
     return unorderedSeries;
   };
@@ -207,12 +125,14 @@ const createConditionSeries = (data, filters) => {
     }
   }
 
-  var [companies, projects, themes] = [{}, {}, {}];
+  var [companies, projects, themes, subThemes] = [{}, {}, {}, {}];
+  var [companyCount, projectCount] = [0, 0];
   data.map((row, rowNum) => {
-    var companyName = row.Company
+    var companyName = row.Company;
     if (companies.hasOwnProperty(companyName)) {
       companies[companyName]++;
     } else {
+      companyCount++;
       companies[companyName] = 1;
     }
 
@@ -222,8 +142,10 @@ const createConditionSeries = (data, filters) => {
         projects[companyName][projName]++;
       } else {
         projects[companyName][projName] = 1;
+        projectCount++;
       }
     } else {
+      projectCount++;
       projects[companyName] = { [projName]: 1 };
     }
 
@@ -239,9 +161,15 @@ const createConditionSeries = (data, filters) => {
     }
   });
 
+  totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
-  projects = sortResults(objectToList(projects, "Project"),"Project");
-  themes = sortResults(objectToList(themes,"Theme"),"Theme")
+  projects = sortResults(objectToList(projects, "Project"), "Project");
+  var [themes, subThemes] = objectToList(themes, "Theme");
+  themes = sortResults(themes, "Theme");
+
+  // console.log(companies);
+  // console.log(projects);
+  // console.log(themes);
   var seriesData = [
     {
       name: "Conditions by Company",
@@ -249,17 +177,8 @@ const createConditionSeries = (data, filters) => {
       data: companies,
     },
   ];
-  return [seriesData, projects.concat(themes)];
+  return [seriesData, projects.concat(themes).concat(subThemes)];
 };
-
-
-//multiple pass timing
-var t0Multiple = performance.now();
-var [seriesData, drilldownSeries] = groupBy(conditionsData, "All",false);
-var t1Multiple = performance.now();
-console.log(
-  "Multiple Pass: " + (t1Multiple - t0Multiple) + " milliseconds."
-);
 
 //one pass timing
 var t0Single = performance.now();
@@ -268,18 +187,15 @@ var [seriesData, drilldownSeries] = createConditionSeries(
   conditionsFilters
 );
 var t1Single = performance.now();
-console.log(
-  "Single Pass: " + (t1Single - t0Single) + " milliseconds."
-);
-
-
+console.log("Single Pass: " + (t1Single - t0Single) + " milliseconds.");
 
 const createGraph = (seriesData, drilldownSeries) => {
-  return new Highcharts.chart("container", {
+  var level = 1;
+  return new Highcharts.chart("container-chart", {
     chart: {
-      height: 700,
+      //height: 700,
       type: "bar",
-      zoomType: "x", //allows the user to focus in on the x or y (x,y,xy)
+      zoomType: "x", 
       animation: true,
       events: {
         load: function () {
@@ -291,13 +207,26 @@ const createGraph = (seriesData, drilldownSeries) => {
           };
         },
         drilldown: function (e) {
-          //console.log('drilldown',this.series[0].userOptions) //use this to calculate the summary measures that will populate the html
-          //console.log(e)
+          if (level < 4) {
+            level++;
+          }
+          if (level == 4) {
+            this.update({
+              chart: { height: 75 },
+              xAxis: { visible: false},
+              yAxis: { visible: false},
+            });
+          }
         },
         drillup: function (e) {
-          //console.log(e)
-          //console.log(e.seriesOptions.data)
-          //console.log('drillup',this.series[0])
+          if (level == 4) {
+            this.update({
+              chart: { height: 700 },
+              yAxis: { visible: true},
+              xAxis: { visible: true},
+            });
+          }
+          level--;
         },
       },
     },
@@ -345,17 +274,16 @@ const createGraph = (seriesData, drilldownSeries) => {
   });
 };
 
-//var stat = applySummary(conditionsData, counts);
 var chart = createGraph(seriesData, drilldownSeries);
 
 var select_status = document.getElementById("select_status");
 select_status.addEventListener("change", (select_status) => {
-  var status = select_status.target.value;
-  var [seriesData, drilldownSeries, counts] = createSeries(
+  conditionsFilters["Condition Status"] = select_status.target.value;
+  var [seriesData, drilldownSeries, counts] = createConditionSeries(
     conditionsData,
-    status
+    conditionsFilters
   );
-  var stat = applySummary(conditionsData, counts);
+
   chart.update({
     drilldown: {
       series: drilldownSeries,
