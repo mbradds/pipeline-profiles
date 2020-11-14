@@ -2,12 +2,12 @@
   border: 5px solid grey;
 }
 /* This is useful for looking at the grid structure */
-.my-row {
+/* .my-row {
   border: 3px solid red;
 }
 .my-col {
   border: 3px solid blue;
-}
+} */
 
 .conditions-container{
   height:700px
