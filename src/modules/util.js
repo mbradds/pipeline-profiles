@@ -89,6 +89,7 @@ export const companyDrop = (companies) => {
 };
 
 //One pass series generation
+//TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
 export const createConditionSeries = (data, filters) => {
   data = applyId(data);
 
