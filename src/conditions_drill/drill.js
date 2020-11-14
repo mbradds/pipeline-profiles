@@ -90,52 +90,68 @@ var level = 1;
 const createGraph = (seriesData, drilldownSeries) => {
   return new Highcharts.chart("container-chart", {
     chart: {
-      //height: 700,
-      type: "bar",
+      inverted: true,
+      type: "column",
       zoomType: "x",
       animation: true,
       events: {
-        load: function () {
-          this.credits.element.onclick = function () {
-            window.open(
-              "https://www.cer-rec.gc.ca/index-eng.html",
-              "_blank" // <- This is what makes it open in a new window.
-            );
-          };
-        },
         drilldown: function (e) {
           $("#select-company").prop("disabled", "disabled");
           $("#select-company").selectpicker("refresh");
           if (level < 4) {
             level++;
-            updateFiltersOnDrill(level, e.seriesOptions.name);
+            //updateFiltersOnDrill(level, e.seriesOptions.name);
           }
           if (level == 4) {
-            this.update({
-              chart: { height: 75 },
-              xAxis: { visible: false },
-              yAxis: { visible: false },
-            });
-            //make the last level chart container larger
-            lastLevelContainer.style.display = "block";
-            drillContainer.style.height = "75px";
-            lastLevelContainer.style.height = "625px";
-            const [lastSeries, categories] = createLastSeries(
-              conditionsData,
-              conditionsFiltersDrill
-            );
-            createLastChart(lastSeries, categories);
+            var chart = this;
+            setTimeout(function () {
+              chart.update({
+                chart: { inverted: false },
+                yAxis: {
+                  type: "category",
+                  labels: {
+                    formatter: function(){
+                      return this.axis.series[0].data[this.value].name
+                    },
+                    events: {
+                      click: function () {
+                        setConditionText(this.axis.series[0].data[this.pos]["onClickText"]);
+                      },
+                    },
+                  },
+                },
+                // xAxis: {
+                //   type: "datetime",
+                // },
+              });
+            }, 0);
           }
         },
         drillup: function (e) {
+          var chart = this;
           if (level == 4) {
-            this.update({
-              chart: { height: 700 },
-              yAxis: { visible: true },
-              xAxis: { visible: true },
-            });
-            drillContainer.style.height = "700px";
-            setConditionText(null);
+            console.log('drilling up')
+            setTimeout(function () {
+              chart.update({
+                yAxis: {
+                  type: "linear",
+                  labels: {
+                    formatter: function(){
+                      return this.value
+                    }
+                  }
+                },
+                xAxis: {
+                  type: "category",
+                  labels: {
+                    formatter: function(){
+                      return this.value
+                    }
+                  }
+                },
+                chart: { inverted: true },
+              });
+            }, 0);
           }
           level--;
           if (level == 1) {
@@ -143,7 +159,6 @@ const createGraph = (seriesData, drilldownSeries) => {
             $("#select-company").selectpicker("refresh");
           }
           updateFiltersOnDrill(level, e.seriesOptions.name);
-          lastLevelContainer.style.display = "none";
         },
       },
     },
@@ -177,6 +192,7 @@ const createGraph = (seriesData, drilldownSeries) => {
     },
 
     yAxis: {
+      //type: "category",
       showEmpty: false,
       title: {
         text: "Number of Conditions",
@@ -214,7 +230,7 @@ var [seriesData, drilldownSeries, companies] = createConditionSeries(
   conditionsData,
   conditionsFilters
 );
-companyDrop(companies)
+companyDrop(companies);
 var chart = createGraph(seriesData, drilldownSeries);
 
 //select status
@@ -226,7 +242,7 @@ select_status.addEventListener("change", (select_status) => {
     conditionsData,
     conditionsFilters
   );
-  companyDrop(companies)
+  companyDrop(companies);
   chart.update({
     drilldown: {
       series: drilldownSeries,

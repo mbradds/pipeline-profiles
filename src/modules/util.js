@@ -113,7 +113,7 @@ export const createConditionSeries = (data, filters) => {
       for (const [pName, pObj] of Object.entries(obj)) {
         var themeData = [];
         for (const [key, value] of Object.entries(pObj)) {
-          themeData.push({ name: key, y: value, drilldown: pName + "_" + key }); //could add another drilldown layer here.
+          themeData.push({ name: key, y: value, drilldown: pName + "_" + key });
           themeLevel.push({
             name: key,
             id: pName + "_" + key,
@@ -123,6 +123,16 @@ export const createConditionSeries = (data, filters) => {
         unorderedSeries.push({ name: pName, id: pName, data: themeData });
       }
       return [unorderedSeries, themeLevel];
+    } else if (level == "id") {
+      for (const [pNameTheme, tObj] of Object.entries(obj)) {
+        unorderedSeries.push({
+          name: pNameTheme, //tObj.name,
+          type: "xrange",
+          pointWidth: 20,
+          id: pNameTheme,
+          data: tObj.data,
+        });
+      }
     }
     return unorderedSeries;
   };
@@ -133,7 +143,7 @@ export const createConditionSeries = (data, filters) => {
     }
   }
 
-  var [companies, projects, themes, subThemes] = [{}, {}, {}, {}];
+  var [companies, projects, themes, id] = [{}, {}, {}, {}];
   var [companyCount, projectCount] = [0, 0];
   var statusSet = new Set();
   data.map((row, rowNum) => {
@@ -169,12 +179,45 @@ export const createConditionSeries = (data, filters) => {
     } else {
       themes[projName] = { [themeName]: 1 };
     }
-  });
 
+    var projTheme = projName + "_" + themeName;
+    if (id.hasOwnProperty(projTheme)) {
+      var y = id[projTheme].data.length
+      id[projTheme].data.push({
+        name: row.id,
+        x: row["Effective Date"],
+        x2: row["Effective Date"] + 86400000 * 5,
+        y:y,
+        color: "#054169",
+        onClickText: row["Condition"],
+      });
+    } else {
+      id[projTheme] = {
+        name: "Condition Effective Date",
+        pointWidth: 20,
+        data: [
+          {
+            name: row.id,
+            x: row["Effective Date"],
+            x2: row["Effective Date"] + 86400000 * 5,
+            y:0,
+            color: "#054169",
+            onClickText: row["Condition"],
+          },
+        ],
+      };
+    }
+  });
   totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
   projects = sortResults(objectToList(projects, "Project"), "Project");
   var [themes, subThemes] = objectToList(themes, "Theme");
+  var idSeries = objectToList(id, "id");
+  console.log(themes)
+  console.log(subThemes)
+  console.log(idSeries)
+  //console.log(idSeries);
+  //console.log(subThemes);
   themes = sortResults(themes, "Theme");
   var seriesData = [
     {
@@ -183,7 +226,7 @@ export const createConditionSeries = (data, filters) => {
       data: companies,
     },
   ];
-  return [seriesData, projects.concat(themes).concat(subThemes), companies];
+  return [seriesData, projects.concat(themes).concat(idSeries), companies];
 };
 
 export const createLastSeries = (data, filters) => {
