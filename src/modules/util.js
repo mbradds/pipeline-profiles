@@ -89,6 +89,7 @@ export const companyDrop = (companies) => {
 };
 
 //One pass series generation
+//TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
 export const createConditionSeries = (data, filters) => {
   data = applyId(data);
 
@@ -97,7 +98,13 @@ export const createConditionSeries = (data, filters) => {
 
     if (level == "Company") {
       for (const [key, value] of Object.entries(obj)) {
-        unorderedSeries.push({ name: key, y: value, drilldown: key });
+        unorderedSeries.push({
+          name: key,
+          y: value,
+          drilldown: key,
+          xAxis: "id_category",
+          yAxis: "id_yLinear",
+        });
       }
     } else if (level == "Project") {
       for (const [pName, pObj] of Object.entries(obj)) {
@@ -105,25 +112,71 @@ export const createConditionSeries = (data, filters) => {
         for (const [key, value] of Object.entries(pObj)) {
           projData.push({ name: key, y: value, drilldown: key });
         }
-        unorderedSeries.push({ name: pName, id: pName, data: projData });
+        unorderedSeries.push({
+          name: pName,
+          id: pName,
+          data: projData,
+          xAxis: "id_category",
+          yAxis: "id_yLinear",
+        });
       }
     } else if (level == "Theme") {
-      var themeLevel = [];
       for (const [pName, pObj] of Object.entries(obj)) {
         var themeData = [];
         for (const [key, value] of Object.entries(pObj)) {
-          themeData.push({ name: key, y: value, drilldown: pName + "_" + key }); //could add another drilldown layer here.
-          themeLevel.push({
+          themeData.push({
             name: key,
-            id: pName + "_" + key,
-            data: [{ name: key, y: value }],
+            y: value,
+            drilldown: pName + " - " + key,
           });
         }
-        unorderedSeries.push({ name: pName, id: pName, data: themeData });
+        unorderedSeries.push({
+          name: pName,
+          id: pName,
+          data: themeData,
+          xAxis: "id_category",
+          yAxis: "id_yLinear",
+        });
       }
-      return [unorderedSeries, themeLevel];
+    } else if (level == "id") {
+      for (const [pNameTheme, tObj] of Object.entries(obj)) {
+        unorderedSeries.push({
+          name: pNameTheme,
+          type: "xrange",
+          pointWidth: 20,
+          id: pNameTheme,
+          data: tObj.data,
+          xAxis: "id_datetime",
+          yAxis: "id_yCategory",
+        });
+      }
     }
     return unorderedSeries;
+  };
+
+  const addEfectivePoint = (row, y) => {
+    return {
+      name: row.id,
+      x: row["Effective Date"],
+      x2: row["Effective Date"] + 86400000 * 5,
+      y: y,
+      color: "#054169",
+      onClickText: row["Condition"],
+    };
+  };
+
+  const addSunsetPoint = (row, y) => {
+    if (row["Sunset Date"] != null) {
+      return {
+        name: row.id,
+        x: row["Sunset Date"],
+        x2: row["Sunset Date"] + 86400000 * 5,
+        y: y,
+        color: "#FF821E",
+      };
+    } else {
+      return false
+    }
   };
 
   for (const [key, value] of Object.entries(filters)) {
@@ -132,7 +185,7 @@ export const createConditionSeries = (data, filters) => {
     }
   }
 
-  var [companies, projects, themes, subThemes] = [{}, {}, {}, {}];
+  var [companies, projects, themes, id,idSunset] = [{}, {}, {}, {},{}];
   var [companyCount, projectCount] = [0, 0];
   var statusSet = new Set();
   data.map((row, rowNum) => {
@@ -168,21 +221,50 @@ export const createConditionSeries = (data, filters) => {
     } else {
       themes[projName] = { [themeName]: 1 };
     }
-  });
 
+    var projTheme = projName + " - " + themeName;
+    if (id.hasOwnProperty(projTheme)) {
+      //var y = id[projTheme].data.length-1;
+      id[projTheme].categories.add(row.id)
+      var y = id[projTheme].categories.size -1 
+      id[projTheme].data.push(addEfectivePoint(row, y));
+      var sunset = addSunsetPoint(row,y)
+      if (sunset){
+        id[projTheme].data.push(sunset);
+      }
+    } else {
+      id[projTheme] = {
+        categories: new Set(),
+        name: row.id,
+        pointWidth: 20,
+        data: [addEfectivePoint(row, 0)],
+      };
+      id[projTheme].categories.add(row[id])
+      var sunset = addSunsetPoint(row,0)
+      if (sunset){
+        id[projTheme].data.push(sunset);
+      }
+    }
+
+  });
   totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
   projects = sortResults(objectToList(projects, "Project"), "Project");
-  var [themes, subThemes] = objectToList(themes, "Theme");
+  var themes = objectToList(themes, "Theme");
+  var idSeries = objectToList(id, "id");
   themes = sortResults(themes, "Theme");
+
   var seriesData = [
     {
       name: "Conditions by Company",
       colorByPoint: false,
       data: companies,
+      xAxis: "id_category",
+      yAxis: "id_yLinear",
     },
   ];
-  return [seriesData, projects.concat(themes).concat(subThemes), companies];
+
+  return [seriesData, projects.concat(themes).concat(idSeries), companies];
 };
 
 export const createLastSeries = (data, filters) => {
