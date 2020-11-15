@@ -105,26 +105,39 @@ const createGraph = (seriesData, drilldownSeries) => {
           }
           if (level == 4) {
             setTimeout(function () {
-              var cat = []
-              chart.series[0].data.map((point)=>{
-                if (!cat.includes(point.name)){
-                  cat.push(point.name)
+              var cat = [];
+              chart.series[0].data.map((point) => {
+                if (!cat.includes(point.name)) {
+                  cat.push(point.name);
                 }
-              })
-              chart.yAxis[1].setCategories(cat)
+              });
+              chart.yAxis[1].setCategories(cat);
               chart.update({
                 chart: {
                   inverted: false,
                   zoomType: null,
                 },
               });
-              console.log(chart.series[0].data)
+              console.log(chart.series[0].data);
             }, 0);
           }
         },
         drillup: function (e) {
-          //console.log(this)
           var chart = this;
+          var [seriesData, drilldownSeries, companies] = createConditionSeries(
+            conditionsData,
+            conditionsFilters
+          );
+          if (level == 2) {
+            this.series[1].setData(seriesData[0].data)
+          } else {
+            chart.update({
+              drilldown: {
+                series: drilldownSeries,
+              },
+            });
+          }
+
           if (level == 4) {
             setTimeout(function () {
               chart.update({
@@ -206,7 +219,7 @@ const createGraph = (seriesData, drilldownSeries) => {
           // },
           events: {
             click: function () {
-              console.log(this.axis.series[0])
+              console.log(this.axis.series[0]);
               setConditionText(
                 this.axis.series[0].data[this.pos]["onClickText"]
               );
@@ -231,7 +244,9 @@ const updateChartAfterDrill = (chart, seriesData) => {
   var ddCurrent = chart.series[0].userOptions.id; //gets the current level of the drilldown
   var ddSeries = chart.options.drilldown.series;
   if (ddCurrent == undefined) {
-    //chart.series[0] = seriesData
+    chart.update({
+      series: seriesData,
+    });
   } else {
     for (var i = 0, ie = ddSeries.length; i < ie; ++i) {
       if (ddSeries[i].id === ddCurrent) {
@@ -246,26 +261,24 @@ var [seriesData, drilldownSeries, companies] = createConditionSeries(
   conditionsFilters
 );
 companyDrop(companies);
-var chart = createGraph(seriesData, drilldownSeries);
+var chartLoad = createGraph(seriesData, drilldownSeries);
 
 //select status
 var select_status = document.getElementById("select_status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
   conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  var [seriesData, drilldownSeries, companies] = createConditionSeries(
+  [seriesData, drilldownSeries, companies] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
   companyDrop(companies);
-  chart.update({
-    series:seriesData,
+  chartLoad.update({
     drilldown: {
       series: drilldownSeries,
     },
   });
-  console.log(chart.series[0])
-  updateChartAfterDrill(chart, seriesData);
+  updateChartAfterDrill(chartLoad, seriesData);
 });
 
 //select company
@@ -273,7 +286,7 @@ var select_company = document.getElementById("select-company");
 select_company.addEventListener("change", (select_company) => {
   conditionsFilters["Company"] = select_company.target.value;
   conditionsFiltersDrill["Company"] = select_company.target.value;
-  var [seriesData, drilldownSeries] = createConditionSeries(
+  [seriesData, drilldownSeries] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
