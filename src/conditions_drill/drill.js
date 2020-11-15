@@ -93,63 +93,42 @@ const createGraph = (seriesData, drilldownSeries) => {
       inverted: true,
       type: "column",
       zoomType: "x",
-      animation: true,
+      animation: false,
       events: {
         drilldown: function (e) {
+          var chart = this;
           $("#select-company").prop("disabled", "disabled");
           $("#select-company").selectpicker("refresh");
           if (level < 4) {
             level++;
-            //updateFiltersOnDrill(level, e.seriesOptions.name);
+            updateFiltersOnDrill(level, e.seriesOptions.name);
           }
           if (level == 4) {
-            var chart = this;
             setTimeout(function () {
+              var cat = []
+              chart.series[0].data.map((point)=>{
+                if (!cat.includes(point.name)){
+                  cat.push(point.name)
+                }
+              })
+              chart.yAxis[1].setCategories(cat)
               chart.update({
-                chart: { inverted: false },
-                yAxis: {
-                  type: "category",
-                  labels: {
-                    formatter: function(){
-                      return this.axis.series[0].data[this.value].name
-                    },
-                    events: {
-                      click: function () {
-                        setConditionText(this.axis.series[0].data[this.pos]["onClickText"]);
-                      },
-                    },
-                  },
+                chart: {
+                  inverted: false,
+                  zoomType: null,
                 },
-                // xAxis: {
-                //   type: "datetime",
-                // },
               });
+              console.log(chart.series[0].data)
             }, 0);
           }
         },
         drillup: function (e) {
+          //console.log(this)
           var chart = this;
           if (level == 4) {
-            console.log('drilling up')
             setTimeout(function () {
               chart.update({
-                yAxis: {
-                  type: "linear",
-                  labels: {
-                    formatter: function(){
-                      return this.value
-                    }
-                  }
-                },
-                xAxis: {
-                  type: "category",
-                  labels: {
-                    formatter: function(){
-                      return this.value
-                    }
-                  }
-                },
-                chart: { inverted: true },
+                chart: { inverted: true, zoomType: "x" },
               });
             }, 0);
           }
@@ -169,7 +148,8 @@ const createGraph = (seriesData, drilldownSeries) => {
 
     plotOptions: {
       series: {
-        cropThreshold: 800, //solution to axis getting messed up on drillup: https://www.highcharts.com/forum/viewtopic.php?t=40702
+        grouping: false,
+        cropThreshold: 1000, //solution to axis getting messed up on drillup: https://www.highcharts.com/forum/viewtopic.php?t=40702
         pointWidth: 20,
         events: {
           legendItemClick: function () {
@@ -184,20 +164,57 @@ const createGraph = (seriesData, drilldownSeries) => {
       href: "https://www.cer-rec.gc.ca/index-eng.html",
     },
 
-    xAxis: {
-      type: "category",
-      title: {
-        text: null,
+    xAxis: [
+      {
+        id: "id_datetime",
+        type: "datetime",
+        title: {
+          text: null,
+        },
       },
-    },
+      {
+        id: "id_category",
+        type: "category",
+        title: {
+          text: null,
+        },
+      },
+    ],
 
-    yAxis: {
-      //type: "category",
-      showEmpty: false,
-      title: {
-        text: "Number of Conditions",
+    yAxis: [
+      {
+        id: "id_yLinear",
+        type: "linear",
+        showEmpty: false,
+        title: {
+          text: "Number of Conditions",
+        },
       },
-    },
+      {
+        id: "id_yCategory",
+        type: "category",
+        //categories:['GC-125 - 14','GC-125 - 15'],
+        title: {
+          text: "",
+        },
+        labels: {
+          // formatter: function () {
+          //   var seriesData = this.axis.series[0].data;
+          //   if (seriesData.length > 0) {
+          //     return this.axis.series[0].data[this.value].name;
+          //   }
+          // },
+          events: {
+            click: function () {
+              console.log(this.axis.series[0])
+              setConditionText(
+                this.axis.series[0].data[this.pos]["onClickText"]
+              );
+            },
+          },
+        },
+      },
+    ],
 
     series: seriesData,
 
@@ -214,9 +231,7 @@ const updateChartAfterDrill = (chart, seriesData) => {
   var ddCurrent = chart.series[0].userOptions.id; //gets the current level of the drilldown
   var ddSeries = chart.options.drilldown.series;
   if (ddCurrent == undefined) {
-    chart.update({
-      series: seriesData,
-    });
+    //chart.series[0] = seriesData
   } else {
     for (var i = 0, ie = ddSeries.length; i < ie; ++i) {
       if (ddSeries[i].id === ddCurrent) {
@@ -244,10 +259,12 @@ select_status.addEventListener("change", (select_status) => {
   );
   companyDrop(companies);
   chart.update({
+    series:seriesData,
     drilldown: {
       series: drilldownSeries,
     },
   });
+  console.log(chart.series[0])
   updateChartAfterDrill(chart, seriesData);
 });
 
