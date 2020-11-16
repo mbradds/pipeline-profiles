@@ -52,7 +52,7 @@ export const sortSeriesData = (data) => {
   data.sort(function (a, b) {
     return b.y - a.y;
   });
-  return data
+  return data;
 };
 
 const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
@@ -63,8 +63,31 @@ const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
 //One pass series generation
 //TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
 export const createConditionSeries = (data, filters) => {
-
   data = applyId(data);
+  const addEfectivePoint = (row, y) => {
+    return {
+      name: row.id,
+      x: row["Effective Date"],
+      x2: row["Effective Date"] + 86400000 * 5,
+      y: y,
+      color: "#054169",
+      onClickText: row["Condition"],
+    };
+  };
+
+  const addSunsetPoint = (row, y) => {
+    if (row["Sunset Date"] != null) {
+      return {
+        name: row.id,
+        x: row["Sunset Date"],
+        x2: row["Sunset Date"] + 86400000 * 5,
+        y: y,
+        color: "#FF821E",
+      };
+    } else {
+      return false;
+    }
+  };
   const objectToList = (obj, level) => {
     var unorderedSeries = [];
     var ddSeries = {};
@@ -113,6 +136,19 @@ export const createConditionSeries = (data, filters) => {
         };
       }
       return ddSeries;
+    } else if (level == "id") {
+      for (const [pNameTheme, tObj] of Object.entries(obj)) {
+        ddSeries[pNameTheme] = {
+          name: pNameTheme,
+          type: "xrange",
+          pointWidth: 20,
+          id: pNameTheme,
+          data: tObj.data,
+          xAxis: "id_datetime",
+          yAxis: "id_yCategory",
+        };
+      }
+      return ddSeries;
     }
   };
 
@@ -158,12 +194,35 @@ export const createConditionSeries = (data, filters) => {
     } else {
       themes[projName] = { [themeName]: 1 };
     }
+
+    var projTheme = projName + " - " + themeName;
+    if (id.hasOwnProperty(projTheme)) {
+      id[projTheme].categories.add(row.id);
+      var y = id[projTheme].categories.size - 1;
+      id[projTheme].data.push(addEfectivePoint(row, y));
+      var sunset = addSunsetPoint(row, y);
+      if (sunset) {
+        id[projTheme].data.push(sunset);
+      }
+    } else {
+      id[projTheme] = {
+        categories: new Set(),
+        name: row.id,
+        pointWidth: 20,
+        data: [addEfectivePoint(row, 0)],
+      };
+      id[projTheme].categories.add(row[id]);
+      var sunset = addSunsetPoint(row, 0);
+      if (sunset) {
+        id[projTheme].data.push(sunset);
+      }
+    }
   });
   totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
   projects = objectToList(projects, "Project");
   themes = objectToList(themes, "Theme");
-  //console.log(themes)
+  id = objectToList(id, "id");
 
   var seriesData = [
     {
@@ -175,5 +234,5 @@ export const createConditionSeries = (data, filters) => {
     },
   ];
 
-  return [seriesData, projects, themes];
+  return [seriesData, projects, themes, id];
 };

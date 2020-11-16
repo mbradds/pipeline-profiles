@@ -1,4 +1,8 @@
-import { getData, createConditionSeries,sortSeriesData } from "../modules/util.js";
+import {
+  getData,
+  createConditionSeries,
+  sortSeriesData,
+} from "../modules/util.js";
 
 const conditionsData = JSON.parse(
   getData("/src/conditions_drill/conditions.json")
@@ -46,12 +50,16 @@ var currentLevel = { level: 0 };
 const createGraph = () => {
   return new Highcharts.chart("container-chart", {
     chart: {
-      inverted: true,
+      //inverted: true,
       type: "column",
       zoomType: "x",
       animation: false,
       events: {
         drilldown: function (e) {
+          var chart = this;
+          chart.update({
+            chart:{inverted:true}
+          })
           currentLevel.level++;
           if (!e.seriesOptions) {
             var chart = this;
@@ -60,10 +68,13 @@ const createGraph = () => {
               currentPoint.company = e.point.name;
             } else if (currentLevel.level == 2) {
               var series = levels.themes[e.point.name];
-              currentPoint.project = e.point.name
+              currentPoint.project = e.point.name;
+            } else if (currentLevel.level == 3) {
+              var series =
+                levels.id[currentPoint.project + " - " + e.point.name];
+              currentPoint.id = e.point.name;
             }
-
-            series.data = sortSeriesData(series.data)
+            series.data = sortSeriesData(series.data);
             setTimeout(function () {
               chart.addSeriesAsDrilldown(e.point, series);
             }, 0);
@@ -75,8 +86,21 @@ const createGraph = () => {
             this.series[1].setData(sortSeriesData(levels.series[0].data));
             this.series[0].setData(sortSeriesData(levels.series[0].data));
           } else if (currentLevel.level == 1) {
-            this.series[1].setData(sortSeriesData(levels.projects[currentPoint.company].data));
-            this.series[0].setData(sortSeriesData(levels.projects[currentPoint.company].data));
+            this.series[1].setData(
+              sortSeriesData(levels.projects[currentPoint.company].data)
+            );
+            this.series[0].setData(
+              sortSeriesData(levels.projects[currentPoint.company].data)
+            );
+          } else if (currentLevel.level == 2) {
+
+             
+            this.series[1].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
+            this.series[0].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
           }
         },
       },
@@ -157,35 +181,41 @@ const createGraph = () => {
 };
 
 const levels = {};
-var [seriesData, projects, themes] = createConditionSeries(
+var [seriesData, projects, themes, id] = createConditionSeries(
   conditionsData,
   conditionsFilters
 );
 levels.series = seriesData;
 levels.projects = projects;
 levels.themes = themes;
+levels.id = id;
 var chart = createGraph();
 
 var select_status = document.getElementById("select_status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
   conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  [seriesData, projects, themes] = createConditionSeries(
+  [seriesData, projects, themes, id] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
   levels.series = seriesData;
   levels.projects = projects;
   levels.themes = themes;
+  levels.id = id;
   if (currentLevel.level == 0) {
     chart.update({
       series: levels.series,
     });
   } else if (currentLevel.level == 1) {
-    console.log(levels.projects)
-    chart.series[0].setData(sortSeriesData(levels.projects[currentPoint.company].data));
+    chart.series[0].setData(
+      sortSeriesData(levels.projects[currentPoint.company].data)
+    );
   } else if (currentLevel.level == 2) {
-    chart.series[0].setData(sortSeriesData(levels.themes[currentPoint.project].data));
+    chart.series[0].setData(
+      sortSeriesData(levels.themes[currentPoint.project].data)
+    );
+  } else if (currentLevel.level == 3) {
+    chart.series[0].setData(levels.id[currentPoint.id].data);
   }
-
 });
