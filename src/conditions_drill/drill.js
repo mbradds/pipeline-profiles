@@ -62,32 +62,41 @@ const createGraph = () => {
             var chart = this;
             if (currentLevel.level == 1) {
               var series = levels.projects[e.point.name];
-              var inv = true
+              var inv = true;
               currentPoint.company = e.point.name;
             } else if (currentLevel.level == 2) {
-              var inv = true
+              var inv = true;
               var series = levels.themes[e.point.name];
               currentPoint.project = e.point.name;
             } else if (currentLevel.level == 3) {
-              var inv = false
+              var inv = false;
               var series =
                 levels.id[currentPoint.project + " - " + e.point.name];
               currentPoint.id = e.point.name;
+              chart.update(
+                {
+                  chart: {zoomType:null},
+                  yAxis: [
+                    {
+                      id: "id_yCategory",
+                      categories: series.categories,
+                      title: {
+                        text: "Instrument Number - Condition Number",
+                      },
+                    },
+                  ],
+                },
+                true
+              );
             }
+            series.data = sortSeriesData(series.data);
             setTimeout(function () {
-              if (Array.isArray(series)){
-                chart.addSingleSeriesAsDrilldown(e.point, series[1]);
-                chart.addSingleSeriesAsDrilldown(e.point, series[0]);
-                chart.applyDrilldown();
-              } else {
-                series.data = sortSeriesData(series.data);
-                chart.addSeriesAsDrilldown(e.point, series);
-              }
+              chart.addSeriesAsDrilldown(e.point, series);
               chart.update({
                 chart: {
-                  inverted:inv
-                }
-              })
+                  inverted: inv,
+                },
+              });
             }, 0);
           }
         },
@@ -104,15 +113,28 @@ const createGraph = () => {
               sortSeriesData(levels.projects[currentPoint.company].data)
             );
           } else if (currentLevel.level == 2) {
-            chart.update({
-              chart:{inverted:true}
-            })
-            console.log('moving up from last level')
-            console.log(levels.themes[currentPoint.project].data)
-            this.series[0].setData(
-              sortSeriesData(levels.themes[currentPoint.project].data)
+            setConditionText(null)
+            chart.update(
+              {
+                chart: {
+                  inverted: true,
+                  zoomType:"x",
+                },
+                yAxis: [
+                  {
+                    id: "id_yCategory",
+                    title: {
+                      text: "",
+                    },
+                  },
+                ],
+              },
+              true
             );
             this.series[1].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
+            this.series[0].setData(
               sortSeriesData(levels.themes[currentPoint.project].data)
             );
           }
@@ -170,24 +192,31 @@ const createGraph = () => {
       },
       {
         id: "id_yCategory",
-        type: "category",
         title: {
           text: "",
         },
         labels: {
+          formatter: function () {
+            return this.value;
+          },
           events: {
             click: function () {
-              setConditionText(
-                this.axis.series[0].data[this.pos]["onClickText"]
-              );
+              var clickedId = this.value;
+              var currentSeries = this.axis.series[0].data;
+              currentSeries.map((row) => {
+                if (
+                  row.name == clickedId &&
+                  row.hasOwnProperty("onClickText")
+                ) {
+                  setConditionText(row["onClickText"]);
+                }
+              });
             },
           },
         },
       },
     ],
-
     series: levels.series,
-
     drilldown: {
       series: [],
     },
@@ -230,6 +259,8 @@ select_status.addEventListener("change", (select_status) => {
       sortSeriesData(levels.themes[currentPoint.project].data)
     );
   } else if (currentLevel.level == 3) {
-    chart.series[0].setData(levels.id[currentPoint.id].data);
+    chart.series[0].setData(
+      levels.id[currentPoint.project + " - " + currentPoint.id].data
+    );
   }
 });
