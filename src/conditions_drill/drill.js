@@ -74,9 +74,15 @@ const createGraph = () => {
                 levels.id[currentPoint.project + " - " + e.point.name];
               currentPoint.id = e.point.name;
             }
-            series.data = sortSeriesData(series.data);
             setTimeout(function () {
-              chart.addSeriesAsDrilldown(e.point, series);
+              if (Array.isArray(series)){
+                chart.addSingleSeriesAsDrilldown(e.point, series[1]);
+                chart.addSingleSeriesAsDrilldown(e.point, series[0]);
+                chart.applyDrilldown();
+              } else {
+                series.data = sortSeriesData(series.data);
+                chart.addSeriesAsDrilldown(e.point, series);
+              }
               chart.update({
                 chart: {
                   inverted:inv
@@ -101,10 +107,12 @@ const createGraph = () => {
             chart.update({
               chart:{inverted:true}
             })
-            this.series[1].setData(
+            console.log('moving up from last level')
+            console.log(levels.themes[currentPoint.project].data)
+            this.series[0].setData(
               sortSeriesData(levels.themes[currentPoint.project].data)
             );
-            this.series[0].setData(
+            this.series[1].setData(
               sortSeriesData(levels.themes[currentPoint.project].data)
             );
           }

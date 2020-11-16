@@ -138,15 +138,20 @@ export const createConditionSeries = (data, filters) => {
       return ddSeries;
     } else if (level == "id") {
       for (const [pNameTheme, tObj] of Object.entries(obj)) {
-        ddSeries[pNameTheme] = {
-          name: pNameTheme,
-          type: "xrange",
-          pointWidth: 20,
-          id: pNameTheme,
-          data: tObj.data,
-          xAxis: "id_datetime",
-          yAxis: "id_yCategory",
-        };
+        if (tObj[1].data.length>0){
+          ddSeries[pNameTheme] = [tObj[0]].concat([tObj[1]])
+        } else {
+          ddSeries[pNameTheme] = tObj[0]
+        }
+        // ddSeries[pNameTheme] = {
+        //   name: pNameTheme,
+        //   type: "xrange",
+        //   pointWidth: 20,
+        //   id: pNameTheme,
+        //   data: tObj.data,
+        //   xAxis: "id_datetime",
+        //   yAxis: "id_yCategory",
+        // };
       }
       return ddSeries;
     }
@@ -158,7 +163,7 @@ export const createConditionSeries = (data, filters) => {
     }
   }
 
-  var [companies, projects, themes, id, idSunset] = [{}, {}, {}, {}, {}];
+  var [companies, projects, themes, id] = [{}, {}, {}, {}];
   var [companyCount, projectCount] = [0, 0];
   var statusSet = new Set();
   data.map((row, rowNum) => {
@@ -197,24 +202,38 @@ export const createConditionSeries = (data, filters) => {
 
     var projTheme = projName + " - " + themeName;
     if (id.hasOwnProperty(projTheme)) {
-      id[projTheme].categories.add(row.id);
-      var y = id[projTheme].categories.size - 1;
-      id[projTheme].data.push(addEfectivePoint(row, y));
+      id[projTheme][0].categories.add(row.id);
+      var y = id[projTheme][0].categories.size - 1;
+      id[projTheme][0].data.push(addEfectivePoint(row, y));
       var sunset = addSunsetPoint(row, y);
       if (sunset) {
-        id[projTheme].data.push(sunset);
+        id[projTheme][1].data.push(sunset);
       }
     } else {
-      id[projTheme] = {
-        categories: new Set(),
-        name: row.id,
+      id[projTheme] = [{},{}]
+      id[projTheme][0] = {
+        name: "Condition Effective Data",
+        id: projTheme,
         pointWidth: 20,
+        type:'xrange',
+        xAxis: "id_datetime",
+        yAxis: "id_yCategory",
         data: [addEfectivePoint(row, 0)],
       };
-      id[projTheme].categories.add(row[id]);
+      id[projTheme][0].categories = new Set()
+      id[projTheme][0].categories.add(row[id]);
+      id[projTheme][1] = {
+        name: "Condition Sunset Date",
+        id: projTheme,
+        pointWidth: 20,
+        type:'xrange',
+        xAxis: "id_datetime",
+        yAxis: "id_yCategory",
+        data: [],
+      };
       var sunset = addSunsetPoint(row, 0);
       if (sunset) {
-        id[projTheme].data.push(sunset);
+        id[projTheme][1].data.push(sunset);
       }
     }
   });
@@ -223,6 +242,8 @@ export const createConditionSeries = (data, filters) => {
   projects = objectToList(projects, "Project");
   themes = objectToList(themes, "Theme");
   id = objectToList(id, "id");
+  console.log(themes)
+  console.log(id)
 
   var seriesData = [
     {
