@@ -50,26 +50,26 @@ var currentLevel = { level: 0 };
 const createGraph = () => {
   return new Highcharts.chart("container-chart", {
     chart: {
-      //inverted: true,
+      inverted: true,
       type: "column",
       zoomType: "x",
       animation: false,
       events: {
         drilldown: function (e) {
           var chart = this;
-          chart.update({
-            chart:{inverted:true}
-          })
           currentLevel.level++;
           if (!e.seriesOptions) {
             var chart = this;
             if (currentLevel.level == 1) {
               var series = levels.projects[e.point.name];
+              var inv = true
               currentPoint.company = e.point.name;
             } else if (currentLevel.level == 2) {
+              var inv = true
               var series = levels.themes[e.point.name];
               currentPoint.project = e.point.name;
             } else if (currentLevel.level == 3) {
+              var inv = false
               var series =
                 levels.id[currentPoint.project + " - " + e.point.name];
               currentPoint.id = e.point.name;
@@ -77,6 +77,11 @@ const createGraph = () => {
             series.data = sortSeriesData(series.data);
             setTimeout(function () {
               chart.addSeriesAsDrilldown(e.point, series);
+              chart.update({
+                chart: {
+                  inverted:inv
+                }
+              })
             }, 0);
           }
         },
@@ -93,8 +98,9 @@ const createGraph = () => {
               sortSeriesData(levels.projects[currentPoint.company].data)
             );
           } else if (currentLevel.level == 2) {
-
-             
+            chart.update({
+              chart:{inverted:true}
+            })
             this.series[1].setData(
               sortSeriesData(levels.themes[currentPoint.project].data)
             );
