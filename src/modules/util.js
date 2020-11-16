@@ -23,19 +23,6 @@ export const getData = (Url) => {
   return Httpreq.responseText;
 };
 
-// export const getUnique = (items, filterColumns) => {
-//   var lookup = {};
-//   var result = [];
-//   for (var item, i = 0; (item = items[i++]); ) {
-//     var name = item[filterColumns];
-//     if (!(name in lookup)) {
-//       lookup[name] = 1;
-//       result.push(name);
-//     }
-//   }
-//   return result;
-// };
-
 const applyId = (data) => {
   data = data.map((v) => {
     v.id = v["Instrument Number"] + " - " + v["Condition Number"];
@@ -61,99 +48,22 @@ export const sortResults = (result, level) => {
   return result;
 };
 
+export const sortSeriesData = (data) => {
+  data.sort(function (a, b) {
+    return b.y - a.y;
+  });
+  return data;
+};
+
 const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
   document.getElementById("companies_number").innerText = companiesNum;
   document.getElementById("projects_number").innerText = projectsNum;
-};
-
-const addToDrop = (drop_name, optionValue, optionText) => {
-  $(drop_name).append(
-    $("<option>", {
-      value: optionValue,
-      text: optionText,
-    })
-  );
-};
-
-export const companyDrop = (companies) => {
-  var currentCompany = $("#select-company").val();
-  if ($("#select-company").is(":enabled")) {
-    $("#select-company").empty();
-    addToDrop("#select-company", "All", "All");
-    for (const [key, value] of Object.entries(companies)) {
-      addToDrop("#select-company", value.name, value.name);
-    }
-  }
-  $("#select-company").selectpicker("refresh");
-  $("#select-company").val(currentCompany).change();
 };
 
 //One pass series generation
 //TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
 export const createConditionSeries = (data, filters) => {
   data = applyId(data);
-
-  const objectToList = (obj, level) => {
-    var unorderedSeries = [];
-
-    if (level == "Company") {
-      for (const [key, value] of Object.entries(obj)) {
-        unorderedSeries.push({
-          name: key,
-          y: value,
-          drilldown: key,
-          xAxis: "id_category",
-          yAxis: "id_yLinear",
-        });
-      }
-    } else if (level == "Project") {
-      for (const [pName, pObj] of Object.entries(obj)) {
-        var projData = [];
-        for (const [key, value] of Object.entries(pObj)) {
-          projData.push({ name: key, y: value, drilldown: key });
-        }
-        unorderedSeries.push({
-          name: pName,
-          id: pName,
-          data: projData,
-          xAxis: "id_category",
-          yAxis: "id_yLinear",
-        });
-      }
-    } else if (level == "Theme") {
-      for (const [pName, pObj] of Object.entries(obj)) {
-        var themeData = [];
-        for (const [key, value] of Object.entries(pObj)) {
-          themeData.push({
-            name: key,
-            y: value,
-            drilldown: pName + " - " + key,
-          });
-        }
-        unorderedSeries.push({
-          name: pName,
-          id: pName,
-          data: themeData,
-          xAxis: "id_category",
-          yAxis: "id_yLinear",
-        });
-      }
-    } else if (level == "id") {
-      for (const [pNameTheme, tObj] of Object.entries(obj)) {
-        unorderedSeries.push({
-          name: pNameTheme,
-          type: "xrange",
-          pointWidth: 20,
-          id: pNameTheme,
-          data: tObj.data,
-          xAxis: "id_datetime",
-          yAxis: "id_yCategory",
-        });
-      }
-    }
-    return unorderedSeries;
-  };
-
   const addEfectivePoint = (row, y) => {
     return {
       name: row.id,
@@ -175,7 +85,71 @@ export const createConditionSeries = (data, filters) => {
         color: "#FF821E",
       };
     } else {
-      return false
+      return false;
+    }
+  };
+  const objectToList = (obj, level) => {
+    var unorderedSeries = [];
+    var ddSeries = {};
+    if (level == "Company") {
+      for (const [key, value] of Object.entries(obj)) {
+        unorderedSeries.push({
+          name: key,
+          y: value,
+          drilldown: key,
+          xAxis: "id_category",
+          yAxis: "id_yLinear",
+        });
+      }
+      return unorderedSeries;
+    } else if (level == "Project") {
+      for (const [pName, pObj] of Object.entries(obj)) {
+        var projData = [];
+        for (const [key, value] of Object.entries(pObj)) {
+          projData.push({ name: key, y: value, drilldown: key });
+        }
+        ddSeries[pName] = {
+          name: pName,
+          id: pName,
+          data: projData,
+          xAxis: "id_category",
+          yAxis: "id_yLinear",
+        };
+      }
+      return ddSeries;
+    } else if (level == "Theme") {
+      for (const [pName, pObj] of Object.entries(obj)) {
+        var themeData = [];
+        for (const [key, value] of Object.entries(pObj)) {
+          themeData.push({
+            name: key,
+            y: value,
+            drilldown: pName + " - " + key,
+          });
+        }
+        ddSeries[pName] = {
+          name: pName,
+          id: pName,
+          data: themeData,
+          xAxis: "id_category",
+          yAxis: "id_yLinear",
+        };
+      }
+      return ddSeries;
+    } else if (level == "id") {
+      for (const [pNameTheme, tObj] of Object.entries(obj)) {
+        ddSeries[pNameTheme] = {
+          name: pNameTheme,
+          type: "xrange",
+          pointWidth: 20,
+          id: pNameTheme,
+          data: tObj.data,
+          categories: Array.from(tObj.categories),
+          xAxis: "id_datetime",
+          yAxis: "id_yCategory",
+        };
+      }
+      return ddSeries;
     }
   };
 
@@ -185,7 +159,7 @@ export const createConditionSeries = (data, filters) => {
     }
   }
 
-  var [companies, projects, themes, id,idSunset] = [{}, {}, {}, {},{}];
+  var [companies, projects, themes, id] = [{}, {}, {}, {}];
   var [companyCount, projectCount] = [0, 0];
   var statusSet = new Set();
   data.map((row, rowNum) => {
@@ -224,12 +198,11 @@ export const createConditionSeries = (data, filters) => {
 
     var projTheme = projName + " - " + themeName;
     if (id.hasOwnProperty(projTheme)) {
-      //var y = id[projTheme].data.length-1;
-      id[projTheme].categories.add(row.id)
-      var y = id[projTheme].categories.size -1 
+      id[projTheme].categories.add(row.id);
+      var y = id[projTheme].categories.size - 1;
       id[projTheme].data.push(addEfectivePoint(row, y));
-      var sunset = addSunsetPoint(row,y)
-      if (sunset){
+      var sunset = addSunsetPoint(row, y);
+      if (sunset) {
         id[projTheme].data.push(sunset);
       }
     } else {
@@ -239,20 +212,18 @@ export const createConditionSeries = (data, filters) => {
         pointWidth: 20,
         data: [addEfectivePoint(row, 0)],
       };
-      id[projTheme].categories.add(row[id])
-      var sunset = addSunsetPoint(row,0)
-      if (sunset){
+      id[projTheme].categories.add(row.id);
+      var sunset = addSunsetPoint(row, 0);
+      if (sunset) {
         id[projTheme].data.push(sunset);
       }
     }
-
   });
   totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
-  projects = sortResults(objectToList(projects, "Project"), "Project");
-  var themes = objectToList(themes, "Theme");
-  var idSeries = objectToList(id, "id");
-  themes = sortResults(themes, "Theme");
+  projects = objectToList(projects, "Project");
+  themes = objectToList(themes, "Theme");
+  id = objectToList(id, "id");
 
   var seriesData = [
     {
@@ -264,54 +235,5 @@ export const createConditionSeries = (data, filters) => {
     },
   ];
 
-  return [seriesData, projects.concat(themes).concat(idSeries), companies];
-};
-
-export const createLastSeries = (data, filters) => {
-  for (const [key, value] of Object.entries(filters)) {
-    if (value !== "All") {
-      data = data.filter((row) => row[key] == value);
-    }
-  }
-  data = applyId(data);
-  var categories = [];
-  var seriesEffective = {
-    name: "Condition Effective Date",
-    pointWidth: 20,
-    color: "#054169",
-    data: [],
-  };
-  var seriesSunset = {
-    name: "Condition Sunset Date",
-    pointWidth: 20,
-    color: "#FF821E",
-    data: [],
-  };
-  data.map((row, rowNum) => {
-    categories.push(row.id);
-    if (row["Sunset Date"] != null) {
-      seriesSunset.data.push({
-        name: row.id,
-        x: row["Sunset Date"],
-        x2: row["Sunset Date"] + 86400000 * 5,
-        y: rowNum,
-        color: "#FF821E",
-      });
-    }
-
-    seriesEffective.data.push({
-      name: row.id,
-      x: row["Effective Date"],
-      x2: row["Effective Date"] + 86400000 * 5,
-      y: rowNum,
-      color: "#054169",
-      onClickText: row["Condition"],
-    });
-  });
-
-  if (seriesSunset.data.length > 0) {
-    return [[seriesEffective].concat([seriesSunset]), categories];
-  } else {
-    return [[seriesEffective], categories];
-  }
+  return [seriesData, projects, themes, id];
 };

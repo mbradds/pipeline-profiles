@@ -1,9 +1,7 @@
 import {
   getData,
-  sortResults,
   createConditionSeries,
-  createLastSeries,
-  companyDrop,
+  sortSeriesData,
 } from "../modules/util.js";
 
 const conditionsData = JSON.parse(
@@ -47,47 +45,9 @@ const setConditionText = (onClickText) => {
   conditionTextContainer.innerText = onClickText;
 };
 
-const createLastChart = (series, categories) => {
-  return new Highcharts.chart("container-last", {
-    chart: {
-      type: "xrange",
-      zoomType: "y",
-      animation: true,
-    },
-    title: {
-      text: "",
-    },
-
-    xAxis: {
-      type: "datetime",
-    },
-
-    plotOptions: {
-      series: {
-        grouping: false,
-      },
-    },
-
-    yAxis: {
-      title: {
-        text: "",
-      },
-      categories: categories,
-      reversed: true,
-      labels: {
-        events: {
-          click: function () {
-            setConditionText(this.axis.series[0].data[this.pos]["onClickText"]);
-          },
-        },
-      },
-    },
-    series: series,
-  });
-};
-
-var level = 1;
-const createGraph = (seriesData, drilldownSeries) => {
+var currentPoint = { company: null, project: null };
+var currentLevel = { level: 0 };
+const createGraph = () => {
   return new Highcharts.chart("container-chart", {
     chart: {
       inverted: true,
@@ -97,60 +57,87 @@ const createGraph = (seriesData, drilldownSeries) => {
       events: {
         drilldown: function (e) {
           var chart = this;
-          $("#select-company").prop("disabled", "disabled");
-          $("#select-company").selectpicker("refresh");
-          if (level < 4) {
-            level++;
-            updateFiltersOnDrill(level, e.seriesOptions.name);
-          }
-          if (level == 4) {
+          currentLevel.level++;
+          if (!e.seriesOptions) {
+            var chart = this;
+            if (currentLevel.level == 1) {
+              var series = levels.projects[e.point.name];
+              var inv = true;
+              currentPoint.company = e.point.name;
+            } else if (currentLevel.level == 2) {
+              var inv = true;
+              var series = levels.themes[e.point.name];
+              currentPoint.project = e.point.name;
+            } else if (currentLevel.level == 3) {
+              var inv = false;
+              var series =
+                levels.id[currentPoint.project + " - " + e.point.name];
+              currentPoint.id = e.point.name;
+              chart.update(
+                {
+                  chart: {zoomType:null},
+                  yAxis: [
+                    {
+                      id: "id_yCategory",
+                      categories: series.categories,
+                      title: {
+                        text: "Instrument Number - Condition Number",
+                      },
+                    },
+                  ],
+                },
+                true
+              );
+            }
+            series.data = sortSeriesData(series.data);
             setTimeout(function () {
-              var cat = [];
-              chart.series[0].data.map((point) => {
-                if (!cat.includes(point.name)) {
-                  cat.push(point.name);
-                }
-              });
-              chart.yAxis[1].setCategories(cat);
+              chart.addSeriesAsDrilldown(e.point, series);
               chart.update({
                 chart: {
-                  inverted: false,
-                  zoomType: null,
+                  inverted: inv,
                 },
               });
-              console.log(chart.series[0].data);
             }, 0);
           }
         },
         drillup: function (e) {
-          var chart = this;
-          var [seriesData, drilldownSeries, companies] = createConditionSeries(
-            conditionsData,
-            conditionsFilters
-          );
-          if (level == 2) {
-            this.series[1].setData(seriesData[0].data)
-          } else {
-            chart.update({
-              drilldown: {
-                series: drilldownSeries,
+          currentLevel.level--;
+          if (currentLevel.level == 0) {
+            this.series[1].setData(sortSeriesData(levels.series[0].data));
+            this.series[0].setData(sortSeriesData(levels.series[0].data));
+          } else if (currentLevel.level == 1) {
+            this.series[1].setData(
+              sortSeriesData(levels.projects[currentPoint.company].data)
+            );
+            this.series[0].setData(
+              sortSeriesData(levels.projects[currentPoint.company].data)
+            );
+          } else if (currentLevel.level == 2) {
+            setConditionText(null)
+            chart.update(
+              {
+                chart: {
+                  inverted: true,
+                  zoomType:"x",
+                },
+                yAxis: [
+                  {
+                    id: "id_yCategory",
+                    title: {
+                      text: "",
+                    },
+                  },
+                ],
               },
-            });
+              true
+            );
+            this.series[1].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
+            this.series[0].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
           }
-
-          if (level == 4) {
-            setTimeout(function () {
-              chart.update({
-                chart: { inverted: true, zoomType: "x" },
-              });
-            }, 0);
-          }
-          level--;
-          if (level == 1) {
-            $("#select-company").prop("disabled", false);
-            $("#select-company").selectpicker("refresh");
-          }
-          updateFiltersOnDrill(level, e.seriesOptions.name);
         },
       },
     },
@@ -205,95 +192,75 @@ const createGraph = (seriesData, drilldownSeries) => {
       },
       {
         id: "id_yCategory",
-        type: "category",
-        //categories:['GC-125 - 14','GC-125 - 15'],
         title: {
           text: "",
         },
         labels: {
-          // formatter: function () {
-          //   var seriesData = this.axis.series[0].data;
-          //   if (seriesData.length > 0) {
-          //     return this.axis.series[0].data[this.value].name;
-          //   }
-          // },
+          formatter: function () {
+            return this.value;
+          },
           events: {
             click: function () {
-              console.log(this.axis.series[0]);
-              setConditionText(
-                this.axis.series[0].data[this.pos]["onClickText"]
-              );
+              var clickedId = this.value;
+              var currentSeries = this.axis.series[0].data;
+              currentSeries.map((row) => {
+                if (
+                  row.name == clickedId &&
+                  row.hasOwnProperty("onClickText")
+                ) {
+                  setConditionText(row["onClickText"]);
+                }
+              });
             },
           },
         },
       },
     ],
-
-    series: seriesData,
-
+    series: levels.series,
     drilldown: {
-      series: drilldownSeries,
+      series: [],
     },
   });
 };
 
-const updateChartAfterDrill = (chart, seriesData) => {
-  // how to update data after drilldown:
-  // https://www.highcharts.com/forum/viewtopic.php?t=40389
-  // http://jsfiddle.net/06oesrs1/
-  var ddCurrent = chart.series[0].userOptions.id; //gets the current level of the drilldown
-  var ddSeries = chart.options.drilldown.series;
-  if (ddCurrent == undefined) {
-    chart.update({
-      series: seriesData,
-    });
-  } else {
-    for (var i = 0, ie = ddSeries.length; i < ie; ++i) {
-      if (ddSeries[i].id === ddCurrent) {
-        chart.series[0].setData(ddSeries[i].data);
-      }
-    }
-  }
-};
-
-var [seriesData, drilldownSeries, companies] = createConditionSeries(
+const levels = {};
+var [seriesData, projects, themes, id] = createConditionSeries(
   conditionsData,
   conditionsFilters
 );
-companyDrop(companies);
-var chartLoad = createGraph(seriesData, drilldownSeries);
+levels.series = seriesData;
+levels.projects = projects;
+levels.themes = themes;
+levels.id = id;
+var chart = createGraph();
 
-//select status
 var select_status = document.getElementById("select_status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
   conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  [seriesData, drilldownSeries, companies] = createConditionSeries(
+  [seriesData, projects, themes, id] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
-  companyDrop(companies);
-  chartLoad.update({
-    drilldown: {
-      series: drilldownSeries,
-    },
-  });
-  updateChartAfterDrill(chartLoad, seriesData);
-});
-
-//select company
-var select_company = document.getElementById("select-company");
-select_company.addEventListener("change", (select_company) => {
-  conditionsFilters["Company"] = select_company.target.value;
-  conditionsFiltersDrill["Company"] = select_company.target.value;
-  [seriesData, drilldownSeries] = createConditionSeries(
-    conditionsData,
-    conditionsFilters
-  );
-  chart.update({
-    drilldown: {
-      series: drilldownSeries,
-    },
-  });
-  updateChartAfterDrill(chart, seriesData);
+  levels.series = seriesData;
+  levels.projects = projects;
+  levels.themes = themes;
+  levels.id = id;
+  if (currentLevel.level == 0) {
+    chart.update({
+      series: levels.series,
+    });
+  } else if (currentLevel.level == 1) {
+    chart.series[0].setData(
+      sortSeriesData(levels.projects[currentPoint.company].data)
+    );
+  } else if (currentLevel.level == 2) {
+    chart.series[0].setData(
+      sortSeriesData(levels.themes[currentPoint.project].data)
+    );
+  } else if (currentLevel.level == 3) {
+    chart.series[0].setData(
+      levels.id[currentPoint.project + " - " + currentPoint.id].data
+    );
+  }
 });
