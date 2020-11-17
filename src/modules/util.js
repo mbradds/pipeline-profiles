@@ -20,13 +20,13 @@ export const getToday = () => {
   var today = new Date(),
     day = 1000 * 60 * 60 * 24;
 
-// Set to 00:00:00:000 today
-today.setUTCHours(0);
-today.setUTCMinutes(0);
-today.setUTCSeconds(0);
-today.setUTCMilliseconds(0);
-return [today,day]
-}
+  // Set to 00:00:00:000 today
+  today.setUTCHours(0);
+  today.setUTCMinutes(0);
+  today.setUTCSeconds(0);
+  today.setUTCMilliseconds(0);
+  return [today, day];
+};
 
 export const getData = (Url) => {
   var Httpreq = new XMLHttpRequest(); // a new request
@@ -44,15 +44,21 @@ const addToDrop = (drop_name, optionValue, optionText) => {
   );
 };
 
-export const updateSelect = (options, selectName) => {
+export const updateSelect = (options, selectName,from='object') => {
   var currentOption = $(selectName).val();
   if ($(selectName).is(":enabled")) {
     $(selectName).empty();
     addToDrop(selectName, "All", "All");
-
-    for (const [key, value] of Object.entries(options)) {
-      addToDrop(selectName, value.name, value.name);
+    if (from=='object'){
+      for (const [key, value] of Object.entries(options)) {
+        addToDrop(selectName, value.name, value.name);
+      }
+    } else if (from=='array'){
+      options.map((option)=>{
+        addToDrop(selectName,option,option)
+      })
     }
+
   }
   $(selectName).selectpicker("refresh");
   $(selectName).val(currentOption).change();
@@ -99,18 +105,18 @@ const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
 //TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
 export const createConditionSeries = (data, filters) => {
   const seriesColor = (filters) => {
-    if (filters["Condition Status"]=="All"){
-      return cerPalette['Ocean']
-    } else if (filters["Condition Status"]=="In Progress"){
-      return cerPalette['Sun']
-    } else if (filters["Condition Status"]=="Closed") {
-      return cerPalette['Cool Grey']
+    if (filters["Condition Status"] == "All") {
+      return cerPalette["Ocean"];
+    } else if (filters["Condition Status"] == "In Progress") {
+      return cerPalette["Sun"];
+    } else if (filters["Condition Status"] == "Closed") {
+      return cerPalette["Cool Grey"];
     } else {
-      return cerPalette['Forest']
+      return cerPalette["Forest"];
     }
-  }
+  };
 
-  var currentColor = seriesColor(filters)
+  var currentColor = seriesColor(filters);
   data = applyId(data);
   const addEfectivePoint = (row, y) => {
     return {
@@ -130,7 +136,7 @@ export const createConditionSeries = (data, filters) => {
         x: row["Sunset Date"],
         x2: row["Sunset Date"] + 86400000 * 15,
         y: y,
-        color: cerPalette['Flame'],
+        color: cerPalette["Flame"],
       };
     } else {
       return false;
@@ -143,9 +149,10 @@ export const createConditionSeries = (data, filters) => {
       for (const [key, value] of Object.entries(obj)) {
         unorderedSeries.push({
           name: key,
-          y: value,
+          y: value.y,
+          conditionStatus: Array.from(value.conditionStatus),
           drilldown: key,
-          color:currentColor,
+          //color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         });
@@ -161,7 +168,7 @@ export const createConditionSeries = (data, filters) => {
           name: pName,
           id: pName,
           data: projData,
-          color:currentColor,
+          //color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         };
@@ -181,7 +188,7 @@ export const createConditionSeries = (data, filters) => {
           name: pName,
           id: pName,
           data: themeData,
-          color:currentColor,
+          //color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         };
@@ -217,10 +224,12 @@ export const createConditionSeries = (data, filters) => {
     statusSet.add(row["Condition Status"]);
     var companyName = row.Company;
     if (companies.hasOwnProperty(companyName)) {
-      companies[companyName]++;
+      companies[companyName].y++;
+      companies[companyName].conditionStatus.add(row["Condition Status"]);
     } else {
       companyCount++;
-      companies[companyName] = 1;
+      companies[companyName] = { y: 1, conditionStatus: new Set() }; //TODO: see if the first set item can be added here
+      companies[companyName].conditionStatus.add(row["Condition Status"]);
     }
 
     var projName = row["Short Project Name"];
@@ -288,5 +297,5 @@ export const createConditionSeries = (data, filters) => {
     },
   ];
 
-  return [seriesData, projects, themes, id,currentColor];
+  return [seriesData, projects, themes, id, currentColor];
 };

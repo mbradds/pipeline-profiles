@@ -110,12 +110,14 @@ const createGraph = () => {
           var chart = this    
           chart.series[1].options.color=levels.color
           chart.series[1].update(chart.series[1].options);
+          chart.series[0].options.color=levels.color
+          chart.series[0].update(chart.series[0].options);
           currentLevel.level--;
           if (currentLevel.level == 0) {
             $("#select-company").prop("disabled", false);
             $("#select-company").selectpicker("refresh");
-            this.series[1].setData(sortSeriesData(levels.series[0].data));
-            this.series[0].setData(sortSeriesData(levels.series[0].data));
+            this.series[1].setData(levels.series[0].data);
+            this.series[0].setData(levels.series[0].data);
           } else if (currentLevel.level == 1) {
             this.series[1].setData(
               sortSeriesData(levels.projects[currentPoint.company].data)
@@ -162,6 +164,7 @@ const createGraph = () => {
     plotOptions: {
       series: {
         grouping: false,
+        color:cerPalette['Ocean'],
         cropThreshold: 1000, //solution to axis getting messed up on drillup: https://www.highcharts.com/forum/viewtopic.php?t=40702
         pointWidth: 20,
         events: {
@@ -260,25 +263,23 @@ levels.themes = themes;
 levels.id = id;
 levels.color = currentColor;
 var chart = createGraph();
+var initialStatus = ['In Progress','Closed','Post Construction Phase','During Construction Phase','Prior to the Construction Phase']
+updateSelect(initialStatus,"#select-status",'array')
 updateSelect(levels.series[0].data, "#select-company");
 
 const updateLevels = (chart, levels) => {
+
+  const updateLevel = (chart,seriesData,color) => {
+    chart.series[0].setData(seriesData);
+    chart.series[0].options.color=color
+    chart.series[0].update(chart.series[0].options);
+  }
   if (currentLevel.level == 0) {
-    chart.update({
-      series: levels.series,
-    },true);
+    updateLevel(chart,levels.series[0].data,levels.color)
   } else if (currentLevel.level == 1) {
-    chart.series[0].setData(
-      sortSeriesData(levels.projects[currentPoint.company].data)
-    );
-    chart.series[0].options.color=levels.color
-    chart.series[0].update(chart.series[0].options);
+    updateLevel(chart,sortSeriesData(levels.projects[currentPoint.company].data),levels.color)
   } else if (currentLevel.level == 2) {
-    chart.series[0].setData(
-      sortSeriesData(levels.themes[currentPoint.project].data)
-    );
-    chart.series[0].options.color=levels.color
-    chart.series[0].update(chart.series[0].options);
+    updateLevel(chart,sortSeriesData(levels.themes[currentPoint.project].data),levels.color)
   } else if (currentLevel.level == 3) {
     var lastLevelData =
       levels.id[currentPoint.project + " - " + currentPoint.id];
@@ -333,5 +334,10 @@ select_company.addEventListener("change", (select_company) => {
   levels.themes = themes;
   levels.id = id;
   levels.color = currentColor;
+  if (conditionsFilters.Company=="All"){
+    updateSelect(initialStatus,"#select-status",'array')
+  } else {
+    updateSelect(levels.series[0].data[0].conditionStatus, "#select-status",'array');
+  }
   updateLevels(chart, levels);
 });
