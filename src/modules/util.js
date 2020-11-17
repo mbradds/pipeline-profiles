@@ -149,8 +149,7 @@ export const createConditionSeries = (data, filters) => {
       for (const [key, value] of Object.entries(obj)) {
         unorderedSeries.push({
           name: key,
-          y: value.y,
-          conditionStatus: Array.from(value.conditionStatus),
+          y: value,
           drilldown: key,
           //color:currentColor,
           xAxis: "id_category",
@@ -219,17 +218,13 @@ export const createConditionSeries = (data, filters) => {
 
   var [companies, projects, themes, id] = [{}, {}, {}, {}];
   var [companyCount, projectCount] = [0, 0];
-  var statusSet = new Set();
   data.map((row, rowNum) => {
-    statusSet.add(row["Condition Status"]);
     var companyName = row.Company;
     if (companies.hasOwnProperty(companyName)) {
-      companies[companyName].y++;
-      companies[companyName].conditionStatus.add(row["Condition Status"]);
+      companies[companyName]++;
     } else {
       companyCount++;
-      companies[companyName] = { y: 1, conditionStatus: new Set() }; //TODO: see if the first set item can be added here
-      companies[companyName].conditionStatus.add(row["Condition Status"]);
+      companies[companyName] = 1
     }
 
     var projName = row["Short Project Name"];
@@ -280,7 +275,6 @@ export const createConditionSeries = (data, filters) => {
     }
   });
 
-  //updateSelect(Array.from(statusSet),"#select-status")
   totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
   projects = objectToList(projects, "Project");
