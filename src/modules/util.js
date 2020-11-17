@@ -110,7 +110,7 @@ export const createConditionSeries = (data, filters) => {
     }
   }
 
-  const currentColor = seriesColor(filters)
+  var currentColor = seriesColor(filters)
   data = applyId(data);
   const addEfectivePoint = (row, y) => {
     return {
@@ -161,6 +161,7 @@ export const createConditionSeries = (data, filters) => {
           name: pName,
           id: pName,
           data: projData,
+          color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         };
@@ -180,6 +181,7 @@ export const createConditionSeries = (data, filters) => {
           name: pName,
           id: pName,
           data: themeData,
+          color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         };
@@ -286,5 +288,5 @@ export const createConditionSeries = (data, filters) => {
     },
   ];
 
-  return [seriesData, projects, themes, id];
+  return [seriesData, projects, themes, id,currentColor];
 };

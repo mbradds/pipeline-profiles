@@ -107,6 +107,9 @@ const createGraph = () => {
           }
         },
         drillup: function (e) {
+          var chart = this    
+          chart.series[1].options.color=levels.color
+          chart.series[1].update(chart.series[1].options);
           currentLevel.level--;
           if (currentLevel.level == 0) {
             $("#select-company").prop("disabled", false);
@@ -122,8 +125,8 @@ const createGraph = () => {
             );
           } else if (currentLevel.level == 2) {
             setConditionText(null);
-            chart.yAxis[0].setExtremes()
-            chart.yAxis[1].setExtremes()
+            chart.yAxis[0].setExtremes();
+            chart.yAxis[1].setExtremes();
             chart.update(
               {
                 chart: {
@@ -182,15 +185,14 @@ const createGraph = () => {
           width: 4,
           color: cerPalette["Cool Grey"],
           label: {
-            format: "%Y-%m" +' (current year-month)',
-            align:"left",
-            rotation:90,
-            verticalAlign:"middle"
+            format: "%Y-%m" + " (current year-month)",
+            align: "left",
+            rotation: 90,
+            verticalAlign: "middle",
           },
-          zIndex:5
+          zIndex: 5,
         },
-        tickInterval:30 * 24 * 3600 * 1000,
-        //max: today.getTime() + 75 * day,
+        tickInterval: 30 * 24 * 3600 * 1000,
         title: {
           text: null,
         },
@@ -248,7 +250,7 @@ const createGraph = () => {
 
 //set up initial chart,data structures, and selects
 const levels = {};
-var [seriesData, projects, themes, id] = createConditionSeries(
+var [seriesData, projects, themes, id, currentColor] = createConditionSeries(
   conditionsData,
   conditionsFilters
 );
@@ -256,6 +258,7 @@ levels.series = seriesData;
 levels.projects = projects;
 levels.themes = themes;
 levels.id = id;
+levels.color = currentColor;
 var chart = createGraph();
 updateSelect(levels.series[0].data, "#select-company");
 
@@ -263,18 +266,37 @@ const updateLevels = (chart, levels) => {
   if (currentLevel.level == 0) {
     chart.update({
       series: levels.series,
-    });
+    },true);
   } else if (currentLevel.level == 1) {
     chart.series[0].setData(
       sortSeriesData(levels.projects[currentPoint.company].data)
     );
+    chart.series[0].options.color=levels.color
+    chart.series[0].update(chart.series[0].options);
   } else if (currentLevel.level == 2) {
     chart.series[0].setData(
       sortSeriesData(levels.themes[currentPoint.project].data)
     );
+    chart.series[0].options.color=levels.color
+    chart.series[0].update(chart.series[0].options);
   } else if (currentLevel.level == 3) {
-    chart.series[0].setData(
-      levels.id[currentPoint.project + " - " + currentPoint.id].data
+    var lastLevelData =
+      levels.id[currentPoint.project + " - " + currentPoint.id];
+    chart.series[0].setData(lastLevelData.data);
+    chart.update(
+      {
+        chart: { zoomType: "y" },
+        yAxis: [
+          {
+            id: "id_yCategory",
+            categories: lastLevelData.categories,
+            title: {
+              text: "Instrument Number - Condition Number",
+            },
+          },
+        ],
+      },
+      true
     );
   }
 };
@@ -284,7 +306,7 @@ var select_status = document.getElementById("select-status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
   conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  [seriesData, projects, themes, id] = createConditionSeries(
+  [seriesData, projects, themes, id, currentColor] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
@@ -292,6 +314,7 @@ select_status.addEventListener("change", (select_status) => {
   levels.projects = projects;
   levels.themes = themes;
   levels.id = id;
+  levels.color = currentColor;
   updateSelect(levels.series[0].data, "#select-company");
   updateLevels(chart, levels);
 });
@@ -301,7 +324,7 @@ var select_company = document.getElementById("select-company");
 select_company.addEventListener("change", (select_company) => {
   conditionsFilters["Company"] = select_company.target.value;
   conditionsFiltersDrill["Company"] = select_company.target.value;
-  [seriesData, projects, themes, id] = createConditionSeries(
+  [seriesData, projects, themes, id, currentColor] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
@@ -309,5 +332,6 @@ select_company.addEventListener("change", (select_company) => {
   levels.projects = projects;
   levels.themes = themes;
   levels.id = id;
+  levels.color = currentColor;
   updateLevels(chart, levels);
 });
