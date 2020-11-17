@@ -1,9 +1,13 @@
 import {
   getData,
+  getToday,
   createConditionSeries,
   sortSeriesData,
+  updateSelect,
+  cerPalette,
 } from "../modules/util.js";
 
+const [today, day] = getToday();
 const conditionsData = JSON.parse(
   getData("/src/conditions_drill/conditions.json")
 );
@@ -56,6 +60,8 @@ const createGraph = () => {
       animation: false,
       events: {
         drilldown: function (e) {
+          $("#select-company").prop("disabled", "disabled");
+          $("#select-company").selectpicker("refresh");
           var chart = this;
           currentLevel.level++;
           if (!e.seriesOptions) {
@@ -75,7 +81,7 @@ const createGraph = () => {
               currentPoint.id = e.point.name;
               chart.update(
                 {
-                  chart: {zoomType:null},
+                  chart: { zoomType: "y" },
                   yAxis: [
                     {
                       id: "id_yCategory",
@@ -103,6 +109,8 @@ const createGraph = () => {
         drillup: function (e) {
           currentLevel.level--;
           if (currentLevel.level == 0) {
+            $("#select-company").prop("disabled", false);
+            $("#select-company").selectpicker("refresh");
             this.series[1].setData(sortSeriesData(levels.series[0].data));
             this.series[0].setData(sortSeriesData(levels.series[0].data));
           } else if (currentLevel.level == 1) {
@@ -113,12 +121,14 @@ const createGraph = () => {
               sortSeriesData(levels.projects[currentPoint.company].data)
             );
           } else if (currentLevel.level == 2) {
-            setConditionText(null)
+            setConditionText(null);
+            chart.yAxis[0].setExtremes()
+            chart.yAxis[1].setExtremes()
             chart.update(
               {
                 chart: {
                   inverted: true,
-                  zoomType:"x",
+                  zoomType: "x",
                 },
                 yAxis: [
                   {
@@ -168,6 +178,19 @@ const createGraph = () => {
       {
         id: "id_datetime",
         type: "datetime",
+        currentDateIndicator: {
+          width: 4,
+          color: cerPalette["Cool Grey"],
+          label: {
+            format: "%Y-%m" +' (current year-month)',
+            align:"left",
+            rotation:90,
+            verticalAlign:"middle"
+          },
+          zIndex:5
+        },
+        tickInterval:30 * 24 * 3600 * 1000,
+        //max: today.getTime() + 75 * day,
         title: {
           text: null,
         },
@@ -223,6 +246,7 @@ const createGraph = () => {
   });
 };
 
+//set up initial chart,data structures, and selects
 const levels = {};
 var [seriesData, projects, themes, id] = createConditionSeries(
   conditionsData,
@@ -233,19 +257,9 @@ levels.projects = projects;
 levels.themes = themes;
 levels.id = id;
 var chart = createGraph();
+updateSelect(levels.series[0].data, "#select-company");
 
-var select_status = document.getElementById("select_status");
-select_status.addEventListener("change", (select_status) => {
-  conditionsFilters["Condition Status"] = select_status.target.value;
-  conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  [seriesData, projects, themes, id] = createConditionSeries(
-    conditionsData,
-    conditionsFilters
-  );
-  levels.series = seriesData;
-  levels.projects = projects;
-  levels.themes = themes;
-  levels.id = id;
+const updateLevels = (chart, levels) => {
   if (currentLevel.level == 0) {
     chart.update({
       series: levels.series,
@@ -263,4 +277,37 @@ select_status.addEventListener("change", (select_status) => {
       levels.id[currentPoint.project + " - " + currentPoint.id].data
     );
   }
+};
+
+//select condition status
+var select_status = document.getElementById("select-status");
+select_status.addEventListener("change", (select_status) => {
+  conditionsFilters["Condition Status"] = select_status.target.value;
+  conditionsFiltersDrill["Condition Status"] = select_status.target.value;
+  [seriesData, projects, themes, id] = createConditionSeries(
+    conditionsData,
+    conditionsFilters
+  );
+  levels.series = seriesData;
+  levels.projects = projects;
+  levels.themes = themes;
+  levels.id = id;
+  updateSelect(levels.series[0].data, "#select-company");
+  updateLevels(chart, levels);
+});
+
+//select company
+var select_company = document.getElementById("select-company");
+select_company.addEventListener("change", (select_company) => {
+  conditionsFilters["Company"] = select_company.target.value;
+  conditionsFiltersDrill["Company"] = select_company.target.value;
+  [seriesData, projects, themes, id] = createConditionSeries(
+    conditionsData,
+    conditionsFilters
+  );
+  levels.series = seriesData;
+  levels.projects = projects;
+  levels.themes = themes;
+  levels.id = id;
+  updateLevels(chart, levels);
 });

@@ -16,11 +16,46 @@ export const cerPalette = {
   hcLightBlue: "#91e8e1",
 };
 
+export const getToday = () => {
+  var today = new Date(),
+    day = 1000 * 60 * 60 * 24;
+
+// Set to 00:00:00:000 today
+today.setUTCHours(0);
+today.setUTCMinutes(0);
+today.setUTCSeconds(0);
+today.setUTCMilliseconds(0);
+return [today,day]
+}
+
 export const getData = (Url) => {
   var Httpreq = new XMLHttpRequest(); // a new request
   Httpreq.open("GET", Url, false);
   Httpreq.send(null);
   return Httpreq.responseText;
+};
+
+const addToDrop = (drop_name, optionValue, optionText) => {
+  $(drop_name).append(
+    $("<option>", {
+      value: optionValue,
+      text: optionText,
+    })
+  );
+};
+
+export const updateSelect = (options, selectName) => {
+  var currentOption = $(selectName).val();
+  if ($(selectName).is(":enabled")) {
+    $(selectName).empty();
+    addToDrop(selectName, "All", "All");
+
+    for (const [key, value] of Object.entries(options)) {
+      addToDrop(selectName, value.name, value.name);
+    }
+  }
+  $(selectName).selectpicker("refresh");
+  $(selectName).val(currentOption).change();
 };
 
 const applyId = (data) => {
@@ -63,14 +98,27 @@ const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
 //One pass series generation
 //TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
 export const createConditionSeries = (data, filters) => {
+  const seriesColor = (filters) => {
+    if (filters["Condition Status"]=="All"){
+      return cerPalette['Ocean']
+    } else if (filters["Condition Status"]=="In Progress"){
+      return cerPalette['Sun']
+    } else if (filters["Condition Status"]=="Closed") {
+      return cerPalette['Cool Grey']
+    } else {
+      return cerPalette['Forest']
+    }
+  }
+
+  const currentColor = seriesColor(filters)
   data = applyId(data);
   const addEfectivePoint = (row, y) => {
     return {
       name: row.id,
       x: row["Effective Date"],
-      x2: row["Effective Date"] + 86400000 * 5,
+      x2: row["Effective Date"] + 86400000 * 15,
       y: y,
-      color: "#054169",
+      color: currentColor,
       onClickText: row["Condition"],
     };
   };
@@ -80,9 +128,9 @@ export const createConditionSeries = (data, filters) => {
       return {
         name: row.id,
         x: row["Sunset Date"],
-        x2: row["Sunset Date"] + 86400000 * 5,
+        x2: row["Sunset Date"] + 86400000 * 15,
         y: y,
-        color: "#FF821E",
+        color: cerPalette['Flame'],
       };
     } else {
       return false;
@@ -97,6 +145,7 @@ export const createConditionSeries = (data, filters) => {
           name: key,
           y: value,
           drilldown: key,
+          color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         });
@@ -219,6 +268,8 @@ export const createConditionSeries = (data, filters) => {
       }
     }
   });
+
+  //updateSelect(Array.from(statusSet),"#select-status")
   totalsFromSeriesGeneration(companyCount, projectCount);
   companies = sortResults(objectToList(companies, "Company"), "Company");
   projects = objectToList(projects, "Project");
