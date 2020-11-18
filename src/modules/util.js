@@ -145,34 +145,18 @@ export const createConditionSeries = (data, filters) => {
   const objectToList = (obj, level) => {
     var unorderedSeries = [];
     var ddSeries = {};
-    if (level == "Company") {
+    if (level == "Project") {
       for (const [key, value] of Object.entries(obj)) {
         unorderedSeries.push({
           name: key,
           y: value,
           drilldown: key,
-          //color:currentColor,
+          color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
         });
       }
       return unorderedSeries;
-    } else if (level == "Project") {
-      for (const [pName, pObj] of Object.entries(obj)) {
-        var projData = [];
-        for (const [key, value] of Object.entries(pObj)) {
-          projData.push({ name: key, y: value, drilldown: key });
-        }
-        ddSeries[pName] = {
-          name: pName,
-          id: pName,
-          data: projData,
-          //color:currentColor,
-          xAxis: "id_category",
-          yAxis: "id_yLinear",
-        };
-      }
-      return ddSeries;
     } else if (level == "Theme") {
       for (const [pName, pObj] of Object.entries(obj)) {
         var themeData = [];
@@ -219,25 +203,13 @@ export const createConditionSeries = (data, filters) => {
   var [companies, projects, themes, id] = [{}, {}, {}, {}];
   var [companyCount, projectCount] = [0, 0];
   data.map((row, rowNum) => {
-    var companyName = row.Company;
-    if (companies.hasOwnProperty(companyName)) {
-      companies[companyName]++;
-    } else {
-      companyCount++;
-      companies[companyName] = 1
-    }
 
     var projName = row["Short Project Name"];
-    if (projects.hasOwnProperty(companyName)) {
-      if (projects[companyName].hasOwnProperty(projName)) {
-        projects[companyName][projName]++;
-      } else {
-        projects[companyName][projName] = 1;
-        projectCount++;
-      }
+    if (projects.hasOwnProperty(projName)) {
+      projects[projName]++;
     } else {
       projectCount++;
-      projects[companyName] = { [projName]: 1 };
+      projects[projName] = 1;
     }
 
     var themeName = row["Theme(s)"];
@@ -275,21 +247,20 @@ export const createConditionSeries = (data, filters) => {
     }
   });
 
-  totalsFromSeriesGeneration(companyCount, projectCount);
-  companies = sortResults(objectToList(companies, "Company"), "Company");
-  projects = objectToList(projects, "Project");
+  //totalsFromSeriesGeneration(companyCount, projectCount);
+  projects = sortSeriesData(objectToList(projects, "Project"));
   themes = objectToList(themes, "Theme");
   id = objectToList(id, "id");
 
   var seriesData = [
     {
-      name: "Conditions by Company",
+      name: filters.Company,
       colorByPoint: false,
-      data: companies,
+      data: projects,
       xAxis: "id_category",
       yAxis: "id_yLinear",
     },
   ];
 
-  return [seriesData, projects, themes, id, currentColor];
+  return [seriesData, themes, id, currentColor];
 };

@@ -15,7 +15,7 @@ const conditionsData = JSON.parse(
 const conditionsFilters = {
   "Project Status": "All",
   "Condition Status": "All",
-  Company: "All",
+  Company: "NOVA Gas Transmission Ltd.",
   "Short Project Name": "All",
   "Theme(s)": "All",
 };
@@ -67,14 +67,10 @@ const createGraph = () => {
           if (!e.seriesOptions) {
             var chart = this;
             if (currentLevel.level == 1) {
-              var series = levels.projects[e.point.name];
-              var inv = true;
-              currentPoint.company = e.point.name;
-            } else if (currentLevel.level == 2) {
               var inv = true;
               var series = levels.themes[e.point.name];
               currentPoint.project = e.point.name;
-            } else if (currentLevel.level == 3) {
+            } else if (currentLevel.level == 2) {
               var inv = false;
               var series =
                 levels.id[currentPoint.project + " - " + e.point.name];
@@ -119,13 +115,6 @@ const createGraph = () => {
             this.series[1].setData(levels.series[0].data);
             this.series[0].setData(levels.series[0].data);
           } else if (currentLevel.level == 1) {
-            this.series[1].setData(
-              sortSeriesData(levels.projects[currentPoint.company].data)
-            );
-            this.series[0].setData(
-              sortSeriesData(levels.projects[currentPoint.company].data)
-            );
-          } else if (currentLevel.level == 2) {
             setConditionText(null);
             chart.yAxis[0].setExtremes();
             chart.yAxis[1].setExtremes();
@@ -253,17 +242,16 @@ const createGraph = () => {
 
 //set up initial chart,data structures, and selects
 const levels = {};
-var [seriesData, projects, themes, id, currentColor] = createConditionSeries(
+var [seriesData, themes, id, currentColor] = createConditionSeries(
   conditionsData,
   conditionsFilters
 );
 levels.series = seriesData;
-levels.projects = projects;
 levels.themes = themes;
 levels.id = id;
 levels.color = currentColor;
 var chart = createGraph();
-var initialStatus = ['In Progress','Closed','Post Construction Phase','During Construction Phase','Prior to the Construction Phase']
+var initialStatus = ['In Progress','Closed']
 updateSelect(initialStatus,"#select-status",'array')
 updateSelect(levels.series[0].data, "#select-company");
 
@@ -277,10 +265,8 @@ const updateLevels = (chart, levels) => {
   if (currentLevel.level == 0) {
     updateLevel(chart,levels.series[0].data,levels.color)
   } else if (currentLevel.level == 1) {
-    updateLevel(chart,sortSeriesData(levels.projects[currentPoint.company].data),levels.color)
-  } else if (currentLevel.level == 2) {
     updateLevel(chart,sortSeriesData(levels.themes[currentPoint.project].data),levels.color)
-  } else if (currentLevel.level == 3) {
+  } else if (currentLevel.level == 2) {
     var lastLevelData =
       levels.id[currentPoint.project + " - " + currentPoint.id];
     chart.series[0].setData(lastLevelData.data);
@@ -307,37 +293,14 @@ var select_status = document.getElementById("select-status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
   conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  [seriesData, projects, themes, id, currentColor] = createConditionSeries(
+  [seriesData, themes, id, currentColor] = createConditionSeries(
     conditionsData,
     conditionsFilters
   );
   levels.series = seriesData;
-  levels.projects = projects;
   levels.themes = themes;
   levels.id = id;
   levels.color = currentColor;
   updateSelect(levels.series[0].data, "#select-company");
-  updateLevels(chart, levels);
-});
-
-//select company
-var select_company = document.getElementById("select-company");
-select_company.addEventListener("change", (select_company) => {
-  conditionsFilters["Company"] = select_company.target.value;
-  conditionsFiltersDrill["Company"] = select_company.target.value;
-  [seriesData, projects, themes, id, currentColor] = createConditionSeries(
-    conditionsData,
-    conditionsFilters
-  );
-  levels.series = seriesData;
-  levels.projects = projects;
-  levels.themes = themes;
-  levels.id = id;
-  levels.color = currentColor;
-  if (conditionsFilters.Company=="All"){
-    updateSelect(initialStatus,"#select-status",'array')
-  } else {
-    updateSelect(levels.series[0].data[0].conditionStatus, "#select-status",'array');
-  }
   updateLevels(chart, levels);
 });
