@@ -4,12 +4,14 @@ import {
   createConditionSeries,
   sortSeriesData,
   updateSelect,
+  updateAllSelects,
   cerPalette,
+  applyId,
 } from "../modules/util.js";
 
 const [today, day] = getToday();
-const conditionsData = JSON.parse(
-  getData("/src/conditions_drill/conditions.json")
+const conditionsData = applyId(
+  JSON.parse(getData("/src/conditions_drill/conditions.json"))
 );
 
 const conditionsFilters = {
@@ -17,27 +19,7 @@ const conditionsFilters = {
   "Condition Status": "All",
   Company: "NOVA Gas Transmission Ltd.",
   "Short Project Name": "All",
-  "Theme(s)": "All",
-};
-
-const conditionsFiltersDrill = {
-  "Project Status": "All",
-  "Condition Status": "All",
-  Company: "All",
-  "Short Project Name": "All",
-  "Theme(s)": "All",
-};
-
-const updateFiltersOnDrill = (level, name) => {
-  if (level == 1) {
-    conditionsFiltersDrill["Short Project Name"] = "All";
-  } else if (level == 2) {
-    conditionsFiltersDrill.Company = name;
-  } else if (level == 3) {
-    conditionsFiltersDrill["Short Project Name"] = name;
-  } else if (level == 4) {
-    conditionsFiltersDrill["Theme(s)"] = name;
-  }
+  "Condition Phase": "All",
 };
 
 //contain DOM objects
@@ -60,8 +42,10 @@ const createGraph = () => {
       animation: false,
       events: {
         drilldown: function (e) {
-          $("#select-company").prop("disabled", "disabled");
-          $("#select-company").selectpicker("refresh");
+          $("#select-project").prop("disabled", "disabled");
+          $("#select-project").selectpicker("refresh");
+          $("#select-status-project").prop("disabled", "disabled");
+          $("#select-status-project").selectpicker("refresh");
           var chart = this;
           currentLevel.level++;
           if (!e.seriesOptions) {
@@ -71,6 +55,8 @@ const createGraph = () => {
               var series = levels.themes[e.point.name];
               currentPoint.project = e.point.name;
             } else if (currentLevel.level == 2) {
+              $("#select-phase").prop("disabled", false);
+              $("#select-phase").selectpicker("refresh");
               var inv = false;
               var series =
                 levels.id[currentPoint.project + " - " + e.point.name];
@@ -91,6 +77,7 @@ const createGraph = () => {
                 true
               );
             }
+            updateAllSelects(series.filters, null);
             series.data = sortSeriesData(series.data);
             setTimeout(function () {
               chart.addSeriesAsDrilldown(e.point, series);
@@ -103,18 +90,25 @@ const createGraph = () => {
           }
         },
         drillup: function (e) {
-          var chart = this    
-          chart.series[1].options.color=levels.color
+          var chart = this;
+          chart.series[1].options.color = levels.color;
           chart.series[1].update(chart.series[1].options);
-          chart.series[0].options.color=levels.color
+          chart.series[0].options.color = levels.color;
           chart.series[0].update(chart.series[0].options);
           currentLevel.level--;
           if (currentLevel.level == 0) {
-            $("#select-company").prop("disabled", false);
-            $("#select-company").selectpicker("refresh");
-            this.series[1].setData(levels.series[0].data);
-            this.series[0].setData(levels.series[0].data);
+            $("#select-project").prop("disabled", false);
+            $("#select-project").selectpicker("refresh");
+            $("#select-status-project").prop("disabled", false);
+            $("#select-status-project").selectpicker("refresh");
+            this.series[1].setData(sortSeriesData(levels.series[0].data));
+            this.series[0].setData(sortSeriesData(levels.series[0].data));
           } else if (currentLevel.level == 1) {
+            conditionsFilters["Condition Phase"] = "All"
+            generateNewSeries(conditionsData,conditionsFilters)
+            $("#select-phase").val("All").change()
+            $("#select-phase").prop("disabled", "disabled");
+            $("#select-phase").selectpicker("refresh");
             setConditionText(null);
             chart.yAxis[0].setExtremes();
             chart.yAxis[1].setExtremes();
@@ -153,13 +147,13 @@ const createGraph = () => {
     plotOptions: {
       series: {
         grouping: false,
-        color:cerPalette['Ocean'],
+        color: cerPalette["Ocean"],
         cropThreshold: 1000, //solution to axis getting messed up on drillup: https://www.highcharts.com/forum/viewtopic.php?t=40702
         pointWidth: 20,
         events: {
           legendItemClick: function () {
             return false;
-          },
+          },createConditionSeries
         },
       },
     },
@@ -237,54 +231,81 @@ const createGraph = () => {
     drilldown: {
       series: [],
     },
+    lang: {
+      noData: "No conditions to display for chosen filters",
+    },
+    noData: {
+      style: {
+        fontWeight: "bold",
+        fontSize: "15px",
+        color: "#303030",
+      },
+    },
   });
 };
 
 //set up initial chart,data structures, and selects
-const levels = {};
-var [seriesData, themes, id, currentColor] = createConditionSeries(
-  conditionsData,
-  conditionsFilters
-);
-levels.series = seriesData;
-levels.themes = themes;
-levels.id = id;
-levels.color = currentColor;
+const levels = {}
+const generateNewSeries = (data,filters) => {
+  var [seriesData, themes, id, currentColor] = createConditionSeries(
+    data,
+    filters
+  );
+  levels.series = seriesData;
+  levels.series[0].data = sortSeriesData(levels.series[0].data);
+  levels.themes = themes;
+  levels.id = id;
+  levels.color = currentColor;
+}
+
+generateNewSeries(conditionsData,conditionsFilters)
 var chart = createGraph();
-var initialStatus = ['In Progress','Closed']
-updateSelect(initialStatus,"#select-status",'array')
-updateSelect(levels.series[0].data, "#select-company");
+updateAllSelects(levels.series[0].filters);
+updateSelect(levels.series[0].data, "#select-project");
+$("#select-phase").prop("disabled", "disabled");
+$("#select-phase").selectpicker("refresh");
 
-const updateLevels = (chart, levels) => {
-
-  const updateLevel = (chart,seriesData,color) => {
-    chart.series[0].setData(seriesData);
-    chart.series[0].options.color=color
-    chart.series[0].update(chart.series[0].options);
-  }
+const updateLevels = (chart, levels, currentSelect) => {
+  const updateLevel = (chart, newSeries, color) => {
+    try {
+      chart.series[0].setData(sortSeriesData(newSeries.data));
+      chart.series[0].options.color = color;
+      chart.series[0].update(chart.series[0].options);
+      updateAllSelects(newSeries.filters, currentSelect);
+    } catch (err) {
+      chart.series[0].setData([]);
+    }
+  };
   if (currentLevel.level == 0) {
-    updateLevel(chart,levels.series[0].data,levels.color)
+    updateLevel(chart, levels.series[0], levels.color);
+    if (currentSelect !== "#select-project") {
+      updateSelect(levels.series[0].data, "#select-project", "object");
+    }
   } else if (currentLevel.level == 1) {
-    updateLevel(chart,sortSeriesData(levels.themes[currentPoint.project].data),levels.color)
+    updateLevel(chart, levels.themes[currentPoint.project], levels.color);
   } else if (currentLevel.level == 2) {
     var lastLevelData =
       levels.id[currentPoint.project + " - " + currentPoint.id];
-    chart.series[0].setData(lastLevelData.data);
-    chart.update(
-      {
-        chart: { zoomType: "y" },
-        yAxis: [
-          {
-            id: "id_yCategory",
-            categories: lastLevelData.categories,
-            title: {
-              text: "Instrument Number - Condition Number",
+    try {
+      chart.series[0].setData(lastLevelData.data);
+      chart.update(
+        {
+          chart: { zoomType: "y" },
+          yAxis: [
+            {
+              id: "id_yCategory",
+              categories: lastLevelData.categories,
+              title: {
+                text: "Instrument Number - Condition Number",
+              },
             },
-          },
-        ],
-      },
-      true
-    );
+          ],
+        },
+        true
+      );
+    } catch (err) {
+      chart.series[0].setData([]);
+    }
   }
 };
 
@@ -292,15 +313,30 @@ const updateLevels = (chart, levels) => {
 var select_status = document.getElementById("select-status");
 select_status.addEventListener("change", (select_status) => {
   conditionsFilters["Condition Status"] = select_status.target.value;
-  conditionsFiltersDrill["Condition Status"] = select_status.target.value;
-  [seriesData, themes, id, currentColor] = createConditionSeries(
-    conditionsData,
-    conditionsFilters
-  );
-  levels.series = seriesData;
-  levels.themes = themes;
-  levels.id = id;
-  levels.color = currentColor;
-  updateSelect(levels.series[0].data, "#select-company");
-  updateLevels(chart, levels);
+  generateNewSeries(conditionsData,conditionsFilters)
+  updateLevels(chart, levels, "#select-status");
+});
+
+//select project status
+var select_status_project = document.getElementById("select-status-project");
+select_status_project.addEventListener("change", (select_status_project) => {
+  conditionsFilters["Project Status"] = select_status_project.target.value;
+  generateNewSeries(conditionsData,conditionsFilters)
+  updateLevels(chart, levels, "#select-status-project");
+});
+
+//select condition phase
+var select_phase = document.getElementById("select-phase");
+select_phase.addEventListener("change", (select_phase) => {
+  conditionsFilters["Condition Phase"] = select_phase.target.value;
+  generateNewSeries(conditionsData,conditionsFilters)
+  updateLevels(chart, levels, "#select-phase");
+});
+
+//select project
+var select_project = document.getElementById("select-project");
+select_project.addEventListener("change", (select_project) => {
+  conditionsFilters["Short Project Name"] = select_project.target.value;
+  generateNewSeries(conditionsData,conditionsFilters)
+  updateLevels(chart, levels, "#select-project");
 });
