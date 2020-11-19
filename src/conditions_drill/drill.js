@@ -2,6 +2,8 @@ import {
   getData,
   getToday,
   createConditionSeries,
+  totalsFromSeriesGeneration,
+  totalsFromCounts,
   sortSeriesData,
   updateSelect,
   updateAllSelects,
@@ -42,6 +44,7 @@ const createGraph = () => {
       animation: false,
       events: {
         drilldown: function (e) {
+          totalsFromSeriesGeneration(1)
           $("#select-project").prop("disabled", "disabled");
           $("#select-project").selectpicker("refresh");
           $("#select-status-project").prop("disabled", "disabled");
@@ -78,6 +81,7 @@ const createGraph = () => {
               );
             }
             updateAllSelects(series.filters, null);
+            totalsFromCounts(series.counts)
             series.data = sortSeriesData(series.data);
             setTimeout(function () {
               chart.addSeriesAsDrilldown(e.point, series);
@@ -97,6 +101,8 @@ const createGraph = () => {
           chart.series[0].update(chart.series[0].options);
           currentLevel.level--;
           if (currentLevel.level == 0) {
+            totalsFromSeriesGeneration(levels.projectCount)
+            totalsFromCounts(levels.series[0].counts)
             $("#select-project").prop("disabled", false);
             $("#select-project").selectpicker("refresh");
             $("#select-status-project").prop("disabled", false);
@@ -104,6 +110,7 @@ const createGraph = () => {
             this.series[1].setData(sortSeriesData(levels.series[0].data));
             this.series[0].setData(sortSeriesData(levels.series[0].data));
           } else if (currentLevel.level == 1) {
+            totalsFromCounts(levels.themes[currentPoint.project].counts)
             conditionsFilters["Condition Phase"] = "All"
             generateNewSeries(conditionsData,conditionsFilters)
             $("#select-phase").val("All").change()
@@ -112,6 +119,12 @@ const createGraph = () => {
             setConditionText(null);
             chart.yAxis[0].setExtremes();
             chart.yAxis[1].setExtremes();
+            this.series[1].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
+            this.series[0].setData(
+              sortSeriesData(levels.themes[currentPoint.project].data)
+            );
             chart.update(
               {
                 chart: {
@@ -128,12 +141,6 @@ const createGraph = () => {
                 ],
               },
               true
-            );
-            this.series[1].setData(
-              sortSeriesData(levels.themes[currentPoint.project].data)
-            );
-            this.series[0].setData(
-              sortSeriesData(levels.themes[currentPoint.project].data)
             );
           }
         },
@@ -247,7 +254,7 @@ const createGraph = () => {
 //set up initial chart,data structures, and selects
 const levels = {}
 const generateNewSeries = (data,filters) => {
-  var [seriesData, themes, id, currentColor] = createConditionSeries(
+  var [seriesData, themes, id, currentColor, projectCount] = createConditionSeries(
     data,
     filters
   );
@@ -256,10 +263,13 @@ const generateNewSeries = (data,filters) => {
   levels.themes = themes;
   levels.id = id;
   levels.color = currentColor;
+  levels.projectCount = projectCount
 }
 
 generateNewSeries(conditionsData,conditionsFilters)
 var chart = createGraph();
+totalsFromSeriesGeneration(levels.projectCount)
+totalsFromCounts(levels.series[0].counts)
 updateAllSelects(levels.series[0].filters);
 updateSelect(levels.series[0].data, "#select-project");
 $("#select-phase").prop("disabled", "disabled");
@@ -272,11 +282,13 @@ const updateLevels = (chart, levels, currentSelect) => {
       chart.series[0].options.color = color;
       chart.series[0].update(chart.series[0].options);
       updateAllSelects(newSeries.filters, currentSelect);
+      totalsFromCounts(newSeries.counts)
     } catch (err) {
       chart.series[0].setData([]);
     }
   };
   if (currentLevel.level == 0) {
+    totalsFromSeriesGeneration(levels.projectCount)
     updateLevel(chart, levels.series[0], levels.color);
     if (currentSelect !== "#select-project") {
       updateSelect(levels.series[0].data, "#select-project", "object");
@@ -288,6 +300,7 @@ const updateLevels = (chart, levels, currentSelect) => {
       levels.id[currentPoint.project + " - " + currentPoint.id];
     try {
       chart.series[0].setData(lastLevelData.data);
+      totalsFromCounts(lastLevelData.counts)
       chart.update(
         {
           chart: { zoomType: "y" },

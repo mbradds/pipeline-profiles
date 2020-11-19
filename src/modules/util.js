@@ -63,20 +63,20 @@ export const updateSelect = (options, selectName, from = "object") => {
   $(selectName).val(currentOption).change();
 };
 
-export const updateAllSelects = (filters,currentSelect) => {
+export const updateAllSelects = (filters, currentSelect) => {
   for (const [key, value] of Object.entries(filters)) {
-    if (key == 'conditionStatus') {
-      var selectName = "#select-status"
-    } else if (key=='projectStatus'){
-      var selectName = "#select-status-project"
-    } else if (key=='conditionPhase'){
-      var selectName = "#select-phase"
+    if (key == "conditionStatus") {
+      var selectName = "#select-status";
+    } else if (key == "projectStatus") {
+      var selectName = "#select-status-project";
+    } else if (key == "conditionPhase") {
+      var selectName = "#select-phase";
     }
-    if (selectName !== currentSelect && $(selectName).val() == "All"){
-      updateSelect(Array.from(value),selectName,"array")
+    if (selectName !== currentSelect && $(selectName).val() == "All") {
+      updateSelect(Array.from(value), selectName, "array");
     }
   }
-}
+};
 
 export const applyId = (data) => {
   data = data.map((v) => {
@@ -110,12 +110,15 @@ export const sortSeriesData = (data) => {
   return data;
 };
 
-const totalsFromSeriesGeneration = (companiesNum, projectsNum) => {
-  document.getElementById("companies_number").innerText = companiesNum;
+export const totalsFromSeriesGeneration = (projectsNum) => {
   document.getElementById("projects_number").innerText = projectsNum;
 };
 
-export const relevantValues = (data, filters) => {};
+export const totalsFromCounts = (counts) => {
+  document.getElementById("open_conditions_number").innerText = counts.conditions.filter(cond => cond == "In Progress").length;
+  document.getElementById("closed_conditions_number").innerText = counts.conditions.filter(cond => cond == "Closed").length
+  document.getElementById("instruments_number").innerText = counts.instruments.size
+}
 
 //One pass series generation
 //TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
@@ -175,7 +178,9 @@ export const createConditionSeries = (data, filters) => {
       ddSeries.name = filters.Company;
       ddSeries.colorByPoint = false;
       ddSeries.data = projData;
-      (ddSeries.filters = obj.filters), (ddSeries.xAxis = "id_category");
+      ddSeries.filters = obj.filters;
+      ddSeries.counts = obj.counts;
+      ddSeries.xAxis = "id_category";
       ddSeries.yAxis = "id_yLinear";
       return ddSeries;
     } else if (level == "Theme") {
@@ -193,6 +198,7 @@ export const createConditionSeries = (data, filters) => {
           id: pName,
           data: themeData,
           filters: pObj.filters,
+          counts: pObj.counts,
           //color:currentColor,
           xAxis: "id_category",
           yAxis: "id_yLinear",
@@ -208,7 +214,8 @@ export const createConditionSeries = (data, filters) => {
           id: pNameTheme,
           data: tObj.data,
           categories: Array.from(tObj.categories),
-          filters:tObj.filters,
+          filters: tObj.filters,
+          counts: tObj.counts,
           xAxis: "id_datetime",
           yAxis: "id_yCategory",
         };
@@ -230,6 +237,10 @@ export const createConditionSeries = (data, filters) => {
     projectStatus: new Set(),
     conditionPhase: new Set(),
   };
+  projects.counts = {
+    conditions: [],
+    instruments: new Set(),
+  };
 
   var [projectCount] = [0];
   data.map((row, rowNum) => {
@@ -244,6 +255,8 @@ export const createConditionSeries = (data, filters) => {
     projects.filters.conditionStatus.add(row["Condition Status"]);
     projects.filters.projectStatus.add(row["Project Status"]);
     projects.filters.conditionPhase.add(row["Condition Phase"]);
+    projects.counts.conditions.push(row["Condition Status"]);
+    projects.counts.instruments.add(row["Instrument Number"]);
 
     //theme level (second)
     var themeName = row["Theme(s)"];
@@ -256,6 +269,8 @@ export const createConditionSeries = (data, filters) => {
       themes[projName].filters.conditionStatus.add(row["Condition Status"]);
       themes[projName].filters.projectStatus.add(row["Project Status"]);
       themes[projName].filters.conditionPhase.add(row["Condition Phase"]);
+      themes[projName].counts.conditions.push(row["Condition Status"]);
+      themes[projName].counts.instruments.add(row["Instrument Number"]);
     } else {
       themes[projName] = {
         data: { [themeName]: 1 },
@@ -264,10 +279,16 @@ export const createConditionSeries = (data, filters) => {
           projectStatus: new Set(),
           conditionPhase: new Set(),
         },
+        counts: {
+          conditions: [],
+          instruments: new Set(),
+        },
       };
       themes[projName].filters.conditionStatus.add(row["Condition Status"]);
       themes[projName].filters.projectStatus.add(row["Project Status"]);
       themes[projName].filters.conditionPhase.add(row["Condition Phase"]);
+      themes[projName].counts.conditions.push(row["Condition Status"]);
+      themes[projName].counts.instruments.add(row["Instrument Number"]);
     }
 
     var projTheme = projName + " - " + themeName;
@@ -276,6 +297,8 @@ export const createConditionSeries = (data, filters) => {
       id[projTheme].filters.conditionStatus.add(row["Condition Status"]);
       id[projTheme].filters.projectStatus.add(row["Project Status"]);
       id[projTheme].filters.conditionPhase.add(row["Condition Phase"]);
+      id[projTheme].counts.conditions.push(row["Condition Status"]);
+      id[projTheme].counts.instruments.add(row["Instrument Number"]);
       var y = id[projTheme].categories.size - 1;
       id[projTheme].data.push(addEfectivePoint(row, y));
       var sunset = addSunsetPoint(row, y);
@@ -293,11 +316,17 @@ export const createConditionSeries = (data, filters) => {
           projectStatus: new Set(),
           conditionPhase: new Set(),
         },
+        counts: {
+          conditions: [],
+          instruments: new Set(),
+        },
       };
       id[projTheme].categories.add(row.id);
       id[projTheme].filters.conditionStatus.add(row["Condition Status"]);
       id[projTheme].filters.projectStatus.add(row["Project Status"]);
       id[projTheme].filters.conditionPhase.add(row["Condition Phase"]);
+      id[projTheme].counts.conditions.push(row["Condition Status"]);
+      id[projTheme].counts.instruments.add(row["Instrument Number"]);
       var sunset = addSunsetPoint(row, 0);
       if (sunset) {
         id[projTheme].data.push(sunset);
@@ -305,10 +334,8 @@ export const createConditionSeries = (data, filters) => {
     }
   });
 
-  //totalsFromSeriesGeneration(companyCount, projectCount);
   projects = objectToList(projects, "Project");
   themes = objectToList(themes, "Theme");
   id = objectToList(id, "id");
-
-  return [[projects], themes, id, currentColor];
+  return [[projects], themes, id, currentColor, projectCount];
 };
