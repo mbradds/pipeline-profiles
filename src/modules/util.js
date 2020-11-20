@@ -72,7 +72,8 @@ export const updateAllSelects = (filters, currentSelect) => {
     } else if (key == "conditionPhase") {
       var selectName = "#select-phase";
     }
-    if (selectName !== currentSelect){// && $(selectName).val() == "All") {
+    if (selectName !== currentSelect) {
+      // && $(selectName).val() == "All") {
       updateSelect(Array.from(value), selectName, "array");
     }
   }
@@ -115,10 +116,60 @@ export const totalsFromSeriesGeneration = (projectsNum) => {
 };
 
 export const totalsFromCounts = (counts) => {
-  document.getElementById("open_conditions_number").innerText = counts.conditions.filter(cond => cond == "In Progress").length;
-  document.getElementById("closed_conditions_number").innerText = counts.conditions.filter(cond => cond == "Closed").length
-  document.getElementById("instruments_number").innerText = counts.instruments.size
-}
+  document.getElementById(
+    "open_conditions_number"
+  ).innerText = counts.conditions.filter(
+    (cond) => cond == "In Progress"
+  ).length;
+  document.getElementById(
+    "closed_conditions_number"
+  ).innerText = counts.conditions.filter((cond) => cond == "Closed").length;
+  document.getElementById("instruments_number").innerText =
+    counts.instruments.size;
+};
+
+export const relevantValues = (data, filters) => {
+  data = data.filter((row) => row.Company == filters.Company);
+
+  var [companyLevel, projectLevel, themeLevel, idLevel] = [{}, {}, {}, {}];
+  companyLevel[filters.Company] = {
+    conditionStatus: new Set(),
+    projectStatus: new Set(),
+  };
+
+  data.map((row) => {
+    companyLevel[filters.Company].conditionStatus.add(row["Condition Status"]);
+    companyLevel[filters.Company].projectStatus.add(row["Project Status"]);
+
+    if (projectLevel.hasOwnProperty(row['Short Project Name'])) {
+      projectLevel[row['Short Project Name']].conditionStatus.add(row["Condition Status"])
+      projectLevel[row['Short Project Name']].projectStatus.add(row["Project Status"])
+    } else {
+      projectLevel[row['Short Project Name']] = {
+        conditionStatus: new Set(),
+        projectStatus: new Set(),
+      }
+      projectLevel[row['Short Project Name']].conditionStatus.add(row["Condition Status"])
+      projectLevel[row['Short Project Name']].projectStatus.add(row["Project Status"])
+    }
+
+    var projTheme = row['Short Project Name'] + " - " + row['Theme(s)'];
+
+    if (themeLevel.hasOwnProperty(projTheme)){
+      themeLevel[projTheme].conditionStatus.add(row['Condition Status'])
+      themeLevel[projTheme].conditionPhase.add(row['Condition Phase'])
+    } else {
+      themeLevel[projTheme] = {
+        conditionStatus: new Set(),
+        conditionPhase: new Set(),
+      }
+      themeLevel[projTheme].conditionStatus.add(row['Condition Status'])
+      themeLevel[projTheme].conditionPhase.add(row['Condition Phase'])
+    }
+  });
+
+  return {'company':companyLevel,'project':projectLevel,'theme':themeLevel};
+};
 
 //One pass series generation
 //TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
