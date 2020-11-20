@@ -16,6 +16,9 @@ export const cerPalette = {
   hcLightBlue: "#91e8e1",
 };
 
+//TODO: this is how you add to a set on creation:
+//const set1 = new Set([1, 2, 3, 4, 5]);
+
 export const getToday = () => {
   var today = new Date(),
     day = 1000 * 60 * 60 * 24;
