@@ -72,7 +72,7 @@ export const updateAllSelects = (filters, currentSelect) => {
     } else if (key == "conditionPhase") {
       var selectName = "#select-phase";
     }
-    if (selectName !== currentSelect && $(selectName).val() == "All") {
+    if (selectName !== currentSelect){// && $(selectName).val() == "All") {
       updateSelect(Array.from(value), selectName, "array");
     }
   }
