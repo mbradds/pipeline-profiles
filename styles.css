@@ -37,3 +37,17 @@
   color: dimgray;
   /* text-align: center; */
 }
+
+.cersummary {
+  font-family: Arial;
+  font-size:17px;
+  font-style: italic;
+  color: dimgray;
+}
+
+.cersummarymeasure {
+  font-family: Arial;
+  font-size:17px;
+  color: black;
+  font-weight: bold;
+}

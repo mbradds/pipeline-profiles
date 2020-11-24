@@ -20,31 +20,35 @@
       <!-- Title -->
       <div class="row">
         <div class="col-md-12">
-          <div class="conditions-title" id="conditions-title">
-          </div>
+          <div class="conditions-title" id="conditions-title"></div>
         </div>
       </div>
       <!-- Summary measures -->
       <div class="row">
         <div class="col-md-3">
-          <div class="cersummary" id="open_conditions">Open conditions:</div>
+          <div class="cersummary" id="open_conditions">
+            Conditions In-Progress:
+          </div>
           <div class="cersummarymeasure" id="open_conditions_number"></div>
         </div>
         <div class="col-md-3">
           <div class="cersummary" id="closed_conditions">
-            Closed conditions:
+            Conditions Closed:
           </div>
           <div class="cersummarymeasure" id="closed_conditions_number"></div>
         </div>
         <div class="col-md-3">
-          <div class="cersummary" id="num_companies">Instruments:</div>
+          <div class="cersummary" id="num_companies">
+            Number of Instruments:
+          </div>
           <div class="cersummarymeasure" id="instruments_number"></div>
         </div>
         <div class="col-md-3">
-          <div class="cersummary" id="num_projects">Projects:</div>
+          <div class="cersummary" id="num_projects">Number of Projects:</div>
           <div class="cersummarymeasure" id="projects_number"></div>
         </div>
       </div>
+      <div class="mrgn-tp-sm"></div>
       <!-- Filters -->
       <div class="row">
         <div class="col-md-3">
@@ -72,10 +76,10 @@
           </select>
         </div>
       </div>
+      <div class="mrgn-tp-sm"></div>
       <div class="row">
         <div class="col-md-12">
-          <div class="sub-title" id="sub-title">
-          </div>
+          <div class="cersummary" id="sub-title"></div>
         </div>
       </div>
       <!-- Highcharts goes here -->
@@ -90,10 +94,26 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="mrgn-tp-lg"></div>
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <!-- dashboard instructions can go here -->
-          Instructions:
+          <section class="panel panel-info">
+            <header class="panel-heading">
+              <h5 class="panel-title">Chart Instructions</h5>
+            </header>
+            <div class="panel-body">
+              <p>
+                The bar chart above shows the number of conditions by project.
+                You can zoom in and out by clicking and dragging on the chart
+                area. Conditions specific to each project can be viewed by
+                drilling down. Click on a project name or bar to drill down.
+                Drop downs can also be used to view specific conditions. Some
+                drop downs are only available after drilling down.
+              </p>
+            </div>
+          </section>
         </div>
       </div>
     </div>

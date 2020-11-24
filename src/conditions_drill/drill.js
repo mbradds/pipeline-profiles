@@ -12,11 +12,11 @@ import {
   dynamicTitle,
 } from "../modules/util.js";
 
-import rawConditions from "../conditions_data/NOVA Gas Transmission Ltd.json"
+import rawConditions from "../conditions_data/NOVA Gas Transmission Ltd.json";
 
 export const conditionDrill = () => {
   const [today, day] = getToday();
-  const conditionsData = applyId(rawConditions)
+  const conditionsData = applyId(rawConditions);
 
   const conditionsFilters = {
     "Project Status": "All",
@@ -199,6 +199,10 @@ export const conditionDrill = () => {
         text: null,
       },
 
+      legend: {
+        enabled: false,
+      },
+
       plotOptions: {
         series: {
           grouping: false,
@@ -215,8 +219,7 @@ export const conditionDrill = () => {
       },
 
       credits: {
-        text: "Canada Energy Regulator",
-        href: "https://www.cer-rec.gc.ca/index-eng.html",
+        text: '',
       },
 
       xAxis: [
