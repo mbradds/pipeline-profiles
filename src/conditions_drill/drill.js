@@ -12,7 +12,7 @@ import {
   dynamicTitle,
 } from "../modules/util.js";
 
-import rawConditions from "./conditions.json"
+import rawConditions from "../conditions_data/NOVA Gas Transmission Ltd.json"
 
 export const conditionDrill = () => {
   const [today, day] = getToday();

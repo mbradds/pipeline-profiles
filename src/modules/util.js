@@ -31,13 +31,6 @@ export const getToday = () => {
   return [today, day];
 };
 
-export const getData = (Url) => {
-  var Httpreq = new XMLHttpRequest(); // a new request
-  Httpreq.open("GET", Url, false);
-  Httpreq.send(null);
-  return Httpreq.responseText;
-};
-
 const addToDrop = (drop_name, optionValue, optionText) => {
   $(drop_name).append(
     $("<option>", {
@@ -163,9 +156,9 @@ export const totalsFromCounts = (counts) => {
 };
 
 export const relevantValues = (data, filters) => {
-  data = data.filter((row) => row.Company == filters.Company);
+  //data = data.filter((row) => row.Company == filters.Company);
   var [companyLevel, projectLevel, themeLevel] = [{}, {}, {}];
-  
+
   companyLevel[filters.Company] = {
     conditionStatus: new Set(),
     projectStatus: new Set(),
