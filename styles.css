@@ -2,26 +2,30 @@
   border: 5px solid grey;
 }
 /* This is useful for looking at the grid structure */
-/* .my-row {
+/* .row {
   border: 3px solid red;
 }
-.my-col {
+.col-md-3 {
   border: 3px solid blue;
 } */
 
-.conditions-container{
-  height:700px
+.conditions-container {
+  height: 700px;
+}
+
+.form-control {
+  min-width: 250px;
+  max-width: 250px;
 }
 
 .cerlabel {
-    position: center;
-    font-family: Arial;
-    font-weight: bold;
-    color:#871455
-  } 
+  position: center;
+  font-family: Arial;
+  font-weight: bold;
+  color: #871455;
+}
 
-
-  .padding-0{
-    padding-right:0;
-    padding-left:0;
+.padding-0 {
+  padding-right: 0;
+  padding-left: 0;
 }

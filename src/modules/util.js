@@ -62,7 +62,8 @@ export const updateSelect = (options, selectName, from = "object") => {
       });
     }
   }
-  $(selectName).selectpicker("refresh");
+  $(selectName).trigger("chosen:updated");
+  //$(selectName).selectpicker("refresh");
   $(selectName).val(currentOption).change();
 };
 
@@ -81,6 +82,17 @@ export const updateAllSelects = (filters, currentSelect) => {
     }
   }
 };
+
+export const dynamicTitle = (filters,point) => {
+  var titleText = ''
+  if (point.project == null){
+    titleText = `Number of conditions by ${filters.Company}`
+  } else {
+    titleText = 'No title'
+  }
+  document.getElementById("conditions-title").innerText = titleText  ;
+}
+
 
 export const applyId = (data) => {
   data = data.map((v) => {

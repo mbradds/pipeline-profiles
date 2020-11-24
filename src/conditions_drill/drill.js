@@ -10,6 +10,7 @@ import {
   cerPalette,
   applyId,
   relevantValues,
+  dynamicTitle,
 } from "../modules/util.js";
 
 const [today, day] = getToday();
@@ -31,9 +32,8 @@ var conditionTextContainer = document.getElementById("container_text");
 const setConditionText = (onClickText) => {
   conditionTextContainer.innerText = onClickText;
 };
-var relevant = relevantValues(conditionsData,conditionsFilters)
-console.log(relevant)
-var currentPoint = { company: null, project: null };
+var relevant = relevantValues(conditionsData, conditionsFilters);
+var currentPoint = { project: null, id: null };
 var currentLevel = { level: 0 };
 const createGraph = () => {
   return new Highcharts.chart("container-chart", {
@@ -46,9 +46,9 @@ const createGraph = () => {
         drilldown: function (e) {
           totalsFromSeriesGeneration(1);
           $("#select-project").prop("disabled", "disabled");
-          $("#select-project").selectpicker("refresh");
+          $("#select-project").trigger("chosen:updated");
           $("#select-status-project").prop("disabled", "disabled");
-          $("#select-status-project").selectpicker("refresh");
+          $("#select-staus-project").trigger("chosen:updated");
           var chart = this;
           currentLevel.level++;
           if (!e.seriesOptions) {
@@ -57,16 +57,36 @@ const createGraph = () => {
               var inv = true;
               var series = levels.themes[e.point.name];
               currentPoint.project = e.point.name;
-              updateSelect(Array.from(relevant.project[currentPoint.project].conditionStatus),"#select-status","array")
+              updateSelect(
+                Array.from(
+                  relevant.project[currentPoint.project].conditionStatus
+                ),
+                "#select-status",
+                "array"
+              );
             } else if (currentLevel.level == 2) {
               $("#select-phase").prop("disabled", false);
-              $("#select-phase").selectpicker("refresh");
+              $("#select-phase").trigger("chosen:updated");
               var inv = false;
               var series =
                 levels.id[currentPoint.project + " - " + e.point.name];
               currentPoint.id = e.point.name;
-              updateSelect(Array.from(relevant.theme[currentPoint.project + " - " + e.point.name].conditionStatus),"#select-status","array")
-              updateSelect(Array.from(relevant.theme[currentPoint.project + " - " + e.point.name].conditionPhase),"#select-phase","array")
+              updateSelect(
+                Array.from(
+                  relevant.theme[currentPoint.project + " - " + e.point.name]
+                    .conditionStatus
+                ),
+                "#select-status",
+                "array"
+              );
+              updateSelect(
+                Array.from(
+                  relevant.theme[currentPoint.project + " - " + e.point.name]
+                    .conditionPhase
+                ),
+                "#select-phase",
+                "array"
+              );
               chart.update(
                 {
                   chart: { zoomType: "y" },
@@ -83,7 +103,6 @@ const createGraph = () => {
                 true
               );
             }
-            //updateAllSelects(series.filters, null);
             totalsFromCounts(series.counts);
             series.data = sortSeriesData(series.data);
             setTimeout(function () {
@@ -95,6 +114,8 @@ const createGraph = () => {
               });
             }, 0);
           }
+          dynamicTitle(conditionsFilters,currentPoint)
+          console.log(currentPoint);
         },
         drillup: function (e) {
           var chart = this;
@@ -104,26 +125,45 @@ const createGraph = () => {
           chart.series[0].update(chart.series[0].options);
           currentLevel.level--;
           if (currentLevel.level == 0) {
+            currentPoint.project = null;
             totalsFromSeriesGeneration(levels.projectCount);
             totalsFromCounts(levels.series[0].counts);
             $("#select-project").prop("disabled", false);
-            $("#select-project").selectpicker("refresh");
+            $("#select-project").trigger("chosen:updated");
             $("#select-status-project").prop("disabled", false);
-            $("#select-status-project").selectpicker("refresh");
+            $("#select-status-project").trigger("chosen:updated");
             this.series[1].setData(sortSeriesData(levels.series[0].data));
             this.series[0].setData(sortSeriesData(levels.series[0].data));
-            updateSelect(Array.from(relevant.company[conditionsFilters.Company].conditionStatus),"#select-status","array")
-            updateSelect(Array.from(relevant.company[conditionsFilters.Company].projectStatus),"#select-status-project","array")
+            updateSelect(
+              Array.from(
+                relevant.company[conditionsFilters.Company].conditionStatus
+              ),
+              "#select-status",
+              "array"
+            );
+            updateSelect(
+              Array.from(
+                relevant.company[conditionsFilters.Company].projectStatus
+              ),
+              "#select-status-project",
+              "array"
+            );
             updateSelect(levels.series[0].data, "#select-project");
           } else if (currentLevel.level == 1) {
-            updateSelect(Array.from(relevant.project[currentPoint.project].conditionStatus),"#select-status","array")
+            currentPoint.id = null;
+            updateSelect(
+              Array.from(
+                relevant.project[currentPoint.project].conditionStatus
+              ),
+              "#select-status",
+              "array"
+            );
             conditionsFilters["Condition Phase"] = "All";
             generateNewSeries(conditionsData, conditionsFilters);
-            //updateAllSelects(levels.themes[currentPoint.project].filters);
             totalsFromCounts(levels.themes[currentPoint.project].counts);
             $("#select-phase").val("All").change();
             $("#select-phase").prop("disabled", "disabled");
-            $("#select-phase").selectpicker("refresh");
+            $("#select-phase").trigger("chosen:updated");
             setConditionText(null);
             chart.yAxis[0].setExtremes();
             chart.yAxis[1].setExtremes();
@@ -151,6 +191,8 @@ const createGraph = () => {
               true
             );
           }
+          dynamicTitle(conditionsFilters,currentPoint)
+          console.log(currentPoint);
         },
       },
     },
@@ -223,7 +265,12 @@ const createGraph = () => {
           text: "",
         },
         labels: {
-          style:  { "cursor": "pointer", "color": "#003399", "fontWeight": "bold", "textDecoration": "underline" },
+          style: {
+            cursor: "pointer",
+            color: "#003399",
+            fontWeight: "bold",
+            textDecoration: "underline",
+          },
           events: {
             click: function () {
               var clickedId = this.value;
@@ -283,7 +330,7 @@ totalsFromCounts(levels.series[0].counts);
 updateAllSelects(levels.series[0].filters);
 updateSelect(levels.series[0].data, "#select-project");
 $("#select-phase").prop("disabled", "disabled");
-$("#select-phase").selectpicker("refresh");
+dynamicTitle(conditionsFilters,currentPoint)
 
 const updateLevels = (chart, levels, currentSelect) => {
   const updateLevel = (chart, newSeries, color) => {
