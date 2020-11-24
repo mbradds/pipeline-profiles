@@ -83,16 +83,37 @@ export const updateAllSelects = (filters, currentSelect) => {
   }
 };
 
-export const dynamicTitle = (filters,point) => {
-  var titleText = ''
-  if (point.project == null){
-    titleText = `Number of conditions by ${filters.Company}`
+export const dynamicTitle = (filters, point) => {
+  // console.log(filters);
+  // console.log(point);
+  var titleExt = "";
+  if (filters["Condition Status"] !== "All") {
+    titleExt = ` (${filters["Condition Status"]} conditions)`;
   } else {
-    titleText = 'No title'
+    titleExt = null;
   }
-  document.getElementById("conditions-title").innerText = titleText  ;
-}
 
+  var titleText = "";
+  var subTitleText = "";
+  if (point.project == null) {
+    titleText = `${filters.Company} - Number of Conditions by Project`;
+    subTitleText = "Click on a project name to view conditions by theme"
+  } else if (point.project !== null && point.id == null) {
+    titleText = `${point.project} - Number of Conditions by Theme`;
+    subTitleText = "Click on a theme to view condition timeline & text"
+  } else if (point.id !== null) {
+    titleText = `${point.project} - ${point.id} Theme`;
+    subTitleText = "Click on instrument & condition number to view condition text"
+  } else {
+    titleText = null
+  }
+
+  if (titleExt !== null) {
+    titleText += titleExt;
+  }
+  document.getElementById("conditions-title").innerText = titleText;
+  document.getElementById("sub-title").innerText = subTitleText
+};
 
 export const applyId = (data) => {
   data = data.map((v) => {
@@ -156,34 +177,42 @@ export const relevantValues = (data, filters) => {
     companyLevel[filters.Company].conditionStatus.add(row["Condition Status"]);
     companyLevel[filters.Company].projectStatus.add(row["Project Status"]);
 
-    if (projectLevel.hasOwnProperty(row['Short Project Name'])) {
-      projectLevel[row['Short Project Name']].conditionStatus.add(row["Condition Status"])
-      projectLevel[row['Short Project Name']].projectStatus.add(row["Project Status"])
+    if (projectLevel.hasOwnProperty(row["Short Project Name"])) {
+      projectLevel[row["Short Project Name"]].conditionStatus.add(
+        row["Condition Status"]
+      );
+      projectLevel[row["Short Project Name"]].projectStatus.add(
+        row["Project Status"]
+      );
     } else {
-      projectLevel[row['Short Project Name']] = {
+      projectLevel[row["Short Project Name"]] = {
         conditionStatus: new Set(),
         projectStatus: new Set(),
-      }
-      projectLevel[row['Short Project Name']].conditionStatus.add(row["Condition Status"])
-      projectLevel[row['Short Project Name']].projectStatus.add(row["Project Status"])
+      };
+      projectLevel[row["Short Project Name"]].conditionStatus.add(
+        row["Condition Status"]
+      );
+      projectLevel[row["Short Project Name"]].projectStatus.add(
+        row["Project Status"]
+      );
     }
 
-    var projTheme = row['Short Project Name'] + " - " + row['Theme(s)'];
+    var projTheme = row["Short Project Name"] + " - " + row["Theme(s)"];
 
-    if (themeLevel.hasOwnProperty(projTheme)){
-      themeLevel[projTheme].conditionStatus.add(row['Condition Status'])
-      themeLevel[projTheme].conditionPhase.add(row['Condition Phase'])
+    if (themeLevel.hasOwnProperty(projTheme)) {
+      themeLevel[projTheme].conditionStatus.add(row["Condition Status"]);
+      themeLevel[projTheme].conditionPhase.add(row["Condition Phase"]);
     } else {
       themeLevel[projTheme] = {
         conditionStatus: new Set(),
         conditionPhase: new Set(),
-      }
-      themeLevel[projTheme].conditionStatus.add(row['Condition Status'])
-      themeLevel[projTheme].conditionPhase.add(row['Condition Phase'])
+      };
+      themeLevel[projTheme].conditionStatus.add(row["Condition Status"]);
+      themeLevel[projTheme].conditionPhase.add(row["Condition Phase"]);
     }
   });
 
-  return {'company':companyLevel,'project':projectLevel,'theme':themeLevel};
+  return { company: companyLevel, project: projectLevel, theme: themeLevel };
 };
 
 //One pass series generation

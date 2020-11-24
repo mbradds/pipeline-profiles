@@ -29,3 +29,11 @@
   padding-right: 0;
   padding-left: 0;
 }
+
+.conditions-title {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Arial;
+  color: dimgray;
+  /* text-align: center; */
+}

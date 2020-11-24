@@ -1,0 +1,31 @@
+{
+  "name": "highchartsmarkets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server --output-public-path=/dist/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "all": "0.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "compression-webpack-plugin": "^6.1.0",
+    "copy-webpack-plugin": "^6.3.0",
+    "core-js": "^3.7.0",
+    "json-minimizer-webpack-plugin": "^2.0.0",
+    "mapshaper": "^0.5.26",
+    "webpack": "^5.4.0",
+    "webpack-bundle-analyzer": "^4.1.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
