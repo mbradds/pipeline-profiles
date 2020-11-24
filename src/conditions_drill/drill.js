@@ -1,5 +1,4 @@
 import {
-  getData,
   getToday,
   createConditionSeries,
   totalsFromSeriesGeneration,
@@ -13,11 +12,11 @@ import {
   dynamicTitle,
 } from "../modules/util.js";
 
+import rawConditions from "./conditions.json"
+
 export const conditionDrill = () => {
   const [today, day] = getToday();
-  const conditionsData = applyId(
-    JSON.parse(getData("/src/conditions_drill/conditions.json"))
-  );
+  const conditionsData = applyId(rawConditions)
 
   const conditionsFilters = {
     "Project Status": "All",

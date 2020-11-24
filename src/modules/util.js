@@ -63,7 +63,6 @@ export const updateSelect = (options, selectName, from = "object") => {
     }
   }
   $(selectName).trigger("chosen:updated");
-  //$(selectName).selectpicker("refresh");
   $(selectName).val(currentOption).change();
 };
 
@@ -136,7 +135,6 @@ export const sortResults = (result, level) => {
       });
     });
   }
-
   return result;
 };
 
@@ -166,8 +164,8 @@ export const totalsFromCounts = (counts) => {
 
 export const relevantValues = (data, filters) => {
   data = data.filter((row) => row.Company == filters.Company);
-
-  var [companyLevel, projectLevel, themeLevel, idLevel] = [{}, {}, {}, {}];
+  var [companyLevel, projectLevel, themeLevel] = [{}, {}, {}];
+  
   companyLevel[filters.Company] = {
     conditionStatus: new Set(),
     projectStatus: new Set(),
@@ -186,15 +184,9 @@ export const relevantValues = (data, filters) => {
       );
     } else {
       projectLevel[row["Short Project Name"]] = {
-        conditionStatus: new Set(),
-        projectStatus: new Set(),
+        conditionStatus: new Set([row["Condition Status"]]),
+        projectStatus: new Set([row["Project Status"]]),
       };
-      projectLevel[row["Short Project Name"]].conditionStatus.add(
-        row["Condition Status"]
-      );
-      projectLevel[row["Short Project Name"]].projectStatus.add(
-        row["Project Status"]
-      );
     }
 
     var projTheme = row["Short Project Name"] + " - " + row["Theme(s)"];
@@ -204,19 +196,16 @@ export const relevantValues = (data, filters) => {
       themeLevel[projTheme].conditionPhase.add(row["Condition Phase"]);
     } else {
       themeLevel[projTheme] = {
-        conditionStatus: new Set(),
-        conditionPhase: new Set(),
+        conditionStatus: new Set([row["Condition Status"]]),
+        conditionPhase: new Set([row["Condition Phase"]]),
       };
-      themeLevel[projTheme].conditionStatus.add(row["Condition Status"]);
-      themeLevel[projTheme].conditionPhase.add(row["Condition Phase"]);
     }
   });
 
   return { company: companyLevel, project: projectLevel, theme: themeLevel };
 };
 
-//One pass series generation
-//TODO: when looping though, generate an object that contains a list of valid select options. This could probably be added to the series
+
 export const createConditionSeries = (data, filters) => {
   const seriesColor = (filters) => {
     if (filters["Condition Status"] == "All") {
@@ -370,20 +359,15 @@ export const createConditionSeries = (data, filters) => {
       themes[projName] = {
         data: { [themeName]: 1 },
         filters: {
-          conditionStatus: new Set(),
-          projectStatus: new Set(),
-          conditionPhase: new Set(),
+          conditionStatus: new Set([row["Condition Status"]]),
+          projectStatus: new Set([row["Project Status"]]),
+          conditionPhase: new Set([row["Condition Phase"]]),
         },
         counts: {
-          conditions: [],
-          instruments: new Set(),
+          conditions: [row["Condition Status"]],
+          instruments: new Set([row["Instrument Number"]]),
         },
       };
-      themes[projName].filters.conditionStatus.add(row["Condition Status"]);
-      themes[projName].filters.projectStatus.add(row["Project Status"]);
-      themes[projName].filters.conditionPhase.add(row["Condition Phase"]);
-      themes[projName].counts.conditions.push(row["Condition Status"]);
-      themes[projName].counts.instruments.add(row["Instrument Number"]);
     }
 
     var projTheme = projName + " - " + themeName;
@@ -402,26 +386,20 @@ export const createConditionSeries = (data, filters) => {
       }
     } else {
       id[projTheme] = {
-        categories: new Set(),
+        categories: new Set([row.id]),
         name: row.id,
         pointWidth: 20,
         data: [addEfectivePoint(row, 0)],
         filters: {
-          conditionStatus: new Set(),
-          projectStatus: new Set(),
-          conditionPhase: new Set(),
+          conditionStatus: new Set([row["Condition Status"]]),
+          projectStatus: new Set([row["Project Status"]]),
+          conditionPhase: new Set([row["Condition Phase"]]),
         },
         counts: {
-          conditions: [],
-          instruments: new Set(),
+          conditions: [row["Condition Status"]],
+          instruments: new Set([row["Instrument Number"]]),
         },
       };
-      id[projTheme].categories.add(row.id);
-      id[projTheme].filters.conditionStatus.add(row["Condition Status"]);
-      id[projTheme].filters.projectStatus.add(row["Project Status"]);
-      id[projTheme].filters.conditionPhase.add(row["Condition Phase"]);
-      id[projTheme].counts.conditions.push(row["Condition Status"]);
-      id[projTheme].counts.instruments.add(row["Instrument Number"]);
       var sunset = addSunsetPoint(row, 0);
       if (sunset) {
         id[projTheme].data.push(sunset);
