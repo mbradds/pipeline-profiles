@@ -1,3 +1,4 @@
-*.csv#
-conditions_working_copy.csv
+**/raw_data
+**/__pycache__
+**/.vscode
 node_modules

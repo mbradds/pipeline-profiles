@@ -1,2 +1,2 @@
-import { conditionDrill } from "./conditions_drill/drill.js";
+import { conditionDrill } from "./conditions/conditions_drill/drill.js";
 conditionDrill();
