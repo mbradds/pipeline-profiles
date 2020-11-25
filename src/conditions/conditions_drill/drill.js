@@ -1,16 +1,16 @@
 import {
-  getToday,
   createConditionSeries,
   totalsFromSeriesGeneration,
   totalsFromCounts,
   sortSeriesData,
   updateSelect,
   updateAllSelects,
-  cerPalette,
   applyId,
   relevantValues,
   dynamicTitle,
-} from "../modules/util.js";
+} from "./drill_functions";
+
+import { cerPalette, getToday } from "../../modules/util";
 
 import rawConditions from "../conditions_data/NOVA Gas Transmission Ltd.json";
 
@@ -223,16 +223,15 @@ export const conditionDrill = () => {
       },
 
       tooltip: {
-        useHTML:true,
-        formatter: function(){
-          if (currentLevel.level == 2){
-            console.log(this)
-            return `last level`
+        useHTML: true,
+        formatter: function () {
+          if (currentLevel.level == 2) {
+            console.log(this);
+            return `last level`;
           } else {
-            return `<i>${this.key}</i>: <b>${this.y} conditions</b>`
+            return `<i>${this.key}</i>: <b>${this.y} conditions</b>`;
           }
-        }
-
+        },
       },
 
       xAxis: [

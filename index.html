@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./wet-boew/css/noscript.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/gantt/modules/gantt.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
     <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
     <script src="https://code.highcharts.com/modules/xrange.js"></script>
@@ -16,7 +17,7 @@
     <script src="https://code.highcharts.com/gantt/modules/current-date-indicator.js"></script>
   </head>
   <body>
-    <div class="container my-container">
+    <div class="container conditions-container">
       <!-- Title -->
       <div class="row">
         <div class="col-md-12">
@@ -85,7 +86,7 @@
       <!-- Highcharts goes here -->
       <div class="row">
         <div class="col-md-12">
-          <div class="conditions-container" id="container-chart"></div>
+          <div class="conditions-container-hc" id="container-chart"></div>
           <div class="row">
             <div class="col-md-12">
               <div class="conditions-last-level" id="container-last"></div>
@@ -117,6 +118,28 @@
         </div>
       </div>
     </div>
+
+    <div class="mrgn-tp-lg"></div>
+    <!-- negotiated settlements-->
+    <div class="container chart-large">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="settle_title" class="figure_title">
+                NGTL Negotiated Settlements
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container-chart-large" id="container_settlements"></div>
+        </div>
+      </div>
+    </div>
+
     <script src="./dist/bundle.js" type="text/javascript"></script>
     <!-- <script src="./src/index.js" type="module"></script> -->
   </body>

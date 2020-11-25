@@ -1,8 +1,7 @@
-import { cerPalette, creditsClick } from "../../modules/util.js";
-import settlementsData from "./settlements.json";
+import { cerPalette, dateFormat } from "../modules/util";
+import settlementsData from "./settlements_data/NOVA Gas Transmission Ltd.json";
 
 export const cassandraSettlements = () => {
-  const dateFormat = "%b %d, %Y";
   const legendNames = {
     company: {
       name: "Active settlement(s)",
@@ -14,16 +13,6 @@ export const cassandraSettlements = () => {
     "Active settlement(s)": cerPalette["Night Sky"],
     "Settlements with fixed end date": cerPalette["Ocean"],
     "Settlements without fixed end date": cerPalette["Cool Grey"],
-  };
-
-  const filters = { Commodity: "All" };
-
-  const setTitle = (figure_title, filters) => {
-    if (filters.Commodity == "All") {
-      figure_title.innerText = "Figure 17: Negotiated Settlement Timelines";
-    } else {
-      figure_title.innerText = `Figure 17: Negotiated Settlement Timelines - ${filters.Commodity} Companies`;
-    }
   };
 
   const currentDate = () => {
@@ -63,14 +52,10 @@ export const cassandraSettlements = () => {
     });
   };
 
-  const settlementSeries = (data, filters) => {
+  const settlementSeries = (data) => {
     var seriesTracker = {};
     var seriesSettle = [];
     var dates = [];
-
-    if (filters.Commodity !== "All") {
-      data = data.filter((row) => row.Commodity == filters.Commodity);
-    }
 
     data = applyEndDateColors(data);
     data = data.sort(sortByProperty("end"));
@@ -136,7 +121,7 @@ export const cassandraSettlements = () => {
         if (companyStartDates[endNum + 1] - endDate > 86400000) {
           companySettles.push({
             name: company,
-            collapsed: true,
+            collapsed: false,
             color: cerPalette["Night Sky"],
             id: companyId(companyTracker, company),
             start: currentStart,
@@ -148,7 +133,7 @@ export const cassandraSettlements = () => {
           if (endNum == companyEndDates.length - 1) {
             companySettles.push({
               name: company,
-              collapsed: true,
+              collapsed: false,
               color: cerPalette["Night Sky"],
               id: companyId(companyTracker, company),
               start: currentStart,
@@ -165,21 +150,16 @@ export const cassandraSettlements = () => {
     return [[...seriesSettle, ...companySettles], dates];
   };
 
-  const [seriesData, dates] = settlementSeries(settlementsData, filters);
+  const [seriesData, dates] = settlementSeries(settlementsData);
 
   const createSettlements = (seriesData) => {
     return Highcharts.ganttChart("container_settlements", {
       chart: {
         type: "gantt",
         borderWidth: 1,
-        events: {
-          load: function () {
-            creditsClick(this, "https://www.cer-rec.gc.ca/en/index.html");
-          },
-        },
       },
       credits: {
-        text: "Source: CER",
+        text: "",
       },
       plotOptions: {
         series: {
@@ -296,16 +276,7 @@ export const cassandraSettlements = () => {
     });
   };
   const mainSettlements = () => {
-    var figure_title = document.getElementById("settle_title");
-    setTitle(figure_title, filters);
     var settlementChart = createSettlements(seriesData);
-    var selectSettle = document.getElementById("select_commodity_settle");
-    selectSettle.addEventListener("change", (selectSettle) => {
-      filters.Commodity = selectSettle.target.value;
-      setTitle(figure_title, filters);
-      const [seriesData, dates] = settlementSeries(settlementsData, filters);
-      settlementChart = createSettlements(seriesData);
-    });
   };
   mainSettlements();
 };

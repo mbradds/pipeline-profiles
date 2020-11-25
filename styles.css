@@ -1,5 +1,5 @@
-.my-container {
-  border: 5px solid grey;
+.conditions-container {
+  border: 4px solid grey;
 }
 /* This is useful for looking at the grid structure */
 /* .row {
@@ -9,7 +9,7 @@
   border: 3px solid blue;
 } */
 
-.conditions-container {
+.conditions-container-hc {
   height: 700px;
 }
 

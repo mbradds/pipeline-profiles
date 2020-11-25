@@ -1,35 +1,4 @@
-export const cerPalette = {
-  "Night Sky": "#054169",
-  Sun: "#FFBE4B",
-  Ocean: "#5FBEE6",
-  Forest: "#559B37",
-  Flame: "#FF821E",
-  Aubergine: "#871455",
-  "Dim Grey": "#8c8c96",
-  "Cool Grey": "#42464B",
-  hcBlue: "#7cb5ec",
-  hcGreen: "#90ed7d",
-  hcPink: "#f15c80",
-  hcRed: "#f45b5b",
-  hcAqua: "#2b908f",
-  hcPurple: "#8085e9",
-  hcLightBlue: "#91e8e1",
-};
-
-//TODO: this is how you add to a set on creation:
-//const set1 = new Set([1, 2, 3, 4, 5]);
-
-export const getToday = () => {
-  var today = new Date(),
-    day = 1000 * 60 * 60 * 24;
-
-  // Set to 00:00:00:000 today
-  today.setUTCHours(0);
-  today.setUTCMinutes(0);
-  today.setUTCSeconds(0);
-  today.setUTCMilliseconds(0);
-  return [today, day];
-};
+import { cerPalette } from "../../modules/util.js";
 
 const addToDrop = (drop_name, optionValue, optionText) => {
   $(drop_name).append(
@@ -89,22 +58,23 @@ export const dynamicTitle = (filters, point) => {
   var subTitleText = "";
   if (point.project == null) {
     titleText = `${filters.Company} - Number of Conditions by Project`;
-    subTitleText = "Click on a project name to view conditions by theme"
+    subTitleText = "Click on a project name to view conditions by theme";
   } else if (point.project !== null && point.id == null) {
     titleText = `${point.project} - Number of Conditions by Theme`;
-    subTitleText = "Click on a theme to view condition timeline & text"
+    subTitleText = "Click on a theme to view condition timeline & text";
   } else if (point.id !== null) {
     titleText = `${point.project} - ${point.id} Theme`;
-    subTitleText = "Click on instrument & condition number to view condition text"
+    subTitleText =
+      "Click on instrument & condition number to view condition text";
   } else {
-    titleText = null
+    titleText = null;
   }
 
   if (titleExt !== null) {
     titleText += titleExt;
   }
   document.getElementById("conditions-title").innerText = titleText;
-  document.getElementById("sub-title").innerText = subTitleText
+  document.getElementById("sub-title").innerText = subTitleText;
 };
 
 export const applyId = (data) => {
@@ -197,7 +167,6 @@ export const relevantValues = (data, filters) => {
 
   return { company: companyLevel, project: projectLevel, theme: themeLevel };
 };
-
 
 export const createConditionSeries = (data, filters) => {
   const seriesColor = (filters) => {
