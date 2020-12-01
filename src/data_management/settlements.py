@@ -2,7 +2,6 @@ import pandas as pd
 import os
 from util import normalize_dates,pipeline_names,saveJson
 
-
 def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settlements_and_Toll_Indicies.XLSX'):
     read_path = os.path.join(os.getcwd(),'raw_data/',name)
     df = pd.read_excel(read_path,sheet_name='Settlements Data',skiprows=2)
@@ -31,8 +30,4 @@ def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settle
     return df
 
 if __name__ == '__main__':
-        
     df = negotiated_settlements()
-
-    
-#%%
