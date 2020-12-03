@@ -1,4 +1,8 @@
 **/raw_data
 **/__pycache__
 **/.vscode
+*.twb
+*.twbx
+*.twbr
 node_modules
+
