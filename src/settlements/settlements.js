@@ -60,6 +60,7 @@ export const cassandraSettlements = () => {
         start: row["Start Date"],
         end: row.end,
         onClickLink: row.regdocs,
+        tollOrder: row["Toll Order"],
       };
     };
 
@@ -142,15 +143,13 @@ export const cassandraSettlements = () => {
     return [[...seriesSettle, ...companySettles], dates];
   };
 
-  const getAstick = () => {
-    console.log('Get a stick!')
-  }
-
   const createSettlements = (seriesData, dates) => {
     return Highcharts.ganttChart("container_settlements", {
       chart: {
         type: "gantt",
         borderWidth: 1,
+        plotBackgroundColor: null,
+        plotShadow: false,
       },
       credits: {
         text: "",
@@ -194,6 +193,7 @@ export const cassandraSettlements = () => {
           currentDateIndicator: {
             width: 2,
             zIndex: 2,
+            dashStyle: "longDash",
             color: "black",
             label: {
               formatter: function () {
@@ -214,13 +214,16 @@ export const cassandraSettlements = () => {
           formatter: function () {
             var currentLabel = this.value;
             var labelSeries = this.axis.series[0].data;
-            var label = currentLabel
+            var label = currentLabel;
             labelSeries.map((row) => {
-              if (row.name == currentLabel && row.hasOwnProperty("onClickLink")) {
-                label = `<a href="${row["onClickLink"]}" target="_blank">${currentLabel}</a>`
+              if (
+                row.name == currentLabel &&
+                row.hasOwnProperty("onClickLink")
+              ) {
+                label = `<a href="${row["onClickLink"]}" target="_blank">${currentLabel}</a>`;
               }
             });
-            return label
+            return label;
           },
         },
       },
@@ -228,7 +231,8 @@ export const cassandraSettlements = () => {
       annotations: [
         {
           labelOptions: {
-            verticalAlign: "top",
+            verticalAlign: "center",
+            align: "center",
             overflow: "none",
           },
           labels: [
@@ -252,12 +256,19 @@ export const cassandraSettlements = () => {
 
       tooltip: {
         xDateFormat: dateFormat,
+        backgroundColor: "rgba(255,255,255,1)",
+        className: "tooltip-settlements",
+        useHTML: true,
         formatter: function () {
           var point = this.point,
             years = 1000 * 60 * 60 * 24 * 365,
             number = (point.x2 - point.x) / years;
           var years = Math.round(number * 100) / 100;
-
+          if (point.tollOrder !== null) {
+            var to = `<tr><td>Toll Order:</td><td style="padding:0"><b> ${point.tollOrder}</b>`;
+          } else {
+            var to = `<tr><td>Toll Order:</td><td style="padding:0"><b></b>`;
+          }
           if (this.color == cerPalette["Cool Grey"]) {
             var endText = "No set end date";
           } else {
@@ -280,6 +291,7 @@ export const cassandraSettlements = () => {
           } else {
             return (
               `<b>${this.key}</b><table>` +
+              to +
               `<tr><td>Start:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
                 dateFormat,
                 this.point.start

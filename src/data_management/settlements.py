@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 from util import normalize_dates,pipeline_names,saveJson
 
@@ -10,14 +11,16 @@ def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settle
        'Start Date', 'End Date (specified, or effective)',
        'Toll Design, Revenue Requirment, or Both','REGDOCS Link to Original Settlement Approval', 'Notes']]
     df = df[~df['Start Date'].isnull()]
-    for delete in ['Original Settlement Approval','Toll Design, Revenue Requirment, or Both','Notes']:
+    for delete in ['Toll Design, Revenue Requirment, or Both','Notes']:
         del df[delete]
     df = df.rename(columns={'Settlement Name and/or Reference':'Settlement Name',
                             'End Date (specified, or effective)':'End Date',
                             'Oil/Gas':'Commodity',
-                            'REGDOCS Link to Original Settlement Approval':'regdocs'})
+                            'REGDOCS Link to Original Settlement Approval':'regdocs',
+                            'Original Settlement Approval':'Toll Order'})
     
     df['regdocs'] = [None if 'https' not in link else link for link in df['regdocs']]
+    df['Toll Order'] = [None if x in ['???',np.nan] else x for x in df['Toll Order']]
     df = normalize_dates(df, ['Start Date','End Date'])
     df = df.sort_values(by=['Company','Start Date','End Date'])
     del df['Group']
