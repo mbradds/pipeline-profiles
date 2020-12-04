@@ -8,21 +8,24 @@ def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settle
     df = df[['Company', 'Group', 'Oil/Gas',
        'Settlement Name and/or Reference', 'Original Settlement Approval',
        'Start Date', 'End Date (specified, or effective)',
-       'Toll Design, Revenue Requirment, or Both', 'Notes']]
+       'Toll Design, Revenue Requirment, or Both','REGDOCS Link to Original Settlement Approval', 'Notes']]
     df = df[~df['Start Date'].isnull()]
     for delete in ['Original Settlement Approval','Toll Design, Revenue Requirment, or Both','Notes']:
         del df[delete]
     df = df.rename(columns={'Settlement Name and/or Reference':'Settlement Name',
                             'End Date (specified, or effective)':'End Date',
-                            'Oil/Gas':'Commodity'})
+                            'Oil/Gas':'Commodity',
+                            'REGDOCS Link to Original Settlement Approval':'regdocs'})
     
+    df['regdocs'] = [None if 'https' not in link else link for link in df['regdocs']]
     df = normalize_dates(df, ['Start Date','End Date'])
     df = df.sort_values(by=['Company','Start Date','End Date'])
     del df['Group']
     #df['Company'] = df['Company'].replace(pipeline_names())
     write_path = os.path.join('../settlements/settlements_data/','settlements.json')
     
-    company_files = ['NOVA Gas Transmission Ltd.']
+    #company_files = ['NOVA Gas Transmission Ltd.']
+    company_files = list(set(list(df['Company'])))
     for company in company_files:
         write_path = os.path.join('../settlements/settlements_data/',company.replace('.','')+'.json')
         df_c = df[df['Company']==company].copy()

@@ -6,127 +6,16 @@
     <link rel="stylesheet" href="styles.css" />
     <link href="./GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./GCWeb/css/theme.min.css" />
-    <link rel="stylesheet" href="./wet-boew/css/noscript.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/gantt/modules/gantt.js"></script>
-    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
-    <script src="https://code.highcharts.com/modules/xrange.js"></script>
-    <script src="https://blacklabel.github.io/custom_events/js/customEvents.js"></script>
-    <script src="https://code.highcharts.com/gantt/modules/current-date-indicator.js"></script>
+    <!-- <link rel="stylesheet" href="./wet-boew/css/noscript.min.css" /> -->
   </head>
   <body>
-    <div class="container conditions-container">
-      <!-- Title -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="conditions-title" id="conditions-title"></div>
-        </div>
-      </div>
-      <!-- Summary measures -->
-      <div class="row">
-        <div class="col-md-3">
-          <div class="cersummary" id="open_conditions">
-            Conditions In-Progress:
-          </div>
-          <div class="cersummarymeasure" id="open_conditions_number"></div>
-        </div>
-        <div class="col-md-3">
-          <div class="cersummary" id="closed_conditions">
-            Conditions Closed:
-          </div>
-          <div class="cersummarymeasure" id="closed_conditions_number"></div>
-        </div>
-        <div class="col-md-3">
-          <div class="cersummary" id="num_companies">
-            Number of Instruments:
-          </div>
-          <div class="cersummarymeasure" id="instruments_number"></div>
-        </div>
-        <div class="col-md-3">
-          <div class="cersummary" id="num_projects">Number of Projects:</div>
-          <div class="cersummarymeasure" id="projects_number"></div>
-        </div>
-      </div>
-      <div class="mrgn-tp-sm"></div>
-      <!-- Filters -->
-      <div class="row">
-        <div class="col-md-3">
-          <div class="cerlabel">Select condition status:</div>
-          <select name="" id="select-status" class="form-control">
-            <option value="All">All</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <div class="cerlabel">Select condition phase:</div>
-          <select name="" id="select-phase" class="form-control">
-            <option value="All">All</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <div class="cerlabel">Select project status:</div>
-          <select name="" id="select-status-project" class="form-control">
-            <option value="All">All</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <div class="cerlabel">Select project:</div>
-          <select name="" id="select-project" class="form-control">
-            <option value="All">All</option>
-          </select>
-        </div>
-      </div>
-      <div class="mrgn-tp-sm"></div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="cersummary" id="sub-title"></div>
-        </div>
-      </div>
-      <!-- Highcharts goes here -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="conditions-container-hc" id="container-chart"></div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="conditions-last-level" id="container-last"></div>
-              <div id="container_text"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mrgn-tp-lg"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <section class="panel panel-info">
-            <header class="panel-heading">
-              <h5 class="panel-title">Chart Instructions</h5>
-            </header>
-            <div class="panel-body">
-              <p>
-                The bar chart above shows the number of conditions by project.
-                You can zoom in and out by clicking and dragging on the chart
-                area. Conditions specific to each project can be viewed by
-                drilling down. Click on a project name or bar to drill down.
-                Drop downs can also be used to view specific conditions. Some
-                drop downs are only available after drilling down.
-              </p>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-
-    <div class="mrgn-tp-lg"></div>
     <!-- negotiated settlements-->
     <div class="container chart-large">
       <div class="row">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <div id="settle_title" class="figure_title">
+              <div id="settle_title" class="figure-title">
                 NGTL Negotiated Settlements
               </div>
             </div>
@@ -140,7 +29,12 @@
       </div>
     </div>
 
-    <script src="./dist/bundle.js" type="text/javascript"></script>
-    <!-- <script src="./src/index.js" type="module"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/gantt/modules/gantt.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+    <script src="https://code.highcharts.com/gantt/modules/current-date-indicator.js"></script>
+    <script src="./dist/bundle_ngtl_eng.js" type="text/javascript"></script>
   </body>
 </html>

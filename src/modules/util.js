@@ -18,16 +18,13 @@ export const cerPalette = {
 
 export const dateFormat = "%b %d, %Y";
 
-export const getToday = () => {
-  var today = new Date(),
-    day = 1000 * 60 * 60 * 24;
-
-  // Set to 00:00:00:000 today
+export const currentDate = () => {
+  var today = new Date();
   today.setUTCHours(0);
   today.setUTCMinutes(0);
   today.setUTCSeconds(0);
   today.setUTCMilliseconds(0);
-  return [today, day];
+  return today.getTime();
 };
 
 //takes in a json object and checks if the column has data

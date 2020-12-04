@@ -1,18 +1,21 @@
 const path = require("path");
-const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+// const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+//   .BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "production",
   target: "es5",
-  entry: "./src/index.js",
+  entry: {
+    ngtl_eng: "./src/index_files/ngtl_eng.js",
+    ngtl_fra: "./src/index_files/ngtl_fra.js",
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "bundle_[name].js",
   },
 
-  plugins: [new BundleAnalyzerPlugin(),new JsonMinimizerPlugin()],
+  //plugins: [new BundleAnalyzerPlugin(),new JsonMinimizerPlugin()],
 
   module: {
     rules: [

@@ -1,4 +1,5 @@
-import { cerPalette, dateFormat } from "../modules/util";
+import { cerPalette, dateFormat, currentDate } from "../modules/util.js";
+import { errorChart } from "../modules/charts.js";
 import settlementsData from "./settlements_data/NOVA Gas Transmission Ltd.json";
 
 export const cassandraSettlements = () => {
@@ -13,15 +14,6 @@ export const cassandraSettlements = () => {
     "Active settlement(s)": cerPalette["Night Sky"],
     "Settlements with fixed end date": cerPalette["Ocean"],
     "Settlements without fixed end date": cerPalette["Cool Grey"],
-  };
-
-  const currentDate = () => {
-    var today = new Date();
-    today.setUTCHours(0);
-    today.setUTCMinutes(0);
-    today.setUTCSeconds(0);
-    today.setUTCMilliseconds(0);
-    return today.getTime();
   };
 
   var today = currentDate();
@@ -56,9 +48,20 @@ export const cassandraSettlements = () => {
     var seriesTracker = {};
     var seriesSettle = [];
     var dates = [];
-
     data = applyEndDateColors(data);
-    data = data.sort(sortByProperty("end"));
+    data = data.sort(sortByProperty("start"));
+
+    const addRow = (row) => {
+      return {
+        name: row["Settlement Name"],
+        id: row["Settlement Name"],
+        parent: row.Company,
+        color: row.color,
+        start: row["Start Date"],
+        end: row.end,
+        onClickLink: row.regdocs,
+      };
+    };
 
     data.map((row) => {
       dates.push(row["Start Date"]);
@@ -68,33 +71,18 @@ export const cassandraSettlements = () => {
         //the parent company is already in the series, add the sub settlement
         seriesTracker[row.Company].startDate.push(row["Start Date"]);
         seriesTracker[row.Company].endDate.push(row.end);
-        seriesSettle.push({
-          name: row["Settlement Name"],
-          id: row["Settlement Name"],
-          parent: row.Company,
-          color: row.color,
-          start: row["Start Date"],
-          end: row.end,
-        });
+        seriesSettle.push(addRow(row));
       } else {
         //A new company is added to the series as the parent, and the current settlement is also added
         seriesTracker[row.Company] = {
           startDate: [row["Start Date"]],
           endDate: [row.end],
         };
-        seriesSettle.push({
-          name: row["Settlement Name"],
-          id: row["Settlement Name"],
-          parent: row.Company,
-          color: row.color,
-          start: row["Start Date"],
-          end: row.end,
-        });
+        seriesSettle.push(addRow(row));
       }
     });
 
     const companySettles = [];
-
     const companyCounter = (companyTracker, company) => {
       if (companyTracker.hasOwnProperty(company)) {
         companyTracker[company]++;
@@ -117,7 +105,12 @@ export const cassandraSettlements = () => {
       var companyStartDates = seriesTracker[company].startDate;
       var companyEndDates = seriesTracker[company].endDate;
       var currentStart = companyStartDates[0];
+      var currentEnd = companyEndDates[0];
+      //this map creates the timeline for each company
       companyEndDates.map((endDate, endNum) => {
+        if (endDate > currentEnd) {
+          currentEnd = endDate;
+        }
         if (companyStartDates[endNum + 1] - endDate > 86400000) {
           companySettles.push({
             name: company,
@@ -125,7 +118,7 @@ export const cassandraSettlements = () => {
             color: cerPalette["Night Sky"],
             id: companyId(companyTracker, company),
             start: currentStart,
-            end: companyEndDates[endNum],
+            end: currentEnd,
           });
           companyTracker = companyCounter(companyTracker, company);
           currentStart = companyStartDates[endNum + 1];
@@ -137,28 +130,32 @@ export const cassandraSettlements = () => {
               color: cerPalette["Night Sky"],
               id: companyId(companyTracker, company),
               start: currentStart,
-              end: companyEndDates[endNum],
+              end: currentEnd,
             });
             companyTracker = companyCounter(companyTracker, company);
           }
         }
       });
     }
-
     dates = dates.filter((row) => row !== null);
     companySettles.sort(sortByProperty("start"));
     return [[...seriesSettle, ...companySettles], dates];
   };
 
-  const [seriesData, dates] = settlementSeries(settlementsData);
+  const getAstick = () => {
+    console.log('Get a stick!')
+  }
 
-  const createSettlements = (seriesData) => {
+  const createSettlements = (seriesData, dates) => {
     return Highcharts.ganttChart("container_settlements", {
       chart: {
         type: "gantt",
         borderWidth: 1,
       },
       credits: {
+        text: "",
+      },
+      title: {
         text: "",
       },
       plotOptions: {
@@ -182,13 +179,6 @@ export const cassandraSettlements = () => {
         symbolHeight: 0,
         squareSymbol: false,
         useHTML: true,
-        title: {
-          text:
-            "Legend: (Click on a company name above to view all negotiated settlements)",
-          style: {
-            fontStyle: "italic",
-          },
-        },
         labelFormatter: function () {
           var legendText = "";
           for (const legendName in legendColors) {
@@ -209,7 +199,7 @@ export const cassandraSettlements = () => {
               formatter: function () {
                 return (
                   Highcharts.dateFormat(dateFormat, this.options.value) +
-                  " (today)"
+                  " (today, UTC)"
                 );
               },
             },
@@ -220,14 +210,48 @@ export const cassandraSettlements = () => {
       yAxis: {
         uniqueNames: true,
         labels: {
+          useHTML: true,
           formatter: function () {
-            return this.value;
+            var currentLabel = this.value;
+            var labelSeries = this.axis.series[0].data;
+            var label = currentLabel
+            labelSeries.map((row) => {
+              if (row.name == currentLabel && row.hasOwnProperty("onClickLink")) {
+                label = `<a href="${row["onClickLink"]}" target="_blank">${currentLabel}</a>`
+              }
+            });
+            return label
           },
         },
       },
 
+      annotations: [
+        {
+          labelOptions: {
+            verticalAlign: "top",
+            overflow: "none",
+          },
+          labels: [
+            {
+              point: { x: -150, y: -30 },
+              style: {
+                fontWeight: "bold",
+                fontSize: 12,
+                color:
+                  (Highcharts.theme && Highcharts.theme.textColor) || "grey",
+              },
+              backgroundColor: "white",
+              borderColor: "white",
+              text:
+                "Click on a settlement name to open<br>original settlement approval (REGDOCS)",
+            },
+          ],
+          draggable: "",
+        },
+      ],
+
       tooltip: {
-        xDateFormat: "%Y-%m-%d",
+        xDateFormat: dateFormat,
         formatter: function () {
           var point = this.point,
             years = 1000 * 60 * 60 * 24 * 365,
@@ -255,7 +279,7 @@ export const cassandraSettlements = () => {
             );
           } else {
             return (
-              `<b>${this.point.parent} - ${this.key} </b><table>` +
+              `<b>${this.key}</b><table>` +
               `<tr><td>Start:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
                 dateFormat,
                 this.point.start
@@ -276,7 +300,13 @@ export const cassandraSettlements = () => {
     });
   };
   const mainSettlements = () => {
-    var settlementChart = createSettlements(seriesData);
+    const [seriesData, dates] = settlementSeries(settlementsData);
+    var settlementChart = createSettlements(seriesData, dates);
   };
-  mainSettlements();
+  try {
+    mainSettlements();
+  } catch (err) {
+    console.log(err);
+    errorChart("container_settlements");
+  }
 };
