@@ -4,5 +4,6 @@
 *.twb
 *.twbx
 *.twbr
+*.geojson
 node_modules
 
