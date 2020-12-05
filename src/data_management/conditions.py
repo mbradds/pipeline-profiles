@@ -52,9 +52,11 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
     print(df.dtypes)
     return df_all
 
+
 def company_names(df):
     company_list = list(set(list(df['Company'])))
     return company_list
+
 
 def export_files(df,folder="../conditions/conditions_data/",name="economic_regions.geojson"):
     df = df[~df.geometry.is_empty]
@@ -62,15 +64,9 @@ def export_files(df,folder="../conditions/conditions_data/",name="economic_regio
     write_path = os.path.join(os.getcwd(),folder,name)
     df.to_file(write_path, driver='GeoJSON')
     print('exported: '+name+' to geojson','with CRS: '+str(df.crs))
+    
 
-def import_statsCan_files(name='ler_000b16a_e.shp'):
-    read_path = os.path.join(os.getcwd(),'raw_data/ler_000b16a_e/',name)
-    df = gpd.read_file(read_path)
-    df = df.set_geometry('geometry')
-    export_files(df)
-    return df
-
-def import_simplified(name='economic_regions.json'):
+def import_simplified(name='economic_regions.geojson'):
     read_path = os.path.join(os.getcwd(),"../conditions/conditions_data/",name)
     df = gpd.read_file(read_path)
     df = df.set_geometry('geometry')
@@ -79,19 +75,15 @@ def import_simplified(name='economic_regions.json'):
         df[splitcols] = [x.split('/')[0].strip() for x in df[splitcols]]
     return df
 
+
 def conditions_on_map(df,shp):
     shp = pd.merge(shp,df,how='left',left_on=['PRNAME','ERNAME'],right_on=['Flat Province','Flat Location'])
     return shp
 
+
 if __name__ == "__main__":
-    df = readCsv()
-    #shp = import_statsCan_files()
+    #df = readCsv()
     shp = import_simplified()
-    condMap = conditions_on_map(df, shp)
+    #condMap = conditions_on_map(df, shp)
     #company = company_names(df)
-
-
-
-
-
 
