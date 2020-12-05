@@ -10,6 +10,7 @@ def normalize_dates(df,date_list):
 
 def normalize_text(df,text_list):
     for text_col in text_list:
+        df[text_col] = df[text_col].astype(str)
         df[text_col] = [x.strip() for x in df[text_col]]
     return df
 
