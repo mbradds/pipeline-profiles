@@ -70,12 +70,20 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
                 expanded_locations.append(row)
         df_all = pd.concat(expanded_locations,axis=0,sort=False,ignore_index=True)
         df_all = df_all[df_all['Location']!="nan"]
-        projects,themes = list(set(df_all['Short Project Name'])),list(set(df['Theme(s)']))
-        df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count'})
-        df_all['Short Project Name'] = ', '.join(projects)
-        df_all['Themes'] = ', '.join(themes)
+        df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count',
+                                                             'Short Project Name':lambda x: list(x),
+                                                             'Theme(s)':lambda t: list(t)})
+        
+        for list_field in ['Short Project Name','Theme(s)']:
+            joined_values = []
+            for list_row in df_all[list_field]:
+                print(list(set(list_row)))
+                joined_values.append(' - '.join(list(set(list_row))))
+            df_all[list_field] = joined_values
+        
+        
         df_all = df_all.reset_index()
-        df_all = df_all.rename(columns={'condition id':'value'})
+        df_all = df_all.rename(columns={'condition id':'value','Theme(s)':'Themes'})
         shp = conditions_on_map(df_all, regions_map,company)
     
     return shp
@@ -88,4 +96,6 @@ def company_names(df):
 
 if __name__ == "__main__":
     shp = readCsv()
+
+#%%
 
