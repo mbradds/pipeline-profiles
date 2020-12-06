@@ -34,6 +34,9 @@
 .container-chart-large {
   min-height: 400px;
 }
+.container-chart-map {
+  min-height: 700px;
+}
 .tooltip-settlements span {
   background-color: white;
   opacity: 1;
