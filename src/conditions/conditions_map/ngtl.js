@@ -58,8 +58,11 @@ export const ngtlConditionsMap = () => {
                   chart.customTooltip.destroy();
                   chart.customTooltip = undefined;
                 }
-                var label = (chart.customTooltip = chart.renderer
+                var label = chart.renderer
                   .label(text)
+                  .css({
+                    width: "200px",
+                  })
                   .attr({
                     // style tooltip
                     "stroke-width": 1,
@@ -68,7 +71,8 @@ export const ngtlConditionsMap = () => {
                     r: 3,
                     fill: "rgb(247, 247, 247)",
                   })
-                  .add(chart.rGroup));
+                  .add(chart.rGroup);
+                chart.customTooltip = label;
                 label.align(
                   Highcharts.extend(label.getBBox(), {
                     align: "right",
