@@ -35,13 +35,53 @@ export const ngtlConditionsMap = () => {
         animation: true,
         events: {
           load: function () {
-            console.log(this);
             this.mapZoom(0.4, 4450286, -2300000);
           },
           //   redraw: function () {
           //     console.log("x: ", this.xAxis[0].getExtremes());
           //     console.log("y: ", this.yAxis[0].getExtremes());
           //   },
+        },
+      },
+      credits: {
+        text: "",
+      },
+      plotOptions: {
+        series: {
+          point: {
+            events: {
+              click: function () {
+                var text = `<b>${this.id}</b>`;
+                const chart = this.series.chart;
+                if (chart.customTooltip) {
+                  // destroy the old one when rendering new
+                  chart.customTooltip.destroy();
+                  chart.customTooltip = undefined;
+                }
+                var label = (chart.customTooltip = chart.renderer
+                  .label(text)
+                  .attr({
+                    // style tooltip
+                    "stroke-width": 1,
+                    zIndex: 8,
+                    padding: 8,
+                    r: 3,
+                    fill: "rgb(247, 247, 247)",
+                  })
+                  .add(chart.rGroup));
+                label.align(
+                  Highcharts.extend(label.getBBox(), {
+                    align: "right",
+                    x: 0, // offset
+                    verticalAlign: "top",
+                    y: 0, // offset
+                  }),
+                  null,
+                  "spacingBox"
+                );
+              },
+            },
+          },
         },
       },
 

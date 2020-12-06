@@ -35,7 +35,9 @@
   min-height: 400px;
 }
 .container-chart-map {
-  min-height: 700px;
+  min-height: 600px;
+  position: relative;
+  z-index: 10;
 }
 .tooltip-settlements span {
   background-color: white;
