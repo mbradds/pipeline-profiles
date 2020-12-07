@@ -77,7 +77,11 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
         for list_field in ['Short Project Name','Theme(s)']:
             joined_values = []
             for list_row in df_all[list_field]:
-                print(list(set(list_row)))
+                if list_field == 'Theme(s)':
+                    concat_themes = []
+                    for theme in list_row:
+                        concat_themes.extend(theme.split(','))
+                    list_row = [x.strip() for x in concat_themes]
                 joined_values.append(' - '.join(list(set(list_row))))
             df_all[list_field] = joined_values
         

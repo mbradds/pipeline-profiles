@@ -100,11 +100,11 @@ export const ngtlConditionsMap = () => {
                 text += `<i>Active Condition Themes:</i>`;
                 text += `<p>${this.properties["Themes"]}</p>`;
                 text += `<i>Features Coming Soon:</i>`;
-                text += `<table> <tr><td><li>Projects/Themes sorted by number of conditions</li></td></tr>`;
-                text += `<table> <tr><td><li>Projects hyperlinked to appropriate REGDOCS page</li></td></tr>`;
-                text += `<table> <tr><td><li>Pipeline shape file overlayed on regions</li></td></tr>`;
-                text += `<table> <tr><td><li>Total NGTL Summary info boxes above chart</li></td></tr>`;
-                text += `</table><br>`;
+                text += `<table> <tr><td><li>Projects/Themes sorted # of conditions</li></td></tr>`;
+                text += `<table> <tr><td><li>Projects hyperlinked to REGDOCS</li></td></tr>`;
+                text += `<table> <tr><td><li>Shape file on top of regions</li></td></tr>`;
+                text += `<table> <tr><td><li>Total Summary info boxes above chart</li></td></tr>`;
+                text += `</table>`;
 
                 const chart = this.series.chart;
                 destroyInsert(chart);
