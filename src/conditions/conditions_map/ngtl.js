@@ -29,11 +29,8 @@ export const ngtlConditionsMap = () => {
   const zZoom = 0.6;
 
   const destroyInsert = (chart) => {
-    if (chart.customTooltip) {
-      // destroy the old one when rendering new
-      chart.customTooltip.destroy();
-      chart.customTooltip = undefined;
-    }
+    chart.customTooltip.destroy();
+    chart.customTooltip = undefined;
   };
 
   const createConditionsMap = (regions, baseMap, container) => {
@@ -44,7 +41,7 @@ export const ngtlConditionsMap = () => {
         animation: true,
         events: {
           load: function () {
-            this.mapZoom(0.4, 4450286, -2300000);
+            this.mapZoom(0.4, -1267305, -1841405);
             const chart = this;
             var text = `<b>Click on a region to view condition info box</b><br>`;
             text += `<i>Click area outside of regions to hide info box</i>`;
@@ -73,17 +70,52 @@ export const ngtlConditionsMap = () => {
             );
           },
           click: function () {
-            destroyInsert(this);
+            var [chartHeight, chartWidth] = [this.chartHeight, this.chartWidth];
+            // console.log(
+            //   "Chart width: ",
+            //   chartWidth,
+            //   "Chart height: ",
+            //   chartHeight
+            // );
+            // console.log(
+            //   "Tooltip width: ",
+            //   this.customTooltip.width,
+            //   "Tooltip height: ",
+            //   this.customTooltip.height
+            // );
+            // console.log(
+            //   "mouse x: ",
+            //   this.mouseDownX,
+            //   "mouse y: ",
+            //   this.mouseDownY
+            // );
+            if (this.customTooltip) {
+              if (
+                this.mouseDownX > chartWidth - this.customTooltip.width &&
+                this.mouseDownY < this.customTooltip.height
+              ) {
+              } else {
+                destroyInsert(this);
+              }
+            }
           },
-          //   redraw: function () {
-          //     console.log("x: ", this.xAxis[0].getExtremes());
-          //     console.log("y: ", this.yAxis[0].getExtremes());
-          //   },
+          redraw: function () {
+            //this is useful for determining the on load map zoom scale
+            // var yScale = this.yAxis[0].getExtremes()
+            // var xScale = this.xAxis[0].getExtremes()
+            // console.log('Map Zoom X = ',(xScale.min+xScale.max)/2)
+            // console.log('Map Zoom Y = ',(yScale.min+yScale.max)/2)
+          },
         },
       },
       credits: {
         text: "",
       },
+
+      mapNavigation: {
+        enabled: false,
+      },
+
       plotOptions: {
         series: {
           point: {
@@ -107,7 +139,9 @@ export const ngtlConditionsMap = () => {
                 text += `</table>`;
 
                 const chart = this.series.chart;
-                destroyInsert(chart);
+                if (chart.customTooltip) {
+                  destroyInsert(chart);
+                }
                 var label = chart.renderer
                   .label(text, null, null, null, null, null, true)
                   .css({

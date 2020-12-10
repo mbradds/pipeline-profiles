@@ -5,6 +5,16 @@ from util import saveJson,normalize_text
 import geopandas as gpd
 #%%
 
+script_dir = os.path.dirname(__file__) 
+
+def import_stats_can(name='ler_000b16a_e.shp'):
+    read_path = os.path.join(script_dir, 'raw_data/ler_000b16a_e/',name)
+    df = gpd.read_file(read_path)
+    df = df.set_geometry('geometry')
+    print(df.crs)
+    return df
+    
+
 def import_simplified(name='economic_regions.json'):
     read_path = os.path.join(os.getcwd(),"../conditions/conditions_data/",name)
     df = gpd.read_file(read_path)
@@ -100,6 +110,7 @@ def company_names(df):
 
 if __name__ == "__main__":
     shp = readCsv()
+    #shp = import_stats_can()
 
 #%%
 
