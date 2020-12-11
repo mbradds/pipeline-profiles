@@ -2,7 +2,6 @@ import ngtlRegions from "./NOVA Gas Transmission Ltd.json";
 import canadaMap from "../conditions_data/base_map.json";
 import mapMetaData from "./NOVA Gas Transmission Ltdmeta.json";
 import { cerPalette } from "../../modules/util";
-import { AutomaticPrefetchPlugin } from "webpack";
 export const ngtlConditionsMap = () => {
   const regionSeries = {
     name: "NGTL Conditions",

@@ -1,5 +1,5 @@
 const path = require("path");
-// const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
+const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 
@@ -15,7 +15,7 @@ module.exports = {
     filename: "bundle_[name].js",
   },
 
-  //plugins: [new BundleAnalyzerPlugin(),new JsonMinimizerPlugin()],
+  plugins: [new JsonMinimizerPlugin()],
 
   module: {
     rules: [
@@ -30,24 +30,5 @@ module.exports = {
   },
   resolve: {
     extensions: ["*", ".js"],
-    alias: {
-      process: "process/browser",
-    },
-    fallback: {
-      fs: false,
-      tls: false,
-      net: false,
-      path: false,
-      zlib: false,
-      http: false,
-      https: false,
-      stream: false,
-      crypto: false,
-      vm: false,
-      os: false,
-      tty: false,
-      constants: false,
-      "crypto-browserify": false,
-    },
   },
 };
