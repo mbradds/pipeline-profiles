@@ -2,6 +2,7 @@ import ngtlRegions from "./NOVA Gas Transmission Ltd.json";
 import canadaMap from "../conditions_data/base_map.json";
 import mapMetaData from "./NOVA Gas Transmission Ltdmeta.json";
 import { cerPalette } from "../../modules/util";
+import { AutomaticPrefetchPlugin } from "webpack";
 export const ngtlConditionsMap = () => {
   const regionSeries = {
     name: "NGTL Conditions",
@@ -37,6 +38,7 @@ export const ngtlConditionsMap = () => {
     return new Highcharts.mapChart(container, {
       chart: {
         borderColor: "black",
+        panning: false,
         borderWidth: 1,
         animation: true,
         events: {
@@ -128,9 +130,10 @@ export const ngtlConditionsMap = () => {
                 text += `<tr><td><li> Closed Conditions:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
                 text += `</table><br>`;
                 text += `<i>Projects with In-Progress Conditions:</i>`;
-                text += `<p>${this.properties["Short Project Name"]}</p>`;
+                //text += `<a href="https://www.cer-rec.gc.ca/en/data-analysis/index.html" target="_blank">Get A Stick!</a>`;
+                text += `<p>${this["Short Project Name"]}</p>`;
                 text += `<i>Active Condition Themes:</i>`;
-                text += `<p>${this.properties["Themes"]}</p>`;
+                text += `<p>${this["Themes"]}</p>`;
                 text += `<i>Features Coming Soon:</i>`;
                 text += `<table> <tr><td><li>Projects/Themes sorted # of conditions</li></td></tr>`;
                 text += `<table> <tr><td><li>Projects hyperlinked to REGDOCS</li></td></tr>`;
@@ -164,6 +167,7 @@ export const ngtlConditionsMap = () => {
                     align: "right",
                     x: 0, // offset
                     verticalAlign: "top",
+                    overflow: "scroll",
                     y: 0, // offset
                   }),
                   null,
@@ -173,6 +177,10 @@ export const ngtlConditionsMap = () => {
             },
           },
         },
+      },
+
+      xAxis: {
+        zoomEnabled: false,
       },
 
       tooltip: {

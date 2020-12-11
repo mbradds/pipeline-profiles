@@ -16,7 +16,7 @@ def import_stats_can(name='ler_000b16a_e.shp'):
     
 
 def import_simplified(name='economic_regions.json'):
-    read_path = os.path.join(os.getcwd(),"../conditions/conditions_data/",name)
+    read_path = os.path.join(script_dir,"../conditions/conditions_data/",name)
     df = gpd.read_file(read_path)
     df = df.set_geometry('geometry')
     fr_cols = ['PRNAME','ERNAME']
@@ -28,22 +28,26 @@ def import_simplified(name='economic_regions.json'):
 def export_files(df,folder="../conditions/conditions_data/",name="economic_regions.geojson"):
     df = df[~df.geometry.is_empty]
     df = df[df.geometry.notna()]
-    write_path = os.path.join(os.getcwd(),folder,name)
+    write_path = os.path.join(script_dir,folder,name)
     df.to_file(write_path, driver='GeoJSON')
     print('exported: '+name+' to geojson','with CRS: '+str(df.crs))
 
 
 def conditions_on_map(df,shp,company):
     shp = pd.merge(shp,df,how='inner',left_on=['PRNAME','ERNAME'],right_on=['Flat Province','id'])
-    export_files(shp,folder="../conditions/conditions_map",name=company.replace('.','')+'.json')
     for delete in ['Short Project Name','Flat Province','Themes']:
-        del df[delete]
+        del shp[delete]
+    export_files(shp,folder="../conditions/conditions_map",name=company.replace('.','')+'.json')
     saveJson(df,os.path.join('../conditions/conditions_map/',company.replace('.','')+'meta'+'.json'))
     return shp
 
+def region_data(df):
+    
+    return df
+
 
 def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
-    conditions_path = os.path.join(os.getcwd(),'conditions_data/','conditions.csv')
+    conditions_path = os.path.join(script_dir,'conditions_data/','conditions.csv')
     print('downloading remote file')
     df = pd.read_csv(link,sep='\t',lineterminator='\r',encoding="UTF-16",error_bad_lines=False)
     dates = ['Effective Date','Issuance Date','Sunset Date']
@@ -80,6 +84,10 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
                 expanded_locations.append(row)
         df_all = pd.concat(expanded_locations,axis=0,sort=False,ignore_index=True)
         df_all = df_all[df_all['Location']!="nan"]
+        del df_all['Location']
+        #calculate metadata here
+        df_meta = region_data(df_all)
+        return df_meta
         df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count',
                                                              'Short Project Name':lambda x: list(x),
                                                              'Theme(s)':lambda t: list(t)})
@@ -95,12 +103,12 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
                 joined_values.append(' - '.join(list(set(list_row))))
             df_all[list_field] = joined_values
         
-        
         df_all = df_all.reset_index()
         df_all = df_all.rename(columns={'condition id':'value','Theme(s)':'Themes'})
+        
         shp = conditions_on_map(df_all, regions_map,company)
     
-    return shp
+    return shp,df_all
 
 
 def company_names(df):
@@ -109,7 +117,7 @@ def company_names(df):
 
 
 if __name__ == "__main__":
-    shp = readCsv()
+    meta = readCsv()
     #shp = import_stats_can()
 
 #%%
