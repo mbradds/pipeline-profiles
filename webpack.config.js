@@ -30,9 +30,24 @@ module.exports = {
   },
   resolve: {
     extensions: ["*", ".js"],
+    alias: {
+      process: "process/browser",
+    },
     fallback: {
-      path: require.resolve("path-browserify"),
-      util: require.resolve("path-browserify"),
+      fs: false,
+      tls: false,
+      net: false,
+      path: false,
+      zlib: false,
+      http: false,
+      https: false,
+      stream: false,
+      crypto: false,
+      vm: false,
+      os: false,
+      tty: false,
+      constants: false,
+      "crypto-browserify": false,
     },
   },
 };

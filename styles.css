@@ -42,7 +42,7 @@
   min-height: 400px;
 }
 .container-chart-map {
-  min-height: 400px;
+  min-height: 600px;
   position: relative;
   z-index: 10;
 }
