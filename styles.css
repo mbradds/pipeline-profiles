@@ -86,7 +86,7 @@
 }
 .conditions-table td:nth-child(1) {
   font-family: Arial;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .conditions-table td:nth-child(2) {
   font-family: Arial;

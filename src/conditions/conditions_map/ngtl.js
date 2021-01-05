@@ -18,12 +18,14 @@ export const ngtlConditionsMap = () => {
   const generateTable = (summary, selectedRegion, tableName) => {
     let projectsHTML = `<table class="conditions-table">`;
     if (tableName == "projects") {
+      projectsHTML += `<caption style="text-align:left;">Projects with In-Progress Conditions:</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion) {
           projectsHTML += `<tr><td>${proj["Short Project Name"]}</td><td>${proj["In Progress"]}</td></tr>`;
         }
       });
     } else if (tableName == "themes") {
+      projectsHTML += `<caption style="text-align:left;">Active Condition Themes:</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion) {
           projectsHTML += `<tr><td>${proj["Theme(s)"]}</td><td>${proj["In Progress"]}</td></tr>`;
@@ -153,15 +155,13 @@ export const ngtlConditionsMap = () => {
           point: {
             events: {
               click: function () {
-                var text = `<div id="conditions-insert"><p><b>${this.id} Economic Region</b></p>`;
-                text += `<i>Conditions Summary:</i>`;
-                text += `<table> <tr><td><li> Last Updated on:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
-                text += `<tr><td><li> In-Progress Conditions:</td><td style="padding:0"><b>&nbsp${this.value}</li></b></td></tr>`;
+                var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${this.id} Economic Region</b></p>`;
+                text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
+                text += `<tr><td><li> Last Updated on:</td><td style="padding:0;"><b>&nbspComing Soon!</li></b></td></tr>`;
+                text += `<tr><td><li> In-Progress Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">&nbsp${this.value}</li></td></tr>`;
                 text += `<tr><td><li> Closed Conditions:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
                 text += `</table><br>`;
-                text += `<i>Projects with In-Progress Conditions:</i>`;
                 text += generateTable(meta, this.id, "projects");
-                text += `<i>Active Condition Themes:</i>`;
                 text += generateTable(meta, this.id, "themes");
                 text += `</table></div>`;
 
