@@ -16,7 +16,11 @@ export const cerPalette = {
   hcLightBlue: "#91e8e1",
 };
 
-export const dateFormat = "%b %d, %Y";
+//export const dateFormat = "%b %d, %Y";
+
+export const dateFormat = (value, format = "%b %d, %Y") => {
+  return Highcharts.dateFormat(format, value);
+};
 
 export const currentDate = () => {
   var today = new Date();

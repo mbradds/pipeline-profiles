@@ -1,7 +1,7 @@
 import ngtlRegions from "./economicRegions.json";
 import canadaMap from "../base_maps/base_map.json";
 import mapMetaData from "./mapMetadata.json";
-// import { cerPalette } from "../../modules/util";
+// import { cerPalette } from "../../modules/util.js";
 import meta from "./summaryMetadata.json";
 
 export const ngtlConditionsMap = () => {
@@ -20,7 +20,10 @@ export const ngtlConditionsMap = () => {
       projectsHTML += `<caption style="text-align:left;">Projects with In-Progress Conditions:</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion) {
-          projectsHTML += `<tr><td>${proj["Short Project Name"]}</td><td>${proj["In Progress"]}</td></tr>`;
+          let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${proj[
+            "Short Project Name"
+          ].replaceAll(" ", "%20")}`;
+          projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["In Progress"]}</td></tr>`;
         }
       });
     } else if (tableName == "themes") {
@@ -65,7 +68,7 @@ export const ngtlConditionsMap = () => {
     chart.customTooltip = undefined;
   };
 
-  const createConditionsMap = (regions, baseMap, container) => {
+  const createConditionsMap = (regions, baseMap, container, meta) => {
     return new Highcharts.mapChart(container, {
       chart: {
         panning: false,
@@ -152,13 +155,14 @@ export const ngtlConditionsMap = () => {
           point: {
             events: {
               click: function () {
+                console.log(this)
                 var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${this.id} Economic Region</b></p>`;
                 text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
-                text += `<tr><td><li> Last Updated on:</td><td style="padding:0;"><b>&nbspComing Soon!</li></b></td></tr>`;
+                text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">${meta.summary.updated}</li></td></tr>`;
                 text += `<tr><td><li> In-Progress Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">&nbsp${this.value}</li></td></tr>`;
                 text += `<tr><td><li> Closed Conditions:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
                 text += `</table><br>`;
-                text += generateTable(meta, this.id, "projects");
+                text += generateTable(meta, this.id, "projects") + "<br>";
                 text += generateTable(meta, this.id, "themes");
                 text += `</table></div>`;
 
@@ -179,7 +183,6 @@ export const ngtlConditionsMap = () => {
                     r: 3,
                     fill: "white",
                     stroke: this.color,
-                    //fill: "rgb(247, 247, 247)",
                   })
                   .add(chart.rGroup);
                 chart.customTooltip = label;
@@ -204,10 +207,11 @@ export const ngtlConditionsMap = () => {
       },
 
       tooltip: {
+        zIndex: 0,
         useHTML: true,
         formatter: function () {
-          let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b>`;
-          toolText += `<table> <tr><td> Number of In Progress Conditions:</td><td style="padding:0"><b>${this.point.properties.value}</b></td></tr>`;
+          let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b><br>`;
+          toolText += `<i>Click on region to view summary</i>`;
           return toolText;
         },
       },
@@ -224,5 +228,5 @@ export const ngtlConditionsMap = () => {
       series: [regions, baseMap],
     });
   };
-  var chart = createConditionsMap(regionSeries, baseMap, "container-map");
+  var chart = createConditionsMap(regionSeries, baseMap, "container-map", meta);
 };

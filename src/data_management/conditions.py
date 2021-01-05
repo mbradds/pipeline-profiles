@@ -3,7 +3,7 @@ import json
 import os
 from util import saveJson,normalize_text
 import geopandas as gpd
-import time
+from datetime import date
 #%%
 
 script_dir = os.path.dirname(__file__) 
@@ -47,7 +47,9 @@ def metadata(df,folder_name):
         if l == "nan":
             notInMap = notInMap+1
     status['notOnMap'] = notInMap
-    status['updated'] = time.time()
+    
+    #get the date the data was pulled
+    status['updated'] = date.today().strftime("%b %d, %Y")
     meta['summary'] = status
     
     #once the status summary is calculated, blank locations and null locations can be removed
@@ -149,3 +151,6 @@ if __name__ == "__main__":
     shp = readCsv()
 
 #%%
+
+
+
