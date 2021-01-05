@@ -1,8 +1,8 @@
-import ngtlRegions from "./NOVA Gas Transmission Ltd.json";
-import canadaMap from "../conditions_data/base_map.json";
-import mapMetaData from "./NOVA Gas Transmission Ltdmeta.json";
-import { cerPalette } from "../../modules/util";
-import meta from "./meta.json";
+import ngtlRegions from "./economicRegions.json";
+import canadaMap from "../base_maps/base_map.json";
+import mapMetaData from "./mapMetadata.json";
+// import { cerPalette } from "../../modules/util";
+import meta from "./summaryMetadata.json";
 
 export const ngtlConditionsMap = () => {
   const fillSummary = (summary) => {
@@ -13,7 +13,6 @@ export const ngtlConditionsMap = () => {
   };
 
   fillSummary(meta.summary);
-  console.log(meta);
 
   const generateTable = (summary, selectedRegion, tableName) => {
     let projectsHTML = `<table class="conditions-table">`;
@@ -40,7 +39,7 @@ export const ngtlConditionsMap = () => {
     name: "NGTL Conditions",
     data: mapMetaData,
     mapData: Highcharts.geojson(ngtlRegions),
-    joinBy: ["ERNAME", "id"],
+    joinBy: ["id", "id"],
     type: "map",
     zIndex: 1,
   };
@@ -69,9 +68,7 @@ export const ngtlConditionsMap = () => {
   const createConditionsMap = (regions, baseMap, container) => {
     return new Highcharts.mapChart(container, {
       chart: {
-        //borderColor: "black",
         panning: false,
-        //borderWidth: 1,
         animation: true,
         events: {
           load: function () {
@@ -209,7 +206,7 @@ export const ngtlConditionsMap = () => {
       tooltip: {
         useHTML: true,
         formatter: function () {
-          let toolText = `<b>${this.point.ERNAME} - ${this.point.properties.PRNAME}</b>`;
+          let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b>`;
           toolText += `<table> <tr><td> Number of In Progress Conditions:</td><td style="padding:0"><b>${this.point.properties.value}</b></td></tr>`;
           return toolText;
         },

@@ -1,7 +1,4 @@
-.form-control {
-  min-width: 250px;
-  max-width: 250px;
-}
+/* general styles shared for multiple profile sections */
 .header {
   font-family: Arial;
   font-weight: bold;
@@ -21,32 +18,30 @@
   font-family: Arial;
   color: dimgray;
 }
-.cersummarymeasure {
-  font-family: Arial;
-  font-size: 17px;
-  color: black;
-  font-weight: bold;
+
+/* styles for negotiated settlements section */
+.tooltip-settlements span {
+  background-color: white;
+  opacity: 1;
+  z-index: 9999 !important;
 }
 .chart-large {
   max-width: 1000px;
   margin: auto;
 }
-#conditions-insert {
-  overflow-y: scroll;
-  max-height: 550px;
-}
 .container-chart-large {
   min-height: 400px;
 }
+
+/* styles for conditions compliance section */
 .container-chart-map {
   min-height: 600px;
   position: relative;
   z-index: 10;
 }
-.tooltip-settlements span {
-  background-color: white;
-  opacity: 1;
-  z-index: 9999 !important;
+#conditions-insert {
+  overflow-y: scroll;
+  max-height: 550px;
 }
 .conditions-summary-value {
   font-family: Arial;
@@ -62,12 +57,11 @@
   color: black;
   text-align: center;
 }
-.summary-border {
+.conditions-summary-border {
   border-style: solid;
   border-color: #8c8c96;
   border-radius: 5px;
 }
-
 .conditions-table {
   font-family: Arial;
   border-collapse: collapse;
@@ -86,7 +80,6 @@
 }
 .conditions-table td:nth-child(1) {
   font-family: Arial;
-  /* font-weight: bold; */
 }
 .conditions-table td:nth-child(2) {
   font-family: Arial;

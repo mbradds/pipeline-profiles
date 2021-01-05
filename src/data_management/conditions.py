@@ -8,25 +8,16 @@ import time
 
 script_dir = os.path.dirname(__file__) 
 
-def import_stats_can(name='ler_000b16a_e.shp'):
-    read_path = os.path.join(script_dir, 'raw_data/ler_000b16a_e/',name)
-    df = gpd.read_file(read_path)
-    df = df.set_geometry('geometry')
-    print(df.crs)
-    return df
-    
-
 def import_simplified(name='economic_regions.json'):
-    read_path = os.path.join(script_dir,"../conditions/conditions_data/",name)
+    read_path = os.path.join(script_dir,"../conditions/base_maps/",name)
     df = gpd.read_file(read_path)
     df = df.set_geometry('geometry')
     fr_cols = ['PRNAME','ERNAME']
     for splitcols in fr_cols:    
         df[splitcols] = [x.split('/')[0].strip() for x in df[splitcols]]
-    #df = df.rename(columns={'ERNAME':'id'})
     return df
 
-def export_files(df,folder="../conditions/conditions_data/",name="economic_regions.geojson"):
+def export_files(df,folder,name):
     df = df[~df.geometry.is_empty]
     df = df[df.geometry.notna()]
     write_path = os.path.join(script_dir,folder,name)
@@ -34,17 +25,16 @@ def export_files(df,folder="../conditions/conditions_data/",name="economic_regio
     print('exported: '+name+' to geojson','with CRS: '+str(df.crs))
 
 
-def conditions_on_map(df,shp,company):
+def conditions_on_map(df,shp,folder_name):
     shp = pd.merge(shp,df,how='inner',left_on=['PRNAME','ERNAME'],right_on=['Flat Province','id'])
-    for delete in ['Short Project Name','Flat Province','Themes']:
+    for delete in ['PRUID','ERUID','ERNAME','PRNAME']:
         del shp[delete]
-    export_files(shp,folder="../conditions/conditions_map",name=company.replace('.','')+'.json')
-    saveJson(df,os.path.join('../conditions/conditions_map/',company.replace('.','')+'meta'+'.json'))
+    export_files(shp,folder="../conditions/"+folder_name,name='economicRegions.json')
+    saveJson(df,os.path.join('../conditions/'+folder_name,'mapMetadata.json'))
     return shp
 
-def metadata(df):
+def metadata(df,folder_name):
     #df contains the condition data for the spcecific company
-    
     meta = {}
     #get the summary stats for the boxes above the map
     status = df[['condition id','Condition Status']].copy()
@@ -81,7 +71,7 @@ def metadata(df):
     meta['themes'] = theme
     
     #save the metadata
-    with open('../conditions/conditions_map/meta.json', 'w') as fp:
+    with open('../conditions/'+folder_name+'/summaryMetadata.json', 'w') as fp:
         json.dump(meta, fp)
     
     df_all = df.copy()
@@ -89,20 +79,13 @@ def metadata(df):
     df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count',
                                                              'Short Project Name':lambda x: list(x),
                                                              'Theme(s)':lambda t: list(t)})
-        
-    for list_field in ['Short Project Name','Theme(s)']:
-        joined_values = []
-        for list_row in df_all[list_field]:
-            if list_field == 'Theme(s)':
-                concat_themes = []
-                for theme in list_row:
-                    concat_themes.extend(theme.split(','))
-                list_row = [x.strip() for x in concat_themes]
-            joined_values.append(' - '.join(list(set(list_row))))
-        df_all[list_field] = joined_values
+    
+    for delete in ['Short Project Name','Theme(s)']:
+        del df_all[delete]
         
     df_all = df_all.reset_index()
-    df_all = df_all.rename(columns={'condition id':'value','Theme(s)':'Themes'})
+    df_all = df_all.rename(columns={'condition id':'value'})
+
     return df_all
 
 
@@ -133,7 +116,10 @@ def readCsv(remote=False):
     regions_map = import_simplified()
     
     for company in company_files:
-        # write_path = os.path.join('../conditions/conditions_data/',company.replace('.','')+'.json')
+        folder_name = company.replace(' ','').replace('.','')
+        if not os.path.exists("../conditions/"+folder_name):
+            os.makedirs("../conditions/"+folder_name)
+        
         df_c = df[df['Company']==company].copy()
         df_c['condition id'] = [str(ins)+'_'+str(cond) for ins,cond in zip(df_c['Instrument Number'],df_c['Condition Number'])]
         
@@ -148,8 +134,8 @@ def readCsv(remote=False):
                 expanded_locations.append(row)
         df_all = pd.concat(expanded_locations,axis=0,sort=False,ignore_index=True)
         #calculate metadata here
-        meta = metadata(df_all)
-        shp = conditions_on_map(meta, regions_map,company)
+        meta = metadata(df_all,folder_name)
+        shp = conditions_on_map(meta, regions_map, folder_name)
     
     return shp
 
@@ -161,6 +147,5 @@ def company_names(df):
 
 if __name__ == "__main__":
     shp = readCsv()
-    #shp = import_stats_can()
 
 #%%
