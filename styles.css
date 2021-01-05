@@ -29,8 +29,11 @@
 }
 .chart-large {
   max-width: 1000px;
-  /* height: 400px; */
   margin: auto;
+}
+#conditions-insert {
+  overflow-y: scroll;
+  max-height: 550px;
 }
 .container-chart-large {
   min-height: 400px;
@@ -49,13 +52,13 @@
   font-family: Arial;
   font-size: 17px;
   font-style: italic;
+  font-weight: bold;
   color: dimgray;
   text-align: center;
 }
 .conditions-summary-title {
   font-family: Arial;
   font-size: 17px;
-  font-style: bold;
   color: black;
   text-align: center;
 }
@@ -63,4 +66,32 @@
   border-style: solid;
   border-color: #8c8c96;
   border-radius: 5px;
+}
+
+.conditions-table {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+.conditions-table td,
+.conditions-table th {
+  border: 1px solid #ddd;
+  padding: 3px;
+}
+.conditions-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.conditions-table tr:hover {
+  background-color: #ddd;
+}
+.conditions-table td:nth-child(1) {
+  font-family: Arial;
+  font-weight: bold;
+}
+.conditions-table td:nth-child(2) {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  color: dimgray;
+  text-align: center;
 }

@@ -76,7 +76,7 @@ def metadata(df):
     theme = df[['condition id','Theme(s)','id']]
     theme = theme.groupby(['Theme(s)','id']).size().reset_index()
     theme = theme.sort_values(by=['id',0],ascending=False)
-    theme = theme.rename(columns={0:"Themes"})
+    theme = theme.rename(columns={0:"In Progress"})
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
     

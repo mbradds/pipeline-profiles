@@ -4,8 +4,6 @@ import mapMetaData from "./NOVA Gas Transmission Ltdmeta.json";
 import { cerPalette } from "../../modules/util";
 import meta from "./meta.json";
 
-console.log(meta.summary);
-
 export const ngtlConditionsMap = () => {
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
@@ -15,6 +13,26 @@ export const ngtlConditionsMap = () => {
   };
 
   fillSummary(meta.summary);
+  console.log(meta);
+
+  const generateTable = (summary, selectedRegion, tableName) => {
+    let projectsHTML = `<table class="conditions-table">`;
+    if (tableName == "projects") {
+      summary.projects.map((proj) => {
+        if (proj.id == selectedRegion) {
+          projectsHTML += `<tr><td>${proj["Short Project Name"]}</td><td>${proj["In Progress"]}</td></tr>`;
+        }
+      });
+    } else if (tableName == "themes") {
+      summary.themes.map((proj) => {
+        if (proj.id == selectedRegion) {
+          projectsHTML += `<tr><td>${proj["Theme(s)"]}</td><td>${proj["In Progress"]}</td></tr>`;
+        }
+      });
+    }
+    projectsHTML += `</table>`;
+    return projectsHTML;
+  };
 
   const regionSeries = {
     name: "NGTL Conditions",
@@ -135,23 +153,17 @@ export const ngtlConditionsMap = () => {
           point: {
             events: {
               click: function () {
-                var text = `<p><b>${this.id} Economic Region</b></p>`;
+                var text = `<div id="conditions-insert"><p><b>${this.id} Economic Region</b></p>`;
                 text += `<i>Conditions Summary:</i>`;
                 text += `<table> <tr><td><li> Last Updated on:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
                 text += `<tr><td><li> In-Progress Conditions:</td><td style="padding:0"><b>&nbsp${this.value}</li></b></td></tr>`;
                 text += `<tr><td><li> Closed Conditions:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
                 text += `</table><br>`;
                 text += `<i>Projects with In-Progress Conditions:</i>`;
-                //text += `<a href="https://www.cer-rec.gc.ca/en/data-analysis/index.html" target="_blank">Get A Stick!</a>`;
-                text += `<p>${this["Short Project Name"]}</p>`;
+                text += generateTable(meta, this.id, "projects");
                 text += `<i>Active Condition Themes:</i>`;
-                text += `<p>${this["Themes"]}</p>`;
-                text += `<i>Features Coming Soon:</i>`;
-                text += `<table> <tr><td><li>Projects/Themes sorted # of conditions</li></td></tr>`;
-                text += `<table> <tr><td><li>Projects hyperlinked to REGDOCS</li></td></tr>`;
-                text += `<table> <tr><td><li>Shape file on top of regions</li></td></tr>`;
-                text += `<table> <tr><td><li>Total Summary info boxes above chart</li></td></tr>`;
-                text += `</table>`;
+                text += generateTable(meta, this.id, "themes");
+                text += `</table></div>`;
 
                 const chart = this.series.chart;
                 if (chart.customTooltip) {
@@ -179,7 +191,6 @@ export const ngtlConditionsMap = () => {
                     align: "right",
                     x: 0, // offset
                     verticalAlign: "top",
-                    overflow: "scroll",
                     y: 0, // offset
                   }),
                   null,
