@@ -54,6 +54,7 @@ def metadata(df,folder_name):
     
     #once the status summary is calculated, blank locations and null locations can be removed
     df = df[df['Location']!="nan"]
+    #TODO: remove this filter, and group all metadata by condition status. All metadata should have an "In Progress" and "Closed" column
     df = df[df['Condition Status']=="In Progress"]       
     
     #get the unique project names sorted by number of open conditions
@@ -137,6 +138,7 @@ def readCsv(remote=False):
         df_all = pd.concat(expanded_locations,axis=0,sort=False,ignore_index=True)
         #calculate metadata here
         meta = metadata(df_all,folder_name)
+        return meta
         shp = conditions_on_map(meta, regions_map, folder_name)
     
     return shp

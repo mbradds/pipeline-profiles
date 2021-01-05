@@ -11,12 +11,12 @@ export const ngtlConditionsMap = () => {
     document.getElementById("closed-summary").innerText = summary.Closed;
     document.getElementById("no-location-summary").innerText = summary.notOnMap;
   };
-
   fillSummary(meta.summary);
 
   const generateTable = (summary, selectedRegion, tableName) => {
-    let projectsHTML = `<table class="conditions-table">`;
+    let projectsHTML = ``;
     if (tableName == "projects") {
+      projectsHTML = `<table class="conditions-table">`;
       projectsHTML += `<caption style="text-align:left;">Projects with In-Progress Conditions:</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion) {
@@ -27,10 +27,11 @@ export const ngtlConditionsMap = () => {
         }
       });
     } else if (tableName == "themes") {
+      projectsHTML = `<table class="conditions-table" id="themes-table">`;
       projectsHTML += `<caption style="text-align:left;">Active Condition Themes:</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion) {
-          projectsHTML += `<tr><td>${proj["Theme(s)"]}</td><td>${proj["In Progress"]}</td></tr>`;
+          projectsHTML += `<tr onclick="themeClick(this)"><td>${proj["Theme(s)"]}</td><td>${proj["In Progress"]}</td></tr>`;
         }
       });
     }
@@ -155,7 +156,6 @@ export const ngtlConditionsMap = () => {
           point: {
             events: {
               click: function () {
-                console.log(this)
                 var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${this.id} Economic Region</b></p>`;
                 text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
                 text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">${meta.summary.updated}</li></td></tr>`;
