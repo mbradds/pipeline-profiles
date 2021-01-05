@@ -3,6 +3,7 @@ import json
 import os
 from util import saveJson,normalize_text
 import geopandas as gpd
+import time
 #%%
 
 script_dir = os.path.dirname(__file__) 
@@ -41,15 +42,80 @@ def conditions_on_map(df,shp,company):
     saveJson(df,os.path.join('../conditions/conditions_map/',company.replace('.','')+'meta'+'.json'))
     return shp
 
-def region_data(df):
+def metadata(df):
+    #df contains the condition data for the spcecific company
     
-    return df
+    meta = {}
+    #get the summary stats for the boxes above the map
+    status = df[['condition id','Condition Status']].copy()
+    status = status.groupby(['Condition Status']).size().reset_index()
+    status = pd.pivot_table(status,values=0,columns="Condition Status")
+    status = status.to_dict(orient='records')[0]
+    df['Location'] = df['Location'].astype("object")
+    notInMap = 0
+    for l in df['Location']:
+        if l == "nan":
+            notInMap = notInMap+1
+    status['notOnMap'] = notInMap
+    status['updated'] = time.time()
+    meta['summary'] = status
+    
+    #once the status summary is calculated, blank locations and null locations can be removed
+    df = df[df['Location']!="nan"]
+    df = df[df['Condition Status']=="In Progress"]       
+    
+    #get the unique project names sorted by number of open conditions
+    project = df[['condition id','Short Project Name','id']]
+    project = project.groupby(['Short Project Name','id']).size().reset_index()
+    project = project.sort_values(by=['id',0],ascending=False)
+    project = project.rename(columns={0:"In Progress"})
+    project = project.to_dict(orient='records')
+    meta['projects'] = project
+    
+    #get the unique project themes sorted by number of open conditions
+    theme = df[['condition id','Theme(s)','id']]
+    theme = theme.groupby(['Theme(s)','id']).size().reset_index()
+    theme = theme.sort_values(by=['id',0],ascending=False)
+    theme = theme.rename(columns={0:"Themes"})
+    theme = theme.to_dict(orient='records')
+    meta['themes'] = theme
+    
+    #save the metadata
+    with open('../conditions/conditions_map/meta.json', 'w') as fp:
+        json.dump(meta, fp)
+    
+    df_all = df.copy()
+    del df_all['Location']
+    df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count',
+                                                             'Short Project Name':lambda x: list(x),
+                                                             'Theme(s)':lambda t: list(t)})
+        
+    for list_field in ['Short Project Name','Theme(s)']:
+        joined_values = []
+        for list_row in df_all[list_field]:
+            if list_field == 'Theme(s)':
+                concat_themes = []
+                for theme in list_row:
+                    concat_themes.extend(theme.split(','))
+                list_row = [x.strip() for x in concat_themes]
+            joined_values.append(' - '.join(list(set(list_row))))
+        df_all[list_field] = joined_values
+        
+    df_all = df_all.reset_index()
+    df_all = df_all.rename(columns={'condition id':'value','Theme(s)':'Themes'})
+    return df_all
 
 
-def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
-    conditions_path = os.path.join(script_dir,'conditions_data/','conditions.csv')
-    print('downloading remote file')
-    df = pd.read_csv(link,sep='\t',lineterminator='\r',encoding="UTF-16",error_bad_lines=False)
+def readCsv(remote=False):
+    if remote:
+        link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
+        conditions_path = os.path.join(script_dir,'conditions_data/','conditions.csv')
+        print('downloading remote file')
+        df = pd.read_csv(link,sep='\t',lineterminator='\r',encoding="UTF-16",error_bad_lines=False)
+    else:
+        print('reading local file')
+        df = pd.read_csv("./raw_data/conditions.csv",sep='\t',lineterminator='\r',encoding="UTF-16",error_bad_lines=False)
+    
     dates = ['Effective Date','Issuance Date','Sunset Date']
     for date in dates:
         df[date] = pd.to_datetime(df[date])
@@ -62,15 +128,13 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
         df['Company'] = df['Company'].replace(r,'', regex=True)
     
     df = df[df['Short Project Name']!="SAM/COM"]
-    #df.to_csv("../conditions/conditions_data/conditions.csv",index=False,encoding="UTF-16")
     
     company_files = ['NOVA Gas Transmission Ltd.']
     regions_map = import_simplified()
     
     for company in company_files:
-        write_path = os.path.join('../conditions/conditions_data/',company.replace('.','')+'.json')
+        # write_path = os.path.join('../conditions/conditions_data/',company.replace('.','')+'.json')
         df_c = df[df['Company']==company].copy()
-        df_c = df_c[df_c['Condition Status']=="In Progress"]
         df_c['condition id'] = [str(ins)+'_'+str(cond) for ins,cond in zip(df_c['Instrument Number'],df_c['Condition Number'])]
         
         expanded_locations = []
@@ -83,32 +147,11 @@ def readCsv(link='http://www.cer-rec.gc.ca/open/conditions/conditions.csv'):
                 row['Flat Province'] = regionProvince[-1].strip()
                 expanded_locations.append(row)
         df_all = pd.concat(expanded_locations,axis=0,sort=False,ignore_index=True)
-        df_all = df_all[df_all['Location']!="nan"]
-        del df_all['Location']
         #calculate metadata here
-        df_meta = region_data(df_all)
-        return df_meta
-        df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count',
-                                                             'Short Project Name':lambda x: list(x),
-                                                             'Theme(s)':lambda t: list(t)})
-        
-        for list_field in ['Short Project Name','Theme(s)']:
-            joined_values = []
-            for list_row in df_all[list_field]:
-                if list_field == 'Theme(s)':
-                    concat_themes = []
-                    for theme in list_row:
-                        concat_themes.extend(theme.split(','))
-                    list_row = [x.strip() for x in concat_themes]
-                joined_values.append(' - '.join(list(set(list_row))))
-            df_all[list_field] = joined_values
-        
-        df_all = df_all.reset_index()
-        df_all = df_all.rename(columns={'condition id':'value','Theme(s)':'Themes'})
-        
-        shp = conditions_on_map(df_all, regions_map,company)
+        meta = metadata(df_all)
+        shp = conditions_on_map(meta, regions_map,company)
     
-    return shp,df_all
+    return shp
 
 
 def company_names(df):
@@ -117,8 +160,7 @@ def company_names(df):
 
 
 if __name__ == "__main__":
-    meta = readCsv()
+    shp = readCsv()
     #shp = import_stats_can()
 
 #%%
-

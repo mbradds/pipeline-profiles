@@ -2,7 +2,20 @@ import ngtlRegions from "./NOVA Gas Transmission Ltd.json";
 import canadaMap from "../conditions_data/base_map.json";
 import mapMetaData from "./NOVA Gas Transmission Ltdmeta.json";
 import { cerPalette } from "../../modules/util";
+import meta from "./meta.json";
+
+console.log(meta.summary);
+
 export const ngtlConditionsMap = () => {
+  const fillSummary = (summary) => {
+    document.getElementById("in-progress-summary").innerText =
+      summary["In Progress"];
+    document.getElementById("closed-summary").innerText = summary.Closed;
+    document.getElementById("no-location-summary").innerText = summary.notOnMap;
+  };
+
+  fillSummary(meta.summary);
+
   const regionSeries = {
     name: "NGTL Conditions",
     data: mapMetaData,
@@ -36,9 +49,9 @@ export const ngtlConditionsMap = () => {
   const createConditionsMap = (regions, baseMap, container) => {
     return new Highcharts.mapChart(container, {
       chart: {
-        borderColor: "black",
+        //borderColor: "black",
         panning: false,
-        borderWidth: 1,
+        //borderWidth: 1,
         animation: true,
         events: {
           load: function () {

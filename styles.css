@@ -21,12 +21,6 @@
   font-family: Arial;
   color: dimgray;
 }
-.cersummary {
-  font-family: Arial;
-  font-size: 17px;
-  font-style: italic;
-  color: dimgray;
-}
 .cersummarymeasure {
   font-family: Arial;
   font-size: 17px;
@@ -50,4 +44,23 @@
   background-color: white;
   opacity: 1;
   z-index: 9999 !important;
+}
+.conditions-summary-value {
+  font-family: Arial;
+  font-size: 17px;
+  font-style: italic;
+  color: dimgray;
+  text-align: center;
+}
+.conditions-summary-title {
+  font-family: Arial;
+  font-size: 17px;
+  font-style: bold;
+  color: black;
+  text-align: center;
+}
+.summary-border {
+  border-style: solid;
+  border-color: #8c8c96;
+  border-radius: 5px;
 }
