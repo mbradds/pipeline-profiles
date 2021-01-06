@@ -12,11 +12,16 @@
   font-weight: bold;
   color: #871455;
 }
-.figure-title {
+/* .figure-title {
   font-size: 25px;
   font-weight: bold;
   font-family: Arial;
   color: dimgray;
+} */
+
+.h2 {
+  font-family: Lato, sans-serif;
+  font-size: 1.8em;
 }
 
 /* styles for negotiated settlements section */
@@ -48,15 +53,15 @@
   font-size: 17px;
   font-style: italic;
   font-weight: bold;
-  color: dimgray;
+  color: #42464b;
   text-align: center;
 }
-.conditions-summary-title {
+/* .conditions-summary-title {
   font-family: Arial;
   font-size: 17px;
   color: black;
   text-align: center;
-}
+} */
 .conditions-summary-border {
   border-style: solid;
   border-color: #8c8c96;
@@ -85,6 +90,6 @@
   font-family: Arial;
   font-style: italic;
   font-weight: bold;
-  color: dimgray;
+  color: #42464b;
   text-align: center;
 }

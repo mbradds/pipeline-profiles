@@ -1,7 +1,7 @@
 import ngtlRegions from "./economicRegions.json";
 import canadaMap from "../base_maps/base_map.json";
 import mapMetaData from "./mapMetadata.json";
-// import { cerPalette } from "../../modules/util.js";
+import { cerPalette } from "../../modules/util.js";
 import meta from "./summaryMetadata.json";
 
 export const ngtlConditionsMap = () => {
@@ -83,13 +83,15 @@ export const ngtlConditionsMap = () => {
     return conditions;
   };
 
-  const regionSeries = {
-    name: "NGTL Conditions",
-    data: processMapMetadata(mapMetaData, conditionsFilter),
-    mapData: Highcharts.geojson(ngtlRegions),
-    joinBy: ["id", "id"],
-    type: "map",
-    zIndex: 1,
+  const generateRegionSeries = (mapMeta, mapRegions, filter) => {
+    return {
+      name: "NGTL Conditions",
+      data: processMapMetadata(mapMeta, filter),
+      mapData: Highcharts.geojson(mapRegions),
+      joinBy: ["id", "id"],
+      type: "map",
+      zIndex: 1,
+    };
   };
 
   const baseMap = {
@@ -128,7 +130,7 @@ export const ngtlConditionsMap = () => {
     return new Highcharts.mapChart(container, {
       chart: {
         panning: false,
-        animation: true,
+        animation: false,
         events: {
           load: function () {
             this.mapZoom(0.4, -1267305, -1841405);
@@ -213,8 +215,8 @@ export const ngtlConditionsMap = () => {
               click: function () {
                 var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${this.id} Economic Region</b></p>`;
                 text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
-                text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">${meta.summary.updated}</li></td></tr>`;
-                text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">&nbsp${this.value}</li></td></tr>`;
+                text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+                text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${this.value}</li></td></tr>`;
                 text += `</table><br>`;
                 text +=
                   generateTable(meta, this.id, "projects", filter) + "<br>";
@@ -283,6 +285,11 @@ export const ngtlConditionsMap = () => {
       series: [regions, baseMap],
     });
   };
+  const regionSeries = generateRegionSeries(
+    mapMetaData,
+    ngtlRegions,
+    conditionsFilter
+  );
   var chart = createConditionsMap(
     regionSeries,
     baseMap,
@@ -290,4 +297,36 @@ export const ngtlConditionsMap = () => {
     meta,
     conditionsFilter
   );
+  $("#conditions-nav-group button").on("click", function () {
+    $(".btn-conditions > .btn").removeClass("active");
+    $(this).addClass("active");
+    var thisBtn = $(this);
+    var btnText = thisBtn.text();
+    var btnValue = thisBtn.val();
+    $("#selectedVal").text(btnValue);
+    if (btnValue !== "not-shown") {
+      conditionsFilter.column = btnValue;
+    }
+    const regionSeries = generateRegionSeries(
+      mapMetaData,
+      ngtlRegions,
+      conditionsFilter
+    );
+    chart.update({
+      series: [regionSeries, baseMap],
+    });
+    if (conditionsFilter.column == "Closed") {
+      chart.mapZoom(undefined, undefined, undefined);
+    } else {
+      chart.mapZoom(0.4, -1267305, -1841405);
+    }
+
+    // var chart = createConditionsMap(
+    //   regionSeries,
+    //   baseMap,
+    //   "container-map",
+    //   meta,
+    //   conditionsFilter
+    // );
+  });
 };

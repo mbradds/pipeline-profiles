@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="styles.css" />
     <link href="./GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./GCWeb/css/theme.min.css" />
-    <!-- <link rel="stylesheet" href="./wet-boew/css/noscript.min.css" /> -->
+    <noscript
+      ><link rel="stylesheet" href="./GCWeb/wet-boew/css/noscript.min.css"
+    /></noscript>
   </head>
   <body>
     <div class="header">
@@ -34,35 +36,58 @@
         </div>
       </div>
     </div> -->
-    <div class="mrgn-tp-xl"></div>
+
     <!-- conditions map -->
     <div class="container chart-large">
       <div class="row">
         <div class="col-md-12">
-          <div id="settle_title" class="figure-title">
-            Conditions Compliance - In Progress Conditions by Region
-          </div>
+          <h2>Conditions Compliance - In Progress Conditions by Region</h2>
         </div>
       </div>
       <div class="mrgn-tp-sm"></div>
-      <div class="row conditions-summary-border">
-        <div class="col-md-4">
-          <div class="conditions-summary-title">
-            Total In-Progress Conditions:
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="btn-group btn-group-justified" id="conditions-nav-group">
+            <div class="btn-group btn-conditions">
+              <button
+                type="button"
+                class="btn btn-default active"
+                value="In Progress"
+              >
+                <div class="conditions-summary-title">
+                  Total In-Progress Conditions:
+                </div>
+                <div
+                  class="conditions-summary-value"
+                  id="in-progress-summary"
+                ></div>
+              </button>
+            </div>
+            <div class="btn-group btn-conditions">
+              <button type="button" class="btn btn-default" value="Closed">
+                <div class="conditions-summary-title">
+                  Total Closed Conditions:
+                </div>
+                <div class="conditions-summary-value" id="closed-summary"></div>
+              </button>
+            </div>
+            <div class="btn-group btn-conditions">
+              <button
+                type="button"
+                class="btn btn-default disabled"
+                value="not-shown"
+              >
+                <div class="conditions-summary-title">
+                  No Geographic Location (not shown):
+                </div>
+                <div
+                  class="conditions-summary-value"
+                  id="no-location-summary"
+                ></div>
+              </button>
+            </div>
           </div>
-          <div class="conditions-summary-value" id="in-progress-summary"></div>
-        </div>
-        <div class="col-md-4">
-          <div class="conditions-summary-title">
-            Total Closed Conditions (not shown):
-          </div>
-          <div class="conditions-summary-value" id="closed-summary"></div>
-        </div>
-        <div class="col-md-4">
-          <div class="conditions-summary-title">
-            No Geographic Location (not shown):
-          </div>
-          <div class="conditions-summary-value" id="no-location-summary"></div>
         </div>
       </div>
       <div class="row">
@@ -75,12 +100,13 @@
 
     <script type="text/javascript">
       function themeClick(e) {
-        console.log('theme clicked!')
-        console.log(e)
+        console.log("theme clicked!");
+        console.log(e);
       }
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="./GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/modules/map.js"></script>
     <script src="https://code.highcharts.com/gantt/modules/gantt.js"></script>
