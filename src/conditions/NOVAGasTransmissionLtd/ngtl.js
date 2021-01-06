@@ -106,27 +106,97 @@ export const ngtlConditionsMap = () => {
     enableMouseTracking: false,
   };
 
-  const xZoom = 50;
-  const yZoom = 900;
-  const zZoom = 0.6;
-
   const destroyInsert = (chart) => {
-    chart.customTooltip.destroy();
-    chart.customTooltip = undefined;
+    if (chart.customTooltip) {
+      let currentPopUp = document.getElementById("conditions-insert");
+      if (currentPopUp) {
+        currentPopUp.innerHTML = "";
+      }
+      chart.customTooltip.destroy();
+      chart.customTooltip = undefined;
+    }
   };
 
-  const selectedMeta = (meta) => {
-    meta.projects = processMapMetadata(
-      meta.projects,
-      conditionsFilter,
-      "projects"
+  const selectedMeta = (m, filter) => {
+    const newMeta = { summary: m.summary };
+    newMeta.projects = processMapMetadata(m.projects, filter, "projects");
+    newMeta.themes = processMapMetadata(m.themes, filter, "themes");
+    return newMeta;
+  };
+
+  const colorRange = (filters) => {
+    if (filters.column == "In Progress") {
+      return {
+        min: 1,
+        minColor: "#EEEEFF",
+        maxColor: "#000022",
+        stops: [
+          [0, "#EFEFFF"],
+          [0.67, "#4444FF"],
+          [1, "#000022"],
+        ],
+      };
+    } else {
+      return {
+        min: 1,
+        minColor: "#d2f8d2",
+        maxColor: "#092215",
+        stops: [
+          [0, "#d2f8d2"],
+          [0.67, "#154f30"],
+          [1, "#092215"],
+        ],
+      };
+    }
+  };
+
+  const popUp = (e, filter, meta) => {
+    let currentPopUp = document.getElementById("conditions-insert");
+    if (currentPopUp) {
+      currentPopUp.innerHTML = "";
+    }
+    var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} Economic Region</b></p>`;
+    text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
+    text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
+    text += `</table><br>`;
+    text += generateTable(meta, e.id, "projects", filter) + "<br>";
+    text += generateTable(meta, e.id, "themes", filter);
+    text += `</table></div>`;
+
+    const chart = e.series.chart;
+    if (chart.customTooltip) {
+      destroyInsert(chart);
+    }
+    var label = chart.renderer
+      .label(text, null, null, null, null, null, true)
+      .css({
+        width: "300px",
+      })
+      .attr({
+        // style tooltip
+        "stroke-width": 3,
+        zIndex: 8,
+        padding: 8,
+        r: 3,
+        fill: "white",
+        stroke: e.color,
+      })
+      .add(chart.rGroup);
+    chart.customTooltip = label;
+    label.align(
+      Highcharts.extend(label.getBBox(), {
+        align: "right",
+        x: 0, // offset
+        verticalAlign: "top",
+        y: 0, // offset
+      }),
+      null,
+      "spacingBox"
     );
-    meta.themes = processMapMetadata(meta.themes, conditionsFilter, "themes");
-    return meta;
   };
 
   const createConditionsMap = (regions, baseMap, container, meta, filter) => {
-    meta = selectedMeta(meta);
     return new Highcharts.mapChart(container, {
       chart: {
         panning: false,
@@ -193,10 +263,10 @@ export const ngtlConditionsMap = () => {
           },
           redraw: function () {
             //this is useful for determining the on load map zoom scale
-            // var yScale = this.yAxis[0].getExtremes()
-            // var xScale = this.xAxis[0].getExtremes()
-            // console.log('Map Zoom X = ',(xScale.min+xScale.max)/2)
-            // console.log('Map Zoom Y = ',(yScale.min+yScale.max)/2)
+            // var yScale = this.yAxis[0].getExtremes();
+            // var xScale = this.xAxis[0].getExtremes();
+            // console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
+            // console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
           },
         },
       },
@@ -213,46 +283,7 @@ export const ngtlConditionsMap = () => {
           point: {
             events: {
               click: function () {
-                var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${this.id} Economic Region</b></p>`;
-                text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
-                text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-                text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${this.value}</li></td></tr>`;
-                text += `</table><br>`;
-                text +=
-                  generateTable(meta, this.id, "projects", filter) + "<br>";
-                text += generateTable(meta, this.id, "themes", filter);
-                text += `</table></div>`;
-
-                const chart = this.series.chart;
-                if (chart.customTooltip) {
-                  destroyInsert(chart);
-                }
-                var label = chart.renderer
-                  .label(text, null, null, null, null, null, true)
-                  .css({
-                    width: "300px",
-                  })
-                  .attr({
-                    // style tooltip
-                    "stroke-width": 3,
-                    zIndex: 8,
-                    padding: 8,
-                    r: 3,
-                    fill: "white",
-                    stroke: this.color,
-                  })
-                  .add(chart.rGroup);
-                chart.customTooltip = label;
-                label.align(
-                  Highcharts.extend(label.getBBox(), {
-                    align: "right",
-                    x: 0, // offset
-                    verticalAlign: "top",
-                    y: 0, // offset
-                  }),
-                  null,
-                  "spacingBox"
-                );
+                popUp(this, filter, selectedMeta(meta, filter));
               },
             },
           },
@@ -272,19 +303,11 @@ export const ngtlConditionsMap = () => {
           return toolText;
         },
       },
-      colorAxis: {
-        min: 1,
-        minColor: "#EEEEFF",
-        maxColor: "#000022",
-        stops: [
-          [0, "#EFEFFF"],
-          [0.67, "#4444FF"],
-          [1, "#000022"],
-        ],
-      },
+      colorAxis: colorRange(filter),
       series: [regions, baseMap],
     });
   };
+
   const regionSeries = generateRegionSeries(
     mapMetaData,
     ngtlRegions,
@@ -301,32 +324,42 @@ export const ngtlConditionsMap = () => {
     $(".btn-conditions > .btn").removeClass("active");
     $(this).addClass("active");
     var thisBtn = $(this);
-    var btnText = thisBtn.text();
     var btnValue = thisBtn.val();
     $("#selectedVal").text(btnValue);
     if (btnValue !== "not-shown") {
       conditionsFilter.column = btnValue;
+      destroyInsert(chart);
     }
     const regionSeries = generateRegionSeries(
       mapMetaData,
       ngtlRegions,
       conditionsFilter
     );
+
     chart.update({
+      plotOptions: {
+        series: {
+          point: {
+            events: {
+              click: function () {
+                popUp(
+                  this,
+                  conditionsFilter,
+                  selectedMeta(meta, conditionsFilter)
+                );
+              },
+            },
+          },
+        },
+      },
       series: [regionSeries, baseMap],
+      colorAxis: colorRange(conditionsFilter),
     });
+    chart.mapZoom(undefined, undefined, undefined);
     if (conditionsFilter.column == "Closed") {
-      chart.mapZoom(undefined, undefined, undefined);
+      chart.mapZoom(0.4, -704903, -1841405);
     } else {
       chart.mapZoom(0.4, -1267305, -1841405);
     }
-
-    // var chart = createConditionsMap(
-    //   regionSeries,
-    //   baseMap,
-    //   "container-map",
-    //   meta,
-    //   conditionsFilter
-    // );
   });
 };
