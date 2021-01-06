@@ -4,6 +4,7 @@ import os
 from util import saveJson,normalize_text
 import geopandas as gpd
 from datetime import date
+import numpy as np
 #%%
 
 script_dir = os.path.dirname(__file__) 
@@ -54,22 +55,23 @@ def metadata(df,folder_name):
     
     #once the status summary is calculated, blank locations and null locations can be removed
     df = df[df['Location']!="nan"]
-    #TODO: remove this filter, and group all metadata by condition status. All metadata should have an "In Progress" and "Closed" column
-    df = df[df['Condition Status']=="In Progress"]       
+    #df = df[df['Condition Status']=="In Progress"]       
     
     #get the unique project names sorted by number of open conditions
-    project = df[['condition id','Short Project Name','id']]
-    project = project.groupby(['Short Project Name','id']).size().reset_index()
-    project = project.sort_values(by=['id',0],ascending=False)
-    project = project.rename(columns={0:"In Progress"})
+    project = df[['condition id','Short Project Name','id','Condition Status']].copy()
+    project = project.groupby(['Short Project Name','id','Condition Status']).size().reset_index()
+    project = pd.pivot_table(project,values=0,index=['Short Project Name','id'],columns='Condition Status').reset_index()
+    project = project.sort_values(by=['In Progress','id'],ascending=False)
+    project = project.replace({np.nan: None})
     project = project.to_dict(orient='records')
     meta['projects'] = project
     
     #get the unique project themes sorted by number of open conditions
-    theme = df[['condition id','Theme(s)','id']]
-    theme = theme.groupby(['Theme(s)','id']).size().reset_index()
-    theme = theme.sort_values(by=['id',0],ascending=False)
-    theme = theme.rename(columns={0:"In Progress"})
+    theme = df[['condition id','Theme(s)','id','Condition Status']].copy()
+    theme = theme.groupby(['Theme(s)','id','Condition Status']).size().reset_index()
+    theme = pd.pivot_table(theme,values=0,index=['Theme(s)','id'],columns='Condition Status').reset_index()
+    theme = theme.sort_values(by=['In Progress','id'],ascending=False)
+    theme = theme.replace({np.nan: None})
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
     
@@ -79,7 +81,7 @@ def metadata(df,folder_name):
     
     df_all = df.copy()
     del df_all['Location']
-    df_all = df_all.groupby(['Flat Province','id']).agg({'condition id':'count',
+    df_all = df_all.groupby(['Flat Province','id','Condition Status']).agg({'condition id':'count',
                                                              'Short Project Name':lambda x: list(x),
                                                              'Theme(s)':lambda t: list(t)})
     
@@ -87,7 +89,7 @@ def metadata(df,folder_name):
         del df_all[delete]
         
     df_all = df_all.reset_index()
-    df_all = df_all.rename(columns={'condition id':'value'})
+    df_all = pd.pivot_table(df_all,values='condition id',index=['Flat Province','id'],columns='Condition Status').reset_index()
 
     return df_all
 
@@ -138,7 +140,6 @@ def readCsv(remote=False):
         df_all = pd.concat(expanded_locations,axis=0,sort=False,ignore_index=True)
         #calculate metadata here
         meta = metadata(df_all,folder_name)
-        return meta
         shp = conditions_on_map(meta, regions_map, folder_name)
     
     return shp
@@ -153,6 +154,10 @@ if __name__ == "__main__":
     shp = readCsv()
 
 #%%
+
+
+
+
 
 
 

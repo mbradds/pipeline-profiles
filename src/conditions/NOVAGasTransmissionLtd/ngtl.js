@@ -5,6 +5,7 @@ import mapMetaData from "./mapMetadata.json";
 import meta from "./summaryMetadata.json";
 
 export const ngtlConditionsMap = () => {
+  const conditionsFilter = { column: "In Progress" };
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
       summary["In Progress"];
@@ -13,25 +14,25 @@ export const ngtlConditionsMap = () => {
   };
   fillSummary(meta.summary);
 
-  const generateTable = (summary, selectedRegion, tableName) => {
+  const generateTable = (summary, selectedRegion, tableName, filter) => {
     let projectsHTML = ``;
     if (tableName == "projects") {
       projectsHTML = `<table class="conditions-table">`;
-      projectsHTML += `<caption style="text-align:left;">Projects with In-Progress Conditions:</caption>`;
+      projectsHTML += `<caption style="text-align:left;">Projects with ${filter.column} Conditions:</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion) {
           let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${proj[
             "Short Project Name"
           ].replaceAll(" ", "%20")}`;
-          projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["In Progress"]}</td></tr>`;
+          projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["value"]}</td></tr>`;
         }
       });
     } else if (tableName == "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
-      projectsHTML += `<caption style="text-align:left;">Active Condition Themes:</caption>`;
+      projectsHTML += `<caption style="text-align:left;">${filter.column} Condition Themes:</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion) {
-          projectsHTML += `<tr onclick="themeClick(this)"><td>${proj["Theme(s)"]}</td><td>${proj["In Progress"]}</td></tr>`;
+          projectsHTML += `<tr onclick="themeClick(this)"><td>${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
         }
       });
     }
@@ -39,9 +40,52 @@ export const ngtlConditionsMap = () => {
     return projectsHTML;
   };
 
+  const processMapMetadata = (data, filter, type = "map") => {
+    const getValid = (type) => {
+      if (type == "map") {
+        function validMetaData(row) {
+          return {
+            "Flat Province": row["Flat Province"],
+            id: row.id,
+            value: row[filter.column],
+          };
+        }
+        return validMetaData;
+      } else if (type == "projects") {
+        function validMetaData(row) {
+          return {
+            "Short Project Name": row["Short Project Name"],
+            id: row.id,
+            value: row[filter.column],
+          };
+        }
+        return validMetaData;
+      } else if (type == "themes") {
+        function validMetaData(row) {
+          return {
+            "Theme(s)": row["Theme(s)"],
+            id: row.id,
+            value: row[filter.column],
+          };
+        }
+        return validMetaData;
+      }
+    };
+
+    let m = getValid(type);
+
+    let conditions = [];
+    data.filter((row) => {
+      if (row[filter.column] !== null) {
+        conditions.push(m(row));
+      }
+    });
+    return conditions;
+  };
+
   const regionSeries = {
     name: "NGTL Conditions",
-    data: mapMetaData,
+    data: processMapMetadata(mapMetaData, conditionsFilter),
     mapData: Highcharts.geojson(ngtlRegions),
     joinBy: ["id", "id"],
     type: "map",
@@ -69,7 +113,18 @@ export const ngtlConditionsMap = () => {
     chart.customTooltip = undefined;
   };
 
-  const createConditionsMap = (regions, baseMap, container, meta) => {
+  const selectedMeta = (meta) => {
+    meta.projects = processMapMetadata(
+      meta.projects,
+      conditionsFilter,
+      "projects"
+    );
+    meta.themes = processMapMetadata(meta.themes, conditionsFilter, "themes");
+    return meta;
+  };
+
+  const createConditionsMap = (regions, baseMap, container, meta, filter) => {
+    meta = selectedMeta(meta);
     return new Highcharts.mapChart(container, {
       chart: {
         panning: false,
@@ -159,11 +214,11 @@ export const ngtlConditionsMap = () => {
                 var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${this.id} Economic Region</b></p>`;
                 text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
                 text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">${meta.summary.updated}</li></td></tr>`;
-                text += `<tr><td><li> In-Progress Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">&nbsp${this.value}</li></td></tr>`;
-                text += `<tr><td><li> Closed Conditions:</td><td style="padding:0"><b>&nbspComing Soon!</li></b></td></tr>`;
+                text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color: dimgray;">&nbsp${this.value}</li></td></tr>`;
                 text += `</table><br>`;
-                text += generateTable(meta, this.id, "projects") + "<br>";
-                text += generateTable(meta, this.id, "themes");
+                text +=
+                  generateTable(meta, this.id, "projects", filter) + "<br>";
+                text += generateTable(meta, this.id, "themes", filter);
                 text += `</table></div>`;
 
                 const chart = this.series.chart;
@@ -228,5 +283,11 @@ export const ngtlConditionsMap = () => {
       series: [regions, baseMap],
     });
   };
-  var chart = createConditionsMap(regionSeries, baseMap, "container-map", meta);
+  var chart = createConditionsMap(
+    regionSeries,
+    baseMap,
+    "container-map",
+    meta,
+    conditionsFilter
+  );
 };
