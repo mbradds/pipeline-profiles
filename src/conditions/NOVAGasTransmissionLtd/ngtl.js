@@ -1,7 +1,7 @@
 import ngtlRegions from "./economicRegions.json";
 import canadaMap from "../base_maps/base_map.json";
 import mapMetaData from "./mapMetadata.json";
-import { cerPalette } from "../../modules/util.js";
+import { cerPalette, sortJson } from "../../modules/util.js";
 import meta from "./summaryMetadata.json";
 
 export const ngtlConditionsMap = () => {
@@ -12,7 +12,10 @@ export const ngtlConditionsMap = () => {
     document.getElementById("closed-summary").innerText = summary.Closed;
     document.getElementById("no-location-summary").innerText = summary.notOnMap;
   };
-  fillSummary(meta.summary);
+
+  const setTitle = (titleElement, filter) => {
+    titleElement.innerText = `Condition Compliance - ${filter.column} Conditions by Region`;
+  };
 
   const generateTable = (summary, selectedRegion, tableName, filter) => {
     let projectsHTML = ``;
@@ -94,18 +97,6 @@ export const ngtlConditionsMap = () => {
     };
   };
 
-  const baseMap = {
-    name: "Canada",
-    mapData: Highcharts.geojson(canadaMap),
-    type: "map",
-    color: "#F0F0F0",
-    borderWidth: 0.5,
-    borderColor: "black",
-    zIndex: 0,
-    showInLegend: false,
-    enableMouseTracking: false,
-  };
-
   const destroyInsert = (chart) => {
     if (chart.customTooltip) {
       let currentPopUp = document.getElementById("conditions-insert");
@@ -121,6 +112,10 @@ export const ngtlConditionsMap = () => {
     const newMeta = { summary: m.summary };
     newMeta.projects = processMapMetadata(m.projects, filter, "projects");
     newMeta.themes = processMapMetadata(m.themes, filter, "themes");
+    if (filter.column == "Closed") {
+      newMeta.projects = sortJson(newMeta.projects, "value");
+      newMeta.themes = sortJson(newMeta.themes, "value");
+    }
     return newMeta;
   };
 
@@ -233,24 +228,6 @@ export const ngtlConditionsMap = () => {
           },
           click: function () {
             var [chartHeight, chartWidth] = [this.chartHeight, this.chartWidth];
-            // console.log(
-            //   "Chart width: ",
-            //   chartWidth,
-            //   "Chart height: ",
-            //   chartHeight
-            // );
-            // console.log(
-            //   "Tooltip width: ",
-            //   this.customTooltip.width,
-            //   "Tooltip height: ",
-            //   this.customTooltip.height
-            // );
-            // console.log(
-            //   "mouse x: ",
-            //   this.mouseDownX,
-            //   "mouse y: ",
-            //   this.mouseDownY
-            // );
             if (this.customTooltip) {
               if (
                 this.mouseDownX > chartWidth - this.customTooltip.width &&
@@ -308,11 +285,29 @@ export const ngtlConditionsMap = () => {
     });
   };
 
+  let titleElement = document.getElementById("conditions-map-title");
+  setTitle(titleElement, conditionsFilter);
+
+  fillSummary(meta.summary);
+
+  const baseMap = {
+    name: "Canada",
+    mapData: Highcharts.geojson(canadaMap),
+    type: "map",
+    color: "#F0F0F0",
+    borderWidth: 0.5,
+    borderColor: "black",
+    zIndex: 0,
+    showInLegend: false,
+    enableMouseTracking: false,
+  };
+
   const regionSeries = generateRegionSeries(
     mapMetaData,
     ngtlRegions,
     conditionsFilter
   );
+
   var chart = createConditionsMap(
     regionSeries,
     baseMap,
@@ -320,6 +315,7 @@ export const ngtlConditionsMap = () => {
     meta,
     conditionsFilter
   );
+
   $("#conditions-nav-group button").on("click", function () {
     $(".btn-conditions > .btn").removeClass("active");
     $(this).addClass("active");
@@ -330,6 +326,7 @@ export const ngtlConditionsMap = () => {
       conditionsFilter.column = btnValue;
       destroyInsert(chart);
     }
+    setTitle(titleElement, conditionsFilter);
     const regionSeries = generateRegionSeries(
       mapMetaData,
       ngtlRegions,

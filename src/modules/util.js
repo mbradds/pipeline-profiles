@@ -22,6 +22,10 @@ export const dateFormat = (value, format = "%b %d, %Y") => {
   return Highcharts.dateFormat(format, value);
 };
 
+export const sortJson = (obj, colName = "value") => {
+  return obj.slice().sort((a, b) => b[colName] - a[colName]);
+};
+
 export const currentDate = () => {
   var today = new Date();
   today.setUTCHours(0);
