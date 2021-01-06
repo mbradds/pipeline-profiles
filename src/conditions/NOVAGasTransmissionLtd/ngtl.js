@@ -35,7 +35,7 @@ export const ngtlConditionsMap = () => {
       projectsHTML += `<caption style="text-align:left;">${filter.column} Condition Themes:</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion) {
-          projectsHTML += `<tr onclick="themeClick(this)"><td>${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
+          projectsHTML += `<tr><td onclick="themeClick(this)">${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
         }
       });
     }
@@ -98,6 +98,7 @@ export const ngtlConditionsMap = () => {
   };
 
   const destroyInsert = (chart) => {
+    document.getElementById("conditions-definitions").innerHTML = "";
     if (chart.customTooltip) {
       let currentPopUp = document.getElementById("conditions-insert");
       if (currentPopUp) {
@@ -285,9 +286,9 @@ export const ngtlConditionsMap = () => {
     });
   };
 
+  //main conditions map
   let titleElement = document.getElementById("conditions-map-title");
   setTitle(titleElement, conditionsFilter);
-
   fillSummary(meta.summary);
 
   const baseMap = {
@@ -332,7 +333,6 @@ export const ngtlConditionsMap = () => {
       ngtlRegions,
       conditionsFilter
     );
-
     chart.update({
       plotOptions: {
         series: {
