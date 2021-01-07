@@ -12,12 +12,10 @@
   font-weight: bold;
   color: #871455;
 }
-/* .figure-title {
-  font-size: 25px;
-  font-weight: bold;
-  font-family: Arial;
-  color: dimgray;
-} */
+#ie-warning {
+  max-width: 1000px;
+  margin: auto;
+}
 
 .h2 {
   font-family: Lato, sans-serif;
