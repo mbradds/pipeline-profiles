@@ -21,7 +21,7 @@ export const ngtlConditionsMap = () => {
     let projectsHTML = ``;
     if (tableName == "projects") {
       projectsHTML = `<table class="conditions-table">`;
-      projectsHTML += `<caption style="text-align:left;">Projects with ${filter.column} Conditions:</caption>`;
+      projectsHTML += `<caption style="text-align:left;">Projects with ${filter.column} Conditions (click for REGDOCS link):</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion) {
           let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${proj[
@@ -32,7 +32,7 @@ export const ngtlConditionsMap = () => {
       });
     } else if (tableName == "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
-      projectsHTML += `<caption style="text-align:left;">${filter.column} Condition Themes:</caption>`;
+      projectsHTML += `<caption style="text-align:left;">${filter.column} Condition Themes (click to view theme definition):</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion) {
           projectsHTML += `<tr><td onclick="themeClick(this)">${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
@@ -201,13 +201,14 @@ export const ngtlConditionsMap = () => {
           load: function () {
             this.mapZoom(0.4, -1267305, -1841405);
             const chart = this;
-            var text = `<b>Click on a region to view condition info box</b><br>`;
-            text += `<i>Click area outside of regions to hide info box</i>`;
+            let text = `<b>Map Instructions:</b>`;
+            text += `<ol><li><i>Click on a region to view condition info box</i></li>`;
+            text += `<li><i>Click map area outside of regions to hide info box</i></li></ol>`;
 
             var label = chart.renderer
               .label(text, null, null, null, null, null, true)
               .css({
-                width: "300px",
+                width: "315px",
               })
               .attr({
                 zIndex: 8,
@@ -219,7 +220,7 @@ export const ngtlConditionsMap = () => {
             label.align(
               Highcharts.extend(label.getBBox(), {
                 align: "left",
-                x: 0, // offset
+                x: -15, // offset
                 verticalAlign: "top",
                 y: 0, // offset
               }),

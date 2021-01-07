@@ -39,15 +39,30 @@
 }
 
 /* styles for conditions compliance section */
-.container-chart-map {
-  min-height: 600px;
-  position: relative;
-  z-index: 10;
+@media only screen and (max-height: 650px) {
+  .container-chart-map {
+    min-height: 500px;
+    position: relative;
+    z-index: 10;
+  }
+  #conditions-insert {
+    overflow-y: scroll;
+    max-height: 450px;
+  }
 }
-#conditions-insert {
-  overflow-y: scroll;
-  max-height: 550px;
+
+@media only screen and (min-height: 650px) {
+  .container-chart-map {
+    min-height: 600px;
+    position: relative;
+    z-index: 10;
+  }
+  #conditions-insert {
+    overflow-y: scroll;
+    max-height: 550px;
+  }
 }
+
 .conditions-summary-value {
   font-family: Arial;
   font-size: 17px;
@@ -56,12 +71,6 @@
   color: #42464b;
   text-align: center;
 }
-/* .conditions-summary-title {
-  font-family: Arial;
-  font-size: 17px;
-  color: black;
-  text-align: center;
-} */
 .conditions-summary-border {
   border-style: solid;
   border-color: #8c8c96;
