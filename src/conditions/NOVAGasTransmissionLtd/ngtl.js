@@ -3,6 +3,7 @@ import canadaMap from "../base_maps/base_map.json";
 import mapMetaData from "./mapMetadata.json";
 import { cerPalette, sortJson } from "../../modules/util.js";
 import meta from "./summaryMetadata.json";
+import "core-js/proposals/string-replace-all";
 
 export const ngtlConditionsMap = () => {
   const conditionsFilter = { column: "In Progress" };
@@ -209,6 +210,7 @@ export const ngtlConditionsMap = () => {
               .label(text, null, null, null, null, null, true)
               .css({
                 width: "315px",
+                margin: 0,
               })
               .attr({
                 zIndex: 8,

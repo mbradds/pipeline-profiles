@@ -14,6 +14,10 @@ module.exports = {
     filename: "bundle_[name].js",
   },
 
+  // plugins: [
+  //   new BundleAnalyzerPlugin()
+  // ],
+
   module: {
     rules: [
       {
