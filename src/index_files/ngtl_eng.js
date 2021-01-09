@@ -1,4 +1,9 @@
 import { generalTheme } from "../modules/themes.js";
+import ngtlRegions from "../conditions/NOVAGasTransmissionLtd/economicRegions.json";
+import canadaMap from "../conditions/base_maps/base_map.json";
+import mapMetaData from "../conditions/NOVAGasTransmissionLtd/mapMetadata.json";
+import meta from "../conditions/NOVAGasTransmissionLtd/summaryMetadata.json";
+import { conditionsMap } from "../conditions/hcConditionsMap.js";
 import ieWarn from "ie-gang";
 let warningParams = {
   message:
@@ -9,7 +14,4 @@ let warningParams = {
 };
 ieWarn(warningParams);
 generalTheme();
-// import { cassandraSettlements } from "../settlements/settlements.js";
-import { ngtlConditionsMap } from "../conditions/NOVAGasTransmissionLtd/ngtl.js";
-// cassandraSettlements();
-ngtlConditionsMap();
+conditionsMap(ngtlRegions, canadaMap, mapMetaData, meta);

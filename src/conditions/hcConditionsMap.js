@@ -1,11 +1,7 @@
-import ngtlRegions from "./economicRegions.json";
-import canadaMap from "../base_maps/base_map.json";
-import mapMetaData from "./mapMetadata.json";
-import { cerPalette, sortJson } from "../../modules/util.js";
-import meta from "./summaryMetadata.json";
+import { cerPalette, sortJson } from "../modules/util.js";
 import "core-js/proposals/string-replace-all";
 
-export const ngtlConditionsMap = () => {
+export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
   const conditionsFilter = { column: "In Progress" };
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
@@ -89,7 +85,7 @@ export const ngtlConditionsMap = () => {
 
   const generateRegionSeries = (mapMeta, mapRegions, filter) => {
     return {
-      name: "NGTL Conditions",
+      name: "Conditions",
       data: processMapMetadata(mapMeta, filter),
       mapData: Highcharts.geojson(mapRegions),
       joinBy: ["id", "id"],
@@ -205,6 +201,19 @@ export const ngtlConditionsMap = () => {
     });
   };
 
+  // const findZoom = (chart) => {
+  //   let rSeries = chart.series[0];
+  //   let [maxX, minX, maxY, minY] = [
+  //     rSeries.maxX,
+  //     rSeries.minX,
+  //     rSeries.maxY,
+  //     rSeries.minY,
+  //   ];
+  //   let x = (Math.abs(maxX) + Math.abs(minX)) / 2;
+  //   let y = (Math.abs(maxY) + Math.abs(minY)) / 2;
+  //   chart.mapZoom(0.4, x * -1, y * -1);
+  // };
+
   const createConditionsMap = (regions, baseMap, container, meta, filter) => {
     return new Highcharts.mapChart(container, {
       chart: {
@@ -218,7 +227,6 @@ export const ngtlConditionsMap = () => {
             let text = `<b>Map Instructions:</b>`;
             text += `<ol><li><i>Click on a region to view condition info box</i></li>`;
             text += `<li><i>Click map area outside of regions to hide info box</i></li></ol>`;
-
             var label = chart.renderer
               .label(text, null, null, null, null, null, true)
               .css({
@@ -321,7 +329,7 @@ export const ngtlConditionsMap = () => {
 
   const regionSeries = generateRegionSeries(
     mapMetaData,
-    ngtlRegions,
+    econRegions,
     conditionsFilter
   );
 
@@ -346,7 +354,7 @@ export const ngtlConditionsMap = () => {
     setTitle(titleElement, conditionsFilter);
     const regionSeries = generateRegionSeries(
       mapMetaData,
-      ngtlRegions,
+      econRegions,
       conditionsFilter
     );
     chart.update(
@@ -373,11 +381,11 @@ export const ngtlConditionsMap = () => {
     );
 
     chart.mapZoom(undefined, undefined, undefined);
+    removeNoConditions(chart);
     if (conditionsFilter.column == "Closed") {
       chart.mapZoom(0.4, -704903, -1841405);
     } else {
       chart.mapZoom(0.4, -1267305, -1841405);
     }
-    removeNoConditions(chart);
   });
 };

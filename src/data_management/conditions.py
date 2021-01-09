@@ -5,7 +5,7 @@ from util import saveJson, normalize_text
 import geopandas as gpd
 from datetime import date
 import numpy as np
-
+print('starting conditions')
 script_dir = os.path.dirname(__file__)
 
 
@@ -61,7 +61,6 @@ def metadata(df, folder_name):
 
     # once the status summary is calculated, blank locations and null locations can be removed
     df = df[df['Location'] != "nan"]
-    # df = df[df['Condition Status']=="In Progress"]
 
     # get the unique project names sorted by number of open conditions
     project = df[['condition id', 'Short Project Name', 'id', 'Condition Status']].copy()
@@ -126,7 +125,7 @@ def process_conditions(remote=False, nonStandard=True):
 
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
-    
+
     if not nonStandard:
         # only include non-standard conditions
         df = df[df['Condition Type'] != 'Standard']
