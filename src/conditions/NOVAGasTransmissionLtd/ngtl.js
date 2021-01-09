@@ -193,6 +193,18 @@ export const ngtlConditionsMap = () => {
     );
   };
 
+  const removeNoConditions = (chart) => {
+    let removeList = [];
+    chart.series[0].points.map((region) => {
+      if (region.value == null) {
+        removeList.push(region);
+      }
+    });
+    removeList.map((region) => {
+      region.remove(false);
+    });
+  };
+
   const createConditionsMap = (regions, baseMap, container, meta, filter) => {
     return new Highcharts.mapChart(container, {
       chart: {
@@ -200,8 +212,9 @@ export const ngtlConditionsMap = () => {
         animation: false,
         events: {
           load: function () {
-            this.mapZoom(0.4, -1267305, -1841405);
             const chart = this;
+            removeNoConditions(chart);
+            chart.mapZoom(0.4, -1267305, -1841405);
             let text = `<b>Map Instructions:</b>`;
             text += `<ol><li><i>Click on a region to view condition info box</i></li>`;
             text += `<li><i>Click map area outside of regions to hide info box</i></li></ol>`;
@@ -214,7 +227,7 @@ export const ngtlConditionsMap = () => {
               })
               .attr({
                 zIndex: 8,
-                padding: 8,
+                padding: 1,
                 r: 3,
                 fill: "white",
               })
@@ -222,7 +235,7 @@ export const ngtlConditionsMap = () => {
             label.align(
               Highcharts.extend(label.getBBox(), {
                 align: "left",
-                x: -15, // offset
+                x: -5, // offset
                 verticalAlign: "top",
                 y: 0, // offset
               }),
@@ -336,30 +349,35 @@ export const ngtlConditionsMap = () => {
       ngtlRegions,
       conditionsFilter
     );
-    chart.update({
-      plotOptions: {
-        series: {
-          point: {
-            events: {
-              click: function () {
-                popUp(
-                  this,
-                  conditionsFilter,
-                  selectedMeta(meta, conditionsFilter)
-                );
+    chart.update(
+      {
+        plotOptions: {
+          series: {
+            point: {
+              events: {
+                click: function () {
+                  popUp(
+                    this,
+                    conditionsFilter,
+                    selectedMeta(meta, conditionsFilter)
+                  );
+                },
               },
             },
           },
         },
+        series: [regionSeries, baseMap],
+        colorAxis: colorRange(conditionsFilter),
       },
-      series: [regionSeries, baseMap],
-      colorAxis: colorRange(conditionsFilter),
-    });
+      false
+    );
+
     chart.mapZoom(undefined, undefined, undefined);
     if (conditionsFilter.column == "Closed") {
       chart.mapZoom(0.4, -704903, -1841405);
     } else {
       chart.mapZoom(0.4, -1267305, -1841405);
     }
+    removeNoConditions(chart);
   });
 };

@@ -16,12 +16,10 @@
   max-width: 1000px;
   margin: auto;
 }
-
 .h2 {
   font-family: Lato, sans-serif;
   font-size: 1.8em;
 }
-
 /* styles for negotiated settlements section */
 .tooltip-settlements span {
   background-color: white;
@@ -35,7 +33,6 @@
 .container-chart-large {
   min-height: 400px;
 }
-
 /* styles for conditions compliance section */
 @media only screen and (max-height: 650px) {
   .container-chart-map {
@@ -48,7 +45,6 @@
     max-height: 450px;
   }
 }
-
 @media only screen and (min-height: 650px) {
   .container-chart-map {
     min-height: 600px;
@@ -60,7 +56,6 @@
     max-height: 550px;
   }
 }
-
 .conditions-summary-value {
   font-family: Arial;
   font-size: 17px;
