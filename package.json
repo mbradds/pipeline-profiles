@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack-dev-server --output-public-path=/dist/",
-    "data": " sh ./src/data_management/prepare_data.sh",
-    "maps": "sh ./src/data_management/simplify_maps.sh"
+    "data-linux": "sh ./src/data_management/prepare_data.sh",
+    "maps-linux": "sh ./src/data_management/simplify_maps.sh"
   },
   "author": "",
   "license": "ISC",

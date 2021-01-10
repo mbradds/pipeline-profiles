@@ -1,6 +1,9 @@
 import { cerPalette, sortJson } from "../modules/util.js";
 import "core-js/proposals/string-replace-all";
+import { mapInits } from "./hcMapZooms.js";
 
+//TOOD: create method that reads meta.summary and determines if "In Progress" has conditions and should be the default.
+//this method would determine which button/map/mapZoom to start with.
 export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
   const conditionsFilter = { column: "In Progress" };
   const fillSummary = (summary) => {
@@ -117,6 +120,15 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     return newMeta;
   };
 
+  const getMapZoom = (mapInits, meta) => {
+    let zooms = mapInits[meta.summary.companyName];
+    if (zooms == undefined) {
+      return { "In Progress": [undefined, undefined, undefined] };
+    } else {
+      return zooms;
+    }
+  };
+
   const colorRange = (filters) => {
     if (filters.column == "In Progress") {
       return {
@@ -201,20 +213,14 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     });
   };
 
-  // const findZoom = (chart) => {
-  //   let rSeries = chart.series[0];
-  //   let [maxX, minX, maxY, minY] = [
-  //     rSeries.maxX,
-  //     rSeries.minX,
-  //     rSeries.maxY,
-  //     rSeries.minY,
-  //   ];
-  //   let x = (Math.abs(maxX) + Math.abs(minX)) / 2;
-  //   let y = (Math.abs(maxY) + Math.abs(minY)) / 2;
-  //   chart.mapZoom(0.4, x * -1, y * -1);
-  // };
-
-  const createConditionsMap = (regions, baseMap, container, meta, filter) => {
+  const createConditionsMap = (
+    regions,
+    baseMap,
+    container,
+    meta,
+    filter,
+    zooms
+  ) => {
     return new Highcharts.mapChart(container, {
       chart: {
         panning: false,
@@ -223,7 +229,11 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
           load: function () {
             const chart = this;
             removeNoConditions(chart);
-            chart.mapZoom(0.4, -1267305, -1841405);
+            chart.mapZoom(
+              zooms["In Progress"][0],
+              zooms["In Progress"][1],
+              zooms["In Progress"][2]
+            );
             let text = `<b>Map Instructions:</b>`;
             text += `<ol><li><i>Click on a region to view condition info box</i></li>`;
             text += `<li><i>Click map area outside of regions to hide info box</i></li></ol>`;
@@ -333,12 +343,14 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     conditionsFilter
   );
 
+  var zooms = getMapZoom(mapInits, meta);
   var chart = createConditionsMap(
     regionSeries,
     baseMap,
     "container-map",
     meta,
-    conditionsFilter
+    conditionsFilter,
+    zooms
   );
 
   $("#conditions-nav-group button").on("click", function () {
@@ -383,9 +395,13 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     chart.mapZoom(undefined, undefined, undefined);
     removeNoConditions(chart);
     if (conditionsFilter.column == "Closed") {
-      chart.mapZoom(0.4, -704903, -1841405);
+      chart.mapZoom(zooms["Closed"][0], zooms["Closed"][1], zooms["Closed"][2]);
     } else {
-      chart.mapZoom(0.4, -1267305, -1841405);
+      chart.mapZoom(
+        zooms["In Progress"][0],
+        zooms["In Progress"][1],
+        zooms["In Progress"][2]
+      );
     }
   });
 };

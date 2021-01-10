@@ -1,5 +1,5 @@
 import { generalTheme } from "../modules/themes.js";
-import ngtlRegions from "../conditions/NOVAGasTransmissionLtd/economicRegions.json";
+import econRegions from "../conditions/NOVAGasTransmissionLtd/economicRegions.json";
 import canadaMap from "../conditions/base_maps/base_map.json";
 import mapMetaData from "../conditions/NOVAGasTransmissionLtd/mapMetadata.json";
 import meta from "../conditions/NOVAGasTransmissionLtd/summaryMetadata.json";
@@ -14,4 +14,4 @@ let warningParams = {
 };
 ieWarn(warningParams);
 generalTheme();
-conditionsMap(ngtlRegions, canadaMap, mapMetaData, meta);
+conditionsMap(econRegions, canadaMap, mapMetaData, meta);

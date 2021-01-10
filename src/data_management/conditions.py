@@ -43,6 +43,7 @@ def conditions_on_map(df, shp, folder_name):
 def metadata(df, folder_name):
     # df contains the condition data for the spcecific company
     meta = {}
+
     # get the summary stats for the boxes above the map
     status = df[['condition id', 'Condition Status']].copy()
     status = status.groupby(['Condition Status']).size().reset_index()
@@ -57,6 +58,9 @@ def metadata(df, folder_name):
 
     # get the date the data was pulled
     status['updated'] = date.today().strftime("%b %d, %Y")
+
+    # get the current company name
+    status['companyName'] = list(df['Company'])[0]
     meta['summary'] = status
 
     # once the status summary is calculated, blank locations and null locations can be removed
