@@ -123,7 +123,10 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
   const getMapZoom = (mapInits, meta) => {
     let zooms = mapInits[meta.summary.companyName];
     if (zooms == undefined) {
-      return { "In Progress": [undefined, undefined, undefined] };
+      return {
+        "In Progress": [undefined, undefined, undefined],
+        Closed: [undefined, undefined, undefined],
+      };
     } else {
       return zooms;
     }
@@ -287,7 +290,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
       },
 
       mapNavigation: {
-        enabled: false,
+        enabled: true,
       },
 
       plotOptions: {
@@ -324,6 +327,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
   let titleElement = document.getElementById("conditions-map-title");
   setTitle(titleElement, conditionsFilter);
   fillSummary(meta.summary);
+  var zooms = getMapZoom(mapInits, meta);
 
   const baseMap = {
     name: "Canada",
@@ -343,7 +347,6 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     conditionsFilter
   );
 
-  var zooms = getMapZoom(mapInits, meta);
   var chart = createConditionsMap(
     regionSeries,
     baseMap,
@@ -353,6 +356,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     zooms
   );
 
+  //change condition type and update map+title
   $("#conditions-nav-group button").on("click", function () {
     $(".btn-conditions > .btn").removeClass("active");
     $(this).addClass("active");

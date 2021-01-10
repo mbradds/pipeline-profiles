@@ -5,7 +5,6 @@ from util import saveJson, normalize_text
 import geopandas as gpd
 from datetime import date
 import numpy as np
-print('starting conditions')
 script_dir = os.path.dirname(__file__)
 
 
@@ -120,12 +119,19 @@ def metadata(df, folder_name):
 def process_conditions(remote=False, nonStandard=True):
     if remote:
         link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
-        # conditions_path = os.path.join(script_dir, 'conditions_data/', 'conditions.csv')
         print('downloading remote file')
-        df = pd.read_csv(link, sep='\t', lineterminator='\r', encoding="UTF-16", error_bad_lines=False)
+        df = pd.read_csv(link,
+                         sep='\t',
+                         lineterminator='\r',
+                         encoding="UTF-16",
+                         error_bad_lines=False)
     else:
         print('reading local file')
-        df = pd.read_csv("./raw_data/conditions.csv", sep='\t', lineterminator='\r', encoding="UTF-16", error_bad_lines=False)
+        df = pd.read_csv("./raw_data/conditions.csv",
+                         sep='\t',
+                         lineterminator='\r',
+                         encoding="UTF-16",
+                         error_bad_lines=False)
 
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
@@ -149,7 +155,7 @@ def process_conditions(remote=False, nonStandard=True):
 
     df = df[df['Short Project Name'] != "SAM/COM"]
 
-    company_files = ['NOVA Gas Transmission Ltd.']
+    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
     regions_map = import_simplified()
 
     for company in company_files:
@@ -184,6 +190,3 @@ def company_names(df):
 
 if __name__ == "__main__":
     shp = process_conditions(remote=False)
-
-
-

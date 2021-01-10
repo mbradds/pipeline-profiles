@@ -1,9 +1,17 @@
-import { generalTheme } from "../modules/themes.js";
+// ngtl
 import econRegions from "../conditions/NOVAGasTransmissionLtd/economicRegions.json";
 import canadaMap from "../conditions/base_maps/base_map.json";
 import mapMetaData from "../conditions/NOVAGasTransmissionLtd/mapMetadata.json";
 import meta from "../conditions/NOVAGasTransmissionLtd/summaryMetadata.json";
+
+// TC Mainline
+// import econRegions from "../conditions/TransCanadaPipeLinesLimited/economicRegions.json";
+// import canadaMap from "../conditions/base_maps/base_map.json";
+// import mapMetaData from "../conditions/TransCanadaPipeLinesLimited/mapMetadata.json";
+// import meta from "../conditions/TransCanadaPipeLinesLimited/summaryMetadata.json";
+
 import { conditionsMap } from "../conditions/hcConditionsMap.js";
+import { generalTheme } from "../modules/themes.js";
 import ieWarn from "ie-gang";
 let warningParams = {
   message:
