@@ -1,6 +1,6 @@
 import { cerPalette, sortJson } from "../modules/util.js";
 import "core-js/proposals/string-replace-all";
-import { mapInits } from "./hcMapZooms.js";
+import { mapInits } from "./hcMapConfig.js";
 
 //TOOD: create method that reads meta.summary and determines if "In Progress" has conditions and should be the default.
 //this method would determine which button/map/mapZoom to start with.
@@ -121,7 +121,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
   };
 
   const getMapZoom = (mapInits, meta) => {
-    let zooms = mapInits[meta.summary.companyName];
+    let zooms = mapInits.zooms[meta.summary.companyName];
     if (zooms == undefined) {
       return {
         "In Progress": [undefined, undefined, undefined],
@@ -276,13 +276,6 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
               }
             }
           },
-          redraw: function () {
-            //this is useful for determining the on load map zoom scale
-            // var yScale = this.yAxis[0].getExtremes();
-            // var xScale = this.xAxis[0].getExtremes();
-            // console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
-            // console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
-          },
         },
       },
       credits: {
@@ -290,7 +283,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
       },
 
       mapNavigation: {
-        enabled: true,
+        enabled: false,
       },
 
       plotOptions: {
@@ -311,7 +304,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
 
       tooltip: {
         zIndex: 0,
-        useHTML: true,
+        useHTML: false,
         formatter: function () {
           let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b><br>`;
           toolText += `<i>Click on region to view summary</i>`;
@@ -321,6 +314,29 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
       colorAxis: colorRange(filter),
       series: [regions, baseMap],
     });
+  };
+
+  const chartMode = (chart, mapInits) => {
+    if (mapInits.mode == "development") {
+      chart.update({
+        chart: {
+          panning: true,
+          events: {
+            redraw: function () {
+              // this is useful for determining the on load map zoom scale
+              var yScale = this.yAxis[0].getExtremes();
+              var xScale = this.xAxis[0].getExtremes();
+              console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
+              console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
+            },
+          },
+        },
+        mapNavigation: {
+          enabled: true,
+        },
+      });
+    }
+    return chart;
   };
 
   //main conditions map
@@ -355,6 +371,9 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     conditionsFilter,
     zooms
   );
+
+  //allow zoom and pan when in development mode
+  chart = chartMode(chart, mapInits);
 
   //change condition type and update map+title
   $("#conditions-nav-group button").on("click", function () {
