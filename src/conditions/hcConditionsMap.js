@@ -107,6 +107,10 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
       chart.customTooltip.destroy();
       chart.customTooltip = undefined;
     }
+    var definitionDiv = document.getElementById("conditions-definitions");
+    if (definitionDiv.style.display === "block") {
+      definitionDiv.style.display = "none";
+    }
   };
 
   const selectedMeta = (m, filter) => {
@@ -165,8 +169,8 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
     }
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} Economic Region</b></p>`;
     text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
-    text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-style: italic;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
+    text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
     text += `</table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
     text += generateTable(meta, e.id, "themes", filter);
@@ -237,20 +241,21 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
               zooms["In Progress"][1],
               zooms["In Progress"][2]
             );
-            let text = `<b>Map Instructions:</b>`;
-            text += `<ol><li><i>Click on a region to view condition info box</i></li>`;
-            text += `<li><i>Click map area outside of regions to hide info box</i></li></ol>`;
+            let text = `<section class="alert alert-warning" style="padding:4px">`;
+            text += `<h4>Map Instructions:</h4>`;
+            text += `<ol><li>Click on a region to view conditions info</li>`;
+            text += `<li>Click map area outside of regions to hide info</li></ol>`;
+            text += `</section>`;
             var label = chart.renderer
               .label(text, null, null, null, null, null, true)
               .css({
-                width: "315px",
+                width: "325px",
                 margin: 0,
               })
               .attr({
                 zIndex: 8,
-                padding: 1,
+                padding: 0,
                 r: 3,
-                fill: "white",
               })
               .add(chart.rGroup);
             label.align(
@@ -307,7 +312,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
         useHTML: false,
         formatter: function () {
           let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b><br>`;
-          toolText += `<i>Click on region to view summary</i>`;
+          toolText += `Click on region to view summary`;
           return toolText;
         },
       },

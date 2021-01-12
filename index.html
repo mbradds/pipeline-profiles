@@ -17,25 +17,6 @@
     <div class="header">
       <p>For CER internal use. Do not share externally.</p>
     </div>
-    <!-- negotiated settlements-->
-    <!-- <div class="container chart-large">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-12">
-              <div id="settle_title" class="figure-title">
-                Negotiated Settlements
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="container-chart-large" id="container_settlements"></div>
-        </div>
-      </div>
-    </div> -->
 
     <div class="row">
       <div class="col-md-12">
@@ -44,9 +25,9 @@
     </div>
 
     <!-- conditions map -->
-    <div class="container chart-large">
+    <div class="container chart-large" id="conditions-dashboard">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-12">
           <h2 id="conditions-map-title">
             Conditions Compliance - In Progress Conditions by Region
           </h2>
@@ -55,7 +36,7 @@
       <div class="mrgn-tp-sm"></div>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-12">
           <div class="btn-group btn-group-justified" id="conditions-nav-group">
             <div class="btn-group btn-conditions">
               <button
@@ -98,19 +79,25 @@
           </div>
         </div>
       </div>
+      <!-- <div class="row" style="margin: auto"> -->
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-12">
           <div class="container-chart-map" id="container-map"></div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <div id="conditions-definitions"></div>
+        <div class="col-md-12 col-lg-12">
+          <div
+            class="alert alert-info"
+            id="conditions-definitions"
+            style="display: none"
+          ></div>
         </div>
       </div>
     </div>
     <div class="mrgn-tp-xl"></div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script type="text/javascript">
       function themeClick(e) {
         let definitions = {
@@ -152,18 +139,21 @@
             "Conditions that ensure projects begin within a specific period of time.",
         };
         var definitionDiv = document.getElementById("conditions-definitions");
+        if (definitionDiv.style.display === "none") {
+          definitionDiv.style.display = "block";
+        }
         var themes = e.innerText.split(",");
-        var definitionsHTML = "";
+        var definitionsHTML = "<h4>Theme Definitions:</h4>";
         for (var i = 0; i < themes.length; i++) {
           var t = themes[i].trim();
-          definitionsHTML += "<h4>" + t + "</h4>";
+          definitionsHTML += "<b>" + t + "</b>";
           definitionsHTML += "<p>" + definitions[t] + "</p>";
         }
         definitionDiv.innerHTML = definitionsHTML;
+        var divPosition = $("#conditions-definitions").offset();
+        $("html, body").animate({ scrollTop: divPosition.top }, "slow");
       }
     </script>
-    <div class="mrgn-tp-xl"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="./GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/modules/map.js"></script>

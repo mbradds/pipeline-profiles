@@ -17,7 +17,7 @@
   margin: auto;
 }
 .h2 {
-  font-family: Lato, sans-serif;
+  font-family: Arial;
   font-size: 1.8em;
 }
 /* styles for negotiated settlements section */
@@ -29,9 +29,6 @@
 .chart-large {
   max-width: 1000px;
   margin: auto;
-}
-.container-chart-large {
-  min-height: 400px;
 }
 /* styles for conditions compliance section */
 @media only screen and (max-height: 650px) {
@@ -59,7 +56,6 @@
 .conditions-summary-value {
   font-family: Arial;
   font-size: 17px;
-  font-style: italic;
   font-weight: bold;
   color: #42464b;
   text-align: center;
@@ -90,7 +86,6 @@
 }
 .conditions-table td:nth-child(2) {
   font-family: Arial;
-  font-style: italic;
   font-weight: bold;
   color: #42464b;
   text-align: center;
