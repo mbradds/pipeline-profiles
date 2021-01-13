@@ -9,9 +9,12 @@ import numpy as np
 script_dir = os.path.dirname(__file__)
 
 
-def orca_regdocs_links():
-    df = execute_sql(script_dir,'projects_regdocs.sql')
-    df.to_csv('projects_regdocs.csv',index=False)
+def orca_regdocs_links(sql=False):
+    if sql:
+        df = execute_sql(script_dir, 'projects_regdocs.sql')
+        df.to_csv('raw_data/projects_regdocs.csv', index=False)
+    else:
+        df = pd.read_csv('raw_data/projects_regdocs.csv')
     return df
 
 
@@ -73,11 +76,11 @@ def metadata(df, folder_name):
     df = df[df['Location'] != "nan"]
 
     # get the unique project names sorted by number of open conditions
-    project = df[['condition id', 'Short Project Name', 'id', 'Condition Status']].copy()
-    project = project.groupby(['Short Project Name', 'id', 'Condition Status']).size().reset_index()
+    project = df[['condition id', 'Short Project Name', 'id', 'Condition Status', 'Regdocs']].copy()
+    project = project.groupby(['Short Project Name', 'id', 'Condition Status', 'Regdocs']).size().reset_index()
     project = pd.pivot_table(project,
                              values=0,
-                             index=['Short Project Name', 'id'],
+                             index=['Short Project Name', 'id', 'Regdocs'],
                              columns='Condition Status').reset_index()
 
     project = project.sort_values(by=['In Progress', 'id'], ascending=False)
@@ -124,6 +127,32 @@ def metadata(df, folder_name):
 
 
 def process_conditions(remote=False, nonStandard=True):
+
+    def add_links(df_c, df_links):
+        # add in regdocs links
+        # df_c = df_c.merge(df_links,
+        #                   how='left',
+        #                   left_on='Project Name',
+        #                   right_on='EnglishProjectName'
+        #                   )
+        # links_delete = ['EnglishProjectName', 'ProjectShortName', 'CS10FolderName']
+        # for delete in links_delete:
+        #     del df_c[delete]
+        # end regdocs links
+
+        l = {}
+        for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
+            l[name] = folder
+
+        regdocs = []
+        for proj in df_c['Project Name']:
+            try:
+                regdocs.append(l[proj])
+            except KeyError:
+                regdocs.append(np.nan)
+        df_c['Regdocs'] = regdocs
+        return df_c
+
     if remote:
         link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
         print('downloading remote file')
@@ -148,8 +177,7 @@ def process_conditions(remote=False, nonStandard=True):
         df = df[df['Condition Type'] != 'Standard']
 
     df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
-    delete_cols = ['Project Name',
-                   'Condition',
+    delete_cols = ['Condition',
                    'Condition Phase',
                    'Instrument Activity',
                    'Condition Type',
@@ -162,8 +190,10 @@ def process_conditions(remote=False, nonStandard=True):
 
     df = df[df['Short Project Name'] != "SAM/COM"]
 
-    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
     regions_map = import_simplified()
+    links = orca_regdocs_links()
+
+    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
@@ -171,8 +201,8 @@ def process_conditions(remote=False, nonStandard=True):
             os.makedirs("../conditions/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
+        df_c = add_links(df_c, links)
         df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
-
         expanded_locations = []
         for unique in df_c['condition id']:
             row = df_c[df_c['condition id'] == unique].copy()
@@ -196,5 +226,11 @@ def company_names(df):
 
 
 if __name__ == "__main__":
-    df = orca_regdocs_links()
-    #shp = process_conditions(remote=False)
+    df = process_conditions(remote=False)
+    #links = orca_regdocs_links()
+
+
+#%%
+
+
+

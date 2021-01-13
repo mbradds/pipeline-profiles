@@ -24,10 +24,12 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
       projectsHTML += `<caption style="text-align:left;">Projects with ${filter.column} Conditions (click for REGDOCS link):</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion) {
-          let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${proj[
-            "Short Project Name"
-          ].replaceAll(" ", "%20")}`;
-          projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["value"]}</td></tr>`;
+          if (proj.Regdocs !== undefined) {
+            let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
+            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["value"]}</td></tr>`;
+          } else {
+            projectsHTML += `<tr><td>${proj["Short Project Name"]}</td><td>${proj["value"]}</td></tr>`;
+          }
         }
       });
     } else if (tableName == "themes") {
@@ -59,6 +61,7 @@ export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
           return {
             "Short Project Name": row["Short Project Name"],
             id: row.id,
+            Regdocs: row.Regdocs,
             value: row[filter.column],
           };
         }
