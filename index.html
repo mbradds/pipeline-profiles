@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="tabs.css" />
     <link href="./GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./GCWeb/css/theme.min.css" />
     <noscript
@@ -11,110 +12,190 @@
     /></noscript>
   </head>
   <body>
-    <div class="header">
-      <h1>Pipeline Profiles: NGTL Prototype</h1>
-    </div>
-    <div class="header">
-      <p>For CER internal use. Do not share externally.</p>
-    </div>
-
-    <!-- <div class="wb-tabs">
-      <div class="tabpanels">
-        <details id="details-panel1" open="open">
-          <summary>Condition Compliance</summary>
-          <div class="row">
-            <div class="col-md-12">
-              <div id="container" style="width: 500px"></div>
-            </div>
-          </div>
-        </details>
-        <details id="details-panel2">
-          <summary>Pipeline Financial Info</summary>
-          <div>get a stick 2</div>
-        </details>
-      </div>
-    </div> -->
-
     <div class="row">
       <div class="col-md-12">
         <div id="ie-warning"></div>
       </div>
     </div>
 
-    <!-- conditions map -->
-    <div class="container chart-large" id="conditions-dashboard">
-      <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <h2 id="conditions-map-title">
-            Conditions Compliance - In Progress Conditions by Region
-          </h2>
-        </div>
-      </div>
-      <div class="mrgn-tp-sm"></div>
+    <div
+      class="w3-sidebar w3-bar-block w3-light-grey w3-card"
+      style="width: 250px"
+    >
+      <h5 class="w3-bar-item">Pipeline Profiles: NGTL</h5>
+      <button
+        class="w3-bar-item w3-button tablink"
+        onclick="openTab(event, 'condition-compliance')"
+        id="defaultClick"
+      >
+        Condition Compliance
+      </button>
+      <button
+        class="w3-bar-item w3-button tablink"
+        onclick="openTab(event, 'pipeline-incidents')"
+      >
+        Pipeline Incidents
+      </button>
+      <button
+        class="w3-bar-item w3-button tablink"
+        onclick="openTab(event, 'contaminated-sites')"
+      >
+        Contaminated Sites/Remediation
+      </button>
+      <button
+        class="w3-bar-item w3-button tablink"
+        onclick="openTab(event, 'o&m-activities')"
+      >
+        Operations and Maintenace Activities
+      </button>
+      <button
+        class="w3-bar-item w3-button tablink"
+        onclick="openTab(event, 'unauthorized-activities')"
+      >
+        Unauthorized Activities
+      </button>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <div class="btn-group btn-group-justified" id="conditions-nav-group">
-            <div class="btn-group btn-conditions">
-              <button
-                type="button"
-                class="btn btn-default active"
-                value="In Progress"
-              >
-                <div class="conditions-summary-title">
-                  Total In-Progress Conditions:
-                </div>
-                <div
-                  class="conditions-summary-value"
-                  id="in-progress-summary"
-                ></div>
-              </button>
+    <div style="margin-left: 250px">
+      <!-- <div class="w3-padding">
+        Pipeline Profiles Safety and Environment Prototypes
+      </div> -->
+      <div
+        id="condition-compliance"
+        class="w3-container profile-section"
+        style="display: none"
+      >
+        <!-- conditions map -->
+        <div class="container chart-large" id="conditions-dashboard">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <h2 id="conditions-map-title">
+                Conditions Compliance - In Progress Conditions by Region
+              </h2>
             </div>
-            <div class="btn-group btn-conditions">
-              <button type="button" class="btn btn-default" value="Closed">
-                <div class="conditions-summary-title">
-                  Total Closed Conditions:
-                </div>
-                <div class="conditions-summary-value" id="closed-summary"></div>
-              </button>
-            </div>
-            <div class="btn-group btn-conditions">
-              <button
-                type="button"
-                class="btn btn-default disabled"
-                value="not-shown"
+          </div>
+          <div class="mrgn-tp-sm"></div>
+
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div
+                class="btn-group btn-group-justified"
+                id="conditions-nav-group"
               >
-                <div class="conditions-summary-title">
-                  No Geographic Location (not shown):
+                <div class="btn-group btn-conditions">
+                  <button
+                    type="button"
+                    class="btn btn-default active"
+                    value="In Progress"
+                  >
+                    <div class="conditions-summary-title">
+                      Total In-Progress Conditions:
+                    </div>
+                    <div
+                      class="conditions-summary-value"
+                      id="in-progress-summary"
+                    ></div>
+                  </button>
                 </div>
-                <div
-                  class="conditions-summary-value"
-                  id="no-location-summary"
-                ></div>
-              </button>
+                <div class="btn-group btn-conditions">
+                  <button type="button" class="btn btn-default" value="Closed">
+                    <div class="conditions-summary-title">
+                      Total Closed Conditions:
+                    </div>
+                    <div
+                      class="conditions-summary-value"
+                      id="closed-summary"
+                    ></div>
+                  </button>
+                </div>
+                <div class="btn-group btn-conditions">
+                  <button
+                    type="button"
+                    class="btn btn-default disabled"
+                    value="not-shown"
+                  >
+                    <div class="conditions-summary-title">
+                      No Geographic Location (not shown):
+                    </div>
+                    <div
+                      class="conditions-summary-value"
+                      id="no-location-summary"
+                    ></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div class="container-chart-map" id="container-map"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div
+                class="alert alert-info"
+                id="conditions-definitions"
+                style="display: none"
+              ></div>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="row" style="margin: auto"> -->
-      <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <div class="container-chart-map" id="container-map"></div>
-        </div>
+
+      <div
+        id="pipeline-incidents"
+        class="w3-container profile-section"
+        style="display: none"
+      >
+        Coming Soon!
       </div>
-      <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <div
-            class="alert alert-info"
-            id="conditions-definitions"
-            style="display: none"
-          ></div>
-        </div>
+
+      <div
+        id="contaminated-sites"
+        class="w3-container profile-section"
+        style="display: none"
+      >
+        Coming Soon!
+      </div>
+
+      <div
+        id="o&m-activities"
+        class="w3-container profile-section"
+        style="display: none"
+      >
+        Coming Soon!
+      </div>
+
+      <div
+        id="unauthorized-activities"
+        class="w3-container profile-section"
+        style="display: none"
+      >
+        Coming Soon!
       </div>
     </div>
-    <div class="mrgn-tp-xl"></div>
 
+    <div class="mrgn-tp-xl"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script>
+      function openTab(evt, sectionName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("profile-section");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(sectionName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+      }
+      document.addEventListener("DOMContentLoaded", function (event) {
+        document.getElementById("defaultClick").click();
+      });
+    </script>
     <script type="text/javascript">
       function themeClick(e) {
         let definitions = {
