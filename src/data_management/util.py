@@ -1,6 +1,35 @@
+from connection import cer_connection
 import pandas as pd
 import os
 from datetime import date
+import io
+
+
+def execute_sql(path,query_name):
+    query_path = os.path.join(path, query_name)
+    conn, engine = cer_connection(db='tsql23cap')
+
+    def utf16open(query_path):
+        file = io.open(query_path, mode='r', encoding="utf-16", errors='ignore')
+        query = file.read()
+        file.close()
+        return query
+
+    def no_encoding_open(query_path):
+        file = io.open(query_path, mode='r', errors='ignore')
+        query = file.read()
+        file.close()
+        return query
+
+    try:
+        query = utf16open(query_path)
+    except:
+        query = no_encoding_open(query_path)
+
+    df = pd.read_sql_query(query, con=conn)
+    conn.close()
+
+    return df
 
 def normalize_dates(df,date_list):
     for date_col in date_list:

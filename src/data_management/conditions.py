@@ -1,3 +1,4 @@
+from util import execute_sql
 import pandas as pd
 import json
 import os
@@ -6,6 +7,12 @@ import geopandas as gpd
 from datetime import date
 import numpy as np
 script_dir = os.path.dirname(__file__)
+
+
+def orca_regdocs_links():
+    df = execute_sql(script_dir,'projects_regdocs.sql')
+    df.to_csv('projects_regdocs.csv',index=False)
+    return df
 
 
 def import_simplified(name='economic_regions.json'):
@@ -189,4 +196,5 @@ def company_names(df):
 
 
 if __name__ == "__main__":
-    shp = process_conditions(remote=False)
+    df = orca_regdocs_links()
+    #shp = process_conditions(remote=False)

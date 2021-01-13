@@ -5,4 +5,5 @@
 *.twbx
 *.twbr
 *.geojson
+connection.py
 node_modules
