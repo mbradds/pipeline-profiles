@@ -90,3 +90,15 @@
   color: #42464b;
   text-align: center;
 }
+/* incidents */
+#html,
+#body,
+#pipeline-incidents {
+  position: relative;
+  height: 100%;
+}
+#incident-map {
+  position: relative;
+  height: 500px;
+  width: 600px;
+}

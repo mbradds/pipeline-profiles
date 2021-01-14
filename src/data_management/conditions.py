@@ -129,17 +129,6 @@ def metadata(df, folder_name):
 def process_conditions(remote=False, nonStandard=True):
 
     def add_links(df_c, df_links):
-        # add in regdocs links
-        # df_c = df_c.merge(df_links,
-        #                   how='left',
-        #                   left_on='Project Name',
-        #                   right_on='EnglishProjectName'
-        #                   )
-        # links_delete = ['EnglishProjectName', 'ProjectShortName', 'CS10FolderName']
-        # for delete in links_delete:
-        #     del df_c[delete]
-        # end regdocs links
-
         l = {}
         for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
             l[name] = folder
@@ -227,10 +216,3 @@ def company_names(df):
 
 if __name__ == "__main__":
     df = process_conditions(remote=False)
-    #links = orca_regdocs_links()
-
-
-#%%
-
-
-
