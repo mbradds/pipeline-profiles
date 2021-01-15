@@ -155,16 +155,33 @@
       <div id="pipeline-incidents" class="w3-container profile-section">
         <div class="container chart-large" id="incidents-dashboard">
           <div class="mrgn-tp-lg"></div>
-          <div class="row">
+          <div class="row" style="width: 400px">
             <div class="col-md-12">
               <!-- add map buttons here -->
-              <button
-                class="btn btn-default"
-                id="toggle-incident-volume"
-                type="submit"
+              <div class="cerlabel">Select incident data:</div>
+              <div
+                class="btn-group btn-group-justified"
+                id="incident-data-type"
               >
-                Toggle incident release volume?
-              </button>
+                <div class="btn-group btn-incident-data-type">
+                  <button
+                    type="button"
+                    class="btn btn-default active"
+                    value="volume"
+                  >
+                    Incident Volume
+                  </button>
+                </div>
+                <div class="btn-group btn-incident-data-type">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    value="frequency"
+                  >
+                    Number of Incidents
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="mrgn-tp-sm"></div>

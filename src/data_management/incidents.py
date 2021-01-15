@@ -53,3 +53,5 @@ def process_incidents(remote=False):
 
 if __name__ == '__main__':
     df = process_incidents(remote=False)
+    print(set(df['Substance']))
+    print(set(df['What Happened']))
