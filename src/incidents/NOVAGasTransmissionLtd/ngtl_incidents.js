@@ -64,7 +64,7 @@ export const ngtlIncidents = () => {
     // .on("mouseout", resetHighlight);
   }
 
-  function processIncidents(data, leaf) {
+  function processIncidents(data, thisMap) {
     let allCircles = data.map((row) => {
       return addCircle(
         row.Latitude,
@@ -75,16 +75,17 @@ export const ngtlIncidents = () => {
         row
       );
     });
-    let circles = L.featureGroup(allCircles).addTo(leaf);
-    leaf.on("zoom", function (e) {
-      updateRadius(leaf, circles, incDataFilters);
+    let circles = L.featureGroup(allCircles).addTo(thisMap.map);
+    thisMap.circles = circles;
+    thisMap.map.on("zoom", function (e) {
+      updateRadius(thisMap);
     });
-    return [leaf, circles];
+    // return thisMap;
   }
 
-  function updateRadius(leaf, circles, filters) {
-    if (filters.type == "volume") {
-      circles.eachLayer(function (layer) {
+  function updateRadius(thisMap) {
+    if (thisMap.filters.type == "volume") {
+      thisMap.circles.eachLayer(function (layer) {
         try {
           layer.setRadius(layer.options["minRadius"]);
         } catch (err) {
@@ -93,13 +94,13 @@ export const ngtlIncidents = () => {
         }
       });
     } else {
-      let currZoom = leaf.getZoom();
+      let currZoom = thisMap.map.getZoom();
       if (currZoom >= 7) {
-        circles.eachLayer(function (layer) {
+        thisMap.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius / 2);
         });
       } else if (currZoom <= 6) {
-        circles.eachLayer(function (layer) {
+        thisMap.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius);
         });
       }
@@ -117,43 +118,51 @@ export const ngtlIncidents = () => {
     });
   }
 
-  function findUser(leaf) {
-    return leaf
-      .locate({
-        //setView: true,
-        watch: true,
-      }) /* This will return map so you can do chaining */
-      .on("locationfound", function (e) {
-        var marker = L.marker([e.latitude, e.longitude]).bindPopup(
-          "Approximate location"
-        );
-        marker.id = "userLocation";
-        leaf.addLayer(marker);
-        leaf.options.user = { latitude: e.latitude, longitude: e.longitude };
-      })
-      .on("locationerror", function (e) {
-        console.log(e);
-      });
+  function findUser(thisMap) {
+    return new Promise((resolve, reject) => {
+      thisMap.map
+        .locate({
+          //setView: true,
+          watch: false,
+        }) /* This will return map so you can do chaining */
+        .on("locationfound", function (e) {
+          var marker = L.marker([e.latitude, e.longitude]).bindPopup(
+            "Approximate location"
+          );
+          marker.id = "userLocation";
+          thisMap.map.addLayer(marker);
+          thisMap.user.latitude = e.latitude;
+          thisMap.user.longitude = e.longitude;
+          resolve(thisMap);
+        })
+        .on("locationerror", function (e) {
+          reject(thisMap);
+        });
+    });
   }
 
-  function nearbyIncidents(leaf, circles) {}
+  async function waitOnUser(thisMap) {
+    return await findUser(thisMap);
+  }
 
-  // load inital dashboard
-  var incDataFilters = { type: "frequency" };
-  var imap = baseMap();
-  var circles;
-  [imap, circles] = processIncidents(incidentData, imap); // this false determines if volume is shown on load
-  let bounds = circles.getBounds();
-  imap.fitBounds(bounds, { maxZoom: 15 });
+  function nearbyIncidents(thisMap, range) {
+    console.log(thisMap.user);
+  }
+  const thisMap = {};
+  thisMap.map = baseMap();
+  thisMap.filters = { type: "frequency" };
+  thisMap.user = { latitude: undefined, longitude: undefined };
+  processIncidents(incidentData, thisMap); // this false determines if volume is shown on load
+  let bounds = thisMap.circles.getBounds();
+  thisMap.map.fitBounds(bounds, { maxZoom: 15 });
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
     $(".btn-incident-data-type > .btn").removeClass("active");
     $(this).addClass("active");
     var thisBtn = $(this);
     var btnValue = thisBtn.val();
-    incDataFilters.type = btnValue;
-
-    updateRadius(imap, circles, incDataFilters);
+    thisMap.filters.type = btnValue;
+    updateRadius(thisMap);
   });
 
   // user selection for finding nearby incidents
@@ -164,11 +173,14 @@ export const ngtlIncidents = () => {
     findIncidentBtn.value = slide.val();
   });
 
-  //var userLoc = null;
   $("#find-incidents-btn").on("click", function () {
     let range = document.getElementById("find-incidents-btn").value;
-    if (!imap.options.user) {
-      imap = findUser(imap, circles);
+    if (!thisMap.user.latitude && !thisMap.user.longitude) {
+      waitOnUser(thisMap).then((userAdded) => {
+        nearbyIncidents(userAdded, range);
+      });
+    } else {
+      nearbyIncidents(thisMap, range);
     }
   });
 };
