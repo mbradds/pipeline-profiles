@@ -1,4 +1,4 @@
-import { cerPalette } from "../../modules/util";
+import { cerPalette, currentDate } from "../../modules/util";
 import incidentData from "./incidents_map.json";
 const haversine = require("haversine");
 
@@ -10,7 +10,7 @@ export const ngtlIncidents = () => {
     "Fuel Gas": cerPalette["Sun"],
     "Lube Oil": cerPalette["hcPurple"],
   };
-  const minRadius = 15000;
+  const minRadius = 17000;
   function baseMap() {
     const baseZoom = [55, -119];
     var map = L.map("incident-map").setView(baseZoom, 5);
@@ -59,20 +59,12 @@ export const ngtlIncidents = () => {
     })
       .bindTooltip(toolTipText)
       .openTooltip();
-    // .on("click", circleClick)
+    //.on("click", circleClick)
     // .on("mouseover", highlightFeature)
     // .on("mouseout", resetHighlight);
   }
 
-  function processIncidents(data, leaf, applyVolume = false) {
-    // const radiusFunc = (applyVolume) => {
-    //   if (applyVolume) {
-    //     return (r) => r["Approximate Volume Released"] / 100;
-    //   } else {
-    //     return (r) => minRadius;
-    //   }
-    // };
-    // let findRadius = radiusFunc(applyVolume);
+  function processIncidents(data, leaf) {
     let allCircles = data.map((row) => {
       return addCircle(
         row.Latitude,
@@ -84,18 +76,34 @@ export const ngtlIncidents = () => {
       );
     });
     let circles = L.featureGroup(allCircles).addTo(leaf);
+    leaf.on("zoom", function (e) {
+      updateRadius(leaf, circles, incDataFilters);
+    });
     return [leaf, circles];
   }
 
-  function updateRadius(circles, r = "minRadius") {
-    circles.eachLayer(function (layer) {
-      try {
-        layer.setRadius(layer.options[r]);
-      } catch (err) {
-        layer.setRadius(0);
-        console.log("Error setting new radius");
+  function updateRadius(leaf, circles, filters) {
+    if (filters.type == "volume") {
+      circles.eachLayer(function (layer) {
+        try {
+          layer.setRadius(layer.options["minRadius"]);
+        } catch (err) {
+          layer.setRadius(0);
+          console.log("Error setting new radius");
+        }
+      });
+    } else {
+      let currZoom = leaf.getZoom();
+      if (currZoom >= 7) {
+        circles.eachLayer(function (layer) {
+          layer.setRadius(minRadius / 2);
+        });
+      } else if (currZoom <= 6) {
+        circles.eachLayer(function (layer) {
+          layer.setRadius(minRadius);
+        });
       }
-    });
+    }
   }
 
   function updateColor(circles, field) {
@@ -128,26 +136,24 @@ export const ngtlIncidents = () => {
       });
   }
 
-  function nearbyIncidents(leaf) {}
+  function nearbyIncidents(leaf, circles) {}
 
   // load inital dashboard
+  var incDataFilters = { type: "frequency" };
   var imap = baseMap();
   var circles;
-  [imap, circles] = processIncidents(incidentData, imap, false); // this false determines if volume is shown on load
+  [imap, circles] = processIncidents(incidentData, imap); // this false determines if volume is shown on load
   let bounds = circles.getBounds();
   imap.fitBounds(bounds, { maxZoom: 15 });
-  console.log(circles);
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
     $(".btn-incident-data-type > .btn").removeClass("active");
     $(this).addClass("active");
     var thisBtn = $(this);
     var btnValue = thisBtn.val();
-    if (btnValue == "volume") {
-      updateRadius(circles, "minRadius");
-    } else {
-      updateRadius(circles, "radius");
-    }
+    incDataFilters.type = btnValue;
+
+    updateRadius(imap, circles, incDataFilters);
   });
 
   // user selection for finding nearby incidents
@@ -162,10 +168,7 @@ export const ngtlIncidents = () => {
   $("#find-incidents-btn").on("click", function () {
     let range = document.getElementById("find-incidents-btn").value;
     if (!imap.options.user) {
-      imap = findUser(imap);
+      imap = findUser(imap, circles);
     }
-    //console.log(userLoc);
-    //imap = getUserLocation(imap);
-    //console.log(imap);
   });
 };
