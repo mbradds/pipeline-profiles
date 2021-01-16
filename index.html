@@ -195,36 +195,48 @@
             </div>
           </div>
           <div class="mrgn-tp-sm"></div>
-          <div class="row">
-            <div class="col-md-12">
-              <div id="incidents-near-me">
-                <div class="row">
-                  <div class="col-md-12 cerlabel">Find Incidents Near Me:</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <input
-                      name="html5shim-1"
-                      id="incident-range-slide"
-                      type="range"
-                      min="0"
-                      max="100"
-                      step="1"
-                      value="50"
-                    />
-                  </div>
-                  <div class="col-md-5">
-                    <button
-                      type="button"
-                      value="50"
-                      id="find-incidents-btn"
-                      class="btn btn-default btn-block"
-                    >
-                      Find Incidents within 50km
-                    </button>
-                  </div>
-                </div>
+          <div id="incidents-near-me">
+            <div class="row" style="margin: 0px">
+              <div class="col-md-12 cerlabel" id="find-incidents-title">
+                Find Incidents Near Me (100km):
               </div>
+            </div>
+            <div class="row" style="margin: 0px">
+              <div class="col-md-6 center-stuff">
+                <input
+                  name="html5shim-1"
+                  id="incident-range-slide"
+                  type="range"
+                  min="0"
+                  max="250"
+                  step="1"
+                  value="100"
+                />
+              </div>
+              <div class="col-md-3 center-stuff">
+                <button
+                  type="button"
+                  value="100"
+                  id="find-incidents-btn"
+                  class="btn btn-default"
+                >
+                  Find Incidents within 100km
+                </button>
+              </div>
+              <div class="col-md-3 center-stuff">
+                <button
+                  type="button"
+                  id="reset-incidents-btn"
+                  class="btn btn-default"
+                  disabled="disabled"
+                >
+                  Reset Map (show all Incidents)
+                </button>
+              </div>
+            </div>
+            <div class="mrgn-tp-md"></div>
+            <div class="row" style="margin: 0px">
+              <div class="col-md-12" id="nearby-flag"></div>
             </div>
           </div>
         </div>

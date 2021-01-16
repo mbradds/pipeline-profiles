@@ -107,16 +107,16 @@ export const ngtlIncidents = () => {
     }
   }
 
-  function updateColor(circles, field) {
-    circles.eachLayer(function (layer) {
-      try {
-        layer.setRadius(layer.options[r]);
-      } catch (err) {
-        layer.setRadius(0);
-        console.log("Error setting new radius");
-      }
-    });
-  }
+  // function updateColor(circles, field) {
+  //   circles.eachLayer(function (layer) {
+  //     try {
+  //       layer.setRadius(layer.options[r]);
+  //     } catch (err) {
+  //       layer.setRadius(0);
+  //       console.log("Error setting new radius");
+  //     }
+  //   });
+  // }
 
   function findUser(thisMap) {
     return new Promise((resolve, reject) => {
@@ -146,15 +146,52 @@ export const ngtlIncidents = () => {
   }
 
   function nearbyIncidents(thisMap, range) {
-    console.log(thisMap.user);
+    var nearbyCircles = [];
+    thisMap.circles.eachLayer(function (layer) {
+      let incLoc = layer._latlng;
+      let distance = haversine(thisMap.user, {
+        latitude: incLoc.lat,
+        longitude: incLoc.lng,
+      });
+      if (distance > range) {
+        layer.setStyle({ fillOpacity: 0 });
+      } else {
+        nearbyCircles.push(layer);
+        layer.setStyle({ fillOpacity: 0.7 });
+      }
+    });
+    var incidentFlag = document.getElementById("nearby-flag");
+    if (nearbyCircles.length > 0) {
+      thisMap.nearby = L.featureGroup(nearbyCircles);
+      let bounds = thisMap.nearby.getBounds();
+      thisMap.map.fitBounds(bounds, { maxZoom: 15 });
+      incidentFlag.innerHTML = `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4>Summary: Coming Soon!</section>`;
+    } else {
+      incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby incidents</h4>Try increasing the search range.</section>`;
+    }
   }
+
+  function resetMap(thisMap) {
+    thisMap.circles.eachLayer(function (layer) {
+      layer.setStyle({ fillOpacity: 0.7 });
+    });
+    thisMap.reZoom();
+  }
+
+  // main
   const thisMap = {};
   thisMap.map = baseMap();
   thisMap.filters = { type: "frequency" };
   thisMap.user = { latitude: undefined, longitude: undefined };
+  thisMap.nearby = undefined;
   processIncidents(incidentData, thisMap); // this false determines if volume is shown on load
-  let bounds = thisMap.circles.getBounds();
-  thisMap.map.fitBounds(bounds, { maxZoom: 15 });
+  thisMap.reZoom = function () {
+    let bounds = this.circles.getBounds();
+    this.map.fitBounds(bounds, { maxZoom: 15 });
+  };
+  thisMap.reZoom();
+  // end main
+
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
     $(".btn-incident-data-type > .btn").removeClass("active");
@@ -169,11 +206,15 @@ export const ngtlIncidents = () => {
   $("#incident-range-slide").on("change", function () {
     let slide = $(this);
     let findIncidentBtn = document.getElementById("find-incidents-btn");
+    let findIncidentTitle = document.getElementById("find-incidents-title");
     findIncidentBtn.innerText = `Find Incidents within ${slide.val()}km`;
+    findIncidentTitle.innerText = `Find Incidents Near Me (${slide.val()}km):`;
     findIncidentBtn.value = slide.val();
   });
 
+  // user selects a range to find nearby incidents
   $("#find-incidents-btn").on("click", function () {
+    document.getElementById("reset-incidents-btn").disabled = false;
     let range = document.getElementById("find-incidents-btn").value;
     if (!thisMap.user.latitude && !thisMap.user.longitude) {
       waitOnUser(thisMap).then((userAdded) => {
@@ -182,5 +223,12 @@ export const ngtlIncidents = () => {
     } else {
       nearbyIncidents(thisMap, range);
     }
+  });
+
+  // reset map after user has selected a range
+  $("#reset-incidents-btn").on("click", function () {
+    resetMap(thisMap);
+    document.getElementById("reset-incidents-btn").disabled = true;
+    document.getElementById("nearby-flag").innerHTML = ``;
   });
 };

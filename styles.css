@@ -104,9 +104,22 @@
 }
 #incidents-near-me {
   position: relative;
-  width: 600px;
+  /* width: 600px; */
   min-height: 100px;
   border-style: solid;
   border-color: dimgray;
   border-radius: 5px;
+}
+
+.row {
+  position: relative;
+  /* border: 3px solid red; */
+}
+.center-stuff {
+  height: 50px;
+  width: 100%;
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
