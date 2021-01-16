@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "all": "0.0.0",
+    "haversine": "^1.1.1",
     "ie-gang": "^1.0.3",
     "mapshaper": "^0.5.28"
   },

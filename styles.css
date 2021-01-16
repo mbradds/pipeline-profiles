@@ -102,3 +102,11 @@
   height: 500px;
   width: 600px;
 }
+#incidents-near-me {
+  position: relative;
+  width: 600px;
+  min-height: 100px;
+  border-style: solid;
+  border-color: dimgray;
+  border-radius: 5px;
+}
