@@ -46,7 +46,7 @@ def process_incidents(remote=False):
             os.makedirs("../incidents/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
-        saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json')
+        saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
 
     return df_c
 
@@ -54,4 +54,5 @@ def process_incidents(remote=False):
 if __name__ == '__main__':
     df = process_incidents(remote=False)
     print(set(df['Substance']))
-    print(set(df['What Happened']))
+    print(set(df['Status']))
+    #print(set(df['What Happened']))

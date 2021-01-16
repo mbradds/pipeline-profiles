@@ -44,7 +44,7 @@
         class="w3-bar-item w3-button tablink"
         onclick="openTab(event, 'condition-compliance')"
       >
-        Condition Compliance
+        Conditions Compliance
       </button>
       <button
         class="w3-bar-item w3-button tablink"
@@ -162,8 +162,14 @@
 
       <div id="pipeline-incidents" class="w3-container profile-section">
         <div class="container chart-large" id="incidents-dashboard">
-          <div class="mrgn-tp-lg"></div>
-          <div class="row" style="width: 400px">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <h2 id="incidents-map-title">
+                Pipeline Incidents With A Product Release
+              </h2>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12">
               <!-- add map buttons here -->
               <div class="cerlabel">Select incident data:</div>
@@ -190,8 +196,11 @@
           </div>
           <div class="mrgn-tp-sm"></div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-7">
               <div id="incident-map"></div>
+            </div>
+            <div class="col-md-5" style="border: 3px solid red">
+              <div id="incident-bar"></div>
             </div>
           </div>
           <div class="mrgn-tp-sm"></div>

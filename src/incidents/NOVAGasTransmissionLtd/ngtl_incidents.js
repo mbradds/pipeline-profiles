@@ -1,5 +1,6 @@
-import { cerPalette, currentDate } from "../../modules/util";
+import { cerPalette } from "../../modules/util";
 import incidentData from "./incidents_map.json";
+import { incidentBar } from "./ngtl_bar.js";
 const haversine = require("haversine");
 
 export const ngtlIncidents = () => {
@@ -10,7 +11,13 @@ export const ngtlIncidents = () => {
     "Fuel Gas": cerPalette["Sun"],
     "Lube Oil": cerPalette["hcPurple"],
   };
-  const minRadius = 17000;
+
+  const statusColors = {
+    "Initially Submitted": cerPalette["Flame"],
+    Closed: cerPalette["Night Sky"],
+    Submitted: cerPalette["Ocean"],
+  };
+
   function baseMap() {
     const baseZoom = [55, -119];
     var map = L.map("incident-map").setView(baseZoom, 5);
@@ -23,7 +30,7 @@ export const ngtlIncidents = () => {
     return map;
   }
 
-  function addCircle(x, y, color, fillColor, r, incidentParams = {}) {
+  function addCircle(x, y, color, fillColor, r, thisMap, incidentParams = {}) {
     const formatCommaList = (text) => {
       if (text.includes(",")) {
         let itemList = text.split(",");
@@ -39,7 +46,11 @@ export const ngtlIncidents = () => {
 
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; text-align:center;"><b>${incidentParams["Incident Number"]}</b></p>`;
     toolTipText += `<table>`;
-    toolTipText += `<tr><td>Substance:</td><td style="color:${fillColor}">&nbsp<b>${incidentParams.Substance}</b></td></tr>`;
+    toolTipText += `<tr><td>${
+      thisMap.field
+    }:</td><td style="color:${fillColor}">&nbsp<b>${
+      incidentParams[thisMap.field]
+    }</b></td></tr>`;
     toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${incidentParams["Approximate Volume Released"]} m3</b></td></tr>`;
     toolTipText += `<tr><td>What Happened?</td><td><b>${formatCommaList(
       incidentParams["What Happened"]
@@ -52,14 +63,14 @@ export const ngtlIncidents = () => {
       color: color,
       fillColor: fillColor,
       fillOpacity: 0.7,
-      radius: minRadius,
+      radius: thisMap.minRadius,
       minRadius: r,
       weight: 1,
       incidentParams,
     })
       .bindTooltip(toolTipText)
       .openTooltip();
-    //.on("click", circleClick)
+    // .on("click", circleClick)
     // .on("mouseover", highlightFeature)
     // .on("mouseout", resetHighlight);
   }
@@ -70,8 +81,9 @@ export const ngtlIncidents = () => {
         row.Latitude,
         row.Longitude,
         cerPalette["Cool Grey"],
-        substanceColors[row.Substance],
-        row["Approximate Volume Released"] / 100,
+        thisMap.colors[thisMap.field][row[thisMap.field]],
+        row["Approximate Volume Released"] / 100 + 2000,
+        thisMap,
         row
       );
     });
@@ -80,7 +92,6 @@ export const ngtlIncidents = () => {
     thisMap.map.on("zoom", function (e) {
       updateRadius(thisMap);
     });
-    // return thisMap;
   }
 
   function updateRadius(thisMap) {
@@ -97,11 +108,11 @@ export const ngtlIncidents = () => {
       let currZoom = thisMap.map.getZoom();
       if (currZoom >= 7) {
         thisMap.circles.eachLayer(function (layer) {
-          layer.setRadius(minRadius / 2);
+          layer.setRadius(thisMap.minRadius / 2);
         });
       } else if (currZoom <= 6) {
         thisMap.circles.eachLayer(function (layer) {
-          layer.setRadius(minRadius);
+          layer.setRadius(thisMap.minRadius);
         });
       }
     }
@@ -179,18 +190,21 @@ export const ngtlIncidents = () => {
   }
 
   // main
+  incidentBar(incidentData);
   const thisMap = {};
   thisMap.map = baseMap();
   thisMap.filters = { type: "frequency" };
   thisMap.user = { latitude: undefined, longitude: undefined };
   thisMap.nearby = undefined;
+  thisMap.minRadius = 17000;
+  thisMap.field = "Substance";
+  thisMap.colors = { Substance: substanceColors, Status: statusColors };
   processIncidents(incidentData, thisMap); // this false determines if volume is shown on load
   thisMap.reZoom = function () {
     let bounds = this.circles.getBounds();
     this.map.fitBounds(bounds, { maxZoom: 15 });
   };
   thisMap.reZoom();
-  // end main
 
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
