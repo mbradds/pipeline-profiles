@@ -1,15 +1,29 @@
 import { cerPalette } from "../../modules/util";
 
 export const incidentBar = (data, map) => {
-  function seriesify(name, series, colors) {
+  function seriesify(name, series, colors, yVal) {
+    const seriesProps = (colors) => {
+      if (colors) {
+        return function (key, value, name, yVal, colors) {
+          return {
+            name: key,
+            data: [{ name: name, y: value[yVal] }],
+            color: colors[name][key],
+          };
+        };
+      } else {
+        return function (key, value, name, yVal, colors) {
+          return { name: key, data: [{ name: name, y: value[yVal] }] };
+        };
+      }
+    };
+
+    var seriesParams = seriesProps(colors);
     let seriesList = [];
     for (const [key, value] of Object.entries(series[name])) {
-      seriesList.push({
-        name: key,
-        data: [{ name: name, y: value.count }],
-        color: colors[name][key],
-      });
+      seriesList.push(seriesParams(key, value, name, yVal, colors));
     }
+
     return seriesList;
   }
 
@@ -88,6 +102,9 @@ export const incidentBar = (data, map) => {
             inactive: {
               opacity: 1,
             },
+            hover: {
+              enabled: false,
+            },
           },
           events: {
             legendItemClick: function () {
@@ -96,7 +113,7 @@ export const incidentBar = (data, map) => {
           },
         },
       },
-      series: seriesify(name, series, colors),
+      series: seriesify(name, series, colors, "frequency"),
     });
   }
 
@@ -104,11 +121,11 @@ export const incidentBar = (data, map) => {
     var [substance, status, province] = [{}, {}, {}];
     const addToSeries = (series, row, name) => {
       if (series.hasOwnProperty(row[name])) {
-        series[row[name]].count += 1;
+        series[row[name]].frequency += 1;
         series[row[name]].volume += row["Approximate Volume Released"];
       } else {
         series[row[name]] = {
-          count: 1,
+          frequency: 1,
           volume: row["Approximate Volume Released"],
         };
       }
@@ -145,9 +162,9 @@ export const incidentBar = (data, map) => {
       },
     });
     let activeDiv = document.getElementById(div);
-    activeDiv.style.borderStyle = null;
-    activeDiv.style.borderColor = null;
-    activeDiv.style.borderRadius = null;
+    activeDiv.style.borderStyle = "solid";
+    activeDiv.style.borderColor = "white";
+    activeDiv.style.borderRadius = "5px";
     return chart;
   }
 
@@ -212,31 +229,38 @@ export const incidentBar = (data, map) => {
     }
   }
 
-  let series = prepareData(data);
   const bars = {
-    Substance: {
-      chart: createBar("substance-bar", "Substance", series, map.colors),
-      status: "activated",
-      div: "substance-bar",
-      name: "Substance",
-    },
-    Status: {
-      chart: createBar("status-bar", "Status", series, map.colors),
-      status: "deactivated",
-      div: "status-bar",
-      name: "Status",
-    },
-    Province: {
-      chart: createBar("province-bar", "Province", series, map.colors),
-      status: "deactivated",
-      div: "province-bar",
-      name: "Province",
-    },
-
+    barColors: undefined,
     currentActive: undefined,
-
+    barList: [],
     set active(newActive) {
       this.currentActive = newActive;
+    },
+
+    makeBar: function (barName, div, status) {
+      this[barName] = {
+        chart: createBar(div, barName, this.barSeries, this.barColors),
+        status: status,
+        div: div,
+        name: barName,
+      };
+      this.barList.push(this[barName]);
+    },
+
+    switchY: function (newY) {
+      this.barList.map((bar) => {
+        let newSeries = seriesify(
+          bar.name,
+          this.barSeries,
+          undefined,
+          //this.barColors,
+          newY
+        );
+
+        bar.chart.update({
+          series: newSeries,
+        });
+      });
     },
 
     deactivateBar: function (barName) {
@@ -245,7 +269,7 @@ export const incidentBar = (data, map) => {
     activateBar: function (barName) {
       activateChart(
         this[barName].chart,
-        map.colors[barName],
+        this.barColors[barName],
         this[barName].div
       );
       this.active = this[barName];
@@ -257,9 +281,14 @@ export const incidentBar = (data, map) => {
       barEvents(this.Province, this);
     },
   };
-
+  bars.barSeries = prepareData(data);
+  bars.barColors = map.colors;
+  bars.makeBar("Substance", "substance-bar", "activated");
+  bars.makeBar("Status", "status-bar", "deactivated");
+  bars.makeBar("Province", "province-bar", "deactivated");
+  bars.activateBar("Substance");
   bars.deactivateBar("Status");
   bars.deactivateBar("Province");
-  bars.activateBar("Substance");
   bars.divEvents();
+  return bars;
 };

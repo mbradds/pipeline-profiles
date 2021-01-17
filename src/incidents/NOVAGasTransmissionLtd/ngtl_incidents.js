@@ -35,7 +35,7 @@ export const ngtlIncidents = () => {
     return map;
   }
 
-  function addCircle(x, y, color, fillColor, r, thisMap, incidentParams = {}) {
+  function toolTip(thisMap, incidentParams, fillColor) {
     const formatCommaList = (text) => {
       if (text.includes(",")) {
         let itemList = text.split(",");
@@ -48,7 +48,6 @@ export const ngtlIncidents = () => {
         return "&nbsp" + text;
       }
     };
-
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; text-align:center;"><b>${incidentParams["Incident Number"]}</b></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
@@ -64,6 +63,10 @@ export const ngtlIncidents = () => {
       incidentParams["Why It Happened"]
     )}</b></td></tr>`;
     toolTipText += `</table>`;
+    return toolTipText;
+  }
+
+  function addCircle(x, y, color, fillColor, r, thisMap, incidentParams = {}) {
     return L.circle([x, y], {
       color: color,
       fillColor: fillColor,
@@ -73,7 +76,7 @@ export const ngtlIncidents = () => {
       weight: 1,
       incidentParams,
     })
-      .bindTooltip(toolTipText)
+      .bindTooltip(toolTip(thisMap, incidentParams, fillColor))
       .openTooltip();
     // .on("click", circleClick)
     // .on("mouseover", highlightFeature)
@@ -203,16 +206,20 @@ export const ngtlIncidents = () => {
   };
   thisMap.fieldChange = function (newField) {
     let newColors = this.colors[newField];
+    this.field = newField;
     this.circles.eachLayer(function (layer) {
+      let newFill = newColors[layer.options.incidentParams[newField]];
       layer.setStyle({
-        fillColor: newColors[layer.options.incidentParams[newField]],
+        fillColor: newFill,
       });
+      layer.bindTooltip(
+        toolTip(thisMap, layer.options.incidentParams, newFill)
+      );
     });
   };
 
   thisMap.reZoom();
-  //thisMap.fieldChange("Status");
-  incidentBar(incidentData, thisMap);
+  let bars = incidentBar(incidentData, thisMap);
 
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
@@ -221,6 +228,7 @@ export const ngtlIncidents = () => {
     var thisBtn = $(this);
     var btnValue = thisBtn.val();
     thisMap.filters.type = btnValue;
+    bars.switchY(btnValue);
     updateRadius(thisMap);
   });
 
