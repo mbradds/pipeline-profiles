@@ -18,6 +18,11 @@ export const ngtlIncidents = () => {
     Submitted: cerPalette["Ocean"],
   };
 
+  const provinceColors = {
+    Alberta: cerPalette["Sun"],
+    "British Columbia": cerPalette["Forest"],
+  };
+
   function baseMap() {
     const baseZoom = [55, -119];
     var map = L.map("incident-map").setView(baseZoom, 5);
@@ -118,17 +123,6 @@ export const ngtlIncidents = () => {
     }
   }
 
-  // function updateColor(circles, field) {
-  //   circles.eachLayer(function (layer) {
-  //     try {
-  //       layer.setRadius(layer.options[r]);
-  //     } catch (err) {
-  //       layer.setRadius(0);
-  //       console.log("Error setting new radius");
-  //     }
-  //   });
-  // }
-
   function findUser(thisMap) {
     return new Promise((resolve, reject) => {
       thisMap.map
@@ -190,7 +184,6 @@ export const ngtlIncidents = () => {
   }
 
   // main
-  incidentBar(incidentData);
   const thisMap = {};
   thisMap.map = baseMap();
   thisMap.filters = { type: "frequency" };
@@ -198,13 +191,28 @@ export const ngtlIncidents = () => {
   thisMap.nearby = undefined;
   thisMap.minRadius = 17000;
   thisMap.field = "Substance";
-  thisMap.colors = { Substance: substanceColors, Status: statusColors };
+  thisMap.colors = {
+    Substance: substanceColors,
+    Status: statusColors,
+    Province: provinceColors,
+  };
   processIncidents(incidentData, thisMap); // this false determines if volume is shown on load
   thisMap.reZoom = function () {
     let bounds = this.circles.getBounds();
     this.map.fitBounds(bounds, { maxZoom: 15 });
   };
+  thisMap.fieldChange = function (newField) {
+    let newColors = this.colors[newField];
+    this.circles.eachLayer(function (layer) {
+      layer.setStyle({
+        fillColor: newColors[layer.options.incidentParams[newField]],
+      });
+    });
+  };
+
   thisMap.reZoom();
+  //thisMap.fieldChange("Status");
+  incidentBar(incidentData, thisMap);
 
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
