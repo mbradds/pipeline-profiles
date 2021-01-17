@@ -234,6 +234,7 @@ export const ngtlIncidents = () => {
       waitOnUser(thisMap).then((userAdded) => {
         nearbyIncidents(userAdded, range);
       });
+      //TODO: add a promise.catch here somewhere.
     } else {
       nearbyIncidents(thisMap, range);
     }
