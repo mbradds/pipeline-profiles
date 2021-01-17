@@ -19,13 +19,6 @@ export const generalTheme = () => {
       },
     },
 
-    tooltip: {
-      useHTML: true,
-      headerFormat:
-        '<span style="font-size:10px;font-weight:bold">{point.key}</span><table>',
-      footerFormat: "</table>",
-    },
-
     xAxis: {
       title: {
         style: {

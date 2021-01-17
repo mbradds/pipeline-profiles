@@ -28,6 +28,13 @@ export const incidentBar = (data, map) => {
   }
 
   function createBar(div, name, series, colors) {
+    function barTitle(name) {
+      if (name == "Status") {
+        return `CER ${name}:`;
+      } else {
+        return name;
+      }
+    }
     return new Highcharts.chart(div, {
       chart: {
         type: "bar",
@@ -37,20 +44,23 @@ export const incidentBar = (data, map) => {
         spacingBottom: 0,
         animation: false,
       },
-      colors: ["#CCCCCC", "#999999", "#666666", "#333333", "#000000"],
+
       title: {
-        text: `${name}:`,
+        text: barTitle(name),
         padding: 0,
         margin: -15,
       },
+
       credits: {
         text: "",
       },
+
       xAxis: {
         visible: false,
         categories: true,
         gridLineWidth: 0,
       },
+
       yAxis: {
         maxPadding: 0,
         visible: true,
@@ -74,20 +84,15 @@ export const incidentBar = (data, map) => {
         },
       },
       legend: {
-        //enabled: true,
         padding: 0,
         margin: 0,
-        y: -15,
-        itemWidth: 180,
-        // symbolWidth: 5,
-        // symbolHeight: 5,
-        // itemStyle: {
-        //   fontSize: 1,
-        // },
+        y: -20,
       },
+
       tooltip: {
-        shared: false,
+        headerFormat: "",
       },
+
       plotOptions: {
         bar: {
           maxPointWidth: 35,
@@ -113,6 +118,7 @@ export const incidentBar = (data, map) => {
           },
         },
       },
+
       series: seriesify(name, series, colors, "frequency"),
     });
   }
@@ -228,6 +234,14 @@ export const incidentBar = (data, map) => {
       allBars.activateBar(bar.name);
     }
   }
+
+  function styleNearMe() {
+    let activeDiv = document.getElementById("incidents-near-me");
+    activeDiv.style.borderStyle = "solid";
+    activeDiv.style.borderColor = cerPalette["Dim Grey"];
+    activeDiv.style.borderRadius = "5px";
+  }
+  styleNearMe();
 
   const bars = {
     barColors: undefined,
