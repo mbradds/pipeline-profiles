@@ -169,8 +169,9 @@ export const incidentBar = (data, map) => {
     });
     let activeDiv = document.getElementById(div);
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = "white";
+    activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
+    activeDiv.style.opacity = 0.6;
     return chart;
   }
 
@@ -198,31 +199,38 @@ export const incidentBar = (data, map) => {
     });
     let activeDiv = document.getElementById(div);
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = cerPalette["Dim Grey"];
+    activeDiv.style.borderColor = cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
+    activeDiv.style.opacity = 1;
   }
 
   function barEvents(bar, allBars) {
-    document.getElementById(bar.div).addEventListener("mouseover", mouseOver);
-    document.getElementById(bar.div).addEventListener("mouseout", mouseOut);
-    document.getElementById(bar.div).addEventListener("click", click);
+    var barDiv = document.getElementById(bar.div);
+    barDiv.addEventListener("mouseover", mouseOver);
+    barDiv.addEventListener("mouseout", mouseOut);
+    barDiv.addEventListener("click", click);
 
     function mouseOver() {
       if (bar.status !== "activated") {
+        barDiv.style.opacity = 1;
         bar.chart.update({
           chart: {
-            backgroundColor: "#FCFFC5",
+            //backgroundColor: "#FCFFC5",
+            backgroundColor: "#F0F8FF",
           },
         });
       }
     }
 
     function mouseOut() {
-      bar.chart.update({
-        chart: {
-          backgroundColor: "white",
-        },
-      });
+      if (bar.status !== "activated") {
+        barDiv.style.opacity = 0.6;
+        bar.chart.update({
+          chart: {
+            backgroundColor: "white",
+          },
+        });
+      }
     }
 
     function click() {
@@ -235,13 +243,13 @@ export const incidentBar = (data, map) => {
     }
   }
 
-  function styleNearMe() {
-    let activeDiv = document.getElementById("incidents-near-me");
-    activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = cerPalette["Dim Grey"];
-    activeDiv.style.borderRadius = "5px";
-  }
-  styleNearMe();
+  // function styleNearMe() {
+  //   let activeDiv = document.getElementById("incidents-near-me");
+  //   activeDiv.style.borderStyle = "solid";
+  //   activeDiv.style.borderColor = cerPalette["Dim Grey"];
+  //   activeDiv.style.borderRadius = "5px";
+  // }
+  // styleNearMe();
 
   const bars = {
     barColors: undefined,

@@ -238,7 +238,7 @@ export const ngtlIncidents = () => {
     let findIncidentBtn = document.getElementById("find-incidents-btn");
     let findIncidentTitle = document.getElementById("find-incidents-title");
     findIncidentBtn.innerText = `Find Incidents within ${slide.val()}km`;
-    findIncidentTitle.innerText = `Find Incidents Near Me (${slide.val()}km):`;
+    findIncidentTitle.innerText = `Select Range (${slide.val()}km):`;
     findIncidentBtn.value = slide.val();
   });
 

@@ -188,10 +188,10 @@
           </div>
           <div class="mrgn-tp-sm"></div>
           <div class="row">
-            <div class="col-md-7" style="margin: 0px">
+            <div class="col-md-8">
               <div id="incident-map"></div>
             </div>
-            <div class="col-md-5" style="margin-left: -15px">
+            <div class="col-md-4">
               <div class="incident-filter-bar" id="substance-bar"></div>
               <div class="mrgn-tp-sm"></div>
               <div class="incident-filter-bar" id="status-bar"></div>
@@ -199,51 +199,55 @@
               <div class="incident-filter-bar" id="province-bar"></div>
             </div>
           </div>
-          <div class="mrgn-tp-sm"></div>
-          <div id="incidents-near-me">
-            <div class="row" style="margin: 0px">
-              <div class="col-md-12 cerlabel" id="find-incidents-title">
-                Find Incidents Near Me (100km):
+          <div class="mrgn-tp-md"></div>
+          <section class="panel panel-info">
+            <header class="panel-heading">
+              <h5 class="panel-title">Are there any incidents near me?</h5>
+            </header>
+            <div class="panel-body incidents-near-me">
+              <div class="row" style="margin: 0px">
+                <div class="col-md-12 cerlabel" id="find-incidents-title">
+                  Select Range (100km):
+                </div>
+              </div>
+              <div class="row" style="margin: 0px">
+                <div class="col-md-6 center-stuff">
+                  <input
+                    name="html5shim-1"
+                    id="incident-range-slide"
+                    type="range"
+                    min="0"
+                    max="200"
+                    step="1"
+                    value="100"
+                  />
+                </div>
+                <div class="col-md-3 center-stuff">
+                  <button
+                    type="button"
+                    value="100"
+                    id="find-incidents-btn"
+                    class="btn btn-default"
+                  >
+                    Find Incidents within 100km
+                  </button>
+                </div>
+                <div class="col-md-3 center-stuff">
+                  <button
+                    type="button"
+                    id="reset-incidents-btn"
+                    class="btn btn-default"
+                    disabled="disabled"
+                  >
+                    Reset Map (show all Incidents)
+                  </button>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 15px; margin-bottom: 0px">
+                <div class="col-md-12" id="nearby-flag"></div>
               </div>
             </div>
-            <div class="row" style="margin: 0px">
-              <div class="col-md-6 center-stuff">
-                <input
-                  name="html5shim-1"
-                  id="incident-range-slide"
-                  type="range"
-                  min="0"
-                  max="250"
-                  step="1"
-                  value="100"
-                />
-              </div>
-              <div class="col-md-3 center-stuff">
-                <button
-                  type="button"
-                  value="100"
-                  id="find-incidents-btn"
-                  class="btn btn-default"
-                >
-                  Find Incidents within 100km
-                </button>
-              </div>
-              <div class="col-md-3 center-stuff">
-                <button
-                  type="button"
-                  id="reset-incidents-btn"
-                  class="btn btn-default"
-                  disabled="disabled"
-                >
-                  Reset Map (show all Incidents)
-                </button>
-              </div>
-            </div>
-            <div class="mrgn-tp-md"></div>
-            <div class="row" style="margin: 0px">
-              <div class="col-md-12" id="nearby-flag"></div>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
 
