@@ -30,9 +30,9 @@ export const incidentBar = (data, map) => {
   function createBar(div, name, series, colors) {
     function barTitle(name) {
       if (name == "Status") {
-        return `CER ${name}:`;
+        return `CER ${name}`;
       } else {
-        return name;
+        return `${name}`;
       }
     }
     return new Highcharts.chart(div, {

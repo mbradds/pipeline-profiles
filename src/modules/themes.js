@@ -83,55 +83,7 @@ export const generalTheme = () => {
     title: {
       text: "",
     },
-
-    legend: {
-      itemStyle: {
-        font: "12pt Arial",
-        color: "black",
-      },
-    },
   };
 
   Highcharts.setOptions(Highcharts.transportation);
-};
-
-export const frenchTheme = () => {
-  Highcharts.french = {
-    lang: {
-      months: [
-        "Janvier",
-        "Février",
-        "Mars",
-        "Avril",
-        "Mai",
-        "Juin",
-        "Juillet",
-        "Août",
-        "Septembre",
-        "Octobre",
-        "Novembre",
-        "Décembre",
-      ],
-      weekdays: [
-        "Dimanche",
-        "Lundi",
-        "Mardi",
-        "Mercredi",
-        "Jeudi",
-        "Vendredi",
-        "Samedi",
-      ],
-      decimalPoint: ",",
-      downloadCSV: "Download CSV (FRA)",
-      downloadJPEG: "Download JPEG image (FRA)",
-      downloadPDF: "Download PDF document (FRA)",
-      downloadPNG: "Download PNG image (FRA)",
-      downloadSVG: "Download SVG vector image (FRA)",
-      downloadXLS: "Download XLS (FRA)",
-      printChart: "Print chart (FRA)",
-      resetZoom: "Reset zoom (FRA)",
-      viewData: "View data table (FRA)",
-    },
-  };
-  Highcharts.setOptions(Highcharts.french);
 };

@@ -8,6 +8,7 @@ import { conditionsMap } from "../conditions/hcConditionsMap.js";
 //ngtl incidents
 import { ngtlIncidents } from "../incidents/NOVAGasTransmissionLtd/ngtl_incidents.js";
 //highcharts themes/configuration
+import { generalTheme } from "../modules/themes.js";
 import ieWarn from "ie-gang";
 
 let warningParams = {
@@ -18,5 +19,6 @@ let warningParams = {
   applyIE: false,
 };
 ieWarn(warningParams);
+generalTheme();
 conditionsMap(econRegions, canadaMap, mapMetaData, meta);
 ngtlIncidents();
