@@ -84,18 +84,6 @@ export const incidentBar = (data, map) => {
         },
       },
 
-      // legend: {
-      //   layout: "horizontal",
-      //   width: 350,
-      //   itemStyle: {
-      //     fontSize: 12,
-      //   },
-      //   padding: 0,
-      //   margin: 0,
-      //   y: -20,
-      //   x: 30,
-      // },
-
       tooltip: {
         headerFormat: "",
       },
@@ -186,6 +174,7 @@ export const incidentBar = (data, map) => {
       chart.series[i].update(chart.series[i].options);
     });
     chart.update({
+      title: { text: `${chart.title.textStr} (click to view)` },
       plotOptions: {
         series: {
           states: {
@@ -212,9 +201,16 @@ export const incidentBar = (data, map) => {
       chart.series[i].options.color = colors[s.name];
       chart.series[i].update(chart.series[i].options);
     });
+    let activeTitle = chart.title.textStr;
+    if (activeTitle.includes("(")) {
+      activeTitle = activeTitle.split("(")[0];
+    }
     chart.update({
       chart: {
         backgroundColor: "white",
+      },
+      title: {
+        text: activeTitle,
       },
       plotOptions: {
         series: {

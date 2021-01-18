@@ -151,7 +151,7 @@ export const ngtlIncidents = () => {
     }
   }
 
-  function findUser(thisMap) {
+  async function findUser(thisMap) {
     return new Promise((resolve, reject) => {
       thisMap.map
         .locate({
@@ -175,7 +175,12 @@ export const ngtlIncidents = () => {
   }
 
   async function waitOnUser(thisMap) {
-    return await findUser(thisMap);
+    try {
+      return await findUser(thisMap);
+    } catch (err) {
+      var incidentFlag = document.getElementById("nearby-flag");
+      incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>Cant access your location.</h4>Try enabling your browser's location services and refresh the page.</section>`;
+    }
   }
 
   function nearbyIncidents(thisMap, range) {
