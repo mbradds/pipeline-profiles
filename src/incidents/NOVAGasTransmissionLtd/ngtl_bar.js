@@ -83,11 +83,18 @@ export const incidentBar = (data, map) => {
           text: "",
         },
       },
-      legend: {
-        padding: 0,
-        margin: 0,
-        y: -20,
-      },
+
+      // legend: {
+      //   layout: "horizontal",
+      //   width: 350,
+      //   itemStyle: {
+      //     fontSize: 12,
+      //   },
+      //   padding: 0,
+      //   margin: 0,
+      //   y: -20,
+      //   x: 30,
+      // },
 
       tooltip: {
         headerFormat: "",
@@ -124,7 +131,7 @@ export const incidentBar = (data, map) => {
   }
 
   function prepareData(data) {
-    var [substance, status, province] = [{}, {}, {}];
+    var [substance, status, province, year] = [{}, {}, {}, {}];
     const addToSeries = (series, row, name) => {
       if (series.hasOwnProperty(row[name])) {
         series[row[name]].frequency += 1;
@@ -142,13 +149,38 @@ export const incidentBar = (data, map) => {
       substance = addToSeries(substance, row, "Substance");
       status = addToSeries(status, row, "Status");
       province = addToSeries(province, row, "Province");
+      year = addToSeries(year, row, "Year");
     });
 
-    return { Substance: substance, Status: status, Province: province };
+    return {
+      Substance: substance,
+      Status: status,
+      Province: province,
+      Year: year,
+    };
   }
 
   function deactivateChart(chart, div) {
-    let greyColors = ["#CCCCCC", "#999999", "#666666", "#333333", "#000000"];
+    if (div !== "year-bar") {
+      var greyColors = ["#CCCCCC", "#999999", "#666666", "#333333", "#000000"];
+    } else {
+      var greyColors = [
+        "#101010",
+        "#282828",
+        "#404040",
+        "#585858",
+        "#696969",
+        "#808080",
+        "#989898",
+        "#A9A9A9",
+        "#BEBEBE",
+        "#D0D0D0",
+        "#DCDCDC",
+        "#F0F0F0",
+        "#FFFFFF",
+      ].reverse();
+    }
+
     chart.series.map((s, i) => {
       chart.series[i].options.color = greyColors[i];
       chart.series[i].update(chart.series[i].options);
@@ -171,7 +203,7 @@ export const incidentBar = (data, map) => {
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
-    activeDiv.style.opacity = 0.6;
+    activeDiv.style.opacity = 0.5;
     return chart;
   }
 
@@ -215,7 +247,6 @@ export const incidentBar = (data, map) => {
         barDiv.style.opacity = 1;
         bar.chart.update({
           chart: {
-            //backgroundColor: "#FCFFC5",
             backgroundColor: "#F0F8FF",
           },
         });
@@ -224,7 +255,7 @@ export const incidentBar = (data, map) => {
 
     function mouseOut() {
       if (bar.status !== "activated") {
-        barDiv.style.opacity = 0.6;
+        barDiv.style.opacity = 0.5;
         bar.chart.update({
           chart: {
             backgroundColor: "white",
@@ -243,18 +274,54 @@ export const incidentBar = (data, map) => {
     }
   }
 
-  // function styleNearMe() {
-  //   let activeDiv = document.getElementById("incidents-near-me");
-  //   activeDiv.style.borderStyle = "solid";
-  //   activeDiv.style.borderColor = cerPalette["Dim Grey"];
-  //   activeDiv.style.borderRadius = "5px";
-  // }
-  // styleNearMe();
-
   const bars = {
     barColors: undefined,
     currentActive: undefined,
     barList: [],
+
+    legends: {
+      Substance: {
+        layout: "horizontal",
+        width: 350,
+        itemStyle: {
+          fontSize: 12,
+        },
+        padding: 0,
+        margin: 0,
+        y: -20,
+        x: 50,
+      },
+      Status: {
+        layout: "horizontal",
+        width: 300,
+        itemStyle: {
+          fontSize: 12,
+        },
+        padding: 0,
+        margin: 0,
+        y: -20,
+        x: 35,
+      },
+      Province: {
+        layout: "horizontal",
+        itemStyle: {
+          fontSize: 12,
+        },
+        padding: 0,
+        margin: 0,
+        y: -20,
+      },
+      Year: {
+        layout: "horizontal",
+        itemStyle: {
+          fontSize: 12,
+        },
+        padding: 0,
+        margin: 0,
+        y: -20,
+      },
+    },
+
     set active(newActive) {
       this.currentActive = newActive;
     },
@@ -297,20 +364,35 @@ export const incidentBar = (data, map) => {
       this.active = this[barName];
       map.fieldChange(barName);
     },
+
+    formatLegend: function (barName) {
+      let legendParams = this.legends[barName];
+      this[barName].chart.update({
+        legend: legendParams,
+      });
+    },
     divEvents: function () {
       barEvents(this.Substance, this);
       barEvents(this.Status, this);
       barEvents(this.Province, this);
+      barEvents(this.Year, this);
     },
   };
+
   bars.barSeries = prepareData(data);
   bars.barColors = map.colors;
   bars.makeBar("Substance", "substance-bar", "activated");
   bars.makeBar("Status", "status-bar", "deactivated");
   bars.makeBar("Province", "province-bar", "deactivated");
+  bars.makeBar("Year", "year-bar", "deactivated");
   bars.activateBar("Substance");
   bars.deactivateBar("Status");
   bars.deactivateBar("Province");
+  bars.deactivateBar("Year");
+  bars.formatLegend("Substance");
+  bars.formatLegend("Status");
+  bars.formatLegend("Province");
+  bars.formatLegend("Year");
   bars.divEvents();
   return bars;
 };

@@ -84,7 +84,23 @@ export const ngtlIncidents = () => {
   }
 
   function processIncidents(data, thisMap) {
+    let years = []; //piggyback on data processing pass to get the year colors
+    let colors = [
+      cerPalette["Sun"],
+      cerPalette["Night Sky"],
+      "#1d5478",
+      "#366687",
+      "#507a96",
+      "#698da5",
+      "#82a0b4",
+      "#9bb3c3",
+      "#b4c6d2",
+      "#cdd9e1",
+      "#e6ecf0",
+      "#ffffff",
+    ];
     let allCircles = data.map((row) => {
+      years.push(row.Year);
       return addCircle(
         row.Latitude,
         row.Longitude,
@@ -95,6 +111,15 @@ export const ngtlIncidents = () => {
         row
       );
     });
+    years = years.filter((v, i, a) => a.indexOf(v) === i); //get unique years
+    years = years.sort(function (a, b) {
+      return b - a;
+    });
+    let yearColors = {};
+    years.map((yr, i) => {
+      yearColors[yr] = colors[i];
+    });
+    thisMap.colors.Year = yearColors;
     let circles = L.featureGroup(allCircles).addTo(thisMap.map);
     thisMap.circles = circles;
     thisMap.map.on("zoom", function (e) {
@@ -250,7 +275,6 @@ export const ngtlIncidents = () => {
       waitOnUser(thisMap).then((userAdded) => {
         nearbyIncidents(userAdded, range);
       });
-      //TODO: add a promise.catch here somewhere.
     } else {
       nearbyIncidents(thisMap, range);
     }
