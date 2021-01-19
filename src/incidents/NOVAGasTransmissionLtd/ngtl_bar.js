@@ -38,9 +38,9 @@ export const incidentBar = (data, map) => {
     return new Highcharts.chart(div, {
       chart: {
         type: "bar",
-        //spacingRight: 0,
-        //spacingLeft: 0,
-        spacongTop: 0,
+        spacingRight: 10,
+        spacingLeft: 4,
+        spacingTop: 5,
         spacingBottom: 0,
         animation: false,
       },
@@ -48,7 +48,7 @@ export const incidentBar = (data, map) => {
       title: {
         text: barTitle(name),
         padding: 0,
-        margin: -15,
+        margin: -10,
       },
 
       credits: {
@@ -88,9 +88,18 @@ export const incidentBar = (data, map) => {
         headerFormat: "",
       },
 
+      legend: {
+        layout: "horizontal",
+        padding: 0,
+        itemMarginTop: -2,
+        itemMarginBottom: -2,
+        y: -20,
+      },
+
       plotOptions: {
         bar: {
-          maxPointWidth: 35,
+          //maxPointWidth: 35,
+          pointWidth: 30,
         },
         series: {
           animation: false,
@@ -283,20 +292,21 @@ export const incidentBar = (data, map) => {
           fontSize: 12,
         },
         padding: 0,
+        itemMarginTop: 0,
         margin: 0,
         y: -20,
         x: 50,
       },
       Status: {
         layout: "horizontal",
-        width: 300,
+        width: 325,
         itemStyle: {
           fontSize: 12,
         },
         padding: 0,
         margin: 0,
         y: -20,
-        x: 35,
+        x: 40,
       },
       Province: {
         layout: "horizontal",
@@ -309,12 +319,15 @@ export const incidentBar = (data, map) => {
       },
       Year: {
         layout: "horizontal",
+        reversed: true,
+        width: 300,
         itemStyle: {
           fontSize: 12,
         },
         padding: 0,
-        margin: 0,
+        margin: 5,
         y: -20,
+        x: 12,
       },
     },
 
