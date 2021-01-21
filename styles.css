@@ -94,12 +94,6 @@ body {
   text-align: center;
 }
 /* incidents */
-.conditions-summary-value {
-  font-family: Arial;
-  font-size: 12px;
-  color: #42464b;
-  text-align: center;
-}
 #pipeline-incidents {
   height: 100%;
 }

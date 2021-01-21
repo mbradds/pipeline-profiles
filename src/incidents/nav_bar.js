@@ -1,4 +1,4 @@
-import { cerPalette } from "../../modules/util";
+import { cerPalette } from "../modules/util.js";
 
 export const incidentBar = (data, map) => {
   function seriesify(name, series, colors, yVal) {

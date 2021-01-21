@@ -1,9 +1,8 @@
-import { cerPalette } from "../../modules/util";
-import incidentData from "./incidents_map.json";
-import { incidentBar } from "./ngtl_bar.js";
+import { cerPalette } from "../modules/util.js";
+import { incidentBar } from "./nav_bar.js";
 const haversine = require("haversine");
 
-export const ngtlIncidents = () => {
+export const mainIncidents = (incidentData) => {
   // TODO: add all substances present in the entire dataset, not just ngtl
   const substanceColors = {
     Propane: cerPalette["Forest"],

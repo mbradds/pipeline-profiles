@@ -1,15 +1,17 @@
+//highcharts themes/configuration
+import { generalTheme } from "../modules/themes.js";
+import ieWarn from "ie-gang";
+
 //ngtl conditions
 import econRegions from "../conditions/NOVAGasTransmissionLtd/economicRegions.json";
 import canadaMap from "../conditions/base_maps/base_map.json";
 import mapMetaData from "../conditions/NOVAGasTransmissionLtd/mapMetadata.json";
 import meta from "../conditions/NOVAGasTransmissionLtd/summaryMetadata.json";
-import { conditionsMap } from "../conditions/hcConditionsMap.js";
+import { mainConditions } from "../conditions/conditionsDashboard.js";
 
 //ngtl incidents
-import { ngtlIncidents } from "../incidents/NOVAGasTransmissionLtd/ngtl_incidents.js";
-//highcharts themes/configuration
-import { generalTheme } from "../modules/themes.js";
-import ieWarn from "ie-gang";
+import incidentData from "../incidents/NOVAGasTransmissionLtd/incidents_map.json";
+import { mainIncidents } from "../incidents/incidentsDashboard.js";
 
 let warningParams = {
   message:
@@ -18,7 +20,9 @@ let warningParams = {
   title: "Old Browser Warning",
   applyIE: false,
 };
+
 ieWarn(warningParams);
 generalTheme();
-conditionsMap(econRegions, canadaMap, mapMetaData, meta);
-ngtlIncidents();
+
+mainConditions(econRegions, canadaMap, mapMetaData, meta);
+mainIncidents(incidentData);

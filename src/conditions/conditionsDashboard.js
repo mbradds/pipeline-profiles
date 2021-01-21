@@ -4,7 +4,8 @@ import { mapInits } from "./hcMapConfig.js";
 
 //TOOD: create method that reads meta.summary and determines if "In Progress" has conditions and should be the default.
 //this method would determine which button/map/mapZoom to start with.
-export const conditionsMap = (econRegions, canadaMap, mapMetaData, meta) => {
+
+export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
   const conditionsFilter = { column: "In Progress" };
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
