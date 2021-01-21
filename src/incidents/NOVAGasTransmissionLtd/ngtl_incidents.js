@@ -222,7 +222,7 @@ export const ngtlIncidents = () => {
   thisMap.filters = { type: "frequency" };
   thisMap.user = { latitude: undefined, longitude: undefined };
   thisMap.nearby = undefined;
-  thisMap.minRadius = 17000;
+  thisMap.minRadius = 14000;
   thisMap.field = "Substance";
   thisMap.colors = {
     Substance: substanceColors,
