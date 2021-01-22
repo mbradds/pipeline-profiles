@@ -1,4 +1,4 @@
-import { cerPalette } from "../modules/util.js";
+import { cerPalette, conversions } from "../modules/util.js";
 import { incidentBar } from "./nav_bar.js";
 const haversine = require("haversine");
 
@@ -47,21 +47,31 @@ export const mainIncidents = (incidentData) => {
         return "&nbsp" + text;
       }
     };
-    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; text-align:center;"><b>${incidentParams["Incident Number"]}</b></p>`;
+
+    let conv = conversions["m3 to bbl"];
+    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams["Incident Number"]}</b></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
       thisMap.field
     }:</td><td style="color:${fillColor}">&nbsp<b>${
       incidentParams[thisMap.field]
     }</b></td></tr>`;
-    toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${incidentParams["Approximate Volume Released"]} m3</b></td></tr>`;
+    toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${Highcharts.numberFormat(
+      (incidentParams["Approximate Volume Released"] * conv).toFixed(2),
+      2,
+      "."
+    )} bbl (${Highcharts.numberFormat(
+      incidentParams["Approximate Volume Released"],
+      2,
+      "."
+    )} m3)</b></td></tr>`;
     toolTipText += `<tr><td>What Happened?</td><td><b>${formatCommaList(
       incidentParams["What Happened"]
     )}</b></td></tr>`;
     toolTipText += `<tr><td>Why It Happened?</td><td><b>${formatCommaList(
       incidentParams["Why It Happened"]
     )}</b></td></tr>`;
-    toolTipText += `</table>`;
+    toolTipText += `</table></div>`;
     return toolTipText;
   }
 
@@ -77,9 +87,6 @@ export const mainIncidents = (incidentData) => {
     })
       .bindTooltip(toolTip(thisMap, incidentParams, fillColor))
       .openTooltip();
-    // .on("click", circleClick)
-    // .on("mouseover", highlightFeature)
-    // .on("mouseout", resetHighlight);
   }
 
   function processIncidents(data, thisMap) {

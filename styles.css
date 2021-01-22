@@ -118,3 +118,6 @@ body {
   align-items: center;
   justify-content: center;
 }
+#incident-tooltip tr {
+  border-bottom: 1pt solid #dcdcdc;
+}

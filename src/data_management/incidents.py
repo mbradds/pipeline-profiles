@@ -52,7 +52,6 @@ def process_incidents(remote=False):
 
 
 if __name__ == '__main__':
+    print('starting incidents...')
     df = process_incidents(remote=False)
-    print(set(df['Substance']))
-    print(set(df['Status']))
-    #print(set(df['What Happened']))
+    print('completed incidents!')

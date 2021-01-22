@@ -18,6 +18,9 @@ export const cerPalette = {
 
 //export const dateFormat = "%b %d, %Y";
 
+// all conversions are in multiplication format (always multiply the number by the "conversions" value)
+export const conversions = { "m3 to bbl": 6.2898, "bbl to m3": 1 / 6.2898 };
+
 export const dateFormat = (value, format = "%b %d, %Y") => {
   return Highcharts.dateFormat(format, value);
 };
@@ -46,22 +49,6 @@ export const checkIfValid = (data) => {
   }
   return valid;
 };
-
-// export const removeNullRegions = (geoJson, propertiesColumn) => {
-//   //let filteredRegions = geoJson;
-//   let filteredRegions = JSON.parse(JSON.stringify(geoJson));
-//   function validProperty(region, propertiesColumn) {
-//     if (region.properties[propertiesColumn] !== null) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   }
-//   filteredRegions.features = filteredRegions.features.filter((r) =>
-//     validProperty(r, propertiesColumn)
-//   );
-//   return filteredRegions;
-// };
 
 //gets the unique regions to populate the dropdown
 export const getUnique = (items, filterColumns) => {

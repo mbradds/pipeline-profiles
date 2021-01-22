@@ -215,4 +215,6 @@ def company_names(df):
 
 
 if __name__ == "__main__":
+    print('starting conditions...')
     df = process_conditions(remote=False)
+    print('completed conditions!')

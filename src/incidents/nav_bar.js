@@ -1,4 +1,4 @@
-import { cerPalette } from "../modules/util.js";
+import { cerPalette, conversions } from "../modules/util.js";
 
 export const incidentBar = (data, map) => {
   function seriesify(name, series, colors, yVal) {
@@ -9,11 +9,16 @@ export const incidentBar = (data, map) => {
             name: key,
             data: [{ name: name, y: value[yVal] }],
             color: colors[name][key],
+            filter: yVal,
           };
         };
       } else {
         return function (key, value, name, yVal, colors) {
-          return { name: key, data: [{ name: name, y: value[yVal] }] };
+          return {
+            name: key,
+            data: [{ name: name, y: value[yVal] }],
+            filter: yVal,
+          };
         };
       }
     };
@@ -35,6 +40,7 @@ export const incidentBar = (data, map) => {
         return `${name}`;
       }
     }
+
     return new Highcharts.chart(div, {
       chart: {
         type: "bar",
@@ -85,7 +91,20 @@ export const incidentBar = (data, map) => {
       },
 
       tooltip: {
-        headerFormat: "",
+        snap: 0,
+        useHTML: true,
+        formatter: function () {
+          let conv = conversions["m3 to bbl"];
+          if (this.series.options.filter == "frequency") {
+            return `${this.series.name} - ${this.y}`;
+          } else if (this.series.options.filter == "volume") {
+            return `${this.series.name} - <b>${Highcharts.numberFormat(
+              this.y * conv,
+              0,
+              "."
+            )} bbl (${Highcharts.numberFormat(this.y, 0, ".")} m3)</b>`;
+          }
+        },
       },
 
       legend: {
@@ -347,13 +366,7 @@ export const incidentBar = (data, map) => {
 
     switchY: function (newY) {
       this.barList.map((bar) => {
-        let newSeries = seriesify(
-          bar.name,
-          this.barSeries,
-          undefined,
-          //this.barColors,
-          newY
-        );
+        let newSeries = seriesify(bar.name, this.barSeries, undefined, newY);
 
         bar.chart.update({
           series: newSeries,
