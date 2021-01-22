@@ -14,6 +14,10 @@ module.exports = {
     filename: "bundle_[name].js",
   },
 
+  // experiments: {
+  //   topLevelAwait: true,
+  // },
+
   // plugins: [
   //   new BundleAnalyzerPlugin()
   // ],

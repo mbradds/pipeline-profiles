@@ -15,7 +15,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
   };
 
   const setTitle = (titleElement, filter) => {
-    titleElement.innerText = `Condition Compliance - ${filter.column} Conditions by Region`;
+    titleElement.innerText = `${filter.column} Conditions by Region`;
   };
 
   const generateTable = (summary, selectedRegion, tableName, filter) => {

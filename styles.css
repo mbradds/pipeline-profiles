@@ -2,6 +2,11 @@
 body {
   overflow-x: hidden;
 }
+/* #condition-compliance {
+  border-style: solid;
+  border-color: #8c8c96;
+  border-radius: 5px;
+} */
 .header {
   font-family: Arial;
   font-weight: bold;
@@ -30,11 +35,11 @@ body {
   z-index: 9999 !important;
 }
 .chart-large {
-  max-width: 1000px;
+  max-width: 100%;
   margin: auto;
 }
 /* styles for conditions compliance section */
-@media only screen and (max-height: 650px) {
+@media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .container-chart-map {
     min-height: 500px;
     position: relative;
@@ -45,7 +50,7 @@ body {
     max-height: 450px;
   }
 }
-@media only screen and (min-height: 650px) {
+@media only screen and (min-height: 901px), screen and (min-width: 1441px) {
   .container-chart-map {
     min-height: 600px;
     position: relative;

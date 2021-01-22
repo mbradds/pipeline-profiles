@@ -117,7 +117,6 @@ export const incidentBar = (data, map) => {
 
       plotOptions: {
         bar: {
-          //maxPointWidth: 35,
           pointWidth: 30,
         },
         series: {
