@@ -256,7 +256,20 @@ export const mainIncidents = (incidentData) => {
 
   thisMap.reZoom();
   let bars = incidentBar(incidentData, thisMap);
-
+  //when using html tabs, the leaflet map will get messed up when moving from display:none to display:block after a screen resize.
+  function lookForSize() {
+    var rezise = false;
+    $(window).on("resize", function () {
+      rezise = true;
+    });
+    $(".tab > .tablinks").on("click", function (e) {
+      if (rezise && e.currentTarget.innerText == "Pipeline Incidents") {
+        thisMap.map.invalidateSize(true, { pan: false, animate: false });
+        rezise = false;
+      }
+    });
+  }
+  lookForSize();
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
     $(".btn-incident-data-type > .btn").removeClass("active");

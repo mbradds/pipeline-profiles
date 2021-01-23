@@ -1,7 +1,6 @@
 console.time(`chart loading`);
 //highcharts themes/configuration
 import { generalTheme } from "../modules/themes.js";
-//let generalTheme = await import("../modules/themes.js");
 import ieWarn from "ie-gang";
 
 //ngtl conditions
@@ -28,4 +27,3 @@ generalTheme();
 
 mainConditions(econRegions, canadaMap, mapMetaData, meta);
 mainIncidents(incidentData);
-console.timeEnd(`chart loading`);

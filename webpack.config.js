@@ -7,7 +7,6 @@ module.exports = {
   target: "es5",
   entry: {
     ngtl_eng: "./src/index_files/ngtl_eng.js",
-    ngtl_fra: "./src/index_files/ngtl_fra.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

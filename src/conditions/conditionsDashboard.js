@@ -2,11 +2,24 @@ import { cerPalette, sortJson } from "../modules/util.js";
 import "core-js/proposals/string-replace-all";
 import { mapInits } from "./hcMapConfig.js";
 
-//TOOD: create method that reads meta.summary and determines if "In Progress" has conditions and should be the default.
-//this method would determine which button/map/mapZoom to start with.
-
 export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
-  const conditionsFilter = { column: "In Progress" };
+  const statusInit = (meta) => {
+    var inProgress = $("#in-progress-btn");
+    var closed = $("#closed-btn");
+    const conditionsFilter = { column: "In Progress" };
+    $(document).ready(function () {
+      if (meta.summary["In Progress"] >= 0) {
+        conditionsFilter.column = "In Progress";
+        inProgress.click();
+      } else if (meta.summary["In Progress"] == 0) {
+        inProgress.prop("disabled", true);
+        conditionsFilter.column = "Closed";
+        closed.click();
+      }
+    });
+    return conditionsFilter;
+  };
+  const conditionsFilter = statusInit(meta);
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
       summary["In Progress"];

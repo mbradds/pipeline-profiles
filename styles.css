@@ -29,9 +29,16 @@ body {
   opacity: 1;
   z-index: 9999 !important;
 }
+/* this padding makes the dashboard/vis less wide. For some dashobards this looks better */
 .chart-large {
   max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
   margin: auto;
+}
+#incidents-dashboard {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 /* styles for conditions compliance section */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
