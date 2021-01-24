@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server --output-public-path=/dist/",
+    "start": "webpack-dev-server --output-public-path=/pipeline-profiles/",
     "data": "sh ./src/data_management/prepare_data.sh",
     "maps": "sh ./src/data_management/simplify_maps.sh"
   },

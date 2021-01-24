@@ -17,11 +17,18 @@ let warningParams = {
 ieWarn(warningParams);
 generalTheme();
 
-function loadAllCharts() {
+// async version
+async function loadAllCharts() {
   let arrayOfCharts = [runConditions(), runIncidents()];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);
   });
 }
+// syncronous version
+// function loadAllCharts() {
+//   runConditions();
+//   runIncidents();
+// }
 
 loadAllCharts();
+console.timeEnd(`chart loading`);
