@@ -17,7 +17,7 @@ let warningParams = {
 ieWarn(warningParams);
 generalTheme();
 
-async function loadAllCharts() {
+function loadAllCharts() {
   let arrayOfCharts = [runConditions(), runIncidents()];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);

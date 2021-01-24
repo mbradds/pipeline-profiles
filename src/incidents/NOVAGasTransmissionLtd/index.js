@@ -4,6 +4,7 @@ import { mainIncidents } from "../incidentsDashboard.js";
 
 export function runIncidents() {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(mainIncidents(incidentData)), 0);
+    resolve(mainIncidents(incidentData));
+    //setTimeout(() => resolve(mainIncidents(incidentData)), 0);
   });
 }

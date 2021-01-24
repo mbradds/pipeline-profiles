@@ -259,12 +259,15 @@ export const mainIncidents = (incidentData) => {
   let bars = incidentBar(incidentData, thisMap);
   //when using html tabs, the leaflet map will get messed up when moving from display:none to display:block after a screen resize.
   function lookForSize() {
-    var rezise = false;
+    var resize = false;
     $(window).on("resize", function () {
-      rezise = true;
+      resize = true;
     });
     $(".tab > .tablinks").on("click", function (e) {
-      thisMap.map.invalidateSize(false);
+      if (resize) {
+        thisMap.map.invalidateSize(true);
+        resize = false;
+      }
     });
   }
   lookForSize();

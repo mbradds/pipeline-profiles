@@ -7,9 +7,10 @@ import { mainConditions } from "../conditionsDashboard.js";
 
 export function runConditions() {
   return new Promise((resolve) => {
-    setTimeout(
-      () => resolve(mainConditions(econRegions, canadaMap, mapMetaData, meta)),
-      0
-    );
+    resolve(mainConditions(econRegions, canadaMap, mapMetaData, meta));
+    // setTimeout(
+    //   () => resolve(mainConditions(econRegions, canadaMap, mapMetaData, meta)),
+    //   0
+    // );
   });
 }
