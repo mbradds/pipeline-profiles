@@ -4,18 +4,14 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  target: "es5",
   entry: {
     ngtl_eng: "./src/index_files/ngtl_eng.js",
   },
   output: {
+    publicPath: "/pipeline-profiles/",
     path: path.resolve(__dirname, "dist"),
     filename: "bundle_[name].js",
   },
-
-  // experiments: {
-  //   topLevelAwait: true,
-  // },
 
   // plugins: [
   //   new BundleAnalyzerPlugin()

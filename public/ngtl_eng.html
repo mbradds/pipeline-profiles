@@ -365,7 +365,7 @@
                     class="btn btn-default"
                     disabled="disabled"
                   >
-                    Reset Map (show all Incidents)
+                    Reset Map
                   </button>
                 </div>
               </div>
@@ -382,27 +382,15 @@
       </div>
     </div>
 
-    <div
-      id="contaminated-sites"
-      class="profile-section tabcontent"
-      style="display: none"
-    >
+    <div id="contaminated-sites" class="profile-section tabcontent">
       Coming Soon!
     </div>
 
-    <div
-      id="o&m-activities"
-      class="profile-section tabcontent"
-      style="display: none"
-    >
+    <div id="o&m-activities" class="profile-section tabcontent">
       Coming Soon!
     </div>
 
-    <div
-      id="unauthorized-activities"
-      class="profile-section tabcontent"
-      style="display: none"
-    >
+    <div id="unauthorized-activities" class="profile-section tabcontent">
       Coming Soon!
     </div>
 
@@ -411,14 +399,12 @@
     <script>
       function openTab(evt, sectionName) {
         var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("profile-section");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
+        $(".profile-section").hide();
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
+        //$("." + sectionName).show();
         document.getElementById(sectionName).style.display = "block";
         evt.currentTarget.className += " active";
       }

@@ -31,6 +31,7 @@ export const mainIncidents = (incidentData) => {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     map.setMinZoom(5);
+    map.invalidateSize(true);
     return map;
   }
 
@@ -263,10 +264,7 @@ export const mainIncidents = (incidentData) => {
       rezise = true;
     });
     $(".tab > .tablinks").on("click", function (e) {
-      if (rezise && e.currentTarget.innerText == "Pipeline Incidents") {
-        thisMap.map.invalidateSize(true, { pan: false, animate: false });
-        rezise = false;
-      }
+      thisMap.map.invalidateSize(false);
     });
   }
   lookForSize();
