@@ -1,9 +1,11 @@
 import { cerPalette, conversions } from "../modules/util.js";
 import { incidentBar } from "./nav_bar.js";
+import { summaryParagraph } from "./summary.js";
 const haversine = require("haversine");
 
-export const mainIncidents = (incidentData) => {
+export const mainIncidents = (incidentData, metaData) => {
   // TODO: add all substances present in the entire dataset, not just ngtl
+  summaryParagraph(metaData);
   const substanceColors = {
     Propane: cerPalette["Forest"],
     "Natural Gas - Sweet": cerPalette["Flame"],
@@ -255,7 +257,6 @@ export const mainIncidents = (incidentData) => {
     });
   };
 
-  thisMap.reZoom();
   let bars = incidentBar(incidentData, thisMap);
   //when using html tabs, the leaflet map will get messed up when moving from display:none to display:block after a screen resize.
   function lookForSize() {
@@ -267,6 +268,9 @@ export const mainIncidents = (incidentData) => {
       if (resize) {
         thisMap.map.invalidateSize(true);
         resize = false;
+      } else {
+        thisMap.reZoom();
+        thisMap.map.invalidateSize(false);
       }
     });
   }
