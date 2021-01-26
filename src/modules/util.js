@@ -16,14 +16,10 @@ export const cerPalette = {
   hcLightBlue: "#91e8e1",
 };
 
-//export const dateFormat = "%b %d, %Y";
+export const dateFormatString = "%b %d, %Y";
 
 // all conversions are in multiplication format (always multiply the number by the "conversions" value)
 export const conversions = { "m3 to bbl": 6.2898, "bbl to m3": 1 / 6.2898 };
-
-export const dateFormat = (value, format = "%b %d, %Y") => {
-  return Highcharts.dateFormat(format, value);
-};
 
 export const sortJson = (obj, colName = "value") => {
   return obj.slice().sort((a, b) => b[colName] - a[colName]);

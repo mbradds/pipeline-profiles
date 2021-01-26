@@ -100,7 +100,6 @@ def metadata(df, folder_name):
     theme = theme.replace({np.nan: None})
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
-
     # save the metadata
     with open('../conditions/'+folder_name+'/summaryMetadata.json', 'w') as fp:
         json.dump(meta, fp)
@@ -174,6 +173,7 @@ def process_conditions(remote=False, nonStandard=True):
 
     for delete in delete_cols:
         del df[delete]
+
     for r in ['\n', '"']:
         df['Company'] = df['Company'].replace(r, '', regex=True)
 
@@ -206,7 +206,7 @@ def process_conditions(remote=False, nonStandard=True):
         meta = metadata(df_all, folder_name)
         shp = conditions_on_map(meta, regions_map, folder_name)
 
-    return shp
+    return shp, meta
 
 
 def company_names(df):
@@ -216,5 +216,5 @@ def company_names(df):
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df = process_conditions(remote=False)
+    df, meta = process_conditions(remote=False)
     print('completed conditions!')

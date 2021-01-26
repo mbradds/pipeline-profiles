@@ -72,6 +72,12 @@ export const generalTheme = () => {
       },
     },
 
+    legend: {
+      itemStyle: {
+        fontSize: "15px",
+      },
+    },
+
     noData: {
       style: {
         fontWeight: "bold",

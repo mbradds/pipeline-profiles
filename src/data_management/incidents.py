@@ -17,8 +17,7 @@ def companyMetaData(df, company):
                 what_list.append(what)
         what_list = [x.strip() for x in what_list]
         what_list = [x for x in what_list if x != 'To be determined']
-        meta[meta_key] = max(set(what_list), key=what_list.count)
-
+        meta[meta_key] = max(set(what_list), key=what_list.count).lower()
         return meta
 
     def most_common_substance(df, meta):
@@ -70,7 +69,6 @@ def process_incidents(remote=False):
     for delete in ['Significant', 'Release Type']:
         del df[delete]
 
-    # df = df[~df['Approximate Volume Released'].isnull()]
     company_files = ['NOVA Gas Transmission Ltd.']
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

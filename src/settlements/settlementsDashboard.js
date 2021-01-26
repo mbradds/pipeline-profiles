@@ -1,8 +1,6 @@
-import { cerPalette, dateFormat, currentDate } from "../modules/util.js";
-import { errorChart } from "../modules/charts.js";
-import settlementsData from "./settlements_data/NOVA Gas Transmission Ltd.json";
+import { cerPalette, dateFormatString, currentDate } from "../modules/util.js";
 
-export const cassandraSettlements = () => {
+export const settlements = (settlementsData) => {
   const legendNames = {
     company: {
       name: "Active settlement(s)",
@@ -144,7 +142,7 @@ export const cassandraSettlements = () => {
   };
 
   const createSettlements = (seriesData, dates) => {
-    return Highcharts.ganttChart("container_settlements", {
+    return Highcharts.ganttChart("negotiated-settlements", {
       chart: {
         type: "gantt",
         borderWidth: 1,
@@ -196,9 +194,11 @@ export const cassandraSettlements = () => {
             dashStyle: "longDash",
             color: "black",
             label: {
+              align: "right",
+              x: -5,
               formatter: function () {
                 return (
-                  Highcharts.dateFormat(dateFormat, this.options.value) +
+                  Highcharts.dateFormat(dateFormatString, this.options.value) +
                   " (today, UTC)"
                 );
               },
@@ -255,7 +255,7 @@ export const cassandraSettlements = () => {
       ],
 
       tooltip: {
-        xDateFormat: dateFormat,
+        xDateFormat: dateFormatString,
         backgroundColor: "rgba(255,255,255,1)",
         className: "tooltip-settlements",
         useHTML: true,
@@ -272,18 +272,21 @@ export const cassandraSettlements = () => {
           if (this.color == cerPalette["Cool Grey"]) {
             var endText = "No set end date";
           } else {
-            var endText = Highcharts.dateFormat(dateFormat, this.point.end);
+            var endText = Highcharts.dateFormat(
+              dateFormatString,
+              this.point.end
+            );
           }
           if (this.point.parent == null) {
             return (
               `<b>${
                 this.key
               }</b><table> <tr><td> Active settlement(s) start:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
-                dateFormat,
+                dateFormatString,
                 this.point.start
               )}</b></td></tr>` +
               `<tr><td> Active settlement(s) end:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
-                dateFormat,
+                dateFormatString,
                 this.point.end
               )}</b></td></tr>` +
               `<tr><td> Active settlement(s) duration:</td><td style="padding:0"><b> ${years} years</b></table>`
@@ -293,7 +296,7 @@ export const cassandraSettlements = () => {
               `<b>${this.key}</b><table>` +
               to +
               `<tr><td>Start:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
-                dateFormat,
+                dateFormatString,
                 this.point.start
               )}</b>` +
               `<tr><td>End:</td><td style="padding:0"><b> ${endText}</b>` +

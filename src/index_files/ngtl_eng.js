@@ -5,6 +5,7 @@ import ieWarn from "ie-gang";
 
 import { runConditions } from "../conditions/NOVAGasTransmissionLtd/index.js";
 import { runIncidents } from "../incidents/NOVAGasTransmissionLtd/index.js";
+import { runSettlements } from "../settlements/NOVAGasTransmissionLtd/index.js";
 
 let warningParams = {
   message:
@@ -19,7 +20,7 @@ generalTheme();
 
 // async version
 async function loadAllCharts() {
-  let arrayOfCharts = [runConditions(), runIncidents()];
+  let arrayOfCharts = [runConditions(), runIncidents(), runSettlements()];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);
   });
@@ -31,4 +32,4 @@ async function loadAllCharts() {
 // }
 
 loadAllCharts();
-console.timeEnd(`chart loading`);
+// console.timeEnd(`chart loading`);

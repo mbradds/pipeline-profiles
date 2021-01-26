@@ -3,24 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- custom styles -->
-    <link rel="stylesheet" href="../styles.css" />
-    <!-- web experience toolkit -->
     <link
       href="../GCWeb/assets/favicon-mobile.png"
       rel="icon"
       type="image/x-icon"
-    />
-    <link rel="stylesheet" href="../GCWeb/css/theme.min.css" />
-    <noscript
-      ><link rel="stylesheet" href="../GCWeb/wet-boew/css/noscript.min.css"
-    /></noscript>
-    <!-- leaflet -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
     />
   </head>
   <body>
@@ -48,6 +34,9 @@
       <!-- the below button needs to remain "Pipeline Incidents" -->
       <button class="tablinks" onclick="openTab(event, 'pipeline-incidents')">
         Pipeline Incidents
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'settlements')">
+        Negotiated Settlements
       </button>
       <button class="tablinks" onclick="openTab(event, 'contaminated-sites')">
         Contaminated Sites/Remediation
@@ -237,35 +226,37 @@
               </div>
             </div>
             <div class="mrgn-tp-lg"></div>
-            <div class="col-md-12">
-              <details>
-                <summary>Source and Description</summary>
-                <p><strong>Source:</strong> CER Regdocs</p>
-                <p><strong>Description:</strong> Coming Soon!</p>
-              </details>
-            </div>
-            <div class="col-md-12">
-              <p>
-                Open data can be freely used and shared by anyone for any
-                purpose. The
-                <a
-                  href="http://www.cer-rec.gc.ca/open/conditions/conditions.csv"
-                  target="_blank"
-                  rel="external"
-                  >data for these graphs are available</a
-                >.
-              </p>
-              <p>
-                Have you checked out the CER's
-                <a
-                  href="https://apps2.cer-rec.gc.ca/conditions/"
-                  target="_blank"
-                  rel="external"
-                  >interactive conditions data visualization</a
-                >? This tool offers a deep dive into the CER's conditions
-                compliance data and process, exploring conditions across all CER
-                regulated companies by keyword, project, and location.
-              </p>
+            <div class="row">
+              <div class="col-md-12">
+                <details>
+                  <summary>Source and Description</summary>
+                  <p><strong>Source:</strong> CER Regdocs</p>
+                  <p><strong>Description:</strong> Coming Soon!</p>
+                </details>
+              </div>
+              <div class="col-md-12">
+                <p>
+                  Open data can be freely used and shared by anyone for any
+                  purpose. The
+                  <a
+                    href="http://www.cer-rec.gc.ca/open/conditions/conditions.csv"
+                    target="_blank"
+                    rel="external"
+                    >data for these graphs are available</a
+                  >.
+                </p>
+                <p>
+                  Have you checked out the CER's
+                  <a
+                    href="https://apps2.cer-rec.gc.ca/conditions/"
+                    target="_blank"
+                    rel="external"
+                    >interactive conditions data visualization</a
+                  >? This tool offers a deep dive into the CER's conditions
+                  compliance data and process, exploring conditions across all
+                  CER regulated companies by keyword, project, and location.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -521,34 +512,54 @@
             </div>
           </section>
         </div>
-        <div class="col-md-12">
-          <details>
-            <summary>Source and Description</summary>
-            <p><strong>Source:</strong> CER Regdocs</p>
-            <p><strong>Description:</strong> Coming Soon!</p>
-          </details>
+        <div class="row">
+          <div class="col-md-12">
+            <details>
+              <summary>Source and Description</summary>
+              <p><strong>Source:</strong> CER Incident data</p>
+              <p><strong>Description:</strong> Coming Soon!</p>
+            </details>
+          </div>
+          <div class="col-md-12">
+            <p>
+              Open data can be freely used and shared by anyone for any purpose.
+              The
+              <a
+                href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6"
+                target="_blank"
+                rel="external"
+                >data for these graphs are available</a
+              >.
+            </p>
+            <p>
+              Have you checked out the CER's
+              <a
+                href="https://apps2.cer-rec.gc.ca/pipeline-incidents/"
+                target="_blank"
+                rel="external"
+                >interactive incident data visualization</a
+              >? This tool offers a deep dive into the CER's incident data
+              trends, exploring incidents across all CER regulated companies.
+            </p>
+          </div>
         </div>
-        <div class="col-md-12">
-          <p>
-            Open data can be freely used and shared by anyone for any purpose.
-            The
-            <a
-              href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6"
-              target="_blank"
-              rel="external"
-              >data for these graphs are available</a
-            >.
-          </p>
-          <p>
-            Have you checked out the CER's
-            <a
-              href="https://apps2.cer-rec.gc.ca/pipeline-incidents/"
-              target="_blank"
-              rel="external"
-              >interactive incident data visualization</a
-            >? This tool offers a deep dive into the CER's incident data trends,
-            exploring incidents across all CER regulated companies.
-          </p>
+      </div>
+    </div>
+
+    <div id="settlements" class="profile-section tabcontent">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Negotiated Settlements</h2>
+            <p class="small">Section updated February 2021</p>
+            <div class="dashboard">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="negotiated-settlements"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -641,6 +652,11 @@
     </script>
     <!-- <script src="../GCWeb/wet-boew/js/wet-boew.min.js"></script> -->
     <!-- highcharts -->
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../GCWeb/css/theme.min.css" />
+    <noscript
+      ><link rel="stylesheet" href="../GCWeb/wet-boew/css/noscript.min.css"
+    /></noscript>
     <script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>
     <script src="https://code.highcharts.com/gantt/8.2.2/modules/gantt.js"></script>
@@ -655,5 +671,11 @@
     ></script>
     <!-- webpack bundle -->
     <script src="../dist/bundle_ngtl_eng.js" type="text/javascript"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
   </body>
 </html>

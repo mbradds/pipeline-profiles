@@ -33,6 +33,9 @@ body {
 .dashboard {
   padding-left: 15px;
   padding-right: 15px;
+  /* border-style: solid;
+  border-color: #8c8c96;
+  border-radius: 5px; */
 }
 /* styles for conditions compliance section */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
