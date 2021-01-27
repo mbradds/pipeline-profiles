@@ -1,5 +1,4 @@
 import { cerPalette, sortJson } from "../modules/util.js";
-import "core-js/proposals/string-replace-all";
 import { mapInits } from "./hcMapConfig.js";
 
 export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
@@ -37,7 +36,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
       projectsHTML = `<table class="conditions-table">`;
       projectsHTML += `<caption style="text-align:left;">Projects with ${filter.column} Conditions (click for REGDOCS link):</caption>`;
       summary.projects.map((proj) => {
-        if (proj.id == selectedRegion) {
+        if (proj.id == selectedRegion && proj.value > 0) {
           if (proj.Regdocs !== undefined) {
             let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
             projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["value"]}</td></tr>`;
@@ -50,7 +49,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
       projectsHTML += `<caption style="text-align:left;">${filter.column} Condition Themes (click to view theme definition):</caption>`;
       summary.themes.map((proj) => {
-        if (proj.id == selectedRegion) {
+        if (proj.id == selectedRegion && proj.value > 0) {
           projectsHTML += `<tr><td onclick="themeClick(this)">${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
         }
       });

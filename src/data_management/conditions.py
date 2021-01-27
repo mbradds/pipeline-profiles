@@ -44,12 +44,20 @@ def conditions_on_map(df, shp, folder_name):
                    right_on=['Flat Province', 'id'])
     for delete in ['PRUID', 'ERUID', 'ERNAME', 'PRNAME']:
         del shp[delete]
+
+    # shp = shp[shp['id'] == 'Calgary']
     export_files(shp, folder="../conditions/"+folder_name, name='economicRegions.json')
     saveJson(df, os.path.join('../conditions/'+folder_name, 'mapMetadata.json'))
     return shp
 
 
 def metadata(df, folder_name):
+
+    def convert_to_int(df):
+        df = df.replace({np.nan: 0})
+        for col in ['In Progress', 'Closed']:
+            df[col] = [int(x) for x in df[col]]
+        return df
     # df contains the condition data for the spcecific company
     meta = {}
 
@@ -84,7 +92,9 @@ def metadata(df, folder_name):
                              columns='Condition Status').reset_index()
 
     project = project.sort_values(by=['In Progress', 'id'], ascending=False)
-    project = project.replace({np.nan: None})
+    project['In Progress'] = pd.to_numeric(project['In Progress'])
+    # TOOD: replace nan with zero's in metadata, and cast all as int. This should reduce file size
+    project = convert_to_int(project)
     project = project.to_dict(orient='records')
     meta['projects'] = project
 
@@ -97,7 +107,8 @@ def metadata(df, folder_name):
                            columns='Condition Status').reset_index()
 
     theme = theme.sort_values(by=['In Progress', 'id'], ascending=False)
-    theme = theme.replace({np.nan: None})
+    # theme = theme.replace({np.nan: None})
+    theme = convert_to_int(theme)
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
     # save the metadata
@@ -182,7 +193,7 @@ def process_conditions(remote=False, nonStandard=True):
     regions_map = import_simplified()
     links = orca_regdocs_links()
 
-    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
+    company_files = ['NOVA Gas Transmission Ltd.']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

@@ -33,7 +33,7 @@ export const mainIncidents = (incidentData, metaData) => {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     map.setMinZoom(5);
-    map.invalidateSize(true);
+    //map.invalidateSize(true);
     return map;
   }
 
@@ -93,6 +93,10 @@ export const mainIncidents = (incidentData, metaData) => {
   }
 
   function processIncidents(data, thisMap) {
+    const radiusCalc = (maxVolume) => {
+      return undefined;
+    };
+
     let years = []; //piggyback on data processing pass to get the year colors
     let colors = [
       cerPalette["Sun"],
@@ -108,6 +112,12 @@ export const mainIncidents = (incidentData, metaData) => {
       "#e6ecf0",
       "#ffffff",
     ];
+    let volumes = data.map((row) => {
+      return row["Approximate Volume Released"];
+    });
+    let [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
+
+    // TODO: get max and min volume, and normalize values. Then categorize maximum into s,m,l and add buffer value.
     let allCircles = data.map((row) => {
       years.push(row.Year);
       return addCircle(
@@ -116,6 +126,9 @@ export const mainIncidents = (incidentData, metaData) => {
         cerPalette["Cool Grey"],
         thisMap.colors[thisMap.field][row[thisMap.field]],
         row["Approximate Volume Released"] / 100 + 2000,
+        // (row["Approximate Volume Released"] - minVol / (maxVol - minVol)) *
+        //   100 +
+        //   thisMap.minRadius / 3,
         thisMap,
         row
       );
@@ -168,13 +181,23 @@ export const mainIncidents = (incidentData, metaData) => {
           watch: false,
         }) /* This will return map so you can do chaining */
         .on("locationfound", function (e) {
-          var marker = L.marker([e.latitude, e.longitude]).bindPopup(
-            "Approximate location"
+          var marker = L.marker([e.latitude, e.longitude], {
+            draggable: true,
+          }).bindPopup(
+            "Approximate location. You can drag this marker around to explore incident events in other locations."
           );
+          //thisMap.circles
+          marker.on("drag", function (e) {
+            var marker = e.target;
+            var position = marker.getLatLng();
+            thisMap.user.latitude = position.lat;
+            thisMap.user.longitude = position.lng;
+          });
           marker.id = "userLocation";
           thisMap.map.addLayer(marker);
           thisMap.user.latitude = e.latitude;
           thisMap.user.longitude = e.longitude;
+          thisMap.user.layer = marker;
           resolve(thisMap);
         })
         .on("locationerror", function (e) {
@@ -193,8 +216,9 @@ export const mainIncidents = (incidentData, metaData) => {
   }
 
   function nearbyIncidents(thisMap, range) {
-    var nearbyCircles = [];
+    var [nearbyCircles, allCircles] = [[], []];
     thisMap.circles.eachLayer(function (layer) {
+      allCircles.push(layer);
       let incLoc = layer._latlng;
       let distance = haversine(thisMap.user, {
         latitude: incLoc.lat,
@@ -208,12 +232,29 @@ export const mainIncidents = (incidentData, metaData) => {
       }
     });
     var incidentFlag = document.getElementById("nearby-flag");
+
+    let userDummy = L.circle([thisMap.user.latitude, thisMap.user.longitude], {
+      color: undefined,
+      fillColor: undefined,
+      fillOpacity: 0,
+      radius: 1,
+      weight: 1,
+    });
+
+    userDummy.addTo(thisMap.map);
     if (nearbyCircles.length > 0) {
       thisMap.nearby = L.featureGroup(nearbyCircles);
       let bounds = thisMap.nearby.getBounds();
+      bounds.extend(userDummy.getBounds());
       thisMap.map.fitBounds(bounds, { maxZoom: 15 });
+      // loop through the nearbyCircles and get some summary stats:
+      thisMap.nearby.eachLayer(function (layer) {
+        //console.log(layer);
+      });
       incidentFlag.innerHTML = `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4>Summary: Coming Soon!</section>`;
     } else {
+      //let userZoom = L.featureGroup(allCircles)
+      //userDummy.addTo(userZoom)
       incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby incidents</h4>Try increasing the search range.</section>`;
     }
   }
@@ -241,7 +282,7 @@ export const mainIncidents = (incidentData, metaData) => {
   processIncidents(incidentData, thisMap); // this false determines if volume is shown on load
   thisMap.reZoom = function () {
     let bounds = this.circles.getBounds();
-    this.map.fitBounds(bounds, { maxZoom: 15 });
+    this.map.fitBounds(bounds, { maxZoom: 5 });
   };
   thisMap.fieldChange = function (newField) {
     let newColors = this.colors[newField];
@@ -265,11 +306,11 @@ export const mainIncidents = (incidentData, metaData) => {
       resize = true;
     });
     $(".tab > .tablinks").on("click", function (e) {
+      thisMap.reZoom();
       if (resize) {
         thisMap.map.invalidateSize(true);
         resize = false;
       } else {
-        thisMap.reZoom();
         thisMap.map.invalidateSize(false);
       }
     });

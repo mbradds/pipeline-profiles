@@ -69,6 +69,7 @@ def process_incidents(remote=False):
     for delete in ['Significant', 'Release Type']:
         del df[delete]
 
+    # print(set(df['Company']))
     company_files = ['NOVA Gas Transmission Ltd.']
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
@@ -76,6 +77,7 @@ def process_incidents(remote=False):
             os.makedirs("../incidents/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
+        # df_c = df[df['Company'] == "Enbridge Pipelines (NW) Inc."].copy()
         # calculate metadata here, before non releases are filtered out
         meta = companyMetaData(df_c, company)
         with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
