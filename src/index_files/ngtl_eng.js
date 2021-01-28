@@ -25,11 +25,5 @@ async function loadAllCharts() {
     console.timeEnd(`chart loading`);
   });
 }
-// syncronous version
-// function loadAllCharts() {
-//   runConditions();
-//   runIncidents();
-// }
 
 loadAllCharts();
-// console.timeEnd(`chart loading`);

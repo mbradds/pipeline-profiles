@@ -33,8 +33,16 @@ export const mainIncidents = (incidentData, metaData) => {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     map.setMinZoom(5);
-    //map.invalidateSize(true);
     return map;
+  }
+
+  function volumeText(m3) {
+    let conv = conversions["m3 to bbl"];
+    return `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${Highcharts.numberFormat(
+      (m3 * conv).toFixed(2),
+      2,
+      "."
+    )} bbl (${Highcharts.numberFormat(m3, 2, ".")} m3)</b></td></tr>`;
   }
 
   function toolTip(thisMap, incidentParams, fillColor) {
@@ -51,7 +59,6 @@ export const mainIncidents = (incidentData, metaData) => {
       }
     };
 
-    let conv = conversions["m3 to bbl"];
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams["Incident Number"]}</b></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
@@ -59,15 +66,7 @@ export const mainIncidents = (incidentData, metaData) => {
     }:</td><td style="color:${fillColor}">&nbsp<b>${
       incidentParams[thisMap.field]
     }</b></td></tr>`;
-    toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${Highcharts.numberFormat(
-      (incidentParams["Approximate Volume Released"] * conv).toFixed(2),
-      2,
-      "."
-    )} bbl (${Highcharts.numberFormat(
-      incidentParams["Approximate Volume Released"],
-      2,
-      "."
-    )} m3)</b></td></tr>`;
+    toolTipText += volumeText(incidentParams["Approximate Volume Released"]);
     toolTipText += `<tr><td>What Happened?</td><td><b>${formatCommaList(
       incidentParams["What Happened"]
     )}</b></td></tr>`;
@@ -94,7 +93,11 @@ export const mainIncidents = (incidentData, metaData) => {
 
   function processIncidents(data, thisMap) {
     const radiusCalc = (maxVolume) => {
-      return undefined;
+      if (maxVolume > 500) {
+        return 150000;
+      } else {
+        return 100000;
+      }
     };
 
     let years = []; //piggyback on data processing pass to get the year colors
@@ -116,19 +119,19 @@ export const mainIncidents = (incidentData, metaData) => {
       return row["Approximate Volume Released"];
     });
     let [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
-
+    let maxRad = radiusCalc(maxVol);
     // TODO: get max and min volume, and normalize values. Then categorize maximum into s,m,l and add buffer value.
     let allCircles = data.map((row) => {
       years.push(row.Year);
+      let t = (row["Approximate Volume Released"] - minVol) / (maxVol - minVol);
+      t = t * (maxRad - 5000) + 5000;
+
       return addCircle(
         row.Latitude,
         row.Longitude,
         cerPalette["Cool Grey"],
         thisMap.colors[thisMap.field][row[thisMap.field]],
-        row["Approximate Volume Released"] / 100 + 2000,
-        // (row["Approximate Volume Released"] - minVol / (maxVol - minVol)) *
-        //   100 +
-        //   thisMap.minRadius / 3,
+        t,
         thisMap,
         row
       );
@@ -186,6 +189,12 @@ export const mainIncidents = (incidentData, metaData) => {
           }).bindPopup(
             "Approximate location. You can drag this marker around to explore incident events in other locations."
           );
+          marker.on("mouseover", function (e) {
+            this.openPopup();
+          });
+          marker.on("mouseout", function (e) {
+            this.closePopup();
+          });
           //thisMap.circles
           marker.on("drag", function (e) {
             var marker = e.target;
@@ -240,21 +249,28 @@ export const mainIncidents = (incidentData, metaData) => {
       radius: 1,
       weight: 1,
     });
-
     userDummy.addTo(thisMap.map);
+
     if (nearbyCircles.length > 0) {
       thisMap.nearby = L.featureGroup(nearbyCircles);
       let bounds = thisMap.nearby.getBounds();
       bounds.extend(userDummy.getBounds());
       thisMap.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
+      let nearbyVolume = 0;
       thisMap.nearby.eachLayer(function (layer) {
-        //console.log(layer);
+        nearbyVolume +=
+          layer.options.incidentParams["Approximate Volume Released"];
       });
-      incidentFlag.innerHTML = `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4>Summary: Coming Soon!</section>`;
+      incidentFlag.innerHTML = `<section class="alert alert-info"><h4>There are ${
+        nearbyCircles.length
+      } incidents within ${range} km</h4>\
+      ${volumeText(nearbyVolume)}</section>`;
     } else {
-      //let userZoom = L.featureGroup(allCircles)
-      //userDummy.addTo(userZoom)
+      let userZoom = L.featureGroup(allCircles);
+      let bounds = userZoom.getBounds();
+      bounds.extend(userDummy.getBounds());
+      thisMap.map.fitBounds(bounds, { maxZoom: 15 });
       incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby incidents</h4>Try increasing the search range.</section>`;
     }
   }

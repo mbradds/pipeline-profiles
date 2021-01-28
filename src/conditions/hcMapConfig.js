@@ -3,7 +3,7 @@ export const mapInits = {
   zooms: {
     "NOVA Gas Transmission Ltd.": {
       "In Progress": [0.22, -12800000, -7504281],
-      Closed: [0.3, -11001114, -7500840],
+      Closed: [0.3, -12001114, -7500840],
       maxDrop: null,
     },
     "TransCanada PipeLines Limited": {

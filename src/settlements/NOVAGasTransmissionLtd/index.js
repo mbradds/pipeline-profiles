@@ -8,7 +8,3 @@ export async function runSettlements() {
     resolve(settlements(settlementsData));
   });
 }
-// syncronous version
-// export function runIncidents() {
-//   mainIncidents(incidentData);
-// }
