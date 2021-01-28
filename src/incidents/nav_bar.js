@@ -361,6 +361,12 @@ export const incidentBar = (data, map) => {
         name: barName,
       };
       this.barList.push(this[barName]);
+      this.formatLegend(barName);
+      if (status == "activated") {
+        this.activateBar(barName);
+      } else if ((status = "deactivated")) {
+        this.deactivateBar(barName);
+      }
     },
 
     switchY: function (newY) {
@@ -402,18 +408,5 @@ export const incidentBar = (data, map) => {
 
   bars.barSeries = prepareData(data);
   bars.barColors = map.colors;
-  bars.makeBar("Substance", "substance-bar", "activated");
-  bars.makeBar("Status", "status-bar", "deactivated");
-  bars.makeBar("Province", "province-bar", "deactivated");
-  bars.makeBar("Year", "year-bar", "deactivated");
-  bars.activateBar("Substance");
-  bars.deactivateBar("Status");
-  bars.deactivateBar("Province");
-  bars.deactivateBar("Year");
-  bars.formatLegend("Substance");
-  bars.formatLegend("Status");
-  bars.formatLegend("Province");
-  bars.formatLegend("Year");
-  bars.divEvents();
   return bars;
 };

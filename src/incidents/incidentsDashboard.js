@@ -3,28 +3,45 @@ import { incidentBar } from "./nav_bar.js";
 import { summaryParagraph } from "./summary.js";
 const haversine = require("haversine");
 
-export const mainIncidents = (incidentData, metaData) => {
-  // TODO: add all substances present in the entire dataset, not just ngtl
-  summaryParagraph(metaData);
-  const substanceColors = {
+class Dashboard {
+  substanceColors = {
     Propane: cerPalette["Forest"],
     "Natural Gas - Sweet": cerPalette["Flame"],
     "Fuel Gas": cerPalette["Sun"],
     "Lube Oil": cerPalette["hcPurple"],
   };
 
-  const statusColors = {
+  statusColors = {
     "Initially Submitted": cerPalette["Flame"],
     Closed: cerPalette["Night Sky"],
     Submitted: cerPalette["Ocean"],
   };
 
-  const provinceColors = {
+  provinceColors = {
     Alberta: cerPalette["Sun"],
     "British Columbia": cerPalette["Forest"],
   };
 
-  function baseMap() {
+  constructor(eventType, filters, minRadius, field) {
+    this.eventType = eventType;
+    this.filters = filters;
+    this.minRadius = minRadius;
+    this.field = field;
+    this.colors = this.setColors();
+    this.user = { latitude: undefined, longitude: undefined };
+  }
+
+  setColors() {
+    if (this.eventType == "incidents") {
+      return {
+        Substance: this.substanceColors,
+        Status: this.statusColors,
+        Province: this.provinceColors,
+      };
+    }
+  }
+
+  addBaseMap() {
     const baseZoom = [55, -119];
     var map = L.map("incident-map").setView(baseZoom, 5);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
@@ -33,10 +50,10 @@ export const mainIncidents = (incidentData, metaData) => {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     map.setMinZoom(5);
-    return map;
+    this.map = map;
   }
 
-  function volumeText(m3) {
+  volumeText(m3) {
     let conv = conversions["m3 to bbl"];
     return `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${Highcharts.numberFormat(
       (m3 * conv).toFixed(2),
@@ -45,7 +62,7 @@ export const mainIncidents = (incidentData, metaData) => {
     )} bbl (${Highcharts.numberFormat(m3, 2, ".")} m3)</b></td></tr>`;
   }
 
-  function toolTip(thisMap, incidentParams, fillColor) {
+  toolTip(incidentParams, fillColor) {
     const formatCommaList = (text) => {
       if (text.includes(",")) {
         let itemList = text.split(",");
@@ -62,11 +79,13 @@ export const mainIncidents = (incidentData, metaData) => {
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams["Incident Number"]}</b></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
-      thisMap.field
+      this.field
     }:</td><td style="color:${fillColor}">&nbsp<b>${
-      incidentParams[thisMap.field]
+      incidentParams[this.field]
     }</b></td></tr>`;
-    toolTipText += volumeText(incidentParams["Approximate Volume Released"]);
+    toolTipText += this.volumeText(
+      incidentParams["Approximate Volume Released"]
+    );
     toolTipText += `<tr><td>What Happened?</td><td><b>${formatCommaList(
       incidentParams["What Happened"]
     )}</b></td></tr>`;
@@ -77,21 +96,44 @@ export const mainIncidents = (incidentData, metaData) => {
     return toolTipText;
   }
 
-  function addCircle(x, y, color, fillColor, r, thisMap, incidentParams = {}) {
+  addCircle(x, y, color, fillColor, r, incidentParams = {}) {
     return L.circle([x, y], {
       color: color,
       fillColor: fillColor,
       fillOpacity: 0.7,
-      radius: thisMap.minRadius,
+      radius: this.minRadius,
       minRadius: r,
       weight: 1,
       incidentParams,
-    })
-      .bindTooltip(toolTip(thisMap, incidentParams, fillColor))
-      .openTooltip();
+    });
   }
 
-  function processIncidents(data, thisMap) {
+  updateRadius() {
+    if (this.filters.type == "volume") {
+      this.circles.eachLayer(function (layer) {
+        try {
+          layer.setRadius(layer.options["minRadius"]);
+        } catch (err) {
+          layer.setRadius(0);
+          console.log("Error setting new radius");
+        }
+      });
+    } else {
+      let currZoom = this.map.getZoom();
+      var minRadius = this.minRadius;
+      if (currZoom >= 7) {
+        this.circles.eachLayer(function (layer) {
+          layer.setRadius(minRadius / 2);
+        });
+      } else if (currZoom <= 6) {
+        this.circles.eachLayer(function (layer) {
+          layer.setRadius(minRadius);
+        });
+      }
+    }
+  }
+
+  processIncidents(data) {
     const radiusCalc = (maxVolume) => {
       if (maxVolume > 500) {
         return 150000;
@@ -120,19 +162,16 @@ export const mainIncidents = (incidentData, metaData) => {
     });
     let [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     let maxRad = radiusCalc(maxVol);
-    // TODO: get max and min volume, and normalize values. Then categorize maximum into s,m,l and add buffer value.
     let allCircles = data.map((row) => {
       years.push(row.Year);
       let t = (row["Approximate Volume Released"] - minVol) / (maxVol - minVol);
       t = t * (maxRad - 5000) + 5000;
-
-      return addCircle(
+      return this.addCircle(
         row.Latitude,
         row.Longitude,
         cerPalette["Cool Grey"],
-        thisMap.colors[thisMap.field][row[thisMap.field]],
+        this.colors[this.field][row[this.field]],
         t,
-        thisMap,
         row
       );
     });
@@ -144,41 +183,19 @@ export const mainIncidents = (incidentData, metaData) => {
     years.map((yr, i) => {
       yearColors[yr] = colors[i];
     });
-    thisMap.colors.Year = yearColors;
-    let circles = L.featureGroup(allCircles).addTo(thisMap.map);
-    thisMap.circles = circles;
-    thisMap.map.on("zoom", function (e) {
-      updateRadius(thisMap);
+    this.colors.Year = yearColors;
+    let circles = L.featureGroup(allCircles).addTo(this.map);
+    this.circles = circles;
+    let currentDashboard = this;
+    this.map.on("zoom", function (e) {
+      currentDashboard.updateRadius();
     });
   }
 
-  function updateRadius(thisMap) {
-    if (thisMap.filters.type == "volume") {
-      thisMap.circles.eachLayer(function (layer) {
-        try {
-          layer.setRadius(layer.options["minRadius"]);
-        } catch (err) {
-          layer.setRadius(0);
-          console.log("Error setting new radius");
-        }
-      });
-    } else {
-      let currZoom = thisMap.map.getZoom();
-      if (currZoom >= 7) {
-        thisMap.circles.eachLayer(function (layer) {
-          layer.setRadius(thisMap.minRadius / 2);
-        });
-      } else if (currZoom <= 6) {
-        thisMap.circles.eachLayer(function (layer) {
-          layer.setRadius(thisMap.minRadius);
-        });
-      }
-    }
-  }
-
-  async function findUser(thisMap) {
+  async findUser() {
     return new Promise((resolve, reject) => {
-      thisMap.map
+      let currentDashboard = this;
+      this.map
         .locate({
           //setView: true,
           watch: false,
@@ -199,37 +216,38 @@ export const mainIncidents = (incidentData, metaData) => {
           marker.on("drag", function (e) {
             var marker = e.target;
             var position = marker.getLatLng();
-            thisMap.user.latitude = position.lat;
-            thisMap.user.longitude = position.lng;
+            currentDashboard.user.latitude = position.lat;
+            currentDashboard.user.longitude = position.lng;
           });
           marker.id = "userLocation";
-          thisMap.map.addLayer(marker);
-          thisMap.user.latitude = e.latitude;
-          thisMap.user.longitude = e.longitude;
-          thisMap.user.layer = marker;
-          resolve(thisMap);
+          currentDashboard.map.addLayer(marker);
+          currentDashboard.user.latitude = e.latitude;
+          currentDashboard.user.longitude = e.longitude;
+          currentDashboard.user.layer = marker;
+          resolve(currentDashboard);
         })
         .on("locationerror", function (e) {
-          reject(thisMap);
+          reject(currentDashboard);
         });
     });
   }
 
-  async function waitOnUser(thisMap) {
+  async waitOnUser() {
     try {
-      return await findUser(thisMap);
+      return await this.findUser();
     } catch (err) {
       var incidentFlag = document.getElementById("nearby-flag");
       incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>Cant access your location.</h4>Try enabling your browser's location services and refresh the page.</section>`;
     }
   }
 
-  function nearbyIncidents(thisMap, range) {
+  nearbyIncidents(range) {
     var [nearbyCircles, allCircles] = [[], []];
-    thisMap.circles.eachLayer(function (layer) {
+    var currentDashboard = this;
+    this.circles.eachLayer(function (layer) {
       allCircles.push(layer);
       let incLoc = layer._latlng;
-      let distance = haversine(thisMap.user, {
+      let distance = haversine(currentDashboard.user, {
         latitude: incLoc.lat,
         longitude: incLoc.lng,
       });
@@ -242,96 +260,102 @@ export const mainIncidents = (incidentData, metaData) => {
     });
     var incidentFlag = document.getElementById("nearby-flag");
 
-    let userDummy = L.circle([thisMap.user.latitude, thisMap.user.longitude], {
+    let userDummy = L.circle([this.user.latitude, this.user.longitude], {
       color: undefined,
       fillColor: undefined,
       fillOpacity: 0,
       radius: 1,
       weight: 1,
     });
-    userDummy.addTo(thisMap.map);
+    userDummy.addTo(this.map);
 
     if (nearbyCircles.length > 0) {
-      thisMap.nearby = L.featureGroup(nearbyCircles);
-      let bounds = thisMap.nearby.getBounds();
+      this.nearby = L.featureGroup(nearbyCircles);
+      let bounds = this.nearby.getBounds();
       bounds.extend(userDummy.getBounds());
-      thisMap.map.fitBounds(bounds, { maxZoom: 15 });
+      this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
       let nearbyVolume = 0;
-      thisMap.nearby.eachLayer(function (layer) {
+      this.nearby.eachLayer(function (layer) {
         nearbyVolume +=
           layer.options.incidentParams["Approximate Volume Released"];
       });
       incidentFlag.innerHTML = `<section class="alert alert-info"><h4>There are ${
         nearbyCircles.length
       } incidents within ${range} km</h4>\
-      ${volumeText(nearbyVolume)}</section>`;
+      ${this.volumeText(nearbyVolume)}</section>`;
     } else {
       let userZoom = L.featureGroup(allCircles);
       let bounds = userZoom.getBounds();
       bounds.extend(userDummy.getBounds());
-      thisMap.map.fitBounds(bounds, { maxZoom: 15 });
+      this.map.fitBounds(bounds, { maxZoom: 15 });
       incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby incidents</h4>Try increasing the search range.</section>`;
     }
   }
 
-  function resetMap(thisMap) {
-    thisMap.circles.eachLayer(function (layer) {
-      layer.setStyle({ fillOpacity: 0.7 });
-    });
-    thisMap.reZoom();
-  }
-
-  // main
-  const thisMap = {};
-  thisMap.map = baseMap();
-  thisMap.filters = { type: "frequency" };
-  thisMap.user = { latitude: undefined, longitude: undefined };
-  thisMap.nearby = undefined;
-  thisMap.minRadius = 14000;
-  thisMap.field = "Substance";
-  thisMap.colors = {
-    Substance: substanceColors,
-    Status: statusColors,
-    Province: provinceColors,
-  };
-  processIncidents(incidentData, thisMap); // this false determines if volume is shown on load
-  thisMap.reZoom = function () {
+  reZoom() {
     let bounds = this.circles.getBounds();
     this.map.fitBounds(bounds, { maxZoom: 5 });
-  };
-  thisMap.fieldChange = function (newField) {
+  }
+
+  resetMap() {
+    this.circles.eachLayer(function (layer) {
+      layer.setStyle({ fillOpacity: 0.7 });
+    });
+    this.reZoom();
+  }
+
+  fieldChange(newField) {
     let newColors = this.colors[newField];
     this.field = newField;
+    var currentDashboard = this;
     this.circles.eachLayer(function (layer) {
       let newFill = newColors[layer.options.incidentParams[newField]];
       layer.setStyle({
         fillColor: newFill,
       });
       layer.bindTooltip(
-        toolTip(thisMap, layer.options.incidentParams, newFill)
+        currentDashboard.toolTip(layer.options.incidentParams, newFill)
       );
     });
-  };
+  }
 
-  let bars = incidentBar(incidentData, thisMap);
-  //when using html tabs, the leaflet map will get messed up when moving from display:none to display:block after a screen resize.
-  function lookForSize() {
+  lookForSize() {
+    var currentDashboard = this;
     var resize = false;
     $(window).on("resize", function () {
       resize = true;
     });
     $(".tab > .tablinks").on("click", function (e) {
-      thisMap.reZoom();
+      currentDashboard.reZoom();
       if (resize) {
-        thisMap.map.invalidateSize(true);
+        currentDashboard.map.invalidateSize(true);
         resize = false;
       } else {
-        thisMap.map.invalidateSize(false);
+        currentDashboard.map.invalidateSize(false);
       }
     });
   }
-  lookForSize();
+}
+
+export const mainIncidents = (incidentData, metaData) => {
+  // TODO: add all substances present in the entire dataset, not just ngtl
+  summaryParagraph(metaData);
+  const filters = { type: "frequency" };
+  const minRadius = 14000;
+  const field = "Substance";
+  const thisMap = new Dashboard("incidents", filters, minRadius, field);
+  thisMap.addBaseMap();
+  thisMap.processIncidents(incidentData);
+
+  let bars = incidentBar(incidentData, thisMap);
+  bars.makeBar("Substance", "substance-bar", "activated");
+  bars.makeBar("Status", "status-bar", "deactivated");
+  bars.makeBar("Province", "province-bar", "deactivated");
+  bars.makeBar("Year", "year-bar", "deactivated");
+  bars.divEvents();
+
+  thisMap.lookForSize();
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
     $(".btn-incident-data-type > .btn").removeClass("active");
@@ -340,7 +364,7 @@ export const mainIncidents = (incidentData, metaData) => {
     var btnValue = thisBtn.val();
     thisMap.filters.type = btnValue;
     bars.switchY(btnValue);
-    updateRadius(thisMap);
+    thisMap.updateRadius();
   });
 
   // user selection for finding nearby incidents
@@ -358,17 +382,17 @@ export const mainIncidents = (incidentData, metaData) => {
     document.getElementById("reset-incidents-btn").disabled = false;
     let range = document.getElementById("find-incidents-btn").value;
     if (!thisMap.user.latitude && !thisMap.user.longitude) {
-      waitOnUser(thisMap).then((userAdded) => {
-        nearbyIncidents(userAdded, range);
+      thisMap.waitOnUser().then((userAdded) => {
+        thisMap.nearbyIncidents(range);
       });
     } else {
-      nearbyIncidents(thisMap, range);
+      thisMap.nearbyIncidents(range);
     }
   });
 
   // reset map after user has selected a range
   $("#reset-incidents-btn").on("click", function () {
-    resetMap(thisMap);
+    thisMap.resetMap();
     document.getElementById("reset-incidents-btn").disabled = true;
     document.getElementById("nearby-flag").innerHTML = ``;
   });
