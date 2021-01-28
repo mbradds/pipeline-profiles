@@ -1,4 +1,4 @@
-import { cerPalette, conversions } from "../modules/util.js";
+import { cerPalette } from "../modules/util.js";
 
 class DashboardNav {
   legends = {
@@ -148,15 +148,14 @@ class DashboardNav {
         snap: 0,
         useHTML: true,
         formatter: function () {
-          let conv = conversions["m3 to bbl"];
           if (this.series.options.filter == "frequency") {
             return `${this.series.name} - ${this.y}`;
           } else if (this.series.options.filter == "volume") {
             return `${this.series.name} - <b>${Highcharts.numberFormat(
-              this.y * conv,
+              this.y,
               0,
               "."
-            )} bbl (${Highcharts.numberFormat(this.y, 0, ".")} m3)</b>`;
+            )} m3</b>`;
           }
         },
       },

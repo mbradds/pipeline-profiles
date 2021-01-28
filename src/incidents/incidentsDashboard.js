@@ -2,8 +2,15 @@ import { cerPalette, conversions } from "../modules/util.js";
 import { incidentBar } from "./nav_bar.js";
 import { summaryParagraph } from "./summary.js";
 const haversine = require("haversine");
+// TODO: import { EventMap, EventNav } from "../modules/dashboard.js"
 
-class Dashboard {
+class DashboardMap {
+  substanceState = {
+    Propane: "gas",
+    "Natural Gas - Sweet": "gas",
+    "Fuel Gas": "liquid",
+    "Lube Oil": "liquid",
+  };
   substanceColors = {
     Propane: cerPalette["Forest"],
     "Natural Gas - Sweet": cerPalette["Flame"],
@@ -22,11 +29,12 @@ class Dashboard {
     "British Columbia": cerPalette["Forest"],
   };
 
-  constructor(eventType, filters, minRadius, field) {
+  constructor(eventType, filters, minRadius, field, baseZoom = [55, -119]) {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
     this.field = field;
+    this.baseZoom = baseZoom;
     this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
   }
@@ -42,8 +50,7 @@ class Dashboard {
   }
 
   addBaseMap() {
-    const baseZoom = [55, -119];
-    var map = L.map("incident-map").setView(baseZoom, 5);
+    var map = L.map("incident-map").setView(this.baseZoom, 5);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
       foo: "bar",
       attribution:
@@ -53,13 +60,31 @@ class Dashboard {
     this.map = map;
   }
 
-  volumeText(m3) {
-    let conv = conversions["m3 to bbl"];
-    return `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${Highcharts.numberFormat(
-      (m3 * conv).toFixed(2),
-      2,
-      "."
-    )} bbl (${Highcharts.numberFormat(m3, 2, ".")} m3)</b></td></tr>`;
+  volumeText(m3, substance, gas = false, liquid = false) {
+    let convLiquid = conversions["m3 to bbl"];
+    let convGas = conversions["m3 to cf"];
+    if (!gas && !liquid) {
+      var state = this.substanceState[substance];
+    } else if (!gas && liquid) {
+      var state = "liquid";
+    } else {
+      var state = "gas";
+    }
+
+    if (state == "gas") {
+      var imperial = `${Highcharts.numberFormat(
+        (m3 * convGas).toFixed(2),
+        2,
+        "."
+      )} cubic feet`;
+    } else {
+      var imperial = `${Highcharts.numberFormat(
+        (m3 * convLiquid).toFixed(2),
+        2,
+        "."
+      )} bbl`;
+    }
+    return `${imperial} (${Highcharts.numberFormat(m3, 2, ".")} m3)`;
   }
 
   toolTip(incidentParams, fillColor) {
@@ -83,9 +108,10 @@ class Dashboard {
     }:</td><td style="color:${fillColor}">&nbsp<b>${
       incidentParams[this.field]
     }</b></td></tr>`;
-    toolTipText += this.volumeText(
-      incidentParams["Approximate Volume Released"]
-    );
+    toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${this.volumeText(
+      incidentParams["Approximate Volume Released"],
+      incidentParams.Substance
+    )}</b></td></tr>`;
     toolTipText += `<tr><td>What Happened?</td><td><b>${formatCommaList(
       incidentParams["What Happened"]
     )}</b></td></tr>`;
@@ -268,15 +294,39 @@ class Dashboard {
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
-      let nearbyVolume = 0;
+      let [nearbyGas, nearbyLiquid] = [0, 0];
+      let currentDashboard = this;
       this.nearby.eachLayer(function (layer) {
-        nearbyVolume +=
-          layer.options.incidentParams["Approximate Volume Released"];
+        let layerState =
+          currentDashboard.substanceState[
+            layer.options.incidentParams.Substance
+          ];
+        if (layerState == "gas") {
+          nearbyGas +=
+            layer.options.incidentParams["Approximate Volume Released"];
+        } else if (layerState == "liquid") {
+          nearbyLiquid +=
+            layer.options.incidentParams["Approximate Volume Released"];
+        } //TODO: add an "Other" option here
       });
-      incidentFlag.innerHTML = `<section class="alert alert-info"><h4>There are ${
-        nearbyCircles.length
-      } incidents within ${range} km</h4>\
-      ${this.volumeText(nearbyVolume)}</section>`;
+      let nearbyText = ``;
+      nearbyText += `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4><table>`;
+      nearbyText += `<tr><td>
+      Estimated gas volume released:&nbsp&nbsp</td><td>${this.volumeText(
+        nearbyGas,
+        undefined,
+        true
+      )}`;
+      nearbyText += `<tr><td>
+      Estimated liquid volume released:&nbsp&nbsp</td><td>${this.volumeText(
+        nearbyLiquid,
+        undefined,
+        false,
+        true
+      )}`;
+      nearbyText += `</table><br><small>Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.</small>
+      </section>`;
+      incidentFlag.innerHTML = nearbyText;
     } else {
       let userZoom = L.featureGroup(allCircles);
       let bounds = userZoom.getBounds();
@@ -337,13 +387,12 @@ export const mainIncidents = (incidentData, metaData) => {
   const filters = { type: "frequency" };
   const minRadius = 14000;
   const field = "Substance";
-  const thisMap = new Dashboard("incidents", filters, minRadius, field);
+  const thisMap = new DashboardMap("incidents", filters, minRadius, field);
   thisMap.addBaseMap();
   thisMap.processIncidents(incidentData);
-
-  let bars = incidentBar(incidentData, thisMap);
-
+  const bars = incidentBar(incidentData, thisMap);
   thisMap.lookForSize();
+
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
     $(".btn-incident-data-type > .btn").removeClass("active");
