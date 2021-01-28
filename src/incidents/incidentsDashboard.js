@@ -206,13 +206,6 @@ class Dashboard {
           }).bindPopup(
             "Approximate location. You can drag this marker around to explore incident events in other locations."
           );
-          marker.on("mouseover", function (e) {
-            this.openPopup();
-          });
-          marker.on("mouseout", function (e) {
-            this.closePopup();
-          });
-          //thisMap.circles
           marker.on("drag", function (e) {
             var marker = e.target;
             var position = marker.getLatLng();
@@ -349,11 +342,6 @@ export const mainIncidents = (incidentData, metaData) => {
   thisMap.processIncidents(incidentData);
 
   let bars = incidentBar(incidentData, thisMap);
-  bars.makeBar("Substance", "substance-bar", "activated");
-  bars.makeBar("Status", "status-bar", "deactivated");
-  bars.makeBar("Province", "province-bar", "deactivated");
-  bars.makeBar("Year", "year-bar", "deactivated");
-  bars.divEvents();
 
   thisMap.lookForSize();
   // user selection to show volume or incident frequency
