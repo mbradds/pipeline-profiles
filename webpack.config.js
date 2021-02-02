@@ -4,8 +4,8 @@ const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  //mode: "production",
-  mode: "development",
+  mode: "production",
+  //mode: "development",
   entry: {
     ngtl_eng: "./src/index_files/ngtl_eng.js",
   },
@@ -13,6 +13,11 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle_[name].js",
     publicPath: "/pipeline-profiles/",
+  },
+
+  devServer: {
+    //contentBase: path.join(__dirname, "dist"),
+    compress: true,
   },
 
   // plugins: [

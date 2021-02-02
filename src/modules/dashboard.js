@@ -1,32 +1,40 @@
 import { cerPalette, conversions } from "../modules/util.js";
 const haversine = require("haversine");
 
-export class DashboardMap {
+const EVENTCOLORS = {
+  substanceColors: {
+    Propane: cerPalette["Forest"],
+    "Natural Gas - Sweet": cerPalette["Flame"],
+    "Fuel Gas": cerPalette["Sun"],
+    "Lube Oil": cerPalette["hcPurple"],
+  },
+  statusColors: {
+    "Initially Submitted": cerPalette["Flame"],
+    Closed: cerPalette["Night Sky"],
+    Submitted: cerPalette["Ocean"],
+  },
+  provinceColors: {
+    Alberta: cerPalette["Sun"],
+    "British Columbia": cerPalette["Forest"],
+  },
+};
+
+export class EventMap {
   substanceState = {
     Propane: "gas",
     "Natural Gas - Sweet": "gas",
     "Fuel Gas": "liquid",
     "Lube Oil": "liquid",
   };
-  substanceColors = {
-    Propane: cerPalette["Forest"],
-    "Natural Gas - Sweet": cerPalette["Flame"],
-    "Fuel Gas": cerPalette["Sun"],
-    "Lube Oil": cerPalette["hcPurple"],
-  };
+  EVENTCOLORS = EVENTCOLORS;
 
-  statusColors = {
-    "Initially Submitted": cerPalette["Flame"],
-    Closed: cerPalette["Night Sky"],
-    Submitted: cerPalette["Ocean"],
-  };
-
-  provinceColors = {
-    Alberta: cerPalette["Sun"],
-    "British Columbia": cerPalette["Forest"],
-  };
-
-  constructor(eventType, filters, minRadius, field, baseZoom = [55, -119]) {
+  constructor(
+    eventType,
+    field = undefined,
+    filters = undefined,
+    minRadius = undefined,
+    baseZoom = [55, -119]
+  ) {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
@@ -39,9 +47,9 @@ export class DashboardMap {
   setColors() {
     if (this.eventType == "incidents") {
       return {
-        Substance: this.substanceColors,
-        Status: this.statusColors,
-        Province: this.provinceColors,
+        Substance: this.EVENTCOLORS.substanceColors,
+        Status: this.EVENTCOLORS.statusColors,
+        Province: this.EVENTCOLORS.provinceColors,
       };
     }
   }
@@ -156,7 +164,7 @@ export class DashboardMap {
     }
   }
 
-  processIncidents(data) {
+  processEventsData(data) {
     const radiusCalc = (maxVolume) => {
       if (maxVolume > 500) {
         return 150000;
@@ -378,7 +386,7 @@ export class DashboardMap {
   }
 }
 
-export class DashboardNav {
+export class EventNavigator {
   legends = {
     Substance: {
       layout: "horizontal",
@@ -609,47 +617,57 @@ export class DashboardNav {
 
   deactivateChart(bar) {
     var chart = bar.chart;
-    var div = bar.div;
-    if (div !== "year-bar") {
-      var greyColors = ["#CCCCCC", "#999999", "#666666", "#333333", "#000000"];
-    } else {
-      var greyColors = [
-        "#101010",
-        "#282828",
-        "#404040",
-        "#585858",
-        "#696969",
-        "#808080",
-        "#989898",
-        "#A9A9A9",
-        "#BEBEBE",
-        "#D0D0D0",
-        "#DCDCDC",
-        "#F0F0F0",
-        "#FFFFFF",
-      ].reverse();
-    }
+    let activeDiv = document.getElementById(bar.div);
+    if (chart) {
+      if (bar.div !== "year-bar") {
+        var greyColors = [
+          "#CCCCCC",
+          "#999999",
+          "#666666",
+          "#333333",
+          "#000000",
+        ];
+      } else {
+        var greyColors = [
+          "#101010",
+          "#282828",
+          "#404040",
+          "#585858",
+          "#696969",
+          "#808080",
+          "#989898",
+          "#A9A9A9",
+          "#BEBEBE",
+          "#D0D0D0",
+          "#DCDCDC",
+          "#F0F0F0",
+          "#FFFFFF",
+        ].reverse();
+      }
 
-    chart.series.map((s, i) => {
-      chart.series[i].options.color = greyColors[i];
-      chart.series[i].update(chart.series[i].options);
-    });
-    chart.update({
-      title: { text: `${chart.title.textStr} (click to view)` },
-      plotOptions: {
-        series: {
-          states: {
-            hover: {
-              enabled: false,
+      chart.series.map((s, i) => {
+        chart.series[i].options.color = greyColors[i];
+        chart.series[i].update(chart.series[i].options);
+      });
+
+      chart.update({
+        title: { text: `${chart.title.textStr} (click to view)` },
+        plotOptions: {
+          series: {
+            states: {
+              hover: {
+                enabled: false,
+              },
             },
           },
         },
-      },
-      tooltip: {
-        enabled: false,
-      },
-    });
-    let activeDiv = document.getElementById(div);
+        tooltip: {
+          enabled: false,
+        },
+      });
+    } else {
+      activeDiv.innerHTML = `<p>${bar.name} (click to view)</p>`;
+    }
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
@@ -657,39 +675,43 @@ export class DashboardNav {
   }
 
   activateChart(bar) {
-    let colors = this.barColors[bar.name];
     let chart = bar.chart;
-    let div = bar.div;
-    chart.series.map((s, i) => {
-      chart.series[i].options.color = colors[s.name];
-      chart.series[i].update(chart.series[i].options);
-    });
-    let activeTitle = chart.title.textStr;
-    if (activeTitle.includes("(")) {
-      activeTitle = activeTitle.split("(")[0];
-    }
-    chart.update({
-      chart: {
-        backgroundColor: "white",
-      },
-      title: {
-        text: activeTitle,
-      },
-      plotOptions: {
-        series: {
-          states: {
-            hover: {
-              enabled: true,
+    let activeDiv = document.getElementById(bar.div);
+    if (chart) {
+      let colors = this.barColors[bar.name];
+      chart.series.map((s, i) => {
+        chart.series[i].options.color = colors[s.name];
+        chart.series[i].update(chart.series[i].options);
+      });
+      let activeTitle = chart.title.textStr;
+      if (activeTitle.includes("(")) {
+        activeTitle = activeTitle.split("(")[0];
+      }
+      chart.update({
+        chart: {
+          backgroundColor: "white",
+        },
+        title: {
+          text: activeTitle,
+        },
+        plotOptions: {
+          series: {
+            states: {
+              hover: {
+                enabled: true,
+              },
             },
           },
         },
-      },
-      tooltip: {
-        enabled: true,
-      },
-    });
+        tooltip: {
+          enabled: true,
+        },
+      });
+    } else {
+      activeDiv.innerHTML = `<p>${bar.name}</p>`;
+      activeDiv.style.backgroundColor = "white";
+    }
     this.currentActive = bar;
-    let activeDiv = document.getElementById(div);
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
@@ -703,22 +725,30 @@ export class DashboardNav {
     function mouseOver() {
       if (bar.status !== "activated") {
         barDiv.style.opacity = 1;
-        bar.chart.update({
-          chart: {
-            backgroundColor: "#F0F8FF",
-          },
-        });
+        if (bar.chart) {
+          bar.chart.update({
+            chart: {
+              backgroundColor: "#F0F8FF",
+            },
+          });
+        } else {
+          barDiv.style.backgroundColor = "#F0F8FF"; // TODO: make these colors into class variables
+        }
       }
     }
 
     function mouseOut() {
       if (bar.status !== "activated") {
         barDiv.style.opacity = 0.5;
-        bar.chart.update({
-          chart: {
-            backgroundColor: "white",
-          },
-        });
+        if (bar.chart) {
+          bar.chart.update({
+            chart: {
+              backgroundColor: "white",
+            },
+          });
+        } else {
+          barDiv.style.backgroundColor = "white";
+        }
       }
     }
 
@@ -736,9 +766,11 @@ export class DashboardNav {
     barDiv.addEventListener("click", click);
   }
 
-  makeBar(barName, div, status) {
+  makeBar(barName, div, status, bar = true) {
     let newBar = {
-      chart: this.createBar(div, barName, this.barSeries, this.barColors),
+      chart: bar
+        ? this.createBar(div, barName, this.barSeries, this.barColors)
+        : false,
       status: status,
       div: div,
       name: barName,
@@ -746,7 +778,9 @@ export class DashboardNav {
     this.allDivs.push(div);
     this.barList.push(newBar);
     this.bars[barName] = newBar;
-    this.formatLegend(barName);
+    if (newBar.chart) {
+      this.formatLegend(barName);
+    }
     if (status == "activated") {
       this.activateChart(newBar);
     } else if ((status = "deactivated")) {
@@ -767,16 +801,83 @@ export class DashboardNav {
     });
   }
 
-  // get allDivs() {
-  //   return this.allDivs;
-  // }
-
   switchY(newY) {
     this.barList.map((bar) => {
       let newSeries = this.seriesify(bar.name, this.barSeries, undefined, newY);
       bar.chart.update({
         series: newSeries,
       });
+    });
+  }
+}
+
+export class EventTrend extends EventMap {
+  constructor(eventType, field, data, div) {
+    super(eventType, field);
+    this.data = data;
+    this.div = div;
+    this.colors = this.setColors();
+  }
+
+  processEventsData(data, field) {
+    let series = {};
+    let currentColors = this.colors[field];
+    data.map((row) => {
+      if (series.hasOwnProperty(row[field])) {
+        if (series[row[field]].hasOwnProperty(row.Year)) {
+          series[row[field]][row.Year]++;
+        } else {
+          series[row[field]][row.Year] = 1;
+        }
+      } else {
+        series[row[field]] = { [row.Year]: 1 };
+      }
+    });
+
+    let seriesList = [];
+    for (const [seriesName, seriesData] of Object.entries(series)) {
+      let hcData = [];
+      for (const [xVal, yVal] of Object.entries(seriesData)) {
+        hcData.push({ name: xVal, y: yVal }); // TODO: the year needs to be cast as a string here
+      }
+      seriesList.push({
+        name: seriesName,
+        data: hcData,
+        color: currentColors[seriesName],
+      });
+    }
+
+    return seriesList;
+  }
+
+  chart() {
+    return new Highcharts.chart(this.div, {
+      chart: {
+        type: "column",
+      },
+      title: {
+        text: "",
+      },
+
+      xAxis: {
+        categories: true,
+      },
+
+      yAxis: {
+        title: {
+          text: "Number of Events",
+        },
+      },
+
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false,
+          },
+        },
+      },
+
+      series: this.processEventsData(this.data, this.field),
     });
   }
 }

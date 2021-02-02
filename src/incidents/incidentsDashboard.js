@@ -1,16 +1,15 @@
 import { summaryParagraph } from "./summary.js";
 import { visibility } from "../modules/util.js";
-import { createTimeSeries } from "./overTime.js";
-import { DashboardMap, DashboardNav } from "../modules/dashboard.js";
+import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
 export const mainIncidents = (incidentData, metaData) => {
   const incidentBar = (data, map) => {
-    const barNav = new DashboardNav(map, undefined, [], {});
+    const barNav = new EventNavigator(map, undefined, [], {});
     barNav.prepareData(data);
-    barNav.makeBar("Substance", "substance-bar", "activated");
-    barNav.makeBar("Status", "status-bar", "deactivated");
-    barNav.makeBar("Province", "province-bar", "deactivated");
-    barNav.makeBar("Year", "year-bar", "deactivated");
+    barNav.makeBar("Substance", "substance-bar", "activated", true);
+    barNav.makeBar("Status", "status-bar", "deactivated", true);
+    barNav.makeBar("Province", "province-bar", "deactivated", true);
+    barNav.makeBar("Year", "year-bar", "deactivated", true);
     barNav.divEvents();
     return barNav;
   };
@@ -19,14 +18,21 @@ export const mainIncidents = (incidentData, metaData) => {
   const filters = { type: "frequency" };
   const minRadius = 14000;
   const field = "Substance";
-  const thisMap = new DashboardMap("incidents", filters, minRadius, field);
+  const thisMap = new EventMap("incidents", field, filters, minRadius);
   thisMap.addBaseMap();
-  thisMap.processIncidents(incidentData);
+  thisMap.processEventsData(incidentData);
   const bars = incidentBar(incidentData, thisMap);
   thisMap.lookForSize();
 
   //add the time series to last button
-  const ts = createTimeSeries(incidentData);
+  //const ts = createTimeSeries(incidentData);
+  const timeSeries = new EventTrend(
+    "incidents",
+    field,
+    incidentData,
+    "time-series"
+  );
+  const hc = timeSeries.chart();
 
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
