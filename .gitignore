@@ -7,3 +7,4 @@ node_modules
 *.twbr
 *.geojson
 connection.py
+**.LICENSE.txt

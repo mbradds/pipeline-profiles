@@ -5,13 +5,6 @@ import mapMetaData from "./mapMetadata.json";
 import meta from "./summaryMetadata.json";
 import { mainConditions } from "../conditionsDashboard.js";
 
-// async version
 export async function runConditions() {
-  return new Promise((resolve) => {
-    resolve(mainConditions(econRegions, canadaMap, mapMetaData, meta));
-  });
+  return mainConditions(econRegions, canadaMap, mapMetaData, meta);
 }
-// syncronous version
-// export function runConditions() {
-//   mainConditions(econRegions, canadaMap, mapMetaData, meta);
-// }

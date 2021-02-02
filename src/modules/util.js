@@ -37,3 +37,18 @@ export const currentDate = () => {
   today.setUTCMilliseconds(0);
   return today.getTime();
 };
+
+export function visibility(divList, status) {
+  divList.map((div) => {
+    var x = document.getElementById(div);
+    if (status == "hide") {
+      if (x.style.display !== "none") {
+        x.style.display = "none";
+      }
+    } else if (status == "show") {
+      if (x.style.display !== "block") {
+        x.style.display = "block";
+      }
+    }
+  });
+}

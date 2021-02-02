@@ -17,6 +17,7 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "all": "0.0.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "haversine": "^1.1.1",
     "ie-gang": "^1.0.3",

@@ -436,6 +436,7 @@
         <h3 id="incidents-map-title">
           Pipeline Incidents With A Product Release
         </h3>
+        <!-- <div id="time-series"></div> -->
         <div class="dashboard">
           <div class="row">
             <div class="col-md-12">
@@ -459,6 +460,11 @@
                     Incident Volume
                   </button>
                 </div>
+                <div class="btn-group btn-incident-data-type">
+                  <button type="button" class="btn btn-default" value="time">
+                    Incidents over time
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -478,7 +484,8 @@
             </div>
           </div>
           <div class="mrgn-tp-md"></div>
-          <section class="panel panel-info">
+          <div id="time-series" style="display: none"></div>
+          <section class="panel panel-info" id="nearby-incidents-popup">
             <header class="panel-heading">
               <h5 class="panel-title">Are there any incidents near me?</h5>
             </header>
