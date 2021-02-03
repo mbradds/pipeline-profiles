@@ -434,13 +434,14 @@ export class EventNavigator {
     },
   };
 
-  constructor(map, currentActive, barList, bars) {
+  constructor(map, currentActive, barList, bars, height = 125) {
     this.map = map;
     this.currentActive = currentActive;
     this.barList = barList;
     this.bars = bars;
     this.barColors = map.colors;
     this.allDivs = [];
+    this.height = height;
   }
 
   seriesify(name, series, colors, yVal) {
@@ -767,6 +768,7 @@ export class EventNavigator {
   }
 
   makeBar(barName, div, status, bar = true) {
+    document.getElementById(div).style.height = `${this.height}px`;
     let newBar = {
       chart: bar
         ? this.createBar(div, barName, this.barSeries, this.barColors)
@@ -820,6 +822,7 @@ export class EventTrend extends EventMap {
   }
 
   processEventsData(data, field) {
+    // console.log(data);
     let series = {};
     let currentColors = this.colors[field];
     data.map((row) => {
@@ -846,16 +849,20 @@ export class EventTrend extends EventMap {
         color: currentColors[seriesName],
       });
     }
-
     return seriesList;
   }
 
-  chart() {
-    return new Highcharts.chart(this.div, {
+  createChart() {
+    this.chart = new Highcharts.chart(this.div, {
       chart: {
         type: "column",
+        animation: false,
       },
       title: {
+        text: "",
+      },
+
+      credits: {
         text: "",
       },
 
@@ -865,12 +872,13 @@ export class EventTrend extends EventMap {
 
       yAxis: {
         title: {
-          text: "Number of Events",
+          text: `Number of ${this.eventType}`,
         },
       },
 
       plotOptions: {
         series: {
+          animation: false,
           label: {
             connectorAllowed: false,
           },
@@ -879,5 +887,18 @@ export class EventTrend extends EventMap {
 
       series: this.processEventsData(this.data, this.field),
     });
+  }
+  fieldChange(newField) {
+    if (newField !== this.field) {
+      let newSeries = this.processEventsData(this.data, newField);
+      while (this.chart.series.length) {
+        this.chart.series[0].remove();
+      }
+      newSeries.map((series) => {
+        this.chart.addSeries(series, false);
+      });
+      this.chart.redraw();
+    }
+    this.field = newField;
   }
 }

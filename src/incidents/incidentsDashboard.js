@@ -3,8 +3,10 @@ import { visibility } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
 export const mainIncidents = (incidentData, metaData) => {
+  // populates the paragraph right above the dashboard with some company specific stats
+  summaryParagraph(metaData);
   const incidentBar = (data, map) => {
-    const barNav = new EventNavigator(map, undefined, [], {});
+    const barNav = new EventNavigator(map, undefined, [], {}, 125);
     barNav.prepareData(data);
     barNav.makeBar("Substance", "substance-bar", "activated", true);
     barNav.makeBar("Status", "status-bar", "deactivated", true);
@@ -14,25 +16,45 @@ export const mainIncidents = (incidentData, metaData) => {
     return barNav;
   };
 
-  summaryParagraph(metaData);
-  const filters = { type: "frequency" };
-  const minRadius = 14000;
   const field = "Substance";
-  const thisMap = new EventMap("incidents", field, filters, minRadius);
-  thisMap.addBaseMap();
-  thisMap.processEventsData(incidentData);
-  const bars = incidentBar(incidentData, thisMap);
-  thisMap.lookForSize();
 
+  const incidentMap = (field) => {
+    const filters = { type: "frequency" };
+    const minRadius = 14000;
+    const map = new EventMap("incidents", field, filters, minRadius);
+    map.addBaseMap();
+    map.processEventsData(incidentData);
+    map.lookForSize();
+    return map;
+  };
+
+  const incidentTimeSeries = (field) => {
+    const timeSeries = new EventTrend(
+      "incidents",
+      field,
+      incidentData,
+      "time-series"
+    );
+
+    const trendNav = new EventNavigator(timeSeries, undefined, [], {}, 125);
+    try {
+      trendNav.makeBar("Substance", "substance-trend", "activated", false);
+      trendNav.makeBar("Status", "status-trend", "deactivated", false);
+      trendNav.makeBar("Province", "province-trend", "deactivated", false);
+      // trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
+      trendNav.divEvents();
+    } catch (err) {
+      console.log(err);
+    }
+
+    const hc = timeSeries.createChart();
+    return hc;
+  };
+
+  const thisMap = incidentMap(field);
+  const bars = incidentBar(incidentData, thisMap);
+  const trends = incidentTimeSeries(field);
   //add the time series to last button
-  //const ts = createTimeSeries(incidentData);
-  const timeSeries = new EventTrend(
-    "incidents",
-    field,
-    incidentData,
-    "time-series"
-  );
-  const hc = timeSeries.chart();
 
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
@@ -48,10 +70,10 @@ export const mainIncidents = (incidentData, metaData) => {
       bars.switchY(btnValue);
       thisMap.updateRadius();
       visibility(dashboardDivs, "show");
-      visibility(["time-series"], "hide");
+      visibility(["time-series-section"], "hide");
     } else {
       visibility(dashboardDivs, "hide");
-      visibility(["time-series"], "show");
+      visibility(["time-series-section"], "show");
     }
   });
 
