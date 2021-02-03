@@ -17,9 +17,9 @@ export const mainIncidents = (incidentData, metaData) => {
   };
 
   const field = "Substance";
+  const filters = { type: "frequency" };
 
-  const incidentMap = (field) => {
-    const filters = { type: "frequency" };
+  const incidentMap = (field, filters) => {
     const minRadius = 14000;
     const map = new EventMap("incidents", field, filters, minRadius);
     map.addBaseMap();
@@ -28,10 +28,11 @@ export const mainIncidents = (incidentData, metaData) => {
     return map;
   };
 
-  const incidentTimeSeries = (field) => {
+  const incidentTimeSeries = (field, filters) => {
     const timeSeries = new EventTrend(
       "incidents",
       field,
+      filters,
       incidentData,
       "time-series"
     );
@@ -47,13 +48,13 @@ export const mainIncidents = (incidentData, metaData) => {
       console.log(err);
     }
 
-    const hc = timeSeries.createChart();
-    return hc;
+    timeSeries.createChart();
+    return timeSeries;
   };
 
-  const thisMap = incidentMap(field);
+  const thisMap = incidentMap(field, filters);
   const bars = incidentBar(incidentData, thisMap);
-  const trends = incidentTimeSeries(field);
+  const trends = incidentTimeSeries(field, filters);
   //add the time series to last button
 
   // user selection to show volume or incident frequency
@@ -62,13 +63,26 @@ export const mainIncidents = (incidentData, metaData) => {
     $(this).addClass("active");
     var thisBtn = $(this);
     var btnValue = thisBtn.val();
+    if (btnValue !== "trends") {
+      // update map radius for volume
+      thisMap.filters.type = btnValue;
+      trends.filters.type = btnValue;
+      bars.switchY(btnValue);
+      thisMap.updateRadius();
+      trends.updateRadius();
+    }
+  });
+
+  // user selection to show map or trends
+  $("#incident-view-type button").on("click", function () {
+    $(".btn-incident-view-type > .btn").removeClass("active");
+    $(this).addClass("active");
+    var thisBtn = $(this);
+    var btnValue = thisBtn.val();
     var dashboardDivs = ["incident-map", "nearby-incidents-popup"].concat(
       bars.allDivs
     );
-    if (btnValue !== "time") {
-      thisMap.filters.type = btnValue;
-      bars.switchY(btnValue);
-      thisMap.updateRadius();
+    if (btnValue !== "trends") {
       visibility(dashboardDivs, "show");
       visibility(["time-series-section"], "hide");
     } else {

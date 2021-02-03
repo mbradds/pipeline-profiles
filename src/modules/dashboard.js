@@ -814,28 +814,59 @@ export class EventNavigator {
 }
 
 export class EventTrend extends EventMap {
-  constructor(eventType, field, data, div) {
+  constructor(eventType, field, filters, data, div) {
     super(eventType, field);
+    this.filters = filters;
     this.data = data;
     this.div = div;
     this.colors = this.setColors();
   }
 
   processEventsData(data, field) {
-    // console.log(data);
-    let series = {};
-    let currentColors = this.colors[field];
-    data.map((row) => {
-      if (series.hasOwnProperty(row[field])) {
-        if (series[row[field]].hasOwnProperty(row.Year)) {
-          series[row[field]][row.Year]++;
-        } else {
-          series[row[field]][row.Year] = 1;
-        }
+    //console.log(data);
+    const yField = (filterValue) => {
+      if (filterValue == "frequency") {
+        return function (data) {
+          let series = {};
+          data.map((row) => {
+            if (series.hasOwnProperty(row[field])) {
+              if (series[row[field]].hasOwnProperty(row.Year)) {
+                series[row[field]][row.Year]++;
+              } else {
+                series[row[field]][row.Year] = 1;
+              }
+            } else {
+              series[row[field]] = { [row.Year]: 1 };
+            }
+          });
+          return series;
+        };
       } else {
-        series[row[field]] = { [row.Year]: 1 };
+        return function (data) {
+          let series = {};
+          data.map((row) => {
+            if (series.hasOwnProperty(row[field])) {
+              if (series[row[field]].hasOwnProperty(row.Year)) {
+                series[row[field]][row.Year] +=
+                  row["Approximate Volume Released"];
+              } else {
+                series[row[field]][row.Year] =
+                  row["Approximate Volume Released"];
+              }
+            } else {
+              series[row[field]] = {
+                [row.Year]: row["Approximate Volume Released"],
+              };
+            }
+          });
+          return series;
+        };
       }
-    });
+    };
+    // let series = {};
+    let currentColors = this.colors[field];
+    let seriesCounter = yField(this.filters.type);
+    let series = seriesCounter(data);
 
     let seriesList = [];
     for (const [seriesName, seriesData] of Object.entries(series)) {
@@ -852,7 +883,16 @@ export class EventTrend extends EventMap {
     return seriesList;
   }
 
+  yAxisTitle() {
+    if (this.filters.type == "frequency") {
+      return `Number of ${this.eventType}`;
+    } else {
+      return `${this.eventType} volume (m3)`;
+    }
+  }
+
   createChart() {
+    let currentTrend = this;
     this.chart = new Highcharts.chart(this.div, {
       chart: {
         type: "column",
@@ -872,7 +912,7 @@ export class EventTrend extends EventMap {
 
       yAxis: {
         title: {
-          text: `Number of ${this.eventType}`,
+          text: currentTrend.yAxisTitle(),
         },
       },
 
@@ -900,5 +940,18 @@ export class EventTrend extends EventMap {
       this.chart.redraw();
     }
     this.field = newField;
+  }
+
+  updateRadius() {
+    let newSeries = this.processEventsData(this.data, this.field);
+    let currentTrend = this;
+    this.chart.update({
+      series: newSeries,
+      yAxis: {
+        title: {
+          text: currentTrend.yAxisTitle(),
+        },
+      },
+    });
   }
 }
