@@ -6,7 +6,7 @@ export const mainIncidents = (incidentData, metaData) => {
   // populates the paragraph right above the dashboard with some company specific stats
   summaryParagraph(metaData);
   const incidentBar = (data, map) => {
-    const barNav = new EventNavigator(map, undefined, [], {}, 125);
+    const barNav = new EventNavigator(map, undefined, [], {}, 122);
     barNav.prepareData(data);
     barNav.makeBar("Substance", "substance-bar", "activated", true);
     barNav.makeBar("Status", "status-bar", "deactivated", true);

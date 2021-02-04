@@ -43,15 +43,15 @@
     </div>
 
     <div class="tab">
-      <button class="tablinks" onclick="openTab(event, 'condition-compliance')">
+      <button
+        class="tablinks"
+        onclick="openTab(event, 'condition-compliance')"
+        id="defaultClick"
+      >
         Conditions Compliance
       </button>
       <!-- the below button needs to remain "Pipeline Incidents" -->
-      <button
-        class="tablinks"
-        onclick="openTab(event, 'pipeline-incidents')"
-        id="defaultClick"
-      >
+      <button class="tablinks" onclick="openTab(event, 'pipeline-incidents')">
         Pipeline Incidents
       </button>
       <button class="tablinks" onclick="openTab(event, 'settlements')">
@@ -348,7 +348,8 @@
             </details>
             <details>
               <summary>
-                What is an incident? (Processing Plant Regulations)
+                What is an incident? (Processing Plant Regulations) // label: {
+                // connectorAllowed: false, // },
               </summary>
               <p>
                 As defined in the PPR, “incident” is defined as an occurrence

@@ -713,7 +713,7 @@ export class EventNavigator {
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
-    activeDiv.style.opacity = 0.5;
+    activeDiv.style.opacity = 0.4;
   }
 
   activateChart(bar) {
@@ -781,7 +781,7 @@ export class EventNavigator {
 
     function mouseOut() {
       if (bar.status !== "activated") {
-        barDiv.style.opacity = 0.5;
+        barDiv.style.opacity = 0.4;
         if (bar.chart) {
           bar.chart.update({
             chart: {
@@ -866,12 +866,13 @@ export class EventTrend extends EventMap {
   }
 
   processEventsData(data, field) {
-    //console.log(data);
     const yField = (multipleValues) => {
       if (!multipleValues) {
         return function (data) {
           let series = {};
+          let uniqueYears = new Set();
           data.map((row) => {
+            uniqueYears.add(row.Year);
             if (series.hasOwnProperty(row[field])) {
               if (series[row[field]].hasOwnProperty(row.Year)) {
                 series[row[field]][row.Year]++;
@@ -882,12 +883,14 @@ export class EventTrend extends EventMap {
               series[row[field]] = { [row.Year]: 1 };
             }
           });
-          return series;
+          return [series, Array.from(uniqueYears)];
         };
       } else {
         return function (data) {
           let series = {};
+          let uniqueYears = new Set();
           data.map((row) => {
+            uniqueYears.add(row.Year);
             if (row[field].includes(",")) {
               var itemList = row[field].split(",");
               itemList = itemList.map((value) => {
@@ -908,14 +911,21 @@ export class EventTrend extends EventMap {
               }
             });
           });
-          return series;
+          return [series, Array.from(uniqueYears)];
         };
       }
     };
     let seriesCounter = yField(this.ONETOMANY[field]);
-    let series = seriesCounter(data);
-
+    let [series, uniqueYears] = seriesCounter(data);
     let seriesList = [];
+    let dummySeries = {}; //makes sure that the x axis is in order
+    dummySeries.data = uniqueYears.map((y) => {
+      return { name: y.toString(), y: undefined };
+    });
+    dummySeries.name = "dummy";
+    dummySeries.showInLegend = false;
+    seriesList.push(dummySeries);
+
     for (const [seriesName, seriesData] of Object.entries(series)) {
       let hcData = [];
       for (const [xVal, yVal] of Object.entries(seriesData)) {
@@ -961,14 +971,14 @@ export class EventTrend extends EventMap {
         title: {
           text: currentTrend.yAxisTitle(),
         },
+        stackLabels: {
+          enabled: true,
+        },
       },
 
       plotOptions: {
         series: {
           animation: false,
-          label: {
-            connectorAllowed: false,
-          },
         },
       },
 
