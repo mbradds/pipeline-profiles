@@ -37,12 +37,13 @@ export const mainIncidents = (incidentData, metaData) => {
       "time-series"
     );
 
-    const trendNav = new EventNavigator(timeSeries, undefined, [], {}, 125);
+    const trendNav = new EventNavigator(timeSeries, undefined, [], {}, 70);
     try {
       trendNav.makeBar("Substance", "substance-trend", "activated", false);
       trendNav.makeBar("Status", "status-trend", "deactivated", false);
+      trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
+      trendNav.makeBar("Why It Happened", "why-trend", "deactivated", false);
       trendNav.makeBar("Province", "province-trend", "deactivated", false);
-      // trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
       trendNav.divEvents();
     } catch (err) {
       console.log(err);
@@ -55,7 +56,6 @@ export const mainIncidents = (incidentData, metaData) => {
   const thisMap = incidentMap(field, filters);
   const bars = incidentBar(incidentData, thisMap);
   const trends = incidentTimeSeries(field, filters);
-  //add the time series to last button
 
   // user selection to show volume or incident frequency
   $("#incident-data-type button").on("click", function () {
@@ -69,7 +69,7 @@ export const mainIncidents = (incidentData, metaData) => {
       trends.filters.type = btnValue;
       bars.switchY(btnValue);
       thisMap.updateRadius();
-      trends.updateRadius();
+      //trends.updateRadius();
     }
   });
 
@@ -85,7 +85,10 @@ export const mainIncidents = (incidentData, metaData) => {
     if (btnValue !== "trends") {
       visibility(dashboardDivs, "show");
       visibility(["time-series-section"], "hide");
+      $("#incident-volume-btn").removeAttr("disabled");
     } else {
+      // if the user selects trends, the option to view volume should be disabled
+      $("#incident-volume-btn").attr("disabled", "disabled");
       visibility(dashboardDivs, "hide");
       visibility(["time-series-section"], "show");
     }

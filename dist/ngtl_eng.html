@@ -43,15 +43,15 @@
     </div>
 
     <div class="tab">
-      <button
-        class="tablinks"
-        onclick="openTab(event, 'condition-compliance')"
-        id="defaultClick"
-      >
+      <button class="tablinks" onclick="openTab(event, 'condition-compliance')">
         Conditions Compliance
       </button>
       <!-- the below button needs to remain "Pipeline Incidents" -->
-      <button class="tablinks" onclick="openTab(event, 'pipeline-incidents')">
+      <button
+        class="tablinks"
+        onclick="openTab(event, 'pipeline-incidents')"
+        id="defaultClick"
+      >
         Pipeline Incidents
       </button>
       <button class="tablinks" onclick="openTab(event, 'settlements')">
@@ -440,7 +440,33 @@
           </h3>
           <div class="row">
             <div class="col-md-6">
-              <!-- <div class="cerlabel">Select view:</div> -->
+              <div
+                class="btn-group btn-group-justified"
+                id="incident-data-type"
+              >
+                <div class="btn-group btn-incident-data-type">
+                  <button
+                    type="button"
+                    class="btn btn-default active"
+                    value="frequency"
+                    id="incident-count-btn"
+                  >
+                    Incident Count
+                  </button>
+                </div>
+                <div class="btn-group btn-incident-data-type">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    value="volume"
+                    id="incident-volume-btn"
+                  >
+                    Incident Volume
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
               <div
                 class="btn-group btn-group-justified"
                 id="incident-view-type"
@@ -457,28 +483,6 @@
                 <div class="btn-group btn-incident-view-type">
                   <button type="button" class="btn btn-default" value="trends">
                     Incident Trends
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- <div class="cerlabel">Select data:</div> -->
-              <div
-                class="btn-group btn-group-justified"
-                id="incident-data-type"
-              >
-                <div class="btn-group btn-incident-data-type">
-                  <button
-                    type="button"
-                    class="btn btn-default active"
-                    value="frequency"
-                  >
-                    Incident Count
-                  </button>
-                </div>
-                <div class="btn-group btn-incident-data-type">
-                  <button type="button" class="btn btn-default" value="volume">
-                    Incident Volume
                   </button>
                 </div>
               </div>
@@ -509,11 +513,11 @@
               <div class="mrgn-tp-sm"></div>
               <div class="event-filter-nav" id="status-trend"></div>
               <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="year-trend"></div>
+              <div class="event-filter-nav" id="what-trend"></div>
+              <div class="mrgn-tp-sm"></div>
+              <div class="event-filter-nav" id="why-trend"></div>
               <div class="mrgn-tp-sm"></div>
               <div class="event-filter-nav" id="province-trend"></div>
-              <!-- <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="what-trend"></div> -->
             </div>
           </div>
 

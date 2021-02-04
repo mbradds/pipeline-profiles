@@ -17,6 +17,36 @@ const EVENTCOLORS = {
     Alberta: cerPalette["Sun"],
     "British Columbia": cerPalette["Forest"],
   },
+  whyColors: {
+    "Standards and Procedures": cerPalette["Flame"],
+    "Tools and Equipment": cerPalette["Forest"],
+    Maintenance: cerPalette["Night Sky"],
+    "Human Factors": cerPalette["Ocean"],
+    "Engineering and Planning": cerPalette["Sun"],
+    "Natural or Environmental Forces": cerPalette["hcAqua"],
+    "To be determined": cerPalette["Cool Grey"],
+    "Inadequate Procurement": cerPalette["Aubergine"],
+    "Inadequate Supervision": cerPalette["Dim Grey"],
+    "Failure in communication": cerPalette["hcPink"],
+  },
+  whatColors: {
+    "Corrosion and Cracking": cerPalette["Aubergine"],
+    "Defect and Deterioration": cerPalette["Cool Grey"],
+    "Equipment Failure": cerPalette["Dim Grey"],
+    "Natural Force Damage": cerPalette["Flame"],
+    "Other Causes": cerPalette["Forest"],
+    "Incorrect Operation": cerPalette["Night Sky"],
+    "External Interference": cerPalette["Ocean"],
+    "To be determined": cerPalette["Sun"],
+  },
+};
+
+const ONETOMANY = {
+  Substance: false,
+  Status: false,
+  Province: false,
+  "What Happened": true,
+  "Why It Happened": true,
 };
 
 export class EventMap {
@@ -50,6 +80,8 @@ export class EventMap {
         Substance: this.EVENTCOLORS.substanceColors,
         Status: this.EVENTCOLORS.statusColors,
         Province: this.EVENTCOLORS.provinceColors,
+        "Why It Happened": this.EVENTCOLORS.whyColors,
+        "What Happened": this.EVENTCOLORS.whatColors,
       };
     }
   }
@@ -164,6 +196,14 @@ export class EventMap {
     }
   }
 
+  applyColor(rowValue, field) {
+    try {
+      return this.colors[field][rowValue];
+    } catch (err) {
+      return undefined;
+    }
+  }
+
   processEventsData(data) {
     const radiusCalc = (maxVolume) => {
       if (maxVolume > 500) {
@@ -201,7 +241,8 @@ export class EventMap {
         row.Latitude,
         row.Longitude,
         cerPalette["Cool Grey"],
-        this.colors[this.field][row[this.field]],
+        this.applyColor(row[this.field], this.field),
+        //this.colors[this.field][row[this.field]],
         t,
         row
       );
@@ -814,6 +855,8 @@ export class EventNavigator {
 }
 
 export class EventTrend extends EventMap {
+  ONETOMANY = ONETOMANY;
+
   constructor(eventType, field, filters, data, div) {
     super(eventType, field);
     this.filters = filters;
@@ -824,8 +867,8 @@ export class EventTrend extends EventMap {
 
   processEventsData(data, field) {
     //console.log(data);
-    const yField = (filterValue) => {
-      if (filterValue == "frequency") {
+    const yField = (multipleValues) => {
+      if (!multipleValues) {
         return function (data) {
           let series = {};
           data.map((row) => {
@@ -845,27 +888,31 @@ export class EventTrend extends EventMap {
         return function (data) {
           let series = {};
           data.map((row) => {
-            if (series.hasOwnProperty(row[field])) {
-              if (series[row[field]].hasOwnProperty(row.Year)) {
-                series[row[field]][row.Year] +=
-                  row["Approximate Volume Released"];
-              } else {
-                series[row[field]][row.Year] =
-                  row["Approximate Volume Released"];
-              }
+            if (row[field].includes(",")) {
+              var itemList = row[field].split(",");
+              itemList = itemList.map((value) => {
+                return value.trim();
+              });
             } else {
-              series[row[field]] = {
-                [row.Year]: row["Approximate Volume Released"],
-              };
+              var itemList = [row[field]];
             }
+            itemList.map((yVal) => {
+              if (series.hasOwnProperty(yVal)) {
+                if (series[yVal].hasOwnProperty(row.Year)) {
+                  series[yVal][row.Year]++;
+                } else {
+                  series[yVal][row.Year] = 1;
+                }
+              } else {
+                series[yVal] = { [row.Year]: 1 };
+              }
+            });
           });
           return series;
         };
       }
     };
-    // let series = {};
-    let currentColors = this.colors[field];
-    let seriesCounter = yField(this.filters.type);
+    let seriesCounter = yField(this.ONETOMANY[field]);
     let series = seriesCounter(data);
 
     let seriesList = [];
@@ -877,7 +924,7 @@ export class EventTrend extends EventMap {
       seriesList.push({
         name: seriesName,
         data: hcData,
-        color: currentColors[seriesName],
+        color: this.applyColor(seriesName, field),
       });
     }
     return seriesList;
