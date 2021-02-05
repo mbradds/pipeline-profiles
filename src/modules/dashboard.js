@@ -482,12 +482,15 @@ export class EventNavigator {
     },
     "First Nations Proximity": {
       layout: "horizontal",
+      width: 350,
       itemStyle: {
         fontSize: 12,
       },
       padding: 0,
+      itemMarginTop: 0,
       margin: 0,
       y: -20,
+      x: 40,
     },
   };
 
@@ -547,15 +550,19 @@ export class EventNavigator {
         type: "bar",
         spacingRight: 8,
         spacingLeft: 2,
-        spacingTop: 5,
-        spacingBottom: 0,
+        spacingTop: 10,
+        spacingBottom: -7,
         animation: false,
       },
 
       title: {
         text: barTitle(name),
+        style: {
+          fontSize: "16px",
+        },
         padding: 0,
-        margin: -10,
+        margin: -15,
+        //x: -25,
       },
 
       credits: {
@@ -621,11 +628,9 @@ export class EventNavigator {
         },
         series: {
           animation: false,
-          // borderColor: "#303030",
           stacking: "normal",
           grouping: false,
           shadow: false,
-          // borderWidth: 0,
           states: {
             inactive: {
               opacity: 1,
