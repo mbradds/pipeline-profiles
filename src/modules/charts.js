@@ -1,5 +1,3 @@
-import { cerPalette } from "./util.js";
-
 export const errorChart = (div) => {
   console.log("Error loading chart to div: " + div);
   return new Highcharts.chart(div, {

@@ -1,11 +1,10 @@
 const path = require("path");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
-const TerserPlugin = require("terser-webpack-plugin");
+// const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  //mode: "development",
   entry: {
     ngtl_eng: "./src/index_files/ngtl_eng.js",
   },
@@ -15,8 +14,9 @@ module.exports = {
     publicPath: "/pipeline-profiles/",
   },
 
+  target: "node",
+
   devServer: {
-    //contentBase: path.join(__dirname, "dist"),
     compress: true,
   },
 
@@ -39,8 +39,8 @@ module.exports = {
     extensions: ["*", ".js"],
   },
 
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
-  },
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [new TerserPlugin()],
+  // },
 };

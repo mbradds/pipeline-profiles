@@ -3,7 +3,28 @@ from util import saveJson
 import ssl
 import os
 import json
+import geopandas as gpd
+from math import radians, cos, sin, asin, sqrt
 ssl._create_default_https_context = ssl._create_unverified_context
+web_mercator = "EPSG:3857"
+canada_geographic = "EPSG:4617"  # https://spatialreference.org/ref/epsg/4617/
+
+
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance between two points
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+
+    # haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a))
+    r = 6371  # Radius of earth in kilometers. Use 3956 for miles
+    return c * r
 
 
 def companyMetaData(df, company):
@@ -37,6 +58,39 @@ def companyMetaData(df, company):
     return meta
 
 
+def load_fn():
+    df = gpd.read_file("./raw_data/Premiere_Nation_First_Nation_SHP/Premiere_Nation_First_Nation.shp")
+    df = df.to_crs(canada_geographic)
+    df.plot()
+    return df
+
+
+def proximity_fn(inc):
+    fn = load_fn()
+    proximity_result = []
+    for index, row in inc.iterrows():
+        inc_lon, inc_lat = row['Longitude'], row['Latitude']
+        for p, band_name in zip(fn['geometry'], fn['BAND_NAME']):
+            fn_lon, fn_lat = p.x, p.y
+            dist = haversine(lon1=inc_lon, lat1=inc_lat, lon2=fn_lon, lat2=fn_lat)
+            if dist <= 50:
+                proximity_result.append({"id": row['Incident Number'],
+                                         "bandName": band_name,
+                                         "distance": round(dist, 1)})
+    proximity_result = pd.DataFrame(proximity_result)
+    category = []
+    for dist in proximity_result['distance']:
+        if dist <= 10:
+            category.append(0)
+        else:
+            category.append(1)
+    proximity_result['category'] = category
+    proximity_result = proximity_result.groupby(['id']).agg({'bandName': ', '.join,
+                                                             'category': min})
+    inc = inc.merge(proximity_result, how='left', left_on=['Incident Number'], right_on=['id'])
+    return inc
+
+
 def process_incidents(remote=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
@@ -66,7 +120,7 @@ def process_incidents(remote=False):
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'], errors='coerce')
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
 
-    for delete in ['Significant', 'Release Type']:
+    for delete in ['Significant', 'Release Type', 'Incident Types', 'Nearest Populated Centre', 'Reported Date']:
         del df[delete]
 
     # print(set(df['Company']))
@@ -77,12 +131,18 @@ def process_incidents(remote=False):
             os.makedirs("../incidents/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
-        # df_c = df[df['Company'] == "Enbridge Pipelines (NW) Inc."].copy()
         # calculate metadata here, before non releases are filtered out
         meta = companyMetaData(df_c, company)
         with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
             json.dump(meta, fp)
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
+        del df_c['Company']
+        df_c = proximity_fn(df_c)
+        df_c['category'] = df_c['category'].fillna(3)
+        df_c['category'] = df_c['category'].replace({0: "within 10 km",
+                                                     1: "within 50 km",
+                                                     3: "no proximity"})
+        del df_c['bandName']
         saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
 
     return df_c, meta

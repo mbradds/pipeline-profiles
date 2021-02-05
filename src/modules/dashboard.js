@@ -39,6 +39,11 @@ const EVENTCOLORS = {
     "External Interference": cerPalette["Ocean"],
     "To be determined": cerPalette["Sun"],
   },
+  fnColors: {
+    "no proximity": cerPalette["Cool Grey"],
+    "within 50 km": cerPalette["Night Sky"],
+    "within 10 km": cerPalette["Sun"],
+  },
 };
 
 const ONETOMANY = {
@@ -47,6 +52,7 @@ const ONETOMANY = {
   Province: false,
   "What Happened": true,
   "Why It Happened": true,
+  category: true,
 };
 
 export class EventMap {
@@ -82,6 +88,7 @@ export class EventMap {
         Province: this.EVENTCOLORS.provinceColors,
         "Why It Happened": this.EVENTCOLORS.whyColors,
         "What Happened": this.EVENTCOLORS.whatColors,
+        category: this.EVENTCOLORS.fnColors,
       };
     }
   }
@@ -473,6 +480,15 @@ export class EventNavigator {
       y: -20,
       x: 12,
     },
+    category: {
+      layout: "horizontal",
+      itemStyle: {
+        fontSize: 12,
+      },
+      padding: 0,
+      margin: 0,
+      y: -20,
+    },
   };
 
   constructor(map, currentActive, barList, bars, height = 125) {
@@ -628,7 +644,7 @@ export class EventNavigator {
   }
 
   prepareData(data) {
-    var [substance, status, province, year] = [{}, {}, {}, {}];
+    var [substance, status, province, year, category] = [{}, {}, {}, {}, {}];
     const addToSeries = (series, row, name) => {
       if (series.hasOwnProperty(row[name])) {
         series[row[name]].frequency += 1;
@@ -647,6 +663,7 @@ export class EventNavigator {
       status = addToSeries(status, row, "Status");
       province = addToSeries(province, row, "Province");
       year = addToSeries(year, row, "Year");
+      category = addToSeries(category, row, "category")
     });
 
     this.barSeries = {
@@ -654,6 +671,7 @@ export class EventNavigator {
       Status: status,
       Province: province,
       Year: year,
+      category:category
     };
   }
 
@@ -955,6 +973,7 @@ export class EventTrend extends EventMap {
         type: "column",
         animation: false,
       },
+
       title: {
         text: "",
       },

@@ -12,6 +12,7 @@ export const mainIncidents = (incidentData, metaData) => {
     barNav.makeBar("Status", "status-bar", "deactivated", true);
     barNav.makeBar("Province", "province-bar", "deactivated", true);
     barNav.makeBar("Year", "year-bar", "deactivated", true);
+    //barNav.makeBar("category", "fn-bar", "deactivated", true);
     barNav.divEvents();
     return barNav;
   };
