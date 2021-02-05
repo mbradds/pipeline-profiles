@@ -40,9 +40,10 @@ const EVENTCOLORS = {
     "To be determined": cerPalette["Sun"],
   },
   fnColors: {
-    "no proximity": cerPalette["Cool Grey"],
-    "within 50 km": cerPalette["Night Sky"],
-    "within 10 km": cerPalette["Sun"],
+    "no proximity": "#F5F5F5",
+    "within 40 km": cerPalette["Night Sky"],
+    "within 10 km": cerPalette["Aubergine"],
+    "On First Nations Land": cerPalette["Sun"],
   },
 };
 
@@ -88,7 +89,7 @@ export class EventMap {
         Province: this.EVENTCOLORS.provinceColors,
         "Why It Happened": this.EVENTCOLORS.whyColors,
         "What Happened": this.EVENTCOLORS.whatColors,
-        category: this.EVENTCOLORS.fnColors,
+        "First Nations Proximity": this.EVENTCOLORS.fnColors,
       };
     }
   }
@@ -249,7 +250,6 @@ export class EventMap {
         row.Longitude,
         cerPalette["Cool Grey"],
         this.applyColor(row[this.field], this.field),
-        //this.colors[this.field][row[this.field]],
         t,
         row
       );
@@ -480,7 +480,7 @@ export class EventNavigator {
       y: -20,
       x: 12,
     },
-    category: {
+    "First Nations Proximity": {
       layout: "horizontal",
       itemStyle: {
         fontSize: 12,
@@ -491,14 +491,16 @@ export class EventNavigator {
     },
   };
 
-  constructor(map, currentActive, barList, bars, height = 125) {
+  constructor(map, currentActive, height = 125, data = false) {
     this.map = map;
     this.currentActive = currentActive;
-    this.barList = barList;
-    this.bars = bars;
+    this.barList = [];
+    this.bars = {};
+    this.barSeries = {};
     this.barColors = map.colors;
     this.allDivs = [];
     this.height = height;
+    this.data = data;
   }
 
   seriesify(name, series, colors, yVal) {
@@ -543,8 +545,8 @@ export class EventNavigator {
     return new Highcharts.chart(div, {
       chart: {
         type: "bar",
-        spacingRight: 10,
-        spacingLeft: 4,
+        spacingRight: 8,
+        spacingLeft: 2,
         spacingTop: 5,
         spacingBottom: 0,
         animation: false,
@@ -619,10 +621,11 @@ export class EventNavigator {
         },
         series: {
           animation: false,
+          // borderColor: "#303030",
           stacking: "normal",
           grouping: false,
           shadow: false,
-          borderWidth: 0,
+          // borderWidth: 0,
           states: {
             inactive: {
               opacity: 1,
@@ -643,8 +646,9 @@ export class EventNavigator {
     });
   }
 
-  prepareData(data) {
-    var [substance, status, province, year, category] = [{}, {}, {}, {}, {}];
+  prepareData(barName) {
+    // TODO: this would run faster if all series were made in one pass
+    var newBar = {};
     const addToSeries = (series, row, name) => {
       if (series.hasOwnProperty(row[name])) {
         series[row[name]].frequency += 1;
@@ -658,21 +662,10 @@ export class EventNavigator {
       return series;
     };
 
-    data.map((row) => {
-      substance = addToSeries(substance, row, "Substance");
-      status = addToSeries(status, row, "Status");
-      province = addToSeries(province, row, "Province");
-      year = addToSeries(year, row, "Year");
-      category = addToSeries(category, row, "category")
+    this.data.map((row) => {
+      newBar = addToSeries(newBar, row, barName);
     });
-
-    this.barSeries = {
-      Substance: substance,
-      Status: status,
-      Province: province,
-      Year: year,
-      category:category
-    };
+    this.barSeries[barName] = newBar;
   }
 
   deactivateChart(bar) {
@@ -714,6 +707,8 @@ export class EventNavigator {
         title: { text: `${chart.title.textStr} (click to view)` },
         plotOptions: {
           series: {
+            borderWidth: 1,
+            borderColor: "#303030",
             states: {
               hover: {
                 enabled: false,
@@ -756,6 +751,8 @@ export class EventNavigator {
         },
         plotOptions: {
           series: {
+            borderWidth: 1,
+            borderColor: "#303030",
             states: {
               hover: {
                 enabled: true,
@@ -828,6 +825,10 @@ export class EventNavigator {
 
   makeBar(barName, div, status, bar = true) {
     document.getElementById(div).style.height = `${this.height}px`;
+    if (this.data) {
+      this.prepareData(barName);
+    }
+
     let newBar = {
       chart: bar
         ? this.createBar(div, barName, this.barSeries, this.barColors)

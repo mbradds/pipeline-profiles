@@ -58,24 +58,50 @@ def companyMetaData(df, company):
     return meta
 
 
-def load_fn():
-    df = gpd.read_file("./raw_data/Premiere_Nation_First_Nation_SHP/Premiere_Nation_First_Nation.shp")
-    df = df.to_crs(canada_geographic)
-    df.plot()
+def load_fn_land():
+    df = gpd.read_file("./raw_data/AL_TA_CA_SHP_eng/AL_TA_CA_2_128_eng.shp")
     return df
 
 
-def proximity_fn(inc):
-    fn = load_fn()
+def load_fn_point():
+    df = gpd.read_file("./raw_data/Premiere_Nation_First_Nation_SHP/Premiere_Nation_First_Nation.shp")
+    df = df.to_crs(canada_geographic)
+    # df.plot()
+    return df
+
+
+def events_on_land(events):
+    land = load_fn_land()
+    events_gdf = events.copy()
+    gEvents = gpd.GeoDataFrame(events_gdf, geometry=gpd.points_from_xy(events.Longitude, events.Latitude))
+    # gEvents.to_file("./raw_data/land_test/nova.shp")
+
+    all_inside = []
+    for land_index, land_row in land.iterrows():
+        in_land = gEvents.within(land_row['geometry'])
+        in_land = gEvents.loc[in_land]
+        if len(in_land) > 0:
+            for event_index, event_row in in_land.iterrows():
+                on_land_details = {}
+                on_land_details['id'] = event_row["Incident Number"]
+                on_land_details['landName'] = land_row["NAME1"]
+                on_land_details['landType'] = land_row['ALTYPE']
+                all_inside.append(on_land_details)
+
+    return all_inside
+
+
+def events_near_land(events):
+    fn = load_fn_point()
     proximity_result = []
-    for index, row in inc.iterrows():
+    for index, row in events.iterrows():
         inc_lon, inc_lat = row['Longitude'], row['Latitude']
         for p, band_name in zip(fn['geometry'], fn['BAND_NAME']):
             fn_lon, fn_lat = p.x, p.y
             dist = haversine(lon1=inc_lon, lat1=inc_lat, lon2=fn_lon, lat2=fn_lat)
-            if dist <= 50:
+            if dist <= 40:
                 proximity_result.append({"id": row['Incident Number'],
-                                         "bandName": band_name,
+                                         "landName": band_name,
                                          "distance": round(dist, 1)})
     proximity_result = pd.DataFrame(proximity_result)
     category = []
@@ -84,11 +110,14 @@ def proximity_fn(inc):
             category.append(0)
         else:
             category.append(1)
-    proximity_result['category'] = category
-    proximity_result = proximity_result.groupby(['id']).agg({'bandName': ', '.join,
-                                                             'category': min})
-    inc = inc.merge(proximity_result, how='left', left_on=['Incident Number'], right_on=['id'])
-    return inc
+    proximity_result['landProximityCategory'] = category
+    proximity_result = proximity_result.groupby(['id']).agg({'landName': ', '.join,
+                                                             'landProximityCategory': min})
+    events = events.merge(proximity_result,
+                          how='left',
+                          left_on=['Incident Number'],
+                          right_on=['id'])
+    return events
 
 
 def process_incidents(remote=False):
@@ -117,10 +146,16 @@ def process_incidents(remote=False):
                                 'Approximate Volume Released'})
     except:
         None
-    df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'], errors='coerce')
+
+    df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
+                                                      errors='coerce')
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
 
-    for delete in ['Significant', 'Release Type', 'Incident Types', 'Nearest Populated Centre', 'Reported Date']:
+    for delete in ['Significant',
+                   'Release Type',
+                   'Incident Types',
+                   'Nearest Populated Centre',
+                   'Reported Date']:
         del df[delete]
 
     # print(set(df['Company']))
@@ -137,12 +172,19 @@ def process_incidents(remote=False):
             json.dump(meta, fp)
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
         del df_c['Company']
-        df_c = proximity_fn(df_c)
-        df_c['category'] = df_c['category'].fillna(3)
-        df_c['category'] = df_c['category'].replace({0: "within 10 km",
-                                                     1: "within 50 km",
-                                                     3: "no proximity"})
-        del df_c['bandName']
+        on_land = events_on_land(df_c)
+        df_c = events_near_land(df_c)
+        df_c['landProximityCategory'] = df_c['landProximityCategory'].fillna(3)
+        df_c['landProximityCategory'] = df_c['landProximityCategory'].replace({0: "within 10 km",
+                                                                               1: "within 40 km",
+                                                                               3: "no proximity"})
+        if len(on_land) > 0:
+            for location in on_land:
+                df_c.loc[df_c["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
+                df_c.loc[df_c["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
+
+        df_c = df_c.rename(columns={'landProximityCategory':
+                                    'First Nations Proximity'})
         saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
 
     return df_c, meta
@@ -151,4 +193,6 @@ def process_incidents(remote=False):
 if __name__ == '__main__':
     print('starting incidents...')
     df, meta = process_incidents(remote=False)
+    # land = load_fn_land()
+    # dfOn = events_on_land(df)
     print('completed incidents!')

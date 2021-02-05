@@ -6,13 +6,12 @@ export const mainIncidents = (incidentData, metaData) => {
   // populates the paragraph right above the dashboard with some company specific stats
   summaryParagraph(metaData);
   const incidentBar = (data, map) => {
-    const barNav = new EventNavigator(map, undefined, [], {}, 122);
-    barNav.prepareData(data);
+    const barNav = new EventNavigator(map, undefined, 122, data);
     barNav.makeBar("Substance", "substance-bar", "activated", true);
     barNav.makeBar("Status", "status-bar", "deactivated", true);
-    barNav.makeBar("Province", "province-bar", "deactivated", true);
+    //barNav.makeBar("Province", "province-bar", "deactivated", true);
     barNav.makeBar("Year", "year-bar", "deactivated", true);
-    //barNav.makeBar("category", "fn-bar", "deactivated", true);
+    barNav.makeBar("First Nations Proximity", "fn-bar", "deactivated", true);
     barNav.divEvents();
     return barNav;
   };
@@ -38,9 +37,10 @@ export const mainIncidents = (incidentData, metaData) => {
       "time-series"
     );
 
-    const trendNav = new EventNavigator(timeSeries, undefined, [], {}, 70);
+    const trendNav = new EventNavigator(timeSeries, undefined, 60, false);
     try {
       trendNav.makeBar("Substance", "substance-trend", "activated", false);
+      trendNav.makeBar("First Nations Proximity", "fn-trend", "deactivated", false);
       trendNav.makeBar("Status", "status-trend", "deactivated", false);
       trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
       trendNav.makeBar("Why It Happened", "why-trend", "deactivated", false);
@@ -49,7 +49,6 @@ export const mainIncidents = (incidentData, metaData) => {
     } catch (err) {
       console.log(err);
     }
-
     timeSeries.createChart();
     return timeSeries;
   };
@@ -70,7 +69,6 @@ export const mainIncidents = (incidentData, metaData) => {
       trends.filters.type = btnValue;
       bars.switchY(btnValue);
       thisMap.updateRadius();
-      //trends.updateRadius();
     }
   });
 
@@ -90,6 +88,7 @@ export const mainIncidents = (incidentData, metaData) => {
     } else {
       // if the user selects trends, the option to view volume should be disabled
       $("#incident-volume-btn").attr("disabled", "disabled");
+      $("#incident-count-btn").click();
       visibility(dashboardDivs, "hide");
       visibility(["time-series-section"], "show");
     }
