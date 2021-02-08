@@ -4,8 +4,8 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "usage",
-        "corejs": 3,
-        "modules": "commonjs"
+        // "debug": true, lets you see the exact polyfills used in the app
+        "corejs": 3
       }
     ]
   ],

@@ -5,6 +5,7 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
+  target: "es5",
   entry: {
     ngtl_eng: "./src/index_files/ngtl_eng.js",
   },
@@ -13,8 +14,6 @@ module.exports = {
     filename: "bundle_[name].js",
     publicPath: "/pipeline-profiles/",
   },
-
-  target: "node",
 
   devServer: {
     compress: true,
