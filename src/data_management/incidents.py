@@ -27,37 +27,6 @@ def haversine(lon1, lat1, lon2, lat2):
     return c * r
 
 
-def companyMetaData(df, company):
-
-    def most_common(df, meta, col_name, meta_key):
-        what_list = []
-        for what in df[col_name]:
-            if ',' in what:
-                what_list.extend(what.split(','))
-            else:
-                what_list.append(what)
-        what_list = [x.strip() for x in what_list]
-        what_list = [x for x in what_list if x != 'To be determined']
-        meta[meta_key] = max(set(what_list), key=what_list.count).lower()
-        return meta
-
-    def most_common_substance(df, meta):
-        df_substance = df[df['Substance'] != "Not Applicable"].copy()
-        meta = most_common(df_substance, meta, "Substance", "mostCommonSubstance")
-        return meta
-
-    meta = {}
-    meta['companyName'] = company
-    meta['release'] = int(df['Approximate Volume Released'].notnull().sum())
-    meta['nonRelease'] = int(df['Approximate Volume Released'].isna().sum())
-
-    # calculate the most common what and why and most common substance released
-    meta = most_common(df, meta, "What Happened", "mostCommonWhat")
-    meta = most_common(df, meta, "Why It Happened", "mostCommonWhy")
-    meta = most_common_substance(df, meta)
-    return meta
-
-
 def load_fn_land():
     df = gpd.read_file("./raw_data/AL_TA_CA_SHP_eng/AL_TA_CA_2_128_eng.shp")
     return df
@@ -120,6 +89,49 @@ def events_near_land(events):
     return events
 
 
+def companyMetaData(df, company):
+
+    def most_common(df, meta, col_name, meta_key):
+        what_list = []
+        for what in df[col_name]:
+            if ',' in what:
+                what_list.extend(what.split(','))
+            else:
+                what_list.append(what)
+        what_list = [x.strip() for x in what_list]
+        what_list = [x for x in what_list if x != 'To be determined']
+        meta[meta_key] = max(set(what_list), key=what_list.count).lower()
+        return meta
+
+    def most_common_substance(df, meta):
+        df_substance = df[df['Substance'] != "Not Applicable"].copy()
+        meta = most_common(df_substance, meta, "Substance", "mostCommonSubstance")
+        return meta
+
+    def other_types(df):
+        serious = {"Adverse Environmental Effects": 0,
+                   "Fatality": 0,
+                   "Serious Injury (CER or TSB)": 0}
+        for type_list in df['Incident Types']:
+            type_list = [x.strip() for x in type_list.split(",")]
+            for t in type_list:
+                if t in serious:
+                    serious[t] = serious[t] + 1
+        return serious
+
+    meta = {}
+    meta['companyName'] = company
+    meta['seriousEvents'] = other_types(df)
+    meta['release'] = int(df['Approximate Volume Released'].notnull().sum())
+    meta['nonRelease'] = int(df['Approximate Volume Released'].isna().sum())
+
+    # calculate the most common what and why and most common substance released
+    meta = most_common(df, meta, "What Happened", "mostCommonWhat")
+    meta = most_common(df, meta, "Why It Happened", "mostCommonWhy")
+    meta = most_common_substance(df, meta)
+    return meta
+
+
 def process_incidents(remote=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
@@ -153,7 +165,6 @@ def process_incidents(remote=False):
 
     for delete in ['Significant',
                    'Release Type',
-                   'Incident Types',
                    'Nearest Populated Centre',
                    'Reported Date']:
         del df[delete]
@@ -168,6 +179,7 @@ def process_incidents(remote=False):
         df_c = df[df['Company'] == company].copy()
         # calculate metadata here, before non releases are filtered out
         meta = companyMetaData(df_c, company)
+        del df['Incident Types']
         with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
             json.dump(meta, fp)
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
@@ -196,3 +208,15 @@ if __name__ == '__main__':
     # land = load_fn_land()
     # dfOn = events_on_land(df)
     print('completed incidents!')
+    
+#%%
+
+# thisdict = {
+#   "brand": "Ford",
+#   "model": "Mustang",
+#   "year": 1964
+# }
+
+# print("my brand" in thisdict)
+
+

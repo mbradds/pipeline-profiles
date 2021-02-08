@@ -173,3 +173,11 @@ body {
   margin-left: 1%;
   margin-right: 1%;
 }
+.profile-text-value {
+  color: #fff;
+  background-color: #930d6e;
+  padding: 0.01em 0.15em 0.01em 0.25em; /*top,right,bottom,left */
+  margin-right: 0.05em;
+  border-radius: 0.15em;
+  font-style: normal;
+}
