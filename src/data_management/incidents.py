@@ -35,7 +35,6 @@ def load_fn_land():
 def load_fn_point():
     df = gpd.read_file("./raw_data/Premiere_Nation_First_Nation_SHP/Premiere_Nation_First_Nation.shp")
     df = df.to_crs(canada_geographic)
-    # df.plot()
     return df
 
 
@@ -205,18 +204,4 @@ def process_incidents(remote=False):
 if __name__ == '__main__':
     print('starting incidents...')
     df, meta = process_incidents(remote=False)
-    # land = load_fn_land()
-    # dfOn = events_on_land(df)
     print('completed incidents!')
-    
-#%%
-
-# thisdict = {
-#   "brand": "Ford",
-#   "model": "Mustang",
-#   "year": 1964
-# }
-
-# print("my brand" in thisdict)
-
-

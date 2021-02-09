@@ -68,10 +68,17 @@ def metadata(df, folder_name):
     status = status.to_dict(orient='records')[0]
     df['Location'] = df['Location'].astype("object")
     notInMap = 0
-    for location in df['Location']:
+    noLoc = {}
+    for location, statusloc in zip(df['Location'], df['Condition Status']):
         if location == "nan":
             notInMap = notInMap+1
-    status['notOnMap'] = notInMap
+            if statusloc in noLoc:
+                noLoc[statusloc] = noLoc[statusloc]+1
+            else:
+                noLoc[statusloc] = 1
+
+    status['notOnMap'] = {"total": notInMap,
+                          "status": noLoc}
 
     # get the date the data was pulled
     status['updated'] = date.today().strftime("%b %d, %Y")

@@ -1,7 +1,23 @@
-import { cerPalette, sortJson } from "../modules/util.js";
+import { cerPalette, sortJson, visibility } from "../modules/util.js";
 import { mapInits } from "./hcMapConfig.js";
 
 export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
+  const noLocationSummary = (meta) => {
+    var infoAlert = document.getElementById("no-location-info");
+    var infohtml = `<p><strong>Some conditions are not tied to a geographic location.</strong></p>`;
+    if (meta.summary.notOnMap.total > 0) {
+      infohtml += `<p>No geographic location summary for ${meta.summary.companyName}:</p>`;
+      infohtml += `<ul>`;
+      for (const [status, count] of Object.entries(
+        meta.summary.notOnMap.status
+      )) {
+        infohtml += `<li>${status} conditions: ${count}</li>`;
+      }
+      infohtml += `</ul>`;
+    }
+
+    infoAlert.innerHTML = infohtml;
+  };
   const statusInit = (meta) => {
     var inProgress = $("#in-progress-btn");
     var closed = $("#closed-btn");
@@ -23,7 +39,8 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
     document.getElementById("in-progress-summary").innerText =
       summary["In Progress"];
     document.getElementById("closed-summary").innerText = summary.Closed;
-    document.getElementById("no-location-summary").innerText = summary.notOnMap;
+    document.getElementById("no-location-summary").innerText =
+      summary.notOnMap.total;
   };
 
   const setTitle = (titleElement, filter) => {
@@ -361,6 +378,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
   };
 
   //main conditions map
+  noLocationSummary(meta);
   let titleElement = document.getElementById("conditions-map-title");
   setTitle(titleElement, conditionsFilter);
   fillSummary(meta.summary);
@@ -406,6 +424,11 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
     if (btnValue !== "not-shown") {
       conditionsFilter.column = btnValue;
       destroyInsert(chart);
+      visibility(["no-location-info"], "hide");
+      visibility(["container-map"], "show");
+    } else {
+      visibility(["no-location-info"], "show");
+      visibility(["container-map"], "hide");
     }
     setTitle(titleElement, conditionsFilter);
     const regionSeries = generateRegionSeries(

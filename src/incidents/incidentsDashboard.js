@@ -40,7 +40,12 @@ export const mainIncidents = (incidentData, metaData) => {
     const trendNav = new EventNavigator(timeSeries, undefined, 60, false);
     try {
       trendNav.makeBar("Substance", "substance-trend", "activated", false);
-      trendNav.makeBar("First Nations Proximity", "fn-trend", "deactivated", false);
+      trendNav.makeBar(
+        "First Nations Proximity",
+        "fn-trend",
+        "deactivated",
+        false
+      );
       trendNav.makeBar("Status", "status-trend", "deactivated", false);
       trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
       trendNav.makeBar("Why It Happened", "why-trend", "deactivated", false);
@@ -58,11 +63,8 @@ export const mainIncidents = (incidentData, metaData) => {
   const trends = incidentTimeSeries(field, filters);
 
   // user selection to show volume or incident frequency
-  $("#incident-data-type button").on("click", function () {
-    $(".btn-incident-data-type > .btn").removeClass("active");
-    $(this).addClass("active");
-    var thisBtn = $(this);
-    var btnValue = thisBtn.val();
+  $("#inline_content input[name='type']").click(function () {
+    var btnValue = $("input:radio[name=type]:checked").val();
     if (btnValue !== "trends") {
       // update map radius for volume
       thisMap.filters.type = btnValue;
