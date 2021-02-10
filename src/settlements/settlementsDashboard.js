@@ -1,26 +1,26 @@
-import { cerPalette, dateFormatString, currentDate } from "../modules/util.js";
+import { profileAssist as pa } from "../modules/util.js";
 
 export const settlements = (settlementsData) => {
   const legendNames = {
     company: {
       name: "Active settlement(s)",
-      color: cerPalette["Night Sky"],
+      color: pa.cerPalette["Night Sky"],
     },
   };
 
   const legendColors = {
-    "Active settlement(s)": cerPalette["Night Sky"],
-    "Settlements with fixed end date": cerPalette["Ocean"],
-    "Settlements without fixed end date": cerPalette["Cool Grey"],
+    "Active settlement(s)": pa.cerPalette["Night Sky"],
+    "Settlements with fixed end date": pa.cerPalette["Ocean"],
+    "Settlements without fixed end date": pa.cerPalette["Cool Grey"],
   };
 
-  var today = currentDate();
+  var today = pa.currentDate();
 
   const getEndDate = (date) => {
     if (date === null) {
-      return [today, cerPalette["Cool Grey"]];
+      return [today, pa.cerPalette["Cool Grey"]];
     } else {
-      return [date, cerPalette["Ocean"]];
+      return [date, pa.cerPalette["Ocean"]];
     }
   };
 
@@ -114,7 +114,7 @@ export const settlements = (settlementsData) => {
           companySettles.push({
             name: company,
             collapsed: false,
-            color: cerPalette["Night Sky"],
+            color: pa.cerPalette["Night Sky"],
             id: companyId(companyTracker, company),
             start: currentStart,
             end: currentEnd,
@@ -126,7 +126,7 @@ export const settlements = (settlementsData) => {
             companySettles.push({
               name: company,
               collapsed: false,
-              color: cerPalette["Night Sky"],
+              color: pa.cerPalette["Night Sky"],
               id: companyId(companyTracker, company),
               start: currentStart,
               end: currentEnd,
@@ -198,7 +198,7 @@ export const settlements = (settlementsData) => {
               x: -5,
               formatter: function () {
                 return (
-                  Highcharts.dateFormat(dateFormatString, this.options.value) +
+                  Highcharts.dateFormat(pa.dateFormatString, this.options.value) +
                   " (today, UTC)"
                 );
               },
@@ -255,7 +255,7 @@ export const settlements = (settlementsData) => {
       ],
 
       tooltip: {
-        xDateFormat: dateFormatString,
+        xDateFormat: pa.dateFormatString,
         backgroundColor: "rgba(255,255,255,1)",
         className: "tooltip-settlements",
         useHTML: true,
@@ -269,11 +269,11 @@ export const settlements = (settlementsData) => {
           } else {
             var to = `<tr><td>Toll Order:</td><td style="padding:0"><b></b>`;
           }
-          if (this.color == cerPalette["Cool Grey"]) {
+          if (this.color == pa.cerPalette["Cool Grey"]) {
             var endText = "No set end date";
           } else {
             var endText = Highcharts.dateFormat(
-              dateFormatString,
+              pa.dateFormatString,
               this.point.end
             );
           }
@@ -282,11 +282,11 @@ export const settlements = (settlementsData) => {
               `<b>${
                 this.key
               }</b><table> <tr><td> Active settlement(s) start:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
-                dateFormatString,
+                pa.dateFormatString,
                 this.point.start
               )}</b></td></tr>` +
               `<tr><td> Active settlement(s) end:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
-                dateFormatString,
+                pa.dateFormatString,
                 this.point.end
               )}</b></td></tr>` +
               `<tr><td> Active settlement(s) duration:</td><td style="padding:0"><b> ${years} years</b></table>`
@@ -296,7 +296,7 @@ export const settlements = (settlementsData) => {
               `<b>${this.key}</b><table>` +
               to +
               `<tr><td>Start:</td><td style="padding:0"><b> ${Highcharts.dateFormat(
-                dateFormatString,
+                pa.dateFormatString,
                 this.point.start
               )}</b>` +
               `<tr><td>End:</td><td style="padding:0"><b> ${endText}</b>` +

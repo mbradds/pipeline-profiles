@@ -1,5 +1,5 @@
 import { summaryParagraph } from "./summary.js";
-import { visibility } from "../modules/util.js";
+import { profileAssist as pa } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
 export const mainIncidents = (incidentData, metaData) => {
@@ -84,15 +84,15 @@ export const mainIncidents = (incidentData, metaData) => {
       bars.allDivs
     );
     if (btnValue !== "trends") {
-      visibility(dashboardDivs, "show");
-      visibility(["time-series-section"], "hide");
+      pa.visibility(dashboardDivs, "show");
+      pa.visibility(["time-series-section"], "hide");
       $("#incident-volume-btn").removeAttr("disabled");
     } else {
       // if the user selects trends, the option to view volume should be disabled
       $("#incident-volume-btn").attr("disabled", "disabled");
       $("#incident-count-btn").click();
-      visibility(dashboardDivs, "hide");
-      visibility(["time-series-section"], "show");
+      pa.visibility(dashboardDivs, "hide");
+      pa.visibility(["time-series-section"], "show");
     }
   });
 

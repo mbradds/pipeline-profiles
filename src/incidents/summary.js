@@ -24,7 +24,6 @@ export const summaryParagraph = (meta) => {
   paragraphText += `</p>`;
 
   //second dynamic paragraph
-
   paragraphText += `<p>`;
   paragraphText += `The dashboard below displays only the incidents that resulted in a release of product from the pipeline, however there are other \
   important incident event types that may not appear on the dashboard. \

@@ -1,4 +1,4 @@
-import { cerPalette, sortJson, visibility } from "../modules/util.js";
+import { profileAssist as pa } from "../modules/util.js";
 import { mapInits } from "./hcMapConfig.js";
 
 export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
@@ -151,8 +151,8 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
     newMeta.projects = processMapMetadata(m.projects, filter, "projects");
     newMeta.themes = processMapMetadata(m.themes, filter, "themes");
     if (filter.column == "Closed") {
-      newMeta.projects = sortJson(newMeta.projects, "value");
-      newMeta.themes = sortJson(newMeta.themes, "value");
+      newMeta.projects = pa.sortJson(newMeta.projects, "value");
+      newMeta.themes = pa.sortJson(newMeta.themes, "value");
     }
     return newMeta;
   };
@@ -202,8 +202,8 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
     }
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} Economic Region</b></p>`;
     text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
-    text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
+    text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
     text += `</table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
     text += generateTable(meta, e.id, "themes", filter);
@@ -424,11 +424,11 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
     if (btnValue !== "not-shown") {
       conditionsFilter.column = btnValue;
       destroyInsert(chart);
-      visibility(["no-location-info"], "hide");
-      visibility(["container-map"], "show");
+      pa.visibility(["no-location-info"], "hide");
+      pa.visibility(["container-map"], "show");
     } else {
-      visibility(["no-location-info"], "show");
-      visibility(["container-map"], "hide");
+      pa.visibility(["no-location-info"], "show");
+      pa.visibility(["container-map"], "hide");
     }
     setTitle(titleElement, conditionsFilter);
     const regionSeries = generateRegionSeries(

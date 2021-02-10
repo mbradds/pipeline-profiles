@@ -1,60 +1,5 @@
-import { cerPalette, conversions } from "../modules/util.js";
+import { profileAssist as pa } from "../modules/util.js";
 const haversine = require("haversine");
-
-const EVENTCOLORS = {
-  substanceColors: {
-    Propane: cerPalette["Forest"],
-    "Natural Gas - Sweet": cerPalette["Flame"],
-    "Fuel Gas": cerPalette["Sun"],
-    "Lube Oil": cerPalette["hcPurple"],
-  },
-  statusColors: {
-    "Initially Submitted": cerPalette["Flame"],
-    Closed: cerPalette["Night Sky"],
-    Submitted: cerPalette["Ocean"],
-  },
-  provinceColors: {
-    Alberta: cerPalette["Sun"],
-    "British Columbia": cerPalette["Forest"],
-  },
-  whyColors: {
-    "Standards and Procedures": cerPalette["Flame"],
-    "Tools and Equipment": cerPalette["Forest"],
-    Maintenance: cerPalette["Night Sky"],
-    "Human Factors": cerPalette["Ocean"],
-    "Engineering and Planning": cerPalette["Sun"],
-    "Natural or Environmental Forces": cerPalette["hcAqua"],
-    "To be determined": cerPalette["Cool Grey"],
-    "Inadequate Procurement": cerPalette["Aubergine"],
-    "Inadequate Supervision": cerPalette["Dim Grey"],
-    "Failure in communication": cerPalette["hcPink"],
-  },
-  whatColors: {
-    "Corrosion and Cracking": cerPalette["Aubergine"],
-    "Defect and Deterioration": cerPalette["Cool Grey"],
-    "Equipment Failure": cerPalette["Dim Grey"],
-    "Natural Force Damage": cerPalette["Flame"],
-    "Other Causes": cerPalette["Forest"],
-    "Incorrect Operation": cerPalette["Night Sky"],
-    "External Interference": cerPalette["Ocean"],
-    "To be determined": cerPalette["Sun"],
-  },
-  fnColors: {
-    "no proximity": "#F5F5F5",
-    "within 40 km": cerPalette["Night Sky"],
-    "within 10 km": cerPalette["Aubergine"],
-    "On First Nations Land": cerPalette["Sun"],
-  },
-};
-
-const ONETOMANY = {
-  Substance: false,
-  Status: false,
-  Province: false,
-  "What Happened": true,
-  "Why It Happened": true,
-  category: true,
-};
 
 export class EventMap {
   substanceState = {
@@ -63,7 +8,52 @@ export class EventMap {
     "Fuel Gas": "liquid",
     "Lube Oil": "liquid",
   };
-  EVENTCOLORS = EVENTCOLORS;
+
+  EVENTCOLORS = {
+    substanceColors: {
+      Propane: pa.cerPalette["Forest"],
+      "Natural Gas - Sweet": pa.cerPalette["Flame"],
+      "Fuel Gas": pa.cerPalette["Sun"],
+      "Lube Oil": pa.cerPalette["hcPurple"],
+    },
+    statusColors: {
+      "Initially Submitted": pa.cerPalette["Flame"],
+      Closed: pa.cerPalette["Night Sky"],
+      Submitted: pa.cerPalette["Ocean"],
+    },
+    provinceColors: {
+      Alberta: pa.cerPalette["Sun"],
+      "British Columbia": pa.cerPalette["Forest"],
+    },
+    whyColors: {
+      "Standards and Procedures": pa.cerPalette["Flame"],
+      "Tools and Equipment": pa.cerPalette["Forest"],
+      Maintenance: pa.cerPalette["Night Sky"],
+      "Human Factors": pa.cerPalette["Ocean"],
+      "Engineering and Planning": pa.cerPalette["Sun"],
+      "Natural or Environmental Forces": pa.cerPalette["hcAqua"],
+      "To be determined": pa.cerPalette["Cool Grey"],
+      "Inadequate Procurement": pa.cerPalette["Aubergine"],
+      "Inadequate Supervision": pa.cerPalette["Dim Grey"],
+      "Failure in communication": pa.cerPalette["hcPink"],
+    },
+    whatColors: {
+      "Corrosion and Cracking": pa.cerPalette["Aubergine"],
+      "Defect and Deterioration": pa.cerPalette["Cool Grey"],
+      "Equipment Failure": pa.cerPalette["Dim Grey"],
+      "Natural Force Damage": pa.cerPalette["Flame"],
+      "Other Causes": pa.cerPalette["Forest"],
+      "Incorrect Operation": pa.cerPalette["Night Sky"],
+      "External Interference": pa.cerPalette["Ocean"],
+      "To be determined": pa.cerPalette["Sun"],
+    },
+    fnColors: {
+      "no proximity": "#F5F5F5",
+      "within 40 km": pa.cerPalette["Night Sky"],
+      "within 10 km": pa.cerPalette["Aubergine"],
+      "On First Nations Land": pa.cerPalette["Sun"],
+    },
+  };
 
   constructor(
     eventType,
@@ -106,8 +96,8 @@ export class EventMap {
   }
 
   volumeText(m3, substance, gas = false, liquid = false) {
-    let convLiquid = conversions["m3 to bbl"];
-    let convGas = conversions["m3 to cf"];
+    let convLiquid = pa.conversions["m3 to bbl"];
+    let convGas = pa.conversions["m3 to cf"];
     if (!gas && !liquid) {
       var state = this.substanceState[substance];
     } else if (!gas && liquid) {
@@ -223,8 +213,8 @@ export class EventMap {
 
     let years = []; //piggyback on data processing pass to get the year colors
     let colors = [
-      cerPalette["Sun"],
-      cerPalette["Night Sky"],
+      pa.cerPalette["Sun"],
+      pa.cerPalette["Night Sky"],
       "#1d5478",
       "#366687",
       "#507a96",
@@ -248,7 +238,7 @@ export class EventMap {
       return this.addCircle(
         row.Latitude,
         row.Longitude,
-        cerPalette["Cool Grey"],
+        pa.cerPalette["Cool Grey"],
         this.applyColor(row[this.field], this.field),
         t,
         row
@@ -620,6 +610,14 @@ export class EventNavigator {
         itemMarginTop: -2,
         itemMarginBottom: -2,
         y: -20,
+        itemStyle: {
+          color: "#000000",
+          cursor: "default",
+        },
+        itemHoverStyle: {
+          color: "#000000",
+          cursor: "default",
+        },
       },
 
       plotOptions: {
@@ -729,7 +727,7 @@ export class EventNavigator {
       activeDiv.innerHTML = `<p>${bar.name} (click to view)</p>`;
     }
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = cerPalette["Dim Grey"];
+    activeDiv.style.borderColor = pa.cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 0.4;
   }
@@ -775,7 +773,7 @@ export class EventNavigator {
     }
     this.currentActive = bar;
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = cerPalette["Cool Grey"];
+    activeDiv.style.borderColor = pa.cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 1;
     this.map.fieldChange(bar.name);
@@ -879,7 +877,14 @@ export class EventNavigator {
 }
 
 export class EventTrend extends EventMap {
-  ONETOMANY = ONETOMANY;
+  ONETOMANY = {
+    Substance: false,
+    Status: false,
+    Province: false,
+    "What Happened": true,
+    "Why It Happened": true,
+    category: true,
+  };
 
   constructor(eventType, field, filters, data, div) {
     super(eventType, field);
