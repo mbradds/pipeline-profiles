@@ -131,7 +131,7 @@ def companyMetaData(df, company):
     return meta
 
 
-def process_incidents(remote=False):
+def process_incidents(remote=False, land=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
         print('downloading remote file')
@@ -183,19 +183,20 @@ def process_incidents(remote=False):
             json.dump(meta, fp)
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
         del df_c['Company']
-        on_land = events_on_land(df_c)
-        df_c = events_near_land(df_c)
-        df_c['landProximityCategory'] = df_c['landProximityCategory'].fillna(3)
-        df_c['landProximityCategory'] = df_c['landProximityCategory'].replace({0: "within 10 km",
-                                                                               1: "within 40 km",
-                                                                               3: "no proximity"})
-        if len(on_land) > 0:
-            for location in on_land:
-                df_c.loc[df_c["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
-                df_c.loc[df_c["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
+        if land:
+            on_land = events_on_land(df_c)
+            df_c = events_near_land(df_c)
+            df_c['landProximityCategory'] = df_c['landProximityCategory'].fillna(3)
+            df_c['landProximityCategory'] = df_c['landProximityCategory'].replace({0: "within 10 km",
+                                                                                   1: "within 40 km",
+                                                                                   3: "no proximity"})
+            if len(on_land) > 0:
+                for location in on_land:
+                    df_c.loc[df_c["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
+                    df_c.loc[df_c["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
 
-        df_c = df_c.rename(columns={'landProximityCategory':
-                                    'First Nations Proximity'})
+            df_c = df_c.rename(columns={'landProximityCategory':
+                                        'First Nations Proximity'})
         saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
 
     return df_c, meta

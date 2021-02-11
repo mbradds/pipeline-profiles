@@ -977,6 +977,47 @@ export class EventTrend extends EventMap {
     }
   }
 
+  oneToManyDisclaimer() {
+    const destoryLabel = (chart) => {
+      if (chart.customLabel) {
+        chart.customLabel.destroy();
+      }
+      chart.customLabel = undefined;
+    };
+    if (this.ONETOMANY[this.field]) {
+      destoryLabel(this.chart);
+      let text = `<section class="alert alert-warning" style="padding:4px">`;
+      text += `<p>${this.eventType} can have multiple <i>${this.field}</i> values. Chart totals may appear larger due to double counting.</p>`;
+      text += `</section>`;
+      //activate the chart disclaimer
+      var label = this.chart.renderer
+        .label(text, null, null, null, null, null, true)
+        .attr({
+          padding: 0,
+          //r: 3,
+        })
+        .css({
+          "max-width": "700px",
+          margin: 0,
+        })
+        .add(this.chart.rGroup);
+
+      label.align(
+        Highcharts.extend(label.getBBox(), {
+          align: "left",
+          x: 50, // offset
+          verticalAlign: "top",
+          y: -10, // offset
+        }),
+        null,
+        "spacingBox"
+      );
+      this.chart.customLabel = label;
+    } else {
+      destoryLabel(this.chart);
+    }
+  }
+
   createChart() {
     let currentTrend = this;
     this.chart = new Highcharts.chart(this.div, {
@@ -1017,6 +1058,7 @@ export class EventTrend extends EventMap {
   }
   fieldChange(newField) {
     if (newField !== this.field) {
+      this.field = newField;
       let newSeries = this.processEventsData(this.data, newField);
       while (this.chart.series.length) {
         this.chart.series[0].remove();
@@ -1024,9 +1066,9 @@ export class EventTrend extends EventMap {
       newSeries.map((series) => {
         this.chart.addSeries(series, false);
       });
+      this.oneToManyDisclaimer();
       this.chart.redraw();
     }
-    this.field = newField;
   }
 
   updateRadius() {
