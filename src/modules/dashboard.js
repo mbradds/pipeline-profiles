@@ -504,7 +504,6 @@ export class EventNavigator {
         },
         padding: -5,
         margin: 0,
-        //x: -25,
       },
 
       credits: {
@@ -564,6 +563,7 @@ export class EventNavigator {
         itemStyle: {
           color: "#000000",
           cursor: "default",
+          fontSize: "13px",
         },
         itemHoverStyle: {
           color: "#000000",

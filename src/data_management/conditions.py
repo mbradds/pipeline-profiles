@@ -56,13 +56,17 @@ def metadata(df, folder_name):
     def convert_to_int(df):
         df = df.replace({np.nan: 0})
         for col in ['In Progress', 'Closed']:
-            df[col] = [int(x) for x in df[col]]
+            try:
+                df[col] = [int(x) for x in df[col]]
+            except:
+                None
         return df
     # df contains the condition data for the spcecific company
     meta = {}
 
     # get the summary stats for the boxes above the map
     status = df[['condition id', 'Condition Status']].copy()
+    status = status.drop_duplicates(subset=['condition id'])
     status = status.groupby(['Condition Status']).size().reset_index()
     status = pd.pivot_table(status, values=0, columns="Condition Status")
     status = status.to_dict(orient='records')[0]
@@ -196,14 +200,14 @@ def process_conditions(remote=False, nonStandard=True):
         df['Company'] = df['Company'].replace(r, '', regex=True)
 
     df = df[df['Short Project Name'] != "SAM/COM"]
-    df['Theme(s)'] = df['Theme(s)'].fillna("No theme specified")
+    df['Theme(s)'] = df['Theme(s)'].replace({"nan":
+                                             "No theme specified"})
 
     regions_map = import_simplified()
     links = orca_regdocs_links()
     # print(sorted(list(set(df['Company']))))
 
     company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
-
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
         if not os.path.exists("../conditions/"+folder_name):
@@ -220,7 +224,7 @@ def process_conditions(remote=False, nonStandard=True):
                 regionProvince = region.strip().split('/')
                 row['id'] = regionProvince[0].strip()
                 row['Flat Province'] = regionProvince[-1].strip()
-                expanded_locations.append(row)
+                expanded_locations.append(row.copy())
         df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
         # calculate metadata here
         meta = metadata(df_all, folder_name)

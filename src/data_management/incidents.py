@@ -170,7 +170,6 @@ def process_incidents(remote=False, land=False):
 
     # print(set(df['Company']))
     company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
-    # company_files = ['TransCanada PipeLines Limited']
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
         if not os.path.exists("../incidents/"+folder_name):

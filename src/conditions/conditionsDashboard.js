@@ -278,15 +278,16 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
               zooms["In Progress"][1],
               zooms["In Progress"][2]
             );
-            let text = `<section class="alert alert-warning" style="padding:4px">`;
+            let text = `<section class="alert alert-warning" style="padding:3px">`;
             text += `<h4>Map Instructions:</h4>`;
             text += `<ol><li>Click on a region to view conditions info</li>`;
             text += `<li>Click map area outside of regions to hide info</li></ol>`;
+            text += `Some conditions apply to multiple regions. Conditions may be double counted across regions, resulting in a higher number of conditions than the totals seen in the buttons above.`;
             text += `</section>`;
             var label = chart.renderer
               .label(text, null, null, null, null, null, true)
               .css({
-                width: "325px",
+                width: "290px",
                 margin: 0,
               })
               .attr({
@@ -299,7 +300,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
               Highcharts.extend(label.getBBox(), {
                 align: "left",
                 x: -5, // offset
-                verticalAlign: "top",
+                verticalAlign: "bottom",
                 y: 0, // offset
               }),
               null,
