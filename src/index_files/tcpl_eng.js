@@ -1,9 +1,9 @@
 console.time(`chart loading`);
 import { generalTheme } from "../modules/themes.js";
 import ieWarn from "ie-gang";
-import { runConditions } from "../conditions/NOVAGasTransmissionLtd/index.js";
-import { runIncidents } from "../incidents/NOVAGasTransmissionLtd/index.js";
-import { runSettlements } from "../settlements/NOVAGasTransmissionLtd/index.js";
+import { runConditions } from "../conditions/TransCanadaPipeLinesLimited/index.js";
+import { runIncidents } from "../incidents/TransCanadaPipeLinesLimited/index.js";
+import { runSettlements } from "../settlements/TransCanadaPipeLinesLimited/index.js";
 
 let warningParams = {
   message:

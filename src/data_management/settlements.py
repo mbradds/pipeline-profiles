@@ -44,7 +44,7 @@ def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settle
     # df['Company'] = df['Company'].replace(pipeline_names())
     write_path = os.path.join('../settlements/settlements_data/', 'settlements.json')
 
-    company_files = ['NOVA Gas Transmission Ltd.']
+    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
     # company_files = list(set(list(df['Company'])))
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

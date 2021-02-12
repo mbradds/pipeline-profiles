@@ -8,6 +8,7 @@ module.exports = {
   target: "es5",
   entry: {
     ngtl_eng: "./src/index_files/ngtl_eng.js",
+    tcpl_eng: "./src/index_files/tcpl_eng.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

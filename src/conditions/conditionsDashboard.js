@@ -43,8 +43,12 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
       summary.notOnMap.total;
   };
 
-  const setTitle = (titleElement, filter) => {
-    titleElement.innerText = `${filter.column} Conditions by Region`;
+  const setTitle = (titleElement, filter, summary) => {
+    if (filter.column == "not-shown") {
+      titleElement.innerText = `${summary.companyName} - no geographic location`;
+    } else {
+      titleElement.innerText = `${summary.companyName} - ${filter.column} Conditions by Region`;
+    }
   };
 
   const generateTable = (summary, selectedRegion, tableName, filter) => {
@@ -380,7 +384,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
   //main conditions map
   noLocationSummary(meta);
   let titleElement = document.getElementById("conditions-map-title");
-  setTitle(titleElement, conditionsFilter);
+  setTitle(titleElement, conditionsFilter, meta.summary);
   fillSummary(meta.summary);
   var zooms = getMapZoom(mapInits, meta);
 
@@ -421,8 +425,8 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
     var thisBtn = $(this);
     var btnValue = thisBtn.val();
     $("#selectedVal").text(btnValue);
+    conditionsFilter.column = btnValue;
     if (btnValue !== "not-shown") {
-      conditionsFilter.column = btnValue;
       destroyInsert(chart);
       pa.visibility(["no-location-info"], "hide");
       pa.visibility(["container-map"], "show");
@@ -430,7 +434,7 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
       pa.visibility(["no-location-info"], "show");
       pa.visibility(["container-map"], "hide");
     }
-    setTitle(titleElement, conditionsFilter);
+    setTitle(titleElement, conditionsFilter, meta.summary);
     const regionSeries = generateRegionSeries(
       mapMetaData,
       econRegions,

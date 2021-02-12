@@ -24,6 +24,10 @@ export class EventMap {
     provinceColors: {
       Alberta: pa.cerPalette["Sun"],
       "British Columbia": pa.cerPalette["Forest"],
+      Saskatchewan: pa.cerPalette["Aubergine"],
+      Manitoba: pa.cerPalette["Ocean"],
+      Ontario: pa.cerPalette["Night Sky"],
+      Quebec: pa.cerPalette["Flame"],
     },
     whyColors: {
       "Standards and Procedures": pa.cerPalette["Flame"],
@@ -60,13 +64,13 @@ export class EventMap {
     field = undefined,
     filters = undefined,
     minRadius = undefined,
-    baseZoom = [55, -119]
+    initZoomTo = [55, -119]
   ) {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
     this.field = field;
-    this.baseZoom = baseZoom;
+    this.initZoomTo = initZoomTo;
     this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
   }
@@ -85,13 +89,16 @@ export class EventMap {
   }
 
   addBaseMap() {
-    var map = L.map("incident-map").setView(this.baseZoom, 5);
+    var map = L.map("incident-map", { zoomSnap: 0.5 }).setView(
+      this.initZoomTo,
+      5
+    );
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
       foo: "bar",
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
-    map.setMinZoom(5);
+    map.setMinZoom(4);
     this.map = map;
   }
 
@@ -186,6 +193,10 @@ export class EventMap {
         this.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius / 2);
         });
+      } else if (currZoom < 5) {
+        this.circles.eachLayer(function (layer) {
+          layer.setRadius(minRadius * 2);
+        });
       } else if (currZoom <= 6) {
         this.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius);
@@ -253,8 +264,7 @@ export class EventMap {
       yearColors[yr] = colors[i];
     });
     this.colors.Year = yearColors;
-    let circles = L.featureGroup(allCircles).addTo(this.map);
-    this.circles = circles;
+    this.circles = L.featureGroup(allCircles).addTo(this.map);
     let currentDashboard = this;
     this.map.on("zoom", function (e) {
       currentDashboard.updateRadius();
@@ -381,7 +391,7 @@ export class EventMap {
 
   reZoom() {
     let bounds = this.circles.getBounds();
-    this.map.fitBounds(bounds, { maxZoom: 5 });
+    this.map.fitBounds(bounds);
   }
 
   resetMap() {
@@ -413,77 +423,18 @@ export class EventMap {
       resize = true;
     });
     $(".tab > .tablinks").on("click", function (e) {
-      currentDashboard.reZoom();
       if (resize) {
         currentDashboard.map.invalidateSize(true);
         resize = false;
       } else {
         currentDashboard.map.invalidateSize(false);
       }
+      currentDashboard.reZoom();
     });
   }
 }
 
 export class EventNavigator {
-  legends = {
-    Substance: {
-      layout: "horizontal",
-      width: 350,
-      itemStyle: {
-        fontSize: 12,
-      },
-      padding: 0,
-      itemMarginTop: 0,
-      margin: 0,
-      y: -20,
-      x: 50,
-    },
-    Status: {
-      layout: "horizontal",
-      width: 325,
-      itemStyle: {
-        fontSize: 12,
-      },
-      padding: 0,
-      margin: 0,
-      y: -20,
-      x: 40,
-    },
-    Province: {
-      layout: "horizontal",
-      itemStyle: {
-        fontSize: 12,
-      },
-      padding: 0,
-      margin: 0,
-      y: -20,
-    },
-    Year: {
-      layout: "horizontal",
-      reversed: true,
-      width: 300,
-      itemStyle: {
-        fontSize: 12,
-      },
-      padding: 0,
-      margin: 5,
-      y: -20,
-      x: 12,
-    },
-    "First Nations Proximity": {
-      layout: "horizontal",
-      width: 350,
-      itemStyle: {
-        fontSize: 12,
-      },
-      padding: 0,
-      itemMarginTop: 0,
-      margin: 0,
-      y: -20,
-      x: 40,
-    },
-  };
-
   constructor(map, currentActive, height = 125, data = false) {
     this.map = map;
     this.currentActive = currentActive;
@@ -537,11 +488,12 @@ export class EventNavigator {
 
     return new Highcharts.chart(div, {
       chart: {
+        y: -30,
         type: "bar",
         spacingRight: 8,
         spacingLeft: 2,
-        spacingTop: 10,
-        spacingBottom: -7,
+        spacingTop: 8,
+        spacingBottom: 5,
         animation: false,
       },
 
@@ -550,8 +502,8 @@ export class EventNavigator {
         style: {
           fontSize: "16px",
         },
-        padding: 0,
-        margin: -15,
+        padding: -5,
+        margin: 0,
         //x: -25,
       },
 
@@ -606,10 +558,9 @@ export class EventNavigator {
 
       legend: {
         layout: "horizontal",
-        padding: 0,
-        itemMarginTop: -2,
-        itemMarginBottom: -2,
-        y: -20,
+        verticalAlign: "bottom",
+        alignColumns: false,
+        margin: 0,
         itemStyle: {
           color: "#000000",
           cursor: "default",
@@ -617,6 +568,9 @@ export class EventNavigator {
         itemHoverStyle: {
           color: "#000000",
           cursor: "default",
+        },
+        navigation: {
+          enabled: false,
         },
       },
 
@@ -843,21 +797,11 @@ export class EventNavigator {
     this.allDivs.push(div);
     this.barList.push(newBar);
     this.bars[barName] = newBar;
-    if (newBar.chart) {
-      this.formatLegend(barName);
-    }
     if (status == "activated") {
       this.activateChart(newBar);
     } else if ((status = "deactivated")) {
       this.deactivateChart(newBar);
     }
-  }
-
-  formatLegend(barName) {
-    let legendParams = this.legends[barName];
-    this.bars[barName].chart.update({
-      legend: legendParams,
-    });
   }
 
   divEvents() {
@@ -993,6 +937,7 @@ export class EventTrend extends EventMap {
       var label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
         .attr({
+          zIndex: 999,
           padding: 0,
           //r: 3,
         })
@@ -1007,7 +952,7 @@ export class EventTrend extends EventMap {
           align: "left",
           x: 50, // offset
           verticalAlign: "top",
-          y: -10, // offset
+          y: -13, // offset
         }),
         null,
         "spacingBox"

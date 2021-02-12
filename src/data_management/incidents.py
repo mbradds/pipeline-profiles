@@ -169,7 +169,8 @@ def process_incidents(remote=False, land=False):
         del df[delete]
 
     # print(set(df['Company']))
-    company_files = ['NOVA Gas Transmission Ltd.']
+    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
+    # company_files = ['TransCanada PipeLines Limited']
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
         if not os.path.exists("../incidents/"+folder_name):
@@ -178,7 +179,7 @@ def process_incidents(remote=False, land=False):
         df_c = df[df['Company'] == company].copy()
         # calculate metadata here, before non releases are filtered out
         meta = companyMetaData(df_c, company)
-        del df['Incident Types']
+        del df_c['Incident Types']
         with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
             json.dump(meta, fp)
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]

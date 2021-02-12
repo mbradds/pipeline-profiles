@@ -196,11 +196,13 @@ def process_conditions(remote=False, nonStandard=True):
         df['Company'] = df['Company'].replace(r, '', regex=True)
 
     df = df[df['Short Project Name'] != "SAM/COM"]
+    df['Theme(s)'] = df['Theme(s)'].fillna("No theme specified")
 
     regions_map = import_simplified()
     links = orca_regdocs_links()
+    # print(sorted(list(set(df['Company']))))
 
-    company_files = ['NOVA Gas Transmission Ltd.']
+    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

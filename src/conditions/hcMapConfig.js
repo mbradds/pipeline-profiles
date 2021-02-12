@@ -7,8 +7,8 @@ export const mapInits = {
       maxDrop: null,
     },
     "TransCanada PipeLines Limited": {
-      "In Progress": [undefined, undefined, undefined],
-      Closed: [undefined, undefined, undefined],
+      "In Progress": [0.22, -10100000, -6500000],
+      Closed: [0.22, -10100000, -6500000],
       maxDrop: null,
     },
   },
