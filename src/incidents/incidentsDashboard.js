@@ -11,7 +11,6 @@ export const mainIncidents = (incidentData, metaData) => {
     barNav.makeBar("Status", "status-bar", "deactivated", true);
     barNav.makeBar("Year", "year-bar", "deactivated", true);
     barNav.makeBar("Province", "province-bar", "deactivated", true);
-    //barNav.makeBar("First Nations Proximity", "fn-bar", "deactivated", true);
     barNav.divEvents();
     return barNav;
   };
@@ -21,7 +20,13 @@ export const mainIncidents = (incidentData, metaData) => {
 
   const incidentMap = (field, filters) => {
     const minRadius = 14000;
-    const map = new EventMap("incidents", field, filters, minRadius);
+    const map = new EventMap(
+      "incidents",
+      field,
+      filters,
+      minRadius,
+      "incident-map"
+    );
     map.addBaseMap();
     map.processEventsData(incidentData);
     map.lookForSize();
@@ -37,15 +42,9 @@ export const mainIncidents = (incidentData, metaData) => {
       "time-series"
     );
 
-    const trendNav = new EventNavigator(timeSeries, undefined, 65, false);
+    const trendNav = new EventNavigator(timeSeries, undefined, 70, false);
     try {
       trendNav.makeBar("Substance", "substance-trend", "activated", false);
-      // trendNav.makeBar(
-      //   "First Nations Proximity",
-      //   "fn-trend",
-      //   "deactivated",
-      //   false
-      // );
       trendNav.makeBar("Status", "status-trend", "deactivated", false);
       trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
       trendNav.makeBar("Why It Happened", "why-trend", "deactivated", false);

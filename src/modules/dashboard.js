@@ -64,6 +64,7 @@ export class EventMap {
     field = undefined,
     filters = undefined,
     minRadius = undefined,
+    mainDiv = "map",
     initZoomTo = [55, -119]
   ) {
     this.eventType = eventType;
@@ -73,6 +74,7 @@ export class EventMap {
     this.initZoomTo = initZoomTo;
     this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
+    this.mainDiv = mainDiv;
   }
 
   setColors() {
@@ -89,7 +91,7 @@ export class EventMap {
   }
 
   addBaseMap() {
-    var map = L.map("incident-map", { zoomSnap: 0.5 }).setView(
+    var map = L.map(this.mainDiv, { zoomSnap: 0.5 }).setView(
       this.initZoomTo,
       5
     );
@@ -189,7 +191,7 @@ export class EventMap {
     } else {
       let currZoom = this.map.getZoom();
       var minRadius = this.minRadius;
-      if (currZoom >= 7) {
+      if (currZoom >= 6.5) {
         this.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius / 2);
         });
@@ -197,7 +199,7 @@ export class EventMap {
         this.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius * 2);
         });
-      } else if (currZoom <= 6) {
+      } else if (currZoom >= 5 || currZoom <= 5.5) {
         this.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius);
         });
@@ -385,7 +387,7 @@ export class EventMap {
       let bounds = userZoom.getBounds();
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
-      incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby incidents</h4>Try increasing the search range.</section>`;
+      incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby ${this.eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.</section>`;
     }
   }
 
@@ -477,15 +479,17 @@ export class EventNavigator {
     return seriesList;
   }
 
-  createBar(div, name, series, colors) {
-    function barTitle(name) {
-      if (name == "Status") {
-        return `CER ${name}`;
-      } else {
-        return `${name}`;
-      }
+  // usefull for names like "Status" that could use additional description
+  pillName(name) {
+    if (name == "Status") {
+      return `CER ${name}`;
+    } else {
+      return `${name}`;
     }
+  }
 
+  createBar(div, name, series, colors) {
+    var currentDashboard = this;
     return new Highcharts.chart(div, {
       chart: {
         y: -30,
@@ -498,7 +502,7 @@ export class EventNavigator {
       },
 
       title: {
-        text: barTitle(name),
+        text: currentDashboard.pillName(name), //barTitle(name),
         style: {
           fontSize: "16px",
         },
@@ -678,7 +682,7 @@ export class EventNavigator {
         },
       });
     } else {
-      activeDiv.innerHTML = `<p>${bar.name} (click to view)</p>`;
+      activeDiv.innerHTML = `<p>${this.pillName(bar.name)} (click to view)</p>`;
     }
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = pa.cerPalette["Dim Grey"];
@@ -722,7 +726,7 @@ export class EventNavigator {
         },
       });
     } else {
-      activeDiv.innerHTML = `<p>${bar.name}</p>`;
+      activeDiv.innerHTML = `<p>${this.pillName(bar.name)}</p>`;
       activeDiv.style.backgroundColor = "white";
     }
     this.currentActive = bar;
@@ -834,7 +838,7 @@ export class EventTrend extends EventMap {
     super(eventType, field);
     this.filters = filters;
     this.data = data;
-    this.div = div;
+    this.mainDiv = div;
     this.colors = this.setColors();
   }
 
@@ -965,7 +969,7 @@ export class EventTrend extends EventMap {
 
   createChart() {
     let currentTrend = this;
-    this.chart = new Highcharts.chart(this.div, {
+    this.chart = new Highcharts.chart(this.mainDiv, {
       chart: {
         type: "column",
         animation: false,

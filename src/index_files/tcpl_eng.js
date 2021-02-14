@@ -18,11 +18,7 @@ generalTheme();
 
 // async version
 async function loadAllCharts() {
-  let arrayOfCharts = [
-    runConditions(),
-    runIncidents(),
-    runSettlements(),
-  ];
+  let arrayOfCharts = [runConditions(), runIncidents(), runSettlements()];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);
   });

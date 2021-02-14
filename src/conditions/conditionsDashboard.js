@@ -1,7 +1,12 @@
 import { profileAssist as pa } from "../modules/util.js";
 import { mapInits } from "./hcMapConfig.js";
 
-export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
+export async function mainConditions(
+  econRegions,
+  canadaMap,
+  mapMetaData,
+  meta
+) {
   const noLocationSummary = (meta) => {
     var infoAlert = document.getElementById("no-location-info");
     var infohtml = `<p><strong>Some conditions are not tied to a geographic location.</strong></p>`;
@@ -383,97 +388,104 @@ export const mainConditions = (econRegions, canadaMap, mapMetaData, meta) => {
   };
 
   //main conditions map
-  noLocationSummary(meta);
-  let titleElement = document.getElementById("conditions-map-title");
-  setTitle(titleElement, conditionsFilter, meta.summary);
-  fillSummary(meta.summary);
-  var zooms = getMapZoom(mapInits, meta);
-
-  const baseMap = {
-    name: "Canada",
-    mapData: Highcharts.geojson(canadaMap),
-    type: "map",
-    color: "#F0F0F0",
-    borderWidth: 0.5,
-    borderColor: "black",
-    zIndex: 0,
-    showInLegend: false,
-    enableMouseTracking: false,
-  };
-
-  const regionSeries = generateRegionSeries(
-    mapMetaData,
-    econRegions,
-    conditionsFilter
-  );
-
-  var chart = createConditionsMap(
-    regionSeries,
-    baseMap,
-    "container-map",
-    meta,
-    conditionsFilter,
-    zooms
-  );
-
-  //allow zoom and pan when in development mode
-  chart = chartMode(chart, mapInits);
-
-  //change condition type and update map+title
-  $("#conditions-nav-group button").on("click", function () {
-    $(".btn-conditions > .btn").removeClass("active");
-    $(this).addClass("active");
-    var thisBtn = $(this);
-    var btnValue = thisBtn.val();
-    $("#selectedVal").text(btnValue);
-    conditionsFilter.column = btnValue;
-    if (btnValue !== "not-shown") {
-      destroyInsert(chart);
-      pa.visibility(["no-location-info"], "hide");
-      pa.visibility(["container-map"], "show");
-    } else {
-      pa.visibility(["no-location-info"], "show");
-      pa.visibility(["container-map"], "hide");
-    }
+  function buildDashboard() {
+    noLocationSummary(meta);
+    let titleElement = document.getElementById("conditions-map-title");
     setTitle(titleElement, conditionsFilter, meta.summary);
+    fillSummary(meta.summary);
+    var zooms = getMapZoom(mapInits, meta);
+
+    const baseMap = {
+      name: "Canada",
+      mapData: Highcharts.geojson(canadaMap),
+      type: "map",
+      color: "#F0F0F0",
+      borderWidth: 0.5,
+      borderColor: "black",
+      zIndex: 0,
+      showInLegend: false,
+      enableMouseTracking: false,
+    };
+
     const regionSeries = generateRegionSeries(
       mapMetaData,
       econRegions,
       conditionsFilter
     );
-    chart.update(
-      {
-        plotOptions: {
-          series: {
-            point: {
-              events: {
-                click: function () {
-                  popUp(
-                    this,
-                    conditionsFilter,
-                    selectedMeta(meta, conditionsFilter)
-                  );
+
+    var chart = createConditionsMap(
+      regionSeries,
+      baseMap,
+      "container-map",
+      meta,
+      conditionsFilter,
+      zooms
+    );
+
+    //allow zoom and pan when in development mode
+    chart = chartMode(chart, mapInits);
+
+    //change condition type and update map+title
+    $("#conditions-nav-group button").on("click", function () {
+      $(".btn-conditions > .btn").removeClass("active");
+      $(this).addClass("active");
+      var thisBtn = $(this);
+      var btnValue = thisBtn.val();
+      $("#selectedVal").text(btnValue);
+      conditionsFilter.column = btnValue;
+      if (btnValue !== "not-shown") {
+        destroyInsert(chart);
+        pa.visibility(["no-location-info"], "hide");
+        pa.visibility(["container-map"], "show");
+      } else {
+        pa.visibility(["no-location-info"], "show");
+        pa.visibility(["container-map"], "hide");
+      }
+      setTitle(titleElement, conditionsFilter, meta.summary);
+      const regionSeries = generateRegionSeries(
+        mapMetaData,
+        econRegions,
+        conditionsFilter
+      );
+      chart.update(
+        {
+          plotOptions: {
+            series: {
+              point: {
+                events: {
+                  click: function () {
+                    popUp(
+                      this,
+                      conditionsFilter,
+                      selectedMeta(meta, conditionsFilter)
+                    );
+                  },
                 },
               },
             },
           },
+          series: [regionSeries, baseMap],
+          colorAxis: colorRange(conditionsFilter),
         },
-        series: [regionSeries, baseMap],
-        colorAxis: colorRange(conditionsFilter),
-      },
-      false
-    );
-
-    chart.mapZoom(undefined, undefined, undefined);
-    removeNoConditions(chart);
-    if (conditionsFilter.column == "Closed") {
-      chart.mapZoom(zooms["Closed"][0], zooms["Closed"][1], zooms["Closed"][2]);
-    } else {
-      chart.mapZoom(
-        zooms["In Progress"][0],
-        zooms["In Progress"][1],
-        zooms["In Progress"][2]
+        false
       );
-    }
-  });
-};
+
+      chart.mapZoom(undefined, undefined, undefined);
+      removeNoConditions(chart);
+      if (conditionsFilter.column == "Closed") {
+        chart.mapZoom(
+          zooms["Closed"][0],
+          zooms["Closed"][1],
+          zooms["Closed"][2]
+        );
+      } else {
+        chart.mapZoom(
+          zooms["In Progress"][0],
+          zooms["In Progress"][1],
+          zooms["In Progress"][2]
+        );
+      }
+    });
+  }
+  return buildDashboard();
+}
