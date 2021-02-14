@@ -1,6 +1,6 @@
 import { profileAssist as pa } from "../modules/util.js";
 
-export const settlements = (settlementsData) => {
+export async function mainSettlements(settlementsData) {
   const legendNames = {
     company: {
       name: "Active settlement(s)",
@@ -198,8 +198,10 @@ export const settlements = (settlementsData) => {
               x: -5,
               formatter: function () {
                 return (
-                  Highcharts.dateFormat(pa.dateFormatString, this.options.value) +
-                  " (today, UTC)"
+                  Highcharts.dateFormat(
+                    pa.dateFormatString,
+                    this.options.value
+                  ) + " (today, UTC)"
                 );
               },
             },
@@ -314,14 +316,13 @@ export const settlements = (settlementsData) => {
       ],
     });
   };
-  const mainSettlements = () => {
-    const [seriesData, dates] = settlementSeries(settlementsData);
-    var settlementChart = createSettlements(seriesData, dates);
+  const buildDashboard = () => {
+    try {
+      const [seriesData, dates] = settlementSeries(settlementsData);
+      var settlementChart = createSettlements(seriesData, dates);
+    } catch (err) {
+      errorChart("container_settlements");
+    }
   };
-  try {
-    mainSettlements();
-  } catch (err) {
-    console.log(err);
-    errorChart("container_settlements");
-  }
-};
+  return buildDashboard();
+}

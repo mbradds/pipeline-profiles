@@ -1,9 +1,19 @@
 console.time(`chart loading`);
 import { generalTheme } from "../modules/themes.js";
 import ieWarn from "ie-gang";
-import { runConditions } from "../conditions/TransCanadaPipeLinesLimited/index.js";
-import { runIncidents } from "../incidents/TransCanadaPipeLinesLimited/index.js";
-import { runSettlements } from "../settlements/TransCanadaPipeLinesLimited/index.js";
+// conditions
+import econRegions from "../conditions/TransCanadaPipeLinesLimited/economicRegions.json";
+import canadaMap from "../conditions/base_maps/base_map.json";
+import mapMetaData from "../conditions/TransCanadaPipeLinesLimited/mapMetadata.json";
+import metaConditions from "../conditions/TransCanadaPipeLinesLimited/summaryMetadata.json";
+import { mainConditions } from "../conditions/conditionsDashboard.js";
+// incidents
+import incidentData from "../incidents/TransCanadaPipeLinesLimited/incidents_map.json";
+import metaIncidents from "../incidents/TransCanadaPipeLinesLimited/summaryMetadata.json";
+import { mainIncidents } from "../incidents/incidentsDashboard.js";
+// settlements
+import settlementsData from "../settlements/TransCanadaPipeLinesLimited/settlementsData.json";
+import { mainSettlements } from "../settlements/settlementsDashboard.js";
 
 let warningParams = {
   message:
@@ -18,7 +28,11 @@ generalTheme();
 
 // async version
 async function loadAllCharts() {
-  let arrayOfCharts = [runConditions(), runIncidents(), runSettlements()];
+  let arrayOfCharts = [
+    mainConditions(econRegions, canadaMap, mapMetaData, metaConditions),
+    mainIncidents(incidentData, metaIncidents),
+    mainSettlements(settlementsData),
+  ];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);
   });
