@@ -11,5 +11,10 @@ export const mapInits = {
       Closed: [0.3, -10100000, -6500000],
       maxDrop: null,
     },
+    "Enbridge Pipelines Inc.": {
+      "In Progress": [0.22, -10100000, -6500000],
+      Closed: [0.22, -10100000, -6500000],
+      maxDrop: null,
+    },
   },
 };

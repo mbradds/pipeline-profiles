@@ -4,9 +4,13 @@ const haversine = require("haversine");
 export class EventMap {
   substanceState = {
     Propane: "gas",
-    "Natural Gas - Sweet": "gas",
+    "Natural Gas": "gas",
     "Fuel Gas": "liquid",
     "Lube Oil": "liquid",
+    "Crude Oil": "liquid",
+    "Diesel Fuel": "liquid",
+    "Natural Gas Liquids": "gas",
+    Condensate: "liquid",
   };
 
   EVENTCOLORS = {
@@ -15,10 +19,15 @@ export class EventMap {
       "Natural Gas - Sweet": pa.cerPalette["Flame"],
       "Fuel Gas": pa.cerPalette["Sun"],
       "Lube Oil": pa.cerPalette["hcPurple"],
+      "Crude Oil - Sweet": pa.cerPalette["Sun"],
+      "Crude Oil - Synthetic": pa.cerPalette["Forest"],
+      "Crude Oil - Sour": pa.cerPalette["Dim Grey"],
+      "Natural Gas Liquids": pa.cerPalette["Night Sky"],
+      Condensate: pa.cerPalette["Ocean"],
     },
     statusColors: {
       "Initially Submitted": pa.cerPalette["Flame"],
-      Closed: pa.cerPalette["Night Sky"],
+      Closed: pa.cerPalette["Cool Grey"],
       Submitted: pa.cerPalette["Ocean"],
     },
     provinceColors: {
@@ -91,7 +100,7 @@ export class EventMap {
   }
 
   addBaseMap() {
-    var map = L.map(this.mainDiv, { zoomSnap: 0.5 }).setView(
+    var map = L.map(this.mainDiv, { zoomSnap: 0.5, zoomDelta: 0.5 }).setView(
       this.initZoomTo,
       5
     );
@@ -108,7 +117,8 @@ export class EventMap {
     let convLiquid = pa.conversions["m3 to bbl"];
     let convGas = pa.conversions["m3 to cf"];
     if (!gas && !liquid) {
-      var state = this.substanceState[substance];
+      let shortSubstance = substance.split("-")[0].trim();
+      var state = this.substanceState[shortSubstance];
     } else if (!gas && liquid) {
       var state = "liquid";
     } else {
@@ -227,6 +237,9 @@ export class EventMap {
     let years = []; //piggyback on data processing pass to get the year colors
     let colors = [
       pa.cerPalette["Sun"],
+      "#022034",
+      "#043454",
+      "#043a5e",
       pa.cerPalette["Night Sky"],
       "#1d5478",
       "#366687",
@@ -437,6 +450,46 @@ export class EventMap {
 }
 
 export class EventNavigator {
+  greyScale = [
+    "#000000",
+    "#080808",
+    "#101010",
+    "#181818",
+    "#202020",
+    "#282828",
+    "#303030",
+    "#383838",
+    "#404040",
+    "#484848",
+    "#505050",
+    "#585858",
+    "#606060",
+    "#686868",
+    "#696969",
+    "#707070",
+    "#787878",
+    "#808080",
+    "#888888",
+    "#909090",
+    "#989898",
+    "#A0A0A0",
+    "#A8A8A8",
+    "#A9A9A9",
+    "#B0B0B0",
+    "#B8B8B8",
+    "#BEBEBE",
+    "#C0C0C0",
+    "#C8C8C8",
+    "#D0D0D0",
+    "#D3D3D3",
+    "#D8D8D8",
+    "#DCDCDC",
+    "#E0E0E0",
+    "#E8E8E8",
+    "#F0F0F0",
+    "#F5F5F5",
+    "#F8F8F8",
+  ];
   constructor(map, currentActive, height = 125, data = false) {
     this.map = map;
     this.currentActive = currentActive;
@@ -502,7 +555,7 @@ export class EventNavigator {
       },
 
       title: {
-        text: currentDashboard.pillName(name), //barTitle(name),
+        text: currentDashboard.pillName(name),
         style: {
           fontSize: "16px",
         },
@@ -602,7 +655,6 @@ export class EventNavigator {
           },
         },
       },
-
       series: this.seriesify(name, series, colors, "frequency"),
     });
   }
@@ -633,30 +685,12 @@ export class EventNavigator {
     var chart = bar.chart;
     let activeDiv = document.getElementById(bar.div);
     if (chart) {
-      if (bar.div !== "year-bar") {
-        var greyColors = [
-          "#CCCCCC",
-          "#999999",
-          "#666666",
-          "#333333",
-          "#000000",
-        ];
+      let greyIndex = Math.floor(this.greyScale.length / chart.series.length);
+      const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+      if (chart.series.length > 1) {
+        var greyColors = every_nth(this.greyScale, greyIndex).reverse();
       } else {
-        var greyColors = [
-          "#101010",
-          "#282828",
-          "#404040",
-          "#585858",
-          "#696969",
-          "#808080",
-          "#989898",
-          "#A9A9A9",
-          "#BEBEBE",
-          "#D0D0D0",
-          "#DCDCDC",
-          "#F0F0F0",
-          "#FFFFFF",
-        ].reverse();
+        var greyColors = [this.greyScale[0]];
       }
 
       chart.series.map((s, i) => {

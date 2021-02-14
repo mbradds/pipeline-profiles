@@ -1,5 +1,5 @@
 import pandas as pd
-from util import saveJson
+from util import saveJson, get_company_names
 import ssl
 import os
 import json
@@ -131,7 +131,7 @@ def companyMetaData(df, company):
     return meta
 
 
-def process_incidents(remote=False, land=False):
+def process_incidents(remote=False, land=False, company_names=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
         print('downloading remote file')
@@ -168,8 +168,13 @@ def process_incidents(remote=False, land=False):
                    'Reported Date']:
         del df[delete]
 
-    # print(set(df['Company']))
-    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
+    if company_names:
+        print(get_company_names(df['Company']))
+
+    company_files = ['NOVA Gas Transmission Ltd.',
+                     'TransCanada PipeLines Limited',
+                     'Enbridge Pipelines Inc.']
+
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
         if not os.path.exists("../incidents/"+folder_name):
@@ -204,5 +209,5 @@ def process_incidents(remote=False, land=False):
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, meta = process_incidents(remote=False)
+    df, meta = process_incidents(remote=False, company_names=False)
     print('completed incidents!')

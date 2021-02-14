@@ -5,18 +5,19 @@ export async function mainConditions(
   econRegions,
   canadaMap,
   mapMetaData,
-  meta
+  meta,
+  lang
 ) {
   const noLocationSummary = (meta) => {
     var infoAlert = document.getElementById("no-location-info");
-    var infohtml = `<p><strong>Some conditions are not tied to a geographic location.</strong></p>`;
+    var infohtml = `<p><strong>${lang.noLocation.title}</strong></p>`;
     if (meta.summary.notOnMap.total > 0) {
-      infohtml += `<p>No geographic location summary for ${meta.summary.companyName}:</p>`;
+      infohtml += `<p>${lang.noLocation.summary(meta.summary.companyName)}</p>`;
       infohtml += `<ul>`;
       for (const [status, count] of Object.entries(
         meta.summary.notOnMap.status
       )) {
-        infohtml += `<li>${status} conditions: ${count}</li>`;
+        infohtml += `<li>${status} ${lang.conditions}: ${count}</li>`;
       }
       infohtml += `</ul>`;
     }
@@ -50,9 +51,12 @@ export async function mainConditions(
 
   const setTitle = (titleElement, filter, summary) => {
     if (filter.column == "not-shown") {
-      titleElement.innerText = `${summary.companyName} - no geographic location`;
+      titleElement.innerText = lang.title.noLocation(summary.companyName);
     } else {
-      titleElement.innerText = `${summary.companyName} - ${filter.column} Conditions by Region`;
+      titleElement.innerText = lang.title.location(
+        summary.companyName,
+        filter.column
+      );
     }
   };
 
@@ -60,7 +64,9 @@ export async function mainConditions(
     let projectsHTML = ``;
     if (tableName == "projects") {
       projectsHTML = `<table class="conditions-table">`;
-      projectsHTML += `<caption style="text-align:left;">Projects with ${filter.column} Conditions (click for REGDOCS link):</caption>`;
+      projectsHTML += `<caption style="text-align:left;">${lang.table.projectsTitle(
+        filter.column
+      )}</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion && proj.value > 0) {
           if (proj.Regdocs !== undefined) {
@@ -73,7 +79,9 @@ export async function mainConditions(
       });
     } else if (tableName == "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
-      projectsHTML += `<caption style="text-align:left;">${filter.column} Condition Themes (click to view theme definition):</caption>`;
+      projectsHTML += `<caption style="text-align:left;">${lang.table.themesTitle(
+        filter.column
+      )}</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion && proj.value > 0) {
           projectsHTML += `<tr><td onclick="themeClick(this)">${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
@@ -193,12 +201,15 @@ export async function mainConditions(
     } else {
       return {
         min: 1,
-        minColor: "#d2f8d2",
-        maxColor: "#092215",
+        minColor: "#DDEBDC",
+        maxColor: "#052204",
         stops: [
-          [0, "#d2f8d2"],
-          [0.67, "#154f30"],
-          [1, "#092215"],
+          [0, "#DDEBDC"],
+          [0.2, "#569E54"],
+          [0.4, "#348B32"],
+          [0.6, "#10660D"],
+          [0.8, "#0A4409"],
+          [1, "#052204"],
         ],
       };
     }
@@ -209,9 +220,9 @@ export async function mainConditions(
     if (currentPopUp) {
       currentPopUp.innerHTML = "";
     }
-    var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} Economic Region</b></p>`;
-    text += `<table><caption style="text-align:left">Conditions Summary:</caption>`;
-    text += `<tr><td><li> Last updated on:</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
+    text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
+    text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
     text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
     text += `</table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
@@ -284,10 +295,10 @@ export async function mainConditions(
               zooms["In Progress"][2]
             );
             let text = `<section class="alert alert-warning" style="padding:3px">`;
-            text += `<h4>Map Instructions:</h4>`;
-            text += `<ol><li>Click on a region to view conditions info</li>`;
-            text += `<li>Click map area outside of regions to hide info</li></ol>`;
-            text += `Some conditions apply to multiple regions. Conditions may be double counted across regions, resulting in a higher number of conditions than the totals seen in the buttons above.`;
+            text += `<h4>${lang.instructions.header}</h4>`;
+            text += `<ol><li>${lang.instructions.line1}</li>`;
+            text += `<li>${lang.instructions.line2}</li></ol>`;
+            text += `${lang.instructions.disclaimer}`;
             text += `</section>`;
             var label = chart.renderer
               .label(text, null, null, null, null, null, true)
@@ -355,7 +366,7 @@ export async function mainConditions(
         useHTML: false,
         formatter: function () {
           let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b><br>`;
-          toolText += `Click on region to view summary`;
+          toolText += lang.tooltip.text;
           return toolText;
         },
       },

@@ -2,7 +2,7 @@ from util import execute_sql
 import pandas as pd
 import json
 import os
-from util import saveJson, normalize_text
+from util import saveJson, normalize_text, get_company_names
 import geopandas as gpd
 from datetime import date
 import numpy as np
@@ -147,7 +147,7 @@ def metadata(df, folder_name):
     return df_all
 
 
-def process_conditions(remote=False, nonStandard=True):
+def process_conditions(remote=False, nonStandard=True, company_names=False):
 
     def add_links(df_c, df_links):
         l = {}
@@ -205,9 +205,13 @@ def process_conditions(remote=False, nonStandard=True):
 
     regions_map = import_simplified()
     links = orca_regdocs_links()
-    # print(sorted(list(set(df['Company']))))
+    if company_names:
+        print(get_company_names(df['Company']))
 
-    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
+    company_files = ['NOVA Gas Transmission Ltd.',
+                     'TransCanada PipeLines Limited',
+                     'Enbridge Pipelines Inc.']
+
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
         if not os.path.exists("../conditions/"+folder_name):
@@ -233,12 +237,7 @@ def process_conditions(remote=False, nonStandard=True):
     return shp, meta
 
 
-def company_names(df):
-    company_list = list(set(list(df['Company'])))
-    return company_list
-
-
 if __name__ == "__main__":
     print('starting conditions...')
-    df, meta = process_conditions(remote=False)
+    df, meta = process_conditions(remote=False, company_names=False)
     print('completed conditions!')

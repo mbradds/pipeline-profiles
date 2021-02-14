@@ -73,3 +73,7 @@ def saveJson(df, write_path, precision=2):
                orient='records',
                double_precision=precision,
                compression='infer')
+
+
+def get_company_names(col):
+    return sorted(list(set(col)))

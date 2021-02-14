@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
-from util import normalize_dates, saveJson, pipeline_names
+from util import normalize_dates, saveJson, pipeline_names, get_company_names
 
 
 def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settlements_and_Toll_Indicies.XLSX'):
@@ -44,7 +44,10 @@ def negotiated_settlements(name='2020_Pipeline_System_Report_-_Negotiated_Settle
     # df['Company'] = df['Company'].replace(pipeline_names())
     write_path = os.path.join('../settlements/settlements_data/', 'settlements.json')
 
-    company_files = ['NOVA Gas Transmission Ltd.', 'TransCanada PipeLines Limited']
+    company_files = ['NOVA Gas Transmission Ltd.',
+                     'TransCanada PipeLines Limited',
+                     'Enbridge Pipelines Inc.']
+    
     # company_files = list(set(list(df['Company'])))
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

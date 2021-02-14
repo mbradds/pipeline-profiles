@@ -14,7 +14,8 @@ import { mainIncidents } from "../incidents/incidentsDashboard.js";
 // settlements
 import settlementsData from "../settlements/NOVAGasTransmissionLtd/settlementsData.json";
 import { mainSettlements } from "../settlements/settlementsDashboard.js";
-
+// language
+import { englishDashboard } from "../modules/langEnglish.js";
 
 let warningParams = {
   message:
@@ -29,7 +30,13 @@ generalTheme();
 
 async function loadAllCharts() {
   let arrayOfCharts = [
-    mainConditions(econRegions, canadaMap, mapMetaData, metaConditions),
+    mainConditions(
+      econRegions,
+      canadaMap,
+      mapMetaData,
+      metaConditions,
+      englishDashboard.conditions
+    ),
     mainIncidents(incidentData, metaIncidents),
     mainSettlements(settlementsData),
   ];
