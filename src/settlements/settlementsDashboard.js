@@ -321,7 +321,7 @@ export async function mainSettlements(settlementsData) {
       const [seriesData, dates] = settlementSeries(settlementsData);
       var settlementChart = createSettlements(seriesData, dates);
     } catch (err) {
-      errorChart("container_settlements");
+      console.log("Settlements Error");
     }
   };
   return buildDashboard();

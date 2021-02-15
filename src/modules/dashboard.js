@@ -68,14 +68,14 @@ export class EventMap {
     },
   };
 
-  constructor(
+  constructor({
     eventType,
     field = undefined,
     filters = undefined,
     minRadius = undefined,
-    mainDiv = "map",
-    initZoomTo = [55, -119]
-  ) {
+    leafletDiv = "map",
+    initZoomTo = [55, -119],
+  }) {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
@@ -83,7 +83,7 @@ export class EventMap {
     this.initZoomTo = initZoomTo;
     this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
-    this.mainDiv = mainDiv;
+    this.leafletDiv = leafletDiv;
   }
 
   setColors() {
@@ -100,7 +100,7 @@ export class EventMap {
   }
 
   addBaseMap() {
-    var map = L.map(this.mainDiv, { zoomSnap: 0.5, zoomDelta: 0.5 }).setView(
+    var map = L.map(this.leafletDiv, { zoomSnap: 0.5, zoomDelta: 0.5 }).setView(
       this.initZoomTo,
       5
     );
@@ -490,13 +490,13 @@ export class EventNavigator {
     "#F5F5F5",
     "#F8F8F8",
   ];
-  constructor(map, currentActive, height = 125, data = false) {
-    this.map = map;
-    this.currentActive = currentActive;
+  constructor({ plot, height = 125, data = false }) {
+    this.plot = plot;
+    this.currentActive = undefined;
     this.barList = [];
     this.bars = {};
     this.barSeries = {};
-    this.barColors = map.colors;
+    this.barColors = plot.colors;
     this.allDivs = [];
     this.height = height;
     this.data = data;
@@ -768,7 +768,7 @@ export class EventNavigator {
     activeDiv.style.borderColor = pa.cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 1;
-    this.map.fieldChange(bar.name);
+    this.plot.fieldChange(bar.name);
   }
 
   barEvents(bar) {
@@ -868,11 +868,11 @@ export class EventTrend extends EventMap {
     category: true,
   };
 
-  constructor(eventType, field, filters, data, div) {
-    super(eventType, field);
+  constructor({ eventType, field, filters, data, hcDiv }) {
+    super({ eventType: eventType, field: field });
     this.filters = filters;
     this.data = data;
-    this.mainDiv = div;
+    this.hcDiv = hcDiv;
     this.colors = this.setColors();
   }
 
@@ -975,9 +975,7 @@ export class EventTrend extends EventMap {
       var label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
         .attr({
-          zIndex: 999,
           padding: 0,
-          //r: 3,
         })
         .css({
           "max-width": "700px",
@@ -990,7 +988,7 @@ export class EventTrend extends EventMap {
           align: "left",
           x: 50, // offset
           verticalAlign: "top",
-          y: -13, // offset
+          y: -27, // offset
         }),
         null,
         "spacingBox"
@@ -1003,10 +1001,11 @@ export class EventTrend extends EventMap {
 
   createChart() {
     let currentTrend = this;
-    this.chart = new Highcharts.chart(this.mainDiv, {
+    this.chart = new Highcharts.chart(this.hcDiv, {
       chart: {
         type: "column",
         animation: false,
+        spacingTop: 25,
       },
 
       title: {
