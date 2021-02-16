@@ -868,12 +868,14 @@ export class EventTrend extends EventMap {
     category: true,
   };
 
-  constructor({ eventType, field, filters, data, hcDiv }) {
+  constructor({ eventType, field, filters, data, hcDiv, definitions = {} }) {
     super({ eventType: eventType, field: field });
     this.filters = filters;
     this.data = data;
     this.hcDiv = hcDiv;
+    this.definitions = definitions;
     this.colors = this.setColors();
+    this.displayDefinitions();
   }
 
   processEventsData(data, field) {
@@ -999,6 +1001,18 @@ export class EventTrend extends EventMap {
     }
   }
 
+  displayDefinitions() {
+    var definitionsPopUp = document.getElementById("trend-definitions");
+    if (this.definitions.hasOwnProperty(this.field)) {
+      pa.visibility(["trend-definitions"], "show");
+      definitionsPopUp.innerHTML = `<p>Click on a bar to view <i>${this.field}</i> sub definition</p>`;
+      this.onClickDefinition = true;
+    } else {
+      pa.visibility(["trend-definitions"], "hide");
+      this.onClickDefinition = false;
+    }
+  }
+
   createChart() {
     let currentTrend = this;
     this.chart = new Highcharts.chart(this.hcDiv, {
@@ -1032,6 +1046,21 @@ export class EventTrend extends EventMap {
       plotOptions: {
         series: {
           animation: false,
+          events: {
+            click: function () {
+              if (currentTrend.onClickDefinition) {
+                var definitionsPopUp = document.getElementById(
+                  "trend-definitions"
+                );
+                let keyColor =
+                  currentTrend.colors[currentTrend.field][this.name];
+
+                let key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
+                definitionsPopUp.innerHTML =
+                  key + currentTrend.definitions[currentTrend.field][this.name];
+              }
+            },
+          },
         },
       },
 
@@ -1049,6 +1078,7 @@ export class EventTrend extends EventMap {
         this.chart.addSeries(series, false);
       });
       this.oneToManyDisclaimer();
+      this.displayDefinitions();
       this.chart.redraw();
     }
   }

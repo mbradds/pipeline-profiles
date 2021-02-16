@@ -97,7 +97,7 @@ body {
 /* incidents */
 #incident-map {
   position: relative;
-  height: 500px;
+  height: 520px;
   margin-right: -15px;
 }
 #time-series {

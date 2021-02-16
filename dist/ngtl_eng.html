@@ -435,9 +435,88 @@
             </details>
             <div class="mrgn-tp-md"></div>
             <div id="system-incidents-paragraph"></div>
+            <details>
+              <summary>
+                Incident Type Definitions:
+                <i>one incident can have multiple types</i>
+              </summary>
+              <ul>
+                <li>
+                  <p>
+                    <strong
+                      >Release of Substance (featured in the dashboard)</strong
+                    >
+                    - Any time a product is unintentionally released. (Releases
+                    of non-gas low pressure products in volumes of less than 1.5
+                    cubic metres are exempt from reporting.)
+                  </p>
+                </li>
+                <li>
+                  <strong> Environmental Effects</strong> - When any chemical
+                  substance is released at a concentration or volume that has
+                  the potential to change the ambient environment in a manner
+                  that would cause harm to human life, wildlife or vegetation
+                  (e.g., glycol, potassium carbonate, methanol, methanol mix
+                  from hydrostatic testing, etc.).
+                </li>
+                <li>
+                  <p><strong>Explosion</strong> - An unintended explosion</p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Fatality</strong> - Any death involving employees,
+                    contractors or members of the public related to the
+                    construction, operation, maintenance or abandonment of
+                    pipelines
+                  </p>
+                </li>
+                <li>
+                  <p><strong>Fire</strong> - An unintended fire</p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Operation Beyond Design Limits</strong> Includes
+                    situations, such as:
+                  </p>
+                  <ul>
+                    <li>
+                      over-pressures - i.e., pressures that are higher than the
+                      maximum the equipment was designed to safely handle;
+                    </li>
+                    <li>vibration beyond design limits;</li>
+                    <li>
+                      slope movements causing movement in the pipeline beyond
+                      design limits;
+                    </li>
+                    <li>pipe exposures in rivers or streams; and</li>
+                    <li>
+                      introduction of an inappropriate product (e.g., sour gas
+                      in excess of CSA limits)
+                    </li>
+                  </ul>
+
+                  <p>
+                    Operation beyond design limit is typically linked to an
+                    over-pressure of the product in the pipe; however, if a pipe
+                    was exposed to excessive vibration and was not designed for
+                    this, this could be considered operation beyond design
+                    limits. Operation beyond design limits does not include
+                    equipment contacting the pipe, or corrosion pits, etc.
+                  </p>
+                </li>
+                <li>
+                  <strong
+                    >Serious Injury (CER or Transportation Safety Board)</strong
+                  >
+                  - Any serious injury involving employees, contractors or
+                  members of the public related to the construction, operation
+                  or maintenance of pipelines.
+                </li>
+              </ul>
+            </details>
           </div>
         </div>
-        <div class="mrgn-tp-lg"></div>
+        <div class="mrgn-tp-md"></div>
 
         <div class="dashboard">
           <div class="dashboard-title">
@@ -514,22 +593,29 @@
             </div>
           </div>
 
-          <div class="row" id="time-series-section" style="display: none">
-            <div class="col-md-8">
-              <div id="time-series"></div>
+          <div id="time-series-section" style="display: none">
+            <div class="row">
+              <div class="col-md-8">
+                <div id="time-series"></div>
+              </div>
+              <div class="col-md-4">
+                <div class="event-filter-nav" id="substance-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="fn-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="status-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="what-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="why-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="province-trend"></div>
+              </div>
             </div>
-            <div class="col-md-4">
-              <div class="event-filter-nav" id="substance-trend"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="fn-trend"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="status-trend"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="what-trend"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="why-trend"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="province-trend"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="alert alert-info" id="trend-definitions"></div>
+              </div>
             </div>
           </div>
 
