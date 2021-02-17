@@ -59,7 +59,7 @@ export async function mainIncidents(incidentData, metaData) {
   const incidentBar = (data, map) => {
     const barNav = new EventNavigator({
       plot: map,
-      pillWidth: 122,
+      pillWidth: 124,
       data: data,
     });
     barNav.makeBar("Substance", "substance-bar", "activated", true);
