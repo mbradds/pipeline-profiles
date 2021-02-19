@@ -161,14 +161,19 @@ body {
   padding: 6px;
   margin-left: 1%;
   margin-right: 1%;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-top: none;
 }
-.profile-title {
+.tabborder {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+/* .profile-title {
   padding: 6px;
   margin-left: 1%;
   margin-right: 1%;
-}
+} */
 .profile-text-value {
   color: #fff;
   background-color: #930d6e;

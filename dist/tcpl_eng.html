@@ -31,12 +31,16 @@
   <body>
     <div id="ie-warning"></div>
 
-    <div class="profile-title">
-      <h2>Pipeline Profiles - TransCanada Mainline</h2>
-      <h3>New Safety & Environment Sections</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 id="wb-cont" property="name">Pipeline Profiles - TransCanada Mainline</h1>
+          <h2>Safety And Environment</h2>
+        </div>
+      </div>
     </div>
 
-    <div class="tab">
+    <div class="tab container">
       <button
         class="tablinks"
         onclick="openTab(event, 'condition-compliance')"
@@ -47,9 +51,6 @@
       <!-- the below button needs to remain "Pipeline Incidents" -->
       <button class="tablinks" onclick="openTab(event, 'pipeline-incidents')">
         Pipeline Incidents
-      </button>
-      <button class="tablinks" onclick="openTab(event, 'settlements')">
-        Negotiated Settlements
       </button>
       <button class="tablinks" onclick="openTab(event, 'contaminated-sites')">
         Contaminated Sites/Remediation
@@ -68,7 +69,7 @@
     <!-- Start Condition Compliance -->
 
     <div id="condition-compliance" class="profile-section tabcontent">
-      <div class="container">
+      <div class="container tabborder">
         <div class="row">
           <div class="col-md-12">
             <h2>Conditions Compliance</h2>
@@ -79,15 +80,25 @@
               Regulations, rules, bylaws, and zoning restrictions. Pipelines are
               also bound by technical, safety, and environmental standards along
               with company rules, protocols and management systems. In addition
-              to these requirements, the CER may add conditions to regulatory
-              instruments that each company must meet. Condition compliance is
-              monitored by the CER and
+              to these requirements, the Commission may add conditions to
+              regulatory instruments that each company must meet. Conditions are
+              project-specific and are designed to protect public and the
+              environment by reducing possible risks identified during the
+              application process.
+            </p>
+
+            <p>
+              Condition compliance is part of the CER's oversight and
               <a href="/en/safety-environment/compliance-enforcement/index.html"
                 >enforcement</a
               >
-              action is taken when required. Conditions are often relevant to a
-              specific region. The map below displays the number of in progress
-              and closed conditions mapped to economic regions as defined by
+              action is taken when required.
+            </p>
+            <p>
+              Conditions can be related to a specific region, or apply to the
+              Pipeline Project as a whole. The map below displays the number of
+              in progress and closed conditions mapped to economic regions as
+              defined by
               <a
                 href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm"
                 >Statistics Canada
@@ -287,7 +298,7 @@
     </div>
 
     <div id="pipeline-incidents" class="profile-section tabcontent">
-      <div class="container">
+      <div class="container tabborder">
         <div class="row">
           <div class="col-md-12">
             <h2>Pipeline Incidents</h2>
@@ -705,24 +716,6 @@
       </div>
     </div>
 
-    <div id="settlements" class="profile-section tabcontent">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Negotiated Settlements</h2>
-            <p class="small">Section updated February 2021</p>
-            <div class="dashboard">
-              <div class="row">
-                <div class="col-md-12">
-                  <div id="negotiated-settlements"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div id="contaminated-sites" class="profile-section tabcontent">
       Coming Soon!
     </div>
@@ -812,7 +805,7 @@
       }
     </script>
 
-    <!-- <script src="../GCWeb/wet-boew/js/wet-boew.min.js"></script> -->
+    <script src="./GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <!-- highcharts -->
     <script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>

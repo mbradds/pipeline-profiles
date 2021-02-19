@@ -30,8 +30,10 @@ export const generateDynamicIncidentText = (meta) => {
   )} have resulted in some volume of product being released, with ${dynamicValue(
     meta.mostCommonSubstance
   )} being the most commonly released substance. \
-  The dashboard below provides some more information about these unintended product release incidents.\ 
-  Part of the CER's incident investigation classifies incidents based on the\ 
+  The dashboard below provides some more information about these unintended product release incidents.`;
+  paragraphText += `</p>`;
+
+  paragraphText += `Part of the CER's incident review classifies incidents based on the\ 
   circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
   On the pipeline system, the most common <i>what happened</i> is ${dynamicValue(
     meta.mostCommonWhat

@@ -12,8 +12,8 @@ import incidentData from "../incidents/EnbridgePipelinesInc/incidents_map.json";
 import metaIncidents from "../incidents/EnbridgePipelinesInc/summaryMetadata.json";
 import { mainIncidents } from "../incidents/incidentsDashboard.js";
 // settlements
-import settlementsData from "../settlements/EnbridgePipelinesInc/settlementsData.json";
-import { mainSettlements } from "../settlements/settlementsDashboard.js";
+// import settlementsData from "../settlements/EnbridgePipelinesInc/settlementsData.json";
+// import { mainSettlements } from "../settlements/settlementsDashboard.js";
 // language
 import { englishDashboard } from "../modules/langEnglish.js";
 let warningParams = {
@@ -36,8 +36,7 @@ async function loadAllCharts() {
       metaConditions,
       englishDashboard.conditions
     ),
-    mainIncidents(incidentData, metaIncidents),
-    mainSettlements(settlementsData),
+    mainIncidents(incidentData, metaIncidents)
   ];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);

@@ -17,7 +17,7 @@ export const englishDashboard = {
     },
     table: {
       projectsTitle: (column) => {
-        return `Projects with ${column} Conditions (click for REGDOCS link):`;
+        return `Projects with ${column} Conditions (click to open REGDOCS project folder):`;
       },
       themesTitle: (column) => {
         return `${column} Condition Themes (click to view theme definition):`;

@@ -12,8 +12,8 @@ import incidentData from "../incidents/NOVAGasTransmissionLtd/incidents_map.json
 import metaIncidents from "../incidents/NOVAGasTransmissionLtd/summaryMetadata.json";
 import { mainIncidents } from "../incidents/incidentsDashboard.js";
 // settlements
-import settlementsData from "../settlements/NOVAGasTransmissionLtd/settlementsData.json";
-import { mainSettlements } from "../settlements/settlementsDashboard.js";
+// import settlementsData from "../settlements/NOVAGasTransmissionLtd/settlementsData.json";
+// import { mainSettlements } from "../settlements/settlementsDashboard.js";
 // language
 import { englishDashboard } from "../modules/langEnglish.js";
 
@@ -38,7 +38,6 @@ async function loadAllCharts() {
       englishDashboard.conditions
     ),
     mainIncidents(incidentData, metaIncidents),
-    mainSettlements(settlementsData),
   ];
   Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`chart loading`);
