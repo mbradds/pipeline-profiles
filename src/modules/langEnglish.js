@@ -9,19 +9,21 @@ export const englishDashboard = {
     },
     title: {
       noLocation: (companyName) => {
-        return `${companyName} - no geographic location`;
+        return `Dashboard: ${companyName} - no geographic location`;
       },
       location: (companyName, column) => {
-        return `${companyName} - ${column} Conditions by Region`;
+        return `Dashboard: ${companyName} - ${column} Conditions by Region`;
       },
     },
     table: {
       projectsTitle: (column) => {
-        return `Projects with ${column} Conditions (click to open REGDOCS project folder):`;
+        return `Projects with ${column} Conditions (click to open REGDOCS* project folder):`;
       },
       themesTitle: (column) => {
         return `${column} Condition Themes (click to view theme definition):`;
       },
+      regdocsDefinition:
+        "*REGDOCS is a regulatory database for activities and transactions conducted at the CER.",
     },
     popUp: {
       econRegion: "Economic Region",

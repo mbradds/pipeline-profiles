@@ -113,12 +113,18 @@ export class EventMap {
     this.map = map;
   }
 
+  getState(substance) {
+    let shortSubstance = substance.split("-")[0].trim();
+    return this.substanceState[shortSubstance];
+  }
+
   volumeText(m3, substance, gas = false, liquid = false) {
     let convLiquid = pa.conversions["m3 to bbl"];
     let convGas = pa.conversions["m3 to cf"];
     if (!gas && !liquid) {
-      let shortSubstance = substance.split("-")[0].trim();
-      var state = this.substanceState[shortSubstance];
+      // let shortSubstance = substance.split("-")[0].trim();
+      // var state = this.substanceState[shortSubstance];
+      var state = this.getState(substance);
     } else if (!gas && liquid) {
       var state = "liquid";
     } else {
@@ -365,10 +371,9 @@ export class EventMap {
       let [nearbyGas, nearbyLiquid] = [0, 0];
       let currentDashboard = this;
       this.nearby.eachLayer(function (layer) {
-        let layerState =
-          currentDashboard.substanceState[
-            layer.options.incidentParams.Substance
-          ];
+        let layerState = currentDashboard.getState(
+          layer.options.incidentParams.Substance
+        );
         if (layerState == "gas") {
           nearbyGas +=
             layer.options.incidentParams["Approximate Volume Released"];

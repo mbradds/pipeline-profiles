@@ -118,16 +118,31 @@ def companyMetaData(df, company):
                     serious[t] = serious[t] + 1
         return serious
 
+    def thisCompanyPct(df, df_c):
+        pct = {}
+        countPct = (len(df_c.index)/len(df.index))*100
+        if countPct >= 1:
+            countPct = round(countPct, 0)
+        else:
+            countPct = round(countPct, 1)
+
+        pct['count'] = countPct
+        # pct['volume'] = round(df_c['Approximate Volume Released'].sum()/df['Approximate Volume Released'].sum(), 3)
+        return pct
+
+    # filter to specific company
+    df_c = df[df['Company'] == company].copy()
     meta = {}
+    meta['relativePct'] = thisCompanyPct(df, df_c)
     meta['companyName'] = company
-    meta['seriousEvents'] = other_types(df)
-    meta['release'] = int(df['Approximate Volume Released'].notnull().sum())
-    meta['nonRelease'] = int(df['Approximate Volume Released'].isna().sum())
+    meta['seriousEvents'] = other_types(df_c)
+    meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
+    meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
     # calculate the most common what and why and most common substance released
-    meta = most_common(df, meta, "What Happened", "mostCommonWhat")
-    meta = most_common(df, meta, "Why It Happened", "mostCommonWhy")
-    meta = most_common_substance(df, meta)
+    meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
+    meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
+    meta = most_common_substance(df_c, meta)
     return meta
 
 
@@ -182,7 +197,7 @@ def process_incidents(remote=False, land=False, company_names=False):
 
         df_c = df[df['Company'] == company].copy()
         # calculate metadata here, before non releases are filtered out
-        meta = companyMetaData(df_c, company)
+        meta = companyMetaData(df, company)
         del df_c['Incident Types']
         with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
             json.dump(meta, fp)

@@ -77,6 +77,8 @@ export async function mainConditions(
           }
         }
       });
+      projectsHTML += `</table>`;
+      projectsHTML += `<i>${lang.table.regdocsDefinition}</i>`;
     } else if (tableName == "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
       projectsHTML += `<caption style="text-align:left;">${lang.table.themesTitle(
@@ -87,8 +89,8 @@ export async function mainConditions(
           projectsHTML += `<tr><td onclick="themeClick(this)">${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
         }
       });
+      projectsHTML += `</table>`;
     }
-    projectsHTML += `</table>`;
     return projectsHTML;
   };
 

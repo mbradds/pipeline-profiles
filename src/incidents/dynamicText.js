@@ -22,7 +22,7 @@ export const generateDynamicIncidentText = (meta) => {
     }
   };
 
-  //first dynamic paragraph.
+  //total incidents.
   paragraphText += `${meta.companyName} has reported a total of ${dynamicValue(
     meta.release + meta.nonRelease
   )} incidents since 2008. Of those incidents, ${dynamicValue(
@@ -33,7 +33,15 @@ export const generateDynamicIncidentText = (meta) => {
   The dashboard below provides some more information about these unintended product release incidents.`;
   paragraphText += `</p>`;
 
-  paragraphText += `Part of the CER's incident review classifies incidents based on the\ 
+  //relative percentages compared to other companies
+  paragraphText += `<p>Relative to other CER regulated pipelines, ${
+    meta.companyName
+  } has accounted for approximately ${dynamicValue(
+    meta.relativePct.count + "%"
+  )} of reported incidents.</p>`;
+
+  //most common reasons
+  paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
   circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
   On the pipeline system, the most common <i>what happened</i> is ${dynamicValue(
     meta.mostCommonWhat
@@ -42,10 +50,10 @@ export const generateDynamicIncidentText = (meta) => {
   )}.`;
   paragraphText += `</p>`;
 
-  //second dynamic paragraph
+  //other important non-release incident types
   paragraphText += `<p>`;
   paragraphText += `The dashboard below displays only the incidents that resulted in a release of product from the pipeline, however there are other \
-  important incident event types that may not appear on the dashboard. \
+  important incident types that may not appear on the dashboard. \
   Of ${meta.companyName} reported incidents, ${dynamicValue(
     meta.seriousEvents["Adverse Environmental Effects"]
   )} ${postWord(

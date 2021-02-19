@@ -138,6 +138,7 @@ export async function mainIncidents(incidentData, metaData) {
           pa.visibility(dashboardDivs, "show");
           pa.visibility(["time-series-section"], "hide");
           $("#incident-volume-btn").removeAttr("disabled");
+          thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
           thisMap.reZoom();
         } else {
           // if the user selects trends, the option to view volume should be disabled
