@@ -2,59 +2,11 @@ import { generateDynamicIncidentText } from "./dynamicText.js";
 import { profileAssist as pa } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
-export async function mainIncidents(incidentData, metaData) {
+export async function mainIncidents(incidentData, metaData, lang) {
   generateDynamicIncidentText(metaData);
   const eventType = "incidents";
   const field = "Substance";
   const filters = { type: "frequency" };
-  const definitions = {
-    Status: {
-      Closed:
-        "The CER’s incident review has been completed and the file is closed.",
-      Submitted:
-        "The company has submitted all of the required information and the CER is reviewing the incident.",
-      "Initially Submitted":
-        " The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
-    },
-    "What Happened": {
-      "Defect and Deterioration":
-        "Defects in manufacturing processes or materials, or deterioration as a result of damage or service life limitations, lack of inspection or maintenance",
-      "Corrosion and Cracking":
-        "External corrosion or cracking caused by damage to coating systems or failed coating systems; weld cracking as a result of stress or workmanship issues; or internal corrosion as a result of contaminates in products",
-      "Equipment Failure":
-        "A failure of the pipeline’s equipment components. Examples of equipment include valves, electrical power systems and control systems",
-      "Incorrect Operation":
-        "Typically, personnel fail to follow procedures or use equipment improperly",
-      "External Interference":
-        "External activities that cause damage to the pipeline or components. Examples include excavation damage and vandalism",
-      "Natural Force Damage":
-        "Damage caused by natural forces, such as earthquakes, landslides and wash-outs",
-      "Other Causes":
-        "All other causes or when an incident’s circumstances could not be determined",
-      "To be determined": "The CER is currently investigating what happened",
-    },
-    "Why It Happened": {
-      "Engineering and Planning":
-        "Failures of assessment, planning or monitoring that may be related to inadequate specifications or design criteria, evaluation of change, or implementation of controls",
-      Maintenance:
-        "Inadequate preventive maintenance or repairs, and excessive wear and tear",
-      "Inadequate Procurement":
-        "Failures in the purchasing, handling, transport and storage of materials",
-      "Tools and Equipment":
-        "Tools and equipment that are inadequate for the task or used improperly",
-      "Standards and Procedures":
-        "Inadequate development, communication, maintenance or monitoring of standards and procedures",
-      "Failure in communication":
-        "Loss of communication with automatic devices, equipment or people",
-      "Inadequate Supervision":
-        "Lack of oversight of a contractor or employee during construction or maintenance activities",
-      "Human Factors":
-        "Individual conduct or capability, or physical and psychological factors",
-      "Natural or Environmental Forces":
-        "External natural or environmental conditions",
-      "To be determined": "The CER is currently investigating why it happened",
-    },
-  };
 
   const incidentBar = (data, map) => {
     const barNav = new EventNavigator({
@@ -70,13 +22,14 @@ export async function mainIncidents(incidentData, metaData) {
     return barNav;
   };
 
-  const incidentMap = (field, filters) => {
+  const incidentMap = (field, filters, lang) => {
     const map = new EventMap({
       eventType: eventType,
       field: field,
       filters: filters,
       minRadius: 14000,
       leafletDiv: "incident-map",
+      lang: lang,
     });
     map.addBaseMap();
     map.processEventsData(incidentData);
@@ -110,9 +63,9 @@ export async function mainIncidents(incidentData, metaData) {
 
   function buildDashboard() {
     try {
-      const thisMap = incidentMap(field, filters);
+      const thisMap = incidentMap(field, filters, lang.dashboard);
       const bars = incidentBar(incidentData, thisMap);
-      const trends = incidentTimeSeries(field, filters, definitions);
+      const trends = incidentTimeSeries(field, filters, lang.definitions);
       // user selection to show volume or incident frequency
       $("#inline_content input[name='type']").click(function () {
         var btnValue = $("input:radio[name=type]:checked").val();

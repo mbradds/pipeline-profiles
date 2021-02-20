@@ -16,6 +16,9 @@ import { mainIncidents } from "../incidents/incidentsDashboard.js";
 // import { mainSettlements } from "../settlements/settlementsDashboard.js";
 // language
 import { englishDashboard } from "../modules/langEnglish.js";
+// load dashboards
+import { loadAllCharts } from "./loadDashboards.js";
+
 let warningParams = {
   message:
     "We noticed you are using Internet Explorer. Please consider using a different browser for a better experience on this page.",
@@ -27,20 +30,15 @@ let warningParams = {
 ieWarn(warningParams);
 generalTheme();
 
-async function loadAllCharts() {
-  let arrayOfCharts = [
-    mainConditions(
-      econRegions,
-      canadaMap,
-      mapMetaData,
-      metaConditions,
-      englishDashboard.conditions
-    ),
-    mainIncidents(incidentData, metaIncidents)
-  ];
-  Promise.allSettled(arrayOfCharts).then((value) => {
-    console.timeEnd(`chart loading`);
-  });
-}
+const arrayOfCharts = [
+  mainConditions(
+    econRegions,
+    canadaMap,
+    mapMetaData,
+    metaConditions,
+    englishDashboard.conditions
+  ),
+  mainIncidents(incidentData, metaIncidents, englishDashboard.incidents),
+];
 
-loadAllCharts();
+loadAllCharts(arrayOfCharts);

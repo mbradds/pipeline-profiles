@@ -1,4 +1,5 @@
 export const generateDynamicIncidentText = (meta) => {
+  console.log(meta);
   let paragraph = document.getElementById("system-incidents-paragraph");
   let paragraphText = `<p>`;
 
@@ -38,7 +39,13 @@ export const generateDynamicIncidentText = (meta) => {
     meta.companyName
   } has accounted for approximately ${dynamicValue(
     meta.relativePct.count + "%"
-  )} of reported incidents.</p>`;
+  )} of reported incidents. Per 1000 km there have been approximately ${dynamicValue(
+    meta.per1000km.incidentsPerKm
+  )} incidents (all incident types), compared to an average of ${dynamicValue(
+    meta.per1000km.avgPerKm
+  )} for large CER regulated ${meta.per1000km.commodity} pipelines.`;
+
+  paragraphText += `</p>`;
 
   //most common reasons
   paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 

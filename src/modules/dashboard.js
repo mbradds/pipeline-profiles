@@ -60,12 +60,6 @@ export class EventMap {
       "External Interference": pa.cerPalette["Ocean"],
       "To be determined": pa.cerPalette["Sun"],
     },
-    fnColors: {
-      "no proximity": "#F5F5F5",
-      "within 40 km": pa.cerPalette["Night Sky"],
-      "within 10 km": pa.cerPalette["Aubergine"],
-      "On First Nations Land": pa.cerPalette["Sun"],
-    },
   };
 
   constructor({
@@ -75,6 +69,7 @@ export class EventMap {
     minRadius = undefined,
     leafletDiv = "map",
     initZoomTo = [55, -119],
+    lang = {},
   }) {
     this.eventType = eventType;
     this.filters = filters;
@@ -84,6 +79,7 @@ export class EventMap {
     this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
     this.leafletDiv = leafletDiv;
+    this.lang = lang;
   }
 
   setColors() {
@@ -94,7 +90,6 @@ export class EventMap {
         Province: this.EVENTCOLORS.provinceColors,
         "Why It Happened": this.EVENTCOLORS.whyColors,
         "What Happened": this.EVENTCOLORS.whatColors,
-        "First Nations Proximity": this.EVENTCOLORS.fnColors,
       };
     }
   }
@@ -122,8 +117,6 @@ export class EventMap {
     let convLiquid = pa.conversions["m3 to bbl"];
     let convGas = pa.conversions["m3 to cf"];
     if (!gas && !liquid) {
-      // let shortSubstance = substance.split("-")[0].trim();
-      // var state = this.substanceState[shortSubstance];
       var state = this.getState(substance);
     } else if (!gas && liquid) {
       var state = "liquid";
@@ -172,10 +165,10 @@ export class EventMap {
       incidentParams["Approximate Volume Released"],
       incidentParams.Substance
     )}</b></td></tr>`;
-    toolTipText += `<tr><td>What Happened?</td><td><b>${formatCommaList(
+    toolTipText += `<tr><td>${this.lang.what}?</td><td><b>${formatCommaList(
       incidentParams["What Happened"]
     )}</b></td></tr>`;
-    toolTipText += `<tr><td>Why It Happened?</td><td><b>${formatCommaList(
+    toolTipText += `<tr><td>${this.lang.why}?</td><td><b>${formatCommaList(
       incidentParams["Why It Happened"]
     )}</b></td></tr>`;
     toolTipText += `</table></div>`;
@@ -303,9 +296,7 @@ export class EventMap {
         .on("locationfound", function (e) {
           var marker = L.marker([e.latitude, e.longitude], {
             draggable: true,
-          }).bindPopup(
-            "Approximate location. You can drag this marker around to explore incident events in other locations."
-          );
+          }).bindPopup(currentDashboard.lang.userPopUp);
           marker.on("drag", function (e) {
             var marker = e.target;
             var position = marker.getLatLng();
@@ -330,7 +321,7 @@ export class EventMap {
       return await this.findUser();
     } catch (err) {
       var incidentFlag = document.getElementById("nearby-flag");
-      incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>Cant access your location.</h4>Try enabling your browser's location services and refresh the page.</section>`;
+      incidentFlag.innerHTML = `<section class="alert alert-warning">${this.lang.locationError}</section>`;
     }
   }
 
@@ -383,21 +374,25 @@ export class EventMap {
         } //TODO: add an "Other" option here
       });
       let nearbyText = ``;
-      nearbyText += `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4><table>`;
+      // nearbyText += `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4><table>`;
+      nearbyText += `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
+        nearbyCircles.length,
+        range
+      )}</h4><table>`;
       nearbyText += `<tr><td>
-        Estimated gas volume released:&nbsp&nbsp</td><td>${this.volumeText(
-          nearbyGas,
-          undefined,
-          true
-        )}`;
+        ${this.lang.gasRelease}&nbsp&nbsp</td><td>${this.volumeText(
+        nearbyGas,
+        undefined,
+        true
+      )}`;
       nearbyText += `<tr><td>
-        Estimated liquid volume released:&nbsp&nbsp</td><td>${this.volumeText(
-          nearbyLiquid,
-          undefined,
-          false,
-          true
-        )}`;
-      nearbyText += `</table><br><small>Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.</small>
+      ${this.lang.liquidRelease}&nbsp&nbsp</td><td>${this.volumeText(
+        nearbyLiquid,
+        undefined,
+        false,
+        true
+      )}`;
+      nearbyText += `</table><br><small>${this.lang.exploreOther}</small>
         </section>`;
       incidentFlag.innerHTML = nearbyText;
     } else {
@@ -405,7 +400,9 @@ export class EventMap {
       let bounds = userZoom.getBounds();
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
-      incidentFlag.innerHTML = `<section class="alert alert-warning"><h4>No nearby ${this.eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.</section>`;
+      incidentFlag.innerHTML = `<section class="alert alert-warning">${this.lang.noNearby(
+        this.eventType
+      )}</section>`;
     }
   }
 

@@ -1,9 +1,11 @@
 import pandas as pd
+import numpy as np
 from util import saveJson, get_company_names
 import ssl
 import os
 import json
 import geopandas as gpd
+from statistics import mean
 from math import radians, cos, sin, asin, sqrt
 ssl._create_default_https_context = ssl._create_unverified_context
 web_mercator = "EPSG:3857"
@@ -88,7 +90,32 @@ def events_near_land(events):
     return events
 
 
-def companyMetaData(df, company):
+def incidentsPerKm(dfAll):
+    dfKm = pd.read_excel('./raw_data/pipeline_length.XLSX')
+    dfKm = dfKm[dfKm['Regulated KM Rounded'].notnull()]
+    dfKm['Company Name'] = [x.strip() for x in dfKm['Company Name']]
+
+    dfAll = dfAll.groupby('Company')['Incident Number'].count()
+    dfAll = dfAll.reset_index()
+    dfAll = dfAll.rename(columns={'Incident Number': 'Incident Count'})
+    dfAll = dfAll.merge(dfKm, how='inner', left_on='Company', right_on='Company Name')
+    for delete in ['Company Name', 'Regulated KM', 'PipelineID']:
+        del dfAll[delete]
+    dfAll['Incidents per 1000km'] = [round((i/l)*1000, 0) for i, l in zip(dfAll['Incident Count'], dfAll['Regulated KM Rounded'])]
+    avgPer = {}
+    for product, per in zip(dfAll['Commodity'], dfAll['Incidents per 1000km']):
+        if product in avgPer.keys():
+            avgPer[product].append(per)
+        else:
+            avgPer[product] = [per]
+    for product, avgList in avgPer.items():
+        avgPer[product] = mean(avgList)
+
+    dfAll['Avg per 1000km'] = [round(avgPer[product], 0) for product in dfAll['Commodity']]
+    return dfAll
+
+
+def companyMetaData(df, dfPerKm, company):
 
     def most_common(df, meta, col_name, meta_key):
         what_list = []
@@ -125,9 +152,7 @@ def companyMetaData(df, company):
             countPct = round(countPct, 0)
         else:
             countPct = round(countPct, 1)
-
         pct['count'] = countPct
-        # pct['volume'] = round(df_c['Approximate Volume Released'].sum()/df['Approximate Volume Released'].sum(), 3)
         return pct
 
     # filter to specific company
@@ -139,6 +164,12 @@ def companyMetaData(df, company):
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
+    thisPerKm = dfPerKm[dfPerKm['Company'] == company].copy()
+    perKm = {}
+    perKm['incidentsPerKm'] = thisPerKm['Incidents per 1000km'].iloc[0]
+    perKm['avgPerKm'] = thisPerKm['Avg per 1000km'].iloc[0]
+    perKm['commodity'] = thisPerKm['Commodity'].iloc[0].lower()
+    meta['per1000km'] = perKm
     # calculate the most common what and why and most common substance released
     meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
     meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
@@ -173,6 +204,14 @@ def process_incidents(remote=False, land=False, company_names=False):
     except:
         None
 
+    # initial data processing
+    df = df[df['Company'] != 'Plains Midstream Canada ULC']
+    # TODO: plains midstream isnt broken down into its seperate pipes...
+    df['Company'] = df['Company'].replace({'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
+                                           'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
+                                           'Alliance Pipeline Ltd as General Partner of Alliance Pipeline Limited Partnership': 'Alliance Pipeline Ltd.',
+                                           'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC'})
+
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
@@ -186,6 +225,8 @@ def process_incidents(remote=False, land=False, company_names=False):
     if company_names:
         print(get_company_names(df['Company']))
 
+    perKm = incidentsPerKm(df)
+
     company_files = ['NOVA Gas Transmission Ltd.',
                      'TransCanada PipeLines Limited',
                      'Enbridge Pipelines Inc.']
@@ -197,7 +238,7 @@ def process_incidents(remote=False, land=False, company_names=False):
 
         df_c = df[df['Company'] == company].copy()
         # calculate metadata here, before non releases are filtered out
-        meta = companyMetaData(df, company)
+        meta = companyMetaData(df, perKm, company)
         del df_c['Incident Types']
         with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
             json.dump(meta, fp)
@@ -225,4 +266,6 @@ def process_incidents(remote=False, land=False, company_names=False):
 if __name__ == '__main__':
     print('starting incidents...')
     df, meta = process_incidents(remote=False, company_names=False)
+    # df = process_incidents(remote=False, company_names=False)
+    # df = incidentsPerKm()
     print('completed incidents!')

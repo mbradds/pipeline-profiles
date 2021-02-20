@@ -104,10 +104,10 @@ body {
   height: 400px;
 }
 .event-filter-nav {
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.2s;
   width: 100%;
-  transition: 0.2s;
-  cursor: grab;
+  transition: 0.1s;
+  cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,7 +145,7 @@ body {
   outline: none;
   cursor: pointer;
   padding: 17px 10px;
-  transition: 0.3s;
+  transition: 0.1s;
   font-size: 17px;
 }
 /* Change background color of buttons on hover */
