@@ -9,9 +9,9 @@ module.exports = {
   mode: "production",
   target: "es5",
   entry: {
-    "js/ngtl": "./src/index_files/en/ngtl.js",
-    "js/tcpl": "./src/index_files/en/tcpl.js",
-    "js/enbridge_mainline": "./src/index_files/en/enbridge_mainline.js",
+    "js/en/ngtl": "./src/index_files/en/ngtl.js",
+    "js/en/tcpl": "./src/index_files/en/tcpl.js",
+    "js/en/enbridge_mainline": "./src/index_files/en/enbridge_mainline.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -30,22 +30,22 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "html/enbridge_mainline.html",
-      chunks: ["js/enbridge_mainline"],
+      filename: "html/en/enbridge_mainline.html",
+      chunks: ["js/en/enbridge_mainline"],
       template: "src/profile_en.html",
-      publicPath: "..",
+      publicPath: "../..",
     }),
     new HtmlWebpackPlugin({
-      filename: "html/ngtl.html",
-      chunks: ["js/ngtl"],
+      filename: "html/en/ngtl.html",
+      chunks: ["js/en/ngtl"],
       template: "src/profile_en.html",
-      publicPath: "..",
+      publicPath: "../..",
     }),
     new HtmlWebpackPlugin({
-      filename: "html/tcpl.html",
-      chunks: ["js/tcpl"],
+      filename: "html/en/tcpl.html",
+      chunks: ["js/en/tcpl"],
       template: "src/profile_en.html",
-      publicPath: "..",
+      publicPath: "../..",
     }),
   ],
 
