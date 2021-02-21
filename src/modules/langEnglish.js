@@ -40,6 +40,46 @@ export const englishDashboard = {
     tooltip: {
       text: "Click on region to view summary",
     },
+    themeDefinitions: {
+      "No theme specified":
+        "Some conditions have not been assigned a theme by the CER.",
+      Administrative: "Conditions that help track organizational tasks.",
+
+      "Damage Prevention":
+        "Conditions that hold companies accountable for the safe conduct in and around pipelines and facilities.",
+
+      "Emergency Management":
+        "Conditions that ensure companies have a robust program that anticipates and prevents incidents, and manages and mitigates situations during an emergency.",
+
+      Enforcement:
+        "Conditions that reinforce prescribed regulatory requirements to be met.",
+
+      "Environmental Protection":
+        "Conditions that mandate projects to be planned, built, operated or abandoned in a manner that protects the environment.",
+
+      Financial:
+        "Conditions that require certain details or all aspects of a company’s financial obligations be fulfilled.",
+
+      "Integrity Management":
+        "Conditions that ensure projects are designed, built, operated and maintained in a safe and effective manner. For instance, the use of appropriate materials, the detection of corrosion, etc.",
+
+      "Management System":
+        "Company specific conditions that ensure the use of an effective and efficient approach to manage and reduce risk. Note: A management system is not project specific.",
+
+      "Safety Management":
+        "Conditions that eliminate or reduce risk to the public, workers, the environment and assets.",
+
+      Security:
+        "Conditions that ensure companies have adequate personnel and systems to deter, respond and manage security threats.",
+
+      "Socio-Economic":
+        "Conditions that address the concerns of potentially affected landowners, residents, communities, indigenous groups, etc.",
+
+      "Standard Condition":
+        "A condition that is typically imposed on all approved projects.",
+      "Sunset Clause":
+        "Conditions that ensure projects begin within a specific period of time.",
+    },
   },
   incidents: {
     definitions: {

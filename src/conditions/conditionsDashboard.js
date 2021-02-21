@@ -87,7 +87,7 @@ export async function mainConditions(
       )}</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion && proj.value > 0) {
-          projectsHTML += `<tr><td onclick="themeClick(this)">${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
+          projectsHTML += `<tr><td>${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
         }
       });
       projectsHTML += `</table>`;
@@ -218,6 +218,24 @@ export async function mainConditions(
     }
   };
 
+  function themeClick(e) {
+    let definitions = lang.themeDefinitions;
+    var definitionDiv = document.getElementById("conditions-definitions");
+    if (definitionDiv.style.display === "none") {
+      definitionDiv.style.display = "block";
+    }
+    var themes = e.split(",");
+    var definitionsHTML = "<h4>Theme Definitions:</h4>";
+    for (var i = 0; i < themes.length; i++) {
+      var t = themes[i].trim();
+      definitionsHTML += "<b>" + t + "</b>";
+      definitionsHTML += "<p>" + definitions[t] + "</p>";
+    }
+    definitionDiv.innerHTML = definitionsHTML;
+    var divPosition = $("#conditions-definitions").offset();
+    $("html, body").animate({ scrollTop: divPosition.top }, "slow");
+  }
+
   const popUp = (e, filter, meta) => {
     let currentPopUp = document.getElementById("conditions-insert");
     if (currentPopUp) {
@@ -262,6 +280,9 @@ export async function mainConditions(
       null,
       "spacingBox"
     );
+    $("#themes-table tr").click(function () {
+      themeClick($(this).children("td").first().text());
+    });
   };
 
   const removeNoConditions = (chart) => {
