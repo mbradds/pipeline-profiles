@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 // const TerserPlugin = require("terser-webpack-plugin");
@@ -8,14 +9,15 @@ module.exports = {
   mode: "production",
   target: "es5",
   entry: {
-    ngtl_eng: "./src/index_files/ngtl_eng.js",
-    tcpl_eng: "./src/index_files/tcpl_eng.js",
-    enbridge_mainline_eng: "./src/index_files/enbridge_mainline_eng.js",
+    "js/ngtl": "./src/index_files/en/ngtl.js",
+    "js/tcpl": "./src/index_files/en/tcpl.js",
+    "js/enbridge_mainline": "./src/index_files/en/enbridge_mainline.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle_[name].js",
-    publicPath: "/pipeline-profiles/",
+    filename: "[name].js",
+    //filename: '[name].[contenthash].js', // adds a unique hash for caching
+    publicPath: "/",
   },
 
   devServer: {
@@ -25,6 +27,27 @@ module.exports = {
   // plugins: [
   //   new BundleAnalyzerPlugin()
   // ],
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "html/enbridge_mainline.html",
+      chunks: ["js/enbridge_mainline"],
+      template: "src/profile_en.html",
+      publicPath: "..",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "html/ngtl.html",
+      chunks: ["js/ngtl"],
+      template: "src/profile_en.html",
+      publicPath: "..",
+    }),
+    new HtmlWebpackPlugin({
+      filename: "html/tcpl.html",
+      chunks: ["js/tcpl"],
+      template: "src/profile_en.html",
+      publicPath: "..",
+    }),
+  ],
 
   module: {
     rules: [

@@ -1,5 +1,4 @@
 export const generateDynamicIncidentText = (meta) => {
-  console.log(meta);
   let paragraph = document.getElementById("system-incidents-paragraph");
   let paragraphText = `<p>`;
 

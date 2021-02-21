@@ -4,41 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
-      href="./GCWeb/assets/favicon-mobile.png"
+      href="../GCWeb/assets/favicon-mobile.png"
       rel="icon"
       type="image/x-icon"
     />
     <link
       rel="preload"
       as="font"
-      href="./GCWeb/fonts/glyphicons-halflings-regular.woff"
+      href="../GCWeb/fonts/glyphicons-halflings-regular.woff"
       type="font/woff2"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
       as="font"
-      href="./GCWeb/fonts/glyphicons-halflings-regular.woff2"
+      href="../GCWeb/fonts/glyphicons-halflings-regular.woff2"
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./GCWeb/css/theme.min.css" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../GCWeb/css/theme.min.css" />
+    <link rel="stylesheet" href="../GCWeb/css/gcwu.custom.css" />
     <noscript
-      ><link rel="stylesheet" href="./GCWeb/wet-boew/css/noscript.min.css"
+      ><link rel="stylesheet" href="../GCWeb/wet-boew/css/noscript.min.css"
     /></noscript>
   </head>
   <body>
     <div id="ie-warning"></div>
 
-    <div class="container">
+    <!-- <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 id="wb-cont" property="name">Pipeline Profiles - NGTL</h1>
+          <h1 id="wb-cont" property="name">
+            Pipeline Profiles - Enbridge Canadian Mainline
+          </h1>
           <h2>Safety And Environment</h2>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <div class="mrgn-tp-md"></div>
 
     <div class="tab container">
       <button
@@ -799,7 +804,7 @@
       }
     </script>
 
-    <script src="./GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="../GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <!-- highcharts -->
     <script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>
@@ -813,8 +818,6 @@
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""
     ></script>
-    <!-- webpack bundle -->
-    <script src="./bundle_ngtl_eng.js" type="text/javascript"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
