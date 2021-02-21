@@ -4,6 +4,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 //   .BundleAnalyzerPlugin;
 // const TerserPlugin = require("terser-webpack-plugin");
 
+// deal with multiple html files
+function generateHtmlPlugins() {
+  const htmlFileNames = ["enbridge_mainline.html", "ngtl.html", "tcpl.html"];
+  return htmlFileNames.map((name) => {
+    return new HtmlWebpackPlugin({
+      filename: `html/en/${name}`,
+      chunks: [`js/en/${name.split(".")[0]}`],
+      template: "src/profile_en.html",
+      publicPath: "../..",
+      minify: false,
+    });
+  });
+}
+
 module.exports = {
   // mode: "development",
   mode: "production",
@@ -28,26 +42,7 @@ module.exports = {
   //   new BundleAnalyzerPlugin()
   // ],
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: "html/en/enbridge_mainline.html",
-      chunks: ["js/en/enbridge_mainline"],
-      template: "src/profile_en.html",
-      publicPath: "../..",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "html/en/ngtl.html",
-      chunks: ["js/en/ngtl"],
-      template: "src/profile_en.html",
-      publicPath: "../..",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "html/en/tcpl.html",
-      chunks: ["js/en/tcpl"],
-      template: "src/profile_en.html",
-      publicPath: "../..",
-    }),
-  ],
+  plugins: generateHtmlPlugins(),
 
   module: {
     rules: [

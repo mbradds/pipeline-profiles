@@ -33,7 +33,7 @@ def export_files(df, folder, name):
     df = df[df.geometry.notna()]
     write_path = os.path.join(script_dir, folder, name)
     df.to_file(write_path, driver='GeoJSON')
-    print('exported: '+name+' to geojson', 'with CRS: '+str(df.crs))
+    print(folder+' done ', 'CRS: '+str(df.crs))
 
 
 def conditions_on_map(df, shp, folder_name):
@@ -61,6 +61,14 @@ def metadata(df, folder_name):
             except:
                 None
         return df
+
+    def addMissing(df):
+        if 'In Progress' not in df.columns:
+            df['In Progress'] = 0
+        if 'Closed' not in df.columns:
+            df['Closed'] = 0
+        return df
+
     # df contains the condition data for the spcecific company
     meta = {}
 
@@ -102,6 +110,10 @@ def metadata(df, folder_name):
                              index=['Short Project Name', 'id', 'Regdocs'],
                              columns='Condition Status').reset_index()
 
+    # if 'In Progress' not in project.columns:
+    #     project['In Progress'] = 0
+    project = addMissing(project)
+
     project = project.sort_values(by=['In Progress', 'id'], ascending=False)
     project['In Progress'] = pd.to_numeric(project['In Progress'])
     # TOOD: replace nan with zero's in metadata, and cast all as int. This should reduce file size
@@ -116,7 +128,7 @@ def metadata(df, folder_name):
                            values=0,
                            index=['Theme(s)', 'id'],
                            columns='Condition Status').reset_index()
-
+    theme = addMissing(theme)
     theme = theme.sort_values(by=['In Progress', 'id'], ascending=False)
     # theme = theme.replace({np.nan: None})
     theme = convert_to_int(theme)
@@ -199,6 +211,12 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
     for r in ['\n', '"']:
         df['Company'] = df['Company'].replace(r, '', regex=True)
 
+    # preliminary processing
+    df['Company'] = df['Company'].replace({'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
+                                           'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
+                                           'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
+                                           'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline'})
+
     df = df[df['Short Project Name'] != "SAM/COM"]
     df['Theme(s)'] = df['Theme(s)'].replace({"nan":
                                              "No theme specified"})
@@ -210,7 +228,19 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
 
     company_files = ['NOVA Gas Transmission Ltd.',
                      'TransCanada PipeLines Limited',
-                     'Enbridge Pipelines Inc.']
+                     'Enbridge Pipelines Inc.',
+                     'Enbridge Pipelines (NW) Inc.',
+                     'Express Pipeline Ltd.',
+                     'Trans Mountain Pipeline ULC',
+                     'Trans Quebec and Maritimes Pipeline Inc.',
+                     'Trans-Northern Pipelines Inc.',
+                     'TransCanada Keystone Pipeline GP Ltd.',
+                     'Westcoast Energy Inc.',
+                     'Alliance Pipeline Ltd.',
+                     'Kinder Morgan Cochin ULC',
+                     'Foothills Pipe Lines Ltd.',
+                     'Southern Lights Pipeline',
+                     'Enbridge Pipelines (Westspur) Inc.']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
@@ -229,6 +259,7 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
                 row['id'] = regionProvince[0].strip()
                 row['Flat Province'] = regionProvince[-1].strip()
                 expanded_locations.append(row.copy())
+
         df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
         # calculate metadata here
         meta = metadata(df_all, folder_name)
