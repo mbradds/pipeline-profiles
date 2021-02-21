@@ -115,48 +115,16 @@ body {
 #incident-tooltip tr {
   border-bottom: 1pt solid #dcdcdc;
 }
-/* tabs (no wet4) */
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  margin-left: 1%;
-  margin-right: 1%;
-}
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 17px 10px;
-  transition: 0.1s;
-  font-size: 17px;
-}
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-/* Style the tab content */
 .tabcontent {
-  padding: 6px;
+  /* padding: 6px;
   margin-left: 1%;
-  margin-right: 1%;
-  /* border: 1px solid #ccc; */
-  border-top: none;
+  margin-right: 1%; */
 }
-.tabborder {
+.section-border {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
-
 .profile-text-value {
   color: #fff;
   background-color: #930d6e;

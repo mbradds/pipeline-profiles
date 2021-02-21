@@ -32,49 +32,75 @@
   <body>
     <div id="ie-warning"></div>
 
-    <!-- <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 id="wb-cont" property="name">
-            Pipeline Profiles - Enbridge Canadian Mainline
-          </h1>
-          <h2>Safety And Environment</h2>
+          <h2>Safety And Environment Profile (New!)</h2>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <div class="mrgn-tp-md"></div>
-
-    <div class="tab container">
-      <button
-        class="tablinks"
-        onclick="openTab(event, 'condition-compliance')"
-        id="defaultClick"
-      >
-        Conditions Compliance
-      </button>
-      <!-- the below button needs to remain "Pipeline Incidents" -->
-      <button class="tablinks" onclick="openTab(event, 'pipeline-incidents')">
-        Pipeline Incidents
-      </button>
-      <button class="tablinks" onclick="openTab(event, 'contaminated-sites')">
-        Contaminated Sites
-      </button>
-      <button class="tablinks" onclick="openTab(event, 'o&m-activities')">
-        Operations & Maintenace Activities
-      </button>
-      <button
-        class="tablinks"
-        onclick="openTab(event, 'unauthorized-activities')"
-      >
-        Unauthorized Activities
-      </button>
+    <div class="mrgn-tp-sm"></div>
+    <div class="container">
+      <div class="btn-group btn-group-justified">
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default tablinks"
+            onclick="openTab(event, 'condition-compliance')"
+            id="defaultClick"
+            style="height: 75px"
+          >
+            Conditions Compliance
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default tablinks"
+            onclick="openTab(event, 'pipeline-incidents')"
+            style="height: 75px"
+          >
+            Reported Incidents
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default"
+            style="height: 75px"
+            disabled="disabled"
+          >
+            Contaminated Sites & Remediation (coming soon!)
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default"
+            style="height: 75px"
+            disabled="disabled"
+          >
+            Operations & Maintenance Activities (coming soon!)
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default"
+            style="height: 75px"
+            disabled="disabled"
+          >
+            Unauthorized Activities (coming soon!)
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Start Condition Compliance -->
 
     <div id="condition-compliance" class="profile-section tabcontent">
-      <div class="container tabborder">
+      <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h2>Conditions Compliance</h2>
@@ -303,7 +329,7 @@
     </div>
 
     <div id="pipeline-incidents" class="profile-section tabcontent">
-      <div class="container tabborder">
+      <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h2>Pipeline Incidents</h2>
