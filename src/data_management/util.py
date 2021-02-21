@@ -77,3 +77,14 @@ def saveJson(df, write_path, precision=2):
 
 def get_company_names(col):
     return sorted(list(set(col)))
+
+
+def company_rename():
+    names = {'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
+             'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
+             'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
+             'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline',
+             'Alliance Pipeline Ltd as General Partner of Alliance Pipeline Limited Partnership': 'Alliance Pipeline Ltd.',
+             'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
+             'Kinder Morgan Cochin ULC': 'PKM Cochin ULC'}
+    return names

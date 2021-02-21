@@ -11,19 +11,25 @@ export class EventMap {
     "Diesel Fuel": "liquid",
     "Natural Gas Liquids": "gas",
     Condensate: "liquid",
+    Other: "other",
+    "Sulphur Dioxide": "other",
   };
 
   EVENTCOLORS = {
     substanceColors: {
       Propane: pa.cerPalette["Forest"],
       "Natural Gas - Sweet": pa.cerPalette["Flame"],
-      "Fuel Gas": pa.cerPalette["Sun"],
+      "Natural Gas - Sour": pa.cerPalette["Dim Grey"],
+      "Fuel Gas": pa.cerPalette["hcGreen"],
       "Lube Oil": pa.cerPalette["hcPurple"],
       "Crude Oil - Sweet": pa.cerPalette["Sun"],
       "Crude Oil - Synthetic": pa.cerPalette["Forest"],
       "Crude Oil - Sour": pa.cerPalette["Dim Grey"],
       "Natural Gas Liquids": pa.cerPalette["Night Sky"],
       Condensate: pa.cerPalette["Ocean"],
+      "Sulphur Dioxide": pa.cerPalette["hcPurple"],
+      "Diesel Fuel": pa.cerPalette["hcRed"],
+      Other: pa.cerPalette["Aubergine"],
     },
     statusColors: {
       "Initially Submitted": pa.cerPalette["Flame"],
@@ -113,31 +119,37 @@ export class EventMap {
     return this.substanceState[shortSubstance];
   }
 
-  volumeText(m3, substance, gas = false, liquid = false) {
+  volumeText(m3, substance, gas = false, liquid = false, other = false) {
     let convLiquid = pa.conversions["m3 to bbl"];
     let convGas = pa.conversions["m3 to cf"];
-    if (!gas && !liquid) {
+    if (!gas && !liquid && !other) {
       var state = this.getState(substance);
-    } else if (!gas && liquid) {
+    } else if (!gas && liquid && !other) {
       var state = "liquid";
-    } else {
+    } else if (gas && !liquid && !other) {
       var state = "gas";
+    } else {
+      var state = "other";
     }
 
-    if (state == "gas") {
-      var imperial = `${Highcharts.numberFormat(
-        (m3 * convGas).toFixed(2),
-        2,
-        "."
-      )} cubic feet`;
+    if (state !== "other") {
+      if (state == "gas") {
+        var imperial = `${Highcharts.numberFormat(
+          (m3 * convGas).toFixed(2),
+          2,
+          "."
+        )} cubic feet`;
+      } else {
+        var imperial = `${Highcharts.numberFormat(
+          (m3 * convLiquid).toFixed(2),
+          2,
+          "."
+        )} bbl`;
+      }
+      return `${imperial} (${Highcharts.numberFormat(m3, 2, ".")} m3)`;
     } else {
-      var imperial = `${Highcharts.numberFormat(
-        (m3 * convLiquid).toFixed(2),
-        2,
-        "."
-      )} bbl`;
+      return `${Highcharts.numberFormat(m3, 2, ".")} m3`;
     }
-    return `${imperial} (${Highcharts.numberFormat(m3, 2, ".")} m3)`;
   }
 
   toolTip(incidentParams, fillColor) {
@@ -359,7 +371,7 @@ export class EventMap {
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
-      let [nearbyGas, nearbyLiquid] = [0, 0];
+      let [nearbyGas, nearbyLiquid, nearbyOther] = [0, 0, 0];
       let currentDashboard = this;
       this.nearby.eachLayer(function (layer) {
         let layerState = currentDashboard.getState(
@@ -371,7 +383,10 @@ export class EventMap {
         } else if (layerState == "liquid") {
           nearbyLiquid +=
             layer.options.incidentParams["Approximate Volume Released"];
-        } //TODO: add an "Other" option here
+        } else {
+          nearbyOther +=
+            layer.options.incidentParams["Approximate Volume Released"];
+        }
       });
       let nearbyText = ``;
       // nearbyText += `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4><table>`;
@@ -388,6 +403,13 @@ export class EventMap {
       nearbyText += `<tr><td>
       ${this.lang.liquidRelease}&nbsp&nbsp</td><td>${this.volumeText(
         nearbyLiquid,
+        undefined,
+        false,
+        true
+      )}`;
+      nearbyText += `<tr><td>
+      ${this.lang.otherRelease}&nbsp&nbsp</td><td>${this.volumeText(
+        nearbyOther,
         undefined,
         false,
         true

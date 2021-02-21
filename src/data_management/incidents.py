@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from util import saveJson, get_company_names
+from util import saveJson, get_company_names, company_rename
 import ssl
 import os
 import json
@@ -94,6 +94,7 @@ def incidentsPerKm(dfAll):
     dfKm = pd.read_excel('./raw_data/pipeline_length.XLSX')
     dfKm = dfKm[dfKm['Regulated KM Rounded'].notnull()]
     dfKm['Company Name'] = [x.strip() for x in dfKm['Company Name']]
+    dfKm['Company Name'] = dfKm['Company Name'].replace(company_rename())
 
     dfAll = dfAll.groupby('Company')['Incident Number'].count()
     dfAll = dfAll.reset_index()
@@ -207,14 +208,26 @@ def process_incidents(remote=False, land=False, company_names=False):
     # initial data processing
     df = df[df['Company'] != 'Plains Midstream Canada ULC']
     # TODO: plains midstream isnt broken down into its seperate pipes...
-    df['Company'] = df['Company'].replace({'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
-                                           'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
-                                           'Alliance Pipeline Ltd as General Partner of Alliance Pipeline Limited Partnership': 'Alliance Pipeline Ltd.',
-                                           'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC'})
+    df['Company'] = df['Company'].replace(company_rename())
 
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
+    df['Substance'] = df['Substance'].replace({"Water": "Other",
+                                               "Hydrogen Sulphide": "Other",
+                                               "Amine": "Other",
+                                               "Contaminated Water": "Other",
+                                               "Potassium Hydroxide (caustic solution)": "Other",
+                                               "Glycol": "Other",
+                                               "Pulp slurry": "Other",
+                                               "Sulphur": "Other",
+                                               "Odourant": "Other",
+                                               "Potassium Carbonate": "Other",
+                                               "Waste Oil": "Other",
+                                               "Produced Water": "Other",
+                                               "Butane": "Other",
+                                               "Mixed HVP Hydrocarbons": "Other",
+                                               "Drilling Fluid": "Other"})
 
     for delete in ['Significant',
                    'Release Type',
@@ -229,7 +242,18 @@ def process_incidents(remote=False, land=False, company_names=False):
 
     company_files = ['NOVA Gas Transmission Ltd.',
                      'TransCanada PipeLines Limited',
-                     'Enbridge Pipelines Inc.']
+                     'Enbridge Pipelines Inc.',
+                     'Enbridge Pipelines (NW) Inc.',
+                     'Express Pipeline Ltd.',
+                     'Trans Mountain Pipeline ULC',
+                     'Trans Quebec and Maritimes Pipeline Inc.',
+                     'Trans-Northern Pipelines Inc.',
+                     'TransCanada Keystone Pipeline GP Ltd.',
+                     'Westcoast Energy Inc.',
+                     'Alliance Pipeline Ltd.',
+                     'PKM Cochin ULC',
+                     'Foothills Pipe Lines Ltd.',
+                     'Southern Lights Pipeline']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
@@ -237,28 +261,40 @@ def process_incidents(remote=False, land=False, company_names=False):
             os.makedirs("../incidents/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
-        # calculate metadata here, before non releases are filtered out
-        meta = companyMetaData(df, perKm, company)
-        del df_c['Incident Types']
-        with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
-            json.dump(meta, fp)
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
-        del df_c['Company']
-        if land:
-            on_land = events_on_land(df_c)
-            df_c = events_near_land(df_c)
-            df_c['landProximityCategory'] = df_c['landProximityCategory'].fillna(3)
-            df_c['landProximityCategory'] = df_c['landProximityCategory'].replace({0: "within 10 km",
-                                                                                   1: "within 40 km",
-                                                                                   3: "no proximity"})
-            if len(on_land) > 0:
-                for location in on_land:
-                    df_c.loc[df_c["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
-                    df_c.loc[df_c["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
+        if not df_c.empty:
+            # calculate metadata here, before non releases are filtered out
+            try:
+                meta = companyMetaData(df, perKm, company)
+            except:
+                print(company, df_c)
+                raise
+            del df_c['Incident Types']
+            with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
+                json.dump(meta, fp)
+            # df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
+            del df_c['Company']
+            if land:
+                on_land = events_on_land(df_c)
+                df_c = events_near_land(df_c)
+                df_c['landProximityCategory'] = df_c['landProximityCategory'].fillna(3)
+                df_c['landProximityCategory'] = df_c['landProximityCategory'].replace({0: "within 10 km",
+                                                                                       1: "within 40 km",
+                                                                                       3: "no proximity"})
+                if len(on_land) > 0:
+                    for location in on_land:
+                        df_c.loc[df_c["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
+                        df_c.loc[df_c["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
 
-            df_c = df_c.rename(columns={'landProximityCategory':
-                                        'First Nations Proximity'})
-        saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
+                df_c = df_c.rename(columns={'landProximityCategory':
+                                            'First Nations Proximity'})
+            saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
+        else:
+            # there are no product release incidents
+            meta = {}
+            saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
+            with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
+                json.dump(meta, fp)
 
     return df_c, meta
 

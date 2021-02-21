@@ -102,6 +102,7 @@ export const englishDashboard = {
       },
       gasRelease: "Estimated gas volume released:",
       liquidRelease: "Estimated liquid volume released:",
+      otherRelease: "Estimated miscellaneous release:",
       exploreOther:
         "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.",
       noNearby: (eventType) => {

@@ -2,7 +2,7 @@ from util import execute_sql
 import pandas as pd
 import json
 import os
-from util import saveJson, normalize_text, get_company_names
+from util import saveJson, normalize_text, get_company_names, company_rename
 import geopandas as gpd
 from datetime import date
 import numpy as np
@@ -77,6 +77,7 @@ def metadata(df, folder_name):
     status = status.drop_duplicates(subset=['condition id'])
     status = status.groupby(['Condition Status']).size().reset_index()
     status = pd.pivot_table(status, values=0, columns="Condition Status")
+    status = addMissing(status)
     status = status.to_dict(orient='records')[0]
     df['Location'] = df['Location'].astype("object")
     notInMap = 0
@@ -212,10 +213,11 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
         df['Company'] = df['Company'].replace(r, '', regex=True)
 
     # preliminary processing
-    df['Company'] = df['Company'].replace({'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
-                                           'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
-                                           'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
-                                           'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline'})
+    # df['Company'] = df['Company'].replace({'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
+    #                                        'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
+    #                                        'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
+    #                                        'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline'})
+    df['Company'] = df['Company'].replace(company_rename())
 
     df = df[df['Short Project Name'] != "SAM/COM"]
     df['Theme(s)'] = df['Theme(s)'].replace({"nan":
@@ -237,10 +239,9 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
                      'TransCanada Keystone Pipeline GP Ltd.',
                      'Westcoast Energy Inc.',
                      'Alliance Pipeline Ltd.',
-                     'Kinder Morgan Cochin ULC',
+                     'PKM Cochin ULC',
                      'Foothills Pipe Lines Ltd.',
-                     'Southern Lights Pipeline',
-                     'Enbridge Pipelines (Westspur) Inc.']
+                     'Southern Lights Pipeline']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

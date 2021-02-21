@@ -16,5 +16,30 @@ export const mapInits = {
       Closed: [0.22, -10100000, -6500000],
       maxDrop: null,
     },
+    "TransCanada Keystone Pipeline GP Ltd.": {
+      "In Progress": [0.22, -12000000, -7504281],
+      Closed: [0.22, -12000000, -7504281],
+      maxDrop: null,
+    },
+    "Trans Mountain Pipeline ULC": {
+      "In Progress": [0.22, -13200000, -7504281],
+      Closed: [0.22, -13200000, -7504281],
+      maxDrop: null,
+    },
+    "Alliance Pipeline Ltd.": {
+      "In Progress": [0.22, -12100000, -7504281],
+      Closed: [0.22, -12100000, -7504281],
+      maxDrop: null,
+    },
+    "PKM Cochin ULC": {
+      "In Progress": [0.22, -12100000, -7504281],
+      Closed: [0.22, -12100000, -7504281],
+      maxDrop: null,
+    },
+    "Westcoast Energy Inc.": {
+      "In Progress": [0.22, -13200000, -7504281],
+      Closed: [0.3, -13200000, -7504281],
+      maxDrop: null,
+    },
   },
 };

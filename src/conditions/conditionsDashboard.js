@@ -20,8 +20,9 @@ export async function mainConditions(
         infohtml += `<li>${status} ${lang.conditions}: ${count}</li>`;
       }
       infohtml += `</ul>`;
+    } else {
+      $("#no-location-btn").prop("disabled", true);
     }
-
     infoAlert.innerHTML = infohtml;
   };
   const statusInit = (meta) => {
@@ -29,7 +30,7 @@ export async function mainConditions(
     var closed = $("#closed-btn");
     const conditionsFilter = { column: "In Progress" };
     $(document).ready(function () {
-      if (meta.summary["In Progress"] >= 0) {
+      if (meta.summary["In Progress"] > 0) {
         conditionsFilter.column = "In Progress";
         inProgress.click();
       } else if (meta.summary["In Progress"] == 0) {
@@ -402,10 +403,10 @@ export async function mainConditions(
 
   //main conditions map
   function buildDashboard() {
-    noLocationSummary(meta);
     let titleElement = document.getElementById("conditions-map-title");
     setTitle(titleElement, conditionsFilter, meta.summary);
     fillSummary(meta.summary);
+    noLocationSummary(meta);
     var zooms = getMapZoom(mapInits, meta);
 
     const baseMap = {
