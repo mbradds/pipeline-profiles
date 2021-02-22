@@ -41,5 +41,10 @@ export const mapInits = {
       Closed: [0.3, -13200000, -7504281],
       maxDrop: null,
     },
+    "Southern Lights Pipeline": {
+      "In Progress": [0.22, -12100000, -7504281],
+      Closed: [0.22, -12100000, -7504281],
+      maxDrop: null,
+    },
   },
 };

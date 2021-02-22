@@ -80,6 +80,11 @@ export const englishDashboard = {
       "Sunset Clause":
         "Conditions that ensure projects begin within a specific period of time.",
     },
+    noConditions: {
+      header: "Dashboard",
+      note:
+        "There is no conditions data available for this company. If data becomes available, or conditions are issued by the commission, they will show up here.",
+    },
   },
   incidents: {
     definitions: {
@@ -148,6 +153,11 @@ export const englishDashboard = {
       noNearby: (eventType) => {
         return `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`;
       },
+    },
+    noIncidents: {
+      header: "Dashboard",
+      note:
+        "There are no records in the CER's incident data for this company. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.",
     },
   },
 };

@@ -3,10 +3,10 @@ import { generalTheme } from "../../modules/themes.js";
 import ieWarn from "ie-gang";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/NOVAGasTransmissionLtd.json";
+import conditionsData from "../../conditions/company_data/EmeraBrunswickPipelineCompanyLtd.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
 // incidents
-import incidentData from "../../incidents/company_data/NOVAGasTransmissionLtd.json";
+import incidentData from "../../incidents/company_data/EmeraBrunswickPipelineCompanyLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // language
 import { englishDashboard } from "../../modules/langEnglish.js";
@@ -20,13 +20,6 @@ let warningParams = {
   title: "Old Browser Warning",
   applyIE: false,
 };
-
-// async function importMod() {
-//   let mod = await import("./textMod.js");
-//   mod.modFunction();
-// }
-
-// importMod();
 
 ieWarn(warningParams);
 generalTheme();

@@ -253,7 +253,15 @@ def process_incidents(remote=False, land=False, company_names=False):
                      'Alliance Pipeline Ltd.',
                      'PKM Cochin ULC',
                      'Foothills Pipe Lines Ltd.',
-                     'Southern Lights Pipeline']
+                     'Southern Lights Pipeline',
+                     'Emera Brunswick Pipeline Company Ltd.',
+                     'Plains Midstream Canada ULC',
+                     'Genesis Pipeline Canada Ltd.',
+                     'Montreal Pipe Line Limited',
+                     'Trans-Northern Pipelines Inc.',
+                     'Kingston Midstream Westspur Limited',
+                     'Many Islands Pipe Lines (Canada) Limited',
+                     'Vector Pipeline Limited Partnership']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
@@ -290,7 +298,7 @@ def process_incidents(remote=False, land=False, company_names=False):
         else:
             # there are no product release incidents
             thisCompanyData['events'] = df_c.to_dict(orient='records')
-            thisCompanyData['meta'] = {}
+            thisCompanyData['meta'] = {"companyName": company}
             with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp)
 

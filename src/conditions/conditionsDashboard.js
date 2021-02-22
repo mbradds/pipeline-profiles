@@ -41,7 +41,7 @@ export async function mainConditions(
     });
     return conditionsFilter;
   };
-  const conditionsFilter = statusInit(meta);
+  // const conditionsFilter = statusInit(meta);
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
       summary["In Progress"];
@@ -219,6 +219,7 @@ export async function mainConditions(
   };
 
   function themeClick(e) {
+    console.log("running");
     let definitions = lang.themeDefinitions;
     var definitionDiv = document.getElementById("conditions-definitions");
     if (definitionDiv.style.display === "none") {
@@ -424,103 +425,112 @@ export async function mainConditions(
 
   //main conditions map
   function buildDashboard() {
-    let titleElement = document.getElementById("conditions-map-title");
-    setTitle(titleElement, conditionsFilter, meta.summary);
-    fillSummary(meta.summary);
-    noLocationSummary(meta);
-    var zooms = getMapZoom(mapInits, meta);
-
-    const baseMap = {
-      name: "Canada",
-      mapData: Highcharts.geojson(canadaMap),
-      type: "map",
-      color: "#F0F0F0",
-      borderWidth: 0.5,
-      borderColor: "black",
-      zIndex: 0,
-      showInLegend: false,
-      enableMouseTracking: false,
-    };
-
-    const regionSeries = generateRegionSeries(
-      mapMetaData,
-      econRegions,
-      conditionsFilter
-    );
-
-    var chart = createConditionsMap(
-      regionSeries,
-      baseMap,
-      "container-map",
-      meta,
-      conditionsFilter,
-      zooms
-    );
-
-    //allow zoom and pan when in development mode
-    chart = chartMode(chart, mapInits);
-
-    //change condition type and update map+title
-    $("#conditions-nav-group button").on("click", function () {
-      $(".btn-conditions > .btn").removeClass("active");
-      $(this).addClass("active");
-      var thisBtn = $(this);
-      var btnValue = thisBtn.val();
-      $("#selectedVal").text(btnValue);
-      conditionsFilter.column = btnValue;
-      if (btnValue !== "not-shown") {
-        destroyInsert(chart);
-        pa.visibility(["no-location-info"], "hide");
-        pa.visibility(["container-map"], "show");
-      } else {
-        pa.visibility(["no-location-info"], "show");
-        pa.visibility(["container-map"], "hide");
-      }
+    if (!$.isEmptyObject(econRegions)) {
+      let titleElement = document.getElementById("conditions-map-title");
+      const conditionsFilter = statusInit(meta);
       setTitle(titleElement, conditionsFilter, meta.summary);
+      fillSummary(meta.summary);
+      noLocationSummary(meta);
+      var zooms = getMapZoom(mapInits, meta);
+
+      const baseMap = {
+        name: "Canada",
+        mapData: Highcharts.geojson(canadaMap),
+        type: "map",
+        color: "#F0F0F0",
+        borderWidth: 0.5,
+        borderColor: "black",
+        zIndex: 0,
+        showInLegend: false,
+        enableMouseTracking: false,
+      };
+
       const regionSeries = generateRegionSeries(
         mapMetaData,
         econRegions,
         conditionsFilter
       );
-      chart.update(
-        {
-          plotOptions: {
-            series: {
-              point: {
-                events: {
-                  click: function () {
-                    popUp(
-                      this,
-                      conditionsFilter,
-                      selectedMeta(meta, conditionsFilter)
-                    );
+
+      var chart = createConditionsMap(
+        regionSeries,
+        baseMap,
+        "container-map",
+        meta,
+        conditionsFilter,
+        zooms
+      );
+
+      //allow zoom and pan when in development mode
+      chart = chartMode(chart, mapInits);
+
+      //change condition type and update map+title
+      $("#conditions-nav-group button").on("click", function () {
+        $(".btn-conditions > .btn").removeClass("active");
+        $(this).addClass("active");
+        var thisBtn = $(this);
+        var btnValue = thisBtn.val();
+        $("#selectedVal").text(btnValue);
+        conditionsFilter.column = btnValue;
+        if (btnValue !== "not-shown") {
+          destroyInsert(chart);
+          pa.visibility(["no-location-info"], "hide");
+          pa.visibility(["container-map"], "show");
+        } else {
+          pa.visibility(["no-location-info"], "show");
+          pa.visibility(["container-map"], "hide");
+        }
+        setTitle(titleElement, conditionsFilter, meta.summary);
+        const regionSeries = generateRegionSeries(
+          mapMetaData,
+          econRegions,
+          conditionsFilter
+        );
+        chart.update(
+          {
+            plotOptions: {
+              series: {
+                point: {
+                  events: {
+                    click: function () {
+                      popUp(
+                        this,
+                        conditionsFilter,
+                        selectedMeta(meta, conditionsFilter)
+                      );
+                    },
                   },
                 },
               },
             },
+            series: [regionSeries, baseMap],
+            colorAxis: colorRange(conditionsFilter),
           },
-          series: [regionSeries, baseMap],
-          colorAxis: colorRange(conditionsFilter),
-        },
-        false
-      );
+          false
+        );
 
-      chart.mapZoom(undefined, undefined, undefined);
-      removeNoConditions(chart);
-      if (conditionsFilter.column == "Closed") {
-        chart.mapZoom(
-          zooms["Closed"][0],
-          zooms["Closed"][1],
-          zooms["Closed"][2]
-        );
-      } else {
-        chart.mapZoom(
-          zooms["In Progress"][0],
-          zooms["In Progress"][1],
-          zooms["In Progress"][2]
-        );
-      }
-    });
+        chart.mapZoom(undefined, undefined, undefined);
+        removeNoConditions(chart);
+        if (conditionsFilter.column == "Closed") {
+          chart.mapZoom(
+            zooms["Closed"][0],
+            zooms["Closed"][1],
+            zooms["Closed"][2]
+          );
+        } else {
+          chart.mapZoom(
+            zooms["In Progress"][0],
+            zooms["In Progress"][1],
+            zooms["In Progress"][2]
+          );
+        }
+      });
+    } else {
+      // the company has no conditions. Hide all the dashboard stuff
+      let noConditions = document.getElementById("conditions-dashboard");
+      let noConditionsHTML = `<h3>${lang.noConditions.header} - ${meta.companyName} </h3>`;
+      noConditionsHTML += `<p>${lang.noConditions.note}</p>`;
+      noConditions.innerHTML = noConditionsHTML;
+    }
   }
   return buildDashboard();
 }

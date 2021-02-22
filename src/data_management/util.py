@@ -86,5 +86,8 @@ def company_rename():
              'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline',
              'Alliance Pipeline Ltd as General Partner of Alliance Pipeline Limited Partnership': 'Alliance Pipeline Ltd.',
              'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
-             'Kinder Morgan Cochin ULC': 'PKM Cochin ULC'}
+             'Kinder Morgan Cochin ULC': 'PKM Cochin ULC',
+             'Enbridge Bakken Pipeline Company Inc., on behalf of Enbridge Bakken Pipeline Limited Partnership': 'Enbridge Bakken Pipeline Company Inc.',
+             'TEML Westspur Pipelines Limited': 'Kingston Midstream Westspur Limited',
+             'Plains Marketing Canada, L.P.': 'Plains Midstream Canada ULC'}
     return names

@@ -1,3 +1,3 @@
-export function getastick() {
-  console.log("get a stick!");
+export function modFunction() {
+  console.log("import test!");
 }

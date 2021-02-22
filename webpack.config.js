@@ -16,6 +16,8 @@ function generateHtmlPlugins() {
     "alliance.html",
     "cochin.html",
     "westcoast.html",
+    "emera_brunswick.html",
+    "southern_lights.html",
   ];
   return htmlFileNames.map((name) => {
     return new HtmlWebpackPlugin({
@@ -41,6 +43,8 @@ module.exports = {
     "js/en/alliance": "./src/index_files/en/alliance.js",
     "js/en/cochin": "./src/index_files/en/cochin.js",
     "js/en/westcoast": "./src/index_files/en/westcoast.js",
+    "js/en/emera_brunswick": "./src/index_files/en/emera_brunswick.js",
+    "js/en/southern_lights": "./src/index_files/en/southern_lights.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

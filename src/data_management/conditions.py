@@ -240,42 +240,57 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
                      'Alliance Pipeline Ltd.',
                      'PKM Cochin ULC',
                      'Foothills Pipe Lines Ltd.',
-                     'Southern Lights Pipeline']
-    # company_files = ['NOVA Gas Transmission Ltd.']
+                     'Southern Lights Pipeline',
+                     'Emera Brunswick Pipeline Company Ltd.',
+                     'Many Islands Pipe Lines (Canada) Limited',
+                     'Maritimes & Northeast Pipeline Management Ltd.',
+                     'Vector Pipeline Limited Partnership',
+                     'Plains Midstream Canada ULC',
+                     'Enbridge Bakken Pipeline Company Inc.',
+                     'Genesis Pipeline Canada Ltd.',
+                     'Montreal Pipe Line Limited',
+                     'Kingston Midstream Westspur Limited']
+
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
-        # if not os.path.exists("../conditions/"+folder_name):
-        #     os.makedirs("../conditions/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
-        df_c = add_links(df_c, links)
-        df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
-        expanded_locations = []
-        for unique in df_c['condition id']:
-            row = df_c[df_c['condition id'] == unique].copy()
-            locations = [x.split(',') for x in row['Location']]
-            for region in locations[0]:
-                regionProvince = region.strip().split('/')
-                row['id'] = regionProvince[0].strip()
-                row['Flat Province'] = regionProvince[-1].strip()
-                expanded_locations.append(row.copy())
+        if not df_c.empty:
+            df_c = add_links(df_c, links)
+            df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
+            expanded_locations = []
+            for unique in df_c['condition id']:
+                row = df_c[df_c['condition id'] == unique].copy()
+                locations = [x.split(',') for x in row['Location']]
+                for region in locations[0]:
+                    regionProvince = region.strip().split('/')
+                    row['id'] = regionProvince[0].strip()
+                    row['Flat Province'] = regionProvince[-1].strip()
+                    expanded_locations.append(row.copy())
 
-        df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
-        # calculate metadata here
-        dfmeta, meta = conditionMetaData(df_all, folder_name)
-        thisCompanyData['meta'] = meta
-        shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name)
+            df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
+            # calculate metadata here
+            dfmeta, meta = conditionMetaData(df_all, folder_name)
+            thisCompanyData['meta'] = meta
+            shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name)
 
-        thisCompanyData['regions'] = shp.to_json()
-        thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
-        with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
-            json.dump(thisCompanyData, fp)
+            thisCompanyData['regions'] = shp.to_json()
+            thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
+            with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                json.dump(thisCompanyData, fp)
+        else:
+            thisCompanyData = {'meta': {"companyName": company},
+                               'regions': "{}",
+                               'mapMeta': []}
+
+            with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                json.dump(thisCompanyData, fp)
 
     return shp, dfmeta
 
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, meta = process_conditions(remote=False, company_names=False)
+    df, meta = process_conditions(remote=True, company_names=False)
     print('completed conditions!')
