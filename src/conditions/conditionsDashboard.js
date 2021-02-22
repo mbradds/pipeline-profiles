@@ -288,7 +288,7 @@ export async function mainConditions(
   const removeNoConditions = (chart) => {
     let removeList = [];
     chart.series[0].points.map((region) => {
-      if (region.value == null) {
+      if (region.value == null || region.value == 0) {
         removeList.push(region);
       }
     });

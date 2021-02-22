@@ -2,18 +2,12 @@ console.time(`chart loading`);
 import { generalTheme } from "../../modules/themes.js";
 import ieWarn from "ie-gang";
 // conditions
-import econRegions from "../../conditions/TransCanadaPipeLinesLimited/economicRegions.json";
 import canadaMap from "../../conditions/base_maps/base_map.json";
-import mapMetaData from "../../conditions/TransCanadaPipeLinesLimited/mapMetadata.json";
-import metaConditions from "../../conditions/TransCanadaPipeLinesLimited/summaryMetadata.json";
+import conditionsData from "../../conditions/company_data/TransCanadaPipeLinesLimited.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
 // incidents
-import incidentData from "../../incidents/TransCanadaPipeLinesLimited/incidents_map.json";
-import metaIncidents from "../../incidents/TransCanadaPipeLinesLimited/summaryMetadata.json";
+import incidentData from "../../incidents/company_data/TransCanadaPipeLinesLimited.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
-// settlements
-// import settlementsData from "../settlements/TransCanadaPipeLinesLimited/settlementsData.json";
-// import { mainSettlements } from "../settlements/settlementsDashboard.js";
 // language
 import { englishDashboard } from "../../modules/langEnglish.js";
 // load dashboards
@@ -32,13 +26,17 @@ generalTheme();
 
 const arrayOfCharts = [
   mainConditions(
-    econRegions,
+    JSON.parse(conditionsData.regions),
     canadaMap,
-    mapMetaData,
-    metaConditions,
+    conditionsData.mapMeta,
+    conditionsData.meta,
     englishDashboard.conditions
   ),
-  mainIncidents(incidentData, metaIncidents, englishDashboard.incidents),
+  mainIncidents(
+    incidentData.events,
+    incidentData.meta,
+    englishDashboard.incidents
+  ),
 ];
 
 loadAllCharts(arrayOfCharts);

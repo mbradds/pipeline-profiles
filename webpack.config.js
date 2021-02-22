@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 // const TerserPlugin = require("terser-webpack-plugin");
@@ -30,7 +31,7 @@ function generateHtmlPlugins() {
 module.exports = {
   // mode: "development",
   mode: "production",
-  target: "es5",
+  // target: "es5",
   entry: {
     "js/en/ngtl": "./src/index_files/en/ngtl.js",
     "js/en/tcpl": "./src/index_files/en/tcpl.js",
@@ -73,8 +74,12 @@ module.exports = {
     extensions: ["*", ".js"],
   },
 
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [new TerserPlugin()],
-  // },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
+      }),
+    ],
+  },
 };

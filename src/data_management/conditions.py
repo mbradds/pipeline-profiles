@@ -29,8 +29,6 @@ def import_simplified(name='economic_regions.json'):
 
 
 def export_files(df, folder, name):
-    df = df[~df.geometry.is_empty]
-    df = df[df.geometry.notna()]
     write_path = os.path.join(script_dir, folder, name)
     df.to_file(write_path, driver='GeoJSON')
     print(folder+' done ', 'CRS: '+str(df.crs))
@@ -45,13 +43,18 @@ def conditions_on_map(df, shp, folder_name):
     for delete in ['PRUID', 'ERUID', 'ERNAME', 'PRNAME']:
         del shp[delete]
 
-    # shp = shp[shp['id'] == 'Calgary']
-    export_files(shp, folder="../conditions/"+folder_name, name='economicRegions.json')
-    saveJson(df, os.path.join('../conditions/'+folder_name, 'mapMetadata.json'))
-    return shp
+    shp = shp[~shp.geometry.is_empty]
+    shp = shp[shp.geometry.notna()]
+    for numericCol in ['In Progress', 'Closed']:
+        if numericCol in shp.columns:
+            shp[numericCol] = shp[numericCol].fillna(0)
+    # export_files(shp, folder="../conditions/"+folder_name, name='economicRegions.json')
+    # saveJson(df, os.path.join('../conditions/'+folder_name, 'mapMetadata.json'))
+    df = df.fillna(0)
+    return shp, df
 
 
-def metadata(df, folder_name):
+def conditionMetaData(df, folder_name):
 
     def convert_to_int(df):
         df = df.replace({np.nan: 0})
@@ -136,8 +139,8 @@ def metadata(df, folder_name):
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
     # save the metadata
-    with open('../conditions/'+folder_name+'/summaryMetadata.json', 'w') as fp:
-        json.dump(meta, fp)
+    # with open('../conditions/'+folder_name+'/summaryMetadata.json', 'w') as fp:
+    #     json.dump(meta, fp)
 
     df_all = df.copy()
     del df_all['Location']
@@ -157,7 +160,7 @@ def metadata(df, folder_name):
                             index=['Flat Province', 'id'],
                             columns='Condition Status').reset_index()
 
-    return df_all
+    return df_all, meta
 
 
 def process_conditions(remote=False, nonStandard=True, company_names=False):
@@ -213,10 +216,6 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
         df['Company'] = df['Company'].replace(r, '', regex=True)
 
     # preliminary processing
-    # df['Company'] = df['Company'].replace({'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
-    #                                        'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
-    #                                        'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
-    #                                        'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline'})
     df['Company'] = df['Company'].replace(company_rename())
 
     df = df[df['Short Project Name'] != "SAM/COM"]
@@ -242,11 +241,12 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
                      'PKM Cochin ULC',
                      'Foothills Pipe Lines Ltd.',
                      'Southern Lights Pipeline']
-
+    # company_files = ['NOVA Gas Transmission Ltd.']
     for company in company_files:
+        thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
-        if not os.path.exists("../conditions/"+folder_name):
-            os.makedirs("../conditions/"+folder_name)
+        # if not os.path.exists("../conditions/"+folder_name):
+        #     os.makedirs("../conditions/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
         df_c = add_links(df_c, links)
@@ -263,10 +263,16 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
 
         df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
         # calculate metadata here
-        meta = metadata(df_all, folder_name)
-        shp = conditions_on_map(meta, regions_map, folder_name)
+        dfmeta, meta = conditionMetaData(df_all, folder_name)
+        thisCompanyData['meta'] = meta
+        shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name)
 
-    return shp, meta
+        thisCompanyData['regions'] = shp.to_json()
+        thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
+        with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+            json.dump(thisCompanyData, fp)
+
+    return shp, dfmeta
 
 
 if __name__ == "__main__":

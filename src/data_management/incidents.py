@@ -116,7 +116,7 @@ def incidentsPerKm(dfAll):
     return dfAll
 
 
-def companyMetaData(df, dfPerKm, company):
+def incidentMetaData(df, dfPerKm, company):
 
     def most_common(df, meta, col_name, meta_key):
         what_list = []
@@ -257,22 +257,17 @@ def process_incidents(remote=False, land=False, company_names=False):
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
-        if not os.path.exists("../incidents/"+folder_name):
-            os.makedirs("../incidents/"+folder_name)
+        # if not os.path.exists("../incidents/"+folder_name):
+        #     os.makedirs("../incidents/"+folder_name)
 
         df_c = df[df['Company'] == company].copy()
         df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
+        thisCompanyData = {}
         if not df_c.empty:
             # calculate metadata here, before non releases are filtered out
-            try:
-                meta = companyMetaData(df, perKm, company)
-            except:
-                print(company, df_c)
-                raise
+            meta = incidentMetaData(df, perKm, company)
+            thisCompanyData['meta'] = meta
             del df_c['Incident Types']
-            with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
-                json.dump(meta, fp)
-            # df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
             del df_c['Company']
             if land:
                 on_land = events_on_land(df_c)
@@ -288,13 +283,16 @@ def process_incidents(remote=False, land=False, company_names=False):
 
                 df_c = df_c.rename(columns={'landProximityCategory':
                                             'First Nations Proximity'})
-            saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
+
+            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
-            meta = {}
-            saveJson(df_c, '../incidents/'+folder_name+'/incidents_map.json', 3)
-            with open('../incidents/'+folder_name+'/summaryMetadata.json', 'w') as fp:
-                json.dump(meta, fp)
+            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            thisCompanyData['meta'] = {}
+            with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                json.dump(thisCompanyData, fp)
 
     return df_c, meta
 
@@ -305,3 +303,5 @@ if __name__ == '__main__':
     # df = process_incidents(remote=False, company_names=False)
     # df = incidentsPerKm()
     print('completed incidents!')
+
+#%%
