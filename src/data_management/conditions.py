@@ -76,7 +76,9 @@ def conditionMetaData(df, folder_name):
     meta = {}
 
     # get the summary stats for the boxes above the map
-    status = df[['condition id', 'Condition Status']].copy()
+    status = df[['condition id', 'Condition Status', 'Location']].copy()
+    status = status[status['Location'] != 'nan']
+    del status['Location']
     status = status.drop_duplicates(subset=['condition id'])
     status = status.groupby(['Condition Status']).size().reset_index()
     status = pd.pivot_table(status, values=0, columns="Condition Status")
@@ -108,14 +110,15 @@ def conditionMetaData(df, folder_name):
 
     # get the unique project names sorted by number of open conditions
     project = df[['condition id', 'Short Project Name', 'id', 'Condition Status', 'Regdocs']].copy()
+    project['Regdocs'] = project['Regdocs'].astype('object')
+    project['Regdocs'] = project['Regdocs'].fillna('noRegdocs')
     project = project.groupby(['Short Project Name', 'id', 'Condition Status', 'Regdocs']).size().reset_index()
     project = pd.pivot_table(project,
                              values=0,
                              index=['Short Project Name', 'id', 'Regdocs'],
                              columns='Condition Status').reset_index()
 
-    # if 'In Progress' not in project.columns:
-    #     project['In Progress'] = 0
+    project['Regdocs'] = project['Regdocs'].replace('noRegdocs', np.nan)
     project = addMissing(project)
 
     project = project.sort_values(by=['In Progress', 'id'], ascending=False)
@@ -251,6 +254,8 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
                      'Montreal Pipe Line Limited',
                      'Kingston Midstream Westspur Limited']
 
+    #company_files = ['Trans-Northern Pipelines Inc.']
+
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
@@ -292,5 +297,5 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, meta = process_conditions(remote=True, company_names=False)
+    df, meta = process_conditions(remote=False, company_names=False)
     print('completed conditions!')

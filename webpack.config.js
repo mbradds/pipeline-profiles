@@ -18,6 +18,15 @@ function generateHtmlPlugins() {
     "westcoast.html",
     "emera_brunswick.html",
     "southern_lights.html",
+    "foothills.html",
+    "many_islands.html",
+    "maritimes_northeast.html",
+    "tqm.html",
+    "vector.html",
+    "bakken.html",
+    "norman_wells.html",
+    "express_pipeline.html",
+    "trans_northern.html",
   ];
   return htmlFileNames.map((name) => {
     return new HtmlWebpackPlugin({
@@ -33,7 +42,7 @@ function generateHtmlPlugins() {
 module.exports = {
   // mode: "development",
   mode: "production",
-  // target: "es5",
+  target: "es5",
   entry: {
     "js/en/ngtl": "./src/index_files/en/ngtl.js",
     "js/en/tcpl": "./src/index_files/en/tcpl.js",
@@ -45,6 +54,15 @@ module.exports = {
     "js/en/westcoast": "./src/index_files/en/westcoast.js",
     "js/en/emera_brunswick": "./src/index_files/en/emera_brunswick.js",
     "js/en/southern_lights": "./src/index_files/en/southern_lights.js",
+    "js/en/foothills": "./src/index_files/en/foothills.js",
+    "js/en/many_islands": "./src/index_files/en/many_islands.js",
+    "js/en/maritimes_northeast": "./src/index_files/en/maritimes_northeast.js",
+    "js/en/tqm": "./src/index_files/en/tqm.js",
+    "js/en/vector": "./src/index_files/en/vector.js",
+    "js/en/bakken": "./src/index_files/en/bakken.js",
+    "js/en/norman_wells": "./src/index_files/en/norman_wells.js",
+    "js/en/express_pipeline": "./src/index_files/en/express_pipeline.js",
+    "js/en/trans_northern": "./src/index_files/en/trans_northern.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

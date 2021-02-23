@@ -9,6 +9,7 @@ export class EventMap {
     "Lube Oil": "liquid",
     "Crude Oil": "liquid",
     "Diesel Fuel": "liquid",
+    Gasoline: "liquid",
     "Natural Gas Liquids": "gas",
     Condensate: "liquid",
     Other: "other",
@@ -29,6 +30,7 @@ export class EventMap {
       Condensate: pa.cerPalette["Ocean"],
       "Sulphur Dioxide": pa.cerPalette["hcPurple"],
       "Diesel Fuel": pa.cerPalette["hcRed"],
+      Gasoline: pa.cerPalette["Flame"],
       Other: pa.cerPalette["Aubergine"],
     },
     statusColors: {
@@ -475,8 +477,6 @@ export class EventMap {
 
 export class EventNavigator {
   greyScale = [
-    "#000000",
-    "#080808",
     "#101010",
     "#181818",
     "#202020",

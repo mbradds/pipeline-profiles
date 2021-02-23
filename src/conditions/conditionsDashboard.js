@@ -527,8 +527,10 @@ export async function mainConditions(
     } else {
       // the company has no conditions. Hide all the dashboard stuff
       let noConditions = document.getElementById("conditions-dashboard");
-      let noConditionsHTML = `<h3>${lang.noConditions.header} - ${meta.companyName} </h3>`;
-      noConditionsHTML += `<p>${lang.noConditions.note}</p>`;
+      let noConditionsHTML = `<section class="alert alert-warning"><h3>${lang.noConditions.header}</h3>`;
+      noConditionsHTML += `<p>${lang.noConditions.note(
+        meta.companyName
+      )}</p></section>`;
       noConditions.innerHTML = noConditionsHTML;
     }
   }

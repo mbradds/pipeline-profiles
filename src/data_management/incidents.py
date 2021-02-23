@@ -244,6 +244,7 @@ def process_incidents(remote=False, land=False, company_names=False):
                      'TransCanada PipeLines Limited',
                      'Enbridge Pipelines Inc.',
                      'Enbridge Pipelines (NW) Inc.',
+                     'Enbridge Bakken Pipeline Company Inc.',
                      'Express Pipeline Ltd.',
                      'Trans Mountain Pipeline ULC',
                      'Trans Quebec and Maritimes Pipeline Inc.',
@@ -261,7 +262,8 @@ def process_incidents(remote=False, land=False, company_names=False):
                      'Trans-Northern Pipelines Inc.',
                      'Kingston Midstream Westspur Limited',
                      'Many Islands Pipe Lines (Canada) Limited',
-                     'Vector Pipeline Limited Partnership']
+                     'Vector Pipeline Limited Partnership',
+                     'Maritimes & Northeast Pipeline Management Ltd.']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

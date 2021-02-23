@@ -78,6 +78,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
             thisMap.updateRadius();
           }
         });
+        if (incidentData.length == 1) {
+          // if there is only one incident, then disable the select volume option
+          $("#incident-volume-btn").attr("disabled", "disabled");
+        }
 
         // user selection to show map or trends
         $("#incident-view-type button").on("click", function () {
@@ -139,8 +143,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
     } else {
       // no incidents data
       let noIncidents = document.getElementById("incidents-dashboard");
-      let noIncidentsHTML = `<h3>${lang.noIncidents.header} - ${metaData.companyName} </h3>`;
-      noIncidentsHTML += `<p>${lang.noIncidents.note}</p>`;
+      let noIncidentsHTML = `<section class="alert alert-warning"><h3>${lang.noIncidents.header}</h3>`;
+      noIncidentsHTML += `<p>${lang.noIncidents.note(
+        metaData.companyName
+      )}</p></section>`;
       noIncidents.innerHTML = noIncidentsHTML;
     }
   }

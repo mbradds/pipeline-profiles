@@ -81,9 +81,10 @@ export const englishDashboard = {
         "Conditions that ensure projects begin within a specific period of time.",
     },
     noConditions: {
-      header: "Dashboard",
-      note:
-        "There is no conditions data available for this company. If data becomes available, or conditions are issued by the commission, they will show up here.",
+      header: "No conditions data available",
+      note: (companyName) => {
+        return `There is no conditions data available for ${companyName}. If data becomes available, or conditions are issued by the commission, they will show up here.`;
+      },
     },
   },
   incidents: {
@@ -155,9 +156,10 @@ export const englishDashboard = {
       },
     },
     noIncidents: {
-      header: "Dashboard",
-      note:
-        "There are no records in the CER's incident data for this company. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.",
+      header: "No incidents data available",
+      note: (companyName) => {
+        return `There are no records in the CER's incident data for ${companyName}. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.`;
+      },
     },
   },
 };

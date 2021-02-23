@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="../../GCWeb/assets/favicon.ico"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="../../GCWeb/fonts/glyphicons-halflings-regular.woff"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="../../GCWeb/fonts/glyphicons-halflings-regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../../GCWeb/css/theme.min.css" />
+    <link rel="stylesheet" href="../../GCWeb/css/gcwu.custom.css" />
+    <noscript
+      ><link rel="stylesheet" href="../../GCWeb/wet-boew/css/noscript.min.css"
+    /></noscript>
+  <script defer src="../../js/en/norman_wells.js"></script></head>
+  <body>
+    <div id="ie-warning"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Safety And Environment (New!)</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="mrgn-tp-sm"></div>
+    <div class="container">
+      <div class="btn-group btn-group-justified">
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default tablinks"
+            onclick="openTab(event, 'condition-compliance')"
+            id="defaultClick"
+            style="height: 75px"
+          >
+            Conditions Compliance
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default tablinks"
+            onclick="openTab(event, 'pipeline-incidents')"
+            style="height: 75px"
+          >
+            Reported Incidents
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default"
+            style="height: 75px"
+            disabled="disabled"
+          >
+            Contaminated Sites & Remediation (coming soon!)
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default"
+            style="height: 75px"
+            disabled="disabled"
+          >
+            Operations & Maintenance Activities (coming soon!)
+          </button>
+        </div>
+        <div class="btn-group tab">
+          <button
+            type="button"
+            class="btn btn-default"
+            style="height: 75px"
+            disabled="disabled"
+          >
+            Unauthorized Activities (coming soon!)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start Condition Compliance -->
+
+    <div id="condition-compliance" class="profile-section tabcontent">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Conditions Compliance</h2>
+            <p class="small">Section updated February 2021</p>
+            <p>
+              Every pipeline company in Canada must meet federal, provincial or
+              territorial, and local requirements. This includes Acts,
+              Regulations, rules, bylaws, and zoning restrictions. Pipelines are
+              also bound by technical, safety, and environmental standards along
+              with company rules, protocols and management systems. In addition
+              to these requirements, the Commission may add conditions to
+              regulatory instruments that each company must meet. Conditions are
+              project-specific and are designed to protect public and the
+              environment by reducing possible risks identified during the
+              application process.
+            </p>
+
+            <p>
+              Condition compliance is part of the CER's oversight and
+              <a href="/en/safety-environment/compliance-enforcement/index.html"
+                >enforcement</a
+              >
+              action is taken when required.
+            </p>
+            <p>
+              Conditions can be related to a specific region, or apply to the
+              pipeline project as a whole. The map below displays the number of
+              in progress and closed conditions mapped to economic regions as
+              defined by
+              <a
+                href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm"
+                >Statistics Canada.
+              </a>
+            </p>
+            <p>
+              Conditions can typically be either in-progress or closed. The CER
+              follows up on in-progress conditions.
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <section class="panel panel-default" style="min-height: 350px">
+                  <header class="panel-heading">
+                    <h5 class="panel-title">In-Progress</h5>
+                  </header>
+                  <div class="panel-body">
+                    <p>
+                      This status refers to conditions that continue to be
+                      monitored by the CER. This happens when:
+                    </p>
+                    <ul>
+                      <li>
+                        condition filings have not yet been received by the CER;
+                        or,
+                      </li>
+                      <li>
+                        filings have been received but are under review or do
+                        not yet meet requirements; or,
+                      </li>
+                      <li>
+                        a project is not completed and it has conditions, which
+                        have not been met; or,
+                      </li>
+                      <li>
+                        a project has a post-construction condition, but a
+                        requirement has not yet been completed; or,
+                      </li>
+                      <li>
+                        some conditions may be active indefinitely or refer to
+                        the continued operation of a pipeline.
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+              <div class="col-md-6">
+                <section class="panel panel-default" style="min-height: 350px">
+                  <header class="panel-heading">
+                    <h5 class="panel-title">Closed</h5>
+                  </header>
+                  <div class="panel-body">
+                    <p>This status refers to:</p>
+                    <ul>
+                      <li>
+                        condition requirements that have been satisfied, and no
+                        further submissions from the company are required; or
+                      </li>
+                      <li>
+                        conditions whose filings or actions apply to a specific
+                        phase that have been fulfilled as the phase is completed
+                        (i.e. a specific filing during construction phase).
+                        Note: comments on the required actions can still be
+                        received.
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <!-- conditions map -->
+            <div class="dashboard" id="conditions-dashboard">
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <h3 id="conditions-map-title"></h3>
+                </div>
+              </div>
+              <div class="mrgn-tp-sm"></div>
+
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <div
+                    class="btn-group btn-group-justified"
+                    id="conditions-nav-group"
+                  >
+                    <div class="btn-group btn-conditions">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        value="In Progress"
+                        id="in-progress-btn"
+                      >
+                        <div class="conditions-summary-title">
+                          In-Progress Conditions with location:
+                        </div>
+                        <div
+                          class="conditions-summary-value"
+                          id="in-progress-summary"
+                        ></div>
+                      </button>
+                    </div>
+                    <div class="btn-group btn-conditions">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        value="Closed"
+                        id="closed-btn"
+                      >
+                        <div class="conditions-summary-title">
+                          Closed Conditions with location:
+                        </div>
+                        <div
+                          class="conditions-summary-value"
+                          id="closed-summary"
+                        ></div>
+                      </button>
+                    </div>
+                    <div class="btn-group btn-conditions">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        value="not-shown"
+                        id="no-location-btn"
+                      >
+                        <div class="conditions-summary-title">
+                          No Geographic Location (not shown on map):
+                        </div>
+                        <div
+                          class="conditions-summary-value"
+                          id="no-location-summary"
+                        ></div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <div class="container-chart-map" id="container-map"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-lg-12">
+                  <div
+                    class="alert alert-info"
+                    id="conditions-definitions"
+                    style="display: none"
+                  ></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div
+                    class="alert alert-info"
+                    id="no-location-info"
+                    style="display: none"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="mrgn-tp-lg"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <details>
+                  <summary>Source and Description</summary>
+                  <p>
+                    <strong>Data Source: </strong
+                    ><a
+                      href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70"
+                      target="_blank"
+                      rel="external"
+                      >Open Government</a
+                    >
+                  </p>
+                  <p><strong>Description: </strong>Coming Soon!</p>
+                </details>
+              </div>
+              <div class="col-md-12">
+                <p>
+                  Open data can be freely used and shared by anyone for any
+                  purpose. The
+                  <a
+                    href="http://www.cer-rec.gc.ca/open/conditions/conditions.csv"
+                    target="_blank"
+                    rel="external"
+                    >data for these graphs are available</a
+                  >.
+                </p>
+                <p>
+                  Have you checked out the CER's
+                  <a
+                    href="https://apps2.cer-rec.gc.ca/conditions/"
+                    target="_blank"
+                    rel="external"
+                    >interactive conditions data visualization</a
+                  >? This tool offers a deep dive into the CER's conditions
+                  compliance data and process, exploring conditions across all
+                  CER regulated companies by keyword, project, and location.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pipeline-incidents" class="profile-section tabcontent">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Pipeline Incidents</h2>
+            <p class="small">Section updated February 2021</p>
+            <p>
+              The information presented here is based on CER data from 2008 to
+              current for incidents reported under the
+              <a
+                href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"
+                target="_blank"
+                >Onshore Pipeline Regulations</a
+              >
+              and the
+              <a
+                href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html"
+                target="_blank"
+                >Processing Plant Regulations</a
+              >. New data is added quarterly.
+              <a
+                href="https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/infographic/index.html"
+                target="_blank"
+                >Learn more</a
+              >
+              on how incident data collection has evolved since the NEB (now the
+              CER) was established in 1959.
+            </p>
+            <p>
+              Companies must report events, such as incidents, to the CER in
+              accordance with the CER
+              <a
+                href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/canada-energy-regulator-event-reporting-guidelines/index.html"
+                >Event Reporting Guidelines</a
+              >. Knowing what happened, and why, helps us find ways to prevent
+              them from happening again.
+            </p>
+            <details>
+              <summary>
+                What is an incident? (Onshore Pipeline Regulations)
+              </summary>
+              <p>
+                As defined in the OPR, “incident” means an occurrence that
+                results in:
+              </p>
+              <ol type="a">
+                <li>the death or serious injury to a person;</li>
+                <li>a significant adverse effect on the environment;</li>
+                <li>an unintended fire or explosion;</li>
+                <li>
+                  an unintended or uncontained release of low vapour pressure
+                  (LVP) hydrocarbons in excess of 1.5 m³;
+                </li>
+                <li>
+                  an unintended or uncontrolled release of gas or high vapour
+                  pressure (HVP) hydrocarbons;
+                </li>
+                <li>
+                  the operation of a pipeline beyond its design limits as
+                  determined under CSA Z662 or CSA Z276 or any operating limits
+                  imposed by the CER.
+                </li>
+              </ol>
+            </details>
+            <details>
+              <summary>
+                What is an incident? (Processing Plant Regulations)
+              </summary>
+              <p>
+                As defined in the PPR, “incident” is defined as an occurrence
+                that results or could result in a significant adverse effect on
+                property, the environment, or the safety of persons. For the
+                purposes of incident reporting in the PPR, events that fall
+                under this definition include, but are not limited to:
+              </p>
+              <ol type="a">
+                <li>the death or serious injury to a person;</li>
+                <li>a significant adverse effect on the environment;</li>
+                <li>
+                  an unintended fire or explosion that results in or has the
+                  potential to result in damage to company, public/ crown or
+                  personal property;
+                </li>
+                <li>
+                  an unintended or uncontained release of low vapour pressure
+                  (LVP) hydrocarbons in excess of 1.5 m³;
+                </li>
+                <li>
+                  an unintended or uncontrolled release of gas, HVP
+                  hydrocarbons, hydrogen sulfide or other poisonous gas; or
+                </li>
+                <li>
+                  the operation of a plant beyond its design limits or any
+                  limits imposed by the CER.
+                </li>
+              </ol>
+            </details>
+            <details>
+              <summary>Incidents and the CER</summary>
+              <p>
+                Companies self-report incidents and are expected to take a
+                precautionary approach in doing so. This means that even when
+                there is doubt as to whether an incident should be reported, the
+                company must report it. The approach is, “When in doubt,
+                report.” This is consistent with CER-regulated companies’
+                responsibility for anticipating, preventing, mitigating and
+                managing incidents of any size or duration.
+              </p>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <p>
+                    The CER reviews all reported incidents to assess whether
+                    companies have taken the appropriate corrective actions and
+                    to identify potential trends in incidents. Each incident is
+                    given a status indicating the current stage of the CER's
+                    incident investigation.
+                  </p>
+                </div>
+                <div class="col-md-9">
+                  <section class="panel panel-default">
+                    <header class="panel-heading">
+                      <h5 class="panel-title">CER Status</h5>
+                    </header>
+                    <div class="panel-body">
+                      <ul>
+                        <li>
+                          <b>Initially Submitted:</b> The company has notified
+                          the CER that an incident has occurred and provided
+                          preliminary information. An investigation is has been
+                          initiated.
+                        </li>
+                        <li>
+                          <b>Submitted:</b> The company has submitted all of the
+                          required information and the CER is reviewing the
+                          incident.
+                        </li>
+                        <li>
+                          <b>Closed:</b> The CER’s incident review has been
+                          completed and the file is closed.
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </details>
+            <div class="mrgn-tp-md"></div>
+            <div id="system-incidents-paragraph"></div>
+            <details>
+              <summary>
+                Incident Type Definitions:
+                <i>one incident can have multiple types</i>
+              </summary>
+              <ul>
+                <li>
+                  <p>
+                    <strong
+                      >Release of Substance (featured in the dashboard)</strong
+                    >
+                    - Any time a product is unintentionally released. (Releases
+                    of non-gas low pressure products in volumes of less than 1.5
+                    cubic metres are exempt from reporting.)
+                  </p>
+                </li>
+                <li>
+                  <strong> Environmental Effects</strong> - When any chemical
+                  substance is released at a concentration or volume that has
+                  the potential to change the ambient environment in a manner
+                  that would cause harm to human life, wildlife or vegetation
+                  (e.g., glycol, potassium carbonate, methanol, methanol mix
+                  from hydrostatic testing, etc.).
+                </li>
+                <li>
+                  <p><strong>Explosion</strong> - An unintended explosion</p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Fatality</strong> - Any death involving employees,
+                    contractors or members of the public related to the
+                    construction, operation, maintenance or abandonment of
+                    pipelines
+                  </p>
+                </li>
+                <li>
+                  <p><strong>Fire</strong> - An unintended fire</p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Operation Beyond Design Limits</strong> Includes
+                    situations, such as:
+                  </p>
+                  <ul>
+                    <li>
+                      over-pressures - i.e., pressures that are higher than the
+                      maximum the equipment was designed to safely handle;
+                    </li>
+                    <li>vibration beyond design limits;</li>
+                    <li>
+                      slope movements causing movement in the pipeline beyond
+                      design limits;
+                    </li>
+                    <li>pipe exposures in rivers or streams; and</li>
+                    <li>
+                      introduction of an inappropriate product (e.g., sour gas
+                      in excess of CSA limits)
+                    </li>
+                  </ul>
+
+                  <p>
+                    Operation beyond design limit is typically linked to an
+                    over-pressure of the product in the pipe; however, if a pipe
+                    was exposed to excessive vibration and was not designed for
+                    this, this could be considered operation beyond design
+                    limits. Operation beyond design limits does not include
+                    equipment contacting the pipe, or corrosion pits, etc.
+                  </p>
+                </li>
+                <li>
+                  <strong
+                    >Serious Injury (CER or Transportation Safety Board)</strong
+                  >
+                  - Any serious injury involving employees, contractors or
+                  members of the public related to the construction, operation
+                  or maintenance of pipelines.
+                </li>
+              </ul>
+            </details>
+          </div>
+        </div>
+        <div class="mrgn-tp-lg"></div>
+
+        <div class="dashboard" id="incidents-dashboard">
+          <div class="dashboard-title">
+            Dashboard: Pipeline Incidents With A Product Release
+          </div>
+
+          <div
+            id="inline_content"
+            class="radio-inline"
+            style="float: left; margin-top: 3px"
+          >
+            <form>
+              <label for="incident-count-btn" class="radio-inline">
+                <input
+                  id="incident-count-btn"
+                  type="radio"
+                  name="type"
+                  value="frequency"
+                  checked="checked"
+                />
+                Incident Count</label
+              >
+              <label for="incident-volume-btn" class="radio-inline">
+                <input
+                  id="incident-volume-btn"
+                  type="radio"
+                  name="type"
+                  value="volume"
+                />
+                Incident Volume</label
+              >
+            </form>
+          </div>
+
+          <div class="row">
+            <div class="mrgn-tp-xl"></div>
+            <div class="col-md-12">
+              <div
+                class="btn-group btn-group-justified"
+                id="incident-view-type"
+              >
+                <div class="btn-group btn-incident-view-type">
+                  <button
+                    type="button"
+                    class="btn btn-default active"
+                    value="map"
+                  >
+                    Incident Map
+                  </button>
+                </div>
+                <div class="btn-group btn-incident-view-type">
+                  <button type="button" class="btn btn-default" value="trends">
+                    Incident Trends
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mrgn-tp-md"></div>
+          <div class="row">
+            <div class="col-md-8">
+              <div id="incident-map"></div>
+            </div>
+            <div class="col-md-4 event-navigator">
+              <div class="event-filter-nav" id="substance-bar"></div>
+              <div class="mrgn-tp-sm"></div>
+              <div class="event-filter-nav" id="status-bar"></div>
+              <div class="mrgn-tp-sm"></div>
+              <div class="event-filter-nav" id="year-bar"></div>
+              <div class="mrgn-tp-sm"></div>
+              <div class="event-filter-nav" id="province-bar"></div>
+            </div>
+          </div>
+
+          <div id="time-series-section" style="display: none">
+            <div class="row">
+              <div class="col-md-9">
+                <div id="time-series"></div>
+              </div>
+              <div class="col-md-3">
+                <div class="event-filter-nav" id="substance-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="status-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="what-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="why-trend"></div>
+                <div class="mrgn-tp-sm"></div>
+                <div class="event-filter-nav" id="province-trend"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="alert alert-info" id="trend-definitions"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mrgn-tp-md"></div>
+          <section class="panel panel-info" id="nearby-incidents-popup">
+            <header class="panel-heading">
+              <h5 class="panel-title">Are there any incidents near me?</h5>
+            </header>
+            <div class="panel-body incidents-near-me">
+              <div class="row" style="margin: 0px">
+                <div class="col-md-12 cerlabel" id="find-incidents-title">
+                  Select Range (100km):
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 center-stuff">
+                  <input
+                    name="html5shim-1"
+                    id="incident-range-slide"
+                    type="range"
+                    min="0"
+                    max="200"
+                    step="1"
+                    value="100"
+                  />
+                </div>
+                <div class="col-md-3 center-stuff">
+                  <button
+                    type="button"
+                    value="100"
+                    style="width: 230px"
+                    id="find-incidents-btn"
+                    class="btn btn-default"
+                  >
+                    Find Incidents within 100km
+                  </button>
+                </div>
+                <div class="col-md-3 center-stuff">
+                  <button
+                    type="button"
+                    id="reset-incidents-btn"
+                    style="width: 230px"
+                    class="btn btn-default"
+                    disabled="disabled"
+                  >
+                    Refill Map Bubbles
+                  </button>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 25px; margin-bottom: -15px">
+                <div
+                  class="col-md-12"
+                  id="nearby-flag"
+                  style="margin-bottom: -15px"
+                ></div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <details>
+              <summary>Source and Description</summary>
+              <p>
+                <strong>Data Source: </strong
+                ><a
+                  href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1"
+                  target="_blank"
+                  rel="external"
+                  >Open Government</a
+                >
+              </p>
+              <p><strong>Description:</strong> Coming Soon!</p>
+            </details>
+          </div>
+          <div class="col-md-12">
+            <p>
+              Open data can be freely used and shared by anyone for any purpose.
+              The
+              <a
+                href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6"
+                target="_blank"
+                rel="external"
+                >data for these graphs are available</a
+              >.
+            </p>
+            <p>
+              Have you checked out the CER's
+              <a
+                href="https://apps2.cer-rec.gc.ca/pipeline-incidents/"
+                target="_blank"
+                rel="external"
+                >interactive incident data visualization</a
+              >? This tool offers a deep dive into the CER's incident data
+              trends, exploring incidents across all CER regulated companies.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contaminated-sites" class="profile-section tabcontent"></div>
+    <div id="o&m-activities" class="profile-section tabcontent"></div>
+    <div id="unauthorized-activities" class="profile-section tabcontent"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script>
+      function openTab(evt, sectionName) {
+        var i, tabcontent, tablinks;
+        $(".profile-section").hide();
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        //$("." + sectionName).show();
+        document.getElementById(sectionName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      document.addEventListener("DOMContentLoaded", function (event) {
+        document.getElementById("defaultClick").click();
+      });
+    </script>
+    <script src="../../GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <!-- highcharts -->
+    <script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
+    <script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>
+    <script src="https://code.highcharts.com/8.2.2/modules/annotations.js"></script>
+    <script src="https://code.highcharts.com/8.2.2/modules/no-data-to-display.js"></script>
+    <!-- leaflet -->
+    <link
+      rel="preload"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      as="style"
+      onload="this.onload-null;this.rel='stylesheet'"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""
+      />
+    </noscript>
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+  </body>
+</html>

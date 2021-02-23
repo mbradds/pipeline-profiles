@@ -3,7 +3,7 @@ export const generateDynamicIncidentText = (meta) => {
   let paragraphText = `<p>`;
 
   const dynamicValue = (val) => {
-    return `<i class="profile-text-value"><strong>${val}</strong></i>`;
+    return `<i class="bg-primary" style="font-style: normal"><strong>&nbsp${val}&nbsp</strong></i>`;
   };
 
   const postWord = (val, type) => {
