@@ -22,6 +22,23 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <!-- leaflet css -->
+    <link
+      rel="preload"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      as="style"
+      onload="this.onload-null;this.rel='stylesheet'"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""
+      />
+    </noscript>
     <link rel="stylesheet" href="../../styles.css" />
     <link rel="stylesheet" href="../../GCWeb/css/theme.min.css" />
     <link rel="stylesheet" href="../../GCWeb/css/gcwu.custom.css" />
@@ -30,7 +47,14 @@
     /></noscript>
   <script defer src="../../js/en/keystone.js"></script></head>
   <body>
-    <div id="ie-warning"></div>
+    <!-- warn CER users about internet explorer -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="ie-warning"></div>
+        </div>
+      </div>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -790,22 +814,6 @@
     <script src="https://code.highcharts.com/8.2.2/modules/annotations.js"></script>
     <script src="https://code.highcharts.com/8.2.2/modules/no-data-to-display.js"></script>
     <!-- leaflet -->
-    <link
-      rel="preload"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      as="style"
-      onload="this.onload-null;this.rel='stylesheet'"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""
-      />
-    </noscript>
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
