@@ -48,8 +48,7 @@ def conditions_on_map(df, shp, folder_name):
     for numericCol in ['In Progress', 'Closed']:
         if numericCol in shp.columns:
             shp[numericCol] = shp[numericCol].fillna(0)
-    # export_files(shp, folder="../conditions/"+folder_name, name='economicRegions.json')
-    # saveJson(df, os.path.join('../conditions/'+folder_name, 'mapMetadata.json'))
+
     df = df.fillna(0)
     return shp, df
 
@@ -76,7 +75,7 @@ def conditionMetaData(df, folder_name):
     meta = {}
 
     # get the summary stats for the boxes above the map
-    status = df[['condition id', 'Condition Status', 'Location']].copy()
+    status = df[['condition id', 'Condition Status', 'Location']].copy().reset_index(drop=True)
     status = status[status['Location'] != 'nan']
     del status['Location']
     status = status.drop_duplicates(subset=['condition id'])
@@ -106,10 +105,10 @@ def conditionMetaData(df, folder_name):
     meta['summary'] = status
 
     # once the status summary is calculated, blank locations and null locations can be removed
-    df = df[df['Location'] != "nan"]
+    df = df[df['Location'] != "nan"].copy().reset_index(drop=True)
 
     # get the unique project names sorted by number of open conditions
-    project = df[['condition id', 'Short Project Name', 'id', 'Condition Status', 'Regdocs']].copy()
+    project = df[['condition id', 'Short Project Name', 'id', 'Condition Status', 'Regdocs']].copy().reset_index(drop=True)
     project['Regdocs'] = project['Regdocs'].astype('object')
     project['Regdocs'] = project['Regdocs'].fillna('noRegdocs')
     project = project.groupby(['Short Project Name', 'id', 'Condition Status', 'Regdocs']).size().reset_index()
@@ -129,7 +128,7 @@ def conditionMetaData(df, folder_name):
     meta['projects'] = project
 
     # get the unique project themes sorted by number of open conditions
-    theme = df[['condition id', 'Theme(s)', 'id', 'Condition Status']].copy()
+    theme = df[['condition id', 'Theme(s)', 'id', 'Condition Status']].copy().reset_index(drop=True)
     theme = theme.groupby(['Theme(s)', 'id', 'Condition Status']).size().reset_index()
     theme = pd.pivot_table(theme,
                            values=0,
@@ -141,9 +140,6 @@ def conditionMetaData(df, folder_name):
     theme = convert_to_int(theme)
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
-    # save the metadata
-    # with open('../conditions/'+folder_name+'/summaryMetadata.json', 'w') as fp:
-    #     json.dump(meta, fp)
 
     df_all = df.copy()
     del df_all['Location']
@@ -166,7 +162,7 @@ def conditionMetaData(df, folder_name):
     return df_all, meta
 
 
-def process_conditions(remote=False, nonStandard=True, company_names=False):
+def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False):
 
     def add_links(df_c, df_links):
         l = {}
@@ -192,11 +188,12 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
                          error_bad_lines=False)
     else:
         print('reading local file')
-        df = pd.read_csv("./raw_data/conditions.csv",
-                         sep='\t',
-                         lineterminator='\r',
-                         encoding="UTF-16",
-                         error_bad_lines=False)
+        # df = pd.read_csv("./raw_data/conditions.csv",
+        #                  sep='\t',
+        #                  lineterminator='\r',
+        #                  encoding="UTF-16",
+        #                  error_bad_lines=False)
+        df = pd.read_csv('./raw_data/conditions.csv', encoding="UTF-16", sep='\t')
 
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
@@ -217,11 +214,13 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
 
     for r in ['\n', '"']:
         df['Company'] = df['Company'].replace(r, '', regex=True)
-
+    df['Company'] = [x.strip() for x in df['Company']]
+    df['Condition Status'] = df['Condition Status'].astype('object')
+    df['Condition Status'] = [str(x).strip() for x in df['Condition Status']]
     # preliminary processing
     df['Company'] = df['Company'].replace(company_rename())
 
-    df = df[df['Short Project Name'] != "SAM/COM"]
+    df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
     df['Theme(s)'] = df['Theme(s)'].replace({"nan":
                                              "No theme specified"})
 
@@ -230,43 +229,44 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
     if company_names:
         print(get_company_names(df['Company']))
 
-    company_files = ['NOVA Gas Transmission Ltd.',
-                     'TransCanada PipeLines Limited',
-                     'Enbridge Pipelines Inc.',
-                     'Enbridge Pipelines (NW) Inc.',
-                     'Express Pipeline Ltd.',
-                     'Trans Mountain Pipeline ULC',
-                     'Trans Quebec and Maritimes Pipeline Inc.',
-                     'Trans-Northern Pipelines Inc.',
-                     'TransCanada Keystone Pipeline GP Ltd.',
-                     'Westcoast Energy Inc.',
-                     'Alliance Pipeline Ltd.',
-                     'PKM Cochin ULC',
-                     'Foothills Pipe Lines Ltd.',
-                     'Southern Lights Pipeline',
-                     'Emera Brunswick Pipeline Company Ltd.',
-                     'Many Islands Pipe Lines (Canada) Limited',
-                     'Maritimes & Northeast Pipeline Management Ltd.',
-                     'Vector Pipeline Limited Partnership',
-                     'Plains Midstream Canada ULC',
-                     'Enbridge Bakken Pipeline Company Inc.',
-                     'Genesis Pipeline Canada Ltd.',
-                     'Montreal Pipe Line Limited',
-                     'Kingston Midstream Westspur Limited']
-
-    #company_files = ['Trans-Northern Pipelines Inc.']
+    if companies:  # used to set one company for testing
+        company_files = companies
+    else:
+        company_files = ['NOVA Gas Transmission Ltd.',
+                         'TransCanada PipeLines Limited',
+                         'Enbridge Pipelines Inc.',
+                         'Enbridge Pipelines (NW) Inc.',
+                         'Express Pipeline Ltd.',
+                         'Trans Mountain Pipeline ULC',
+                         'Trans Quebec and Maritimes Pipeline Inc.',
+                         'Trans-Northern Pipelines Inc.',
+                         'TransCanada Keystone Pipeline GP Ltd.',
+                         'Westcoast Energy Inc.',
+                         'Alliance Pipeline Ltd.',
+                         'PKM Cochin ULC',
+                         'Foothills Pipe Lines Ltd.',
+                         'Southern Lights Pipeline',
+                         'Emera Brunswick Pipeline Company Ltd.',
+                         'Many Islands Pipe Lines (Canada) Limited',
+                         'Maritimes & Northeast Pipeline Management Ltd.',
+                         'Vector Pipeline Limited Partnership',
+                         'Plains Midstream Canada ULC',
+                         'Enbridge Bakken Pipeline Company Inc.',
+                         'Genesis Pipeline Canada Ltd.',
+                         'Montreal Pipe Line Limited',
+                         'Kingston Midstream Westspur Limited']
 
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
 
-        df_c = df[df['Company'] == company].copy()
+        df_c = df[df['Company'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
             df_c = add_links(df_c, links)
             df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
             expanded_locations = []
             for unique in df_c['condition id']:
-                row = df_c[df_c['condition id'] == unique].copy()
+                row = df_c[df_c['condition id'] == unique].copy().reset_index(drop=True)
                 locations = [x.split(',') for x in row['Location']]
                 for region in locations[0]:
                     regionProvince = region.strip().split('/')
@@ -285,17 +285,22 @@ def process_conditions(remote=False, nonStandard=True, company_names=False):
             with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp)
         else:
+            meta = {"companyName": company}
             thisCompanyData = {'meta': {"companyName": company},
                                'regions': "{}",
                                'mapMeta': []}
 
             with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp)
+        print('completed conditions: '+company)
 
-    return shp, dfmeta
+    return df_c, shp, dfmeta, meta
 
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, meta = process_conditions(remote=False, company_names=False)
+    # df = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'])
+    df, regions, mapMeta, meta = process_conditions(remote=False)
     print('completed conditions!')
+
+#%%

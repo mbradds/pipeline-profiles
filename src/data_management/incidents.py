@@ -1,11 +1,9 @@
 import pandas as pd
 import numpy as np
-from util import saveJson, get_company_names, company_rename
+from util import get_company_names, company_rename
 import ssl
-import os
 import json
 import geopandas as gpd
-from statistics import mean
 from math import radians, cos, sin, asin, sqrt
 ssl._create_default_https_context = ssl._create_unverified_context
 web_mercator = "EPSG:3857"
@@ -103,16 +101,14 @@ def incidentsPerKm(dfAll):
     for delete in ['Company Name', 'Regulated KM', 'PipelineID']:
         del dfAll[delete]
     dfAll['Incidents per 1000km'] = [round((i/l)*1000, 0) for i, l in zip(dfAll['Incident Count'], dfAll['Regulated KM Rounded'])]
-    avgPer = {}
-    for product, per in zip(dfAll['Commodity'], dfAll['Incidents per 1000km']):
-        if product in avgPer.keys():
-            avgPer[product].append(per)
-        else:
-            avgPer[product] = [per]
-    for product, avgList in avgPer.items():
-        avgPer[product] = mean(avgList)
 
-    dfAll['Avg per 1000km'] = [round(avgPer[product], 0) for product in dfAll['Commodity']]
+    # find the average incident per 1000km per group
+    dfAvg = dfAll.copy()
+    dfAvg = dfAvg.groupby(['Commodity'])['Incidents per 1000km'].mean().reset_index()
+    dfAvg = dfAvg.rename(columns={'Incidents per 1000km': 'Avg per 1000km'})
+    # merge the average with the company results
+    dfAll = dfAll.merge(dfAvg, how='inner', left_on='Commodity', right_on='Commodity')
+    dfAll['Avg per 1000km'] = dfAll['Avg per 1000km'].round(0)
     return dfAll
 
 
@@ -178,7 +174,7 @@ def incidentMetaData(df, dfPerKm, company):
     return meta
 
 
-def process_incidents(remote=False, land=False, company_names=False):
+def process_incidents(remote=False, land=False, company_names=False, companies=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
         print('downloading remote file')
@@ -240,78 +236,76 @@ def process_incidents(remote=False, land=False, company_names=False):
 
     perKm = incidentsPerKm(df)
 
-    company_files = ['NOVA Gas Transmission Ltd.',
-                     'TransCanada PipeLines Limited',
-                     'Enbridge Pipelines Inc.',
-                     'Enbridge Pipelines (NW) Inc.',
-                     'Enbridge Bakken Pipeline Company Inc.',
-                     'Express Pipeline Ltd.',
-                     'Trans Mountain Pipeline ULC',
-                     'Trans Quebec and Maritimes Pipeline Inc.',
-                     'Trans-Northern Pipelines Inc.',
-                     'TransCanada Keystone Pipeline GP Ltd.',
-                     'Westcoast Energy Inc.',
-                     'Alliance Pipeline Ltd.',
-                     'PKM Cochin ULC',
-                     'Foothills Pipe Lines Ltd.',
-                     'Southern Lights Pipeline',
-                     'Emera Brunswick Pipeline Company Ltd.',
-                     'Plains Midstream Canada ULC',
-                     'Genesis Pipeline Canada Ltd.',
-                     'Montreal Pipe Line Limited',
-                     'Trans-Northern Pipelines Inc.',
-                     'Kingston Midstream Westspur Limited',
-                     'Many Islands Pipe Lines (Canada) Limited',
-                     'Vector Pipeline Limited Partnership',
-                     'Maritimes & Northeast Pipeline Management Ltd.']
+    if companies:
+        company_files = companies
+    else:
+        company_files = ['NOVA Gas Transmission Ltd.',
+                         'TransCanada PipeLines Limited',
+                         'Enbridge Pipelines Inc.',
+                         'Enbridge Pipelines (NW) Inc.',
+                         'Enbridge Bakken Pipeline Company Inc.',
+                         'Express Pipeline Ltd.',
+                         'Trans Mountain Pipeline ULC',
+                         'Trans Quebec and Maritimes Pipeline Inc.',
+                         'Trans-Northern Pipelines Inc.',
+                         'TransCanada Keystone Pipeline GP Ltd.',
+                         'Westcoast Energy Inc.',
+                         'Alliance Pipeline Ltd.',
+                         'PKM Cochin ULC',
+                         'Foothills Pipe Lines Ltd.',
+                         'Southern Lights Pipeline',
+                         'Emera Brunswick Pipeline Company Ltd.',
+                         'Plains Midstream Canada ULC',
+                         'Genesis Pipeline Canada Ltd.',
+                         'Montreal Pipe Line Limited',
+                         'Trans-Northern Pipelines Inc.',
+                         'Kingston Midstream Westspur Limited',
+                         'Many Islands Pipe Lines (Canada) Limited',
+                         'Vector Pipeline Limited Partnership',
+                         'Maritimes & Northeast Pipeline Management Ltd.']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
-        # if not os.path.exists("../incidents/"+folder_name):
-        #     os.makedirs("../incidents/"+folder_name)
-
-        df_c = df[df['Company'] == company].copy()
-        df_c = df_c[~df_c['Approximate Volume Released'].isnull()]
+        df_c = df[df['Company'] == company].copy().reset_index(drop=True)
+        df_vol = df_c[~df_c['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
         thisCompanyData = {}
-        if not df_c.empty:
+        if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
             meta = incidentMetaData(df, perKm, company)
             thisCompanyData['meta'] = meta
-            del df_c['Incident Types']
-            del df_c['Company']
+            del df_vol['Incident Types']
+            del df_vol['Company']
             if land:
-                on_land = events_on_land(df_c)
-                df_c = events_near_land(df_c)
-                df_c['landProximityCategory'] = df_c['landProximityCategory'].fillna(3)
-                df_c['landProximityCategory'] = df_c['landProximityCategory'].replace({0: "within 10 km",
-                                                                                       1: "within 40 km",
-                                                                                       3: "no proximity"})
+                on_land = events_on_land(df_vol)
+                df_vol = events_near_land(df_vol)
+                df_vol['landProximityCategory'] = df_vol['landProximityCategory'].fillna(3)
+                df_vol['landProximityCategory'] = df_vol['landProximityCategory'].replace({0: "within 10 km",
+                                                                                           1: "within 40 km",
+                                                                                           3: "no proximity"})
                 if len(on_land) > 0:
                     for location in on_land:
-                        df_c.loc[df_c["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
-                        df_c.loc[df_c["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
+                        df_vol.loc[df_vol["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
+                        df_vol.loc[df_vol["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
 
-                df_c = df_c.rename(columns={'landProximityCategory':
-                                            'First Nations Proximity'})
+                df_vol = df_vol.rename(columns={'landProximityCategory':
+                                                'First Nations Proximity'})
 
-            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            thisCompanyData['events'] = df_vol.to_dict(orient='records')
             with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
-            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            thisCompanyData['events'] = df_vol.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp)
 
-    return df_c, meta
+    return df_c, df_vol, meta, perKm
 
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, meta = process_incidents(remote=False, company_names=False)
-    # df = process_incidents(remote=False, company_names=False)
-    # df = incidentsPerKm()
+    df, volume, meta, perKm = process_incidents(remote=False)
     print('completed incidents!')
 
 #%%
