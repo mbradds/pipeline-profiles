@@ -1,4 +1,3 @@
-console.time(`chart loading`);
 import { generalTheme } from "../../modules/themes.js";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";

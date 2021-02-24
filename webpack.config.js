@@ -26,11 +26,17 @@ function generateHtmlPlugins() {
     "norman_wells",
     "express_pipeline",
     "trans_northern",
+    "genesis",
+    "montreal",
+    "westspur",
+    "aurora",
+    "milk_river",
+    "wascana",
   ];
   return htmlFileNames.map((name) => {
     return new HtmlWebpackPlugin({
       filename: `en/${name}/${name}.html`,
-      chunks: [`en/${name}/${name}`],
+      chunks: [`en/${name}/${name}`, `en/${name}/incidents`],
       template: "src/profile_en.html",
       publicPath: "../..",
       minify: false,
@@ -69,6 +75,12 @@ module.exports = {
       "./src/index_files/en/express_pipeline.js",
     "en/trans_northern/trans_northern":
       "./src/index_files/en/trans_northern.js",
+    "en/genesis/genesis": "./src/index_files/en/genesis.js",
+    "en/montreal/montreal": "./src/index_files/en/montreal.js",
+    "en/westspur/westspur": "./src/index_files/en/westspur.js",
+    "en/aurora/aurora": "./src/index_files/en/plains.js",
+    "en/milk_river/milk_river": "./src/index_files/en/plains.js",
+    "en/wascana/wascana": "./src/index_files/en/plains.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -82,15 +94,6 @@ module.exports = {
   },
 
   plugins: generateHtmlPlugins(),
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     filename: `en/ngtl/ngtl.html`,
-  //     chunks: [`ngtl/ngtl.js`, `ngtl/incidents.js`],
-  //     template: "./src/profile_en.html",
-  //     publicPath: "../..",
-  //     minify: false,
-  //   }),
-  // ],
 
   module: {
     rules: [

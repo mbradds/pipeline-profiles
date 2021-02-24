@@ -13,14 +13,6 @@ import { englishDashboard } from "../../modules/langEnglish.js";
 import { loadAllCharts } from "../loadDashboards.js";
 generalTheme();
 
-// async function getIncidents() {
-//   const mod = await import(
-//     /* webpackPrefetch: true */ /* webpackChunkName: "/en/ngtl/incidents" */ "./ngtl_incidents.js"
-//   );
-//   const modReturn = mod.modTest(loadAllCharts, englishDashboard);
-// }
-// getIncidents();
-
 const arrayOfCharts = [
   mainConditions(
     JSON.parse(conditionsData.regions),

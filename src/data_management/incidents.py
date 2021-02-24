@@ -202,7 +202,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         None
 
     # initial data processing
-    df = df[df['Company'] != 'Plains Midstream Canada ULC']
+    #df = df[df['Company'] != 'Plains Midstream Canada ULC']
     # TODO: plains midstream isnt broken down into its seperate pipes...
     df['Company'] = df['Company'].replace(company_rename())
 
@@ -305,7 +305,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta, perKm = process_incidents(remote=False)
+    df, volume, meta, perKm = process_incidents(remote=False, companies=['Plains Midstream Canada ULC'])
     print('completed incidents!')
 
 #%%

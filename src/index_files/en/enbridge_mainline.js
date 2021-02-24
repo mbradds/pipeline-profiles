@@ -1,4 +1,4 @@
-console.time(`chart loading`);
+console.time(`first content loading`);
 import { generalTheme } from "../../modules/themes.js";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";
@@ -28,4 +28,6 @@ const arrayOfCharts = [
   ),
 ];
 
-loadAllCharts(arrayOfCharts);
+loadAllCharts(arrayOfCharts).then((value) => {
+  console.timeEnd("first content loading");
+});

@@ -1,4 +1,6 @@
 export const englishDashboard = {
+  plains:
+    "Plains Midstream Canada ULC includes the Aurora, Milk River, and Wascana pipelines",
   conditions: {
     conditions: "conditions",
     noLocation: {
