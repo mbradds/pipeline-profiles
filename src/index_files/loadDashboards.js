@@ -9,7 +9,5 @@ let warningParams = {
 justWhy.ieWarn(warningParams);
 
 export async function loadAllCharts(arrayOfCharts) {
-  Promise.allSettled(arrayOfCharts).then((value) => {
-    console.timeEnd(`chart loading`);
-  });
+  return Promise.allSettled(arrayOfCharts);
 }
