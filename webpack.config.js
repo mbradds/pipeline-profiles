@@ -5,38 +5,38 @@ const TerserPlugin = require("terser-webpack-plugin");
 //   .BundleAnalyzerPlugin;
 
 // deal with multiple html files
-// function generateHtmlPlugins() {
-//   const htmlFileNames = [
-//     "ngtl.html",
-//     "enbridge_mainline.html",
-//     "tcpl.html",
-//     "keystone.html",
-//     "trans_mountain.html",
-//     "alliance.html",
-//     "cochin.html",
-//     "westcoast.html",
-//     "emera_brunswick.html",
-//     "southern_lights.html",
-//     "foothills.html",
-//     "many_islands.html",
-//     "maritimes_northeast.html",
-//     "tqm.html",
-//     "vector.html",
-//     "bakken.html",
-//     "norman_wells.html",
-//     "express_pipeline.html",
-//     "trans_northern.html",
-//   ];
-//   return htmlFileNames.map((name) => {
-//     return new HtmlWebpackPlugin({
-//       filename: `html/en/${name}`,
-//       chunks: [`js/en/${name.split(".")[0]}`],
-//       template: "src/profile_en.html",
-//       publicPath: "../..",
-//       minify: false,
-//     });
-//   });
-// }
+function generateHtmlPlugins() {
+  const htmlFileNames = [
+    "ngtl",
+    "enbridge_mainline",
+    "tcpl",
+    "keystone",
+    "trans_mountain",
+    "alliance",
+    "cochin",
+    "westcoast",
+    "emera_brunswick",
+    "southern_lights",
+    "foothills",
+    "many_islands",
+    "maritimes_northeast",
+    "tqm",
+    "vector",
+    "bakken",
+    "norman_wells",
+    "express_pipeline",
+    "trans_northern",
+  ];
+  return htmlFileNames.map((name) => {
+    return new HtmlWebpackPlugin({
+      filename: `en/${name}/${name}.html`,
+      chunks: [`en/${name}/${name}`],
+      template: "src/profile_en.html",
+      publicPath: "../..",
+      minify: false,
+    });
+  });
+}
 
 module.exports = {
   // mode: "development",
@@ -44,24 +44,31 @@ module.exports = {
   target: "web",
   entry: {
     "en/ngtl/ngtl": "./src/index_files/en/ngtl.js",
-    // "js/en/tcpl": "./src/index_files/en/tcpl.js",
-    // "js/en/enbridge_mainline": "./src/index_files/en/enbridge_mainline.js",
-    // "js/en/keystone": "./src/index_files/en/keystone.js",
-    // "js/en/trans_mountain": "./src/index_files/en/trans_mountain.js",
-    // "js/en/alliance": "./src/index_files/en/alliance.js",
-    // "js/en/cochin": "./src/index_files/en/cochin.js",
-    // "js/en/westcoast": "./src/index_files/en/westcoast.js",
-    // "js/en/emera_brunswick": "./src/index_files/en/emera_brunswick.js",
-    // "js/en/southern_lights": "./src/index_files/en/southern_lights.js",
-    // "js/en/foothills": "./src/index_files/en/foothills.js",
-    // "js/en/many_islands": "./src/index_files/en/many_islands.js",
-    // "js/en/maritimes_northeast": "./src/index_files/en/maritimes_northeast.js",
-    // "js/en/tqm": "./src/index_files/en/tqm.js",
-    // "js/en/vector": "./src/index_files/en/vector.js",
-    // "js/en/bakken": "./src/index_files/en/bakken.js",
-    // "js/en/norman_wells": "./src/index_files/en/norman_wells.js",
-    // "js/en/express_pipeline": "./src/index_files/en/express_pipeline.js",
-    // "js/en/trans_northern": "./src/index_files/en/trans_northern.js",
+    "en/tcpl/tcpl": "./src/index_files/en/tcpl.js",
+    "en/enbridge_mainline/enbridge_mainline":
+      "./src/index_files/en/enbridge_mainline.js",
+    "en/keystone/keystone": "./src/index_files/en/keystone.js",
+    "en/trans_mountain/trans_mountain":
+      "./src/index_files/en/trans_mountain.js",
+    "en/alliance/alliance": "./src/index_files/en/alliance.js",
+    "en/cochin/cochin": "./src/index_files/en/cochin.js",
+    "en/westcoast/westcoast": "./src/index_files/en/westcoast.js",
+    "en/emera_brunswick/emera_brunswick":
+      "./src/index_files/en/emera_brunswick.js",
+    "en/southern_lights/southern_lights":
+      "./src/index_files/en/southern_lights.js",
+    "en/foothills/foothills": "./src/index_files/en/foothills.js",
+    "en/many_islands/many_islands": "./src/index_files/en/many_islands.js",
+    "en/maritimes_northeast/maritimes_northeast":
+      "./src/index_files/en/maritimes_northeast.js",
+    "en/tqm/tqm": "./src/index_files/en/tqm.js",
+    "en/vector/vector": "./src/index_files/en/vector.js",
+    "en/bakken/bakken": "./src/index_files/en/bakken.js",
+    "en/norman_wells/norman_wells": "./src/index_files/en/norman_wells.js",
+    "en/express_pipeline/express_pipeline":
+      "./src/index_files/en/express_pipeline.js",
+    "en/trans_northern/trans_northern":
+      "./src/index_files/en/trans_northern.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -74,16 +81,16 @@ module.exports = {
     compress: true,
   },
 
-  //plugins: generateHtmlPlugins(),
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: `en/ngtl/ngtl.html`,
-      chunks: [`ngtl/ngtl.js`, `ngtl/incidents.js`],
-      template: "./src/profile_en.html",
-      publicPath: "../..",
-      minify: false,
-    }),
-  ],
+  plugins: generateHtmlPlugins(),
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     filename: `en/ngtl/ngtl.html`,
+  //     chunks: [`ngtl/ngtl.js`, `ngtl/incidents.js`],
+  //     template: "./src/profile_en.html",
+  //     publicPath: "../..",
+  //     minify: false,
+  //   }),
+  // ],
 
   module: {
     rules: [
