@@ -41,7 +41,7 @@ function generateHtmlPlugins() {
 module.exports = {
   // mode: "development",
   mode: "production",
-  target: "web",
+  target: "es5",
   entry: {
     "en/ngtl/ngtl": "./src/index_files/en/ngtl.js",
     "en/tcpl/tcpl": "./src/index_files/en/tcpl.js",
