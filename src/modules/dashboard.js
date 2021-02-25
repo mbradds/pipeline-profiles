@@ -45,6 +45,8 @@ export class EventMap {
       Manitoba: pa.cerPalette["Ocean"],
       Ontario: pa.cerPalette["Night Sky"],
       Quebec: pa.cerPalette["Flame"],
+      "New Brunswick": pa.cerPalette["Forest"],
+      "Nova Scotia": pa.cerPalette["Night Sky"],
     },
     whyColors: {
       "Standards and Procedures": pa.cerPalette["Flame"],
