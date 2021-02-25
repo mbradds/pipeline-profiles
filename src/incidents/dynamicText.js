@@ -22,6 +22,20 @@ export const generateDynamicIncidentText = (meta) => {
     }
   };
 
+  const companyChange = (val) => {
+    if (val > 0) {
+      return `<i class="text-danger" style="font-style: normal"><strong>increased by ${Math.abs(
+        val
+      )}%&nbsp</strong></i>`;
+    } else if (val < 0) {
+      return `<i class="text-success" style="font-style: normal"><strong>decreased by ${Math.abs(
+        val
+      )}%&nbsp</strong></i>`;
+    } else {
+      return `<i class="text-info" style="font-style: normal"><strong>remained unchanged&nbsp</strong></i>`;
+    }
+  };
+
   //total incidents.
   paragraphText += `${meta.companyName} has reported a total of ${dynamicValue(
     meta.release + meta.nonRelease
@@ -34,17 +48,32 @@ export const generateDynamicIncidentText = (meta) => {
   paragraphText += `</p>`;
 
   //relative percentages compared to other companies
-  paragraphText += `<p>Relative to other CER regulated pipelines, ${
-    meta.companyName
-  } has accounted for approximately ${dynamicValue(
-    meta.relativePct.count + "%"
-  )} of reported incidents. Per 1000 km there have been approximately ${dynamicValue(
-    meta.per1000km.incidentsPerKm
-  )} incidents (all incident types), compared to an average of ${dynamicValue(
-    meta.per1000km.avgPerKm
-  )} for large CER regulated ${meta.per1000km.commodity} pipelines.`;
+  // paragraphText += `<p>Relative to other CER regulated pipelines, ${
+  //   meta.companyName
+  // } has accounted for approximately ${dynamicValue(
+  //   meta.relativePct.count + "%"
+  // )} of reported incidents. Per 1000 km there have been approximately ${dynamicValue(
+  //   meta.per1000km.incidentsPerKm
+  // )} incidents (all incident types), compared to an average of ${dynamicValue(
+  //   meta.per1000km.avgPerKm
+  // )} for large CER regulated ${meta.per1000km.commodity} pipelines.`;
 
-  paragraphText += `</p>`;
+  // paragraphText += `</p>`;
+
+  if (meta.trends.company.hasOwnProperty("pctChange")) {
+    paragraphText += `<p>Relative to incidents reported in ${
+      meta.trends.company.year
+    } \
+    (the last year of full data), product release incidents on this system have ${companyChange(
+      meta.trends.company.pctChange
+    )}compared to the average of the previous five years. Across all CER regulated pipelines, product release incidents have ${companyChange(
+      meta.trends.industry.pctChange
+    )}in ${meta.trends.industry.year} compared to the previous five years.</p>`;
+  } else {
+    paragraphText += `<p>There have been no reported product release incidents on this system since ${dynamicValue(
+      meta.trends.company.noneSince
+    )}.</p>`;
+  }
 
   //most common reasons
   paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
@@ -54,7 +83,7 @@ export const generateDynamicIncidentText = (meta) => {
   )} and the most common <i>why it happened</i> is ${dynamicValue(
     meta.mostCommonWhy
   )}.`;
-  paragraphText += `</p>`;
+  paragraphText += ` Take a look at the <i>Incident Trends</i> section of the dashboard below for definitions and a breakdown of what and why.</p>`;
 
   //other important non-release incident types
   paragraphText += `<p>`;
@@ -73,7 +102,7 @@ export const generateDynamicIncidentText = (meta) => {
   )} ${postWord(
     meta.seriousEvents["Fatality"],
     "fatality"
-  )} related to incident events.`;
+  )} related to incident events. Open the dropdown below to view the definitions of these incident types.`;
   paragraphText += `</p>`;
   paragraph.innerHTML = paragraphText;
 };

@@ -4,8 +4,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 
-// deal with multiple html files
-function generateHtmlPlugins() {
+var profileWebpackConfig = (function () {
   const htmlFileNames = [
     "ngtl",
     "enbridge_mainline",
@@ -33,55 +32,45 @@ function generateHtmlPlugins() {
     "milk_river",
     "wascana",
   ];
-  return htmlFileNames.map((name) => {
-    return new HtmlWebpackPlugin({
-      filename: `en/${name}/${name}.html`,
-      chunks: [`en/${name}/${name}`, `en/${name}/incidents`],
-      template: "src/profile_en.html",
-      publicPath: "../..",
-      minify: false,
+
+  function htmlWebpack() {
+    return htmlFileNames.map((name) => {
+      return new HtmlWebpackPlugin({
+        filename: `en/${name}/${name}.html`,
+        chunks: [`en/${name}/${name}`],
+        template: "src/profile_en.html",
+        publicPath: "../..",
+        minify: false,
+      });
     });
-  });
-}
+  }
+
+  function entry(language = ["en"]) {
+    const entryPoints = {};
+    language.map((lang) => {
+      htmlFileNames.map((name) => {
+        if (["aurora", "milk_river", "wascana"].includes(name)) {
+          var scriptName = "plains";
+        } else {
+          var scriptName = name;
+        }
+        entryPoints[
+          `${lang}/${name}/${name}`
+        ] = `./src/index_files/${lang}/${scriptName}.js`;
+      });
+    });
+
+    return entryPoints;
+  }
+
+  return { htmlWebpack: htmlWebpack, entry: entry };
+})();
 
 module.exports = {
   // mode: "development",
   mode: "production",
   target: "es5",
-  entry: {
-    "en/ngtl/ngtl": "./src/index_files/en/ngtl.js",
-    "en/tcpl/tcpl": "./src/index_files/en/tcpl.js",
-    "en/enbridge_mainline/enbridge_mainline":
-      "./src/index_files/en/enbridge_mainline.js",
-    "en/keystone/keystone": "./src/index_files/en/keystone.js",
-    "en/trans_mountain/trans_mountain":
-      "./src/index_files/en/trans_mountain.js",
-    "en/alliance/alliance": "./src/index_files/en/alliance.js",
-    "en/cochin/cochin": "./src/index_files/en/cochin.js",
-    "en/westcoast/westcoast": "./src/index_files/en/westcoast.js",
-    "en/emera_brunswick/emera_brunswick":
-      "./src/index_files/en/emera_brunswick.js",
-    "en/southern_lights/southern_lights":
-      "./src/index_files/en/southern_lights.js",
-    "en/foothills/foothills": "./src/index_files/en/foothills.js",
-    "en/many_islands/many_islands": "./src/index_files/en/many_islands.js",
-    "en/maritimes_northeast/maritimes_northeast":
-      "./src/index_files/en/maritimes_northeast.js",
-    "en/tqm/tqm": "./src/index_files/en/tqm.js",
-    "en/vector/vector": "./src/index_files/en/vector.js",
-    "en/bakken/bakken": "./src/index_files/en/bakken.js",
-    "en/norman_wells/norman_wells": "./src/index_files/en/norman_wells.js",
-    "en/express_pipeline/express_pipeline":
-      "./src/index_files/en/express_pipeline.js",
-    "en/trans_northern/trans_northern":
-      "./src/index_files/en/trans_northern.js",
-    "en/genesis/genesis": "./src/index_files/en/genesis.js",
-    "en/montreal/montreal": "./src/index_files/en/montreal.js",
-    "en/westspur/westspur": "./src/index_files/en/westspur.js",
-    "en/aurora/aurora": "./src/index_files/en/plains.js",
-    "en/milk_river/milk_river": "./src/index_files/en/plains.js",
-    "en/wascana/wascana": "./src/index_files/en/plains.js",
-  },
+  entry: profileWebpackConfig.entry(["en"]),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -93,7 +82,8 @@ module.exports = {
     compress: true,
   },
 
-  plugins: generateHtmlPlugins(),
+  plugins: profileWebpackConfig.htmlWebpack(),
+  //plugins: generateHtmlPlugins(),
 
   module: {
     rules: [

@@ -8,6 +8,7 @@ from math import radians, cos, sin, asin, sqrt
 ssl._create_default_https_context = ssl._create_unverified_context
 web_mercator = "EPSG:3857"
 canada_geographic = "EPSG:4617"  # https://spatialreference.org/ref/epsg/4617/
+lastFullYear = 2020
 
 
 def haversine(lon1, lat1, lon2, lat2):
@@ -174,6 +175,31 @@ def incidentMetaData(df, dfPerKm, company):
     return meta
 
 
+def changes(df, volume=True):
+    changeMeta = {}
+    trend = df.copy().reset_index(drop=True)
+    if volume:
+        trend = trend[~trend['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
+    trend = trend.groupby(['Year'])['Incident Number'].count()
+    trend = trend.reset_index()
+    trend = trend.sort_values(by='Year')
+    trend = trend.rename(columns={'Incident Number': 'Incident Count'})
+    max_year = max(trend['Year'])
+    # isolate the five year range
+    trend = trend[(trend['Year'] <= lastFullYear) & (trend['Year'] >= lastFullYear-5)]
+    if lastFullYear in list(trend['Year']):
+        recentIncidents = trend[trend['Year'] == lastFullYear].copy().reset_index()
+        recentIncidents = recentIncidents.loc[0, "Incident Count"]
+        fiveYearAvg = trend[trend['Year'] != lastFullYear].copy().reset_index()
+        fiveYearAvg = fiveYearAvg['Incident Count'].mean()
+        changeMeta['year'] = int(lastFullYear)
+        changeMeta['pctChange'] = round(((int(recentIncidents)-int(fiveYearAvg))/int(fiveYearAvg))*100, 0)
+
+    else:
+        changeMeta["noneSince"] = max_year
+    return changeMeta
+
+
 def process_incidents(remote=False, land=False, company_names=False, companies=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
@@ -202,8 +228,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         None
 
     # initial data processing
-    #df = df[df['Company'] != 'Plains Midstream Canada ULC']
-    # TODO: plains midstream isnt broken down into its seperate pipes...
     df['Company'] = df['Company'].replace(company_rename())
 
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
@@ -234,6 +258,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     if company_names:
         print(get_company_names(df['Company']))
 
+    industryTrend = changes(df, volume=True)
     perKm = incidentsPerKm(df)
 
     if companies:
@@ -272,6 +297,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
             meta = incidentMetaData(df, perKm, company)
+            companyTrend = changes(df_vol, volume=False)
+            meta['trends'] = {"company": companyTrend, "industry": industryTrend}
             thisCompanyData['meta'] = meta
             del df_vol['Incident Types']
             del df_vol['Company']
@@ -305,7 +332,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta, perKm = process_incidents(remote=False, companies=['Plains Midstream Canada ULC'])
+    #df = process_incidents(remote=False)
+    df, volume, meta, perKm = process_incidents(remote=False)
     print('completed incidents!')
 
 #%%
