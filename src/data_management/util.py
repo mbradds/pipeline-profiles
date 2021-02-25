@@ -5,9 +5,9 @@ from datetime import date
 import io
 
 
-def execute_sql(path, query_name):
+def execute_sql(path, query_name, db='tsql23cap'):
     query_path = os.path.join(path, query_name)
-    conn, engine = cer_connection(db='tsql23cap')
+    conn, engine = cer_connection(db=db)
 
     def utf16open(query_path):
         file = io.open(query_path, mode='r', encoding="utf-16", errors='ignore')
