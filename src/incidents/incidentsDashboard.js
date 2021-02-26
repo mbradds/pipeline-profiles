@@ -70,12 +70,14 @@ export async function mainIncidents(incidentData, metaData, lang) {
         // user selection to show volume or incident frequency
         $("#inline_content input[name='type']").click(function () {
           var btnValue = $("input:radio[name=type]:checked").val();
-          if (btnValue !== "trends") {
-            // update map radius for volume
-            thisMap.filters.type = btnValue;
-            trends.filters.type = btnValue;
-            bars.switchY(btnValue);
-            thisMap.updateRadius();
+          thisMap.filters.type = btnValue;
+          trends.filters.type = btnValue;
+          bars.switchY(btnValue);
+          thisMap.updateRadius();
+          if (btnValue !== "frequency") {
+            thisMap.addMapDisclaimer();
+          } else {
+            thisMap.removeMapDisclaimer();
           }
         });
         if (incidentData.length == 1) {

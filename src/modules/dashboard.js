@@ -156,6 +156,24 @@ export class EventMap {
     }
   }
 
+  addMapDisclaimer() {
+    var info = L.control();
+    var text = this.lang.volumeDisclaimer;
+    info.onAdd = function (map) {
+      this._div = L.DomUtil.create("div", "incident-volume-disclaimer");
+      this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px"><p>${text}</p></div>`;
+      return this._div;
+    };
+    info.addTo(this.map);
+    this.mapDisclaimer = info;
+  }
+
+  removeMapDisclaimer() {
+    if (this.mapDisclaimer) {
+      this.mapDisclaimer.remove();
+    }
+  }
+
   toolTip(incidentParams, fillColor) {
     const formatCommaList = (text) => {
       if (text.includes(",")) {

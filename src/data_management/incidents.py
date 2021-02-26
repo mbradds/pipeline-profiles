@@ -156,18 +156,18 @@ def incidentMetaData(df, dfPerKm, company):
     # filter to specific company
     df_c = df[df['Company'] == company].copy()
     meta = {}
-    meta['relativePct'] = thisCompanyPct(df, df_c)
+    # meta['relativePct'] = thisCompanyPct(df, df_c)
     meta['companyName'] = company
     meta['seriousEvents'] = other_types(df_c)
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
-    thisPerKm = dfPerKm[dfPerKm['Company'] == company].copy()
-    perKm = {}
-    perKm['incidentsPerKm'] = thisPerKm['Incidents per 1000km'].iloc[0]
-    perKm['avgPerKm'] = thisPerKm['Avg per 1000km'].iloc[0]
-    perKm['commodity'] = thisPerKm['Commodity'].iloc[0].lower()
-    meta['per1000km'] = perKm
+    # thisPerKm = dfPerKm[dfPerKm['Company'] == company].copy()
+    # perKm = {}
+    # perKm['incidentsPerKm'] = thisPerKm['Incidents per 1000km'].iloc[0]
+    # perKm['avgPerKm'] = thisPerKm['Avg per 1000km'].iloc[0]
+    # perKm['commodity'] = thisPerKm['Commodity'].iloc[0].lower()
+    # meta['per1000km'] = perKm
     # calculate the most common what and why and most common substance released
     meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
     meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
@@ -258,8 +258,9 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     if company_names:
         print(get_company_names(df['Company']))
 
-    industryTrend = changes(df, volume=True)
-    perKm = incidentsPerKm(df)
+    # industryTrend = changes(df, volume=True)
+    # perKm = incidentsPerKm(df)
+    perKm = None
 
     if companies:
         company_files = companies
@@ -297,8 +298,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
             meta = incidentMetaData(df, perKm, company)
-            companyTrend = changes(df_vol, volume=False)
-            meta['trends'] = {"company": companyTrend, "industry": industryTrend}
+            # companyTrend = changes(df_vol, volume=False)
+            # meta['trends'] = {"company": companyTrend, "industry": industryTrend}
             thisCompanyData['meta'] = meta
             del df_vol['Incident Types']
             del df_vol['Company']
@@ -332,7 +333,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    #df = process_incidents(remote=False)
     df, volume, meta, perKm = process_incidents(remote=False)
     print('completed incidents!')
 

@@ -141,6 +141,8 @@ export const englishDashboard = {
     dashboard: {
       what: "What Happened",
       why: "Why It Happened",
+      volumeDisclaimer:
+        "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       userPopUp:
         "Approximate location. You can drag this marker around to explore incident events in other locations.",
       locationError:
