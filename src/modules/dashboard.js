@@ -197,7 +197,7 @@ export class EventMap {
       fillColor: fillColor,
       fillOpacity: 0.7,
       radius: this.minRadius,
-      minRadius: r,
+      volRadius: r,
       weight: 1,
       incidentParams,
     });
@@ -207,7 +207,7 @@ export class EventMap {
     if (this.filters.type == "volume") {
       this.circles.eachLayer(function (layer) {
         try {
-          layer.setRadius(layer.options["minRadius"]);
+          layer.setRadius(layer.options["volRadius"]);
         } catch (err) {
           layer.setRadius(0);
           console.log("Error setting new radius");
@@ -216,7 +216,11 @@ export class EventMap {
     } else {
       let currZoom = this.map.getZoom();
       var minRadius = this.minRadius;
-      if (currZoom >= 6.5) {
+      if (currZoom >= 9) {
+        this.circles.eachLayer(function (layer) {
+          layer.setRadius(minRadius / 4);
+        });
+      } else if (currZoom >= 6.5) {
         this.circles.eachLayer(function (layer) {
           layer.setRadius(minRadius / 2);
         });
@@ -274,14 +278,16 @@ export class EventMap {
     let maxRad = radiusCalc(maxVol);
     let allCircles = data.map((row) => {
       years.push(row.Year);
-      let t = (row["Approximate Volume Released"] - minVol) / (maxVol - minVol);
-      t = t * (maxRad - 5000) + 5000;
+      let radiusVol =
+        (row["Approximate Volume Released"] - minVol) / (maxVol - minVol);
+
+      radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
       return this.addCircle(
         row.Latitude,
         row.Longitude,
         pa.cerPalette["Cool Grey"],
-        this.applyColor(row[this.field], this.field),
-        t,
+        this.applyColor(row[this.field], this.field), //fillColor
+        radiusVol,
         row
       );
     });

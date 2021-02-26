@@ -83,7 +83,6 @@ module.exports = {
   },
 
   plugins: profileWebpackConfig.htmlWebpack(),
-  //plugins: generateHtmlPlugins(),
 
   module: {
     rules: [
