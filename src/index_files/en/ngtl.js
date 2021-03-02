@@ -1,21 +1,16 @@
 console.time(`first content loading`);
-import { L } from "leaflet";
-import Highcharts from "highcharts";
-require("highcharts/modules/map")(Highcharts);
-window.Highcharts = Highcharts;
-window.L = L;
 import { generalTheme } from "../../modules/themes.js";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";
 import conditionsData from "../../conditions/company_data/NOVAGasTransmissionLtd.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
-// incidents
+//incidents
 import incidentData from "../../incidents/company_data/NOVAGasTransmissionLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // operations and maintenance
 import opsData from "../../operationsAndMaintenance/company_data/NOVAGasTransmissionLtd.json";
 import { mainOandM } from "../../operationsAndMaintenance/oandmDashboard.js";
-// language
+//language;
 import { englishDashboard } from "../../modules/langEnglish.js";
 // load dashboards
 import { loadAllCharts } from "../loadDashboards.js";
