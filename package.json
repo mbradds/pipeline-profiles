@@ -23,6 +23,7 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "haversine": "^1.1.1",
+    "highcharts": "^9.0.1",
     "ie-gang": "^1.0.4",
     "leaflet": "^1.7.1",
     "mapshaper": "^0.5.28"
