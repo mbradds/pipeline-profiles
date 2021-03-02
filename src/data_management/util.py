@@ -31,10 +31,35 @@ def execute_sql(path, query_name, db='tsql23cap'):
     return df
 
 
-def normalize_dates(df, date_list):
+def most_common(df, meta, col_name, meta_key, top=1):
+    what_list = []
+    for what in df[col_name]:
+        if ',' in what:
+            what_list.extend(what.split(','))
+        else:
+            what_list.append(what)
+    what_list = [x.strip() for x in what_list]
+    what_list = [x for x in what_list if x not in ['To be determined', '', "Other", "Not Specified"]]
+    if top == 1:
+        meta[meta_key] = max(set(what_list), key=what_list.count).lower()
+    else:
+        counter = {}
+        for e in what_list:
+            if e in counter:
+                counter[e] = counter[e] + 1
+            else:
+                counter[e] = 1
+        counter = dict(sorted(counter.items(), key=lambda item: item[1], reverse=True))
+        counter = {k.lower(): counter[k] for k in list(counter)[:top]}
+        meta[meta_key] = counter
+    return meta
+
+
+def normalize_dates(df, date_list, short_date=False):
     for date_col in date_list:
-        df[date_col] = pd.to_datetime(df[date_col])
-        df[date_col] = df[date_col].dt.date
+        df[date_col] = pd.to_datetime(df[date_col], errors='raise')
+        if short_date:
+            df[date_col] = df[date_col].dt.date
     return df
 
 
@@ -91,3 +116,9 @@ def company_rename():
              'TEML Westspur Pipelines Limited': 'Kingston Midstream Westspur Limited',
              'Plains Marketing Canada, L.P.': 'Plains Midstream Canada ULC'}
     return names
+
+
+if __name__ == "__main__":
+    None
+
+

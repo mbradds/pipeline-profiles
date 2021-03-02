@@ -1,4 +1,4 @@
-import { generateDynamicIncidentText } from "./dynamicText.js";
+import { profileTextQuery } from "../modules/dynamicText.js";
 import { profileAssist as pa } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
@@ -63,7 +63,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
   function buildDashboard() {
     if (!incidentData.length == 0) {
       try {
-        generateDynamicIncidentText(metaData);
+        profileTextQuery.incidentsEnglish(
+          "system-incidents-paragraph",
+          metaData
+        );
+        //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);
         const bars = incidentBar(incidentData, thisMap);
         const trends = incidentTimeSeries(field, filters, lang.definitions);

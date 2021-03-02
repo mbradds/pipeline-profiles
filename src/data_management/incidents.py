@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from util import get_company_names, company_rename
+from util import get_company_names, company_rename, most_common
 import ssl
 import json
 import geopandas as gpd
@@ -114,18 +114,6 @@ def incidentsPerKm(dfAll):
 
 
 def incidentMetaData(df, dfPerKm, company):
-
-    def most_common(df, meta, col_name, meta_key):
-        what_list = []
-        for what in df[col_name]:
-            if ',' in what:
-                what_list.extend(what.split(','))
-            else:
-                what_list.append(what)
-        what_list = [x.strip() for x in what_list]
-        what_list = [x for x in what_list if x != 'To be determined']
-        meta[meta_key] = max(set(what_list), key=what_list.count).lower()
-        return meta
 
     def most_common_substance(df, meta):
         df_substance = df[df['Substance'] != "Not Applicable"].copy()

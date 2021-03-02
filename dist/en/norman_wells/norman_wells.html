@@ -66,7 +66,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Safety And Environment (New!)</h2>
+          <h2>Safety And Environment</h2>
         </div>
       </div>
     </div>
@@ -79,8 +79,8 @@
             type="button"
             class="btn btn-default tablinks"
             onclick="openTab(event, 'condition-compliance')"
-            id="defaultClick"
             style="height: 75px"
+            id="defaultClick"
           >
             Conditions Compliance
           </button>
@@ -98,11 +98,11 @@
         <div class="btn-group tab">
           <button
             type="button"
-            class="btn btn-default"
+            class="btn btn-default tablinks"
             style="height: 75px"
-            disabled="disabled"
+            onclick="openTab(event, 'operations-maintenance')"
           >
-            Operations & Maintenance Activities (coming soon!)
+            Operations & Maintenance Activities
           </button>
         </div>
         <div class="btn-group tab">
@@ -834,8 +834,55 @@
       </div>
     </div>
 
+    <div id="operations-maintenance" class="profile-section tabcontent">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Operations and Maintenance Activities</h2>
+            <p class="small">Section updated February 2021</p>
+            <p>
+              Pipeline operators regularly conduct routine operations and
+              maintenance activities (O&M activities) on CER regualted
+              pipelines. These activities can include things such as pipeline
+              repairs, investigative & integrity digs, and many other activities
+              designed to protect the safety and environment.
+            </p>
+            <p>
+              O&M activities are evaluated by the CER as part of the original
+              application for the construction and operation of a pipeline;
+              therefore, companies are not required to apply for additional
+              approval to undertake most O&M activities. However,
+              companies/operators are required to provide the CER with
+              sufficient information to make a decision as to whether to inspect
+              O&M activities that could result in safety consequences to
+              landowners or the public, environmental consequences, or a
+              negative impact on normal third-party use of the right-of-way
+              (RoW) or adjacent property.
+            </p>
+
+            <p>
+              The CER has compiled key information about each O&M activity
+              reported since 20XX into a publicy available dataset on
+              <a>Open Government.</a> Some of this data is featured in the
+              interactive dashboard below.
+            </p>
+            <div id="system-o&m-paragraph"></div>
+            <p>
+              Take a look at the
+              <a
+                href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes.html"
+                target="_blank"
+                rel="external"
+                >O&M Guidelines</a
+              >
+              for more information on reporting and compliance that pipelines
+              must follow for O&M activities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="contaminated-sites" class="profile-section tabcontent"></div>
-    <div id="o&m-activities" class="profile-section tabcontent"></div>
     <div id="unauthorized-activities" class="profile-section tabcontent"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script>
