@@ -1,15 +1,20 @@
 import pandas as pd
-from util import execute_sql, normalize_dates, most_common
+from util import execute_sql, normalize_dates, most_common, get_company_names
 import os
 import json
 script_dir = os.path.dirname(__file__)
 
 
-def get_data(sql=False):
+def get_data(test, sql=False):
     if sql:
-        df = execute_sql(path=script_dir, query_name='o_and_m.sql', db='dsql23cap')
+        print('reading sql o and m activities')
+        df = execute_sql(path=script_dir, query_name='omActivities.sql', db='dsql23cap')
         df.to_csv('raw_data/o_and_m.csv', index=False)
+    elif test:
+        print('reading test o and m activities')
+        df = pd.read_csv('raw_data/test_data/o_and_m.csv')
     else:
+        print('reading local o and m activities')
         df = pd.read_csv('raw_data/o_and_m.csv')
     return df
 
@@ -26,12 +31,12 @@ def meta_activities(df_c, company, meta):
     return meta
 
 
-def process_operations():
-    if not os.path.exists("../o_and_m"):
-        os.mkdir("../o_and_m")
-        os.mkdir("../o_and_m/company_data")
+def process_operations(test=False):
+    if not os.path.exists("../operationsAndMaintenance"):
+        os.mkdir("../operationsAndMaintenance")
+        os.mkdir("../operationsAndMaintenance/company_data")
 
-    df = get_data()
+    df = get_data(test)
     for delete in ['Description',
                    'Circumstance',
                    'Third Party Consultation',
@@ -52,6 +57,12 @@ def process_operations():
                    'Shore Option']:
 
         del df[delete]
+
+    # fix company names
+    df['Company Name'] = [str(x).strip() for x in df['Company Name']]
+    df = df[df['Company Name'] != "nan"].copy().reset_index()
+    df['Company Name'] = df['Company Name'].replace({"NOVA Gas Transmission Ltd": "NOVA Gas Transmission Ltd."})
+    # all_names = get_company_names(df['Company Name'])
 
     # standardize the activity types
     activity_cols = ['Activity Type', 'Activity Type Other']
@@ -103,14 +114,14 @@ def process_operations():
 
             for col in delete_after_meta:
                 del df_c[col]
-            with open('../o_and_m/company_data/'+folder_name+'.json', 'w') as fp:
-                json.dump(thisCompanyData, fp, default=str)
+            if not test:
+                with open('../operationsAndMaintenance/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp, default=str)
 
-    return df_c, meta, df
-    # return df
+    return thisCompanyData
 
 
 if __name__ == "__main__":
     print('starting o and m...')
-    df_c, meta, df = process_operations()
+    nova = process_operations()
     print('completed o and m!')

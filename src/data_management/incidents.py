@@ -188,32 +188,33 @@ def changes(df, volume=True):
     return changeMeta
 
 
-def process_incidents(remote=False, land=False, company_names=False, companies=False):
+def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
-        print('downloading remote file')
+        print('downloading remote incidents file')
         df = pd.read_csv(link,
                          skiprows=1,
                          encoding="UTF-16",
                          error_bad_lines=False)
         df.to_csv("./raw_data/incidents.csv", index=False)
+    elif test:
+        print('reading test incidents file')
+        df = pd.read_csv("./raw_data/test_data/incidents.csv",
+                         skiprows=0,
+                         encoding="UTF-8",
+                         error_bad_lines=False)
     else:
-        print('reading local file')
+        print('reading local incidents file')
         df = pd.read_csv("./raw_data/incidents.csv",
                          skiprows=0,
                          encoding="UTF-8",
                          error_bad_lines=False)
-    try:
-        df = df.rename(columns={'Approximate Volume Released (m³)':
-                                'Approximate Volume Released'})
-    except:
-        None
 
-    try:
-        df = df.rename(columns={'Approximate Volume Released (m3)':
-                                'Approximate Volume Released'})
-    except:
-        None
+    for vol in ['Approximate Volume Released (m³)', 'Approximate Volume Released (m3)']:
+        try:
+            df = df.rename(columns={vol: 'Approximate Volume Released'})
+        except:
+            None
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())
@@ -307,14 +308,16 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                                                 'First Nations Proximity'})
 
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
-            with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
-                json.dump(thisCompanyData, fp)
+            if not test:
+                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
-            with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
-                json.dump(thisCompanyData, fp)
+            if not test:
+                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp)
 
     return df_c, df_vol, meta, perKm
 

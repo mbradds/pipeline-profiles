@@ -34,6 +34,7 @@ def execute_sql(path, query_name, db='tsql23cap'):
 def most_common(df, meta, col_name, meta_key, top=1):
     what_list = []
     for what in df[col_name]:
+        what = str(what)
         if ',' in what:
             what_list.extend(what.split(','))
         else:

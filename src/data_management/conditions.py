@@ -162,7 +162,7 @@ def conditionMetaData(df, folder_name):
     return df_all, meta
 
 
-def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False):
+def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False, test=False):
 
     def add_links(df_c, df_links):
         l = {}
@@ -180,14 +180,18 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 
     if remote:
         link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
-        print('downloading remote file')
+        print('downloading remote conditions file')
         df = pd.read_csv(link,
                          sep='\t',
                          lineterminator='\r',
                          encoding="UTF-16",
                          error_bad_lines=False)
+
+    elif test:
+        print('reading test conditions data')
+        df = pd.read_csv('./raw_data/test_data/conditions.csv', encoding="UTF-16", sep='\t')
     else:
-        print('reading local file')
+        print('reading local conditions data')
         # df = pd.read_csv("./raw_data/conditions.csv",
         #                  sep='\t',
         #                  lineterminator='\r',
@@ -282,16 +286,18 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 
             thisCompanyData['regions'] = shp.to_json()
             thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
-            with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
-                json.dump(thisCompanyData, fp)
+            if not test:
+                with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp)
         else:
             meta = {"companyName": company}
             thisCompanyData = {'meta': {"companyName": company},
                                'regions': "{}",
                                'mapMeta': []}
 
-            with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
-                json.dump(thisCompanyData, fp)
+            if not test:
+                with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp)
         print('completed conditions: '+company)
 
     return df_c, shp, dfmeta, meta

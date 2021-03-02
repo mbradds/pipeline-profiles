@@ -8,8 +8,8 @@ import { mainConditions } from "../../conditions/conditionsDashboard.js";
 import incidentData from "../../incidents/company_data/NOVAGasTransmissionLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // operations and maintenance
-import opsData from "../../o_and_m/company_data/NOVAGasTransmissionLtd.json";
-import { mainOandM } from "../../o_and_m/oandmDashboard.js";
+import opsData from "../../operationsAndMaintenance/company_data/NOVAGasTransmissionLtd.json";
+import { mainOandM } from "../../operationsAndMaintenance/oandmDashboard.js";
 // language
 import { englishDashboard } from "../../modules/langEnglish.js";
 // load dashboards
