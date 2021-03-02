@@ -1,8 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 var profileWebpackConfig = (function () {
   const htmlFileNames = [
@@ -47,6 +49,7 @@ var profileWebpackConfig = (function () {
 
   function entry(language = ["en"]) {
     const entryPoints = {};
+    //const entryPoints = { shared: "leaflet" };
     language.map((lang) => {
       htmlFileNames.map((name) => {
         if (["aurora", "milk_river", "wascana"].includes(name)) {
@@ -82,7 +85,25 @@ module.exports = {
     compress: true,
   },
 
-  plugins: profileWebpackConfig.htmlWebpack(),
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src", "main.css"),
+          to: path.resolve(__dirname, "dist", "main.css"),
+        },
+        {
+          from: path.resolve(__dirname, "src", "GCWeb"),
+          to: path.resolve(__dirname, "dist", "GCWeb"),
+        },
+        {
+          from: path.resolve(__dirname, "src", "wet-boew"),
+          to: path.resolve(__dirname, "dist", "wet-boew"),
+        },
+      ],
+    }),
+    new CleanWebpackPlugin(),
+  ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
     rules: [
@@ -103,8 +124,11 @@ module.exports = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        test: /\.js(\?.*)?$/i,
-        extractComments: false,
+        // include: /[\\/]node_modules[\\/](leaflet)[\\/]/,
+        // extractComments: false,
+        // terserOptions: {
+        //   ecma: 8,
+        // },
       }),
     ],
   },

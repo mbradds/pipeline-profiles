@@ -5,6 +5,7 @@ import canadaMap from "../../conditions/base_maps/base_map.json";
 import conditionsData from "../../conditions/company_data/NOVAGasTransmissionLtd.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
 // incidents
+//import { L } from "leaflet";
 import incidentData from "../../incidents/company_data/NOVAGasTransmissionLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // operations and maintenance
