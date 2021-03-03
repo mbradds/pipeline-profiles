@@ -71,8 +71,8 @@ var profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  mode: "development",
-  // mode: "production",
+  // mode: "development",
+  mode: "production",
   target: "es5",
   entry: profileWebpackConfig.entry(["en"]),
   output: {

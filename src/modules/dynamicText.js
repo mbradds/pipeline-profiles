@@ -20,6 +20,29 @@ export const profileTextQuery = (function () {
     }
   };
 
+  const addSentence = (dict, addNumber = true) => {
+    var commonActivityText = ``;
+    let counter = 0;
+    let activitySize = Object.keys(dict).length;
+    for (const property in dict) {
+      counter++;
+      if (addNumber) {
+        if (counter !== activitySize) {
+          commonActivityText += `${property} (${dict[property]}), `;
+        } else {
+          commonActivityText += `and ${property} (${dict[property]})`;
+        }
+      } else {
+        if (counter !== activitySize) {
+          commonActivityText += `${property}, `;
+        } else {
+          commonActivityText += `and ${property}`;
+        }
+      }
+    }
+    return commonActivityText;
+  };
+
   const incidentsEnglish = (id, meta) => {
     const paragraph = document.getElementById(id);
     let paragraphText = `<p>`;
@@ -39,7 +62,7 @@ export const profileTextQuery = (function () {
     //most common reasons
     paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
         circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
-        On the pipeline system, the most common <i>what happened</i> is ${dynamicValue(
+        On this pipeline system, the most common <i>what happened</i> is ${dynamicValue(
           meta.mostCommonWhat
         )} and the most common <i>why it happened</i> is ${dynamicValue(
       meta.mostCommonWhy
@@ -76,31 +99,23 @@ export const profileTextQuery = (function () {
       meta.companyName
     } has reported a total of ${dynamicValue(
       meta.numberOfEvents
-    )} individual O&M activities, and ${dynamicValue(
+    )} individual O&M activities with ${dynamicValue(
       meta.numberOfDigs + " integrity digs"
-    )} since ${meta.earliestYear}. The latest O&M activity occured in ${
+    )} since ${
+      meta.earliestYear
+    }. The latest O&M activity occured in ${dynamicValue(
       meta.latestYear
-    }.</p>`;
+    )}.</p>`;
 
-    let commonActivityText = ``;
-    let counter = 0;
     let activitySize = Object.keys(meta.mostCommonActivity).length;
-    for (const property in meta.mostCommonActivity) {
-      counter++;
-      if (counter !== activitySize) {
-        commonActivityText += `${property} (${meta.mostCommonActivity[property]}), `;
-      } else {
-        commonActivityText += `and ${property} (${meta.mostCommonActivity[property]})`;
-      }
-    }
     // second most common event/location paragraph
-    paragraphText += `<p>On the pipeline system, the ${activitySize} most common O&M activity types conducted are ${dynamicValue(
-      commonActivityText
+    paragraphText += `<p>On this pipeline system, the ${activitySize} most common O&M activity types conducted are ${dynamicValue(
+      addSentence(meta.mostCommonActivity)
     )}. There have been ${dynamicValue(
       meta.speciesAtRiskEvents
     )} O&M activities with a species at risk present. \
-    These activities can occur at various locations on or near the pipeline. On the pipeline system, O&M activities have occured near ${dynamicValue(
-      meta.nearby
+    These activities can occur at various locations on or near the pipeline. On this pipeline system, O&M activities have occured near ${dynamicValue(
+      addSentence(meta.nearby, false)
     )} among other populated areas.</p>`;
     paragraph.innerHTML = paragraphText;
   };

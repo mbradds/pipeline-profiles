@@ -4,6 +4,16 @@ import os
 import json
 script_dir = os.path.dirname(__file__)
 
+short_provinces = {'British Columbia': 'BC',
+                   'Ontario': 'ON',
+                   'Alberta': 'AB',
+                   'Quebec': 'QC',
+                   'Saskatchewan': 'SK',
+                   'New Brunswick': 'NB',
+                   'Manitoba': 'MB',
+                   'Nova Scotia': 'NS',
+                   'Northwest Territories': 'NT'}
+
 
 def get_data(test, sql=False):
     if sql:
@@ -20,22 +30,13 @@ def get_data(test, sql=False):
 
 
 def meta_activities(df_c, company, meta):
+
     meta = most_common(df_c, meta, "Activity Type", "mostCommonActivity", top=3)
     df_l = df_c.copy().reset_index(drop=True)
+    df_l['Nearest Populated Centre'] = df_l['Nearest Populated Centre'] +'-'+df_l['Short Province']
     df_l = df_l[(~df_l['Nearest Populated Centre'].str.contains("Section")) & (~df_l['Nearest Populated Centre'].str.contains("Station")) & (~df_l['Nearest Populated Centre'].str.contains("Not Specified"))]
-    meta = most_common(df_l, meta, "Nearest Populated Centre", "nearby", top=3)
-    
-    citysize = len(meta['nearby'].keys())
-    cityString = ''
-    for num, city in enumerate(meta['nearby'].keys()):
-        if num == citysize-1:
-            cityString = cityString + ', and '+city.capitalize()
-        elif num ==0:
-            cityString = cityString + city.capitalize()
-        else:
-            cityString = cityString + ', '+city.capitalize()
+    meta = most_common(df_l, meta, "Nearest Populated Centre", "nearby", top=3, lower=False)
 
-    meta['nearby'] = cityString
     meta["numberOfEvents"] = int(df_c['Event Number'].count())
     meta["numberOfDigs"] = int(df_c['Dig Count'].sum())
     meta["earliestYear"] = min(df_c['Occurrence Date']).year
@@ -77,6 +78,7 @@ def process_operations(test=False):
     df = df[df['Company Name'] != "nan"].copy().reset_index(drop=True)
     df['Company Name'] = df['Company Name'].replace({"NOVA Gas Transmission Ltd": "NOVA Gas Transmission Ltd."})
     # all_names = get_company_names(df['Company Name'])
+    df['Short Province'] = [short_provinces[x] for x in df['Province']]
 
     # standardize the activity types
     activity_cols = ['Activity Type', 'Activity Type Other']
@@ -126,6 +128,7 @@ def process_operations(test=False):
                                  'Company Name',
                                  'In Stream Work Required',
                                  'Ground Disturbance Near Water Required',
+                                 'Short Province',
                                  'Dig Count']
             df_c = normalizeBool(df_c, ['Integrity Dig',
                                         'Ground Disturbance Near Water Required',
