@@ -99,9 +99,10 @@ export const profileTextQuery = (function () {
     )}. There have been ${dynamicValue(
       meta.speciesAtRiskEvents
     )} O&M activities with a species at risk present. \
-    These activities can occur at various locations near the pipeline, occasionally near cities and towns. On the pipeline system</p>`;
+    These activities can occur at various locations on or near the pipeline. On the pipeline system, O&M activities have occured near ${dynamicValue(
+      meta.nearby
+    )} among other populated areas.</p>`;
     paragraph.innerHTML = paragraphText;
-    console.log(meta);
   };
 
   return { incidentsEnglish: incidentsEnglish, oandmEnglish: oandmEnglish };

@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_dates, most_common, get_company_names
+from util import execute_sql, normalize_dates, most_common, get_company_names, normalizeBool
 import os
 import json
 script_dir = os.path.dirname(__file__)
@@ -21,7 +21,21 @@ def get_data(test, sql=False):
 
 def meta_activities(df_c, company, meta):
     meta = most_common(df_c, meta, "Activity Type", "mostCommonActivity", top=3)
-    # meta = most_common(df_c, meta, "Nearest Populated Centre", "nearby", top=3)
+    df_l = df_c.copy().reset_index(drop=True)
+    df_l = df_l[(~df_l['Nearest Populated Centre'].str.contains("Section")) & (~df_l['Nearest Populated Centre'].str.contains("Station")) & (~df_l['Nearest Populated Centre'].str.contains("Not Specified"))]
+    meta = most_common(df_l, meta, "Nearest Populated Centre", "nearby", top=3)
+    
+    citysize = len(meta['nearby'].keys())
+    cityString = ''
+    for num, city in enumerate(meta['nearby'].keys()):
+        if num == citysize-1:
+            cityString = cityString + ', and '+city.capitalize()
+        elif num ==0:
+            cityString = cityString + city.capitalize()
+        else:
+            cityString = cityString + ', '+city.capitalize()
+
+    meta['nearby'] = cityString
     meta["numberOfEvents"] = int(df_c['Event Number'].count())
     meta["numberOfDigs"] = int(df_c['Dig Count'].sum())
     meta["earliestYear"] = min(df_c['Occurrence Date']).year
@@ -60,7 +74,7 @@ def process_operations(test=False):
 
     # fix company names
     df['Company Name'] = [str(x).strip() for x in df['Company Name']]
-    df = df[df['Company Name'] != "nan"].copy().reset_index()
+    df = df[df['Company Name'] != "nan"].copy().reset_index(drop=True)
     df['Company Name'] = df['Company Name'].replace({"NOVA Gas Transmission Ltd": "NOVA Gas Transmission Ltd."})
     # all_names = get_company_names(df['Company Name'])
 
@@ -105,23 +119,31 @@ def process_operations(test=False):
         df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
             thisCompanyData['meta'] = meta_activities(df_c, company, meta)
-            thisCompanyData['events'] = df_c.to_dict(orient='records')
             delete_after_meta = ['Event Number',
                                  'Completion Date',
                                  'Occurrence Date',
                                  'Nearest Populated Centre',
-                                 'Company Name']
+                                 'Company Name',
+                                 'In Stream Work Required',
+                                 'Ground Disturbance Near Water Required',
+                                 'Dig Count']
+            df_c = normalizeBool(df_c, ['Integrity Dig',
+                                        'Ground Disturbance Near Water Required',
+                                        'Fish Present',
+                                        'In Stream Work Required',
+                                        'Species At Risk Present'], normType = "Y/N")
 
             for col in delete_after_meta:
                 del df_c[col]
+            thisCompanyData['events'] = df_c.to_dict(orient='records')
             if not test:
                 with open('../operationsAndMaintenance/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp, default=str)
 
-    return thisCompanyData
+    return thisCompanyData, df_c
 
 
 if __name__ == "__main__":
     print('starting o and m...')
-    nova = process_operations()
+    nova, df_c = process_operations()
     print('completed o and m!')

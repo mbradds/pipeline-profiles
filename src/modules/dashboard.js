@@ -70,6 +70,18 @@ export class EventMap {
       "External Interference": pa.cerPalette["Ocean"],
       "To be determined": pa.cerPalette["Sun"],
     },
+    omColors: {
+      Replacement: pa.cerPalette["Cool Grey"],
+      Other: pa.cerPalette["Sun"],
+      "Pipeline integrity dig": pa.cerPalette["Night Sky"],
+      "Cathodic protection": pa.cerPalette["Forest"],
+      "Remedial work": pa.cerPalette["Aubergine"],
+      Repair: pa.cerPalette["Ocean"],
+    },
+    yesNoColors: {
+      Yes: pa.cerPalette["Sun"],
+      No: pa.cerPalette["Night Sky"],
+    },
   };
 
   constructor({
@@ -100,6 +112,14 @@ export class EventMap {
         Province: this.EVENTCOLORS.provinceColors,
         "Why It Happened": this.EVENTCOLORS.whyColors,
         "What Happened": this.EVENTCOLORS.whatColors,
+      };
+    } else if (this.eventType == "O&M activities") {
+      return {
+        Status: this.EVENTCOLORS.statusColors,
+        Province: this.EVENTCOLORS.provinceColors,
+        "Activity Type": this.EVENTCOLORS.omColors,
+        "Species At Risk Present": this.EVENTCOLORS.yesNoColors,
+        "Fish Present": this.EVENTCOLORS.yesNoColors,
       };
     }
   }
@@ -586,6 +606,9 @@ export class EventNavigator {
   pillName(name) {
     if (name == "Status") {
       return `CER ${name}`;
+    } else if (["Species At Risk Present", "Fish Present"].includes(name)) {
+      //add all yes/no columns here
+      return `${name}?`;
     } else {
       return `${name}`;
     }
@@ -767,6 +790,7 @@ export class EventNavigator {
       });
     } else {
       activeDiv.innerHTML = `<p>${this.pillName(bar.name)} (click to view)</p>`;
+      activeDiv.style.padding = "5px";
     }
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = pa.cerPalette["Dim Grey"];
@@ -812,6 +836,7 @@ export class EventNavigator {
     } else {
       activeDiv.innerHTML = `<p>${this.pillName(bar.name)}</p>`;
       activeDiv.style.backgroundColor = "white";
+      activeDiv.style.padding = "5px";
     }
     this.currentActive = bar;
     activeDiv.style.borderStyle = "solid";
@@ -1082,6 +1107,14 @@ export class EventTrend extends EventMap {
 
       xAxis: {
         categories: true,
+      },
+
+      legend: {
+        title: {
+          text: "Click on a legend item to remove it from the chart",
+        },
+        margin: 0,
+        maxHeight: 120,
       },
 
       yAxis: {

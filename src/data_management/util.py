@@ -31,7 +31,7 @@ def execute_sql(path, query_name, db='tsql23cap'):
     return df
 
 
-def most_common(df, meta, col_name, meta_key, top=1):
+def most_common(df, meta, col_name, meta_key, top=1, dtype="dict"):
     what_list = []
     for what in df[col_name]:
         what = str(what)
@@ -52,8 +52,23 @@ def most_common(df, meta, col_name, meta_key, top=1):
                 counter[e] = 1
         counter = dict(sorted(counter.items(), key=lambda item: item[1], reverse=True))
         counter = {k.lower(): counter[k] for k in list(counter)[:top]}
+        if dtype != "dict":
+            counter = list(counter.keys())
         meta[meta_key] = counter
     return meta
+
+
+def normalizeBool(df, cols, normType="Y/N"):
+    for col in cols:
+        df[col] = [str(x).strip() for x in df[col]]
+        if normType == "T/F":
+            df[col] = df[col].replace({"True": "T",
+                                       "False": "F"})
+        elif normType == "Y/N":
+            df[col] = df[col].replace({"True": "Yes",
+                                       "False": "No"})
+
+    return df
 
 
 def normalize_dates(df, date_list, short_date=False):
