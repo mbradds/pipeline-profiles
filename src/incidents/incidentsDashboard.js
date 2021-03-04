@@ -7,6 +7,18 @@ export async function mainIncidents(incidentData, metaData, lang) {
   const field = "Substance";
   const filters = { type: "frequency" };
 
+  const setTitle = (lang, meta) => {
+    try {
+      document.getElementById(
+        "incidents-dashboard-title"
+      ).innerHTML = lang.title(meta.systemName);
+    } catch (err) {
+      document.getElementById(
+        "incidents-dashboard-title"
+      ).innerText = `Dashboard: Pipeline Incidents With A Product Release`;
+    }
+  };
+
   const incidentBar = (data, map) => {
     const barNav = new EventNavigator({
       plot: map,
@@ -63,10 +75,17 @@ export async function mainIncidents(incidentData, metaData, lang) {
   function buildDashboard() {
     if (!incidentData.length == 0) {
       try {
+        // add the system name to metadata
+        try {
+          metaData.systemName = lang.companyToSystem[metaData.companyName];
+        } catch (err) {
+          metaData.systemName = metaData.companyName;
+        }
         profileTextQuery.incidentsEnglish(
           "system-incidents-paragraph",
           metaData
         );
+        setTitle(lang, metaData);
         //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);
         const bars = incidentBar(incidentData, thisMap);

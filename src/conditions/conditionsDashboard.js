@@ -52,10 +52,10 @@ export async function mainConditions(
 
   const setTitle = (titleElement, filter, summary) => {
     if (filter.column == "not-shown") {
-      titleElement.innerText = lang.title.noLocation(summary.companyName);
+      titleElement.innerText = lang.title.noLocation(summary.systemName);
     } else {
       titleElement.innerText = lang.title.location(
-        summary.companyName,
+        summary.systemName,
         filter.column
       );
     }
@@ -426,6 +426,14 @@ export async function mainConditions(
   //main conditions map
   function buildDashboard() {
     if (!$.isEmptyObject(econRegions)) {
+      // add the system name to metadata
+      try {
+        meta.summary.systemName =
+          lang.companyToSystem[meta.summary.companyName];
+      } catch (err) {
+        console.log(err);
+        meta.summary.systemName = meta.summary.companyName;
+      }
       let titleElement = document.getElementById("conditions-map-title");
       const conditionsFilter = statusInit(meta);
       setTitle(titleElement, conditionsFilter, meta.summary);

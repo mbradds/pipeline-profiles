@@ -47,8 +47,8 @@ export const profileTextQuery = (function () {
     const paragraph = document.getElementById(id);
     let paragraphText = `<p>`;
     //total incidents.
-    paragraphText += `${
-      meta.companyName
+    paragraphText += `The ${
+      meta.systemName
     } has reported a total of ${dynamicValue(
       meta.release + meta.nonRelease
     )} incidents since 2008. Of those incidents, ${dynamicValue(
@@ -73,7 +73,7 @@ export const profileTextQuery = (function () {
     paragraphText += `<p>`;
     paragraphText += `The dashboard below displays only the incidents that resulted in a release of product from the pipeline, however there are other \
         important incident types that may not appear on the dashboard. \
-        Of ${meta.companyName} reported incidents, ${dynamicValue(
+        Of ${meta.systemName}'s reported incidents, ${dynamicValue(
       meta.seriousEvents["Adverse Environmental Effects"]
     )} ${postWord(
       meta.seriousEvents["Adverse Environmental Effects"],
@@ -95,8 +95,8 @@ export const profileTextQuery = (function () {
     const paragraph = document.getElementById(id);
     // first total/summary paragraph for the system.
     let paragraphText = `<p>`;
-    paragraphText += `${
-      meta.companyName
+    paragraphText += `The ${
+      meta.systemName
     } has reported a total of ${dynamicValue(
       meta.numberOfEvents
     )} individual O&M activities with ${dynamicValue(

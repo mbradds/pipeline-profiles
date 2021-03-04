@@ -34,6 +34,12 @@ export async function mainOandM(activityData, metaData, lang) {
   };
   function buildDashboard() {
     try {
+      // add the system name to metadata
+      try {
+        metaData.systemName = lang.companyToSystem[metaData.companyName];
+      } catch (err) {
+        metaData.systemName = metaData.companyName;
+      }
       profileTextQuery.oandmEnglish("system-o&m-paragraph", metaData);
       const trends = oandmTimeSeries(field, filters);
     } catch (err) {

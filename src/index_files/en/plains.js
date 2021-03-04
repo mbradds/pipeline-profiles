@@ -13,7 +13,7 @@ import { loadAllCharts } from "../loadDashboards.js";
 generalTheme();
 function plains_midstream_profile(lang, div) {
   [...document.querySelectorAll(`.${div}`)].map((warn) => {
-    warn.innerHTML = `<section class="alert alert-warning"><h4>${lang.plains}</h4></section>`;
+    warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
   });
 }
 plains_midstream_profile(englishDashboard, "plains_disclaimer");

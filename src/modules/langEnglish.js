@@ -1,7 +1,37 @@
+const companyToSystem = {
+  "NOVA Gas Transmission Ltd.": "NGTL System",
+  "TransCanada PipeLines Limited": "TC Canadian Mainline",
+  "Enbridge Pipelines Inc.": "Enbridge Canadian Mainline",
+  "Enbridge Pipelines (NW) Inc.": "Norman Wells Pipeline",
+  "Enbridge Bakken Pipeline Company Inc.": "Enbridge Bakken System",
+  "Express Pipeline Ltd.": "Express Pipeline",
+  "Trans Mountain Pipeline ULC": "Trans Mountain Pipeline",
+  "Trans Quebec and Maritimes Pipeline Inc.": "TQM Pipeline",
+  "Trans-Northern Pipelines Inc.": "Trans-Northern Pipeline",
+  "TransCanada Keystone Pipeline GP Ltd.": "Keystone Pipeline",
+  "Westcoast Energy Inc.": "Enbridge BC Pipeline",
+  "Alliance Pipeline Ltd.": "Alliance Pipeline",
+  "PKM Cochin ULC": "Cochin Pipeline",
+  "Foothills Pipe Lines Ltd.": "Foothills System",
+  "Southern Lights Pipeline": "Southern Lights Pipeline",
+  "Emera Brunswick Pipeline Company Ltd.": "Brunswick Pipeline",
+  "Plains Midstream Canada ULC": "Plains Midstream Canada ULC",
+  "Genesis Pipeline Canada Ltd.": "Genesis Pipeline",
+  "Montreal Pipe Line Limited": "Montreal Pipeline",
+  "Trans-Northern Pipelines Inc.": "Trans-Northern Pipeline",
+  "Kingston Midstream Westspur Limited": "Westspur Pipeline",
+  "Many Islands Pipe Lines (Canada) Limited":
+    "Many Islands Pipe Lines (Canada) Limited",
+  "Vector Pipeline Limited Partnership": "Vector Pipeline",
+  "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
+};
+
 export const englishDashboard = {
   plains:
     "Plains Midstream Canada ULC includes the Aurora, Milk River, and Wascana pipelines",
+
   conditions: {
+    companyToSystem: companyToSystem,
     conditions: "conditions",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
@@ -90,6 +120,10 @@ export const englishDashboard = {
     },
   },
   incidents: {
+    companyToSystem: companyToSystem,
+    title: (systemName) => {
+      return `Dashboard: ${systemName} - Incidents With A Product Release`;
+    },
     definitions: {
       Status: {
         Closed:
@@ -166,5 +200,5 @@ export const englishDashboard = {
       },
     },
   },
-  o_and_m: {},
+  o_and_m: { companyToSystem: companyToSystem },
 };
