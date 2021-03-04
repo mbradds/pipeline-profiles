@@ -46,12 +46,12 @@ def meta_activities(df_c, company, meta):
     return meta
 
 
-def process_operations(test=False):
+def process_operations(test=False, sql=False):
     if not os.path.exists("../operationsAndMaintenance"):
         os.mkdir("../operationsAndMaintenance")
         os.mkdir("../operationsAndMaintenance/company_data")
 
-    df = get_data(test)
+    df = get_data(test, sql)
     for delete in ['Description',
                    'Circumstance',
                    'Third Party Consultation',
@@ -100,7 +100,7 @@ def process_operations(test=False):
         del df[activity]
     df['Activity Type'] = consolidated_activity
     df['Activity Type'] = df['Activity Type'].replace({"Nan": "Other", "Error": "Other"})
-    df = normalize_dates(df, ['Occurrence Date', 'Completion Date'], short_date=True)
+    df = normalize_dates(df, ['Occurrence Date', 'Completion Date', 'Reported Date'], short_date=True)
     df['Year'] = [x.year for x in df['Occurrence Date']]
 
     for fillZero in ['Dig Count']:
@@ -121,6 +121,7 @@ def process_operations(test=False):
         df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
             thisCompanyData['meta'] = meta_activities(df_c, company, meta)
+            df_c['Year'] = [int(x) for x in df_c['Year']]
             delete_after_meta = ['Event Number',
                                  'Completion Date',
                                  'Occurrence Date',
@@ -129,6 +130,8 @@ def process_operations(test=False):
                                  'In Stream Work Required',
                                  'Ground Disturbance Near Water Required',
                                  'Short Province',
+                                 'Integrity Dig',
+                                 'Reported Date',
                                  'Dig Count']
             df_c = normalizeBool(df_c, ['Integrity Dig',
                                         'Ground Disturbance Near Water Required',
@@ -148,5 +151,5 @@ def process_operations(test=False):
 
 if __name__ == "__main__":
     print('starting o and m...')
-    nova, df_c = process_operations()
+    nova, df_c = process_operations(test=False, sql=False)
     print('completed o and m!')
