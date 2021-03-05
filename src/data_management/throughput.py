@@ -14,10 +14,10 @@ def get_data(test, sql=False):
         df.to_csv('raw_data/throughput_gas.csv', index=False)
     elif test:
         print('reading test throughput')
-        df = pd.read_csv('raw_data/test_data/throughput_gas.csv')
+        df = pd.read_csv('raw_data/test_data/throughput_gas_monthly.csv')
     else:
         print('reading local throughput')
-        df = pd.read_csv('raw_data/throughput_gas.csv', encoding='latin-1')
+        df = pd.read_csv('raw_data/throughput_gas_monthly.csv', encoding='latin-1')
     return df
 
 
@@ -35,6 +35,16 @@ def meta_throughput(df_c, meta):
     return meta
 
 
+def serialize(df, col):
+    serialized_col = []
+    for date in df[col]:
+        dateSeries = int(''.join(list(pd.Series(date).to_json(orient='records'))[1:-1]))
+        serialized_col.append(dateSeries)
+
+    df['Date'] = serialized_col
+    return df
+
+
 def process_throughput(test=False, sql=False):
     if not os.path.exists("../operationsAndMaintenance"):
         os.mkdir("../operationsAndMaintenance")
@@ -43,12 +53,7 @@ def process_throughput(test=False, sql=False):
     df = get_data(test, sql)
 
     df['Date'] = pd.to_datetime(df['Date'])
-    dateList = df['Date'].to_json(orient='records')
-    print(dateList)
-    df = df[df['Date'].dt.year >= 2010].copy().reset_index(drop=True)
-    df = normalize_dates(df, ['Date'], True)
-    # df['Date'] = [int(time.mktime(t.timetuple())) for t in df['Date']]
-    df['Date'] = [int(t.strftime("%s")) for t in df['Date']]
+    df = serialize(df, 'Date')
 
     for col in ['Capacity (1000 m3/d)', 'Throughput (1000 m3/d)']:
         df[col] = df[col].fillna(0)
