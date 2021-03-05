@@ -7,12 +7,6 @@ import { mainConditions } from "../../conditions/conditionsDashboard.js";
 //incidents
 import incidentData from "../../incidents/company_data/NOVAGasTransmissionLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
-// operations and maintenance
-import opsData from "../../operationsAndMaintenance/company_data/NOVAGasTransmissionLtd.json";
-import { mainOandM } from "../../operationsAndMaintenance/oandmDashboard.js";
-//traffic
-// import trafficData from "../../traffic/company_data/NOVAGasTransmissionLtd.json";
-// import { mainTraffic } from "../../traffic/trafficDashboard.js";
 //language;
 import { englishDashboard } from "../../modules/langEnglish.js";
 // load dashboards
@@ -32,8 +26,6 @@ const arrayOfCharts = [
     incidentData.meta,
     englishDashboard.incidents
   ),
-  mainOandM(opsData.events, opsData.meta, englishDashboard.o_and_m),
-  // mainTraffic(trafficData.traffic, trafficData.meta, englishDashboard.traffic),
 ];
 
 loadAllCharts(arrayOfCharts).then((value) => {
