@@ -92,4 +92,9 @@ export const generalTheme = () => {
   };
 
   Highcharts.setOptions(Highcharts.transportation);
+  // Highcharts.setOptions({
+  //   global: {
+  //     useUTC: true,
+  //   },
+  // });
 };

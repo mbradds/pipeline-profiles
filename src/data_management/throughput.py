@@ -2,6 +2,8 @@ import pandas as pd
 from util import execute_sql, normalize_dates, most_common, get_company_names, normalizeBool
 import os
 import json
+from datetime import datetime
+import time
 script_dir = os.path.dirname(__file__)
 
 
@@ -15,7 +17,7 @@ def get_data(test, sql=False):
         df = pd.read_csv('raw_data/test_data/throughput_gas.csv')
     else:
         print('reading local throughput')
-        df = pd.read_csv('raw_data/throughput_gas.csv')
+        df = pd.read_csv('raw_data/throughput_gas.csv', encoding='latin-1')
     return df
 
 
@@ -24,11 +26,11 @@ def meta_throughput(df_c, meta):
     df_meta = df_meta.drop_duplicates().reset_index(drop=True)
     for col in df_meta:
         df_meta[col] = [x.strip() for x in df_meta[col]]
-    
+
     directions = {}
     for key, flow, trade in zip(df_meta['Key Point'], df_meta['Direction of Flow'], df_meta['Trade Type']):
         directions[key] = [flow, trade]
-    
+
     meta["directions"] = directions
     return meta
 
@@ -39,7 +41,14 @@ def process_throughput(test=False, sql=False):
         os.mkdir("../operationsAndMaintenance/company_data")
 
     df = get_data(test, sql)
-    df = normalize_dates(df, ['Date'])
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    dateList = df['Date'].to_json(orient='records')
+    print(dateList)
+    df = df[df['Date'].dt.year >= 2010].copy().reset_index(drop=True)
+    df = normalize_dates(df, ['Date'], True)
+    # df['Date'] = [int(time.mktime(t.timetuple())) for t in df['Date']]
+    df['Date'] = [int(t.strftime("%s")) for t in df['Date']]
 
     for col in ['Capacity (1000 m3/d)', 'Throughput (1000 m3/d)']:
         df[col] = df[col].fillna(0)
@@ -59,18 +68,35 @@ def process_throughput(test=False, sql=False):
         meta = meta_throughput(df_c, meta)
         for delete in ['Direction of Flow', 'Corporate Entity', 'Trade Type']:
             del df_c[delete]
-        
-        thisCompanyData['traffic'] = df_c.to_dict(orient='records')
+
+        point_data = {}
+        points = sorted(list(set(df_c['Key Point'])))
+        for p in points:
+            pointThroughput, pointCapacity, pointDates = [], [], []
+            df_p = df_c[df_c['Key Point'] == p].copy().reset_index()
+            for date, t, c in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity']):
+                # pointDates.append(date)
+                pointThroughput.append([date, t])
+                pointCapacity.append([date, c])
+            point_data[p] = [{"name": "Throughput",
+                              "type": "area",
+                              "data": pointThroughput},
+                             {"name": "Capacity",
+                              "type": "line",
+                              "data": pointCapacity}]
+
+        meta["points"] = points
+        # thisCompanyData['traffic'] = df_c.to_dict(orient='records')
+        thisCompanyData["traffic"] = point_data
         thisCompanyData['meta'] = meta
         if not test:
             with open('../traffic/company_data/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp, default=str)
 
-    return thisCompanyData
+    return thisCompanyData, df_c
 
 
 if __name__ == "__main__":
     print('starting throughput...')
-    nova = process_throughput(test=False, sql=False)
+    nova, df = process_throughput(test=False, sql=False)
     print('completed throughput!')
-    
