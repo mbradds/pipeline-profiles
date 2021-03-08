@@ -70,14 +70,6 @@ export class EventMap {
       "External Interference": pa.cerPalette["Ocean"],
       "To be determined": pa.cerPalette["Sun"],
     },
-    omColors: {
-      Replacement: pa.cerPalette["Cool Grey"],
-      Other: pa.cerPalette["Sun"],
-      "Pipeline integrity dig": pa.cerPalette["Night Sky"],
-      "Cathodic protection": pa.cerPalette["Forest"],
-      "Remedial work": pa.cerPalette["Aubergine"],
-      Repair: pa.cerPalette["Ocean"],
-    },
     yesNoColors: {
       Yes: pa.cerPalette["Sun"],
       No: pa.cerPalette["Night Sky"],
@@ -113,14 +105,6 @@ export class EventMap {
         Province: this.EVENTCOLORS.provinceColors,
         "Why It Happened": this.EVENTCOLORS.whyColors,
         "What Happened": this.EVENTCOLORS.whatColors,
-      };
-    } else if (this.eventType == "O&M activities") {
-      return {
-        Status: this.EVENTCOLORS.statusColors,
-        Province: this.EVENTCOLORS.provinceColors,
-        "Activity Type": this.EVENTCOLORS.omColors,
-        "Species At Risk Present": this.EVENTCOLORS.yesNoColors,
-        "Fish Present": this.EVENTCOLORS.yesNoColors,
       };
     }
   }

@@ -39,7 +39,11 @@ export const generalTheme = () => {
         label: {
           align: "center",
           style: {
-            fontWeight: "bold",
+            fontWeight: "bold",  // Highcharts.setOptions({
+              //   global: {
+              //     useUTC: true,
+              //   },
+              // });
             color: pa.cerPalette["Cool Grey"],
           },
         },
@@ -92,9 +96,4 @@ export const generalTheme = () => {
   };
 
   Highcharts.setOptions(Highcharts.transportation);
-  // Highcharts.setOptions({
-  //   global: {
-  //     useUTC: true,
-  //   },
-  // });
 };

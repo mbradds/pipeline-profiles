@@ -1,5 +1,4 @@
 export const profileTextQuery = (function () {
-  //   let paragraph = document.getElementById("system-incidents-paragraph");
   const dynamicValue = (val) => {
     return `<i class="bg-primary" style="font-style: normal"><strong>&nbsp${val}&nbsp</strong></i>`;
   };
@@ -18,29 +17,6 @@ export const profileTextQuery = (function () {
         return "fatalities";
       }
     }
-  };
-
-  const addSentence = (dict, addNumber = true) => {
-    var commonActivityText = ``;
-    let counter = 0;
-    let activitySize = Object.keys(dict).length;
-    for (const property in dict) {
-      counter++;
-      if (addNumber) {
-        if (counter !== activitySize) {
-          commonActivityText += `${property} (${dict[property]}), `;
-        } else {
-          commonActivityText += `and ${property} (${dict[property]})`;
-        }
-      } else {
-        if (counter !== activitySize) {
-          commonActivityText += `${property}, `;
-        } else {
-          commonActivityText += `and ${property}`;
-        }
-      }
-    }
-    return commonActivityText;
   };
 
   const incidentsEnglish = (id, meta) => {
@@ -91,34 +67,5 @@ export const profileTextQuery = (function () {
     paragraph.innerHTML = paragraphText;
   };
 
-  const oandmEnglish = (id, meta) => {
-    const paragraph = document.getElementById(id);
-    // first total/summary paragraph for the system.
-    let paragraphText = `<p>`;
-    paragraphText += `The ${
-      meta.systemName
-    } has reported a total of ${dynamicValue(
-      meta.numberOfEvents
-    )} individual O&M activities with ${dynamicValue(
-      meta.numberOfDigs + " integrity digs"
-    )} since ${
-      meta.earliestYear
-    }. The latest O&M activity occured in ${dynamicValue(
-      meta.latestYear
-    )}.</p>`;
-
-    let activitySize = Object.keys(meta.mostCommonActivity).length;
-    // second most common event/location paragraph
-    paragraphText += `<p>On this pipeline system, the ${activitySize} most common O&M activity types conducted are ${dynamicValue(
-      addSentence(meta.mostCommonActivity)
-    )}. There have been ${dynamicValue(
-      meta.speciesAtRiskEvents
-    )} O&M activities with a species at risk present. \
-    These activities can occur at various locations on or near the pipeline. On this pipeline system, O&M activities have occured near ${dynamicValue(
-      addSentence(meta.nearby, false)
-    )} among other populated areas.</p>`;
-    paragraph.innerHTML = paragraphText;
-  };
-
-  return { incidentsEnglish: incidentsEnglish, oandmEnglish: oandmEnglish };
+  return { incidentsEnglish: incidentsEnglish };
 })();

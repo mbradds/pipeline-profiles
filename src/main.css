@@ -1,4 +1,3 @@
-/* general styles shared for multiple profile sections */
 body {
   overflow-x: hidden;
 }
@@ -8,10 +7,6 @@ body {
   font-weight: bold;
   color: #871455;
 }
-/* #ie-warning {
-  max-width: 1000px;
-  margin: auto;
-} */
 .h2 {
   font-family: Arial;
   font-size: 1.8em;
@@ -81,7 +76,7 @@ body {
   color: #42464b;
   text-align: center;
 }
-/* incidents */
+/* styles for incidents section */
 #incident-map {
   position: relative;
   height: 515px;

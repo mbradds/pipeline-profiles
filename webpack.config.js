@@ -39,7 +39,6 @@ var profileWebpackConfig = (function () {
     return htmlFileNames.map((name) => {
       return new HtmlWebpackPlugin({
         filename: `en/${name}/${name}.html`,
-        // inject:false,
         chunks: [`en/${name}/${name}`],
         chunkSortMode: "manual",
         template: "src/profile_en.html",
@@ -51,7 +50,6 @@ var profileWebpackConfig = (function () {
 
   function entry(language = ["en"]) {
     const entryPoints = {};
-    //const entryPoints = { shared: "leaflet" };
     language.map((lang) => {
       htmlFileNames.map((name) => {
         if (["aurora", "milk_river", "wascana"].includes(name)) {
