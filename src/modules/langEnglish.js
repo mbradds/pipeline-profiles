@@ -122,7 +122,7 @@ export const englishDashboard = {
   incidents: {
     companyToSystem: companyToSystem,
     title: (systemName) => {
-      return `Dashboard: ${systemName} - Incidents With A Product Release`;
+      return `Dashboard: ${systemName} - Incidents with a product release`;
     },
     definitions: {
       Status: {
@@ -192,6 +192,8 @@ export const englishDashboard = {
       noNearby: (eventType) => {
         return `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`;
       },
+      rangeTitle: "Select range",
+      findBtnTitle: "Find Incidents within",
     },
     noIncidents: {
       header: "No incidents data available",

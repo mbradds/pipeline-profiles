@@ -8,19 +8,17 @@
       rel="icon"
       type="image/x-icon"
     />
-    <!-- leaflet css -->
     <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
-    <!-- this preload doesnt work on ie! -->
-    <!-- <link
       rel="preload"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       as="style"
       onload="this.onload-null;this.rel='stylesheet'"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""
     />
@@ -31,7 +29,8 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""
       />
-    </noscript> -->
+    </noscript>
+    <link rel="preload" href="../../main.css" as="style" />
     <link rel="stylesheet" href="../../main.css" />
     <link rel="stylesheet" href="../../GCWeb/css/theme.min.css" />
     <link rel="stylesheet" href="../../GCWeb/css/gcwu.custom.css" />
@@ -82,8 +81,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Start Condition Compliance -->
 
     <div id="condition-compliance" class="profile-section tabcontent">
       <div class="container">
@@ -186,7 +183,6 @@
               </div>
             </div>
 
-            <!-- conditions map -->
             <div class="plains_disclaimer"></div>
             <div class="dashboard" id="conditions-dashboard">
               <div class="row">
@@ -282,7 +278,7 @@
                 <details>
                   <summary>Source and Description</summary>
                   <p>
-                    <strong>Data Source: </strong
+                    <strong>Data source: </strong
                     ><a
                       href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70"
                       target="_blank"
@@ -348,8 +344,8 @@
             <h3>Pipeline Incidents</h3>
             <p class="small">Section updated March 2021</p>
             <p>
-              The information presented here is based on CER data from 2008 to
-              current for incidents reported under the
+              The information presented here is based on CER data (2008 to
+              current) for incidents reported under the
               <a
                 href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"
                 target="_blank"
@@ -380,7 +376,7 @@
             </p>
             <details>
               <summary>
-                What is an incident? (Onshore Pipeline Regulations)
+                What is an incident? (Onshore Pipeline Regulations (OPR))
               </summary>
               <p>
                 As defined in the OPR, “incident” means an occurrence that
@@ -407,7 +403,7 @@
             </details>
             <details>
               <summary>
-                What is an incident? (Processing Plant Regulations)
+                What is an incident? (Processing Plant Regulations (PPR))
               </summary>
               <p>
                 As defined in the PPR, “incident” is defined as an occurrence
@@ -490,7 +486,7 @@
             <div class="mrgn-tp-md" id="system-incidents-paragraph"></div>
             <details>
               <summary>
-                Incident Type Definitions:
+                Incident type definitions:
                 <i>one incident can have multiple types</i>
               </summary>
               <ul>
@@ -588,7 +584,7 @@
                   value="frequency"
                   checked="checked"
                 />
-                Incident Count</label
+                Incident count</label
               >
               <label for="incident-volume-btn" class="radio-inline">
                 <input
@@ -597,14 +593,13 @@
                   name="type"
                   value="volume"
                 />
-                Incident Volume</label
+                Incident volume</label
               >
             </form>
           </div>
 
           <div class="row">
-            <div class="mrgn-tp-xl"></div>
-            <div class="col-md-12">
+            <div class="col-md-12 mrgn-tp-md">
               <div
                 class="btn-group btn-group-justified"
                 id="incident-view-type"
@@ -632,12 +627,9 @@
             </div>
             <div class="col-md-4 event-navigator">
               <div class="event-filter-nav" id="substance-bar"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="status-bar"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="year-bar"></div>
-              <div class="mrgn-tp-sm"></div>
-              <div class="event-filter-nav" id="province-bar"></div>
+              <div class="event-filter-nav mrgn-tp-sm" id="status-bar"></div>
+              <div class="event-filter-nav mrgn-tp-sm" id="year-bar"></div>
+              <div class="event-filter-nav mrgn-tp-sm" id="province-bar"></div>
             </div>
           </div>
 
@@ -648,14 +640,16 @@
               </div>
               <div class="col-md-3">
                 <div class="event-filter-nav" id="substance-trend"></div>
-                <div class="mrgn-tp-sm"></div>
-                <div class="event-filter-nav" id="status-trend"></div>
-                <div class="mrgn-tp-sm"></div>
-                <div class="event-filter-nav" id="what-trend"></div>
-                <div class="mrgn-tp-sm"></div>
-                <div class="event-filter-nav" id="why-trend"></div>
-                <div class="mrgn-tp-sm"></div>
-                <div class="event-filter-nav" id="province-trend"></div>
+                <div
+                  class="event-filter-nav mrgn-tp-sm"
+                  id="status-trend"
+                ></div>
+                <div class="event-filter-nav mrgn-tp-sm" id="what-trend"></div>
+                <div class="event-filter-nav mrgn-tp-sm" id="why-trend"></div>
+                <div
+                  class="event-filter-nav mrgn-tp-sm"
+                  id="province-trend"
+                ></div>
               </div>
             </div>
             <div class="row">
@@ -675,7 +669,7 @@
             <div class="panel-body incidents-near-me">
               <div class="row" style="margin: 0px">
                 <div class="col-md-12 cerlabel" id="find-incidents-title">
-                  Select Range (100km):
+                  Select range (100km):
                 </div>
               </div>
               <div class="row">
@@ -728,7 +722,7 @@
             <details>
               <summary>Source and Description</summary>
               <p>
-                <strong>Data Source: </strong
+                <strong>Data source: </strong
                 ><a
                   href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1"
                   target="_blank"
@@ -749,7 +743,7 @@
                 larger map bubbles showing larger release volumes relative to
                 other product releases on the system. The incident data can also
                 be toggled to display a stacked bar chart of incidents over time
-                by clicking on the <i>Incident Trends</i> button above the map.
+                by clicking on the <i>incident trends</i> button above the map.
                 The stacked bars dispaly the number of product release incidents
                 by year, with bar color segments corresponding to the various
                 products released. Similiar to the map, incidents can be
@@ -785,10 +779,7 @@
       </div>
     </div>
 
-    <!-- <div id="operations-maintenance" class="profile-section tabcontent"></div>
-    <div id="contaminated-sites" class="profile-section tabcontent"></div>
-    <div id="unauthorized-activities" class="profile-section tabcontent"></div> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script>
       function openTab(evt, sectionName) {
         var i, tabcontent, tablinks;
@@ -797,7 +788,6 @@
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-        //$("." + sectionName).show();
         document.getElementById(sectionName).style.display = "block";
         evt.currentTarget.className += " active";
       }
@@ -806,10 +796,8 @@
       });
     </script>
     <script src="../../GCWeb/wet-boew/js/wet-boew.min.js"></script>
-    <!-- highcharts -->
     <script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>
-    <!-- leaflet -->
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="

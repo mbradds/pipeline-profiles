@@ -43,7 +43,7 @@ export const profileTextQuery = (function () {
         )} and the most common <i>why it happened</i> is ${dynamicValue(
       meta.mostCommonWhy
     )}.`;
-    paragraphText += ` Take a look at the <i>Incident Trends</i> section of the dashboard below for definitions and a breakdown of what and why.</p>`;
+    paragraphText += ` Take a look at the <i>incident trends</i> section of the dashboard below for definitions and a breakdown of what and why.</p>`;
 
     //other important non-release incident types
     paragraphText += `<p>`;

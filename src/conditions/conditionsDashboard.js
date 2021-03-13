@@ -349,10 +349,9 @@ export async function mainConditions(
             );
           },
           click: function () {
-            var [chartHeight, chartWidth] = [this.chartHeight, this.chartWidth];
             if (this.customTooltip) {
               if (
-                this.mouseDownX > chartWidth - this.customTooltip.width &&
+                this.mouseDownX > this.chartWidth - this.customTooltip.width &&
                 this.mouseDownY < this.customTooltip.height
               ) {
               } else {
@@ -401,25 +400,25 @@ export async function mainConditions(
   };
 
   const chartMode = (chart, mapInits) => {
-    if (mapInits.mode == "development") {
-      chart.update({
-        chart: {
-          panning: true,
-          events: {
-            redraw: function () {
-              // this is useful for determining the on load map zoom scale
-              var yScale = this.yAxis[0].getExtremes();
-              var xScale = this.xAxis[0].getExtremes();
-              console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
-              console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
-            },
-          },
-        },
-        mapNavigation: {
-          enabled: true,
-        },
-      });
-    }
+    // if (mapInits.mode == "development") {
+    //   chart.update({
+    //     chart: {
+    //       panning: true,
+    //       events: {
+    //         redraw: function () {
+    //           // this is useful for determining the on load map zoom scale
+    //           var yScale = this.yAxis[0].getExtremes();
+    //           var xScale = this.xAxis[0].getExtremes();
+    //           console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
+    //           console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
+    //         },
+    //       },
+    //     },
+    //     mapNavigation: {
+    //       enabled: true,
+    //     },
+    //   });
+    // }
     return chart;
   };
 

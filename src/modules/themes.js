@@ -34,20 +34,6 @@ export const generalTheme = () => {
           color: pa.cerPalette["Cool Grey"],
         },
       },
-      plotBands: {
-        color: pa.cerPalette["Forecast"],
-        label: {
-          align: "center",
-          style: {
-            fontWeight: "bold",  // Highcharts.setOptions({
-              //   global: {
-              //     useUTC: true,
-              //   },
-              // });
-            color: pa.cerPalette["Cool Grey"],
-          },
-        },
-      },
     },
 
     yAxis: {
@@ -79,14 +65,6 @@ export const generalTheme = () => {
     legend: {
       itemStyle: {
         fontSize: "15px",
-      },
-    },
-
-    noData: {
-      style: {
-        fontWeight: "bold",
-        fontSize: "15px",
-        color: "#303030",
       },
     },
 

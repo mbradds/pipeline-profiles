@@ -70,10 +70,6 @@ export class EventMap {
       "External Interference": pa.cerPalette["Ocean"],
       "To be determined": pa.cerPalette["Sun"],
     },
-    yesNoColors: {
-      Yes: pa.cerPalette["Sun"],
-      No: pa.cerPalette["Night Sky"],
-    },
   };
 
   constructor({

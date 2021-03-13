@@ -1,5 +1,4 @@
 export var profileAssist = (function () {
-  // TODO: use this pattern to reduce global namespace pollution
   "use strict";
 
   const cerPalette = {
@@ -20,8 +19,6 @@ export var profileAssist = (function () {
     hcLightBlue: "#91e8e1",
   };
 
-  const dateFormatString = "%b %d, %Y";
-
   const conversions = {
     "m3 to bbl": 6.2898,
     "bbl to m3": 1 / 6.2898,
@@ -30,15 +27,6 @@ export var profileAssist = (function () {
 
   const sortJson = (obj, colName = "value") => {
     return obj.slice().sort((a, b) => b[colName] - a[colName]);
-  };
-
-  const currentDate = () => {
-    var today = new Date();
-    today.setUTCHours(0);
-    today.setUTCMinutes(0);
-    today.setUTCSeconds(0);
-    today.setUTCMilliseconds(0);
-    return today.getTime();
   };
 
   function visibility(divList, status) {
@@ -58,10 +46,8 @@ export var profileAssist = (function () {
 
   return {
     cerPalette: cerPalette,
-    dateFormatString: dateFormatString,
     conversions: conversions,
     sortJson: sortJson,
-    currentDate: currentDate,
     visibility: visibility,
   };
 })();

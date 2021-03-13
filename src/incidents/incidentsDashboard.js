@@ -15,7 +15,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
     } catch (err) {
       document.getElementById(
         "incidents-dashboard-title"
-      ).innerText = `Dashboard: Pipeline Incidents With A Product Release`;
+      ).innerText = `Dashboard: Incidents with a product release`;
     }
   };
 
@@ -138,8 +138,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
           let findIncidentTitle = document.getElementById(
             "find-incidents-title"
           );
-          findIncidentBtn.innerText = `Find Incidents within ${slide.val()}km`;
-          findIncidentTitle.innerText = `Select Range (${slide.val()}km):`;
+          findIncidentBtn.innerText = `${
+            lang.dashboard.findBtnTitle
+          } ${slide.val()}km`;
+          findIncidentTitle.innerText = `${
+            lang.dashboard.rangeTitle
+          } (${slide.val()}km):`;
           findIncidentBtn.value = slide.val();
         });
 
