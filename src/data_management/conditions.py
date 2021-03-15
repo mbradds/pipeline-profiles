@@ -24,7 +24,13 @@ def import_simplified(name='economic_regions.json'):
     df = df.set_geometry('geometry')
     fr_cols = ['PRNAME', 'ERNAME']
     for splitcols in fr_cols:
-        df[splitcols] = [x.split('/')[0].strip() for x in df[splitcols]]
+        df[splitcols] = [x.split('/') for x in df[splitcols]]
+        df[splitcols+'_en'] = [x[0].strip() for x in df[splitcols]]
+        df[splitcols+'_fr'] = [x[0].strip() if len(x) == 1 else x[-1].strip() for x in df[splitcols]]
+
+    for delete in ['PRNAME', 'ERNAME', 'PRUID', 'ERUID']:
+        del df[delete]
+    df['PRNAME_fr'] = df['PRNAME_fr'].replace({'Québec': 'Quebec'})
     return df
 
 
@@ -34,14 +40,23 @@ def export_files(df, folder, name):
     print(folder+' done ', 'CRS: '+str(df.crs))
 
 
-def conditions_on_map(df, shp, folder_name):
+def conditions_on_map(df, shp, folder_name, lang):
     shp = pd.merge(shp,
                    df,
                    how='inner',
-                   left_on=['PRNAME', 'ERNAME'],
+                   left_on=['PRNAME_'+lang, 'ERNAME_'+lang],
                    right_on=['Flat Province', 'id'])
-    for delete in ['PRUID', 'ERUID', 'ERNAME', 'PRNAME']:
-        del shp[delete]
+
+    if lang == 'en':
+        del shp['ERNAME_fr']
+        del shp['PRNAME_fr']
+        shp = shp.rename(columns={'ERNAME_en': 'ERNAME',
+                                  'PRNAME_en': 'PRNAME'})
+    else:
+        del shp['ERNAME_en']
+        del shp['PRNAME_en']
+        shp = shp.rename(columns={'ERNAME_fr': 'ERNAME',
+                                  'PRNAME_fr': 'PRNAME'})
 
     shp = shp[~shp.geometry.is_empty]
     shp = shp[shp.geometry.notna()]
@@ -162,7 +177,7 @@ def conditionMetaData(df, folder_name):
     return df_all, meta
 
 
-def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False, test=False):
+def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False, test=False, lang='en'):
 
     def add_links(df_c, df_links):
         l = {}
@@ -179,7 +194,10 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
         return df_c
 
     if remote:
-        link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
+        if lang == 'en':
+            link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
+        else:
+            link = 'https://www.cer-rec.gc.ca/ouvert/conditions/conditions.csv'
         print('downloading remote conditions file')
         df = pd.read_csv(link,
                          sep='\t',
@@ -192,12 +210,45 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
         df = pd.read_csv('./raw_data/test_data/conditions.csv', encoding="UTF-16", sep='\t')
     else:
         print('reading local conditions data')
-        # df = pd.read_csv("./raw_data/conditions.csv",
-        #                  sep='\t',
-        #                  lineterminator='\r',
-        #                  encoding="UTF-16",
-        #                  error_bad_lines=False)
-        df = pd.read_csv('./raw_data/conditions.csv', encoding="UTF-16", sep='\t')
+        if lang == 'en':
+            df = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
+        else:
+            en = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
+            en = en[en['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
+
+            fr = pd.read_csv('./raw_data/conditions_fr.csv', encoding="UTF-16", sep='\t')
+            fr = fr.rename(columns={"Société": "Company",
+                                    "Nom du projet": "Project Name",
+                                    "Nom du projet court": "Short Project Name",
+                                    "État du projet": "Project Status",
+                                    "Instrument no": "Instrument Number",
+                                    "Activité liée à l'instrument": "Instrument Activity",
+                                    "Entrée en vigueur": "Effective Date",
+                                    "Date de délivrance": "Issuance Date",
+                                    "Date de réexamen": "Sunset Date",
+                                    "État de l'instrument": "Instrument Status",
+                                    "Lieu": "Location",
+                                    "Condition No": "Condition Number",
+                                    "Condition": "Condition",
+                                    "État de condition": "Condition Status",
+                                    "Étape de condition": "Condition Phase",
+                                    "Type de Condition": "Condition Type",
+                                    "Dépôt pour condition": "Condition Filing",
+                                    "Thème(s)": "Theme(s)"})
+            fr = fr[fr['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
+
+            en = normalize_text(en, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
+            fr = normalize_text(fr, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
+            fr['french id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(fr['Instrument Number'], fr['Condition Number'])]
+            en['english id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(en['Instrument Number'], en['Condition Number'])]
+            fr = fr[['french id', 'Location', 'Short Project Name', 'Theme(s)']].copy().reset_index(drop=True)
+            join = en.merge(fr, how='left', left_on='english id', right_on='french id', suffixes=('_en', '_fr'))
+            for delete in ['french id', 'english id', 'Location_en', 'Theme(s)_en', 'Short Project Name_en']:
+                del join[delete]
+            join = join.rename(columns={'Theme(s)_fr': 'Theme(s)',
+                                        'Location_fr': 'Location',
+                                        'Short Project Name_fr': 'Short Project Name'})
+            df = join.copy()
 
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
@@ -282,12 +333,12 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
             # calculate metadata here
             dfmeta, meta = conditionMetaData(df_all, folder_name)
             thisCompanyData['meta'] = meta
-            shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name)
+            shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name, lang)
 
             thisCompanyData['regions'] = shp.to_json()
             thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
             if not test:
-                with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../conditions/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             meta = {"companyName": company}
@@ -296,7 +347,7 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
                                'mapMeta': []}
 
             if not test:
-                with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../conditions/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         print('completed conditions: '+company)
 
@@ -306,7 +357,7 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 if __name__ == "__main__":
     print('starting conditions...')
     # df = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'])
-    df, regions, mapMeta, meta = process_conditions(remote=False)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr')
     print('completed conditions!')
 
 #%%

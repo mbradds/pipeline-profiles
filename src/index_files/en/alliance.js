@@ -1,10 +1,10 @@
 import { generalTheme } from "../../modules/themes.js";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/AlliancePipelineLtd.json";
+import conditionsData from "../../conditions/company_data/en/AlliancePipelineLtd.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
 // incidents
-import incidentData from "../../incidents/company_data/AlliancePipelineLtd.json";
+import incidentData from "../../incidents/company_data/en/AlliancePipelineLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // language
 import { englishDashboard } from "../../modules/langEnglish.js";

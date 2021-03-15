@@ -1,12 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 var profileWebpackConfig = (function () {
+  const language = ["en"];
+
   const htmlFileNames = [
     "ngtl",
     "enbridge_mainline",
@@ -36,19 +37,25 @@ var profileWebpackConfig = (function () {
   ];
 
   function htmlWebpack() {
-    return htmlFileNames.map((name) => {
-      return new HtmlWebpackPlugin({
-        filename: `en/${name}/${name}.html`,
-        chunks: [`en/${name}/${name}`],
-        chunkSortMode: "manual",
-        template: "src/profile_en.html",
-        publicPath: "../..",
-        minify: false,
+    var html = [];
+    language.map((lang) => {
+      htmlFileNames.map((name) => {
+        html.push(
+          new HtmlWebpackPlugin({
+            filename: `${lang}/${name}/${name}.html`,
+            chunks: [`${lang}/${name}/${name}_${lang}`],
+            chunkSortMode: "manual",
+            template: "src/profile_en.html",
+            publicPath: "../..",
+            minify: false,
+          })
+        );
       });
     });
+    return html;
   }
 
-  function entry(language = ["en"]) {
+  function entry() {
     const entryPoints = {};
     language.map((lang) => {
       htmlFileNames.map((name) => {
@@ -58,7 +65,7 @@ var profileWebpackConfig = (function () {
           var scriptName = name;
         }
         entryPoints[
-          `${lang}/${name}/${name}`
+          `${lang}/${name}/${name}_${lang}`
         ] = `./src/index_files/${lang}/${scriptName}.js`;
       });
     });
@@ -72,8 +79,7 @@ var profileWebpackConfig = (function () {
 module.exports = {
   // mode: "development",
   mode: "production",
-  target: "es5",
-  entry: profileWebpackConfig.entry(["en"]),
+  entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
@@ -122,10 +128,6 @@ module.exports = {
 
   optimization: {
     minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        extractComments: false,
-      }),
-    ],
+    usedExports: true,
   },
 };

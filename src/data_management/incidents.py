@@ -3,90 +3,8 @@ import numpy as np
 from util import get_company_names, company_rename, most_common
 import ssl
 import json
-import geopandas as gpd
-from math import radians, cos, sin, asin, sqrt
 ssl._create_default_https_context = ssl._create_unverified_context
-web_mercator = "EPSG:3857"
-canada_geographic = "EPSG:4617"  # https://spatialreference.org/ref/epsg/4617/
 lastFullYear = 2020
-
-
-def haversine(lon1, lat1, lon2, lat2):
-    """
-    Calculate the great circle distance between two points
-    on the earth (specified in decimal degrees)
-    """
-    # convert decimal degrees to radians
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-
-    # haversine formula
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a))
-    r = 6371  # Radius of earth in kilometers. Use 3956 for miles
-    return c * r
-
-
-def load_fn_land():
-    df = gpd.read_file("./raw_data/AL_TA_CA_SHP_eng/AL_TA_CA_2_128_eng.shp")
-    return df
-
-
-def load_fn_point():
-    df = gpd.read_file("./raw_data/Premiere_Nation_First_Nation_SHP/Premiere_Nation_First_Nation.shp")
-    df = df.to_crs(canada_geographic)
-    return df
-
-
-def events_on_land(events):
-    land = load_fn_land()
-    events_gdf = events.copy()
-    gEvents = gpd.GeoDataFrame(events_gdf, geometry=gpd.points_from_xy(events.Longitude, events.Latitude))
-    # gEvents.to_file("./raw_data/land_test/nova.shp")
-
-    all_inside = []
-    for land_index, land_row in land.iterrows():
-        in_land = gEvents.within(land_row['geometry'])
-        in_land = gEvents.loc[in_land]
-        if len(in_land) > 0:
-            for event_index, event_row in in_land.iterrows():
-                on_land_details = {}
-                on_land_details['id'] = event_row["Incident Number"]
-                on_land_details['landName'] = land_row["NAME1"]
-                on_land_details['landType'] = land_row['ALTYPE']
-                all_inside.append(on_land_details)
-
-    return all_inside
-
-
-def events_near_land(events):
-    fn = load_fn_point()
-    proximity_result = []
-    for index, row in events.iterrows():
-        inc_lon, inc_lat = row['Longitude'], row['Latitude']
-        for p, band_name in zip(fn['geometry'], fn['BAND_NAME']):
-            fn_lon, fn_lat = p.x, p.y
-            dist = haversine(lon1=inc_lon, lat1=inc_lat, lon2=fn_lon, lat2=fn_lat)
-            if dist <= 40:
-                proximity_result.append({"id": row['Incident Number'],
-                                         "landName": band_name,
-                                         "distance": round(dist, 1)})
-    proximity_result = pd.DataFrame(proximity_result)
-    category = []
-    for dist in proximity_result['distance']:
-        if dist <= 10:
-            category.append(0)
-        else:
-            category.append(1)
-    proximity_result['landProximityCategory'] = category
-    proximity_result = proximity_result.groupby(['id']).agg({'landName': ', '.join,
-                                                             'landProximityCategory': min})
-    events = events.merge(proximity_result,
-                          how='left',
-                          left_on=['Incident Number'],
-                          right_on=['id'])
-    return events
 
 
 def incidentsPerKm(dfAll):
@@ -113,17 +31,25 @@ def incidentsPerKm(dfAll):
     return dfAll
 
 
-def incidentMetaData(df, dfPerKm, company):
+def incidentMetaData(df, dfPerKm, company, lang):
 
-    def most_common_substance(df, meta):
-        df_substance = df[df['Substance'] != "Not Applicable"].copy()
+    def most_common_substance(df, meta, lang):
+        if lang == 'en':
+            df_substance = df[df['Substance'] != "Not Applicable"].copy()
+        else:
+            df_substance = df[df['Substance'] != "Sans object"].copy()
         meta = most_common(df_substance, meta, "Substance", "mostCommonSubstance")
         return meta
 
-    def other_types(df):
-        serious = {"Adverse Environmental Effects": 0,
-                   "Fatality": 0,
-                   "Serious Injury (CER or TSB)": 0}
+    def other_types(df, lang):
+        if lang == 'en':
+            serious = {"Adverse Environmental Effects": 0,
+                       "Fatality": 0,
+                       "Serious Injury (CER or TSB)": 0}
+        else:
+            serious = {'Effets environnementaux négatifs': 0,
+                       'Blessure grave (Régie ou BST)': 0,
+                       'Décès': 0}
         for type_list in df['Incident Types']:
             type_list = [x.strip() for x in type_list.split(",")]
             for t in type_list:
@@ -146,7 +72,7 @@ def incidentMetaData(df, dfPerKm, company):
     meta = {}
     # meta['relativePct'] = thisCompanyPct(df, df_c)
     meta['companyName'] = company
-    meta['seriousEvents'] = other_types(df_c)
+    meta['seriousEvents'] = other_types(df_c, lang)
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
@@ -159,7 +85,7 @@ def incidentMetaData(df, dfPerKm, company):
     # calculate the most common what and why and most common substance released
     meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
     meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
-    meta = most_common_substance(df_c, meta)
+    meta = most_common_substance(df_c, meta, lang)
     return meta
 
 
@@ -188,9 +114,18 @@ def changes(df, volume=True):
     return changeMeta
 
 
-def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
+def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False, lang='en'):
+
+    def fixColumns(df):
+        new_cols = {x: x.split("(")[0].strip() for x in df.columns}
+        df = df.rename(columns=new_cols)
+        return df
+
     if remote:
-        link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
+        if lang == 'en':
+            link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
+        else:
+            link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/2020-12-31-donnees-incidents.csv"
         print('downloading remote incidents file')
         df = pd.read_csv(link,
                          skiprows=1,
@@ -203,18 +138,69 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                          skiprows=0,
                          encoding="UTF-8",
                          error_bad_lines=False)
+
     else:
         print('reading local incidents file')
-        df = pd.read_csv("./raw_data/incidents.csv",
-                         skiprows=0,
-                         encoding="UTF-8",
-                         error_bad_lines=False)
+        if lang == 'en':
+            df = pd.read_csv("./raw_data/incidents_en.csv",
+                             skiprows=0,
+                             encoding="UTF-8",
+                             error_bad_lines=False)
+            df = fixColumns(df)
+            df['Substance'] = df['Substance'].replace({"Water": "Other",
+                                                       "Hydrogen Sulphide": "Other",
+                                                       "Amine": "Other",
+                                                       "Contaminated Water": "Other",
+                                                       "Potassium Hydroxide (caustic solution)": "Other",
+                                                       "Glycol": "Other",
+                                                       "Pulp slurry": "Other",
+                                                       "Sulphur": "Other",
+                                                       "Odourant": "Other",
+                                                       "Potassium Carbonate": "Other",
+                                                       "Waste Oil": "Other",
+                                                       "Produced Water": "Other",
+                                                       "Butane": "Natural Gas Liquids",
+                                                       "Mixed HVP Hydrocarbons": "Other",
+                                                       "Drilling Fluid": "Other"})
+        else:
+            df = pd.read_csv("./raw_data/incidents_fr.csv",
+                             skiprows=1,
+                             encoding="UTF-16",
+                             error_bad_lines=False)
+            df = fixColumns(df)
+            df = df.rename(columns={"Numéro d'incident": "Incident Number",
+                                    "Types d'incident": "Incident Types",
+                                    "Date de l'événement signalé": "Reported Date",
+                                    "Centre habité le plus près": "Nearest Populated Centre",
+                                    "Province": "Province",
+                                    "Société": "Company",
+                                    "État": "Status",
+                                    "Latitude": "Latitude",
+                                    "Longitude": "Longitude",
+                                    "Approximation du volume déversé": "Approximate Volume Released",
+                                    "Substance": "Substance",
+                                    "Type de Déversement": "Release Type",
+                                    "Majeur": "Significant",
+                                    "Année": "Year",
+                                    "Ce qui s’est passé": "What Happened",
+                                    "Cause": "Why It Happened"})
 
-    for vol in ['Approximate Volume Released (m³)', 'Approximate Volume Released (m3)']:
-        try:
-            df = df.rename(columns={vol: 'Approximate Volume Released'})
-        except:
-            None
+            df['Substance'] = df['Substance'].replace({'Glycol': 'Aurte',
+                                                        'Hydroxyde de potassium (solution caustique)': 'Autre',
+                                                        'Butane': 'Liquides de gaz naturel',
+                                                        'Carbonate de potassium': 'Autre',
+                                                        'Odorisant': 'Autre',
+                                                        "Sulfure d'hydrogène": 'Autre',
+                                                        'Eau produite': 'Autre',
+                                                        'Fluide de forage': 'Autre',
+                                                        'Huile usée': 'Autre',
+                                                        'Dioxyde de soufre': 'Autre',
+                                                        'Eau contaminée': 'Autre',
+                                                        "Mélange d'hydrocarbures à HPV": 'Autre',
+                                                        'Eau': 'Autre',
+                                                        'Pâte liquide': 'Autre',
+                                                        'Soufre': 'Autre',
+                                                        'Amine': 'Autre'})
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())
@@ -222,21 +208,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
-    df['Substance'] = df['Substance'].replace({"Water": "Other",
-                                               "Hydrogen Sulphide": "Other",
-                                               "Amine": "Other",
-                                               "Contaminated Water": "Other",
-                                               "Potassium Hydroxide (caustic solution)": "Other",
-                                               "Glycol": "Other",
-                                               "Pulp slurry": "Other",
-                                               "Sulphur": "Other",
-                                               "Odourant": "Other",
-                                               "Potassium Carbonate": "Other",
-                                               "Waste Oil": "Other",
-                                               "Produced Water": "Other",
-                                               "Butane": "Other",
-                                               "Mixed HVP Hydrocarbons": "Other",
-                                               "Drilling Fluid": "Other"})
 
     for delete in ['Significant',
                    'Release Type',
@@ -286,37 +257,22 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         thisCompanyData = {}
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
-            meta = incidentMetaData(df, perKm, company)
+            meta = incidentMetaData(df, perKm, company, lang)
             # companyTrend = changes(df_vol, volume=False)
             # meta['trends'] = {"company": companyTrend, "industry": industryTrend}
             thisCompanyData['meta'] = meta
             del df_vol['Incident Types']
             del df_vol['Company']
-            if land:
-                on_land = events_on_land(df_vol)
-                df_vol = events_near_land(df_vol)
-                df_vol['landProximityCategory'] = df_vol['landProximityCategory'].fillna(3)
-                df_vol['landProximityCategory'] = df_vol['landProximityCategory'].replace({0: "within 10 km",
-                                                                                           1: "within 40 km",
-                                                                                           3: "no proximity"})
-                if len(on_land) > 0:
-                    for location in on_land:
-                        df_vol.loc[df_vol["Incident Number"] == location["id"], ["landProximityCategory"]] = "On First Nations Land"
-                        df_vol.loc[df_vol["Incident Number"] == location["id"], ["landName"]] = location["landName"]+" ("+location["landType"]+")"
-
-                df_vol = df_vol.rename(columns={'landProximityCategory':
-                                                'First Nations Proximity'})
-
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             if not test:
-                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             if not test:
-                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return df_c, df_vol, meta, perKm
@@ -324,7 +280,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta, perKm = process_incidents(remote=False)
+    df, volume, meta, perKm = process_incidents(remote=False, lang='fr')
     print('completed incidents!')
 
 #%%

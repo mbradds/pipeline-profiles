@@ -131,7 +131,7 @@ export const englishDashboard = {
         Submitted:
           "The company has submitted all of the required information and the CER is reviewing the incident.",
         "Initially Submitted":
-          " The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
+          "The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
       },
       "What Happened": {
         "Defect and Deterioration":

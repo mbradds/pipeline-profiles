@@ -1,5 +1,5 @@
-import { profileTextQuery } from "../modules/dynamicText.js";
-import { profileAssist as pa } from "../modules/util.js";
+import { incidentsTextEng } from "../modules/dynamicText.js";
+import { visibility } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
 export async function mainIncidents(incidentData, metaData, lang) {
@@ -81,10 +81,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         } catch (err) {
           metaData.systemName = metaData.companyName;
         }
-        profileTextQuery.incidentsEnglish(
-          "system-incidents-paragraph",
-          metaData
-        );
+        incidentsTextEng("system-incidents-paragraph", metaData);
         setTitle(lang, metaData);
         //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);
@@ -118,16 +115,16 @@ export async function mainIncidents(incidentData, metaData, lang) {
             bars.allDivs
           );
           if (btnValue !== "trends") {
-            pa.visibility(dashboardDivs, "show");
-            pa.visibility(["time-series-section"], "hide");
+            visibility(dashboardDivs, "show");
+            visibility(["time-series-section"], "hide");
             $("#incident-volume-btn").removeAttr("disabled");
             thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
           } else {
             // if the user selects trends, the option to view volume should be disabled
             $("#incident-volume-btn").attr("disabled", "disabled");
             $("#incident-count-btn").prop("checked", true).click();
-            pa.visibility(dashboardDivs, "hide");
-            pa.visibility(["time-series-section"], "show");
+            visibility(dashboardDivs, "hide");
+            visibility(["time-series-section"], "show");
           }
         });
 

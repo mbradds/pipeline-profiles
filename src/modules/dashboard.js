@@ -1,4 +1,4 @@
-import { profileAssist as pa } from "../modules/util.js";
+import { cerPalette, conversions, visibility } from "../modules/util.js";
 const haversine = require("haversine");
 
 export class EventMap {
@@ -18,57 +18,57 @@ export class EventMap {
 
   EVENTCOLORS = {
     substanceColors: {
-      Propane: pa.cerPalette["Forest"],
-      "Natural Gas - Sweet": pa.cerPalette["Flame"],
-      "Natural Gas - Sour": pa.cerPalette["Dim Grey"],
-      "Fuel Gas": pa.cerPalette["hcGreen"],
-      "Lube Oil": pa.cerPalette["hcPurple"],
-      "Crude Oil - Sweet": pa.cerPalette["Sun"],
-      "Crude Oil - Synthetic": pa.cerPalette["Forest"],
-      "Crude Oil - Sour": pa.cerPalette["Dim Grey"],
-      "Natural Gas Liquids": pa.cerPalette["Night Sky"],
-      Condensate: pa.cerPalette["Ocean"],
-      "Sulphur Dioxide": pa.cerPalette["hcPurple"],
-      "Diesel Fuel": pa.cerPalette["hcRed"],
-      Gasoline: pa.cerPalette["Flame"],
-      Other: pa.cerPalette["Aubergine"],
+      Propane: cerPalette["Forest"],
+      "Natural Gas - Sweet": cerPalette["Flame"],
+      "Natural Gas - Sour": cerPalette["Dim Grey"],
+      "Fuel Gas": cerPalette["hcGreen"],
+      "Lube Oil": cerPalette["hcPurple"],
+      "Crude Oil - Sweet": cerPalette["Sun"],
+      "Crude Oil - Synthetic": cerPalette["Forest"],
+      "Crude Oil - Sour": cerPalette["Dim Grey"],
+      "Natural Gas Liquids": cerPalette["Night Sky"],
+      Condensate: cerPalette["Ocean"],
+      "Sulphur Dioxide": cerPalette["hcPurple"],
+      "Diesel Fuel": cerPalette["hcRed"],
+      Gasoline: cerPalette["Flame"],
+      Other: cerPalette["Aubergine"],
     },
     statusColors: {
-      "Initially Submitted": pa.cerPalette["Flame"],
-      Closed: pa.cerPalette["Cool Grey"],
-      Submitted: pa.cerPalette["Ocean"],
+      "Initially Submitted": cerPalette["Flame"],
+      Closed: cerPalette["Cool Grey"],
+      Submitted: cerPalette["Ocean"],
     },
     provinceColors: {
-      Alberta: pa.cerPalette["Sun"],
-      "British Columbia": pa.cerPalette["Forest"],
-      Saskatchewan: pa.cerPalette["Aubergine"],
-      Manitoba: pa.cerPalette["Ocean"],
-      Ontario: pa.cerPalette["Night Sky"],
-      Quebec: pa.cerPalette["Flame"],
-      "New Brunswick": pa.cerPalette["Forest"],
-      "Nova Scotia": pa.cerPalette["Night Sky"],
+      Alberta: cerPalette["Sun"],
+      "British Columbia": cerPalette["Forest"],
+      Saskatchewan: cerPalette["Aubergine"],
+      Manitoba: cerPalette["Ocean"],
+      Ontario: cerPalette["Night Sky"],
+      Quebec: cerPalette["Flame"],
+      "New Brunswick": cerPalette["Forest"],
+      "Nova Scotia": cerPalette["Night Sky"],
     },
     whyColors: {
-      "Standards and Procedures": pa.cerPalette["Flame"],
-      "Tools and Equipment": pa.cerPalette["Forest"],
-      Maintenance: pa.cerPalette["Night Sky"],
-      "Human Factors": pa.cerPalette["Ocean"],
-      "Engineering and Planning": pa.cerPalette["Sun"],
-      "Natural or Environmental Forces": pa.cerPalette["hcAqua"],
-      "To be determined": pa.cerPalette["Cool Grey"],
-      "Inadequate Procurement": pa.cerPalette["Aubergine"],
-      "Inadequate Supervision": pa.cerPalette["Dim Grey"],
-      "Failure in communication": pa.cerPalette["hcPink"],
+      "Standards and Procedures": cerPalette["Flame"],
+      "Tools and Equipment": cerPalette["Forest"],
+      Maintenance: cerPalette["Night Sky"],
+      "Human Factors": cerPalette["Ocean"],
+      "Engineering and Planning": cerPalette["Sun"],
+      "Natural or Environmental Forces": cerPalette["hcAqua"],
+      "To be determined": cerPalette["Cool Grey"],
+      "Inadequate Procurement": cerPalette["Aubergine"],
+      "Inadequate Supervision": cerPalette["Dim Grey"],
+      "Failure in communication": cerPalette["hcPink"],
     },
     whatColors: {
-      "Corrosion and Cracking": pa.cerPalette["Aubergine"],
-      "Defect and Deterioration": pa.cerPalette["Cool Grey"],
-      "Equipment Failure": pa.cerPalette["Dim Grey"],
-      "Natural Force Damage": pa.cerPalette["Flame"],
-      "Other Causes": pa.cerPalette["Forest"],
-      "Incorrect Operation": pa.cerPalette["Night Sky"],
-      "External Interference": pa.cerPalette["Ocean"],
-      "To be determined": pa.cerPalette["Sun"],
+      "Corrosion and Cracking": cerPalette["Aubergine"],
+      "Defect and Deterioration": cerPalette["Cool Grey"],
+      "Equipment Failure": cerPalette["Dim Grey"],
+      "Natural Force Damage": cerPalette["Flame"],
+      "Other Causes": cerPalette["Forest"],
+      "Incorrect Operation": cerPalette["Night Sky"],
+      "External Interference": cerPalette["Ocean"],
+      "To be determined": cerPalette["Sun"],
     },
   };
 
@@ -125,8 +125,8 @@ export class EventMap {
   }
 
   volumeText(m3, substance, gas = false, liquid = false, other = false) {
-    let convLiquid = pa.conversions["m3 to bbl"];
-    let convGas = pa.conversions["m3 to cf"];
+    let convLiquid = conversions["m3 to bbl"];
+    let convGas = conversions["m3 to cf"];
     if (!gas && !liquid && !other) {
       var state = this.getState(substance);
     } else if (!gas && liquid && !other) {
@@ -277,11 +277,11 @@ export class EventMap {
 
     let years = []; //piggyback on data processing pass to get the year colors
     let colors = [
-      pa.cerPalette["Sun"],
+      cerPalette["Sun"],
       "#022034",
       "#043454",
       "#043a5e",
-      pa.cerPalette["Night Sky"],
+      cerPalette["Night Sky"],
       "#1d5478",
       "#366687",
       "#507a96",
@@ -307,7 +307,7 @@ export class EventMap {
       return this.addCircle(
         row.Latitude,
         row.Longitude,
-        pa.cerPalette["Cool Grey"],
+        cerPalette["Cool Grey"],
         this.applyColor(row[this.field], this.field), //fillColor
         radiusVol,
         row
@@ -777,7 +777,7 @@ export class EventNavigator {
       activeDiv.style.padding = "5px";
     }
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = pa.cerPalette["Dim Grey"];
+    activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 0.4;
   }
@@ -824,7 +824,7 @@ export class EventNavigator {
     }
     this.currentActive = bar;
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = pa.cerPalette["Cool Grey"];
+    activeDiv.style.borderColor = cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 1;
     this.plot.fieldChange(bar.name);
@@ -1063,11 +1063,11 @@ export class EventTrend extends EventMap {
   displayDefinitions() {
     var definitionsPopUp = document.getElementById("trend-definitions");
     if (this.definitions.hasOwnProperty(this.field)) {
-      pa.visibility(["trend-definitions"], "show");
+      visibility(["trend-definitions"], "show");
       definitionsPopUp.innerHTML = `<p>Click on a bar to view <i>${this.field}</i> sub definition</p>`;
       this.onClickDefinition = true;
     } else {
-      pa.visibility(["trend-definitions"], "hide");
+      visibility(["trend-definitions"], "hide");
       this.onClickDefinition = false;
     }
   }

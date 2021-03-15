@@ -1,6 +1,6 @@
-import { profileAssist as pa } from "./util.js";
+import { cerPalette } from "./util.js";
 export const generalTheme = () => {
-  Highcharts.transportation = {
+  Highcharts.profiles = {
     chart: {
       borderColor: "black",
       animation: true,
@@ -23,7 +23,7 @@ export const generalTheme = () => {
       title: {
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
           fontWeight: "bold",
           fontFamily: "Arial",
         },
@@ -31,7 +31,7 @@ export const generalTheme = () => {
       labels: {
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
         },
       },
     },
@@ -40,7 +40,7 @@ export const generalTheme = () => {
       title: {
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
           fontWeight: "bold",
           fontFamily: "Arial",
         },
@@ -51,7 +51,7 @@ export const generalTheme = () => {
         },
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
         },
       },
       stackLabels: {
@@ -73,5 +73,5 @@ export const generalTheme = () => {
     },
   };
 
-  Highcharts.setOptions(Highcharts.transportation);
+  Highcharts.setOptions(Highcharts.profiles);
 };

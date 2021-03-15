@@ -1,4 +1,4 @@
-import { profileAssist as pa } from "../modules/util.js";
+import { sortJson, cerPalette, visibility } from "../modules/util.js";
 import { mapInits } from "./hcMapConfig.js";
 
 export async function mainConditions(
@@ -171,8 +171,8 @@ export async function mainConditions(
     newMeta.projects = processMapMetadata(m.projects, filter, "projects");
     newMeta.themes = processMapMetadata(m.themes, filter, "themes");
     if (filter.column == "Closed") {
-      newMeta.projects = pa.sortJson(newMeta.projects, "value");
-      newMeta.themes = pa.sortJson(newMeta.themes, "value");
+      newMeta.projects = sortJson(newMeta.projects, "value");
+      newMeta.themes = sortJson(newMeta.themes, "value");
     }
     return newMeta;
   };
@@ -244,8 +244,8 @@ export async function mainConditions(
     }
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
-    text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
+    text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
     text += `</table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
     text += generateTable(meta, e.id, "themes", filter);
@@ -480,11 +480,11 @@ export async function mainConditions(
         conditionsFilter.column = btnValue;
         if (btnValue !== "not-shown") {
           destroyInsert(chart);
-          pa.visibility(["no-location-info"], "hide");
-          pa.visibility(["container-map"], "show");
+          visibility(["no-location-info"], "hide");
+          visibility(["container-map"], "show");
         } else {
-          pa.visibility(["no-location-info"], "show");
-          pa.visibility(["container-map"], "hide");
+          visibility(["no-location-info"], "show");
+          visibility(["container-map"], "hide");
         }
         setTitle(titleElement, conditionsFilter, meta.summary);
         const regionSeries = generateRegionSeries(

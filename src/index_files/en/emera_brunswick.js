@@ -1,10 +1,10 @@
 import { generalTheme } from "../../modules/themes.js";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/EmeraBrunswickPipelineCompanyLtd.json";
+import conditionsData from "../../conditions/company_data/en/EmeraBrunswickPipelineCompanyLtd.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
 // incidents
-import incidentData from "../../incidents/company_data/EmeraBrunswickPipelineCompanyLtd.json";
+import incidentData from "../../incidents/company_data/en/EmeraBrunswickPipelineCompanyLtd.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // language
 import { englishDashboard } from "../../modules/langEnglish.js";
