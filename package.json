@@ -8,13 +8,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "node server.js",
     "heroku-postbuild": "webpack",
     "dev": "webpack serve --output-public-path=/dist/",
     "data": "sh ./src/data_management/prepare_data.sh",
-    "maps": "sh ./src/data_management/simplify_maps.sh"
+    "maps": "sh ./src/data_management/simplify_maps.sh",
+    "test": "sh ./src/data_management/test_data.sh"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,6 @@
 import unittest
 from incidents import process_incidents
 from conditions import process_conditions
-from omActivities import process_operations
 from util import most_common
 import pandas as pd
 
@@ -27,7 +26,8 @@ class TestUtil(unittest.TestCase):
 
 
 class TestNovaIncidents(unittest.TestCase):
-    df, volume, meta, perKm = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
+    df, volume, meta = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True, lang='en')
+    dfFR, volumeFR, metaFR = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True, lang='fr')
 
     def countIncidentType(self, iType, df):
         count = 0
@@ -35,6 +35,18 @@ class TestNovaIncidents(unittest.TestCase):
             if iType in t:
                 count = count + 1
         return count
+
+    def testEngEqualToFra(self):
+        self.assertEqual(len(self.df), len(self.dfFR))
+        self.assertEqual(self.countIncidentType("Adverse Environmental Effects", self.df),
+                         self.countIncidentType("Effets environnementaux négatifs", self.dfFR))
+
+        self.assertEqual(self.meta["seriousEvents"]["Adverse Environmental Effects"],
+                         self.metaFR["seriousEvents"]["Adverse Environmental Effects"])
+        self.assertEqual(self.meta["seriousEvents"]["Serious Injury (CER or TSB)"],
+                         self.metaFR["seriousEvents"]["Serious Injury (CER or TSB)"])
+        self.assertEqual(self.meta["seriousEvents"]["Fatality"],
+                         self.metaFR["seriousEvents"]["Fatality"])
 
     def testTotal(self):
         self.assertEqual(len(self.df), 330)  # total incidents for NGTL
@@ -70,7 +82,7 @@ class TestNovaIncidents(unittest.TestCase):
 
 
 class NovaTotalConditions(unittest.TestCase):
-    company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
+    company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True, lang='en')
 
     def testCompanyData(self):
         in_Progress = self.company_df[self.company_df['Condition Status'] == "In Progress"].copy().reset_index(drop=True)
@@ -92,13 +104,6 @@ class NovaTotalConditions(unittest.TestCase):
         red_deer = self.mapMeta[self.mapMeta['id'] == "Red Deer"].copy().reset_index(drop=True)
         self.assertEqual(red_deer.loc[0, "In Progress"], 9)
         self.assertEqual(red_deer.loc[0, "Closed"], 35)
-
-
-class NovaOandM(unittest.TestCase):
-    nova = process_operations(test=True)
-
-    def testMetaData(self):
-        self.assertEqual(self.nova["meta"]["numberOfEvents"], 178)
 
 
 if __name__ == "__main__":

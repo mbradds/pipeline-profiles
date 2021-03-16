@@ -109,12 +109,68 @@ def changes(df, volume=True):
     return changeMeta
 
 
-def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False, lang='en'):
+def fixColumns(df):
+    new_cols = {x: x.split("(")[0].strip() for x in df.columns}
+    df = df.rename(columns=new_cols)
+    return df
 
-    def fixColumns(df):
-        new_cols = {x: x.split("(")[0].strip() for x in df.columns}
-        df = df.rename(columns=new_cols)
-        return df
+
+def process_french(df):
+    df = fixColumns(df)
+    df = df.rename(columns={"Numéro d'incident": "Incident Number",
+                            "Types d'incident": "Incident Types",
+                            "Date de l'événement signalé": "Reported Date",
+                            "Centre habité le plus près": "Nearest Populated Centre",
+                            "Province": "Province",
+                            "Société": "Company",
+                            "État": "Status",
+                            "Latitude": "Latitude",
+                            "Longitude": "Longitude",
+                            "Approximation du volume déversé": "Approximate Volume Released",
+                            "Substance": "Substance",
+                            "Type de Déversement": "Release Type",
+                            "Majeur": "Significant",
+                            "Année": "Year",
+                            "Ce qui s’est passé": "What Happened",
+                            "Cause": "Why It Happened"})
+    chosenSubstances = ["Propane",
+                        "Gaz Naturel - non sulfureux",
+                        "Gaz naturel - sulfureux",
+                        "Huile lubrifiante",
+                        "Pétrole brut non sulfureux",
+                        "Pétrole brut synthétique",
+                        "Pétrole brut sulfureux",
+                        "Liquides de gaz naturel",
+                        "Condensat",
+                        "Dioxyde de soufre",
+                        "Carburant diesel",
+                        "Essence"]
+    df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
+    df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
+    return df
+
+
+def process_english(df):
+    df = fixColumns(df)
+    chosenSubstances = ["Propane",
+                        "Natural Gas - Sweet",
+                        "Natural Gas - Sour",
+                        "Fuel Gas",
+                        "Lube Oil",
+                        "Crude Oil - Sweet",
+                        "Crude Oil - Synthetic",
+                        "Crude Oil - Sour",
+                        "Natural Gas Liquids",
+                        "Condensate",
+                        "Sulphur Dioxide",
+                        "Diesel Fuel",
+                        "Gasoline"]
+    df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]
+    df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
+    return df
+
+
+def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False, lang='en'):
 
     if remote:
         if lang == 'en':
@@ -129,72 +185,35 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         df.to_csv("./raw_data/incidents.csv", index=False)
     elif test:
         print('reading test incidents file')
-        df = pd.read_csv("./raw_data/test_data/incidents.csv",
-                         skiprows=0,
-                         encoding="UTF-8",
-                         error_bad_lines=False)
-
-    else:
-        print('reading local incidents file')
         if lang == 'en':
-            df = pd.read_csv("./raw_data/incidents_en.csv",
+            df = pd.read_csv("./raw_data/test_data/incidents_en.csv",
                              skiprows=0,
                              encoding="UTF-8",
                              error_bad_lines=False)
-            df = fixColumns(df)
-            # print(list(set(df['Substance'])))
-            chosenSubstances = ["Propane",
-                                "Natural Gas - Sweet",
-                                "Natural Gas - Sour",
-                                "Fuel Gas",
-                                "Lube Oil",
-                                "Crude Oil - Sweet",
-                                "Crude Oil - Synthetic",
-                                "Crude Oil - Sour",
-                                "Natural Gas Liquids",
-                                "Condensate",
-                                "Sulphur Dioxide",
-                                "Diesel Fuel",
-                                "Gasoline"]
-            df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]
-            df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
+            df = process_english(df)
         else:
             df = pd.read_csv("./raw_data/incidents_fr.csv",
                              skiprows=1,
                              encoding="UTF-16",
                              error_bad_lines=False)
-            df = fixColumns(df)
-            df = df.rename(columns={"Numéro d'incident": "Incident Number",
-                                    "Types d'incident": "Incident Types",
-                                    "Date de l'événement signalé": "Reported Date",
-                                    "Centre habité le plus près": "Nearest Populated Centre",
-                                    "Province": "Province",
-                                    "Société": "Company",
-                                    "État": "Status",
-                                    "Latitude": "Latitude",
-                                    "Longitude": "Longitude",
-                                    "Approximation du volume déversé": "Approximate Volume Released",
-                                    "Substance": "Substance",
-                                    "Type de Déversement": "Release Type",
-                                    "Majeur": "Significant",
-                                    "Année": "Year",
-                                    "Ce qui s’est passé": "What Happened",
-                                    "Cause": "Why It Happened"})
-            chosenSubstances = ["Propane",
-                                "Gaz Naturel - non sulfureux",
-                                "Gaz naturel - sulfureux",
-                                "Huile lubrifiante",
-                                "Pétrole brut non sulfureux",
-                                "Pétrole brut synthétique",
-                                "Pétrole brut sulfureux",
-                                "Liquides de gaz naturel",
-                                "Condensat",
-                                "Dioxyde de soufre",
-                                "Carburant diesel",
-                                "Essence"]
-            df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
-            df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
-            # print(sorted(list(set(df['Province']))))
+            df = process_french(df)
+
+    else:
+        print('reading local incidents file')
+        if lang == 'en':
+            print('starting english incidents...')
+            df = pd.read_csv("./raw_data/incidents_en.csv",
+                             skiprows=0,
+                             encoding="UTF-8",
+                             error_bad_lines=False)
+            df = process_english(df)
+        else:
+            print('starting french incidents...')
+            df = pd.read_csv("./raw_data/incidents_fr.csv",
+                             skiprows=1,
+                             encoding="UTF-16",
+                             error_bad_lines=False)
+            df = process_french(df)
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())
@@ -269,13 +288,13 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                 with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
-    return df_c, df_vol, meta, perKm
+    return df_c, df_vol, meta
 
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta, perKm = process_incidents(remote=False, lang='en')
-    df, volume, meta, perKm = process_incidents(remote=False, lang='fr')
+    df, volume, meta = process_incidents(remote=False, lang='en')
+    df, volume, meta = process_incidents(remote=False, lang='fr')
     print('completed incidents!')
 
 #%%
