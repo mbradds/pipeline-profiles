@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 var profileWebpackConfig = (function () {
-  const language = ["en"];
+  const language = ["en", "fr"];
 
   const htmlFileNames = [
     "ngtl",

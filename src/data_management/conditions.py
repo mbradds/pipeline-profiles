@@ -178,6 +178,11 @@ def conditionMetaData(df, folder_name):
 
 
 def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False, test=False, lang='en'):
+    
+    def frenchSubsets(df, colName):
+        fr = df[[colName+'_en', colName+'_fr']].copy().drop_duplicates()
+        fr_replace = {x.strip(): y.strip() for x,y in zip(fr[colName+'_en'], fr[colName+'_fr'])}
+        return fr_replace
 
     def add_links(df_c, df_links):
         l = {}
@@ -212,8 +217,11 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
         print('reading local conditions data')
         if lang == 'en':
             df = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
+            df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
         else:
-            en = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
+            df = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
+            df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
+            en = df.copy()
             en = en[en['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
 
             fr = pd.read_csv('./raw_data/conditions_fr.csv', encoding="UTF-16", sep='\t')
@@ -242,13 +250,13 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
             fr['french id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(fr['Instrument Number'], fr['Condition Number'])]
             en['english id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(en['Instrument Number'], en['Condition Number'])]
             fr = fr[['french id', 'Location', 'Short Project Name', 'Theme(s)']].copy().reset_index(drop=True)
-            join = en.merge(fr, how='left', left_on='english id', right_on='french id', suffixes=('_en', '_fr'))
-            for delete in ['french id', 'english id', 'Location_en', 'Theme(s)_en', 'Short Project Name_en']:
-                del join[delete]
-            join = join.rename(columns={'Theme(s)_fr': 'Theme(s)',
-                                        'Location_fr': 'Location',
-                                        'Short Project Name_fr': 'Short Project Name'})
-            df = join.copy()
+            join = en.merge(fr, how='inner', left_on='english id', right_on='french id', suffixes=('_en', '_fr'))
+            projectReplace = frenchSubsets(join, 'Short Project Name')
+            themeReplace = frenchSubsets(join, 'Theme(s)')
+            locationReplace = frenchSubsets(join, 'Location')
+            df['Location'] = df['Location'].replace(locationReplace)
+            df['Theme(s)'] = df['Theme(s)'].replace(themeReplace)
+            df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
 
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
@@ -257,7 +265,6 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
         # only include non-standard conditions
         df = df[df['Condition Type'] != 'Standard']
 
-    df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
     delete_cols = ['Condition',
                    'Condition Phase',
                    'Instrument Activity',
@@ -356,7 +363,7 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 
 if __name__ == "__main__":
     print('starting conditions...')
-    # df = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'])
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en')
     df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr')
     print('completed conditions!')
 

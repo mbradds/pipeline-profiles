@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from util import get_company_names, company_rename, most_common
 import ssl
 import json
@@ -47,9 +46,12 @@ def incidentMetaData(df, dfPerKm, company, lang):
                        "Fatality": 0,
                        "Serious Injury (CER or TSB)": 0}
         else:
-            serious = {'Effets environnementaux négatifs': 0,
-                       'Blessure grave (Régie ou BST)': 0,
-                       'Décès': 0}
+            df['Incident Types'] = df['Incident Types'].replace({'Effets environnementaux négatifs': 'Adverse Environmental Effects',
+                                                                 'Blessure grave (Régie ou BST)': 'Serious Injury (CER or TSB)',
+                                                                 'Décès': 'Fatality'})
+            serious = {"Adverse Environmental Effects": 0,
+                       "Fatality": 0,
+                       "Serious Injury (CER or TSB)": 0}
         for type_list in df['Incident Types']:
             type_list = [x.strip() for x in type_list.split(",")]
             for t in type_list:
@@ -76,13 +78,6 @@ def incidentMetaData(df, dfPerKm, company, lang):
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
-    # thisPerKm = dfPerKm[dfPerKm['Company'] == company].copy()
-    # perKm = {}
-    # perKm['incidentsPerKm'] = thisPerKm['Incidents per 1000km'].iloc[0]
-    # perKm['avgPerKm'] = thisPerKm['Avg per 1000km'].iloc[0]
-    # perKm['commodity'] = thisPerKm['Commodity'].iloc[0].lower()
-    # meta['per1000km'] = perKm
-    # calculate the most common what and why and most common substance released
     meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
     meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
     meta = most_common_substance(df_c, meta, lang)
@@ -186,21 +181,21 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                                     "Cause": "Why It Happened"})
 
             df['Substance'] = df['Substance'].replace({'Glycol': 'Aurte',
-                                                        'Hydroxyde de potassium (solution caustique)': 'Autre',
-                                                        'Butane': 'Liquides de gaz naturel',
-                                                        'Carbonate de potassium': 'Autre',
-                                                        'Odorisant': 'Autre',
-                                                        "Sulfure d'hydrogène": 'Autre',
-                                                        'Eau produite': 'Autre',
-                                                        'Fluide de forage': 'Autre',
-                                                        'Huile usée': 'Autre',
-                                                        'Dioxyde de soufre': 'Autre',
-                                                        'Eau contaminée': 'Autre',
-                                                        "Mélange d'hydrocarbures à HPV": 'Autre',
-                                                        'Eau': 'Autre',
-                                                        'Pâte liquide': 'Autre',
-                                                        'Soufre': 'Autre',
-                                                        'Amine': 'Autre'})
+                                                       'Hydroxyde de potassium (solution caustique)': 'Autre',
+                                                       'Butane': 'Liquides de gaz naturel',
+                                                       'Carbonate de potassium': 'Autre',
+                                                       'Odorisant': 'Autre',
+                                                       "Sulfure d'hydrogène": 'Autre',
+                                                       'Eau produite': 'Autre',
+                                                       'Fluide de forage': 'Autre',
+                                                       'Huile usée': 'Autre',
+                                                       'Dioxyde de soufre': 'Autre',
+                                                       'Eau contaminée': 'Autre',
+                                                       "Mélange d'hydrocarbures à HPV": 'Autre',
+                                                       'Eau': 'Autre',
+                                                       'Pâte liquide': 'Autre',
+                                                       'Soufre': 'Autre',
+                                                       'Amine': 'Autre'})
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())
@@ -280,6 +275,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
+    df, volume, meta, perKm = process_incidents(remote=False, lang='en')
     df, volume, meta, perKm = process_incidents(remote=False, lang='fr')
     print('completed incidents!')
 
