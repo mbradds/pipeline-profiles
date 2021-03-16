@@ -82,7 +82,7 @@ module.exports = {
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    filename: "[name].[contenthash].js",
     publicPath: "/dist/en/",
   },
 
