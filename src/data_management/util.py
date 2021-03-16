@@ -40,7 +40,7 @@ def most_common(df, meta, col_name, meta_key, top=1, dtype="dict", lower=True):
         else:
             what_list.append(what)
     what_list = [x.strip() for x in what_list]
-    what_list = [x for x in what_list if x not in ['To be determined', '', "Other", "Not Specified", "Sans objet"]]
+    what_list = [x for x in what_list if x not in ['To be determined', '', "Other", "Not Specified", "Sans objet", "Autre"]]
     if top == 1:
         meta[meta_key] = max(set(what_list), key=what_list.count).lower()
     else:

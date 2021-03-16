@@ -38,6 +38,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       eventType: eventType,
       field: field,
       filters: filters,
+      colors: lang.EVENTCOLORS,
       minRadius: 14000,
       leafletDiv: "incident-map",
       lang: lang,
@@ -48,14 +49,15 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return map;
   };
 
-  const incidentTimeSeries = (field, filters, definitions) => {
+  const incidentTimeSeries = (field, filters, lang) => {
     const timeSeries = new EventTrend({
       eventType: eventType,
       field: field,
       filters: filters,
       data: incidentData,
       hcDiv: "time-series",
-      definitions: definitions,
+      colors: lang.dashboard.EVENTCOLORS,
+      definitions: lang.definitions,
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,
@@ -86,7 +88,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);
         const bars = incidentBar(incidentData, thisMap);
-        const trends = incidentTimeSeries(field, filters, lang.definitions);
+        const trends = incidentTimeSeries(field, filters, lang);
         // user selection to show volume or incident frequency
         $("#inline_content input[name='type']").click(function () {
           var btnValue = $("input:radio[name=type]:checked").val();

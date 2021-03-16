@@ -142,21 +142,22 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                              encoding="UTF-8",
                              error_bad_lines=False)
             df = fixColumns(df)
-            df['Substance'] = df['Substance'].replace({"Water": "Other",
-                                                       "Hydrogen Sulphide": "Other",
-                                                       "Amine": "Other",
-                                                       "Contaminated Water": "Other",
-                                                       "Potassium Hydroxide (caustic solution)": "Other",
-                                                       "Glycol": "Other",
-                                                       "Pulp slurry": "Other",
-                                                       "Sulphur": "Other",
-                                                       "Odourant": "Other",
-                                                       "Potassium Carbonate": "Other",
-                                                       "Waste Oil": "Other",
-                                                       "Produced Water": "Other",
-                                                       "Butane": "Natural Gas Liquids",
-                                                       "Mixed HVP Hydrocarbons": "Other",
-                                                       "Drilling Fluid": "Other"})
+            # print(list(set(df['Substance'])))
+            chosenSubstances = ["Propane",
+                                "Natural Gas - Sweet",
+                                "Natural Gas - Sour",
+                                "Fuel Gas",
+                                "Lube Oil",
+                                "Crude Oil - Sweet",
+                                "Crude Oil - Synthetic",
+                                "Crude Oil - Sour",
+                                "Natural Gas Liquids",
+                                "Condensate",
+                                "Sulphur Dioxide",
+                                "Diesel Fuel",
+                                "Gasoline"]
+            df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]
+            df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
         else:
             df = pd.read_csv("./raw_data/incidents_fr.csv",
                              skiprows=1,
@@ -179,23 +180,21 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                                     "Année": "Year",
                                     "Ce qui s’est passé": "What Happened",
                                     "Cause": "Why It Happened"})
-
-            df['Substance'] = df['Substance'].replace({'Glycol': 'Aurte',
-                                                       'Hydroxyde de potassium (solution caustique)': 'Autre',
-                                                       'Butane': 'Liquides de gaz naturel',
-                                                       'Carbonate de potassium': 'Autre',
-                                                       'Odorisant': 'Autre',
-                                                       "Sulfure d'hydrogène": 'Autre',
-                                                       'Eau produite': 'Autre',
-                                                       'Fluide de forage': 'Autre',
-                                                       'Huile usée': 'Autre',
-                                                       'Dioxyde de soufre': 'Autre',
-                                                       'Eau contaminée': 'Autre',
-                                                       "Mélange d'hydrocarbures à HPV": 'Autre',
-                                                       'Eau': 'Autre',
-                                                       'Pâte liquide': 'Autre',
-                                                       'Soufre': 'Autre',
-                                                       'Amine': 'Autre'})
+            chosenSubstances = ["Propane",
+                                "Gaz Naturel - non sulfureux",
+                                "Gaz naturel - sulfureux",
+                                "Huile lubrifiante",
+                                "Pétrole brut non sulfureux",
+                                "Pétrole brut synthétique",
+                                "Pétrole brut sulfureux",
+                                "Liquides de gaz naturel",
+                                "Condensat",
+                                "Dioxyde de soufre",
+                                "Carburant diesel",
+                                "Essence"]
+            df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
+            df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
+            # print(sorted(list(set(df['Province']))))
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())

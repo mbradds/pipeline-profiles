@@ -15,68 +15,70 @@ export class EventMap {
     Other: "other",
     "Sulphur Dioxide": "other",
   };
+  //EVENTCOLORS = {};
 
-  EVENTCOLORS = {
-    substanceColors: {
-      Propane: cerPalette["Forest"],
-      "Natural Gas - Sweet": cerPalette["Flame"],
-      "Natural Gas - Sour": cerPalette["Dim Grey"],
-      "Fuel Gas": cerPalette["hcGreen"],
-      "Lube Oil": cerPalette["hcPurple"],
-      "Crude Oil - Sweet": cerPalette["Sun"],
-      "Crude Oil - Synthetic": cerPalette["Forest"],
-      "Crude Oil - Sour": cerPalette["Dim Grey"],
-      "Natural Gas Liquids": cerPalette["Night Sky"],
-      Condensate: cerPalette["Ocean"],
-      "Sulphur Dioxide": cerPalette["hcPurple"],
-      "Diesel Fuel": cerPalette["hcRed"],
-      Gasoline: cerPalette["Flame"],
-      Other: cerPalette["Aubergine"],
-    },
-    statusColors: {
-      "Initially Submitted": cerPalette["Flame"],
-      Closed: cerPalette["Cool Grey"],
-      Submitted: cerPalette["Ocean"],
-    },
-    provinceColors: {
-      Alberta: cerPalette["Sun"],
-      "British Columbia": cerPalette["Forest"],
-      Saskatchewan: cerPalette["Aubergine"],
-      Manitoba: cerPalette["Ocean"],
-      Ontario: cerPalette["Night Sky"],
-      Quebec: cerPalette["Flame"],
-      "New Brunswick": cerPalette["Forest"],
-      "Nova Scotia": cerPalette["Night Sky"],
-    },
-    whyColors: {
-      "Standards and Procedures": cerPalette["Flame"],
-      "Tools and Equipment": cerPalette["Forest"],
-      Maintenance: cerPalette["Night Sky"],
-      "Human Factors": cerPalette["Ocean"],
-      "Engineering and Planning": cerPalette["Sun"],
-      "Natural or Environmental Forces": cerPalette["hcAqua"],
-      "To be determined": cerPalette["Cool Grey"],
-      "Inadequate Procurement": cerPalette["Aubergine"],
-      "Inadequate Supervision": cerPalette["Dim Grey"],
-      "Failure in communication": cerPalette["hcPink"],
-    },
-    whatColors: {
-      "Corrosion and Cracking": cerPalette["Aubergine"],
-      "Defect and Deterioration": cerPalette["Cool Grey"],
-      "Equipment Failure": cerPalette["Dim Grey"],
-      "Natural Force Damage": cerPalette["Flame"],
-      "Other Causes": cerPalette["Forest"],
-      "Incorrect Operation": cerPalette["Night Sky"],
-      "External Interference": cerPalette["Ocean"],
-      "To be determined": cerPalette["Sun"],
-    },
-  };
+  // EVENTCOLORS = {
+  //   substanceColors: {
+  //     Propane: cerPalette["Forest"],
+  //     "Natural Gas - Sweet": cerPalette["Flame"],
+  //     "Natural Gas - Sour": cerPalette["Dim Grey"],
+  //     "Fuel Gas": cerPalette["hcGreen"],
+  //     "Lube Oil": cerPalette["hcPurple"],
+  //     "Crude Oil - Sweet": cerPalette["Sun"],
+  //     "Crude Oil - Synthetic": cerPalette["Forest"],
+  //     "Crude Oil - Sour": cerPalette["Dim Grey"],
+  //     "Natural Gas Liquids": cerPalette["Night Sky"],
+  //     Condensate: cerPalette["Ocean"],
+  //     "Sulphur Dioxide": cerPalette["hcPurple"],
+  //     "Diesel Fuel": cerPalette["hcRed"],
+  //     Gasoline: cerPalette["Flame"],
+  //     Other: cerPalette["Aubergine"],
+  //   },
+  //   statusColors: {
+  //     "Initially Submitted": cerPalette["Flame"],
+  //     Closed: cerPalette["Cool Grey"],
+  //     Submitted: cerPalette["Ocean"],
+  //   },
+  //   provinceColors: {
+  //     Alberta: cerPalette["Sun"],
+  //     "British Columbia": cerPalette["Forest"],
+  //     Saskatchewan: cerPalette["Aubergine"],
+  //     Manitoba: cerPalette["Ocean"],
+  //     Ontario: cerPalette["Night Sky"],
+  //     Quebec: cerPalette["Flame"],
+  //     "New Brunswick": cerPalette["Forest"],
+  //     "Nova Scotia": cerPalette["Night Sky"],
+  //   },
+  //   whyColors: {
+  //     "Standards and Procedures": cerPalette["Flame"],
+  //     "Tools and Equipment": cerPalette["Forest"],
+  //     Maintenance: cerPalette["Night Sky"],
+  //     "Human Factors": cerPalette["Ocean"],
+  //     "Engineering and Planning": cerPalette["Sun"],
+  //     "Natural or Environmental Forces": cerPalette["hcAqua"],
+  //     "To be determined": cerPalette["Cool Grey"],
+  //     "Inadequate Procurement": cerPalette["Aubergine"],
+  //     "Inadequate Supervision": cerPalette["Dim Grey"],
+  //     "Failure in communication": cerPalette["hcPink"],
+  //   },
+  //   whatColors: {
+  //     "Corrosion and Cracking": cerPalette["Aubergine"],
+  //     "Defect and Deterioration": cerPalette["Cool Grey"],
+  //     "Equipment Failure": cerPalette["Dim Grey"],
+  //     "Natural Force Damage": cerPalette["Flame"],
+  //     "Other Causes": cerPalette["Forest"],
+  //     "Incorrect Operation": cerPalette["Night Sky"],
+  //     "External Interference": cerPalette["Ocean"],
+  //     "To be determined": cerPalette["Sun"],
+  //   },
+  // };
 
   constructor({
     eventType,
     field = undefined,
     filters = undefined,
     minRadius = undefined,
+    colors = {},
     leafletDiv = "map",
     initZoomTo = [55, -119],
     lang = {},
@@ -84,25 +86,13 @@ export class EventMap {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
+    this.colors = colors;
     this.field = field;
     this.initZoomTo = initZoomTo;
-    this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
     this.leafletDiv = leafletDiv;
     this.lang = lang;
     this.mapDisclaimer = undefined;
-  }
-
-  setColors() {
-    if (this.eventType == "incidents") {
-      return {
-        Substance: this.EVENTCOLORS.substanceColors,
-        Status: this.EVENTCOLORS.statusColors,
-        Province: this.EVENTCOLORS.provinceColors,
-        "Why It Happened": this.EVENTCOLORS.whyColors,
-        "What Happened": this.EVENTCOLORS.whatColors,
-      };
-    }
   }
 
   addBaseMap() {
@@ -927,13 +917,21 @@ export class EventTrend extends EventMap {
     category: true,
   };
 
-  constructor({ eventType, field, filters, data, hcDiv, definitions = {} }) {
+  constructor({
+    eventType,
+    field,
+    filters,
+    data,
+    hcDiv,
+    colors = {},
+    definitions = {},
+  }) {
     super({ eventType: eventType, field: field });
     this.filters = filters;
     this.data = data;
     this.hcDiv = hcDiv;
+    this.colors = colors;
     this.definitions = definitions;
-    this.colors = this.setColors();
     this.displayDefinitions();
   }
 
