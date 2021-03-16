@@ -19,9 +19,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
     }
   };
 
-  const incidentBar = (data, map) => {
+  const incidentBar = (data, map, langPillTitles) => {
     const barNav = new EventNavigator({
       plot: map,
+      langPillTitles: langPillTitles,
       pillWidth: 124,
       data: data,
     });
@@ -38,7 +39,6 @@ export async function mainIncidents(incidentData, metaData, lang) {
       eventType: eventType,
       field: field,
       filters: filters,
-      colors: lang.EVENTCOLORS,
       minRadius: 14000,
       leafletDiv: "incident-map",
       lang: lang,
@@ -56,11 +56,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
       filters: filters,
       data: incidentData,
       hcDiv: "time-series",
-      colors: lang.dashboard.EVENTCOLORS,
+      lang: lang.dashboard,
       definitions: lang.definitions,
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,
+      langPillTitles: lang.dashboard.pillTitles,
       height: 70,
     });
 
@@ -87,7 +88,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
         setTitle(lang, metaData);
         //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);
-        const bars = incidentBar(incidentData, thisMap);
+        const bars = incidentBar(
+          incidentData,
+          thisMap,
+          lang.dashboard.pillTitles
+        );
         const trends = incidentTimeSeries(field, filters, lang);
         // user selection to show volume or incident frequency
         $("#inline_content input[name='type']").click(function () {

@@ -174,8 +174,13 @@ export const frenchDashboard = {
       },
     },
     dashboard: {
-      what: "What Happened",
-      why: "Why It Happened",
+      what: "What Happened FR",
+      why: "Why It Happened FR",
+      estRelease: "Est. Release Volume FR:",
+      pillTitles: {
+        titles: { Status: "REC Status" },
+        click: "click to view FR",
+      },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       userPopUp:

@@ -176,6 +176,8 @@ export const englishDashboard = {
     dashboard: {
       what: "What Happened",
       why: "Why It Happened",
+      estRelease: "Est. Release Volume:",
+      pillTitles: { titles: { Status: "CER Status" }, click: "click to view" },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       userPopUp:

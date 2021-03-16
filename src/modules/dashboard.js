@@ -5,80 +5,32 @@ export class EventMap {
   substanceState = {
     Propane: "gas",
     "Natural Gas": "gas",
+    "Gaz Naturel": "gas",
     "Fuel Gas": "liquid",
     "Lube Oil": "liquid",
+    "Huile lubrifiante": "liquid",
     "Crude Oil": "liquid",
+    "Pétrole brut non sulfureux": "liquid",
+    "Pétrole brut synthétique": "liquid",
+    "Pétrole brut sulfureux": "liquid",
     "Diesel Fuel": "liquid",
     Gasoline: "liquid",
+    Essence: "liquid",
     "Natural Gas Liquids": "gas",
+    "Liquides de gaz naturel": "gas",
     Condensate: "liquid",
+    Condensat: "liquid",
     Other: "other",
+    Autre: "other",
     "Sulphur Dioxide": "other",
+    "Dioxyde de soufre": "other",
   };
-  //EVENTCOLORS = {};
-
-  // EVENTCOLORS = {
-  //   substanceColors: {
-  //     Propane: cerPalette["Forest"],
-  //     "Natural Gas - Sweet": cerPalette["Flame"],
-  //     "Natural Gas - Sour": cerPalette["Dim Grey"],
-  //     "Fuel Gas": cerPalette["hcGreen"],
-  //     "Lube Oil": cerPalette["hcPurple"],
-  //     "Crude Oil - Sweet": cerPalette["Sun"],
-  //     "Crude Oil - Synthetic": cerPalette["Forest"],
-  //     "Crude Oil - Sour": cerPalette["Dim Grey"],
-  //     "Natural Gas Liquids": cerPalette["Night Sky"],
-  //     Condensate: cerPalette["Ocean"],
-  //     "Sulphur Dioxide": cerPalette["hcPurple"],
-  //     "Diesel Fuel": cerPalette["hcRed"],
-  //     Gasoline: cerPalette["Flame"],
-  //     Other: cerPalette["Aubergine"],
-  //   },
-  //   statusColors: {
-  //     "Initially Submitted": cerPalette["Flame"],
-  //     Closed: cerPalette["Cool Grey"],
-  //     Submitted: cerPalette["Ocean"],
-  //   },
-  //   provinceColors: {
-  //     Alberta: cerPalette["Sun"],
-  //     "British Columbia": cerPalette["Forest"],
-  //     Saskatchewan: cerPalette["Aubergine"],
-  //     Manitoba: cerPalette["Ocean"],
-  //     Ontario: cerPalette["Night Sky"],
-  //     Quebec: cerPalette["Flame"],
-  //     "New Brunswick": cerPalette["Forest"],
-  //     "Nova Scotia": cerPalette["Night Sky"],
-  //   },
-  //   whyColors: {
-  //     "Standards and Procedures": cerPalette["Flame"],
-  //     "Tools and Equipment": cerPalette["Forest"],
-  //     Maintenance: cerPalette["Night Sky"],
-  //     "Human Factors": cerPalette["Ocean"],
-  //     "Engineering and Planning": cerPalette["Sun"],
-  //     "Natural or Environmental Forces": cerPalette["hcAqua"],
-  //     "To be determined": cerPalette["Cool Grey"],
-  //     "Inadequate Procurement": cerPalette["Aubergine"],
-  //     "Inadequate Supervision": cerPalette["Dim Grey"],
-  //     "Failure in communication": cerPalette["hcPink"],
-  //   },
-  //   whatColors: {
-  //     "Corrosion and Cracking": cerPalette["Aubergine"],
-  //     "Defect and Deterioration": cerPalette["Cool Grey"],
-  //     "Equipment Failure": cerPalette["Dim Grey"],
-  //     "Natural Force Damage": cerPalette["Flame"],
-  //     "Other Causes": cerPalette["Forest"],
-  //     "Incorrect Operation": cerPalette["Night Sky"],
-  //     "External Interference": cerPalette["Ocean"],
-  //     "To be determined": cerPalette["Sun"],
-  //   },
-  // };
 
   constructor({
     eventType,
     field = undefined,
     filters = undefined,
     minRadius = undefined,
-    colors = {},
     leafletDiv = "map",
     initZoomTo = [55, -119],
     lang = {},
@@ -86,7 +38,7 @@ export class EventMap {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
-    this.colors = colors;
+    this.colors = lang.EVENTCOLORS;
     this.field = field;
     this.initZoomTo = initZoomTo;
     this.user = { latitude: undefined, longitude: undefined };
@@ -189,7 +141,9 @@ export class EventMap {
     }:</td><td style="color:${fillColor}">&nbsp<b>${
       incidentParams[this.field]
     }</b></td></tr>`;
-    toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${this.volumeText(
+    toolTipText += `<tr><td>${
+      this.lang.estRelease
+    }</td><td>&nbsp<b>${this.volumeText(
       incidentParams["Approximate Volume Released"],
       incidentParams.Substance
     )}</b></td></tr>`;
@@ -534,8 +488,9 @@ export class EventNavigator {
     "#F5F5F5",
     "#F8F8F8",
   ];
-  constructor({ plot, height = 125, data = false }) {
+  constructor({ plot, langPillTitles, height = 125, data = false }) {
     this.plot = plot;
+    this.langPillTitles = langPillTitles;
     this.currentActive = undefined;
     this.barList = [];
     this.bars = {};
@@ -578,11 +533,8 @@ export class EventNavigator {
 
   // usefull for names like "Status" that could use additional description
   pillName(name) {
-    if (name == "Status") {
-      return `CER ${name}`;
-    } else if (["Species At Risk Present", "Fish Present"].includes(name)) {
-      //add all yes/no columns here
-      return `${name}?`;
+    if (this.langPillTitles.titles.hasOwnProperty(name)) {
+      return this.langPillTitles.titles[name];
     } else {
       return `${name}`;
     }
@@ -731,6 +683,7 @@ export class EventNavigator {
   deactivateChart(bar) {
     var chart = bar.chart;
     let activeDiv = document.getElementById(bar.div);
+    let clickText = this.langPillTitles.click;
     if (chart) {
       let greyIndex = Math.floor(this.greyScale.length / chart.series.length);
       const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
@@ -746,7 +699,7 @@ export class EventNavigator {
       });
 
       chart.update({
-        title: { text: `${chart.title.textStr} (click to view)` },
+        title: { text: `${chart.title.textStr} (${clickText})` },
         plotOptions: {
           series: {
             borderWidth: 1,
@@ -923,14 +876,15 @@ export class EventTrend extends EventMap {
     filters,
     data,
     hcDiv,
-    colors = {},
+    lang,
     definitions = {},
   }) {
     super({ eventType: eventType, field: field });
     this.filters = filters;
     this.data = data;
     this.hcDiv = hcDiv;
-    this.colors = colors;
+    this.lang = lang;
+    this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
     this.displayDefinitions();
   }
