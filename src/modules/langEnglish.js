@@ -180,7 +180,7 @@ export const englishDashboard = {
       userPopUp:
         "Approximate location. You can drag this marker around to explore incident events in other locations.",
       locationError:
-        "<h4>Cant access your location.</h4>Try enabling your browser's location services and refresh the page.",
+        "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.",
       nearbyHeader: (numCircles, range) => {
         return `There are ${numCircles} incidents within ${range} km`;
       },

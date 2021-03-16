@@ -7,7 +7,7 @@ import { mainConditions } from "../../conditions/conditionsDashboard.js";
 import incidentData from "../../incidents/company_data/fr/PlainsMidstreamCanadaULC.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // language
-import { englishDashboard } from "../../modules/langEnglish.js";
+import { frenchDashboard } from "../../modules/langFrench.js";
 // load dashboards
 import { loadAllCharts } from "../loadDashboards.js";
 generalTheme();
@@ -16,7 +16,7 @@ function plains_midstream_profile(lang, div) {
     warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
   });
 }
-plains_midstream_profile(englishDashboard, "plains_disclaimer");
+plains_midstream_profile(frenchDashboard, "plains_disclaimer");
 
 const arrayOfCharts = [
   mainConditions(
@@ -24,12 +24,12 @@ const arrayOfCharts = [
     canadaMap,
     conditionsData.mapMeta,
     conditionsData.meta,
-    englishDashboard.conditions
+    frenchDashboard.conditions
   ),
   mainIncidents(
     incidentData.events,
     incidentData.meta,
-    englishDashboard.incidents
+    frenchDashboard.incidents
   ),
 ];
 

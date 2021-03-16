@@ -7,7 +7,7 @@ import { mainConditions } from "../../conditions/conditionsDashboard.js";
 import incidentData from "../../incidents/company_data/fr/KingstonMidstreamWestspurLimited.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // language
-import { englishDashboard } from "../../modules/langEnglish.js";
+import { frenchDashboard } from "../../modules/langFrench.js";
 // load dashboards
 import { loadAllCharts } from "../loadDashboards.js";
 generalTheme();
@@ -18,12 +18,12 @@ const arrayOfCharts = [
     canadaMap,
     conditionsData.mapMeta,
     conditionsData.meta,
-    englishDashboard.conditions
+    frenchDashboard.conditions
   ),
   mainIncidents(
     incidentData.events,
     incidentData.meta,
-    englishDashboard.incidents
+    frenchDashboard.incidents
   ),
 ];
 

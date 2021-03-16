@@ -42,10 +42,10 @@ var profileWebpackConfig = (function () {
       htmlFileNames.map((name) => {
         html.push(
           new HtmlWebpackPlugin({
-            filename: `${lang}/${name}/${name}.html`,
+            filename: `${lang}/${name}/${name}_${lang}.html`,
             chunks: [`${lang}/${name}/${name}_${lang}`],
             chunkSortMode: "manual",
-            template: "src/profile_en.html",
+            template: `src/profile_${lang}.html`,
             publicPath: "../..",
             minify: false,
           })
