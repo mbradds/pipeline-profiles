@@ -388,7 +388,7 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 
 if __name__ == "__main__":
     print('starting conditions...')
-    # df, regions, mapMeta, meta = process_conditions(remote=True, lang='en')
+    df, regions, mapMeta, meta = process_conditions(remote=True, lang='en')
     df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr')
     print('completed conditions!')
 

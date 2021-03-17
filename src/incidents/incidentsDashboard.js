@@ -116,8 +116,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         $("#incident-view-type button").on("click", function () {
           $(".btn-incident-view-type > .btn").removeClass("active");
           $(this).addClass("active");
-          var thisBtn = $(this);
-          var btnValue = thisBtn.val();
+          var btnValue = $(this).val();
           var dashboardDivs = ["incident-map", "nearby-incidents-popup"].concat(
             bars.allDivs
           );

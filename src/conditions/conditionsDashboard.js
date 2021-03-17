@@ -41,7 +41,7 @@ export async function mainConditions(
     });
     return conditionsFilter;
   };
-  // const conditionsFilter = statusInit(meta);
+
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
       summary["In Progress"];
@@ -245,11 +245,9 @@ export async function mainConditions(
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
     text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
-    text += `</table><br>`;
+    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr></table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
-    text += generateTable(meta, e.id, "themes", filter);
-    text += `</table></div>`;
+    text += generateTable(meta, e.id, "themes", filter) + "</table></div>";
 
     const chart = e.series.chart;
     if (chart.customTooltip) {
@@ -361,13 +359,6 @@ export async function mainConditions(
           },
         },
       },
-      credits: {
-        text: "",
-      },
-
-      mapNavigation: {
-        enabled: false,
-      },
 
       plotOptions: {
         series: {
@@ -379,10 +370,6 @@ export async function mainConditions(
             },
           },
         },
-      },
-
-      xAxis: {
-        zoomEnabled: false,
       },
 
       tooltip: {
@@ -399,28 +386,29 @@ export async function mainConditions(
     });
   };
 
-  const chartMode = (chart, mapInits) => {
-    // if (mapInits.mode == "development") {
-    //   chart.update({
-    //     chart: {
-    //       panning: true,
-    //       events: {
-    //         redraw: function () {
-    //           // this is useful for determining the on load map zoom scale
-    //           var yScale = this.yAxis[0].getExtremes();
-    //           var xScale = this.xAxis[0].getExtremes();
-    //           console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
-    //           console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
-    //         },
-    //       },
-    //     },
-    //     mapNavigation: {
-    //       enabled: true,
-    //     },
-    //   });
-    // }
-    return chart;
-  };
+  // uncomment this when adding new conditions maps to get the zoom init
+  // const chartMode = (chart, mapInits) => {
+  //   if (mapInits.mode == "development") {
+  //     chart.update({
+  //       chart: {
+  //         panning: true,
+  //         events: {
+  //           redraw: function () {
+  //             // this is useful for determining the on load map zoom scale
+  //             var yScale = this.yAxis[0].getExtremes();
+  //             var xScale = this.xAxis[0].getExtremes();
+  //             console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
+  //             console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
+  //           },
+  //         },
+  //       },
+  //       mapNavigation: {
+  //         enabled: true,
+  //       },
+  //     });
+  //   }
+  //   return chart;
+  // };
 
   //main conditions map
   function buildDashboard() {
@@ -467,15 +455,14 @@ export async function mainConditions(
         zooms
       );
 
-      //allow zoom and pan when in development mode
-      chart = chartMode(chart, mapInits);
+      // allow zoom and pan when in development mode
+      // chart = chartMode(chart, mapInits);
 
       //change condition type and update map+title
       $("#conditions-nav-group button").on("click", function () {
         $(".btn-conditions > .btn").removeClass("active");
         $(this).addClass("active");
-        var thisBtn = $(this);
-        var btnValue = thisBtn.val();
+        var btnValue = $(this).val();
         $("#selectedVal").text(btnValue);
         conditionsFilter.column = btnValue;
         if (btnValue !== "not-shown") {

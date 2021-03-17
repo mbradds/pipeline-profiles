@@ -2,20 +2,11 @@ import { cerPalette } from "./util.js";
 export const generalTheme = () => {
   Highcharts.profiles = {
     chart: {
-      borderColor: "black",
       animation: true,
     },
-
     plotOptions: {
       column: {
         stacking: "normal",
-      },
-      area: {
-        stacking: "normal",
-        marker: false,
-        dataLabels: {
-          enabled: false,
-        },
       },
     },
 
@@ -66,6 +57,10 @@ export const generalTheme = () => {
       itemStyle: {
         fontSize: "15px",
       },
+    },
+
+    credits: {
+      text: "",
     },
 
     title: {

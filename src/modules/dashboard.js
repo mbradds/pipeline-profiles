@@ -364,9 +364,7 @@ export class EventMap {
             layer.options.incidentParams["Approximate Volume Released"];
         }
       });
-      let nearbyText = ``;
-      // nearbyText += `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4><table>`;
-      nearbyText += `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
+      let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
         nearbyCircles.length,
         range
       )}</h4><table>`;
@@ -560,10 +558,6 @@ export class EventNavigator {
         },
         padding: -5,
         margin: 0,
-      },
-
-      credits: {
-        text: "",
       },
 
       xAxis: {
@@ -982,8 +976,7 @@ export class EventTrend extends EventMap {
     if (this.ONETOMANY[this.field]) {
       destoryLabel(this.chart);
       let text = `<section class="alert alert-warning" style="padding:4px">`;
-      text += `<p>${this.eventType} can have multiple <i>${this.field}</i> values. Chart totals may appear larger due to double counting.</p>`;
-      text += `</section>`;
+      text += `<p>${this.eventType} can have multiple <i>${this.field}</i> values. Chart totals may appear larger due to double counting.</p></section>`;
       //activate the chart disclaimer
       var label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
@@ -1031,14 +1024,6 @@ export class EventTrend extends EventMap {
         type: "column",
         animation: false,
         spacingTop: 25,
-      },
-
-      title: {
-        text: "",
-      },
-
-      credits: {
-        text: "",
       },
 
       xAxis: {

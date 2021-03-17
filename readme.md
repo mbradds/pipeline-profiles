@@ -4,6 +4,12 @@
 
 New interactive content under development for the CER's [pipeline profiles](https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/index.html) web page.
 
+This project uses three primary technologies to create web based interactive dashboards and dynamic text specific to 25 of the largest pipelines regulated by the CER. The content is developed for both English and French. Here is a summary of the major front end frameworks used:
+
+- **Highcharts**: Used to create basic interactive charts and maps.
+- **Leaflet**: Used for more advanced mapping features.
+- **Web Expreience Toolkit**: GoC web framework for creating a common look and feel. Used to add filters, buttons, and structure to bind the above two technologies into usable dashboards. Also used to style dynamic data embedded text.
+
 Sections being added:
 
 - **Safety & Environment**
