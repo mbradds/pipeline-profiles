@@ -11,12 +11,10 @@ body {
   font-family: Arial;
   font-size: 1.8em;
 }
-/* this padding makes the dashboard/vis less wide. For some dashobards this looks better */
 .dashboard {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* styles for conditions compliance section */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .container-chart-map {
     min-height: 550px;
@@ -76,7 +74,6 @@ body {
   color: #42464b;
   text-align: center;
 }
-/* styles for incidents section */
 #incident-map {
   position: relative;
   height: 515px;

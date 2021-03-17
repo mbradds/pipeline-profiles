@@ -23,6 +23,7 @@ pipeline_profiles
 │   server.js (express js server configuration for heroku)
 |   requirements.txt (conda python 3 environment used in ./src/data_management)
 │   webpack.config.js (functionality for creating clean ../dist folder in english and french)
+|   index.html (main navigation page for profiles. Has entry links for all sub profiles in /dist)
 |   .babelrc (babel config with corejs 3 polyfills)
 |   ...
 |
@@ -50,8 +51,8 @@ pipeline_profiles
 |   └───modules (shared dashboard code & utility functions)
 │
 └───dist
-    │   en/
-    │   fr/
+    │   en/ english js bundles & html for each profile (to be placed on web server)
+    │   fr/ french js bundles & html for each profile (to be placed on web server)
 ```
 
 ## Quick start for contributing
@@ -64,6 +65,14 @@ git clone https://github.com/mbradds/pipeline-profiles.git
 ```
 
 2. install dependencies
+
+First time install:
+
+```bash
+npm ci
+```
+
+Or update dependencies
 
 ```bash
 npm install
@@ -218,6 +227,34 @@ if __name__ == "__main__":
     print('completed conditions!')
 ```
 
+## Dependencies
+
+- [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) Helps reduce bundle size by a few KB.
+- [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
+- [express](https://www.npmjs.com/package/express) Used only for heroku website.
+- [haversine](https://www.npmjs.com/package/haversine) For finding distance between user and Incidents.
+- [ie-gang](https://www.npmjs.com/package/ie-gang) Warns user to switch away from IE-11.
+- [mapshaper](https://www.npmjs.com/package/mapshaper) Simplifies the maps used in the Conditions map. Reduces Canada base map file size by >99.9%!
+
+### Dev Dependencies
+
+- [@babel/core](https://babeljs.io/docs/en/babel-core)
+- [@babel/plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)
+- [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
+- [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)
+- [babel-loader](https://www.npmjs.com/package/babel-loader/v/8.0.0-beta.1)
+- [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin)
+- [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/)
+- [core-js](https://www.npmjs.com/package/core-js)
+- [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/)
+- [webpack](https://webpack.js.org/)
+- [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
+- [webpack-cli](https://www.npmjs.com/package/webpack-cli)
+- [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)
+- [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals)
+
+Note: the html-webpack-plugin is instrumental for this project. Each pipeline profile webpage is essentially the same, but with different data. The two templates `src/profile_en.html` and `src/profile_fr.html` contain all the text and web resources (css, scripts tags) and the plugin injects the appropriate script tags for the profile. Changes made to these templates will appear on all 25 profile pages in english and french.
+
 ## Tests
 
 The greatest risk for errors, such as incorrect values appearing in the front end, are likely to happen as a result of errors in the "back end" python code (npm run data). These python scripts compute large amounts of summary statistics, totals, metadata (number of incidents, most common, types, etc) from datasets that have inherent errors. This is made more risky by the fact that there are english and french datasets, and these datasets may have unrelated problems. Here is a list of embedded data errors I have noticed so far:
@@ -240,3 +277,8 @@ npm run test
 This code is difficult to test, because the code is run on data that updates every day, or every quarter. To simplify this, i have added static test data seperate from "production" data. The test data is located here: `src/data_management/raw_data/test_data`. npm run test will test the python code on static data, where things like the correct totals, counts and other numbers that appear later on the front end are known.
 
 The unit tests check a bunch of summary statistics and data validation metrics specific the the ngtl profile. It will also test to see if the english numbers/data are the same in french.
+
+## ToDo list
+
+- Create a distribution bundle for Highcharts+Leaflet. Highcharts doesnt make tree shaking easy, but its possible to create a [custom distribution](https://www.highcharts.com/docs/getting-started/how-to-create-custom-highcharts-files) with only the files needed.
+- As new profile sections are added, the json data will start to increase bundle sizes above 250 kb. The data should be split into a seperate webpack bundle. This will also help with caching, because the data can be updated, and the rest of the code can remain cached.
