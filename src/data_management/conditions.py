@@ -303,6 +303,8 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
     # preliminary processing
     df['Company'] = df['Company'].replace(company_rename())
 
+    print(sorted(list(set(df['Theme(s)']))))
+    return
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
     df['Theme(s)'] = df['Theme(s)'].replace({"nan":
                                              "No theme specified"})
@@ -386,8 +388,8 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, regions, mapMeta, meta = process_conditions(remote=True, lang='en')
-    df, regions, mapMeta, meta = process_conditions(remote=True, lang='fr')
+    # df, regions, mapMeta, meta = process_conditions(remote=True, lang='en')
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr')
     print('completed conditions!')
 
 #%%

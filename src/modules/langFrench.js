@@ -76,42 +76,34 @@ export const frenchDashboard = {
     themeDefinitions: {
       "No theme specified":
         "Some conditions have not been assigned a theme by the CER.",
-      Administrative: "Conditions that help track organizational tasks.",
-
-      "Damage Prevention":
-        "Conditions that hold companies accountable for the safe conduct in and around pipelines and facilities.",
-
-      "Emergency Management":
-        "Conditions that ensure companies have a robust program that anticipates and prevents incidents, and manages and mitigates situations during an emergency.",
-
-      Enforcement:
-        "Conditions that reinforce prescribed regulatory requirements to be met.",
-
-      "Environmental Protection":
-        "Conditions that mandate projects to be planned, built, operated or abandoned in a manner that protects the environment.",
-
-      Financial:
-        "Conditions that require certain details or all aspects of a company’s financial obligations be fulfilled.",
-
-      "Integrity Management":
-        "Conditions that ensure projects are designed, built, operated and maintained in a safe and effective manner. For instance, the use of appropriate materials, the detection of corrosion, etc.",
-
-      "Management System":
-        "Company specific conditions that ensure the use of an effective and efficient approach to manage and reduce risk. Note: A management system is not project specific.",
-
-      "Safety Management":
-        "Conditions that eliminate or reduce risk to the public, workers, the environment and assets.",
-
-      Security:
-        "Conditions that ensure companies have adequate personnel and systems to deter, respond and manage security threats.",
-
-      "Socio-Economic":
-        "Conditions that address the concerns of potentially affected landowners, residents, communities, indigenous groups, etc.",
-
-      "Standard Condition":
-        "A condition that is typically imposed on all approved projects.",
-      "Sunset Clause":
-        "Conditions that ensure projects begin within a specific period of time.",
+      Administratif:
+        "Conditions permettant de faire le suivi des tâches organisationnelles.",
+      "Condition standard":
+        "Une condition généralement imposée relativement à tous les projets approuvés.",
+      "Conditions normales":
+        "Une condition généralement imposée relativement à tous les projets approuvés.",
+      "Disposition de temporisation":
+        "Conditions visant à s’assurer que les projets sont entrepris dans un délai précis.",
+      Exécution:
+        "Conditions venant renforcer les exigences réglementaires prescrites.",
+      Finances:
+        "Conditions dont le respect nécessite la présentation de certains détails concernant tous les aspects des obligations financières d’une société.",
+      "Gestion de l’intégrité":
+        "Conditions visant à s’assurer que les projets sont conçus, construits, exploités et entretenus de manière sécuritaire et efficace (utilisation de matériaux appropriés, détection de la corrosion, etc.).",
+      "Gestion de la sécurité":
+        "Conditions visant à éliminer ou à réduire le risque pour le public, les travailleurs, l’environnement et les biens.",
+      "Gestion des situations d’urgence":
+        "Conditions visant à s’assurer que les sociétés disposent d’un solide programme de prévention des incidents qui permet de gérer et d’atténuer certaines situations en cas d’urgence.",
+      "Prévention des dommages":
+        "Conditions visant à tenir les sociétés responsables du déroulement sécuritaire des activités à proximité des pipelines et des installations.",
+      "Protection de l’environnement":
+        "Conditions visant à s’assurer que la planification, la construction, l’exploitation ou la cessation d’exploitation des projets seront effectuées dans le respect de l’environnement.",
+      Socioéconomique:
+        "Conditions visant à répondre aux préoccupations des propriétaires fonciers, des résidents, des collectivités et des groupes autochtones susceptibles d’être touchés, etc.",
+      Sûreté:
+        "Conditions visant à s’assurer que les sociétés disposent du personnel voulu et des systèmes adéquats pour contrer les menaces à la sûreté, y répondre et les gérer",
+      "Système de gestion":
+        "Conditions particulières imposées à une société afin de s’assurer qu’une démarche efficace est utilisée pour gérer et réduire le risque. Remarque : un système de gestion n’est pas propre à un projet.",
     },
     noConditions: {
       header: "No conditions data available",
@@ -127,50 +119,50 @@ export const frenchDashboard = {
     },
     definitions: {
       Status: {
-        Closed:
-          "The CER’s incident review has been completed and the file is closed.",
-        Submitted:
-          "The company has submitted all of the required information and the CER is reviewing the incident.",
-        "Initially Submitted":
-          "The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
+        Fermé:
+          "La Régie a terminé l’examen de l’incident et a clos le dossier.",
+        Soumis:
+          "La société a fourni tous les renseignements exigés et la Régie examine ce qui s’est produit.",
+        "Initialement soumis":
+          "La société a informé la Régie qu’un incident était survenu et a fourni les renseignements préliminaires sur celui-ci. Une enquête est en cours.",
       },
       "What Happened": {
-        "Defect and Deterioration":
-          "Defects in manufacturing processes or materials, or deterioration as a result of damage or service life limitations, lack of inspection or maintenance",
-        "Corrosion and Cracking":
-          "External corrosion or cracking caused by damage to coating systems or failed coating systems; weld cracking as a result of stress or workmanship issues; or internal corrosion as a result of contaminates in products",
-        "Equipment Failure":
-          "A failure of the pipeline’s equipment components. Examples of equipment include valves, electrical power systems and control systems",
-        "Incorrect Operation":
-          "Typically, personnel fail to follow procedures or use equipment improperly",
-        "External Interference":
-          "External activities that cause damage to the pipeline or components. Examples include excavation damage and vandalism",
-        "Natural Force Damage":
-          "Damage caused by natural forces, such as earthquakes, landslides and wash-outs",
-        "Other Causes":
-          "All other causes or when an incident’s circumstances could not be determined",
-        "To be determined": "The incident is under review",
+        "Défectuosité et détérioration":
+          " Défectuosité au niveau des matériaux ou des processus de fabrication et détérioration attribuable à des dommages, au dépassement de la durée de vie utile, à l’absence d’inspection ou à un manque d’entretien.",
+        "Corrosion et fissuration":
+          "Corrosion externe ou fissuration du revêtement, en raison de dommages ou d’une défaillance, fissuration au niveau des soudures attribuable à des problèmes de contrainte ou de fabrication et corrosion interne due à la présence de contaminants dans les produits.",
+        "Défaillance d’équipement":
+          "Défaillance d’une des composantes de l’équipement associées au pipeline comme, par exemple, les vannes, l’alimentation électrique ou les systèmes de contrôle.",
+        "Erreur d’exploitation":
+          "En général, le personnel ne respecte pas les marches à suivre ou utilise l’équipement d’une manière non appropriée.",
+        "Interférences extérieures":
+          "Activités extérieures à l’origine de dommages au pipeline ou à ses composantes comme, par exemple, des travaux d’excavation ou du vandalisme.",
+        "Forces de la nature":
+          "Dommages pouvant être causés, par exemple, par un tremblement de terre, un glissement de terrain ou l’érosion.",
+        "Autres causes":
+          "Toutes les autres causes ou lorsqu’il est impossible de déterminer les circonstances de l’incident.",
+        "À déterminer": "The incident is under review",
       },
       "Why It Happened": {
-        "Engineering and Planning":
-          "Failures of assessment, planning or monitoring that may be related to inadequate specifications or design criteria, evaluation of change, or implementation of controls",
-        Maintenance:
-          "Inadequate preventive maintenance or repairs, and excessive wear and tear",
-        "Inadequate Procurement":
-          "Failures in the purchasing, handling, transport and storage of materials",
-        "Tools and Equipment":
-          "Tools and equipment that are inadequate for the task or used improperly",
-        "Standards and Procedures":
-          "Inadequate development, communication, maintenance or monitoring of standards and procedures",
-        "Failure in communication":
-          "Loss of communication with automatic devices, equipment or people",
-        "Inadequate Supervision":
-          "Lack of oversight of a contractor or employee during construction or maintenance activities",
-        "Human Factors":
-          "Individual conduct or capability, or physical and psychological factors",
-        "Natural or Environmental Forces":
-          "External natural or environmental conditions",
-        "To be determined": "The incident is under review.",
+        "Ingénierie et planification":
+          "Défaillances au niveau de l’évaluation, de la planification ou de la surveillance pouvant être en rapport avec le caractère non approprié des données techniques, des critères de conception, de l’évaluation de changements ou de la mise en œuvre de contrôles.",
+        Entretien:
+          "Entretien préventif inadéquat ou réparations mal effectuées ainsi qu’usure et détérioration excessives.",
+        "Approvisionnement inadéquat":
+          "Problèmes au niveau des achats, de la manutention des matériaux, de leur transport ou de leur entreposage.",
+        "Outils et équipement":
+          "Outils et équipement qui ne permettent pas d’accomplir la tâche voulue ou dont l’utilisation n’est pas appropriée.",
+        "Normes et procédures":
+          "Élaboration, communication, mise à jour ou surveillance inadéquates des normes et procédures",
+        "Problème de communication":
+          "Perte de contact avec des dispositifs automatisés, de l’équipement ou des personnes.",
+        "Supervision insuffisante":
+          "Manque de surveillance d’un entrepreneur ou d’un employé pendant les travaux, qu’ils soient de construction ou d’entretien.",
+        "Facteurs humains":
+          "Facteurs liés à la conduite ou aux capacités d’une personne, qui peuvent par ailleurs être physiques ou psychologiques.",
+        "Forces de la nature ou environnement":
+          "Conditions relatives à l’environnement ou au milieu naturel.",
+        "À déterminer": "The incident is under review.",
       },
     },
     dashboard: {
