@@ -116,3 +116,6 @@ body {
   float: left;
   font-family: Lato, sans-serif;
 }
+.notice-me-btn {
+  box-shadow: 0 0 11px #ffbe4b;
+}

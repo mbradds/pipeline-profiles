@@ -154,7 +154,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         $("#find-incidents-btn").on("click", function () {
           var resetBtn = document.getElementById("reset-incidents-btn");
           resetBtn.disabled = false;
-          resetBtn.className = "btn btn-primary";
+          resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
           let range = document.getElementById("find-incidents-btn").value;
           if (!thisMap.user.latitude && !thisMap.user.longitude) {
             thisMap.waitOnUser().then((userAdded) => {
@@ -170,7 +170,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
           thisMap.resetMap();
           var resetBtn = document.getElementById("reset-incidents-btn");
           resetBtn.disabled = true;
-          resetBtn.className = "btn btn-default";
+          resetBtn.className = "btn btn-default col-md-12";
           //document.getElementById("reset-incidents-btn").disabled = true;
           document.getElementById("nearby-flag").innerHTML = ``;
         });
