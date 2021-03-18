@@ -1,10 +1,10 @@
 import { generalTheme } from "../../modules/themes.js";
 // conditions
 import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/PlainsMidstreamCanadaULC.json";
+import conditionsData from "../../conditions/company_data/en/PlainsMidstreamCanadaULC.json";
 import { mainConditions } from "../../conditions/conditionsDashboard.js";
 // incidents
-import incidentData from "../../incidents/company_data/PlainsMidstreamCanadaULC.json";
+import incidentData from "../../incidents/company_data/en/PlainsMidstreamCanadaULC.json";
 import { mainIncidents } from "../../incidents/incidentsDashboard.js";
 // language
 import { englishDashboard } from "../../modules/langEnglish.js";
@@ -13,7 +13,7 @@ import { loadAllCharts } from "../loadDashboards.js";
 generalTheme();
 function plains_midstream_profile(lang, div) {
   [...document.querySelectorAll(`.${div}`)].map((warn) => {
-    warn.innerHTML = `<section class="alert alert-warning"><h4>${lang.plains}</h4></section>`;
+    warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
   });
 }
 plains_midstream_profile(englishDashboard, "plains_disclaimer");

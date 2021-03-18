@@ -1,4 +1,4 @@
-import { profileAssist as pa } from "../modules/util.js";
+import { sortJson, cerPalette, visibility } from "../modules/util.js";
 import { mapInits } from "./hcMapConfig.js";
 
 export async function mainConditions(
@@ -41,7 +41,7 @@ export async function mainConditions(
     });
     return conditionsFilter;
   };
-  // const conditionsFilter = statusInit(meta);
+
   const fillSummary = (summary) => {
     document.getElementById("in-progress-summary").innerText =
       summary["In Progress"];
@@ -52,10 +52,10 @@ export async function mainConditions(
 
   const setTitle = (titleElement, filter, summary) => {
     if (filter.column == "not-shown") {
-      titleElement.innerText = lang.title.noLocation(summary.companyName);
+      titleElement.innerText = lang.title.noLocation(summary.systemName);
     } else {
       titleElement.innerText = lang.title.location(
-        summary.companyName,
+        summary.systemName,
         filter.column
       );
     }
@@ -171,8 +171,8 @@ export async function mainConditions(
     newMeta.projects = processMapMetadata(m.projects, filter, "projects");
     newMeta.themes = processMapMetadata(m.themes, filter, "themes");
     if (filter.column == "Closed") {
-      newMeta.projects = pa.sortJson(newMeta.projects, "value");
-      newMeta.themes = pa.sortJson(newMeta.themes, "value");
+      newMeta.projects = sortJson(newMeta.projects, "value");
+      newMeta.themes = sortJson(newMeta.themes, "value");
     }
     return newMeta;
   };
@@ -244,12 +244,10 @@ export async function mainConditions(
     }
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
-    text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${pa.cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr>`;
-    text += `</table><br>`;
+    text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr></table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
-    text += generateTable(meta, e.id, "themes", filter);
-    text += `</table></div>`;
+    text += generateTable(meta, e.id, "themes", filter) + "</table></div>";
 
     const chart = e.series.chart;
     if (chart.customTooltip) {
@@ -349,10 +347,9 @@ export async function mainConditions(
             );
           },
           click: function () {
-            var [chartHeight, chartWidth] = [this.chartHeight, this.chartWidth];
             if (this.customTooltip) {
               if (
-                this.mouseDownX > chartWidth - this.customTooltip.width &&
+                this.mouseDownX > this.chartWidth - this.customTooltip.width &&
                 this.mouseDownY < this.customTooltip.height
               ) {
               } else {
@@ -361,13 +358,6 @@ export async function mainConditions(
             }
           },
         },
-      },
-      credits: {
-        text: "",
-      },
-
-      mapNavigation: {
-        enabled: false,
       },
 
       plotOptions: {
@@ -380,10 +370,6 @@ export async function mainConditions(
             },
           },
         },
-      },
-
-      xAxis: {
-        zoomEnabled: false,
       },
 
       tooltip: {
@@ -400,32 +386,41 @@ export async function mainConditions(
     });
   };
 
-  const chartMode = (chart, mapInits) => {
-    if (mapInits.mode == "development") {
-      chart.update({
-        chart: {
-          panning: true,
-          events: {
-            redraw: function () {
-              // this is useful for determining the on load map zoom scale
-              var yScale = this.yAxis[0].getExtremes();
-              var xScale = this.xAxis[0].getExtremes();
-              console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
-              console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
-            },
-          },
-        },
-        mapNavigation: {
-          enabled: true,
-        },
-      });
-    }
-    return chart;
-  };
+  // uncomment this when adding new conditions maps to get the zoom init
+  // const chartMode = (chart, mapInits) => {
+  //   if (mapInits.mode == "development") {
+  //     chart.update({
+  //       chart: {
+  //         panning: true,
+  //         events: {
+  //           redraw: function () {
+  //             // this is useful for determining the on load map zoom scale
+  //             var yScale = this.yAxis[0].getExtremes();
+  //             var xScale = this.xAxis[0].getExtremes();
+  //             console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
+  //             console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
+  //           },
+  //         },
+  //       },
+  //       mapNavigation: {
+  //         enabled: true,
+  //       },
+  //     });
+  //   }
+  //   return chart;
+  // };
 
   //main conditions map
   function buildDashboard() {
     if (!$.isEmptyObject(econRegions)) {
+      // add the system name to metadata
+      try {
+        meta.summary.systemName =
+          lang.companyToSystem[meta.summary.companyName];
+      } catch (err) {
+        console.log(err);
+        meta.summary.systemName = meta.summary.companyName;
+      }
       let titleElement = document.getElementById("conditions-map-title");
       const conditionsFilter = statusInit(meta);
       setTitle(titleElement, conditionsFilter, meta.summary);
@@ -460,24 +455,23 @@ export async function mainConditions(
         zooms
       );
 
-      //allow zoom and pan when in development mode
-      chart = chartMode(chart, mapInits);
+      // allow zoom and pan when in development mode
+      // chart = chartMode(chart, mapInits);
 
       //change condition type and update map+title
       $("#conditions-nav-group button").on("click", function () {
         $(".btn-conditions > .btn").removeClass("active");
         $(this).addClass("active");
-        var thisBtn = $(this);
-        var btnValue = thisBtn.val();
+        var btnValue = $(this).val();
         $("#selectedVal").text(btnValue);
         conditionsFilter.column = btnValue;
         if (btnValue !== "not-shown") {
           destroyInsert(chart);
-          pa.visibility(["no-location-info"], "hide");
-          pa.visibility(["container-map"], "show");
+          visibility(["no-location-info"], "hide");
+          visibility(["container-map"], "show");
         } else {
-          pa.visibility(["no-location-info"], "show");
-          pa.visibility(["container-map"], "hide");
+          visibility(["no-location-info"], "show");
+          visibility(["container-map"], "hide");
         }
         setTitle(titleElement, conditionsFilter, meta.summary);
         const regionSeries = generateRegionSeries(

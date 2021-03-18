@@ -1,10 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 var profileWebpackConfig = (function () {
+  const language = ["en", "fr"];
+
   const htmlFileNames = [
     "ngtl",
     "enbridge_mainline",
@@ -34,18 +37,25 @@ var profileWebpackConfig = (function () {
   ];
 
   function htmlWebpack() {
-    return htmlFileNames.map((name) => {
-      return new HtmlWebpackPlugin({
-        filename: `en/${name}/${name}.html`,
-        chunks: [`en/${name}/${name}`],
-        template: "src/profile_en.html",
-        publicPath: "../..",
-        minify: false,
+    var html = [];
+    language.map((lang) => {
+      htmlFileNames.map((name) => {
+        html.push(
+          new HtmlWebpackPlugin({
+            filename: `${lang}/${name}/${name}_${lang}.html`,
+            chunks: [`${lang}/${name}/${name}_${lang}`],
+            chunkSortMode: "manual",
+            template: `src/profile_${lang}.html`,
+            publicPath: "../..",
+            minify: false,
+          })
+        );
       });
     });
+    return html;
   }
 
-  function entry(language = ["en"]) {
+  function entry() {
     const entryPoints = {};
     language.map((lang) => {
       htmlFileNames.map((name) => {
@@ -55,7 +65,7 @@ var profileWebpackConfig = (function () {
           var scriptName = name;
         }
         entryPoints[
-          `${lang}/${name}/${name}`
+          `${lang}/${name}/${name}_${lang}`
         ] = `./src/index_files/${lang}/${scriptName}.js`;
       });
     });
@@ -67,14 +77,12 @@ var profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  mode: "development",
-  // mode: "production",
-  target: "es5",
-  entry: profileWebpackConfig.entry(["en"]),
+  // mode: "development",
+  mode: "production",
+  entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
-    //filename: '[name].[contenthash].js', // adds a unique hash for caching
+    filename: "[name].[contenthash].js",
     publicPath: "/dist/en/",
   },
 
@@ -82,7 +90,26 @@ module.exports = {
     compress: true,
   },
 
-  plugins: profileWebpackConfig.htmlWebpack(),
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src", "main.css"),
+          to: path.resolve(__dirname, "dist", "main.css"),
+        },
+        {
+          from: path.resolve(__dirname, "src", "GCWeb"),
+          to: path.resolve(__dirname, "dist", "GCWeb"),
+        },
+        {
+          from: path.resolve(__dirname, "src", "wet-boew"),
+          to: path.resolve(__dirname, "dist", "wet-boew"),
+        },
+      ],
+    }),
+    new CleanWebpackPlugin(),
+    //new BundleAnalyzerPlugin(),
+  ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
     rules: [
@@ -101,11 +128,6 @@ module.exports = {
 
   optimization: {
     minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        test: /\.js(\?.*)?$/i,
-        extractComments: false,
-      }),
-    ],
+    usedExports: true,
   },
 };

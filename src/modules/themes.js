@@ -1,21 +1,12 @@
-import { profileAssist as pa } from "./util.js";
+import { cerPalette } from "./util.js";
 export const generalTheme = () => {
-  Highcharts.transportation = {
+  Highcharts.profiles = {
     chart: {
-      borderColor: "black",
       animation: true,
     },
-
     plotOptions: {
       column: {
         stacking: "normal",
-      },
-      area: {
-        stacking: "normal",
-        marker: false,
-        dataLabels: {
-          enabled: false,
-        },
       },
     },
 
@@ -23,7 +14,7 @@ export const generalTheme = () => {
       title: {
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
           fontWeight: "bold",
           fontFamily: "Arial",
         },
@@ -31,17 +22,7 @@ export const generalTheme = () => {
       labels: {
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
-        },
-      },
-      plotBands: {
-        color: pa.cerPalette["Forecast"],
-        label: {
-          align: "center",
-          style: {
-            fontWeight: "bold",
-            color: pa.cerPalette["Cool Grey"],
-          },
+          color: cerPalette["Cool Grey"],
         },
       },
     },
@@ -50,7 +31,7 @@ export const generalTheme = () => {
       title: {
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
           fontWeight: "bold",
           fontFamily: "Arial",
         },
@@ -61,7 +42,7 @@ export const generalTheme = () => {
         },
         style: {
           fontSize: 12,
-          color: pa.cerPalette["Cool Grey"],
+          color: cerPalette["Cool Grey"],
         },
       },
       stackLabels: {
@@ -78,12 +59,8 @@ export const generalTheme = () => {
       },
     },
 
-    noData: {
-      style: {
-        fontWeight: "bold",
-        fontSize: "15px",
-        color: "#303030",
-      },
+    credits: {
+      text: "",
     },
 
     title: {
@@ -91,5 +68,5 @@ export const generalTheme = () => {
     },
   };
 
-  Highcharts.setOptions(Highcharts.transportation);
+  Highcharts.setOptions(Highcharts.profiles);
 };

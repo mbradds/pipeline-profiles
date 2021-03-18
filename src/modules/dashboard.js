@@ -1,75 +1,29 @@
-import { profileAssist as pa } from "../modules/util.js";
+import { cerPalette, conversions, visibility } from "../modules/util.js";
 const haversine = require("haversine");
 
 export class EventMap {
   substanceState = {
     Propane: "gas",
     "Natural Gas": "gas",
+    "Gaz Naturel": "gas",
     "Fuel Gas": "liquid",
     "Lube Oil": "liquid",
+    "Huile lubrifiante": "liquid",
     "Crude Oil": "liquid",
+    "Pétrole brut non sulfureux": "liquid",
+    "Pétrole brut synthétique": "liquid",
+    "Pétrole brut sulfureux": "liquid",
     "Diesel Fuel": "liquid",
     Gasoline: "liquid",
+    Essence: "liquid",
     "Natural Gas Liquids": "gas",
+    "Liquides de gaz naturel": "gas",
     Condensate: "liquid",
+    Condensat: "liquid",
     Other: "other",
+    Autre: "other",
     "Sulphur Dioxide": "other",
-  };
-
-  EVENTCOLORS = {
-    substanceColors: {
-      Propane: pa.cerPalette["Forest"],
-      "Natural Gas - Sweet": pa.cerPalette["Flame"],
-      "Natural Gas - Sour": pa.cerPalette["Dim Grey"],
-      "Fuel Gas": pa.cerPalette["hcGreen"],
-      "Lube Oil": pa.cerPalette["hcPurple"],
-      "Crude Oil - Sweet": pa.cerPalette["Sun"],
-      "Crude Oil - Synthetic": pa.cerPalette["Forest"],
-      "Crude Oil - Sour": pa.cerPalette["Dim Grey"],
-      "Natural Gas Liquids": pa.cerPalette["Night Sky"],
-      Condensate: pa.cerPalette["Ocean"],
-      "Sulphur Dioxide": pa.cerPalette["hcPurple"],
-      "Diesel Fuel": pa.cerPalette["hcRed"],
-      Gasoline: pa.cerPalette["Flame"],
-      Other: pa.cerPalette["Aubergine"],
-    },
-    statusColors: {
-      "Initially Submitted": pa.cerPalette["Flame"],
-      Closed: pa.cerPalette["Cool Grey"],
-      Submitted: pa.cerPalette["Ocean"],
-    },
-    provinceColors: {
-      Alberta: pa.cerPalette["Sun"],
-      "British Columbia": pa.cerPalette["Forest"],
-      Saskatchewan: pa.cerPalette["Aubergine"],
-      Manitoba: pa.cerPalette["Ocean"],
-      Ontario: pa.cerPalette["Night Sky"],
-      Quebec: pa.cerPalette["Flame"],
-      "New Brunswick": pa.cerPalette["Forest"],
-      "Nova Scotia": pa.cerPalette["Night Sky"],
-    },
-    whyColors: {
-      "Standards and Procedures": pa.cerPalette["Flame"],
-      "Tools and Equipment": pa.cerPalette["Forest"],
-      Maintenance: pa.cerPalette["Night Sky"],
-      "Human Factors": pa.cerPalette["Ocean"],
-      "Engineering and Planning": pa.cerPalette["Sun"],
-      "Natural or Environmental Forces": pa.cerPalette["hcAqua"],
-      "To be determined": pa.cerPalette["Cool Grey"],
-      "Inadequate Procurement": pa.cerPalette["Aubergine"],
-      "Inadequate Supervision": pa.cerPalette["Dim Grey"],
-      "Failure in communication": pa.cerPalette["hcPink"],
-    },
-    whatColors: {
-      "Corrosion and Cracking": pa.cerPalette["Aubergine"],
-      "Defect and Deterioration": pa.cerPalette["Cool Grey"],
-      "Equipment Failure": pa.cerPalette["Dim Grey"],
-      "Natural Force Damage": pa.cerPalette["Flame"],
-      "Other Causes": pa.cerPalette["Forest"],
-      "Incorrect Operation": pa.cerPalette["Night Sky"],
-      "External Interference": pa.cerPalette["Ocean"],
-      "To be determined": pa.cerPalette["Sun"],
-    },
+    "Dioxyde de soufre": "other",
   };
 
   constructor({
@@ -84,24 +38,13 @@ export class EventMap {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
+    this.colors = lang.EVENTCOLORS;
     this.field = field;
     this.initZoomTo = initZoomTo;
-    this.colors = this.setColors();
     this.user = { latitude: undefined, longitude: undefined };
     this.leafletDiv = leafletDiv;
     this.lang = lang;
-  }
-
-  setColors() {
-    if (this.eventType == "incidents") {
-      return {
-        Substance: this.EVENTCOLORS.substanceColors,
-        Status: this.EVENTCOLORS.statusColors,
-        Province: this.EVENTCOLORS.provinceColors,
-        "Why It Happened": this.EVENTCOLORS.whyColors,
-        "What Happened": this.EVENTCOLORS.whatColors,
-      };
-    }
+    this.mapDisclaimer = undefined;
   }
 
   addBaseMap() {
@@ -124,8 +67,8 @@ export class EventMap {
   }
 
   volumeText(m3, substance, gas = false, liquid = false, other = false) {
-    let convLiquid = pa.conversions["m3 to bbl"];
-    let convGas = pa.conversions["m3 to cf"];
+    let convLiquid = conversions["m3 to bbl"];
+    let convGas = conversions["m3 to cf"];
     if (!gas && !liquid && !other) {
       var state = this.getState(substance);
     } else if (!gas && liquid && !other) {
@@ -157,20 +100,23 @@ export class EventMap {
   }
 
   addMapDisclaimer() {
-    var info = L.control();
-    var text = this.lang.volumeDisclaimer;
-    info.onAdd = function (map) {
-      this._div = L.DomUtil.create("div", "incident-volume-disclaimer");
-      this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px"><p>${text}</p></div>`;
-      return this._div;
-    };
-    info.addTo(this.map);
-    this.mapDisclaimer = info;
+    if (!this.mapDisclaimer) {
+      var info = L.control();
+      var text = this.lang.volumeDisclaimer;
+      info.onAdd = function (map) {
+        this._div = L.DomUtil.create("div", "incident-volume-disclaimer");
+        this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px"><p>${text}</p></div>`;
+        return this._div;
+      };
+      info.addTo(this.map);
+      this.mapDisclaimer = info;
+    }
   }
 
   removeMapDisclaimer() {
     if (this.mapDisclaimer) {
       this.mapDisclaimer.remove();
+      this.mapDisclaimer = undefined;
     }
   }
 
@@ -195,7 +141,9 @@ export class EventMap {
     }:</td><td style="color:${fillColor}">&nbsp<b>${
       incidentParams[this.field]
     }</b></td></tr>`;
-    toolTipText += `<tr><td>Est. Release Volume:</td><td>&nbsp<b>${this.volumeText(
+    toolTipText += `<tr><td>${
+      this.lang.estRelease
+    }</td><td>&nbsp<b>${this.volumeText(
       incidentParams["Approximate Volume Released"],
       incidentParams.Substance
     )}</b></td></tr>`;
@@ -273,11 +221,11 @@ export class EventMap {
 
     let years = []; //piggyback on data processing pass to get the year colors
     let colors = [
-      pa.cerPalette["Sun"],
+      cerPalette["Sun"],
       "#022034",
       "#043454",
       "#043a5e",
-      pa.cerPalette["Night Sky"],
+      cerPalette["Night Sky"],
       "#1d5478",
       "#366687",
       "#507a96",
@@ -303,7 +251,7 @@ export class EventMap {
       return this.addCircle(
         row.Latitude,
         row.Longitude,
-        pa.cerPalette["Cool Grey"],
+        cerPalette["Cool Grey"],
         this.applyColor(row[this.field], this.field), //fillColor
         radiusVol,
         row
@@ -416,9 +364,7 @@ export class EventMap {
             layer.options.incidentParams["Approximate Volume Released"];
         }
       });
-      let nearbyText = ``;
-      // nearbyText += `<section class="alert alert-info"><h4>There are ${nearbyCircles.length} incidents within ${range} km</h4><table>`;
-      nearbyText += `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
+      let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
         nearbyCircles.length,
         range
       )}</h4><table>`;
@@ -540,8 +486,9 @@ export class EventNavigator {
     "#F5F5F5",
     "#F8F8F8",
   ];
-  constructor({ plot, height = 125, data = false }) {
+  constructor({ plot, langPillTitles, height = 125, data = false }) {
     this.plot = plot;
+    this.langPillTitles = langPillTitles;
     this.currentActive = undefined;
     this.barList = [];
     this.bars = {};
@@ -584,8 +531,8 @@ export class EventNavigator {
 
   // usefull for names like "Status" that could use additional description
   pillName(name) {
-    if (name == "Status") {
-      return `CER ${name}`;
+    if (this.langPillTitles.titles.hasOwnProperty(name)) {
+      return this.langPillTitles.titles[name];
     } else {
       return `${name}`;
     }
@@ -611,10 +558,6 @@ export class EventNavigator {
         },
         padding: -5,
         margin: 0,
-      },
-
-      credits: {
-        text: "",
       },
 
       xAxis: {
@@ -734,6 +677,7 @@ export class EventNavigator {
   deactivateChart(bar) {
     var chart = bar.chart;
     let activeDiv = document.getElementById(bar.div);
+    let clickText = this.langPillTitles.click;
     if (chart) {
       let greyIndex = Math.floor(this.greyScale.length / chart.series.length);
       const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
@@ -749,7 +693,7 @@ export class EventNavigator {
       });
 
       chart.update({
-        title: { text: `${chart.title.textStr} (click to view)` },
+        title: { text: `${chart.title.textStr} (${clickText})` },
         plotOptions: {
           series: {
             borderWidth: 1,
@@ -767,9 +711,10 @@ export class EventNavigator {
       });
     } else {
       activeDiv.innerHTML = `<p>${this.pillName(bar.name)} (click to view)</p>`;
+      activeDiv.style.padding = "5px";
     }
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = pa.cerPalette["Dim Grey"];
+    activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 0.4;
   }
@@ -812,10 +757,11 @@ export class EventNavigator {
     } else {
       activeDiv.innerHTML = `<p>${this.pillName(bar.name)}</p>`;
       activeDiv.style.backgroundColor = "white";
+      activeDiv.style.padding = "5px";
     }
     this.currentActive = bar;
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = pa.cerPalette["Cool Grey"];
+    activeDiv.style.borderColor = cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = 1;
     this.plot.fieldChange(bar.name);
@@ -918,13 +864,22 @@ export class EventTrend extends EventMap {
     category: true,
   };
 
-  constructor({ eventType, field, filters, data, hcDiv, definitions = {} }) {
+  constructor({
+    eventType,
+    field,
+    filters,
+    data,
+    hcDiv,
+    lang,
+    definitions = {},
+  }) {
     super({ eventType: eventType, field: field });
     this.filters = filters;
     this.data = data;
     this.hcDiv = hcDiv;
+    this.lang = lang;
+    this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
-    this.colors = this.setColors();
     this.displayDefinitions();
   }
 
@@ -1021,8 +976,7 @@ export class EventTrend extends EventMap {
     if (this.ONETOMANY[this.field]) {
       destoryLabel(this.chart);
       let text = `<section class="alert alert-warning" style="padding:4px">`;
-      text += `<p>${this.eventType} can have multiple <i>${this.field}</i> values. Chart totals may appear larger due to double counting.</p>`;
-      text += `</section>`;
+      text += `<p>${this.eventType} can have multiple <i>${this.field}</i> values. Chart totals may appear larger due to double counting.</p></section>`;
       //activate the chart disclaimer
       var label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
@@ -1054,11 +1008,11 @@ export class EventTrend extends EventMap {
   displayDefinitions() {
     var definitionsPopUp = document.getElementById("trend-definitions");
     if (this.definitions.hasOwnProperty(this.field)) {
-      pa.visibility(["trend-definitions"], "show");
+      visibility(["trend-definitions"], "show");
       definitionsPopUp.innerHTML = `<p>Click on a bar to view <i>${this.field}</i> sub definition</p>`;
       this.onClickDefinition = true;
     } else {
-      pa.visibility(["trend-definitions"], "hide");
+      visibility(["trend-definitions"], "hide");
       this.onClickDefinition = false;
     }
   }
@@ -1072,16 +1026,16 @@ export class EventTrend extends EventMap {
         spacingTop: 25,
       },
 
-      title: {
-        text: "",
-      },
-
-      credits: {
-        text: "",
-      },
-
       xAxis: {
         categories: true,
+      },
+
+      legend: {
+        title: {
+          text: "Click on a legend item to remove it from the chart",
+        },
+        margin: 0,
+        maxHeight: 120,
       },
 
       yAxis: {

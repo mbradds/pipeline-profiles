@@ -1,5 +1,5 @@
-import { generateDynamicIncidentText } from "./dynamicText.js";
-import { profileAssist as pa } from "../modules/util.js";
+import { incidentsTextEng } from "../modules/dynamicText.js";
+import { visibility } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
 export async function mainIncidents(incidentData, metaData, lang) {
@@ -7,9 +7,22 @@ export async function mainIncidents(incidentData, metaData, lang) {
   const field = "Substance";
   const filters = { type: "frequency" };
 
-  const incidentBar = (data, map) => {
+  const setTitle = (lang, meta) => {
+    try {
+      document.getElementById(
+        "incidents-dashboard-title"
+      ).innerHTML = lang.title(meta.systemName);
+    } catch (err) {
+      document.getElementById(
+        "incidents-dashboard-title"
+      ).innerText = `Dashboard: Incidents with a product release`;
+    }
+  };
+
+  const incidentBar = (data, map, langPillTitles) => {
     const barNav = new EventNavigator({
       plot: map,
+      langPillTitles: langPillTitles,
       pillWidth: 124,
       data: data,
     });
@@ -36,17 +49,19 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return map;
   };
 
-  const incidentTimeSeries = (field, filters, definitions) => {
+  const incidentTimeSeries = (field, filters, lang) => {
     const timeSeries = new EventTrend({
       eventType: eventType,
       field: field,
       filters: filters,
       data: incidentData,
       hcDiv: "time-series",
-      definitions: definitions,
+      lang: lang.dashboard,
+      definitions: lang.definitions,
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,
+      langPillTitles: lang.dashboard.pillTitles,
       height: 70,
     });
 
@@ -63,10 +78,22 @@ export async function mainIncidents(incidentData, metaData, lang) {
   function buildDashboard() {
     if (!incidentData.length == 0) {
       try {
-        generateDynamicIncidentText(metaData);
+        // add the system name to metadata
+        try {
+          metaData.systemName = lang.companyToSystem[metaData.companyName];
+        } catch (err) {
+          metaData.systemName = metaData.companyName;
+        }
+        incidentsTextEng("system-incidents-paragraph", metaData);
+        setTitle(lang, metaData);
+        //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);
-        const bars = incidentBar(incidentData, thisMap);
-        const trends = incidentTimeSeries(field, filters, lang.definitions);
+        const bars = incidentBar(
+          incidentData,
+          thisMap,
+          lang.dashboard.pillTitles
+        );
+        const trends = incidentTimeSeries(field, filters, lang);
         // user selection to show volume or incident frequency
         $("#inline_content input[name='type']").click(function () {
           var btnValue = $("input:radio[name=type]:checked").val();
@@ -89,22 +116,21 @@ export async function mainIncidents(incidentData, metaData, lang) {
         $("#incident-view-type button").on("click", function () {
           $(".btn-incident-view-type > .btn").removeClass("active");
           $(this).addClass("active");
-          var thisBtn = $(this);
-          var btnValue = thisBtn.val();
+          var btnValue = $(this).val();
           var dashboardDivs = ["incident-map", "nearby-incidents-popup"].concat(
             bars.allDivs
           );
           if (btnValue !== "trends") {
-            pa.visibility(dashboardDivs, "show");
-            pa.visibility(["time-series-section"], "hide");
+            visibility(dashboardDivs, "show");
+            visibility(["time-series-section"], "hide");
             $("#incident-volume-btn").removeAttr("disabled");
             thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
           } else {
             // if the user selects trends, the option to view volume should be disabled
             $("#incident-volume-btn").attr("disabled", "disabled");
             $("#incident-count-btn").prop("checked", true).click();
-            pa.visibility(dashboardDivs, "hide");
-            pa.visibility(["time-series-section"], "show");
+            visibility(dashboardDivs, "hide");
+            visibility(["time-series-section"], "show");
           }
         });
 
@@ -115,8 +141,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
           let findIncidentTitle = document.getElementById(
             "find-incidents-title"
           );
-          findIncidentBtn.innerText = `Find Incidents within ${slide.val()}km`;
-          findIncidentTitle.innerText = `Select Range (${slide.val()}km):`;
+          findIncidentBtn.innerText = `${
+            lang.dashboard.findBtnTitle
+          } ${slide.val()}km`;
+          findIncidentTitle.innerText = `${
+            lang.dashboard.rangeTitle
+          } (${slide.val()}km):`;
           findIncidentBtn.value = slide.val();
         });
 

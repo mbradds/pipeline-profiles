@@ -1,7 +1,38 @@
+import { cerPalette } from "./util.js";
+const companyToSystem = {
+  "NOVA Gas Transmission Ltd.": "NGTL System",
+  "TransCanada PipeLines Limited": "TC Canadian Mainline",
+  "Enbridge Pipelines Inc.": "Enbridge Canadian Mainline",
+  "Enbridge Pipelines (NW) Inc.": "Norman Wells Pipeline",
+  "Enbridge Bakken Pipeline Company Inc.": "Enbridge Bakken System",
+  "Express Pipeline Ltd.": "Express Pipeline",
+  "Trans Mountain Pipeline ULC": "Trans Mountain Pipeline",
+  "Trans Quebec and Maritimes Pipeline Inc.": "TQM Pipeline",
+  "Trans-Northern Pipelines Inc.": "Trans-Northern Pipeline",
+  "TransCanada Keystone Pipeline GP Ltd.": "Keystone Pipeline",
+  "Westcoast Energy Inc.": "Enbridge BC Pipeline",
+  "Alliance Pipeline Ltd.": "Alliance Pipeline",
+  "PKM Cochin ULC": "Cochin Pipeline",
+  "Foothills Pipe Lines Ltd.": "Foothills System",
+  "Southern Lights Pipeline": "Southern Lights Pipeline",
+  "Emera Brunswick Pipeline Company Ltd.": "Brunswick Pipeline",
+  "Plains Midstream Canada ULC": "Plains Midstream Canada ULC",
+  "Genesis Pipeline Canada Ltd.": "Genesis Pipeline",
+  "Montreal Pipe Line Limited": "Montreal Pipeline",
+  "Trans-Northern Pipelines Inc.": "Trans-Northern Pipeline",
+  "Kingston Midstream Westspur Limited": "Westspur Pipeline",
+  "Many Islands Pipe Lines (Canada) Limited":
+    "Many Islands Pipe Lines (Canada) Limited",
+  "Vector Pipeline Limited Partnership": "Vector Pipeline",
+  "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
+};
+
 export const englishDashboard = {
   plains:
     "Plains Midstream Canada ULC includes the Aurora, Milk River, and Wascana pipelines",
+
   conditions: {
+    companyToSystem: companyToSystem,
     conditions: "conditions",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
@@ -90,6 +121,10 @@ export const englishDashboard = {
     },
   },
   incidents: {
+    companyToSystem: companyToSystem,
+    title: (systemName) => {
+      return `Dashboard: ${systemName} - Incidents with a product release`;
+    },
     definitions: {
       Status: {
         Closed:
@@ -97,7 +132,7 @@ export const englishDashboard = {
         Submitted:
           "The company has submitted all of the required information and the CER is reviewing the incident.",
         "Initially Submitted":
-          " The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
+          "The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
       },
       "What Happened": {
         "Defect and Deterioration":
@@ -141,12 +176,14 @@ export const englishDashboard = {
     dashboard: {
       what: "What Happened",
       why: "Why It Happened",
+      estRelease: "Est. Release Volume:",
+      pillTitles: { titles: { Status: "CER Status" }, click: "click to view" },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       userPopUp:
         "Approximate location. You can drag this marker around to explore incident events in other locations.",
       locationError:
-        "<h4>Cant access your location.</h4>Try enabling your browser's location services and refresh the page.",
+        "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.",
       nearbyHeader: (numCircles, range) => {
         return `There are ${numCircles} incidents within ${range} km`;
       },
@@ -157,6 +194,64 @@ export const englishDashboard = {
         "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.",
       noNearby: (eventType) => {
         return `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`;
+      },
+      rangeTitle: "Select range",
+      findBtnTitle: "Find Incidents within",
+      EVENTCOLORS: {
+        Substance: {
+          Propane: cerPalette["Forest"],
+          "Natural Gas - Sweet": cerPalette["Flame"],
+          "Natural Gas - Sour": cerPalette["Dim Grey"],
+          "Fuel Gas": cerPalette["hcGreen"],
+          "Lube Oil": cerPalette["hcPurple"],
+          "Crude Oil - Sweet": cerPalette["Sun"],
+          "Crude Oil - Synthetic": cerPalette["Forest"],
+          "Crude Oil - Sour": cerPalette["Dim Grey"],
+          "Natural Gas Liquids": cerPalette["Night Sky"],
+          Condensate: cerPalette["Ocean"],
+          "Sulphur Dioxide": cerPalette["hcPurple"],
+          "Diesel Fuel": cerPalette["hcRed"],
+          Gasoline: cerPalette["Flame"],
+          Other: cerPalette["Aubergine"],
+        },
+        Status: {
+          "Initially Submitted": cerPalette["Flame"],
+          Closed: cerPalette["Cool Grey"],
+          Submitted: cerPalette["Ocean"],
+        },
+        Province: {
+          Alberta: cerPalette["Sun"],
+          "British Columbia": cerPalette["Forest"],
+          Saskatchewan: cerPalette["Aubergine"],
+          Manitoba: cerPalette["Ocean"],
+          Ontario: cerPalette["Night Sky"],
+          Quebec: cerPalette["Flame"],
+          "New Brunswick": cerPalette["Forest"],
+          "Nova Scotia": cerPalette["Night Sky"],
+          "Northwest Territories": cerPalette["hcLightBlue"],
+        },
+        "Why It Happened": {
+          "Standards and Procedures": cerPalette["Flame"],
+          "Tools and Equipment": cerPalette["Forest"],
+          Maintenance: cerPalette["Night Sky"],
+          "Human Factors": cerPalette["Ocean"],
+          "Engineering and Planning": cerPalette["Sun"],
+          "Natural or Environmental Forces": cerPalette["hcAqua"],
+          "To be determined": cerPalette["Cool Grey"],
+          "Inadequate Procurement": cerPalette["Aubergine"],
+          "Inadequate Supervision": cerPalette["Dim Grey"],
+          "Failure in communication": cerPalette["hcPink"],
+        },
+        "What Happened": {
+          "Corrosion and Cracking": cerPalette["Aubergine"],
+          "Defect and Deterioration": cerPalette["Cool Grey"],
+          "Equipment Failure": cerPalette["Dim Grey"],
+          "Natural Force Damage": cerPalette["Flame"],
+          "Other Causes": cerPalette["Forest"],
+          "Incorrect Operation": cerPalette["Night Sky"],
+          "External Interference": cerPalette["Ocean"],
+          "To be determined": cerPalette["Sun"],
+        },
       },
     },
     noIncidents: {
