@@ -17,7 +17,7 @@ export async function mainConditions(
       for (const [status, count] of Object.entries(
         meta.summary.notOnMap.status
       )) {
-        infohtml += `<li>${status} ${lang.conditions}: ${count}</li>`;
+        infohtml += `<li>${meta.colNames[status]} ${lang.conditions}: ${count}</li>`;
       }
       infohtml += `</ul>`;
     } else {
@@ -66,7 +66,7 @@ export async function mainConditions(
     if (tableName == "projects") {
       projectsHTML = `<table class="conditions-table">`;
       projectsHTML += `<caption style="text-align:left;">${lang.table.projectsTitle(
-        filter.column
+        summary.colNames[filter.column]
       )}</caption>`;
       summary.projects.map((proj) => {
         if (proj.id == selectedRegion && proj.value > 0) {
@@ -78,12 +78,11 @@ export async function mainConditions(
           }
         }
       });
-      projectsHTML += `</table>`;
-      projectsHTML += `<i>${lang.table.regdocsDefinition}</i>`;
+      projectsHTML += `</table><i>${lang.table.regdocsDefinition}</i>`;
     } else if (tableName == "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
       projectsHTML += `<caption style="text-align:left;">${lang.table.themesTitle(
-        filter.column
+        summary.colNames[filter.column]
       )}</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion && proj.value > 0) {
@@ -170,6 +169,7 @@ export async function mainConditions(
     const newMeta = { summary: m.summary };
     newMeta.projects = processMapMetadata(m.projects, filter, "projects");
     newMeta.themes = processMapMetadata(m.themes, filter, "themes");
+    newMeta.colNames = m.colNames;
     if (filter.column == "Closed") {
       newMeta.projects = sortJson(newMeta.projects, "value");
       newMeta.themes = sortJson(newMeta.themes, "value");
@@ -219,14 +219,13 @@ export async function mainConditions(
   };
 
   function themeClick(e) {
-    console.log("running");
     let definitions = lang.themeDefinitions;
     var definitionDiv = document.getElementById("conditions-definitions");
     if (definitionDiv.style.display === "none") {
       definitionDiv.style.display = "block";
     }
     var themes = e.split(",");
-    var definitionsHTML = "<h4>Theme Definitions:</h4>";
+    var definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
     for (var i = 0; i < themes.length; i++) {
       var t = themes[i].trim();
       definitionsHTML += "<b>" + t + "</b>";
@@ -245,7 +244,11 @@ export async function mainConditions(
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
     text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
-    text += `<tr><td><li> ${filter.column} Conditions:</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">&nbsp${e.value}</li></td></tr></table><br>`;
+    text += `<tr><td><li> ${
+      meta.colNames[filter.column]
+    } Conditions:</td><td style="padding:0;font-weight: bold;color:${
+      cerPalette["Cool Grey"]
+    };">&nbsp${e.value}</li></td></tr></table><br>`;
     text += generateTable(meta, e.id, "projects", filter) + "<br>";
     text += generateTable(meta, e.id, "themes", filter) + "</table></div>";
 
@@ -421,6 +424,7 @@ export async function mainConditions(
         console.log(err);
         meta.summary.systemName = meta.summary.companyName;
       }
+      meta.colNames = lang.colNames;
       let titleElement = document.getElementById("conditions-map-title");
       const conditionsFilter = statusInit(meta);
       setTitle(titleElement, conditionsFilter, meta.summary);

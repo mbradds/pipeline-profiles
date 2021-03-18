@@ -634,7 +634,7 @@ export class EventNavigator {
           shadow: false,
           states: {
             inactive: {
-              opacity: 1,
+              enabled: false,
             },
             hover: {
               enabled: false,

@@ -33,6 +33,7 @@ export const englishDashboard = {
 
   conditions: {
     companyToSystem: companyToSystem,
+    colNames: { "In Progress": "In Progress", Closed: "Closed" },
     conditions: "conditions",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
@@ -73,6 +74,7 @@ export const englishDashboard = {
     tooltip: {
       text: "Click on region to view summary",
     },
+    themeDefinitionsTitle: "Theme Definitions:",
     themeDefinitions: {
       "No theme specified":
         "Some conditions have not been assigned a theme by the CER.",
