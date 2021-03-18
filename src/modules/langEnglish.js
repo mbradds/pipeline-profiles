@@ -209,7 +209,6 @@ export const englishDashboard = {
           "Crude Oil - Sour": cerPalette["Dim Grey"],
           "Natural Gas Liquids": cerPalette["Night Sky"],
           Condensate: cerPalette["Ocean"],
-          "Sulphur Dioxide": cerPalette["hcPurple"],
           "Diesel Fuel": cerPalette["hcRed"],
           Gasoline: cerPalette["Flame"],
           Other: cerPalette["Aubergine"],

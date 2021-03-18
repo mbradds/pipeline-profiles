@@ -142,7 +142,7 @@ def process_french(df):
                         "Pétrole brut sulfureux",
                         "Liquides de gaz naturel",
                         "Condensat",
-                        "Dioxyde de soufre",
+                        # "Dioxyde de soufre",
                         "Carburant diesel",
                         "Essence"]
     df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
@@ -162,7 +162,7 @@ def process_english(df):
                         "Crude Oil - Sour",
                         "Natural Gas Liquids",
                         "Condensate",
-                        "Sulphur Dioxide",
+                        # "Sulphur Dioxide",
                         "Diesel Fuel",
                         "Gasoline"]
     df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]

@@ -119,3 +119,6 @@ body {
 .notice-me-btn {
   box-shadow: 0 0 11px #ffbe4b;
 }
+.map-disclaimer p {
+  font-size: 13px;
+}

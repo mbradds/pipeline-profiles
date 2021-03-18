@@ -203,7 +203,6 @@ export const frenchDashboard = {
           "Pétrole brut sulfureux": cerPalette["Dim Grey"],
           "Liquides de gaz naturel": cerPalette["Night Sky"],
           Condensat: cerPalette["Ocean"],
-          "Dioxyde de soufre": cerPalette["hcPurple"],
           "Carburant diesel": cerPalette["hcRed"],
           Essence: cerPalette["Flame"],
           Autre: cerPalette["Aubergine"],

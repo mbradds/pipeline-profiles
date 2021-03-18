@@ -22,8 +22,6 @@ export class EventMap {
     Condensat: "liquid",
     Other: "other",
     Autre: "other",
-    "Sulphur Dioxide": "other",
-    "Dioxyde de soufre": "other",
   };
 
   constructor({
@@ -104,7 +102,7 @@ export class EventMap {
       var info = L.control();
       var text = this.lang.volumeDisclaimer;
       info.onAdd = function (map) {
-        this._div = L.DomUtil.create("div", "incident-volume-disclaimer");
+        this._div = L.DomUtil.create("div", "map-disclaimer");
         this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px"><p>${text}</p></div>`;
         return this._div;
       };
@@ -610,6 +608,7 @@ export class EventNavigator {
         verticalAlign: "bottom",
         alignColumns: false,
         margin: 0,
+        symbolPadding: 2,
         itemStyle: {
           color: "#000000",
           cursor: "default",
