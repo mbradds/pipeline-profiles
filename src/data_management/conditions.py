@@ -394,8 +394,9 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', companies=['NOVA Gas Transmission Ltd.'], save=False)
-    #df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr')
+    links = orca_regdocs_links(True)
+    #df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=False)
+    #df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=False)
     print('completed conditions!')
 
 #%%
