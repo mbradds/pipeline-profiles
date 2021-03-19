@@ -232,8 +232,7 @@ export async function mainConditions(
       definitionsHTML += "<p>" + definitions[t] + "</p>";
     }
     definitionDiv.innerHTML = definitionsHTML;
-    var divPosition = $("#conditions-definitions").offset();
-    $("html, body").animate({ scrollTop: divPosition.top }, "slow");
+    definitionDiv.scrollIntoView(false);
   }
 
   const popUp = (e, filter, meta) => {

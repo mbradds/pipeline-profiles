@@ -1,4 +1,4 @@
-import { incidentsTextEng } from "../modules/dynamicText.js";
+import { incidentsTextEng, incidentsTextFra } from "../modules/dynamicText.js";
 import { visibility } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
@@ -84,7 +84,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
         } catch (err) {
           metaData.systemName = metaData.companyName;
         }
-        incidentsTextEng("system-incidents-paragraph", metaData);
+        if (lang.language == "en") {
+          incidentsTextEng("system-incidents-paragraph", metaData);
+        } else if (lang.language == "fr") {
+          incidentsTextFra("system-incidents-paragraph", metaData);
+        }
+
         setTitle(lang, metaData);
         //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);

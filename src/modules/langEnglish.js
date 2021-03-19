@@ -123,6 +123,7 @@ export const englishDashboard = {
     },
   },
   incidents: {
+    language: "en",
     companyToSystem: companyToSystem,
     title: (systemName) => {
       return `Dashboard: ${systemName} - Incidents with a product release`;
@@ -206,6 +207,7 @@ export const englishDashboard = {
       legendClick: "Click on a legend item to remove it from the chart",
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
+      trendYTitle: "Number of Incidents",
       EVENTCOLORS: {
         Substance: {
           Propane: cerPalette["Forest"],

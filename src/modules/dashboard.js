@@ -709,7 +709,9 @@ export class EventNavigator {
         },
       });
     } else {
-      activeDiv.innerHTML = `<p>${this.pillName(bar.name)} (click to view)</p>`;
+      activeDiv.innerHTML = `<p>${this.pillName(bar.name)} (${
+        this.langPillTitles.click
+      })</p>`;
       activeDiv.style.padding = "5px";
     }
     activeDiv.style.borderStyle = "solid";
@@ -959,9 +961,9 @@ export class EventTrend extends EventMap {
 
   yAxisTitle() {
     if (this.filters.type == "frequency") {
-      return `Number of ${this.eventType}`;
+      return `${this.lang.trendYTitle}`;
     } else {
-      return `${this.eventType} volume (m3)`;
+      return "";
     }
   }
 

@@ -291,3 +291,4 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Try to remove j-query dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`
 - Include documentation and instructions for getting regdocs links from the internal cer database.
+- `src/modules/dynamicText.js` should be imported at each en/fr entry point to avoid both language functions being imported at `src/incidents/incidentDashboard.js`. The bundle size savings will become more important if more dynamic text is added.

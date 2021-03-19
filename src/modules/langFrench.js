@@ -91,7 +91,7 @@ export const frenchDashboard = {
         "Conditions visant à s’assurer que les projets sont entrepris dans un délai précis.",
       Exécution:
         "Conditions venant renforcer les exigences réglementaires prescrites.",
-      Finances:
+      Financier:
         "Conditions dont le respect nécessite la présentation de certains détails concernant tous les aspects des obligations financières d’une société.",
       "Gestion de l’intégrité":
         "Conditions visant à s’assurer que les projets sont conçus, construits, exploités et entretenus de manière sécuritaire et efficace (utilisation de matériaux appropriés, détection de la corrosion, etc.).",
@@ -118,6 +118,7 @@ export const frenchDashboard = {
     },
   },
   incidents: {
+    language: "fr",
     companyToSystem: companyToSystem,
     title: (systemName) => {
       return `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`;
@@ -146,7 +147,7 @@ export const frenchDashboard = {
           "Dommages pouvant être causés, par exemple, par un tremblement de terre, un glissement de terrain ou l’érosion.",
         "Autres causes":
           "Toutes les autres causes ou lorsqu’il est impossible de déterminer les circonstances de l’incident.",
-        "À déterminer": "The incident is under review",
+        "À déterminer": "L’incident est à l’étude.",
       },
       "Why It Happened": {
         "Ingénierie et planification":
@@ -186,7 +187,7 @@ export const frenchDashboard = {
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
       countDisclaimer: (eventType, field) => {
-        return `<p>${eventType} can have multiple <i>${field}</i> values. Chart totals may appear larger due to double counting.</p>`;
+        return `<p>Les incidents peuvent avoir plusieurs valeurs <i>${field}</i>.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.</p>`;
       },
       userPopUp:
         "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
@@ -210,6 +211,7 @@ export const frenchDashboard = {
         "Cliquez sur un élément de légende pour le supprimer du graphique",
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les incidents dans",
+      trendYTitle: "Nombre d’incidents",
       EVENTCOLORS: {
         Substance: {
           Propane: cerPalette["Forest"],
