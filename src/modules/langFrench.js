@@ -113,7 +113,7 @@ export const frenchDashboard = {
     noConditions: {
       header: "Aucune donnée disponible sur les conditions",
       note: (companyName) => {
-        return `${companyName} - Aucune donnée disponible sur les conditions`;
+        return `Aucune donnée sur les conditions n’est disponible pour ${companyName}. Si des données deviennent disponibles ou si des conditions sont imposées par la Commission, elles apparaîtront ici.`;
       },
     },
   },
@@ -205,7 +205,7 @@ export const frenchDashboard = {
         return `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`;
       },
       barClick: (field) => {
-        return `<p>Click on a bar to view <i>${field}</i> sub definition</p>`;
+        return `<p>Cliquer sur une bande pour consulter la définition de <i>${field}</i></p>`;
       },
       legendClick:
         "Cliquez sur un élément de légende pour le supprimer du graphique",
