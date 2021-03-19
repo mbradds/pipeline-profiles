@@ -103,7 +103,7 @@ export class EventMap {
       var text = this.lang.volumeDisclaimer;
       info.onAdd = function (map) {
         this._div = L.DomUtil.create("div", "map-disclaimer");
-        this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px"><p>${text}</p></div>`;
+        this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
         return this._div;
       };
       info.addTo(this.map);
@@ -965,6 +965,14 @@ export class EventTrend extends EventMap {
     }
   }
 
+  pillNameSubstitution() {
+    if (this.lang.pillTitles.titles.hasOwnProperty(this.field)) {
+      return this.lang.pillTitles.titles[this.field];
+    } else {
+      return this.field;
+    }
+  }
+
   oneToManyDisclaimer() {
     const destoryLabel = (chart) => {
       if (chart.customLabel) {
@@ -975,7 +983,10 @@ export class EventTrend extends EventMap {
     if (this.ONETOMANY[this.field]) {
       destoryLabel(this.chart);
       let text = `<section class="alert alert-warning" style="padding:4px">`;
-      text += `<p>${this.eventType} can have multiple <i>${this.field}</i> values. Chart totals may appear larger due to double counting.</p></section>`;
+      text += `${this.lang.countDisclaimer(
+        this.eventType,
+        this.pillNameSubstitution()
+      )}</section>`;
       //activate the chart disclaimer
       var label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
@@ -1008,7 +1019,9 @@ export class EventTrend extends EventMap {
     var definitionsPopUp = document.getElementById("trend-definitions");
     if (this.definitions.hasOwnProperty(this.field)) {
       visibility(["trend-definitions"], "show");
-      definitionsPopUp.innerHTML = `<p>Click on a bar to view <i>${this.field}</i> sub definition</p>`;
+      definitionsPopUp.innerHTML = this.lang.barClick(
+        this.pillNameSubstitution()
+      );
       this.onClickDefinition = true;
     } else {
       visibility(["trend-definitions"], "hide");
@@ -1031,7 +1044,7 @@ export class EventTrend extends EventMap {
 
       legend: {
         title: {
-          text: "Click on a legend item to remove it from the chart",
+          text: currentTrend.lang.legendClick,
         },
         margin: 0,
         maxHeight: 120,

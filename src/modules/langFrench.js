@@ -175,11 +175,19 @@ export const frenchDashboard = {
       why: "Cause",
       estRelease: "Estimation du volume",
       pillTitles: {
-        titles: { Status: "REC État", Year: "Année" },
+        titles: {
+          Status: "REC État",
+          Year: "Année",
+          "What Happened": "Incident",
+          "Why It Happened": "Cause",
+        },
         click: "clique pour voir",
       },
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
+      countDisclaimer: (eventType, field) => {
+        return `<p>${eventType} can have multiple <i>${field}</i> values. Chart totals may appear larger due to double counting.</p>`;
+      },
       userPopUp:
         "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
       locationError:
@@ -195,6 +203,11 @@ export const frenchDashboard = {
       noNearby: (eventType) => {
         return `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`;
       },
+      barClick: (field) => {
+        return `<p>Click on a bar to view <i>${field}</i> sub definition</p>`;
+      },
+      legendClick:
+        "Cliquez sur un élément de légende pour le supprimer du graphique",
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les incidents dans",
       EVENTCOLORS: {
