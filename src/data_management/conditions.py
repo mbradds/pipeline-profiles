@@ -224,7 +224,13 @@ def process_french(df, fr):
     return df
 
 
-def process_conditions(remote=False, nonStandard=True, company_names=False, companies=False, test=False, lang='en'):
+def process_conditions(remote=False,
+                       nonStandard=True,
+                       company_names=False,
+                       companies=False,
+                       test=False,
+                       lang='en',
+                       save=True):
 
     def add_links(df_c, df_links):
         l = {}
@@ -303,8 +309,6 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
     # preliminary processing
     df['Company'] = df['Company'].replace(company_rename())
 
-    print(sorted(list(set(df['Theme(s)']))))
-    return
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
     df['Theme(s)'] = df['Theme(s)'].replace({"nan":
                                              "No theme specified"})
@@ -367,29 +371,32 @@ def process_conditions(remote=False, nonStandard=True, company_names=False, comp
 
             thisCompanyData['regions'] = shp.to_json()
             thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
-            if not test:
+            if not test and save:
                 with open('../conditions/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
+                print('completed+saved '+lang+' conditions: '+company)
         else:
             meta = {"companyName": company}
             thisCompanyData = {'meta': {"companyName": company},
                                'regions': "{}",
                                'mapMeta': []}
 
-            if not test:
+            if not test and save:
                 with open('../conditions/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
+                print('completed+saved '+lang+' conditions: '+company)
 
-        if not test:
-            print('completed '+lang+' conditions: '+company)
+        # if not test:
+        #     print('completed '+lang+' conditions: '+company)
 
     return df_c, shp, dfmeta, meta
 
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, regions, mapMeta, meta = process_conditions(remote=True, lang='en')
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr')
+    # links = orca_regdocs_links(True)
+    df, regions, mapMeta, meta = process_conditions(remote=True, lang='en', save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=True, lang='fr', save=True)
     print('completed conditions!')
 
 #%%

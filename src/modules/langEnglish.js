@@ -33,6 +33,7 @@ export const englishDashboard = {
 
   conditions: {
     companyToSystem: companyToSystem,
+    colNames: { "In Progress": "In Progress", Closed: "Closed" },
     conditions: "conditions",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
@@ -73,6 +74,7 @@ export const englishDashboard = {
     tooltip: {
       text: "Click on region to view summary",
     },
+    themeDefinitionsTitle: "Theme Definitions:",
     themeDefinitions: {
       "No theme specified":
         "Some conditions have not been assigned a theme by the CER.",
@@ -180,6 +182,9 @@ export const englishDashboard = {
       pillTitles: { titles: { Status: "CER Status" }, click: "click to view" },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
+      countDisclaimer: (eventType, field) => {
+        return `<p>${eventType} can have multiple <i>${field}</i> values. Chart totals may appear larger due to double counting.</p>`;
+      },
       userPopUp:
         "Approximate location. You can drag this marker around to explore incident events in other locations.",
       locationError:
@@ -195,6 +200,10 @@ export const englishDashboard = {
       noNearby: (eventType) => {
         return `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`;
       },
+      barClick: (field) => {
+        return `<p>Click on a bar to view <i>${field}</i> sub definition</p>`;
+      },
+      legendClick: "Click on a legend item to remove it from the chart",
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
       EVENTCOLORS: {
@@ -209,7 +218,6 @@ export const englishDashboard = {
           "Crude Oil - Sour": cerPalette["Dim Grey"],
           "Natural Gas Liquids": cerPalette["Night Sky"],
           Condensate: cerPalette["Ocean"],
-          "Sulphur Dioxide": cerPalette["hcPurple"],
           "Diesel Fuel": cerPalette["hcRed"],
           Gasoline: cerPalette["Flame"],
           Other: cerPalette["Aubergine"],

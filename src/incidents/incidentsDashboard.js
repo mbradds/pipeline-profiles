@@ -152,7 +152,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
         // user selects a range to find nearby incidents
         $("#find-incidents-btn").on("click", function () {
-          document.getElementById("reset-incidents-btn").disabled = false;
+          var resetBtn = document.getElementById("reset-incidents-btn");
+          resetBtn.disabled = false;
+          resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
           let range = document.getElementById("find-incidents-btn").value;
           if (!thisMap.user.latitude && !thisMap.user.longitude) {
             thisMap.waitOnUser().then((userAdded) => {
@@ -166,7 +168,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
         // reset map after user has selected a range
         $("#reset-incidents-btn").on("click", function () {
           thisMap.resetMap();
-          document.getElementById("reset-incidents-btn").disabled = true;
+          var resetBtn = document.getElementById("reset-incidents-btn");
+          resetBtn.disabled = true;
+          resetBtn.className = "btn btn-default col-md-12";
+          //document.getElementById("reset-incidents-btn").disabled = true;
           document.getElementById("nearby-flag").innerHTML = ``;
         });
       } catch (err) {

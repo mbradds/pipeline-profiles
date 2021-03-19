@@ -84,11 +84,12 @@ body {
 }
 .event-filter-nav {
   width: 100%;
-  transition: 0.1s;
+  transition: box-shadow 0.2s ease;
   cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 0px rgb(255, 255, 255);
 }
 .event-filter-nav:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
@@ -115,4 +116,10 @@ body {
   font-size: 1.17em;
   float: left;
   font-family: Lato, sans-serif;
+}
+.notice-me-btn {
+  box-shadow: 0 0 11px #ffbe4b;
+}
+.map-disclaimer p {
+  font-size: 13px;
 }

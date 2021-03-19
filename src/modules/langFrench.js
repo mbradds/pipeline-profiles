@@ -1,81 +1,86 @@
 import { cerPalette } from "./util.js";
 const companyToSystem = {
-  "NOVA Gas Transmission Ltd.": "NGTL System",
-  "TransCanada PipeLines Limited": "TC Canadian Mainline",
-  "Enbridge Pipelines Inc.": "Enbridge Canadian Mainline",
-  "Enbridge Pipelines (NW) Inc.": "Norman Wells Pipeline",
-  "Enbridge Bakken Pipeline Company Inc.": "Enbridge Bakken System",
-  "Express Pipeline Ltd.": "Express Pipeline",
-  "Trans Mountain Pipeline ULC": "Trans Mountain Pipeline",
-  "Trans Quebec and Maritimes Pipeline Inc.": "TQM Pipeline",
-  "Trans-Northern Pipelines Inc.": "Trans-Northern Pipeline",
-  "TransCanada Keystone Pipeline GP Ltd.": "Keystone Pipeline",
-  "Westcoast Energy Inc.": "Enbridge BC Pipeline",
-  "Alliance Pipeline Ltd.": "Alliance Pipeline",
-  "PKM Cochin ULC": "Cochin Pipeline",
-  "Foothills Pipe Lines Ltd.": "Foothills System",
-  "Southern Lights Pipeline": "Southern Lights Pipeline",
-  "Emera Brunswick Pipeline Company Ltd.": "Brunswick Pipeline",
+  "NOVA Gas Transmission Ltd.": "Réseau de NGTL",
+  "TransCanada PipeLines Limited": "Réseau de TC au Canada",
+  "Enbridge Pipelines Inc.": "Réseau d’Enbridge au Canada",
+  "Enbridge Pipelines (NW) Inc.": "Pipeline Norman Wells",
+  "Enbridge Bakken Pipeline Company Inc.": "Réseau Bakken d’Enbridge",
+  "Express Pipeline Ltd.": "Pipeline Express",
+  "Trans Mountain Pipeline ULC": "Pipeline Trans Mountain",
+  "Trans Quebec and Maritimes Pipeline Inc.": "Gazoduc TQM",
+  "Trans-Northern Pipelines Inc.": "Pipeline Trans-Nord",
+  "TransCanada Keystone Pipeline GP Ltd.": "Pipeline Keystone",
+  "Westcoast Energy Inc.": "Gazoduc BC d’Enbridge",
+  "Alliance Pipeline Ltd.": "Gazoduc Alliance",
+  "PKM Cochin ULC": "Pipeline Cochin",
+  "Foothills Pipe Lines Ltd.": "Réseau de Foothills",
+  "Southern Lights Pipeline": "Pipeline Southern Lights",
+  "Emera Brunswick Pipeline Company Ltd.": "Gazoduc Brunswick",
   "Plains Midstream Canada ULC": "Plains Midstream Canada ULC",
-  "Genesis Pipeline Canada Ltd.": "Genesis Pipeline",
-  "Montreal Pipe Line Limited": "Montreal Pipeline",
-  "Trans-Northern Pipelines Inc.": "Trans-Northern Pipeline",
-  "Kingston Midstream Westspur Limited": "Westspur Pipeline",
+  "Genesis Pipeline Canada Ltd.": "Pipeline Genesis",
+  "Montreal Pipe Line Limited": "Pipeline Montréal",
+  "Trans-Northern Pipelines Inc.": "Pipeline Trans-Nord",
+  "Kingston Midstream Westspur Limited": "Pipeline Westspur",
   "Many Islands Pipe Lines (Canada) Limited":
     "Many Islands Pipe Lines (Canada) Limited",
-  "Vector Pipeline Limited Partnership": "Vector Pipeline",
-  "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
+  "Vector Pipeline Limited Partnership": "Gazoduc Vector",
+  "Maritimes & Northeast Pipeline Management Ltd.": "Gazoduc M&NP",
 };
 
 export const frenchDashboard = {
   plains:
-    "Plains Midstream Canada ULC includes the Aurora, Milk River, and Wascana pipelines",
+    "Plains Midstream Canada ULC comprend les pipelines Aurora, Milk River et Wascana",
 
   conditions: {
     companyToSystem: companyToSystem,
+    colNames: { "In Progress": "En cours", Closed: "Conforme" },
     conditions: "conditions",
     noLocation: {
-      title: "Some conditions are not tied to a geographic location.",
+      title:
+        "Certaines conditions ne sont pas liées à un emplacement géographique.",
       summary: (companyName) => {
-        return `No geographic location summary for ${companyName}:`;
+        return `Aucun résumé de l’emplacement géographique de ${companyName}:`;
       },
     },
     title: {
       noLocation: (companyName) => {
-        return `Dashboard: ${companyName} - no geographic location`;
+        return `Tableau de bord: ${companyName} - aucun emplacement géographique`;
       },
       location: (companyName, column) => {
-        return `Dashboard: ${companyName} - ${column} Conditions by Region`;
+        return `Tableau de bord: ${companyName} - ${column} Conditions par région`;
       },
     },
     table: {
       projectsTitle: (column) => {
-        return `Projects with ${column} Conditions (click to open REGDOCS* project folder):`;
+        return `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*):`;
       },
       themesTitle: (column) => {
-        return `${column} Condition Themes (click to view theme definition):`;
+        return `${column} Thèmes de condition (cliquer pour voir la définition du thème):`;
       },
       regdocsDefinition:
-        "*REGDOCS is a regulatory database for activities and transactions conducted at the CER.",
+        "*REGDOCS est une base de données sur les activités de réglementation et opérations réglementaires menées par la Régie.",
     },
     popUp: {
-      econRegion: "Economic Region",
-      summary: "Conditions Summary:",
-      lastUpdated: "Last updated on:",
+      econRegion: "Région économique",
+      summary: "Sommaire des conditions :",
+      lastUpdated: "Dernière mise à jour le :",
     },
     instructions: {
-      header: "Map Instructions:",
-      line1: "Click on a region to view conditions info",
-      line2: "Click map area outside of regions to hide info",
+      header: "Instructions liées à la carte :",
+      line1:
+        "Cliquer sur une région pour consulter les renseignements sur les conditions.",
+      line2:
+        "Cliquer sur la carte à l’extérieur des régions pour masquer l’information.",
       disclaimer:
-        "Some conditions apply to multiple regions. Conditions may be double counted across regions, resulting in a higher number of conditions than the totals seen in the buttons above.",
+        "Certaines conditions s’appliquent à plusieurs régions. Certaines conditions peuvent être comptées en double d’une région à l’autre, ce qui donne un nombre plus élevé de conditions que les totaux indiqués dans les boutons ci-dessus.",
     },
     tooltip: {
-      text: "Click on region to view summary",
+      text: "Cliquer sur une région pour consulter le sommaire.",
     },
+    themeDefinitionsTitle: "Définitions du thème:",
     themeDefinitions: {
       "No theme specified":
-        "Some conditions have not been assigned a theme by the CER.",
+        "La Régie n’a pas attribué de thème à certaines conditions.",
       Administratif:
         "Conditions permettant de faire le suivi des tâches organisationnelles.",
       "Condition standard":
@@ -106,16 +111,16 @@ export const frenchDashboard = {
         "Conditions particulières imposées à une société afin de s’assurer qu’une démarche efficace est utilisée pour gérer et réduire le risque. Remarque : un système de gestion n’est pas propre à un projet.",
     },
     noConditions: {
-      header: "No conditions data available",
+      header: "Aucune donnée disponible sur les conditions",
       note: (companyName) => {
-        return `There is no conditions data available for ${companyName}. If data becomes available, or conditions are issued by the commission, they will show up here.`;
+        return `${companyName} - Aucune donnée disponible sur les conditions`;
       },
     },
   },
   incidents: {
     companyToSystem: companyToSystem,
     title: (systemName) => {
-      return `Dashboard: ${systemName} - Incidents with a product release`;
+      return `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`;
     },
     definitions: {
       Status: {
@@ -162,36 +167,49 @@ export const frenchDashboard = {
           "Facteurs liés à la conduite ou aux capacités d’une personne, qui peuvent par ailleurs être physiques ou psychologiques.",
         "Forces de la nature ou environnement":
           "Conditions relatives à l’environnement ou au milieu naturel.",
-        "À déterminer": "The incident is under review.",
+        "À déterminer": "L’incident est à l’étude.",
       },
     },
     dashboard: {
-      what: "What Happened FR",
-      why: "Why It Happened FR",
-      estRelease: "Est. Release Volume FR:",
+      what: "Incident",
+      why: "Cause",
+      estRelease: "Estimation du volume",
       pillTitles: {
-        titles: { Status: "REC Status" },
-        click: "click to view FR",
+        titles: {
+          Status: "REC État",
+          Year: "Année",
+          "What Happened": "Incident",
+          "Why It Happened": "Cause",
+        },
+        click: "clique pour voir",
       },
       volumeDisclaimer:
-        "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
+        "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
+      countDisclaimer: (eventType, field) => {
+        return `<p>${eventType} can have multiple <i>${field}</i> values. Chart totals may appear larger due to double counting.</p>`;
+      },
       userPopUp:
-        "Approximate location. You can drag this marker around to explore incident events in other locations.",
+        "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
       locationError:
-        "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.",
+        "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.",
       nearbyHeader: (numCircles, range) => {
-        return `There are ${numCircles} incidents within ${range} km`;
+        return `Il y a ${numCircles} incidents dans un rayon de ${range} km`;
       },
-      gasRelease: "Estimated gas volume released:",
-      liquidRelease: "Estimated liquid volume released:",
-      otherRelease: "Estimated miscellaneous release:",
+      gasRelease: "Estimation du volume de gaz rejeté:",
+      liquidRelease: "Estimation du volume de liquide déversé:",
+      otherRelease: "Estimation du rejet (divers):",
       exploreOther:
-        "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.",
+        "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.",
       noNearby: (eventType) => {
-        return `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`;
+        return `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`;
       },
-      rangeTitle: "Select range",
-      findBtnTitle: "Find Incidents within",
+      barClick: (field) => {
+        return `<p>Click on a bar to view <i>${field}</i> sub definition</p>`;
+      },
+      legendClick:
+        "Cliquez sur un élément de légende pour le supprimer du graphique",
+      rangeTitle: "Sélectionner une plage",
+      findBtnTitle: "Rechercher les incidents dans",
       EVENTCOLORS: {
         Substance: {
           Propane: cerPalette["Forest"],
@@ -203,7 +221,6 @@ export const frenchDashboard = {
           "Pétrole brut sulfureux": cerPalette["Dim Grey"],
           "Liquides de gaz naturel": cerPalette["Night Sky"],
           Condensat: cerPalette["Ocean"],
-          "Dioxyde de soufre": cerPalette["hcPurple"],
           "Carburant diesel": cerPalette["hcRed"],
           Essence: cerPalette["Flame"],
           Autre: cerPalette["Aubergine"],
@@ -249,9 +266,9 @@ export const frenchDashboard = {
       },
     },
     noIncidents: {
-      header: "No incidents data available",
+      header: "Aucune donnée sur les incidents disponible",
       note: (companyName) => {
-        return `There are no records in the CER's incident data for ${companyName}. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.`;
+        return `Il n’y a pas d’enregistrements dans les données sur les incidents de la Régie pour ${companyName}. Si de nouveaux incidents sont signalés à la Régie pour ce pipeline, ils apparaîtront ici après la mise à jour trimestrielle des données.`;
       },
     },
   },
