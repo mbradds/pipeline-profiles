@@ -1,4 +1,6 @@
 import { cerPalette } from "./util.js";
+import { incidentsTextEng } from "./dynamicText.js";
+
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "NGTL System",
   "TransCanada PipeLines Limited": "TC Canadian Mainline",
@@ -123,7 +125,7 @@ export const englishDashboard = {
     },
   },
   incidents: {
-    language: "en",
+    dynamicText: incidentsTextEng,
     companyToSystem: companyToSystem,
     title: (systemName) => {
       return `Dashboard: ${systemName} - Incidents with a product release`;

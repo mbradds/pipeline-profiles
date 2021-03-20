@@ -1,76 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="../../GCWeb/assets/favicon.ico"
-      rel="icon"
-      type="image/x-icon"
-    />
-    <link
-      rel="preload"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      as="style"
-      onload="this.onload-null;this.rel='stylesheet'"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="../../GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="preload" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" as="style" onload="this.onload-null;this.rel='stylesheet'" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
     <noscript>
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""
-      />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
     </noscript>
-    <link rel="preload" href="../../main.css" as="style" />
-    <link rel="stylesheet" href="../../main.css" />
-    <link rel="stylesheet" href="../../GCWeb/css/theme.min.css" />
-    <link rel="stylesheet" href="../../GCWeb/css/gcwu.custom.css" />
-    <noscript
-      ><link rel="stylesheet" href="../../GCWeb/wet-boew/css/noscript.min.css"
-    /></noscript>
-  <script defer src="../../en/westcoast/westcoast_en.64ffc203e6659db252b5.js"></script></head>
+    <link rel="preload" href="../../main.css" as="style">
+    <link rel="stylesheet" href="../../main.css">
+    <link rel="stylesheet" href="../../GCWeb/css/theme.min.css">
+    <link rel="stylesheet" href="../../GCWeb/css/gcwu.custom.css">
+    <noscript><link rel="stylesheet" href="../../GCWeb/wet-boew/css/noscript.min.css"></noscript>
+  <script defer="defer" src="../../en/westcoast/westcoast_en.4bc912a9edb9ba80fa3c.js"></script></head>
   <body>
-    <!-- warn CER users about internet explorer -->
+    
+    
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="ie-warning"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- everything inside this container (not including container div) is to be pasted into cer html files -->
       <h2 id="safety-environment">Safety And Environment</h2>
       <div class="mrgn-tp-lg">
         <div class="btn-group btn-group-justified">
           <div class="btn-group tab">
-            <button
-              type="button"
-              class="btn btn-default tablinks"
-              onclick="openTab(event, 'condition-compliance')"
-              id="defaultClick"
-              style="height: 75px"
-            >
+            <button type="button" class="btn btn-default tablinks" onclick="openTab(event, 'condition-compliance')" id="defaultClick" style="height: 75px">
               Conditions Compliance
             </button>
           </div>
           <div class="btn-group tab">
-            <button
-              type="button"
-              class="btn btn-default tablinks"
-              onclick="openTab(event, 'pipeline-incidents')"
-              style="height: 75px"
-            >
+            <button type="button" class="btn btn-default tablinks" onclick="openTab(event, 'pipeline-incidents')" style="height: 75px">
               Reported Incidents
             </button>
           </div>
@@ -97,9 +55,7 @@
 
             <p>
               Condition compliance is part of the CER's oversight and
-              <a href="/en/safety-environment/compliance-enforcement/index.html"
-                >enforcement</a
-              >
+              <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a>
               action is taken when required.
             </p>
             <p>
@@ -107,9 +63,7 @@
               pipeline project as a whole. The map below displays the number of
               in progress and closed conditions mapped to economic regions as
               defined by
-              <a
-                href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm"
-                >Statistics Canada.
+              <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm">Statistics Canada.
               </a>
             </p>
             <p>
@@ -187,56 +141,29 @@
 
               <div class="row mrgn-tp-sm">
                 <div class="col-md-12 col-lg-12">
-                  <div
-                    class="btn-group btn-group-justified"
-                    id="conditions-nav-group"
-                  >
+                  <div class="btn-group btn-group-justified" id="conditions-nav-group">
                     <div class="btn-group btn-conditions">
-                      <button
-                        type="button"
-                        class="btn btn-default"
-                        value="In Progress"
-                        id="in-progress-btn"
-                      >
+                      <button type="button" class="btn btn-default" value="In Progress" id="in-progress-btn">
                         <div class="conditions-summary-title">
                           In-Progress Conditions with location:
                         </div>
-                        <div
-                          class="conditions-summary-value"
-                          id="in-progress-summary"
-                        ></div>
+                        <div class="conditions-summary-value" id="in-progress-summary"></div>
                       </button>
                     </div>
                     <div class="btn-group btn-conditions">
-                      <button
-                        type="button"
-                        class="btn btn-default"
-                        value="Closed"
-                        id="closed-btn"
-                      >
+                      <button type="button" class="btn btn-default" value="Closed" id="closed-btn">
                         <div class="conditions-summary-title">
                           Closed Conditions with location:
                         </div>
-                        <div
-                          class="conditions-summary-value"
-                          id="closed-summary"
-                        ></div>
+                        <div class="conditions-summary-value" id="closed-summary"></div>
                       </button>
                     </div>
                     <div class="btn-group btn-conditions">
-                      <button
-                        type="button"
-                        class="btn btn-default"
-                        value="not-shown"
-                        id="no-location-btn"
-                      >
+                      <button type="button" class="btn btn-default" value="not-shown" id="no-location-btn">
                         <div class="conditions-summary-title">
                           No Geographic Location (not shown on map):
                         </div>
-                        <div
-                          class="conditions-summary-value"
-                          id="no-location-summary"
-                        ></div>
+                        <div class="conditions-summary-value" id="no-location-summary"></div>
                       </button>
                     </div>
                   </div>
@@ -249,20 +176,12 @@
               </div>
               <div class="row">
                 <div class="col-md-12 col-lg-12">
-                  <div
-                    class="alert alert-info"
-                    id="conditions-definitions"
-                    style="display: none"
-                  ></div>
+                  <div class="alert alert-info" id="conditions-definitions" style="display: none"></div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div
-                    class="alert alert-info"
-                    id="no-location-info"
-                    style="display: none"
-                  ></div>
+                  <div class="alert alert-info" id="no-location-info" style="display: none"></div>
                 </div>
               </div>
             </div>
@@ -272,13 +191,7 @@
                 <details>
                   <summary>Source and Description</summary>
                   <p>
-                    <strong>Data source: </strong
-                    ><a
-                      href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70"
-                      target="_blank"
-                      rel="external"
-                      >Open Government</a
-                    >
+                    <strong>Data source: </strong><a href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Open Government</a>
                   </p>
                   <p>
                     <strong>Description: </strong>The above map displays the
@@ -306,21 +219,11 @@
                 <p>
                   Open data can be freely used and shared by anyone for any
                   purpose. The
-                  <a
-                    href="http://www.cer-rec.gc.ca/open/conditions/conditions.csv"
-                    target="_blank"
-                    rel="external"
-                    >data for these graphs are available</a
-                  >.
+                  <a href="http://www.cer-rec.gc.ca/open/conditions/conditions.csv" target="_blank" rel="external">data for these graphs are available</a>.
                 </p>
                 <p>
                   Have you checked out the CER's
-                  <a
-                    href="https://apps2.cer-rec.gc.ca/conditions/"
-                    target="_blank"
-                    rel="external"
-                    >interactive conditions data visualization</a
-                  >? This tool offers a deep dive into the CER's conditions
+                  <a href="https://apps2.cer-rec.gc.ca/conditions/" target="_blank" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions
                   compliance data and process, exploring conditions across all
                   CER regulated companies by keyword, project, and location.
                 </p>
@@ -338,32 +241,17 @@
             <p>
               The information presented here is based on CER data (2008 to
               current) for incidents reported under the
-              <a
-                href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"
-                target="_blank"
-                >Onshore Pipeline Regulations</a
-              >
+              <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html" target="_blank">Onshore Pipeline Regulations</a>
               and the
-              <a
-                href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html"
-                target="_blank"
-                >Processing Plant Regulations</a
-              >. New data is added quarterly.
-              <a
-                href="https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/infographic/index.html"
-                target="_blank"
-                >Learn more</a
-              >
+              <a href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html" target="_blank">Processing Plant Regulations</a>. New data is added quarterly.
+              <a href="https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/infographic/index.html" target="_blank">Learn more</a>
               on how incident data collection has evolved since the NEB (now the
               CER) was established in 1959.
             </p>
             <p>
               Companies must report events, such as incidents, to the CER in
               accordance with the CER
-              <a
-                href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/canada-energy-regulator-event-reporting-guidelines/index.html"
-                >Event Reporting Guidelines</a
-              >. Knowing what happened, and why, helps us find ways to prevent
+              <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/canada-energy-regulator-event-reporting-guidelines/index.html">Event Reporting Guidelines</a>. Knowing what happened, and why, helps us find ways to prevent
               them from happening again.
             </p>
             <details>
@@ -484,9 +372,7 @@
               <ul>
                 <li>
                   <p>
-                    <strong
-                      >Release of Substance (featured in the dashboard)</strong
-                    >
+                    <strong>Release of Substance (featured in the dashboard)</strong>
                     - Any time a product is unintentionally released. (Releases
                     of non-gas low pressure products in volumes of less than 1.5
                     cubic metres are exempt from reporting.)
@@ -546,9 +432,7 @@
                   </p>
                 </li>
                 <li>
-                  <strong
-                    >Serious Injury (CER or Transportation Safety Board)</strong
-                  >
+                  <strong>Serious Injury (CER or Transportation Safety Board)</strong>
                   - Any serious injury involving employees, contractors or
                   members of the public related to the construction, operation
                   or maintenance of pipelines.
@@ -565,39 +449,19 @@
           <div id="inline_content" class="radio-inline pull-left mrgn-tp-sm">
             <form>
               <label for="incident-count-btn" class="radio-inline">
-                <input
-                  id="incident-count-btn"
-                  type="radio"
-                  name="type"
-                  value="frequency"
-                  checked="checked"
-                />
-                Incident count</label
-              >
+                <input id="incident-count-btn" type="radio" name="type" value="frequency" checked="checked">
+                Incident count</label>
               <label for="incident-volume-btn" class="radio-inline">
-                <input
-                  id="incident-volume-btn"
-                  type="radio"
-                  name="type"
-                  value="volume"
-                />
-                Incident volume</label
-              >
+                <input id="incident-volume-btn" type="radio" name="type" value="volume">
+                Incident volume</label>
             </form>
           </div>
 
           <div class="row">
             <div class="col-md-12 mrgn-tp-md">
-              <div
-                class="btn-group btn-group-justified"
-                id="incident-view-type"
-              >
+              <div class="btn-group btn-group-justified" id="incident-view-type">
                 <div class="btn-group btn-incident-view-type">
-                  <button
-                    type="button"
-                    class="btn btn-default active"
-                    value="map"
-                  >
+                  <button type="button" class="btn btn-default active" value="map">
                     Incident Map
                   </button>
                 </div>
@@ -628,16 +492,10 @@
               </div>
               <div class="col-md-3">
                 <div class="event-filter-nav" id="substance-trend"></div>
-                <div
-                  class="event-filter-nav mrgn-tp-sm"
-                  id="status-trend"
-                ></div>
+                <div class="event-filter-nav mrgn-tp-sm" id="status-trend"></div>
                 <div class="event-filter-nav mrgn-tp-sm" id="what-trend"></div>
                 <div class="event-filter-nav mrgn-tp-sm" id="why-trend"></div>
-                <div
-                  class="event-filter-nav mrgn-tp-sm"
-                  id="province-trend"
-                ></div>
+                <div class="event-filter-nav mrgn-tp-sm" id="province-trend"></div>
               </div>
             </div>
             <div class="row">
@@ -647,10 +505,7 @@
             </div>
           </div>
 
-          <section
-            class="panel panel-info mrgn-tp-md"
-            id="nearby-incidents-popup"
-          >
+          <section class="panel panel-info mrgn-tp-md" id="nearby-incidents-popup">
             <header class="panel-heading">
               <h5 class="panel-title">Are there any incidents near me?</h5>
             </header>
@@ -662,43 +517,21 @@
               </div>
               <div class="row">
                 <div class="col-md-6 center-stuff">
-                  <input
-                    name="html5shim-1"
-                    id="incident-range-slide"
-                    type="range"
-                    min="0"
-                    max="200"
-                    step="1"
-                    value="100"
-                  />
+                  <input name="html5shim-1" id="incident-range-slide" type="range" min="0" max="200" step="1" value="100">
                 </div>
                 <div class="col-md-3 center-stuff">
-                  <button
-                    type="button"
-                    value="100"
-                    id="find-incidents-btn"
-                    class="btn btn-default col-md-12"
-                  >
+                  <button type="button" value="100" id="find-incidents-btn" class="btn btn-default col-md-12">
                     Find Incidents within 100km
                   </button>
                 </div>
                 <div class="col-md-3 center-stuff">
-                  <button
-                    type="button"
-                    id="reset-incidents-btn"
-                    class="btn btn-default col-md-12"
-                    disabled="disabled"
-                  >
+                  <button type="button" id="reset-incidents-btn" class="btn btn-default col-md-12" disabled="disabled">
                     Refill Map Bubbles
                   </button>
                 </div>
               </div>
               <div class="row mrgn-tp-lg" style="margin-bottom: -15px">
-                <div
-                  class="col-md-12"
-                  id="nearby-flag"
-                  style="margin-bottom: -15px"
-                ></div>
+                <div class="col-md-12" id="nearby-flag" style="margin-bottom: -15px"></div>
               </div>
             </div>
           </section>
@@ -708,13 +541,7 @@
             <details>
               <summary>Source and Description</summary>
               <p>
-                <strong>Data source: </strong
-                ><a
-                  href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1"
-                  target="_blank"
-                  rel="external"
-                  >Open Government</a
-                >
+                <strong>Data source: </strong><a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>
               </p>
               <p>
                 <strong>Description:</strong> The above map displays the
@@ -743,21 +570,11 @@
             <p>
               Open data can be freely used and shared by anyone for any purpose.
               The
-              <a
-                href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6"
-                target="_blank"
-                rel="external"
-                >data for these graphs are available</a
-              >.
+              <a href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6" target="_blank" rel="external">data for these graphs are available</a>.
             </p>
             <p>
               Have you checked out the CER's
-              <a
-                href="https://apps2.cer-rec.gc.ca/pipeline-incidents/"
-                target="_blank"
-                rel="external"
-                >interactive incident data visualization</a
-              >? This tool offers a deep dive into the CER's incident data
+              <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data
               trends, exploring incidents across all CER regulated companies.
             </p>
           </div>
@@ -784,10 +601,6 @@
     <script src="../../GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
-    ></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   </body>
 </html>
