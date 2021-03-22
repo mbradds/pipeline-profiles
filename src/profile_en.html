@@ -39,13 +39,6 @@
     /></noscript>
   </head>
   <body>
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="ie-warning"></div>
-        </div>
-      </div>
-    </div> -->
     <!-- everything inside this container (not including container div) is to be pasted into cer html files -->
     <div class="container">
       <h2 id="safety-environment">Safety And Environment</h2>
@@ -57,7 +50,6 @@
               class="btn btn-default tablinks"
               onclick="openTab(event, 'condition-compliance')"
               id="defaultClick"
-              style="height: 75px"
             >
               Conditions Compliance
             </button>
@@ -67,7 +59,6 @@
               type="button"
               class="btn btn-default tablinks"
               onclick="openTab(event, 'pipeline-incidents')"
-              style="height: 75px"
             >
               Reported Incidents
             </button>
@@ -248,18 +239,16 @@
               <div class="row">
                 <div class="col-md-12 col-lg-12">
                   <div
-                    class="alert alert-info"
+                    class="alert alert-info profile-hide"
                     id="conditions-definitions"
-                    style="display: none"
                   ></div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div
-                    class="alert alert-info"
+                    class="alert alert-info profile-hide"
                     id="no-location-info"
-                    style="display: none"
                   ></div>
                 </div>
               </div>
@@ -619,7 +608,7 @@
             </div>
           </div>
 
-          <div id="time-series-section" style="display: none">
+          <div id="time-series-section" class="profile-hide">
             <div class="row">
               <div class="col-md-9">
                 <div id="time-series"></div>
@@ -691,12 +680,8 @@
                   </button>
                 </div>
               </div>
-              <div class="row mrgn-tp-lg" style="margin-bottom: -15px">
-                <div
-                  class="col-md-12"
-                  id="nearby-flag"
-                  style="margin-bottom: -15px"
-                ></div>
+              <div class="row mrgn-tp-lg">
+                <div class="col-md-12" id="nearby-flag"></div>
               </div>
             </div>
           </section>

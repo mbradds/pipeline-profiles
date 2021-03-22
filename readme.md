@@ -239,7 +239,6 @@ if __name__ == "__main__":
 - [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
 - [express](https://www.npmjs.com/package/express) Used only for heroku website.
 - [haversine](https://www.npmjs.com/package/haversine) For finding distance between user and Incidents.
-- [ie-gang](https://www.npmjs.com/package/ie-gang) Warns user to switch away from IE-11.
 - [mapshaper](https://www.npmjs.com/package/mapshaper) Simplifies the maps used in the Conditions map. Reduces Canada base map file size by >99.9%!
 
 ### Dev Dependencies

@@ -14,21 +14,20 @@
     <link rel="stylesheet" href="../../GCWeb/css/theme.min.css">
     <link rel="stylesheet" href="../../GCWeb/css/gcwu.custom.css">
     <noscript><link rel="stylesheet" href="../../GCWeb/wet-boew/css/noscript.min.css"></noscript>
-  <script defer="defer" src="../../fr/westcoast/westcoast_fr.1e5885d8a59c699f5d02.js"></script></head>
+  <script defer="defer" src="../../fr/westcoast/westcoast_fr.d10b22fb6d5d33ca0738.js"></script></head>
   <body>
-    
     
     <div class="container">
       <h2 id="safety-environment">Sécurité et environnement</h2>
       <div class="mrgn-tp-lg">
         <div class="btn-group btn-group-justified">
           <div class="btn-group tab">
-            <button type="button" class="btn btn-default tablinks" onclick="openTab(event, 'condition-compliance')" style="height: 75px" id="defaultClick">
+            <button type="button" class="btn btn-default tablinks" onclick="openTab(event, 'condition-compliance')" id="defaultClick">
               Conformité aux conditions
             </button>
           </div>
           <div class="btn-group tab">
-            <button type="button" class="btn btn-default tablinks" onclick="openTab(event, 'pipeline-incidents')" style="height: 75px">
+            <button type="button" class="btn btn-default tablinks" onclick="openTab(event, 'pipeline-incidents')">
               Incidents signalés
             </button>
           </div>
@@ -176,12 +175,12 @@
               </div>
               <div class="row">
                 <div class="col-md-12 col-lg-12">
-                  <div class="alert alert-info" id="conditions-definitions" style="display: none"></div>
+                  <div class="alert alert-info profile-hide" id="conditions-definitions"></div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <div class="alert alert-info" id="no-location-info" style="display: none"></div>
+                  <div class="alert alert-info profile-hide" id="no-location-info"></div>
                 </div>
               </div>
             </div>
@@ -485,7 +484,7 @@
             </div>
           </div>
 
-          <div id="time-series-section" style="display: none">
+          <div id="time-series-section" class="profile-hide">
             <div class="row">
               <div class="col-md-9">
                 <div id="time-series"></div>
@@ -532,8 +531,8 @@
                   </button>
                 </div>
               </div>
-              <div class="row mrgn-tp-lg" style="margin-bottom: -15px">
-                <div class="col-md-12" id="nearby-flag" style="margin-bottom: -15px"></div>
+              <div class="row mrgn-tp-lg">
+                <div class="col-md-12" id="nearby-flag"></div>
               </div>
             </div>
           </section>
