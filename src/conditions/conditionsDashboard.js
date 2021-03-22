@@ -160,8 +160,8 @@ export async function mainConditions(
       chart.customTooltip = undefined;
     }
     var definitionDiv = document.getElementById("conditions-definitions");
-    if (definitionDiv.style.display === "block") {
-      definitionDiv.style.display = "none";
+    if (definitionDiv.classList.contains("profile-show")) {
+      definitionDiv.classList.remove("profile-show");
     }
   };
 
@@ -221,8 +221,9 @@ export async function mainConditions(
   function themeClick(e) {
     let definitions = lang.themeDefinitions;
     var definitionDiv = document.getElementById("conditions-definitions");
-    if (definitionDiv.style.display === "none") {
-      definitionDiv.style.display = "block";
+    if (definitionDiv.classList.contains("profile-hide")) {
+      //definitionDiv.style.display = "block";
+      definitionDiv.classList.add("profile-show");
     }
     var themes = e.split(",");
     var definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
@@ -232,8 +233,7 @@ export async function mainConditions(
       definitionsHTML += "<p>" + definitions[t] + "</p>";
     }
     definitionDiv.innerHTML = definitionsHTML;
-    var divPosition = $("#conditions-definitions").offset();
-    $("html, body").animate({ scrollTop: divPosition.top }, "slow");
+    definitionDiv.scrollIntoView(false);
   }
 
   const popUp = (e, filter, meta) => {

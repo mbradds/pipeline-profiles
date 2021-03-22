@@ -1,4 +1,6 @@
 import { cerPalette } from "./util.js";
+import { incidentsTextEng } from "./dynamicText.js";
+
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "NGTL System",
   "TransCanada PipeLines Limited": "TC Canadian Mainline",
@@ -123,6 +125,7 @@ export const englishDashboard = {
     },
   },
   incidents: {
+    dynamicText: incidentsTextEng,
     companyToSystem: companyToSystem,
     title: (systemName) => {
       return `Dashboard: ${systemName} - Incidents with a product release`;
@@ -206,6 +209,7 @@ export const englishDashboard = {
       legendClick: "Click on a legend item to remove it from the chart",
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
+      trendYTitle: "Number of Incidents",
       EVENTCOLORS: {
         Substance: {
           Propane: cerPalette["Forest"],

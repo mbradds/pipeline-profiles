@@ -39,18 +39,9 @@
     /></noscript>
   </head>
   <body>
-    <!-- warn CER users about internet explorer -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="ie-warning"></div>
-        </div>
-      </div>
-    </div>
-
+    <!-- everything inside this container (not including container div) is to be pasted into cer html files -->
     <div class="container">
       <h2 id="safety-environment">Sécurité et environnement</h2>
-      <!-- everything inside this container (not including container div) is to be pasted into cer html files -->
       <div class="mrgn-tp-lg">
         <div class="btn-group btn-group-justified">
           <div class="btn-group tab">
@@ -58,10 +49,9 @@
               type="button"
               class="btn btn-default tablinks"
               onclick="openTab(event, 'condition-compliance')"
-              style="height: 75px"
               id="defaultClick"
             >
-              Respect des conditions
+              Conformité aux conditions
             </button>
           </div>
           <div class="btn-group tab">
@@ -69,7 +59,6 @@
               type="button"
               class="btn btn-default tablinks"
               onclick="openTab(event, 'pipeline-incidents')"
-              style="height: 75px"
             >
               Incidents signalés
             </button>
@@ -80,7 +69,7 @@
       <div id="condition-compliance" class="profile-section tabcontent">
         <div class="row">
           <div class="col-md-12">
-            <h3>Conditions Compliance</h3>
+            <h3>Conformité aux conditions</h3>
             <p class="small">Section updated March 2021</p>
             <p>
               Every pipeline company in Canada must meet federal, provincial or
@@ -199,7 +188,7 @@
                         id="in-progress-btn"
                       >
                         <div class="conditions-summary-title">
-                          In-Progress Conditions with location:
+                          Conditions en cours avec emplacement:
                         </div>
                         <div
                           class="conditions-summary-value"
@@ -215,7 +204,7 @@
                         id="closed-btn"
                       >
                         <div class="conditions-summary-title">
-                          Closed Conditions with location:
+                          Conditions remplies avec emplacement:
                         </div>
                         <div
                           class="conditions-summary-value"
@@ -231,7 +220,7 @@
                         id="no-location-btn"
                       >
                         <div class="conditions-summary-title">
-                          No Geographic Location (not shown on map):
+                          Aucun lieu (non indiqué sur la carte):
                         </div>
                         <div
                           class="conditions-summary-value"
@@ -250,18 +239,16 @@
               <div class="row">
                 <div class="col-md-12 col-lg-12">
                   <div
-                    class="alert alert-info"
+                    class="alert alert-info profile-hide"
                     id="conditions-definitions"
-                    style="display: none"
                   ></div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div
-                    class="alert alert-info"
+                    class="alert alert-info profile-hide"
                     id="no-location-info"
-                    style="display: none"
                   ></div>
                 </div>
               </div>
@@ -572,7 +559,7 @@
                   value="frequency"
                   checked="checked"
                 />
-                Incident count</label
+                Nombre d'incidents</label
               >
               <label for="incident-volume-btn" class="radio-inline">
                 <input
@@ -581,7 +568,7 @@
                   name="type"
                   value="volume"
                 />
-                Incident volume</label
+                Volume des incidents</label
               >
             </form>
           </div>
@@ -598,12 +585,12 @@
                     class="btn btn-default active"
                     value="map"
                   >
-                    Incident Map
+                    Carte des incidents
                   </button>
                 </div>
                 <div class="btn-group btn-incident-view-type">
                   <button type="button" class="btn btn-default" value="trends">
-                    Incident Trends
+                    Tendance des incidents
                   </button>
                 </div>
               </div>
@@ -621,7 +608,7 @@
             </div>
           </div>
 
-          <div id="time-series-section" style="display: none">
+          <div id="time-series-section" class="profile-hide">
             <div class="row">
               <div class="col-md-9">
                 <div id="time-series"></div>
@@ -652,7 +639,9 @@
             id="nearby-incidents-popup"
           >
             <header class="panel-heading">
-              <h5 class="panel-title">Y a-t-il des incidents près de moi?</h5>
+              <h5 class="panel-title">
+                Y a-t-il des incidents près de chez moi?
+              </h5>
             </header>
             <div class="panel-body incidents-near-me">
               <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
@@ -689,16 +678,12 @@
                     class="btn btn-default col-md-12"
                     disabled="disabled"
                   >
-                    Refill Map Bubbles
+                    Remplir les bulles de carte
                   </button>
                 </div>
               </div>
-              <div class="row mrgn-tp-lg" style="margin-bottom: -15px">
-                <div
-                  class="col-md-12"
-                  id="nearby-flag"
-                  style="margin-bottom: -15px"
-                ></div>
+              <div class="row mrgn-tp-lg">
+                <div class="col-md-12" id="nearby-flag"></div>
               </div>
             </div>
           </section>

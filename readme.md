@@ -239,7 +239,6 @@ if __name__ == "__main__":
 - [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
 - [express](https://www.npmjs.com/package/express) Used only for heroku website.
 - [haversine](https://www.npmjs.com/package/haversine) For finding distance between user and Incidents.
-- [ie-gang](https://www.npmjs.com/package/ie-gang) Warns user to switch away from IE-11.
 - [mapshaper](https://www.npmjs.com/package/mapshaper) Simplifies the maps used in the Conditions map. Reduces Canada base map file size by >99.9%!
 
 ### Dev Dependencies
@@ -288,6 +287,6 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 
 - Create a distribution bundle for Highcharts+Leaflet. Highcharts doesnt make tree shaking easy, but its possible to create a [custom distribution](https://www.highcharts.com/docs/getting-started/how-to-create-custom-highcharts-files) with only the files needed.
 - As new profile sections are added, the json data will start to increase bundle sizes above 250 kb. The data should be split into a seperate webpack bundle. This will also help with caching, because the data can be updated, and the rest of the code can remain cached.
-- Try to remove j-query dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
+- Try to remove Jquery dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`
 - Include documentation and instructions for getting regdocs links from the internal cer database.

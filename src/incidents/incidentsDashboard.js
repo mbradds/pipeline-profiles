@@ -1,4 +1,3 @@
-import { incidentsTextEng } from "../modules/dynamicText.js";
 import { visibility } from "../modules/util.js";
 import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
 
@@ -84,7 +83,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
         } catch (err) {
           metaData.systemName = metaData.companyName;
         }
-        incidentsTextEng("system-incidents-paragraph", metaData);
+
+        lang.dynamicText("system-incidents-paragraph", metaData);
+
         setTitle(lang, metaData);
         //generateDynamicIncidentText(metaData);
         const thisMap = incidentMap(field, filters, lang.dashboard);

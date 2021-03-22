@@ -47,7 +47,15 @@ var profileWebpackConfig = (function () {
             chunkSortMode: "manual",
             template: `src/profile_${lang}.html`,
             publicPath: "../..",
-            minify: false,
+            minify: {
+              collapseWhitespace: false,
+              keepClosingSlash: false,
+              removeComments: true,
+              removeRedundantAttributes: false,
+              removeScriptTypeAttributes: false,
+              removeStyleLinkTypeAttributes: false,
+              useShortDoctype: false,
+            },
           })
         );
       });

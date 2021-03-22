@@ -7,9 +7,14 @@ body {
   font-weight: bold;
   color: #871455;
 }
-.h2 {
-  font-family: Arial;
-  font-size: 1.8em;
+.tablinks {
+  height: 75px !important;
+}
+.profile-hide {
+  display: none;
+}
+.profile-show {
+  display: block;
 }
 .dashboard {
   padding-left: 15px;
@@ -96,6 +101,9 @@ body {
 }
 #incidents-near-me {
   min-height: 100px;
+}
+#nearby-flag {
+  margin-bottom: -15px;
 }
 .center-stuff {
   height: 50px;
