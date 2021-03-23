@@ -78,7 +78,7 @@ export async function mainConditions(
           }
         }
       });
-      projectsHTML += `</table><i>${lang.table.regdocsDefinition}</i>`;
+      projectsHTML += `</table>${lang.table.regdocsDefinition}`;
     } else if (tableName == "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
       projectsHTML += `<caption style="text-align:left;">${lang.table.themesTitle(

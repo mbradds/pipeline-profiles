@@ -37,12 +37,12 @@ export const incidentsTextEng = (id, meta) => {
   //most common reasons
   paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
         circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
-        On this pipeline system, the most common <i>what happened</i> is ${dynamicValue(
+        On this pipeline system, the most common what happened is ${dynamicValue(
           meta.mostCommonWhat
-        )} and the most common <i>why it happened</i> is ${dynamicValue(
+        )} and the most common why it happened is ${dynamicValue(
     meta.mostCommonWhy
   )}.`;
-  paragraphText += ` Take a look at the <i>incident trends</i> section of the dashboard below for definitions and a breakdown of what and why.</p>`;
+  paragraphText += ` Take a look at the incident trends section of the dashboard below for definitions and a breakdown of what and why.</p>`;
 
   //other important non-release incident types
   paragraphText += `<p>`;
@@ -85,12 +85,12 @@ export const incidentsTextFra = (id, meta) => {
   //most common reasons
   paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
         circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
-        On this pipeline system, the most common <i>what happened</i> is ${dynamicValue(
+        On this pipeline system, the most common what happened is ${dynamicValue(
           meta.mostCommonWhat
-        )} and the most common <i>why it happened</i> is ${dynamicValue(
+        )} and the most common why it happened is ${dynamicValue(
     meta.mostCommonWhy
   )}.`;
-  paragraphText += ` Take a look at the <i>incident trends</i> section of the dashboard below for definitions and a breakdown of what and why.</p>`;
+  paragraphText += ` Take a look at the incident trends section of the dashboard below for definitions and a breakdown of what and why.</p>`;
 
   //other important non-release incident types
   paragraphText += `<p>`;

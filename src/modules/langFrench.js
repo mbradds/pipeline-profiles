@@ -189,7 +189,7 @@ export const frenchDashboard = {
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
       countDisclaimer: (eventType, field) => {
-        return `<p>Les incidents peuvent avoir plusieurs valeurs <i>${field}</i>.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.</p>`;
+        return `<p>Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.</p>`;
       },
       userPopUp:
         "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
@@ -207,7 +207,7 @@ export const frenchDashboard = {
         return `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`;
       },
       barClick: (field) => {
-        return `<p>Cliquer sur une bande pour consulter la définition de <i>${field}</i></p>`;
+        return `<p>Cliquer sur une bande pour consulter la définition de ${field}</p>`;
       },
       legendClick:
         "Cliquez sur un élément de légende pour le supprimer du graphique",
