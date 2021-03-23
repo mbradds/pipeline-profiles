@@ -95,6 +95,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
           lang.dashboard.pillTitles
         );
         const trends = incidentTimeSeries(field, filters, lang);
+        const volumeBtn = document.getElementById("incident-volume-btn");
         // user selection to show volume or incident frequency
         $("#inline_content input[name='type']").click(function () {
           var btnValue = $("input:radio[name=type]:checked").val();
@@ -110,7 +111,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         });
         if (incidentData.length == 1) {
           // if there is only one incident, then disable the select volume option
-          $("#incident-volume-btn").attr("disabled", "disabled");
+          volumeBtn.disabled = true;
         }
 
         // user selection to show map or trends
@@ -124,12 +125,14 @@ export async function mainIncidents(incidentData, metaData, lang) {
           if (btnValue !== "trends") {
             visibility(dashboardDivs, "show");
             visibility(["time-series-section"], "hide");
-            $("#incident-volume-btn").removeAttr("disabled");
+            volumeBtn.disabled = false;
             thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
           } else {
             // if the user selects trends, the option to view volume should be disabled
-            $("#incident-volume-btn").attr("disabled", "disabled");
-            $("#incident-count-btn").prop("checked", true).click();
+            volumeBtn.disabled = true;
+            const countBtn = document.getElementById("incident-count-btn");
+            countBtn.checked = true;
+            countBtn.click();
             visibility(dashboardDivs, "hide");
             visibility(["time-series-section"], "show");
           }

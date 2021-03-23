@@ -21,7 +21,7 @@ export async function mainConditions(
       }
       infohtml += `</ul>`;
     } else {
-      $("#no-location-btn").prop("disabled", true);
+      document.getElementById("no-location-btn").disabled = true;
     }
     infoAlert.innerHTML = infohtml;
   };
