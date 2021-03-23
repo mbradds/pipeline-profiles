@@ -26,17 +26,16 @@ export async function mainConditions(
     infoAlert.innerHTML = infohtml;
   };
   const statusInit = (meta) => {
-    var inProgress = $("#in-progress-btn");
-    var closed = $("#closed-btn");
     const conditionsFilter = { column: "In Progress" };
-    $(document).ready(function () {
+    document.addEventListener("DOMContentLoaded", function () {
+      const inProgress = document.getElementById("in-progress-btn");
       if (meta.summary["In Progress"] > 0) {
         conditionsFilter.column = "In Progress";
         inProgress.click();
       } else if (meta.summary["In Progress"] == 0) {
-        inProgress.prop("disabled", true);
+        inProgress.disabled = true;
         conditionsFilter.column = "Closed";
-        closed.click();
+        document.getElementById("closed-btn").click();
       }
     });
     return conditionsFilter;
