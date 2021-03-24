@@ -35,7 +35,7 @@ export const frenchDashboard = {
 
   conditions: {
     companyToSystem: companyToSystem,
-    colNames: { "In Progress": "En cours", Closed: "Conforme" },
+    colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",
     noLocation: {
       title:
@@ -177,6 +177,9 @@ export const frenchDashboard = {
       what: "Incident",
       why: "Cause",
       estRelease: "Estimation du volume",
+      cf: "pieds cubes",
+      bbl: "b",
+      decimal: ",",
       pillTitles: {
         titles: {
           Status: "REC État",

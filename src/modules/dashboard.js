@@ -82,18 +82,22 @@ export class EventMap {
         var imperial = `${Highcharts.numberFormat(
           (m3 * convGas).toFixed(2),
           2,
-          "."
-        )} cubic feet`;
+          this.lang.decimal
+        )} ${this.lang.cf}`;
       } else {
         var imperial = `${Highcharts.numberFormat(
           (m3 * convLiquid).toFixed(2),
           2,
-          "."
-        )} bbl`;
+          this.lang.decimal
+        )} ${this.lang.bbl}`;
       }
-      return `${imperial} (${Highcharts.numberFormat(m3, 2, ".")} m3)`;
+      return `${imperial} (${Highcharts.numberFormat(
+        m3,
+        2,
+        this.lang.decimal
+      )} m3)`;
     } else {
-      return `${Highcharts.numberFormat(m3, 2, ".")} m3`;
+      return `${Highcharts.numberFormat(m3, 2, this.lang.decimal)} m3`;
     }
   }
 

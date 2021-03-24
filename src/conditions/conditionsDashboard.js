@@ -56,7 +56,7 @@ export async function mainConditions(
     } else {
       titleElement.innerText = lang.title.location(
         summary.systemName,
-        filter.column
+        lang.colNames[filter.column]
       );
     }
   };
