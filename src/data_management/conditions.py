@@ -43,6 +43,7 @@ def export_files(df, folder, name):
 
 
 def conditions_on_map(df, shp, folder_name, lang):
+    df['Flat Province'] = df['Flat Province'].replace('Québec', 'Quebec')
     shp = pd.merge(shp,
                    df,
                    how='inner',
@@ -115,7 +116,8 @@ def conditionMetaData(df, folder_name):
                           "status": noLoc}
 
     # get the date the data was pulled
-    status['updated'] = date.today().strftime("%b %d, %Y")
+    #status['updated'] = date.today().strftime("%b %d, %Y")
+    status['updated'] = "Mar 19, 2021"
 
     # get the current company name
     status['companyName'] = list(df['Company'])[0]
@@ -208,6 +210,8 @@ def process_french(df, fr):
                             "Dépôt pour condition": "Condition Filing",
                             "Thème(s)": "Theme(s)"})
     fr = fr[fr['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
+    #fr['Company'] = fr['Company'].replace({'Trans Quebec and Maritimes Pipeline Inc.': 'Trans Québec and Maritimes Pipeline Inc.'})
+    fr['Company'] = fr['Company'].replace(company_rename())
 
     en = normalize_text(en, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
     fr = normalize_text(fr, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
@@ -395,7 +399,7 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # links = orca_regdocs_links(True)
-    df, regions, mapMeta, meta = process_conditions(remote=True, lang='en', save=True)
+    # df, regions, mapMeta, meta = process_conditions(remote=True, lang='en', save=True)
     df, regions, mapMeta, meta = process_conditions(remote=True, lang='fr', save=True)
     print('completed conditions!')
 
