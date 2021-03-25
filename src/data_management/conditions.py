@@ -116,8 +116,8 @@ def conditionMetaData(df, folder_name):
                           "status": noLoc}
 
     # get the date the data was pulled
-    #status['updated'] = date.today().strftime("%b %d, %Y")
-    status['updated'] = "Mar 19, 2021"
+    status['updated'] = date.today().strftime("%b %d, %Y")
+    # status['updated'] = "Mar 19, 2021" #override todays date with custom date
 
     # get the current company name
     status['companyName'] = list(df['Company'])[0]
@@ -210,7 +210,6 @@ def process_french(df, fr):
                             "Dépôt pour condition": "Condition Filing",
                             "Thème(s)": "Theme(s)"})
     fr = fr[fr['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
-    #fr['Company'] = fr['Company'].replace({'Trans Quebec and Maritimes Pipeline Inc.': 'Trans Québec and Maritimes Pipeline Inc.'})
     fr['Company'] = fr['Company'].replace(company_rename())
 
     en = normalize_text(en, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])

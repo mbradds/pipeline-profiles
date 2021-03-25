@@ -46,14 +46,14 @@ def incidentMetaData(df, dfPerKm, company, lang):
                        "Fatality": 0,
                        "Serious Injury (CER or TSB)": 0}
         else:
-            # df['Incident Types'] = df['Incident Types'].replace({'Effets environnementaux négatifs': 'Adverse Environmental Effects',
-            #                                                      'Blessure grave (Régie ou BST)': 'Serious Injury (CER or TSB)',
-            #                                                      'Décès': 'Fatality'})
             newTxt = []
             for txt in df['Incident Types']:
                 newTxt.append(txt.replace("Effets environnementaux négatifs",
-                                          "Adverse Environmental Effects").replace("Blessure grave (Régie ou BST)",
-                                                                                   "Serious Injury (CER or TSB)").replace("Décès", "Fatality"))
+                                          "Adverse Environmental Effects")
+                              .replace("Blessure grave (Régie ou BST)",
+                                       "Serious Injury (CER or TSB)")
+                              .replace("Décès", "Fatality"))
+
             df['Incident Types'] = newTxt
 
             serious = {"Adverse Environmental Effects": 0,
