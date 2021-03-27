@@ -18,6 +18,22 @@ const postWord = (val, type) => {
   }
 };
 
+const changeText = (num) => {
+  if (num > 0) {
+    return `<i class="bg-success" style="font-style: normal"><strong>increased by ${Math.abs(
+      num
+    )}%</strong></i>`;
+  } else if (num < 0) {
+    return `<i class="bg-danger" style="font-style: normal"><strong>decreased by ${Math.abs(
+      num
+    )}%</strong></i>`;
+  } else {
+    return `<i class="bg-info" style="font-style: normal"><strong>not changed</strong></i>`;
+  }
+};
+
+const quarters = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
+
 export const incidentsTextEng = (id, meta) => {
   const paragraph = document.getElementById(id);
   let paragraphText = `<p>`;
@@ -104,3 +120,41 @@ export const incidentsTextFra = (id, meta) => {
   paragraphText += `</p>`;
   paragraph.innerHTML = paragraphText;
 };
+
+export function trafficTrendTextEng(metaData, defaultPoint) {
+  const thisTrend = metaData.trendText[defaultPoint];
+  var trendBox = document.getElementById("traffic-trends");
+  var trendText = `<p>`;
+  trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
+    defaultPoint
+  )} key point have ${changeText(
+    thisTrend.throughChange.pct
+  )}, from an average of ${thisTrend.throughChange.from} Bcf/d in ${
+    quarters[thisTrend.fromDate[1]]
+  } ${thisTrend.fromDate[0]} to an average of ${
+    thisTrend.throughChange.to
+  } Bcf/d in ${quarters[thisTrend.toDate[1]]} ${
+    thisTrend.toDate[0]
+  } (most recent quarter of data).`;
+  trendText += `</p>`;
+  trendBox.innerHTML = trendText;
+}
+
+export function trafficTrendTextFra(metaData, defaultPoint) {
+  const thisTrend = metaData.trendText[defaultPoint];
+  var trendBox = document.getElementById("traffic-trends");
+  var trendText = `<p>`;
+  trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
+    defaultPoint
+  )} key point have ${changeText(
+    thisTrend.throughChange.pct
+  )}, from an average of ${thisTrend.throughChange.from} Bcf/d in ${
+    quarters[thisTrend.fromDate[1]]
+  } ${thisTrend.fromDate[0]} to an average of ${
+    thisTrend.throughChange.to
+  } Bcf/d in ${quarters[thisTrend.toDate[1]]} ${
+    thisTrend.toDate[0]
+  } (most recent quarter of data).`;
+  trendText += `</p>`;
+  trendBox.innerHTML = trendText;
+}

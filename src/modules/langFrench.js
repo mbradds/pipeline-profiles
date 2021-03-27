@@ -1,5 +1,5 @@
 import { cerPalette } from "./util.js";
-import { incidentsTextFra } from "./dynamicText.js";
+import { incidentsTextFra, trafficTrendTextFra } from "./dynamicText.js";
 
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "Réseau de NGTL",
@@ -278,6 +278,23 @@ export const frenchDashboard = {
       note: (companyName) => {
         return `Il n’y a pas d’enregistrements dans les données sur les incidents de la Régie pour ${companyName}. Si de nouveaux incidents sont signalés à la Régie pour ce pipeline, ils apparaîtront ici après la mise à jour trimestrielle des données.`;
       },
+    },
+  },
+  traffic: {
+    dynamicText: trafficTrendTextFra,
+    months: {
+      1: "January",
+      2: "February",
+      3: "March",
+      4: "April",
+      5: "May",
+      6: "June",
+      7: "July",
+      8: "August",
+      9: "September",
+      10: "October",
+      11: "November",
+      12: "December",
     },
   },
 };
