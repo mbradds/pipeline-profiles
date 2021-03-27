@@ -136,7 +136,7 @@ export class EventMap {
       }
     };
 
-    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams["Incident Number"]}</b></p>`;
+    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams["id"]}</b></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
       this.field
@@ -146,14 +146,14 @@ export class EventMap {
     toolTipText += `<tr><td>${
       this.lang.estRelease
     }</td><td>&nbsp<b>${this.volumeText(
-      incidentParams["Approximate Volume Released"],
+      incidentParams["vol"],
       incidentParams.Substance
     )}</b></td></tr>`;
     toolTipText += `<tr><td>${this.lang.what}?</td><td><b>${formatCommaList(
-      incidentParams["What Happened"]
+      incidentParams["what"]
     )}</b></td></tr>`;
     toolTipText += `<tr><td>${this.lang.why}?</td><td><b>${formatCommaList(
-      incidentParams["Why It Happened"]
+      incidentParams["why"]
     )}</b></td></tr>`;
     toolTipText += `</table></div>`;
     return toolTipText;
@@ -240,19 +240,18 @@ export class EventMap {
       "#ffffff",
     ];
     let volumes = data.map((row) => {
-      return row["Approximate Volume Released"];
+      return row["vol"];
     });
     let [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     let maxRad = radiusCalc(maxVol);
     let allCircles = data.map((row) => {
       years.push(row.Year);
-      let radiusVol =
-        (row["Approximate Volume Released"] - minVol) / (maxVol - minVol);
+      let radiusVol = (row["vol"] - minVol) / (maxVol - minVol);
 
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
       return this.addCircle(
-        row.Latitude,
-        row.Longitude,
+        row["lat long"][0],
+        row["lat long"][1],
         cerPalette["Cool Grey"],
         this.applyColor(row[this.field], this.field), //fillColor
         radiusVol,
@@ -356,14 +355,11 @@ export class EventMap {
           layer.options.incidentParams.Substance
         );
         if (layerState == "gas") {
-          nearbyGas +=
-            layer.options.incidentParams["Approximate Volume Released"];
+          nearbyGas += layer.options.incidentParams["vol"];
         } else if (layerState == "liquid") {
-          nearbyLiquid +=
-            layer.options.incidentParams["Approximate Volume Released"];
+          nearbyLiquid += layer.options.incidentParams["vol"];
         } else {
-          nearbyOther +=
-            layer.options.incidentParams["Approximate Volume Released"];
+          nearbyOther += layer.options.incidentParams["vol"];
         }
       });
       let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
@@ -436,7 +432,6 @@ export class EventMap {
     var resize = false;
     window.addEventListener("resize", function () {
       resize = true;
-      console.log("resize!");
     });
     $(".tab > .tablinks").on("click", function (e) {
       if (resize) {
@@ -662,11 +657,11 @@ export class EventNavigator {
     const addToSeries = (series, row, name) => {
       if (series.hasOwnProperty(row[name])) {
         series[row[name]].frequency += 1;
-        series[row[name]].volume += row["Approximate Volume Released"];
+        series[row[name]].volume += row["vol"];
       } else {
         series[row[name]] = {
           frequency: 1,
-          volume: row["Approximate Volume Released"],
+          volume: row["vol"],
         };
       }
       return series;
@@ -865,8 +860,8 @@ export class EventTrend extends EventMap {
     Substance: false,
     Status: false,
     Province: false,
-    "What Happened": true,
-    "Why It Happened": true,
+    what: true,
+    why: true,
     category: true,
   };
 

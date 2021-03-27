@@ -71,9 +71,9 @@ export async function mainConditions(
         if (proj.id == selectedRegion && proj.value > 0) {
           if (proj.Regdocs !== undefined) {
             let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
-            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["Short Project Name"]}</a></td><td>${proj["value"]}</td></tr>`;
+            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["name"]}</a></td><td>${proj["value"]}</td></tr>`;
           } else {
-            projectsHTML += `<tr><td>${proj["Short Project Name"]}</td><td>${proj["value"]}</td></tr>`;
+            projectsHTML += `<tr><td>${proj["name"]}</td><td>${proj["value"]}</td></tr>`;
           }
         }
       });
@@ -85,7 +85,7 @@ export async function mainConditions(
       )}</caption>`;
       summary.themes.map((proj) => {
         if (proj.id == selectedRegion && proj.value > 0) {
-          projectsHTML += `<tr><td>${proj["Theme(s)"]}</td><td>${proj["value"]}</td></tr>`;
+          projectsHTML += `<tr><td>${proj["Theme"]}</td><td>${proj["value"]}</td></tr>`;
         }
       });
       projectsHTML += `</table>`;
@@ -94,6 +94,11 @@ export async function mainConditions(
   };
 
   const processMapMetadata = (data, filter, type = "map") => {
+    if (filter.column == "In Progress") {
+      var colSelector = 0;
+    } else if (filter.column == "Closed") {
+      var colSelector = 1;
+    }
     const getValid = (type) => {
       if (type == "map") {
         function validMetaData(row) {
@@ -107,19 +112,19 @@ export async function mainConditions(
       } else if (type == "projects") {
         function validMetaData(row) {
           return {
-            "Short Project Name": row["Short Project Name"],
+            name: row["name"],
             id: row.id,
-            Regdocs: row.Regdocs,
-            value: row[filter.column],
+            Regdocs: row.v[2],
+            value: row.v[colSelector],
           };
         }
         return validMetaData;
       } else if (type == "themes") {
         function validMetaData(row) {
           return {
-            "Theme(s)": row["Theme(s)"],
+            Theme: row["t"],
             id: row.id,
-            value: row[filter.column],
+            value: row.v[colSelector],
           };
         }
         return validMetaData;

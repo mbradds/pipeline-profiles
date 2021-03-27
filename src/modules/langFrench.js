@@ -134,7 +134,7 @@ export const frenchDashboard = {
         "Initialement soumis":
           "La société a informé la Régie qu’un incident était survenu et a fourni les renseignements préliminaires sur celui-ci. Une enquête est en cours.",
       },
-      "What Happened": {
+      what: {
         "Défectuosité et détérioration":
           " Défectuosité au niveau des matériaux ou des processus de fabrication et détérioration attribuable à des dommages, au dépassement de la durée de vie utile, à l’absence d’inspection ou à un manque d’entretien.",
         "Corrosion et fissuration":
@@ -151,7 +151,7 @@ export const frenchDashboard = {
           "Toutes les autres causes ou lorsqu’il est impossible de déterminer les circonstances de l’incident.",
         "À déterminer": "L’incident est à l’étude.",
       },
-      "Why It Happened": {
+      why: {
         "Ingénierie et planification":
           "Défaillances au niveau de l’évaluation, de la planification ou de la surveillance pouvant être en rapport avec le caractère non approprié des données techniques, des critères de conception, de l’évaluation de changements ou de la mise en œuvre de contrôles.",
         Entretien:
@@ -184,8 +184,8 @@ export const frenchDashboard = {
         titles: {
           Status: "REC État",
           Year: "Année",
-          "What Happened": "Incident",
-          "Why It Happened": "Cause",
+          what: "Incident",
+          Why: "Cause",
         },
         click: "clique pour voir",
       },
@@ -248,7 +248,7 @@ export const frenchDashboard = {
           "Nouvelle-Écosse": cerPalette["Night Sky"],
           "Territoires du Nord-Ouest": cerPalette["hcLightBlue"],
         },
-        "Why It Happened": {
+        why: {
           "Normes et procédures": cerPalette["Flame"],
           "Outils et équipement": cerPalette["Forest"],
           Entretien: cerPalette["Night Sky"],
@@ -260,7 +260,7 @@ export const frenchDashboard = {
           "Supervision insuffisante": cerPalette["Dim Grey"],
           "Problème de communication": cerPalette["hcPink"],
         },
-        "What Happened": {
+        what: {
           "Corrosion et fissuration": cerPalette["Aubergine"],
           "Défectuosité et détérioration": cerPalette["Cool Grey"],
           "Défaillance d’équipement": cerPalette["Dim Grey"],

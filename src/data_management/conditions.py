@@ -143,6 +143,14 @@ def conditionMetaData(df, folder_name):
     project['In Progress'] = pd.to_numeric(project['In Progress'])
     # TOOD: replace nan with zero's in metadata, and cast all as int. This should reduce file size
     project = convert_to_int(project)
+    project['Regdocs'] = [int(x) for x in project['Regdocs']]
+    # optimize json size
+    project = project.rename(columns={"Short Project Name": "name"})
+    project['v'] = [[inProgress, closed, regdocs] for inProgress, closed, regdocs in zip(project['In Progress'],
+                                                                                         project['Closed'],
+                                                                                         project['Regdocs'])]
+    for delete in ['In Progress', 'Closed', 'Regdocs']:
+        del project[delete]
     project = project.to_dict(orient='records')
     meta['projects'] = project
 
@@ -155,8 +163,13 @@ def conditionMetaData(df, folder_name):
                            columns='Condition Status').reset_index()
     theme = addMissing(theme)
     theme = theme.sort_values(by=['In Progress', 'id'], ascending=False)
-    # theme = theme.replace({np.nan: None})
+    # optimize json size
     theme = convert_to_int(theme)
+    theme = theme.rename(columns={"Theme(s)": "t"})
+    theme["v"] = [[inProgress, closed] for inProgress, closed in zip(theme['In Progress'],
+                                                                     theme['Closed'])]
+    for delete in ['In Progress', 'Closed']:
+        del theme[delete]
     theme = theme.to_dict(orient='records')
     meta['themes'] = theme
 
@@ -398,8 +411,8 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # links = orca_regdocs_links(True)
-    # df, regions, mapMeta, meta = process_conditions(remote=True, lang='en', save=True)
-    df, regions, mapMeta, meta = process_conditions(remote=True, lang='fr', save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
     print('completed conditions!')
 
 #%%

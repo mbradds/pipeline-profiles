@@ -66,8 +66,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
     trendNav.makeBar("Substance", "substance-trend", "activated", false);
     trendNav.makeBar("Status", "status-trend", "deactivated", false);
-    trendNav.makeBar("What Happened", "what-trend", "deactivated", false);
-    trendNav.makeBar("Why It Happened", "why-trend", "deactivated", false);
+    trendNav.makeBar("what", "what-trend", "deactivated", false);
+    trendNav.makeBar("why", "why-trend", "deactivated", false);
     trendNav.makeBar("Province", "province-trend", "deactivated", false);
     trendNav.divEvents();
     timeSeries.createChart();

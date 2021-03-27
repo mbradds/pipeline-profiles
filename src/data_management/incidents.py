@@ -177,6 +177,18 @@ def process_english(df):
     return df
 
 
+def optimizeJson(df):
+    df = df.rename(columns={"Incident Number": "id",
+                            "Approximate Volume Released": "vol",
+                            "What Happened": "what",
+                            "Why It Happened": "why"})
+    df["lat long"] = [[round(lat,4), round(long,4)] for lat, long in zip(df['Latitude'],
+                                                       df['Longitude'])]
+    for delete in ['Latitude', 'Longitude']:
+        del df[delete]
+    return df
+
+
 def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False, lang='en'):
 
     if remote:
@@ -283,6 +295,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
             thisCompanyData['meta'] = meta
             del df_vol['Incident Types']
             del df_vol['Company']
+            df_vol = optimizeJson(df_vol)
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             if not test:
                 with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:

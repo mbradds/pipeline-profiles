@@ -139,7 +139,7 @@ export const englishDashboard = {
         "Initially Submitted":
           "The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
       },
-      "What Happened": {
+      what: {
         "Defect and Deterioration":
           "Defects in manufacturing processes or materials, or deterioration as a result of damage or service life limitations, lack of inspection or maintenance",
         "Corrosion and Cracking":
@@ -156,7 +156,7 @@ export const englishDashboard = {
           "All other causes or when an incident’s circumstances could not be determined",
         "To be determined": "The incident is under review",
       },
-      "Why It Happened": {
+      why: {
         "Engineering and Planning":
           "Failures of assessment, planning or monitoring that may be related to inadequate specifications or design criteria, evaluation of change, or implementation of controls",
         Maintenance:
@@ -185,7 +185,14 @@ export const englishDashboard = {
       cf: "cubic feet",
       decimal: ".",
       bbl: "bbl",
-      pillTitles: { titles: { Status: "CER Status" }, click: "click to view" },
+      pillTitles: {
+        titles: {
+          Status: "CER Status",
+          why: "Why It Happened",
+          what: "What Happened",
+        },
+        click: "click to view",
+      },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       countDisclaimer: (eventType, field) => {
@@ -245,7 +252,7 @@ export const englishDashboard = {
           "Nova Scotia": cerPalette["Night Sky"],
           "Northwest Territories": cerPalette["hcLightBlue"],
         },
-        "Why It Happened": {
+        "why": {
           "Standards and Procedures": cerPalette["Flame"],
           "Tools and Equipment": cerPalette["Forest"],
           Maintenance: cerPalette["Night Sky"],
@@ -257,7 +264,7 @@ export const englishDashboard = {
           "Inadequate Supervision": cerPalette["Dim Grey"],
           "Failure in communication": cerPalette["hcPink"],
         },
-        "What Happened": {
+        "what": {
           "Corrosion and Cracking": cerPalette["Aubergine"],
           "Defect and Deterioration": cerPalette["Cool Grey"],
           "Equipment Failure": cerPalette["Dim Grey"],
