@@ -937,12 +937,23 @@ export class EventTrend extends EventMap {
     let seriesCounter = yField(this.ONETOMANY[field]);
     let [series, uniqueYears] = seriesCounter(data);
     let seriesList = [];
-    let dummySeries = {}; //makes sure that the x axis is in order
-    dummySeries.data = uniqueYears.map((y) => {
-      return { name: y.toString(), y: undefined };
+    let dummySeries = { name: "dummy", showInLegend: false }; //makes sure that the x axis is in order
+    let dummyData = [];
+    uniqueYears.map((y, index) => {
+      if (
+        y + 1 !== uniqueYears[index + 1] &&
+        index !== uniqueYears.length - 1
+      ) {
+        let firstYear = y;
+        let lastYear = uniqueYears[index + 1] - 1;
+        for (var i = firstYear; i <= lastYear; i++) {
+          dummyData.push({ name: i.toString(), y: undefined });
+        }
+      } else {
+        dummyData.push({ name: y.toString(), y: undefined });
+      }
     });
-    dummySeries.name = "dummy";
-    dummySeries.showInLegend = false;
+    dummySeries.data = dummyData;
     seriesList.push(dummySeries);
 
     for (const [seriesName, seriesData] of Object.entries(series)) {
