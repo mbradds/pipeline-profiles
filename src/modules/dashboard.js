@@ -101,24 +101,43 @@ export class EventMap {
     }
   }
 
-  addMapDisclaimer() {
-    if (!this.mapDisclaimer) {
-      var info = L.control();
-      var text = this.lang.volumeDisclaimer;
-      info.onAdd = function (map) {
-        this._div = L.DomUtil.create("div", "map-disclaimer");
-        this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
-        return this._div;
-      };
-      info.addTo(this.map);
-      this.mapDisclaimer = info;
+  addMapDisclaimer(type = "volume") {
+    if (type == "volume") {
+      if (!this.mapVolumeDisclaimer) {
+        var info = L.control();
+        var text = this.lang.volumeDisclaimer;
+        info.onAdd = function (map) {
+          this._div = L.DomUtil.create("div", "map-disclaimer");
+          this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
+          return this._div;
+        };
+        info.addTo(this.map);
+        this.mapVolumeDisclaimer = info;
+      }
+    } else if (type == "location") {
+      if (!this.mapLocationDisclaimer) {
+        var info = L.control({ position: "bottomleft" });
+        var text = this.lang.locationDisclaimer;
+        info.onAdd = function (map) {
+          this._div = L.DomUtil.create("div", "map-disclaimer");
+          this._div.innerHTML = `<div class="alert alert-info" style="padding:3px;"><p><strong>${text}<strong></p></div>`;
+          return this._div;
+        };
+        info.addTo(this.map);
+        this.mapLocationDisclaimer = info;
+      }
     }
   }
 
-  removeMapDisclaimer() {
-    if (this.mapDisclaimer) {
-      this.mapDisclaimer.remove();
-      this.mapDisclaimer = undefined;
+  removeMapDisclaimer(type = "volume") {
+    if (type == "volume") {
+      var currentDisclaimer = this.mapVolumeDisclaimer;
+    } else if (type == "location") {
+      var currentDisclaimer = this.mapLocationDisclaimer;
+    }
+    if (currentDisclaimer) {
+      currentDisclaimer.remove();
+      currentDisclaimer = undefined;
     }
   }
 
@@ -300,18 +319,14 @@ export class EventMap {
           resolve(currentDashboard);
         })
         .on("locationerror", function (e) {
-          reject(currentDashboard);
+          reject(console.log("locationerror in findUser method"));
         });
     });
   }
 
   async waitOnUser() {
-    try {
-      return await this.findUser();
-    } catch (err) {
-      var incidentFlag = document.getElementById("nearby-flag");
-      incidentFlag.innerHTML = `<section class="alert alert-warning">${this.lang.locationError}</section>`;
-    }
+    // this promise is handled one level above in ../indidents/incidentDashboard.js
+    return await this.findUser();
   }
 
   nearbyIncidents(range) {

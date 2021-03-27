@@ -195,6 +195,7 @@ export const englishDashboard = {
       },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
+      locationDisclaimer: "Waiting for your location...",
       countDisclaimer: (eventType, field) => {
         return `<p>${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.</p>`;
       },
@@ -252,7 +253,7 @@ export const englishDashboard = {
           "Nova Scotia": cerPalette["Night Sky"],
           "Northwest Territories": cerPalette["hcLightBlue"],
         },
-        "why": {
+        why: {
           "Standards and Procedures": cerPalette["Flame"],
           "Tools and Equipment": cerPalette["Forest"],
           Maintenance: cerPalette["Night Sky"],
@@ -264,7 +265,7 @@ export const englishDashboard = {
           "Inadequate Supervision": cerPalette["Dim Grey"],
           "Failure in communication": cerPalette["hcPink"],
         },
-        "what": {
+        what: {
           "Corrosion and Cracking": cerPalette["Aubergine"],
           "Defect and Deterioration": cerPalette["Cool Grey"],
           "Equipment Failure": cerPalette["Dim Grey"],

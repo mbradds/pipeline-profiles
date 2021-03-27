@@ -191,6 +191,7 @@ export const frenchDashboard = {
       },
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
+      locationDisclaimer: "En attente de votre position...",
       countDisclaimer: (eventType, field) => {
         return `<p>Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.</p>`;
       },

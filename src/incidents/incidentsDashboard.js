@@ -104,9 +104,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
           bars.switchY(btnValue);
           thisMap.updateRadius();
           if (btnValue !== "frequency") {
-            thisMap.addMapDisclaimer();
+            thisMap.addMapDisclaimer("volume");
           } else {
-            thisMap.removeMapDisclaimer();
+            thisMap.removeMapDisclaimer("volume");
           }
         });
         if (incidentData.length == 1) {
@@ -157,15 +157,30 @@ export async function mainIncidents(incidentData, metaData, lang) {
         // user selects a range to find nearby incidents
         $("#find-incidents-btn").on("click", function () {
           var resetBtn = document.getElementById("reset-incidents-btn");
-          resetBtn.disabled = false;
-          resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
           let range = document.getElementById("find-incidents-btn").value;
           if (!thisMap.user.latitude && !thisMap.user.longitude) {
-            thisMap.waitOnUser().then((userAdded) => {
-              thisMap.nearbyIncidents(range);
-            });
+            var loadDisclaimer = setTimeout(function () {
+              thisMap.addMapDisclaimer("location");
+            }, 200);
+            thisMap
+              .waitOnUser()
+              .then((userAdded) => {
+                thisMap.nearbyIncidents(range);
+                clearTimeout(loadDisclaimer);
+                thisMap.removeMapDisclaimer("location");
+                resetBtn.disabled = false;
+                resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+              })
+              .catch((error) => {
+                var incidentFlag = document.getElementById("nearby-flag");
+                incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
+                clearTimeout(loadDisclaimer);
+                thisMap.removeMapDisclaimer("location");
+              });
           } else {
             thisMap.nearbyIncidents(range);
+            resetBtn.disabled = false;
+            resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
           }
         });
 
@@ -175,7 +190,6 @@ export async function mainIncidents(incidentData, metaData, lang) {
           var resetBtn = document.getElementById("reset-incidents-btn");
           resetBtn.disabled = true;
           resetBtn.className = "btn btn-default col-md-12";
-          //document.getElementById("reset-incidents-btn").disabled = true;
           document.getElementById("nearby-flag").innerHTML = ``;
         });
       } catch (err) {
