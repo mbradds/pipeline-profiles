@@ -1,5 +1,9 @@
 node_modules
-**/raw_data
+src/data_management/raw_data/*
+!src/data_management/raw_data/conditions_en.csv
+!src/data_management/raw_data/conditions_fr.csv
+!src/data_management/raw_data/incidents_en.csv
+!src/data_management/raw_data/incidents_fr.csv
 **/__pycache__
 **/.vscode
 *.twb
