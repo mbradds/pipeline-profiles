@@ -9,3 +9,4 @@ node_modules
 connection.py
 **.LICENSE.txt
 src/wtfiles
+dist/
