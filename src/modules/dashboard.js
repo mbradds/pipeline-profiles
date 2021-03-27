@@ -434,8 +434,9 @@ export class EventMap {
   lookForSize() {
     var currentDashboard = this;
     var resize = false;
-    $(window).on("resize", function () {
+    window.addEventListener("resize", function () {
       resize = true;
+      console.log("resize!");
     });
     $(".tab > .tablinks").on("click", function (e) {
       if (resize) {
