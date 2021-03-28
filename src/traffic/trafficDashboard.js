@@ -141,7 +141,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       s.id = s.name;
       if (unitsHolder.base !== unitsHolder.current) {
         s.data = s.data.map((row) => {
-          return [row[0], row[1] ? row[1] * unitsHolder.conversion : undefined];
+          return [row[0], row[1] ? row[1] * unitsHolder.conversion : null];
         });
       } else {
         s.data = s.data;
@@ -214,6 +214,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           stacking: "normal",
         },
         series: {
+          connectNulls: false,
           lineWidth: 3,
           marker: {
             enabled: false,
@@ -229,7 +230,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
   };
 
-  const hasImportsRedraw = (chart, btnValue, metaData) => {
+  const hasImportsRedraw = (chart, btnValue, metaData, units) => {
     chart.update(
       {
         title: {
@@ -238,7 +239,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         yAxis: [
           {
             title: {
-              text: `Exports (${metaData.units})`,
+              text: `Exports (${units})`,
             },
             height: "45%",
             min: 0,
@@ -247,7 +248,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           {
             visible: true,
             title: {
-              text: `Imports (${metaData.units})`,
+              text: `Imports (${units})`,
             },
             top: "50%",
             height: "45%",
@@ -257,9 +258,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
           },
         ],
       },
+      false,
+      false,
       false
     );
-    chart.redraw();
+    chart.redraw(false);
     var maxY = Math.max(chart.yAxis[0].max, chart.yAxis[1].max);
     chart.update(
       {
@@ -272,6 +275,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
           },
         ],
       },
+      false,
+      false,
       false
     );
     return chart;
@@ -333,43 +338,22 @@ export async function mainTraffic(trafficData, metaData, lang) {
         setTitle(defaultPoint, metaData.directions[defaultPoint]),
         unitsHolder.current
       );
+      var hasImports = false;
       if (defaultPoint == "St. Stephen") {
         ["traffic-points-btn", "key-point-title"].map((hideDiv) => {
           document.getElementById(hideDiv).style.display = "none";
         });
-        hasImportsRedraw(chart, defaultPoint, metaData);
-        chart.redraw();
+        hasImports = true;
+        hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
+        chart.redraw(true);
       }
       lang.dynamicText(metaData, defaultPoint);
-
-      //user selects units
-      $("#select-units-radio input[name='trafficUnits']").click(function () {
-        var btnValue = $("input:radio[name=trafficUnits]:checked").val();
-        unitsHolder.current = btnValue;
-        chart.update(
-          {
-            series: addSeriesParams(trafficData[defaultPoint], unitsHolder),
-            yAxis: [
-              {
-                title: { text: unitsHolder.current },
-              },
-            ],
-            tooltip: {
-              formatter: function () {
-                return tooltipText(this, unitsHolder.current);
-              },
-            },
-          },
-          true,
-          false,
-          true
-        );
-      });
 
       // user selects key point
       $("#traffic-points-btn button").on("click", function () {
         $(".btn-point > .btn").removeClass("active");
         var thisBtn = $(this);
+        hasImports = false;
         thisBtn.addClass("active");
         defaultPoint = thisBtn.val();
         const newSeries = addSeriesParams(
@@ -391,7 +375,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
         });
 
-        let hasImports = false;
         newSeries.map((newS) => {
           if (currentIds.includes(newS.id)) {
             chart.get(newS.id).setData(newS.data, false, false, false);
@@ -403,7 +386,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
         });
         if (hasImports) {
-          hasImportsRedraw(chart, defaultPoint, metaData);
+          hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
         } else {
           chart.update(
             {
@@ -425,10 +408,37 @@ export async function mainTraffic(trafficData, metaData, lang) {
             false
           );
         }
-
         chart.redraw(true);
         pointMap.pointChange(defaultPoint);
         lang.dynamicText(metaData, defaultPoint);
+      });
+
+      //user selects units
+      $("#select-units-radio input[name='trafficUnits']").click(function () {
+        var btnValue = $("input:radio[name=trafficUnits]:checked").val();
+        unitsHolder.current = btnValue;
+        chart.update(
+          {
+            series: addSeriesParams(trafficData[defaultPoint], unitsHolder),
+            yAxis: [
+              {
+                title: { text: unitsHolder.current },
+              },
+            ],
+            tooltip: {
+              formatter: function () {
+                return tooltipText(this, unitsHolder.current);
+              },
+            },
+          },
+          true,
+          false,
+          false
+        );
+        if (hasImports) {
+          hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
+          chart.redraw(false);
+        }
       });
 
       // update map zoom

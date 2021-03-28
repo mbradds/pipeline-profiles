@@ -11,7 +11,7 @@ var profileWebpackConfig = (function () {
   const htmlFileNames = [
     ["ngtl", "natural-gas"],
     ["alliance", "natural-gas"],
-    // ["tcpl", "natural-gas"],
+    ["tcpl", "natural-gas"],
     // ["westcoast", "natural-gas"],
     // ["emera_brunswick", "natural-gas"],
     ["maritimes_northeast", "natural-gas"],
