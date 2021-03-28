@@ -184,7 +184,7 @@ def conversion(df, data):
     return df
 
 
-def process_throughput(test=False, sql=False, data='gas'):
+def process_throughput(test=False, sql=False, data='gas', companies=False):
 
     def pushTraffic(t, arr, date, rounding):
         if t == 0:
@@ -253,7 +253,8 @@ def process_throughput(test=False, sql=False, data='gas'):
                          'Express Pipeline Ltd.',
                          'Genesis Pipeline Canada Ltd.',
                          'Montreal Pipe Line Limited']
-        # company_files = ['TransCanada Keystone Pipeline GP Ltd.']
+    if companies:
+        company_files = companies
 
     for company in company_files:
         meta = {"companyName": company}
@@ -283,6 +284,7 @@ def process_throughput(test=False, sql=False, data='gas'):
                 traffic_types = {}
                 counter = 0
                 for date, t, c, trade in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity'], df_p['Trade Type']):
+                    t, c = float(t), float(c)
                     if trade in traffic_types:
                         traffic_types[trade] = pushTraffic(t, traffic_types[trade], date, rounding)
                     else:
@@ -309,40 +311,28 @@ def process_throughput(test=False, sql=False, data='gas'):
                         yAxis = 0
 
                     throughput_series.append({"name": tt,
-                                              "id": tt,
-                                              "type": "area",
-                                              "zIndex": 4,
                                               "yAxis": yAxis,
                                               "color": applyColors(tt),
                                               "data": data})
 
                 if len(pointImportCapacity) > 0:
                     throughput_series.append({"name": "Import Capacity",
-                                              "id": "Import Capacity",
-                                              "type": "line",
                                               "yAxis": 1,
-                                              "zIndex": 5,
                                               "color": "#FFBE4B",
                                               "data": pointImportCapacity})
                     throughput_series.append({"name": "Export Capacity",
-                                              "id": "Export Capacity",
-                                              "type": "line",
                                               "yAxis": 0,
-                                              "zIndex": 5,
                                               "color": "#FFBE4B",
                                               "data": pointCapacity})
                 else:
                     throughput_series.append({"name": "Capacity",
-                                              "id": "Capacity",
-                                              "type": "line",
                                               "yAxis": 0,
-                                              "zIndex": 5,
                                               "color": "#FFBE4B",
                                               "data": pointCapacity})
 
                 point_data[p] = throughput_series
 
-            meta["points"] = pointsList
+            # meta["points"] = pointsList # this has been moved to front end
             thisCompanyData["traffic"] = point_data
             thisCompanyData['meta'] = meta
             if not test:
@@ -364,5 +354,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, data='gas')
+    #traffic, df = process_throughput(test=False, sql=False, data='gas')
+    traffic, df = process_throughput(test=False, sql=False, data='oil', companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')

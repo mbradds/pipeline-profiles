@@ -1,6 +1,21 @@
 import { cerPalette, conversions, visibility } from "../modules/util.js";
 const haversine = require("haversine");
 
+function leafletBaseMap(config) {
+  var map = L.map(config.div, {
+    zoomSnap: config.zoomSnap,
+    zoomDelta: config.zoomDelta,
+    zoomControl: config.zoomControl,
+  }).setView(config.initZoomTo, config.initZoomLevel);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
+    foo: "bar",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  map.setMinZoom(config.minZoom);
+  return map;
+}
+
 export class EventMap {
   substanceState = {
     Propane: "gas",
@@ -46,17 +61,15 @@ export class EventMap {
   }
 
   addBaseMap() {
-    var map = L.map(this.leafletDiv, { zoomSnap: 0.5, zoomDelta: 0.5 }).setView(
-      this.initZoomTo,
-      5
-    );
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
-      foo: "bar",
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-    map.setMinZoom(4);
-    this.map = map;
+    this.map = leafletBaseMap({
+      div: this.leafletDiv,
+      zoomSnap: 0.5,
+      zoomDelta: 0.5,
+      zoomControl: true,
+      initZoomTo: this.initZoomTo,
+      initZoomLevel: 5,
+      minZoom: 4,
+    });
   }
 
   getState(substance) {
@@ -1137,6 +1150,117 @@ export class EventTrend extends EventMap {
           text: currentTrend.yAxisTitle(),
         },
       },
+    });
+  }
+}
+
+export class KeyPointMap {
+  colors = {
+    active: cerPalette["Sun"],
+    deactivated: cerPalette["Cool Grey"],
+  };
+  constructor({
+    points,
+    selected,
+    minRadius = undefined,
+    leafletDiv = "traffic-map",
+    initZoomTo = [60, -97],
+    padding = [30, 30],
+    lang = {},
+  }) {
+    this.points = points;
+    this.selected = selected;
+    this.minRadius = minRadius;
+    this.initZoomTo = initZoomTo;
+    this.padding = padding;
+    this.leafletDiv = leafletDiv;
+    this.lang = lang;
+    this.mapDisclaimer = undefined;
+  }
+
+  addBaseMap() {
+    var map = leafletBaseMap({
+      div: this.leafletDiv,
+      zoomSnap: 0.25,
+      zoomDelta: 0.25,
+      zoomControl: false,
+      initZoomTo: this.initZoomTo,
+      initZoomLevel: 5,
+      minZoom: 2.5,
+    });
+    map.scrollWheelZoom.disable();
+    this.map = map;
+  }
+
+  reZoom(zoomIn = true) {
+    let bounds = this.keyPoints.getBounds();
+    if (zoomIn) {
+      this.map.fitBounds(bounds, { padding: this.padding });
+    } else {
+      this.map.setView(this.initZoomTo, 2.5);
+    }
+  }
+
+  addCircle(x, y, color, fillColor, fillOpacity, r, name) {
+    return L.circle([x, y], {
+      color: color,
+      fillColor: fillColor,
+      fillOpacity: fillOpacity,
+      radius: this.minRadius,
+      volRadius: r,
+      weight: 1,
+      name: name,
+    }).bindTooltip(`<strong>${name}</strong>`);
+  }
+
+  addPoints() {
+    let allPoints = this.points.map((point) => {
+      if (point["Key Point"] == this.selected) {
+        var pointColor = this.colors.active;
+        var pointOpacity = 1;
+        var toFront = true;
+      } else {
+        var pointColor = this.colors.deactivated;
+        var pointOpacity = 0.5;
+        var toFront = false;
+      }
+      return this.addCircle(
+        point.Latitude,
+        point.Longitude,
+        "#42464B",
+        pointColor,
+        pointOpacity,
+        this.minRadius,
+        point["Key Point"],
+        toFront
+      );
+    });
+    this.keyPoints = L.featureGroup(allPoints).addTo(this.map);
+    const thisMap = this;
+    this.keyPoints.eachLayer(function (layer) {
+      if (layer.options.name == thisMap.selected) {
+        layer.bringToFront();
+      }
+    });
+    this.reZoom();
+  }
+
+  pointChange(newPoint) {
+    this.selected = newPoint;
+    const thisMap = this;
+    this.keyPoints.eachLayer(function (layer) {
+      if (layer.options.name == thisMap.selected) {
+        layer.setStyle({
+          fillColor: thisMap.colors.active,
+          fillOpacity: 1,
+        });
+        layer.bringToFront();
+      } else {
+        layer.setStyle({
+          fillColor: thisMap.colors.deactivated,
+          fillOpacity: 0.5,
+        });
+      }
     });
   }
 }

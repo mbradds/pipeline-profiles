@@ -1,118 +1,5 @@
-// import { trafficTrendTextEng } from "../modules/dynamicText.js";
-import { cerPalette } from "../modules/util.js";
-
-class KeyPointMap {
-  colors = {
-    active: cerPalette["Sun"],
-    deactivated: cerPalette["Cool Grey"],
-  };
-  constructor({
-    points,
-    selected,
-    minRadius = undefined,
-    leafletDiv = "traffic-map",
-    initZoomTo = [60, -97],
-    padding = [30, 30],
-    lang = {},
-  }) {
-    this.points = points;
-    this.selected = selected;
-    this.minRadius = minRadius;
-    this.initZoomTo = initZoomTo;
-    this.padding = padding;
-    this.leafletDiv = leafletDiv;
-    this.lang = lang;
-    this.mapDisclaimer = undefined;
-  }
-
-  addBaseMap() {
-    var map = L.map(this.leafletDiv, {
-      zoomSnap: 0.25,
-      zoomDelta: 0.25,
-      zoomControl: false,
-    }).setView(this.initZoomTo, 5);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
-      foo: "bar",
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-    map.setMinZoom(2.5);
-    map.scrollWheelZoom.disable();
-    this.map = map;
-  }
-
-  reZoom(zoomIn = true) {
-    let bounds = this.keyPoints.getBounds();
-    if (zoomIn) {
-      this.map.fitBounds(bounds, { padding: this.padding });
-    } else {
-      this.map.setView(this.initZoomTo, 2.5);
-    }
-  }
-
-  addCircle(x, y, color, fillColor, fillOpacity, r, name) {
-    return L.circle([x, y], {
-      color: color,
-      fillColor: fillColor,
-      fillOpacity: fillOpacity,
-      radius: this.minRadius,
-      volRadius: r,
-      weight: 1,
-      name: name,
-    }).bindTooltip(`<strong>${name}</strong>`);
-  }
-
-  addPoints() {
-    let allPoints = this.points.map((point) => {
-      if (point["Key Point"] == this.selected) {
-        var pointColor = this.colors.active;
-        var pointOpacity = 1;
-        var toFront = true;
-      } else {
-        var pointColor = this.colors.deactivated;
-        var pointOpacity = 0.5;
-        var toFront = false;
-      }
-      return this.addCircle(
-        point.Latitude,
-        point.Longitude,
-        "#42464B",
-        pointColor,
-        pointOpacity,
-        this.minRadius,
-        point["Key Point"],
-        toFront
-      );
-    });
-    this.keyPoints = L.featureGroup(allPoints).addTo(this.map);
-    const thisMap = this;
-    this.keyPoints.eachLayer(function (layer) {
-      if (layer.options.name == thisMap.selected) {
-        layer.bringToFront();
-      }
-    });
-    this.reZoom();
-  }
-
-  pointChange(newPoint) {
-    this.selected = newPoint;
-    const thisMap = this;
-    this.keyPoints.eachLayer(function (layer) {
-      if (layer.options.name == thisMap.selected) {
-        layer.setStyle({
-          fillColor: thisMap.colors.active,
-          fillOpacity: 1,
-        });
-        layer.bringToFront();
-      } else {
-        layer.setStyle({
-          fillColor: thisMap.colors.deactivated,
-          fillOpacity: 0.5,
-        });
-      }
-    });
-  }
-}
+import { cerPalette, conversions } from "../modules/util.js";
+import { KeyPointMap } from "../modules/dashboard.js";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   function addPointButtons(metaData, defaultSelect) {
@@ -130,13 +17,50 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
   }
 
+  function addUnits(defaultUnit) {
+    var buttonHTML = "";
+    const unitsHolder = { base: defaultUnit, current: defaultUnit };
+
+    const radioBtn = (unit, checked, i) => {
+      if (checked) {
+        var checkhtml = 'checked="checked"';
+      } else {
+        var checkhtml = " ";
+      }
+      return `<label for="units${i}" class="radio-inline">
+    <input id="units${i}" value="${unit}" type="radio"${checkhtml}name="trafficUnits" />
+    ${unit}</label>`;
+    };
+    if (defaultUnit == "Bcf/d") {
+      var secondUnit = "Million m3/d";
+      unitsHolder["conversion"] = conversions["Bcf/d to Million m3/d"];
+    } else if (defaultUnit == "Mb/d") {
+      var secondUnit = "Thousand m3/d";
+      unitsHolder["conversion"] = conversions["Mb/d to Thousand m3/d"];
+    }
+
+    [
+      [defaultUnit, true],
+      [secondUnit, false],
+    ].map((unit, i) => {
+      buttonHTML += radioBtn(unit[0], unit[1], i);
+    });
+    document.getElementById("select-units-radio").innerHTML = buttonHTML;
+
+    return unitsHolder;
+  }
+
   const setTitle = (point, tradeType) => {
     return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
   };
 
-  function tooltipText(event) {
-    const addRow = (p, unit, extraStyle = "") => {
-      return `<tr style="${extraStyle}"><th style="color:${p.color}">${p.series.name}:</th><th>&nbsp${p.y} ${unit}</th></tr>`;
+  function tooltipText(event, units) {
+    const rounding = 2;
+
+    const addRow = (p, unit, rounding, extraStyle = "") => {
+      return `<tr style="${extraStyle}"><th style="color:${p.color}">${
+        p.series.name
+      }:</th><th>&nbsp${p.y.toFixed(rounding)} ${unit}</th></tr>`;
     };
 
     const addTable = (section) => {
@@ -149,24 +73,26 @@ export async function mainTraffic(trafficData, metaData, lang) {
       if (section.traffic.length > 2) {
         toolText += addRow(
           {
-            color: cerPalette["Dim Grey"],
+            color: cerPalette["Cool Grey"],
             series: { name: "Total" },
-            y: total.toFixed(1),
+            y: total,
           },
-          "Bcf/d"
+          units,
+          rounding,
+          "border-top: 1px dashed grey"
         );
       }
       if (section.hasOwnProperty("capacity")) {
         toolText += section.capacity[0];
-        let utilization = ((total / section.capacity[1]) * 100).toFixed(1);
         toolText += addRow(
           {
             color: cerPalette["Cool Grey"],
             series: { name: "Utilization" },
-            y: utilization,
+            y: (total / section.capacity[1]) * 100,
           },
           "%",
-          "border-top: 1px dashed grey"
+          0,
+          "border-top: 1px solid grey"
         );
       }
 
@@ -179,21 +105,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
       other: { traffic: [] },
     };
     var hasImports = false;
-    var totalThroughput = 0;
     event.points.map((p) => {
       if (p.series.name == "import") {
         hasImports = true;
-        textHolder.imports.traffic.push([addRow(p, "Bcf/d"), p.y]);
+        textHolder.imports.traffic.push([addRow(p, units, rounding), p.y]);
       } else if (p.series.name == "Import Capacity") {
-        textHolder.imports.capacity = [addRow(p, "Bcf/d"), p.y];
+        textHolder.imports.capacity = [addRow(p, units, rounding), p.y];
       } else if (
         p.series.name == "Capacity" ||
         p.series.name == "Export Capacity"
       ) {
-        textHolder.other.capacity = [addRow(p, "Bcf/d"), p.y];
+        textHolder.other.capacity = [addRow(p, units, rounding), p.y];
       } else {
-        textHolder.other.traffic.push([addRow(p, " Bcf/d"), p.y]);
-        totalThroughput += p.y;
+        textHolder.other.traffic.push([addRow(p, units, rounding), p.y]);
       }
     });
 
@@ -208,55 +132,42 @@ export async function mainTraffic(trafficData, metaData, lang) {
     if (hasImports) {
       toolText += addTable(textHolder.imports);
     }
-
     return toolText;
   }
 
-  // function tooltipText(event) {
-  //   let toolText = `<i><strong>${Highcharts.dateFormat(
-  //     "%b, %Y",
-  //     event.x
-  //   )}</strong></i>`;
-  //   let throughTable = `<table style="margin-top:5px">`;
-  //   let totalThroughput = 0;
-  //   let throughcounter = 0;
-  //   let capacity = [];
-  //   let hasImports = false;
-  //   event.points.map((p) => {
-  //     if (p.series.name == "import") {
-  //       hasImports = true;
-  //     }
-  //     if (p.color !== "#FFBE4B") {
-  //       totalThroughput += p.y;
-  //       throughcounter += 1;
-  //       throughTable += `<tr><th style="color:${p.color}">${p.series.name}:</th><th>&nbsp${p.y} Bcf/d</th></tr>`;
-  //     } else {
-  //       //capacity = p.y;
-  //       capacity.push({ name: p.series.name, value: p.y });
-  //     }
-  //   });
-  //   if (throughcounter > 1 && !hasImports) {
-  //     throughTable += `<tr style="border-top: 1px dashed grey"><th>Total:</th><th>&nbsp${totalThroughput.toFixed(
-  //       2
-  //     )} Bcf/d</th></tr>`;
-  //   }
+  function addSeriesParams(series, unitsHolder) {
+    const newSeries = JSON.parse(JSON.stringify(series));
+    return newSeries.map((s) => {
+      s.id = s.name;
+      if (unitsHolder.base !== unitsHolder.current) {
+        s.data = s.data.map((row) => {
+          return [row[0], row[1] ? row[1] * unitsHolder.conversion : undefined];
+        });
+      } else {
+        s.data = s.data;
+      }
+      if (
+        s.name == "Capacity" ||
+        s.name == "Import Capacity" ||
+        s.name == "Export Capacity"
+      ) {
+        s.type = "line";
+        s.zIndex = 5;
+      } else {
+        s.type = "area";
+        s.zIndex = 4;
+      }
+      return s;
+    });
+  }
 
-  //   if (capacity.length !== 0) {
-  //     capacity.map((cap) => {
-  //       throughTable += `<tr style="border-bottom:1px solid grey"><th style="color:#FFBE4B">${
-  //         cap.name
-  //       }:</th><th>&nbsp${cap.value.toFixed(2)} Bcf/d</th></tr>`;
-  //       throughTable += `<tr><th>Utilization:</th><th>&nbsp${(
-  //         (totalThroughput / cap.value) *
-  //         100
-  //       ).toFixed(0)} %</th></tr>`;
-  //     });
-  //   }
-
-  //   throughTable += `</table>`;
-  //   toolText += throughTable;
-  //   return toolText;
-  // }
+  function getPointList(keyPoints) {
+    var pointList = [];
+    keyPoints.map((point) => {
+      pointList.push(point["Key Point"]);
+    });
+    return pointList.sort();
+  }
 
   const trafficChart = (series, title, units, div = "traffic-hc") => {
     return new Highcharts.chart(div, {
@@ -295,7 +206,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         backgroundColor: "white",
         useHTML: true,
         formatter: function () {
-          return tooltipText(this);
+          return tooltipText(this, units);
         },
       },
       plotOptions: {
@@ -304,6 +215,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
         },
         series: {
           lineWidth: 3,
+          marker: {
+            enabled: false,
+          },
           states: {
             inactive: {
               opacity: 1,
@@ -365,8 +279,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function buildDashboard() {
     try {
-      const defaultPoint = metaData.defaultPoint;
+      var defaultPoint = metaData.defaultPoint;
+      const unitsHolder = addUnits(metaData.units);
       var pointMap = undefined;
+      metaData.points = getPointList(metaData.keyPoints);
       if (defaultPoint !== "system") {
         if (metaData.points.length == 1) {
           // eg, Keystone
@@ -411,15 +327,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
         var element = document.getElementById("traffic-hc-column");
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
-      const firstTitle = setTitle(
-        defaultPoint,
-        metaData.directions[defaultPoint]
-      );
 
       const chart = trafficChart(
-        trafficData[defaultPoint],
-        firstTitle,
-        metaData.units
+        addSeriesParams(trafficData[defaultPoint], unitsHolder),
+        setTitle(defaultPoint, metaData.directions[defaultPoint]),
+        unitsHolder.current
       );
       if (defaultPoint == "St. Stephen") {
         ["traffic-points-btn", "key-point-title"].map((hideDiv) => {
@@ -430,16 +342,45 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
       lang.dynamicText(metaData, defaultPoint);
 
-      // update buttons
+      //user selects units
+      $("#select-units-radio input[name='trafficUnits']").click(function () {
+        var btnValue = $("input:radio[name=trafficUnits]:checked").val();
+        unitsHolder.current = btnValue;
+        chart.update(
+          {
+            series: addSeriesParams(trafficData[defaultPoint], unitsHolder),
+            yAxis: [
+              {
+                title: { text: unitsHolder.current },
+              },
+            ],
+            tooltip: {
+              formatter: function () {
+                return tooltipText(this, unitsHolder.current);
+              },
+            },
+          },
+          true,
+          false,
+          true
+        );
+      });
+
+      // user selects key point
       $("#traffic-points-btn button").on("click", function () {
         $(".btn-point > .btn").removeClass("active");
         var thisBtn = $(this);
         thisBtn.addClass("active");
-        var btnValue = thisBtn.val();
-        const newSeries = trafficData[btnValue];
+        defaultPoint = thisBtn.val();
+        const newSeries = addSeriesParams(
+          trafficData[defaultPoint],
+          unitsHolder
+        );
+
         var currentIds = chart.series.map((s) => {
           return s.userOptions.id;
         });
+
         var newIds = newSeries.map((s) => {
           return s.id;
         });
@@ -449,6 +390,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             chart.get(id).remove(false);
           }
         });
+
         let hasImports = false;
         newSeries.map((newS) => {
           if (currentIds.includes(newS.id)) {
@@ -461,17 +403,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
         });
         if (hasImports) {
-          hasImportsRedraw(chart, btnValue, metaData);
+          hasImportsRedraw(chart, defaultPoint, metaData);
         } else {
           chart.update(
             {
               title: {
-                text: setTitle(btnValue, metaData.directions[btnValue]),
+                text: setTitle(defaultPoint, metaData.directions[defaultPoint]),
               },
               yAxis: [
                 {
                   title: {
-                    text: metaData.units,
+                    text: unitsHolder.current,
                   },
                   height: "100%",
                   min: 0,
@@ -483,13 +425,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
             false
           );
         }
-        if (hasImports) {
-          undefined;
-        }
 
         chart.redraw(true);
-        pointMap.pointChange(btnValue);
-        lang.dynamicText(metaData, btnValue);
+        pointMap.pointChange(defaultPoint);
+        lang.dynamicText(metaData, defaultPoint);
       });
 
       // update map zoom

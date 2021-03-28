@@ -10,16 +10,16 @@ var profileWebpackConfig = (function () {
 
   const htmlFileNames = [
     ["ngtl", "natural-gas"],
-    // ["alliance", "natural-gas"],
+    ["alliance", "natural-gas"],
     // ["tcpl", "natural-gas"],
     // ["westcoast", "natural-gas"],
     // ["emera_brunswick", "natural-gas"],
-    // ["maritimes_northeast", "natural-gas"],
+    ["maritimes_northeast", "natural-gas"],
     // ["many_islands", "natural-gas"],
     // ["tqm", "natural-gas"],
     // ["vector", "natural-gas"],
     // ["foothills", "natural-gas"],
-    // ["enbridge_mainline", "oil-and-liquids"],
+    ["enbridge_mainline", "oil-and-liquids"],
     // ["keystone", "oil-and-liquids"],
     // ["trans_mountain", "oil-and-liquids"],
     // ["cochin", "oil-and-liquids"],
@@ -71,6 +71,7 @@ var profileWebpackConfig = (function () {
     language.map((lang) => {
       sections.map((section) => {
         htmlFileNames.map((name) => {
+          // mode: "development",
           if (["aurora", "milk_river", "wascana"].includes(name[0])) {
             var folderName = "plains";
           } else {
@@ -99,8 +100,8 @@ var profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  // mode: "development",
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -130,7 +131,7 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
-    //new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
