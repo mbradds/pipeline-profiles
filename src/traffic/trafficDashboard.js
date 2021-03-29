@@ -4,17 +4,26 @@ import { KeyPointMap } from "../modules/dashboard.js";
 export async function mainTraffic(trafficData, metaData, lang) {
   function addPointButtons(metaData, defaultSelect) {
     let btnGroup = $("#traffic-points-btn");
-    metaData.points.map((point) => {
-      if (point == defaultSelect) {
+    if (defaultSelect !== "Burnaby") {
+      metaData.points.map((point) => {
+        if (point == defaultSelect) {
+          var checkTxt = " active";
+        } else {
+          var checkTxt = "";
+        }
         btnGroup.append(
-          `<div class="btn-group btn-point"><button type="button" value="${point}" class="btn btn-default active">${point}</button></div>`
+          `<div class="btn-group btn-point"><button type="button" value="${point}" class="btn btn-default${checkTxt}">${point}</button></div>`
         );
-      } else {
+      });
+    } else {
+      metaData.points.map((point, i) => {
         btnGroup.append(
-          `<div class="btn-group btn-point"><button type="button" value="${point}" class="btn btn-default">${point}</button></div>`
+          `<div class="checkbox-inline">
+          <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point}">${point}</label>
+       </div>`
         );
-      }
-    });
+      });
+    }
   }
 
   function addUnits(defaultUnit) {
@@ -70,7 +79,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         toolText += row[0];
         total += row[1];
       });
-      if (section.traffic.length > 2) {
+      if (section.traffic.length >= 2) {
         toolText += addRow(
           {
             color: cerPalette["Cool Grey"],
@@ -135,7 +144,38 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return toolText;
   }
 
+  const createFirstSeries = (trafficData, defaultPoint, includeList = []) => {
+    var firstSeries = [];
+    var capAdded = false;
+    if (defaultPoint == "Burnaby") {
+      for (const [key, keyData] of Object.entries(trafficData)) {
+        if (includeList.includes(key)) {
+          keyData.map((data) => {
+            if (data.name == "Capacity" && !capAdded) {
+              capAdded = true;
+              firstSeries.push(data);
+            } else if (data.name !== "Capacity") {
+              data.name = data.name + "-" + key;
+              firstSeries.push(data);
+            }
+          });
+        }
+      }
+    } else {
+      firstSeries = trafficData[defaultPoint];
+    }
+    return firstSeries;
+  };
+
   function addSeriesParams(series, unitsHolder) {
+    function compareStrings(a, b) {
+      a = a.toLowerCase();
+      b = b.toLowerCase();
+      return a < b ? -1 : a > b ? 1 : 0;
+    }
+    series.sort(function (a, b) {
+      return compareStrings(a.name, b.name);
+    });
     const newSeries = JSON.parse(JSON.stringify(series));
     return newSeries.map((s) => {
       s.id = s.name;
@@ -333,8 +373,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
+      const firstSeries = createFirstSeries(
+        trafficData,
+        defaultPoint,
+        metaData.points
+      );
+
       const chart = trafficChart(
-        addSeriesParams(trafficData[defaultPoint], unitsHolder),
+        addSeriesParams(firstSeries, unitsHolder),
         setTitle(defaultPoint, metaData.directions[defaultPoint]),
         unitsHolder.current
       );
@@ -350,68 +396,152 @@ export async function mainTraffic(trafficData, metaData, lang) {
       lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
 
       // user selects key point
-      $("#traffic-points-btn button").on("click", function () {
-        $(".btn-point > .btn").removeClass("active");
-        var thisBtn = $(this);
-        hasImports = false;
-        thisBtn.addClass("active");
-        defaultPoint = thisBtn.val();
-        const newSeries = addSeriesParams(
-          trafficData[defaultPoint],
-          unitsHolder
-        );
-
-        var currentIds = chart.series.map((s) => {
-          return s.userOptions.id;
-        });
-
-        var newIds = newSeries.map((s) => {
-          return s.id;
-        });
-
-        currentIds.map((id) => {
-          if (!newIds.includes(id)) {
-            chart.get(id).remove(false);
-          }
-        });
-
-        newSeries.map((newS) => {
-          if (currentIds.includes(newS.id)) {
-            chart.get(newS.id).setData(newS.data, false, false, false);
-          } else {
-            chart.addSeries(newS, false, true);
-          }
-          if (newS.name == "import") {
-            hasImports = true;
-          }
-        });
-        if (hasImports) {
-          hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
-        } else {
-          chart.update(
-            {
-              title: {
-                text: setTitle(defaultPoint, metaData.directions[defaultPoint]),
-              },
-              yAxis: [
-                {
-                  title: {
-                    text: unitsHolder.current,
-                  },
-                  height: "100%",
-                  min: 0,
-                  max: undefined,
-                },
-                { visible: false },
-              ],
-            },
-            false
+      if (defaultPoint !== "Burnaby") {
+        $("#traffic-points-btn button").on("click", function () {
+          $(".btn-point > .btn").removeClass("active");
+          var thisBtn = $(this);
+          hasImports = false;
+          thisBtn.addClass("active");
+          defaultPoint = thisBtn.val();
+          const newSeries = addSeriesParams(
+            trafficData[defaultPoint],
+            unitsHolder
           );
-        }
-        chart.redraw(true);
-        pointMap.pointChange(defaultPoint);
-        lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
-      });
+
+          var currentIds = chart.series.map((s) => {
+            return s.userOptions.id;
+          });
+
+          var newIds = newSeries.map((s) => {
+            return s.id;
+          });
+
+          currentIds.map((id) => {
+            if (!newIds.includes(id)) {
+              chart.get(id).remove(false);
+            }
+          });
+
+          newSeries.map((newS) => {
+            if (currentIds.includes(newS.id)) {
+              chart.get(newS.id).setData(newS.data, false, false, false);
+            } else {
+              chart.addSeries(newS, false, true);
+            }
+            if (newS.name == "import") {
+              hasImports = true;
+            }
+          });
+          if (hasImports) {
+            hasImportsRedraw(
+              chart,
+              defaultPoint,
+              metaData,
+              unitsHolder.current
+            );
+          } else {
+            chart.update(
+              {
+                title: {
+                  text: setTitle(
+                    defaultPoint,
+                    metaData.directions[defaultPoint]
+                  ),
+                },
+                yAxis: [
+                  {
+                    title: {
+                      text: unitsHolder.current,
+                    },
+                    height: "100%",
+                    min: 0,
+                    max: undefined,
+                  },
+                  { visible: false },
+                ],
+              },
+              false
+            );
+          }
+          chart.redraw(true);
+          pointMap.pointChange(defaultPoint);
+          lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
+        });
+      } else {
+        $("#traffic-points-btn input[type=checkbox]").on("change", function () {
+          if ($(this).is(":checked")) {
+            var checked = $(this).val();
+            metaData.points.push(checked);
+          } else {
+            var unChecked = $(this).val();
+            metaData.points = metaData.points.filter(
+              (point) => point !== unChecked
+            );
+          }
+          console.log(defaultPoint, metaData.points);
+          const newSeries = addSeriesParams(
+            createFirstSeries(trafficData, defaultPoint, metaData.points),
+            unitsHolder
+          );
+          console.log(newSeries);
+          var currentIds = chart.series.map((s) => {
+            return s.userOptions.id;
+          });
+
+          var newIds = newSeries.map((s) => {
+            return s.id;
+          });
+
+          currentIds.map((id) => {
+            if (!newIds.includes(id)) {
+              chart.get(id).remove(false);
+            }
+          });
+
+          newSeries.map((newS) => {
+            if (currentIds.includes(newS.id)) {
+              chart.get(newS.id).setData(newS.data, false, false, false);
+            } else {
+              chart.addSeries(newS, false, true);
+            }
+            if (newS.name == "import") {
+              hasImports = true;
+            }
+          });
+          if (hasImports) {
+            hasImportsRedraw(
+              chart,
+              defaultPoint,
+              metaData,
+              unitsHolder.current
+            );
+          } else {
+            chart.update(
+              {
+                title: {
+                  text: setTitle(
+                    defaultPoint,
+                    metaData.directions[defaultPoint]
+                  ),
+                },
+                yAxis: [
+                  {
+                    title: {
+                      text: unitsHolder.current,
+                    },
+                    height: "100%",
+                    min: 0,
+                    max: undefined,
+                  },
+                  { visible: false },
+                ],
+              },
+              false
+            );
+          }
+          chart.redraw(true);
+        });
+      }
 
       //user selects units
       $("#select-units-radio input[name='trafficUnits']").click(function () {

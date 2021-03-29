@@ -82,7 +82,7 @@ def meta_throughput(df_c, meta, data):
     df_meta = df_meta.sort_values(by=['Key Point', 'Trade Type'])
     df_meta = df_meta.groupby(['Key Point']).agg(direction=("Direction of Flow", set),
                                                  trade=("Trade Type", set))
-    # df_meta = df_meta.groupby(['Key Point'])['Direction of Flow', 'Trade Type'].agg(lambda col: ' & '.join(col))
+
     df_meta = df_meta.reset_index()
     for col in ['direction', 'trade']:
         df_meta[col] = [" & ".join(list(x)) for x in df_meta[col]]
@@ -102,7 +102,6 @@ def getRounding(point):
         rounding = 4
     else:
         rounding = 2
-
     return rounding
 
 
@@ -242,7 +241,6 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
 
     df['Date'] = pd.to_datetime(df['Date'])
     df = serialize(df, 'Date')
-
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
     df = fixCorporateEntity(df)
     df = fixKeyPoint(df)
@@ -374,6 +372,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', companies=['Westcoast Energy Inc.'])
-    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    # traffic, df = process_throughput(test=False, sql=False, commodity='gas')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Trans Mountain Pipeline ULC'])
     print('completed throughput!')
