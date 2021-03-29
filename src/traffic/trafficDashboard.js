@@ -59,8 +59,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return unitsHolder;
   }
 
-  const setTitle = (point, tradeType) => {
-    return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+  const setTitle = (point, tradeType, tm = false) => {
+    if (!tm) {
+      return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+    } else {
+      return `${point.join("-")} monthly traffic`;
+    }
   };
 
   function tooltipText(event, units) {
@@ -148,7 +152,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
     var firstSeries = [];
     var capAdded = false;
     if (defaultPoint == "Burnaby") {
-      for (const [key, keyData] of Object.entries(trafficData)) {
+      for (const [key, keyData] of Object.entries(
+        JSON.parse(JSON.stringify(trafficData))
+      )) {
         if (includeList.includes(key)) {
           keyData.map((data) => {
             if (data.name == "Capacity" && !capAdded) {
@@ -167,12 +173,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return firstSeries;
   };
 
+  function compareStrings(a, b) {
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+    return a < b ? -1 : a > b ? 1 : 0;
+  }
+
   function addSeriesParams(series, unitsHolder) {
-    function compareStrings(a, b) {
-      a = a.toLowerCase();
-      b = b.toLowerCase();
-      return a < b ? -1 : a > b ? 1 : 0;
-    }
     series.sort(function (a, b) {
       return compareStrings(a.name, b.name);
     });
@@ -193,9 +200,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
       ) {
         s.type = "line";
         s.zIndex = 5;
+        s.lineWidth = 3;
       } else {
         s.type = "area";
         s.zIndex = 4;
+        s.lineWidth = 1;
       }
       return s;
     });
@@ -255,7 +264,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         },
         series: {
           connectNulls: false,
-          lineWidth: 3,
           marker: {
             enabled: false,
           },
@@ -325,6 +333,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function buildDashboard() {
     try {
       var defaultPoint = metaData.defaultPoint;
+      if (defaultPoint == "Burnaby") {
+        var tm = true;
+      } else {
+        var tm = false;
+      }
       const unitsHolder = addUnits(metaData.units);
       var pointMap = undefined;
       metaData.points = getPointList(metaData.keyPoints);
@@ -381,7 +394,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
       const chart = trafficChart(
         addSeriesParams(firstSeries, unitsHolder),
-        setTitle(defaultPoint, metaData.directions[defaultPoint]),
+        !tm
+          ? setTitle(defaultPoint, metaData.directions[defaultPoint])
+          : setTitle(metaData.points, undefined, tm),
         unitsHolder.current
       );
       var hasImports = false;
@@ -396,7 +411,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
 
       // user selects key point
-      if (defaultPoint !== "Burnaby") {
+      if (!tm) {
         $("#traffic-points-btn button").on("click", function () {
           $(".btn-point > .btn").removeClass("active");
           var thisBtn = $(this);
@@ -478,67 +493,24 @@ export async function mainTraffic(trafficData, metaData, lang) {
               (point) => point !== unChecked
             );
           }
-          console.log(defaultPoint, metaData.points);
           const newSeries = addSeriesParams(
             createFirstSeries(trafficData, defaultPoint, metaData.points),
             unitsHolder
           );
-          console.log(newSeries);
-          var currentIds = chart.series.map((s) => {
-            return s.userOptions.id;
-          });
-
-          var newIds = newSeries.map((s) => {
-            return s.id;
-          });
-
-          currentIds.map((id) => {
-            if (!newIds.includes(id)) {
-              chart.get(id).remove(false);
-            }
-          });
-
-          newSeries.map((newS) => {
-            if (currentIds.includes(newS.id)) {
-              chart.get(newS.id).setData(newS.data, false, false, false);
-            } else {
-              chart.addSeries(newS, false, true);
-            }
-            if (newS.name == "import") {
-              hasImports = true;
-            }
-          });
-          if (hasImports) {
-            hasImportsRedraw(
-              chart,
-              defaultPoint,
-              metaData,
-              unitsHolder.current
-            );
-          } else {
-            chart.update(
-              {
-                title: {
-                  text: setTitle(
-                    defaultPoint,
-                    metaData.directions[defaultPoint]
-                  ),
-                },
-                yAxis: [
-                  {
-                    title: {
-                      text: unitsHolder.current,
-                    },
-                    height: "100%",
-                    min: 0,
-                    max: undefined,
-                  },
-                  { visible: false },
-                ],
-              },
-              false
-            );
+          while (chart.series.length) {
+            chart.series[0].remove(false, false, false);
           }
+          newSeries.map((newS) => {
+            chart.addSeries(newS, false, false);
+          });
+          chart.update(
+            {
+              title: {
+                text: setTitle(metaData.points, undefined, tm),
+              },
+            },
+            false
+          );
           chart.redraw(true);
         });
       }
@@ -548,7 +520,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
         unitsHolder.current = $("input:radio[name=trafficUnits]:checked").val();
         chart.update(
           {
-            series: addSeriesParams(trafficData[defaultPoint], unitsHolder),
+            series: addSeriesParams(
+              !tm
+                ? createFirstSeries(trafficData, defaultPoint)
+                : createFirstSeries(trafficData, defaultPoint, metaData.points),
+              unitsHolder
+            ),
             yAxis: [
               {
                 title: { text: unitsHolder.current },
