@@ -69,6 +69,7 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
         df = normalize_text(df, ['Key Point', 'Corporate Entity'])
         df = normalize_numeric(df, ['Latitude', 'Longitude'], 3)
         df = fixCorporateEntity(df)
+        df = df[df['Key Point'] != "FortisBC Lower Mainland"]
 
     return df
 
@@ -97,7 +98,7 @@ def meta_throughput(df_c, meta, data):
 
 
 def getRounding(point):
-    if point in ['Kingsvale', 'NOVA/Gordondale']:
+    if point in ['Kingsvale', 'NOVA/Gordondale', 'St. Stephen']:
         rounding = 4
     else:
         rounding = 2
@@ -105,24 +106,22 @@ def getRounding(point):
     return rounding
 
 
-def meta_trend(df_c):
+def meta_trend(df_c, commodity):
 
     def group_trends(df):
         df = df.groupby(['Date', 'Corporate Entity', 'Key Point']).agg({'Capacity': 'mean', 'Throughput': 'sum'})
         df = df.reset_index()
         return df
 
-    metaTrends = {}
-    for point in list(set(df_c['Key Point'])):
-        rounding = getRounding(point)
-        metaTrends[point] = {}
-        df_t = df_c.copy()
-        del df_t['Json Date']
-        dfp = df_t[df_t['Key Point'] == point].copy().reset_index(drop=True)
+    def calculate_trend(dfp, metaTrends, point, trendName, commodity):
         dfp = dfp.sort_values(by='Date', ascending=True)
         dfp = dfp.set_index('Date')
         dfp = dfp.groupby(['Corporate Entity', 'Key Point', 'Direction of Flow', 'Trade Type']).resample('Q', convention='end').agg('mean').reset_index()
-        dfp = dfp[dfp['Date'] >= max(dfp['Date']) - dateutil.relativedelta.relativedelta(months=12)].reset_index(drop=True)
+        if commodity == "gas":
+            dfp = dfp[dfp['Date'] >= max(dfp['Date']) - dateutil.relativedelta.relativedelta(months=12)].copy().reset_index(drop=True)
+        else:
+            dfp = dfp[dfp['Date'] >= max(dfp['Date']) - dateutil.relativedelta.relativedelta(months=3)].copy().reset_index(drop=True)
+
         df_old = dfp[dfp['Date'] == min(dfp['Date'])].copy().reset_index(drop=True)
         df_new = dfp[dfp['Date'] == max(dfp['Date'])].copy().reset_index(drop=True)
 
@@ -131,11 +130,34 @@ def meta_trend(df_c):
         newThrough, newCap, newDate = df_new.loc[0, "Throughput"], df_new.loc[0, "Capacity"], df_new.loc[0, "Date"]
         oldThrough, oldCap, oldDate = df_old.loc[0, "Throughput"], df_old.loc[0, "Capacity"], df_old.loc[0, "Date"]
 
-        metaTrends[point]["throughChange"] = {"pct": int(round((newThrough-oldThrough)/abs(oldThrough)*100, 0)),
-                                              "from": round(oldThrough, rounding),
-                                              "to": round(newThrough, rounding)}
-        metaTrends[point]["fromDate"] = [oldDate.year, oldDate.month]
-        metaTrends[point]["toDate"] = [newDate.year, newDate.month]
+        thisTrend = {}
+        try:
+            thisTrend["throughChange"] = {"pct": int(round((newThrough-oldThrough)/abs(oldThrough)*100, 0)),
+                                                  "from": round(oldThrough, rounding),
+                                                  "to": round(newThrough, rounding)}
+        except:
+            thisTrend["throughChange"] = {"pct": 0, "from": 0, "to": 0}
+
+        thisTrend["fromDate"] = [oldDate.year, oldDate.month]
+        thisTrend["toDate"] = [newDate.year, newDate.month]
+        thisTrend["name"] = trendName
+        metaTrends[point].append(thisTrend)
+        return metaTrends
+
+    metaTrends = {}
+    for point in list(set(df_c['Key Point'])):
+        rounding = getRounding(point)
+        df_t = df_c.copy()
+        del df_t['Json Date']
+        dfp = df_t[df_t['Key Point'] == point].copy().reset_index(drop=True)
+        metaTrends[point] = []
+        if "import" in list(dfp['Trade Type']):
+            dfImport = dfp[dfp['Trade Type'] == "import"].copy()
+            dfOther = dfp[dfp['Trade Type'] != "import"].copy()
+            metaTrends = calculate_trend(dfOther, metaTrends, point, "export", commodity)
+            metaTrends = calculate_trend(dfImport, metaTrends, point, "import", commodity)
+        else:
+            metaTrends = calculate_trend(dfp, metaTrends, point, "default", commodity)
     return metaTrends
 
 
@@ -184,7 +206,7 @@ def conversion(df, data):
     return df
 
 
-def process_throughput(test=False, sql=False, data='gas', companies=False):
+def process_throughput(test=False, sql=False, commodity='gas', companies=False):
 
     def pushTraffic(t, arr, date, rounding):
         if t == 0:
@@ -197,10 +219,10 @@ def process_throughput(test=False, sql=False, data='gas', companies=False):
         os.mkdir("../traffic")
         os.mkdir("../traffic/company_data")
 
-    if data == 'gas':
+    if commodity == 'gas':
         query = 'throughput_gas_monthly.sql'
         df = get_data(test, sql, query)
-        df = conversion(df, data)
+        df = conversion(df, commodity)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df = df.drop(df[(df['Key Point'] == "Saturn") & (df['Throughput'] == 0)].index)
@@ -210,13 +232,12 @@ def process_throughput(test=False, sql=False, data='gas', companies=False):
         df = get_data(test, sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
-        df = conversion(df, data)
+        df = conversion(df, commodity)
         df['Trade Type'] = [str(p).strip()+"-"+str(tt).strip() for p, tt in zip(df['Product'], df['Trade Type'])]
         del df['Product']
         units = "Mb/d"
-        # print(list(set(df['Trade Type'])))
 
-    print(list(set(df['Corporate Entity'])))
+    # print(list(set(df['Corporate Entity'])))
     points = get_data(False, sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
@@ -226,7 +247,7 @@ def process_throughput(test=False, sql=False, data='gas', companies=False):
     df = fixCorporateEntity(df)
     df = fixKeyPoint(df)
 
-    if data == 'gas':
+    if commodity == 'gas':
         company_files = ['NOVA Gas Transmission Ltd.',
                          'Westcoast Energy Inc.',
                          'TransCanada PipeLines Limited',
@@ -264,9 +285,9 @@ def process_throughput(test=False, sql=False, data='gas', companies=False):
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
-            trend = meta_trend(df_c)
+            trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
-            meta = meta_throughput(df_c, meta, data)
+            meta = meta_throughput(df_c, meta, commodity)
             thisKeyPoints = points[points['Corporate Entity'] == company].copy().reset_index(drop=True)
             del thisKeyPoints['Corporate Entity']
             meta['keyPoints'] = thisKeyPoints.to_dict(orient='records')
@@ -332,7 +353,6 @@ def process_throughput(test=False, sql=False, data='gas', companies=False):
 
                 point_data[p] = throughput_series
 
-            # meta["points"] = pointsList # this has been moved to front end
             thisCompanyData["traffic"] = point_data
             thisCompanyData['meta'] = meta
             if not test:
@@ -354,6 +374,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
-    #traffic, df = process_throughput(test=False, sql=False, data='gas')
-    traffic, df = process_throughput(test=False, sql=False, data='oil', companies=['Enbridge Pipelines Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', companies=['Westcoast Energy Inc.'])
+    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')

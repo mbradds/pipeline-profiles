@@ -347,7 +347,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
         chart.redraw(true);
       }
-      lang.dynamicText(metaData, defaultPoint);
+      lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
 
       // user selects key point
       $("#traffic-points-btn button").on("click", function () {
@@ -410,13 +410,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
         }
         chart.redraw(true);
         pointMap.pointChange(defaultPoint);
-        lang.dynamicText(metaData, defaultPoint);
+        lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
       });
 
       //user selects units
       $("#select-units-radio input[name='trafficUnits']").click(function () {
-        var btnValue = $("input:radio[name=trafficUnits]:checked").val();
-        unitsHolder.current = btnValue;
+        unitsHolder.current = $("input:radio[name=trafficUnits]:checked").val();
         chart.update(
           {
             series: addSeriesParams(trafficData[defaultPoint], unitsHolder),
@@ -444,10 +443,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
       // update map zoom
       $("#key-point-zoom-btn button").on("click", function () {
         $(".btn-map > .btn").removeClass("active");
-        var thisBtn = $(this);
-        thisBtn.addClass("active");
-        var btnValue = thisBtn.val();
-        if (btnValue == "zoom-in") {
+        var inOutBtn = $(this);
+        inOutBtn.addClass("active");
+        var zoomResponse = inOutBtn.val();
+        if (zoomResponse == "zoom-in") {
           pointMap.reZoom(true);
         } else {
           pointMap.reZoom(false);

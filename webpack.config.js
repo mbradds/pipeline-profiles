@@ -12,7 +12,7 @@ var profileWebpackConfig = (function () {
     ["ngtl", "natural-gas"],
     ["alliance", "natural-gas"],
     ["tcpl", "natural-gas"],
-    // ["westcoast", "natural-gas"],
+    ["westcoast", "natural-gas"],
     // ["emera_brunswick", "natural-gas"],
     ["maritimes_northeast", "natural-gas"],
     // ["many_islands", "natural-gas"],
@@ -100,8 +100,8 @@ var profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  mode: "development",
-  // mode: "production",
+  // mode: "development",
+  mode: "production",
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),

@@ -121,40 +121,58 @@ export const incidentsTextFra = (id, meta) => {
   paragraph.innerHTML = paragraphText;
 };
 
-export function trafficTrendTextEng(metaData, defaultPoint) {
+export function trafficTrendTextEng(metaData, defaultPoint, units) {
   const thisTrend = metaData.trendText[defaultPoint];
   var trendBox = document.getElementById("traffic-trends");
-  var trendText = `<p>`;
-  trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
-    defaultPoint
-  )} key point have ${changeText(
-    thisTrend.throughChange.pct
-  )}, from an average of ${thisTrend.throughChange.from} Bcf/d in ${
-    quarters[thisTrend.fromDate[1]]
-  } ${thisTrend.fromDate[0]} to an average of ${
-    thisTrend.throughChange.to
-  } Bcf/d in ${quarters[thisTrend.toDate[1]]} ${
-    thisTrend.toDate[0]
-  } (most recent quarter of data).`;
-  trendText += `</p>`;
+  var trendText = "";
+  thisTrend.map((trend) => {
+    if (trend.name == "default") {
+      var trendId = "";
+    } else {
+      var trendId = ` (${trend.name})`;
+    }
+    trendText += `<p>`;
+    trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
+      defaultPoint + trendId
+    )} key point have ${changeText(
+      trend.throughChange.pct
+    )}, from an average of ${trend.throughChange.from} ${units} in ${
+      quarters[trend.fromDate[1]]
+    } ${trend.fromDate[0]} to an average of ${
+      trend.throughChange.to
+    } ${units} in ${quarters[trend.toDate[1]]} ${
+      trend.toDate[0]
+    } (most recent quarter of data).`;
+    trendText += `</p>`;
+  });
+
   trendBox.innerHTML = trendText;
 }
 
-export function trafficTrendTextFra(metaData, defaultPoint) {
+export function trafficTrendTextFra(metaData, defaultPoint, units) {
   const thisTrend = metaData.trendText[defaultPoint];
   var trendBox = document.getElementById("traffic-trends");
-  var trendText = `<p>`;
-  trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
-    defaultPoint
-  )} key point have ${changeText(
-    thisTrend.throughChange.pct
-  )}, from an average of ${thisTrend.throughChange.from} Bcf/d in ${
-    quarters[thisTrend.fromDate[1]]
-  } ${thisTrend.fromDate[0]} to an average of ${
-    thisTrend.throughChange.to
-  } Bcf/d in ${quarters[thisTrend.toDate[1]]} ${
-    thisTrend.toDate[0]
-  } (most recent quarter of data).`;
-  trendText += `</p>`;
+  var trendText = "";
+  thisTrend.map((trend) => {
+    if (trend.name == "default") {
+      var trendId = "";
+    } else {
+      var trendId = ` (${trend.name})`;
+    }
+    trendText += `<p>`;
+    trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
+      defaultPoint + trendId
+    )} key point have ${changeText(
+      trend.throughChange.pct
+    )}, from an average of ${trend.throughChange.from} ${units} in ${
+      quarters[trend.fromDate[1]]
+    } ${trend.fromDate[0]} to an average of ${
+      trend.throughChange.to
+    } ${units} in ${quarters[trend.toDate[1]]} ${
+      trend.toDate[0]
+    } (most recent quarter of data).`;
+    trendText += `</p>`;
+  });
+
   trendBox.innerHTML = trendText;
 }
