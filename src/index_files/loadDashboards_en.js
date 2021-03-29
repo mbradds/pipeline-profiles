@@ -10,7 +10,7 @@ import { englishDashboard } from "../modules/langEnglish.js";
 import { mainTraffic } from "../traffic/trafficDashboard.js";
 generalTheme();
 
-export async function loadAllCharts(data) {
+export async function loadAllCharts(data, plains = false) {
   const arrayOfCharts = [
     mainTraffic(
       data.trafficData.traffic,
@@ -30,6 +30,15 @@ export async function loadAllCharts(data) {
       englishDashboard.incidents
     ),
   ];
+
+  if (plains) {
+    function plains_midstream_profile(lang, div) {
+      [...document.querySelectorAll(`.${div}`)].map((warn) => {
+        warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
+      });
+    }
+    plains_midstream_profile(englishDashboard, "plains_disclaimer");
+  }
 
   return Promise.allSettled(arrayOfCharts).then((value) => {
     console.timeEnd(`first content loading`);
