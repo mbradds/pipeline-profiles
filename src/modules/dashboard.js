@@ -1215,7 +1215,7 @@ export class KeyPointMap {
 
   addPoints() {
     let allPoints = this.points.map((point) => {
-      if (point["Key Point"] == this.selected) {
+      if (this.selected.includes(point["Key Point"])) {
         var pointColor = this.colors.active;
         var pointOpacity = 1;
         var toFront = true;
@@ -1249,7 +1249,7 @@ export class KeyPointMap {
     this.selected = newPoint;
     const thisMap = this;
     this.keyPoints.eachLayer(function (layer) {
-      if (layer.options.name == thisMap.selected) {
+      if (thisMap.selected.includes(layer.options.name)) {
         layer.setStyle({
           fillColor: thisMap.colors.active,
           fillOpacity: 1,

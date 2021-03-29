@@ -121,11 +121,8 @@ export const incidentsTextFra = (id, meta) => {
   paragraph.innerHTML = paragraphText;
 };
 
-export function trafficTrendTextEng(metaData, defaultPoint, units) {
-  const thisTrend = metaData.trendText[defaultPoint];
-  var trendBox = document.getElementById("traffic-trends");
-  var trendText = "";
-  thisTrend.map((trend) => {
+export function trafficTrendTextEng(metaData, defaultPoint, units, tm) {
+  const buildText = (trendText, trend, point) => {
     if (trend.name == "default") {
       var trendId = "";
     } else {
@@ -133,7 +130,7 @@ export function trafficTrendTextEng(metaData, defaultPoint, units) {
     }
     trendText += `<p>`;
     trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
-      defaultPoint + trendId
+      point + trendId
     )} key point have ${changeText(
       trend.throughChange.pct
     )}, from an average of ${trend.throughChange.from} ${units} in ${
@@ -144,16 +141,29 @@ export function trafficTrendTextEng(metaData, defaultPoint, units) {
       trend.toDate[0]
     } (most recent quarter of data).`;
     trendText += `</p>`;
-  });
+    return trendText;
+  };
 
+  var trendBox = document.getElementById("traffic-trends");
+  var trendText = "";
+
+  if (!tm) {
+    const thisTrend = metaData.trendText[defaultPoint];
+    thisTrend.map((trend) => {
+      trendText += buildText("", trend, defaultPoint);
+    });
+  } else {
+    for (const [defaultPoint, thisTrend] of Object.entries(
+      metaData.trendText
+    )) {
+      trendText += buildText("", thisTrend[0], defaultPoint);
+    }
+  }
   trendBox.innerHTML = trendText;
 }
 
-export function trafficTrendTextFra(metaData, defaultPoint, units) {
-  const thisTrend = metaData.trendText[defaultPoint];
-  var trendBox = document.getElementById("traffic-trends");
-  var trendText = "";
-  thisTrend.map((trend) => {
+export function trafficTrendTextFra(metaData, defaultPoint, units, tm) {
+  const buildText = (trendText, trend, point) => {
     if (trend.name == "default") {
       var trendId = "";
     } else {
@@ -161,7 +171,7 @@ export function trafficTrendTextFra(metaData, defaultPoint, units) {
     }
     trendText += `<p>`;
     trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
-      defaultPoint + trendId
+      point + trendId
     )} key point have ${changeText(
       trend.throughChange.pct
     )}, from an average of ${trend.throughChange.from} ${units} in ${
@@ -172,7 +182,23 @@ export function trafficTrendTextFra(metaData, defaultPoint, units) {
       trend.toDate[0]
     } (most recent quarter of data).`;
     trendText += `</p>`;
-  });
+    return trendText;
+  };
 
+  var trendBox = document.getElementById("traffic-trends");
+  var trendText = "";
+
+  if (!tm) {
+    const thisTrend = metaData.trendText[defaultPoint];
+    thisTrend.map((trend) => {
+      trendText += buildText("", trend, defaultPoint);
+    });
+  } else {
+    for (const [defaultPoint, thisTrend] of Object.entries(
+      metaData.trendText
+    )) {
+      trendText += buildText("", thisTrend[0], defaultPoint);
+    }
+  }
   trendBox.innerHTML = trendText;
 }

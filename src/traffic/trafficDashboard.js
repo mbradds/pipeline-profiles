@@ -148,7 +148,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return toolText;
   }
 
-  const createFirstSeries = (trafficData, defaultPoint, includeList = []) => {
+  const createSeries = (trafficData, defaultPoint, includeList = []) => {
     var firstSeries = [];
     var capAdded = false;
     if (defaultPoint == "Burnaby") {
@@ -258,6 +258,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
           return tooltipText(this, units);
         },
       },
+      legend: {
+        alignColumns: false,
+        margin: 0,
+        symbolPadding: 2,
+      },
       plotOptions: {
         area: {
           stacking: "normal",
@@ -359,8 +364,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
           var minRadius = 50000;
           var padding = [0, 0];
         } else if (metaData.companyName == "Trans Mountain Pipeline ULC") {
-          var minRadius = 5000;
-          var padding = [70, 70];
+          var minRadius = 2000;
+          var padding = [60, 60];
         } else if (metaData.points.length == 1) {
           var minRadius = 30000;
           var padding = [150, 150];
@@ -370,7 +375,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         }
         pointMap = new KeyPointMap({
           points: metaData.keyPoints,
-          selected: defaultPoint,
+          selected: !tm ? [defaultPoint] : metaData.points,
           minRadius: minRadius,
           padding: padding,
         });
@@ -386,7 +391,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
-      const firstSeries = createFirstSeries(
+      const firstSeries = createSeries(
         trafficData,
         defaultPoint,
         metaData.points
@@ -408,7 +413,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
         chart.redraw(true);
       }
-      lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
+      lang.dynamicText(metaData, defaultPoint, unitsHolder.current, tm);
 
       // user selects key point
       if (!tm) {
@@ -479,22 +484,20 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
           }
           chart.redraw(true);
-          pointMap.pointChange(defaultPoint);
-          lang.dynamicText(metaData, defaultPoint, unitsHolder.current);
+          pointMap.pointChange([defaultPoint]);
+          lang.dynamicText(metaData, defaultPoint, unitsHolder.current, tm);
         });
       } else {
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
           if ($(this).is(":checked")) {
-            var checked = $(this).val();
-            metaData.points.push(checked);
+            metaData.points.push($(this).val());
           } else {
-            var unChecked = $(this).val();
             metaData.points = metaData.points.filter(
-              (point) => point !== unChecked
+              (point) => point !== $(this).val()
             );
           }
           const newSeries = addSeriesParams(
-            createFirstSeries(trafficData, defaultPoint, metaData.points),
+            createSeries(trafficData, defaultPoint, metaData.points),
             unitsHolder
           );
           while (chart.series.length) {
@@ -512,6 +515,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             false
           );
           chart.redraw(true);
+          pointMap.pointChange(metaData.points);
         });
       }
 
@@ -522,8 +526,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
           {
             series: addSeriesParams(
               !tm
-                ? createFirstSeries(trafficData, defaultPoint)
-                : createFirstSeries(trafficData, defaultPoint, metaData.points),
+                ? createSeries(trafficData, defaultPoint)
+                : createSeries(trafficData, defaultPoint, metaData.points),
               unitsHolder
             ),
             yAxis: [

@@ -252,9 +252,9 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                          'Alliance Pipeline Ltd.',
                          'Emera Brunswick Pipeline Company Ltd.',
                          'Trans Quebec and Maritimes Pipeline Inc.',
-                         'Foothills Pipe Lines Ltd.',
                          'Maritimes & Northeast Pipeline Management Ltd.',
-                         'Many Islands Pipe Lines (Canada) Limited']
+                         'Many Islands Pipe Lines (Canada) Limited',
+                         'Foothills Pipe Lines Ltd.']
     else:
         company_files = ['Enbridge Pipelines Inc.',
                          'TransCanada Keystone Pipeline GP Ltd.',
