@@ -40,13 +40,16 @@ var profileWebpackConfig = (function () {
     var html = [];
     language.map((lang) => {
       htmlFileNames.map((name) => {
+        var chunks = [
+          `${lang}/${name[1]}/js/data_${name[0]}_${lang}`,
+          `${lang}/${name[1]}/js/index_${name[0]}_${lang}`,
+        ];
         html.push(
           new HtmlWebpackPlugin({
             filename: `${lang}/${name[1]}/${name[0]}_${lang}.html`,
-            chunks: [`${lang}/${name[1]}/js/${name[0]}_${lang}`],
-            chunkSortMode: "manual",
+            chunks: chunks,
+            chunkSortMode: "none",
             template: `src/profile_${lang}.html`,
-            // publicPath: "../..",
             minify: {
               collapseWhitespace: false,
               keepClosingSlash: false,
@@ -63,18 +66,30 @@ var profileWebpackConfig = (function () {
     return html;
   }
 
-  function entry() {
+  function entry(sections = ["data", "index"]) {
     const entryPoints = {};
     language.map((lang) => {
-      htmlFileNames.map((name) => {
-        if (["aurora", "milk_river", "wascana"].includes(name[0])) {
-          var scriptName = "plains";
-        } else {
-          var scriptName = name[0];
-        }
-        entryPoints[
-          `${lang}/${name[1]}/js/${name[0]}_${lang}`
-        ] = `./src/index_files/${lang}/${scriptName}.js`;
+      sections.map((section) => {
+        htmlFileNames.map((name) => {
+          // mode: "development",
+          if (["aurora", "milk_river", "wascana"].includes(name[0])) {
+            var folderName = "plains";
+          } else {
+            var folderName = name[0];
+          }
+          if (section == "data") {
+            entryPoints[
+              `${lang}/${name[1]}/js/${section}_${name[0]}_${lang}`
+            ] = `./src/index_files/${lang}/${folderName}/${section}.js`;
+          } else {
+            entryPoints[
+              `${lang}/${name[1]}/js/${section}_${name[0]}_${lang}`
+            ] = {
+              import: `./src/index_files/${lang}/${folderName}/${section}.js`,
+              dependOn: `${lang}/${name[1]}/js/data_${name[0]}_${lang}`,
+            };
+          }
+        });
       });
     });
 
@@ -116,7 +131,7 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
-    //new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {

@@ -1,5 +1,5 @@
 import { cerPalette } from "./util.js";
-import { incidentsTextEng } from "./dynamicText.js";
+import { incidentsTextEng, trafficTrendTextEng } from "./dynamicText.js";
 
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "NGTL System",
@@ -282,6 +282,23 @@ export const englishDashboard = {
       note: (companyName) => {
         return `There are no records in the CER's incident data for ${companyName}. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.`;
       },
+    },
+  },
+  traffic: {
+    dynamicText: trafficTrendTextEng,
+    months: {
+      1: "January",
+      2: "February",
+      3: "March",
+      4: "April",
+      5: "May",
+      6: "June",
+      7: "July",
+      8: "August",
+      9: "September",
+      10: "October",
+      11: "November",
+      12: "December",
     },
   },
 };

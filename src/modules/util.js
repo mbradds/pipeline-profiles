@@ -20,6 +20,8 @@ export const conversions = {
   "m3 to bbl": 6.2898,
   "bbl to m3": 1 / 6.2898,
   "m3 to cf": 35.3,
+  "Bcf/d to Million m3/d": 28.32,
+  "Mb/d to Thousand m3/d": 159,
 };
 
 export const sortJson = (obj, colName = "value") => {
