@@ -147,7 +147,7 @@ def meta_trend(df_c, commodity):
     for point in list(set(df_c['Key Point'])):
         rounding = getRounding(point)
         df_t = df_c.copy()
-        del df_t['Json Date']
+        # del df_t['Json Date']
         dfp = df_t[df_t['Key Point'] == point].copy().reset_index(drop=True)
         metaTrends[point] = []
         if "import" in list(dfp['Trade Type']):
@@ -209,9 +209,9 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
 
     def pushTraffic(t, arr, date, rounding):
         if t == 0:
-            arr.append([int(date), None])
+            arr.append(None)
         else:
-            arr.append([int(date), round(float(t), rounding)])
+            arr.append(round(float(t), rounding))
         return arr
 
     if not os.path.exists("../traffic"):
@@ -240,7 +240,7 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
     points = get_data(False, sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
-    df = serialize(df, 'Date')
+    # df = serialize(df, 'Date')
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
     df = fixCorporateEntity(df)
     df = fixKeyPoint(df)
@@ -289,12 +289,13 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
             thisKeyPoints = points[points['Corporate Entity'] == company].copy().reset_index(drop=True)
             del thisKeyPoints['Corporate Entity']
             meta['keyPoints'] = thisKeyPoints.to_dict(orient='records')
-            for delete in ['Direction of Flow', 'Corporate Entity', 'Date']:
+            for delete in ['Direction of Flow', 'Corporate Entity']:
                 del df_c[delete]
 
-            df_c = df_c.rename(columns={"Json Date": "Date"})
+            # df_c = df_c.rename(columns={"Json Date": "Date"})
             point_data = {}
             pointsList = sorted(list(set(df_c['Key Point'])))
+            # pointsList = ['Chippawa']
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
@@ -302,6 +303,21 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                 df_p = df_p.groupby(['Date', 'Key Point', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
                 traffic_types = {}
                 counter = 0
+                lastDate = None
+                pointDates = sorted(list(set(df_p['Date'])))
+                df_p = df_p.drop_duplicates(subset=['Date', 'Key Point', 'Trade Type'], ignore_index=True)
+                tradeData = []
+                for tr in list(set(df_p['Trade Type'])):
+                    df_p_t = df_p[df_p['Trade Type'] == tr].copy()
+                    df_p_t = df_p_t.merge(pd.DataFrame(pointDates), how='right', left_on='Date', right_on=0)
+                    del[df_p_t[0]]
+                    for totalFill in ['Key Point', 'Trade Type']:
+                        df_p_t[totalFill] = df_p_t[totalFill].fillna(method="bfill").fillna(method='ffill')
+
+                    for numFill in ['Throughput', 'Capacity']:
+                        df_p_t[numFill] = df_p_t[numFill].fillna(0)
+                    tradeData.append(df_p_t)
+                df_p = pd.concat(tradeData, ignore_index=True).copy()
                 for date, t, c, trade in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity'], df_p['Trade Type']):
                     t, c = float(t), float(c)
                     if trade in traffic_types:
@@ -309,20 +325,19 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                     else:
                         traffic_types[trade] = pushTraffic(t, [], date, rounding)
 
-                    if len(pointCapacity) == 0:
-                        pointCapacity = pushTraffic(c, pointCapacity, date, rounding)
-                    elif date != pointCapacity[-1][0]:
+                    if date != lastDate and trade != "import":
                         pointCapacity = pushTraffic(c, pointCapacity, date, rounding)
 
                     if trade == "import":
-                        if len(pointImportCapacity) == 0:
-                            pointImportCapacity = pushTraffic(c, pointImportCapacity, date, rounding)
-                        elif date != pointImportCapacity[-1][0]:
-                            pointImportCapacity = pushTraffic(c, pointImportCapacity, date, rounding)
+                        pointImportCapacity = pushTraffic(c, pointImportCapacity, date, rounding)
 
                     counter = counter + 1
+                    lastDate = date
 
                 throughput_series = []
+                minDate = min(pointDates) - dateutil.relativedelta.relativedelta(months=1)
+                throughput_series.append({"name": "date", "min": [minDate.year, minDate.month-1, minDate.day]})
+
                 for tt, data in traffic_types.items():
                     if tt == "import":
                         yAxis = 1
@@ -372,6 +387,10 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
-    # traffic, df = process_throughput(test=False, sql=False, commodity='gas')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Trans Mountain Pipeline ULC'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas') #, companies=['TransCanada PipeLines Limited'])
+    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')
+    
+#%%
+
+

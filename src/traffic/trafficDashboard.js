@@ -180,18 +180,25 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function addSeriesParams(series, unitsHolder) {
+    let minDate = series[0].min;
+    series = series.slice(1);
+
     series.sort(function (a, b) {
       return compareStrings(a.name, b.name);
     });
     const newSeries = JSON.parse(JSON.stringify(series));
     return newSeries.map((s) => {
+      let startd = new Date(minDate[0], minDate[1], minDate[2]);
       s.id = s.name;
       if (unitsHolder.base !== unitsHolder.current) {
         s.data = s.data.map((row) => {
           return [row[0], row[1] ? row[1] * unitsHolder.conversion : null];
         });
       } else {
-        s.data = s.data;
+        s.data = s.data.map((row) => {
+          var nextDate = startd.setMonth(startd.getMonth() + 1);
+          return [nextDate, row];
+        });
       }
       if (
         s.name == "Capacity" ||
@@ -207,6 +214,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         s.lineWidth = 1;
       }
       return s;
+      // }
     });
   }
 
@@ -396,7 +404,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         defaultPoint,
         metaData.points
       );
-
       const chart = trafficChart(
         addSeriesParams(firstSeries, unitsHolder),
         !tm
