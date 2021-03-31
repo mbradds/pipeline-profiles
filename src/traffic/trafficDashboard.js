@@ -150,8 +150,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   const createSeries = (trafficData, defaultPoint, includeList = []) => {
     var firstSeries = [];
-    var capAdded = false;
     if (defaultPoint == "Burnaby") {
+      var [capAdded, dateAdded] = [false, false];
       for (const [key, keyData] of Object.entries(
         JSON.parse(JSON.stringify(trafficData))
       )) {
@@ -160,7 +160,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
             if (data.name == "Capacity" && !capAdded) {
               capAdded = true;
               firstSeries.push(data);
-            } else if (data.name !== "Capacity") {
+            } else if (data.name == "date" && !dateAdded) {
+              firstSeries.push(data);
+              dateAdded = true;
+            } else if (data.name !== "Capacity" && data.name !== "date") {
               data.name = data.name + "-" + key;
               firstSeries.push(data);
             }
@@ -192,7 +195,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       s.id = s.name;
       if (unitsHolder.base !== unitsHolder.current) {
         s.data = s.data.map((row) => {
-          return [row[0], row[1] ? row[1] * unitsHolder.conversion : null];
+          var nextDate = startd.setMonth(startd.getMonth() + 1);
+          return [nextDate, row ? row * unitsHolder.conversion : null];
         });
       } else {
         s.data = s.data.map((row) => {

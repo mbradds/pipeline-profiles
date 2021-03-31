@@ -294,12 +294,14 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
 
             point_data = {}
             pointsList = sorted(list(set(df_c['Key Point'])))
-            pointsList = ['Into-Sarnia']
+            # pointsList = ['Into-Sarnia']
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
                 df_p = df_c[df_c['Key Point'] == p].copy().reset_index(drop=True)
                 df_p = df_p.groupby(['Date', 'Key Point', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
+                if p == "Into-Sarnia":
+                    df_p = df_p.sort_values(by=['Date', 'Trade Type'], ascending=[True, False])
                 traffic_types = {}
                 counter = 0
                 pointDates = sorted(list(set(df_p['Date'])))
@@ -331,7 +333,6 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                         pointImportCapacity = pushTraffic(c, pointImportCapacity, date, rounding)
 
                     counter = counter + 1
-                    lastDate = date
 
                 throughput_series = []
                 minDate = min(pointDates) - dateutil.relativedelta.relativedelta(months=1)
@@ -387,7 +388,7 @@ if __name__ == "__main__":
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
     # traffic, df = process_throughput(test=False, sql=False, commodity='gas') #, companies=['Westcoast Energy Inc.'])
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Trans Mountain Pipeline ULC'])
     print('completed throughput!')
     
 #%%
