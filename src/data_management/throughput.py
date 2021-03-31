@@ -292,10 +292,9 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
             for delete in ['Direction of Flow', 'Corporate Entity']:
                 del df_c[delete]
 
-            # df_c = df_c.rename(columns={"Json Date": "Date"})
             point_data = {}
             pointsList = sorted(list(set(df_c['Key Point'])))
-            # pointsList = ['Chippawa']
+            pointsList = ['Into-Sarnia']
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
@@ -303,10 +302,9 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                 df_p = df_p.groupby(['Date', 'Key Point', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
                 traffic_types = {}
                 counter = 0
-                lastDate = None
                 pointDates = sorted(list(set(df_p['Date'])))
                 df_p = df_p.drop_duplicates(subset=['Date', 'Key Point', 'Trade Type'], ignore_index=True)
-                tradeData = []
+                tradeData, dateAdded = [], []
                 for tr in list(set(df_p['Trade Type'])):
                     df_p_t = df_p[df_p['Trade Type'] == tr].copy()
                     df_p_t = df_p_t.merge(pd.DataFrame(pointDates), how='right', left_on='Date', right_on=0)
@@ -325,8 +323,9 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                     else:
                         traffic_types[trade] = pushTraffic(t, [], date, rounding)
 
-                    if date != lastDate and trade != "import":
+                    if date not in dateAdded and trade != "import":
                         pointCapacity = pushTraffic(c, pointCapacity, date, rounding)
+                        dateAdded.append(date)
 
                     if trade == "import":
                         pointImportCapacity = pushTraffic(c, pointImportCapacity, date, rounding)
@@ -387,8 +386,8 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas') #, companies=['TransCanada PipeLines Limited'])
-    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    # traffic, df = process_throughput(test=False, sql=False, commodity='gas') #, companies=['Westcoast Energy Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')
     
 #%%
