@@ -376,13 +376,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function buildDashboard() {
     try {
       var defaultPoint = metaData.defaultPoint;
-      if (defaultPoint == "Burnaby") {
-        var tm = true;
-      } else {
-        var tm = false;
-      }
+      var tm = defaultPoint == "Burnaby" ? true : false;
       const unitsHolder = addUnits(metaData.units);
-      var pointMap = undefined;
       metaData.points = getPointList(metaData.keyPoints);
       if (defaultPoint !== "system") {
         if (metaData.points.length == 1) {
@@ -411,7 +406,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           var minRadius = 30000;
           var padding = [30, 30];
         }
-        pointMap = new KeyPointMap({
+        var pointMap = new KeyPointMap({
           points: metaData.keyPoints,
           selected: !tm ? [defaultPoint] : metaData.points,
           minRadius: minRadius,
@@ -448,7 +443,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
         chart.redraw(true);
       }
-      lang.dynamicText(metaData, defaultPoint, unitsHolder.current, tm);
+      lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
 
       // user selects key point
       if (!tm) {
@@ -519,7 +514,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
           chart.redraw(true);
           pointMap.pointChange([defaultPoint]);
-          lang.dynamicText(metaData, defaultPoint, unitsHolder.current, tm);
+          lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
         });
       } else {
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
@@ -587,6 +582,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
           chart.redraw(false);
         }
+        lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
       });
 
       // update map zoom

@@ -1193,10 +1193,16 @@ export class KeyPointMap {
   }
 
   reZoom(zoomIn = true) {
-    let bounds = this.keyPoints.getBounds();
     if (zoomIn) {
-      this.map.fitBounds(bounds, { padding: this.padding });
+      var zoomRadius = this.minRadius;
+      this.keyPoints.eachLayer(function (layer) {
+        layer.setRadius(zoomRadius);
+      });
+      this.map.fitBounds(this.keyPoints.getBounds(), { padding: this.padding });
     } else {
+      this.keyPoints.eachLayer(function (layer) {
+        layer.setRadius(100000);
+      });
       this.map.setView(this.initZoomTo, 2.5);
     }
   }

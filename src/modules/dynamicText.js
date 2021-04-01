@@ -121,8 +121,16 @@ export const incidentsTextFra = (id, meta) => {
   paragraph.innerHTML = paragraphText;
 };
 
-export function trafficTrendTextEng(metaData, defaultPoint, units, tm) {
-  const buildText = (trendText, trend, point) => {
+export function trafficTrendTextEng(metaData, defaultPoint, unitsHolder, tm) {
+  const formatValue = (value, units) => {
+    if (units.base !== units.current) {
+      return (value * units.conversion).toFixed(0);
+    } else {
+      return value;
+    }
+  };
+
+  const buildText = (trendText, trend, point, units) => {
     if (trend.name == "default") {
       var trendId = "";
     } else {
@@ -133,11 +141,13 @@ export function trafficTrendTextEng(metaData, defaultPoint, units, tm) {
       point + trendId
     )} key point have ${changeText(
       trend.throughChange.pct
-    )}, from an average of ${trend.throughChange.from} ${units} in ${
-      quarters[trend.fromDate[1]]
-    } ${trend.fromDate[0]} to an average of ${
-      trend.throughChange.to
-    } ${units} in ${quarters[trend.toDate[1]]} ${
+    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
+      units.current
+    } in ${quarters[trend.fromDate[1]]} ${
+      trend.fromDate[0]
+    } to an average of ${formatValue(trend.throughChange.to, units)} ${
+      units.current
+    } in ${quarters[trend.toDate[1]]} ${
       trend.toDate[0]
     } (most recent quarter of data).`;
     trendText += `</p>`;
@@ -150,13 +160,13 @@ export function trafficTrendTextEng(metaData, defaultPoint, units, tm) {
   if (!tm) {
     const thisTrend = metaData.trendText[defaultPoint];
     thisTrend.map((trend) => {
-      trendText += buildText("", trend, defaultPoint);
+      trendText += buildText("", trend, defaultPoint, unitsHolder);
     });
   } else {
     for (const [defaultPoint, thisTrend] of Object.entries(
       metaData.trendText
     )) {
-      trendText += buildText("", thisTrend[0], defaultPoint);
+      trendText += buildText("", thisTrend[0], defaultPoint, unitsHolder);
     }
   }
   trendBox.innerHTML = trendText;
