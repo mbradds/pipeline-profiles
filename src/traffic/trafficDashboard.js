@@ -59,9 +59,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return unitsHolder;
   }
 
-  const setTitle = (point, tradeType, tm = false) => {
+  const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
     if (!tm) {
-      return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+      if (!fiveYear) {
+        return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+      } else {
+        return `${point} - Five year average & range`;
+      }
     } else {
       return `${point.join("-")} monthly traffic`;
     }
@@ -238,14 +242,31 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return [lastYrSeries, fiveYrAvg, fiveYrRange];
   }
 
-  function createFiveYearChart(series) {
+  function createFiveYearChart(series, point) {
+    // TODO: create an object that contains shared chart properties like legend, etc
     return new Highcharts.chart("traffic-hc-range", {
       chart: {
         type: "line",
         marginRight: 0,
+        spacingTop: 5,
+        spacingBottom: 10,
+      },
+      title: {
+        align: "left",
+        x: 10,
+        margin: 5,
+        text: setTitle(point, undefined, false, true),
+        style: {
+          fontSize: "16px",
+          fontWeight: "bold",
+        },
       },
       xAxis: {
         crosshair: true,
+      },
+      legend: {
+        margin: 0,
+        symbolPadding: 2,
       },
       yAxis: {
         startOnTick: true,
@@ -362,13 +383,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
         zoomType: "x",
         marginRight: 0,
         animation: false,
-      },
-      credits: {
-        text: "",
+        // spacingTop: 0,
+        spacingBottom: 0,
       },
       title: {
         align: "left",
         x: 10,
+        margin: 5,
         text: title,
         style: {
           fontSize: "16px",
@@ -539,7 +560,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         unitsHolder.current
       );
 
-      const fiveChart = createFiveYearChart(fiveSeries);
+      const fiveChart = createFiveYearChart(fiveSeries, defaultPoint);
 
       var hasImports = false;
       if (defaultPoint == "St. Stephen") {
@@ -620,6 +641,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
             fiveChart.update({
               series: newFiveSeries,
+              title: {
+                text: setTitle(defaultPoint, undefined, false, true),
+              },
             });
           }
           chart.redraw(true);

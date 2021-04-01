@@ -132,14 +132,14 @@ body {
   font-size: 13px;
 }
 #traffic-map {
-  height: 380px;
+  height: 360px;
   margin-bottom: 5px;
 }
 #traffic-hc {
-  height: 340px;
+  height: 300px;
 }
 #traffic-hc-range {
-  height: 240px;
+  height: 250px;
 }
 #traffic-container {
   margin-left: -15px;
