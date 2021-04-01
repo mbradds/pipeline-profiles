@@ -184,8 +184,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function compareStrings(a, b) {
-    a = a.toLowerCase();
-    b = b.toLowerCase();
     return a < b ? -1 : a > b ? 1 : 0;
   }
 
@@ -210,14 +208,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
         }
       };
 
+      var dateFunction = incremendDate(frequency);
       if (unitsHolder.base !== unitsHolder.current) {
-        var dateFunction = incremendDate(frequency);
         return function (row, startDate) {
           var nextDate = dateFunction(startDate);
           return [nextDate, row ? row * unitsHolder.conversion : null];
         };
       } else {
-        var dateFunction = incremendDate(frequency);
         return function (row, startDate) {
           var nextDate = dateFunction(startDate);
           return [nextDate, row];
@@ -229,8 +226,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return newSeries.map((s) => {
       let startd = new Date(minDate[0], minDate[1], minDate[2]);
       s.id = s.name;
+      var addFunction = addRow(unitsHolder, metaData.frequency);
       s.data = s.data.map((row) => {
-        var addFunction = addRow(unitsHolder, metaData.frequency);
         return addFunction(row, startd);
       });
 
@@ -248,7 +245,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         s.lineWidth = 1;
       }
       return s;
-      // }
     });
   }
 
@@ -433,13 +429,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
-      const firstSeries = createSeries(
-        trafficData,
-        defaultPoint,
-        metaData.points
-      );
       const chart = trafficChart(
-        addSeriesParams(firstSeries, unitsHolder),
+        addSeriesParams(
+          createSeries(trafficData, defaultPoint, metaData.points),
+          unitsHolder
+        ),
         !tm
           ? setTitle(defaultPoint, metaData.directions[defaultPoint])
           : setTitle(metaData.points, undefined, tm),
@@ -460,10 +454,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
       if (!tm) {
         $("#traffic-points-btn button").on("click", function () {
           $(".btn-point > .btn").removeClass("active");
-          var thisBtn = $(this);
+          var keyBtn = $(this).addClass("active");
           hasImports = false;
-          thisBtn.addClass("active");
-          defaultPoint = thisBtn.val();
+          defaultPoint = keyBtn.val();
           const newSeries = addSeriesParams(
             trafficData[defaultPoint],
             unitsHolder
@@ -537,16 +530,20 @@ export async function mainTraffic(trafficData, metaData, lang) {
               (point) => point !== $(this).val()
             );
           }
+
+          while (chart.series.length) {
+            chart.series[0].remove(false, false, false);
+          }
+
           const newSeries = addSeriesParams(
             createSeries(trafficData, defaultPoint, metaData.points),
             unitsHolder
           );
-          while (chart.series.length) {
-            chart.series[0].remove(false, false, false);
-          }
+
           newSeries.map((newS) => {
             chart.addSeries(newS, false, false);
           });
+
           chart.update(
             {
               title: {
@@ -616,6 +613,5 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return buildDashboard();
     }
   }
-
   return buildDecision(trafficData);
 }

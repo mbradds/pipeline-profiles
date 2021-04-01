@@ -13,13 +13,15 @@ This project uses three primary technologies to create web based interactive das
 Sections being added:
 
 - **Safety & Environment**
-  1. Conditions Compliance (March 25, 2021)
-  2. Reported Incidents (March 25, 2021)
+  1. Conditions Compliance (Released, March 31, 2021)
+  2. Reported Incidents (Released, March 31, 2021)
   3. Operations & Maintenance Activities (TBD, under development)
   4. Contaminated Sites/Remediation (TBD, under development)
   5. Unauthorized Activities (TBD, under development)
 - **Traffic (Pipeline Throughput & Capacity)** (April/May 2021, under development)
+- **Oil Pipeline Apportionment** (TBD)
 - **Pipeline Tolls** (TBD)
+- **Pipeline/Corporate Financial info** (TBD)
 
 ## Repository Information
 
@@ -54,9 +56,11 @@ pipeline_profiles
 |   |
 |   └───new sections (new dashboards/sections will be added!)
 |   |
+|   └───traffic (Pipeline throughput and capacity)
+|   |
 |   └───modules (shared dashboard code & utility functions)
 │
-└───dist
+└───dist (tries to match dweb7 folder structure)
     │   en/ english js bundles & html for each profile (to be placed on web server)
     │   fr/ french js bundles & html for each profile (to be placed on web server)
 ```
@@ -288,6 +292,5 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Create a distribution bundle for Highcharts+Leaflet. Highcharts doesnt make tree shaking easy, but its possible to create a [custom distribution](https://www.highcharts.com/docs/getting-started/how-to-create-custom-highcharts-files) with only the files needed.
 - As new profile sections are added, the json data will start to increase bundle sizes above 250 kb. The data should be split into a seperate webpack bundle. This will also help with caching, because the data can be updated, and the rest of the code can remain cached.
 - Try to remove Jquery dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
-- Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`
+- Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
-- Incident trends should have "spaces" between non-consecutive years.
