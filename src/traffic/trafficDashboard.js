@@ -184,9 +184,39 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function createFiveYearSeries(data) {
-    console.log(data);
-    var lastDate = new Date(data["lastDate"]);
-    console.log(lastDate.getFullYear());
+    var lastYear = new Date(data["lastDate"]).getFullYear();
+    var firstYear = lastYear - 6;
+    console.log(lastYear, firstYear);
+    delete data["lastDate"];
+    const months = {};
+    for (const [date, value] of Object.entries(data)) {
+      let dateInt = new Date(parseInt(date, 10));
+      let [month, year] = [dateInt.getMonth(), dateInt.getFullYear()];
+      if (year > firstYear && year < lastYear) {
+        if (month in months) {
+          months[month].push(value);
+        } else {
+          months[month] = [value];
+        }
+      }
+    }
+    const fiveYrRange = {
+      data: [],
+      name: "Five Year Range",
+      type: "arearange",
+    };
+    const fiveYrAvg = {
+      data: [],
+      name: "Five Year Average",
+      type: "line",
+    };
+    const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+    for (const [x, value] of Object.entries(months)) {
+      fiveYrRange.data.push([x, Math.min(...value), Math.max(...value)]);
+      fiveYrAvg.data.push([x, arrAvg(value)]);
+    }
+    console.log(fiveYrRange);
+    console.log(fiveYrAvg);
   }
 
   function addSeriesParams(series, unitsHolder) {
