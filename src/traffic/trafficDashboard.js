@@ -183,11 +183,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return firstSeries;
   };
 
-  function compareStrings(a, b) {
-    return a < b ? -1 : a > b ? 1 : 0;
+  function createFiveYearSeries(data) {
+    console.log(data);
+    var lastDate = new Date(data["lastDate"]);
+    console.log(lastDate.getFullYear());
   }
 
   function addSeriesParams(series, unitsHolder) {
+    function compareStrings(a, b) {
+      return a < b ? -1 : a > b ? 1 : 0;
+    }
+
     let minDate = series[0].min;
     series = series.slice(1);
 
@@ -195,7 +201,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return compareStrings(a.name, b.name);
     });
 
-    const addRow = (unitsHolder, frequency) => {
+    const isCapacity = (seriesName) => {
+      if (
+        seriesName == "Capacity" ||
+        seriesName == "Import Capacity" ||
+        seriesName == "Export Capacity"
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const addRow = (unitsHolder, frequency, seriesName) => {
       const incremendDate = (frequency) => {
         if (frequency == "daily") {
           return function (date) {
@@ -210,32 +228,44 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
       var dateFunction = incremendDate(frequency);
       if (unitsHolder.base !== unitsHolder.current) {
-        return function (row, startDate) {
+        return function (row, startDate, five) {
           var nextDate = dateFunction(startDate);
           return [nextDate, row ? row * unitsHolder.conversion : null];
         };
       } else {
-        return function (row, startDate) {
-          var nextDate = dateFunction(startDate);
-          return [nextDate, row];
-        };
+        if (!isCapacity(seriesName)) {
+          return function (row, startDate, five) {
+            var nextDate = dateFunction(startDate);
+            if (nextDate in five) {
+              five[nextDate] += row;
+            } else {
+              five[nextDate] = row;
+            }
+            five["lastDate"] = nextDate;
+            return [[nextDate, row], five];
+          };
+        } else {
+          return function (row, startDate, five) {
+            var nextDate = dateFunction(startDate);
+            return [[nextDate, row], five];
+          };
+        }
       }
     };
 
-    const newSeries = JSON.parse(JSON.stringify(series));
-    return newSeries.map((s) => {
+    const nextSeries = JSON.parse(JSON.stringify(series));
+    let newSeries = [];
+    const fiveYearData = {};
+    nextSeries.map((s) => {
       let startd = new Date(minDate[0], minDate[1], minDate[2]);
       s.id = s.name;
-      var addFunction = addRow(unitsHolder, metaData.frequency);
+      var addFunction = addRow(unitsHolder, metaData.frequency, s.name);
       s.data = s.data.map((row) => {
-        return addFunction(row, startd);
+        var next = addFunction(row, startd, fiveYearData);
+        return next[0];
       });
 
-      if (
-        s.name == "Capacity" ||
-        s.name == "Import Capacity" ||
-        s.name == "Export Capacity"
-      ) {
+      if (isCapacity(s.name)) {
         s.type = "line";
         s.zIndex = 5;
         s.lineWidth = 3;
@@ -244,8 +274,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
         s.zIndex = 4;
         s.lineWidth = 1;
       }
-      return s;
+      newSeries.push(s);
     });
+    createFiveYearSeries(fiveYearData);
+    return newSeries;
   }
 
   function getPointList(keyPoints) {
