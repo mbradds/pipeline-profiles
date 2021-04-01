@@ -192,8 +192,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       data: [],
       type: "line",
       zIndex: 5,
-      name: `${lastYear}`,
-      color: cerPalette["Sun"],
+      name: `${lastYear} (last year of data)`,
+      color: cerPalette["hcRed"],
     };
     for (const [date, value] of Object.entries(data)) {
       let dateInt = new Date(parseInt(date, 10));
@@ -211,9 +211,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
     const fiveYrRange = {
       data: [],
-      name: "Five Year Range",
+      name: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
       type: "arearange",
       zIndex: 3,
+      marker: {
+        enabled: false,
+      },
       color: cerPalette["Ocean"],
     };
     const fiveYrAvg = {
@@ -221,6 +224,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
       name: "Five Year Average",
       type: "line",
       zIndex: 4,
+      marker: {
+        enabled: false,
+      },
+      lineWidth: 4,
       color: cerPalette["Forest"],
     };
     const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
@@ -228,14 +235,26 @@ export async function mainTraffic(trafficData, metaData, lang) {
       fiveYrRange.data.push([x, Math.min(...value), Math.max(...value)]);
       fiveYrAvg.data.push([x, arrAvg(value)]);
     }
-    console.log(fiveYrRange);
-    console.log(fiveYrAvg);
-    console.log(lastYrSeries);
+    return [lastYrSeries, fiveYrAvg, fiveYrRange];
+  }
+
+  function createFiveYearChart(series) {
     return new Highcharts.chart("traffic-hc-range", {
       chart: {
         type: "line",
+        marginRight: 0,
       },
-      series: [fiveYrAvg, fiveYrRange, lastYrSeries],
+      xAxis: {
+        crosshair: true,
+      },
+      yAxis: {
+        startOnTick: true,
+        endOnTick: false,
+      },
+      tooltip: {
+        shared: true,
+      },
+      series: series,
     });
   }
 
@@ -326,8 +345,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
       newSeries.push(s);
     });
-    createFiveYearSeries(fiveYearData);
-    return newSeries;
+    return [newSeries, createFiveYearSeries(fiveYearData)];
   }
 
   function getPointList(keyPoints) {
@@ -367,6 +385,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             text: units,
           },
           min: 0,
+          startOnTick: true,
+          endOnTick: false,
         },
         { visible: false },
       ],
@@ -506,16 +526,21 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
+      const [timeSeries, fiveSeries] = addSeriesParams(
+        createSeries(trafficData, defaultPoint, metaData.points),
+        unitsHolder
+      );
+
       const chart = trafficChart(
-        addSeriesParams(
-          createSeries(trafficData, defaultPoint, metaData.points),
-          unitsHolder
-        ),
+        timeSeries,
         !tm
           ? setTitle(defaultPoint, metaData.directions[defaultPoint])
           : setTitle(metaData.points, undefined, tm),
         unitsHolder.current
       );
+
+      const fiveChart = createFiveYearChart(fiveSeries);
+
       var hasImports = false;
       if (defaultPoint == "St. Stephen") {
         ["traffic-points-btn", "key-point-title"].map((hideDiv) => {
@@ -534,7 +559,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           var keyBtn = $(this).addClass("active");
           hasImports = false;
           defaultPoint = keyBtn.val();
-          const newSeries = addSeriesParams(
+          const [newSeries, newFiveSeries] = addSeriesParams(
             trafficData[defaultPoint],
             unitsHolder
           );
@@ -593,6 +618,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
               false
             );
+            fiveChart.update({
+              series: newFiveSeries,
+            });
           }
           chart.redraw(true);
           pointMap.pointChange([defaultPoint]);
