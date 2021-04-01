@@ -186,12 +186,21 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function createFiveYearSeries(data) {
     var lastYear = new Date(data["lastDate"]).getFullYear();
     var firstYear = lastYear - 6;
-    console.log(lastYear, firstYear);
     delete data["lastDate"];
     const months = {};
+    const lastYrSeries = {
+      data: [],
+      type: "line",
+      zIndex: 5,
+      name: `${lastYear}`,
+      color: cerPalette["Sun"],
+    };
     for (const [date, value] of Object.entries(data)) {
       let dateInt = new Date(parseInt(date, 10));
       let [month, year] = [dateInt.getMonth(), dateInt.getFullYear()];
+      if (year == lastYear) {
+        lastYrSeries.data.push([month, value]);
+      }
       if (year > firstYear && year < lastYear) {
         if (month in months) {
           months[month].push(value);
@@ -204,11 +213,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
       data: [],
       name: "Five Year Range",
       type: "arearange",
+      zIndex: 3,
+      color: cerPalette["Ocean"],
     };
     const fiveYrAvg = {
       data: [],
       name: "Five Year Average",
       type: "line",
+      zIndex: 4,
+      color: cerPalette["Forest"],
     };
     const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
     for (const [x, value] of Object.entries(months)) {
@@ -217,6 +230,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
     console.log(fiveYrRange);
     console.log(fiveYrAvg);
+    console.log(lastYrSeries);
+    return new Highcharts.chart("traffic-hc-range", {
+      chart: {
+        type: "line",
+      },
+      series: [fiveYrAvg, fiveYrRange, lastYrSeries],
+    });
   }
 
   function addSeriesParams(series, unitsHolder) {
