@@ -135,10 +135,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
 
     // tooltip header
-    let toolText = `<strong>${Highcharts.dateFormat(
-      "%b, %Y",
-      event.x
-    )}</strong>`;
+    if (metaData.frequency == "monthly") {
+      var toolText = `<strong>${Highcharts.dateFormat(
+        "%b, %Y",
+        event.x
+      )}</strong>`;
+    } else {
+      var toolText = `<strong>${Highcharts.dateFormat(
+        "%b %e, %Y",
+        event.x
+      )}</strong>`;
+    }
 
     toolText += addTable(textHolder.other);
 
@@ -189,21 +196,44 @@ export async function mainTraffic(trafficData, metaData, lang) {
     series.sort(function (a, b) {
       return compareStrings(a.name, b.name);
     });
+
+    const addRow = (unitsHolder, frequency) => {
+      const incremendDate = (frequency) => {
+        if (frequency == "daily") {
+          return function (date) {
+            return date.setDate(date.getDate() + 1);
+          };
+        } else {
+          return function (date) {
+            return date.setMonth(date.getMonth() + 1);
+          };
+        }
+      };
+
+      if (unitsHolder.base !== unitsHolder.current) {
+        var dateFunction = incremendDate(frequency);
+        return function (row, startDate) {
+          var nextDate = dateFunction(startDate);
+          return [nextDate, row ? row * unitsHolder.conversion : null];
+        };
+      } else {
+        var dateFunction = incremendDate(frequency);
+        return function (row, startDate) {
+          var nextDate = dateFunction(startDate);
+          return [nextDate, row];
+        };
+      }
+    };
+
     const newSeries = JSON.parse(JSON.stringify(series));
     return newSeries.map((s) => {
       let startd = new Date(minDate[0], minDate[1], minDate[2]);
       s.id = s.name;
-      if (unitsHolder.base !== unitsHolder.current) {
-        s.data = s.data.map((row) => {
-          var nextDate = startd.setMonth(startd.getMonth() + 1);
-          return [nextDate, row ? row * unitsHolder.conversion : null];
-        });
-      } else {
-        s.data = s.data.map((row) => {
-          var nextDate = startd.setMonth(startd.getMonth() + 1);
-          return [nextDate, row];
-        });
-      }
+      s.data = s.data.map((row) => {
+        var addFunction = addRow(unitsHolder, metaData.frequency);
+        return addFunction(row, startd);
+      });
+
       if (
         s.name == "Capacity" ||
         s.name == "Import Capacity" ||

@@ -205,7 +205,11 @@ def conversion(df, data):
     return df
 
 
-def process_throughput(test=False, sql=False, commodity='gas', companies=False):
+def process_throughput(test=False,
+                       sql=False,
+                       commodity='gas',
+                       companies=False,
+                       frequency='monthly'):
 
     def pushTraffic(t, arr, date, rounding):
         if t == 0:
@@ -219,7 +223,11 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
         os.mkdir("../traffic/company_data")
 
     if commodity == 'gas':
-        query = 'throughput_gas_monthly.sql'
+        if frequency == "monthly":
+            query = 'throughput_gas_monthly.sql'
+        else:
+            query = 'throughput_gas.sql'
+
         df = get_data(test, sql, query)
         df = conversion(df, commodity)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
@@ -278,6 +286,7 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
     for company in company_files:
         meta = {"companyName": company}
         meta["units"] = units
+        meta["frequency"] = frequency
         meta['defaultPoint'] = getDefaultPoint(company)
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
@@ -335,7 +344,11 @@ def process_throughput(test=False, sql=False, commodity='gas', companies=False):
                     counter = counter + 1
 
                 throughput_series = []
-                minDate = min(pointDates) - dateutil.relativedelta.relativedelta(months=1)
+                if frequency == "monthly":
+                    minDate = min(pointDates) - dateutil.relativedelta.relativedelta(months=1)
+                else:
+                    minDate = min(pointDates) - dateutil.relativedelta.relativedelta(days=1)
+
                 throughput_series.append({"name": "date", "min": [minDate.year, minDate.month-1, minDate.day]})
 
                 for tt, data in traffic_types.items():
@@ -387,10 +400,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(False, True, query="throughput_oil_monthly.sql")
     # gas = get_data(False, True, query="throughput_gas_monthly.sql")
-    # traffic, df = process_throughput(test=False, sql=False, commodity='gas') #, companies=['Westcoast Energy Inc.'])
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Trans Mountain Pipeline ULC'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='daily')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')
-    
-#%%
-
-
