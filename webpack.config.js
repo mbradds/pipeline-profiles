@@ -71,7 +71,6 @@ var profileWebpackConfig = (function () {
     language.map((lang) => {
       sections.map((section) => {
         htmlFileNames.map((name) => {
-          // mode: "development",
           if (["aurora", "milk_river", "wascana"].includes(name[0])) {
             var folderName = "plains";
           } else {
