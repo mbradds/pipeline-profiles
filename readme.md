@@ -294,3 +294,4 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Try to remove Jquery dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
+- Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
