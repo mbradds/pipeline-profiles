@@ -99,8 +99,8 @@ var profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  // mode: "development",
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
