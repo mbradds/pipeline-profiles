@@ -1,4 +1,4 @@
-import { cerPalette, conversions } from "../modules/util.js";
+import { cerPalette, conversions, visibility } from "../modules/util.js";
 import { KeyPointMap } from "../modules/dashboard.js";
 
 export async function mainTraffic(trafficData, metaData, lang) {
@@ -26,9 +26,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   }
 
-  function addUnits(defaultUnit) {
+  function addUnitsAndSetup(defaultUnit, defaultPoint) {
     var buttonHTML = "";
     const unitsHolder = { base: defaultUnit, current: defaultUnit };
+    var tm = defaultPoint == "Burnaby" ? true : false;
 
     const radioBtn = (unit, checked, i) => {
       if (checked) {
@@ -40,8 +41,18 @@ export async function mainTraffic(trafficData, metaData, lang) {
     <input id="units${i}" value="${unit}" type="radio"${checkhtml}name="trafficUnits" />
     ${unit}</label>`;
     };
+    var [buildFive, hasImports] = [false, false];
     if (defaultUnit == "Bcf/d") {
       var secondUnit = "Million m3/d";
+      if (defaultPoint == "St. Stephen") {
+        hasImports = true;
+      } else {
+        const fiveYearDiv = document.createElement("div");
+        fiveYearDiv.setAttribute("id", "traffic-hc-range");
+        document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
+      }
+      buildFive = true;
+
       unitsHolder["conversion"] = conversions["Bcf/d to Million m3/d"];
     } else if (defaultUnit == "Mb/d") {
       var secondUnit = "Thousand m3/d";
@@ -56,104 +67,20 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
     document.getElementById("select-units-radio").innerHTML = buttonHTML;
 
-    return unitsHolder;
+    return [unitsHolder, buildFive, hasImports, tm];
   }
 
-  const setTitle = (point, tradeType, tm = false) => {
+  const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
     if (!tm) {
-      return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+      if (!fiveYear) {
+        return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+      } else {
+        return `${point} - Five year average & range`;
+      }
     } else {
       return `${point.join("-")} monthly traffic`;
     }
   };
-
-  function tooltipText(event, units) {
-    const rounding = 2;
-
-    const addRow = (p, unit, rounding, extraStyle = "") => {
-      return `<tr style="${extraStyle}"><th style="color:${p.color}">${
-        p.series.name
-      }:</th><th>&nbsp${p.y.toFixed(rounding)} ${unit}</th></tr>`;
-    };
-
-    const addTable = (section) => {
-      let toolText = `<table class="mrgn-tp-sm">`;
-      let total = 0;
-      section.traffic.map((row) => {
-        toolText += row[0];
-        total += row[1];
-      });
-      if (section.traffic.length >= 2) {
-        toolText += addRow(
-          {
-            color: cerPalette["Cool Grey"],
-            series: { name: "Total" },
-            y: total,
-          },
-          units,
-          rounding,
-          "border-top: 1px dashed grey"
-        );
-      }
-      if (section.hasOwnProperty("capacity")) {
-        toolText += section.capacity[0];
-        toolText += addRow(
-          {
-            color: cerPalette["Cool Grey"],
-            series: { name: "Utilization" },
-            y: (total / section.capacity[1]) * 100,
-          },
-          "%",
-          0,
-          "border-top: 1px solid grey"
-        );
-      }
-
-      toolText += `</table>`;
-      return toolText;
-    };
-
-    var textHolder = {
-      imports: { traffic: [], capacity: 0 },
-      other: { traffic: [] },
-    };
-    var hasImports = false;
-    event.points.map((p) => {
-      if (p.series.name == "import") {
-        hasImports = true;
-        textHolder.imports.traffic.push([addRow(p, units, rounding), p.y]);
-      } else if (p.series.name == "Import Capacity") {
-        textHolder.imports.capacity = [addRow(p, units, rounding), p.y];
-      } else if (
-        p.series.name == "Capacity" ||
-        p.series.name == "Export Capacity"
-      ) {
-        textHolder.other.capacity = [addRow(p, units, rounding), p.y];
-      } else {
-        textHolder.other.traffic.push([addRow(p, units, rounding), p.y]);
-      }
-    });
-
-    // tooltip header
-    if (metaData.frequency == "monthly") {
-      var toolText = `<strong>${Highcharts.dateFormat(
-        "%b, %Y",
-        event.x
-      )}</strong>`;
-    } else {
-      var toolText = `<strong>${Highcharts.dateFormat(
-        "%b %e, %Y",
-        event.x
-      )}</strong>`;
-    }
-
-    toolText += addTable(textHolder.other);
-
-    if (hasImports) {
-      toolText += addTable(textHolder.imports);
-    }
-    return toolText;
-  }
 
   const createSeries = (trafficData, defaultPoint, includeList = []) => {
     var firstSeries = [];
@@ -183,11 +110,69 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return firstSeries;
   };
 
-  function compareStrings(a, b) {
-    return a < b ? -1 : a > b ? 1 : 0;
+  function createFiveYearSeries(data) {
+    var lastYear = new Date(data["lastDate"]).getFullYear();
+    var firstYear = lastYear - 6;
+    delete data["lastDate"];
+    const months = {};
+    const lastYrSeries = {
+      data: [],
+      type: "line",
+      zIndex: 5,
+      name: `${lastYear} throughput (last year of data)`,
+      color: cerPalette["hcRed"],
+    };
+    for (const [date, value] of Object.entries(data)) {
+      let dateInt = new Date(parseInt(date, 10));
+      let [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
+      if (year == lastYear) {
+        lastYrSeries.data.push([lang.months[month.toString()], value]);
+      }
+      if (year > firstYear && year < lastYear) {
+        if (month in months) {
+          months[month].push(value);
+        } else {
+          months[month] = [value];
+        }
+      }
+    }
+    const fiveYrRange = {
+      data: [],
+      name: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
+      type: "arearange",
+      zIndex: 3,
+      marker: {
+        enabled: false,
+      },
+      color: cerPalette["Ocean"],
+    };
+    const fiveYrAvg = {
+      data: [],
+      name: "Five Year Average",
+      type: "line",
+      zIndex: 4,
+      marker: {
+        enabled: false,
+      },
+      lineWidth: 4,
+      color: "black",
+    };
+    const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+    for (const [x, value] of Object.entries(months)) {
+      fiveYrRange.data.push([
+        lang.months[x],
+        Math.min(...value),
+        Math.max(...value),
+      ]);
+      fiveYrAvg.data.push([lang.months[x], arrAvg(value)]);
+    }
+    return [lastYrSeries, fiveYrAvg, fiveYrRange];
   }
 
-  function addSeriesParams(series, unitsHolder) {
+  function addSeriesParams(series, unitsHolder, buildFive) {
+    function compareStrings(a, b) {
+      return a < b ? -1 : a > b ? 1 : 0;
+    }
     let minDate = series[0].min;
     series = series.slice(1);
 
@@ -195,7 +180,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return compareStrings(a.name, b.name);
     });
 
-    const addRow = (unitsHolder, frequency) => {
+    const isCapacity = (seriesName) => {
+      if (
+        seriesName == "Capacity" ||
+        seriesName == "Import Capacity" ||
+        seriesName == "Export Capacity"
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const addRow = (unitsHolder, frequency, seriesName, buildFive) => {
       const incremendDate = (frequency) => {
         if (frequency == "daily") {
           return function (date) {
@@ -208,44 +205,79 @@ export async function mainTraffic(trafficData, metaData, lang) {
         }
       };
 
+      const calcRowUnits = (unitsHolder) => {
+        if (unitsHolder.base !== unitsHolder.current) {
+          return function (row) {
+            return row ? row * unitsHolder.conversion : null;
+          };
+        } else {
+          return function (row) {
+            return row;
+          };
+        }
+      };
+
       var dateFunction = incremendDate(frequency);
-      if (unitsHolder.base !== unitsHolder.current) {
-        return function (row, startDate) {
-          var nextDate = dateFunction(startDate);
-          return [nextDate, row ? row * unitsHolder.conversion : null];
-        };
+      var rowFunction = calcRowUnits(unitsHolder);
+      if (!isCapacity(seriesName)) {
+        if (buildFive) {
+          return function (row, startDate, five) {
+            var nextDate = dateFunction(startDate);
+            if (nextDate in five) {
+              five[nextDate] += rowFunction(row);
+            } else {
+              five[nextDate] = rowFunction(row);
+            }
+            five["lastDate"] = nextDate;
+            return [[nextDate, rowFunction(row)], five];
+          };
+        } else {
+          return function (row, startDate, five) {
+            var nextDate = dateFunction(startDate);
+            return [[nextDate, rowFunction(row)], five];
+          };
+        }
       } else {
-        return function (row, startDate) {
+        return function (row, startDate, five) {
           var nextDate = dateFunction(startDate);
-          return [nextDate, row];
+          return [[nextDate, rowFunction(row)], five];
         };
       }
     };
 
-    const newSeries = JSON.parse(JSON.stringify(series));
-    return newSeries.map((s) => {
+    const nextSeries = JSON.parse(JSON.stringify(series));
+    let newSeries = [];
+    const fiveYearData = {};
+    nextSeries.map((s) => {
       let startd = new Date(minDate[0], minDate[1], minDate[2]);
       s.id = s.name;
-      var addFunction = addRow(unitsHolder, metaData.frequency);
+      var addFunction = addRow(
+        unitsHolder,
+        metaData.frequency,
+        s.name,
+        buildFive
+      );
       s.data = s.data.map((row) => {
-        return addFunction(row, startd);
+        var next = addFunction(row, startd, fiveYearData);
+        return next[0];
       });
 
-      if (
-        s.name == "Capacity" ||
-        s.name == "Import Capacity" ||
-        s.name == "Export Capacity"
-      ) {
+      if (isCapacity(s.name)) {
         s.type = "line";
-        s.zIndex = 5;
+        s.zIndex = 6;
         s.lineWidth = 3;
       } else {
         s.type = "area";
-        s.zIndex = 4;
+        s.zIndex = 5;
         s.lineWidth = 1;
       }
-      return s;
+      newSeries.push(s);
     });
+    if (buildFive) {
+      return [newSeries, createFiveYearSeries(fiveYearData)];
+    } else {
+      return [newSeries, undefined];
+    }
   }
 
   function getPointList(keyPoints) {
@@ -256,25 +288,184 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return pointList.sort();
   }
 
-  const trafficChart = (series, title, units, div = "traffic-hc") => {
+  const rounding = 2;
+  const addToolRow = (p, unit, rounding, extraStyle = "") => {
+    const yVal = (p) => {
+      if (p.point.hasOwnProperty("low") && p.point.hasOwnProperty("high")) {
+        return (p) => {
+          return `${p.point.low.toFixed(rounding)} - ${p.point.high.toFixed(
+            rounding
+          )}`;
+        };
+      } else {
+        return (p) => {
+          return `${p.y.toFixed(rounding)}`;
+        };
+      }
+    };
+
+    var yFunction = yVal(p);
+    return `<tr style="${extraStyle}"><th style="color:${p.color}">${
+      p.series.name
+    }:</th><th>&nbsp${yFunction(p)} ${unit}</th></tr>`;
+  };
+
+  function tooltipText(event, units) {
+    const addTable = (section) => {
+      let toolText = `<table class="mrgn-tp-sm">`;
+      let total = 0;
+      section.traffic.map((row) => {
+        toolText += row[0];
+        total += row[1];
+      });
+      if (section.traffic.length >= 2) {
+        toolText += addToolRow(
+          {
+            color: cerPalette["Cool Grey"],
+            series: { name: "Total" },
+            y: total,
+            point: {},
+          },
+          units,
+          rounding,
+          "border-top: 1px dashed grey"
+        );
+      }
+      if (section.hasOwnProperty("capacity")) {
+        toolText += section.capacity[0];
+        toolText += addToolRow(
+          {
+            color: cerPalette["Cool Grey"],
+            series: { name: "Utilization" },
+            y: (total / section.capacity[1]) * 100,
+            point: {},
+          },
+          "%",
+          0,
+          "border-top: 1px solid grey"
+        );
+      }
+
+      toolText += `</table>`;
+      return toolText;
+    };
+
+    var textHolder = {
+      imports: { traffic: [], capacity: 0 },
+      other: { traffic: [] },
+    };
+    var hasImports = false;
+    event.points.map((p) => {
+      if (p.series.name == "import") {
+        hasImports = true;
+        textHolder.imports.traffic.push([addToolRow(p, units, rounding), p.y]);
+      } else if (p.series.name == "Import Capacity") {
+        textHolder.imports.capacity = [addToolRow(p, units, rounding), p.y];
+      } else if (
+        p.series.name == "Capacity" ||
+        p.series.name == "Export Capacity"
+      ) {
+        textHolder.other.capacity = [addToolRow(p, units, rounding), p.y];
+      } else {
+        textHolder.other.traffic.push([addToolRow(p, units, rounding), p.y]);
+      }
+    });
+
+    // tooltip header
+    if (metaData.frequency == "monthly") {
+      var toolText = `<strong>${Highcharts.dateFormat(
+        "%b, %Y",
+        event.x
+      )}</strong>`;
+    } else {
+      var toolText = `<strong>${Highcharts.dateFormat(
+        "%b %e, %Y",
+        event.x
+      )}</strong>`;
+    }
+
+    toolText += addTable(textHolder.other);
+
+    if (hasImports) {
+      toolText += addTable(textHolder.imports);
+    }
+    return toolText;
+  }
+
+  function fiveYearTooltipText(event, units) {
+    var toolText = `<strong>${lang.months[event.x + 1]}</strong><table>`;
+    //console.log(event);
+    event.points.map((p) => {
+      //console.log(p);
+      toolText += addToolRow(p, units, rounding);
+    });
+    toolText += "</table>";
+    return toolText;
+  }
+
+  const sharedHcParams = {
+    legend: { alignColumns: false, margin: 0, symbolPadding: 2 },
+    title: (text) => {
+      return {
+        align: "left",
+        x: 10,
+        margin: 5,
+        text: text,
+        style: {
+          fontSize: "16px",
+          fontWeight: "bold",
+        },
+      };
+    },
+  };
+
+  function createFiveYearChart(series, point, units) {
+    return new Highcharts.chart("traffic-hc-range", {
+      chart: {
+        type: "line",
+        marginRight: 0,
+        spacingTop: 5,
+        spacingBottom: 10,
+      },
+      title: sharedHcParams.title(setTitle(point, undefined, false, true)),
+      xAxis: {
+        crosshair: true,
+        tickInterval: 1,
+        labels: {
+          step: 1,
+          formatter: function () {
+            return lang.months[this.value + 1];
+          },
+        },
+      },
+      legend: sharedHcParams.legend,
+      yAxis: {
+        startOnTick: true,
+        endOnTick: false,
+        title: { text: units },
+      },
+      tooltip: {
+        shared: true,
+        backgroundColor: "white",
+        borderColor: cerPalette["Dim Grey"],
+        useHTML: true,
+        formatter: function () {
+          return fiveYearTooltipText(this, units);
+        },
+      },
+      series: series,
+    });
+  }
+
+  function buildTrafficChart(series, title, units, div = "traffic-hc") {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
         marginRight: 0,
         animation: false,
+        spacingBottom: 0,
       },
-      credits: {
-        text: "",
-      },
-      title: {
-        align: "left",
-        x: 10,
-        text: title,
-        style: {
-          fontSize: "16px",
-          fontWeight: "bold",
-        },
-      },
+      title: sharedHcParams.title(title),
       xAxis: {
         type: "datetime",
         crosshair: true,
@@ -285,22 +476,21 @@ export async function mainTraffic(trafficData, metaData, lang) {
             text: units,
           },
           min: 0,
+          startOnTick: true,
+          endOnTick: false,
         },
         { visible: false },
       ],
       tooltip: {
         shared: true,
         backgroundColor: "white",
+        borderColor: cerPalette["Dim Grey"],
         useHTML: true,
         formatter: function () {
           return tooltipText(this, units);
         },
       },
-      legend: {
-        alignColumns: false,
-        margin: 0,
-        symbolPadding: 2,
-      },
+      legend: sharedHcParams.legend,
       plotOptions: {
         area: {
           stacking: "normal",
@@ -319,7 +509,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       },
       series: series,
     });
-  };
+  }
 
   const hasImportsRedraw = (chart, btnValue, metaData, units) => {
     chart.update(
@@ -373,11 +563,35 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return chart;
   };
 
+  function resize(buildFive, hasImports) {
+    var mainTraffic = document.getElementById("traffic-hc");
+    var mainMap = document.getElementById("traffic-map");
+    if (buildFive && hasImports) {
+      // user is on a gas profile, but there are imports that hide five year avg
+      mainTraffic.classList.remove("traffic-hc-shared");
+      mainTraffic.classList.add("traffic-hc-single-gas");
+      mainMap.classList.add("traffic-map-shared");
+      visibility(["traffic-hc-range"], "hide");
+    } else if (!buildFive) {
+      mainTraffic.classList.add("traffic-hc-single");
+      mainMap.classList.add("traffic-map-single");
+    } else {
+      visibility(["traffic-hc-range"], "show");
+      mainTraffic.classList.add("traffic-hc-shared");
+      mainMap.classList.add("traffic-map-shared");
+      mainTraffic.classList.remove("traffic-hc-single-gas");
+    }
+    return undefined;
+  }
+
   function buildDashboard() {
     try {
       var defaultPoint = metaData.defaultPoint;
-      var tm = defaultPoint == "Burnaby" ? true : false;
-      const unitsHolder = addUnits(metaData.units);
+      var [unitsHolder, buildFive, hasImports, tm] = addUnitsAndSetup(
+        metaData.units,
+        defaultPoint
+      );
+      resize(buildFive, hasImports);
       metaData.points = getPointList(metaData.keyPoints);
       if (defaultPoint !== "system") {
         if (metaData.points.length == 1) {
@@ -424,24 +638,39 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
-      const chart = trafficChart(
-        addSeriesParams(
-          createSeries(trafficData, defaultPoint, metaData.points),
-          unitsHolder
-        ),
+      const [timeSeries, fiveSeries] = addSeriesParams(
+        createSeries(trafficData, defaultPoint, metaData.points),
+        unitsHolder,
+        buildFive
+      );
+
+      const trafficChart = buildTrafficChart(
+        timeSeries,
         !tm
           ? setTitle(defaultPoint, metaData.directions[defaultPoint])
           : setTitle(metaData.points, undefined, tm),
         unitsHolder.current
       );
-      var hasImports = false;
-      if (defaultPoint == "St. Stephen") {
-        ["traffic-points-btn", "key-point-title"].map((hideDiv) => {
-          document.getElementById(hideDiv).style.display = "none";
-        });
-        hasImports = true;
-        hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
-        chart.redraw(true);
+
+      // only m&np should meet this criteria on load
+      if (hasImports) {
+        hasImportsRedraw(
+          trafficChart,
+          defaultPoint,
+          metaData,
+          unitsHolder.current
+        );
+        trafficChart.redraw(true);
+      } else if (buildFive && !hasImports) {
+        // user is on gas profile that isnt m&np
+        var fiveChart = createFiveYearChart(
+          fiveSeries,
+          defaultPoint,
+          unitsHolder.current
+        );
+      } else {
+        // user is on oil profile
+        var fiveChart = false;
       }
       lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
 
@@ -452,12 +681,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
           var keyBtn = $(this).addClass("active");
           hasImports = false;
           defaultPoint = keyBtn.val();
-          const newSeries = addSeriesParams(
+          const [newSeries, newFiveSeries] = addSeriesParams(
             trafficData[defaultPoint],
-            unitsHolder
+            unitsHolder,
+            buildFive
           );
 
-          var currentIds = chart.series.map((s) => {
+          var currentIds = trafficChart.series.map((s) => {
             return s.userOptions.id;
           });
 
@@ -467,29 +697,30 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
           currentIds.map((id) => {
             if (!newIds.includes(id)) {
-              chart.get(id).remove(false);
+              trafficChart.get(id).remove(false);
             }
           });
 
           newSeries.map((newS) => {
             if (currentIds.includes(newS.id)) {
-              chart.get(newS.id).setData(newS.data, false, false, false);
+              trafficChart.get(newS.id).setData(newS.data, false, false, false);
             } else {
-              chart.addSeries(newS, false, true);
+              trafficChart.addSeries(newS, false, true);
             }
             if (newS.name == "import") {
               hasImports = true;
             }
           });
+
           if (hasImports) {
             hasImportsRedraw(
-              chart,
+              trafficChart,
               defaultPoint,
               metaData,
               unitsHolder.current
             );
           } else {
-            chart.update(
+            trafficChart.update(
               {
                 title: {
                   text: setTitle(
@@ -511,8 +742,18 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
               false
             );
+            if (fiveChart) {
+              fiveChart.update({
+                series: newFiveSeries,
+                title: {
+                  text: setTitle(defaultPoint, undefined, false, true),
+                },
+              });
+            }
           }
-          chart.redraw(true);
+          resize(buildFive, hasImports);
+          trafficChart.redraw(true);
+          trafficChart.reflow();
           pointMap.pointChange([defaultPoint]);
           lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
         });
@@ -526,43 +767,46 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
           }
 
-          while (chart.series.length) {
-            chart.series[0].remove(false, false, false);
+          while (trafficChart.series.length) {
+            trafficChart.series[0].remove(false, false, false);
           }
 
-          const newSeries = addSeriesParams(
-            createSeries(trafficData, defaultPoint, metaData.points),
-            unitsHolder
-          );
+          if (metaData.points.length > 0) {
+            const [newSeries, newFiveSeries] = addSeriesParams(
+              createSeries(trafficData, defaultPoint, metaData.points),
+              unitsHolder,
+              buildFive
+            );
 
-          newSeries.map((newS) => {
-            chart.addSeries(newS, false, false);
-          });
+            newSeries.map((newS) => {
+              trafficChart.addSeries(newS, false, false);
+            });
 
-          chart.update(
-            {
-              title: {
-                text: setTitle(metaData.points, undefined, tm),
+            trafficChart.update(
+              {
+                title: {
+                  text: setTitle(metaData.points, undefined, tm),
+                },
               },
-            },
-            false
-          );
-          chart.redraw(true);
-          pointMap.pointChange(metaData.points);
+              false
+            );
+            trafficChart.redraw(true);
+            pointMap.pointChange(metaData.points);
+          }
         });
       }
 
       //user selects units
       $("#select-units-radio input[name='trafficUnits']").click(function () {
         unitsHolder.current = $("input:radio[name=trafficUnits]:checked").val();
-        chart.update(
+        var [newTimeSeries, newFiveSeries] = addSeriesParams(
+          createSeries(trafficData, defaultPoint, metaData.points),
+          unitsHolder,
+          buildFive
+        );
+        trafficChart.update(
           {
-            series: addSeriesParams(
-              !tm
-                ? createSeries(trafficData, defaultPoint)
-                : createSeries(trafficData, defaultPoint, metaData.points),
-              unitsHolder
-            ),
+            series: newTimeSeries,
             yAxis: [
               {
                 title: { text: unitsHolder.current },
@@ -579,8 +823,31 @@ export async function mainTraffic(trafficData, metaData, lang) {
           false
         );
         if (hasImports) {
-          hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
-          chart.redraw(false);
+          hasImportsRedraw(
+            trafficChart,
+            defaultPoint,
+            metaData,
+            unitsHolder.current
+          );
+          trafficChart.redraw(false);
+        }
+        if (fiveChart) {
+          fiveChart.update(
+            {
+              series: newFiveSeries,
+              tooltip: {
+                formatter: function () {
+                  return fiveYearTooltipText(this, unitsHolder.current);
+                },
+              },
+              yAxis: {
+                title: { text: unitsHolder.current },
+              },
+            },
+            true,
+            false,
+            false
+          );
         }
         lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
       });
