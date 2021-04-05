@@ -26,9 +26,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   }
 
-  function addUnits(defaultUnit, defaultPoint) {
+  function addUnitsAndSetup(defaultUnit, defaultPoint) {
     var buttonHTML = "";
     const unitsHolder = { base: defaultUnit, current: defaultUnit };
+    var tm = defaultPoint == "Burnaby" ? true : false;
 
     const radioBtn = (unit, checked, i) => {
       if (checked) {
@@ -66,7 +67,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
     document.getElementById("select-units-radio").innerHTML = buttonHTML;
 
-    return [unitsHolder, buildFive, hasImports];
+    return [unitsHolder, buildFive, hasImports, tm];
   }
 
   const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
@@ -80,94 +81,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return `${point.join("-")} monthly traffic`;
     }
   };
-
-  function tooltipText(event, units) {
-    const rounding = 2;
-
-    const addRow = (p, unit, rounding, extraStyle = "") => {
-      return `<tr style="${extraStyle}"><th style="color:${p.color}">${
-        p.series.name
-      }:</th><th>&nbsp${p.y.toFixed(rounding)} ${unit}</th></tr>`;
-    };
-
-    const addTable = (section) => {
-      let toolText = `<table class="mrgn-tp-sm">`;
-      let total = 0;
-      section.traffic.map((row) => {
-        toolText += row[0];
-        total += row[1];
-      });
-      if (section.traffic.length >= 2) {
-        toolText += addRow(
-          {
-            color: cerPalette["Cool Grey"],
-            series: { name: "Total" },
-            y: total,
-          },
-          units,
-          rounding,
-          "border-top: 1px dashed grey"
-        );
-      }
-      if (section.hasOwnProperty("capacity")) {
-        toolText += section.capacity[0];
-        toolText += addRow(
-          {
-            color: cerPalette["Cool Grey"],
-            series: { name: "Utilization" },
-            y: (total / section.capacity[1]) * 100,
-          },
-          "%",
-          0,
-          "border-top: 1px solid grey"
-        );
-      }
-
-      toolText += `</table>`;
-      return toolText;
-    };
-
-    var textHolder = {
-      imports: { traffic: [], capacity: 0 },
-      other: { traffic: [] },
-    };
-    var hasImports = false;
-    event.points.map((p) => {
-      if (p.series.name == "import") {
-        hasImports = true;
-        textHolder.imports.traffic.push([addRow(p, units, rounding), p.y]);
-      } else if (p.series.name == "Import Capacity") {
-        textHolder.imports.capacity = [addRow(p, units, rounding), p.y];
-      } else if (
-        p.series.name == "Capacity" ||
-        p.series.name == "Export Capacity"
-      ) {
-        textHolder.other.capacity = [addRow(p, units, rounding), p.y];
-      } else {
-        textHolder.other.traffic.push([addRow(p, units, rounding), p.y]);
-      }
-    });
-
-    // tooltip header
-    if (metaData.frequency == "monthly") {
-      var toolText = `<strong>${Highcharts.dateFormat(
-        "%b, %Y",
-        event.x
-      )}</strong>`;
-    } else {
-      var toolText = `<strong>${Highcharts.dateFormat(
-        "%b %e, %Y",
-        event.x
-      )}</strong>`;
-    }
-
-    toolText += addTable(textHolder.other);
-
-    if (hasImports) {
-      toolText += addTable(textHolder.imports);
-    }
-    return toolText;
-  }
 
   const createSeries = (trafficData, defaultPoint, includeList = []) => {
     var firstSeries = [];
@@ -206,7 +119,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       data: [],
       type: "line",
       zIndex: 5,
-      name: `${lastYear} (last year of data)`,
+      name: `${lastYear} throughput (last year of data)`,
       color: cerPalette["hcRed"],
     };
     for (const [date, value] of Object.entries(data)) {
@@ -242,7 +155,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         enabled: false,
       },
       lineWidth: 4,
-      color: cerPalette["Forest"],
+      color: "black",
     };
     const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
     for (const [x, value] of Object.entries(months)) {
@@ -254,48 +167,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       fiveYrAvg.data.push([lang.months[x], arrAvg(value)]);
     }
     return [lastYrSeries, fiveYrAvg, fiveYrRange];
-  }
-
-  function createFiveYearChart(series, point, units) {
-    // TODO: create an object that contains shared chart properties like legend, etc
-    return new Highcharts.chart("traffic-hc-range", {
-      chart: {
-        type: "line",
-        marginRight: 0,
-        spacingTop: 5,
-        spacingBottom: 10,
-      },
-      title: {
-        align: "left",
-        x: 10,
-        margin: 5,
-        text: setTitle(point, undefined, false, true),
-        style: {
-          fontSize: "16px",
-          fontWeight: "bold",
-        },
-      },
-      xAxis: {
-        crosshair: true,
-        categories: Object.values(lang.months),
-        labels: {
-          step: 1,
-        },
-      },
-      legend: {
-        margin: 0,
-        symbolPadding: 2,
-      },
-      yAxis: {
-        startOnTick: true,
-        endOnTick: false,
-        title: { text: units },
-      },
-      tooltip: {
-        shared: true,
-      },
-      series: series,
-    });
   }
 
   function addSeriesParams(series, unitsHolder, buildFive) {
@@ -417,7 +288,176 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return pointList.sort();
   }
 
-  const trafficChart = (series, title, units, div = "traffic-hc") => {
+  const rounding = 2;
+  const addToolRow = (p, unit, rounding, extraStyle = "") => {
+    const yVal = (p) => {
+      if (p.point.hasOwnProperty("low") && p.point.hasOwnProperty("high")) {
+        return (p) => {
+          return `${p.point.low.toFixed(rounding)} - ${p.point.high.toFixed(
+            rounding
+          )}`;
+        };
+      } else {
+        return (p) => {
+          return `${p.y.toFixed(rounding)}`;
+        };
+      }
+    };
+
+    var yFunction = yVal(p);
+    return `<tr style="${extraStyle}"><th style="color:${p.color}">${
+      p.series.name
+    }:</th><th>&nbsp${yFunction(p)} ${unit}</th></tr>`;
+  };
+
+  function tooltipText(event, units) {
+    const addTable = (section) => {
+      let toolText = `<table class="mrgn-tp-sm">`;
+      let total = 0;
+      section.traffic.map((row) => {
+        toolText += row[0];
+        total += row[1];
+      });
+      if (section.traffic.length >= 2) {
+        toolText += addToolRow(
+          {
+            color: cerPalette["Cool Grey"],
+            series: { name: "Total" },
+            y: total,
+            point: {},
+          },
+          units,
+          rounding,
+          "border-top: 1px dashed grey"
+        );
+      }
+      if (section.hasOwnProperty("capacity")) {
+        toolText += section.capacity[0];
+        toolText += addToolRow(
+          {
+            color: cerPalette["Cool Grey"],
+            series: { name: "Utilization" },
+            y: (total / section.capacity[1]) * 100,
+            point: {},
+          },
+          "%",
+          0,
+          "border-top: 1px solid grey"
+        );
+      }
+
+      toolText += `</table>`;
+      return toolText;
+    };
+
+    var textHolder = {
+      imports: { traffic: [], capacity: 0 },
+      other: { traffic: [] },
+    };
+    var hasImports = false;
+    event.points.map((p) => {
+      if (p.series.name == "import") {
+        hasImports = true;
+        textHolder.imports.traffic.push([addToolRow(p, units, rounding), p.y]);
+      } else if (p.series.name == "Import Capacity") {
+        textHolder.imports.capacity = [addToolRow(p, units, rounding), p.y];
+      } else if (
+        p.series.name == "Capacity" ||
+        p.series.name == "Export Capacity"
+      ) {
+        textHolder.other.capacity = [addToolRow(p, units, rounding), p.y];
+      } else {
+        textHolder.other.traffic.push([addToolRow(p, units, rounding), p.y]);
+      }
+    });
+
+    // tooltip header
+    if (metaData.frequency == "monthly") {
+      var toolText = `<strong>${Highcharts.dateFormat(
+        "%b, %Y",
+        event.x
+      )}</strong>`;
+    } else {
+      var toolText = `<strong>${Highcharts.dateFormat(
+        "%b %e, %Y",
+        event.x
+      )}</strong>`;
+    }
+
+    toolText += addTable(textHolder.other);
+
+    if (hasImports) {
+      toolText += addTable(textHolder.imports);
+    }
+    return toolText;
+  }
+
+  function fiveYearTooltipText(event, units) {
+    var toolText = `<strong>${lang.months[event.x + 1]}</strong><table>`;
+    //console.log(event);
+    event.points.map((p) => {
+      //console.log(p);
+      toolText += addToolRow(p, units, rounding);
+    });
+    toolText += "</table>";
+    return toolText;
+  }
+
+  const sharedHcParams = {
+    legend: { alignColumns: false, margin: 0, symbolPadding: 2 },
+    title: (text) => {
+      return {
+        align: "left",
+        x: 10,
+        margin: 5,
+        text: text,
+        style: {
+          fontSize: "16px",
+          fontWeight: "bold",
+        },
+      };
+    },
+  };
+
+  function createFiveYearChart(series, point, units) {
+    return new Highcharts.chart("traffic-hc-range", {
+      chart: {
+        type: "line",
+        marginRight: 0,
+        spacingTop: 5,
+        spacingBottom: 10,
+      },
+      title: sharedHcParams.title(setTitle(point, undefined, false, true)),
+      xAxis: {
+        crosshair: true,
+        tickInterval: 1,
+        labels: {
+          step: 1,
+          formatter: function () {
+            return lang.months[this.value + 1];
+          },
+        },
+      },
+      legend: sharedHcParams.legend,
+      yAxis: {
+        startOnTick: true,
+        endOnTick: false,
+        title: { text: units },
+      },
+      tooltip: {
+        shared: true,
+        backgroundColor: "white",
+        borderColor: cerPalette["Dim Grey"],
+        useHTML: true,
+        formatter: function () {
+          return fiveYearTooltipText(this, units);
+        },
+      },
+      series: series,
+    });
+  }
+
+  function buildTrafficChart(series, title, units, div = "traffic-hc") {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
@@ -425,16 +465,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         animation: false,
         spacingBottom: 0,
       },
-      title: {
-        align: "left",
-        x: 10,
-        margin: 5,
-        text: title,
-        style: {
-          fontSize: "16px",
-          fontWeight: "bold",
-        },
-      },
+      title: sharedHcParams.title(title),
       xAxis: {
         type: "datetime",
         crosshair: true,
@@ -453,16 +484,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
       tooltip: {
         shared: true,
         backgroundColor: "white",
+        borderColor: cerPalette["Dim Grey"],
         useHTML: true,
         formatter: function () {
           return tooltipText(this, units);
         },
       },
-      legend: {
-        alignColumns: false,
-        margin: 0,
-        symbolPadding: 2,
-      },
+      legend: sharedHcParams.legend,
       plotOptions: {
         area: {
           stacking: "normal",
@@ -481,7 +509,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       },
       series: series,
     });
-  };
+  }
 
   const hasImportsRedraw = (chart, btnValue, metaData, units) => {
     chart.update(
@@ -559,8 +587,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function buildDashboard() {
     try {
       var defaultPoint = metaData.defaultPoint;
-      var tm = defaultPoint == "Burnaby" ? true : false;
-      var [unitsHolder, buildFive, hasImports] = addUnits(
+      var [unitsHolder, buildFive, hasImports, tm] = addUnitsAndSetup(
         metaData.units,
         defaultPoint
       );
@@ -617,7 +644,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         buildFive
       );
 
-      const chart = trafficChart(
+      const trafficChart = buildTrafficChart(
         timeSeries,
         !tm
           ? setTitle(defaultPoint, metaData.directions[defaultPoint])
@@ -627,8 +654,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
       // only m&np should meet this criteria on load
       if (hasImports) {
-        hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
-        chart.redraw(true);
+        hasImportsRedraw(
+          trafficChart,
+          defaultPoint,
+          metaData,
+          unitsHolder.current
+        );
+        trafficChart.redraw(true);
       } else if (buildFive && !hasImports) {
         // user is on gas profile that isnt m&np
         var fiveChart = createFiveYearChart(
@@ -655,7 +687,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             buildFive
           );
 
-          var currentIds = chart.series.map((s) => {
+          var currentIds = trafficChart.series.map((s) => {
             return s.userOptions.id;
           });
 
@@ -665,15 +697,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
           currentIds.map((id) => {
             if (!newIds.includes(id)) {
-              chart.get(id).remove(false);
+              trafficChart.get(id).remove(false);
             }
           });
 
           newSeries.map((newS) => {
             if (currentIds.includes(newS.id)) {
-              chart.get(newS.id).setData(newS.data, false, false, false);
+              trafficChart.get(newS.id).setData(newS.data, false, false, false);
             } else {
-              chart.addSeries(newS, false, true);
+              trafficChart.addSeries(newS, false, true);
             }
             if (newS.name == "import") {
               hasImports = true;
@@ -682,13 +714,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
           if (hasImports) {
             hasImportsRedraw(
-              chart,
+              trafficChart,
               defaultPoint,
               metaData,
               unitsHolder.current
             );
           } else {
-            chart.update(
+            trafficChart.update(
               {
                 title: {
                   text: setTitle(
@@ -720,8 +752,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             }
           }
           resize(buildFive, hasImports);
-          chart.redraw(true);
-          chart.reflow();
+          trafficChart.redraw(true);
+          trafficChart.reflow();
           pointMap.pointChange([defaultPoint]);
           lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
         });
@@ -735,8 +767,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
           }
 
-          while (chart.series.length) {
-            chart.series[0].remove(false, false, false);
+          while (trafficChart.series.length) {
+            trafficChart.series[0].remove(false, false, false);
           }
 
           if (metaData.points.length > 0) {
@@ -747,10 +779,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
 
             newSeries.map((newS) => {
-              chart.addSeries(newS, false, false);
+              trafficChart.addSeries(newS, false, false);
             });
 
-            chart.update(
+            trafficChart.update(
               {
                 title: {
                   text: setTitle(metaData.points, undefined, tm),
@@ -758,7 +790,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
               false
             );
-            chart.redraw(true);
+            trafficChart.redraw(true);
             pointMap.pointChange(metaData.points);
           }
         });
@@ -772,7 +804,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           unitsHolder,
           buildFive
         );
-        chart.update(
+        trafficChart.update(
           {
             series: newTimeSeries,
             yAxis: [
@@ -791,13 +823,23 @@ export async function mainTraffic(trafficData, metaData, lang) {
           false
         );
         if (hasImports) {
-          hasImportsRedraw(chart, defaultPoint, metaData, unitsHolder.current);
-          chart.redraw(false);
+          hasImportsRedraw(
+            trafficChart,
+            defaultPoint,
+            metaData,
+            unitsHolder.current
+          );
+          trafficChart.redraw(false);
         }
         if (fiveChart) {
           fiveChart.update(
             {
               series: newFiveSeries,
+              tooltip: {
+                formatter: function () {
+                  return fiveYearTooltipText(this, unitsHolder.current);
+                },
+              },
               yAxis: {
                 title: { text: unitsHolder.current },
               },
