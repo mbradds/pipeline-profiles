@@ -29,6 +29,10 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
 };
 
+const numberFormat = (value, rounding = 2) => {
+  return Highcharts.numberFormat(value, rounding, ".", ",");
+};
+
 export const englishDashboard = {
   plains:
     "Plains Midstream Canada ULC includes the Aurora, Milk River, and Wascana pipelines",
@@ -286,6 +290,7 @@ export const englishDashboard = {
   },
   traffic: {
     dynamicText: trafficTrendTextEng,
+    numberFormat: numberFormat,
     months: {
       1: "Jan",
       2: "Feb",

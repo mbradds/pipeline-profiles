@@ -53,7 +53,7 @@ var profileWebpackConfig = (function () {
             minify: {
               collapseWhitespace: false,
               keepClosingSlash: false,
-              removeComments: true,
+              removeComments: false,
               removeRedundantAttributes: false,
               removeScriptTypeAttributes: false,
               removeStyleLinkTypeAttributes: false,

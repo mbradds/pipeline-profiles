@@ -294,13 +294,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const yVal = (p) => {
       if (p.point.hasOwnProperty("low") && p.point.hasOwnProperty("high")) {
         return (p) => {
-          return `${p.point.low.toFixed(rounding)} - ${p.point.high.toFixed(
-            rounding
+          return `${lang.numberFormat(p.point.low)} - ${lang.numberFormat(
+            p.point.high
           )}`;
         };
       } else {
         return (p) => {
-          return `${p.y.toFixed(rounding)}`;
+          return `${lang.numberFormat(p.y, rounding)}`;
         };
       }
     };
@@ -653,7 +653,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
         // user is on oil profile
         var fiveChart = false;
       }
-      lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
+      lang.dynamicText(
+        metaData,
+        defaultPoint,
+        unitsHolder,
+        tm,
+        lang.numberFormat
+      );
 
       // user selects key point
       if (!tm) {
@@ -735,7 +741,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
           trafficChart.redraw(true);
           trafficChart.reflow();
           pointMap.pointChange([defaultPoint]);
-          lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
+          lang.dynamicText(
+            metaData,
+            defaultPoint,
+            unitsHolder,
+            tm,
+            lang.numberFormat
+          );
         });
       } else {
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
@@ -829,7 +841,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
             false
           );
         }
-        lang.dynamicText(metaData, defaultPoint, unitsHolder, tm);
+        lang.dynamicText(
+          metaData,
+          defaultPoint,
+          unitsHolder,
+          tm,
+          lang.numberFormat
+        );
       });
 
       // update map zoom
