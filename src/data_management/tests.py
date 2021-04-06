@@ -70,11 +70,11 @@ class TestNovaIncidents(unittest.TestCase):
         self.assertEqual(len(status), 82)
         self.assertEqual(len(year), 2)
         trueSubstanceRelease = 38370485
-        self.assertTrue(trueSubstanceRelease-1 <= int(substance['Approximate Volume Released'].sum()) <= trueSubstanceRelease+1)
+        self.assertTrue(trueSubstanceRelease-1 <= int(substance['vol'].sum()) <= trueSubstanceRelease+1)
         trueStatusRelease = 26871755
-        self.assertTrue(trueStatusRelease-1 <= int(status['Approximate Volume Released'].sum()) <= trueStatusRelease)
+        self.assertTrue(trueStatusRelease-1 <= int(status['vol'].sum()) <= trueStatusRelease)
         trueYearRelease = 20800000
-        self.assertTrue(trueYearRelease-1 <= int(year['Approximate Volume Released'].sum()) <= trueYearRelease+1)
+        self.assertTrue(trueYearRelease-1 <= int(year['vol'].sum()) <= trueYearRelease+1)
 
     def testTrends(self):
         year = self.volume[self.volume['Year'] == 2016].copy()

@@ -47,7 +47,7 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
     csvName = query.split(".")[0]+'.csv'
     if sql:
         print('reading sql '+query.split(".")[0])
-        df = execute_sql(path=script_dir, query_name=query, db='EnergyData')
+        df = execute_sql(path=os.path.join(script_dir, "/queries"), query_name=query, db='EnergyData')
         df.to_csv('raw_data/'+csvName, index=False)
     elif test:
         print('reading test '+query.split(".")[0])

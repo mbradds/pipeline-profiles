@@ -8,16 +8,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "export NODE_OPTIONS='--max-old-space-size=8192' && webpack",
-    "start": "node --max-old-space-size=8192 server.js",
+    "build": "webpack",
+    "start": "node server.js",
     "heroku-postbuild": "webpack",
-    "dev": "export NODE_OPTIONS='--max-old-space-size=8192' && webpack serve --output-public-path=/dist/",
-    "data": "sh ./src/data_management/prepare_data.sh",
-    "maps": "sh ./src/data_management/simplify_maps.sh",
-    "test": "sh ./src/data_management/test_data.sh"
+    "dev": "webpack serve --output-public-path=/dist/",
+    "data": "sh ./src/data_management/npm_scripts/prepare_data.sh",
+    "maps": "sh ./src/data_management/npm_scripts/simplify_maps.sh",
+    "test": "sh ./src/data_management/npm_scripts/test_data.sh",
+    "requirements_txt": "sh ./src/data_management/npm_scripts/requirements.sh"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.13.9",
     "all": "0.0.0",

@@ -1,7 +1,7 @@
 const express = require("express");
 var compression = require("compression");
 const path = require("path");
-const port = process.env.PORT || 8080;
+const port = process.env.npm_config_port || 8080;
 const app = express();
 
 function shouldCompress(req, res) {

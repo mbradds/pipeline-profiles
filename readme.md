@@ -44,8 +44,11 @@ pipeline_profiles
 │   └───data_management
 │   |   │   conditions.py (creates conditions data for front end)
 │   |   │   incidents.py (creates incidents data for front end)
-|   |   |   prepare_data.sh (npm run data to update all data)
-|   |   |   tests.py & test_data.sh (npm run test)
+|   |   |   tests.py (run with npm run test)
+|   |   |   util.py (shared python code module)
+|   |   |   queries/ (contains queries used to get data from CER sql servers)
+|   |   |   npm_scripts/ (all the "data" automation scripts available in package.json)
+|   |   |   raw_data/ (pre-prepared data used by python when not pulling from remote locations)
 │   |   │   ...
 |   |
 |   └───index_files (entry points for all profile webpages)
@@ -64,6 +67,13 @@ pipeline_profiles
     │   en/ english js bundles & html for each profile (to be placed on web server)
     │   fr/ french js bundles & html for each profile (to be placed on web server)
 ```
+
+## Software prerequisites
+
+1. npm & node (for running the project locally and contributing)
+2. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
+3. Git (for contributing)
+4. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)
 
 ## Quick start for contributing
 
@@ -107,7 +117,7 @@ git checkout -b profile_improvement
 npm run dev
 ```
 
-6. distribution bundles are currently tracked. Before committing:
+6. distribution bundles are not tracked. Before publishing:
 
 ```diff
 -mode: "development",
@@ -123,6 +133,16 @@ npm run build
 This will overwrite everything in `/dist`. The js bundles in `/dist` can be placed on the web server.
 
 ## Quick start for updating data
+
+### Are you using windows?
+
+The npm scripts used for data and map automation expect a unix shell, and wont work on windows. If using windows, run all the scripts mentioned in this section inside the git bash client for windows.
+
+### Are you connecting to CER databases?
+
+Several datasets are pulled directly from CER internal databases. A single python file `src/data_management/connection.py` handles the sqlalchemy connection parameters and strings. This file is left untracked because it has the db strings hard coded. A template file `src/data_management/connection.example.py` file is included with the connection strings left blank. Before running or contributing to the python code, you will need to open this file, add the connection strings, and save the file here: `src/data_management/connection.py` to ensure that connection info remains untracked.
+
+### Have you set up the pipeline-profiles conda environment?
 
 It is highly recommended that you first create the conda python environment described in [requirements.txt](requirements.txt). The npm script below expects a conda python environment called pipeline-profiles.
 

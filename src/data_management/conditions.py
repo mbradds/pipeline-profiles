@@ -13,7 +13,7 @@ script_dir = os.path.dirname(__file__)
 
 def orca_regdocs_links(sql=False):
     if sql:
-        df = execute_sql(script_dir, 'projects_regdocs.sql')
+        df = execute_sql(os.path.join(script_dir, "/queries"), 'projects_regdocs.sql')
         df.to_csv('raw_data/projects_regdocs.csv', index=False)
     else:
         df = pd.read_csv('raw_data/projects_regdocs.csv')
