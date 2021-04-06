@@ -46,5 +46,5 @@ and throughput.[Corporate Entity] = capacity.[Corporate Entity]
 and throughput.[Pipeline Name] = capacity.[Pipeline Name]
 where throughput.[Corporate Entity] = 'Trans Mountain Pipeline ULC'
 ) as hc
-where [Year] >= '2010'
+--where [Year] >= '2010'
 order by [Corporate Entity], [Pipeline Name], [Key Point], cast(str([Month])+'-'+'1'+'-'+str([Year]) as date)

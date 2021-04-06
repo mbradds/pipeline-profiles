@@ -1,4 +1,40 @@
 Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Product,Throughput (1000 m3/d),Available Capacity (1000 m3/d)
+2007-01-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.57,5.47
+2007-02-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.27,5.47
+2007-03-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.69,5.47
+2007-04-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.5,5.47
+2007-05-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.29,5.47
+2007-06-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.3,5.47
+2007-07-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.24,5.47
+2007-08-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.04,5.47
+2007-09-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.07,5.47
+2007-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.96,5.47
+2007-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.18,5.47
+2007-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.36,5.47
+2008-01-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.18,5.47
+2008-02-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.17,5.47
+2008-03-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.01,5.47
+2008-04-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.2800000000000002,5.47
+2008-05-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.03,5.47
+2008-06-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.02,5.47
+2008-07-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.79,5.47
+2008-08-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.29,5.47
+2008-09-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.14,5.47
+2008-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.09,5.47
+2008-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.02,5.47
+2008-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.9699999999999998,5.47
+2009-01-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.86,5.47
+2009-02-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.98,5.47
+2009-03-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.99,5.47
+2009-04-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.03,5.47
+2009-05-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.07,5.47
+2009-06-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.0,5.47
+2009-07-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.92,5.47
+2009-08-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.86,5.47
+2009-09-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.92,5.47
+2009-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.61,5.47
+2009-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,2.79,5.47
+2009-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.4,5.47
 2010-01-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.17,5.47
 2010-02-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.3,5.47
 2010-03-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,intracanada,domestic light,3.15,5.47
@@ -275,6 +311,114 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Produ
 2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,intracanada,domestic light / ngl,62.35,
 2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,intracanada,domestic light / ngl,64.2,
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,intracanada,domestic light / ngl,72.56,
+2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,65.8,288.1
+2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,44.39,288.1
+2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,139.29,288.1
+2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,60.57,291.3
+2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,42.71,291.3
+2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,132.6,291.3
+2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,67.11,298.1
+2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,44.91,298.1
+2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,118.53,298.1
+2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,69.17,293.0
+2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,41.47,293.0
+2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,123.12,293.0
+2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,53.55,287.3
+2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,39.76,287.3
+2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,127.23,287.3
+2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,48.67,278.0
+2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,45.94,278.0
+2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,119.99,278.0
+2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,53.32,276.1
+2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,45.12,276.1
+2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,127.76,276.1
+2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,63.19,281.2
+2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,40.69,281.2
+2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,123.71,281.2
+2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,73.01,281.7
+2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,37.94,281.7
+2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,116.43,281.7
+2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,63.84,279.8
+2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,38.61,279.8
+2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,120.85,279.8
+2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,71.89,287.7
+2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,51.46,287.7
+2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,125.09,287.7
+2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,63.16,288.0
+2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,48.41,288.0
+2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,134.1,288.0
+2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,65.16,288.1
+2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,47.77,288.1
+2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,136.43,288.1
+2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,57.1,285.0
+2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,48.28,285.0
+2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,141.04,285.0
+2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,58.29,285.9
+2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,45.56,285.9
+2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,132.73,285.9
+2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,57.41,282.8
+2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,43.3,282.8
+2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,135.19,282.8
+2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,50.31,275.3
+2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,36.99,275.3
+2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,141.44,275.3
+2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,58.2,279.7
+2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,37.23,279.7
+2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,134.29,279.7
+2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,63.78,286.6
+2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,36.75,286.6
+2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,127.33,286.6
+2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,68.56,291.9
+2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,40.65,291.9
+2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,132.02,291.9
+2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,69.62,285.0
+2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,41.04,285.0
+2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,125.46,285.0
+2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,68.64,284.0
+2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,45.36,284.0
+2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,136.24,284.0
+2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,79.38,297.2
+2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,42.13,297.2
+2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,138.02,297.2
+2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,79.51,298.6
+2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,43.66,298.6
+2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,138.97,298.6
+2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,73.53,298.1
+2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,39.53,298.1
+2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,140.58,298.1
+2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,64.77,290.3
+2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,42.93,290.3
+2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,133.89,290.3
+2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,59.35,322.9
+2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,40.7,322.9
+2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,132.76,322.9
+2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,60.78,313.5
+2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,37.68,313.5
+2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,126.77,313.5
+2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,61.89,323.7
+2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,39.34,323.7
+2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,129.8,323.7
+2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,77.34,326.3
+2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,49.36,326.3
+2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,138.02,326.3
+2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,84.35,320.7
+2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,45.29,320.7
+2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,139.82,320.7
+2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,78.89,325.9
+2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,41.02,325.9
+2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,135.48,325.9
+2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,84.8,320.4
+2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,40.41,320.4
+2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,123.98,320.4
+2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,78.36,304.9
+2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,45.17,304.9
+2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,118.82,304.9
+2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,84.11,319.7
+2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,43.07,319.7
+2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,126.08,319.7
+2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,84.48,316.1
+2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,40.29,316.1
+2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,136.99,316.1
 2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,export,domestic light / ngl,63.54,326.6
 2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,44.15,326.6
 2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,134.11,326.6
@@ -744,6 +888,114 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Produ
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,import,foreign light,5.17,458.35
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada,domestic light / ngl,63.69,458.35
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,intracanada / export,domestic heavy,285.9,458.35
+2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.8,118.5
+2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.44,118.5
+2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,48.75,118.5
+2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.29,124.1
+2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.03,124.1
+2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,47.02,124.1
+2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.19,123.9
+2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,7.76,123.9
+2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,46.79,123.9
+2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.09,124.7
+2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,11.78,124.7
+2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,43.24,124.7
+2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.61,117.8
+2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,15.5,117.8
+2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,44.24,117.8
+2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.29,124.0
+2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,15.24,124.0
+2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,50.16,124.0
+2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.4,123.2
+2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,17.11,123.2
+2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,48.77,123.2
+2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.33,123.2
+2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,12.82,123.2
+2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,44.4,123.2
+2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.17,117.8
+2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,11.5,117.8
+2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,40.58,117.8
+2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.4699999999999998,120.9
+2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,14.52,120.9
+2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,42.29,120.9
+2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.42,124.4
+2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.8,124.4
+2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,54.49,124.4
+2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.29,122.6
+2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.42,122.6
+2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,51.95,122.6
+2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.93,125.8
+2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,14.69,125.8
+2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,51.71,125.8
+2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.1,120.6
+2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.49,120.6
+2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,52.38,120.6
+2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.52,117.6
+2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,15.14,117.6
+2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,49.43,117.6
+2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.13,115.5
+2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,12.05,115.5
+2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,46.7,115.5
+2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.75,118.9
+2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,15.25,118.9
+2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,40.1,118.9
+2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,6.01,120.5
+2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.64,120.5
+2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,40.6,120.5
+2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.44,120.7
+2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,15.0,120.7
+2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,40.91,120.7
+2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.1,120.2
+2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,15.35,120.2
+2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,44.75,120.2
+2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.15,117.5
+2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,18.26,117.5
+2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,44.29,117.5
+2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.28,117.2
+2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,19.06,117.2
+2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,49.1,117.2
+2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.79,122.4
+2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.56,122.4
+2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,45.92,122.4
+2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.95,121.0
+2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,18.35,121.0
+2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,47.71,121.0
+2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.99,121.0
+2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,18.17,121.0
+2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,43.95,121.0
+2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.68,120.1
+2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.99,120.1
+2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,47.2,120.1
+2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,4.23,116.6
+2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.4,116.6
+2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,43.75,116.6
+2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.01,113.7
+2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,12.44,113.7
+2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,40.54,113.7
+2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.39,120.1
+2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,17.29,120.1
+2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,43.04,120.1
+2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,1.07,121.0
+2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.62,121.0
+2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,53.03,121.0
+2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,1.21,119.5
+2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,17.95,119.5
+2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,48.95,119.5
+2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.98,122.3
+2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.58,122.3
+2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,44.66,122.3
+2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.45,119.4
+2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.76,119.4
+2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,43.96,119.4
+2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,1.9,121.8
+2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,12.87,121.8
+2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,48.64,121.8
+2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.11,121.6
+2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,13.34,121.6
+2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,46.15,121.6
+2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,2.61,121.9
+2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,17.4,121.9
+2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,43.98,121.9
 2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,import,foreign light,3.22,123.2
 2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic heavy,16.83,123.2
 2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,intracanada / export,domestic light / ngl,47.87,123.2
@@ -1367,6 +1619,150 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Produ
 2019-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,not available,intracanada,natural gas liquids (ngl),0.33,39.33
 2019-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,not available,intracanada,south east sask (ses) crude,20.32,39.33
 2019-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,not available,intracanada,westspur midale (msm) crude,6.72,39.33
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,35.0
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,35.0
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,13.0,35.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,36.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,36.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,14.0,36.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,37.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,37.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,13.0,37.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,35.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,35.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,35.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,29.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,29.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,7.0,29.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,36.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,36.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,6.0,36.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,37.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,37.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,9.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,37.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,39.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,39.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,39.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,35.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,35.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,35.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,37.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,5.0,37.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,14.0,37.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,30.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,30.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,12.0,30.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,36.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,36.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,36.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,35.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,5.0,35.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,14.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,35.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,40.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,40.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,12.0,40.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,42.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,12.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,42.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,43.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,43.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,43.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,42.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,42.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,39.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,39.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,39.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,43.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,43.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,11.0,43.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,40.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,40.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,40.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,42.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,6.0,42.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,33.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,0.0,33.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,5.0,33.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,40.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,40.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,6.0,40.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,42.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,42.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,41.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,41.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,10.0,41.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,38.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,38.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,6.0,38.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,36.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,9.0,36.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,5.0,36.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,42.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,42.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,3.0,42.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,40.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,4.0,40.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,3.0,40.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,49.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,4.0,49.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,6.0,49.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,40.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,40.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,12.0,40.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,28.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,28.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,28.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,39.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,6.0,39.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,39.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,48.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,48.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,48.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,36.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,36.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,36.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,32.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,9.0,32.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,32.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,46.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,9.0,46.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,5.0,46.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,50.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,50.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,7.0,50.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,53.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,53.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,7.0,53.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,50.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,9.0,50.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,50.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,47.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,47.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,9.0,47.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,50.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,50.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,12.0,50.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,48.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,8.0,48.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,11.0,48.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,46.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,7.0,46.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,8.0,46.0
@@ -1763,6 +2159,102 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Produ
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic heavy,0.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,domestic light,10.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,intracanada,refined petroleum products,3.0,53.0
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,35.0
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,35.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,36.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,36.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,3.0,37.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,13.0,37.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,35.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,35.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,29.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,14.0,29.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,36.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,14.0,36.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,37.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,14.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,37.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,39.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,39.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,35.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,11.0,35.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,37.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,10.0,37.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,30.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,30.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,3.0,36.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,36.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,4.0,35.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,13.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,4.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,9.0,35.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,3.0,40.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,40.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,42.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,42.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,4.0,43.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,43.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,5.0,42.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,42.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,5.0,39.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,39.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,5.0,43.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,14.0,43.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,3.0,40.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,14.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,7.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,11.0,40.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,6.0,42.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,11.0,42.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,5.0,33.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,13.0,33.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,8.0,40.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,40.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,5.0,42.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,13.0,42.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,4.0,41.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,41.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,3.0,38.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,38.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,36.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,17.0,36.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,42.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,20.0,42.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,2.0,40.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,20.0,40.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,49.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,21.0,49.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,40.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,15.0,40.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,28.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,9.0,28.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,39.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,12.0,39.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,48.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,14.0,48.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,36.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,13.0,36.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,32.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,9.0,32.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,46.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,46.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,50.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,22.0,50.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,53.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,23.0,53.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,50.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,21.0,50.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,47.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,19.0,47.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,50.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,20.0,50.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,48.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,18.0,48.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,1.0,46.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,16.0,46.0
 2010-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,47.0
@@ -2027,6 +2519,102 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Produ
 2020-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,34.0,47.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic heavy,0.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,export,domestic light,35.0,53.0
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,4.0,35.0
+2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,35.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,36.0
+2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,36.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,37.0
+2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,37.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,1.0,35.0
+2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,35.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,0.0,29.0
+2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,2.0,29.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,6.0,36.0
+2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,36.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,37.0
+2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,2.0,37.0
+2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,37.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,4.0,39.0
+2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,39.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,35.0
+2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,3.0,35.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,37.0
+2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,5.0,37.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,2.0,30.0
+2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,30.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,36.0
+2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,36.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,0.0,35.0
+2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,2.0,35.0
+2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,35.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,6.0,40.0
+2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,40.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,6.0,42.0
+2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,10.0,42.0
+2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,8.0,42.0
+2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,42.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,4.0,43.0
+2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,43.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,7.0,42.0
+2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,42.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,5.0,39.0
+2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,39.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,6.0,43.0
+2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,43.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,7.0,40.0
+2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,4.0,40.0
+2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,40.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,8.0,42.0
+2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,42.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,33.0
+2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,33.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,40.0
+2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,40.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,42.0
+2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,42.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,8.0,41.0
+2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,41.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,2.0,38.0
+2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,2.0,38.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,2.0,36.0
+2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,4.0,36.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,8.0,42.0
+2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,5.0,42.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,4.0,40.0
+2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,4.0,40.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,5.0,49.0
+2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,9.0,49.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,6.0,40.0
+2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,40.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,5.0,28.0
+2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,28.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,8.0,39.0
+2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,39.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,17.0,48.0
+2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,4.0,48.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,10.0,36.0
+2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,36.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,15.0,32.0
+2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,2.0,32.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,18.0,46.0
+2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,46.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,9.0,50.0
+2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,2.0,50.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,9.0,53.0
+2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,1.0,53.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,11.0,50.0
+2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,50.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,7.0,47.0
+2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,47.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,11.0,50.0
+2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,50.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,12.0,48.0
+2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,48.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,3.0,46.0
 2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,46.0
 2010-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,14.0,47.0
@@ -2291,6 +2879,54 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Trade Type,Produ
 2020-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,47.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic heavy,5.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,export,domestic light,0.0,53.0
+2006-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.45,
+2006-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.82,
+2006-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.81,
+2006-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,27.17,
+2006-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,27.42,
+2006-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.47,
+2006-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.19,
+2006-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.29,
+2006-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.6,
+2006-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,36.58,
+2006-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,37.23,
+2006-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.97,
+2007-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.61,
+2007-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,30.86,
+2007-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.29,
+2007-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,30.87,
+2007-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.03,
+2007-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,37.17,
+2007-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.1,
+2007-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,36.84,
+2007-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,36.3,
+2007-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,38.13,
+2007-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.47,
+2007-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,36.39,
+2008-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.26,
+2008-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,32.9,
+2008-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,32.26,
+2008-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,32.03,
+2008-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,37.1,
+2008-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,38.83,
+2008-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.84,
+2008-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.48,
+2008-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.43,
+2008-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.71,
+2008-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,36.6,
+2008-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,35.74,
+2009-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.13,
+2009-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.5,
+2009-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,31.65,
+2009-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,31.23,
+2009-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.81,
+2009-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.6,
+2009-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.87,
+2009-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,32.55,
+2009-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,36.53,
+2009-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.23,
+2009-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.6,
+2009-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,34.48,
 2010-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,32.9,
 2010-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,33.21,
 2010-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,intracanada,refined petroleum products,31.84,
