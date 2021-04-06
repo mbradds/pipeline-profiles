@@ -82,15 +82,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   };
 
-  const createSeries = (trafficData, defaultPoint, includeList = []) => {
+  const createSeries = (trafficData, defaultPoint, includeList = [], tm) => {
     var firstSeries = [];
-    if (defaultPoint == "Burnaby") {
+    if (tm) {
       var [capAdded, dateAdded] = [false, false];
       for (const [key, keyData] of Object.entries(
         JSON.parse(JSON.stringify(trafficData))
       )) {
         if (includeList.includes(key)) {
-          // todo: clean up tm data in python. Only one date should be shipped
           keyData.map((data) => {
             if (data.name == "Capacity" && !capAdded) {
               capAdded = true;
@@ -121,7 +120,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       type: "line",
       zIndex: 5,
       name: `${lastYear} throughput (last year of data)`,
-      id: `${lastYear} throughput (last year of data)`,
       color: cerPalette["hcRed"],
     };
     for (const [date, value] of Object.entries(data)) {
@@ -141,7 +139,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const fiveYrRange = {
       data: [],
       name: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
-      id: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
       type: "arearange",
       zIndex: 3,
       marker: {
@@ -152,7 +149,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const fiveYrAvg = {
       data: [],
       name: "Five Year Average",
-      id: "Five Year Average",
       type: "line",
       zIndex: 4,
       marker: {
@@ -161,6 +157,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
       lineWidth: 4,
       color: "black",
     };
+    // add id's for series adding a deleting
+    [lastYrSeries, fiveYrAvg, fiveYrRange].map((s) => {
+      s.id = s.name;
+    });
     const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
     for (const [x, value] of Object.entries(months)) {
       fiveYrRange.data.push([
@@ -462,11 +462,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
         tickPixelInterval: 40,
         labels: {
           formatter: function () {
-            return this.value.toFixed(1);
+            return lang.numberFormat(this.value, 1);
           },
         },
       },
-      tooltip: sharedHcParams.tooltip,
       tooltip: {
         shared: true,
         backgroundColor: "white",
@@ -505,7 +504,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           tickPixelInterval: 40,
           labels: {
             formatter: function () {
-              return this.value.toFixed(1);
+              return lang.numberFormat(this.value, 1);
             },
           },
         },
@@ -545,7 +544,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             tickPixelInterval: 40,
             labels: {
               formatter: function () {
-                return this.value.toFixed(1);
+                return lang.numberFormat(this.value, 1);
               },
             },
             title: {
@@ -673,7 +672,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
 
       const [timeSeries, fiveSeries] = addSeriesParams(
-        createSeries(trafficData, defaultPoint, metaData.points),
+        createSeries(trafficData, defaultPoint, metaData.points, tm),
         unitsHolder,
         buildFive
       );
@@ -796,6 +795,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           );
         });
       } else {
+        // user is on trans mountain profile
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
           if ($(this).is(":checked")) {
             metaData.points.push($(this).val());
@@ -811,7 +811,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
           if (metaData.points.length > 0) {
             const [newSeries, newFiveSeries] = addSeriesParams(
-              createSeries(trafficData, defaultPoint, metaData.points),
+              createSeries(trafficData, defaultPoint, metaData.points, tm),
               unitsHolder,
               buildFive
             );
@@ -820,15 +820,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
               trafficChart.addSeries(newS, false, false);
             });
 
-            trafficChart.update(
-              {
-                title: {
-                  text: setTitle(metaData.points, undefined, tm),
-                },
+            trafficChart.update({
+              title: {
+                text: setTitle(metaData.points, undefined, tm),
               },
-              false
-            );
-            trafficChart.redraw(true);
+            });
             pointMap.pointChange(metaData.points);
           }
         });
@@ -838,7 +834,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       $("#select-units-radio input[name='trafficUnits']").click(function () {
         unitsHolder.current = $("input:radio[name=trafficUnits]:checked").val();
         var [newTimeSeries, newFiveSeries] = addSeriesParams(
-          createSeries(trafficData, defaultPoint, metaData.points),
+          createSeries(trafficData, defaultPoint, metaData.points, tm),
           unitsHolder,
           buildFive
         );

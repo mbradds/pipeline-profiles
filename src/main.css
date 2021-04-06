@@ -133,6 +133,7 @@ body {
 }
 #traffic-hc-column {
   padding-right: 0px;
+  padding-left: 0px;
 }
 .traffic-map-shared {
   height: 380px;

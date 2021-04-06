@@ -44,6 +44,7 @@ pipeline_profiles
 │   └───data_management
 │   |   │   conditions.py (creates conditions data for front end)
 │   |   │   incidents.py (creates incidents data for front end)
+|   |   |   traffic.py (created throughput & capacity for front end)
 |   |   |   tests.py (run with npm run test)
 |   |   |   util.py (shared python code module)
 |   |   |   queries/ (contains queries used to get data from CER sql servers)
