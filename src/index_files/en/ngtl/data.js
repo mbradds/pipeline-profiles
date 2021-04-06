@@ -1,4 +1,3 @@
-//import { data } from "./data.js";
 import canadaMap from "../../../conditions/base_maps/base_map.json";
 import conditionsData from "../../../conditions/company_data/en/NOVAGasTransmissionLtd.json";
 import incidentData from "../../../incidents/company_data/en/NOVAGasTransmissionLtd.json";
