@@ -1162,20 +1162,41 @@ export class KeyPointMap {
   constructor({
     points,
     selected,
-    minRadius = undefined,
     leafletDiv = "traffic-map",
     initZoomTo = [60, -97],
-    padding = [30, 30],
+    companyName = "",
     lang = {},
   }) {
     this.points = points;
     this.selected = selected;
-    this.minRadius = minRadius;
     this.initZoomTo = initZoomTo;
-    this.padding = padding;
     this.leafletDiv = leafletDiv;
+    this.companyName = companyName;
     this.lang = lang;
     this.mapDisclaimer = undefined;
+    this.getInits(companyName, points);
+  }
+
+  getInits(companyName, points) {
+    if (
+      ["TransCanada PipeLines Limited", "Enbridge Pipelines Inc."].includes(
+        companyName
+      )
+    ) {
+      var minRadius = 50000;
+      var padding = [0, 0];
+    } else if (companyName == "Trans Mountain Pipeline ULC") {
+      var minRadius = 2000;
+      var padding = [60, 60];
+    } else if (points.length == 1) {
+      var minRadius = 30000;
+      var padding = [150, 150];
+    } else {
+      var minRadius = 30000;
+      var padding = [30, 30];
+    }
+    this.minRadius = minRadius;
+    this.padding = padding;
   }
 
   addBaseMap() {

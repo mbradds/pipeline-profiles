@@ -2,6 +2,7 @@ import { cerPalette, conversions, visibility } from "../modules/util.js";
 import { KeyPointMap } from "../modules/dashboard.js";
 
 export async function mainTraffic(trafficData, metaData, lang) {
+  const rounding = 2;
   function addPointButtons(metaData, defaultSelect) {
     let btnGroup = $("#traffic-points-btn");
     if (defaultSelect !== "Burnaby") {
@@ -44,12 +45,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
     var [buildFive, hasImports] = [false, false];
     if (defaultUnit == "Bcf/d") {
       var secondUnit = "Million m3/d";
+      const fiveYearDiv = document.createElement("div");
+      fiveYearDiv.setAttribute("id", "traffic-hc-range");
+      document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
       if (defaultPoint == "St. Stephen") {
         hasImports = true;
-      } else {
-        const fiveYearDiv = document.createElement("div");
-        fiveYearDiv.setAttribute("id", "traffic-hc-range");
-        document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
       }
       buildFive = true;
 
@@ -90,6 +90,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         JSON.parse(JSON.stringify(trafficData))
       )) {
         if (includeList.includes(key)) {
+          // todo: clean up tm data in python. Only one date should be shipped
           keyData.map((data) => {
             if (data.name == "Capacity" && !capAdded) {
               capAdded = true;
@@ -271,6 +272,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         s.zIndex = 5;
         s.lineWidth = 1;
       }
+      s.marker = { enabled: false };
       newSeries.push(s);
     });
     if (buildFive) {
@@ -288,7 +290,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return pointList.sort();
   }
 
-  const rounding = 2;
   const addToolRow = (p, unit, rounding, extraStyle = "") => {
     const yVal = (p) => {
       if (p.point.hasOwnProperty("low") && p.point.hasOwnProperty("high")) {
@@ -378,6 +379,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         event.x
       )}</strong>`;
     } else {
+      //remove this when frequency is decided!
       var toolText = `<strong>${Highcharts.dateFormat(
         "%b %e, %Y",
         event.x
@@ -394,9 +396,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function fiveYearTooltipText(event, units) {
     var toolText = `<strong>${lang.months[event.x + 1]}</strong><table>`;
-    //console.log(event);
     event.points.map((p) => {
-      //console.log(p);
       toolText += addToolRow(p, units, rounding);
     });
     toolText += "</table>";
@@ -405,6 +405,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   const sharedHcParams = {
     legend: { alignColumns: false, margin: 0, symbolPadding: 2 },
+    plotOptions: {
+      area: {
+        stacking: "normal",
+      },
+      series: {
+        connectNulls: true,
+        states: {
+          inactive: {
+            opacity: 1,
+          },
+        },
+      },
+    },
     title: (text) => {
       return {
         align: "left",
@@ -444,6 +457,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         endOnTick: false,
         title: { text: units },
       },
+      tooltip: sharedHcParams.tooltip,
       tooltip: {
         shared: true,
         backgroundColor: "white",
@@ -453,6 +467,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           return fiveYearTooltipText(this, units);
         },
       },
+      plotOptions: sharedHcParams.plotOptions,
       series: series,
     });
   }
@@ -491,22 +506,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         },
       },
       legend: sharedHcParams.legend,
-      plotOptions: {
-        area: {
-          stacking: "normal",
-        },
-        series: {
-          connectNulls: false,
-          marker: {
-            enabled: false,
-          },
-          states: {
-            inactive: {
-              opacity: 1,
-            },
-          },
-        },
-      },
+      plotOptions: sharedHcParams.plotOptions,
       series: series,
     });
   }
@@ -523,7 +523,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
               text: `Exports (${units})`,
             },
             height: "45%",
-            min: 0,
             max: undefined,
           },
           {
@@ -535,6 +534,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             height: "45%",
             offset: 0,
             min: 0,
+            startOnTick: true,
+            endOnTick: false,
             max: undefined,
           },
         ],
@@ -581,7 +582,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       mainMap.classList.add("traffic-map-shared");
       mainTraffic.classList.remove("traffic-hc-single-gas");
     }
-    return undefined;
   }
 
   function buildDashboard() {
@@ -603,36 +603,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
           addPointButtons(metaData, defaultPoint);
         }
 
-        if (
-          ["TransCanada PipeLines Limited", "Enbridge Pipelines Inc."].includes(
-            metaData.companyName
-          )
-        ) {
-          var minRadius = 50000;
-          var padding = [0, 0];
-        } else if (metaData.companyName == "Trans Mountain Pipeline ULC") {
-          var minRadius = 2000;
-          var padding = [60, 60];
-        } else if (metaData.points.length == 1) {
-          var minRadius = 30000;
-          var padding = [150, 150];
-        } else {
-          var minRadius = 30000;
-          var padding = [30, 30];
-        }
         var pointMap = new KeyPointMap({
           points: metaData.keyPoints,
           selected: !tm ? [defaultPoint] : metaData.points,
-          minRadius: minRadius,
-          padding: padding,
+          companyName: metaData.companyName,
         });
         pointMap.addBaseMap();
         pointMap.addPoints();
       } else {
-        ["traffic-points-btn", "traffic-container", "key-point-title"].map(
-          (hideDiv) => {
-            document.getElementById(hideDiv).style.display = "none";
-          }
+        visibility(
+          ["traffic-points-btn", "traffic-container", "key-point-title"],
+          "hide"
         );
         var element = document.getElementById("traffic-hc-column");
         element.className = element.className.replace("col-md-8", "col-md-12");
@@ -734,7 +715,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
                       text: unitsHolder.current,
                     },
                     height: "100%",
-                    min: 0,
                     max: undefined,
                   },
                   { visible: false },
