@@ -121,6 +121,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       type: "line",
       zIndex: 5,
       name: `${lastYear} throughput (last year of data)`,
+      id: `${lastYear} throughput (last year of data)`,
       color: cerPalette["hcRed"],
     };
     for (const [date, value] of Object.entries(data)) {
@@ -140,6 +141,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const fiveYrRange = {
       data: [],
       name: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
+      id: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
       type: "arearange",
       zIndex: 3,
       marker: {
@@ -150,6 +152,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const fiveYrAvg = {
       data: [],
       name: "Five Year Average",
+      id: "Five Year Average",
       type: "line",
       zIndex: 4,
       marker: {
@@ -456,6 +459,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
         startOnTick: true,
         endOnTick: false,
         title: { text: units },
+        tickPixelInterval: 40,
+        labels: {
+          formatter: function () {
+            return this.value.toFixed(1);
+          },
+        },
       },
       tooltip: sharedHcParams.tooltip,
       tooltip: {
@@ -493,6 +502,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
           min: 0,
           startOnTick: true,
           endOnTick: false,
+          tickPixelInterval: 40,
+          labels: {
+            formatter: function () {
+              return this.value.toFixed(1);
+            },
+          },
         },
         { visible: false },
       ],
@@ -527,6 +542,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
           },
           {
             visible: true,
+            tickPixelInterval: 40,
+            labels: {
+              formatter: function () {
+                return this.value.toFixed(1);
+              },
+            },
             title: {
               text: `Imports (${units})`,
             },
@@ -584,6 +605,38 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   }
 
+  const updateSeries = (chart, newSeries, hasImports, returnImports) => {
+    var currentIds = chart.series.map((s) => {
+      return s.userOptions.id;
+    });
+
+    var newIds = newSeries.map((s) => {
+      return s.id;
+    });
+
+    currentIds.map((id) => {
+      if (!newIds.includes(id)) {
+        chart.get(id).remove(false);
+      }
+    });
+
+    newSeries.map((newS) => {
+      if (currentIds.includes(newS.id)) {
+        chart.get(newS.id).setData(newS.data, false, false, false);
+      } else {
+        chart.addSeries(newS, false, true);
+      }
+      if (newS.name == "import") {
+        hasImports = true;
+      }
+    });
+    if (returnImports) {
+      return [chart, hasImports];
+    } else {
+      return chart;
+    }
+  };
+
   function buildDashboard() {
     try {
       var defaultPoint = metaData.defaultPoint;
@@ -625,7 +678,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         buildFive
       );
 
-      const trafficChart = buildTrafficChart(
+      var trafficChart = buildTrafficChart(
         timeSeries,
         !tm
           ? setTitle(defaultPoint, metaData.directions[defaultPoint])
@@ -674,30 +727,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
             buildFive
           );
 
-          var currentIds = trafficChart.series.map((s) => {
-            return s.userOptions.id;
-          });
-
-          var newIds = newSeries.map((s) => {
-            return s.id;
-          });
-
-          currentIds.map((id) => {
-            if (!newIds.includes(id)) {
-              trafficChart.get(id).remove(false);
-            }
-          });
-
-          newSeries.map((newS) => {
-            if (currentIds.includes(newS.id)) {
-              trafficChart.get(newS.id).setData(newS.data, false, false, false);
-            } else {
-              trafficChart.addSeries(newS, false, true);
-            }
-            if (newS.name == "import") {
-              hasImports = true;
-            }
-          });
+          [trafficChart, hasImports] = updateSeries(
+            trafficChart,
+            newSeries,
+            hasImports,
+            true
+          );
 
           if (hasImports) {
             hasImportsRedraw(
@@ -717,9 +752,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 },
                 yAxis: [
                   {
-                    title: {
-                      text: unitsHolder.current,
-                    },
                     height: "100%",
                     max: undefined,
                   },
@@ -729,12 +761,26 @@ export async function mainTraffic(trafficData, metaData, lang) {
               false
             );
             if (fiveChart) {
-              fiveChart.update({
-                series: newFiveSeries,
-                title: {
-                  text: setTitle(defaultPoint, undefined, false, true),
+              fiveChart = updateSeries(
+                fiveChart,
+                newFiveSeries,
+                undefined,
+                false
+              );
+              fiveChart.update(
+                {
+                  title: {
+                    text: setTitle(defaultPoint, undefined, false, true),
+                  },
+                  yAxis: {
+                    visible: true,
+                  },
                 },
-              });
+                false,
+                false,
+                false
+              );
+              fiveChart.redraw(true);
             }
           }
           resize(buildFive, hasImports);

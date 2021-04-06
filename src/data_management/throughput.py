@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_dates, most_common, get_company_names, normalizeBool, normalize_text, normalize_numeric
+from util import execute_sql, normalize_dates, get_company_names, normalize_text, normalize_numeric
 import os
 import json
 import dateutil.relativedelta
@@ -100,6 +100,8 @@ def meta_throughput(df_c, meta, data):
 def getRounding(point):
     if point in ['Kingsvale', 'NOVA/Gordondale', 'St. Stephen']:
         rounding = 4
+    elif point in ['Emerson II', 'Eastern Triangle - Parkway Deliveries']:
+        rounding = 3
     else:
         rounding = 2
     return rounding
@@ -131,11 +133,15 @@ def meta_trend(df_c, commodity):
 
         thisTrend = {}
         try:
-            thisTrend["throughChange"] = {"pct": int(round((newThrough-oldThrough)/abs(oldThrough)*100, 0)),
-                                                  "from": round(oldThrough, rounding),
-                                                  "to": round(newThrough, rounding)}
+            if oldThrough > 0:
+                pct = int(round((newThrough-oldThrough)/abs(oldThrough)*100, 0))
+            else:
+                pct = None
+            thisTrend["throughChange"] = {"pct": pct,
+                                          "from": round(oldThrough, rounding),
+                                          "to": round(newThrough, rounding)}
         except:
-            thisTrend["throughChange"] = {"pct": 0, "from": 0, "to": 0}
+            raise
 
         thisTrend["fromDate"] = [oldDate.year, oldDate.month]
         thisTrend["toDate"] = [newDate.year, newDate.month]
@@ -147,7 +153,6 @@ def meta_trend(df_c, commodity):
     for point in list(set(df_c['Key Point'])):
         rounding = getRounding(point)
         df_t = df_c.copy()
-        # del df_t['Json Date']
         dfp = df_t[df_t['Key Point'] == point].copy().reset_index(drop=True)
         metaTrends[point] = []
         if "import" in list(dfp['Trade Type']):
@@ -303,7 +308,6 @@ def process_throughput(test=False,
 
             point_data = {}
             pointsList = sorted(list(set(df_c['Key Point'])))
-            # pointsList = ['Into-Sarnia']
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
