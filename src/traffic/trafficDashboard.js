@@ -111,9 +111,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function createFiveYearSeries(data) {
-    var lastYear = new Date(data["lastDate"]).getFullYear();
-    var firstYear = lastYear - 6;
+    var lastYear = new Date(data["lastDate"]).getFullYear(); // the last year in the dataset
+    var firstYear = lastYear - 6; // the first year of the five year average
     delete data["lastDate"];
+    var startYear = new Date(parseInt(Object.keys(data)[0], 10)).getFullYear(); // the first year in the dataset
     const months = {};
     const lastYrSeries = {
       data: [],
@@ -122,20 +123,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       name: `${lastYear} throughput (last year of data)`,
       color: cerPalette["hcRed"],
     };
-    for (const [date, value] of Object.entries(data)) {
-      let dateInt = new Date(parseInt(date, 10));
-      let [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
-      if (year == lastYear) {
-        lastYrSeries.data.push([lang.months[month.toString()], value]);
-      }
-      if (year > firstYear && year < lastYear) {
-        if (month in months) {
-          months[month].push(value);
-        } else {
-          months[month] = [value];
-        }
-      }
-    }
+
     const fiveYrRange = {
       data: [],
       name: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
@@ -146,6 +134,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       },
       color: cerPalette["Ocean"],
     };
+
     const fiveYrAvg = {
       data: [],
       name: "Five Year Average",
@@ -161,16 +150,35 @@ export async function mainTraffic(trafficData, metaData, lang) {
     [lastYrSeries, fiveYrAvg, fiveYrRange].map((s) => {
       s.id = s.name;
     });
-    const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
-    for (const [x, value] of Object.entries(months)) {
-      fiveYrRange.data.push([
-        lang.months[x],
-        Math.min(...value),
-        Math.max(...value),
-      ]);
-      fiveYrAvg.data.push([lang.months[x], arrAvg(value)]);
+    if (startYear > firstYear) {
+      return [lastYrSeries, fiveYrAvg, fiveYrRange];
+    } else {
+      for (const [date, value] of Object.entries(data)) {
+        let dateInt = new Date(parseInt(date, 10));
+        let [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
+        if (year == lastYear) {
+          lastYrSeries.data.push([lang.months[month.toString()], value]);
+        }
+        if (year > firstYear && year < lastYear) {
+          if (month in months) {
+            months[month].push(value);
+          } else {
+            months[month] = [value];
+          }
+        }
+      }
+
+      const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+      for (const [x, value] of Object.entries(months)) {
+        fiveYrRange.data.push([
+          lang.months[x],
+          Math.min(...value),
+          Math.max(...value),
+        ]);
+        fiveYrAvg.data.push([lang.months[x], arrAvg(value)]);
+      }
+      return [lastYrSeries, fiveYrAvg, fiveYrRange];
     }
-    return [lastYrSeries, fiveYrAvg, fiveYrRange];
   }
 
   function addSeriesParams(series, unitsHolder, buildFive) {
@@ -464,6 +472,16 @@ export async function mainTraffic(trafficData, metaData, lang) {
           formatter: function () {
             return lang.numberFormat(this.value, 1);
           },
+        },
+      },
+      lang: {
+        noData: "Not enough data to calculate five-year average",
+      },
+      noData: {
+        style: {
+          fontWeight: "bold",
+          fontSize: "15px",
+          color: "#303030",
         },
       },
       tooltip: {
