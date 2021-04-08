@@ -280,7 +280,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                          'Kingston Midstream Westspur Limited',
                          'Many Islands Pipe Lines (Canada) Limited',
                          'Vector Pipeline Limited Partnership',
-                         'Maritimes & Northeast Pipeline Management Ltd.']
+                         'Maritimes & Northeast Pipeline Management Ltd.',
+                         'Aurora Pipeline Company Ltd']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

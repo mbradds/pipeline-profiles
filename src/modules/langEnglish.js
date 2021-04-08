@@ -39,7 +39,7 @@ const dateFormat = (value, format = "%b %d, %Y") => {
 
 export const englishDashboard = {
   plains:
-    "Plains Midstream Canada ULC includes the Aurora, Milk River, and Wascana pipelines",
+    "Plains Midstream Canada ULC includes the Milk River and Wascana pipelines",
 
   conditions: {
     dateFormat: dateFormat,

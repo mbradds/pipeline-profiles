@@ -35,6 +35,7 @@ var profileWebpackConfig = (function () {
     ["aurora", "oil-and-liquids"],
     ["milk_river", "oil-and-liquids"],
     ["wascana", "oil-and-liquids"],
+    ["aurora", "oil-and-liquids"],
   ];
 
   function htmlWebpack() {
@@ -75,7 +76,7 @@ var profileWebpackConfig = (function () {
       ] = `./src/index_files/loadDashboards_${lang}.js`;
       sections.map((section) => {
         htmlFileNames.map((name) => {
-          if (["aurora", "milk_river", "wascana"].includes(name[0])) {
+          if (["milk_river", "wascana"].includes(name[0])) {
             var folderName = "plains";
           } else {
             var folderName = name[0];

@@ -284,7 +284,8 @@ def process_throughput(test=False,
                          'Enbridge Bakken Pipeline Company Inc.',
                          'Express Pipeline Ltd.',
                          'Genesis Pipeline Canada Ltd.',
-                         'Montreal Pipe Line Limited']
+                         'Montreal Pipe Line Limited',
+                         'Aurora Pipeline Company Ltd']
     if companies:
         company_files = companies
 

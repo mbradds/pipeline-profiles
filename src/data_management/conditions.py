@@ -360,7 +360,8 @@ def process_conditions(remote=False,
                          'Enbridge Bakken Pipeline Company Inc.',
                          'Genesis Pipeline Canada Ltd.',
                          'Montreal Pipe Line Limited',
-                         'Kingston Midstream Westspur Limited']
+                         'Kingston Midstream Westspur Limited',
+                         'Aurora Pipeline Company Ltd']
 
     for company in company_files:
         thisCompanyData = {}
@@ -412,7 +413,7 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # links = orca_regdocs_links(True)
-    # df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
     df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
     print('completed conditions!')
 
