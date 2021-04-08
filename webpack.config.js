@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 var profileWebpackConfig = (function () {
   const language = ["en", "fr"];
@@ -107,6 +108,8 @@ module.exports = {
     compress: true,
   },
 
+  devtool: false,
+
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
@@ -125,6 +128,11 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
+    // uncomment these lines below for easier browser debugging in development mode
+    // new webpack.SourceMapDevToolPlugin({
+    //   filename: "dist/[file].map",
+    //   fileContext: "public",
+    // }),
     // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
