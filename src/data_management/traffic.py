@@ -165,16 +165,6 @@ def meta_trend(df_c, commodity):
     return metaTrends
 
 
-def serialize(df, col):
-    serialized_col = []
-    for date in df[col]:
-        dateSeries = int(''.join(list(pd.Series(date).to_json(orient='records'))[1:-1]))
-        serialized_col.append(dateSeries)
-
-    df['Json Date'] = serialized_col
-    return df
-
-
 def getDefaultPoint(company):
     defaults = {'NOVA Gas Transmission Ltd.': 'Upstream of James River',
                 'Westcoast Energy Inc.': 'Huntingdon/FortisBC Lower Mainland',
@@ -210,10 +200,69 @@ def conversion(df, data):
     return df
 
 
+def translate(df):
+    points = {'Border': 'Frontière',
+              'Zone 2': 'Zone 2',
+              'FortisBC Lower Mainland': 'Lower Mainland de FortisBC',
+              'Huntingdon Export': 'point d’exportation Huntingdon',
+              'Kingsvale': 'Kingsvale',
+              'NOVA/Gordondale': 'NOVA-Gordondale',
+              'Sunset Creek': 'Sunset Creek',
+              'Baileyville, Ma. / St. Stephen N.B.': 'Baileyville, Ma. / St. Stephen N.B.',
+              'Chippawa': 'Chippawa',
+              'Cromer/Regina': 'Cromer/Regina',
+              'Eastern Triangle - NOL Receipts': 'Triangle de l’Est – CNO (réceptions)',
+              'Eastern Triangle - Parkway Deliveries': 'Triangle de l’Est – Parkway (livraisons)',
+              'Eastern Triangle - Parkway Receipts': 'Triangle de l’Est – Parkway (réceptions)',
+              'Emerson I': 'Emerson I',
+              'Emerson II': 'Emerson II',
+              'ex-Cromer': 'ex-Cromer',
+              'ex-Gretna': 'ex-Gretna',
+              'Into-Sarnia': 'Into-Sarnia',
+              'Iroquois': 'Iroquois',
+              'Niagara': 'Niagara',
+              'Northern Ontario Line': 'Canalisation du Nord de l’Onta',
+              'Other US Northeast': 'Nord-Est des États-Unis (autre)',
+              'Prairies': 'Prairies',
+              'St Clair': 'St Clair',
+              'Ft. Saskatchewan': 'Ft. Saskatchewan',
+              'Regina': 'Regina',
+              'Windsor': 'Windsor',
+              'Kingsgate': 'Kingsgate',
+              'Monchy': 'Monchy',
+              'International boundary at or near Haskett, Manitoba': 'Frontière internationale près de Haskett, au Manitoba - Flux mensuel ',
+              'East Gate': 'Poste d’entrée Est',
+              'North and East': 'Nord et Est ',
+              'Upstream of James River': 'En amont de la rivière James',
+              'West Gate': 'Poste d’entrée Ouest',
+              'Zama': 'Zama',
+              'Burnaby': 'Burnaby',
+              'Sumas': 'Sumas',
+              'Westridge': 'Westridge',
+              'East Hereford': 'Hereford est',
+              'Saint Lazare': 'Saint Lazare'
+              }
+
+    directions = {'north': 'nord',
+                  'east': 'est',
+                  'south': 'sud',
+                  'west': 'ouest',
+                  'northeast': 'nord-est',
+                  'northwest': 'nord-ouest',
+                  'southeast': 'sud-est',
+                  'southwest': 'sud-ouest'}
+
+    df['Key Point'] = df['Key Point'].replace(points)
+    df['Direction of Flow'] = df['Direction of Flow'].replace(directions)
+
+    return df
+
+
 def process_throughput(test=False,
                        sql=False,
                        commodity='gas',
                        companies=False,
+                       lang="en",
                        frequency='monthly'):
 
     def pushTraffic(t, arr, date, rounding):
@@ -223,9 +272,8 @@ def process_throughput(test=False,
             arr.append(round(float(t), rounding))
         return arr
 
-    if not os.path.exists("../traffic"):
-        os.mkdir("../traffic")
-        os.mkdir("../traffic/company_data")
+    if not os.path.exists("../traffic/company_data/"+lang):
+        os.mkdir("../traffic/company_data/"+lang)
 
     if commodity == 'gas':
         if frequency == "monthly":
@@ -253,10 +301,11 @@ def process_throughput(test=False,
     points = get_data(False, sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
-    # df = serialize(df, 'Date')
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
     df = fixCorporateEntity(df)
     df = fixKeyPoint(df)
+    if lang == "fr":
+        df = translate(df)
 
     if commodity == 'gas':
         company_files = ['NOVA Gas Transmission Ltd.',
@@ -400,11 +449,14 @@ def process_throughput(test=False,
     return thisCompanyData, df_c
 
 
+# TODO: the object can be optimized the same as incidents: loc: [lat, long], etc
+# TODO: enforce case on text columns
+# TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly', lang="en")
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil', lang="en")
     print('completed throughput!')

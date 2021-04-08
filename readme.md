@@ -315,4 +315,5 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
-- Try to have only one code bundle for en and fr, and seperate code bundles for each pipeline data.
+- Add "tie" corner case handling for most common incident what/why in the most_common method: `src/data_management/util.py`. Also make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
+- Change in progress and closed definition boxes into expandible dropdowns.

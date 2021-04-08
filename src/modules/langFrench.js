@@ -292,6 +292,12 @@ export const frenchDashboard = {
   traffic: {
     dynamicText: trafficTrendTextFra,
     numberFormat: numberFormat,
+    units: {
+      "Bcf/d": "Bcf/d FR",
+      "Million m3/d": "Million m3/d FR",
+      "Mb/d": "Mb/d FR",
+      "Thousand m3/d": "Thousand m3/d FR",
+    },
     months: {
       1: "janv",
       2: "févr",

@@ -60,8 +60,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
 
     [
-      [defaultUnit, true],
-      [secondUnit, false],
+      [lang.units[defaultUnit], true],
+      [lang.units[secondUnit], false],
     ].map((unit, i) => {
       buttonHTML += radioBtn(unit[0], unit[1], i);
     });
