@@ -116,8 +116,9 @@ def conditionMetaData(df, folder_name):
                           "status": noLoc}
 
     # get the date the data was pulled
-    status['updated'] = date.today().strftime("%b %d, %Y")
-    # status['updated'] = "Mar 19, 2021" #override todays date with custom date
+    today = date.today()
+    # status['updated'] = [today.year, today.month-1, today.day]
+    status['updated'] = [2021, 2, 19]  # override todays date with custom date
 
     # get the current company name
     status['companyName'] = list(df['Company'])[0]
@@ -411,7 +412,7 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # links = orca_regdocs_links(True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
+    # df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
     df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
     print('completed conditions!')
 

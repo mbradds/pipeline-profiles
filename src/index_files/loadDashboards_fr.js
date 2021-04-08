@@ -1,5 +1,5 @@
 console.time(`first content loading`);
-import { generalTheme } from "../modules/themes.js";
+import { generalTheme, frenchTheme } from "../modules/themes.js";
 // conditions
 import { mainConditions } from "../conditions/conditionsDashboard.js";
 //incidents
@@ -9,6 +9,7 @@ import { frenchDashboard } from "../modules/langFrench.js";
 //traffic
 import { mainTraffic } from "../traffic/trafficDashboard.js";
 generalTheme();
+frenchTheme();
 
 export async function loadAllCharts(data, plains = false) {
   const arrayOfCharts = [

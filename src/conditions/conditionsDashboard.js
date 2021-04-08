@@ -245,9 +245,19 @@ export async function mainConditions(
     if (currentPopUp) {
       currentPopUp.innerHTML = "";
     }
+    var updateDate = new Date(
+      meta.summary.updated[0],
+      meta.summary.updated[1],
+      meta.summary.updated[2]
+    );
+
     var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
-    text += `<tr><td><li>${lang.popUp.lastUpdated}</td><td style="padding:0;font-weight: bold;color:${cerPalette["Cool Grey"]};">${meta.summary.updated}</li></td></tr>`;
+    text += `<tr><td><li>${
+      lang.popUp.lastUpdated
+    }</td><td style="padding:0;font-weight: bold;color:${
+      cerPalette["Cool Grey"]
+    };">${lang.dateFormat(updateDate)}</li></td></tr>`;
     text += `<tr><td><li> ${
       meta.colNames[filter.column]
     } Conditions:</td><td style="padding:0;font-weight: bold;color:${

@@ -33,11 +33,16 @@ const numberFormat = (value, rounding = 2) => {
   return Highcharts.numberFormat(value, rounding, ",", " ");
 };
 
+const dateFormat = (value, format = "%b %d, %Y") => {
+  return Highcharts.dateFormat(format, value);
+};
+
 export const frenchDashboard = {
   plains:
     "Plains Midstream Canada ULC comprend les pipelines Aurora, Milk River et Wascana",
 
   conditions: {
+    dateFormat: dateFormat,
     companyToSystem: companyToSystem,
     colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",

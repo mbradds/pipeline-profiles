@@ -70,3 +70,50 @@ export const generalTheme = () => {
 
   Highcharts.setOptions(Highcharts.profiles);
 };
+
+export const frenchTheme = () => {
+  Highcharts.french = {
+    lang: {
+      months: [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril",
+        "Mai",
+        "Juin",
+        "Juillet",
+        "Août",
+        "Septembre",
+        "Octobre",
+        "Novembre",
+        "Décembre",
+      ],
+      shortMonths: [
+        "jan",
+        "fév",
+        "mar",
+        "avr",
+        "mai",
+        "juin",
+        "juil",
+        "aoû",
+        "sep",
+        "oct",
+        "nov",
+        "déc",
+      ],
+      weekdays: [
+        "Dimanche",
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi",
+      ],
+      decimalPoint: ",",
+      resetZoom: "réinitialiser le zoom",
+    },
+  };
+  Highcharts.setOptions(Highcharts.french);
+};
