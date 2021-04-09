@@ -6,17 +6,56 @@ import dateutil.relativedelta
 script_dir = os.path.dirname(__file__)
 
 
-def translations(section):
+def addIds(df):
+    points = {'system': '0',
+              'Border': '1',
+              'Zone 2': '2',
+              'Huntingdon/FortisBC Lower Mainland': '3',
+              'Kingsvale': '4',
+              'NOVA/Gordondale': '5',
+              'Sunset Creek': '6',
+              'St. Stephen': '7',
+              'Chippawa': '8',
+              'Cromer/Regina': '9',
+              'Eastern Triangle - NOL Receipts': '10',
+              'Eastern Triangle - Parkway Deliveries': '11',
+              'Eastern Triangle - Parkway Receipts': '12',
+              'Emerson I': '13',
+              'Emerson II': '14',
+              'ex-Cromer': '15',
+              'ex-Gretna': '16',
+              'Into-Sarnia': '17',
+              'Iroquois': '18',
+              'Niagara': '19',
+              'Northern Ontario Line': '20',
+              'Other US Northeast': '21',
+              'Prairies': '22',
+              'St Clair': '23',
+              'Ft. Saskatchewan': '24',
+              'Regina': '25',
+              'Windsor': '26',
+              'Kingsgate': '27',
+              'Monchy': '28',
+              'International boundary at or near Haskett, Manitoba': '29',
+              'East Gate': '30',
+              'North and East': '31',
+              'Upstream of James River': '32',
+              'West Gate': '33',
+              'Zama': '34',
+              'Burnaby': '35',
+              'Sumas': '36',
+              'Westridge': '37',
+              'East Hereford': '38',
+              'Saint Lazare': '39',
+              'Calgary': '40',
+              'Edmonton': '41',
+              'OSDA Kirby': '42',
+              'OSDA Liege': '43',
+              'Saturn': '44'
+              }
 
-    if section == "direction":
-        return {'north': 'nord',
-                'east': 'est',
-                'south': 'sud',
-                'west': 'ouest',
-                'northeast': 'nord-est',
-                'northwest': 'nord-ouest',
-                'southeast': 'sud-est',
-                'southwest': 'sud-ouest'}
+    df['Key Point'] = df['Key Point'].replace(points)
+    return df
 
 
 def applyColors(trade_type):
@@ -83,6 +122,7 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
         df = normalize_numeric(df, ['Latitude', 'Longitude'], 3)
         df = fixCorporateEntity(df)
         df = df[df['Key Point'] != "FortisBC Lower Mainland"]
+        df = addIds(df)
 
     return df
 
@@ -179,22 +219,22 @@ def meta_trend(df_c, commodity):
 
 
 def getDefaultPoint(company):
-    defaults = {'NOVA Gas Transmission Ltd.': 'Upstream of James River',
-                'Westcoast Energy Inc.': 'Huntingdon/FortisBC Lower Mainland',
-                'TransCanada PipeLines Limited': 'Prairies',
-                'Alliance Pipeline Ltd.': 'Border',
-                'Emera Brunswick Pipeline Company Ltd.': 'system',
-                'Trans Quebec and Maritimes Pipeline Inc.': 'Saint Lazare',
-                'Foothills Pipe Lines Ltd.': 'Kingsgate',
-                'Maritimes & Northeast Pipeline Management Ltd.': 'St. Stephen',
-                'Enbridge Pipelines Inc.': 'ex-Gretna',
-                'TransCanada Keystone Pipeline GP Ltd.': 'International boundary at or near Haskett, Manitoba',
-                'Trans Mountain Pipeline ULC': 'Burnaby',
-                'PKM Cochin ULC': 'Ft. Saskatchewan',
-                'Trans-Northern Pipelines Inc.': 'system',
-                'Enbridge Pipelines (NW) Inc.': 'Zama',
-                'Enbridge Southern Lights GP Inc.': 'system',
-                'TEML Westpur Pipelines Limited (TEML)': 'system'}
+    defaults = {'NOVA Gas Transmission Ltd.': '32',
+                'Westcoast Energy Inc.': '3',
+                'TransCanada PipeLines Limited': '22',
+                'Alliance Pipeline Ltd.': '1',
+                'Emera Brunswick Pipeline Company Ltd.': '0',
+                'Trans Quebec and Maritimes Pipeline Inc.': '39',
+                'Foothills Pipe Lines Ltd.': '27',
+                'Maritimes & Northeast Pipeline Management Ltd.': '7',
+                'Enbridge Pipelines Inc.': '16',
+                'TransCanada Keystone Pipeline GP Ltd.': '29',
+                'Trans Mountain Pipeline ULC': '35',
+                'PKM Cochin ULC': '24',
+                'Trans-Northern Pipelines Inc.': '0',
+                'Enbridge Pipelines (NW) Inc.': '34',
+                'Enbridge Southern Lights GP Inc.': '0',
+                'TEML Westpur Pipelines Limited (TEML)': '0'}
     try:
         return defaults[company]
     except:
@@ -210,68 +250,6 @@ def conversion(df, data):
         for col in ['Capacity', 'Throughput']:
             df[col] = df[col].fillna(0)
             df[col] = [(x*6.2898) for x in df[col]]
-    return df
-
-
-def translate(df):
-    points = {'Border': 'Frontière',
-              'Zone 2': 'Zone 2',
-              'FortisBC Lower Mainland': 'Lower Mainland de FortisBC',
-              'Huntingdon Export': 'point d’exportation Huntingdon',
-              'Kingsvale': 'Kingsvale',
-              'NOVA/Gordondale': 'NOVA-Gordondale',
-              'Sunset Creek': 'Sunset Creek',
-              'Baileyville, Ma. / St. Stephen N.B.': 'Baileyville, Ma. / St. Stephen N.B.',
-              'Chippawa': 'Chippawa',
-              'Cromer/Regina': 'Cromer/Regina',
-              'Eastern Triangle - NOL Receipts': 'Triangle de l’Est – CNO (réceptions)',
-              'Eastern Triangle - Parkway Deliveries': 'Triangle de l’Est – Parkway (livraisons)',
-              'Eastern Triangle - Parkway Receipts': 'Triangle de l’Est – Parkway (réceptions)',
-              'Emerson I': 'Emerson I',
-              'Emerson II': 'Emerson II',
-              'ex-Cromer': 'ex-Cromer',
-              'ex-Gretna': 'ex-Gretna',
-              'Into-Sarnia': 'Into-Sarnia',
-              'Iroquois': 'Iroquois',
-              'Niagara': 'Niagara',
-              'Northern Ontario Line': 'Canalisation du Nord de l’Onta',
-              'Other US Northeast': 'Nord-Est des États-Unis (autre)',
-              'Prairies': 'Prairies',
-              'St Clair': 'St Clair',
-              'Ft. Saskatchewan': 'Ft. Saskatchewan',
-              'Regina': 'Regina',
-              'Windsor': 'Windsor',
-              'Kingsgate': 'Kingsgate',
-              'Monchy': 'Monchy',
-              'International boundary at or near Haskett, Manitoba': 'Frontière internationale près de Haskett, au Manitoba - Flux mensuel ',
-              'East Gate': 'Poste d’entrée Est',
-              'North and East': 'Nord et Est ',
-              'Upstream of James River': 'En amont de la rivière James',
-              'West Gate': 'Poste d’entrée Ouest',
-              'Zama': 'Zama',
-              'Burnaby': 'Burnaby',
-              'Sumas': 'Sumas',
-              'Westridge': 'Westridge',
-              'East Hereford': 'Hereford est',
-              'Saint Lazare': 'Saint Lazare'
-              }
-
-    directions = {'north': 'nord',
-                  'east': 'est',
-                  'south': 'sud',
-                  'west': 'ouest',
-                  'northeast': 'nord-est',
-                  'northwest': 'nord-ouest',
-                  'southeast': 'sud-est',
-                  'southwest': 'sud-ouest',
-                  'east & north': 'est & nord',
-                  'southeast & east': 'sud-est & est',
-                  'east & southeast': 'est & sud-est',
-                  'west & south': 'ouest & sud'}
-
-    # df['Key Point'] = df['Key Point'].replace(points)
-    df['Direction of Flow'] = df['Direction of Flow'].replace(directions)
-
     return df
 
 
@@ -303,20 +281,18 @@ def process_throughput(test=False,
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df = df.drop(df[(df['Key Point'] == "Saturn") & (df['Throughput'] == 0)].index)
         units = "Bcf/d"
-        # if lang == "fr":
-        #     df = translate(df)
+
     else:
         query = 'throughput_oil_monthly.sql'
         df = get_data(test, sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df = conversion(df, commodity)
-        # if lang == "fr":
-        #     df = translate(df)
         df['Trade Type'] = [str(p).strip()+"-"+str(tt).strip() for p, tt in zip(df['Product'], df['Trade Type'])]
         del df['Product']
         units = "Mb/d"
 
+    df = addIds(df)
     print(list(set(df['Trade Type'])))
     points = get_data(False, sql, 'key_points.sql')
 
@@ -475,6 +451,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    # traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
     traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')

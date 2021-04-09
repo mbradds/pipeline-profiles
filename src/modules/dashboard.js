@@ -1242,7 +1242,7 @@ export class KeyPointMap {
 
   addPoints() {
     let allPoints = this.points.map((point) => {
-      if (this.selected.includes(point["Key Point"])) {
+      if (this.selected.includes(point["name"])) {
         var pointColor = this.colors.active;
         var pointOpacity = 1;
         var toFront = true;
@@ -1258,7 +1258,7 @@ export class KeyPointMap {
         pointColor,
         pointOpacity,
         this.minRadius,
-        point["Key Point"],
+        point["name"],
         toFront
       );
     });

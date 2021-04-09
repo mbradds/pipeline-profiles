@@ -164,9 +164,9 @@ export function trafficTrendTextEng(
   var trendText = "";
 
   if (!tm) {
-    const thisTrend = metaData.trendText[defaultPoint];
+    const thisTrend = metaData.trendText[defaultPoint.id];
     thisTrend.map((trend) => {
-      trendText += buildText("", trend, defaultPoint, unitsHolder);
+      trendText += buildText("", trend, defaultPoint.name, unitsHolder);
     });
   } else {
     for (const [defaultPoint, thisTrend] of Object.entries(
@@ -221,9 +221,9 @@ export function trafficTrendTextFra(
   var trendText = "";
 
   if (!tm) {
-    const thisTrend = metaData.trendText[defaultPoint];
+    const thisTrend = metaData.trendText[defaultPoint.id];
     thisTrend.map((trend) => {
-      trendText += buildText("", trend, defaultPoint, unitsHolder);
+      trendText += buildText("", trend, defaultPoint.name, unitsHolder);
     });
   } else {
     for (const [defaultPoint, thisTrend] of Object.entries(

@@ -28,6 +28,15 @@ export const sortJson = (obj, colName = "value") => {
   return obj.slice().sort((a, b) => b[colName] - a[colName]);
 };
 
+export function sortJsonAlpha(lst, col) {
+  function compareStrings(a, b) {
+    return a < b ? -1 : a > b ? 1 : 0;
+  }
+  return lst.sort(function (a, b) {
+    return compareStrings(a[col], b[col]);
+  });
+}
+
 export function visibility(divList, status) {
   divList.map((div) => {
     var x = document.getElementById(div);

@@ -1,30 +1,49 @@
-import { cerPalette, conversions, visibility } from "../modules/util.js";
+import {
+  cerPalette,
+  conversions,
+  visibility,
+  sortJsonAlpha,
+} from "../modules/util.js";
 import { KeyPointMap } from "../modules/dashboard.js";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;
   function addPointButtons(metaData, defaultSelect) {
     let btnGroup = $("#traffic-points-btn");
-    if (defaultSelect !== "Burnaby") {
+    if (defaultSelect.id !== "35") {
       metaData.points.map((point) => {
-        if (point == defaultSelect) {
+        if (point.id == defaultSelect.id) {
           var checkTxt = " active";
         } else {
           var checkTxt = "";
         }
         btnGroup.append(
-          `<div class="btn-group btn-point"><button type="button" value="${point}" class="btn btn-default${checkTxt}">${point}</button></div>`
+          `<div class="btn-group btn-point"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`
         );
       });
     } else {
       metaData.points.map((point, i) => {
         btnGroup.append(
           `<div class="checkbox-inline">
-          <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point}">${point}</label>
+          <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point.id}">${point.name}</label>
        </div>`
         );
       });
     }
+  }
+
+  function getPointList(metaData) {
+    var pointList = [];
+    metaData.keyPoints.map((point) => {
+      let pointName = lang.points[point["Key Point"]];
+      pointList.push({
+        id: point["Key Point"],
+        name: pointName,
+      });
+      point["name"] = pointName;
+      return point;
+    });
+    return sortJsonAlpha(pointList, "name");
   }
 
   function addUnitsAndSetup(defaultUnit, defaultPoint) {
@@ -33,7 +52,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       base: lang.units[defaultUnit],
       current: lang.units[defaultUnit],
     };
-    var tm = defaultPoint == "Burnaby" ? true : false;
+    var tm = defaultPoint.id == "35" ? true : false; // 35 = Burnaby
 
     const radioBtn = (unit, checked, i) => {
       if (checked) {
@@ -51,7 +70,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       const fiveYearDiv = document.createElement("div");
       fiveYearDiv.setAttribute("id", "traffic-hc-range");
       document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
-      if (defaultPoint == "St. Stephen") {
+      if (defaultPoint.id == "7") {
+        // 7 = St. Stephen
         hasImports = true;
       }
       buildFive = true;
@@ -83,7 +103,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
         return `${point} - Five year average & range`;
       }
     } else {
-      return `${point.join("-")} monthly traffic`;
+      var titleText = "";
+      point.map((p) => {
+        titleText += `${p.name} `;
+      });
+      return `${titleText} - monthly traffic`;
     }
   };
 
@@ -91,6 +115,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     var firstSeries = [];
     if (tm) {
       var [capAdded, dateAdded] = [false, false];
+      includeList = includeList.map((p) => p.id);
       for (const [key, keyData] of Object.entries(
         JSON.parse(JSON.stringify(trafficData))
       )) {
@@ -103,14 +128,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
               firstSeries.push(data);
               dateAdded = true;
             } else if (data.name !== "Capacity" && data.name !== "date") {
-              data.name = data.name + "-" + key;
+              data.name = data.name + "-" + lang.points[key];
               firstSeries.push(data);
             }
           });
         }
       }
     } else {
-      firstSeries = trafficData[defaultPoint];
+      firstSeries = trafficData[defaultPoint.id];
     }
     return firstSeries;
   };
@@ -187,15 +212,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function addSeriesParams(series, unitsHolder, buildFive) {
-    function compareStrings(a, b) {
-      return a < b ? -1 : a > b ? 1 : 0;
-    }
     let minDate = series[0].min;
     series = series.slice(1);
-
-    series.sort(function (a, b) {
-      return compareStrings(a.name, b.name);
-    });
+    series = sortJsonAlpha(series, "name");
 
     const isCapacity = (seriesName) => {
       if (
@@ -296,14 +315,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     } else {
       return [newSeries, undefined];
     }
-  }
-
-  function getPointList(keyPoints) {
-    var pointList = [];
-    keyPoints.map((point) => {
-      pointList.push(point["Key Point"]);
-    });
-    return pointList.sort();
   }
 
   const addToolRow = (p, unit, rounding, extraStyle = "") => {
@@ -456,7 +467,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         spacingTop: 5,
         spacingBottom: 10,
       },
-      title: sharedHcParams.title(setTitle(point, undefined, false, true)),
+      title: sharedHcParams.title(setTitle(point.name, undefined, false, true)),
       xAxis: {
         crosshair: true,
         tickInterval: 1,
@@ -564,7 +575,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     chart.update(
       {
         title: {
-          text: setTitle(btnValue, metaData.directions[btnValue]),
+          text: setTitle(btnValue.name, metaData.directions[btnValue.id]),
         },
         yAxis: [
           {
@@ -671,16 +682,21 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   };
 
+  function getKeyPoint(defaultId) {
+    return { id: defaultId, name: lang.points[defaultId] };
+  }
+
   function buildDashboard() {
     try {
-      var defaultPoint = metaData.defaultPoint;
+      var defaultPoint = getKeyPoint(metaData.defaultPoint);
       var [unitsHolder, buildFive, hasImports, tm] = addUnitsAndSetup(
         metaData.units,
         defaultPoint
       );
       resize(buildFive, hasImports);
-      metaData.points = getPointList(metaData.keyPoints);
-      if (defaultPoint !== "system") {
+      metaData.points = getPointList(metaData);
+      if (defaultPoint.id !== "0") {
+        // 0 = system
         if (metaData.points.length == 1) {
           // eg, Keystone
           ["traffic-points-btn", "key-point-title"].map((hideDiv) => {
@@ -692,7 +708,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
         var pointMap = new KeyPointMap({
           points: metaData.keyPoints,
-          selected: !tm ? [defaultPoint] : metaData.points,
+          selected: !tm
+            ? [defaultPoint.name]
+            : metaData.points.map((p) => p.name),
           companyName: metaData.companyName,
         });
         pointMap.addBaseMap();
@@ -715,7 +733,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       var trafficChart = buildTrafficChart(
         timeSeries,
         !tm
-          ? setTitle(defaultPoint, metaData.directions[defaultPoint])
+          ? setTitle(defaultPoint.name, metaData.directions[defaultPoint.id])
           : setTitle(metaData.points, undefined, tm),
         unitsHolder.current
       );
@@ -754,9 +772,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
           $(".btn-point > .btn").removeClass("active");
           var keyBtn = $(this).addClass("active");
           hasImports = false;
-          defaultPoint = keyBtn.val();
+          defaultPoint = getKeyPoint(keyBtn.val());
           const [newSeries, newFiveSeries] = addSeriesParams(
-            trafficData[defaultPoint],
+            trafficData[defaultPoint.id],
             unitsHolder,
             buildFive
           );
@@ -780,8 +798,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
               {
                 title: {
                   text: setTitle(
-                    defaultPoint,
-                    metaData.directions[defaultPoint]
+                    defaultPoint.name,
+                    metaData.directions[defaultPoint.id]
                   ),
                 },
                 yAxis: [
@@ -807,7 +825,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               fiveChart.update(
                 {
                   title: {
-                    text: setTitle(defaultPoint, undefined, false, true),
+                    text: setTitle(defaultPoint.name, undefined, false, true),
                   },
                   yAxis: {
                     visible: true,
@@ -823,7 +841,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           resize(buildFive, hasImports);
           trafficChart.redraw(true);
           trafficChart.reflow();
-          pointMap.pointChange([defaultPoint]);
+          pointMap.pointChange([defaultPoint.name]);
           lang.dynamicText(
             metaData,
             defaultPoint,
@@ -835,11 +853,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
       } else {
         // user is on trans mountain profile
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
+          var pointId = $(this).val();
           if ($(this).is(":checked")) {
-            metaData.points.push($(this).val());
+            metaData.points.push({
+              id: pointId,
+              name: lang.points[pointId],
+            });
           } else {
             metaData.points = metaData.points.filter(
-              (point) => point !== $(this).val()
+              (point) => point.id !== pointId
             );
           }
 
@@ -863,7 +885,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 text: setTitle(metaData.points, undefined, tm),
               },
             });
-            pointMap.pointChange(metaData.points);
+            pointMap.pointChange(metaData.points.map((p) => p.name));
           }
         });
       }
