@@ -29,7 +29,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function addUnitsAndSetup(defaultUnit, defaultPoint) {
     var buttonHTML = "";
-    const unitsHolder = { base: defaultUnit, current: defaultUnit };
+    const unitsHolder = {
+      base: lang.units[defaultUnit],
+      current: lang.units[defaultUnit],
+    };
     var tm = defaultPoint == "Burnaby" ? true : false;
 
     const radioBtn = (unit, checked, i) => {
@@ -73,7 +76,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
   const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
     if (!tm) {
       if (!fiveYear) {
-        return `${point} - monthly ${tradeType[1]} traffic (Direction of flow: ${tradeType[0]})`;
+        return `${point} - monthly ${
+          lang.trade[tradeType[1]]
+        } traffic (Direction of flow: ${lang.directions[tradeType[0]]})`;
       } else {
         return `${point} - Five year average & range`;
       }
@@ -348,7 +353,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         toolText += addToolRow(
           {
             color: cerPalette["Cool Grey"],
-            series: { name: "Utilization" },
+            series: { name: lang.util },
             y: (total / section.capacity[1]) * 100,
             point: {},
           },
@@ -537,7 +542,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
           return tooltipText(this, units);
         },
       },
-      legend: sharedHcParams.legend,
+      legend: {
+        alignColumns: false,
+        margin: 0,
+        symbolPadding: 2,
+        labelFormatter: function () {
+          let legendLang = lang.trade[this.name];
+          if (legendLang) {
+            return legendLang;
+          } else {
+            return this.name;
+          }
+        },
+      },
       plotOptions: sharedHcParams.plotOptions,
       series: series,
     });
@@ -771,6 +788,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
                   {
                     height: "100%",
                     max: undefined,
+                    title: {
+                      text: unitsHolder.current,
+                    },
                   },
                   { visible: false },
                 ],

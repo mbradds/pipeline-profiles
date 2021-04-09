@@ -6,6 +6,19 @@ import dateutil.relativedelta
 script_dir = os.path.dirname(__file__)
 
 
+def translations(section):
+
+    if section == "direction":
+        return {'north': 'nord',
+                'east': 'est',
+                'south': 'sud',
+                'west': 'ouest',
+                'northeast': 'nord-est',
+                'northwest': 'nord-ouest',
+                'southeast': 'sud-est',
+                'southwest': 'sud-ouest'}
+
+
 def applyColors(trade_type):
     trade_type = trade_type.split("-")[0].strip()
     colors = {"intracanada": "#054169",
@@ -250,9 +263,13 @@ def translate(df):
                   'northeast': 'nord-est',
                   'northwest': 'nord-ouest',
                   'southeast': 'sud-est',
-                  'southwest': 'sud-ouest'}
+                  'southwest': 'sud-ouest',
+                  'east & north': 'est & nord',
+                  'southeast & east': 'sud-est & est',
+                  'east & southeast': 'est & sud-est',
+                  'west & south': 'ouest & sud'}
 
-    df['Key Point'] = df['Key Point'].replace(points)
+    # df['Key Point'] = df['Key Point'].replace(points)
     df['Direction of Flow'] = df['Direction of Flow'].replace(directions)
 
     return df
@@ -262,7 +279,6 @@ def process_throughput(test=False,
                        sql=False,
                        commodity='gas',
                        companies=False,
-                       lang="en",
                        frequency='monthly'):
 
     def pushTraffic(t, arr, date, rounding):
@@ -272,8 +288,8 @@ def process_throughput(test=False,
             arr.append(round(float(t), rounding))
         return arr
 
-    if not os.path.exists("../traffic/company_data/"+lang):
-        os.mkdir("../traffic/company_data/"+lang)
+    if not os.path.exists("../traffic/company_data"):
+        os.mkdir("../traffic/company_data")
 
     if commodity == 'gas':
         if frequency == "monthly":
@@ -287,25 +303,27 @@ def process_throughput(test=False,
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df = df.drop(df[(df['Key Point'] == "Saturn") & (df['Throughput'] == 0)].index)
         units = "Bcf/d"
+        # if lang == "fr":
+        #     df = translate(df)
     else:
         query = 'throughput_oil_monthly.sql'
         df = get_data(test, sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df = conversion(df, commodity)
+        # if lang == "fr":
+        #     df = translate(df)
         df['Trade Type'] = [str(p).strip()+"-"+str(tt).strip() for p, tt in zip(df['Product'], df['Trade Type'])]
         del df['Product']
         units = "Mb/d"
 
-    # print(list(set(df['Corporate Entity'])))
+    print(list(set(df['Trade Type'])))
     points = get_data(False, sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
     df = fixCorporateEntity(df)
     df = fixKeyPoint(df)
-    if lang == "fr":
-        df = translate(df)
 
     if commodity == 'gas':
         company_files = ['NOVA Gas Transmission Ltd.',
@@ -457,6 +475,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly', lang="en")
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', lang="en")
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')
