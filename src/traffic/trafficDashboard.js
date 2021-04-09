@@ -708,9 +708,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
         var pointMap = new KeyPointMap({
           points: metaData.keyPoints,
-          selected: !tm
-            ? [defaultPoint.name]
-            : metaData.points.map((p) => p.name),
+          selected: !tm ? [defaultPoint] : metaData.points,
           companyName: metaData.companyName,
         });
         pointMap.addBaseMap();
@@ -841,7 +839,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           resize(buildFive, hasImports);
           trafficChart.redraw(true);
           trafficChart.reflow();
-          pointMap.pointChange([defaultPoint.name]);
+          pointMap.pointChange([defaultPoint]);
           lang.dynamicText(
             metaData,
             defaultPoint,
@@ -885,7 +883,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 text: setTitle(metaData.points, undefined, tm),
               },
             });
-            pointMap.pointChange(metaData.points.map((p) => p.name));
+            pointMap.pointChange(metaData.points);
           }
         });
       }

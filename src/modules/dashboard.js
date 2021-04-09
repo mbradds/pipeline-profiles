@@ -1168,13 +1168,19 @@ export class KeyPointMap {
     lang = {},
   }) {
     this.points = points;
-    this.selected = selected;
+    this.selected = this.selectedPointNames(selected);
     this.initZoomTo = initZoomTo;
     this.leafletDiv = leafletDiv;
     this.companyName = companyName;
     this.lang = lang;
     this.mapDisclaimer = undefined;
     this.getInits(companyName, points);
+  }
+
+  selectedPointNames(pointObj) {
+    return pointObj.map((p) => {
+      return p.name;
+    });
   }
 
   getInits(companyName, points) {
@@ -1252,8 +1258,8 @@ export class KeyPointMap {
         var toFront = false;
       }
       return this.addCircle(
-        point.Latitude,
-        point.Longitude,
+        point.loc[0],
+        point.loc[1],
         "#42464B",
         pointColor,
         pointOpacity,
@@ -1273,7 +1279,7 @@ export class KeyPointMap {
   }
 
   pointChange(newPoint) {
-    this.selected = newPoint;
+    this.selected = this.selectedPointNames(newPoint);
     const thisMap = this;
     this.keyPoints.eachLayer(function (layer) {
       if (thisMap.selected.includes(layer.options.name)) {

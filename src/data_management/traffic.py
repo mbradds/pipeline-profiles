@@ -345,7 +345,9 @@ def process_throughput(test=False,
             meta["trendText"] = trend
             meta = meta_throughput(df_c, meta, commodity)
             thisKeyPoints = points[points['Corporate Entity'] == company].copy().reset_index(drop=True)
-            del thisKeyPoints['Corporate Entity']
+            thisKeyPoints['loc'] = [[lat, long] for lat, long in zip(thisKeyPoints['Latitude'], thisKeyPoints['Longitude'])]
+            for delete in ['Corporate Entity', 'Latitude', 'Longitude']:
+                del thisKeyPoints[delete]
             meta['keyPoints'] = thisKeyPoints.to_dict(orient='records')
             for delete in ['Direction of Flow', 'Corporate Entity']:
                 del df_c[delete]
@@ -451,6 +453,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    # traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil') #, companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')
