@@ -51,3 +51,5 @@ export function visibility(divList, status) {
     }
   });
 }
+
+export const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;

@@ -3,6 +3,7 @@ import {
   conversions,
   visibility,
   sortJsonAlpha,
+  arrAvg,
 } from "../modules/util.js";
 import { KeyPointMap } from "../modules/dashboard.js";
 
@@ -198,7 +199,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         }
       }
 
-      const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
       for (const [x, value] of Object.entries(months)) {
         fiveYrRange.data.push([
           lang.months[x],
@@ -281,35 +281,43 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
     };
 
-    const nextSeries = JSON.parse(JSON.stringify(series));
-    let newSeries = [];
     const fiveYearData = {};
-    nextSeries.map((s) => {
+    // a deep copy is no longer required here. Each datapoint number is assigned as a new variable with addFunction
+    let newSeries = series.map((s) => {
+      const nextSeries = {};
       let startd = new Date(minDate[0], minDate[1], minDate[2]);
-      s.id = s.name;
+
+      nextSeries.id = s.name;
+      for (const [key, value] of Object.entries(s)) {
+        if (key !== "data") {
+          nextSeries[key] = value;
+        }
+      }
+
       var addFunction = addRow(
         unitsHolder,
         metaData.frequency,
         s.name,
         buildFive
       );
-      s.data = s.data.map((row) => {
+      nextSeries.data = s.data.map((row) => {
         var next = addFunction(row, startd, fiveYearData);
         return next[0];
       });
 
-      if (isCapacity(s.name)) {
-        s.type = "line";
-        s.zIndex = 6;
-        s.lineWidth = 3;
+      if (isCapacity(nextSeries.name)) {
+        nextSeries.type = "line";
+        nextSeries.zIndex = 6;
+        nextSeries.lineWidth = 3;
       } else {
-        s.type = "area";
-        s.zIndex = 5;
-        s.lineWidth = 1;
+        nextSeries.type = "area";
+        nextSeries.zIndex = 5;
+        nextSeries.lineWidth = 1;
       }
-      s.marker = { enabled: false };
-      newSeries.push(s);
+      nextSeries.marker = { enabled: false };
+      return nextSeries;
     });
+
     if (buildFive) {
       return [newSeries, createFiveYearSeries(fiveYearData)];
     } else {
@@ -422,9 +430,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function fiveYearTooltipText(event, units) {
-    var toolText = `<strong>${lang.months[event.x + 1]}</strong><table>`;
+    const currMonth = lang.months[event.x + 1];
+    var toolText = `<strong>${currMonth}</strong><table>`;
     event.points.map((p) => {
-      toolText += addToolRow(p, units, rounding);
+      const cleanPoint = p;
+      cleanPoint.series.name = p.series.name.split("(")[0].trim();
+      toolText += addToolRow(cleanPoint, units, rounding);
     });
     toolText += "</table>";
     return toolText;
