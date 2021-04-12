@@ -96,9 +96,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
   const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
     if (!tm) {
       if (!fiveYear) {
-        return `${point} - monthly ${
-          lang.trade[tradeType[1]]
-        } traffic (Direction of flow: ${lang.directions[tradeType[0]]})`;
+        return `${point} - monthly ${tradeType[1].join(
+          " & "
+        )} traffic (Direction of flow: ${tradeType[0].join(" & ")})`;
       } else {
         return `${point} - Five year average & range`;
       }

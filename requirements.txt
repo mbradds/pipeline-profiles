@@ -16,9 +16,9 @@ bleach=3.3.0=pyhd3eb1b0_0
 brotlipy=0.7.0=py38h27cfd23_1003
 bson=0.5.9=py_0
 bzip2=1.0.8=h7b6447c_0
-ca-certificates=2021.1.19=h06a4308_1
+ca-certificates=2020.12.5=ha878542_0
 cairo=1.14.12=h8948797_3
-certifi=2020.12.5=py38h06a4308_0
+certifi=2020.12.5=py38h578d9bd_1
 cffi=1.14.0=py38h2e261b9_0
 cfitsio=3.470=hb7c8383_2
 chardet=4.0.0=py38h06a4308_1003
@@ -159,6 +159,7 @@ python=3.8.2=h191fe78_0
 python-dateutil=2.8.1=pyhd3eb1b0_0
 python-jsonrpc-server=0.4.0=py_0
 python-language-server=0.35.1=py_0
+python_abi=3.8=1_cp38
 pytz=2021.1=pyhd3eb1b0_0
 pyxdg=0.27=pyhd3eb1b0_0
 pyyaml=5.4.1=py38h27cfd23_1

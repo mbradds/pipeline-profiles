@@ -138,9 +138,10 @@ def meta_throughput(df_c, meta, data):
 
     df_meta = df_meta.reset_index()
     for col in ['direction', 'trade']:
-        df_meta[col] = [" & ".join(list(x)) for x in df_meta[col]]
-    for col in df_meta:
-        df_meta[col] = [x.strip() for x in df_meta[col]]
+        # df_meta[col] = [" & ".join(list(x)) for x in df_meta[col]]
+        df_meta[col] = [list(x) for x in df_meta[col]]
+    # for col in df_meta:
+    #     df_meta[col] = [x.strip() for x in df_meta[col]]
 
     directions = {}
     for key, flow, trade in zip(df_meta['Key Point'], df_meta['direction'], df_meta['trade']):
@@ -292,6 +293,7 @@ def process_throughput(test=False,
         del df['Product']
         units = "Mb/d"
 
+    df = fixKeyPoint(df)
     df = addIds(df)
     print(list(set(df['Trade Type'])))
     points = get_data(False, sql, 'key_points.sql')
@@ -299,7 +301,6 @@ def process_throughput(test=False,
     df['Date'] = pd.to_datetime(df['Date'])
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
     df = fixCorporateEntity(df)
-    df = fixKeyPoint(df)
 
     if commodity == 'gas':
         company_files = ['NOVA Gas Transmission Ltd.',
@@ -319,7 +320,6 @@ def process_throughput(test=False,
                          'Trans-Northern Pipelines Inc.',
                          'Enbridge Pipelines (NW) Inc.',
                          'Enbridge Southern Lights GP Inc.',
-                         'TEML Westpur Pipelines Limited (TEML)',
                          'Kingston Midstream Westspur Limited',
                          'Vector Pipeline Limited Partnership',
                          'Many Islands Pipe Lines (Canada) Limited',
@@ -329,6 +329,10 @@ def process_throughput(test=False,
                          'Genesis Pipeline Canada Ltd.',
                          'Montreal Pipe Line Limited',
                          'Aurora Pipeline Company Ltd']
+
+    group2 = ['TEML Westpur Pipelines Limited (TEML)',
+              'Enbridge Southern Lights GP Inc.']
+
     if companies:
         company_files = companies
 
@@ -340,7 +344,7 @@ def process_throughput(test=False,
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
-        if not df_c.empty:
+        if not df_c.empty and company not in group2:
             trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
             meta = meta_throughput(df_c, meta, commodity)
@@ -453,6 +457,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly') #, companies=['Maritimes & Northeast Pipeline Management Ltd.'])
     traffic, df = process_throughput(test=False, sql=False, commodity='oil') #, companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')
