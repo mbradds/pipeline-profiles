@@ -48,6 +48,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function addUnitsAndSetup(defaultUnit, defaultPoint) {
+    metaData["commodity"] = defaultUnit == "Mb/d" ? "oil" : "gas";
     var buttonHTML = "";
     const unitsHolder = {
       base: lang.units[defaultUnit],
@@ -115,7 +116,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   const createSeries = (trafficData, defaultPoint, includeList = [], tm) => {
     var firstSeries = [];
     if (tm) {
-      var [capAdded, dateAdded] = [false, false];
+      var [capAdded, dateAdded, seriesAdded] = [false, false, {}];
       includeList = includeList.map((p) => p.id);
       for (const [key, keyData] of Object.entries(
         JSON.parse(JSON.stringify(trafficData))
@@ -129,11 +130,27 @@ export async function mainTraffic(trafficData, metaData, lang) {
               firstSeries.push(data);
               dateAdded = true;
             } else if (data.name !== "Capacity" && data.name !== "date") {
-              data.name = data.name + "-" + lang.points[key];
-              firstSeries.push(data);
+              if (seriesAdded.hasOwnProperty(data.name)) {
+                var newData = data.data;
+                seriesAdded[data.name].data = seriesAdded[data.name].data.map(
+                  (v, i) => {
+                    return v + newData[i];
+                  }
+                );
+              } else {
+                seriesAdded[data.name] = {
+                  data: data.data,
+                  yAxis: data.yAxis,
+                  color: data.color,
+                  name: data.name,
+                };
+              }
             }
           });
         }
+      }
+      for (const [key, value] of Object.entries(seriesAdded)) {
+        firstSeries.push(value);
       }
     } else {
       firstSeries = trafficData[defaultPoint.id];
@@ -341,7 +358,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
     };
 
     var yFunction = yVal(p);
-    return `<tr style="${extraStyle}"><th style="color:${p.color}">${
+    if (unit == "%" || p.series.name == "Total") {
+      var colorCircle = "";
+    } else {
+      var colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp`;
+    }
+    return `<tr style="${extraStyle}"><th>${colorCircle}${
       p.series.name
     }:</th><th>&nbsp${yFunction(p)} ${unit}</th></tr>`;
   };
@@ -459,6 +481,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
         x: 10,
         margin: 5,
         text: text,
+        style: {
+          fontWeight: "normal",
+        },
       };
     },
   };
@@ -506,7 +531,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       },
       tooltip: {
         shared: true,
-        backgroundColor: "white",
         borderColor: cerPalette["Dim Grey"],
         useHTML: true,
         formatter: function () {
@@ -519,6 +543,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function buildTrafficChart(series, title, units, div = "traffic-hc") {
+    var yAxisRound = metaData.commodity == "oil" ? 0 : 1;
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
@@ -542,7 +567,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           tickPixelInterval: 40,
           labels: {
             formatter: function () {
-              return lang.numberFormat(this.value, 1);
+              return lang.numberFormat(this.value, yAxisRound);
             },
           },
         },
@@ -550,7 +575,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       ],
       tooltip: {
         shared: true,
-        backgroundColor: "white",
         borderColor: cerPalette["Dim Grey"],
         useHTML: true,
         formatter: function () {
@@ -697,6 +721,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         metaData.units,
         defaultPoint
       );
+
       resize(buildFive, hasImports);
       metaData.points = getPointList(metaData);
       if (defaultPoint.id !== "0") {

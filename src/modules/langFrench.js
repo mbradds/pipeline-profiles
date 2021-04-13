@@ -295,7 +295,7 @@ export const frenchDashboard = {
     units: {
       "Bcf/d": "Bcf/d FR",
       "Million m3/d": "Million m3/d FR",
-      "Mb/d": "Mb/d FR",
+      "Mb/d": "Thousand b/d FR",
       "Thousand m3/d": "Thousand m3/d FR",
     },
     directions: {

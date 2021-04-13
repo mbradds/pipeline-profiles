@@ -299,7 +299,7 @@ export const englishDashboard = {
     units: {
       "Bcf/d": "Bcf/d",
       "Million m3/d": "Million m3/d",
-      "Mb/d": "Mb/d",
+      "Mb/d": "Thousand b/d",
       "Thousand m3/d": "Thousand m3/d",
     },
     directions: {

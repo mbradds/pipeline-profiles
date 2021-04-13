@@ -136,6 +136,16 @@ export function trafficTrendTextEng(
     }
   };
 
+  const trendSub = (commodity) => {
+    if (commodity == "gas") {
+      return "year over year";
+    } else if (commodity == "oil") {
+      return "quarter over quarter";
+    } else {
+      return "";
+    }
+  };
+
   const buildText = (trendText, trend, point, units) => {
     if (trend.name == "default") {
       var trendId = "";
@@ -145,8 +155,8 @@ export function trafficTrendTextEng(
     trendText += `<p>`;
     trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
       point + trendId
-    )} key point have ${changeText(
-      trend.throughChange.pct
+    )} key point have ${changeText(trend.throughChange.pct)} ${trendSub(
+      metaData.commodity
     )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
       units.current
     } in ${quarters[trend.fromDate[1]]} ${
@@ -169,10 +179,19 @@ export function trafficTrendTextEng(
       trendText += buildText("", trend, defaultPoint.name, unitsHolder);
     });
   } else {
+    var pointNames = {};
+    metaData.points.map((p) => {
+      pointNames[p.id] = p.name;
+    });
     for (const [defaultPoint, thisTrend] of Object.entries(
       metaData.trendText
     )) {
-      trendText += buildText("", thisTrend[0], defaultPoint, unitsHolder);
+      trendText += buildText(
+        "",
+        thisTrend[0],
+        pointNames[defaultPoint],
+        unitsHolder
+      );
     }
   }
   trendBox.innerHTML = trendText;

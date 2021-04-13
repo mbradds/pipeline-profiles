@@ -290,7 +290,7 @@ def process_throughput(test=False,
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df = conversion(df, commodity)
-        df['Trade Type'] = [str(p).strip()+"-"+str(tt).strip() for p, tt in zip(df['Product'], df['Trade Type'])]
+        df['Trade Type'] = [str(p).strip() for p in df['Product']]
         del df['Product']
         units = "Mb/d"
 
@@ -359,13 +359,12 @@ def process_throughput(test=False,
 
             point_data = {}
             pointsList = sorted(list(set(df_c['Key Point'])))
+            #pointsList = ['16']
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
                 df_p = df_c[df_c['Key Point'] == p].copy().reset_index(drop=True)
                 df_p = df_p.groupby(['Date', 'Key Point', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
-                if p == "Into-Sarnia":
-                    df_p = df_p.sort_values(by=['Date', 'Trade Type'], ascending=[True, False])
                 traffic_types = {}
                 counter = 0
                 pointDates = sorted(list(set(df_p['Date'])))
@@ -382,8 +381,11 @@ def process_throughput(test=False,
                         df_p_t[numFill] = df_p_t[numFill].fillna(0)
                     tradeData.append(df_p_t)
                 df_p = pd.concat(tradeData, ignore_index=True).copy()
+                if p == "16":
+                    df_p = df_p.sort_values(by=['Trade Type', 'Date'], ascending=[True, True])
                 for date, t, c, trade in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity'], df_p['Trade Type']):
                     t, c = float(t), float(c)
+
                     if trade in traffic_types:
                         traffic_types[trade] = pushTraffic(t, traffic_types[trade], date, rounding)
                     else:
@@ -427,10 +429,18 @@ def process_throughput(test=False,
                                               "color": "#FFBE4B",
                                               "data": pointCapacity})
                 else:
-                    throughput_series.append({"name": "Capacity",
-                                              "yAxis": 0,
-                                              "color": "#FFBE4B",
-                                              "data": pointCapacity})
+                    # check if there is at least one non null in the data
+                    hasData = False
+                    for val in pointCapacity:
+                        if val:
+                            hasData = True
+                            break
+
+                    if hasData:
+                        throughput_series.append({"name": "Capacity",
+                                                  "yAxis": 0,
+                                                  "color": "#FFBE4B",
+                                                  "data": pointCapacity})
 
                 point_data[p] = throughput_series
 
@@ -459,5 +469,5 @@ if __name__ == "__main__":
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
     # traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly') #, companies=['Maritimes & Northeast Pipeline Management Ltd.'])
-    traffic, df = process_throughput(test=False, sql=True, commodity='oil') #, companies=['Enbridge Pipelines Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')
