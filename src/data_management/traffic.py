@@ -99,7 +99,8 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
     csvName = query.split(".")[0]+'.csv'
     if sql:
         print('reading sql '+query.split(".")[0])
-        df = execute_sql(path=os.path.join(script_dir, "/queries"), query_name=query, db='EnergyData')
+        print(os.path.join(script_dir, "queries"))
+        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db='EnergyData')
         df.to_csv('raw_data/'+csvName, index=False)
     elif test:
         print('reading test '+query.split(".")[0])
@@ -457,6 +458,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly') #, companies=['Maritimes & Northeast Pipeline Management Ltd.'])
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil') #, companies=['Enbridge Pipelines Inc.'])
+    # traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly') #, companies=['Maritimes & Northeast Pipeline Management Ltd.'])
+    traffic, df = process_throughput(test=False, sql=True, commodity='oil') #, companies=['Enbridge Pipelines Inc.'])
     print('completed throughput!')
