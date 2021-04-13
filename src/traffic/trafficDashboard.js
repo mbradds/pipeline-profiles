@@ -444,9 +444,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
   const sharedHcParams = {
     legend: { alignColumns: false, margin: 0, symbolPadding: 2 },
     plotOptions: {
-      area: {
-        stacking: "normal",
-      },
       series: {
         connectNulls: true,
         states: {
@@ -462,10 +459,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         x: 10,
         margin: 5,
         text: text,
-        style: {
-          fontSize: "16px",
-          fontWeight: "bold",
-        },
       };
     },
   };

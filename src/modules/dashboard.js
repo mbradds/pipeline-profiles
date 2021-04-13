@@ -580,7 +580,7 @@ export class EventNavigator {
       title: {
         text: currentDashboard.pillName(name),
         style: {
-          fontSize: "16px",
+          fontWeight: "normal",
         },
         padding: -5,
         margin: 0,
@@ -594,7 +594,6 @@ export class EventNavigator {
 
       yAxis: {
         maxPadding: 0,
-        visible: true,
         plotLines: [
           {
             color: "white",
@@ -632,8 +631,6 @@ export class EventNavigator {
       },
 
       legend: {
-        layout: "horizontal",
-        verticalAlign: "bottom",
         alignColumns: false,
         margin: 0,
         symbolPadding: 2,
@@ -657,7 +654,6 @@ export class EventNavigator {
         },
         series: {
           animation: false,
-          stacking: "normal",
           grouping: false,
           shadow: false,
           states: {

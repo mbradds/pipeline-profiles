@@ -8,6 +8,12 @@ export const generalTheme = () => {
       column: {
         stacking: "normal",
       },
+      area: {
+        stacking: "normal",
+      },
+      bar: {
+        stacking: "normal",
+      },
     },
 
     xAxis: {
@@ -65,6 +71,10 @@ export const generalTheme = () => {
 
     title: {
       text: "",
+      style: {
+        fontSize: "16px",
+        fontWeight: "bold",
+      },
     },
   };
 
