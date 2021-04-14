@@ -296,6 +296,13 @@ export const englishDashboard = {
   traffic: {
     dynamicText: trafficTrendTextEng,
     numberFormat: numberFormat,
+    descriptions: {
+      noPoint: "Description coming soon!",
+      30: "In the southeastern portion of the NGTL system, the East Gate interconnects with TransCanada's Canadian Mainline (near Empress, Alberta) and TransCanada's Foothills Pipeline (near McNeill, Alberta).",
+      33: "In the southwestern portion of the NGTL system, the West Gate interconnects with TransCanada's Foothills Pipeline (British Columbia).",
+      32: "Throughputs in the northwestern portion of the NGTL system. Upstream of James River flows contain receipts from the Horn River and the Groundbirch pipelines (part of NGTL).",
+      31: "Throughputs to delivery areas in northern Alberta, including natural gas used for oil sands operations.",
+    },
     units: {
       "Bcf/d": "Bcf/d",
       "Million m3/d": "Million m3/d",

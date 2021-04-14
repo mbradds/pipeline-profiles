@@ -549,7 +549,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         zoomType: "x",
         marginRight: 0,
         animation: false,
-        spacingBottom: 0,
       },
       title: sharedHcParams.title(title),
       xAxis: {
@@ -714,6 +713,16 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return { id: defaultId, name: lang.points[defaultId] };
   }
 
+  function displayPointDescription(defaultPoint) {
+    var pointText = lang.descriptions[defaultPoint.id];
+    var pointDiv = document.getElementById("traffic-point-description");
+    if (pointText) {
+      pointDiv.innerHTML = `<p>${pointText}</p>`;
+    } else {
+      pointDiv.innerHTML = `<p>${lang.descriptions.noPoint}</p>`;
+    }
+  }
+
   function buildDashboard() {
     try {
       var defaultPoint = getKeyPoint(metaData.defaultPoint);
@@ -792,6 +801,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         tm,
         lang.numberFormat
       );
+      displayPointDescription(defaultPoint);
 
       // user selects key point
       if (!tm) {
@@ -876,6 +886,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             tm,
             lang.numberFormat
           );
+          displayPointDescription(defaultPoint);
         });
       } else {
         // user is on trans mountain profile

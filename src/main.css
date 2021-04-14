@@ -131,6 +131,9 @@ body {
 .map-disclaimer p {
   font-size: 13px;
 }
+#key-point-info p {
+  margin-bottom: 0px;
+}
 #traffic-hc-column {
   padding-right: 0px;
   padding-left: 0px;
