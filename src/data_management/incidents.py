@@ -3,7 +3,7 @@ from util import get_company_names, company_rename, most_common
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
-lastFullYear = 2020
+# lastFullYear = 2021
 
 
 def incidentsPerKm(dfAll):
@@ -91,29 +91,29 @@ def incidentMetaData(df, dfPerKm, company, lang):
     return meta
 
 
-def changes(df, volume=True):
-    changeMeta = {}
-    trend = df.copy().reset_index(drop=True)
-    if volume:
-        trend = trend[~trend['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
-    trend = trend.groupby(['Year'])['Incident Number'].count()
-    trend = trend.reset_index()
-    trend = trend.sort_values(by='Year')
-    trend = trend.rename(columns={'Incident Number': 'Incident Count'})
-    max_year = max(trend['Year'])
-    # isolate the five year range
-    trend = trend[(trend['Year'] <= lastFullYear) & (trend['Year'] >= lastFullYear-5)]
-    if lastFullYear in list(trend['Year']):
-        recentIncidents = trend[trend['Year'] == lastFullYear].copy().reset_index()
-        recentIncidents = recentIncidents.loc[0, "Incident Count"]
-        fiveYearAvg = trend[trend['Year'] != lastFullYear].copy().reset_index()
-        fiveYearAvg = fiveYearAvg['Incident Count'].mean()
-        changeMeta['year'] = int(lastFullYear)
-        changeMeta['pctChange'] = round(((int(recentIncidents)-int(fiveYearAvg))/int(fiveYearAvg))*100, 0)
+# def changes(df, volume=True):
+#     changeMeta = {}
+#     trend = df.copy().reset_index(drop=True)
+#     if volume:
+#         trend = trend[~trend['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
+#     trend = trend.groupby(['Year'])['Incident Number'].count()
+#     trend = trend.reset_index()
+#     trend = trend.sort_values(by='Year')
+#     trend = trend.rename(columns={'Incident Number': 'Incident Count'})
+#     max_year = max(trend['Year'])
+#     # isolate the five year range
+#     trend = trend[(trend['Year'] <= lastFullYear) & (trend['Year'] >= lastFullYear-5)]
+#     if lastFullYear in list(trend['Year']):
+#         recentIncidents = trend[trend['Year'] == lastFullYear].copy().reset_index()
+#         recentIncidents = recentIncidents.loc[0, "Incident Count"]
+#         fiveYearAvg = trend[trend['Year'] != lastFullYear].copy().reset_index()
+#         fiveYearAvg = fiveYearAvg['Incident Count'].mean()
+#         changeMeta['year'] = int(lastFullYear)
+#         changeMeta['pctChange'] = round(((int(recentIncidents)-int(fiveYearAvg))/int(fiveYearAvg))*100, 0)
 
-    else:
-        changeMeta["noneSince"] = max_year
-    return changeMeta
+#     else:
+#         changeMeta["noneSince"] = max_year
+#     return changeMeta
 
 
 def fixColumns(df):
@@ -140,6 +140,12 @@ def process_french(df):
                             "Année": "Year",
                             "Ce qui s’est passé": "What Happened",
                             "Cause": "Why It Happened"})
+
+    # take care of "what happened" french col error
+    for colName in df.columns:
+        if "est passé" in colName:
+            df = df.rename(columns={colName: "What Happened"})
+
     chosenSubstances = ["Propane",
                         "Gaz Naturel - non sulfureux",
                         "Gaz naturel - sulfureux",
@@ -193,46 +199,50 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
     if remote:
         if lang == 'en':
-            link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
+            link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2021-03-31-incident-data.csv"
+            process_func = process_english
         else:
-            link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/2020-12-31-donnees-incidents.csv"
+            link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/2021-03-31-donnees-incidents.csv"
+            process_func = process_french
         print('downloading remote incidents file')
         df = pd.read_csv(link,
-                         skiprows=1,
-                         encoding="UTF-16",
+                         skiprows=0,
+                         encoding="latin-1",
+                         engine="python",
                          error_bad_lines=False)
-        df.to_csv("./raw_data/incidents.csv", index=False)
+        df = process_func(df)
+        df.to_csv("./raw_data/incidents_"+lang+".csv", index=False)
     elif test:
         print('reading test incidents file')
         if lang == 'en':
-            df = pd.read_csv("./raw_data/test_data/incidents_en.csv",
-                             skiprows=0,
-                             encoding="UTF-8",
-                             error_bad_lines=False)
-            df = process_english(df)
+            path = "./raw_data/test_data/incidents_en.csv"
+            process_func = process_english
         else:
-            df = pd.read_csv("./raw_data/incidents_fr.csv",
-                             skiprows=1,
-                             encoding="UTF-16",
-                             error_bad_lines=False)
-            df = process_french(df)
+            path = "./raw_data/test_data/incidents_fr.csv"
+            process_func = process_french
+
+        df = pd.read_csv(path,
+                         skiprows=0,
+                         encoding="utf-8",
+                         error_bad_lines=False)
+        df = process_func(df)
 
     else:
         print('reading local incidents file')
         if lang == 'en':
             print('starting english incidents...')
-            df = pd.read_csv("./raw_data/incidents_en.csv",
-                             skiprows=0,
-                             encoding="UTF-8",
-                             error_bad_lines=False)
-            df = process_english(df)
+            path = "./raw_data/incidents_en.csv"
+            process_func = process_english
         else:
             print('starting french incidents...')
-            df = pd.read_csv("./raw_data/incidents_fr.csv",
-                             skiprows=1,
-                             encoding="UTF-16",
-                             error_bad_lines=False)
-            df = process_french(df)
+            path = "./raw_data/incidents_fr.csv"
+            process_func = process_french
+
+        df = pd.read_csv(path,
+                         skiprows=0,
+                         encoding="utf-8",
+                         error_bad_lines=False)
+        df = process_func(df)
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())
@@ -314,8 +324,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta = process_incidents(remote=False, lang='en')
-    df, volume, meta = process_incidents(remote=False, lang='fr')
+    df, volume, meta = process_incidents(remote=False, test=False, lang='en')
+    df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
     print('completed incidents!')
 
 #%%

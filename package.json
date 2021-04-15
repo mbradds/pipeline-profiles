@@ -12,10 +12,12 @@
     "start": "node server.js",
     "heroku-postbuild": "webpack",
     "dev": "webpack serve --output-public-path=/dist/",
-    "data": "sh ./src/data_management/npm_scripts/prepare_data.sh",
-    "maps": "sh ./src/data_management/npm_scripts/simplify_maps.sh",
-    "test": "sh ./src/data_management/npm_scripts/test_data.sh",
-    "requirements_txt": "sh ./src/data_management/npm_scripts/requirements.sh"
+    "update-traffic-data": "sh ./src/data_management/npm_scripts/update-traffic-data.sh",
+    "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
+    "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
+    "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
+    "test": "sh ./src/data_management/npm_scripts/test-data.sh",
+    "requirements-txt": "sh ./src/data_management/npm_scripts/requirements.sh"
   },
   "author": "",
   "license": "MIT",

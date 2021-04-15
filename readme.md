@@ -145,28 +145,17 @@ Several datasets are pulled directly from CER internal databases. A single pytho
 
 ### Have you set up the pipeline-profiles conda environment?
 
-It is highly recommended that you first create the conda python environment described in [requirements.txt](requirements.txt). The npm script below expects a conda python environment called pipeline-profiles.
+It is highly recommended that you first create the conda python environment described in [requirements.txt](requirements.txt). The npm scripts for data updates expect a conda python environment called pipeline-profiles.
 
-Re-run all data:
+Update datasets:
 
 ```bash
-npm run data
+npm run update-traffic-data
+npm run update-incidents-data
+npm run update-conditions-data
 ```
 
 Note: depending on several factors, including the current state of the python scripts called with the above command, this may not actually update the data you want. Take a look at the sub sections below for update instructions specific to the dataset.
-
-**Warning:** npm run data will update all datasets. If you want to only update one dataset, either run python scripts seperately, or update the [prepare_data.sh](./src/data_management/prepare_data.sh) file like so.
-
-```diff
-#!/bin/bash
-eval "$(conda shell.bash hook)"
-conda activate pipeline-profiles
-cd src/data_management
--python conditions.py
-python incidents.py
-```
-
-<i>After the change above, npm run data will only update incidents.</i>
 
 ### Dataset 1: Incidents
 
@@ -200,6 +189,8 @@ if __name__ == '__main__':
     print('completed incidents!')
 ```
 
+4. `npm run update-incidents-data && npm run build`
+
 #### Option 2: Use local CSV's in your possession for update
 
 Alternatively, if the remote data fetch doesnt work, or you have the incident data before its uploaded onto the web, then the new incident data csv files can be placed into the `src/data_mangagement/raw_data` folder, overwriting the <i>incidents_en.csv</i> and <i>incidents_fr.csv</i> that are already there.
@@ -217,6 +208,8 @@ if __name__ == '__main__':
 -    process_incidents(remote=True, lang='fr')
     print('completed incidents!')
 ```
+
+3. `npm run update-incidents-data && npm run build`
 
 ### Dataset 2: Conditions
 
@@ -240,6 +233,8 @@ if __name__ == "__main__":
     print('completed conditions!')
 ```
 
+4. `npm run update-conditions-data && npm run build`
+
 #### Option 2: Use local CSV's in your possession for update
 
 Alternatively, if the remote data fetch doesnt work, then the new conditions data csv files can be placed into `src/data_mangagement/raw_data`, overwriting the <i>conditions_en.csv</i> and <i>conditions_fr.csv</i> that are already there.
@@ -248,15 +243,14 @@ Alternatively, if the remote data fetch doesnt work, then the new conditions dat
 
 2. Make sure that the python script is configured to pull data from `src/data_mangagement/raw_data`
 
-```diff
+````diff
 if __name__ == "__main__":
     print('starting conditions...')
 +    process_conditions(remote=False, lang='en')
 +    process_conditions(remote=False, lang='fr')
 -    process_conditions(remote=True, lang='en')
--    process_conditions(remote=True, lang='fr')
-    print('completed conditions!')
-```
+-    process_conditions(remote=True, lang='fr')4. `npm run update-conditions-data && npm run build`
+3. `npm run update-conditions-data && npm run build`
 
 ## Dependencies
 
@@ -294,7 +288,7 @@ The greatest risk for errors, such as incorrect values appearing in the front en
 
 ```python
 df['Company'] = df['Company'].replace({"Enbridge Pipelines Inc": "Enbridge Pipelines Inc."})
-```
+````
 
 There are several python unit tests written for the various python data outputs and utility functions. These are found here `src/data_management/tests.py`
 
@@ -318,3 +312,5 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
 - Add "tie" corner case handling for most common incident what/why in the most_common method: `src/data_management/util.py`. Also make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
 - Change in progress and closed definition boxes into expandible dropdowns.
+- Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
+- Add an option in incidents and conditions py for direct connection to cer infrastructure.

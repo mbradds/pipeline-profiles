@@ -49,29 +49,29 @@ class TestNovaIncidents(unittest.TestCase):
                          self.metaFR["seriousEvents"]["Fatality"])
 
     def testTotal(self):
-        self.assertEqual(len(self.df), 330)  # total incidents for NGTL
-        self.assertEqual(len(self.volume), 89)  # total release incidents
+        self.assertEqual(len(self.df), 338)  # total incidents for NGTL
+        self.assertEqual(len(self.volume), 90)  # total release incidents
 
     def testIncidentTypes(self):
         # test on full NGTL data
         self.assertEqual(self.countIncidentType("Adverse Environmental Effects", self.df), 7)
-        self.assertEqual(self.countIncidentType("Serious Injury (CER or TSB)", self.df), 12)
+        self.assertEqual(self.countIncidentType("Serious Injury (CER or TSB)", self.df), 13)
         self.assertEqual(self.countIncidentType("Fatality", self.df), 1)
         # test on calcualted sumamry metadata
         self.assertEqual(self.meta["seriousEvents"]["Adverse Environmental Effects"], 7)
-        self.assertEqual(self.meta["seriousEvents"]["Serious Injury (CER or TSB)"], 12)
+        self.assertEqual(self.meta["seriousEvents"]["Serious Injury (CER or TSB)"], 13)
         self.assertEqual(self.meta["seriousEvents"]["Fatality"], 1)
 
     def testVariableCounts(self):
         substance = self.volume[self.volume['Substance'] == "Natural Gas - Sweet"].copy()
         status = self.volume[self.volume['Status'] == "Closed"].copy()
         year = self.volume[self.volume['Year'] == 2013].copy()
-        self.assertEqual(len(substance), 83)
-        self.assertEqual(len(status), 82)
+        self.assertEqual(len(substance), 84)
+        self.assertEqual(len(status), 86)
         self.assertEqual(len(year), 2)
-        trueSubstanceRelease = 38370485
+        trueSubstanceRelease = 38402739.2
         self.assertTrue(trueSubstanceRelease-1 <= int(substance['vol'].sum()) <= trueSubstanceRelease+1)
-        trueStatusRelease = 26871755
+        trueStatusRelease = 26912716.7
         self.assertTrue(trueStatusRelease-1 <= int(status['vol'].sum()) <= trueStatusRelease)
         trueYearRelease = 20800000
         self.assertTrue(trueYearRelease-1 <= int(year['vol'].sum()) <= trueYearRelease+1)
