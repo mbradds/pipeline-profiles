@@ -99,7 +99,6 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
     csvName = query.split(".")[0]+'.csv'
     if sql:
         print('reading sql '+query.split(".")[0])
-        print(os.path.join(script_dir, "queries"))
         df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db='EnergyData')
         df.to_csv('raw_data/'+csvName, index=False)
     elif test:
@@ -296,7 +295,6 @@ def process_throughput(test=False,
 
     df = fixKeyPoint(df)
     df = addIds(df)
-    print(list(set(df['Trade Type'])))
     points = get_data(False, sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
@@ -308,10 +306,10 @@ def process_throughput(test=False,
                          'Westcoast Energy Inc.',
                          'TransCanada PipeLines Limited',
                          'Alliance Pipeline Ltd.',
-                         'Emera Brunswick Pipeline Company Ltd.',
                          'Trans Quebec and Maritimes Pipeline Inc.',
                          'Maritimes & Northeast Pipeline Management Ltd.',
                          'Many Islands Pipe Lines (Canada) Limited',
+                         'Emera Brunswick Pipeline Company Ltd.',
                          'Foothills Pipe Lines Ltd.']
     else:
         company_files = ['Enbridge Pipelines Inc.',
@@ -332,7 +330,8 @@ def process_throughput(test=False,
                          'Aurora Pipeline Company Ltd']
 
     group2 = ['TEML Westpur Pipelines Limited (TEML)',
-              'Enbridge Southern Lights GP Inc.']
+              'Enbridge Southern Lights GP Inc.',
+              'Emera Brunswick Pipeline Company Ltd.']
 
     if companies:
         company_files = companies
@@ -359,7 +358,6 @@ def process_throughput(test=False,
 
             point_data = {}
             pointsList = sorted(list(set(df_c['Key Point'])))
-            #pointsList = ['16']
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
@@ -468,6 +466,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    # traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly') #, companies=['Maritimes & Northeast Pipeline Management Ltd.'])
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Enbridge Pipelines Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')

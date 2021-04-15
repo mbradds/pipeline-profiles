@@ -302,6 +302,10 @@ export const englishDashboard = {
       33: "In the southwestern portion of the NGTL system, the West Gate interconnects with TransCanada's Foothills Pipeline (British Columbia).",
       32: "Throughputs in the northwestern portion of the NGTL system. Upstream of James River flows contain receipts from the Horn River and the Groundbirch pipelines (part of NGTL).",
       31: "Throughputs to delivery areas in northern Alberta, including natural gas used for oil sands operations.",
+      40: "Connection between the NGTL system and local distribution pipelines used to service the Calgary area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
+      41: "Located just Northeast of Calgary, the Edmonton key point captures gas post Upstream of James river, bound North for use in the Edmonton area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
+      42: "Stands for Oil Sands Delivery Area. Gas throughput here is typically bound for use in nearby Cold Lake oil sands SAGD & CSS operations. These unconventional production methods rely on gas to generate the steam used to heat underground reservoirs, allowing bitumen to reach the surface.",
+      43: "Stands for Oil Sands Delivery Area. Located just Northwest of Fort McMurray, gas throughput here is typically bound for use in nearby Athabasca oil sands mining, SAGD, and CSS operations. Bitumen mining operations use natural gas in the upgrading process, where bitumen is heated up and split into lighter components, ultimately producing synthetic crude oil.",
     },
     units: {
       "Bcf/d": "Bcf/d",

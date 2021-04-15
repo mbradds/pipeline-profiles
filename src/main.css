@@ -138,26 +138,50 @@ body {
   padding-right: 0px;
   padding-left: 0px;
 }
-.traffic-map-shared {
-  height: 380px;
-  margin-bottom: 5px;
-}
-.traffic-map-single {
-  height: 330px;
-  margin-bottom: 5px;
-}
-.traffic-hc-shared {
-  height: 275px;
+#map-panel-body {
+  padding: 0px;
 }
 .traffic-hc-single-gas {
   height: 500px;
 }
-.traffic-hc-single {
-  height: 480px;
+/* small screen */
+@media only screen and (max-height: 900px), screen and (max-width: 1440px) {
+  .traffic-map-shared {
+    height: 340px;
+    margin-bottom: 5px;
+  }
+  .traffic-map-single {
+    height: 320px;
+    margin-bottom: 5px;
+  }
+  .traffic-hc-shared {
+    height: 250px;
+  }
+  #traffic-hc-range {
+    height: 250px;
+  }
+  .traffic-hc-single {
+    height: 480px;
+  }
 }
-#traffic-hc-range {
-  height: 275px;
-}
-#map-panel-body {
-  padding: 0px;
+
+/* large screens */
+@media only screen and (min-height: 900px), screen and (min-width: 1440px) {
+  .traffic-map-shared {
+    height: 390px;
+    margin-bottom: 5px;
+  }
+  .traffic-map-single {
+    height: 330px;
+    margin-bottom: 5px;
+  }
+  .traffic-hc-shared {
+    height: 275px;
+  }
+  #traffic-hc-range {
+    height: 275px;
+  }
+  .traffic-hc-single {
+    height: 490px;
+  }
 }
