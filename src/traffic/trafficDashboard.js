@@ -36,7 +36,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function getPointList(metaData) {
     var pointList = [];
     metaData.keyPoints.map((point) => {
-      let pointName = lang.points[point["Key Point"]];
+      let pointName = lang.points[point["Key Point"]][0];
       pointList.push({
         id: point["Key Point"],
         name: pointName,
@@ -710,16 +710,16 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function getKeyPoint(defaultId) {
-    return { id: defaultId, name: lang.points[defaultId] };
+    return { id: defaultId, name: lang.points[defaultId][0] };
   }
 
   function displayPointDescription(defaultPoint) {
-    var pointText = lang.descriptions[defaultPoint.id];
+    var pointText = lang.points[defaultPoint.id][1];
     var pointDiv = document.getElementById("traffic-point-description");
     if (pointText) {
       pointDiv.innerHTML = `<p>${pointText}</p>`;
     } else {
-      pointDiv.innerHTML = `<p>${lang.descriptions.noPoint}</p>`;
+      pointDiv.innerHTML = `<p></p>`;
     }
   }
 

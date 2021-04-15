@@ -192,6 +192,7 @@ export function trafficTrendTextEng(
         pointNames[defaultPoint],
         unitsHolder
       );
+      trendText += `<br>`;
     }
   }
   trendBox.innerHTML = trendText;
@@ -268,6 +269,7 @@ export function trafficTrendTextFra(
         pointNames[defaultPoint],
         unitsHolder
       );
+      trendText += `<br>`;
     }
   }
   trendBox.innerHTML = trendText;

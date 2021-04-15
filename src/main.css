@@ -134,6 +134,9 @@ body {
 #key-point-info p {
   margin-bottom: 0px;
 }
+#key-point-info .panel-body {
+  padding-bottom: 0px;
+}
 #traffic-hc-column {
   padding-right: 0px;
   padding-left: 0px;
@@ -141,11 +144,11 @@ body {
 #map-panel-body {
   padding: 0px;
 }
-.traffic-hc-single-gas {
-  height: 500px;
-}
 /* small screen */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
+  .traffic-hc-single-gas {
+    height: 500px;
+  }
   .traffic-map-shared {
     height: 340px;
     margin-bottom: 5px;
@@ -167,8 +170,11 @@ body {
 
 /* large screens */
 @media only screen and (min-height: 900px), screen and (min-width: 1440px) {
+  .traffic-hc-single-gas {
+    height: 520px;
+  }
   .traffic-map-shared {
-    height: 390px;
+    height: 375px;
     margin-bottom: 5px;
   }
   .traffic-map-single {
@@ -176,10 +182,10 @@ body {
     margin-bottom: 5px;
   }
   .traffic-hc-shared {
-    height: 275px;
+    height: 265px;
   }
   #traffic-hc-range {
-    height: 275px;
+    height: 265px;
   }
   .traffic-hc-single {
     height: 490px;
