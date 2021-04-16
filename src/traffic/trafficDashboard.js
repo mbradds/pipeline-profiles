@@ -363,9 +363,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     } else {
       var colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp`;
     }
-    return `<tr style="${extraStyle}"><th>${colorCircle}${
-      p.series.name
-    }:</th><th>&nbsp${yFunction(p)} ${unit}</th></tr>`;
+    return `<tr style="${extraStyle}"><th>${colorCircle}${p.series.name
+      }:</th><th>&nbsp${yFunction(p)} ${unit}</th></tr>`;
   };
 
   function tooltipText(event, units) {
@@ -548,6 +547,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       chart: {
         zoomType: "x",
         marginRight: 0,
+        spacingTop: 5,
+        spacingBottom: 10,
         animation: false,
       },
       title: sharedHcParams.title(title),
