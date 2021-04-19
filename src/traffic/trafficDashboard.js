@@ -4,6 +4,7 @@ import {
   visibility,
   sortJsonAlpha,
   arrAvg,
+  listOrParagraph
 } from "../modules/util.js";
 import { KeyPointMap } from "../modules/dashboard.js";
 
@@ -218,6 +219,22 @@ export async function mainTraffic(trafficData, metaData, lang) {
         fiveYrAvg.data.push([lang.months[x], arrAvg(value)]);
       }
       return [lastYrSeries, fiveYrAvg, fiveYrRange];
+    }
+  }
+
+  function fiveYearTrend(fiveSeries, hasImports) {
+    if (fiveSeries && !hasImports) {
+      const [lastYrSeries, fiveYrAvg] = [fiveSeries[0], fiveSeries[1]]
+      const fiveYrTrend = {}
+      let lst = [[fiveYrAvg, "fiveYrQtr"], [lastYrSeries, "lastYrQtr"]]
+      lst.map((series) => {
+        let last3 = series[0].data.slice(-3)
+        last3 = last3.map(v => v[1])
+        fiveYrTrend[series[1]] = arrAvg(last3)
+      })
+      return fiveYrTrend
+    } else {
+      return undefined
     }
   }
 
@@ -707,20 +724,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function displayPointDescription(points) {
-    if (points.length > 1) {
-      var [seperator, pointHtml, closing] = ['li', '<ul>', '</ul>']
-    } else {
-      var [seperator, pointHtml, closing] = ['p', '', '']
-    }
-    var pointDiv = document.getElementById("traffic-point-description");
-    points.map((p) => {
-      let pointText = lang.points[p.id][1];
-      if (pointText) {
-        pointHtml += `<${seperator}>${pointText}</${seperator}>`;
-      }
+    points = points.map((p) => {
+      p.textCol = lang.points[p.id][1]
+      return p
     })
-    pointHtml += closing
-    pointDiv.innerHTML = pointHtml
+    document.getElementById("traffic-point-description").innerHTML = listOrParagraph(points, "textCol")
+
   }
 
   function buildDashboard() {
@@ -794,6 +803,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
         // user is on oil profile
         var fiveChart = false;
       }
+      metaData.fiveTrend = fiveYearTrend(fiveSeries, hasImports)
+      console.log(metaData)
       lang.dynamicText(
         metaData,
         defaultPoint,

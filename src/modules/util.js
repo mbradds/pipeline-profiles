@@ -53,3 +53,19 @@ export function visibility(divList, status) {
 }
 
 export const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+export function listOrParagraph(itter, textCol) {
+  if (itter.length > 1) {
+    var [seperator, pointHtml, closing] = ['li', '<ul>', '</ul>']
+  } else {
+    var [seperator, pointHtml, closing] = ['p', '', '']
+  }
+  itter.map((i) => {
+    if (i && textCol in i) {
+      let pointText = i[textCol]
+      pointHtml += `<${seperator}>${pointText}</${seperator}>`;
+    }
+  })
+  pointHtml += closing
+  return pointHtml
+}
