@@ -769,7 +769,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
-      const [timeSeries, fiveSeries] = addSeriesParams(
+      let [timeSeries, fiveSeries] = addSeriesParams(
         createSeries(trafficData, defaultPoint, metaData.points, tm),
         unitsHolder,
         buildFive
@@ -804,7 +804,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         var fiveChart = false;
       }
       metaData.fiveTrend = fiveYearTrend(fiveSeries, hasImports)
-      console.log(metaData)
       lang.dynamicText(
         metaData,
         defaultPoint,
@@ -825,7 +824,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           var keyBtn = $(this).addClass("active");
           hasImports = false;
           defaultPoint = getKeyPoint(keyBtn.val());
-          const [newSeries, newFiveSeries] = addSeriesParams(
+          [timeSeries, fiveSeries] = addSeriesParams(
             trafficData[defaultPoint.id],
             unitsHolder,
             buildFive
@@ -833,7 +832,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
           [trafficChart, hasImports] = updateSeries(
             trafficChart,
-            newSeries,
+            timeSeries,
             hasImports,
             true
           );
@@ -870,7 +869,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             if (fiveChart) {
               fiveChart = updateSeries(
                 fiveChart,
-                newFiveSeries,
+                fiveSeries,
                 undefined,
                 false
               );
@@ -894,6 +893,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           trafficChart.redraw(true);
           trafficChart.reflow();
           pointMap.pointChange([defaultPoint]);
+          metaData.fiveTrend = fiveYearTrend(fiveSeries, hasImports)
           lang.dynamicText(
             metaData,
             defaultPoint,
@@ -923,13 +923,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
 
           if (metaData.points.length > 0) {
-            const [newSeries, newFiveSeries] = addSeriesParams(
+            [timeSeries, fiveSeries] = addSeriesParams(
               createSeries(trafficData, defaultPoint, metaData.points, tm),
               unitsHolder,
               buildFive
             );
 
-            newSeries.map((newS) => {
+            timeSeries.map((newS) => {
               trafficChart.addSeries(newS, false, false);
             });
 
@@ -954,14 +954,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
       //user selects units
       $("#select-units-radio input[name='trafficUnits']").click(function () {
         unitsHolder.current = $("input:radio[name=trafficUnits]:checked").val();
-        var [newTimeSeries, newFiveSeries] = addSeriesParams(
+        [timeSeries, fiveSeries] = addSeriesParams(
           createSeries(trafficData, defaultPoint, metaData.points, tm),
           unitsHolder,
           buildFive
         );
         trafficChart.update(
           {
-            series: newTimeSeries,
+            series: timeSeries,
             yAxis: [
               {
                 title: { text: unitsHolder.current },
@@ -989,7 +989,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         if (fiveChart) {
           fiveChart.update(
             {
-              series: newFiveSeries,
+              series: fiveSeries,
               tooltip: {
                 formatter: function () {
                   return fiveYearTooltipText(this, unitsHolder.current);
@@ -1016,9 +1016,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
       // update map zoom
       $("#key-point-zoom-btn button").on("click", function () {
         $(".btn-map > .btn").removeClass("active");
-        var inOutBtn = $(this);
+        let inOutBtn = $(this);
         inOutBtn.addClass("active");
-        var zoomResponse = inOutBtn.val();
+        let zoomResponse = inOutBtn.val();
         if (zoomResponse == "zoom-in") {
           pointMap.reZoom(true);
         } else {

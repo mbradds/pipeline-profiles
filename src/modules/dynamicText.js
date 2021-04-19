@@ -21,13 +21,11 @@ const postWord = (val, type) => {
 };
 
 const changeText = (num, frontText = true) => {
-  // TODO: what types are going on here?
-  console.log(typeof num)
   if (frontText) {
     var textInfo = (val) => {
       if (val > 0) {
         return ["bg-success", `increased by ${Math.abs(num)}%`]
-      } else if (num < 0) {
+      } else if (val < 0) {
         return ["bg-danger", `decreased by ${Math.abs(num)}%`]
       } else {
         return ["bg-info", "not changed"]
@@ -36,9 +34,9 @@ const changeText = (num, frontText = true) => {
   } else {
     var textInfo = (val) => {
       if (val > 0) {
-        return ["bg-success", `${Math.abs(num)}% above`]
-      } else if (num < 0) {
-        return ["bg-danger", `${Math.abs(num)}% below`]
+        return ["bg-success", `${Math.abs(num).toFixed(0)}% above`]
+      } else if (val < 0) {
+        return ["bg-danger", `${Math.abs(num).toFixed(0)}% below`]
       } else {
         return ["bg-info", "equal to"]
       }
@@ -181,8 +179,12 @@ export function trafficTrendTextEng(
 
   const buildFiveText = (ft, tt) => {
     let pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100
-    console.log(changeText(pctChange, false))
-    return `<p>Throughputs in ${quarters[tt.toDate[1]]} ${tt.toDate[0]} are ${changeText(pctChange, false)} compared to the five year average.</p>`
+    if (pctChange) {
+      let qtr = `${quarters[tt.toDate[1]]} ${tt.toDate[0]}`
+      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(pctChange, false)} the five year average.</p>`
+    } else {
+      return ""
+    }
   }
 
   var trendBox = document.getElementById("traffic-trends");
@@ -190,14 +192,12 @@ export function trafficTrendTextEng(
 
   if (!tm) {
     const thisTrend = metaData.trendText[defaultPoint.id];
-    console.log(thisTrend)
     thisTrend.map((trend) => {
       trendText += `<p>${buildText("", trend, defaultPoint.name, unitsHolder)}</p>`
     });
     if (metaData.fiveTrend) {
       trendText += buildFiveText(metaData.fiveTrend, thisTrend[0])
     }
-
   } else {
     let pointNames = {};
     metaData.points.map((p) => {
