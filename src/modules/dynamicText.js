@@ -38,15 +38,14 @@ export const incidentsTextEng = (id, meta) => {
   const paragraph = document.getElementById(id);
   let paragraphText = `<p>`;
   //total incidents.
-  paragraphText += `The ${
-    meta.systemName
-  } has reported a total of ${dynamicValue(
-    meta.release + meta.nonRelease
-  )} incidents since 2008. Of those incidents, ${dynamicValue(
-    meta.release
-  )} have resulted in some volume of product being released, with ${dynamicValue(
-    meta.mostCommonSubstance
-  )} being the most commonly released substance. \
+  paragraphText += `The ${meta.systemName
+    } has reported a total of ${dynamicValue(
+      meta.release + meta.nonRelease
+    )} incidents since 2008. Of those incidents, ${dynamicValue(
+      meta.release
+    )} have resulted in some volume of product being released, with ${dynamicValue(
+      meta.mostCommonSubstance
+    )} being the most commonly released substance. \
         The dashboard below provides some more information about these product release incidents.`;
   paragraphText += `</p>`;
 
@@ -54,8 +53,8 @@ export const incidentsTextEng = (id, meta) => {
   paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
         circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
         On this pipeline system, the most common what happened is ${dynamicValue(
-          meta.mostCommonWhat
-        )} and the most common why it happened is ${dynamicValue(
+    meta.mostCommonWhat
+  )} and the most common why it happened is ${dynamicValue(
     meta.mostCommonWhy
   )}.`;
   paragraphText += ` Take a look at the incident trends section of the dashboard below for definitions and a breakdown of what and why.</p>`;
@@ -71,8 +70,8 @@ export const incidentsTextEng = (id, meta) => {
     "have"
   )} resulted in adverse environmental effects.\
         There have been ${dynamicValue(
-          meta.seriousEvents["Serious Injury (CER or TSB)"]
-        )} serious injuries, and ${dynamicValue(
+    meta.seriousEvents["Serious Injury (CER or TSB)"]
+  )} serious injuries, and ${dynamicValue(
     meta.seriousEvents["Fatality"]
   )} ${postWord(
     meta.seriousEvents["Fatality"],
@@ -88,13 +87,12 @@ export const incidentsTextFra = (id, meta) => {
   //total incidents.
   paragraphText += `Un total de ${dynamicValue(
     meta.release + meta.nonRelease
-  )} incidents ont été signalés à l’égard du réseau de ${
-    meta.systemName
-  } depuis 2008. De ces incidents, ${dynamicValue(
-    meta.release
-  )} ont entraîné le rejet d’un certain volume de produit. Le ${dynamicValue(
-    meta.mostCommonSubstance
-  )} est la substance la plus couramment rejetée. Le tableau de bord ci-dessous renferme de plus amples renseignements sur ces incidents.`;
+  )} incidents ont été signalés à l’égard du réseau de ${meta.systemName
+    } depuis 2008. De ces incidents, ${dynamicValue(
+      meta.release
+    )} ont entraîné le rejet d’un certain volume de produit. Le ${dynamicValue(
+      meta.mostCommonSubstance
+    )} est la substance la plus couramment rejetée. Le tableau de bord ci-dessous renferme de plus amples renseignements sur ces incidents.`;
   paragraphText += `</p>`;
 
   //most common reasons
@@ -137,9 +135,9 @@ export function trafficTrendTextEng(
   };
 
   const trendSub = (commodity) => {
-    if (commodity == "gas") {
+    if (commodity === "gas") {
       return "year over year";
-    } else if (commodity == "oil") {
+    } else if (commodity === "oil") {
       return "quarter over quarter";
     } else {
       return "";
@@ -147,7 +145,7 @@ export function trafficTrendTextEng(
   };
 
   const buildText = (trendText, trend, point, units) => {
-    if (trend.name == "default") {
+    if (trend.name === "default") {
       var trendId = "";
     } else {
       var trendId = ` (${trend.name})`;
@@ -157,15 +155,11 @@ export function trafficTrendTextEng(
       point + trendId
     )} key point have ${changeText(trend.throughChange.pct)} ${trendSub(
       metaData.commodity
-    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
-      units.current
-    } in ${quarters[trend.fromDate[1]]} ${
-      trend.fromDate[0]
-    } to an average of ${formatValue(trend.throughChange.to, units)} ${
-      units.current
-    } in ${quarters[trend.toDate[1]]} ${
-      trend.toDate[0]
-    } (most recent quarter of data).`;
+    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${units.current
+      } in ${quarters[trend.fromDate[1]]} ${trend.fromDate[0]
+      } to an average of ${formatValue(trend.throughChange.to, units)} ${units.current
+      } in ${quarters[trend.toDate[1]]} ${trend.toDate[0]
+      } (most recent quarter of data).`;
     trendText += `</p>`;
     return trendText;
   };
@@ -179,21 +173,27 @@ export function trafficTrendTextEng(
       trendText += buildText("", trend, defaultPoint.name, unitsHolder);
     });
   } else {
+    trendText += '<ul>'
     var pointNames = {};
     metaData.points.map((p) => {
       pointNames[p.id] = p.name;
     });
+    
     for (const [defaultPoint, thisTrend] of Object.entries(
       metaData.trendText
     )) {
-      trendText += buildText(
-        "",
-        thisTrend[0],
-        pointNames[defaultPoint],
-        unitsHolder
-      );
-      trendText += `<br>`;
+      if (defaultPoint in pointNames) {
+        var tmPoint = buildText(
+          "",
+          thisTrend[0],
+          pointNames[defaultPoint],
+          unitsHolder
+        );
+        trendText += `<li>${tmPoint}</li>`
+      }
+
     }
+    trendText += '</ul>'
   }
   trendBox.innerHTML = trendText;
 }
@@ -214,9 +214,9 @@ export function trafficTrendTextFra(
   };
 
   const trendSub = (commodity) => {
-    if (commodity == "gas") {
+    if (commodity === "gas") {
       return "year over year";
-    } else if (commodity == "oil") {
+    } else if (commodity === "oil") {
       return "quarter over quarter";
     } else {
       return "";
@@ -224,7 +224,7 @@ export function trafficTrendTextFra(
   };
 
   const buildText = (trendText, trend, point, units) => {
-    if (trend.name == "default") {
+    if (trend.name === "default") {
       var trendId = "";
     } else {
       var trendId = ` (${trend.name})`;
@@ -234,15 +234,11 @@ export function trafficTrendTextFra(
       point + trendId
     )} key point have ${changeText(trend.throughChange.pct)} ${trendSub(
       metaData.commodity
-    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
-      units.current
-    } in ${quarters[trend.fromDate[1]]} ${
-      trend.fromDate[0]
-    } to an average of ${formatValue(trend.throughChange.to, units)} ${
-      units.current
-    } in ${quarters[trend.toDate[1]]} ${
-      trend.toDate[0]
-    } (most recent quarter of data).`;
+    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${units.current
+      } in ${quarters[trend.fromDate[1]]} ${trend.fromDate[0]
+      } to an average of ${formatValue(trend.throughChange.to, units)} ${units.current
+      } in ${quarters[trend.toDate[1]]} ${trend.toDate[0]
+      } (most recent quarter of data).`;
     trendText += `</p>`;
     return trendText;
   };

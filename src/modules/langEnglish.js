@@ -442,9 +442,9 @@ export const englishDashboard = {
         "Zama",
         "The end of the Norman Wells pipeline, where it connects with provincially regulated pipeline systems.",
       ],
-      35: ["Burnaby", ""],
-      36: ["Sumas", ""],
-      37: ["Westridge", ""],
+      35: ["Burnaby", "Burnaby description"],
+      36: ["Sumas", "Sumas description"],
+      37: ["Westridge", "Westridge description"],
       38: [
         "East Hereford",
         "Export interconnect with the Portland Natural Gas Transmission System at the Canada-U.S. border near East Hereford, Québec. TQM delivers natural gas customers in the U.S. states of Vermont, New Hampshire, Maine and Massachusetts.",
