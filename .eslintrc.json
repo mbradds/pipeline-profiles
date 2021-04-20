@@ -1,9 +1,8 @@
 {
-    "extends": [
-        "airbnb-base",
-        "prettier"
-    ],
-    "rules": {
-        "import/prefer-default-export": "off"
-    }
+  "extends": ["airbnb-base", "prettier"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "no-nested-ternary": "off",
+    "no-undef": "warn"
+  }
 }

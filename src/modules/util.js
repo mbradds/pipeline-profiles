@@ -24,7 +24,8 @@ export const conversions = {
   "Mb/d to Thousand m3/d": 159,
 };
 
-export const sortJson = (obj, colName = "value") => obj.slice().sort((a, b) => b[colName] - a[colName]);
+export const sortJson = (obj, colName = "value") =>
+  obj.slice().sort((a, b) => b[colName] - a[colName]);
 
 export function sortJsonAlpha(lst, col) {
   function compareStrings(a, b) {
@@ -34,13 +35,13 @@ export function sortJsonAlpha(lst, col) {
 }
 
 export function visibility(divList, status) {
-  divList.map((div) => {
+  divList.forEach((div) => {
     const x = document.getElementById(div);
-    if (status == "hide") {
+    if (status === "hide") {
       if (x.style.display !== "none") {
         x.style.display = "none";
       }
-    } else if (status == "show") {
+    } else if (status === "show") {
       if (x.style.display !== "block") {
         x.style.display = "block";
       }
@@ -51,12 +52,12 @@ export function visibility(divList, status) {
 export const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
 export function listOrParagraph(itter, textCol) {
+  let [seperator, pointHtml, closing] = ["p", "", ""];
   if (itter.length > 1) {
-    var [seperator, pointHtml, closing] = ["li", "<ul>", "</ul>"];
-  } else {
-    var [seperator, pointHtml, closing] = ["p", "", ""];
+    [seperator, pointHtml, closing] = ["li", "<ul>", "</ul>"];
   }
-  itter.map((i) => {
+
+  itter.forEach((i) => {
     if (i && textCol in i) {
       const pointText = i[textCol];
       pointHtml += `<${seperator}>${pointText}</${seperator}>`;

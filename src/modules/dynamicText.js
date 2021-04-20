@@ -68,8 +68,8 @@ export const incidentsTextEng = (id, meta) => {
   paragraphText += `</p>`;
 
   // most common reasons
-  paragraphText += `<p>Part of the CER's incident review classifies incidents based on the\ 
-        circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened).\ 
+  paragraphText += `<p>Part of the CER's incident review classifies incidents based on the 
+        circumstances that directly led to the incident (what happened), and the underlying reasons for the incident (why it happened). 
         On this pipeline system, the most common what happened is ${dynamicValue(
           meta.mostCommonWhat
         )} and the most common why it happened is ${dynamicValue(
@@ -90,9 +90,9 @@ export const incidentsTextEng = (id, meta) => {
         There have been ${dynamicValue(
           meta.seriousEvents["Serious Injury (CER or TSB)"]
         )} serious injuries, and ${dynamicValue(
-    meta.seriousEvents["Fatality"]
+    meta.seriousEvents.Fatality
   )} ${postWord(
-    meta.seriousEvents["Fatality"],
+    meta.seriousEvents.Fatality,
     "fatality"
   )} related to incident events. Open the dropdown below to view the definitions of these incident types.`;
   paragraphText += `</p>`;
@@ -132,7 +132,7 @@ export const incidentsTextFra = (id, meta) => {
   Il y a eu ${dynamicValue(
     meta.seriousEvents["Serious Injury (CER or TSB)"]
   )} cas de blessures graves et ${dynamicValue(
-    meta.seriousEvents["Fatality"]
+    meta.seriousEvents.Fatality
   )} décès liés à des incidents. Cliquez sur le menu déroulant ci-dessous pour voir les définitions de ces types d’incidents.`;
   paragraphText += `</p>`;
   paragraph.innerHTML = paragraphText;

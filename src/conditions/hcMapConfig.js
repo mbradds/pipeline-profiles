@@ -1,5 +1,5 @@
 export const mapInits = {
-  mode: "production", //setting mode to "development" will allow pan,zoom, and x,y location console logging.
+  mode: "production", // setting mode to "development" will allow pan,zoom, and x,y location console logging.
   zooms: {
     "NOVA Gas Transmission Ltd.": {
       "In Progress": [0.22, -12800000, -7504281],

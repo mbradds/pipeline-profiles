@@ -1,5 +1,5 @@
-import { sortJson, cerPalette, visibility } from "../modules/util.js";
-import { mapInits } from "./hcMapConfig.js";
+import { sortJson, cerPalette, visibility } from "../modules/util";
+import { mapInits } from "./hcMapConfig";
 
 export async function mainConditions(
   econRegions,
@@ -8,36 +8,37 @@ export async function mainConditions(
   meta,
   lang
 ) {
-  const noLocationSummary = (meta) => {
-    var infoAlert = document.getElementById("no-location-info");
-    var infohtml = `<p><strong>${lang.noLocation.title}</strong></p>`;
-    if (meta.summary.notOnMap.total > 0) {
-      infohtml += `<p>${lang.noLocation.summary(meta.summary.companyName)}</p>`;
+  const noLocationSummary = (params) => {
+    const infoAlert = document.getElementById("no-location-info");
+    let infohtml = `<p><strong>${lang.noLocation.title}</strong></p>`;
+    if (params.summary.notOnMap.total > 0) {
+      infohtml += `<p>${lang.noLocation.summary(
+        params.summary.companyName
+      )}</p>`;
       infohtml += `<ul>`;
-      for (const [status, count] of Object.entries(
-        meta.summary.notOnMap.status
-      )) {
-        infohtml += `<li>${meta.colNames[status]} ${lang.conditions}: ${count}</li>`;
-      }
+      Object.keys(params.summary.notOnMap.status).forEach((status) => {
+        const count = params.summary.notOnMap.status[status];
+        infohtml += `<li>${params.colNames[status]} ${lang.conditions}: ${count}</li>`;
+      });
       infohtml += `</ul>`;
     } else {
       document.getElementById("no-location-btn").disabled = true;
     }
     infoAlert.innerHTML = infohtml;
   };
-  const statusInit = (meta) => {
-    const conditionsFilter = { column: "In Progress" };
-    document.addEventListener("DOMContentLoaded", function () {
-      const inProgress = document.getElementById("in-progress-btn");
-      if (meta.summary["In Progress"] > 0) {
-        conditionsFilter.column = "In Progress";
-        inProgress.click();
-      } else if (meta.summary["In Progress"] == 0) {
-        inProgress.disabled = true;
-        conditionsFilter.column = "Closed";
-        document.getElementById("closed-btn").click();
+  const statusInit = (metaData) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const inProgress = $("#in-progress-btn");
+      if (metaData.summary["In Progress"] > 0) {
+        inProgress.addClass("active");
+      } else if (metaData.summary["In Progress"] === 0) {
+        inProgress.prop("disabled", true);
+        $("#closed-btn").addClass("active");
       }
     });
+    const conditionsFilter = {
+      column: metaData.summary["In Progress"] > 0 ? "In Progress" : "Closed",
+    };
     return conditionsFilter;
   };
 
@@ -49,43 +50,44 @@ export async function mainConditions(
       summary.notOnMap.total;
   };
 
-  const setTitle = (titleElement, filter, summary) => {
-    if (filter.column == "not-shown") {
-      titleElement.innerText = lang.title.noLocation(summary.systemName);
+  const setTitle = (titleDiv, params) => {
+    const titleElement = document.getElementById(titleDiv);
+    if (params.conditionsFilter.column === "not-shown") {
+      titleElement.innerText = lang.title.noLocation(params.systemName);
     } else {
       titleElement.innerText = lang.title.location(
-        summary.systemName,
-        lang.colNames[filter.column]
+        params.systemName,
+        lang.colNames[params.conditionsFilter.column]
       );
     }
   };
 
-  const generateTable = (summary, selectedRegion, tableName, filter) => {
+  const generateTable = (summary, params, selectedRegion, tableName) => {
     let projectsHTML = ``;
-    if (tableName == "projects") {
+    if (tableName === "projects") {
       projectsHTML = `<table class="conditions-table">`;
       projectsHTML += `<caption style="text-align:left;">${lang.table.projectsTitle(
-        summary.colNames[filter.column]
+        params.colNames[params.conditionsFilter.column]
       )}</caption>`;
-      summary.projects.map((proj) => {
-        if (proj.id == selectedRegion && proj.value > 0) {
+      summary.projects.forEach((proj) => {
+        if (proj.id === selectedRegion && proj.value > 0) {
           if (proj.Regdocs !== undefined) {
-            let regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
-            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj["name"]}</a></td><td>${proj["value"]}</td></tr>`;
+            const regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
+            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj.name}</a></td><td>${proj.value}</td></tr>`;
           } else {
-            projectsHTML += `<tr><td>${proj["name"]}</td><td>${proj["value"]}</td></tr>`;
+            projectsHTML += `<tr><td>${proj.name}</td><td>${proj.value}</td></tr>`;
           }
         }
       });
       projectsHTML += `</table>${lang.table.regdocsDefinition}`;
-    } else if (tableName == "themes") {
+    } else if (tableName === "themes") {
       projectsHTML = `<table class="conditions-table" id="themes-table">`;
       projectsHTML += `<caption style="text-align:left;">${lang.table.themesTitle(
-        summary.colNames[filter.column]
+        params.colNames[params.conditionsFilter.column]
       )}</caption>`;
-      summary.themes.map((proj) => {
-        if (proj.id == selectedRegion && proj.value > 0) {
-          projectsHTML += `<tr><td>${proj["Theme"]}</td><td>${proj["value"]}</td></tr>`;
+      summary.themes.forEach((proj) => {
+        if (proj.id === selectedRegion && proj.value > 0) {
+          projectsHTML += `<tr><td>${proj.Theme}</td><td>${proj.value}</td></tr>`;
         }
       });
       projectsHTML += `</table>`;
@@ -94,55 +96,56 @@ export async function mainConditions(
   };
 
   const processMapMetadata = (data, filter, type = "map") => {
-    if (filter.column == "In Progress") {
-      var colSelector = 0;
-    } else if (filter.column == "Closed") {
-      var colSelector = 1;
+    let colSelector = 0;
+    if (filter.column === "Closed") {
+      colSelector = 1;
     }
-    const getValid = (type) => {
-      if (type == "map") {
-        function validMetaData(row) {
+    const getValid = (dataSet) => {
+      if (dataSet === "map") {
+        const validMetaData = function (row) {
           return {
             "Flat Province": row["Flat Province"],
             id: row.id,
             value: row[filter.column],
           };
-        }
+        };
         return validMetaData;
-      } else if (type == "projects") {
-        function validMetaData(row) {
+      }
+      if (dataSet === "projects") {
+        const validMetaData = function (row) {
           return {
-            name: row["name"],
+            name: row.name,
             id: row.id,
             Regdocs: row.v[2],
             value: row.v[colSelector],
           };
-        }
+        };
         return validMetaData;
-      } else if (type == "themes") {
-        function validMetaData(row) {
+      }
+      if (dataSet === "themes") {
+        const validMetaData = function (row) {
           return {
-            Theme: row["t"],
+            Theme: row.t,
             id: row.id,
             value: row.v[colSelector],
           };
-        }
+        };
         return validMetaData;
       }
     };
 
-    let m = getValid(type);
+    const m = getValid(type);
 
-    let conditions = [];
-    data.filter((row) => {
+    const conditions = data.map((row) => {
       if (row[filter.column] !== null) {
-        conditions.push(m(row));
+        return m(row);
       }
+      return false;
     });
     return conditions;
   };
 
-  const generateRegionSeries = (mapMeta, mapRegions, filter) => {
+  function generateRegionSeries(mapMeta, mapRegions, filter) {
     return {
       name: "Conditions",
       data: processMapMetadata(mapMeta, filter),
@@ -151,50 +154,57 @@ export async function mainConditions(
       type: "map",
       zIndex: 1,
     };
-  };
+  }
 
   const destroyInsert = (chart) => {
     document.getElementById("conditions-definitions").innerHTML = "";
     if (chart.customTooltip) {
-      let currentPopUp = document.getElementById("conditions-insert");
+      const currentPopUp = document.getElementById("conditions-insert");
       if (currentPopUp) {
         currentPopUp.innerHTML = "";
       }
       chart.customTooltip.destroy();
       chart.customTooltip = undefined;
     }
-    var definitionDiv = document.getElementById("conditions-definitions");
+    const definitionDiv = document.getElementById("conditions-definitions");
     if (definitionDiv.classList.contains("profile-show")) {
       definitionDiv.classList.remove("profile-show");
     }
   };
 
-  const selectedMeta = (m, filter) => {
-    const newMeta = { summary: m.summary };
-    newMeta.projects = processMapMetadata(m.projects, filter, "projects");
-    newMeta.themes = processMapMetadata(m.themes, filter, "themes");
-    newMeta.colNames = m.colNames;
-    if (filter.column == "Closed") {
+  const selectedMeta = (params) => {
+    const newMeta = { summary: params.summary };
+    newMeta.projects = processMapMetadata(
+      params.projects,
+      params.conditionsFilter,
+      "projects"
+    );
+    newMeta.themes = processMapMetadata(
+      params.themes,
+      params.conditionsFilter,
+      "themes"
+    );
+    newMeta.colNames = params.colNames;
+    if (params.conditionsFilter.column === "Closed") {
       newMeta.projects = sortJson(newMeta.projects, "value");
       newMeta.themes = sortJson(newMeta.themes, "value");
     }
     return newMeta;
   };
 
-  const getMapZoom = (mapInits, meta) => {
-    let zooms = mapInits.zooms[meta.summary.companyName];
-    if (zooms == undefined) {
+  const getMapZoom = (inits, metaData) => {
+    const zooms = inits.zooms[metaData.summary.companyName];
+    if (zooms === undefined) {
       return {
         "In Progress": [undefined, undefined, undefined],
         Closed: [undefined, undefined, undefined],
       };
-    } else {
-      return zooms;
     }
+    return zooms;
   };
 
   const colorRange = (filters) => {
-    if (filters.column == "In Progress") {
+    if (filters.column === "In Progress") {
       return {
         min: 1,
         minColor: "#EEEEFF",
@@ -205,53 +215,51 @@ export async function mainConditions(
           [1, "#000022"],
         ],
       };
-    } else {
-      return {
-        min: 1,
-        minColor: "#DDEBDC",
-        maxColor: "#052204",
-        stops: [
-          [0, "#DDEBDC"],
-          [0.2, "#569E54"],
-          [0.4, "#348B32"],
-          [0.6, "#10660D"],
-          [0.8, "#0A4409"],
-          [1, "#052204"],
-        ],
-      };
     }
+    return {
+      min: 1,
+      minColor: "#DDEBDC",
+      maxColor: "#052204",
+      stops: [
+        [0, "#DDEBDC"],
+        [0.2, "#569E54"],
+        [0.4, "#348B32"],
+        [0.6, "#10660D"],
+        [0.8, "#0A4409"],
+        [1, "#052204"],
+      ],
+    };
   };
 
   function themeClick(e) {
-    let definitions = lang.themeDefinitions;
-    var definitionDiv = document.getElementById("conditions-definitions");
+    const definitions = lang.themeDefinitions;
+    const definitionDiv = document.getElementById("conditions-definitions");
     if (definitionDiv.classList.contains("profile-hide")) {
-      //definitionDiv.style.display = "block";
       definitionDiv.classList.add("profile-show");
     }
-    var themes = e.split(",");
-    var definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
-    for (var i = 0; i < themes.length; i++) {
-      var t = themes[i].trim();
-      definitionsHTML += "<b>" + t + "</b>";
-      definitionsHTML += "<p>" + definitions[t] + "</p>";
+    const themes = e.split(",");
+    let definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
+    for (let i = 0; i < themes.length; i += 1) {
+      const t = themes[i].trim();
+      definitionsHTML += `<b>${t}</b>`;
+      definitionsHTML += `<p>${definitions[t]}</p>`;
     }
     definitionDiv.innerHTML = definitionsHTML;
     definitionDiv.scrollIntoView(false);
   }
 
-  const popUp = (e, filter, meta) => {
-    let currentPopUp = document.getElementById("conditions-insert");
+  const popUp = (e, params, metaSelect) => {
+    const currentPopUp = document.getElementById("conditions-insert");
     if (currentPopUp) {
       currentPopUp.innerHTML = "";
     }
-    var updateDate = new Date(
-      meta.summary.updated[0],
-      meta.summary.updated[1],
-      meta.summary.updated[2]
+    const updateDate = new Date(
+      metaSelect.summary.updated[0],
+      metaSelect.summary.updated[1],
+      metaSelect.summary.updated[2]
     );
 
-    var text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
+    let text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
     text += `<tr><td><li>${
       lang.popUp.lastUpdated
@@ -259,24 +267,28 @@ export async function mainConditions(
       cerPalette["Cool Grey"]
     };">${lang.dateFormat(updateDate)}</li></td></tr>`;
     text += `<tr><td><li> ${
-      meta.colNames[filter.column]
+      params.colNames[params.conditionsFilter.column]
     } Conditions:</td><td style="padding:0;font-weight: bold;color:${
       cerPalette["Cool Grey"]
     };">&nbsp${e.value}</li></td></tr></table><br>`;
-    text += generateTable(meta, e.id, "projects", filter) + "<br>";
-    text += generateTable(meta, e.id, "themes", filter) + "</table></div>";
+    text += `${generateTable(metaSelect, params, e.id, "projects")}<br>`;
+    text += `${generateTable(
+      metaSelect,
+      params,
+      e.id,
+      "themes"
+    )}</table></div>`;
 
-    const chart = e.series.chart;
+    const { chart } = e.series;
     if (chart.customTooltip) {
       destroyInsert(chart);
     }
-    var label = chart.renderer
+    const label = chart.renderer
       .label(text, null, null, null, null, null, true)
       .css({
         width: "300px",
       })
       .attr({
-        // style tooltip
         "stroke-width": 3,
         zIndex: 8,
         padding: 8,
@@ -302,31 +314,24 @@ export async function mainConditions(
   };
 
   const removeNoConditions = (chart) => {
-    let removeList = [];
-    chart.series[0].points.map((region) => {
-      if (region.value == null || region.value == 0) {
-        removeList.push(region);
+    const removeList = chart.series[0].points.filter((region) => {
+      if (region.value == null || region.value === 0) {
+        return region;
       }
+      return false;
     });
-    removeList.map((region) => {
+    removeList.forEach((region) => {
       region.remove(false);
     });
   };
 
-  const createConditionsMap = (
-    regions,
-    baseMap,
-    container,
-    meta,
-    filter,
-    zooms
-  ) => {
-    return new Highcharts.mapChart(container, {
+  const createConditionsMap = (regions, baseMap, container, params, zooms) =>
+    new Highcharts.mapChart(container, {
       chart: {
         panning: false,
         animation: false,
         events: {
-          load: function () {
+          load() {
             const chart = this;
             removeNoConditions(chart);
             chart.mapZoom(
@@ -340,7 +345,7 @@ export async function mainConditions(
             text += `<li>${lang.instructions.line2}</li></ol>`;
             text += `${lang.instructions.disclaimer}`;
             text += `</section>`;
-            var label = chart.renderer
+            const label = chart.renderer
               .label(text, null, null, null, null, null, true)
               .css({
                 width: "290px",
@@ -363,13 +368,13 @@ export async function mainConditions(
               "spacingBox"
             );
           },
-          click: function () {
+          click() {
             if (this.customTooltip) {
-              if (
+              const clickOnTooltip =
                 this.mouseDownX > this.chartWidth - this.customTooltip.width &&
-                this.mouseDownY < this.customTooltip.height
-              ) {
-              } else {
+                this.mouseDownY < this.customTooltip.height;
+
+              if (!clickOnTooltip) {
                 destroyInsert(this);
               }
             }
@@ -381,8 +386,8 @@ export async function mainConditions(
         series: {
           point: {
             events: {
-              click: function () {
-                popUp(this, filter, selectedMeta(meta, filter));
+              click() {
+                popUp(this, params, selectedMeta(params));
               },
             },
           },
@@ -392,16 +397,15 @@ export async function mainConditions(
       tooltip: {
         zIndex: 0,
         useHTML: false,
-        formatter: function () {
+        formatter() {
           let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b><br>`;
           toolText += lang.tooltip.text;
           return toolText;
         },
       },
-      colorAxis: colorRange(filter),
+      colorAxis: colorRange(params.conditionsFilter),
       series: [regions, baseMap],
     });
-  };
 
   // uncomment this when adding new conditions maps to get the zoom init
   // const chartMode = (chart, mapInits) => {
@@ -427,24 +431,27 @@ export async function mainConditions(
   //   return chart;
   // };
 
-  //main conditions map
+  // main conditions map
   function buildDashboard() {
     if (!$.isEmptyObject(econRegions)) {
-      // add the system name to metadata
-      try {
-        meta.summary.systemName =
-          lang.companyToSystem[meta.summary.companyName];
-      } catch (err) {
-        console.log(err);
-        meta.summary.systemName = meta.summary.companyName;
+      const chartParams = meta;
+      // TODO: add handling for when meta.summary.companyName is no in lang
+      if (
+        Object.prototype.hasOwnProperty.call(
+          lang.companyToSystem,
+          meta.summary.companyName
+        )
+      ) {
+        chartParams.systemName = lang.companyToSystem[meta.summary.companyName];
+      } else {
+        chartParams.systemName = meta.summary.companyName;
       }
-      meta.colNames = lang.colNames;
-      let titleElement = document.getElementById("conditions-map-title");
-      const conditionsFilter = statusInit(meta);
-      setTitle(titleElement, conditionsFilter, meta.summary);
-      fillSummary(meta.summary);
-      noLocationSummary(meta);
-      var zooms = getMapZoom(mapInits, meta);
+      chartParams.colNames = lang.colNames;
+      chartParams.conditionsFilter = statusInit(meta);
+      setTitle("conditions-map-title", chartParams);
+      fillSummary(chartParams.summary);
+      noLocationSummary(chartParams);
+      const zooms = getMapZoom(mapInits, meta);
 
       const baseMap = {
         name: "Canada",
@@ -461,28 +468,26 @@ export async function mainConditions(
       const regionSeries = generateRegionSeries(
         mapMetaData,
         econRegions,
-        conditionsFilter
+        chartParams.conditionsFilter
       );
 
-      var chart = createConditionsMap(
+      const chart = createConditionsMap(
         regionSeries,
         baseMap,
         "container-map",
-        meta,
-        conditionsFilter,
+        chartParams,
         zooms
       );
 
       // allow zoom and pan when in development mode
       // chart = chartMode(chart, mapInits);
-
-      //change condition type and update map+title
+      // change condition type and update map+title
       $("#conditions-nav-group button").on("click", function () {
         $(".btn-conditions > .btn").removeClass("active");
         $(this).addClass("active");
-        var btnValue = $(this).val();
+        const btnValue = $(this).val();
         $("#selectedVal").text(btnValue);
-        conditionsFilter.column = btnValue;
+        chartParams.conditionsFilter.column = btnValue;
         if (btnValue !== "not-shown") {
           destroyInsert(chart);
           visibility(["no-location-info"], "hide");
@@ -491,11 +496,11 @@ export async function mainConditions(
           visibility(["no-location-info"], "show");
           visibility(["container-map"], "hide");
         }
-        setTitle(titleElement, conditionsFilter, meta.summary);
-        const regionSeries = generateRegionSeries(
+        setTitle("conditions-map-title", chartParams);
+        const newSeries = generateRegionSeries(
           mapMetaData,
           econRegions,
-          conditionsFilter
+          chartParams.conditionsFilter
         );
         chart.update(
           {
@@ -503,31 +508,23 @@ export async function mainConditions(
               series: {
                 point: {
                   events: {
-                    click: function () {
-                      popUp(
-                        this,
-                        conditionsFilter,
-                        selectedMeta(meta, conditionsFilter)
-                      );
+                    click() {
+                      popUp(this, chartParams, selectedMeta(chartParams));
                     },
                   },
                 },
               },
             },
-            series: [regionSeries, baseMap],
-            colorAxis: colorRange(conditionsFilter),
+            series: [newSeries, baseMap],
+            colorAxis: colorRange(chartParams.conditionsFilter),
           },
           false
         );
 
         chart.mapZoom(undefined, undefined, undefined);
         removeNoConditions(chart);
-        if (conditionsFilter.column == "Closed") {
-          chart.mapZoom(
-            zooms["Closed"][0],
-            zooms["Closed"][1],
-            zooms["Closed"][2]
-          );
+        if (chartParams.conditionsFilter.column === "Closed") {
+          chart.mapZoom(zooms.Closed[0], zooms.Closed[1], zooms.Closed[2]);
         } else {
           chart.mapZoom(
             zooms["In Progress"][0],
@@ -538,7 +535,7 @@ export async function mainConditions(
       });
     } else {
       // the company has no conditions. Hide all the dashboard stuff
-      let noConditions = document.getElementById("conditions-dashboard");
+      const noConditions = document.getElementById("conditions-dashboard");
       let noConditionsHTML = `<section class="alert alert-warning"><h3>${lang.noConditions.header}</h3>`;
       noConditionsHTML += `<p>${lang.noConditions.note(
         meta.companyName
@@ -546,5 +543,9 @@ export async function mainConditions(
       noConditions.innerHTML = noConditionsHTML;
     }
   }
-  return buildDashboard();
+  try {
+    buildDashboard();
+  } catch (err) {
+    console.log(err);
+  }
 }
