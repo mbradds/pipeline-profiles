@@ -7,7 +7,6 @@ src/data_management/raw_data/*
 !src/data_management/raw_data/throughput_gas_monthly.csv
 !src/data_management/raw_data/throughput_oil_monthly.csv
 **/__pycache__
-**/.vscode
 *.twb
 *.twbx
 *.twbr
