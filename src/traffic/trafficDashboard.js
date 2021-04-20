@@ -4,6 +4,7 @@ import {
   visibility,
   sortJsonAlpha,
   arrAvg,
+  listOrParagraph
 } from "../modules/util.js";
 import { KeyPointMap } from "../modules/dashboard.js";
 
@@ -218,6 +219,22 @@ export async function mainTraffic(trafficData, metaData, lang) {
         fiveYrAvg.data.push([lang.months[x], arrAvg(value)]);
       }
       return [lastYrSeries, fiveYrAvg, fiveYrRange];
+    }
+  }
+
+  function fiveYearTrend(fiveSeries, hasImports) {
+    if (fiveSeries && !hasImports) {
+      const [lastYrSeries, fiveYrAvg] = [fiveSeries[0], fiveSeries[1]]
+      const fiveYrTrend = {}
+      let lst = [[fiveYrAvg, "fiveYrQtr"], [lastYrSeries, "lastYrQtr"]]
+      lst.map((series) => {
+        let last3 = series[0].data.slice(-3)
+        last3 = last3.map(v => v[1])
+        fiveYrTrend[series[1]] = arrAvg(last3)
+      })
+      return fiveYrTrend
+    } else {
+      return undefined
     }
   }
 
@@ -631,7 +648,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       false
     );
     chart.redraw(false);
-    var maxY = Math.max(chart.yAxis[0].max, chart.yAxis[1].max);
+    let maxY = Math.max(chart.yAxis[0].max, chart.yAxis[1].max);
     chart.update(
       {
         yAxis: [
@@ -707,20 +724,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function displayPointDescription(points) {
-    if (points.length > 1) {
-      var [seperator, pointHtml, closing] = ['li', '<ul>', '</ul>']
-    } else {
-      var [seperator, pointHtml, closing] = ['p', '', '']
-    }
-    var pointDiv = document.getElementById("traffic-point-description");
-    points.map((p) => {
-      let pointText = lang.points[p.id][1];
-      if (pointText) {
-        pointHtml += `<${seperator}>${pointText}</${seperator}>`;
-      }
+    points = points.map((p) => {
+      p.textCol = lang.points[p.id][1]
+      return p
     })
-    pointHtml += closing
-    pointDiv.innerHTML = pointHtml
+    document.getElementById("traffic-point-description").innerHTML = listOrParagraph(points, "textCol")
+
   }
 
   function buildDashboard() {
@@ -760,7 +769,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
-      const [timeSeries, fiveSeries] = addSeriesParams(
+      let [timeSeries, fiveSeries] = addSeriesParams(
         createSeries(trafficData, defaultPoint, metaData.points, tm),
         unitsHolder,
         buildFive
@@ -794,6 +803,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         // user is on oil profile
         var fiveChart = false;
       }
+      metaData.fiveTrend = fiveYearTrend(fiveSeries, hasImports)
       lang.dynamicText(
         metaData,
         defaultPoint,
@@ -814,7 +824,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           var keyBtn = $(this).addClass("active");
           hasImports = false;
           defaultPoint = getKeyPoint(keyBtn.val());
-          const [newSeries, newFiveSeries] = addSeriesParams(
+          [timeSeries, fiveSeries] = addSeriesParams(
             trafficData[defaultPoint.id],
             unitsHolder,
             buildFive
@@ -822,7 +832,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
           [trafficChart, hasImports] = updateSeries(
             trafficChart,
-            newSeries,
+            timeSeries,
             hasImports,
             true
           );
@@ -859,7 +869,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             if (fiveChart) {
               fiveChart = updateSeries(
                 fiveChart,
-                newFiveSeries,
+                fiveSeries,
                 undefined,
                 false
               );
@@ -883,6 +893,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           trafficChart.redraw(true);
           trafficChart.reflow();
           pointMap.pointChange([defaultPoint]);
+          metaData.fiveTrend = fiveYearTrend(fiveSeries, hasImports)
           lang.dynamicText(
             metaData,
             defaultPoint,
@@ -895,7 +906,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       } else {
         // user is on trans mountain profile
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
-          var pointId = $(this).val();
+          let pointId = $(this).val();
           if ($(this).is(":checked")) {
             metaData.points.push({
               id: pointId,
@@ -912,13 +923,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
 
           if (metaData.points.length > 0) {
-            const [newSeries, newFiveSeries] = addSeriesParams(
+            [timeSeries, fiveSeries] = addSeriesParams(
               createSeries(trafficData, defaultPoint, metaData.points, tm),
               unitsHolder,
               buildFive
             );
 
-            newSeries.map((newS) => {
+            timeSeries.map((newS) => {
               trafficChart.addSeries(newS, false, false);
             });
 
@@ -943,14 +954,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
       //user selects units
       $("#select-units-radio input[name='trafficUnits']").click(function () {
         unitsHolder.current = $("input:radio[name=trafficUnits]:checked").val();
-        var [newTimeSeries, newFiveSeries] = addSeriesParams(
+        [timeSeries, fiveSeries] = addSeriesParams(
           createSeries(trafficData, defaultPoint, metaData.points, tm),
           unitsHolder,
           buildFive
         );
         trafficChart.update(
           {
-            series: newTimeSeries,
+            series: timeSeries,
             yAxis: [
               {
                 title: { text: unitsHolder.current },
@@ -978,7 +989,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         if (fiveChart) {
           fiveChart.update(
             {
-              series: newFiveSeries,
+              series: fiveSeries,
               tooltip: {
                 formatter: function () {
                   return fiveYearTooltipText(this, unitsHolder.current);
@@ -1005,9 +1016,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
       // update map zoom
       $("#key-point-zoom-btn button").on("click", function () {
         $(".btn-map > .btn").removeClass("active");
-        var inOutBtn = $(this);
+        let inOutBtn = $(this);
         inOutBtn.addClass("active");
-        var zoomResponse = inOutBtn.val();
+        let zoomResponse = inOutBtn.val();
         if (zoomResponse == "zoom-in") {
           pointMap.reZoom(true);
         } else {
