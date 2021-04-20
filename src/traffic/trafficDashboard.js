@@ -648,7 +648,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       false
     );
     chart.redraw(false);
-    var maxY = Math.max(chart.yAxis[0].max, chart.yAxis[1].max);
+    let maxY = Math.max(chart.yAxis[0].max, chart.yAxis[1].max);
     chart.update(
       {
         yAxis: [
@@ -906,7 +906,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       } else {
         // user is on trans mountain profile
         $("#traffic-points-btn input[type=checkbox]").on("change", function () {
-          var pointId = $(this).val();
+          let pointId = $(this).val();
           if ($(this).is(":checked")) {
             metaData.points.push({
               id: pointId,

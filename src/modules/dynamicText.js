@@ -187,9 +187,7 @@ export function trafficTrendTextEng(
     }
   }
 
-  var trendBox = document.getElementById("traffic-trends");
-  var trendText = "";
-
+  let trendText = "";
   if (!tm) {
     const thisTrend = metaData.trendText[defaultPoint.id];
     thisTrend.map((trend) => {
@@ -222,7 +220,7 @@ export function trafficTrendTextEng(
     }
     trendText = listOrParagraph(pointText, "textCol")
   }
-  trendBox.innerHTML = trendText;
+  document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
 export function trafficTrendTextFra(
@@ -256,8 +254,7 @@ export function trafficTrendTextFra(
     } else {
       var trendId = ` (${trend.name})`;
     }
-    trendText += `<p>`;
-    trendText += `As of the most recent quarterly update, throughputs at the ${dynamicValue(
+    trendText += `Throughputs at the ${dynamicValue(
       point + trendId
     )} key point have ${changeText(trend.throughChange.pct)} ${trendSub(
       metaData.commodity
@@ -266,34 +263,51 @@ export function trafficTrendTextFra(
       } to an average of ${formatValue(trend.throughChange.to, units)} ${units.current
       } in ${quarters[trend.toDate[1]]} ${trend.toDate[0]
       } (most recent quarter of data).`;
-    trendText += `</p>`;
     return trendText;
   };
 
-  var trendBox = document.getElementById("traffic-trends");
-  var trendText = "";
+  const buildFiveText = (ft, tt) => {
+    let pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100
+    if (pctChange) {
+      let qtr = `${quarters[tt.toDate[1]]} ${tt.toDate[0]}`
+      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(pctChange, false)} the five year average.</p>`
+    } else {
+      return ""
+    }
+  }
 
+  let trendText = "";
   if (!tm) {
     const thisTrend = metaData.trendText[defaultPoint.id];
     thisTrend.map((trend) => {
-      trendText += buildText("", trend, defaultPoint.name, unitsHolder);
+      trendText += `<p>${buildText("", trend, defaultPoint.name, unitsHolder)}</p>`
     });
+    if (metaData.fiveTrend) {
+      trendText += buildFiveText(metaData.fiveTrend, thisTrend[0])
+    }
   } else {
-    var pointNames = {};
+    let pointNames = {};
     metaData.points.map((p) => {
       pointNames[p.id] = p.name;
     });
+
+    let pointText = []
     for (const [defaultPoint, thisTrend] of Object.entries(
       metaData.trendText
     )) {
-      trendText += buildText(
-        "",
-        thisTrend[0],
-        pointNames[defaultPoint],
-        unitsHolder
-      );
-      trendText += `<br>`;
+      if (defaultPoint in pointNames) {
+        pointText.push({
+          textCol: buildText(
+            "",
+            thisTrend[0],
+            pointNames[defaultPoint],
+            unitsHolder
+          )
+        });
+      }
+
     }
+    trendText = listOrParagraph(pointText, "textCol")
   }
-  trendBox.innerHTML = trendText;
+  document.getElementById("traffic-trends").innerHTML = trendText;
 }
