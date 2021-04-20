@@ -24,22 +24,18 @@ export const conversions = {
   "Mb/d to Thousand m3/d": 159,
 };
 
-export const sortJson = (obj, colName = "value") => {
-  return obj.slice().sort((a, b) => b[colName] - a[colName]);
-};
+export const sortJson = (obj, colName = "value") => obj.slice().sort((a, b) => b[colName] - a[colName]);
 
 export function sortJsonAlpha(lst, col) {
   function compareStrings(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
   }
-  return lst.sort(function (a, b) {
-    return compareStrings(a[col], b[col]);
-  });
+  return lst.sort((a, b) => compareStrings(a[col], b[col]));
 }
 
 export function visibility(divList, status) {
   divList.map((div) => {
-    var x = document.getElementById(div);
+    const x = document.getElementById(div);
     if (status == "hide") {
       if (x.style.display !== "none") {
         x.style.display = "none";
@@ -56,16 +52,16 @@ export const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
 export function listOrParagraph(itter, textCol) {
   if (itter.length > 1) {
-    var [seperator, pointHtml, closing] = ['li', '<ul>', '</ul>']
+    var [seperator, pointHtml, closing] = ["li", "<ul>", "</ul>"];
   } else {
-    var [seperator, pointHtml, closing] = ['p', '', '']
+    var [seperator, pointHtml, closing] = ["p", "", ""];
   }
   itter.map((i) => {
     if (i && textCol in i) {
-      let pointText = i[textCol]
+      const pointText = i[textCol];
       pointHtml += `<${seperator}>${pointText}</${seperator}>`;
     }
-  })
-  pointHtml += closing
-  return pointHtml
+  });
+  pointHtml += closing;
+  return pointHtml;
 }
