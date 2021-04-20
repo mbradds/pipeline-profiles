@@ -1,13 +1,15 @@
-console.time(`first content loading`);
-import { generalTheme } from "../modules/themes.js";
+import { generalTheme } from "../modules/themes";
 // conditions
-import { mainConditions } from "../conditions/conditionsDashboard.js";
-//incidents
-import { mainIncidents } from "../incidents/incidentsDashboard.js";
-//language;
-import { englishDashboard } from "../modules/langEnglish.js";
-//traffic
-import { mainTraffic } from "../traffic/trafficDashboard.js";
+import { mainConditions } from "../conditions/conditionsDashboard";
+// incidents
+import { mainIncidents } from "../incidents/incidentsDashboard";
+// language;
+import { englishDashboard } from "../modules/langEnglish";
+// traffic
+import { mainTraffic } from "../traffic/trafficDashboard";
+
+console.time(`first content loading`);
+
 generalTheme();
 
 export async function loadAllCharts(data, plains = false) {
@@ -31,16 +33,19 @@ export async function loadAllCharts(data, plains = false) {
     ),
   ];
 
-  if (plains) {
-    function plains_midstream_profile(lang, div) {
-      [...document.querySelectorAll(`.${div}`)].map((warn) => {
-        warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
-      });
-    }
-    plains_midstream_profile(englishDashboard, "plains_disclaimer");
+  function plainsMidstreamProfile(lang, div) {
+    [...document.querySelectorAll(`.${div}`)].forEach((warn) => {
+      const plainsDiv = warn;
+      plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
+    });
   }
 
-  return Promise.allSettled(arrayOfCharts).then((value) => {
+  if (plains) {
+    plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
+  }
+
+  return Promise.allSettled(arrayOfCharts).then(() => {
+    // .then((value))
     console.timeEnd(`first content loading`);
   });
 }

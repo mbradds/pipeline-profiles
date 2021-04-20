@@ -1,5 +1,5 @@
-import { cerPalette } from "./util.js";
-import { incidentsTextFra, trafficTrendTextFra } from "./dynamicText.js";
+import { cerPalette } from "./util";
+import { incidentsTextFra, trafficTrendTextFra } from "./dynamicText";
 
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "Réseau de NGTL",
@@ -21,7 +21,6 @@ const companyToSystem = {
   "Plains Midstream Canada ULC": "Plains Midstream Canada ULC",
   "Genesis Pipeline Canada Ltd.": "Pipeline Genesis",
   "Montreal Pipe Line Limited": "Pipeline Montréal",
-  "Trans-Northern Pipelines Inc.": "Pipeline Trans-Nord",
   "Kingston Midstream Westspur Limited": "Pipeline Westspur",
   "Many Islands Pipe Lines (Canada) Limited":
     "Many Islands Pipe Lines (Canada) Limited",
@@ -29,45 +28,38 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "Gazoduc M&NP",
 };
 
-const numberFormat = (value, rounding = 2) => {
-  return Highcharts.numberFormat(value, rounding, ",", " ");
-};
+const numberFormat = (value, rounding = 2) =>
+  Highcharts.numberFormat(value, rounding, ",", " ");
 
-const dateFormat = (value, format = "%b %d, %Y") => {
-  return Highcharts.dateFormat(format, value);
-};
+const dateFormat = (value, format = "%b %d, %Y") =>
+  Highcharts.dateFormat(format, value);
 
 export const frenchDashboard = {
   plains:
     "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana",
 
   conditions: {
-    dateFormat: dateFormat,
-    companyToSystem: companyToSystem,
+    dateFormat,
+    companyToSystem,
     colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",
     noLocation: {
       title:
         "Certaines conditions ne sont pas liées à un emplacement géographique.",
-      summary: (companyName) => {
-        return `Aucun résumé de l’emplacement géographique de ${companyName}:`;
-      },
+      summary: (companyName) =>
+        `Aucun résumé de l’emplacement géographique de ${companyName}:`,
     },
     title: {
-      noLocation: (companyName) => {
-        return `Tableau de bord: ${companyName} - aucun emplacement géographique`;
-      },
-      location: (companyName, column) => {
-        return `Tableau de bord: ${companyName} - ${column} Conditions par région`;
-      },
+      noLocation: (companyName) =>
+        `Tableau de bord: ${companyName} - aucun emplacement géographique`,
+      location: (companyName, column) =>
+        `Tableau de bord: ${companyName} - ${column} Conditions par région`,
     },
     table: {
-      projectsTitle: (column) => {
-        return `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*):`;
-      },
-      themesTitle: (column) => {
-        return `${column} Thèmes de condition (cliquer pour voir la définition du thème):`;
-      },
+      projectsTitle: (column) =>
+        `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*):`,
+      themesTitle: (column) =>
+        `${column} Thèmes de condition (cliquer pour voir la définition du thème):`,
       regdocsDefinition:
         "*REGDOCS est une base de données sur les activités de réglementation et opérations réglementaires menées par la Régie.",
     },
@@ -123,17 +115,15 @@ export const frenchDashboard = {
     },
     noConditions: {
       header: "Aucune donnée disponible sur les conditions",
-      note: (companyName) => {
-        return `Aucune donnée sur les conditions n’est disponible pour ${companyName}. Si des données deviennent disponibles ou si des conditions sont imposées par la Commission, elles apparaîtront ici.`;
-      },
+      note: (companyName) =>
+        `Aucune donnée sur les conditions n’est disponible pour ${companyName}. Si des données deviennent disponibles ou si des conditions sont imposées par la Commission, elles apparaîtront ici.`,
     },
   },
   incidents: {
     dynamicText: incidentsTextFra,
-    companyToSystem: companyToSystem,
-    title: (systemName) => {
-      return `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`;
-    },
+    companyToSystem,
+    title: (systemName) =>
+      `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`,
     definitions: {
       Status: {
         Fermé:
@@ -201,27 +191,23 @@ export const frenchDashboard = {
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
       locationDisclaimer: "En attente de votre position...",
-      countDisclaimer: (eventType, field) => {
-        return `<p>Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.</p>`;
-      },
+      countDisclaimer: (eventType, field) =>
+        `<p>Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.</p>`,
       userPopUp:
         "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
       locationError:
         "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.",
-      nearbyHeader: (numCircles, range) => {
-        return `Il y a ${numCircles} incidents dans un rayon de ${range} km`;
-      },
+      nearbyHeader: (numCircles, range) =>
+        `Il y a ${numCircles} incidents dans un rayon de ${range} km`,
       gasRelease: "Estimation du volume de gaz rejeté:",
       liquidRelease: "Estimation du volume de liquide déversé:",
       otherRelease: "Estimation du rejet (divers):",
       exploreOther:
         "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.",
-      noNearby: (eventType) => {
-        return `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`;
-      },
-      barClick: (field) => {
-        return `<p>Cliquer sur une bande pour consulter la définition de ${field}</p>`;
-      },
+      noNearby: (eventType) =>
+        `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
+      barClick: (field) =>
+        `<p>Cliquer sur une bande pour consulter la définition de ${field}</p>`,
       legendClick:
         "Cliquez sur un élément de légende pour le supprimer du graphique",
       rangeTitle: "Sélectionner une plage",
@@ -229,69 +215,68 @@ export const frenchDashboard = {
       trendYTitle: "Nombre d’incidents",
       EVENTCOLORS: {
         Substance: {
-          Propane: cerPalette["Forest"],
-          "Gaz Naturel - non sulfureux": cerPalette["Flame"],
+          Propane: cerPalette.Forest,
+          "Gaz Naturel - non sulfureux": cerPalette.Flame,
           "Gaz naturel - sulfureux": cerPalette["Dim Grey"],
-          "Huile lubrifiante": cerPalette["hcPurple"],
-          "Pétrole brut non sulfureux": cerPalette["Sun"],
-          "Pétrole brut synthétique": cerPalette["Forest"],
+          "Huile lubrifiante": cerPalette.hcPurple,
+          "Pétrole brut non sulfureux": cerPalette.Sun,
+          "Pétrole brut synthétique": cerPalette.Forest,
           "Pétrole brut sulfureux": cerPalette["Dim Grey"],
           "Liquides de gaz naturel": cerPalette["Night Sky"],
-          Condensat: cerPalette["Ocean"],
-          "Carburant diesel": cerPalette["hcRed"],
-          Essence: cerPalette["Flame"],
-          Autre: cerPalette["Aubergine"],
+          Condensat: cerPalette.Ocean,
+          "Carburant diesel": cerPalette.hcRed,
+          Essence: cerPalette.Flame,
+          Autre: cerPalette.Aubergine,
         },
         Status: {
-          "Initialement Soumis": cerPalette["Flame"],
+          "Initialement Soumis": cerPalette.Flame,
           Fermé: cerPalette["Cool Grey"],
-          Soumis: cerPalette["Ocean"],
+          Soumis: cerPalette.Ocean,
         },
         Province: {
-          Alberta: cerPalette["Sun"],
-          "Colombie-Britannique": cerPalette["Forest"],
-          Saskatchewan: cerPalette["Aubergine"],
-          Manitoba: cerPalette["Ocean"],
+          Alberta: cerPalette.Sun,
+          "Colombie-Britannique": cerPalette.Forest,
+          Saskatchewan: cerPalette.Aubergine,
+          Manitoba: cerPalette.Ocean,
           Ontario: cerPalette["Night Sky"],
-          Québec: cerPalette["Flame"],
-          "Nouveau-Brunswick": cerPalette["Forest"],
+          Québec: cerPalette.Flame,
+          "Nouveau-Brunswick": cerPalette.Forest,
           "Nouvelle-Écosse": cerPalette["Night Sky"],
-          "Territoires du Nord-Ouest": cerPalette["hcLightBlue"],
+          "Territoires du Nord-Ouest": cerPalette.hcLightBlue,
         },
         why: {
-          "Normes et procédures": cerPalette["Flame"],
-          "Outils et équipement": cerPalette["Forest"],
+          "Normes et procédures": cerPalette.Flame,
+          "Outils et équipement": cerPalette.Forest,
           Entretien: cerPalette["Night Sky"],
-          "Facteurs humains": cerPalette["Ocean"],
-          "Ingénierie et planification": cerPalette["Sun"],
-          "Forces de la nature ou environnement": cerPalette["hcAqua"],
+          "Facteurs humains": cerPalette.Ocean,
+          "Ingénierie et planification": cerPalette.Sun,
+          "Forces de la nature ou environnement": cerPalette.hcAqua,
           "To be determined": cerPalette["Cool Grey"],
-          "Approvisionnement inadéquat": cerPalette["Aubergine"],
+          "Approvisionnement inadéquat": cerPalette.Aubergine,
           "Supervision insuffisante": cerPalette["Dim Grey"],
-          "Problème de communication": cerPalette["hcPink"],
+          "Problème de communication": cerPalette.hcPink,
         },
         what: {
-          "Corrosion et fissuration": cerPalette["Aubergine"],
+          "Corrosion et fissuration": cerPalette.Aubergine,
           "Défectuosité et détérioration": cerPalette["Cool Grey"],
           "Défaillance d’équipement": cerPalette["Dim Grey"],
-          "Forces de la nature": cerPalette["Flame"],
-          "Autres causes": cerPalette["Forest"],
+          "Forces de la nature": cerPalette.Flame,
+          "Autres causes": cerPalette.Forest,
           "Erreur d’exploitation": cerPalette["Night Sky"],
-          "Interférences extérieures": cerPalette["Ocean"],
-          "To be determined": cerPalette["Sun"],
+          "Interférences extérieures": cerPalette.Ocean,
+          "To be determined": cerPalette.Sun,
         },
       },
     },
     noIncidents: {
       header: "Aucune donnée sur les incidents disponible",
-      note: (companyName) => {
-        return `Il n’y a pas d’enregistrements dans les données sur les incidents de la Régie pour ${companyName}. Si de nouveaux incidents sont signalés à la Régie pour ce pipeline, ils apparaîtront ici après la mise à jour trimestrielle des données.`;
-      },
+      note: (companyName) =>
+        `Il n’y a pas d’enregistrements dans les données sur les incidents de la Régie pour ${companyName}. Si de nouveaux incidents sont signalés à la Régie pour ce pipeline, ils apparaîtront ici après la mise à jour trimestrielle des données.`,
     },
   },
   traffic: {
     dynamicText: trafficTrendTextFra,
-    numberFormat: numberFormat,
+    numberFormat,
     descriptions: { noPoint: "Description coming soon!" },
     units: {
       "Bcf/d": "Bcf/d FR",

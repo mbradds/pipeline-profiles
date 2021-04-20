@@ -165,15 +165,15 @@ export async function mainIncidents(incidentData, metaData, lang) {
             }, 200);
             thisMap
               .waitOnUser()
-              .then((userAdded) => {
-                thisMap.nearbyIncidents(range);
+              .then(() => {
+                thisMap.nearbyIncidents(range); // .then((userAdded))
                 clearTimeout(loadDisclaimer);
                 thisMap.removeMapDisclaimer("location");
                 resetBtn.disabled = false;
                 resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
               })
-              .catch((error) => {
-                const incidentFlag = document.getElementById("nearby-flag");
+              .catch(() => {
+                const incidentFlag = document.getElementById("nearby-flag"); // .catch((error))
                 incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
                 clearTimeout(loadDisclaimer);
                 thisMap.removeMapDisclaimer("location");

@@ -5,6 +5,7 @@
     "no-nested-ternary": "off",
     "no-undef": "warn",
     "max-classes-per-file": "off",
-    "no-underscore-dangle": "warn"
+    "no-underscore-dangle": "warn",
+    "new-cap": "warn"
   }
 }

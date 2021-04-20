@@ -101,18 +101,18 @@ export async function mainConditions(
       colSelector = 1;
     }
     const getValid = (dataSet) => {
+      let validMetaData;
       if (dataSet === "map") {
-        const validMetaData = function (row) {
+        validMetaData = function (row) {
           return {
             "Flat Province": row["Flat Province"],
             id: row.id,
             value: row[filter.column],
           };
         };
-        return validMetaData;
       }
       if (dataSet === "projects") {
-        const validMetaData = function (row) {
+        validMetaData = function (row) {
           return {
             name: row.name,
             id: row.id,
@@ -120,18 +120,17 @@ export async function mainConditions(
             value: row.v[colSelector],
           };
         };
-        return validMetaData;
       }
       if (dataSet === "themes") {
-        const validMetaData = function (row) {
+        validMetaData = function (row) {
           return {
             Theme: row.t,
             id: row.id,
             value: row.v[colSelector],
           };
         };
-        return validMetaData;
       }
+      return validMetaData;
     };
 
     const m = getValid(type);
@@ -164,12 +163,12 @@ export async function mainConditions(
         currentPopUp.innerHTML = "";
       }
       chart.customTooltip.destroy();
-      chart.customTooltip = undefined;
     }
     const definitionDiv = document.getElementById("conditions-definitions");
     if (definitionDiv.classList.contains("profile-show")) {
       definitionDiv.classList.remove("profile-show");
     }
+    // chart.customTooltip = undefined;
   };
 
   const selectedMeta = (params) => {
@@ -282,6 +281,7 @@ export async function mainConditions(
     const { chart } = e.series;
     if (chart.customTooltip) {
       destroyInsert(chart);
+      chart.customTooltip = undefined;
     }
     const label = chart.renderer
       .label(text, null, null, null, null, null, true)
@@ -376,6 +376,7 @@ export async function mainConditions(
 
               if (!clickOnTooltip) {
                 destroyInsert(this);
+                this.customTooltip = undefined;
               }
             }
           },
@@ -490,6 +491,7 @@ export async function mainConditions(
         chartParams.conditionsFilter.column = btnValue;
         if (btnValue !== "not-shown") {
           destroyInsert(chart);
+          chart.customTooltip = undefined;
           visibility(["no-location-info"], "hide");
           visibility(["container-map"], "show");
         } else {

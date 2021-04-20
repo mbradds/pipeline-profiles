@@ -1,4 +1,5 @@
-import { cerPalette } from "./util.js";
+import { cerPalette } from "./util";
+
 export const generalTheme = () => {
   Highcharts.profiles = {
     chart: {
@@ -43,7 +44,7 @@ export const generalTheme = () => {
         },
       },
       labels: {
-        formatter: function () {
+        formatter () {
           return Highcharts.numberFormat(this.value, 0, ".", ",");
         },
         style: {

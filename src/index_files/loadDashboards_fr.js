@@ -1,13 +1,15 @@
-console.time(`first content loading`);
-import { generalTheme, frenchTheme } from "../modules/themes.js";
+import { generalTheme, frenchTheme } from "../modules/themes";
 // conditions
-import { mainConditions } from "../conditions/conditionsDashboard.js";
-//incidents
-import { mainIncidents } from "../incidents/incidentsDashboard.js";
-//language;
-import { frenchDashboard } from "../modules/langFrench.js";
-//traffic
-import { mainTraffic } from "../traffic/trafficDashboard.js";
+import { mainConditions } from "../conditions/conditionsDashboard";
+// incidents
+import { mainIncidents } from "../incidents/incidentsDashboard";
+// language;
+import { frenchDashboard } from "../modules/langFrench";
+// traffic
+import { mainTraffic } from "../traffic/trafficDashboard";
+
+console.time(`first content loading`);
+
 generalTheme();
 frenchTheme();
 
@@ -32,16 +34,17 @@ export async function loadAllCharts(data, plains = false) {
     ),
   ];
 
+  function plainsMidstreamProfile(lang, div) {
+    [...document.querySelectorAll(`.${div}`)].forEach((warn) => {
+      const plainsDiv = warn;
+      plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
+    });
+  }
   if (plains) {
-    function plains_midstream_profile(lang, div) {
-      [...document.querySelectorAll(`.${div}`)].map((warn) => {
-        warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
-      });
-    }
-    plains_midstream_profile(frenchDashboard, "plains_disclaimer");
+    plainsMidstreamProfile(frenchDashboard, "plains_disclaimer");
   }
 
-  return Promise.allSettled(arrayOfCharts).then((value) => {
+  return Promise.allSettled(arrayOfCharts).then(() => {
     console.timeEnd(`first content loading`);
   });
 }
