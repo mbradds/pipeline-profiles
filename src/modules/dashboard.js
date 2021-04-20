@@ -1,8 +1,9 @@
-import { cerPalette, conversions, visibility } from "../modules/util.js";
+import { cerPalette, conversions, visibility } from "./util";
+
 const haversine = require("haversine");
 
 function leafletBaseMap(config) {
-  var map = L.map(config.div, {
+  const map = L.map(config.div, {
     zoomSnap: config.zoomSnap,
     zoomDelta: config.zoomDelta,
     zoomControl: config.zoomControl,
@@ -16,29 +17,77 @@ function leafletBaseMap(config) {
   return map;
 }
 
-export class EventMap {
-  substanceState = {
-    Propane: "gas",
-    "Natural Gas": "gas",
-    "Gaz Naturel": "gas",
-    "Fuel Gas": "liquid",
-    "Lube Oil": "liquid",
-    "Huile lubrifiante": "liquid",
-    "Crude Oil": "liquid",
-    "Pétrole brut non sulfureux": "liquid",
-    "Pétrole brut synthétique": "liquid",
-    "Pétrole brut sulfureux": "liquid",
-    "Diesel Fuel": "liquid",
-    Gasoline: "liquid",
-    Essence: "liquid",
-    "Natural Gas Liquids": "gas",
-    "Liquides de gaz naturel": "gas",
-    Condensate: "liquid",
-    Condensat: "liquid",
-    Other: "other",
-    Autre: "other",
-  };
+const substanceState = {
+  Propane: "gas",
+  "Natural Gas": "gas",
+  "Gaz Naturel": "gas",
+  "Fuel Gas": "liquid",
+  "Lube Oil": "liquid",
+  "Huile lubrifiante": "liquid",
+  "Crude Oil": "liquid",
+  "Pétrole brut non sulfureux": "liquid",
+  "Pétrole brut synthétique": "liquid",
+  "Pétrole brut sulfureux": "liquid",
+  "Diesel Fuel": "liquid",
+  Gasoline: "liquid",
+  Essence: "liquid",
+  "Natural Gas Liquids": "gas",
+  "Liquides de gaz naturel": "gas",
+  Condensate: "liquid",
+  Condensat: "liquid",
+  Other: "other",
+  Autre: "other",
+};
 
+const greyScale = [
+  "#101010",
+  "#181818",
+  "#202020",
+  "#282828",
+  "#303030",
+  "#383838",
+  "#404040",
+  "#484848",
+  "#505050",
+  "#585858",
+  "#606060",
+  "#686868",
+  "#696969",
+  "#707070",
+  "#787878",
+  "#808080",
+  "#888888",
+  "#909090",
+  "#989898",
+  "#A0A0A0",
+  "#A8A8A8",
+  "#A9A9A9",
+  "#B0B0B0",
+  "#B8B8B8",
+  "#BEBEBE",
+  "#C0C0C0",
+  "#C8C8C8",
+  "#D0D0D0",
+  "#D3D3D3",
+  "#D8D8D8",
+  "#DCDCDC",
+  "#E0E0E0",
+  "#E8E8E8",
+  "#F0F0F0",
+  "#F5F5F5",
+  "#F8F8F8",
+];
+
+const ONETOMANY = {
+  Substance: false,
+  Status: false,
+  Province: false,
+  what: true,
+  why: true,
+  category: true,
+};
+
+export class EventMap {
   constructor({
     eventType,
     field = undefined,
@@ -52,6 +101,7 @@ export class EventMap {
     this.filters = filters;
     this.minRadius = minRadius;
     this.colors = lang.EVENTCOLORS;
+    this.substanceState = substanceState;
     this.field = field;
     this.initZoomTo = initZoomTo;
     this.user = { latitude: undefined, longitude: undefined };
@@ -73,102 +123,107 @@ export class EventMap {
   }
 
   getState(substance) {
-    let shortSubstance = substance.split("-")[0].trim();
+    const shortSubstance = substance.split("-")[0].trim();
     return this.substanceState[shortSubstance];
   }
 
   volumeText(m3, substance, gas = false, liquid = false, other = false) {
-    let convLiquid = conversions["m3 to bbl"];
-    let convGas = conversions["m3 to cf"];
+    const convLiquid = conversions["m3 to bbl"];
+    const convGas = conversions["m3 to cf"];
+    let state = "other";
     if (!gas && !liquid && !other) {
-      var state = this.getState(substance);
+      state = this.getState(substance);
     } else if (!gas && liquid && !other) {
-      var state = "liquid";
+      state = "liquid";
     } else if (gas && !liquid && !other) {
-      var state = "gas";
-    } else {
-      var state = "other";
+      state = "gas";
     }
 
     if (state !== "other") {
-      if (state == "gas") {
-        var imperial = `${Highcharts.numberFormat(
+      let imperial;
+      if (state === "gas") {
+        imperial = `${Highcharts.numberFormat(
           (m3 * convGas).toFixed(2),
           2,
           this.lang.decimal
         )} ${this.lang.cf}`;
       } else {
-        var imperial = `${Highcharts.numberFormat(
+        imperial = `${Highcharts.numberFormat(
           (m3 * convLiquid).toFixed(2),
           2,
           this.lang.decimal
         )} ${this.lang.bbl}`;
       }
+
       return `${imperial} (${Highcharts.numberFormat(
         m3,
         2,
         this.lang.decimal
       )} m3)`;
-    } else {
-      return `${Highcharts.numberFormat(m3, 2, this.lang.decimal)} m3`;
     }
+    return `${Highcharts.numberFormat(m3, 2, this.lang.decimal)} m3`;
   }
 
   addMapDisclaimer(type = "volume") {
-    if (type == "volume") {
+    const disclaimerL = (map, position, alertStyle, text) => {
+      const info = L.control({ position });
+      info.onAdd = function () {
+        const disclaimerDiv = L.DomUtil.create("div", "map-disclaimer");
+        disclaimerDiv.innerHTML = `<div class="alert ${alertStyle}" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
+        return disclaimerDiv;
+      };
+      info.addTo(map);
+      return info;
+    };
+    if (type === "volume") {
       if (!this.mapVolumeDisclaimer) {
-        var info = L.control();
-        var text = this.lang.volumeDisclaimer;
-        info.onAdd = function (map) {
-          this._div = L.DomUtil.create("div", "map-disclaimer");
-          this._div.innerHTML = `<div class="alert alert-warning" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
-          return this._div;
-        };
-        info.addTo(this.map);
-        this.mapVolumeDisclaimer = info;
+        this.mapVolumeDisclaimer = disclaimerL(
+          this.map,
+          "topright",
+          "alert-warning",
+          this.lang.volumeDisclaimer
+        );
       }
-    } else if (type == "location") {
+    } else if (type === "location") {
       if (!this.mapLocationDisclaimer) {
-        var info = L.control({ position: "bottomleft" });
-        var text = this.lang.locationDisclaimer;
-        info.onAdd = function (map) {
-          this._div = L.DomUtil.create("div", "map-disclaimer");
-          this._div.innerHTML = `<div class="alert alert-info" style="padding:3px;"><p><strong>${text}<strong></p></div>`;
-          return this._div;
-        };
-        info.addTo(this.map);
-        this.mapLocationDisclaimer = info;
+        this.mapLocationDisclaimer = disclaimerL(
+          this.map,
+          "bottomleft",
+          "alert-info",
+          this.lang.locationDisclaimer
+        );
       }
     }
   }
 
   removeMapDisclaimer(type = "volume") {
-    if (type == "volume") {
-      var currentDisclaimer = this.mapVolumeDisclaimer;
-    } else if (type == "location") {
-      var currentDisclaimer = this.mapLocationDisclaimer;
-    }
-    if (currentDisclaimer) {
-      currentDisclaimer.remove();
-      currentDisclaimer = undefined;
+    if (type === "volume") {
+      if (this.mapVolumeDisclaimer) {
+        this.mapVolumeDisclaimer.remove();
+        this.mapVolumeDisclaimer = undefined;
+      }
+    } else if (type === "location") {
+      if (this.mapLocationDisclaimer) {
+        this.mapLocationDisclaimer.remove();
+        this.mapVolumeDisclaimer = undefined;
+      }
     }
   }
 
   toolTip(incidentParams, fillColor) {
     const formatCommaList = (text) => {
       if (text.includes(",")) {
-        let itemList = text.split(",");
+        const itemList = text.split(",");
         let brokenText = ``;
-        for (var i = 0; i < itemList.length; i++) {
-          brokenText += "&nbsp- " + itemList[i] + "<br>";
+        for (let i = 0; i < itemList.length; i++) {
+          brokenText += `&nbsp- ${itemList[i]}<br>`;
         }
         return brokenText;
-      } else {
-        return "&nbsp" + text;
       }
+      return `&nbsp${text}`;
     };
 
-    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams["id"]}</b></p>`;
+    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams.id}</b></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
       this.field
@@ -178,14 +233,14 @@ export class EventMap {
     toolTipText += `<tr><td>${
       this.lang.estRelease
     }</td><td>&nbsp<b>${this.volumeText(
-      incidentParams["vol"],
+      incidentParams.vol,
       incidentParams.Substance
     )}</b></td></tr>`;
     toolTipText += `<tr><td>${this.lang.what}?</td><td><b>${formatCommaList(
-      incidentParams["what"]
+      incidentParams.what
     )}</b></td></tr>`;
     toolTipText += `<tr><td>${this.lang.why}?</td><td><b>${formatCommaList(
-      incidentParams["why"]
+      incidentParams.why
     )}</b></td></tr>`;
     toolTipText += `</table></div>`;
     return toolTipText;
@@ -193,8 +248,8 @@ export class EventMap {
 
   addCircle(x, y, color, fillColor, r, incidentParams = {}) {
     return L.circle([x, y], {
-      color: color,
-      fillColor: fillColor,
+      color,
+      fillColor,
       fillOpacity: 0.7,
       radius: this.minRadius,
       volRadius: r,
@@ -204,32 +259,32 @@ export class EventMap {
   }
 
   updateRadius() {
-    if (this.filters.type == "volume") {
-      this.circles.eachLayer(function (layer) {
+    if (this.filters.type === "volume") {
+      this.circles.eachLayer((layer) => {
         try {
-          layer.setRadius(layer.options["volRadius"]);
+          layer.setRadius(layer.options.volRadius);
         } catch (err) {
           layer.setRadius(0);
           console.log("Error setting new radius");
         }
       });
     } else {
-      let currZoom = this.map.getZoom();
-      var minRadius = this.minRadius;
+      const currZoom = this.map.getZoom();
+      const { minRadius } = this;
       if (currZoom >= 9) {
-        this.circles.eachLayer(function (layer) {
+        this.circles.eachLayer((layer) => {
           layer.setRadius(minRadius / 4);
         });
       } else if (currZoom >= 6.5) {
-        this.circles.eachLayer(function (layer) {
+        this.circles.eachLayer((layer) => {
           layer.setRadius(minRadius / 2);
         });
       } else if (currZoom < 5) {
-        this.circles.eachLayer(function (layer) {
+        this.circles.eachLayer((layer) => {
           layer.setRadius(minRadius * 2);
         });
       } else if (currZoom >= 5 || currZoom <= 5.5) {
-        this.circles.eachLayer(function (layer) {
+        this.circles.eachLayer((layer) => {
           layer.setRadius(minRadius);
         });
       }
@@ -248,14 +303,13 @@ export class EventMap {
     const radiusCalc = (maxVolume) => {
       if (maxVolume > 500) {
         return 150000;
-      } else {
-        return 100000;
       }
+      return 100000;
     };
 
-    let years = []; //piggyback on data processing pass to get the year colors
-    let colors = [
-      cerPalette["Sun"],
+    let years = []; // piggyback on data processing pass to get the year colors
+    const colors = [
+      cerPalette.Sun,
       "#022034",
       "#043454",
       "#043a5e",
@@ -271,56 +325,51 @@ export class EventMap {
       "#e6ecf0",
       "#ffffff",
     ];
-    let volumes = data.map((row) => {
-      return row["vol"];
-    });
-    let [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
-    let maxRad = radiusCalc(maxVol);
-    let allCircles = data.map((row) => {
+    const volumes = data.map((row) => row.vol);
+    const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
+    const maxRad = radiusCalc(maxVol);
+    const allCircles = data.map((row) => {
       years.push(row.Year);
-      let radiusVol = (row["vol"] - minVol) / (maxVol - minVol);
+      let radiusVol = (row.vol - minVol) / (maxVol - minVol);
 
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
       return this.addCircle(
         row["lat long"][0],
         row["lat long"][1],
         cerPalette["Cool Grey"],
-        this.applyColor(row[this.field], this.field), //fillColor
+        this.applyColor(row[this.field], this.field), // fillColor
         radiusVol,
         row
       );
     });
-    years = years.filter((v, i, a) => a.indexOf(v) === i); //get unique years
-    years = years.sort(function (a, b) {
-      return b - a;
-    });
-    let yearColors = {};
-    years.map((yr, i) => {
+    years = years.filter((v, i, a) => a.indexOf(v) === i); // get unique years
+    years = years.sort((a, b) => b - a);
+    const yearColors = {};
+    years.forEach((yr, i) => {
       yearColors[yr] = colors[i];
     });
     this.colors.Year = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
-    let currentDashboard = this;
-    this.map.on("zoom", function (e) {
+    const currentDashboard = this;
+    this.map.on("zoom", (e) => {
       currentDashboard.updateRadius();
     });
   }
 
   async findUser() {
     return new Promise((resolve, reject) => {
-      let currentDashboard = this;
+      const currentDashboard = this;
       this.map
         .locate({
-          //setView: true,
+          // setView: true,
           watch: false,
         }) /* This will return map so you can do chaining */
-        .on("locationfound", function (e) {
-          var marker = L.marker([e.latitude, e.longitude], {
+        .on("locationfound", (e) => {
+          const marker = L.marker([e.latitude, e.longitude], {
             draggable: true,
           }).bindPopup(currentDashboard.lang.userPopUp);
-          marker.on("drag", function (e) {
-            var marker = e.target;
-            var position = marker.getLatLng();
+          marker.on("drag", (d) => {
+            const position = d.target.getLatLng();
             currentDashboard.user.latitude = position.lat;
             currentDashboard.user.longitude = position.lng;
           });
@@ -331,24 +380,25 @@ export class EventMap {
           currentDashboard.user.layer = marker;
           resolve(currentDashboard);
         })
-        .on("locationerror", function (e) {
-          reject(console.log("locationerror in findUser method"));
+        .on("locationerror", (err) => {
+          console.log("locationerror in findUser method");
+          reject(err);
         });
     });
   }
 
   async waitOnUser() {
     // this promise is handled one level above in ../indidents/incidentDashboard.js
-    return await this.findUser();
+    return this.findUser();
   }
 
   nearbyIncidents(range) {
-    var [nearbyCircles, allCircles] = [[], []];
-    var currentDashboard = this;
-    this.circles.eachLayer(function (layer) {
+    const [nearbyCircles, allCircles] = [[], []];
+    const currentDashboard = this;
+    this.circles.eachLayer((layer) => {
       allCircles.push(layer);
-      let incLoc = layer._latlng;
-      let distance = haversine(currentDashboard.user, {
+      const incLoc = layer._latlng;
+      const distance = haversine(currentDashboard.user, {
         latitude: incLoc.lat,
         longitude: incLoc.lng,
       });
@@ -359,9 +409,9 @@ export class EventMap {
         layer.setStyle({ fillOpacity: 0.7 });
       }
     });
-    var incidentFlag = document.getElementById("nearby-flag");
+    const incidentFlag = document.getElementById("nearby-flag");
 
-    let userDummy = L.circle([this.user.latitude, this.user.longitude], {
+    const userDummy = L.circle([this.user.latitude, this.user.longitude], {
       color: undefined,
       fillColor: undefined,
       fillOpacity: 0,
@@ -372,22 +422,22 @@ export class EventMap {
 
     if (nearbyCircles.length > 0) {
       this.nearby = L.featureGroup(nearbyCircles);
-      let bounds = this.nearby.getBounds();
+      const bounds = this.nearby.getBounds();
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
       let [nearbyGas, nearbyLiquid, nearbyOther] = [0, 0, 0];
-      let currentDashboard = this;
-      this.nearby.eachLayer(function (layer) {
-        let layerState = currentDashboard.getState(
+      // const currentDashboard = this;
+      this.nearby.eachLayer((layer) => {
+        const layerState = currentDashboard.getState(
           layer.options.incidentParams.Substance
         );
-        if (layerState == "gas") {
-          nearbyGas += layer.options.incidentParams["vol"];
-        } else if (layerState == "liquid") {
-          nearbyLiquid += layer.options.incidentParams["vol"];
+        if (layerState === "gas") {
+          nearbyGas += layer.options.incidentParams.vol;
+        } else if (layerState === "liquid") {
+          nearbyLiquid += layer.options.incidentParams.vol;
         } else {
-          nearbyOther += layer.options.incidentParams["vol"];
+          nearbyOther += layer.options.incidentParams.vol;
         }
       });
       let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
@@ -418,8 +468,8 @@ export class EventMap {
         </section>`;
       incidentFlag.innerHTML = nearbyText;
     } else {
-      let userZoom = L.featureGroup(allCircles);
-      let bounds = userZoom.getBounds();
+      const userZoom = L.featureGroup(allCircles);
+      const bounds = userZoom.getBounds();
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
       incidentFlag.innerHTML = `<section class="alert alert-warning">${this.lang.noNearby(
@@ -429,23 +479,23 @@ export class EventMap {
   }
 
   reZoom() {
-    let bounds = this.circles.getBounds();
+    const bounds = this.circles.getBounds();
     this.map.fitBounds(bounds);
   }
 
   resetMap() {
-    this.circles.eachLayer(function (layer) {
+    this.circles.eachLayer((layer) => {
       layer.setStyle({ fillOpacity: 0.7 });
     });
     this.reZoom();
   }
 
   fieldChange(newField) {
-    let newColors = this.colors[newField];
+    const newColors = this.colors[newField];
     this.field = newField;
-    var currentDashboard = this;
-    this.circles.eachLayer(function (layer) {
-      let newFill = newColors[layer.options.incidentParams[newField]];
+    const currentDashboard = this;
+    this.circles.eachLayer((layer) => {
+      const newFill = newColors[layer.options.incidentParams[newField]];
       layer.setStyle({
         fillColor: newFill,
       });
@@ -456,12 +506,12 @@ export class EventMap {
   }
 
   lookForSize() {
-    var currentDashboard = this;
-    var resize = false;
-    window.addEventListener("resize", function () {
+    const currentDashboard = this;
+    let resize = false;
+    window.addEventListener("resize", () => {
       resize = true;
     });
-    $(".tab > .tablinks").on("click", function (e) {
+    $(".tab > .tablinks").on("click", (e) => {
       if (resize) {
         currentDashboard.map.invalidateSize(true);
         resize = false;
@@ -474,44 +524,6 @@ export class EventMap {
 }
 
 export class EventNavigator {
-  greyScale = [
-    "#101010",
-    "#181818",
-    "#202020",
-    "#282828",
-    "#303030",
-    "#383838",
-    "#404040",
-    "#484848",
-    "#505050",
-    "#585858",
-    "#606060",
-    "#686868",
-    "#696969",
-    "#707070",
-    "#787878",
-    "#808080",
-    "#888888",
-    "#909090",
-    "#989898",
-    "#A0A0A0",
-    "#A8A8A8",
-    "#A9A9A9",
-    "#B0B0B0",
-    "#B8B8B8",
-    "#BEBEBE",
-    "#C0C0C0",
-    "#C8C8C8",
-    "#D0D0D0",
-    "#D3D3D3",
-    "#D8D8D8",
-    "#DCDCDC",
-    "#E0E0E0",
-    "#E8E8E8",
-    "#F0F0F0",
-    "#F5F5F5",
-    "#F8F8F8",
-  ];
   constructor({ plot, langPillTitles, height = 125, data = false }) {
     this.plot = plot;
     this.langPillTitles = langPillTitles;
@@ -523,49 +535,51 @@ export class EventNavigator {
     this.allDivs = [];
     this.height = height;
     this.data = data;
+    this.greyScale = greyScale;
   }
 
-  seriesify(name, series, colors, yVal) {
+  seriesify(name, series, yVal) {
     const seriesProps = (colors) => {
       if (colors) {
-        return function (key, value, name, yVal, colors) {
+        return function (key, value) {
           return {
             name: key,
-            data: [{ name: name, y: value[yVal] }],
+            data: [{ name, y: value[yVal] }],
             color: colors[name][key],
             filter: yVal,
           };
         };
-      } else {
-        return function (key, value, name, yVal, colors) {
-          return {
-            name: key,
-            data: [{ name: name, y: value[yVal] }],
-            filter: yVal,
-          };
-        };
       }
+      return function (key, value) {
+        return {
+          name: key,
+          data: [{ name, y: value[yVal] }],
+          filter: yVal,
+        };
+      };
     };
 
-    var seriesParams = seriesProps(colors);
-    let seriesList = [];
-    for (const [key, value] of Object.entries(series[name])) {
-      seriesList.push(seriesParams(key, value, name, yVal, colors));
-    }
+    const seriesParams = seriesProps(this.colors);
+    const seriesList = [];
+    Object.keys(series[name]).forEach((key) => {
+      const value = series[name][key];
+      seriesList.push(seriesParams(key, value, name, yVal, this.colors));
+    });
     return seriesList;
   }
 
   // usefull for names like "Status" that could use additional description
   pillName(name) {
-    if (this.langPillTitles.titles.hasOwnProperty(name)) {
+    if (
+      Object.prototype.hasOwnProperty.call(this.langPillTitles.titles, name)
+    ) {
       return this.langPillTitles.titles[name];
-    } else {
-      return `${name}`;
     }
+    return `${name}`;
   }
 
-  createBar(div, name, series, colors) {
-    var currentDashboard = this;
+  createBar(div, name, series) {
+    const currentDashboard = this;
     return new Highcharts.chart(div, {
       chart: {
         y: -30,
@@ -617,10 +631,11 @@ export class EventNavigator {
       tooltip: {
         snap: 0,
         useHTML: true,
-        formatter: function () {
+        formatter() {
           if (this.series.options.filter == "frequency") {
             return `${this.series.name} - ${this.y}`;
-          } else if (this.series.options.filter == "volume") {
+          }
+          if (this.series.options.filter == "volume") {
             return `${this.series.name} - <b>${Highcharts.numberFormat(
               this.y,
               0,
@@ -665,27 +680,27 @@ export class EventNavigator {
             },
           },
           events: {
-            legendItemClick: function () {
+            legendItemClick() {
               return false;
             },
           },
         },
       },
-      series: this.seriesify(name, series, colors, "frequency"),
+      series: this.seriesify(name, series, "frequency"),
     });
   }
 
   prepareData(barName) {
     // TODO: this would run faster if all series were made in one pass
-    var newBar = {};
+    let newBar = {};
     const addToSeries = (series, row, name) => {
       if (series.hasOwnProperty(row[name])) {
         series[row[name]].frequency += 1;
-        series[row[name]].volume += row["vol"];
+        series[row[name]].volume += row.vol;
       } else {
         series[row[name]] = {
           frequency: 1,
-          volume: row["vol"],
+          volume: row.vol,
         };
       }
       return series;
@@ -698,11 +713,11 @@ export class EventNavigator {
   }
 
   deactivateChart(bar) {
-    var chart = bar.chart;
-    let activeDiv = document.getElementById(bar.div);
-    let clickText = this.langPillTitles.click;
+    const { chart } = bar;
+    const activeDiv = document.getElementById(bar.div);
+    const clickText = this.langPillTitles.click;
     if (chart) {
-      let greyIndex = Math.floor(this.greyScale.length / chart.series.length);
+      const greyIndex = Math.floor(this.greyScale.length / chart.series.length);
       const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
       if (chart.series.length > 1) {
         var greyColors = every_nth(this.greyScale, greyIndex).reverse();
@@ -745,10 +760,10 @@ export class EventNavigator {
   }
 
   activateChart(bar) {
-    let chart = bar.chart;
-    let activeDiv = document.getElementById(bar.div);
+    const { chart } = bar;
+    const activeDiv = document.getElementById(bar.div);
     if (chart) {
-      let colors = this.barColors[bar.name];
+      const colors = this.barColors[bar.name];
       chart.series.map((s, i) => {
         chart.series[i].options.color = colors[s.name];
         chart.series[i].update(chart.series[i].options);
@@ -793,8 +808,8 @@ export class EventNavigator {
   }
 
   barEvents(bar) {
-    var barDiv = document.getElementById(bar.div);
-    var barNav = this;
+    const barDiv = document.getElementById(bar.div);
+    const barNav = this;
     function mouseOver() {
       if (bar.status !== "activated") {
         barDiv.style.opacity = 1;
@@ -845,33 +860,31 @@ export class EventNavigator {
       this.prepareData(barName);
     }
 
-    let newBar = {
-      chart: bar
-        ? this.createBar(div, barName, this.barSeries, this.barColors)
-        : false,
-      status: status,
-      div: div,
+    const newBar = {
+      chart: bar ? this.createBar(div, barName, this.barSeries) : false,
+      status,
+      div,
       name: barName,
     };
     this.allDivs.push(div);
     this.barList.push(newBar);
     this.bars[barName] = newBar;
-    if (status == "activated") {
+    if (status === "activated") {
       this.activateChart(newBar);
-    } else if ((status = "deactivated")) {
+    } else if (status === "deactivated") {
       this.deactivateChart(newBar);
     }
   }
 
   divEvents() {
-    this.barList.map((bar) => {
+    this.barList.forEach((bar) => {
       this.barEvents(bar);
     });
   }
 
   switchY(newY) {
-    this.barList.map((bar) => {
-      let newSeries = this.seriesify(bar.name, this.barSeries, undefined, newY);
+    this.barList.forEach((bar) => {
+      const newSeries = this.seriesify(bar.name, this.barSeries, newY);
       bar.chart.update({
         series: newSeries,
       });
@@ -880,15 +893,6 @@ export class EventNavigator {
 }
 
 export class EventTrend extends EventMap {
-  ONETOMANY = {
-    Substance: false,
-    Status: false,
-    Province: false,
-    what: true,
-    why: true,
-    category: true,
-  };
-
   constructor({
     eventType,
     field,
@@ -898,27 +902,33 @@ export class EventTrend extends EventMap {
     lang,
     definitions = {},
   }) {
-    super({ eventType: eventType, field: field });
+    super({ eventType, field });
     this.filters = filters;
     this.data = data;
     this.hcDiv = hcDiv;
     this.lang = lang;
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
+    this.ONETOMANY = ONETOMANY;
     this.displayDefinitions();
   }
 
   processEventsData(data, field) {
     const yField = (multipleValues) => {
       if (!multipleValues) {
-        return function (data) {
-          let series = {};
-          let uniqueYears = new Set();
-          data.map((row) => {
+        return function (events) {
+          const series = {};
+          const uniqueYears = new Set();
+          events.forEach((row) => {
             uniqueYears.add(row.Year);
-            if (series.hasOwnProperty(row[field])) {
-              if (series[row[field]].hasOwnProperty(row.Year)) {
-                series[row[field]][row.Year]++;
+            if (Object.prototype.hasOwnProperty.call(series, row[field])) {
+              if (
+                Object.prototype.hasOwnProperty.call(
+                  series[row[field]],
+                  row.Year
+                )
+              ) {
+                series[row[field]][row.Year] += 1;
               } else {
                 series[row[field]][row.Year] = 1;
               }
@@ -928,86 +938,91 @@ export class EventTrend extends EventMap {
           });
           return [series, Array.from(uniqueYears)];
         };
-      } else {
-        return function (data) {
-          let series = {};
-          let uniqueYears = new Set();
-          data.map((row) => {
-            uniqueYears.add(row.Year);
-            if (row[field].includes(",")) {
-              var itemList = row[field].split(",");
-              itemList = itemList.map((value) => {
-                return value.trim();
-              });
-            } else {
-              var itemList = [row[field]];
-            }
-            itemList.map((yVal) => {
-              if (series.hasOwnProperty(yVal)) {
-                if (series[yVal].hasOwnProperty(row.Year)) {
-                  series[yVal][row.Year]++;
-                } else {
-                  series[yVal][row.Year] = 1;
-                }
-              } else {
-                series[yVal] = { [row.Year]: 1 };
-              }
-            });
-          });
-          return [series, Array.from(uniqueYears)];
-        };
       }
+      return function (events) {
+        const series = {};
+        const uniqueYears = new Set();
+        events.forEach((row) => {
+          let itemList;
+          uniqueYears.add(row.Year);
+          if (row[field].includes(",")) {
+            itemList = row[field].split(",");
+            itemList = itemList.map((value) => value.trim());
+          } else {
+            itemList = [row[field]];
+          }
+          itemList.forEach((yVal) => {
+            if (Object.prototype.hasOwnProperty.call(series, yVal)) {
+              if (
+                Object.prototype.hasOwnProperty.call(series[yVal], row.Year)
+              ) {
+                series[yVal][row.Year] += 1;
+              } else {
+                series[yVal][row.Year] = 1;
+              }
+            } else {
+              series[yVal] = { [row.Year]: 1 };
+            }
+          });
+        });
+        return [series, Array.from(uniqueYears)];
+      };
     };
-    let seriesCounter = yField(this.ONETOMANY[field]);
-    let [series, uniqueYears] = seriesCounter(data);
-    let seriesList = [];
-    let dummySeries = { name: "dummy", showInLegend: false }; //makes sure that the x axis is in order
-    let dummyData = [];
-    uniqueYears.map((y, index) => {
+    const seriesCounter = yField(this.ONETOMANY[field]);
+    const [series, uniqueYears] = seriesCounter(data);
+    const seriesList = [];
+    const dummySeries = { name: "dummy", showInLegend: false }; // makes sure that the x axis is in order
+    const dummyData = [];
+    uniqueYears.forEach((y, index) => {
       if (
         y + 1 !== uniqueYears[index + 1] &&
         index !== uniqueYears.length - 1
       ) {
-        let firstYear = y;
-        let lastYear = uniqueYears[index + 1] - 1;
-        for (var i = firstYear; i <= lastYear; i++) {
+        const firstYear = y;
+        const lastYear = uniqueYears[index + 1] - 1;
+        for (let i = firstYear; i <= lastYear; i += 1) {
           dummyData.push({ name: i.toString(), y: undefined });
         }
       } else {
         dummyData.push({ name: y.toString(), y: undefined });
       }
     });
+
     dummySeries.data = dummyData;
     seriesList.push(dummySeries);
-
-    for (const [seriesName, seriesData] of Object.entries(series)) {
-      let hcData = [];
-      for (const [xVal, yVal] of Object.entries(seriesData)) {
-        hcData.push({ name: xVal, y: yVal }); // TODO: the year needs to be cast as a string here
-      }
+    Object.keys(series).forEach((seriesName) => {
+      const seriesData = series[seriesName];
+      const hcData = [];
+      Object.keys(seriesData).forEach((xVal) => {
+        const yVal = seriesData[xVal];
+        hcData.push({ name: xVal, y: yVal });
+      });
       seriesList.push({
         name: seriesName,
         data: hcData,
         color: this.applyColor(seriesName, field),
       });
-    }
+    });
     return seriesList;
   }
 
   yAxisTitle() {
-    if (this.filters.type == "frequency") {
+    if (this.filters.type === "frequency") {
       return `${this.lang.trendYTitle}`;
-    } else {
-      return "";
     }
+    return "";
   }
 
   pillNameSubstitution() {
-    if (this.lang.pillTitles.titles.hasOwnProperty(this.field)) {
+    if (
+      Object.prototype.hasOwnProperty.call(
+        this.lang.pillTitles.titles,
+        this.field
+      )
+    ) {
       return this.lang.pillTitles.titles[this.field];
-    } else {
-      return this.field;
     }
+    return this.field;
   }
 
   oneToManyDisclaimer() {
@@ -1015,17 +1030,16 @@ export class EventTrend extends EventMap {
       if (chart.customLabel) {
         chart.customLabel.destroy();
       }
-      chart.customLabel = undefined;
     };
     if (this.ONETOMANY[this.field]) {
       destoryLabel(this.chart);
+      this.chart.customLabel = undefined;
       let text = `<section class="alert alert-warning" style="padding:4px">`;
       text += `${this.lang.countDisclaimer(
         this.eventType,
         this.pillNameSubstitution()
       )}</section>`;
-      //activate the chart disclaimer
-      var label = this.chart.renderer
+      const label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
         .attr({
           padding: 0,
@@ -1049,12 +1063,13 @@ export class EventTrend extends EventMap {
       this.chart.customLabel = label;
     } else {
       destoryLabel(this.chart);
+      this.chart.customLabel = undefined;
     }
   }
 
   displayDefinitions() {
-    var definitionsPopUp = document.getElementById("trend-definitions");
-    if (this.definitions.hasOwnProperty(this.field)) {
+    const definitionsPopUp = document.getElementById("trend-definitions");
+    if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
       visibility(["trend-definitions"], "show");
       definitionsPopUp.innerHTML = this.lang.barClick(
         this.pillNameSubstitution()
@@ -1067,7 +1082,7 @@ export class EventTrend extends EventMap {
   }
 
   createChart() {
-    let currentTrend = this;
+    const currentTrend = this;
     this.chart = new Highcharts.chart(this.hcDiv, {
       chart: {
         type: "column",
@@ -1100,15 +1115,15 @@ export class EventTrend extends EventMap {
         series: {
           animation: false,
           events: {
-            click: function () {
+            click() {
               if (currentTrend.onClickDefinition) {
-                var definitionsPopUp = document.getElementById(
+                const definitionsPopUp = document.getElementById(
                   "trend-definitions"
                 );
-                let keyColor =
+                const keyColor =
                   currentTrend.colors[currentTrend.field][this.name];
 
-                let key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
+                const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
                 definitionsPopUp.innerHTML =
                   key + currentTrend.definitions[currentTrend.field][this.name];
               }
@@ -1120,14 +1135,15 @@ export class EventTrend extends EventMap {
       series: this.processEventsData(this.data, this.field),
     });
   }
+
   fieldChange(newField) {
     if (newField !== this.field) {
       this.field = newField;
-      let newSeries = this.processEventsData(this.data, newField);
+      const newSeries = this.processEventsData(this.data, newField);
       while (this.chart.series.length) {
         this.chart.series[0].remove();
       }
-      newSeries.map((series) => {
+      newSeries.forEach((series) => {
         this.chart.addSeries(series, false);
       });
       this.oneToManyDisclaimer();
@@ -1137,8 +1153,8 @@ export class EventTrend extends EventMap {
   }
 
   updateRadius() {
-    let newSeries = this.processEventsData(this.data, this.field);
-    let currentTrend = this;
+    const newSeries = this.processEventsData(this.data, this.field);
+    const currentTrend = this;
     this.chart.update({
       series: newSeries,
       yAxis: {
@@ -1151,10 +1167,6 @@ export class EventTrend extends EventMap {
 }
 
 export class KeyPointMap {
-  colors = {
-    active: cerPalette["Sun"],
-    deactivated: cerPalette["Cool Grey"],
-  };
   constructor({
     points,
     selected,
@@ -1164,45 +1176,46 @@ export class KeyPointMap {
     lang = {},
   }) {
     this.points = points;
-    this.selected = this.selectedPointNames(selected);
+    this.selected = this.constructor.selectedPointNames(selected);
     this.initZoomTo = initZoomTo;
     this.leafletDiv = leafletDiv;
     this.companyName = companyName;
     this.lang = lang;
     this.mapDisclaimer = undefined;
+    this.colors = {
+      active: cerPalette.Sun,
+      deactivated: cerPalette["Cool Grey"],
+    };
     this.getInits(companyName, points);
   }
 
-  selectedPointNames(pointObj) {
-    return pointObj.map((p) => {
-      return p.name;
-    });
+  static selectedPointNames(s) {
+    return s.map((p) => p.name);
   }
 
   getInits(companyName, points) {
+    let minRadius = 30000;
+    let padding = [30, 30];
     if (
       ["TransCanada PipeLines Limited", "Enbridge Pipelines Inc."].includes(
         companyName
       )
     ) {
-      var minRadius = 50000;
-      var padding = [0, 0];
-    } else if (companyName == "Trans Mountain Pipeline ULC") {
-      var minRadius = 2000;
-      var padding = [60, 60];
-    } else if (points.length == 1) {
-      var minRadius = 30000;
-      var padding = [150, 150];
-    } else {
-      var minRadius = 30000;
-      var padding = [30, 30];
+      minRadius = 50000;
+      padding = [0, 0];
+    } else if (companyName === "Trans Mountain Pipeline ULC") {
+      minRadius = 2000;
+      padding = [60, 60];
+    } else if (points.length === 1) {
+      minRadius = 30000;
+      padding = [150, 150];
     }
     this.minRadius = minRadius;
     this.padding = padding;
   }
 
   addBaseMap() {
-    var map = leafletBaseMap({
+    const map = leafletBaseMap({
       div: this.leafletDiv,
       zoomSnap: 0.25,
       zoomDelta: 0.25,
@@ -1217,13 +1230,13 @@ export class KeyPointMap {
 
   reZoom(zoomIn = true) {
     if (zoomIn) {
-      var zoomRadius = this.minRadius;
-      this.keyPoints.eachLayer(function (layer) {
+      const zoomRadius = this.minRadius;
+      this.keyPoints.eachLayer((layer) => {
         layer.setRadius(zoomRadius);
       });
       this.map.fitBounds(this.keyPoints.getBounds(), { padding: this.padding });
     } else {
-      this.keyPoints.eachLayer(function (layer) {
+      this.keyPoints.eachLayer((layer) => {
         layer.setRadius(100000);
       });
       this.map.setView(this.initZoomTo, 2.5);
@@ -1232,26 +1245,31 @@ export class KeyPointMap {
 
   addCircle(x, y, color, fillColor, fillOpacity, r, name) {
     return L.circle([x, y], {
-      color: color,
-      fillColor: fillColor,
-      fillOpacity: fillOpacity,
+      color,
+      fillColor,
+      fillOpacity,
       radius: this.minRadius,
       volRadius: r,
       weight: 1,
-      name: name,
+      name,
     }).bindTooltip(`<strong>${name}</strong>`);
   }
 
   addPoints() {
-    let allPoints = this.points.map((point) => {
-      if (this.selected.includes(point["name"])) {
-        var pointColor = this.colors.active;
-        var pointOpacity = 1;
-        var toFront = true;
+    const allPoints = this.points.map((point) => {
+      let [pointColor, pointOpacity, toFront] = [
+        undefined,
+        undefined,
+        undefined,
+      ];
+      if (this.selected.includes(point.name)) {
+        pointColor = this.colors.active;
+        pointOpacity = 1;
+        toFront = true;
       } else {
-        var pointColor = this.colors.deactivated;
-        var pointOpacity = 0.5;
-        var toFront = false;
+        pointColor = this.colors.deactivated;
+        pointOpacity = 0.5;
+        toFront = false;
       }
       return this.addCircle(
         point.loc[0],
@@ -1260,14 +1278,14 @@ export class KeyPointMap {
         pointColor,
         pointOpacity,
         this.minRadius,
-        point["name"],
+        point.name,
         toFront
       );
     });
     this.keyPoints = L.featureGroup(allPoints).addTo(this.map);
     const thisMap = this;
-    this.keyPoints.eachLayer(function (layer) {
-      if (layer.options.name == thisMap.selected) {
+    this.keyPoints.eachLayer((layer) => {
+      if (layer.options.name === thisMap.selected) {
         layer.bringToFront();
       }
     });
@@ -1275,9 +1293,9 @@ export class KeyPointMap {
   }
 
   pointChange(newPoint) {
-    this.selected = this.selectedPointNames(newPoint);
+    this.selected = this.constructor.selectedPointNames(newPoint);
     const thisMap = this;
-    this.keyPoints.eachLayer(function (layer) {
+    this.keyPoints.eachLayer((layer) => {
       if (thisMap.selected.includes(layer.options.name)) {
         layer.setStyle({
           fillColor: thisMap.colors.active,

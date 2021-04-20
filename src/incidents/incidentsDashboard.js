@@ -1,16 +1,16 @@
-import { visibility } from "../modules/util.js";
-import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard.js";
+import { visibility } from "../modules/util";
+import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
   const field = "Substance";
   const filters = { type: "frequency" };
 
-  const setTitle = (lang, meta) => {
+  const setTitle = (language, meta) => {
     try {
       document.getElementById(
         "incidents-dashboard-title"
-      ).innerHTML = lang.title(meta.systemName);
+      ).innerHTML = language.title(meta.systemName);
     } catch (err) {
       document.getElementById(
         "incidents-dashboard-title"
@@ -21,9 +21,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
   const incidentBar = (data, map, langPillTitles) => {
     const barNav = new EventNavigator({
       plot: map,
-      langPillTitles: langPillTitles,
+      langPillTitles,
       pillWidth: 124,
-      data: data,
+      data,
     });
     barNav.makeBar("Substance", "substance-bar", "activated", true);
     barNav.makeBar("Status", "status-bar", "deactivated", true);
@@ -33,14 +33,14 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return barNav;
   };
 
-  const incidentMap = (field, filters, lang) => {
+  const incidentMap = (mapField, mapFilters, mapLang) => {
     const map = new EventMap({
-      eventType: eventType,
-      field: field,
-      filters: filters,
+      eventType,
+      field: mapField,
+      filters: mapFilters,
       minRadius: 14000,
       leafletDiv: "incident-map",
-      lang: lang,
+      lang: mapLang,
     });
     map.addBaseMap();
     map.processEventsData(incidentData);
@@ -48,11 +48,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return map;
   };
 
-  const incidentTimeSeries = (field, filters, lang) => {
+  const incidentTimeSeries = (timeField, timeFilters) => {
     const timeSeries = new EventTrend({
-      eventType: eventType,
-      field: field,
-      filters: filters,
+      eventType,
+      field: timeField,
+      filters: timeFilters,
       data: incidentData,
       hcDiv: "time-series",
       lang: lang.dashboard,
@@ -75,30 +75,30 @@ export async function mainIncidents(incidentData, metaData, lang) {
   };
 
   function buildDashboard() {
-    if (!incidentData.length == 0) {
+    if (incidentData.length > 0) {
       try {
+        const chartParams = metaData;
         // add the system name to metadata
         try {
-          metaData.systemName = lang.companyToSystem[metaData.companyName];
+          chartParams.systemName = lang.companyToSystem[metaData.companyName];
         } catch (err) {
-          metaData.systemName = metaData.companyName;
+          chartParams.systemName = metaData.companyName;
         }
 
-        lang.dynamicText("system-incidents-paragraph", metaData);
+        lang.dynamicText("system-incidents-paragraph", chartParams);
 
-        setTitle(lang, metaData);
-        //generateDynamicIncidentText(metaData);
+        setTitle(lang, chartParams);
         const thisMap = incidentMap(field, filters, lang.dashboard);
         const bars = incidentBar(
           incidentData,
           thisMap,
           lang.dashboard.pillTitles
         );
-        const trends = incidentTimeSeries(field, filters, lang);
+        const trends = incidentTimeSeries(field, filters);
         const volumeBtn = document.getElementById("incident-volume-btn");
         // user selection to show volume or incident frequency
-        $("#inline_content input[name='type']").click(function () {
-          var btnValue = $("input:radio[name=type]:checked").val();
+        $("#inline_content input[name='type']").click(() => {
+          const btnValue = $("input:radio[name=type]:checked").val();
           thisMap.filters.type = btnValue;
           trends.filters.type = btnValue;
           bars.switchY(btnValue);
@@ -109,7 +109,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
             thisMap.removeMapDisclaimer("volume");
           }
         });
-        if (incidentData.length == 1) {
+        if (incidentData.length === 1) {
           // if there is only one incident, then disable the select volume option
           volumeBtn.disabled = true;
         }
@@ -118,10 +118,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
         $("#incident-view-type button").on("click", function () {
           $(".btn-incident-view-type > .btn").removeClass("active");
           $(this).addClass("active");
-          var btnValue = $(this).val();
-          var dashboardDivs = ["incident-map", "nearby-incidents-popup"].concat(
-            bars.allDivs
-          );
+          const btnValue = $(this).val();
+          const dashboardDivs = [
+            "incident-map",
+            "nearby-incidents-popup",
+          ].concat(bars.allDivs);
           if (btnValue !== "trends") {
             visibility(dashboardDivs, "show");
             visibility(["time-series-section"], "hide");
@@ -140,9 +141,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
         // user selection for finding nearby incidents
         $("#incident-range-slide").on("change", function () {
-          let slide = $(this);
-          let findIncidentBtn = document.getElementById("find-incidents-btn");
-          let findIncidentTitle = document.getElementById(
+          const slide = $(this);
+          const findIncidentBtn = document.getElementById("find-incidents-btn");
+          const findIncidentTitle = document.getElementById(
             "find-incidents-title"
           );
           findIncidentBtn.innerText = `${
@@ -155,11 +156,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
         });
 
         // user selects a range to find nearby incidents
-        $("#find-incidents-btn").on("click", function () {
-          var resetBtn = document.getElementById("reset-incidents-btn");
-          let range = document.getElementById("find-incidents-btn").value;
+        $("#find-incidents-btn").on("click", () => {
+          const resetBtn = document.getElementById("reset-incidents-btn");
+          const range = document.getElementById("find-incidents-btn").value;
           if (!thisMap.user.latitude && !thisMap.user.longitude) {
-            var loadDisclaimer = setTimeout(function () {
+            const loadDisclaimer = setTimeout(() => {
               thisMap.addMapDisclaimer("location");
             }, 200);
             thisMap
@@ -172,7 +173,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
                 resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
               })
               .catch((error) => {
-                var incidentFlag = document.getElementById("nearby-flag");
+                const incidentFlag = document.getElementById("nearby-flag");
                 incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
                 clearTimeout(loadDisclaimer);
                 thisMap.removeMapDisclaimer("location");
@@ -185,9 +186,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
         });
 
         // reset map after user has selected a range
-        $("#reset-incidents-btn").on("click", function () {
+        $("#reset-incidents-btn").on("click", () => {
           thisMap.resetMap();
-          var resetBtn = document.getElementById("reset-incidents-btn");
+          const resetBtn = document.getElementById("reset-incidents-btn");
           resetBtn.disabled = true;
           resetBtn.className = "btn btn-default col-md-12";
           document.getElementById("nearby-flag").innerHTML = ``;
@@ -197,7 +198,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       }
     } else {
       // no incidents data
-      let noIncidents = document.getElementById("incidents-dashboard");
+      const noIncidents = document.getElementById("incidents-dashboard");
       let noIncidentsHTML = `<section class="alert alert-warning"><h3>${lang.noIncidents.header}</h3>`;
       noIncidentsHTML += `<p>${lang.noIncidents.note(
         metaData.companyName
