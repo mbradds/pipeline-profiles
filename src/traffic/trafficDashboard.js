@@ -573,7 +573,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             formatter() {
               return lang.numberFormat(
                 this.value,
-                metaData.commodity == "oil" ? 0 : 1
+                metaData.commodity === "oil" ? 0 : 1
               );
             },
           },

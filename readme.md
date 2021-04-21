@@ -311,6 +311,6 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
 - Add "tie" corner case handling for most common incident what/why in the most_common method: `src/data_management/util.py`. Also make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
-- Change in progress and closed definition boxes into expandible dropdowns.
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
 - Add an option in incidents and conditions py for direct connection to cer infrastructure.
+- Add missing (non consecutive) date/data handling for traffic and apportionment

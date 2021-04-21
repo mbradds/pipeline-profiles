@@ -138,10 +138,7 @@ def meta_throughput(df_c, meta, data):
 
     df_meta = df_meta.reset_index()
     for col in ['direction', 'trade']:
-        # df_meta[col] = [" & ".join(list(x)) for x in df_meta[col]]
         df_meta[col] = [list(x) for x in df_meta[col]]
-    # for col in df_meta:
-    #     df_meta[col] = [x.strip() for x in df_meta[col]]
 
     directions = {}
     for key, flow, trade in zip(df_meta['Key Point'], df_meta['direction'], df_meta['trade']):
