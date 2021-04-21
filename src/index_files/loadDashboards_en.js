@@ -7,6 +7,8 @@ import { mainIncidents } from "../incidents/incidentsDashboard";
 import { englishDashboard } from "../modules/langEnglish";
 // traffic
 import { mainTraffic } from "../traffic/trafficDashboard";
+// apportionment
+import { mainApportion } from "../apportionment/apportionmentDashboard";
 
 console.time(`first content loading`);
 
@@ -31,6 +33,7 @@ export async function loadAllCharts(data, plains = false) {
       data.incidentData.meta,
       englishDashboard.incidents
     ),
+    mainApportion(data.apportionData, englishDashboard.apportion),
   ];
 
   function plainsMidstreamProfile(lang, div) {

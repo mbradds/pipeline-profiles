@@ -138,7 +138,23 @@ def company_rename():
     return names
 
 
+def conversion(df, commodity, dataCols, rounding=False, fillna=False):
+    if commodity == 'gas':
+        conv = 28316.85
+    elif commodity == "oil":
+        conv = 6.2898
+
+    for col in dataCols:
+        if fillna:
+            df[col] = df[col].fillna(fillna)
+        if commodity == "oil":
+            df[col] = [x*conv if not pd.isnull(x) else x for x in df[col]]
+        else:
+            df[col] = [x/conv if not pd.isnull(x) else x for x in df[col]]
+        if rounding:
+            df[col] = df[col].round(rounding)
+    return df
+
+
 if __name__ == "__main__":
     None
-
-

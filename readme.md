@@ -314,3 +314,4 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
 - Add an option in incidents and conditions py for direct connection to cer infrastructure.
 - Add missing (non consecutive) date/data handling for traffic and apportionment
+- As the more sections are added, the case grows for templating the html better. It is very rare that a pipeline system will have all "sections" of the profiles, so there is alot of hiding/showing divs on each page. On slow connections the user may see this layout thrashing. Look into using handlebars for webpack: https://github.com/pcardune/handlebars-loader

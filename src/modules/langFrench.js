@@ -28,6 +28,13 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "Gazoduc M&NP",
 };
 
+const units = {
+  "Bcf/d": "Bcf/d FR",
+  "Million m3/d": "Million m3/d FR",
+  "Mb/d": "Thousand b/d FR",
+  "Thousand m3/d": "Thousand m3/d FR",
+};
+
 const numberFormat = (value, rounding = 2) =>
   Highcharts.numberFormat(value, rounding, ",", " ");
 
@@ -275,15 +282,10 @@ export const frenchDashboard = {
     },
   },
   traffic: {
+    units,
     dynamicText: trafficTrendTextFra,
     numberFormat,
     descriptions: { noPoint: "Description coming soon!" },
-    units: {
-      "Bcf/d": "Bcf/d FR",
-      "Million m3/d": "Million m3/d FR",
-      "Mb/d": "Thousand b/d FR",
-      "Thousand m3/d": "Thousand m3/d FR",
-    },
     directions: {
       north: "nord",
       east: "est",
@@ -471,5 +473,8 @@ export const frenchDashboard = {
       11: "nov",
       12: "déc",
     },
+  },
+  apportion: {
+    units,
   },
 };
