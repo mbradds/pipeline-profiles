@@ -6,6 +6,7 @@ import {
   arrAvg,
   listOrParagraph,
   addSeriesParams,
+  addUnitsAndSetup,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
@@ -42,53 +43,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       };
     });
     return sortJsonAlpha(pointList, "name");
-  }
-
-  function addUnitsAndSetup(defaultUnit, defaultPoint) {
-    const commodity = defaultUnit === "Mb/d" ? "oil" : "gas";
-    const unitsHolder = {
-      base: lang.units[defaultUnit],
-      current: lang.units[defaultUnit],
-    };
-
-    const radioBtn = (unit, checked, i) => {
-      let checkhtml = " ";
-      if (checked) {
-        checkhtml = 'checked="checked"';
-      }
-      return `<label for="units${i}" class="radio-inline">
-    <input id="units${i}" value="${unit}" type="radio"${checkhtml}name="trafficUnits" />
-    ${unit}</label>`;
-    };
-    let [buildFive, hasImports] = [false, false];
-    let secondUnit = "";
-    if (defaultUnit === "Bcf/d") {
-      secondUnit = "Million m3/d";
-      const fiveYearDiv = document.createElement("div");
-      fiveYearDiv.setAttribute("id", "traffic-hc-range");
-      document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
-      if (defaultPoint.id === "7") {
-        // 7 = St. Stephen
-        hasImports = true;
-      }
-      buildFive = true;
-
-      unitsHolder.conversion = conversions["Bcf/d to Million m3/d"];
-    } else if (defaultUnit === "Mb/d") {
-      secondUnit = "Thousand m3/d";
-      unitsHolder.conversion = conversions["Mb/d to Thousand m3/d"];
-    }
-
-    let buttonHTML = "";
-    [
-      [lang.units[defaultUnit], true],
-      [lang.units[secondUnit], false],
-    ].forEach((unit, i) => {
-      buttonHTML += radioBtn(unit[0], unit[1], i);
-    });
-    document.getElementById("select-units-radio").innerHTML = buttonHTML;
-    const tm = defaultPoint.id === "35"; // 35 = Burnaby
-    return { unitsHolder, buildFive, hasImports, tm, commodity };
   }
 
   const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
@@ -628,7 +582,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function buildDashboard() {
     try {
       const defaultPoint = getKeyPoint(metaData.defaultPoint);
-      const chartParams = addUnitsAndSetup(metaData.units, defaultPoint);
+      const chartParams = addUnitsAndSetup(
+        metaData.units,
+        defaultPoint,
+        lang.units,
+        "traffic"
+      );
       // TODO: use speread operators here to make copies
       chartParams.defaultPoint = defaultPoint;
       chartParams.points = getPointList(metaData);
@@ -831,7 +790,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
 
       // user selects units
-      $("#select-units-radio input[name='trafficUnits']").click(() => {
+      $("#select-units-radio-traffic input[name='trafficUnits']").click(() => {
         chartParams.unitsHolder.current = $(
           "input:radio[name=trafficUnits]:checked"
         ).val();

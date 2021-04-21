@@ -196,7 +196,7 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
       checkhtml = 'checked="checked"';
     }
     return `<label for="units${i}_${s}" class="radio-inline">
-  <input id="units${i}_${s}" value="${unit}" type="radio"${checkhtml}name="trafficUnits" />
+  <input id="units${i}_${s}" value="${unit}" type="radio"${checkhtml}name="${section}Units" />
   ${unit}</label>`;
   };
   let [buildFive, hasImports] = [false, false];
@@ -228,6 +228,6 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   document.getElementById(
     `select-units-radio-${section}`
   ).innerHTML = buttonHTML;
-  const tm = defaultPoint.id === "35"; // 35 = Burnaby
+  const tm = defaultPoint.id === "35";
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }

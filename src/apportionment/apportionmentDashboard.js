@@ -8,11 +8,6 @@ import {
 } from "../modules/util";
 
 export async function mainApportion(apportionData, lang) {
-  // const unitsHolder = {
-  //   base: "Mb/d",
-  //   current: "Mb/d",
-  // };
-
   function buildApportionSeries(seriesWithDate, unitsHolder) {
     const series = addSeriesParams(
       seriesWithDate,
@@ -28,9 +23,7 @@ export async function mainApportion(apportionData, lang) {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
-        marginRight: 0,
-        spacingTop: 5,
-        spacingBottom: 5,
+        spacingLeft: 0,
         animation: false,
       },
       xAxis: {
@@ -65,18 +58,30 @@ export async function mainApportion(apportionData, lang) {
       series,
     });
   }
-  try {
-    const {
-      unitsHolder,
-      buildFive,
-      hasImports,
-      tm,
-      commodity,
-    } = addUnitsAndSetup("Mb/d", { id: undefined }, lang.units, "apportion");
-    const series = buildApportionSeries(apportionData.series, unitsHolder);
-    console.log(series);
-    const chart = buildApportionChart(series, "", unitsHolder.current);
-  } catch (err) {
-    console.log(err);
+
+  function buildDecision() {
+    if (apportionData.build) {
+      try {
+        const {
+          unitsHolder,
+          buildFive,
+          hasImports,
+          tm,
+          commodity,
+        } = addUnitsAndSetup(
+          "Mb/d",
+          { id: undefined },
+          lang.units,
+          "apportion"
+        );
+        const series = buildApportionSeries(apportionData.series, unitsHolder);
+        const chart = buildApportionChart(series, "", unitsHolder.current);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      visibility(["apportionment-section"], "hide");
+    }
   }
+  return buildDecision();
 }

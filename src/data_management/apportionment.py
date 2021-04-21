@@ -85,7 +85,7 @@ def process_apportionment(test=False, sql=False, companies=False):
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
-            thisCompanyData['buildApportionment'] = True
+            thisCompanyData['build'] = True
             df_c = df_c.drop_duplicates(subset=['Date'])
             df_c = df_c.sort_values(by='Date')
             minDate = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
