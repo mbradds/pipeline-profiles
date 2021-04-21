@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_dates, get_company_names, normalize_text, normalize_numeric
+from util import execute_sql, normalize_text, normalize_numeric, conversion
 import os
 import json
 import dateutil.relativedelta
@@ -239,18 +239,6 @@ def getDefaultPoint(company):
         return None
 
 
-def conversion(df, data):
-    if data == 'gas':
-        for col in ['Capacity (1000 m3/d)', 'Throughput (1000 m3/d)']:
-            df[col] = df[col].fillna(0)
-            df[col] = [x/28316.85 for x in df[col]]
-    else:
-        for col in ['Capacity', 'Throughput']:
-            df[col] = df[col].fillna(0)
-            df[col] = [(x*6.2898) for x in df[col]]
-    return df
-
-
 def process_throughput(test=False,
                        sql=False,
                        commodity='gas',
@@ -274,9 +262,9 @@ def process_throughput(test=False,
             query = 'throughput_gas.sql'
 
         df = get_data(test, sql, query)
-        df = conversion(df, commodity)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
+
         df = df.drop(df[(df['Key Point'] == "Saturn") & (df['Throughput'] == 0)].index)
         units = "Bcf/d"
 
@@ -285,11 +273,11 @@ def process_throughput(test=False,
         df = get_data(test, sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
-        df = conversion(df, commodity)
         df['Trade Type'] = [str(p).strip() for p in df['Product']]
         del df['Product']
         units = "Mb/d"
 
+    df = conversion(df, commodity, ['Capacity', 'Throughput'], False, 0)
     df = fixKeyPoint(df)
     df = addIds(df)
     points = get_data(False, sql, 'key_points.sql')

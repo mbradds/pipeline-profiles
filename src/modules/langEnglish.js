@@ -28,9 +28,18 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
 };
 
-const numberFormat = (value, rounding = 2) => Highcharts.numberFormat(value, rounding, ".", ",");
+const units = {
+  "Bcf/d": "Bcf/d",
+  "Million m3/d": "Million m3/d",
+  "Mb/d": "Thousand b/d",
+  "Thousand m3/d": "Thousand m3/d",
+};
 
-const dateFormat = (value, format = "%b %d, %Y") => Highcharts.dateFormat(format, value);
+const numberFormat = (value, rounding = 2) =>
+  Highcharts.numberFormat(value, rounding, ".", ",");
+
+const dateFormat = (value, format = "%b %d, %Y") =>
+  Highcharts.dateFormat(format, value);
 
 export const englishDashboard = {
   plains:
@@ -43,15 +52,20 @@ export const englishDashboard = {
     conditions: "conditions",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
-      summary: (companyName) => `No geographic location summary for ${companyName}:`,
+      summary: (companyName) =>
+        `No geographic location summary for ${companyName}:`,
     },
     title: {
-      noLocation: (companyName) => `Dashboard: ${companyName} - no geographic location`,
-      location: (companyName, column) => `Dashboard: ${companyName} - ${column} Conditions by Region`,
+      noLocation: (companyName) =>
+        `Dashboard: ${companyName} - no geographic location`,
+      location: (companyName, column) =>
+        `Dashboard: ${companyName} - ${column} Conditions by Region`,
     },
     table: {
-      projectsTitle: (column) => `Projects with ${column} Conditions (click to open REGDOCS* project folder):`,
-      themesTitle: (column) => `${column} Condition Themes (click to view theme definition):`,
+      projectsTitle: (column) =>
+        `Projects with ${column} Conditions (click to open REGDOCS* project folder):`,
+      themesTitle: (column) =>
+        `${column} Condition Themes (click to view theme definition):`,
       regdocsDefinition:
         "*REGDOCS is a regulatory database for activities and transactions conducted at the CER.",
     },
@@ -113,13 +127,15 @@ export const englishDashboard = {
     },
     noConditions: {
       header: "No conditions data available",
-      note: (companyName) => `There is no conditions data available for ${companyName}. If data becomes available, or conditions are issued by the commission, they will show up here.`,
+      note: (companyName) =>
+        `There is no conditions data available for ${companyName}. If data becomes available, or conditions are issued by the commission, they will show up here.`,
     },
   },
   incidents: {
     dynamicText: incidentsTextEng,
     companyToSystem,
-    title: (systemName) => `Dashboard: ${systemName} - Incidents with a product release`,
+    title: (systemName) =>
+      `Dashboard: ${systemName} - Incidents with a product release`,
     definitions: {
       Status: {
         Closed:
@@ -186,19 +202,23 @@ export const englishDashboard = {
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       locationDisclaimer: "Waiting for your location...",
-      countDisclaimer: (eventType, field) => `<p>${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.</p>`,
+      countDisclaimer: (eventType, field) =>
+        `<p>${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.</p>`,
       userPopUp:
         "Approximate location. You can drag this marker around to explore incident events in other locations.",
       locationError:
         "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.",
-      nearbyHeader: (numCircles, range) => `There are ${numCircles} incidents within ${range} km`,
+      nearbyHeader: (numCircles, range) =>
+        `There are ${numCircles} incidents within ${range} km`,
       gasRelease: "Estimated gas volume released:",
       liquidRelease: "Estimated liquid volume released:",
       otherRelease: "Estimated miscellaneous release:",
       exploreOther:
         "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.",
-      noNearby: (eventType) => `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
-      barClick: (field) => `<p>Click on a bar to view ${field} sub definition</p>`,
+      noNearby: (eventType) =>
+        `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
+      barClick: (field) =>
+        `<p>Click on a bar to view ${field} sub definition</p>`,
       legendClick: "Click on a legend item to remove it from the chart",
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
@@ -261,18 +281,14 @@ export const englishDashboard = {
     },
     noIncidents: {
       header: "No incidents data available",
-      note: (companyName) => `There are no records in the CER's incident data for ${companyName}. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.`,
+      note: (companyName) =>
+        `There are no records in the CER's incident data for ${companyName}. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.`,
     },
   },
   traffic: {
+    units,
     dynamicText: trafficTrendTextEng,
     numberFormat,
-    units: {
-      "Bcf/d": "Bcf/d",
-      "Million m3/d": "Million m3/d",
-      "Mb/d": "Thousand b/d",
-      "Thousand m3/d": "Thousand m3/d",
-    },
     directions: {
       north: "north",
       east: "east",
@@ -460,5 +476,8 @@ export const englishDashboard = {
       11: "Nov",
       12: "Dec",
     },
+  },
+  apportion: {
+    units,
   },
 };

@@ -5,6 +5,7 @@ import {
   sortJsonAlpha,
   arrAvg,
   listOrParagraph,
+  addSeriesParams,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
@@ -244,110 +245,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return fiveYrTrend;
     }
     return undefined;
-  }
-
-  function addSeriesParams(seriesWithDate, unitsHolder, buildFive) {
-    const minDate = seriesWithDate[0].min;
-    let series = seriesWithDate.slice(1);
-    series = sortJsonAlpha(series, "name");
-
-    const isCapacity = (seriesName) => {
-      if (
-        seriesName === "Capacity" ||
-        seriesName === "Import Capacity" ||
-        seriesName === "Export Capacity"
-      ) {
-        return true;
-      }
-      return false;
-    };
-
-    const addRow = (units, frequency, seriesName, buildFiveYr) => {
-      const incremendDate = (f) => {
-        if (f === "daily") {
-          return function (date) {
-            return date.setDate(date.getDate() + 1);
-          };
-        }
-        return function (date) {
-          return date.setMonth(date.getMonth() + 1);
-        };
-      };
-
-      const calcRowUnits = (u) => {
-        if (u.base !== u.current) {
-          return function (row) {
-            return row ? row * u.conversion : null;
-          };
-        }
-        return function (row) {
-          return row;
-        };
-      };
-
-      const dateFunction = incremendDate(frequency);
-      const rowFunction = calcRowUnits(units);
-      if (!isCapacity(seriesName)) {
-        if (buildFiveYr) {
-          return function (row, startDate) {
-            const nextDate = dateFunction(startDate);
-            return [nextDate, rowFunction(row)];
-          };
-        }
-        return function (row, startDate) {
-          const nextDate = dateFunction(startDate);
-          return [nextDate, rowFunction(row)];
-        };
-      }
-      return function (row, startDate) {
-        const nextDate = dateFunction(startDate);
-        return [nextDate, rowFunction(row)];
-      };
-    };
-
-    const fiveYearData = {};
-    const newSeries = series.map((s) => {
-      const nextSeries = {};
-      const startd = new Date(minDate[0], minDate[1], minDate[2]);
-
-      nextSeries.id = s.name;
-      Object.keys(s).forEach((key) => {
-        const value = s[key];
-        if (key !== "data") {
-          nextSeries[key] = value;
-        }
-      });
-
-      const addFunction = addRow(
-        unitsHolder,
-        metaData.frequency,
-        s.name,
-        buildFive
-      );
-      nextSeries.data = s.data.map((row) => {
-        const [nextDate, rowCalc] = addFunction(row, startd);
-        fiveYearData[nextDate] = rowCalc;
-        fiveYearData.lastDate = nextDate;
-        return [nextDate, rowCalc];
-      });
-
-      if (isCapacity(nextSeries.name)) {
-        nextSeries.type = "line";
-        nextSeries.zIndex = 6;
-        nextSeries.lineWidth = 3;
-      } else {
-        nextSeries.type = "area";
-        nextSeries.zIndex = 5;
-        nextSeries.lineWidth = 1;
-      }
-      nextSeries.marker = { enabled: false };
-      return nextSeries;
-    });
-
-    if (buildFive) {
-      return [newSeries, createFiveYearSeries(fiveYearData)];
-    }
-    return [newSeries, undefined];
   }
 
   const addToolRow = (p, unit, round, extraStyle = "") => {
@@ -773,6 +670,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
         chartParams.unitsHolder,
         chartParams.buildFive
       );
+      if (fiveSeries) {
+        fiveSeries = createFiveYearSeries(fiveSeries);
+      }
 
       let trafficChart = buildTrafficChart(
         timeSeries,
@@ -818,6 +718,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
             chartParams.unitsHolder,
             chartParams.buildFive
           );
+
+          if (fiveSeries) {
+            fiveSeries = createFiveYearSeries(fiveSeries);
+          }
 
           [trafficChart, chartParams.hasImports] = updateSeries(
             trafficChart,
@@ -936,6 +840,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
           chartParams.unitsHolder,
           chartParams.buildFive
         );
+        if (fiveSeries) {
+          fiveSeries = createFiveYearSeries(fiveSeries);
+        }
         trafficChart.update(
           {
             series: timeSeries,

@@ -1,8 +1,7 @@
 import pandas as pd
-from util import execute_sql, normalize_dates, get_company_names, normalize_text, normalize_numeric
+from util import normalize_dates, conversion, normalize_numeric
 import dateutil.relativedelta
 from traffic import get_data, addIds
-import os
 import json
 
 
@@ -44,6 +43,10 @@ def process_apportionment(test=False, sql=False, companies=False):
     df = addIds(df)
     del df['Pipeline Name']
     df = df.rename(columns={x: x.split("(")[0].strip() for x in df.columns})
+    numCols = ['Available Capacity', 'Original Nominations', 'Accepted Nominations', 'Apportionment Percentage']
+    df = normalize_numeric(df, numCols, 2)
+    df = conversion(df, "oil", numCols[:-1], 2, False)
+
     df['Apportionment Percentage'] = df['Apportionment Percentage'].round(2)
 
     company_files = ['NOVA Gas Transmission Ltd.',

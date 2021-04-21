@@ -33,7 +33,7 @@ export async function loadAllCharts(data, plains = false) {
       data.incidentData.meta,
       englishDashboard.incidents
     ),
-    mainApportion(data.apportionData, undefined),
+    mainApportion(data.apportionData, englishDashboard.apportion),
   ];
 
   function plainsMidstreamProfile(lang, div) {
