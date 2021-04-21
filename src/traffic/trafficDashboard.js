@@ -351,7 +351,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   const addToolRow = (p, unit, round, extraStyle = "") => {
-    let colorCircle = "";
     const yVal = (pnt) => {
       if (
         Object.prototype.hasOwnProperty.call(pnt.point, "low") &&
@@ -366,7 +365,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     };
 
     const yFunction = yVal(p);
-    if (unit !== "%" || p.series.name !== "Total") {
+    let colorCircle = "";
+    if (unit !== "%" && p.series.name !== "Total") {
       colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp`;
     }
     return `<tr style="${extraStyle}"><th>${colorCircle}${

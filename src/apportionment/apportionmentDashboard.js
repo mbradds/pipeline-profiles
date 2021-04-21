@@ -7,6 +7,6 @@ import {
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
-export async function mainApportionment(apportionData, lang) {
-  return undefined;
+export async function mainApportion(apportionData, lang) {
+  console.log(apportionData);
 }
