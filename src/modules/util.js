@@ -72,11 +72,14 @@ export function addSeriesParams(
   unitsHolder,
   buildFive,
   frequency = "monthly",
-  section = "traffic"
+  section = "traffic",
+  sorted = true
 ) {
   const minDate = seriesWithDate[0].min;
   let series = seriesWithDate.slice(1);
-  series = sortJsonAlpha(series, "name");
+  if (sorted) {
+    series = sortJsonAlpha(series, "name");
+  }
 
   const isCapacity = (seriesName) => {
     if (
@@ -164,10 +167,14 @@ export function addSeriesParams(
         nextSeries.lineWidth = 1;
       }
     } else if (section === "apportionment") {
-      if (nextSeries.type === "line") {
+      if (nextSeries.type === "line" && nextSeries.yAxis === 0) {
         nextSeries.zIndex = 6;
         nextSeries.lineWidth = 3;
         nextSeries.color = cerPalette.Sun;
+      } else if (nextSeries.type === "line" && nextSeries.yAxis === 1) {
+        nextSeries.zIndex = 6;
+        nextSeries.lineWidth = 3;
+        nextSeries.color = cerPalette.Forest;
       } else {
         nextSeries.zIndex = 5;
         nextSeries.color = cerPalette["Night Sky"];

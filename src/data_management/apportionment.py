@@ -123,15 +123,20 @@ def process_apportionment(test=False, sql=False, companies=False):
 
             series.append({"name": lineName,
                            "data": lineData,
+                           "yAxis": 0,
                            "type": "line"})
             series.append({"name": areaName,
                            "data": areaData,
+                           "yAxis": 0,
                            "type": "area"})
             if hasPct:
-                series.append({"name": "pct",
+                series.append({"name": "Apportionment Percent",
                                "data": pctData,
+                               "yAxis": 1,
+                               "type": "line",
                                "visible": False,
-                               "showInLegend": False})
+                               # "showInLegend": False
+                               })
 
             thisCompanyData["series"] = series
 
