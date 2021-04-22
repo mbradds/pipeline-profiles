@@ -36,7 +36,7 @@ const units = {
 };
 
 const numberFormat = (value, rounding = 2) =>
-  Highcharts.numberFormat(value, rounding, ".", ",");
+  Highcharts.numberFormat(value, rounding, ".", " ");
 
 const dateFormat = (value, format = "%b %d, %Y") =>
   Highcharts.dateFormat(format, value);
@@ -479,5 +479,6 @@ export const englishDashboard = {
   },
   apportion: {
     units,
+    numberFormat,
   },
 };

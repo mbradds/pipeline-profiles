@@ -21,7 +21,6 @@ export const conversions = {
   "bbl to m3": 1 / 6.2898,
   "m3 to cf": 35.3,
   "Bcf/d to Million m3/d": 28.32,
-  "Mb/d to Thousand m3/d": 159,
 };
 
 export const sortJson = (obj, colName = "value") =>
@@ -222,7 +221,7 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
     unitsHolder.conversion = conversions["Bcf/d to Million m3/d"];
   } else if (defaultUnit === "Mb/d") {
     secondUnit = "Thousand m3/d";
-    unitsHolder.conversion = conversions["Mb/d to Thousand m3/d"];
+    unitsHolder.conversion = conversions["bbl to m3"];
   }
 
   let buttonHTML = "";

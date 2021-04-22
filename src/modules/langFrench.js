@@ -476,5 +476,6 @@ export const frenchDashboard = {
   },
   apportion: {
     units,
+    numberFormat,
   },
 };

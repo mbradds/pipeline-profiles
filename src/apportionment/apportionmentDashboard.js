@@ -23,7 +23,7 @@ export async function mainApportion(apportionData, lang) {
       if (pnt.series.options.yAxis === 1) {
         return [(pnt.y * 100).toFixed(0), "%"];
       }
-      return [pnt.y.toFixed(1), suffix];
+      return [lang.numberFormat(pnt.y, 1), suffix];
     };
 
     let toolText = `<strong>${Highcharts.dateFormat(
@@ -58,6 +58,11 @@ export async function mainApportion(apportionData, lang) {
         {
           title: {
             text: units,
+          },
+          labels: {
+            formatter() {
+              return lang.numberFormat(this.value, 0);
+            },
           },
           min: 0,
           startOnTick: true,
@@ -117,6 +122,7 @@ export async function mainApportion(apportionData, lang) {
           lang.units,
           "apportion"
         );
+
         let series = buildApportionSeries(apportionData.series, unitsHolder);
         const chart = buildApportionChart(series, "", unitsHolder.current);
         // user selects units

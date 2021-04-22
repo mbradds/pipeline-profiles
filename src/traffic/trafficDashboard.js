@@ -397,7 +397,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
   }
 
-  function buildTrafficChart(series, title, units, div = "traffic-hc") {
+  function buildTrafficChart(series, title, params, div = "traffic-hc") {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
@@ -414,7 +414,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       yAxis: [
         {
           title: {
-            text: units,
+            text: params.unitsHolder.current,
           },
           min: 0,
           startOnTick: true,
@@ -424,7 +424,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             formatter() {
               return lang.numberFormat(
                 this.value,
-                metaData.commodity === "oil" ? 0 : 1
+                params.commodity === "oil" ? 0 : 1
               );
             },
           },
@@ -436,7 +436,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         borderColor: cerPalette["Dim Grey"],
         useHTML: true,
         formatter() {
-          return tooltipText(this, units);
+          return tooltipText(this, params.unitsHolder.current);
         },
       },
       legend: {
@@ -641,7 +641,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               chartParams.directions[chartParams.defaultPoint.id]
             )
           : setTitle(chartParams.points, undefined, chartParams.tm),
-        chartParams.unitsHolder.current
+        chartParams
       );
 
       let fiveChart = false; // TODO: add buildFive and hasImports to createFiveYearChart and return undefined
