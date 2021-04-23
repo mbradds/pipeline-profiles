@@ -1,0 +1,26 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script>
+  function openTab(evt, sectionName) {
+    var i, tabcontent, tablinks;
+    $(".profile-section").hide();
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(sectionName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  document.addEventListener("DOMContentLoaded", function (event) {
+    document.getElementById("defaultClick").click();
+  });
+</script>
+<script src="../../GCWeb/wet-boew/js/wet-boew.min.js"></script>
+<script src="https://code.highcharts.com/8.2.2/highcharts.js"></script>
+<script src="https://code.highcharts.com/8.2.2/modules/no-data-to-display.js"></script>
+<script src="https://code.highcharts.com/8.2.2/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/maps/8.2.2/modules/map.js"></script>
+<script
+  src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""
+></script>

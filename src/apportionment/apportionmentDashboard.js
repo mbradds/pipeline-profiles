@@ -152,8 +152,6 @@ export async function mainApportion(apportionData, lang) {
       } catch (err) {
         console.log(err);
       }
-    } else {
-      visibility(["apportionment-section"], "hide");
     }
   }
   return buildDecision();

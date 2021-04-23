@@ -113,6 +113,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
+      page: { sections: { traffic: true, apportion: false, safety: true } },
       filename: `en/natural-gas/ngtl_en.html`,
       chunks: [`en/natural-gas/js/data_ngtl_en`, `en/profile_code_en`],
       chunkSortMode: "none",

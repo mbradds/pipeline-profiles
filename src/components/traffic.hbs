@@ -1,0 +1,143 @@
+<div id="traffic-section">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Throughput and capacity</h2>
+      <p class="small">
+        Section updated quarterly (early March, mid-May, mid-August and
+        mid-November)
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p
+        class="cerlabel mrgn-tp-sm"
+        id="key-point-title"
+        style="margin-bottom: 0px"
+      >
+        Select key point:
+      </p>
+      <div
+        class="btn-group btn-group mrgn-bttm-md"
+        id="traffic-points-btn"
+      ></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8" id="traffic-hc-column">
+      <div id="traffic-hc"></div>
+    </div>
+    <div class="col-md-4">
+      <p class="cerlabel" id="select-units-title" style="margin-bottom: 0px">
+        Select units:
+      </p>
+      <div id="select-units-radio-traffic"></div>
+      <section class="panel panel-info mrgn-tp-sm" id="traffic-container">
+        <header class="panel-heading">
+          <h5 class="panel-title">Key Points Map</h5>
+        </header>
+        <div class="panel-body" id="map-panel-body">
+          <div id="traffic-map"></div>
+          <div class="btn-group btn-group-justified" id="key-point-zoom-btn">
+            <div class="btn-group btn-map">
+              <button
+                type="button"
+                value="zoom-in"
+                class="btn btn-default active"
+              >
+                Zoom In
+              </button>
+            </div>
+            <div class="btn-group btn-map">
+              <button type="button" value="zoom-out" class="btn btn-default">
+                Zoom Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="row wb-eqht" id="key-point-info">
+    <div class="col-md-6">
+      <section class="panel panel-info hght-inhrt">
+        <header class="panel-heading">
+          <h5 class="panel-title">Key Point Trends</h5>
+        </header>
+        <div class="panel-body" id="traffic-trends"></div>
+      </section>
+    </div>
+    <div class="col-md-6">
+      <section class="panel panel-info hght-inhrt">
+        <header class="panel-heading">
+          <h5 class="panel-title">Key Point Description</h5>
+        </header>
+        <div class="panel-body" id="traffic-point-description"></div>
+      </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <details>
+        <summary>Dashboard instructions</summary>
+        <ul class="lst-spcd">
+          <li>
+            Click on a key point button above the chart & map to view traffic at
+            a different location. The map shows approximate locations on the
+            pipeline where throughputs & capacity are recorded by the pipeline
+            operator.
+          </li>
+          <li>
+            Click and drag your mouse on the area chart to zoom into a desired
+            date range. Click on the Reset Zoom button to reset the full date
+            range.
+          </li>
+          <li>
+            Click on the chart legend items below the chart to remove & add
+            sections of data as required.
+          </li>
+          <li>
+            The key point trends are calculated using quarterly average traffic
+            at the key point. Natural gas throughput trends are displayed year
+            over year (last full quarter of data compared to the same quarter
+            last year). Crude oil and liquids key point trends are displayed
+            quarter over quarter (last full quarter of data compared to the
+            previous quarter).
+          </li>
+        </ul>
+        <p>
+          <strong>Note:</strong> The five year average is calcualted for natural
+          gas key points using the total throughput across all trade types and
+          direction of flows. For bi-directional key points (both export and
+          import) the throughput is displayed for both directions, instead of
+          the five year average.
+        </p>
+        <p class="mrgn-tp-sm">
+          Looking for <strong>daily data</strong>? Daily
+          <strong>natural gas</strong>
+          traffic datasets are available on
+          <a
+            href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34"
+            target="_blank"
+            rel="external"
+            >Open Government</a
+          >.
+        </p>
+      </details>
+
+      <details>
+        <summary>Source and description</summary>
+        <p>
+          <strong>Data source: </strong
+          ><a
+            href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34"
+            target="_blank"
+            rel="external"
+            >Open Government</a
+          >
+        </p>
+        <p><strong>Description: </strong>Coming soon!</p>
+      </details>
+    </div>
+  </div>
+</div>
