@@ -1,22 +1,40 @@
 <!DOCTYPE html>
+{{#if htmlWebpackPlugin.options.page.lang.en}}
 <html lang="en">
-  <head>
-    {{> components/head}}
-  </head>
-  <body>
-    <div class="container">
-      {{#if htmlWebpackPlugin.options.page.sections.traffic}}
-      {{> components/traffic}}
-      {{/if}}
+{{else if htmlWebpackPlugin.options.page.lang.fr}}
+<html lang="fr">
+{{/if}}
 
-      {{#if htmlWebpackPlugin.options.page.sections.apportion}}
-      {{> components/apportion}}
-      {{/if}}
+<head>
+  {{> components/head}}
+</head>
+<body>
+  <div class="container">
+  {{#if htmlWebpackPlugin.options.page.sections.traffic}}
+    {{#if htmlWebpackPlugin.options.page.lang.en}}
+    {{> components/en/traffic}}
+    {{else if htmlWebpackPlugin.options.page.lang.fr}}
+    {{> components/fr/traffic}}
+    {{/if}}
+  {{/if}}
 
-      {{#if htmlWebpackPlugin.options.page.sections.safety}}
-      {{> components/safety_environment}}
-      {{/if}}
-    </div>
-    {{> components/footer}}
-  </body>
+  {{#if htmlWebpackPlugin.options.page.sections.apportion}}
+    {{#if htmlWebpackPlugin.options.page.lang.en}}
+    {{> components/en/apportion}}
+    {{else if htmlWebpackPlugin.options.page.lang.fr}}
+    {{> components/fr/apportion}}
+    {{/if}}
+  {{/if}}
+
+  {{#if htmlWebpackPlugin.options.page.sections.safety}}
+    {{#if htmlWebpackPlugin.options.page.lang.en}}
+    {{> components/en/safety_environment}}
+    {{else if htmlWebpackPlugin.options.page.lang.fr}}
+    {{> components/fr/safety_environment}}
+    {{/if}}
+  {{/if}}
+
+  </div>
+  {{> components/footer}}
+</body>
 </html>
