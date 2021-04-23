@@ -140,6 +140,12 @@ def process_french(df):
                             "Année": "Year",
                             "Ce qui s’est passé": "What Happened",
                             "Cause": "Why It Happened"})
+
+    # take care of "what happened" french col error
+    for colName in df.columns:
+        if "est passé" in colName:
+            df = df.rename(columns={colName: "What Happened"})
+
     chosenSubstances = ["Propane",
                         "Gaz Naturel - non sulfureux",
                         "Gaz naturel - sulfureux",
@@ -223,14 +229,15 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
             print('starting english incidents...')
             df = pd.read_csv("./raw_data/incidents_en.csv",
                              skiprows=0,
-                             encoding="UTF-8",
+                             encoding="latin-1",
+                             engine="python",
                              error_bad_lines=False)
             df = process_english(df)
         else:
             print('starting french incidents...')
             df = pd.read_csv("./raw_data/incidents_fr.csv",
-                             skiprows=1,
-                             encoding="UTF-16",
+                             skiprows=0,
+                             encoding="latin-1",
                              error_bad_lines=False)
             df = process_french(df)
 
@@ -280,7 +287,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                          'Kingston Midstream Westspur Limited',
                          'Many Islands Pipe Lines (Canada) Limited',
                          'Vector Pipeline Limited Partnership',
-                         'Maritimes & Northeast Pipeline Management Ltd.']
+                         'Maritimes & Northeast Pipeline Management Ltd.',
+                         'Aurora Pipeline Company Ltd']
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

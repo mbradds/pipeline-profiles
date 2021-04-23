@@ -31,7 +31,7 @@ const companyToSystem = {
 
 export const frenchDashboard = {
   plains:
-    "Plains Midstream Canada ULC comprend les pipelines Aurora, Milk River et Wascana",
+  "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana",
 
   conditions: {
     companyToSystem: companyToSystem,

@@ -359,7 +359,8 @@ def process_conditions(remote=False,
                          'Enbridge Bakken Pipeline Company Inc.',
                          'Genesis Pipeline Canada Ltd.',
                          'Montreal Pipe Line Limited',
-                         'Kingston Midstream Westspur Limited']
+                         'Kingston Midstream Westspur Limited',
+                         'Aurora Pipeline Company Ltd']
 
     for company in company_files:
         thisCompanyData = {}
