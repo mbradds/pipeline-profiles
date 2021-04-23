@@ -1,8 +1,8 @@
 import {
   cerPalette,
-  visibility,
   addSeriesParams,
   addUnitsAndSetup,
+  visibility,
 } from "../modules/util";
 
 export async function mainApportion(apportionData, lang) {
@@ -152,6 +152,10 @@ export async function mainApportion(apportionData, lang) {
       } catch (err) {
         console.log(err);
       }
+    } else if (document.getElementById("apportionment-section")) {
+      // handles when profileManager is configured to show section without data
+      visibility(["apportionment-section"], "hide");
+      console.warn("no apportionment data, but still tried to build section");
     }
   }
   return buildDecision();

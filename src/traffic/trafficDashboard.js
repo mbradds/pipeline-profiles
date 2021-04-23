@@ -1,6 +1,5 @@
 import {
   cerPalette,
-  conversions,
   visibility,
   sortJsonAlpha,
   arrAvg,
@@ -865,12 +864,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   }
 
-  function buildDecision(data) {
-    if (data && Object.keys(data).length === 0) {
-      document.getElementById("traffic-section").style.display = "none";
-    } else {
+  function buildDecision() {
+    if (metaData.build) {
       return buildDashboard();
+    } if (document.getElementById("traffic-section")) {
+      visibility(["traffic-section"], "hide");
+      console.warn("no traffic data but still tried to build");
     }
   }
-  return buildDecision(trafficData);
+  return buildDecision();
 }

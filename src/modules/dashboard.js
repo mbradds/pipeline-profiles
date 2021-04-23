@@ -215,7 +215,7 @@ export class EventMap {
       if (text.includes(",")) {
         const itemList = text.split(",");
         let brokenText = ``;
-        for (let i = 0; i < itemList.length; i++) {
+        for (let i = 0; i < itemList.length; i += 1) {
           brokenText += `&nbsp- ${itemList[i]}<br>`;
         }
         return brokenText;
@@ -223,25 +223,27 @@ export class EventMap {
       return `&nbsp${text}`;
     };
 
-    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><b>${incidentParams.id}</b></p>`;
+    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${incidentParams.id}</strong></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${
       this.field
-    }:</td><td style="color:${fillColor}">&nbsp<b>${
+    }:</td><td style="color:${fillColor}">&nbsp<strong>${
       incidentParams[this.field]
-    }</b></td></tr>`;
+    }</strong></td></tr>`;
     toolTipText += `<tr><td>${
       this.lang.estRelease
-    }</td><td>&nbsp<b>${this.volumeText(
+    }</td><td>&nbsp<strong>${this.volumeText(
       incidentParams.vol,
       incidentParams.Substance
-    )}</b></td></tr>`;
-    toolTipText += `<tr><td>${this.lang.what}?</td><td><b>${formatCommaList(
+    )}</strong></td></tr>`;
+    toolTipText += `<tr><td>${
+      this.lang.what
+    }?</td><td><strong>${formatCommaList(
       incidentParams.what
-    )}</b></td></tr>`;
-    toolTipText += `<tr><td>${this.lang.why}?</td><td><b>${formatCommaList(
+    )}</strong></td></tr>`;
+    toolTipText += `<tr><td>${this.lang.why}?</td><td><strong>${formatCommaList(
       incidentParams.why
-    )}</b></td></tr>`;
+    )}</strong></td></tr>`;
     toolTipText += `</table></div>`;
     return toolTipText;
   }
@@ -632,16 +634,18 @@ export class EventNavigator {
         snap: 0,
         useHTML: true,
         formatter() {
-          if (this.series.options.filter == "frequency") {
-            return `${this.series.name} - ${this.y}`;
+          let toolText = "";
+          if (this.series.options.filter === "frequency") {
+            toolText = `${this.series.name} - ${this.y}`;
           }
-          if (this.series.options.filter == "volume") {
-            return `${this.series.name} - <b>${Highcharts.numberFormat(
+          if (this.series.options.filter === "volume") {
+            tooltext = `${this.series.name} - <strong>${Highcharts.numberFormat(
               this.y,
               0,
               "."
-            )} m3</b>`;
+            )} m3</strong>`;
           }
+          return toolText;
         },
       },
 
@@ -694,19 +698,20 @@ export class EventNavigator {
     // TODO: this would run faster if all series were made in one pass
     let newBar = {};
     const addToSeries = (series, row, name) => {
-      if (series.hasOwnProperty(row[name])) {
-        series[row[name]].frequency += 1;
-        series[row[name]].volume += row.vol;
+      const newSeries = series;
+      if (Object.prototype.hasOwnProperty.call(newSeries, row[name])) {
+        newSeries[row[name]].frequency += 1;
+        newSeries[row[name]].volume += row.vol;
       } else {
-        series[row[name]] = {
+        newSeries[row[name]] = {
           frequency: 1,
           volume: row.vol,
         };
       }
-      return series;
+      return newSeries;
     };
 
-    this.data.map((row) => {
+    this.data.forEach((row) => {
       newBar = addToSeries(newBar, row, barName);
     });
     this.barSeries[barName] = newBar;
@@ -718,14 +723,15 @@ export class EventNavigator {
     const clickText = this.langPillTitles.click;
     if (chart) {
       const greyIndex = Math.floor(this.greyScale.length / chart.series.length);
-      const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+      const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+      let greyColors;
       if (chart.series.length > 1) {
-        var greyColors = every_nth(this.greyScale, greyIndex).reverse();
+        greyColors = everyNth(this.greyScale, greyIndex).reverse();
       } else {
-        var greyColors = [this.greyScale[0]];
+        greyColors = [this.greyScale[0]];
       }
 
-      chart.series.map((s, i) => {
+      chart.series.forEach((s, i) => {
         chart.series[i].options.color = greyColors[i];
         chart.series[i].update(chart.series[i].options);
       });
@@ -764,7 +770,7 @@ export class EventNavigator {
     const activeDiv = document.getElementById(bar.div);
     if (chart) {
       const colors = this.barColors[bar.name];
-      chart.series.map((s, i) => {
+      chart.series.forEach((s, i) => {
         chart.series[i].options.color = colors[s.name];
         chart.series[i].update(chart.series[i].options);
       });

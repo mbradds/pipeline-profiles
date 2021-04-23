@@ -117,8 +117,8 @@ def conditionMetaData(df, folder_name):
 
     # get the date the data was pulled
     today = date.today()
-    # status['updated'] = [today.year, today.month-1, today.day]
-    status['updated'] = [2021, 2, 19]  # override todays date with custom date
+    status['updated'] = [today.year, today.month-1, today.day]
+    # status['updated'] = [2021, 2, 19]  # override todays date with custom date
 
     # get the current company name
     status['companyName'] = list(df['Company'])[0]

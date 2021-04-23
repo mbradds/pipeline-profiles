@@ -330,6 +330,7 @@ def process_throughput(test=False,
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
         if not df_c.empty and company not in group2:
+            meta["build"] = True
             trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
             meta = meta_throughput(df_c, meta, commodity)
@@ -435,7 +436,7 @@ def process_throughput(test=False,
         else:
             # there is no traffic data
             thisCompanyData['traffic'] = {}
-            thisCompanyData['meta'] = {"companyName": company}
+            thisCompanyData['meta'] = {"companyName": company, "build": False}
             if not test:
                 with open('../traffic/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)

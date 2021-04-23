@@ -240,8 +240,8 @@ export async function mainConditions(
     let definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
     for (let i = 0; i < themes.length; i += 1) {
       const t = themes[i].trim();
-      definitionsHTML += `<b>${t}</b>`;
-      definitionsHTML += `<p>${definitions[t]}</p>`;
+      definitionsHTML += `<strong>${t}</strong>`;
+      definitionsHTML += `<strong>${definitions[t]}</strong>`;
     }
     definitionDiv.innerHTML = definitionsHTML;
     definitionDiv.scrollIntoView(false);
@@ -258,7 +258,7 @@ export async function mainConditions(
       metaSelect.summary.updated[2]
     );
 
-    let text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><b>${e.id} ${lang.popUp.econRegion}</b></p>`;
+    let text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><strong>${e.id} ${lang.popUp.econRegion}</strong></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
     text += `<tr><td><li>${
       lang.popUp.lastUpdated
@@ -399,7 +399,7 @@ export async function mainConditions(
         zIndex: 0,
         useHTML: false,
         formatter() {
-          let toolText = `<b>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</b><br>`;
+          let toolText = `<strong>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</strong><br>`;
           toolText += lang.tooltip.text;
           return toolText;
         },
