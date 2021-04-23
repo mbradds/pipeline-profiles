@@ -144,24 +144,24 @@ body {
 /* small screen */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .traffic-hc-single-gas {
-    height: 500px;
+    height: 490px;
   }
   .traffic-map-shared {
     height: 340px;
     margin-bottom: 5px;
   }
   .traffic-map-single {
-    height: 320px;
+    height: 305px;
     margin-bottom: 5px;
   }
   .traffic-hc-shared {
-    height: 250px;
+    height: 245px;
   }
   #traffic-hc-range {
-    height: 250px;
+    height: 245px;
   }
   .traffic-hc-single {
-    height: 480px;
+    height: 470px;
   }
 }
 

@@ -40,7 +40,17 @@ export async function mainApportion(apportionData, lang) {
     return toolText;
   }
 
-  function buildApportionChart(series, title, units, div = "apportion-hc") {
+  function buildTitle(data) {
+    return {
+      text: `Apportionment at: ${lang.points[data.keyPoint][0]}`,
+      align: "left",
+      style: {
+        fontWeight: "normal",
+      },
+    };
+  }
+
+  function buildApportionChart(series, units, div = "apportion-hc") {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
@@ -51,9 +61,7 @@ export async function mainApportion(apportionData, lang) {
         type: "datetime",
         crosshair: true,
       },
-      title: {
-        text: title,
-      },
+      title: buildTitle(apportionData),
       yAxis: [
         {
           title: {
@@ -124,7 +132,7 @@ export async function mainApportion(apportionData, lang) {
         );
 
         let series = buildApportionSeries(apportionData.series, unitsHolder);
-        const chart = buildApportionChart(series, "", unitsHolder.current);
+        const chart = buildApportionChart(series, unitsHolder.current);
         // user selects units
         $("#select-units-radio-apportion input[name='apportionUnits']").click(
           () => {

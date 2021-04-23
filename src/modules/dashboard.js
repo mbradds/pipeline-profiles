@@ -1213,8 +1213,8 @@ export class KeyPointMap {
       minRadius = 2000;
       padding = [60, 60];
     } else if (points.length === 1) {
-      minRadius = 30000;
-      padding = [150, 150];
+      minRadius = 25000;
+      padding = [145, 145];
     }
     this.minRadius = minRadius;
     this.padding = padding;

@@ -331,7 +331,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     },
     title: (text) => ({
       align: "left",
-      x: 10,
+      x: 7,
       margin: 5,
       text,
       style: {
@@ -867,7 +867,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function buildDecision() {
     if (metaData.build) {
       return buildDashboard();
-    } if (document.getElementById("traffic-section")) {
+    }
+    if (document.getElementById("traffic-section")) {
       visibility(["traffic-section"], "hide");
       console.warn("no traffic data but still tried to build");
     }
