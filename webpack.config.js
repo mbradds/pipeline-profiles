@@ -1,4 +1,5 @@
 const path = require("path");
+const pm = require("./src/profileManager");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -35,23 +36,28 @@ var profileWebpackConfig = (function () {
     ["aurora", "oil-and-liquids"],
     ["milk_river", "oil-and-liquids"],
     ["wascana", "oil-and-liquids"],
-    ["aurora", "oil-and-liquids"],
   ];
 
   function htmlWebpack() {
     var html = [];
-    language.map((lang) => {
-      htmlFileNames.map((name) => {
-        var chunks = [
-          `${lang}/${name[1]}/js/data_${name[0]}_${lang}`,
-          `${lang}/profile_code_${lang}`,
-        ];
+    language.forEach((lang) => {
+      htmlFileNames.forEach((name) => {
+        const pageData = Object.assign({}, pm[name[0]]);
+        if (lang === "en") {
+          pageData.lang = { en: true, fr: false };
+        } else if (lang === "fr") {
+          pageData.lang = { en: false, fr: true };
+        }
         html.push(
           new HtmlWebpackPlugin({
+            page: pageData,
             filename: `${lang}/${name[1]}/${name[0]}_${lang}.html`,
-            chunks: chunks,
-            chunkSortMode: "none",
-            template: `src/profile_${lang}.html`,
+            chunks: [
+              `${lang}/profile_code_${lang}`,
+              `${lang}/${name[1]}/js/data_${name[0]}_${lang}`,
+            ],
+            chunksSortMode: "auto",
+            template: `src/profile.hbs`,
             minify: {
               collapseWhitespace: false,
               keepClosingSlash: false,
@@ -70,12 +76,9 @@ var profileWebpackConfig = (function () {
 
   function entry(sections = ["data"]) {
     const entryPoints = {};
-    language.map((lang) => {
-      entryPoints[
-        `${lang}/profile_code_${lang}`
-      ] = `./src/index_files/loadDashboards_${lang}.js`;
-      sections.map((section) => {
-        htmlFileNames.map((name) => {
+    language.forEach((lang) => {
+      sections.forEach((section) => {
+        htmlFileNames.forEach((name) => {
           if (["milk_river", "wascana"].includes(name[0])) {
             var folderName = "plains";
           } else {
@@ -87,6 +90,10 @@ var profileWebpackConfig = (function () {
           };
         });
       });
+      // order of script addition to "entryPoints" matters for chunkSortMode
+      entryPoints[
+        `${lang}/profile_code_${lang}`
+      ] = `./src/index_files/loadDashboards_${lang}.js`;
     });
 
     return entryPoints;
@@ -129,12 +136,6 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
-    // uncomment these lines below for easier browser debugging in development mode
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: "dist/[file].map",
-    //   fileContext: "public",
-    // }),
-    // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
@@ -146,6 +147,7 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      { test: /\.hbs$/, loader: "handlebars-loader" },
     ],
   },
   resolve: {
