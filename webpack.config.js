@@ -7,35 +7,35 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 //   .BundleAnalyzerPlugin;
 
 var profileWebpackConfig = (function () {
-  const language = ["en", "fr"];
+  const language = ["en"];
 
   const htmlFileNames = [
     ["ngtl", "natural-gas"],
-    ["alliance", "natural-gas"],
-    ["tcpl", "natural-gas"],
-    ["westcoast", "natural-gas"],
-    ["emera_brunswick", "natural-gas"],
-    ["maritimes_northeast", "natural-gas"],
-    ["many_islands", "natural-gas"],
-    ["tqm", "natural-gas"],
-    ["vector", "natural-gas"],
-    ["foothills", "natural-gas"],
-    ["enbridge_mainline", "oil-and-liquids"],
-    ["keystone", "oil-and-liquids"],
-    ["trans_mountain", "oil-and-liquids"],
-    ["cochin", "oil-and-liquids"],
-    ["southern_lights", "oil-and-liquids"],
-    ["bakken", "oil-and-liquids"],
-    ["norman_wells", "oil-and-liquids"],
-    ["express_pipeline", "oil-and-liquids"],
-    ["trans_northern", "oil-and-liquids"],
-    ["genesis", "oil-and-liquids"],
-    ["montreal", "oil-and-liquids"],
-    ["westspur", "oil-and-liquids"],
-    ["aurora", "oil-and-liquids"],
-    ["milk_river", "oil-and-liquids"],
-    ["wascana", "oil-and-liquids"],
-    ["aurora", "oil-and-liquids"],
+    // ["alliance", "natural-gas"],
+    // ["tcpl", "natural-gas"],
+    // ["westcoast", "natural-gas"],
+    // ["emera_brunswick", "natural-gas"],
+    // ["maritimes_northeast", "natural-gas"],
+    // ["many_islands", "natural-gas"],
+    // ["tqm", "natural-gas"],
+    // ["vector", "natural-gas"],
+    // ["foothills", "natural-gas"],
+    // ["enbridge_mainline", "oil-and-liquids"],
+    // ["keystone", "oil-and-liquids"],
+    // ["trans_mountain", "oil-and-liquids"],
+    // ["cochin", "oil-and-liquids"],
+    // ["southern_lights", "oil-and-liquids"],
+    // ["bakken", "oil-and-liquids"],
+    // ["norman_wells", "oil-and-liquids"],
+    // ["express_pipeline", "oil-and-liquids"],
+    // ["trans_northern", "oil-and-liquids"],
+    // ["genesis", "oil-and-liquids"],
+    // ["montreal", "oil-and-liquids"],
+    // ["westspur", "oil-and-liquids"],
+    // ["aurora", "oil-and-liquids"],
+    // ["milk_river", "oil-and-liquids"],
+    // ["wascana", "oil-and-liquids"],
+    // ["aurora", "oil-and-liquids"],
   ];
 
   function htmlWebpack() {
@@ -112,6 +112,21 @@ module.exports = {
   devtool: false,
 
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: `en/natural-gas/ngtl_en.html`,
+      chunks: [`en/natural-gas/js/data_ngtl_en`, `en/profile_code_en`],
+      chunkSortMode: "none",
+      template: `src/profile_en.hbs`,
+      minify: {
+        collapseWhitespace: false,
+        keepClosingSlash: false,
+        removeComments: false,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        useShortDoctype: false,
+      },
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -129,13 +144,7 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
-    // uncomment these lines below for easier browser debugging in development mode
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: "dist/[file].map",
-    //   fileContext: "public",
-    // }),
-    // new BundleAnalyzerPlugin(),
-  ].concat(profileWebpackConfig.htmlWebpack()),
+  ],
 
   module: {
     rules: [
@@ -146,6 +155,7 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      { test: /\.hbs$/, loader: "handlebars-loader" },
     ],
   },
   resolve: {
