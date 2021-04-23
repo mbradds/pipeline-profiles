@@ -36,9 +36,10 @@ pipeline_profiles
 |   ...
 |
 └───src
-│   │   profile_en.html (webpack template for english content)
-│   │   profile_fr.html (only make html changes in these templates)
+│   │   profile.hbs (conditional handlebars template for a new profile)
+│   │   profileManager.js (manual logic for adding sections to a profile)
 |   |   main.css (custom css for all dashboards. Appears in ../dist via CopyWebpackPlugin)
+|   |   components/ (handlebars partials for each profile section)
 |   |   ...
 │   │
 │   └───data_management
@@ -243,19 +244,30 @@ Alternatively, if the remote data fetch doesnt work, then the new conditions dat
 
 2. Make sure that the python script is configured to pull data from `src/data_mangagement/raw_data`
 
-````diff
+```diff
 if __name__ == "__main__":
     print('starting conditions...')
 +    process_conditions(remote=False, lang='en')
 +    process_conditions(remote=False, lang='fr')
 -    process_conditions(remote=True, lang='en')
 -    process_conditions(remote=True, lang='fr')4. `npm run update-conditions-data && npm run build`
+```
+
 3. `npm run update-conditions-data && npm run build`
+
+### Dataset 3: Traffic
+
+- Instructions coming soon!
+
+### Dataset 4: Apportionment
+
+- Instructions coming soon!
 
 ## Dependencies
 
 - [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) Helps reduce bundle size by a few KB.
 - [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
+- [eslint-config-airbnb-base](https://github.com/airbnb/javascript) Those folks know JS!
 - [express](https://www.npmjs.com/package/express) Used only for heroku website.
 - [haversine](https://www.npmjs.com/package/haversine) For finding distance between user and Incidents.
 - [mapshaper](https://www.npmjs.com/package/mapshaper) Simplifies the maps used in the Conditions map. Reduces Canada base map file size by >99.9%!
@@ -270,6 +282,11 @@ if __name__ == "__main__":
 - [clean-webpack-plugin](https://www.npmjs.com/package/clean-webpack-plugin)
 - [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/)
 - [core-js](https://www.npmjs.com/package/core-js)
+- [eslint](https://eslint.org/)
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
+- [handlebars](https://handlebarsjs.com/)
+- [handlebars-loader](https://www.npmjs.com/package/handlebars-loader)
 - [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/)
 - [webpack](https://webpack.js.org/)
 - [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
@@ -277,7 +294,14 @@ if __name__ == "__main__":
 - [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)
 - [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals)
 
-Note: the html-webpack-plugin is instrumental for this project. Each pipeline profile webpage is essentially the same, but with different data. The two templates `src/profile_en.html` and `src/profile_fr.html` contain all the text and web resources (css, scripts tags) and the plugin injects the appropriate script tags for the profile. Changes made to these templates will appear on all 25 profile pages in english and french.
+Note: the html-webpack-plugin and handlebars-loader is instrumental for this project. Older versions of this repo only had two templates, one for english and one for french. As the project grew, I needed a tempalte engine. A good example of this need is the apportionment section. There are only around 5 oil pipeline profiles with apportionment data (there could be more in the future though!) so i dont want to include the apportionment html in 20 profiles that dont need it, and then hide/show divs conditionally after the dom is ready. This probably causes layout thrashing. With handlebars, i can conditionally render components/sections based on the logic in `src/profileManager.js`. Even better, with handlebars-loader, one html is compiled for each profile (web team can only handle html) and html-webpack-plugin still injects all the scripts.
+
+This was the old way before handlebars:
+Each pipeline profile webpage is essentially the same, but with different data. The two templates `src/profile_en.html` and `src/profile_fr.html` contain all the text and web resources (css, scripts tags) and the plugin injects the appropriate script tags for the profile. Changes made to these templates will appear on all 25 profile pages in english and french.
+
+## Adding new pipeline profile sections
+
+- Instructions coming soon!
 
 ## Tests
 
@@ -288,7 +312,7 @@ The greatest risk for errors, such as incorrect values appearing in the front en
 
 ```python
 df['Company'] = df['Company'].replace({"Enbridge Pipelines Inc": "Enbridge Pipelines Inc."})
-````
+```
 
 There are several python unit tests written for the various python data outputs and utility functions. These are found here `src/data_management/tests.py`
 
@@ -314,4 +338,4 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
 - Add an option in incidents and conditions py for direct connection to cer infrastructure.
 - Add missing (non consecutive) date/data handling for traffic and apportionment
-- As the more sections are added, the case grows for templating the html better. It is very rare that a pipeline system will have all "sections" of the profiles, so there is alot of hiding/showing divs on each page. On slow connections the user may see this layout thrashing. Look into using handlebars for webpack: https://github.com/pcardune/handlebars-loader
+- Look into fully templating the html with handlebars data condtitionally adding english/french paragraphs to fully shared templates.

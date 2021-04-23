@@ -4,36 +4,38 @@
 {{else if htmlWebpackPlugin.options.page.lang.fr}}
 <html lang="fr">
 {{/if}}
-
 <head>
   {{> components/head}}
 </head>
 <body>
   <div class="container">
   {{#if htmlWebpackPlugin.options.page.sections.traffic}}
+  <!-- start traffic -->
     {{#if htmlWebpackPlugin.options.page.lang.en}}
     {{> components/en/traffic}}
     {{else if htmlWebpackPlugin.options.page.lang.fr}}
     {{> components/fr/traffic}}
     {{/if}}
+  <!-- end traffic -->
   {{/if}}
-
   {{#if htmlWebpackPlugin.options.page.sections.apportion}}
+  <!-- start apportionment -->
     {{#if htmlWebpackPlugin.options.page.lang.en}}
     {{> components/en/apportion}}
     {{else if htmlWebpackPlugin.options.page.lang.fr}}
     {{> components/fr/apportion}}
     {{/if}}
+  <!-- end apportionment -->
   {{/if}}
-
   {{#if htmlWebpackPlugin.options.page.sections.safety}}
+  <!-- start safety and environment -->
     {{#if htmlWebpackPlugin.options.page.lang.en}}
     {{> components/en/safety_environment}}
     {{else if htmlWebpackPlugin.options.page.lang.fr}}
     {{> components/fr/safety_environment}}
     {{/if}}
+  <!-- end safety and environment -->
   {{/if}}
-
   </div>
   {{> components/footer}}
 </body>
