@@ -18,13 +18,13 @@ const profileSections = {
     sections: { traffic: true, apportion: false, safety: true },
   },
   many_islands: {
-    sections: { traffic: true, apportion: false, safety: true },
+    sections: { traffic: false, apportion: false, safety: true },
   },
   tqm: {
     sections: { traffic: true, apportion: false, safety: true },
   },
   vector: {
-    sections: { traffic: true, apportion: false, safety: true },
+    sections: { traffic: false, apportion: false, safety: true },
   },
   foothills: {
     sections: { traffic: true, apportion: false, safety: true },
@@ -62,7 +62,7 @@ const profileSections = {
   montreal: {
     sections: { traffic: false, apportion: false, safety: true },
   },
-  westpur: {
+  westspur: {
     sections: { traffic: false, apportion: false, safety: true },
   },
   aurora: {

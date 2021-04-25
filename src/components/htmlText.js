@@ -9,11 +9,11 @@ const instructionsFr = "Dashboard instructions";
 const noteEn = "Note:";
 const noteFr = "Note:";
 const sourceAndDescEn = "Source and description";
-const sourceAndDescFr = "Source et description de la figure";
+const sourceAndDescFr = "Source and description";
 const dataSourceEn = "Data Source:";
-const dataSourceFr = "Source de données :";
+const dataSourceFr = "Data Source:";
 const descriptionEn = "Description:";
-const descriptionFr = "Description :";
+const descriptionFr = "Description:";
 
 const en = {
   apportion: {
@@ -55,6 +55,15 @@ const en = {
     sourceTitle: sourceAndDescEn,
     dataSourceTitle: dataSourceEn,
     descriptionTitle: descriptionEn,
+  },
+  safety: {
+    header: "Safety and Environment",
+    complianceBtn: "Conditions Compliance",
+    incidentsBtn: "Reported Incidents",
+    complianceUpdated: "Section updated March 2021",
+    p1:
+      "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
+    p2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
   },
 };
 

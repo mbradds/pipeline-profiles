@@ -149,7 +149,11 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-      { test: /\.hbs$/, loader: "handlebars-loader" },
+      {
+        test: /\.hbs$/,
+        loader: "handlebars-loader",
+        options: { precompileOptions: { noEscape: true, strict: true } },
+      },
     ],
   },
   resolve: {
