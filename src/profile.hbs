@@ -11,20 +11,12 @@
   <div class="container">
   {{#if htmlWebpackPlugin.options.page.sections.traffic}}
   <!-- start traffic -->
-    {{#if htmlWebpackPlugin.options.page.lang.en}}
-    {{> components/en/traffic}}
-    {{else if htmlWebpackPlugin.options.page.lang.fr}}
-    {{> components/fr/traffic}}
-    {{/if}}
+    {{> components/traffic text=htmlWebpackPlugin.options.page.text}}
   <!-- end traffic -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.apportion}}
   <!-- start apportionment -->
-    {{#if htmlWebpackPlugin.options.page.lang.en}}
-    {{> components/en/apportion}}
-    {{else if htmlWebpackPlugin.options.page.lang.fr}}
-    {{> components/fr/apportion}}
-    {{/if}}
+    {{> components/apportion text=htmlWebpackPlugin.options.page.text}}
   <!-- end apportionment -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.safety}}

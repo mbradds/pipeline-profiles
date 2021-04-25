@@ -1,5 +1,6 @@
 const path = require("path");
-const pm = require("./src/profileManager");
+const pm = require("./src/components/profileManager");
+const profileText = require("./src/components/htmlText");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -48,6 +49,7 @@ var profileWebpackConfig = (function () {
         } else if (lang === "fr") {
           pageData.lang = { en: false, fr: true };
         }
+        pageData.text = profileText[lang];
         html.push(
           new HtmlWebpackPlugin({
             page: pageData,
@@ -103,8 +105,8 @@ var profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  // mode: "development",
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),

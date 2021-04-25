@@ -1,4 +1,3 @@
-*.json
 webpack.config.js
 dist
 node_modules
