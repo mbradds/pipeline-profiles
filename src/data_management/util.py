@@ -41,24 +41,27 @@ def most_common(df, meta, col_name, meta_key, top=1, dtype="dict", lower=True):
             what_list.append(what)
     what_list = [x.strip() for x in what_list]
     what_list = [x for x in what_list if x not in ['To be determined', '', "Other", "Not Specified", "Sans objet", "Autre"]]
-    if top == 1:
-        meta[meta_key] = max(set(what_list), key=what_list.count).lower()
-    else:
-        counter = {}
-        for e in what_list:
-            if e in counter:
-                counter[e] = counter[e] + 1
-            else:
-                counter[e] = 1
-        counter = dict(sorted(counter.items(), key=lambda item: item[1], reverse=True))
-        if lower:
-            counter = {k.lower(): counter[k] for k in list(counter)[:top]}
-        else:
-            counter = {k: counter[k] for k in list(counter)[:top]}
 
-        if dtype != "dict":
-            counter = list(counter.keys())
-        meta[meta_key] = counter
+    dft = pd.DataFrame(what_list, columns=["entries"])
+    dft['records'] = 1
+    dft = dft.groupby(by="entries").sum().reset_index()
+    dft = dft.sort_values(by=['records', 'entries'], ascending=[False, True])
+    dft = dft.groupby(by="records").agg({"entries": " & ".join}).reset_index()
+    dft = dft.sort_values(by=['records'], ascending=False)
+    dft = dft.head(top)
+
+    counter = {}
+    for name, count in zip(dft['entries'], dft['records']):
+        counter[name] = count
+
+    if lower:
+        counter = {k.lower(): counter[k] for k in list(counter)}
+
+    if dtype != "dict":
+        counter = list(counter.keys())
+    if top == 1:
+        counter = list(counter.keys())[0]
+    meta[meta_key] = counter
     return meta
 
 

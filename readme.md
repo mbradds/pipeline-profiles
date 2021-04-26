@@ -334,8 +334,7 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
-- Add "tie" corner case handling for most common incident what/why in the most_common method: `src/data_management/util.py`. Also make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
+- Make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
 - Add an option in incidents and conditions py for direct connection to cer infrastructure.
 - Add missing (non consecutive) date/data handling for traffic and apportionment
-- Look into fully templating the html with handlebars data condtitionally adding english/french paragraphs to fully shared templates.

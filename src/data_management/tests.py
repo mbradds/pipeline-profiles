@@ -6,7 +6,9 @@ import pandas as pd
 
 
 class TestUtil(unittest.TestCase):
-    testData = {'row_1': [5, 3, 2, 1, 0, 0, 0, 1], 'row_2': ['e', 'a', 'b', 'c', 'd', 'e', 'e', 'c']}
+    testData = {'row_1': [5, 3, 2, 1, 0, 0, 0, 1],
+                'row_2': ['e', 'a', 'b', 'c', 'd', 'e', 'e', 'c'],
+                'row_3': ['4', '4', '4', '4', '8', '8', '8', '8']}
     df = pd.DataFrame.from_dict(testData, orient='columns')
 
     def testMostCommonText1(self):
@@ -23,6 +25,11 @@ class TestUtil(unittest.TestCase):
         meta = {}
         meta = most_common(self.df, meta, "row_2", "testTop2", top=2)
         self.assertEqual(meta["testTop2"], {'e': 3, 'c': 2})
+
+    def testMostCommonTie(self):
+        meta = {}
+        meta = most_common(self.df, meta, "row_3", "testTie", top=1)
+        self.assertEqual(meta["testTie"], "4 & 8")
 
 
 class TestNovaIncidents(unittest.TestCase):

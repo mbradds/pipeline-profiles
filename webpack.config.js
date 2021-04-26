@@ -8,7 +8,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 
-var profileWebpackConfig = (function () {
+const profileWebpackConfig = (function () {
   const language = ["en", "fr"];
 
   const htmlFileNames = [

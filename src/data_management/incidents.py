@@ -233,14 +233,16 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
             print('starting english incidents...')
             path = "./raw_data/incidents_en.csv"
             process_func = process_english
+            encoding = "utf-8"
         else:
             print('starting french incidents...')
             path = "./raw_data/incidents_fr.csv"
             process_func = process_french
+            encoding = "utf-8-sig"
 
         df = pd.read_csv(path,
                          skiprows=0,
-                         encoding="utf-8",
+                         encoding=encoding,
                          error_bad_lines=False)
         df = process_func(df)
 
