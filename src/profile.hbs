@@ -21,12 +21,7 @@
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.safety}}
   <!-- start safety and environment -->
-    {{!-- {{> components/safety_environment text=htmlWebpackPlugin.options.page.text}} --}}
-    {{#if htmlWebpackPlugin.options.page.lang.en}}
-    {{> components/en/safety_environment}}
-    {{else if htmlWebpackPlugin.options.page.lang.fr}}
-    {{> components/fr/safety_environment}}
-    {{/if}}
+    {{> components/safety_environment text=htmlWebpackPlugin.options.page.text}}
   <!-- end safety and environment -->
   {{/if}}
   </div>

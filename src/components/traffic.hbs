@@ -5,17 +5,10 @@
       <p class="small">
         {{text.traffic.updated}}
       </p>
-      <p
-        class="cerlabel mrgn-tp-sm"
-        id="key-point-title"
-        style="margin-bottom: 0px"
-      >
+      <p class="cerlabel mrgn-tp-sm" id="key-point-title" style="margin-bottom: 0px">
         {{text.traffic.selectKeyPt}}
       </p>
-      <div
-        class="btn-group btn-group mrgn-bttm-md"
-        id="traffic-points-btn"
-      ></div>
+      <div class="btn-group btn-group mrgn-bttm-md" id="traffic-points-btn"></div>
     </div>
   </div>
   <div class="row">
@@ -24,7 +17,7 @@
     </div>
     <div class="col-md-4">
       <p class="cerlabel" id="select-units-title" style="margin-bottom: 0px">
-        {{text.traffic.selectUnits}}
+        {{text.selectUnits}}
       </p>
       <div id="select-units-radio-traffic"></div>
       <section class="panel panel-info mrgn-tp-sm" id="traffic-container">
@@ -35,11 +28,7 @@
           <div id="traffic-map"></div>
           <div class="btn-group btn-group-justified" id="key-point-zoom-btn">
             <div class="btn-group btn-map">
-              <button
-                type="button"
-                value="zoom-in"
-                class="btn btn-default active"
-              >
+              <button type="button" value="zoom-in" class="btn btn-default active">
                 {{text.traffic.zoomIn}}
               </button>
             </div>
@@ -76,18 +65,10 @@
       <details>
         <summary>{{text.traffic.instructionsTitle}}</summary>
         <ul class="lst-spcd">
-          <li>
-            {{text.traffic.instructions.one}}
-          </li>
-          <li>
-            {{text.traffic.instructions.two}}
-          </li>
-          <li>
-            {{text.traffic.instructions.three}}
-          </li>
-          <li>
-            {{text.traffic.instructions.four}}
-          </li>
+          <li>{{text.traffic.instructions.one}}</li>
+          <li>{{text.traffic.instructions.two}}</li>
+          <li>{{text.traffic.instructions.three}}</li>
+          <li>{{text.traffic.instructions.four}}</li>
         </ul>
         <p>
           <strong>{{text.traffic.note}}</strong> {{text.traffic.instructions.five}}
@@ -96,27 +77,19 @@
           Looking for <strong>daily data</strong>? Daily
           <strong>natural gas</strong>
           traffic datasets are available on
-          <a
-            href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34"
-            target="_blank"
-            rel="external"
-            >Open Government</a
-          >.
+          <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank"
+            rel="external">Open Government</a>.
         </p>
       </details>
 
       <details>
-        <summary>{{text.traffic.sourceTitle}}</summary>
+        <summary>{{text.sourceTitle}}</summary>
         <p>
-          <strong>{{text.traffic.dataSourceTitle}}</strong
-          ><a
-            href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34"
-            target="_blank"
-            rel="external"
-            >Open Government</a
-          >
+          <strong>{{text.dataSourceTitle}}</strong><a
+            href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank"
+            rel="external">Open Government</a>
         </p>
-        <p><strong>{{text.traffic.descriptionTitle}} </strong>Coming soon!</p>
+        <p><strong>{{text.descriptionTitle}} </strong>Coming soon!</p>
       </details>
     </div>
   </div>

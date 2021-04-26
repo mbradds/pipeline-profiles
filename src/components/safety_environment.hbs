@@ -20,68 +20,29 @@
     <div class="col-md-12">
       <h3>{{text.safety.complianceBtn}}</h3>
       <p class="small">{{text.safety.complianceUpdated}}</p>
-      <p>
-        {{text.safety.p1}}
-      </p>
-      <p>
-        {{text.safety.p2}}
-      </p>
-      <p>
-        Conditions can be related to a specific region, or apply to the pipeline
-        project as a whole. The map below displays the number of in progress and
-        closed conditions mapped to economic regions as defined by
-        <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm">Statistics
-          Canada.
-        </a>
-      </p>
-      <p>
-        Conditions can typically be either in-progress or closed. The CER
-        follows up on in-progress conditions.
-      </p>
+      <p>{{text.safety.conditionsp1}}</p>
+      <p>{{text.safety.conditionsp2}}</p>
+      <p>{{text.safety.conditionsp3}}</p>
+      <p>{{text.safety.conditionsp4}}</p>
       <div class="row">
         <div class="col-md-12">
           <details>
-            <summary>In-Progress</summary>
-            <p>
-              This status refers to conditions that continue to be monitored by
-              the CER. This happens when:
-            </p>
+            <summary>{{text.safety.inProgress}}</summary>
+            <p>{{text.safety.inProgressLst.one}}</p>
             <ul class="lst-spcd">
-              <li>
-                condition filings have not yet been received by the CER; or,
-              </li>
-              <li>
-                filings have been received but are under review or do not yet
-                meet requirements; or,
-              </li>
-              <li>
-                a project is not completed and it has conditions, which have not
-                been met; or,
-              </li>
-              <li>
-                a project has a post-construction condition, but a requirement
-                has not yet been completed; or,
-              </li>
-              <li>
-                some conditions may be active indefinitely or refer to the
-                continued operation of a pipeline.
-              </li>
+              <li>{{text.safety.inProgressLst.two}}</li>
+              <li>{{text.safety.inProgressLst.three}}</li>
+              <li>{{text.safety.inProgressLst.four}}</li>
+              <li>{{text.safety.inProgressLst.five}}</li>
+              <li>{{text.safety.inProgressLst.six}}</li>
             </ul>
           </details>
           <details>
-            <summary>Closed</summary>
-            <p>This status refers to:</p>
+            <summary>{{text.safety.closed}}</summary>
+            <p>{{text.safety.closedLst.one}}</p>
             <ul class="lst-spcd">
-              <li>
-                condition requirements that have been satisfied, and no further
-                submissions from the company are required; or
-              </li>
-              <li>
-                conditions whose filings or actions apply to a specific phase
-                that have been fulfilled as the phase is completed (i.e. a
-                specific filing during construction phase). Note: comments on
-                the required actions can still be received.
-              </li>
+              <li>{{text.safety.closedLst.two}}</li>
+              <li>{{text.safety.closedLst.three}}</li>
             </ul>
           </details>
         </div>
@@ -101,7 +62,7 @@
               <div class="btn-group btn-conditions">
                 <button type="button" class="btn btn-default" value="In Progress" id="in-progress-btn">
                   <div class="conditions-summary-title">
-                    In-Progress Conditions with location:
+                    {{text.safety.inProgressBtn}}
                   </div>
                   <div class="conditions-summary-value" id="in-progress-summary"></div>
                 </button>
@@ -109,7 +70,7 @@
               <div class="btn-group btn-conditions">
                 <button type="button" class="btn btn-default" value="Closed" id="closed-btn">
                   <div class="conditions-summary-title">
-                    Closed Conditions with location:
+                    {{text.safety.closedBtn}}
                   </div>
                   <div class="conditions-summary-value" id="closed-summary"></div>
                 </button>
@@ -117,7 +78,7 @@
               <div class="btn-group btn-conditions">
                 <button type="button" class="btn btn-default" value="not-shown" id="no-location-btn">
                   <div class="conditions-summary-title">
-                    No Geographic Location (not shown on map):
+                    {{text.safety.noLocationBtn}}
                   </div>
                   <div class="conditions-summary-value" id="no-location-summary"></div>
                 </button>
@@ -145,45 +106,20 @@
       <div class="row mrgn-tp-lg">
         <div class="col-md-12">
           <details>
-            <summary>Source and description</summary>
+            <summary>{{text.sourceTitle}}</summary>
             <p>
-              <strong>Data source: </strong><a
-                href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank"
-                rel="external">Open Government</a>
+              <strong>{{text.dataSourceTitle}} </strong>
+              {{text.safety.conditionsSourceLink}}
             </p>
             <p>
-              <strong>Description: </strong>The above map displays the number of
-              CER conditions associated with projects approved by the
-              Commission. The map is split into two tabs which show in-progress
-              and closed conditions separately, mapped to an economic region. If
-              a company has no in-progress conditions specific to an economic
-              region, the dashboard will default to show the closed conditions
-              by region. An additional view is available which contains the
-              number of in-progress and closed conditions that don't have a
-              corresponding economic region in the dataset. The map regions are
-              shaded based on the number of conditions, with lighter colored
-              regions containing fewer conditions compared to darker colors.
-              Conditions that apply to more than one region are double counted
-              in the map, and these conditions will appear in the map region
-              total and map region breakdown for each applicable region. The
-              condition counts contained in the map navigation buttons represent
-              total conditions without region double counting.
+              <strong>{{text.descriptionTitle}} </strong>
+              {{text.safety.conditionsDescription}}
             </p>
           </details>
         </div>
         <div class="col-md-12 mrgn-tp-lg">
-          <p>
-            Open data can be freely used and shared by anyone for any purpose.
-            The
-            <a href="/open/conditions/conditions.csv">data for these graphs are available [CSV]</a>.
-          </p>
-          <p>
-            Have you checked out the CER's
-            <a href="https://apps2.cer-rec.gc.ca/conditions/" target="_blank" rel="external">interactive conditions data
-              visualization</a>? This tool offers a deep dive into the CER's conditions compliance
-            data and process, exploring conditions across all CER regulated
-            companies by keyword, project, and location.
-          </p>
+          <p>{{text.safety.conditionsOpenData}}</p>
+          <p>{{text.safety.conditionsViz}}</p>
         </div>
       </div>
     </div>
@@ -193,128 +129,51 @@
 <div id="pipeline-incidents" class="profile-section tabcontent">
   <div class="row">
     <div class="col-md-12">
-      <h3>Pipeline Incidents</h3>
-      <p class="small">Section updated March 2021</p>
-      <p>
-        The information presented here is based on CER data (2008 to current)
-        for incidents reported under the
-        <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html" target="_blank">Onshore Pipeline
-          Regulations</a>
-        and the
-        <a href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html" target="_blank">Processing Plant
-          Regulations</a>. New data is added quarterly.
-        <a href="https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/infographic/index.html"
-          target="_blank">Learn more</a>
-        on how incident data collection has evolved since the NEB (now the CER)
-        was established in 1959.
-      </p>
-      <p>
-        Companies must report events, such as incidents, to the CER in
-        accordance with the CER
-        <a
-          href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/canada-energy-regulator-event-reporting-guidelines/index.html">Event
-          Reporting Guidelines</a>. Knowing what happened, and why, helps us find ways to prevent them
-        from happening again.
-      </p>
+      <h3>{{text.safety.incidentsHeader}}</h3>
+      <p class="small">{{text.safety.incidentsUpdated}}</p>
+      <p>{{text.safety.incidentsp1}}</p>
+      <p>{{text.safety.incidentsp2}}</p>
       <details>
-        <summary>
-          What is an incident? (Onshore Pipeline Regulations (OPR))
-        </summary>
-        <p>
-          As defined in the OPR, “incident” means an occurrence that results in:
-        </p>
+        <summary>{{text.safety.incidentsDetails1.one}}</summary>
+        <p>{{text.safety.incidentsDetails1.two}}</p>
         <ol class="lst-lwr-alph">
-          <li>the death or serious injury to a person;</li>
-          <li>a significant adverse effect on the environment;</li>
-          <li>an unintended fire or explosion;</li>
-          <li>
-            an unintended or uncontained release of low vapour pressure (LVP)
-            hydrocarbons in excess of 1.5&nbsp;m&sup3;
-          </li>
-          <li>
-            an unintended or uncontrolled release of gas or high vapour pressure
-            (HVP) hydrocarbons;
-          </li>
-          <li>
-            the operation of a pipeline beyond its design limits as determined
-            under CSA Z662 or CSA Z276 or any operating limits imposed by the
-            CER.
-          </li>
+          <li>{{text.safety.incidentsDetails1.three}}</li>
+          <li>{{text.safety.incidentsDetails1.four}}</li>
+          <li>{{text.safety.incidentsDetails1.five}}</li>
+          <li>{{text.safety.incidentsDetails1.six}}</li>
+          <li>{{text.safety.incidentsDetails1.seven}}</li>
+          <li>{{text.safety.incidentsDetails1.eight}}</li>
         </ol>
       </details>
       <details>
-        <summary>
-          What is an incident? (Processing Plant Regulations (PPR))
-        </summary>
-        <p>
-          As defined in the PPR, “incident” is defined as an occurrence that
-          results or could result in a significant adverse effect on property,
-          the environment, or the safety of persons. For the purposes of
-          incident reporting in the PPR, events that fall under this definition
-          include, but are not limited to:
-        </p>
+        <summary>{{text.safety.incidentsDetails2.one}}</summary>
+        <p>{{text.safety.incidentsDetails2.two}}</p>
         <ol class="lst-lwr-alph">
-          <li>the death or serious injury to a person;</li>
-          <li>a significant adverse effect on the environment;</li>
-          <li>
-            an unintended fire or explosion that results in or has the potential
-            to result in damage to company, public/crown or personal property;
-          </li>
-          <li>
-            an unintended or uncontained release of low vapour pressure (LVP)
-            hydrocarbons in excess of 1.5&nbsp;m&sup3;
-          </li>
-          <li>
-            an unintended or uncontrolled release of gas, HVP hydrocarbons,
-            hydrogen sulfide or other poisonous gas; or
-          </li>
-          <li>
-            the operation of a plant beyond its design limits or any limits
-            imposed by the CER.
-          </li>
+          <li>{{text.safety.incidentsDetails2.three}}</li>
+          <li>{{text.safety.incidentsDetails2.four}}</li>
+          <li>{{text.safety.incidentsDetails2.five}}</li>
+          <li>{{text.safety.incidentsDetails2.six}}</li>
+          <li>{{text.safety.incidentsDetails2.seven}}</li>
+          <li>{{text.safety.incidentsDetails2.eight}}</li>
         </ol>
       </details>
       <details>
-        <summary>Incidents and the CER</summary>
-        <p>
-          Companies self-report incidents and are expected to take a
-          precautionary approach in doing so. This means that even when there is
-          doubt as to whether an incident should be reported, the company must
-          report it. The approach is, “When in doubt, report.” This is
-          consistent with CER-regulated companies’ responsibility for
-          anticipating, preventing, mitigating and managing incidents of any
-          size or duration.
-        </p>
-
+        <summary>{{text.safety.incidentsDetails3.one}}</summary>
+        <p>{{text.safety.incidentsDetails3.two}}</p>
         <div class="row">
           <div class="col-md-3">
-            <p>
-              The CER reviews all reported incidents to assess whether companies
-              have taken the appropriate corrective actions and to identify
-              potential trends in incidents. Each incident is given a status
-              indicating the current stage of the CER's incident review.
-            </p>
+            <p>{{text.safety.incidentsDetails3.three}}</p>
           </div>
           <div class="col-md-9">
             <section class="panel panel-default">
               <header class="panel-heading">
-                <h5 class="panel-title">CER Status</h5>
+                <h5 class="panel-title">{{text.safety.incidentsDetails3.four}}</h5>
               </header>
               <div class="panel-body">
                 <ul class="lst-spcd">
-                  <li>
-                    <strong>Initially Submitted:</strong> The company has notified the CER
-                    that an incident has occurred and provided preliminary
-                    information. A review has been initiated.
-                  </li>
-                  <li>
-                    <strong>Submitted:</strong> The company has submitted all of the
-                    required information and the CER is reviewing the incident.
-                  </li>
-                  <li>
-                    <strong>Closed:</strong> The CER’s incident review has been completed
-                    and the file is closed.
-                  </li>
+                  <li>{{text.safety.incidentsDetails3.five}}</li>
+                  <li>{{text.safety.incidentsDetails3.six}}</li>
+                  <li>{{text.safety.incidentsDetails3.seven}}</li>
                 </ul>
               </div>
             </section>
@@ -323,76 +182,25 @@
       </details>
       <div class="mrgn-tp-md" id="system-incidents-paragraph"></div>
       <details>
-        <summary>
-          Incident type definitions: one incident can have multiple types
-        </summary>
+        <summary>{{text.safety.incidentsDetails4.one}}</summary>
         <ul class="lst-spcd">
+          <li>{{text.safety.incidentsDetails4.two}}</li>
+          <li>{{text.safety.incidentsDetails4.three}}</li>
+          <li>{{text.safety.incidentsDetails4.four}}</li>
+          <li>{{text.safety.incidentsDetails4.five}}</li>
+          <li>{{text.safety.incidentsDetails4.six}}</li>
           <li>
-            <p>
-              <strong>Release of Substance (featured in the dashboard)</strong>
-              - Any time a product is unintentionally released. (Releases of
-              non-gas low pressure products in volumes of less than
-              1.5&nbsp;m&sup3 are exempt from reporting.)
-            </p>
-          </li>
-          <li>
-            <strong>Adverse Environmental Effects</strong> - When any chemical
-            substance is released at a concentration or volume that has the
-            potential to change the ambient environment in a manner that would
-            cause harm to human life, wildlife or vegetation (e.g., glycol,
-            potassium carbonate, methanol, methanol mix from hydrostatic
-            testing, etc.).
-          </li>
-          <li>
-            <p><strong>Explosion</strong> - An unintended explosion</p>
-          </li>
-          <li>
-            <p>
-              <strong>Fatality</strong> - Any death involving employees,
-              contractors or members of the public related to the construction,
-              operation, maintenance or abandonment of pipelines
-            </p>
-          </li>
-          <li>
-            <p><strong>Fire</strong> - An unintended fire</p>
-          </li>
-          <li>
-            <p>
-              <strong>Operation Beyond Design Limits</strong> Includes
-              situations, such as:
-            </p>
+            <p>{{text.safety.incidentsDetails4.seven}}</p>
             <ul class="lst-spcd">
-              <li>
-                over-pressures - i.e., pressures that are higher than the
-                maximum the equipment was designed to safely handle;
-              </li>
-              <li>vibration beyond design limits;</li>
-              <li>
-                slope movements causing movement in the pipeline beyond design
-                limits;
-              </li>
-              <li>pipe exposures in rivers or streams; and</li>
-              <li>
-                introduction of an inappropriate product (e.g., sour gas in
-                excess of CSA limits)
-              </li>
+              <li>{{text.safety.incidentsDetails4.eight}}</li>
+              <li>{{text.safety.incidentsDetails4.nine}}</li>
+              <li>{{text.safety.incidentsDetails4.ten}}</li>
+              <li>{{text.safety.incidentsDetails4.eleven}}</li>
+              <li>{{text.safety.incidentsDetails4.twelve}}</li>
             </ul>
-
-            <p>
-              Operation beyond design limit is typically linked to an
-              over-pressure of the product in the pipe; however, if a pipe was
-              exposed to excessive vibration and was not designed for this, this
-              could be considered operation beyond design limits. Operation
-              beyond design limits does not include equipment contacting the
-              pipe, or corrosion pits, etc.
-            </p>
+            <p>{{text.safety.incidentsDetails4.thirteen}}</p>
           </li>
-          <li>
-            <strong>Serious Injury (CER or Transportation Safety Board)</strong>
-            - Any serious injury involving employees, contractors or members of
-            the public related to the construction, operation or maintenance of
-            pipelines.
-          </li>
+          <li>{{text.safety.incidentsDetails4.fourteen}}</li>
         </ul>
       </details>
     </div>
@@ -406,10 +214,10 @@
       <form>
         <label for="incident-count-btn" class="radio-inline">
           <input id="incident-count-btn" type="radio" name="type" value="frequency" checked="checked" />
-          Incident count</label>
+          {{text.safety.incidentsCountRadio}}</label>
         <label for="incident-volume-btn" class="radio-inline">
           <input id="incident-volume-btn" type="radio" name="type" value="volume" />
-          Incident volume</label>
+          {{text.safety.incidentsVolRadio}}</label>
       </form>
     </div>
 
@@ -418,12 +226,12 @@
         <div class="btn-group btn-group-justified" id="incident-view-type">
           <div class="btn-group btn-incident-view-type">
             <button type="button" class="btn btn-default active" value="map">
-              Incident Map
+              {{text.safety.incidentsMapBtn}}
             </button>
           </div>
           <div class="btn-group btn-incident-view-type">
             <button type="button" class="btn btn-default" value="trends">
-              Incident Trends
+              {{text.safety.incidentsTrendBtn}}
             </button>
           </div>
         </div>
@@ -463,12 +271,12 @@
 
     <section class="panel panel-info mrgn-tp-md" id="nearby-incidents-popup">
       <header class="panel-heading">
-        <h5 class="panel-title">Are there any incidents near me?</h5>
+        <h5 class="panel-title">{{text.safety.incidentsNearMe}}</h5>
       </header>
       <div class="panel-body incidents-near-me">
         <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
           <div class="col-md-12 cerlabel" id="find-incidents-title">
-            Select range (100km):
+            {{text.safety.incidentsSelectRange}}
           </div>
         </div>
         <div class="row">
@@ -477,12 +285,12 @@
           </div>
           <div class="col-md-3 center-stuff">
             <button type="button" value="100" id="find-incidents-btn" class="btn btn-default col-md-12">
-              Find Incidents within 100km
+              {{text.safety.incidentsFind}}
             </button>
           </div>
           <div class="col-md-3 center-stuff">
             <button type="button" id="reset-incidents-btn" class="btn btn-default col-md-12" disabled="disabled">
-              Refill Map Bubbles
+              {{text.safety.incidentsRefill}}
             </button>
           </div>
         </div>
@@ -495,45 +303,17 @@
   <div class="row">
     <div class="col-md-12">
       <details>
-        <summary>Source and description</summary>
+        <summary>{{text.sourceTitle}}</summary>
         <p>
-          <strong>Data source: </strong><a
-            href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank"
-            rel="external">Open Government</a>
+          <strong>{{text.dataSourceTitle}} </strong>
+          {{text.safety.incidentsSourceLink}}
         </p>
-        <p>
-          <strong>Description:</strong> The above map displays the location of
-          product release incidents that have occured on the pipeline system
-          since 2008. The map defaults to show incidents as bubbles which are
-          colored based on the substance released. Incidents on the map can be
-          re-categorized based on the most recently available status of the
-          CER's incident review, the year in which the incident was reported,
-          and the province/territory where the incident occured. The incident
-          map bubble can be switched to show the estimated volume of product
-          released, with larger map bubbles showing larger release volumes
-          relative to other product releases on the system. The incident data
-          can also be toggled to display a stacked bar chart of incidents over
-          time by clicking on the incident trends button above the map. The
-          stacked bars dispaly the number of product release incidents by year,
-          with bar color segments corresponding to the various products
-          released. Similiar to the map, incidents can be re-categorized by
-          clicking on the side buttons to view a breakdown of incidents by
-          status, what happened, why it happened, and province/territory.
-        </p>
+        <p>{{text.safety.incidentsDescription}}</p>
       </details>
     </div>
     <div class="col-md-12 mrgn-tp-lg">
-      <p>
-        Open data can be freely used and shared by anyone for any purpose. The
-        <a href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6" target="_blank"
-          rel="external">data for these graphs are available</a>.
-      </p>
-      <p>
-        Have you checked out the CER's
-        <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident
-          data visualization</a>? This tool offers a deep dive into the CER's incident data trends,
-        exploring incidents across all CER regulated companies.
-      </p>
+      <p>{{text.safety.incidentsOpenData}}</p>
+      <p>{{text.safety.incidentsViz}}</p>
     </div>
   </div>
 </div>
