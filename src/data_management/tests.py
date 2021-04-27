@@ -1,6 +1,7 @@
 import unittest
 from incidents import process_incidents
 from conditions import process_conditions
+from traffic import process_throughput
 from util import most_common
 import pandas as pd
 
@@ -111,6 +112,13 @@ class NovaTotalConditions(unittest.TestCase):
         red_deer = self.mapMeta[self.mapMeta['id'] == "Red Deer"].copy().reset_index(drop=True)
         self.assertEqual(red_deer.loc[0, "In Progress"], 9)
         self.assertEqual(red_deer.loc[0, "Closed"], 35)
+
+
+class NovaTraffic(unittest.TestCase):
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly', companies=['NOVA Gas Transmission Ltd.'])
+
+    def testMeta(self):
+        self.assertEqual(self.traffic["meta"]["units"], "Bcf/d")
 
 
 if __name__ == "__main__":

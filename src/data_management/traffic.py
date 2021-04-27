@@ -101,9 +101,10 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
         print('reading sql '+query.split(".")[0])
         df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db='EnergyData')
         df.to_csv('raw_data/'+csvName, index=False)
-    elif test:
-        print('reading test '+query.split(".")[0])
-        df = pd.read_csv('raw_data/test_data/'+csvName)
+    # traffic probaby doesnt need test data!
+    # elif test:
+    #     print('reading test '+query.split(".")[0])
+    #     df = pd.read_csv('raw_data/test_data/'+csvName)
     else:
         print('reading local '+query.split(".")[0])
         df = pd.read_csv('raw_data/'+csvName, encoding='latin-1')
@@ -452,6 +453,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly', companies=["NOVA Gas Transmission Ltd."])
+    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')
