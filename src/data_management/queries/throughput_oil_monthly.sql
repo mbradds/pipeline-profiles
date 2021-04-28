@@ -4,10 +4,15 @@ cast(str([Month])+'-'+'1'+'-'+str([Year]) as date) as [Date],
 [Pipeline Name],
 [Key Point],
 [Direction of Flow],
---[Trade Type],
 Product,
-round([Throughput (1000 m3/d)],2) as [Throughput (1000 m3/d)],
-round([Available Capacity (1000 m3/d)],2) as [Available Capacity (1000 m3/d)]
+case when [Corporate Entity] <> 'Enbridge Pipelines Inc.'
+then round([Throughput (1000 m3/d)], 2)
+else round([Throughput (1000 m3/d)], 4)
+end as [Throughput (1000 m3/d)],
+case when [Corporate Entity] <> 'Enbridge Pipelines Inc.'
+then round([Available Capacity (1000 m3/d)], 2)
+else round([Available Capacity (1000 m3/d)], 4)
+end as [Available Capacity (1000 m3/d)]
 from (
 SELECT 
 throughput.[Month],
@@ -16,7 +21,6 @@ throughput.[Corporate Entity],
 throughput.[Pipeline Name],
 throughput.[Key Point],
 throughput.[Direction of Flow],
---[Trade Type],
 throughput.[Product],
 sum([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
 avg(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
@@ -36,7 +40,6 @@ throughput.[Corporate Entity],
 throughput.[Pipeline Name],
 throughput.[Key Point],
 [Direction of Flow],
---[Trade Type],
 [Product],
 sum([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
 avg(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
