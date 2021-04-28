@@ -237,3 +237,8 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   const tm = defaultPoint.id === "35";
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }
+
+export function addUnitsDisclaimer(div, commodity, textFunction) {
+  const unitsDisclaimer = document.getElementById(div);
+  unitsDisclaimer.innerHTML = textFunction(commodity);
+}

@@ -3,6 +3,7 @@ import {
   addSeriesParams,
   addUnitsAndSetup,
   visibility,
+  addUnitsDisclaimer,
 } from "../modules/util";
 
 export async function mainApportion(apportionData, lang) {
@@ -133,6 +134,11 @@ export async function mainApportion(apportionData, lang) {
 
         let series = buildApportionSeries(apportionData.series, unitsHolder);
         const chart = buildApportionChart(series, unitsHolder.current);
+        addUnitsDisclaimer(
+          "conversion-disclaimer-apportion",
+          "oil",
+          lang.unitsDisclaimerText
+        );
         // user selects units
         $("#select-units-radio-apportion input[name='apportionUnits']").click(
           () => {

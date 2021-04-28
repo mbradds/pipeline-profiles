@@ -6,6 +6,7 @@ import {
   listOrParagraph,
   addSeriesParams,
   addUnitsAndSetup,
+  addUnitsDisclaimer,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
@@ -594,6 +595,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
       chartParams.directions = metaData.directions;
       chartParams.trendText = metaData.trendText;
       resize(chartParams);
+      addUnitsDisclaimer(
+        "conversion-disclaimer-traffic",
+        chartParams.commodity,
+        lang.unitsDisclaimerText
+      );
 
       const pointMap = new KeyPointMap({
         points: chartParams.points,

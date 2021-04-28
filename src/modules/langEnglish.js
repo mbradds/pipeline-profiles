@@ -35,6 +35,18 @@ const units = {
   "Thousand m3/d": "Thousand m3/d",
 };
 
+const unitsDisclaimerText = (commodity) => {
+  let conversionText = "";
+  if (commodity === "oil") {
+    conversionText =
+      "A conversion of 1 cubic meter = 6.2898 barrels of oil is used in this dashboard";
+  } else if (commodity === "gas") {
+    conversionText =
+      "A conversion of 1 cubic meter = 35.3147 Cubic feet (cf) natural gas is used in this dashboard";
+  }
+  return conversionText;
+};
+
 const points = {
   0: [
     "system",
@@ -439,6 +451,7 @@ export const englishDashboard = {
     },
   },
   traffic: {
+    unitsDisclaimerText,
     units,
     dynamicText: trafficTrendTextEng,
     numberFormat,
@@ -480,6 +493,7 @@ export const englishDashboard = {
     },
   },
   apportion: {
+    unitsDisclaimerText,
     units,
     points,
     numberFormat,
