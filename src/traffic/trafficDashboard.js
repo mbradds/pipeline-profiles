@@ -663,12 +663,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
         fiveChart = false;
       }
       chartParams.fiveTrend = fiveYearTrend(fiveSeries, chartParams.hasImports);
-      lang.dynamicText(chartParams, lang.numberFormat);
-      if (!chartParams.tm) {
-        displayPointDescription([chartParams.defaultPoint]);
-      } else {
-        displayPointDescription(chartParams.points);
-      }
+      // this event listener possibly helps with the equal height not working properly
+      window.addEventListener("DOMContentLoaded", () => {
+        lang.dynamicText(chartParams, lang.numberFormat);
+        if (!chartParams.tm) {
+          displayPointDescription([chartParams.defaultPoint]);
+        } else {
+          displayPointDescription(chartParams.points);
+        }
+      });
 
       // user selects key point
       if (!chartParams.tm) {
