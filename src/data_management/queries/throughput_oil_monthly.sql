@@ -5,14 +5,8 @@ cast(str([Month])+'-'+'1'+'-'+str([Year]) as date) as [Date],
 [Key Point],
 [Direction of Flow],
 Product,
-case when [Corporate Entity] <> 'Enbridge Pipelines Inc.'
-then round([Throughput (1000 m3/d)], 2)
-else round([Throughput (1000 m3/d)], 4)
-end as [Throughput (1000 m3/d)],
-case when [Corporate Entity] <> 'Enbridge Pipelines Inc.'
-then round([Available Capacity (1000 m3/d)], 2)
-else round([Available Capacity (1000 m3/d)], 4)
-end as [Available Capacity (1000 m3/d)]
+round([Throughput (1000 m3/d)], 2) as [Throughput (1000 m3/d)],
+round([Available Capacity (1000 m3/d)], 2) as [Available Capacity (1000 m3/d)]
 from (
 SELECT 
 throughput.[Month],
