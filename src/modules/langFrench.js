@@ -54,26 +54,35 @@ const points = {
   ],
   1: [
     "Border",
-    "Pipeline border crossing and interconnection between the Alliance Canada and Alliance USA pipeline near Elmore Saskatchewan.",
+    "Pipeline border crossing and interconnection between the Alliance Canada and Alliance USA pipeline near Elmore Saskatchewan (Sherwood, ND in the U.S.).  The CER’s regulation of the Alliance pipeline ends at this border point.",
   ],
   2: [
     "Zone 2",
-    "Located near the Blueberry Compressor Station, Zone 2 aggregates liquids rich gas primarilty from the montney formation. The majority of Alliance receipt points are upstream of Zone 2.",
+    "Located near the Blueberry Compressor Station, Zone 2 aggregates liquids rich gas primarily from the Montney Basin in northeast BC & northwest AB. The majority of Alliance receipt points are upstream of Zone 2, with smaller volumes received by the system south of Zone 2.",
   ],
   3: [
     "Huntingdon/FortisBC Lower Mainland",
-    "Gas exports to the U.S. are typically bound for use in crude oil refineries on the West Coast of Washington State, and intracanada throughput connects with the FortisBC local distribution network for use in Vancouver and the BC lower mainland.",
+    "Export connection with the U.S. pipeline grid at Huntingdon, B.C. Exports to the U.S. are typically bound for use in crude oil refineries on the West Coast of Washington State. Intracanada throughput connects with the FortisBC local distribution network for use in Vancouver and the BC lower mainland.",
   ],
-  4: ["Kingsvale", "Connection with the Southern Crossing pipeline."],
-  5: ["NOVA/Gordondale", "Connection with the NGTL System."],
-  6: ["Sunset Creek", "Connection with the NGTL System."],
+  4: [
+    "Kingsvale",
+    "Connection with the FortisBC Southern Crossing pipeline. The Southern Crossing moves smaller volumes of natural gas across southern BC from the NGTL West Gate point.",
+  ],
+  5: [
+    "NOVA/Gordondale",
+    "Connection with the NGTL System. The only Westcoast key point in Alberta. Most gas moving on Westcoast makes its way south through BC, but smaller volumes at NOVA/Gordondale & Sunset Creek move East into Alberta onto the NGTL system.",
+  ],
+  6: [
+    "Sunset Creek",
+    "Connection with the NGTL System. Situated near the Station 2 trading point, where gas can either move south on the Westcoast system, or East into Alberta.",
+  ],
   7: [
     "St. Stephen",
     "Import/export interconnect with the US portion of M&NP at the Canada-U.S. border near St. Stephen, New Brunswick.",
   ],
   8: [
     "Chippawa",
-    "Import interconnect with the Empire Pipeline at the Canada-U.S. border near Niagara Falls, Ontario. Prior to 2015, Chippawa was an export point.",
+    "Interconnect with the Empire State Pipeline at the Canada-U.S. border near Niagara Falls, Ontario. Prior to 2015, Chippawa was an export point until increasing gas production in the northeastern U.S. began to displace imports from Canada. Chippawa key point is bi-directional.",
   ],
   9: [
     "Cromer/Regina",
@@ -81,36 +90,39 @@ const points = {
   ],
   10: [
     "Eastern Triangle - NOL Receipts",
-    "Includes receipts from the NOL segment which are measured at station 116 in North Bay, Ontario.",
+    "Includes receipts from the Northern Ontario Line (NOL) segment, measured at compressor station 116 near North Bay, Ontario. The Eastern Triangle is comprised of three segments - Barrie, Montreal and the North Bay Short Cut (NBSC).",
   ],
-  11: ["Eastern Triangle - Parkway Deliveries", "no description provided"],
+  11: [
+    "Eastern Triangle - Parkway Deliveries",
+    "Delivery interconnect with the Union Gas Pipeline, near Milton, Ontario. Throughputs include nominations bound for Dawn storage, via the Union Gas System, and tend to be seasonal (primarily in the summer), depending on market conditions. ",
+  ],
   12: [
     "Eastern Triangle - Parkway Receipts",
-    "Includes receipts from Parkway East, Parkway West and King’s North, all located in the greater Toronto area, Ontario.",
+    "Receipt interconnect with the Union Gas Pipeline, near Milton, Ontario. Includes supply from Dawn storage.",
   ],
   13: [
     "Emerson I",
-    "Export interconnect with the Viking Gas Transmission Pipeline at the Canada-U.S. border near Emerson, Manitoba.",
+    "Interconnect with the Viking Gas Transmission Pipeline at the Canada-U.S. border near Emerson, Manitoba.",
   ],
   14: [
     "Emerson II",
-    "Export/import interconnect with the Great Lakes Gas Transmission Pipeline on the Canada-U.S. border near Emerson, Manitoba.",
+    "Interconnect with the Great Lakes Gas Transmission Pipeline on the Canada-U.S. border near Emerson, Manitoba. Emerson II key point is bi-directional.",
   ],
   15: [
     "ex-Cromer",
-    "The Canadian Mainline receives U.S. crude oil from the Enbridge Bakken pipeline.",
+    "Canadian Mainline receives U.S. and Saskatchewan crude oil from the Enbridge Bakken Pipeline as well as Saskatchewan production from the Westspur Pipeline at the Cromer terminal just north of Cromer Manitoba. The Mainline moves near the Bakken production region (southern Saskatchewan, southwest Manitoba, & North Dakota), receiving light crude oil produced nearby.",
   ],
   16: [
     "ex-Gretna",
-    "The pipeline crosses the Canada-U.S. border and joins with the Enbridge Lakehead system. Delivery point for the Canadian Mainline.",
+    "Canadian Mainline crosses the Canada-U.S. border and joins with the Enbridge Lakehead system. The CER’s regulation of the Canadian Mainline ends at this border point.",
   ],
   17: [
     "Into-Sarnia",
-    "The Mainline connects with Line 9, which delivers crude oil to Montreal, Quebec. Also a delivery point for the Canadian Mainline.",
+    "Enbridge Lakehead system delivers Canadian as well as some U.S. production into Sarnia, Ontario on Line 5 and Line 78. Line 5 carries light oil and NGLs while Line 78 carries primarily heavier crudes. From Sarnia, Line 9 delivers crude oil to Montreal, Quebec and Line 7/11 delivers to the Nanticoke refinery.",
   ],
   18: [
     "Iroquois",
-    "Export interconnect with the Iroquois Gas Transmission System at the Canada-U.S. border near Iroquois, Ontario.",
+    "Interconnect with the Iroquois Gas Transmission System at the Canada-U.S. border near Iroquois, Ontario. The Iroquois pipeline transports Canadian gas into U.S. northeast. Iroquois key point is bi-directional.",
   ],
   19: [
     "Niagara",
@@ -122,34 +134,35 @@ const points = {
   ],
   21: [
     "Other US Northeast",
-    "Export interconnects with three smaller U.S. pipelines at the Canada-U.S. border near Cornwall, Ontario and Napierville and Phillipsburg, Quebec. ‘Other US Northeast’ flows is an aggregate of these three export points.",
+    "Interconnect with three U.S. pipelines at the Canada-U.S. border near Cornwall, Ontario and Napierville and Phillipsburg, Quebec. ‘Other US Northeast’ is an aggregate of these three export points and includes interconnects with the St. Lawrence Gas Company, North Country Gas Pipeline and Vermont Gas Systems respectively. ",
   ],
   22: [
     "Prairies",
-    "Interconnect with the NOVA Gas Transmission Ltd. (NGTL) system at the Alberta/Saskatchewan border near Empress, Alberta. Empress is the largest receipt point on the Mainline.",
+    "Interconnect with the NOVA Gas Transmission Ltd. (NGTL) system at the Alberta/Saskatchewan border. Empress is one of the primary receipt points on the Mainline. Gas moves east for use in Manitoba, Ontario, Quebec, and exports into the U.S. Midwest and U.S. Northeast. ",
   ],
-  23: ["St Clair", "no description provided"],
+  23: [
+    "St Clair",
+    "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
+  ],
   24: [
     "Ft. Saskatchewan",
     "The end of the Cochin pipeline near Ft. Saskatchewan AB. Condensate is transferred to provincially regulated pipelines and transported to oil sands operations in northern Alberta.",
   ],
-  25: ["Regina", "no description provided"],
-  26: ["Windsor", "no description provided"],
   27: [
     "Kingsgate",
-    "Export interconnect with the Gas Transmission Northwest Pipeline (GTN) at the Canada-U.S. border near Kingsgate, British Columbia. GTN supplies markets in the Pacific Northwest, California and Nevada.",
+    "Interconnect with the Gas Transmission Northwest Pipeline (GTN) at the Canada-U.S. border near Kingsgate, British Columbia. GTN supplies markets in the Pacific Northwest, California and Nevada.",
   ],
   28: [
     "Monchy",
-    "Export interconnect with the Northern Border Pipeline at the Canada U.S. border near Monchy, Saskatchewan. Northern Border supplies markets in the mid-continent U.S. and Chicago.",
+    "Interconnect with the Northern Border Pipeline at the Canada U.S. border near Monchy, Saskatchewan. Northern Border supplies markets in the mid-continent U.S.",
   ],
   29: [
     "International boundary at or near Haskett, Manitoba",
-    "Pipeline border crossing between Manitoba and North Dakota, US. The CER's regulation of the Keystone pipeline ends at the border.",
+    "Pipeline border crossing between Manitoba and North Dakota, U.S. The CER's regulation of the Keystone pipeline ends at the US/Canada border.",
   ],
   30: [
     "East Gate",
-    "In the southeastern portion of the NGTL system, the East Gate interconnects with TransCanada's Canadian Mainline (near Empress, Alberta) and TransCanada's Foothills Pipeline (near McNeill, Alberta).",
+    "NGTL interconnect with the TC Energy Canadian Mainline (near Empress, Alberta) and the Foothills Pipeline (near McNeill, Alberta). Most gas moves from East Gate to the TC Mainline for use in central and eastern Canada, and is exported to the US Midwest and Northeast.",
   ],
   31: [
     "North and East",
@@ -157,46 +170,55 @@ const points = {
   ],
   32: [
     "Upstream of James River",
-    "Throughputs in the northwestern portion of the NGTL system. Upstream of James River flows contain receipts from the Horn River and the Groundbirch pipelines (parts of NGTL).",
+    "Receives gas from the Horn River, North Montney Mainline and Groundbirch pipelines in the northwestern portion of the NGTL system. Typically the highest traffic key point on the system, capturing a significant amount of gas produced in the WCSB.",
   ],
   33: [
     "West Gate",
-    "In the southwestern portion of the NGTL system, the West Gate interconnects with TransCanada's Foothills Pipeline (British Columbia).",
+    "NGTL interconnect with TC Energy’s Foothills Pipeline in southwestern Alberta at the British Columbia border. Gas travels through the Foothills system for export into the western United States.",
   ],
   34: [
     "Zama",
-    "The end of the Norman Wells pipeline, where it connects with provincially regulated pipeline systems.",
+    "The end of the Norman Wells pipeline in northwest Alberta. The pipeline connects with provincially regulated systems, and enters the Alberta light crude oil market.",
   ],
-  35: ["Burnaby", ""],
-  36: ["Sumas", ""],
-  37: ["Westridge", ""],
+  35: [
+    "Burnaby",
+    "Delivers light crude oil to the 55,000 b/d Parkland Refinery in Burnaby BC, and delivers refined petroleum products for use in Burnaby and surrounding areas.",
+  ],
+  36: [
+    "Sumas",
+    "Connection between the Trans Mountain Pipeline and the Trans Mountain Puget Sound Pipeline in Abbotsford, BC. Light crude oil and smaller volumes of heavy crude oil are diverted for export to nearby refineries in Anacortes, Cherry Point, and Ferndale on the west coast of Washington State.",
+  ],
+  37: [
+    "Westridge",
+    "The smallest delivery point on the system located within Port Metro Vancouver, the Westridge Marine Terminal is able to load crude oil tankers with primarily heavy crude oil for various markets, including Asia and California.",
+  ],
   38: [
     "East Hereford",
     "Export interconnect with the Portland Natural Gas Transmission System at the Canada-U.S. border near East Hereford, Québec. TQM delivers natural gas customers in the U.S. states of Vermont, New Hampshire, Maine and Massachusetts.",
   ],
   39: [
     "Saint Lazare",
-    "Interconnect with TransCanada’s Canadian Mainline near Saint Lazare, Québec. TransCanada’s Canadian Mainline delivers natural gas produced in the Western Canadian Sedimentary Basin and the Appalachian Basin.",
+    "Interconnect with the TC Canadian Mainline near Saint Lazare, Québec. TransCanada’s Canadian Mainline delivers natural gas produced in the WCSB and the Appalachian Basin for use in Montreal and surrounding areas.",
   ],
   40: [
     "Calgary",
-    "Connection between the NGTL system and local distribution pipelines used to service the Calgary area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
+    "Connection between the NGTL system and local distribution pipelines used to service the Calgary market area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
   ],
   41: [
     "Edmonton",
-    "Located just Northeast of Calgary, the Edmonton key point captures gas post Upstream of James river, bound North for use in the Edmonton area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
+    "Located northeast of Calgary, the Edmonton key point captures gas post Upstream of James River, bound north to service the Edmonton market area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
   ],
   42: [
     "OSDA Kirby",
-    "Stands for Oil Sands Delivery Area. Gas throughput here is typically bound for use in nearby Cold Lake oil sands SAGD & CSS operations. These unconventional production methods rely on gas to generate the steam used to heat underground reservoirs, allowing bitumen to reach the surface.",
+    "Stands for Oil Sands Delivery Area. Gas throughput here is typically bound for use in nearby Cold Lake oil sands Steam-Assisted Gravity Drainage (SAGD) and Cyclic Steam Stimulation (CSS) operations. These unconventional oil production methods rely on gas to generate the steam used to heat underground reservoirs, allowing bitumen to reach the surface.",
   ],
   43: [
     "OSDA Liege",
-    "Stands for Oil Sands Delivery Area. Located just north-west of Fort McMurray, gas throughput here is typically bound for use in nearby Athabasca oil sands mining, SAGD, and CSS operations. Bitumen mining operations use natural gas in the upgrading process, where bitumen is heated up and split into lighter components, ultimately producing synthetic crude oil.",
+    "Stands for Oil Sands Delivery Area. Located just northwest of Fort McMurray, gas throughput here is typically bound for use in nearby Athabasca oil sands mining and in-situ operations. Bitumen mining operations use natural gas to convert mined bitumen into synthetic crude oil.",
   ],
   44: [
     "Saturn",
-    "Compressor station located south-west of Fort St. John, British Columbia. Throughputs transported on the North Montney Mainline.",
+    "NGTL segment near the Saturn compressor station located southwest of Fort St. John in British Columbia. Connects NGTL with production from the North Montney Mainline and Aitken storage. Component of total deliveries at Upstream of James River key point.",
   ],
 };
 

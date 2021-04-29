@@ -571,8 +571,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function displayPointDescription(points) {
     const pointsText = points.map((p) => {
-      p.textCol = lang.points[p.id][1];
-      return p;
+      let textCol = "";
+      if (points.length > 1) {
+        textCol = `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`;
+      } else {
+        textCol = lang.points[p.id][1];
+      }
+      const newP = { ...p, textCol };
+      return newP;
     });
     document.getElementById(
       "traffic-point-description"
@@ -669,7 +675,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         if (!chartParams.tm) {
           displayPointDescription([chartParams.defaultPoint]);
         } else {
-          displayPointDescription(chartParams.points);
+          displayPointDescription(chartParams.points, chartParams.tm);
         }
       });
 
