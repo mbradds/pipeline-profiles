@@ -47,14 +47,14 @@ class TestNovaIncidents(unittest.TestCase):
     def testEngEqualToFra(self):
         self.assertEqual(len(self.df), len(self.dfFR))
         self.assertEqual(self.countIncidentType("Adverse Environmental Effects", self.df),
-                         self.countIncidentType("Effets environnementaux négatifs", self.dfFR))
+                          self.countIncidentType("Effets environnementaux négatifs", self.dfFR))
 
         self.assertEqual(self.meta["seriousEvents"]["Adverse Environmental Effects"],
-                         self.metaFR["seriousEvents"]["Adverse Environmental Effects"])
+                          self.metaFR["seriousEvents"]["Adverse Environmental Effects"])
         self.assertEqual(self.meta["seriousEvents"]["Serious Injury (CER or TSB)"],
-                         self.metaFR["seriousEvents"]["Serious Injury (CER or TSB)"])
+                          self.metaFR["seriousEvents"]["Serious Injury (CER or TSB)"])
         self.assertEqual(self.meta["seriousEvents"]["Fatality"],
-                         self.metaFR["seriousEvents"]["Fatality"])
+                          self.metaFR["seriousEvents"]["Fatality"])
 
     def testTotal(self):
         self.assertEqual(len(self.df), 338)  # total incidents for NGTL
@@ -119,6 +119,22 @@ class NovaTraffic(unittest.TestCase):
 
     def testMeta(self):
         self.assertEqual(self.traffic["meta"]["units"], "Bcf/d")
+        self.assertEqual(self.traffic["meta"]["build"], True)
+        self.assertEqual(self.traffic["meta"]["defaultPoint"], '32')
+        # check that there is a trend text for every traffic dataset
+        trendLength = len(self.traffic["meta"]["trendText"])
+        dataSets = len(self.traffic["traffic"])
+        self.assertEqual(trendLength, dataSets)
+        # check that min date has not changed
+        point = self.traffic["traffic"]["32"]
+        self.assertEqual(point[0]["min"], [2005, 11, 1])
+        # check one data point for traffic and capacity
+        # traffic
+        self.assertEqual(point[1]["name"], "intracanada")
+        self.assertEqual(point[1]["data"][0], 5.71)
+        # capacity
+        self.assertEqual(point[2]["name"], "Capacity")
+        self.assertEqual(point[2]["data"][0], 6.62)
 
 
 if __name__ == "__main__":
