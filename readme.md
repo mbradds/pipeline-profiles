@@ -1,5 +1,7 @@
 # Pipeline Profiles
 
+[![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+
 - **Live version:** https://pipeline-profiles.herokuapp.com/
 
 New interactive content under development for the CER's [pipeline profiles](https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/index.html) web page.
@@ -35,6 +37,9 @@ pipeline_profiles
 |   .babelrc (babel config with corejs 3 polyfills)
 |   ...
 |
+└───test
+|   |   test.js (AVA units tests for front end code, npm run test-frontend)
+|
 └───src
 │   │   profile.hbs (conditional handlebars template for a new profile)
 │   │   profileManager.js (manual logic for adding sections to a profile)
@@ -46,7 +51,7 @@ pipeline_profiles
 │   |   │   conditions.py (creates conditions data for front end)
 │   |   │   incidents.py (creates incidents data for front end)
 |   |   |   traffic.py (created throughput & capacity for front end)
-|   |   |   tests.py (run with npm run test)
+|   |   |   tests.py (python unit tests npm run test-backend)
 |   |   |   util.py (shared python code module)
 |   |   |   queries/ (contains queries used to get data from CER sql servers)
 |   |   |   npm_scripts/ (all the "data" automation scripts available in package.json)
@@ -267,7 +272,7 @@ if __name__ == "__main__":
 
 - [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) Helps reduce bundle size by a few KB.
 - [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
-- [eslint-config-airbnb-base](https://github.com/airbnb/javascript) Those folks know JS!
+- [datestone](https://www.npmjs.com/package/datestone) Save network size (over 50%) when dealing with time series data.
 - [express](https://www.npmjs.com/package/express) Used only for heroku website.
 - [haversine](https://www.npmjs.com/package/haversine) For finding distance between user and Incidents.
 - [mapshaper](https://www.npmjs.com/package/mapshaper) Simplifies the maps used in the Conditions map. Reduces Canada base map file size by >99.9%!
@@ -284,6 +289,7 @@ if __name__ == "__main__":
 - [core-js](https://www.npmjs.com/package/core-js)
 - [eslint](https://eslint.org/)
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-config-airbnb-base](https://github.com/airbnb/javascript) Those folks know JS!
 - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
 - [handlebars](https://handlebarsjs.com/)
 - [handlebars-loader](https://www.npmjs.com/package/handlebars-loader)
@@ -305,6 +311,8 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 
 ## Tests
 
+# Python unit tests (back end)
+
 The greatest risk for errors, such as incorrect values appearing in the front end, are likely to happen as a result of errors in the "back end" python code (npm run data). These python scripts compute large amounts of summary statistics, totals, metadata (number of incidents, most common, types, etc) from datasets that have inherent errors. This is made more risky by the fact that there are english and french datasets, and these datasets may have unrelated problems. Here is a list of embedded data errors I have noticed so far:
 
 1. Trailing whitespace in text columns. This is a problem when filtering/grouping, because "NGTL" will be seperated from "NGTL ". This error is mainly mitigated by running `.strip()` on important text based columns.
@@ -319,12 +327,20 @@ There are several python unit tests written for the various python data outputs 
 The python unit tests can be run through an npm script:
 
 ```bash
-npm run test
+npm run test-backend
 ```
 
 This code is difficult to test, because the code is run on data that updates every day, or every quarter. To simplify this, i have added static test data seperate from "production" data. The test data is located here: `src/data_management/raw_data/test_data`. npm run test will test the python code on static data, where things like the correct totals, counts and other numbers that appear later on the front end are known.
 
 The unit tests check a bunch of summary statistics and data validation metrics specific the the ngtl profile. It will also test to see if the english numbers/data are the same in french.
+
+# AVA unit tests (front end)
+
+Test coverage is pretty low right now. Mainly focussing on major r-usable functionality in `src/modules/util.js` and major calcualtions done on the front end like the five year average. I would like to move more general/pure functions to `src/modules/util.js` so that they can be tested easier.
+
+```bash
+npm run test-frontend
+```
 
 ## ToDo list
 

@@ -22,7 +22,7 @@ export const conversions = {
   "m3 to bbl": 6.2898,
   "bbl to m3": 1 / 6.2898,
   "m3 to cf": 35.3,
-  "Bcf/d to Million m3/d": 28.32,
+  "bcf/d to million m3/d": 28.32,
 };
 
 export const sortJson = (obj, colName = "value") =>
@@ -178,7 +178,7 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   let [buildFive, hasImports] = [false, false];
   let secondUnit = "";
   if (defaultUnit === "Bcf/d") {
-    secondUnit = "Million m3/d";
+    secondUnit = "million m3/d";
     const fiveYearDiv = document.createElement("div");
     fiveYearDiv.setAttribute("id", "traffic-hc-range");
     document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
@@ -188,9 +188,9 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
     }
     buildFive = true;
 
-    unitsHolder.conversion = conversions["Bcf/d to Million m3/d"];
+    unitsHolder.conversion = conversions["bcf/d to million m3/d"];
   } else if (defaultUnit === "Mb/d") {
-    secondUnit = "Thousand m3/d";
+    secondUnit = "thousand m3/d";
     unitsHolder.conversion = conversions["bbl to m3"];
   }
 

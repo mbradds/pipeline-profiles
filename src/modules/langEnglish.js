@@ -30,9 +30,9 @@ const companyToSystem = {
 
 const units = {
   "Bcf/d": "Bcf/d",
-  "Million m3/d": "Million m3/d",
-  "Mb/d": "Thousand b/d",
-  "Thousand m3/d": "Thousand m3/d",
+  "million m3/d": "million m3/d",
+  "Mb/d": "thousand b/d",
+  "thousand m3/d": "thousand m3/d",
 };
 
 const unitsDisclaimerText = (commodity) => {
