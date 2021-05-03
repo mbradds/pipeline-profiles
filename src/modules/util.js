@@ -1,3 +1,5 @@
+import { mapDates } from "datestone";
+
 export const cerPalette = {
   "Night Sky": "#054169",
   Sun: "#FFBE4B",
@@ -91,53 +93,10 @@ export function addSeriesParams(
     return false;
   };
 
-  const addRow = (units, freq, seriesName, buildFiveYr) => {
-    const incremendDate = (f) => {
-      if (f === "daily") {
-        return function (date) {
-          return date.setDate(date.getDate() + 1);
-        };
-      }
-      return function (date) {
-        return date.setMonth(date.getMonth() + 1);
-      };
-    };
-
-    const calcRowUnits = (u) => {
-      if (u.base !== u.current) {
-        return function (row) {
-          return row ? row * u.conversion : null;
-        };
-      }
-      return function (row) {
-        return row;
-      };
-    };
-
-    const dateFunction = incremendDate(freq);
-    const rowFunction = calcRowUnits(units);
-    if (!isCapacity(seriesName)) {
-      if (buildFiveYr) {
-        return function (row, startDate) {
-          const nextDate = dateFunction(startDate);
-          return [nextDate, rowFunction(row)];
-        };
-      }
-      return function (row, startDate) {
-        const nextDate = dateFunction(startDate);
-        return [nextDate, rowFunction(row)];
-      };
-    }
-    return function (row, startDate) {
-      const nextDate = dateFunction(startDate);
-      return [nextDate, rowFunction(row)];
-    };
-  };
-
   const fiveYearData = {};
   const newSeries = series.map((s) => {
     const nextSeries = {};
-    const startd = new Date(minDate[0], minDate[1], minDate[2]);
+    const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
 
     nextSeries.id = s.name;
     Object.keys(s).forEach((key) => {
@@ -147,13 +106,31 @@ export function addSeriesParams(
       }
     });
 
-    const addFunction = addRow(unitsHolder, frequency, s.name, buildFive);
-    nextSeries.data = s.data.map((row) => {
-      const [nextDate, rowCalc] = addFunction(row, startd);
-      fiveYearData[nextDate] = rowCalc;
-      fiveYearData.lastDate = nextDate;
-      return [nextDate, rowCalc];
+    let transform = {
+      convert: false,
+      operation: "none",
+      conversion: 0,
+      round: -1,
+    };
+
+    if (unitsHolder.current !== unitsHolder.base) {
+      transform = {
+        convert: true,
+        operation: "*",
+        conversion: unitsHolder.conversion,
+        round: -1,
+      };
+    }
+
+    nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
+    // TODO: look into a better way to handle five year data without this object
+    // TODO: look into if mapDates can return js data object instead of number
+    nextSeries.data.forEach((row) => {
+      const [date, value] = row;
+      fiveYearData[date] = value;
     });
+    const lastDate = nextSeries.data.slice(-1)[0][0];
+    fiveYearData.lastDate = lastDate;
 
     if (section === "traffic") {
       if (isCapacity(nextSeries.name)) {
