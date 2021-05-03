@@ -16,17 +16,16 @@
     "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
     "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
     "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
-    "test": "sh ./src/data_management/npm_scripts/test-data.sh",
+    "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
+    "test-frontend": "ava",
     "requirements-txt": "sh ./src/data_management/npm_scripts/requirements.sh"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.13.9",
-    "all": "0.0.0",
     "compression": "^1.7.4",
     "datestone": "^1.0.0",
-    "eslint-config-airbnb-base": "^14.2.1",
     "express": "^4.17.1",
     "haversine": "^1.1.1",
     "mapshaper": "^0.5.28"
@@ -36,13 +35,16 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.13.9",
     "@babel/preset-env": "^7.12.1",
+    "ava": "^3.15.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.4.1",
     "core-js": "^3.7.0",
     "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-import": "^2.22.1",
+    "esm": "^3.2.25",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.2.0",
@@ -51,5 +53,19 @@
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-node-externals": "^2.5.2"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ],
+    "files": [
+      "test/test.js"
+    ],
+    "extensions": {
+      "js": true
+    },
+    "nonSemVerExperiments": {
+      "configurableModuleFormat": true
+    }
   }
 }
