@@ -108,12 +108,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function createFiveYearSeries(dataWithDate) {
-    const { lastDate, ...data } = dataWithDate;
+    const lastDate = dataWithDate.slice(-1)[0][0];
     const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
     const firstYear = lastYear - 6; // the first year of the five year average
-    const startYear = new Date(
-      parseInt(Object.keys(data)[0], 10)
-    ).getFullYear();
+    const startYear = new Date(dataWithDate[0][0]).getFullYear();
 
     const lastYrSeries = {
       data: [],
@@ -154,9 +152,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return [lastYrSeries, fiveYrAvg, fiveYrRange];
     }
 
-    Object.keys(data).forEach((dateKey) => {
-      const value = data[dateKey];
-      const dateInt = new Date(parseInt(dateKey, 10));
+    dataWithDate.forEach((row) => {
+      const value = row[1];
+      const dateInt = new Date(parseInt(row[0], 10));
       const [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
       if (year === lastYear) {
         lastYrSeries.data.push([lang.months[month.toString()], value]);
@@ -575,7 +573,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       if (points.length > 1) {
         textCol = `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`;
       } else {
-        textCol = lang.points[p.id][1];
+        textCol = `${lang.points[p.id][1]}`;
       }
       const newP = { ...p, textCol };
       return newP;
@@ -887,6 +885,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       visibility(["traffic-section"], "hide");
       console.warn("no traffic data but still tried to build");
     }
+    return undefined;
   }
   return buildDecision();
 }

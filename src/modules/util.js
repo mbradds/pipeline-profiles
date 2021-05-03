@@ -93,7 +93,7 @@ export function addSeriesParams(
     return false;
   };
 
-  const fiveYearData = {};
+  let fiveYearData = {};
   const newSeries = series.map((s) => {
     const nextSeries = {};
     const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
@@ -123,14 +123,6 @@ export function addSeriesParams(
     }
 
     nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
-    // TODO: look into a better way to handle five year data without this object
-    // TODO: look into if mapDates can return js data object instead of number
-    nextSeries.data.forEach((row) => {
-      const [date, value] = row;
-      fiveYearData[date] = value;
-    });
-    const lastDate = nextSeries.data.slice(-1)[0][0];
-    fiveYearData.lastDate = lastDate;
 
     if (section === "traffic") {
       if (isCapacity(nextSeries.name)) {
@@ -141,6 +133,7 @@ export function addSeriesParams(
         nextSeries.type = "area";
         nextSeries.zIndex = 5;
         nextSeries.lineWidth = 1;
+        fiveYearData = nextSeries.data;
       }
     } else if (section === "apportionment") {
       if (nextSeries.type === "line" && nextSeries.yAxis === 0) {
