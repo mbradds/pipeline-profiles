@@ -108,10 +108,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function createFiveYearSeries(dataWithDate) {
-    const lastDate = dataWithDate.slice(-1)[0][0];
+    const { lastDate, ...data } = dataWithDate;
     const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
     const firstYear = lastYear - 6; // the first year of the five year average
-    const startYear = new Date(dataWithDate[0][0]).getFullYear();
+    const startYear = new Date(
+      parseInt(Object.keys(data)[0], 10)
+    ).getFullYear();
 
     const lastYrSeries = {
       data: [],
@@ -152,9 +154,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return [lastYrSeries, fiveYrAvg, fiveYrRange];
     }
 
-    dataWithDate.forEach((row) => {
-      const value = row[1];
-      const dateInt = new Date(parseInt(row[0], 10));
+    Object.keys(data).forEach((dateKey) => {
+      const value = data[dateKey];
+      const dateInt = new Date(parseInt(dateKey, 10));
       const [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
       if (year === lastYear) {
         lastYrSeries.data.push([lang.months[month.toString()], value]);
@@ -328,6 +330,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
         },
       },
     },
+    labelFormatter: (val, params) =>
+      lang.numberFormat(val, params.commodity === "oil" ? 0 : 1),
     title: (text) => ({
       align: "left",
       x: 7,
@@ -368,7 +372,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         tickPixelInterval: 40,
         labels: {
           formatter() {
-            return lang.numberFormat(this.value, 1);
+            return sharedHcParams.labelFormatter(this.value, params);
           },
         },
       },
@@ -420,10 +424,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           tickPixelInterval: 40,
           labels: {
             formatter() {
-              return lang.numberFormat(
-                this.value,
-                params.commodity === "oil" ? 0 : 1
-              );
+              return sharedHcParams.labelFormatter(this.value, params);
             },
           },
         },
@@ -519,20 +520,21 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function resize(params) {
     const mainTrafficDiv = document.getElementById("traffic-hc");
     const mainMap = document.getElementById("traffic-map");
-    if (params.buildFive && params.hasImports) {
+    if (params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
       mainTrafficDiv.classList.remove("traffic-hc-shared");
       mainTrafficDiv.classList.add("traffic-hc-single-gas");
-      mainMap.classList.add("traffic-map-shared");
       visibility(["traffic-hc-range"], "hide");
     } else if (!params.buildFive) {
+      mainTrafficDiv.classList.remove("traffic-hc-shared");
+      mainMap.classList.remove("traffic-map-shared");
       mainTrafficDiv.classList.add("traffic-hc-single");
       mainMap.classList.add("traffic-map-single");
     } else {
+      if (!mainTrafficDiv.classList.contains("traffic-hc-shared")) {
+        mainTrafficDiv.classList.add("traffic-hc-shared");
+      }
       visibility(["traffic-hc-range"], "show");
-      mainTrafficDiv.classList.add("traffic-hc-shared");
-      mainMap.classList.add("traffic-map-shared");
-      mainTrafficDiv.classList.remove("traffic-hc-single-gas");
     }
   }
 
@@ -581,6 +583,37 @@ export async function mainTraffic(trafficData, metaData, lang) {
     document.getElementById(
       "traffic-point-description"
     ).innerHTML = listOrParagraph(pointsText, "textCol");
+  }
+
+  function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
+    let series;
+    if (fiveSeries) {
+      series = createFiveYearSeries(fiveSeries);
+    }
+    let chart;
+    if (fiveChart) {
+      chart = updateSeries(fiveChart, series, undefined, false);
+      chart.update(
+        {
+          title: {
+            text: setTitle(
+              chartParams.defaultPoint.name,
+              undefined,
+              false,
+              true
+            ),
+          },
+          yAxis: {
+            visible: true,
+          },
+        },
+        false,
+        false,
+        false
+      );
+      chart.redraw(true);
+    }
+    return [series, chart];
   }
 
   function buildDashboard() {
@@ -690,10 +723,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
             chartParams.buildFive
           );
 
-          if (fiveSeries) {
-            fiveSeries = createFiveYearSeries(fiveSeries);
-          }
-
           [trafficChart, chartParams.hasImports] = updateSeries(
             trafficChart,
             timeSeries,
@@ -725,28 +754,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
               false
             );
-            if (fiveChart) {
-              fiveChart = updateSeries(fiveChart, fiveSeries, undefined, false);
-              fiveChart.update(
-                {
-                  title: {
-                    text: setTitle(
-                      chartParams.defaultPoint.name,
-                      undefined,
-                      false,
-                      true
-                    ),
-                  },
-                  yAxis: {
-                    visible: true,
-                  },
-                },
-                false,
-                false,
-                false
-              );
-              fiveChart.redraw(true);
-            }
+            [fiveSeries, fiveChart] = updateFiveYearChart(
+              fiveSeries,
+              fiveChart,
+              chartParams
+            );
           }
           resize(chartParams);
           trafficChart.redraw(true);
@@ -794,6 +806,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 text: setTitle(chartParams.points, undefined, chartParams.tm),
               },
             });
+            [fiveSeries, fiveChart] = updateFiveYearChart(
+              fiveSeries,
+              fiveChart,
+              chartParams
+            );
             pointMap.pointChange(chartParams.points);
           }
           displayPointDescription(chartParams.points);

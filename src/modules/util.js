@@ -93,7 +93,7 @@ export function addSeriesParams(
     return false;
   };
 
-  let fiveYearData = {};
+  const fiveYearData = {};
   const newSeries = series.map((s) => {
     const nextSeries = {};
     const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
@@ -133,7 +133,16 @@ export function addSeriesParams(
         nextSeries.type = "area";
         nextSeries.zIndex = 5;
         nextSeries.lineWidth = 1;
-        fiveYearData = nextSeries.data;
+        nextSeries.data.forEach((row) => {
+          if (Object.prototype.hasOwnProperty.call(fiveYearData, row[0])) {
+            fiveYearData[row[0]] += row[1];
+          } else {
+            const toAdd = row[1];
+            fiveYearData[row[0]] = toAdd;
+          }
+        });
+        const lastDate = nextSeries.data.slice(-1)[0][0];
+        fiveYearData.lastDate = lastDate;
       }
     } else if (section === "apportionment") {
       if (nextSeries.type === "line" && nextSeries.yAxis === 0) {
@@ -177,17 +186,19 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   };
   let [buildFive, hasImports] = [false, false];
   let secondUnit = "";
-  if (defaultUnit === "Bcf/d") {
-    secondUnit = "million m3/d";
+  if (section === "traffic") {
     const fiveYearDiv = document.createElement("div");
     fiveYearDiv.setAttribute("id", "traffic-hc-range");
     document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
-    if (defaultPoint.id === "7") {
-      // 7 = St. Stephen
-      hasImports = true;
-    }
-    buildFive = true;
+  }
 
+  if (defaultPoint.id === "7") {
+    // 7 = St. Stephen
+    hasImports = true;
+  }
+  buildFive = true;
+  if (defaultUnit === "Bcf/d") {
+    secondUnit = "million m3/d";
     unitsHolder.conversion = conversions["bcf/d to million m3/d"];
   } else if (defaultUnit === "Mb/d") {
     secondUnit = "thousand m3/d";
