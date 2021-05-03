@@ -45,20 +45,23 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return sortJsonAlpha(pointList, "name");
   }
 
-  const setTitle = (point, tradeType, tm = false, fiveYear = false) => {
-    if (!tm) {
-      if (!fiveYear) {
-        return `${point} - monthly ${tradeType[1].join(
-          " & "
-        )} traffic (Direction of flow: ${tradeType[0].join(" & ")})`;
-      }
-      return `${point} - Five year average & range`;
+  const setTitle = (params, fiveYr) => {
+    let pointText = "";
+    let directionText = "";
+    if (params.tm) {
+      params.points.forEach((point) => {
+        pointText += `${point.name} `;
+      });
+    } else {
+      pointText = params.defaultPoint.name;
+      directionText = `(Direction of flow: ${
+        params.directions[params.defaultPoint.id]
+      })`;
     }
-    let titleText = "";
-    point.forEach((p) => {
-      titleText += `${p.name} `;
-    });
-    return `${titleText} - monthly traffic`;
+    if (fiveYr) {
+      return `${pointText} - Five year average & range`;
+    }
+    return `${pointText} - monthly traffic ${directionText}`;
   };
 
   const createSeries = (data, params) => {
@@ -351,9 +354,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         spacingTop: 5,
         spacingBottom: 5,
       },
-      title: sharedHcParams.title(
-        setTitle(params.defaultPoint.name, undefined, false, true)
-      ),
+      title: sharedHcParams.title(setTitle(params, true)),
       xAxis: {
         crosshair: true,
         tickInterval: 1,
@@ -459,10 +460,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     chart.update(
       {
         title: {
-          text: setTitle(
-            params.defaultPoint.name,
-            params.directions[params.defaultPoint.id]
-          ),
+          text: setTitle(params, false),
         },
         yAxis: [
           {
@@ -596,12 +594,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       chart.update(
         {
           title: {
-            text: setTitle(
-              chartParams.defaultPoint.name,
-              undefined,
-              false,
-              true
-            ),
+            text: setTitle(chartParams, true),
           },
           yAxis: {
             visible: true,
@@ -677,12 +670,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
       let trafficChart = buildTrafficChart(
         timeSeries,
-        !chartParams.tm
-          ? setTitle(
-              chartParams.defaultPoint.name,
-              chartParams.directions[chartParams.defaultPoint.id]
-            )
-          : setTitle(chartParams.points, undefined, chartParams.tm),
+        setTitle(chartParams, false),
         chartParams
       );
 
@@ -736,10 +724,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             trafficChart.update(
               {
                 title: {
-                  text: setTitle(
-                    chartParams.defaultPoint.name,
-                    chartParams.directions[chartParams.defaultPoint.id]
-                  ),
+                  text: setTitle(chartParams, false),
                 },
                 yAxis: [
                   {
@@ -803,7 +788,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
             trafficChart.update({
               title: {
-                text: setTitle(chartParams.points, undefined, chartParams.tm),
+                text: setTitle(chartParams, false),
               },
             });
             [fiveSeries, fiveChart] = updateFiveYearChart(

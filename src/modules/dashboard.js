@@ -1202,6 +1202,7 @@ export class KeyPointMap {
   getInits(companyName, points) {
     let minRadius = 30000;
     let padding = [30, 30];
+    let maxZoom;
     if (
       ["TransCanada PipeLines Limited", "Enbridge Pipelines Inc."].includes(
         companyName
@@ -1213,11 +1214,13 @@ export class KeyPointMap {
       minRadius = 2000;
       padding = [60, 60];
     } else if (points.length === 1) {
-      minRadius = 25000;
-      padding = [145, 145];
+      minRadius = 15000;
+      padding = [150, 150];
+      maxZoom = 6;
     }
     this.minRadius = minRadius;
     this.padding = padding;
+    this.maxZoom = maxZoom;
   }
 
   addBaseMap() {
@@ -1227,10 +1230,11 @@ export class KeyPointMap {
       zoomDelta: 0.25,
       zoomControl: false,
       initZoomTo: this.initZoomTo,
-      initZoomLevel: 5,
+      initZoomLevel: 4,
       minZoom: 2.5,
     });
     map.scrollWheelZoom.disable();
+    map.setMaxZoom(this.maxZoom);
     this.map = map;
   }
 
@@ -1250,6 +1254,13 @@ export class KeyPointMap {
   }
 
   addCircle(x, y, color, fillColor, fillOpacity, r, name) {
+    let toolText = name;
+    const toolList = name.split(" ");
+    if (toolList.length - 1 > 5) {
+      toolText = `${toolList.slice(0, 3).join(" ")}<br>${toolList
+        .slice(3)
+        .join(" ")}`;
+    }
     return L.circle([x, y], {
       color,
       fillColor,
@@ -1258,7 +1269,7 @@ export class KeyPointMap {
       volRadius: r,
       weight: 1,
       name,
-    }).bindTooltip(`<strong>${name}</strong>`);
+    }).bindTooltip(`<strong>${toolText}</strong>`);
   }
 
   addPoints() {
