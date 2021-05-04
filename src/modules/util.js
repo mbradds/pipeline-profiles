@@ -219,57 +219,27 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }
 
-export function createFiveYearSeries(dataWithDate, lang) {
-  const { lastDate, ...data } = dataWithDate;
+export function calculateFiveYrAvg(lastDate, dataObj) {
   const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
   const firstYear = lastYear - 6; // the first year of the five year average
-  const startYear = new Date(parseInt(Object.keys(data)[0], 10)).getFullYear();
+  const startYear = new Date(
+    parseInt(Object.keys(dataObj)[0], 10)
+  ).getFullYear();
 
-  const lastYrSeries = {
-    data: [],
-    type: "line",
-    zIndex: 5,
-    name: lang.fiveYr.lastYrName(lastYear),
-    color: cerPalette.hcRed,
-  };
-
-  const fiveYrRange = {
-    data: [],
-    name: lang.fiveYr.rangeName(firstYear, lastYear),
-    type: "arearange",
-    zIndex: 3,
-    marker: {
-      enabled: false,
-    },
-    color: cerPalette.Ocean,
-  };
-
-  const fiveYrAvg = {
-    data: [],
-    name: lang.fiveYr.avgName,
-    type: "line",
-    zIndex: 4,
-    marker: {
-      enabled: false,
-    },
-    lineWidth: 4,
-    color: "black",
-  };
-  lastYrSeries.id = lastYrSeries.name;
-  fiveYrRange.id = fiveYrRange.name;
-  fiveYrAvg.id = fiveYrAvg.name;
+  const meta = { lastYear, firstYear };
+  const [currentYrData, rangeData, avgData] = [[], [], []];
 
   const months = {};
   if (startYear > firstYear) {
-    return [lastYrSeries, fiveYrAvg, fiveYrRange];
+    return { currentYrData, avgData, rangeData, meta };
   }
 
-  Object.keys(data).forEach((dateKey) => {
-    const value = data[dateKey];
+  Object.keys(dataObj).forEach((dateKey) => {
+    const value = dataObj[dateKey];
     const dateInt = new Date(parseInt(dateKey, 10));
     const [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
     if (year === lastYear) {
-      lastYrSeries.data.push([lang.months[month.toString()], value]);
+      currentYrData.push([month.toString(), value]);
     }
     if (year > firstYear && year < lastYear) {
       if (month in months) {
@@ -282,15 +252,11 @@ export function createFiveYearSeries(dataWithDate, lang) {
 
   Object.keys(months).forEach((monthNum) => {
     const value = months[monthNum];
-    fiveYrRange.data.push([
-      lang.months[monthNum],
-      Math.min(...value),
-      Math.max(...value),
-    ]);
-    fiveYrAvg.data.push([lang.months[monthNum], arrAvg(value)]);
+    rangeData.push([monthNum, Math.min(...value), Math.max(...value)]);
+    avgData.push([monthNum, arrAvg(value)]);
   });
 
-  return [lastYrSeries, fiveYrAvg, fiveYrRange];
+  return { currentYrData, avgData, rangeData, meta };
 }
 
 export function addUnitsDisclaimer(div, commodity, textFunction) {

@@ -4,6 +4,7 @@ import {
   sortJson,
   sortJsonAlpha,
   addSeriesParams,
+  calculateFiveYrAvg,
 } from "../src/modules/util";
 
 function macroIs(t, input, expected) {
@@ -57,16 +58,22 @@ test("addSeriesParams type", macroIs, s[0][0].type, "area");
 test(
   "addSeriesParams min date",
   macroDeep,
-  new Date(s[1][0][0]),
+  new Date(parseInt(Object.keys(s[1])[0])),
   new Date(2006, 0, 1)
 );
 
 test(
   "addSeriesParams max date",
   macroDeep,
-  new Date(s[1][2][0]),
+  new Date(parseInt(Object.keys(s[1])[2])),
   new Date(2006, 2, 1)
 );
 
 test("addseriesParams No Five vs Five", macroDeep, s[0], sNoFive[0]);
 test("addseriesParams No Five undefined", macroIs, sNoFive[1], undefined);
+
+// test five year average calculation
+
+// const timeSeries = {};
+// const lastDate = new Date(2015, 0, 1).getTime();
+// console.log(lastDate);

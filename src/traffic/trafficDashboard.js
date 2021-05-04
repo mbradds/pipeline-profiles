@@ -7,12 +7,58 @@ import {
   addSeriesParams,
   addUnitsAndSetup,
   addUnitsDisclaimer,
-  createFiveYearSeries,
+  calculateFiveYrAvg,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;
+
+  function createFiveYearSeries(dataWithDate, lang) {
+    const { lastDate, ...dataObj } = dataWithDate;
+    const { currentYrData, avgData, rangeData, meta } = calculateFiveYrAvg(
+      lastDate,
+      dataObj
+    );
+
+    const lastYrSeries = {
+      data: [],
+      type: "line",
+      zIndex: 5,
+      name: lang.fiveYr.lastYrName(meta.lastYear),
+      color: cerPalette.hcRed,
+    };
+
+    const fiveYrRange = {
+      data: [],
+      name: lang.fiveYr.rangeName(meta.firstYear, meta.lastYear),
+      type: "arearange",
+      zIndex: 3,
+      marker: {
+        enabled: false,
+      },
+      color: cerPalette.Ocean,
+    };
+
+    const fiveYrAvg = {
+      data: [],
+      name: lang.fiveYr.avgName,
+      type: "line",
+      zIndex: 4,
+      marker: {
+        enabled: false,
+      },
+      lineWidth: 4,
+      color: "black",
+    };
+    lastYrSeries.id = lastYrSeries.name;
+    fiveYrRange.id = fiveYrRange.name;
+    fiveYrAvg.id = fiveYrAvg.name;
+    lastYrSeries.data = currentYrData;
+    fiveYrAvg.data = avgData;
+    fiveYrRange.data = rangeData;
+    return [lastYrSeries, fiveYrAvg, fiveYrRange];
+  }
 
   function addPointButtons(params) {
     const btnGroup = $("#traffic-points-btn");

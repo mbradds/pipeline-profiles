@@ -1,9 +1,9 @@
 {
   "extends": ["airbnb-base", "prettier"],
+  "browser": true,
   "rules": {
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",
-    "no-undef": "warn",
     "max-classes-per-file": "off",
     "no-underscore-dangle": "warn",
     "new-cap": "warn"
