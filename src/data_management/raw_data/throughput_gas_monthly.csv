@@ -3887,7 +3887,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2014-01-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,1818.408
 2014-01-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,1577.146
 2014-02-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.0
-2014-02-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,10584.772
+2014-02-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,10584.773
 2014-03-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,22528.752
 2014-03-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.0
 2014-04-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,21932.446
@@ -4398,7 +4398,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2014-12-01,TransCanada PipeLines Limited,Niagara,east,export,35851.0,0.0
 2015-01-01,TransCanada PipeLines Limited,Niagara,west,import,13914.0,11734.78
 2015-01-01,TransCanada PipeLines Limited,Niagara,east,export,35851.0,0.0
-2015-02-01,TransCanada PipeLines Limited,Niagara,west,import,13914.0,9894.107
+2015-02-01,TransCanada PipeLines Limited,Niagara,west,import,13914.0,9894.108
 2015-02-01,TransCanada PipeLines Limited,Niagara,east,export,35851.0,0.0
 2015-03-01,TransCanada PipeLines Limited,Niagara,west,import,13914.0,12117.325
 2015-03-01,TransCanada PipeLines Limited,Niagara,east,export,35851.0,0.0
@@ -5938,7 +5938,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2017-03-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.009
 2017-03-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1502.215
 2017-04-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,95.362
-2017-04-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1325.924
+2017-04-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1325.923
 2017-05-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,621.975
 2017-05-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,182.494
 2017-06-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,721.43
@@ -6215,7 +6215,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2013-09-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,2198.396
 2013-10-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,3110.287
 2013-10-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,23.426
-2013-11-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,5088.652
+2013-11-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,5088.653
 2013-11-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2013-12-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,3190.659
 2013-12-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0

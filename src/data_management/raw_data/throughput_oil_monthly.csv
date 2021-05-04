@@ -167,6 +167,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,domestic light,1.0,2.6
 2020-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,domestic light,1.45,2.6
 2020-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,domestic light,1.31,2.6
+2021-01-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,domestic light,1.09,2.6
+2021-02-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,domestic light,1.3900000000000001,2.6
+2021-03-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,south,domestic light,1.11,2.6
 2015-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,4.2,
 2015-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,8.9,
 2015-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,13.0,
@@ -239,6 +242,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,9.43,
 2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,9.55,
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,5.17,
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,1.87,
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,2.15,
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer/Regina,east,foreign light,1.5699999999999998,
 2015-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,64.8,
 2015-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,63.2,
 2015-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,63.1,
@@ -311,6 +317,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,62.35,
 2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,64.2,
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,72.56,
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,70.95,
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,72.68,
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Cromer,east,domestic light / ngl,70.2,
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic heavy,139.29,288.1
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic light / ngl,110.19,288.1
 2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic heavy,132.6,291.3
@@ -720,6 +729,15 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic heavy,285.9,458.35
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic light / ngl,140.35,458.35
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,foreign light,5.17,458.35
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic heavy,304.5,468.57
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic light / ngl,145.41,468.57
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,foreign light,1.87,468.57
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic heavy,290.83,459.49
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic light / ngl,148.58,459.49
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,foreign light,2.15,459.49
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic heavy,290.05,452.11
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,domestic light / ngl,124.5,452.11
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,east,foreign light,1.5699999999999998,452.11
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic heavy,13.44,118.5
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic light / ngl,48.75,118.5
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,foreign light,3.8,118.5
@@ -1220,6 +1238,15 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic heavy,22.89,173.45
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic light / ngl,67.31,173.45
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,foreign light,16.35,173.45
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic heavy,26.73,172.5
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic light / ngl,66.21,172.5
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,foreign light,20.79,172.5
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic heavy,31.31,173.45
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic light / ngl,68.81,173.45
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,foreign light,18.21,173.45
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic heavy,25.5,173.3
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,domestic light / ngl,64.47,173.3
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,east,foreign light,17.09,173.3
 2011-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,north-west,diluent,7.24,28.6
 2011-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,north-west,diluent,11.59,28.6
 2011-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,north-west,diluent,10.58,28.6
