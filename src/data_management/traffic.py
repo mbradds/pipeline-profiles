@@ -248,7 +248,7 @@ def process_throughput(test=False,
 
     def pushTraffic(t, arr, date, rounding):
         if t == 0:
-            arr.append(0)
+            arr.append(None)
         else:
             arr.append(round(float(t), rounding))
         return arr

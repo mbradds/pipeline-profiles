@@ -378,7 +378,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         marginRight: 0,
         spacingTop: 5,
         spacingBottom: 5,
-        animation: false,
+        animation: true,
       },
       title: sharedHcParams.title(title),
       xAxis: {
@@ -436,7 +436,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         yAxis: [
           {
             title: {
-              text: lang.exportsAxis(params.unitsHolder.current),
+              text: lang.exportAxis(params.unitsHolder.current),
             },
             height: "45%",
             max: undefined,
@@ -450,7 +450,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
             },
             title: {
-              text: lang.importsAxis(params.unitsHolder.current),
+              text: lang.importAxis(params.unitsHolder.current),
             },
             top: "50%",
             height: "45%",
@@ -516,13 +516,18 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
     currentIds.forEach((id) => {
       if (!newIds.includes(id)) {
-        chart.get(id).remove(false);
+        let selectedSeries = chart.get(id);
+        selectedSeries.hide();
+        selectedSeries.update({ showInLegend: false }, false);
       }
     });
 
     newSeries.forEach((newS) => {
       if (currentIds.includes(newS.id)) {
-        chart.get(newS.id).setData(newS.data, false, false, false);
+        let selectedSeries = chart.get(newS.id);
+        selectedSeries.show();
+        selectedSeries.setData(newS.data, false, false, false);
+        selectedSeries.update({ showInLegend: true }, false);
       } else {
         chart.addSeries(newS, false, true);
       }
@@ -530,6 +535,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         updateImports = true;
       }
     });
+
     if (returnImports) {
       return [chart, updateImports];
     }
