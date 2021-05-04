@@ -492,6 +492,18 @@ export const englishDashboard = {
       "east & southeast": "east & southeast",
       "west & south": "west & south",
     },
+    fiveYr: {
+      lastYrName: (lastYear) => `${lastYear} throughput (last year of data)`,
+      avgName: "Five Year Average",
+      rangeName: (min, max) => `Five Year Range (${min + 1}-${max - 1})`,
+      notEnough: "Not enough data to calculate five-year average",
+    },
+    exportAxis: (unit) => `Exports (${unit})`,
+    importAxis: (unit) => `Imports (${unit})`,
+    fiveYrTitle: (pointText) => `${pointText} - Five year average & range`,
+    trafficTitle: (pointText, dirText) =>
+      `${pointText} - monthly traffic ${dirText}`,
+    flow: "Direction of flow:",
     trade: {
       import: "import",
       intracanada: "intracanada",

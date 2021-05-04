@@ -219,6 +219,80 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }
 
+export function createFiveYearSeries(dataWithDate, lang) {
+  const { lastDate, ...data } = dataWithDate;
+  const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
+  const firstYear = lastYear - 6; // the first year of the five year average
+  const startYear = new Date(parseInt(Object.keys(data)[0], 10)).getFullYear();
+
+  const lastYrSeries = {
+    data: [],
+    type: "line",
+    zIndex: 5,
+    name: lang.fiveYr.lastYrName(lastYear),
+    color: cerPalette.hcRed,
+  };
+
+  const fiveYrRange = {
+    data: [],
+    name: lang.fiveYr.rangeName(firstYear, lastYear),
+    type: "arearange",
+    zIndex: 3,
+    marker: {
+      enabled: false,
+    },
+    color: cerPalette.Ocean,
+  };
+
+  const fiveYrAvg = {
+    data: [],
+    name: lang.fiveYr.avgName,
+    type: "line",
+    zIndex: 4,
+    marker: {
+      enabled: false,
+    },
+    lineWidth: 4,
+    color: "black",
+  };
+  lastYrSeries.id = lastYrSeries.name;
+  fiveYrRange.id = fiveYrRange.name;
+  fiveYrAvg.id = fiveYrAvg.name;
+
+  const months = {};
+  if (startYear > firstYear) {
+    return [lastYrSeries, fiveYrAvg, fiveYrRange];
+  }
+
+  Object.keys(data).forEach((dateKey) => {
+    const value = data[dateKey];
+    const dateInt = new Date(parseInt(dateKey, 10));
+    const [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
+    if (year === lastYear) {
+      lastYrSeries.data.push([lang.months[month.toString()], value]);
+    }
+    if (year > firstYear && year < lastYear) {
+      if (month in months) {
+        months[month].push(value);
+      } else {
+        months[month] = [value];
+      }
+    }
+  });
+
+  Object.keys(months).forEach((monthNum) => {
+    const value = months[monthNum];
+    fiveYrRange.data.push([
+      lang.months[monthNum],
+      Math.min(...value),
+      Math.max(...value),
+    ]);
+    fiveYrAvg.data.push([lang.months[monthNum], arrAvg(value)]);
+  });
+
+  return [lastYrSeries, fiveYrAvg, fiveYrRange];
+}
+
 export function addUnitsDisclaimer(div, commodity, textFunction) {
   const unitsDisclaimer = document.getElementById(div);
   unitsDisclaimer.innerHTML = textFunction(commodity);

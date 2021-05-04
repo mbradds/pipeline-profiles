@@ -7,6 +7,7 @@ import {
   addSeriesParams,
   addUnitsAndSetup,
   addUnitsDisclaimer,
+  createFiveYearSeries,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
@@ -54,14 +55,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
       });
     } else {
       pointText = params.defaultPoint.name;
-      directionText = `(Direction of flow: ${
+      directionText = `${lang.flow} ${
         params.directions[params.defaultPoint.id]
       })`;
     }
     if (fiveYr) {
-      return `${pointText} - Five year average & range`;
+      return lang.fiveYrTitle(pointText);
     }
-    return `${pointText} - monthly traffic ${directionText}`;
+    return lang.trafficTitle(pointText, directionText);
   };
 
   const createSeries = (data, params) => {
@@ -109,82 +110,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
     return firstSeries;
   };
-
-  function createFiveYearSeries(dataWithDate) {
-    const { lastDate, ...data } = dataWithDate;
-    const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
-    const firstYear = lastYear - 6; // the first year of the five year average
-    const startYear = new Date(
-      parseInt(Object.keys(data)[0], 10)
-    ).getFullYear();
-
-    const lastYrSeries = {
-      data: [],
-      type: "line",
-      zIndex: 5,
-      name: `${lastYear} throughput (last year of data)`,
-      color: cerPalette.hcRed,
-    };
-
-    const fiveYrRange = {
-      data: [],
-      name: `Five Year Range (${firstYear + 1}-${lastYear - 1})`,
-      type: "arearange",
-      zIndex: 3,
-      marker: {
-        enabled: false,
-      },
-      color: cerPalette.Ocean,
-    };
-
-    const fiveYrAvg = {
-      data: [],
-      name: "Five Year Average",
-      type: "line",
-      zIndex: 4,
-      marker: {
-        enabled: false,
-      },
-      lineWidth: 4,
-      color: "black",
-    };
-    lastYrSeries.id = lastYrSeries.name;
-    fiveYrRange.id = fiveYrRange.name;
-    fiveYrAvg.id = fiveYrAvg.name;
-
-    const months = {};
-    if (startYear > firstYear) {
-      return [lastYrSeries, fiveYrAvg, fiveYrRange];
-    }
-
-    Object.keys(data).forEach((dateKey) => {
-      const value = data[dateKey];
-      const dateInt = new Date(parseInt(dateKey, 10));
-      const [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
-      if (year === lastYear) {
-        lastYrSeries.data.push([lang.months[month.toString()], value]);
-      }
-      if (year > firstYear && year < lastYear) {
-        if (month in months) {
-          months[month].push(value);
-        } else {
-          months[month] = [value];
-        }
-      }
-    });
-
-    Object.keys(months).forEach((monthNum) => {
-      const value = months[monthNum];
-      fiveYrRange.data.push([
-        lang.months[monthNum],
-        Math.min(...value),
-        Math.max(...value),
-      ]);
-      fiveYrAvg.data.push([lang.months[monthNum], arrAvg(value)]);
-    });
-
-    return [lastYrSeries, fiveYrAvg, fiveYrRange];
-  }
 
   function fiveYearTrend(fiveSeries, hasImports) {
     if (fiveSeries && !hasImports) {
@@ -378,7 +303,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         },
       },
       lang: {
-        noData: "Not enough data to calculate five-year average",
+        noData: lang.fiveYr.notEnough,
       },
       noData: {
         style: {
@@ -465,7 +390,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         yAxis: [
           {
             title: {
-              text: `Exports (${params.unitsHolder.current})`,
+              text: lang.exportsAxis(params.unitsHolder.current),
             },
             height: "45%",
             max: undefined,
@@ -479,7 +404,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
             },
             title: {
-              text: `Imports (${params.unitsHolder.current})`,
+              text: lang.importsAxis(params.unitsHolder.current),
             },
             top: "50%",
             height: "45%",
@@ -516,6 +441,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function resize(params) {
+    // TODO: this needs to be cleaned up and tested more
+    // TODO: remove all the css classes that aernt needed now that oil has five year
     const mainTrafficDiv = document.getElementById("traffic-hc");
     const mainMap = document.getElementById("traffic-map");
     if (params.hasImports) {
@@ -586,7 +513,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
     let series;
     if (fiveSeries) {
-      series = createFiveYearSeries(fiveSeries);
+      series = createFiveYearSeries(fiveSeries, lang);
     }
     let chart;
     if (fiveChart) {
@@ -664,8 +591,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
         chartParams.unitsHolder,
         chartParams.buildFive
       );
+
       if (fiveSeries) {
-        fiveSeries = createFiveYearSeries(fiveSeries);
+        fiveSeries = createFiveYearSeries(fiveSeries, lang);
       }
 
       let trafficChart = buildTrafficChart(
@@ -814,7 +742,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           chartParams.buildFive
         );
         if (fiveSeries) {
-          fiveSeries = createFiveYearSeries(fiveSeries);
+          fiveSeries = createFiveYearSeries(fiveSeries, lang);
         }
         trafficChart.update(
           {
