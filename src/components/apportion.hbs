@@ -11,18 +11,21 @@
       </p>
       <div id="select-units-radio-apportion"></div>
       <div class="mrgn-tp-sm" id="apportion-hc"></div>
-      <p class="mrgn-tp-md">
-        Open data can be freely used and shared by anyone for any purpose. The
-        <a href="https://open.canada.ca/data/en/dataset/e00172b8-35c2-4651-a8c5-13ab30bd7236" rel="external">
-          data for these graphs are available</a>.
-      </p>
       <details>
         <summary>{{text.sourceTitle}}</summary>
         <p>
           <strong>{{text.dataSourceTitle}} </strong>
           {{text.traffic.trafficSourceLink}}
         </p>
-        <p><strong>{{text.descriptionTitle}} </strong>Coming soon!</p>
+        <p><strong>{{text.descriptionTitle}} </strong>
+        {{#ifeq text.pipelineName.id "enbridge_mainline"}}
+          {{text.apportion.description.enbridge}}
+        {{/ifeq}}
+        {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+          {{text.apportion.description.other}}
+        {{/ifnoteq}}
+        
+        </p>
         <small id="conversion-disclaimer-apportion"></small>
       </details>
     </div>

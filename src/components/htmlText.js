@@ -7,7 +7,7 @@ const trafficUpdatedFr =
 const instructionsEn = "Dashboard instructions";
 const instructionsFr = "Dashboard instructions";
 const noteEn = "Note:";
-const noteFr = "Note:";
+const noteFr = "Remarque :";
 const sourceAndDescEn = "Source and description";
 const sourceAndDescFr = "Source et description de la figure";
 const dataSourceEn = "Data Source:";
@@ -31,6 +31,12 @@ const en = {
     p3:
       "The interactive graph below shows data for nominations and apportionment on the pipeline system.",
     selectUnits: unitsEn,
+    description: {
+      enbridge:
+        "The above chart displays pipeline nomination data for the Enbridge Canadian Mainline at the system level. Original nominations are shown as a blue area on the chart, and accepted nominations are shown as a yellow line. Detailed apportionment data at the key point level for the Enbridge Canadian Mainline is available for download through the open government link above.",
+      other:
+        "The above chart displays pipeline nomination data for the pipeline system. Original nominations are shown as a blue area on the chart, with available pipeline capacity shown as a yellow line. If available, the apportionment percent can be toggled onto the chart as a green line by clicking on “Apportionment Percent” directly below the chart.",
+    },
   },
   traffic: {
     header: "Throughput and capacity",
@@ -44,6 +50,8 @@ const en = {
     keyPtDescription: "Key Point Description",
     instructionsTitle: instructionsEn,
     note: noteEn,
+    capacityNote:
+      "The physical capacity of a pipeline is based on many factors such as the products being carried, direction of flow, pipeline pumping capacity, and maintenance work or other pressure restrictions. The actual physical capacity of the pipeline may, at times, be higher than the assumed operational capacity stated here.",
     dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>.`,
     trafficSourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
     instructions: {
@@ -58,6 +66,8 @@ const en = {
       five:
         "The five year average is calcualted for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five year average.",
     },
+    description:
+      "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five year average and five year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity is recorded.",
   },
   safety: {
     header: "Safety and Environment",
@@ -216,6 +226,13 @@ const fr = {
       "La répartition est le pourcentage de réduction appliqué à la commande de chacun des expéditeurs afin de ne pas dépasser la capacité non souscrite disponible. En général, ce pourcentage est appliqué également à tous les expéditeurs ayant passé une commande. Par exemple, si la commande de l’expéditeur&nbsp;A vise 100&nbsp;barils et celle de l’expéditeur&nbsp;B, 1&nbsp;000&nbsp;barils, selon un taux de répartition de 10&nbsp;%, les deux expéditeurs pourront faire transporter 90&nbsp;barils et 900&nbsp;barils.",
     p3:
       "Le graphique interactif ci-dessous présente les données relatives aux commandes et à la répartition sur le <enter pipeline here>",
+    selectUnits: unitsFr,
+    description: {
+      enbridge:
+        "FR: The above chart displays pipeline nomination data for the Enbridge Canadian Mainline at the system level. Original nominations are shown as a blue area on the chart, and accepted nominations are shown as a yellow line. Detailed apportionment data at the key point level for the Enbridge Canadian Mainline is available for download through the open government link above.",
+      other:
+        "FR: The above chart displays pipeline nomination data for the pipeline system. Original nominations are shown as a blue area on the chart, with available pipeline capacity shown as a yellow line. If available, the apportionment percent can be toggled onto the chart as a green line by clicking on “Apportionment Percent” directly below the chart.",
+    },
   },
   traffic: {
     header: "Débit et capacité",
@@ -228,6 +245,8 @@ const fr = {
     keyPtDescription: "Key Point Description",
     instructionsTitle: instructionsFr,
     note: noteFr,
+    capacityNote:
+      "La capacité physique d’un pipeline dépend de nombreux facteurs, tels que les produits transportés, le sens d’écoulement, la capacité de pompage du pipeline, les travaux d’entretien et les restrictions de pression. La capacité physique réelle du pipeline peut parfois être supérieure à la capacité opérationnelle hypothétique indiquée ici.",
     dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>.`,
     trafficSourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
     instructions: {
@@ -242,6 +261,8 @@ const fr = {
       five:
         "The five year average is calcualted for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five year average.",
     },
+    description:
+      "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five year average and five year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity is recorded. FR",
   },
   safety: {
     header: "Sécurité et environnement",

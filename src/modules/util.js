@@ -230,7 +230,7 @@ export function calculateFiveYrAvg(lastDate, dataObj) {
   const [currentYrData, rangeData, avgData] = [[], [], []];
 
   const months = {};
-  if (startYear > firstYear) {
+  if (startYear > firstYear + 1) {
     return { currentYrData, avgData, rangeData, meta };
   }
 

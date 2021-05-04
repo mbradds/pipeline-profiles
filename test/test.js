@@ -1,4 +1,5 @@
 import test from "ava";
+import { mapDates } from "datestone";
 import {
   arrAvg,
   sortJson,
@@ -73,7 +74,35 @@ test("addseriesParams No Five vs Five", macroDeep, s[0], sNoFive[0]);
 test("addseriesParams No Five undefined", macroIs, sNoFive[1], undefined);
 
 // test five year average calculation
+function generateTestData(months = 60) {
+  let timeSeries = [];
+  let [m0, m1] = [0, months];
+  while (m0 <= m1) {
+    timeSeries.push(5);
+    m0++;
+  }
+  timeSeries = mapDates(timeSeries, new Date(2015, 0, 1), "monthly");
+  // console.log(new Date(parseInt(timeSeries[0][0])));
+  const timeObj = {};
 
-// const timeSeries = {};
-// const lastDate = new Date(2015, 0, 1).getTime();
-// console.log(lastDate);
+  timeSeries.forEach((row) => {
+    timeObj[row[0]] = new Date(parseInt(row[0])).getMonth() + 1;
+  });
+  const lastDate = timeSeries.slice(-1)[0][0];
+
+  const fiveYr = calculateFiveYrAvg(lastDate, timeObj);
+  return fiveYr;
+}
+
+const testData1 = generateTestData(59);
+test("not enough five year data", macroDeep, testData1.avgData, []);
+
+const testData2 = generateTestData(65);
+test(
+  "five years, 6 months current year",
+  macroIs,
+  testData2.currentYrData[0][1],
+  1
+);
+test("five years, 6 months lastYear", macroIs, testData2.meta.lastYear, 2020);
+// console.log(testData2);

@@ -50,9 +50,10 @@ const profileWebpackConfig = (function () {
           pageData.lang = { en: false, fr: true };
         }
         pageData.text = profileText[lang];
+        pageData.text.pipelineName = { id: name[0] };
         html.push(
           new HtmlWebpackPlugin({
-            page: pageData,
+            page: JSON.parse(JSON.stringify(pageData)),
             filename: `${lang}/${name[1]}/${name[0]}_${lang}.html`,
             chunks: [
               `${lang}/profile_code_${lang}`,
@@ -157,7 +158,10 @@ module.exports = {
       {
         test: /\.hbs$/,
         loader: "handlebars-loader",
-        options: { precompileOptions: { noEscape: true, strict: true } },
+        options: {
+          precompileOptions: { noEscape: true, strict: true },
+          runtime: path.resolve(__dirname, "src/components/helpers.js"),
+        },
       },
     ],
   },
