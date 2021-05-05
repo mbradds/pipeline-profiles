@@ -618,7 +618,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         companyName: chartParams.companyName,
       });
       if (chartParams.defaultPoint.id !== "0") {
-        // 0 = system
+        // 0 = system. These pipelines should be using trafficNoMap.hbs
         if (chartParams.points.length === 1) {
           // eg, Keystone
           ["traffic-points-btn", "key-point-title"].forEach((hideDiv) => {
@@ -629,13 +629,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         }
         pointMap.addBaseMap();
         pointMap.addPoints();
-      } else {
-        visibility(
-          ["traffic-points-btn", "traffic-container", "key-point-title"],
-          "hide"
-        );
-        const element = document.getElementById("traffic-hc-column");
-        element.className = element.className.replace("col-md-8", "col-md-12");
       }
 
       let [timeSeries, fiveSeries] = addSeriesParams(

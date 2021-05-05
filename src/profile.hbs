@@ -9,9 +9,15 @@
 </head>
 <body>
   <div class="container">
-  {{#if htmlWebpackPlugin.options.page.sections.traffic}}
+  {{#if htmlWebpackPlugin.options.page.sections.traffic.map}}
   <!-- start traffic -->
     {{> components/traffic text=htmlWebpackPlugin.options.page.text}}
+  <!-- end traffic -->
+  {{/if}}
+  {{!-- pipeline has traffic data, but no leaflet map. Trans-Northern/group2 --}}
+  {{#if htmlWebpackPlugin.options.page.sections.traffic.noMap}}
+  <!-- start traffic -->
+    {{> components/trafficNoMap text=htmlWebpackPlugin.options.page.text}}
   <!-- end traffic -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.apportion}}

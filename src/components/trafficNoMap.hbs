@@ -1,0 +1,69 @@
+<div id="traffic-section">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>{{text.traffic.header}}</h2>
+      <p class="small">{{text.traffic.updated}}</p>
+        <p class="cerlabel mrgn-tp-md" id="select-units-title" style="margin-bottom: 0px">
+        {{text.selectUnits}}
+      </p>
+      <div id="select-units-radio-traffic"></div>
+    </div>
+  </div>
+  <div class="row mrgn-tp-md">
+    <div class="col-md-12 traffic-hc-column-nomap" id="traffic-hc-column">
+      <div class="traffic-hc-shared" id="traffic-hc"></div>
+    </div>
+  </div>
+  <div class="row wb-eqht mrgn-tp-sm" id="key-point-info">
+    <div class="col-md-6">
+      <section class="panel panel-info hght-inhrt">
+        <header class="panel-heading">
+          <h5 class="panel-title">{{text.traffic.keyPtTrends}}</h5>
+        </header>
+        <div class="panel-body" id="traffic-trends"></div>
+      </section>
+    </div>
+    <div class="col-md-6">
+      <section class="panel panel-info hght-inhrt">
+        <header class="panel-heading">
+          <h5 class="panel-title">{{text.traffic.keyPtDescription}}</h5>
+        </header>
+        <div class="panel-body" id="traffic-point-description"></div>
+      </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        <strong>{{text.traffic.note}}</strong> {{text.traffic.capacityNote}}
+      </p>
+      <details>
+        <summary>{{text.traffic.instructionsTitle}}</summary>
+        <ul class="lst-spcd">
+          <li>{{text.traffic.instructions.one}}</li>
+          <li>{{text.traffic.instructions.two}}</li>
+          <li>{{text.traffic.instructions.three}}</li>
+          <li>{{text.traffic.instructions.four}}</li>
+        </ul>
+        <p>
+          <strong>{{text.traffic.note}}</strong>
+          {{text.traffic.instructions.five}}
+        </p>
+        <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
+      </details>
+
+      <details>
+        <summary>{{text.sourceTitle}}</summary>
+        <p>
+          <strong>{{text.dataSourceTitle}} </strong>
+          {{text.traffic.trafficSourceLink}}
+        </p>
+        <p>
+          <strong>{{text.descriptionTitle}} </strong>
+          {{text.traffic.description}}
+        </p>
+        <small id="conversion-disclaimer-traffic"></small>
+      </details>
+    </div>
+  </div>
+</div>
