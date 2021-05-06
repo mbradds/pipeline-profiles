@@ -101,7 +101,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       });
     } else {
       pointText = params.defaultPoint.name;
-      directionText = `${lang.flow} ${
+      directionText = `(${lang.flow} ${
         params.directions[params.defaultPoint.id]
       })`;
     }

@@ -51,6 +51,16 @@ const changeText = (num, frontText = true) => {
 
 const quarters = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
 
+const trendSub = (commodity) => {
+  let subText = "";
+  if (commodity === "gas") {
+    subText = "year over year";
+  } else if (commodity === "oil") {
+    subText = "quarter over quarter";
+  }
+  return subText;
+};
+
 export const incidentsTextEng = (id, meta) => {
   const paragraph = document.getElementById(id);
   let paragraphText = `<p>`;
@@ -146,16 +156,6 @@ export function trafficTrendTextEng(params, numberFormat) {
     return numberFormat(value);
   };
 
-  const trendSub = (commodity) => {
-    let subText = "";
-    if (commodity === "gas") {
-      subText = "year over year";
-    } else if (commodity === "oil") {
-      subText = "quarter over quarter";
-    }
-    return subText;
-  };
-
   const buildText = (trend, point, units) => {
     let trendId = "";
     if (trend.name !== "default") {
@@ -232,16 +232,6 @@ export function trafficTrendTextFra(params, numberFormat) {
       return numberFormat(value * units.conversion);
     }
     return numberFormat(value);
-  };
-
-  const trendSub = (commodity) => {
-    let subText = "";
-    if (commodity === "gas") {
-      subText = "year over year";
-    } else if (commodity === "oil") {
-      subText = "quarter over quarter";
-    }
-    return subText;
   };
 
   const buildText = (trend, point, units) => {

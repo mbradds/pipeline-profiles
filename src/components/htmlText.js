@@ -5,7 +5,7 @@ const trafficUpdatedEn =
 const trafficUpdatedFr =
   "Section mise à jour trimestrielle (début mars, mi-mai, mi-août et mi-novembre)";
 const instructionsEn = "Dashboard instructions";
-const instructionsFr = "Dashboard instructions";
+const instructionsFr = "Dashboard instructions FR";
 const noteEn = "Note:";
 const noteFr = "Remarque :";
 const sourceAndDescEn = "Source and description";
@@ -13,7 +13,7 @@ const sourceAndDescFr = "Source et description de la figure";
 const dataSourceEn = "Data Source:";
 const dataSourceFr = "Source de données :";
 const descriptionEn = "Description:";
-const descriptionFr = "Description :";
+const descriptionFr = "Description: FR";
 
 const en = {
   sourceTitle: sourceAndDescEn,
@@ -244,32 +244,32 @@ const fr = {
   traffic: {
     header: "Débit et capacité",
     updated: trafficUpdatedFr,
-    selectKeyPt: "Select key point:",
-    keyPtMap: "Key Point Map",
-    zoomIn: "Zoom In",
-    zoomOut: "Zoom Out",
-    keyPtTrends: "Key Point Trends",
-    keyPtDescription: "Key Point Description",
+    selectKeyPt: "Select key point: FR",
+    keyPtMap: "Key Point Map FR",
+    zoomIn: "Zoom In FR",
+    zoomOut: "Zoom Out FR",
+    keyPtTrends: "Key Point Trends FR",
+    keyPtDescription: "Key Point Description FR",
     instructionsTitle: instructionsFr,
     note: noteFr,
     capacityNote:
       "La capacité physique d’un pipeline dépend de nombreux facteurs, tels que les produits transportés, le sens d’écoulement, la capacité de pompage du pipeline, les travaux d’entretien et les restrictions de pression. La capacité physique réelle du pipeline peut parfois être supérieure à la capacité opérationnelle hypothétique indiquée ici.",
-    dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>.`,
+    dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>. FR`,
     trafficSourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
     instructions: {
       one:
-        "Click on a key point button above the chart & map to view traffic at a different location. The map shows approximate locations on the pipeline where throughputs & capacity are recorded by the pipeline operator.",
+        "FR Click on a key point button above the chart & map to view traffic at a different location. The map shows approximate locations on the pipeline where throughputs & capacity are recorded by the pipeline operator.",
       two:
-        "Click and drag your mouse on the area chart to zoom into a desired date range. Click on the Reset Zoom button to reset the full date range.",
+        "FR Click and drag your mouse on the area chart to zoom into a desired date range. Click on the Reset Zoom button to reset the full date range.",
       three:
-        "Click on the chart legend items below the chart to remove & add sections of data as required.",
+        "FR Click on the chart legend items below the chart to remove & add sections of data as required.",
       four:
-        "The key point trends are calculated using quarterly average traffic at the key point. Natural gas throughput trends are displayed year over year (last full quarter of data compared to the same quarter last year). Crude oil and liquids key point trends are displayed quarter over quarter (last full quarter of data compared to the previous quarter).",
+        "FR The key point trends are calculated using quarterly average traffic at the key point. Natural gas throughput trends are displayed year over year (last full quarter of data compared to the same quarter last year). Crude oil and liquids key point trends are displayed quarter over quarter (last full quarter of data compared to the previous quarter).",
       five:
-        "The five year average is calcualted for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five year average.",
+        "FR The five year average is calcualted for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five year average.",
     },
     description:
-      "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five year average and five year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity is recorded. FR",
+      "FR The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five year average and five year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity is recorded.",
   },
   safety: {
     header: "Sécurité et environnement",

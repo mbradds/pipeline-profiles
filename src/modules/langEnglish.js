@@ -531,5 +531,12 @@ export const englishDashboard = {
     units,
     points,
     numberFormat,
+    title: { enbridge: "System wide nominations", other: "Apportionment at:" },
+    series: {
+      "Accepted Nominations": "Accepted Nominations",
+      "Original Nominations": "Original Nominations",
+      "Available Capacity": "Available Capacity",
+      "Apportionment Percent": "Apportionment Percent",
+    },
   },
 };

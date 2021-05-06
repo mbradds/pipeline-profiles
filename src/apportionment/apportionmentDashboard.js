@@ -8,8 +8,15 @@ import {
 
 export async function mainApportion(apportionData, lang) {
   function buildApportionSeries(seriesWithDate, unitsHolder) {
+    const seriesWithNames = seriesWithDate.map((s) => {
+      if (s.name !== "date") {
+        s.name = lang.series[s.name];
+      }
+      return s;
+    });
+
     const series = addSeriesParams(
-      seriesWithDate,
+      seriesWithNames,
       unitsHolder,
       false,
       "monthly",
@@ -44,9 +51,9 @@ export async function mainApportion(apportionData, lang) {
   function buildTitle(data) {
     let titleText = "";
     if (data.company === "Enbridge Pipelines Inc.") {
-      titleText = "System wide nominations";
+      titleText = `${lang.title.enbridge}`;
     } else {
-      titleText = `Apportionment at: ${lang.points[data.keyPoint][0]}`;
+      titleText = `${lang.title.other} ${lang.points[data.keyPoint][0]}`;
     }
     return {
       text: titleText,

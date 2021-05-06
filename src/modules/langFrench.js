@@ -29,10 +29,10 @@ const companyToSystem = {
 };
 
 const units = {
-  "Bcf/d": "Bcf/d FR",
-  "million m3/d": "million m3/d FR",
-  "Mb/d": "thousand b/d FR",
-  "thousand m3/d": "thousand m3/d FR",
+  "Bcf/d": "milliard de pieds cubes",
+  "million m3/d": "million de pieds cubes par jour",
+  "Mb/d": "kb/j",
+  "thousand m3/d": "k m3/j",
 };
 
 const unitsDisclaimerText = (commodity) => {
@@ -474,7 +474,6 @@ export const frenchDashboard = {
     points,
     dynamicText: trafficTrendTextFra,
     numberFormat,
-    descriptions: { noPoint: "Description coming soon!" },
     directions: {
       north: "nord",
       east: "est",
@@ -528,5 +527,15 @@ export const frenchDashboard = {
     units,
     points,
     numberFormat,
+    title: {
+      enbridge: "FR System wide nominations",
+      other: "FR Apportionment at:",
+    },
+    series: {
+      "Accepted Nominations": "FR Accepted Nominations",
+      "Original Nominations": "FR Original Nominations",
+      "Available Capacity": "FR Available Capacity",
+      "Apportionment Percent": "FR Apportionment Percent",
+    },
   },
 };
