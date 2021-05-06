@@ -1,11 +1,22 @@
 <div id="apportionment-section">
   <div class="row">
     <div class="col-md-12">
-      <h2>{{text.apportion.header}}</h2>
+      {{#ifeq text.pipelineName.id "enbridge_mainline"}}
+        <h2>{{text.apportion.header.enbridge}}</h2>
+      {{/ifeq}}
+      {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+        <h2>{{text.apportion.header.other}}</h2>
+      {{/ifnoteq}}
       <p class="small">{{text.apportion.updated}}</p>
       <p>{{text.apportion.p1}}</p>
       <p>{{text.apportion.p2}}</p>
-      <p>{{text.apportion.p3}}</p>
+      {{#ifeq text.pipelineName.id "enbridge_mainline"}}
+        <p>{{text.apportion.p3.enbridge}}</p>
+      {{/ifeq}}
+      {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+        <p>{{text.apportion.p3.other}}</p>
+      {{/ifnoteq}}
+      
       <p class="cerlabel mrgn-tp-lg" id="select-units-title" style="margin-bottom: 0px">
         {{text.selectUnits}}
       </p>
@@ -24,7 +35,6 @@
         {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
           {{text.apportion.description.other}}
         {{/ifnoteq}}
-        
         </p>
         <small id="conversion-disclaimer-apportion"></small>
       </details>

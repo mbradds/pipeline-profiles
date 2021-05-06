@@ -42,8 +42,14 @@ export async function mainApportion(apportionData, lang) {
   }
 
   function buildTitle(data) {
+    let titleText = "";
+    if (data.company === "Enbridge Pipelines Inc.") {
+      titleText = "System wide nominations";
+    } else {
+      titleText = `Apportionment at: ${lang.points[data.keyPoint][0]}`;
+    }
     return {
-      text: `Apportionment at: ${lang.points[data.keyPoint][0]}`,
+      text: titleText,
       align: "left",
       style: {
         fontWeight: "normal",
