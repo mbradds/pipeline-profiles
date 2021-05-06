@@ -1,4 +1,4 @@
-import { mapDates } from "datestone";
+import { mapDates } from "./datestone";
 
 export const cerPalette = {
   "Night Sky": "#054169",
