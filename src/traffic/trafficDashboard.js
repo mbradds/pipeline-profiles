@@ -415,10 +415,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
         margin: 0,
         symbolPadding: 2,
         labelFormatter() {
-          const legendLang = lang.trade[this.name];
-          if (legendLang) {
-            return legendLang;
-          }
+          // const legendLang = lang.trade[this.name];
+          // if (legendLang) {
+          //   return legendLang;
+          // }
           return this.name;
         },
       },
@@ -629,7 +629,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       let [timeSeries, fiveSeries] = addSeriesParams(
         createSeries(trafficData, chartParams),
         chartParams.unitsHolder,
-        chartParams.buildFive
+        chartParams.buildFive,
+        lang.series
       );
 
       if (fiveSeries) {
@@ -676,7 +677,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
           [timeSeries, fiveSeries] = addSeriesParams(
             trafficData[chartParams.defaultPoint.id],
             chartParams.unitsHolder,
-            chartParams.buildFive
+            chartParams.buildFive,
+            lang.series
           );
 
           [trafficChart, chartParams.hasImports] = updateSeries(
@@ -747,7 +749,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             [timeSeries, fiveSeries] = addSeriesParams(
               createSeries(trafficData, chartParams),
               chartParams.unitsHolder,
-              chartParams.buildFive
+              chartParams.buildFive,
+              lang.series
             );
 
             timeSeries.forEach((newS) => {
@@ -779,7 +782,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
         [timeSeries, fiveSeries] = addSeriesParams(
           createSeries(trafficData, chartParams),
           chartParams.unitsHolder,
-          chartParams.buildFive
+          chartParams.buildFive,
+          lang.series
         );
         if (fiveSeries) {
           fiveSeries = createFiveYearSeries(fiveSeries, lang);

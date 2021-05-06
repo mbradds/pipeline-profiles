@@ -72,6 +72,7 @@ export function addSeriesParams(
   seriesWithDate,
   unitsHolder,
   buildFive,
+  seriesNames,
   frequency = "monthly",
   section = "traffic",
   sorted = true
@@ -97,11 +98,17 @@ export function addSeriesParams(
   const newSeries = series.map((s) => {
     const nextSeries = {};
     const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
-
-    nextSeries.id = s.name;
+    if (seriesNames) {
+      if (seriesNames.hasOwnProperty(s.name)) {
+        nextSeries.name = seriesNames[s.name];
+      } else {
+        nextSeries.name = s.name;
+      }
+    }
+    nextSeries.id = nextSeries.name;
     Object.keys(s).forEach((key) => {
       const value = s[key];
-      if (key !== "data") {
+      if (key !== "data" && key != "name") {
         nextSeries[key] = value;
       }
     });
@@ -125,7 +132,7 @@ export function addSeriesParams(
     nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
 
     if (section === "traffic") {
-      if (isCapacity(nextSeries.name)) {
+      if (isCapacity(s.name)) {
         nextSeries.type = "line";
         nextSeries.zIndex = 6;
         nextSeries.lineWidth = 3;

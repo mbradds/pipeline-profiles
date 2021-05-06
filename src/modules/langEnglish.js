@@ -504,11 +504,16 @@ export const englishDashboard = {
     trafficTitle: (pointText, dirText) =>
       `${pointText} - monthly traffic ${dirText}`,
     flow: "Direction of flow:",
-    trade: {
+    series: {
       import: "import",
       intracanada: "intracanada",
       export: "export",
       Capacity: "Capacity",
+      "domestic heavy": "domestic heavy",
+      "domestic light / ngl": "domestic light / ngl",
+      "foreign light": "foreign light",
+      "domestic light": "domestic light",
+      "refined petroleum products": "refined petroleum products",
     },
     util: "Utilization",
     months: {
@@ -533,10 +538,10 @@ export const englishDashboard = {
     numberFormat,
     title: { enbridge: "System wide nominations", other: "Apportionment at:" },
     series: {
-      "Accepted Nominations": "Accepted Nominations",
-      "Original Nominations": "Original Nominations",
-      "Available Capacity": "Available Capacity",
-      "Apportionment Percent": "Apportionment Percent",
+      an: "Accepted Nominations",
+      on: "Original Nominations",
+      ac: "Available Capacity",
+      ap: "Apportionment Percent",
     },
   },
 };

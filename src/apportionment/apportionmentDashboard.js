@@ -8,17 +8,11 @@ import {
 
 export async function mainApportion(apportionData, lang) {
   function buildApportionSeries(seriesWithDate, unitsHolder) {
-    const seriesWithNames = seriesWithDate.map((s) => {
-      if (s.name !== "date") {
-        s.name = lang.series[s.name];
-      }
-      return s;
-    });
-
     const series = addSeriesParams(
-      seriesWithNames,
+      seriesWithDate,
       unitsHolder,
       false,
+      lang.series,
       "monthly",
       "apportionment",
       false

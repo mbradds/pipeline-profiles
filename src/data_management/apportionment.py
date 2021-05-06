@@ -1,5 +1,6 @@
 import pandas as pd
 from util import normalize_dates, conversion, normalize_numeric
+from errors import ApportionSeriesCombinationError
 import dateutil.relativedelta
 from traffic import get_data, addIds
 import json
@@ -107,15 +108,15 @@ def process_apportionment(test=False, sql=False, companies=False):
                 if hasCap and hasOrigNom:
                     linePoint = cap
                     areaPoint = oNom
-                    areaName = "Original Nominations"
-                    lineName = "Available Capacity"
+                    areaName = "on"  # Original Nominations
+                    lineName = "ac"  # Available Capacity
                 elif hasOrigNom and hasAccepNom:
                     linePoint = aNom
                     areaPoint = oNom
-                    areaName = "Original Nominations"
-                    lineName = "Accepted Nominations"
+                    areaName = "on"
+                    lineName = "an"
                 else:
-                    print('Unpredictable apportionment data!')
+                    raise ApportionSeriesCombinationError(company)
 
                 pctData.append(aPct)
                 lineData.append(linePoint)
@@ -130,7 +131,7 @@ def process_apportionment(test=False, sql=False, companies=False):
                            "yAxis": 0,
                            "type": "area"})
             if hasPct:
-                series.append({"name": "Apportionment Percent",
+                series.append({"name": "ap",  # Apportionment Percent
                                "data": pctData,
                                "yAxis": 1,
                                "type": "line",

@@ -500,11 +500,16 @@ export const frenchDashboard = {
     trafficTitle: (pointText, dirText) =>
       `${pointText} - monthly traffic ${dirText} FR`,
     flow: "Direction of flow: FR",
-    trade: {
+    series: {
       import: "importation",
       intracanada: "intracanada FR",
       export: "exportation",
       Capacity: "Capacité",
+      "domestic heavy": "lourd canadien",
+      "domestic light / ngl": "léger canadien / ngl",
+      "foreign light": "léger étranger",
+      "domestic light": "léger canadien",
+      "refined petroleum products": "produits pétroliers raffinés",
     },
     util: "Utilization FR",
     months: {
@@ -532,10 +537,10 @@ export const frenchDashboard = {
       other: "FR Apportionment at:",
     },
     series: {
-      "Accepted Nominations": "FR Accepted Nominations",
-      "Original Nominations": "FR Original Nominations",
-      "Available Capacity": "FR Available Capacity",
-      "Apportionment Percent": "FR Apportionment Percent",
+      an: "FR Accepted Nominations",
+      on: "FR Original Nominations",
+      ac: "FR Available Capacity",
+      ap: "FR Apportionment Percent",
     },
   },
 };
