@@ -149,8 +149,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
+        test: /\.(js|mjs)$/,
+        exclude: /node_modules\/(?!(datestone)\/).*/,
         use: {
           loader: "babel-loader",
         },
