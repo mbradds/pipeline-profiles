@@ -153,21 +153,10 @@ body {
     height: 340px;
     margin-bottom: 5px;
   }
-  .traffic-map-single {
-    height: 305px;
-    margin-bottom: 5px;
-  }
   .traffic-hc-shared {
     height: 245px;
   }
-  #traffic-hc-range {
-    height: 245px;
-  }
-  .traffic-hc-single {
-    height: 470px;
-  }
 }
-
 /* large screens */
 @media only screen and (min-height: 900px), screen and (min-width: 1440px) {
   .traffic-hc-single-gas {
@@ -177,17 +166,7 @@ body {
     height: 375px;
     margin-bottom: 5px;
   }
-  .traffic-map-single {
-    height: 330px;
-    margin-bottom: 5px;
-  }
   .traffic-hc-shared {
     height: 265px;
-  }
-  #traffic-hc-range {
-    height: 265px;
-  }
-  .traffic-hc-single {
-    height: 490px;
   }
 }

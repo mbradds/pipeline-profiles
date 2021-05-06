@@ -496,11 +496,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       mainTrafficDiv.classList.remove("traffic-hc-shared");
       mainTrafficDiv.classList.add("traffic-hc-single-gas");
       visibility(["traffic-hc-range"], "hide");
-    } else if (!params.buildFive) {
-      mainTrafficDiv.classList.remove("traffic-hc-shared");
-      mainMap.classList.remove("traffic-map-shared");
-      mainTrafficDiv.classList.add("traffic-hc-single");
-      mainMap.classList.add("traffic-map-single");
     } else {
       if (!mainTrafficDiv.classList.contains("traffic-hc-shared")) {
         mainTrafficDiv.classList.add("traffic-hc-shared");

@@ -186,11 +186,6 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   };
   let [buildFive, hasImports] = [false, false];
   let secondUnit = "";
-  if (section === "traffic") {
-    const fiveYearDiv = document.createElement("div");
-    fiveYearDiv.setAttribute("id", "traffic-hc-range");
-    document.getElementById("traffic-hc-column").appendChild(fiveYearDiv);
-  }
 
   if (defaultPoint.id === "7") {
     // 7 = St. Stephen
