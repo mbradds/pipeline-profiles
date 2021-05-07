@@ -144,7 +144,7 @@ module.exports = {
     //   filename: "dist/[file].map",
     //   fileContext: "public",
     // }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
@@ -191,7 +191,8 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          test: /[\\/]node_modules[\\/]/,
+          // test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/](leaflet)[\\/]/,
           chunks: "initial",
           reuseExistingChunk: true,
           enforce: true,
