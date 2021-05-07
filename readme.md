@@ -20,8 +20,8 @@ Sections being added:
   3. Operations & Maintenance Activities (TBD, under development)
   4. Contaminated Sites/Remediation (TBD, under development)
   5. Unauthorized Activities (TBD, under development)
-- **Traffic (Pipeline Throughput & Capacity)** (April/May 2021, under development)
-- **Oil Pipeline Apportionment** (TBD)
+- **Traffic (Pipeline Throughput & Capacity)** (May 18, 2021, under development)
+- **Oil Pipeline Apportionment** (May 18, 2021, under development)
 - **Pipeline Tolls** (TBD)
 - **Pipeline/Corporate Financial info** (TBD)
 
@@ -77,10 +77,11 @@ pipeline_profiles
 
 ## Software prerequisites
 
-1. npm & node (for running the project locally and contributing)
-2. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
-3. Git (for contributing)
-4. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)
+1. npm (v 7.11.1+)
+2. node (v 14.16.1+)
+3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
+4. Git (for contributing)
+5. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)
 
 ## Quick start for contributing
 
@@ -270,6 +271,8 @@ if __name__ == "__main__":
 
 ## Dependencies
 
+- [highcharts](https://www.npmjs.com/package/highcharts)
+- [leaflet](https://www.npmjs.com/package/leaflet)
 - [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) Helps reduce bundle size by a few KB.
 - [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
 - [datestone](https://www.npmjs.com/package/datestone) Save network size (over 50%) when dealing with time series data.
@@ -345,7 +348,8 @@ npm run test-frontend
 ## ToDo list
 
 - Rewrite everything in TypeScript
-- Create a distribution bundle for Highcharts+Leaflet. Highcharts doesnt make tree shaking easy, but its possible to create a [custom distribution](https://www.highcharts.com/docs/getting-started/how-to-create-custom-highcharts-files) with only the files needed.
+- Create a distribution bundle for Highcharts+Leaflet. Highcharts doesnt make tree shaking easy, but its possible to create a [custom distribution](https://www.highcharts.com/docs/getting-started/how-to-create-custom-highcharts-files) with only the files needed. <strong>Note:</strong> This is done and merged into main as of May 7, 2021.
+- TODO: upgrade highcharts dependecy. The project currently uses highcharts@8.2.2 which has some vulnerabilities.
 - Try to remove Jquery dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
