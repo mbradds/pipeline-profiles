@@ -99,7 +99,7 @@ export function addSeriesParams(
     const nextSeries = {};
     const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
     if (seriesNames) {
-      if (seriesNames.hasOwnProperty(s.name)) {
+      if (Object.prototype.hasOwnProperty.call(seriesNames, s.name)) {
         nextSeries.name = seriesNames[s.name];
       } else {
         nextSeries.name = s.name;
@@ -108,7 +108,7 @@ export function addSeriesParams(
     nextSeries.id = nextSeries.name;
     Object.keys(s).forEach((key) => {
       const value = s[key];
-      if (key !== "data" && key != "name") {
+      if (key !== "data" && key !== "name") {
         nextSeries[key] = value;
       }
     });
@@ -264,4 +264,16 @@ export function calculateFiveYrAvg(lastDate, dataObj) {
 export function addUnitsDisclaimer(div, commodity, textFunction) {
   const unitsDisclaimer = document.getElementById(div);
   unitsDisclaimer.innerHTML = textFunction(commodity);
+}
+
+export function btnGroupClick(groupId, caller, args) {
+  document.getElementById(`${groupId}`).addEventListener("click", (event) => {
+    const allButtons = document.querySelectorAll(`#${groupId} .btn`);
+    allButtons.forEach((elem) => {
+      elem.className = elem.className.replace(" active", "");
+    });
+    event.target.className += " active";
+    const response = event.target.value;
+    return caller(args, response);
+  });
 }

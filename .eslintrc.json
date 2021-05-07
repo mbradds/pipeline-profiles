@@ -1,6 +1,12 @@
 {
   "extends": ["airbnb-base", "prettier"],
-  "browser": true,
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Highcharts": true,
+    "$": true
+  },
   "rules": {
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",

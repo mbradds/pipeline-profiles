@@ -8,6 +8,7 @@ import {
   addUnitsAndSetup,
   addUnitsDisclaimer,
   calculateFiveYrAvg,
+  btnGroupClick,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
@@ -507,7 +508,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
     currentIds.forEach((id) => {
       if (!newIds.includes(id)) {
-        let selectedSeries = chart.get(id);
+        const selectedSeries = chart.get(id);
         selectedSeries.hide();
         selectedSeries.update({ showInLegend: false }, false);
       }
@@ -515,7 +516,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
     newSeries.forEach((newS) => {
       if (currentIds.includes(newS.id)) {
-        let selectedSeries = chart.get(newS.id);
+        const selectedSeries = chart.get(newS.id);
         selectedSeries.show();
         selectedSeries.setData(newS.data, false, false, false);
         selectedSeries.update({ showInLegend: true }, false);
@@ -577,6 +578,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
       chart.redraw(true);
     }
     return [series, chart];
+  }
+
+  function zoomCallback(args, response) {
+    if (response === "zoom-in") {
+      args.pointMap.reZoom(true);
+    } else {
+      args.pointMap.reZoom(false);
+    }
   }
 
   function buildDashboard() {
@@ -773,7 +782,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       // user selects units
       document
         .getElementById("select-units-radio-traffic")
-        .addEventListener("click", function (event) {
+        .addEventListener("click", (event) => {
           if (event.target && event.target.matches("input[type='radio']")) {
             chartParams.unitsHolder.current = event.target.value;
             [timeSeries, fiveSeries] = addSeriesParams(
@@ -831,29 +840,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             lang.dynamicText(chartParams, lang.numberFormat);
           }
         });
-
-      function zoomCallback(pointMap, zoomResponse) {
-        if (zoomResponse === "zoom-in") {
-          pointMap.reZoom(true);
-        } else {
-          pointMap.reZoom(false);
-        }
-      }
-
       // update map zoom
-      document
-        .getElementById("key-point-zoom-btn")
-        .addEventListener("click", function (event) {
-          let allButtons = document.querySelectorAll(
-            "#key-point-zoom-btn .btn"
-          );
-          allButtons.forEach((elem) => {
-            elem.className = elem.className.replace(" active", "");
-          });
-          event.target.className += " active";
-          const zoomResponse = event.target.value;
-          zoomCallback(pointMap, zoomResponse);
-        });
+      btnGroupClick("key-point-zoom-btn", zoomCallback, { pointMap });
     } catch (err) {
       console.log(err);
     }
