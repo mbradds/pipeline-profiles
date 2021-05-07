@@ -147,29 +147,30 @@ export async function mainApportion(apportionData, lang) {
           lang.unitsDisclaimerText
         );
         // user selects units
-        $("#select-units-radio-apportion input[name='apportionUnits']").click(
-          () => {
-            unitsHolder.current = $(
-              "input:radio[name=apportionUnits]:checked"
-            ).val();
-            series = buildApportionSeries(apportionData.series, unitsHolder);
-            chart.update({
-              series,
-              yAxis: [
-                {
-                  title: {
-                    text: unitsHolder.current,
+        document
+          .getElementById("select-units-radio-apportion")
+          .addEventListener("click", function (event) {
+            if (event.target && event.target.matches("input[type='radio']")) {
+              let justSelected = event.target.value;
+              unitsHolder.current = justSelected;
+              series = buildApportionSeries(apportionData.series, unitsHolder);
+              chart.update({
+                series,
+                yAxis: [
+                  {
+                    title: {
+                      text: unitsHolder.current,
+                    },
+                  },
+                ],
+                tooltip: {
+                  formatter() {
+                    return tooltipText(this, unitsHolder.current);
                   },
                 },
-              ],
-              tooltip: {
-                formatter() {
-                  return tooltipText(this, unitsHolder.current);
-                },
-              },
-            });
-          }
-        );
+              });
+            }
+          });
       } catch (err) {
         console.log(err);
       }

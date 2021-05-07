@@ -771,77 +771,89 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
 
       // user selects units
-      $("#select-units-radio-traffic input[name='trafficUnits']").click(() => {
-        chartParams.unitsHolder.current = $(
-          "input:radio[name=trafficUnits]:checked"
-        ).val();
-        [timeSeries, fiveSeries] = addSeriesParams(
-          createSeries(trafficData, chartParams),
-          chartParams.unitsHolder,
-          chartParams.buildFive,
-          lang.series
-        );
-        if (fiveSeries) {
-          fiveSeries = createFiveYearSeries(fiveSeries, lang);
-        }
-        trafficChart.update(
-          {
-            series: timeSeries,
-            yAxis: [
+      document
+        .getElementById("select-units-radio-traffic")
+        .addEventListener("click", function (event) {
+          if (event.target && event.target.matches("input[type='radio']")) {
+            chartParams.unitsHolder.current = event.target.value;
+            [timeSeries, fiveSeries] = addSeriesParams(
+              createSeries(trafficData, chartParams),
+              chartParams.unitsHolder,
+              chartParams.buildFive,
+              lang.series
+            );
+            if (fiveSeries) {
+              fiveSeries = createFiveYearSeries(fiveSeries, lang);
+            }
+            trafficChart.update(
               {
-                title: { text: chartParams.unitsHolder.current },
-              },
-            ],
-            tooltip: {
-              formatter() {
-                return tooltipText(this, chartParams.unitsHolder.current);
-              },
-            },
-          },
-          true,
-          false,
-          false
-        );
-        if (chartParams.hasImports) {
-          hasImportsRedraw(trafficChart, chartParams);
-          trafficChart.redraw(false);
-        }
-        if (fiveChart) {
-          fiveChart.update(
-            {
-              series: fiveSeries,
-              tooltip: {
-                formatter() {
-                  return fiveYearTooltipText(
-                    this,
-                    chartParams.unitsHolder.current
-                  );
+                series: timeSeries,
+                yAxis: [
+                  {
+                    title: { text: chartParams.unitsHolder.current },
+                  },
+                ],
+                tooltip: {
+                  formatter() {
+                    return tooltipText(this, chartParams.unitsHolder.current);
+                  },
                 },
               },
-              yAxis: {
-                title: { text: chartParams.unitsHolder.current },
-              },
-            },
-            true,
-            false,
-            false
-          );
-        }
-        lang.dynamicText(chartParams, lang.numberFormat);
-      });
+              true,
+              false,
+              false
+            );
+            if (chartParams.hasImports) {
+              hasImportsRedraw(trafficChart, chartParams);
+              trafficChart.redraw(false);
+            }
+            if (fiveChart) {
+              fiveChart.update(
+                {
+                  series: fiveSeries,
+                  tooltip: {
+                    formatter() {
+                      return fiveYearTooltipText(
+                        this,
+                        chartParams.unitsHolder.current
+                      );
+                    },
+                  },
+                  yAxis: {
+                    title: { text: chartParams.unitsHolder.current },
+                  },
+                },
+                true,
+                false,
+                false
+              );
+            }
+            lang.dynamicText(chartParams, lang.numberFormat);
+          }
+        });
 
-      // update map zoom
-      $("#key-point-zoom-btn button").on("click", function () {
-        $(".btn-map > .btn").removeClass("active");
-        const inOutBtn = $(this);
-        inOutBtn.addClass("active");
-        const zoomResponse = inOutBtn.val();
+      function zoomCallback(pointMap, zoomResponse) {
         if (zoomResponse === "zoom-in") {
           pointMap.reZoom(true);
         } else {
           pointMap.reZoom(false);
         }
-      });
+      }
+
+      // update map zoom
+      document
+        .getElementById("key-point-zoom-btn")
+        .addEventListener("click", function (event) {
+          let allButtons = document.querySelectorAll(
+            "#key-point-zoom-btn .btn"
+          );
+          allButtons.forEach((elem) => {
+            elem.className = elem.className.replace(" active", "");
+          });
+          event.target.className += " active";
+          const zoomResponse = event.target.value;
+          zoomCallback(pointMap, zoomResponse);
+        });
     } catch (err) {
       console.log(err);
     }
