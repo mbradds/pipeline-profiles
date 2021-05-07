@@ -4,7 +4,7 @@ const profileText = require("./src/components/htmlText");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const webpack = require("webpack");
+// const webpack = require("webpack");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 
@@ -144,6 +144,7 @@ module.exports = {
     //   filename: "dist/[file].map",
     //   fileContext: "public",
     // }),
+    // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
@@ -153,6 +154,20 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            publicPath: "dist/images/",
+            outputPath: "images",
+          },
         },
       },
       {
@@ -172,5 +187,24 @@ module.exports = {
   optimization: {
     minimize: true,
     usedExports: true,
+    // runtimeChunk: true, //TODO: look into if this is needed
+    splitChunks: {
+      cacheGroups: {
+        leafletVendor: {
+          test: /[\\/]node_modules[\\/](leaflet)[\\/]/,
+          chunks: "initial",
+          reuseExistingChunk: true,
+          enforce: true,
+          filename: "vendor/leaflet.[contenthash].js",
+        },
+        highchartsVendor: {
+          test: /[\\/]node_modules[\\/](highcharts)[\\/]/,
+          chunks: "initial",
+          reuseExistingChunk: true,
+          enforce: true,
+          filename: "vendor/highcharts.[contenthash].js",
+        },
+      },
+    },
   },
 };

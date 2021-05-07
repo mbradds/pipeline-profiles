@@ -415,10 +415,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         margin: 0,
         symbolPadding: 2,
         labelFormatter() {
-          // const legendLang = lang.trade[this.name];
-          // if (legendLang) {
-          //   return legendLang;
-          // }
           return this.name;
         },
       },
