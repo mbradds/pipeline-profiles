@@ -1,7 +1,4 @@
-import "leaflet/dist/leaflet.css";
-import * as L from "leaflet";
-window.L = L;
-
+import { bindToWindow } from "./vendor";
 import { generalTheme, frenchTheme } from "../modules/themes";
 // conditions
 import { mainConditions } from "../conditions/conditionsDashboard";
@@ -14,7 +11,7 @@ import { mainTraffic } from "../traffic/trafficDashboard";
 // apportionment
 import { mainApportion } from "../apportionment/apportionmentDashboard";
 console.time(`first content loading`);
-
+bindToWindow();
 generalTheme();
 frenchTheme();
 

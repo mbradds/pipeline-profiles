@@ -5,8 +5,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const webpack = require("webpack");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+//   .BundleAnalyzerPlugin;
 
 const profileWebpackConfig = (function () {
   const language = ["en", "fr"];
@@ -144,7 +144,7 @@ module.exports = {
     //   filename: "dist/[file].map",
     //   fileContext: "public",
     // }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
@@ -191,12 +191,11 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          // test: /[\\/]node_modules[\\/]/,
-          test: /[\\/]node_modules[\\/](leaflet)[\\/]/,
+          test: /[\\/]node_modules[\\/](leaflet|highcharts)[\\/]/,
           chunks: "initial",
           reuseExistingChunk: true,
           enforce: true,
-          filename: "vend/vendor.js",
+          filename: "vendor/vendor.js",
         },
       },
     },

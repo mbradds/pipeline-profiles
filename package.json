@@ -27,6 +27,7 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "haversine": "^1.1.1",
+    "highcharts": "^8.2.2",
     "leaflet": "^1.7.1",
     "mapshaper": "^0.5.28"
   },
