@@ -147,6 +147,10 @@ module.exports = {
     // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
+  resolve: {
+    extensions: ["*", ".js"],
+  },
+
   module: {
     rules: [
       {
@@ -161,12 +165,13 @@ module.exports = {
         use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        test: /\.png$/,
         use: {
           loader: "file-loader",
           options: {
-            publicPath: "dist/images/",
+            publicPath: "../../images",
             outputPath: "images",
+            name: "[name].png",
           },
         },
       },
@@ -179,9 +184,6 @@ module.exports = {
         },
       },
     ],
-  },
-  resolve: {
-    extensions: ["*", ".js"],
   },
 
   optimization: {
