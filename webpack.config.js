@@ -4,9 +4,9 @@ const profileText = require("./src/components/htmlText");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const webpack = require("webpack");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-//   .BundleAnalyzerPlugin;
+// const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 const profileWebpackConfig = (function () {
   const language = ["en", "fr"];
@@ -144,6 +144,7 @@ module.exports = {
     //   filename: "dist/[file].map",
     //   fileContext: "public",
     // }),
+    // new BundleAnalyzerPlugin(),
   ].concat(profileWebpackConfig.htmlWebpack()),
 
   module: {
@@ -153,6 +154,20 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            publicPath: "dist/images/",
+            outputPath: "images",
+          },
         },
       },
       {
@@ -172,5 +187,17 @@ module.exports = {
   optimization: {
     minimize: true,
     usedExports: true,
+    // runtimeChunk: true, //TODO: look into if this is needed
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "initial",
+          reuseExistingChunk: true,
+          enforce: true,
+          filename: "vend/vendor.js",
+        },
+      },
+    },
   },
 };
