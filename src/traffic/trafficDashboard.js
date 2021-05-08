@@ -14,7 +14,7 @@ import { KeyPointMap } from "../modules/dashboard";
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;
 
-  function createFiveYearSeries(dataWithDate, lang) {
+  function createFiveYearSeries(dataWithDate) {
     const { lastDate, ...dataObj } = dataWithDate;
     const { currentYrData, avgData, rangeData, meta } = calculateFiveYrAvg(
       lastDate,
@@ -61,21 +61,20 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function addPointButtons(params) {
-    const btnGroup = $("#traffic-points-btn");
+    const btnGroup = document.getElementById("traffic-points-btn");
+    let html = "";
     if (params.defaultPoint.id !== "35") {
       params.points.forEach((point) => {
         const checkTxt = point.id === params.defaultPoint.id ? " active" : "";
-        btnGroup.append(
-          `<div class="btn-group btn-point"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`
-        );
+        html = `<div class="btn-group btn-point"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`;
+        btnGroup.insertAdjacentHTML("beforeend", html);
       });
     } else {
       params.points.forEach((point, i) => {
-        btnGroup.append(
-          `<div class="checkbox-inline">
-          <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point.id}">${point.name}</label>
-       </div>`
-        );
+        html = `<div class="checkbox-inline">
+        <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point.id}">${point.name}</label>
+     </div>`;
+        btnGroup.insertAdjacentHTML("beforeend", html);
       });
     }
   }
@@ -486,7 +485,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     // TODO: this needs to be cleaned up and tested more
     // TODO: remove all the css classes that aernt needed now that oil has five year
     const mainTrafficDiv = document.getElementById("traffic-hc");
-    const mainMap = document.getElementById("traffic-map");
     if (params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
       mainTrafficDiv.classList.remove("traffic-hc-shared");
@@ -507,7 +505,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
     currentIds.forEach((id) => {
       if (!newIds.includes(id)) {
-        let selectedSeries = chart.get(id);
+        const selectedSeries = chart.get(id);
         selectedSeries.hide();
         selectedSeries.update({ showInLegend: false }, false);
       }
@@ -515,7 +513,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
     newSeries.forEach((newS) => {
       if (currentIds.includes(newS.id)) {
-        let selectedSeries = chart.get(newS.id);
+        const selectedSeries = chart.get(newS.id);
         selectedSeries.show();
         selectedSeries.setData(newS.data, false, false, false);
         selectedSeries.update({ showInLegend: true }, false);
@@ -556,12 +554,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
     let series;
     if (fiveSeries) {
-      series = createFiveYearSeries(fiveSeries, lang);
+      series = createFiveYearSeries(fiveSeries);
     }
-    let chart;
+    let newChart;
     if (fiveChart) {
-      chart = updateSeries(fiveChart, series, undefined, false);
-      chart.update(
+      newChart = updateSeries(fiveChart, series, undefined, false);
+      newChart.update(
         {
           title: {
             text: setTitle(chartParams, true),
@@ -574,9 +572,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
         false,
         false
       );
-      chart.redraw(true);
+      newChart.redraw(true);
     }
-    return [series, chart];
+    return [series, newChart];
   }
 
   function buildDashboard() {
@@ -630,7 +628,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       );
 
       if (fiveSeries) {
-        fiveSeries = createFiveYearSeries(fiveSeries, lang);
+        fiveSeries = createFiveYearSeries(fiveSeries);
       }
 
       let trafficChart = buildTrafficChart(
@@ -665,183 +663,212 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
       // user selects key point
       if (!chartParams.tm) {
-        $("#traffic-points-btn button").on("click", function () {
-          $(".btn-point > .btn").removeClass("active");
-          const keyBtn = $(this).addClass("active");
-          chartParams.hasImports = false;
-          chartParams.defaultPoint = getKeyPoint(keyBtn.val());
-          [timeSeries, fiveSeries] = addSeriesParams(
-            trafficData[chartParams.defaultPoint.id],
-            chartParams.unitsHolder,
-            chartParams.buildFive,
-            lang.series
-          );
+        document
+          .getElementById("traffic-points-btn")
+          .addEventListener("click", (event) => {
+            const evt = event;
+            const allButtons = document.querySelectorAll(
+              `#traffic-points-btn .btn`
+            );
+            allButtons.forEach((elem) => {
+              const e = elem;
+              e.className = elem.className.replace(" active", "");
+            });
+            evt.target.className += " active";
+            const btnValue = evt.target.value;
+            chartParams.hasImports = false;
+            chartParams.defaultPoint = getKeyPoint(btnValue);
+            [timeSeries, fiveSeries] = addSeriesParams(
+              trafficData[chartParams.defaultPoint.id],
+              chartParams.unitsHolder,
+              chartParams.buildFive,
+              lang.series
+            );
 
-          [trafficChart, chartParams.hasImports] = updateSeries(
-            trafficChart,
-            timeSeries,
-            chartParams.hasImports,
-            true
-          );
+            [trafficChart, chartParams.hasImports] = updateSeries(
+              trafficChart,
+              timeSeries,
+              chartParams.hasImports,
+              true
+            );
 
-          if (chartParams.hasImports) {
-            hasImportsRedraw(trafficChart, chartParams);
-          } else {
-            trafficChart.update(
-              {
-                title: {
-                  text: setTitle(chartParams, false),
-                },
-                yAxis: [
-                  {
-                    height: "100%",
-                    max: undefined,
-                    title: {
-                      text: chartParams.unitsHolder.current,
-                    },
+            if (chartParams.hasImports) {
+              hasImportsRedraw(trafficChart, chartParams);
+            } else {
+              trafficChart.update(
+                {
+                  title: {
+                    text: setTitle(chartParams, false),
                   },
-                  { visible: false },
-                ],
-              },
-              false
-            );
-            [fiveSeries, fiveChart] = updateFiveYearChart(
+                  yAxis: [
+                    {
+                      height: "100%",
+                      max: undefined,
+                      title: {
+                        text: chartParams.unitsHolder.current,
+                      },
+                    },
+                    { visible: false },
+                  ],
+                },
+                false
+              );
+              [fiveSeries, fiveChart] = updateFiveYearChart(
+                fiveSeries,
+                fiveChart,
+                chartParams
+              );
+            }
+            resize(chartParams);
+            trafficChart.redraw(true);
+            trafficChart.reflow();
+            pointMap.pointChange([chartParams.defaultPoint]);
+            chartParams.fiveTrend = fiveYearTrend(
               fiveSeries,
-              fiveChart,
-              chartParams
+              chartParams.hasImports
             );
-          }
-          resize(chartParams);
-          trafficChart.redraw(true);
-          trafficChart.reflow();
-          pointMap.pointChange([chartParams.defaultPoint]);
-          chartParams.fiveTrend = fiveYearTrend(
-            fiveSeries,
-            chartParams.hasImports
-          );
-          lang.dynamicText(chartParams, lang.numberFormat);
-          displayPointDescription([chartParams.defaultPoint]);
-        });
+            lang.dynamicText(chartParams, lang.numberFormat);
+            displayPointDescription([chartParams.defaultPoint]);
+          });
       } else {
         // user is on trans mountain profile
-        $("#traffic-points-btn input[type=checkbox]").on("change", function () {
-          const pointId = $(this).val();
-          if ($(this).is(":checked")) {
-            chartParams.points.push({
-              id: pointId,
-              name: lang.points[pointId][0],
-            });
-          } else {
-            chartParams.points = chartParams.points.filter(
-              (point) => point.id !== pointId
-            );
-          }
+        document
+          .getElementById("traffic-points-btn")
+          .addEventListener("click", (event) => {
+            if (
+              event.target &&
+              event.target.matches("input[type='checkbox']")
+            ) {
+              const pointId = event.target.value;
+              if (event.target.checked) {
+                chartParams.points.push({
+                  id: pointId,
+                  name: lang.points[pointId][0],
+                });
+              } else {
+                chartParams.points = chartParams.points.filter(
+                  (point) => point.id !== pointId
+                );
+              }
 
-          while (trafficChart.series.length) {
-            trafficChart.series[0].remove(false, false, false);
-          }
+              while (trafficChart.series.length) {
+                trafficChart.series[0].remove(false, false, false);
+              }
 
-          if (chartParams.points.length > 0) {
+              if (chartParams.points.length > 0) {
+                [timeSeries, fiveSeries] = addSeriesParams(
+                  createSeries(trafficData, chartParams),
+                  chartParams.unitsHolder,
+                  chartParams.buildFive,
+                  lang.series
+                );
+
+                timeSeries.forEach((newS) => {
+                  trafficChart.addSeries(newS, false, false);
+                });
+
+                trafficChart.update({
+                  title: {
+                    text: setTitle(chartParams, false),
+                  },
+                });
+                [fiveSeries, fiveChart] = updateFiveYearChart(
+                  fiveSeries,
+                  fiveChart,
+                  chartParams
+                );
+                pointMap.pointChange(chartParams.points);
+              }
+              displayPointDescription(chartParams.points);
+              lang.dynamicText(chartParams, lang.numberFormat);
+            }
+          });
+      }
+
+      // user selects units
+      document
+        .getElementById("select-units-radio-traffic")
+        .addEventListener("click", (event) => {
+          if (event.target && event.target.matches("input[type='radio']")) {
+            const radioValue = event.target.value;
+            chartParams.unitsHolder.current = radioValue;
             [timeSeries, fiveSeries] = addSeriesParams(
               createSeries(trafficData, chartParams),
               chartParams.unitsHolder,
               chartParams.buildFive,
               lang.series
             );
-
-            timeSeries.forEach((newS) => {
-              trafficChart.addSeries(newS, false, false);
-            });
-
-            trafficChart.update({
-              title: {
-                text: setTitle(chartParams, false),
-              },
-            });
-            [fiveSeries, fiveChart] = updateFiveYearChart(
-              fiveSeries,
-              fiveChart,
-              chartParams
-            );
-            pointMap.pointChange(chartParams.points);
-          }
-          displayPointDescription(chartParams.points);
-          lang.dynamicText(chartParams, lang.numberFormat);
-        });
-      }
-
-      // user selects units
-      $("#select-units-radio-traffic input[name='trafficUnits']").click(() => {
-        chartParams.unitsHolder.current = $(
-          "input:radio[name=trafficUnits]:checked"
-        ).val();
-        [timeSeries, fiveSeries] = addSeriesParams(
-          createSeries(trafficData, chartParams),
-          chartParams.unitsHolder,
-          chartParams.buildFive,
-          lang.series
-        );
-        if (fiveSeries) {
-          fiveSeries = createFiveYearSeries(fiveSeries, lang);
-        }
-        trafficChart.update(
-          {
-            series: timeSeries,
-            yAxis: [
+            let newFiveSeries;
+            if (fiveSeries) {
+              newFiveSeries = createFiveYearSeries(fiveSeries);
+            }
+            trafficChart.update(
               {
-                title: { text: chartParams.unitsHolder.current },
-              },
-            ],
-            tooltip: {
-              formatter() {
-                return tooltipText(this, chartParams.unitsHolder.current);
-              },
-            },
-          },
-          true,
-          false,
-          false
-        );
-        if (chartParams.hasImports) {
-          hasImportsRedraw(trafficChart, chartParams);
-          trafficChart.redraw(false);
-        }
-        if (fiveChart) {
-          fiveChart.update(
-            {
-              series: fiveSeries,
-              tooltip: {
-                formatter() {
-                  return fiveYearTooltipText(
-                    this,
-                    chartParams.unitsHolder.current
-                  );
+                series: timeSeries,
+                yAxis: [
+                  {
+                    title: { text: chartParams.unitsHolder.current },
+                  },
+                ],
+                tooltip: {
+                  formatter() {
+                    return tooltipText(this, chartParams.unitsHolder.current);
+                  },
                 },
               },
-              yAxis: {
-                title: { text: chartParams.unitsHolder.current },
-              },
-            },
-            true,
-            false,
-            false
-          );
-        }
-        lang.dynamicText(chartParams, lang.numberFormat);
-      });
+              true,
+              false,
+              false
+            );
+            if (chartParams.hasImports) {
+              hasImportsRedraw(trafficChart, chartParams);
+              trafficChart.redraw(false);
+            }
+            if (fiveChart) {
+              fiveChart.update(
+                {
+                  series: newFiveSeries,
+                  tooltip: {
+                    formatter() {
+                      return fiveYearTooltipText(
+                        this,
+                        chartParams.unitsHolder.current
+                      );
+                    },
+                  },
+                  yAxis: {
+                    title: { text: chartParams.unitsHolder.current },
+                  },
+                },
+                true,
+                false,
+                false
+              );
+            }
+            lang.dynamicText(chartParams, lang.numberFormat);
+          }
+        });
 
       // update map zoom
-      $("#key-point-zoom-btn button").on("click", function () {
-        $(".btn-map > .btn").removeClass("active");
-        const inOutBtn = $(this);
-        inOutBtn.addClass("active");
-        const zoomResponse = inOutBtn.val();
-        if (zoomResponse === "zoom-in") {
-          pointMap.reZoom(true);
-        } else {
-          pointMap.reZoom(false);
-        }
-      });
+      document
+        .getElementById("key-point-zoom-btn")
+        .addEventListener("click", (event) => {
+          const evt = event;
+          const allButtons = document.querySelectorAll(
+            `#key-point-zoom-btn .btn`
+          );
+          allButtons.forEach((elem) => {
+            const e = elem;
+            e.className = elem.className.replace(" active", "");
+          });
+          evt.target.className += " active";
+          const btnValue = evt.target.value;
+          if (btnValue === "zoom-in") {
+            pointMap.reZoom(true);
+          } else {
+            pointMap.reZoom(false);
+          }
+        });
     } catch (err) {
       console.log(err);
     }

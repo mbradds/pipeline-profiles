@@ -99,16 +99,18 @@ export function addSeriesParams(
     const nextSeries = {};
     const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
     if (seriesNames) {
-      if (seriesNames.hasOwnProperty(s.name)) {
+      if (Object.prototype.hasOwnProperty.call(seriesNames, s.name)) {
         nextSeries.name = seriesNames[s.name];
       } else {
         nextSeries.name = s.name;
       }
+    } else {
+      nextSeries.name = s.name;
     }
     nextSeries.id = nextSeries.name;
     Object.keys(s).forEach((key) => {
       const value = s[key];
-      if (key !== "data" && key != "name") {
+      if (key !== "data" && key !== "name") {
         nextSeries[key] = value;
       }
     });
