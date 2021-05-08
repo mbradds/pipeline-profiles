@@ -295,6 +295,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     legend: { alignColumns: false, margin: 0, symbolPadding: 2 },
     plotOptions: {
       series: {
+        animation: false,
         connectNulls: true,
         states: {
           inactive: {
@@ -370,14 +371,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     });
   }
 
-  function buildTrafficChart(series, title, params, div = "traffic-hc") {
+  function createTrafficChart(series, title, params, div = "traffic-hc") {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
         marginRight: 0,
         spacingTop: 5,
         spacingBottom: 5,
-        animation: true,
       },
       title: sharedHcParams.title(title),
       xAxis: {
@@ -631,7 +631,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         fiveSeries = createFiveYearSeries(fiveSeries);
       }
 
-      let trafficChart = buildTrafficChart(
+      let trafficChart = createTrafficChart(
         timeSeries,
         setTitle(chartParams, false),
         chartParams

@@ -97,102 +97,119 @@ export async function mainIncidents(incidentData, metaData, lang) {
         const trends = incidentTimeSeries(field, filters);
         const volumeBtn = document.getElementById("incident-volume-btn");
         // user selection to show volume or incident frequency
-        $("#inline_content input[name='type']").click(() => {
-          const btnValue = $("input:radio[name=type]:checked").val();
-          thisMap.filters.type = btnValue;
-          trends.filters.type = btnValue;
-          bars.switchY(btnValue);
-          thisMap.updateRadius();
-          if (btnValue !== "frequency") {
-            thisMap.addMapDisclaimer("volume");
-          } else {
-            thisMap.removeMapDisclaimer("volume");
-          }
-        });
+        document
+          .getElementById("inline_content")
+          .addEventListener("click", (event) => {
+            if (event.target && event.target.matches("input[type='radio']")) {
+              const btnValue = event.target.value;
+              thisMap.filters.type = btnValue;
+              trends.filters.type = btnValue;
+              bars.switchY(btnValue);
+              thisMap.updateRadius();
+              if (btnValue !== "frequency") {
+                thisMap.addMapDisclaimer("volume");
+              } else {
+                thisMap.removeMapDisclaimer("volume");
+              }
+            }
+          });
+
         if (incidentData.length === 1) {
           // if there is only one incident, then disable the select volume option
           volumeBtn.disabled = true;
         }
 
         // user selection to show map or trends
-        $("#incident-view-type button").on("click", function () {
-          $(".btn-incident-view-type > .btn").removeClass("active");
-          $(this).addClass("active");
-          const btnValue = $(this).val();
-          const dashboardDivs = [
-            "incident-map",
-            "nearby-incidents-popup",
-          ].concat(bars.allDivs);
-          if (btnValue !== "trends") {
-            visibility(dashboardDivs, "show");
-            visibility(["time-series-section"], "hide");
-            volumeBtn.disabled = false;
-            thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
-          } else {
-            // if the user selects trends, the option to view volume should be disabled
-            volumeBtn.disabled = true;
-            const countBtn = document.getElementById("incident-count-btn");
-            countBtn.checked = true;
-            countBtn.click();
-            visibility(dashboardDivs, "hide");
-            visibility(["time-series-section"], "show");
-          }
-        });
+        document
+          .getElementById("incident-view-type")
+          .addEventListener("click", (event) => {
+            const evt = event;
+            const allButtons = document.querySelectorAll(
+              `#incident-view-type .btn`
+            );
+            allButtons.forEach((elem) => {
+              const e = elem;
+              e.className = elem.className.replace(" active", "");
+            });
+            evt.target.className += " active";
+            const btnValue = evt.target.value;
+            const dashboardDivs = [
+              "incident-map",
+              "nearby-incidents-popup",
+            ].concat(bars.allDivs);
+            if (btnValue !== "trends") {
+              visibility(dashboardDivs, "show");
+              visibility(["time-series-section"], "hide");
+              volumeBtn.disabled = false;
+              thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
+            } else {
+              // if the user selects trends, the option to view volume should be disabled
+              volumeBtn.disabled = true;
+              const countBtn = document.getElementById("incident-count-btn");
+              countBtn.checked = true;
+              countBtn.click();
+              visibility(dashboardDivs, "hide");
+              visibility(["time-series-section"], "show");
+            }
+          });
 
         // user selection for finding nearby incidents
-        $("#incident-range-slide").on("change", function () {
-          const slide = $(this);
+        const slider = document.getElementById("incident-range-slide");
+
+        slider.addEventListener("change", () => {
+          const currentValue = slider.value;
           const findIncidentBtn = document.getElementById("find-incidents-btn");
           const findIncidentTitle = document.getElementById(
             "find-incidents-title"
           );
-          findIncidentBtn.innerText = `${
-            lang.dashboard.findBtnTitle
-          } ${slide.val()}km`;
-          findIncidentTitle.innerText = `${
-            lang.dashboard.rangeTitle
-          } (${slide.val()}km):`;
-          findIncidentBtn.value = slide.val();
+          findIncidentBtn.innerText = `${lang.dashboard.findBtnTitle} ${currentValue}km`;
+          findIncidentTitle.innerText = `${lang.dashboard.rangeTitle} (${currentValue}km):`;
+          findIncidentBtn.value = currentValue;
         });
 
         // user selects a range to find nearby incidents
-        $("#find-incidents-btn").on("click", () => {
-          const resetBtn = document.getElementById("reset-incidents-btn");
-          const range = document.getElementById("find-incidents-btn").value;
-          if (!thisMap.user.latitude && !thisMap.user.longitude) {
-            const loadDisclaimer = setTimeout(() => {
-              thisMap.addMapDisclaimer("location");
-            }, 200);
-            thisMap
-              .waitOnUser()
-              .then(() => {
-                thisMap.nearbyIncidents(range); // .then((userAdded))
-                clearTimeout(loadDisclaimer);
-                thisMap.removeMapDisclaimer("location");
-                resetBtn.disabled = false;
-                resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
-              })
-              .catch(() => {
-                const incidentFlag = document.getElementById("nearby-flag"); // .catch((error))
-                incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
-                clearTimeout(loadDisclaimer);
-                thisMap.removeMapDisclaimer("location");
-              });
-          } else {
-            thisMap.nearbyIncidents(range);
-            resetBtn.disabled = false;
-            resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
-          }
-        });
+        document
+          .getElementById("find-incidents-btn")
+          .addEventListener("click", () => {
+            const resetBtn = document.getElementById("reset-incidents-btn");
+            const range = document.getElementById("find-incidents-btn").value;
+            if (!thisMap.user.latitude && !thisMap.user.longitude) {
+              const loadDisclaimer = setTimeout(() => {
+                thisMap.addMapDisclaimer("location");
+              }, 200);
+              thisMap
+                .waitOnUser()
+                .then(() => {
+                  thisMap.nearbyIncidents(range); // .then((userAdded))
+                  clearTimeout(loadDisclaimer);
+                  thisMap.removeMapDisclaimer("location");
+                  resetBtn.disabled = false;
+                  resetBtn.className =
+                    "btn btn-primary col-md-12 notice-me-btn";
+                })
+                .catch(() => {
+                  const incidentFlag = document.getElementById("nearby-flag"); // .catch((error))
+                  incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
+                  clearTimeout(loadDisclaimer);
+                  thisMap.removeMapDisclaimer("location");
+                });
+            } else {
+              thisMap.nearbyIncidents(range);
+              resetBtn.disabled = false;
+              resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+            }
+          });
 
         // reset map after user has selected a range
-        $("#reset-incidents-btn").on("click", () => {
-          thisMap.resetMap();
-          const resetBtn = document.getElementById("reset-incidents-btn");
-          resetBtn.disabled = true;
-          resetBtn.className = "btn btn-default col-md-12";
-          document.getElementById("nearby-flag").innerHTML = ``;
-        });
+        document
+          .getElementById("reset-incidents-btn")
+          .addEventListener("click", () => {
+            thisMap.resetMap();
+            const resetBtn = document.getElementById("reset-incidents-btn");
+            resetBtn.disabled = true;
+            resetBtn.className = "btn btn-default col-md-12";
+            document.getElementById("nearby-flag").innerHTML = ``;
+          });
       } catch (err) {
         console.log(err);
       }

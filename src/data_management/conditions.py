@@ -384,6 +384,7 @@ def process_conditions(remote=False,
             df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
             # calculate metadata here
             dfmeta, meta = conditionMetaData(df_all, folder_name)
+            meta["build"] = True
             thisCompanyData['meta'] = meta
             shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name, lang)
 
@@ -395,7 +396,8 @@ def process_conditions(remote=False,
                 print('completed+saved '+lang+' conditions: '+company)
         else:
             meta = {"companyName": company}
-            thisCompanyData = {'meta': {"companyName": company},
+            thisCompanyData = {'meta': {"companyName": company,
+                                        "build": False},
                                'regions': "{}",
                                'mapMeta': []}
 

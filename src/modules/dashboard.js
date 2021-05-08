@@ -353,7 +353,7 @@ export class EventMap {
     this.colors.Year = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
     const currentDashboard = this;
-    this.map.on("zoom", (e) => {
+    this.map.on("zoom", () => {
       currentDashboard.updateRadius();
     });
   }
@@ -513,15 +513,17 @@ export class EventMap {
     window.addEventListener("resize", () => {
       resize = true;
     });
-    $(".tab > .tablinks").on("click", (e) => {
-      if (resize) {
-        currentDashboard.map.invalidateSize(true);
-        resize = false;
-      } else {
-        currentDashboard.map.invalidateSize(false);
-      }
-      currentDashboard.reZoom();
-    });
+    document
+      .getElementById("safety-env-navigation")
+      .addEventListener("click", () => {
+        if (resize) {
+          currentDashboard.map.invalidateSize(true);
+          resize = false;
+        } else {
+          currentDashboard.map.invalidateSize(false);
+        }
+        currentDashboard.reZoom();
+      });
   }
 }
 
@@ -639,7 +641,7 @@ export class EventNavigator {
             toolText = `${this.series.name} - ${this.y}`;
           }
           if (this.series.options.filter === "volume") {
-            tooltext = `${this.series.name} - <strong>${Highcharts.numberFormat(
+            toolText = `${this.series.name} - <strong>${Highcharts.numberFormat(
               this.y,
               0,
               "."
@@ -776,7 +778,7 @@ export class EventNavigator {
       });
       let activeTitle = chart.title.textStr;
       if (activeTitle.includes("(")) {
-        activeTitle = activeTitle.split("(")[0];
+        [activeTitle] = activeTitle.split("(");
       }
       chart.update({
         chart: {

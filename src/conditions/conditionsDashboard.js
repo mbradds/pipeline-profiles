@@ -28,12 +28,12 @@ export async function mainConditions(
   };
   const statusInit = (metaData) => {
     document.addEventListener("DOMContentLoaded", () => {
-      const inProgress = $("#in-progress-btn");
+      const inProgress = document.getElementById("in-progress-btn");
       if (metaData.summary["In Progress"] > 0) {
-        inProgress.addClass("active");
+        inProgress.classList.add("active");
       } else if (metaData.summary["In Progress"] === 0) {
-        inProgress.prop("disabled", true);
-        $("#closed-btn").addClass("active");
+        inProgress.disabled = true;
+        document.getElementById("closed-btn").classList.add("active");
       }
     });
     const conditionsFilter = {
@@ -168,7 +168,6 @@ export async function mainConditions(
     if (definitionDiv.classList.contains("profile-show")) {
       definitionDiv.classList.remove("profile-show");
     }
-    // chart.customTooltip = undefined;
   };
 
   const selectedMeta = (params) => {
@@ -229,23 +228,6 @@ export async function mainConditions(
       ],
     };
   };
-
-  function themeClick(e) {
-    const definitions = lang.themeDefinitions;
-    const definitionDiv = document.getElementById("conditions-definitions");
-    if (definitionDiv.classList.contains("profile-hide")) {
-      definitionDiv.classList.add("profile-show");
-    }
-    const themes = e.split(",");
-    let definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
-    for (let i = 0; i < themes.length; i += 1) {
-      const t = themes[i].trim();
-      definitionsHTML += `<strong>${t}</strong>`;
-      definitionsHTML += `<strong>${definitions[t]}</strong>`;
-    }
-    definitionDiv.innerHTML = definitionsHTML;
-    definitionDiv.scrollIntoView(false);
-  }
 
   const popUp = (e, params, metaSelect) => {
     const currentPopUp = document.getElementById("conditions-insert");
@@ -308,8 +290,26 @@ export async function mainConditions(
       null,
       "spacingBox"
     );
-    $("#themes-table tr").click(function () {
-      themeClick($(this).children("td").first().text());
+    const themeRows = document.getElementById("themes-table").rows;
+    themeRows.forEach((tableRow) => {
+      const tr = tableRow;
+      const rowText = tr.querySelectorAll("td")[0].textContent;
+      tr.onclick = function themeClick() {
+        const definitions = lang.themeDefinitions;
+        const definitionDiv = document.getElementById("conditions-definitions");
+        if (definitionDiv.classList.contains("profile-hide")) {
+          definitionDiv.classList.add("profile-show");
+        }
+        const themes = rowText.split(",");
+        let definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
+        for (let i = 0; i < themes.length; i += 1) {
+          const t = themes[i].trim();
+          definitionsHTML += `<strong>${t}: </strong>`;
+          definitionsHTML += `${definitions[t]}<br>`;
+        }
+        definitionDiv.innerHTML = definitionsHTML;
+        definitionDiv.scrollIntoView(false);
+      };
     });
   };
 
@@ -434,9 +434,8 @@ export async function mainConditions(
 
   // main conditions map
   function buildDashboard() {
-    if (!$.isEmptyObject(econRegions)) {
+    if (meta.build) {
       const chartParams = meta;
-      // TODO: add handling for when meta.summary.companyName is no in lang
       if (
         Object.prototype.hasOwnProperty.call(
           lang.companyToSystem,
@@ -482,59 +481,67 @@ export async function mainConditions(
 
       // allow zoom and pan when in development mode
       // chart = chartMode(chart, mapInits);
-      // change condition type and update map+title
-      $("#conditions-nav-group button").on("click", function () {
-        $(".btn-conditions > .btn").removeClass("active");
-        $(this).addClass("active");
-        const btnValue = $(this).val();
-        $("#selectedVal").text(btnValue);
-        chartParams.conditionsFilter.column = btnValue;
-        if (btnValue !== "not-shown") {
-          destroyInsert(chart);
-          chart.customTooltip = undefined;
-          visibility(["no-location-info"], "hide");
-          visibility(["container-map"], "show");
-        } else {
-          visibility(["no-location-info"], "show");
-          visibility(["container-map"], "hide");
-        }
-        setTitle("conditions-map-title", chartParams);
-        const newSeries = generateRegionSeries(
-          mapMetaData,
-          econRegions,
-          chartParams.conditionsFilter
-        );
-        chart.update(
-          {
-            plotOptions: {
-              series: {
-                point: {
-                  events: {
-                    click() {
-                      popUp(this, chartParams, selectedMeta(chartParams));
+
+      document
+        .getElementById("conditions-nav-group")
+        .addEventListener("click", (event) => {
+          const evt = event;
+          const allButtons = document.querySelectorAll(
+            `#conditions-nav-group .btn`
+          );
+          allButtons.forEach((elem) => {
+            const e = elem;
+            e.className = elem.className.replace(" active", "");
+          });
+          evt.target.className += " active";
+          const btnValue = evt.target.value;
+          chartParams.conditionsFilter.column = btnValue;
+          if (btnValue !== "not-shown") {
+            destroyInsert(chart);
+            chart.customTooltip = undefined;
+            visibility(["no-location-info"], "hide");
+            visibility(["container-map"], "show");
+          } else {
+            visibility(["no-location-info"], "show");
+            visibility(["container-map", "conditions-definitions"], "hide");
+          }
+          setTitle("conditions-map-title", chartParams);
+          const newSeries = generateRegionSeries(
+            mapMetaData,
+            econRegions,
+            chartParams.conditionsFilter
+          );
+          chart.update(
+            {
+              plotOptions: {
+                series: {
+                  point: {
+                    events: {
+                      click() {
+                        popUp(this, chartParams, selectedMeta(chartParams));
+                      },
                     },
                   },
                 },
               },
+              series: [newSeries, baseMap],
+              colorAxis: colorRange(chartParams.conditionsFilter),
             },
-            series: [newSeries, baseMap],
-            colorAxis: colorRange(chartParams.conditionsFilter),
-          },
-          false
-        );
-
-        chart.mapZoom(undefined, undefined, undefined);
-        removeNoConditions(chart);
-        if (chartParams.conditionsFilter.column === "Closed") {
-          chart.mapZoom(zooms.Closed[0], zooms.Closed[1], zooms.Closed[2]);
-        } else {
-          chart.mapZoom(
-            zooms["In Progress"][0],
-            zooms["In Progress"][1],
-            zooms["In Progress"][2]
+            false
           );
-        }
-      });
+
+          chart.mapZoom(undefined, undefined, undefined);
+          removeNoConditions(chart);
+          if (chartParams.conditionsFilter.column === "Closed") {
+            chart.mapZoom(zooms.Closed[0], zooms.Closed[1], zooms.Closed[2]);
+          } else {
+            chart.mapZoom(
+              zooms["In Progress"][0],
+              zooms["In Progress"][1],
+              zooms["In Progress"][2]
+            );
+          }
+        });
     } else {
       // the company has no conditions. Hide all the dashboard stuff
       const noConditions = document.getElementById("conditions-dashboard");

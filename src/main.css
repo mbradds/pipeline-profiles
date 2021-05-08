@@ -42,7 +42,11 @@ body {
     max-height: 550px;
   }
 }
+.conditions-summary-title {
+  pointer-events: none;
+}
 .conditions-summary-value {
+  pointer-events: none;
   font-family: Arial;
   font-size: 17px;
   font-weight: bold;
