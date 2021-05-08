@@ -146,13 +146,14 @@ export async function mainApportion(apportionData, lang) {
           "oil",
           lang.unitsDisclaimerText
         );
+
         // user selects units
         document
           .getElementById("select-units-radio-apportion")
           .addEventListener("click", (event) => {
             if (event.target && event.target.matches("input[type='radio']")) {
-              const justSelected = event.target.value;
-              unitsHolder.current = justSelected;
+              const radioValue = event.target.value;
+              unitsHolder.current = radioValue;
               series = buildApportionSeries(apportionData.series, unitsHolder);
               chart.update({
                 series,

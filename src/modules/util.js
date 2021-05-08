@@ -265,15 +265,3 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
   const unitsDisclaimer = document.getElementById(div);
   unitsDisclaimer.innerHTML = textFunction(commodity);
 }
-
-export function btnGroupClick(groupId, caller, args) {
-  document.getElementById(`${groupId}`).addEventListener("click", (event) => {
-    const allButtons = document.querySelectorAll(`#${groupId} .btn`);
-    allButtons.forEach((elem) => {
-      elem.className = elem.className.replace(" active", "");
-    });
-    event.target.className += " active";
-    const response = event.target.value;
-    return caller(args, response);
-  });
-}

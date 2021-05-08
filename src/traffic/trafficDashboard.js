@@ -8,14 +8,13 @@ import {
   addUnitsAndSetup,
   addUnitsDisclaimer,
   calculateFiveYrAvg,
-  btnGroupClick,
 } from "../modules/util";
 import { KeyPointMap } from "../modules/dashboard";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;
 
-  function createFiveYearSeries(dataWithDate, lang) {
+  function createFiveYearSeries(dataWithDate) {
     const { lastDate, ...dataObj } = dataWithDate;
     const { currentYrData, avgData, rangeData, meta } = calculateFiveYrAvg(
       lastDate,
@@ -487,7 +486,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     // TODO: this needs to be cleaned up and tested more
     // TODO: remove all the css classes that aernt needed now that oil has five year
     const mainTrafficDiv = document.getElementById("traffic-hc");
-    const mainMap = document.getElementById("traffic-map");
     if (params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
       mainTrafficDiv.classList.remove("traffic-hc-shared");
@@ -557,12 +555,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
     let series;
     if (fiveSeries) {
-      series = createFiveYearSeries(fiveSeries, lang);
+      series = createFiveYearSeries(fiveSeries);
     }
-    let chart;
+    let newChart;
     if (fiveChart) {
-      chart = updateSeries(fiveChart, series, undefined, false);
-      chart.update(
+      newChart = updateSeries(fiveChart, series, undefined, false);
+      newChart.update(
         {
           title: {
             text: setTitle(chartParams, true),
@@ -575,17 +573,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
         false,
         false
       );
-      chart.redraw(true);
+      newChart.redraw(true);
     }
-    return [series, chart];
-  }
-
-  function zoomCallback(args, response) {
-    if (response === "zoom-in") {
-      args.pointMap.reZoom(true);
-    } else {
-      args.pointMap.reZoom(false);
-    }
+    return [series, newChart];
   }
 
   function buildDashboard() {
@@ -639,7 +629,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       );
 
       if (fiveSeries) {
-        fiveSeries = createFiveYearSeries(fiveSeries, lang);
+        fiveSeries = createFiveYearSeries(fiveSeries);
       }
 
       let trafficChart = buildTrafficChart(
@@ -784,15 +774,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
         .getElementById("select-units-radio-traffic")
         .addEventListener("click", (event) => {
           if (event.target && event.target.matches("input[type='radio']")) {
-            chartParams.unitsHolder.current = event.target.value;
+            const radioValue = event.target.value;
+            chartParams.unitsHolder.current = radioValue;
             [timeSeries, fiveSeries] = addSeriesParams(
               createSeries(trafficData, chartParams),
               chartParams.unitsHolder,
               chartParams.buildFive,
               lang.series
             );
+            let newFiveSeries;
             if (fiveSeries) {
-              fiveSeries = createFiveYearSeries(fiveSeries, lang);
+              newFiveSeries = createFiveYearSeries(fiveSeries);
             }
             trafficChart.update(
               {
@@ -819,7 +811,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             if (fiveChart) {
               fiveChart.update(
                 {
-                  series: fiveSeries,
+                  series: newFiveSeries,
                   tooltip: {
                     formatter() {
                       return fiveYearTooltipText(
@@ -840,8 +832,27 @@ export async function mainTraffic(trafficData, metaData, lang) {
             lang.dynamicText(chartParams, lang.numberFormat);
           }
         });
+
       // update map zoom
-      btnGroupClick("key-point-zoom-btn", zoomCallback, { pointMap });
+      document
+        .getElementById("key-point-zoom-btn")
+        .addEventListener("click", (event) => {
+          const evt = event;
+          const allButtons = document.querySelectorAll(
+            `#key-point-zoom-btn .btn`
+          );
+          allButtons.forEach((elem) => {
+            const e = elem;
+            e.className = elem.className.replace(" active", "");
+          });
+          evt.target.className += " active";
+          const btnValue = evt.target.value;
+          if (btnValue === "zoom-in") {
+            pointMap.reZoom(true);
+          } else {
+            pointMap.reZoom(false);
+          }
+        });
     } catch (err) {
       console.log(err);
     }
