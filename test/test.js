@@ -1,5 +1,5 @@
 import test from "ava";
-import { mapDates } from "datestone";
+import { mapDates } from "../src/modules/datestone";
 import {
   arrAvg,
   sortJson,
@@ -53,7 +53,6 @@ const seriesWithDate = [
 const unitsHolder = { base: "one", current: "one", conversion: 50 };
 const s = addSeriesParams(seriesWithDate, unitsHolder, true);
 const sNoFive = addSeriesParams(seriesWithDate, unitsHolder, false);
-
 test("addSeriesParams id", macroIs, s[0][0].id, "i");
 test("addSeriesParams type", macroIs, s[0][0].type, "area");
 test(

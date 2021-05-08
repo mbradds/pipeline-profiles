@@ -104,6 +104,8 @@ export function addSeriesParams(
       } else {
         nextSeries.name = s.name;
       }
+    } else {
+      nextSeries.name = s.name;
     }
     nextSeries.id = nextSeries.name;
     Object.keys(s).forEach((key) => {
