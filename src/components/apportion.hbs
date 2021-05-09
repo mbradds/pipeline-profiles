@@ -2,22 +2,24 @@
   <div class="row">
     <div class="col-md-12">
       {{#ifeq text.pipelineName.id "enbridge_mainline"}}
-        <h2>{{text.apportion.header.enbridge}}</h2>
-      {{/ifeq}}
-      {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-        <h2>{{text.apportion.header.other}}</h2>
+      <h2>{{text.apportion.header.enbridge}}</h2>
+      {{/ifeq}} {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+      <h2>{{text.apportion.header.other}}</h2>
       {{/ifnoteq}}
       <p class="small">{{text.apportion.updated}}</p>
       <p>{{text.apportion.p1}}</p>
       <p>{{text.apportion.p2}}</p>
       {{#ifeq text.pipelineName.id "enbridge_mainline"}}
-        <p>{{text.apportion.p3.enbridge}}</p>
-      {{/ifeq}}
-      {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-        <p>{{text.apportion.p3.other}}</p>
+      <p>{{text.apportion.p3.enbridge}}</p>
+      {{/ifeq}} {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+      <p>{{text.apportion.p3.other}}</p>
       {{/ifnoteq}}
-      
-      <p class="cerlabel mrgn-tp-lg" id="select-units-title" style="margin-bottom: 0px">
+
+      <p
+        class="cerlabel mrgn-tp-lg"
+        id="select-units-title"
+        style="margin-bottom: 0px"
+      >
         {{text.selectUnits}}
       </p>
       <div id="select-units-radio-apportion"></div>
@@ -28,13 +30,12 @@
           <strong>{{text.dataSourceTitle}} </strong>
           {{text.traffic.trafficSourceLink}}
         </p>
-        <p><strong>{{text.descriptionTitle}} </strong>
-        {{#ifeq text.pipelineName.id "enbridge_mainline"}}
-          {{text.apportion.description.enbridge}}
-        {{/ifeq}}
-        {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-          {{text.apportion.description.other}}
-        {{/ifnoteq}}
+        <p>
+          <strong>{{text.descriptionTitle}} </strong>
+          {{#ifeq text.pipelineName.id "enbridge_mainline"}}
+          {{text.apportion.description.enbridge}} {{/ifeq}} {{#ifnoteq
+          text.pipelineName.id "enbridge_mainline"}}
+          {{text.apportion.description.other}} {{/ifnoteq}}
         </p>
         <small id="conversion-disclaimer-apportion"></small>
       </details>

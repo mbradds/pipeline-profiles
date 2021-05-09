@@ -16,10 +16,7 @@ body {
 .profile-show {
   display: block;
 }
-.dashboard {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .container-chart-map {
     min-height: 550px;
@@ -90,6 +87,10 @@ body {
 }
 #time-series {
   height: 400px;
+}
+#inline-radio {
+  padding-right: 35px;
+  padding-left: 0px;
 }
 .event-filter-nav {
   width: 100%;

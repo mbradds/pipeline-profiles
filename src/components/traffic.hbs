@@ -2,13 +2,18 @@
   <div class="row">
     <div class="col-md-12">
       <h2>{{text.traffic.header}}</h2>
-      <p class="small">
-        {{text.traffic.updated}}
-      </p>
-      <p class="cerlabel mrgn-tp-sm" id="key-point-title" style="margin-bottom: 0px">
+      <p class="small">{{text.traffic.updated}}</p>
+      <p
+        class="cerlabel mrgn-tp-sm"
+        id="key-point-title"
+        style="margin-bottom: 0px"
+      >
         {{text.traffic.selectKeyPt}}
       </p>
-      <div class="btn-group btn-group mrgn-bttm-md" id="traffic-points-btn"></div>
+      <div
+        class="btn-group btn-group mrgn-bttm-md"
+        id="traffic-points-btn"
+      ></div>
     </div>
   </div>
   <div class="row">
@@ -29,7 +34,11 @@
           <div class="traffic-map-shared" id="traffic-map"></div>
           <div class="btn-group btn-group-justified" id="key-point-zoom-btn">
             <div class="btn-group btn-map">
-              <button type="button" value="zoom-in" class="btn btn-default active">
+              <button
+                type="button"
+                value="zoom-in"
+                class="btn btn-default active"
+              >
                 {{text.traffic.zoomIn}}
               </button>
             </div>
@@ -63,7 +72,9 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <p><strong>{{text.traffic.note}}</strong> {{text.traffic.capacityNote}}</p>
+      <p>
+        <strong>{{text.traffic.note}}</strong> {{text.traffic.capacityNote}}
+      </p>
       <details>
         <summary>{{text.traffic.instructionsTitle}}</summary>
         <ul class="lst-spcd">
@@ -73,11 +84,10 @@
           <li>{{text.traffic.instructions.four}}</li>
         </ul>
         <p>
-          <strong>{{text.traffic.note}}</strong> {{text.traffic.instructions.five}}
+          <strong>{{text.traffic.note}}</strong>
+          {{text.traffic.instructions.five}}
         </p>
-        <p class="mrgn-tp-sm">
-          {{text.traffic.dailyData}}
-        </p>
+        <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
       </details>
 
       <details>
@@ -86,7 +96,10 @@
           <strong>{{text.dataSourceTitle}} </strong>
           {{text.traffic.trafficSourceLink}}
         </p>
-        <p><strong>{{text.descriptionTitle}} </strong> {{text.traffic.description}}</p>
+        <p>
+          <strong>{{text.descriptionTitle}} </strong>
+          {{text.traffic.description}}
+        </p>
         <small id="conversion-disclaimer-traffic"></small>
       </details>
     </div>

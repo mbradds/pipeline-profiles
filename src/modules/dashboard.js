@@ -273,21 +273,24 @@ export class EventMap {
     } else {
       const currZoom = this.map.getZoom();
       const { minRadius } = this;
-      if (currZoom >= 9) {
+      if (currZoom >= 5 && currZoom <= 6.5) {
         this.circles.eachLayer((layer) => {
-          layer.setRadius(minRadius / 4);
+          layer.setRadius(minRadius);
         });
-      } else if (currZoom >= 6.5) {
-        this.circles.eachLayer((layer) => {
-          layer.setRadius(minRadius / 2);
-        });
-      } else if (currZoom < 5) {
+      } else if (currZoom <= 4.5) {
         this.circles.eachLayer((layer) => {
           layer.setRadius(minRadius * 2);
         });
-      } else if (currZoom >= 5 || currZoom <= 5.5) {
+      } else if (currZoom > 6.5) {
+        let zoomFactor = currZoom - 6;
+        if (currZoom > 11.5) {
+          zoomFactor += 8;
+        }
+        if (zoomFactor < 2) {
+          zoomFactor = 2;
+        }
         this.circles.eachLayer((layer) => {
-          layer.setRadius(minRadius);
+          layer.setRadius(minRadius / zoomFactor);
         });
       }
     }

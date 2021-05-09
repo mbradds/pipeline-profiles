@@ -98,7 +98,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         const volumeBtn = document.getElementById("incident-volume-btn");
         // user selection to show volume or incident frequency
         document
-          .getElementById("inline_content")
+          .getElementById("inline-radio")
           .addEventListener("click", (event) => {
             if (event.target && event.target.matches("input[type='radio']")) {
               const btnValue = event.target.value;
