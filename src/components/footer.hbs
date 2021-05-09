@@ -1,8 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
   function openTab(evt, sectionName) {
-    var i, tabcontent, tablinks;
-    $(".profile-section").hide();
+    let i, tabcontent, tablinks;
+    document.querySelectorAll(".profile-section").forEach((section) => {
+      section.style.display = "none"
+    })
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
