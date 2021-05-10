@@ -29,31 +29,31 @@ const companyToSystem = {
 };
 
 const units = {
-  "Bcf/d": "milliard de pieds cubes",
-  "million m3/d": "million de pieds cubes par jour",
+  "Bcf/d": "Gpi3/j",
+  "million m3/d": "millions m3/j",
   "Mb/d": "kb/j",
-  "thousand m3/d": "k m3/j",
+  "thousand m3/d": "km3/j",
 };
 
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
     conversionText =
-      "FR: A conversion of 1 cubic meter = 6.2898 barrels of oil is used in this dashboard";
+      "Une conversion de 1 mètre cube correspondant à 6,2898 barils de pétrole est utilisée dans ce tableau de bord.";
   } else if (commodity === "gas") {
     conversionText =
-      "FR: A conversion of 1 cubic meter = 35.3147 Cubic feet (cf) natural gas is used in this dashboard";
+      "Une conversion de 1 mètre cube correspondant à 35,3147 pieds cubes (pi³) de gaz naturel est utilisée dans ce tableau de bord.";
   }
   return conversionText;
 };
 
 const points = {
   0: [
-    "system",
+    "Réseau",
     "Pipeline throughput is measured at the system level (entire pipeline) instead of individual key points.",
   ],
   1: [
-    "Border",
+    "Frontière",
     "Pipeline border crossing and interconnection between the Alliance Canada and Alliance USA pipeline near Elmore Saskatchewan (Sherwood, ND in the U.S.).  The CER’s regulation of the Alliance pipeline ends at this border point.",
   ],
   2: [
@@ -89,15 +89,15 @@ const points = {
     "The Canadian Mainline receives U.S. crude oil from the Wascana Pipeline and connects to the Cooperative Refinery Complex.",
   ],
   10: [
-    "Eastern Triangle - NOL Receipts",
+    "Triangle de l’Est – Points de réception de la CNO",
     "Includes receipts from the Northern Ontario Line (NOL) segment, measured at compressor station 116 near North Bay, Ontario. The Eastern Triangle is comprised of three segments - Barrie, Montreal and the North Bay Short Cut (NBSC).",
   ],
   11: [
-    "Eastern Triangle - Parkway Deliveries",
+    "Triangle de l’Est – Points de livraison Parkway",
     "Delivery interconnect with the Union Gas Pipeline, near Milton, Ontario. Throughputs include nominations bound for Dawn storage, via the Union Gas System, and tend to be seasonal (primarily in the summer), depending on market conditions. ",
   ],
   12: [
-    "Eastern Triangle - Parkway Receipts",
+    "Triangle de l’Est — Points de réception Parkway",
     "Receipt interconnect with the Union Gas Pipeline, near Milton, Ontario. Includes supply from Dawn storage.",
   ],
   13: [
@@ -117,7 +117,7 @@ const points = {
     "Canadian Mainline crosses the Canada-U.S. border and joins with the Enbridge Lakehead system. The CER’s regulation of the Canadian Mainline ends at this border point.",
   ],
   17: [
-    "Into-Sarnia",
+    "Vers Sarnia",
     "Enbridge Lakehead system delivers Canadian as well as some U.S. production into Sarnia, Ontario on Line 5 and Line 78. Line 5 carries light oil and NGLs while Line 78 carries primarily heavier crudes. From Sarnia, Line 9 delivers crude oil to Montreal, Quebec and Line 7/11 delivers to the Nanticoke refinery.",
   ],
   18: [
@@ -129,11 +129,11 @@ const points = {
     "Import interconnect with the Tennessee Gas Pipeline and the National Fuel Gas Pipeline at the Canada-U.S. border near Niagara Falls, Ontario. Prior to 2012, Niagara was an export point",
   ],
   20: [
-    "Northern Ontario Line",
+    "Canalisation du Nord de l’Ontario",
     "Segment of the Mainline which begins near compressor 41 in Manitoba and extends to compressor station 116 near North Bay, Ontario.",
   ],
   21: [
-    "Other US Northeast",
+    "Nord-Est des États-Unis (autre)",
     "Interconnect with three U.S. pipelines at the Canada-U.S. border near Cornwall, Ontario and Napierville and Phillipsburg, Quebec. ‘Other US Northeast’ is an aggregate of these three export points and includes interconnects with the St. Lawrence Gas Company, North Country Gas Pipeline and Vermont Gas Systems respectively. ",
   ],
   22: [
@@ -157,23 +157,23 @@ const points = {
     "Interconnect with the Northern Border Pipeline at the Canada U.S. border near Monchy, Saskatchewan. Northern Border supplies markets in the mid-continent U.S.",
   ],
   29: [
-    "International boundary at or near Haskett, Manitoba",
+    "Frontière internationale, près de Haskett, au Manitoba",
     "Pipeline border crossing between Manitoba and North Dakota, U.S. The CER's regulation of the Keystone pipeline ends at the US/Canada border.",
   ],
   30: [
-    "East Gate",
+    "Poste d’entrée Est",
     "NGTL interconnect with the TC Energy Canadian Mainline (near Empress, Alberta) and the Foothills Pipeline (near McNeill, Alberta). Most gas moves from East Gate to the TC Mainline for use in central and eastern Canada, and is exported to the US Midwest and Northeast.",
   ],
   31: [
-    "North and East",
+    "Nord et Est",
     "Throughputs to delivery areas in northern Alberta, including natural gas used for oil sands operations.",
   ],
   32: [
-    "Upstream of James River",
+    "Point en amont de la rivière James",
     "Receives gas from the Horn River, North Montney Mainline and Groundbirch pipelines in the northwestern portion of the NGTL system. Typically the highest traffic key point on the system, capturing a significant amount of gas produced in the WCSB.",
   ],
   33: [
-    "West Gate",
+    "Poste d’entrée Ouest",
     "NGTL interconnect with TC Energy’s Foothills Pipeline in southwestern Alberta at the British Columbia border. Gas travels through the Foothills system for export into the western United States.",
   ],
   34: [
@@ -209,11 +209,11 @@ const points = {
     "Located northeast of Calgary, the Edmonton key point captures gas post Upstream of James River, bound north to service the Edmonton market area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
   ],
   42: [
-    "OSDA Kirby",
+    "Zone de livraison des sables bitumineux Kirby",
     "Stands for Oil Sands Delivery Area. Gas throughput here is typically bound for use in nearby Cold Lake oil sands Steam-Assisted Gravity Drainage (SAGD) and Cyclic Steam Stimulation (CSS) operations. These unconventional oil production methods rely on gas to generate the steam used to heat underground reservoirs, allowing bitumen to reach the surface.",
   ],
   43: [
-    "OSDA Liege",
+    "Zone de livraison des sables bitumineux Liege",
     "Stands for Oil Sands Delivery Area. Located just northwest of Fort McMurray, gas throughput here is typically bound for use in nearby Athabasca oil sands mining and in-situ operations. Bitumen mining operations use natural gas to convert mined bitumen into synthetic crude oil.",
   ],
   44: [
@@ -489,20 +489,21 @@ export const frenchDashboard = {
       "west & south": "ouest & sud",
     },
     fiveYr: {
-      lastYrName: (lastYear) => `${lastYear} throughput (last year of data) FR`,
-      avgName: "Five Year Average FR",
-      rangeName: (min, max) => `Five Year Range (${min + 1}-${max - 1}) FR`,
-      notEnough: "Not enough data to calculate five-year average FR",
+      lastYrName: (lastYear) => `Débit ${lastYear} (dernière année de données)`,
+      avgName: "Moyenne sur cinq ans",
+      rangeName: (min, max) => `Gamme de cinq ans (${min + 1}-${max - 1})`,
+      notEnough: "Données insuffisantes pour calculer la moyenne sur cinq ans",
     },
-    exportAxis: (unit) => `Exports (${unit}) FR`,
-    importAxis: (unit) => `Imports (${unit}) FR`,
-    fiveYrTitle: (pointText) => `${pointText} - Five year average & range FR`,
+    exportAxis: (unit) => `Exportations (${unit})`,
+    importAxis: (unit) => `Importations (${unit})`,
+    fiveYrTitle: (pointText) =>
+      `${pointText} - Période de cinq ans et fourchette`,
     trafficTitle: (pointText, dirText) =>
-      `${pointText} - monthly traffic ${dirText} FR`,
-    flow: "Direction of flow: FR",
+      `${pointText} - transport mensuel ${dirText}`,
+    flow: "Sens d’écoulement :",
     series: {
       import: "importation",
-      intracanada: "intracanada FR",
+      intracanada: "Intra-Canada",
       export: "exportation",
       Capacity: "Capacité",
       "domestic heavy": "lourd canadien",
@@ -511,7 +512,7 @@ export const frenchDashboard = {
       "domestic light": "léger canadien",
       "refined petroleum products": "produits pétroliers raffinés",
     },
-    util: "Utilization FR",
+    util: "Utilisation",
     months: {
       1: "janv",
       2: "févr",
@@ -533,14 +534,14 @@ export const frenchDashboard = {
     points,
     numberFormat,
     title: {
-      enbridge: "FR System wide nominations",
-      other: "FR Apportionment at:",
+      enbridge: "Commandes d’expédition pour tout le réseau",
+      other: "Répartition à :",
     },
     series: {
-      an: "FR Accepted Nominations",
-      on: "FR Original Nominations",
-      ac: "FR Available Capacity",
-      ap: "FR Apportionment Percent",
+      an: "Commandes acceptées",
+      on: "Commandes d’expédition initiales",
+      ac: "Capacité disponible",
+      ap: "Pourcentage de répartition",
     },
   },
 };

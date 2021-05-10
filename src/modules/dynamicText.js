@@ -21,26 +21,32 @@ const postWord = (val, type) => {
   return wrd;
 };
 
-const changeText = (num, frontText = true) => {
+const changeText = (num, lang, frontText = true) => {
   const textInfo = (val) => {
     let styleList = ["bg-success", "no calculation available"];
     if (val > 0) {
       if (frontText) {
-        styleList = ["bg-success", `increased by ${Math.abs(num)}%`];
+        const langText = lang === "en" ? "increased by" : "augmenté de";
+        styleList = ["bg-success", `${langText} ${Math.abs(num)}%`];
       } else {
-        styleList = ["bg-success", `${Math.abs(num).toFixed(0)}% above`];
+        const langText = lang === "en" ? "above" : "au-dessus de";
+        styleList = ["bg-success", `${Math.abs(num).toFixed(0)}% ${langText}`];
       }
     } else if (val < 0) {
       if (frontText) {
-        styleList = ["bg-danger", `decreased by ${Math.abs(num)}%`];
+        const langText = lang === "en" ? "decreased by" : "diminué de";
+        styleList = ["bg-danger", `${langText} ${Math.abs(num)}%`];
       } else {
-        styleList = ["bg-danger", `${Math.abs(num).toFixed(0)}% below`];
+        const langText = lang === "en" ? "below" : "sous";
+        styleList = ["bg-danger", `${Math.abs(num).toFixed(0)}% ${langText}`];
       }
     } else if (val === 0) {
       if (frontText) {
-        styleList = ["bg-info", "not changed"];
+        const langText = lang === "en" ? "not changed" : "inchangé";
+        styleList = ["bg-info", `${langText}`];
       } else {
-        styleList = ["bg-info", "equal to"];
+        const langText = lang === "en" ? "equal to" : "égal à";
+        styleList = ["bg-info", `${langText}`];
       }
     }
     return styleList;
@@ -49,14 +55,15 @@ const changeText = (num, frontText = true) => {
   return `<i class="${flag}" style="font-style: normal"><strong>${text}</strong></i>`;
 };
 
-const quarters = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
+const quartersEn = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
+const quartersFr = { 12: "T4", 9: "T3", 6: "T2", 3: "T1" };
 
-const trendSub = (commodity) => {
+const trendSub = (commodity, lang) => {
   let subText = "";
   if (commodity === "gas") {
-    subText = "year over year";
+    subText = lang === "en" ? "year over year" : "Une année à l’autre";
   } else if (commodity === "oil") {
-    subText = "quarter over quarter";
+    subText = lang === "en" ? "quarter over quarter" : "Un trimestre à l’autre";
   }
   return subText;
 };
@@ -163,15 +170,16 @@ export function trafficTrendTextEng(params, numberFormat) {
     }
     const trendText = `Throughputs at the ${dynamicValue(
       point + trendId
-    )} key point have ${changeText(trend.throughChange.pct)} ${trendSub(
-      params.commodity
+    )} key point have ${changeText(trend.throughChange.pct, "en")} ${trendSub(
+      params.commodity,
+      "en"
     )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
       units.current
-    } in ${quarters[trend.fromDate[1]]} ${
+    } in ${quartersEn[trend.fromDate[1]]} ${
       trend.fromDate[0]
     } to an average of ${formatValue(trend.throughChange.to, units)} ${
       units.current
-    } in ${quarters[trend.toDate[1]]} ${
+    } in ${quartersEn[trend.toDate[1]]} ${
       trend.toDate[0]
     } (most recent quarter of data).`;
     return trendText;
@@ -180,9 +188,10 @@ export function trafficTrendTextEng(params, numberFormat) {
   const buildFiveText = (ft, tt) => {
     const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
     if (pctChange) {
-      const qtr = `${quarters[tt.toDate[1]]} ${tt.toDate[0]}`;
+      const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
       return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
         pctChange,
+        "en",
         false
       )} the five year average.</p>`;
     }
@@ -239,30 +248,36 @@ export function trafficTrendTextFra(params, numberFormat) {
     if (trend.name !== "default") {
       trendId = ` (${trend.name})`;
     }
-    const trendText = `Throughputs at the ${dynamicValue(
+    const trendText = `Les débits au ${dynamicValue(
       point + trendId
-    )} key point have ${changeText(trend.throughChange.pct)} ${trendSub(
-      params.commodity
-    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
-      units.current
-    } in ${quarters[trend.fromDate[1]]} ${
+    )} point principal ont ${changeText(
+      trend.throughChange.pct,
+      "fr"
+    )} ${trendSub(
+      params.commodity,
+      "fr"
+    )}, par rapport à une moyenne de ${formatValue(
+      trend.throughChange.from,
+      units
+    )} ${units.current} en ${quartersFr[trend.fromDate[1]]} ${
       trend.fromDate[0]
-    } to an average of ${formatValue(trend.throughChange.to, units)} ${
+    } à une moyenne de ${formatValue(trend.throughChange.to, units)} ${
       units.current
-    } in ${quarters[trend.toDate[1]]} ${
+    } en ${quartersFr[trend.toDate[1]]} ${
       trend.toDate[0]
-    } (most recent quarter of data).`;
+    } (dernier trimestre des données).`;
     return trendText;
   };
 
   const buildFiveText = (ft, tt) => {
     const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
     if (pctChange) {
-      const qtr = `${quarters[tt.toDate[1]]} ${tt.toDate[0]}`;
-      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
+      const qtr = `${quartersFr[tt.toDate[1]]} ${tt.toDate[0]}`;
+      return `<p style="margin-bottom: 0px">Les débits au ${qtr} est ${changeText(
         pctChange,
+        "fr",
         false
-      )} the five year average.</p>`;
+      )} à la moyenne sur cinq ans.</p>`;
     }
     return "";
   };
