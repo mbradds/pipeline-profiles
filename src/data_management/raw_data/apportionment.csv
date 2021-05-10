@@ -167,6 +167,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Ori
 2020-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.98,,0.0
 2020-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.37,,0.0
 2020-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.32,,0.0
+2021-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.1,,0.0
+2021-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.41,,0.0
+2021-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.1400000000000001,,0.0
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,288.1,,,
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,118.5,,,
 2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,348.92,,0.0
@@ -793,6 +796,19 @@ Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Ori
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.45,,,
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,401.23,,0.32
 2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,696.77,568.25,
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,468.57,,,
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.5,,,
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,490.26,,0.44
+2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,811.08,594.44,
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,459.49,,,
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.45,,,
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/93,,134.51,,0.02
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,569.57,,0.53
+2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,902.86,598.3,
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,452.11,,,
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.3,,,
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,509.11,,0.47
+2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,794.69,555.41,
 2011-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
 2011-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
 2011-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,

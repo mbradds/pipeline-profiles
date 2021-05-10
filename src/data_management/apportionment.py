@@ -1,5 +1,5 @@
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric
+from util import normalize_dates, conversion, normalize_numeric, normalize_text
 from errors import ApportionSeriesCombinationError
 import dateutil.relativedelta
 from traffic import get_data, addIds
@@ -31,6 +31,7 @@ def process_apportionment(test=False, sql=False, companies=False):
         df = pd.read_csv("./raw_data/apportionment.csv")
 
     df = normalize_dates(df, ['Date'])
+    df = normalize_text(df, ['Corporate Entity'])
     # enbridge processing
     df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Key Point'] != 'system')].index)
     df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Date'].dt.year < 2016)].index)
@@ -79,8 +80,7 @@ def process_apportionment(test=False, sql=False, companies=False):
                      'Enbridge Southern Lights GP Inc.',
                      'Emera Brunswick Pipeline Company Ltd.']
 
-    # for company in list(set(df['Corporate Entity'])):
-    # for company in ['Enbridge Pipelines Inc.']:
+    # for company in ['Enbridge Pipelines (NW) Inc.']:
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
@@ -152,4 +152,4 @@ def process_apportionment(test=False, sql=False, companies=False):
 
 
 if __name__ == "__main__":
-    df = process_apportionment()
+    df = process_apportionment(sql=True)
