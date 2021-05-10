@@ -178,7 +178,7 @@ const en = {
     incidentsDetails4: {
       one: "Incident type definitions: one incident can have multiple types",
       two:
-        "<strong>Release of Substance (featured in the dashboard)</strong> - Any time a product is unintentionally released. (Releases of non-gas low pressure products in volumes of less than 1.5&nbsp;m&sup3 are exempt from reporting.)",
+        "<strong>Release of Substance (featured in the dashboard)</strong> - Any time a product is unintentionally released. (Releases of non-gas low pressure products in volumes of less than 1.5&nbsp;m&sup3; are exempt from reporting.)",
       three:
         "<strong>Adverse Environmental Effects</strong> - When any chemical substance is released at a concentration or volume that has the potential to change the ambient environment in a manner that would cause harm to human life, wildlife or vegetation (e.g., glycol, potassium carbonate, methanol, methanol mix from hydrostatic testing, etc.).",
       four: "<strong>Explosion</strong> - An unintended explosion",
@@ -394,7 +394,7 @@ const fr = {
       one:
         "Définitions des types d’incidents : un incident peut être associé à plusieurs types",
       two:
-        "<strong>Rejet d’une substance (figure dans le tableau de bord)</strong>- Tout rejet non intentionnel d’un produit. (Les rejets à basse pression de produits autres que du gaz d’un volume inférieur à 1,5&nbsp;m&sup3 n’ont pas à être signalés.)",
+        "<strong>Rejet d’une substance (figure dans le tableau de bord)</strong>- Tout rejet non intentionnel d’un produit. (Les rejets à basse pression de produits autres que du gaz d’un volume inférieur à 1,5&nbsp;m&sup3; n’ont pas à être signalés.)",
       three:
         "<strong>Effets négatifs sur l’environnement</strong> - Lorsqu’il y a rejet d’une substance chimique à une concentration ou dans une quantité suffisante pour modifier l’environnement ambiant et mettre en danger la vie humaine, la faune ou la végétation (p. ex., glycol, carbonate de potassium, méthanol, mélange de méthanol provenant d’un essai hydrostatique, etc.).",
       four: "<strong>Explosion</strong> - Une explosion non intentionnelle.",

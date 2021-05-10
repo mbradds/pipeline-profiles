@@ -8,9 +8,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
   const setTitle = (language, meta) => {
     try {
-      document.getElementById(
-        "incidents-dashboard-title"
-      ).innerHTML = language.title(meta.systemName);
+      document.getElementById("incidents-dashboard-title").innerHTML =
+        language.title(meta.systemName);
     } catch (err) {
       document.getElementById(
         "incidents-dashboard-title"
@@ -100,7 +99,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         document
           .getElementById("inline-radio")
           .addEventListener("click", (event) => {
-            if (event.target && event.target.matches("input[type='radio']")) {
+            if (event.target) {
               const btnValue = event.target.value;
               thisMap.filters.type = btnValue;
               trends.filters.type = btnValue;

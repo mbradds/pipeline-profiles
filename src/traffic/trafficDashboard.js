@@ -546,9 +546,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       const newP = { ...p, textCol };
       return newP;
     });
-    document.getElementById(
-      "traffic-point-description"
-    ).innerHTML = listOrParagraph(pointsText, "textCol");
+    document.getElementById("traffic-point-description").innerHTML =
+      listOrParagraph(pointsText, "textCol");
   }
 
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
@@ -735,10 +734,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         document
           .getElementById("traffic-points-btn")
           .addEventListener("click", (event) => {
-            if (
-              event.target &&
-              event.target.matches("input[type='checkbox']")
-            ) {
+            if (event.target) {
               const pointId = event.target.value;
               if (event.target.checked) {
                 chartParams.points.push({
@@ -789,7 +785,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       document
         .getElementById("select-units-radio-traffic")
         .addEventListener("click", (event) => {
-          if (event.target && event.target.matches("input[type='radio']")) {
+          if (event.target) {
             const radioValue = event.target.value;
             chartParams.unitsHolder.current = radioValue;
             [timeSeries, fiveSeries] = addSeriesParams(
