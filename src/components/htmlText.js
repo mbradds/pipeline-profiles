@@ -231,8 +231,8 @@ const fr = {
     note: noteFr,
     capacityNote:
       "La capacité physique d’un pipeline dépend de nombreux facteurs, tels que les produits transportés, le sens d’écoulement, la capacité de pompage du pipeline, les travaux d’entretien et les restrictions de pression. La capacité physique réelle du pipeline peut parfois être supérieure à la capacité opérationnelle hypothétique indiquée ici.",
-    dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>. FR`,
-    trafficSourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
+    dailyData: `Vous recherchez des  <strong>données quotidiennes</strong>? Des ensembles de données quotidiennes sur le trafic de gaz naturel sont disponibles sur <a href="https://open.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>.`,
+    trafficSourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>`,
     instructions: {
       one: "Cliquez sur un point principal au-dessus du graphique et de la carte pour voir le transport à un autre endroit. La carte montre les emplacements approximatifs sur le pipeline où l’exploitant du pipeline enregistre les débits et la capacité.",
       two: "Cliquez et faites glisser votre souris sur le graphique pour faire un zoom jusqu’à la plage de dates souhaitée. Cliquez sur le bouton Réinitialiser le zoom pour réinitialiser toute la plage de dates.",

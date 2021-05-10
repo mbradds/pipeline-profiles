@@ -51,6 +51,7 @@ const profileWebpackConfig = (function () {
         }
         pageData.text = profileText[lang];
         pageData.text.pipelineName = { id: name[0] };
+        pageData.text.commodity = name[1];
         html.push(
           new HtmlWebpackPlugin({
             page: JSON.parse(JSON.stringify(pageData)),
