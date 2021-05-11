@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common, strip_cols
+from util import company_rename, most_common, strip_cols
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -10,8 +10,50 @@ ideas:
     -total number of integrity digs highlighted
     -top 3 nearest populated centers highlighted
     -total land needed relative to something
+    -group o and m categories by year before front end. Test the sizes!
 
 '''
+
+
+def optimizeJson(df):
+    delete_after_meta = ['Event Number',
+                         'Company Name',
+                         'Dig Count',
+                         'Nearest Populated Centre',
+                         'New Land Area Needed',
+                         'Length Of Replacement Pipe',
+                         'event duration']
+    for delete in delete_after_meta:
+        del df[delete]
+    df['year'] = df['Commencement Date'].dt.year
+    # df = df.fillna(value=None)
+    for col in df.columns:
+        if "date" in col.lower():
+            del df[col]
+    return df.to_dict(orient="records")
+
+
+def metadata(df):
+    thisCompanyMeta = {}
+    thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
+    thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
+    most_common(df,
+                thisCompanyMeta,
+                "Nearest Populated Centre",
+                "nearby",
+                3,
+                "list")
+    thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
+    thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
+    thisCompanyMeta["atRisk"] = sum([1 if x == "Yes" else 0 for x in df['Species At Risk Present At Activity Site']])
+    thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
+    thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
+    return thisCompanyMeta
+
+
+def column_insights(df):
+    df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
+    return df
 
 
 def process_oandm(remote=False, companies=False, test=False, lang='en'):
@@ -67,6 +109,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
     for delete in ['Company Address',
                    'Company City',
                    'Company Postal Code',
+                   'Company Province/Territory',
                    'Circumstance(s)',
                    'Result Of A Class Location Change',
                    'Distance To Closest Building',
@@ -82,24 +125,82 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
                    'Activity Acquiring New Private Land',
                    'Activity Acquiring New Land Under Compliance',
                    'Land Within Critical Habitat',
+                   'Activity Crossing Water Body',
                    'New Temporary Land Needed',
+                   'Vehicle Crossing Count',
                    'Provincial and federal authorities been consulted',
                    'Activity Using Navigable Water',
                    'Activity Following DFO Fish Measures For In Stream Work',
                    'Navigable Water Frozen Or Dry',
+                   'Activity Following DFO Fish Measures For Crossing',
+                   'Ground Disturbance Near Water Required',
                    'Navigable Water Activity Meeting Transport Canada Minor Works And Waters Order']:
         del df[delete]
 
         # deal with dates
-        for dateCol in df.columns:
-            if "date" in dateCol.lower():
-                df[dateCol] = pd.to_datetime(df[dateCol])
-    print(df.dtypes)
+    for dateCol in df.columns:
+        if "date" in dateCol.lower():
+            df[dateCol] = pd.to_datetime(df[dateCol])
+
+    df['Company Name'] = df['Company Name'].replace(company_rename())
+    df = column_insights(df)
+    # print(df.dtypes)
+    # print(sorted(list(set(df['Company Name']))))
+    if companies:
+        company_files = companies
+    else:
+        company_files = ['NOVA Gas Transmission Ltd.',
+                         'TransCanada PipeLines Limited',
+                         'Enbridge Pipelines Inc.',
+                         'Enbridge Pipelines (NW) Inc.',
+                         'Enbridge Bakken Pipeline Company Inc.',
+                         'Express Pipeline Ltd.',
+                         'Trans Mountain Pipeline ULC',
+                         'Trans Quebec and Maritimes Pipeline Inc.',
+                         'Trans-Northern Pipelines Inc.',
+                         'TransCanada Keystone Pipeline GP Ltd.',
+                         'Westcoast Energy Inc.',
+                         'Alliance Pipeline Ltd.',
+                         'PKM Cochin ULC',
+                         'Foothills Pipe Lines Ltd.',
+                         'Southern Lights Pipeline',
+                         'Emera Brunswick Pipeline Company Ltd.',
+                         'Plains Midstream Canada ULC',
+                         'Genesis Pipeline Canada Ltd.',
+                         'Montreal Pipe Line Limited',
+                         'Trans-Northern Pipelines Inc.',
+                         'Kingston Midstream Westspur Limited',
+                         'Many Islands Pipe Lines (Canada) Limited',
+                         'Vector Pipeline Limited Partnership',
+                         'Maritimes & Northeast Pipeline Management Ltd.',
+                         'Aurora Pipeline Company Ltd']
+
+    for company in company_files:
+        folder_name = company.replace(' ', '').replace('.', '')
+        df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
+        df_c = df_c.drop_duplicates(subset=['Event Number'])
+        thisCompanyData = {}
+        if not df_c.empty:
+            thisCompanyData["meta"] = metadata(df_c)
+            thisCompanyData["company"] = company
+            thisCompanyData["build"] = True
+            thisCompanyData["data"] = optimizeJson(df_c)
+            if not test:
+                with open('../oandm/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp)
+        else:
+            # there are no o and m events
+            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            thisCompanyData['meta'] = {"companyName": company}
+            thisCompanyData["build"] = False
+            if not test:
+                with open('../oandm/company_data/'+folder_name+'.json', 'w') as fp:
+                    json.dump(thisCompanyData, fp)
     return df
 
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False, lang='en')
+    df = process_oandm(remote=False, test=False, lang='en') #, companies=['NOVA Gas Transmission Ltd.'])
     # df = process_oandm(remote=False, test=False, lang='fr')
     print('completed oandm!')
