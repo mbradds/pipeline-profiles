@@ -130,10 +130,10 @@ class NovaTraffic(unittest.TestCase):
         self.assertEqual(point[0]["min"], [2005, 11, 1])
         # check one data point for traffic and capacity
         # traffic
-        self.assertEqual(point[1]["name"], "intracanada")
+        self.assertEqual(point[1]["id"], "in")
         self.assertEqual(point[1]["data"][0], 5.71)
         # capacity
-        self.assertEqual(point[2]["name"], "Capacity")
+        self.assertEqual(point[2]["id"], "cap")
         self.assertEqual(point[2]["data"][0], 6.62)
 
 

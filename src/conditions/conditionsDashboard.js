@@ -246,7 +246,7 @@ export async function mainConditions(
       lang.popUp.lastUpdated
     }</td><td style="padding:0;font-weight: bold;color:${
       cerPalette["Cool Grey"]
-    };">${lang.dateFormat(updateDate)}</li></td></tr>`;
+    };">&nbsp${lang.dateFormat(updateDate)}</li></td></tr>`;
     text += `<tr><td><li> ${
       params.colNames[params.conditionsFilter.column]
     } Conditions:</td><td style="padding:0;font-weight: bold;color:${
