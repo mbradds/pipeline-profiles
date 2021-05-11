@@ -121,26 +121,26 @@ export async function mainTraffic(trafficData, metaData, lang) {
         if (includeKeys.includes(key)) {
           const keyData = newData[key];
           keyData.forEach((tmPoint) => {
-            if (tmPoint.name === "Capacity" && !capAdded) {
+            if (tmPoint.id === "cap" && !capAdded) {
               capAdded = true;
               firstSeries.push(tmPoint);
-            } else if (tmPoint.name === "date" && !dateAdded) {
+            } else if (tmPoint.id === "date" && !dateAdded) {
               firstSeries.push(tmPoint);
               dateAdded = true;
-            } else if (tmPoint.name !== "Capacity" && tmPoint.name !== "date") {
+            } else if (tmPoint.id !== "cap" && tmPoint.id !== "date") {
               if (
-                Object.prototype.hasOwnProperty.call(seriesAdded, tmPoint.name)
+                Object.prototype.hasOwnProperty.call(seriesAdded, tmPoint.id)
               ) {
                 const newData2 = tmPoint.data;
-                seriesAdded[tmPoint.name].data = seriesAdded[
-                  tmPoint.name
-                ].data.map((v, i) => v + newData2[i]);
+                seriesAdded[tmPoint.id].data = seriesAdded[tmPoint.id].data.map(
+                  (v, i) => v + newData2[i]
+                );
               } else {
-                seriesAdded[tmPoint.name] = {
+                seriesAdded[tmPoint.id] = {
                   data: tmPoint.data,
                   yAxis: tmPoint.yAxis,
                   color: tmPoint.color,
-                  name: tmPoint.name,
+                  id: tmPoint.id,
                 };
               }
             }
@@ -244,14 +244,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
     };
     let hasImports = false;
     event.points.forEach((p) => {
-      if (p.series.name === "import") {
+      if (p.series.options.id === "im") {
         hasImports = true;
         textHolder.imports.traffic.push([addToolRow(p, units, rounding), p.y]);
-      } else if (p.series.name === "Import Capacity") {
+      } else if (p.series.options.id === "icap") {
         textHolder.imports.capacity = [addToolRow(p, units, rounding), p.y];
       } else if (
-        p.series.name === "Capacity" ||
-        p.series.name === "Export Capacity"
+        p.series.options.id === "cap" ||
+        p.series.options.id === "ecap"
       ) {
         textHolder.other.capacity = [addToolRow(p, units, rounding), p.y];
       } else {
@@ -520,7 +520,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       } else {
         chart.addSeries(newS, false, true);
       }
-      if (newS.name === "import" || newS.name === "importation") {
+      if (newS.id === "im") {
         updateImports = true;
       }
     });
@@ -652,7 +652,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       chartParams.fiveTrend = fiveYearTrend(fiveSeries, chartParams.hasImports);
       // this event listener possibly helps with the equal height not working properly
       window.addEventListener("DOMContentLoaded", () => {
-        lang.dynamicText(chartParams, lang.numberFormat);
+        lang.dynamicText(chartParams, lang.numberFormat, lang.series);
         if (!chartParams.tm) {
           displayPointDescription([chartParams.defaultPoint]);
         } else {
@@ -726,7 +726,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               fiveSeries,
               chartParams.hasImports
             );
-            lang.dynamicText(chartParams, lang.numberFormat);
+            lang.dynamicText(chartParams, lang.numberFormat, lang.series);
             displayPointDescription([chartParams.defaultPoint]);
           });
       } else {
@@ -776,7 +776,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 pointMap.pointChange(chartParams.points);
               }
               displayPointDescription(chartParams.points);
-              lang.dynamicText(chartParams, lang.numberFormat);
+              lang.dynamicText(chartParams, lang.numberFormat, lang.series);
             }
           });
       }
@@ -841,7 +841,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 false
               );
             }
-            lang.dynamicText(chartParams, lang.numberFormat);
+            lang.dynamicText(chartParams, lang.numberFormat, lang.series);
           }
         });
 

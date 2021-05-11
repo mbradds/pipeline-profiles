@@ -314,7 +314,7 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 
 ## Tests
 
-# Python unit tests (back end)
+### Python unit tests (back end)
 
 The greatest risk for errors, such as incorrect values appearing in the front end, are likely to happen as a result of errors in the "back end" python code (npm run data). These python scripts compute large amounts of summary statistics, totals, metadata (number of incidents, most common, types, etc) from datasets that have inherent errors. This is made more risky by the fact that there are english and french datasets, and these datasets may have unrelated problems. Here is a list of embedded data errors I have noticed so far:
 
@@ -337,7 +337,7 @@ This code is difficult to test, because the code is run on data that updates eve
 
 The unit tests check a bunch of summary statistics and data validation metrics specific the the ngtl profile. It will also test to see if the english numbers/data are the same in french.
 
-# AVA unit tests (front end)
+### AVA unit tests (front end)
 
 Test coverage is pretty low right now. Mainly focussing on major r-usable functionality in `src/modules/util.js` and major calcualtions done on the front end like the five year average. I would like to move more general/pure functions to `src/modules/util.js` so that they can be tested easier.
 
@@ -348,13 +348,20 @@ npm run test-frontend
 ## ToDo list
 
 - Rewrite everything in TypeScript
-- Create a distribution bundle for Highcharts+Leaflet. Highcharts doesnt make tree shaking easy, but its possible to create a [custom distribution](https://www.highcharts.com/docs/getting-started/how-to-create-custom-highcharts-files) with only the files needed. <strong>Note:</strong> This is done and merged into main as of May 7, 2021.
-- TODO: upgrade highcharts dependecy. The project currently uses highcharts@8.2.2 which has some vulnerabilities.
-- Try to remove Jquery dependencies. Jquery is already included on all CER pages, but there are usually multiple versions defined, and it will probably be removed at some point.
 - Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
-- Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
+- Include documentation on updating traffic and apportionment sections.
 - Make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
 - Add an option in incidents and conditions py for direct connection to cer infrastructure.
-- Add missing (non consecutive) date/data handling for traffic and apportionment
+- Add missing (non consecutive) date/data handling for traffic and apportionment (in python)
+- The dynamic text modude `src/modules/dynamicText.js` is kind of split between english and french methods. Where possible, all these methods should be consolidated to take a language parameter. This might not always be possible because of the sentence structure between english and french.
+- The data prep pattern used in the traffic section is pretty effective. Having id's for all the key points and trade types cuts down on data size a bit, makes on the fly translation safer, and allows for shared data between english and french. Try to re-create this pattern for the rest of the sections.
+- Company names as file names inside each "company_data" folder is probably going to lead to problems. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
+
+## Completed ToDo's
+
+- Create distribution bundle for highcharts + leaflet
+- Upgrade highcharts from 8.2.2 to 9.1.0
+- Fully remove Jquery dependency
+- Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/

@@ -48,7 +48,7 @@ test("sortJsonAlpha", (t) => {
 // addSeriesParams (used in traffic and apportionment)
 const seriesWithDate = [
   { name: "date", min: [2005, 11, 1] },
-  { name: "i", data: [1, 2, 3] },
+  { id: "i", data: [1, 2, 3] },
 ];
 const unitsHolder = { base: "one", current: "one", conversion: 50 };
 const s = addSeriesParams(seriesWithDate, unitsHolder, true);

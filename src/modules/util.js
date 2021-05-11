@@ -80,15 +80,11 @@ export function addSeriesParams(
   const minDate = seriesWithDate[0].min;
   let series = seriesWithDate.slice(1);
   if (sorted) {
-    series = sortJsonAlpha(series, "name");
+    series = sortJsonAlpha(series, "id");
   }
 
-  const isCapacity = (seriesName) => {
-    if (
-      seriesName === "Capacity" ||
-      seriesName === "Import Capacity" ||
-      seriesName === "Export Capacity"
-    ) {
+  const isCapacity = (seriesId) => {
+    if (seriesId === "cap" || seriesId === "icap" || seriesId === "ecap") {
       return true;
     }
     return false;
@@ -99,15 +95,15 @@ export function addSeriesParams(
     const nextSeries = {};
     const startd = new Date(minDate[0], minDate[1] + 1, minDate[2]);
     if (seriesNames) {
-      if (Object.prototype.hasOwnProperty.call(seriesNames, s.name)) {
-        nextSeries.name = seriesNames[s.name];
+      if (Object.prototype.hasOwnProperty.call(seriesNames, s.id)) {
+        nextSeries.name = seriesNames[s.id];
       } else {
-        nextSeries.name = s.name;
+        nextSeries.name = s.id;
       }
     } else {
-      nextSeries.name = s.name;
+      nextSeries.name = s.id;
     }
-    nextSeries.id = nextSeries.name;
+
     Object.keys(s).forEach((key) => {
       const value = s[key];
       if (key !== "data" && key !== "name") {
@@ -134,7 +130,7 @@ export function addSeriesParams(
     nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
 
     if (section === "traffic") {
-      if (isCapacity(s.name)) {
+      if (isCapacity(s.id)) {
         nextSeries.type = "line";
         nextSeries.zIndex = 6;
         nextSeries.lineWidth = 3;
@@ -216,9 +212,8 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   ].forEach((unit, i) => {
     buttonHTML += radioBtn(unit[0], unit[1], i, section);
   });
-  document.getElementById(
-    `select-units-radio-${section}`
-  ).innerHTML = buttonHTML;
+  document.getElementById(`select-units-radio-${section}`).innerHTML =
+    buttonHTML;
   const tm = defaultPoint.id === "35";
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }

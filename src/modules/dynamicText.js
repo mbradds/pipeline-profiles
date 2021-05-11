@@ -68,6 +68,34 @@ const trendSub = (commodity, lang) => {
   return subText;
 };
 
+const formatValue = (value, units, numberFormat) => {
+  if (units.base !== units.current) {
+    return numberFormat(value * units.conversion);
+  }
+  return numberFormat(value);
+};
+
+const buildFiveText = (ft, tt, lang) => {
+  const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
+  if (pctChange) {
+    const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
+    if (lang === "en") {
+      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
+        pctChange,
+        lang,
+        false
+      )} the five year average.</p>`;
+    }
+    return `<p style="margin-bottom: 0px">Les débits au ${qtr} est ${changeText(
+      pctChange,
+      lang,
+      false
+    )} à la moyenne sur cinq ans.</p>`;
+  }
+
+  return "";
+};
+
 export const incidentsTextEng = (id, meta) => {
   const paragraph = document.getElementById(id);
   let paragraphText = `<p>`;
@@ -155,47 +183,31 @@ export const incidentsTextFra = (id, meta) => {
   paragraph.innerHTML = paragraphText;
 };
 
-export function trafficTrendTextEng(params, numberFormat) {
-  const formatValue = (value, units) => {
-    if (units.base !== units.current) {
-      return numberFormat(value * units.conversion);
-    }
-    return numberFormat(value);
-  };
-
+export function trafficTrendTextEng(params, numberFormat, seriesId) {
   const buildText = (trend, point, units) => {
     let trendId = "";
     if (trend.name !== "default") {
-      trendId = ` (${trend.name})`;
+      trendId = ` (${seriesId[trend.name]})`;
     }
     const trendText = `Throughputs at the ${dynamicValue(
       point + trendId
     )} key point have ${changeText(trend.throughChange.pct, "en")} ${trendSub(
       params.commodity,
       "en"
-    )}, from an average of ${formatValue(trend.throughChange.from, units)} ${
-      units.current
-    } in ${quartersEn[trend.fromDate[1]]} ${
+    )}, from an average of ${formatValue(
+      trend.throughChange.from,
+      units,
+      numberFormat
+    )} ${units.current} in ${quartersEn[trend.fromDate[1]]} ${
       trend.fromDate[0]
-    } to an average of ${formatValue(trend.throughChange.to, units)} ${
-      units.current
-    } in ${quartersEn[trend.toDate[1]]} ${
+    } to an average of ${formatValue(
+      trend.throughChange.to,
+      units,
+      numberFormat
+    )} ${units.current} in ${quartersEn[trend.toDate[1]]} ${
       trend.toDate[0]
     } (most recent quarter of data).`;
     return trendText;
-  };
-
-  const buildFiveText = (ft, tt) => {
-    const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
-    if (pctChange) {
-      const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
-      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
-        pctChange,
-        "en",
-        false
-      )} the five year average.</p>`;
-    }
-    return "";
   };
 
   let trendText = "";
@@ -209,7 +221,7 @@ export function trafficTrendTextEng(params, numberFormat) {
       )}</p>`;
     });
     if (params.fiveTrend) {
-      trendText += buildFiveText(params.fiveTrend, thisTrend[0]);
+      trendText += buildFiveText(params.fiveTrend, thisTrend[0], "en");
     }
   } else {
     const pointNames = {};
@@ -235,18 +247,11 @@ export function trafficTrendTextEng(params, numberFormat) {
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
-export function trafficTrendTextFra(params, numberFormat) {
-  const formatValue = (value, units) => {
-    if (units.base !== units.current) {
-      return numberFormat(value * units.conversion);
-    }
-    return numberFormat(value);
-  };
-
+export function trafficTrendTextFra(params, numberFormat, seriesId) {
   const buildText = (trend, point, units) => {
     let trendId = "";
     if (trend.name !== "default") {
-      trendId = ` (${trend.name})`;
+      trendId = ` (${seriesId[trend.name]})`;
     }
     const trendText = `Les débits au ${dynamicValue(
       point + trendId
@@ -258,28 +263,18 @@ export function trafficTrendTextFra(params, numberFormat) {
       "fr"
     )}, par rapport à une moyenne de ${formatValue(
       trend.throughChange.from,
-      units
+      units,
+      numberFormat
     )} ${units.current} en ${quartersFr[trend.fromDate[1]]} ${
       trend.fromDate[0]
-    } à une moyenne de ${formatValue(trend.throughChange.to, units)} ${
-      units.current
-    } en ${quartersFr[trend.toDate[1]]} ${
+    } à une moyenne de ${formatValue(
+      trend.throughChange.to,
+      units,
+      numberFormat
+    )} ${units.current} en ${quartersFr[trend.toDate[1]]} ${
       trend.toDate[0]
     } (dernier trimestre des données).`;
     return trendText;
-  };
-
-  const buildFiveText = (ft, tt) => {
-    const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
-    if (pctChange) {
-      const qtr = `${quartersFr[tt.toDate[1]]} ${tt.toDate[0]}`;
-      return `<p style="margin-bottom: 0px">Les débits au ${qtr} est ${changeText(
-        pctChange,
-        "fr",
-        false
-      )} à la moyenne sur cinq ans.</p>`;
-    }
-    return "";
   };
 
   let trendText = "";
@@ -293,7 +288,7 @@ export function trafficTrendTextFra(params, numberFormat) {
       )}</p>`;
     });
     if (params.fiveTrend) {
-      trendText += buildFiveText(params.fiveTrend, thisTrend[0]);
+      trendText += buildFiveText(params.fiveTrend, thisTrend[0], "fr");
     }
   } else {
     const pointNames = {};

@@ -1,5 +1,6 @@
 import pandas as pd
 from util import execute_sql, normalize_text, normalize_numeric, conversion
+from errors import TradeIdError
 import os
 import json
 import dateutil.relativedelta
@@ -58,22 +59,44 @@ def addIds(df):
     return df
 
 
+def applyTradeId(df):
+    trade = {"intracanada": "in",
+             "export": "ex",
+             "import": "im",
+             "capacity": "cap",
+             "domestic heavy": "dh",
+             "refined petroleum products": "rp",
+             "domestic light": "dl",
+             "domestic light / ngl": "dln",
+             "natural gas liquids (ngl)": "ngl",
+             "foreign light": "fl",
+             "condensate": "co",
+             "diluent": "di",
+             "south east sask (ses) crude": "ses",
+             "westspur midale (msm) crude": "msm"}
+    df['Trade Type'] = df['Trade Type'].replace(trade)
+    for tt in df['Trade Type']:
+        if tt not in trade.values():
+            raise TradeIdError(tt)
+    return df
+
+
 def applyColors(trade_type):
     trade_type = trade_type.split("-")[0].strip()
-    colors = {"intracanada": "#054169",
-              "export": "#559B37",
-              "import": "#5FBEE6",
-              "capacity": "#FFBE4B",
-              "domestic heavy": "#054169",
-              "refined petroleum products": "#FF821E",
-              "domestic light": "#5FBEE6",
-              "domestic light / ngl": "#559B37",
-              "natural gas liquids (ngl)": "#FFBE4B",
-              "foreign light": "#8c8c96",
-              "condensate": "#871455",
-              "diluent": "#871455",
-              "south east sask (ses) crude": "#054169",
-              "westspur midale (msm) crude": "#559B37"}
+    colors = {"in": "#054169",
+              "ex": "#559B37",
+              "im": "#5FBEE6",
+              "cap": "#FFBE4B",
+              "dh": "#054169",
+              "rp": "#FF821E",
+              "dl": "#5FBEE6",
+              "dln": "#559B37",
+              "ngl": "#FFBE4B",
+              "fl": "#8c8c96",
+              "co": "#871455",
+              "di": "#871455",
+              "ses": "#054169",
+              "msm": "#559B37"}
     return colors[trade_type]
 
 
@@ -207,11 +230,11 @@ def meta_trend(df_c, commodity):
         df_t = df_c.copy()
         dfp = df_t[df_t['Key Point'] == point].copy().reset_index(drop=True)
         metaTrends[point] = []
-        if "import" in list(dfp['Trade Type']):
-            dfImport = dfp[dfp['Trade Type'] == "import"].copy()
-            dfOther = dfp[dfp['Trade Type'] != "import"].copy()
-            metaTrends = calculate_trend(dfOther, metaTrends, point, "export", commodity)
-            metaTrends = calculate_trend(dfImport, metaTrends, point, "import", commodity)
+        if "im" in list(dfp['Trade Type']):
+            dfImport = dfp[dfp['Trade Type'] == "im"].copy()
+            dfOther = dfp[dfp['Trade Type'] != "im"].copy()
+            metaTrends = calculate_trend(dfOther, metaTrends, point, "ex", commodity)
+            metaTrends = calculate_trend(dfImport, metaTrends, point, "im", commodity)
         else:
             metaTrends = calculate_trend(dfp, metaTrends, point, "default", commodity)
     return metaTrends
@@ -279,12 +302,14 @@ def process_throughput(test=False,
         units = "Mb/d"
 
     df = conversion(df, commodity, ['Capacity', 'Throughput'], False, 0)
+    df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
     df = fixKeyPoint(df)
     df = addIds(df)
+    df = applyTradeId(df)
     points = get_data(False, sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
-    df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
+
     df = fixCorporateEntity(df)
 
     if commodity == 'gas':
@@ -376,11 +401,11 @@ def process_throughput(test=False,
                     else:
                         traffic_types[trade] = pushTraffic(t, [], date, rounding)
 
-                    if date not in dateAdded and trade != "import":
+                    if date not in dateAdded and trade != "im":
                         pointCapacity = pushTraffic(c, pointCapacity, date, rounding)
                         dateAdded.append(date)
 
-                    if trade == "import":
+                    if trade == "im":
                         pointImportCapacity = pushTraffic(c, pointImportCapacity, date, rounding)
 
                     counter = counter + 1
@@ -391,25 +416,25 @@ def process_throughput(test=False,
                 else:
                     minDate = min(pointDates) - dateutil.relativedelta.relativedelta(days=1)
 
-                throughput_series.append({"name": "date", "min": [minDate.year, minDate.month-1, minDate.day]})
+                throughput_series.append({"id": "date", "min": [minDate.year, minDate.month-1, minDate.day]})
 
                 for tt, data in traffic_types.items():
-                    if tt == "import":
+                    if tt == "im":
                         yAxis = 1
                     else:
                         yAxis = 0
 
-                    throughput_series.append({"name": tt,
+                    throughput_series.append({"id": tt,
                                               "yAxis": yAxis,
                                               "color": applyColors(tt),
                                               "data": data})
 
                 if len(pointImportCapacity) > 0:
-                    throughput_series.append({"name": "Import Capacity",
+                    throughput_series.append({"id": "icap",
                                               "yAxis": 1,
                                               "color": "#FFBE4B",
                                               "data": pointImportCapacity})
-                    throughput_series.append({"name": "Export Capacity",
+                    throughput_series.append({"id": "ecap",
                                               "yAxis": 0,
                                               "color": "#FFBE4B",
                                               "data": pointCapacity})
@@ -422,7 +447,7 @@ def process_throughput(test=False,
                             break
 
                     if hasData:
-                        throughput_series.append({"name": "Capacity",
+                        throughput_series.append({"id": "cap",
                                                   "yAxis": 0,
                                                   "color": "#FFBE4B",
                                                   "data": pointCapacity})

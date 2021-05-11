@@ -122,16 +122,16 @@ def process_apportionment(test=False, sql=False, companies=False):
                 lineData.append(linePoint)
                 areaData.append(areaPoint)
 
-            series.append({"name": lineName,
+            series.append({"id": lineName,
                            "data": lineData,
                            "yAxis": 0,
                            "type": "line"})
-            series.append({"name": areaName,
+            series.append({"id": areaName,
                            "data": areaData,
                            "yAxis": 0,
                            "type": "area"})
             if hasPct:
-                series.append({"name": "ap",  # Apportionment Percent
+                series.append({"id": "ap",  # Apportionment Percent
                                "data": pctData,
                                "yAxis": 1,
                                "type": "line",
@@ -152,4 +152,4 @@ def process_apportionment(test=False, sql=False, companies=False):
 
 
 if __name__ == "__main__":
-    df = process_apportionment(sql=True)
+    df = process_apportionment(sql=False)
