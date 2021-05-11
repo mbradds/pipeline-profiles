@@ -25,12 +25,35 @@ def optimizeJson(df):
                          'event duration']
     for delete in delete_after_meta:
         del df[delete]
+
     df['year'] = df['Commencement Date'].dt.year
     # df = df.fillna(value=None)
     for col in df.columns:
         if "date" in col.lower():
             del df[col]
-    return df.to_dict(orient="records")
+    # group data here
+    series = {}
+    for col in df.columns:
+        if col != "year":
+            dfSeries = df[['year', col]].copy()
+            dfSeries[col] = dfSeries[col].fillna(value=0)
+            dfSeries['value'] = 1
+            dfSeries = dfSeries.groupby(by=['year', col]).count()
+            dfSeries = dfSeries.reset_index()
+            dfSeries = pd.pivot_table(dfSeries,
+                                      values="value",
+                                      index=['year'],
+                                      columns=[col])
+            dfSeries = dfSeries.reset_index()
+            dfSeries = dfSeries.sort_values(by="year")
+            thisSeries = {}
+            for sName in dfSeries.columns:
+                if sName != 'year':
+                    dfSeries[sName] = dfSeries[sName].fillna(value=0)
+                dfSeries[sName] = [int(x) for x in dfSeries[sName]]
+                thisSeries[sName] = list(dfSeries[sName])
+            series[col] = thisSeries
+    return series
 
 
 def metadata(df):
