@@ -520,7 +520,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       } else {
         chart.addSeries(newS, false, true);
       }
-      if (newS.name === "import") {
+      if (newS.name === "import" || newS.name === "importation") {
         updateImports = true;
       }
     });

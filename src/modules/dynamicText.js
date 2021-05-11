@@ -40,7 +40,7 @@ const changeText = (num, lang, frontText = true) => {
         const langText = lang === "en" ? "below" : "sous";
         styleList = ["bg-danger", `${Math.abs(num).toFixed(0)}% ${langText}`];
       }
-    } else if (val === 0) {
+    } else if (val === 0 || val === null) {
       if (frontText) {
         const langText = lang === "en" ? "not changed" : "inchangé";
         styleList = ["bg-info", `${langText}`];
