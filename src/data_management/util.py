@@ -159,5 +159,10 @@ def conversion(df, commodity, dataCols, rounding=False, fillna=False):
     return df
 
 
+def strip_cols(df):
+    newCols = {x: x.strip() for x in df.columns}
+    df = df.rename(columns=newCols)
+    return df
+
 if __name__ == "__main__":
     None
