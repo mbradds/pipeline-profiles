@@ -1128,9 +1128,8 @@ export class EventTrend extends EventMap {
           events: {
             click() {
               if (currentTrend.onClickDefinition) {
-                const definitionsPopUp = document.getElementById(
-                  "trend-definitions"
-                );
+                const definitionsPopUp =
+                  document.getElementById("trend-definitions");
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.name];
 

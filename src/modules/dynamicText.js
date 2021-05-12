@@ -324,12 +324,24 @@ export function oandmText(meta) {
     meta.totalDigs
   )} integrity digs, and approximately ${dynamicValue(
     `${meta.lengthReplaced} km`
-  )} of pipeline replaced.<p>`;
+  )} of pipeline replaced. On average, O&M activities take approximately ${dynamicValue(
+    `${meta.avgDuration} days`
+  )} from start to finish on this system.<p>`;
 
   const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occured near ${dynamicValue(
     meta.nearby.join(", ")
-  )}.<p>`;
+  )}.</p>`;
+  const thirdParagraph = `<p>In order to accomodate the worksite and equipment, O&M activities may require a significant amount of land area outside of company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+    `${meta.landRequired} hectares`
+  )}, an area of land equal to ${dynamicValue(
+    meta.iceRinks
+  )} ice hockey rinks.<p>`;
 
-  const totalText = firstParagraph + secondParagraph;
+  const fourthParagraph = `<p>There have been ${dynamicValue(
+    meta.atRisk
+  )} O&M activities with a schedule 1 species at risk present at the activity site. When this happens, the company must take extra precautions, listed here.</p>`;
+
+  const totalText =
+    firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
   document.getElementById("oandm-dynamic-text").innerHTML = totalText;
 }
