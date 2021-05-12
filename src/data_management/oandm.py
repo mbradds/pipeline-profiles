@@ -57,15 +57,29 @@ def optimizeJson(df):
 
 
 def metadata(df):
+    def filterNear(city):
+        if len(city) <= 2:
+            return False
+        elif city in ['as per the attached document', 'various']:
+            return False
+        else:
+            return True
+
     thisCompanyMeta = {}
     thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
     thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
-    most_common(df,
+    nearList = list(df['Nearest Populated Centre'])
+    nearList = filter(filterNear, nearList)
+    nearList = [x.split(",")[0].strip() for x in nearList]
+    nearDf = pd.DataFrame(nearList)
+    most_common(nearDf,
                 thisCompanyMeta,
-                "Nearest Populated Centre",
+                0,
                 "nearby",
                 3,
-                "list")
+                "list",
+                True,
+                False)
     thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
     thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
     thisCompanyMeta["atRisk"] = sum([1 if x == "Yes" else 0 for x in df['Species At Risk Present At Activity Site']])

@@ -31,7 +31,15 @@ def execute_sql(path, query_name, db='tsql23cap'):
     return df
 
 
-def most_common(df, meta, col_name, meta_key, top=1, dtype="dict", lower=True):
+def most_common(df,
+                meta,
+                col_name,
+                meta_key,
+                top=1,
+                dtype="dict",
+                lower=True,
+                joinTies=True):
+
     what_list = []
     for what in df[col_name]:
         what = str(what)
@@ -46,8 +54,9 @@ def most_common(df, meta, col_name, meta_key, top=1, dtype="dict", lower=True):
     dft['records'] = 1
     dft = dft.groupby(by="entries").sum().reset_index()
     dft = dft.sort_values(by=['records', 'entries'], ascending=[False, True])
-    dft = dft.groupby(by="records").agg({"entries": " & ".join}).reset_index()
-    dft = dft.sort_values(by=['records'], ascending=False)
+    if joinTies:
+        dft = dft.groupby(by="records").agg({"entries": " & ".join}).reset_index()
+        dft = dft.sort_values(by=['records'], ascending=False)
     dft = dft.head(top)
 
     counter = {}
