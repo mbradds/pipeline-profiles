@@ -352,12 +352,12 @@ npm run test-frontend
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Include documentation on updating traffic and apportionment sections.
 - Make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
-- Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
 - Add an option in incidents and conditions py for direct connection to cer infrastructure.
 - Add missing (non consecutive) date/data handling for traffic and apportionment (in python)
 - The dynamic text modude `src/modules/dynamicText.js` is kind of split between english and french methods. Where possible, all these methods should be consolidated to take a language parameter. This might not always be possible because of the sentence structure between english and french.
 - The data prep pattern used in the traffic section is pretty effective. Having id's for all the key points and trade types cuts down on data size a bit, makes on the fly translation safer, and allows for shared data between english and french. Try to re-create this pattern for the rest of the sections.
 - Company names as file names inside each "company_data" folder is probably going to lead to problems. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
+- The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends.
 
 ## Completed ToDo's
 
@@ -365,3 +365,4 @@ npm run test-frontend
 - Upgrade highcharts from 8.2.2 to 9.1.0
 - Fully remove Jquery dependency
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
+- Add in the html style changes requested by the web team (eg, replace all bold tags with strong)

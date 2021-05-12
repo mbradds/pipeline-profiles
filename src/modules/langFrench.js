@@ -78,11 +78,11 @@ const points = {
   ],
   7: [
     "St. Stephen",
-    "Import/export interconnect with the US portion of M&NP at the Canada-U.S. border near St. Stephen, New Brunswick.",
+    "L’interconnexion d’importation-exportation avec la partie du réseau de M&NP en sol américain, à la frontière canado-américaine près de St. Stephen, au Nouveau-Brunswick, constitue un des principaux points.",
   ],
   8: [
     "Chippawa",
-    "Interconnect with the Empire State Pipeline at the Canada-U.S. border near Niagara Falls, Ontario. Prior to 2015, Chippawa was an export point until increasing gas production in the northeastern U.S. began to displace imports from Canada. Chippawa key point is bi-directional.",
+    "Raccordement au réseau Empire State Pipeline, à la frontière canado-américaine, près de Niagara Falls, en Ontario. Chippawa était un point d’exportation jusqu’en 2015 lorsque l’augmentation de la production gazière dans le Nord-Est des États-Unis a commencé à déplacer les importations du Canada. Le point Chippawa est bidirectionnel.",
   ],
   9: [
     "Cromer/Regina",
@@ -90,23 +90,23 @@ const points = {
   ],
   10: [
     "Triangle de l’Est – Points de réception de la CNO",
-    "Includes receipts from the Northern Ontario Line (NOL) segment, measured at compressor station 116 near North Bay, Ontario. The Eastern Triangle is comprised of three segments - Barrie, Montreal and the North Bay Short Cut (NBSC).",
+    "Comprend les points de réception de la CNO, mesurés à la station de compression 116 près de North Bay, en Ontario. Le triangle de l’Est comprend trois tronçons : Barrie, Montréal et le raccourci North Bay.",
   ],
   11: [
     "Triangle de l’Est – Points de livraison Parkway",
-    "Delivery interconnect with the Union Gas Pipeline, near Milton, Ontario. Throughputs include nominations bound for Dawn storage, via the Union Gas System, and tend to be seasonal (primarily in the summer), depending on market conditions. ",
+    "Raccordement au gazoduc d’Enbridge, près de Milton, en Ontario. Les volumes comprennent les commandes d’expédition destinées à l’aire de stockage à Dawn, par le réseau gazier d’Enbridge, et sont généralement saisonniers (principalement en été), selon les conditions du marché.",
   ],
   12: [
     "Triangle de l’Est — Points de réception Parkway",
-    "Receipt interconnect with the Union Gas Pipeline, near Milton, Ontario. Includes supply from Dawn storage.",
+    "Raccordement au gazoduc d’Enbridge, près de Milton, en Ontario. Comprend l’approvisionnement en provenance de l’aire de stockage à Dawn.",
   ],
   13: [
     "Emerson I",
-    "Interconnect with the Viking Gas Transmission Pipeline at the Canada-U.S. border near Emerson, Manitoba.",
+    "Raccordement au réseau de Viking Gas Transmission Pipeline, à la frontière canado-américaine près d’Emerson, au Manitoba.",
   ],
   14: [
     "Emerson II",
-    "Interconnect with the Great Lakes Gas Transmission Pipeline on the Canada-U.S. border near Emerson, Manitoba. Emerson II key point is bi-directional.",
+    "Raccordement au réseau de Great Lakes Gas Transmission Pipeline, à la frontière canado-américaine, près d’Emerson, au Manitoba. Le point Emerson II est bidirectionnel.",
   ],
   15: [
     "ex-Cromer",
@@ -122,39 +122,39 @@ const points = {
   ],
   18: [
     "Iroquois",
-    "Interconnect with the Iroquois Gas Transmission System at the Canada-U.S. border near Iroquois, Ontario. The Iroquois pipeline transports Canadian gas into U.S. northeast. Iroquois key point is bi-directional.",
+    "Raccordement au réseau d’Iroquois Gas Transmission System, à la frontière canado-américaine, près d’Iroquois, en Ontario. Le pipeline Iroquois transporte du gaz canadien vers le Nord-Est des États-Unis. Le point Iroquois est bidirectionnel.",
   ],
   19: [
     "Niagara",
-    "Import interconnect with the Tennessee Gas Pipeline and the National Fuel Gas Pipeline at the Canada-U.S. border near Niagara Falls, Ontario. Prior to 2012, Niagara was an export point",
+    "Raccordement au réseau de Tennessee Gas Pipeline et de National Fuel Gas Pipeline, à la frontière canado-américaine, près de Niagara Falls, en Ontario. Niagara était un point d’exportation jusqu’en 2012 lorsque l’augmentation de la production gazière dans le Nord-Est des États-Unis a commencé à déplacer les importations du Canada. Le point Niagara est bidirectionnel.",
   ],
   20: [
     "Canalisation du Nord de l’Ontario",
-    "Segment of the Mainline which begins near compressor 41 in Manitoba and extends to compressor station 116 near North Bay, Ontario.",
+    "Tronçon du réseau principal qui s’étend de la station de compression 41, près de Winnipeg, au Manitoba, à la station de compression 116, près de North Bay, en Ontario.",
   ],
   21: [
     "Nord-Est des États-Unis (autre)",
-    "Interconnect with three U.S. pipelines at the Canada-U.S. border near Cornwall, Ontario and Napierville and Phillipsburg, Quebec. ‘Other US Northeast’ is an aggregate of these three export points and includes interconnects with the St. Lawrence Gas Company, North Country Gas Pipeline and Vermont Gas Systems respectively. ",
+    "Raccordement à trois réseaux américains en Ontario, à la frontière canado-américaine, près de Cornwall, et au Québec, près de Napierville et de Philipsburg. Ces trois points d’exportation font partie de la catégorie « Autres points dans le Nord-Est des États-Unis », qui comprend aussi les raccordements aux réseaux de St. Lawrence Gas Company, de North Country Pipeline et de Vermont Gas Systems, respectivement.",
   ],
   22: [
     "Prairies",
-    "Interconnect with the NOVA Gas Transmission Ltd. (NGTL) system at the Alberta/Saskatchewan border. Empress is one of the primary receipt points on the Mainline. Gas moves east for use in Manitoba, Ontario, Quebec, and exports into the U.S. Midwest and U.S. Northeast. ",
+    "Raccordement au réseau de NGTL près d’Empress, en Alberta, à la limite entre l’Alberta et la Saskatchewan, et points de réception de la Saskatchewan. Empress est l’un des principaux points de réception du réseau. Le gaz est acheminé vers l’est à destination du Manitoba, de l’Ontario et du Québec, ainsi qu’en vue de son exportation vers le Midwest américain et le Nord-Est des États-Unis.",
   ],
-  23: [
-    "St Clair",
-    "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
-  ],
+  // 23: [
+  //   "St Clair",
+  //   "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
+  // ],
   24: [
     "Ft. Saskatchewan",
     "Extrémité du pipeline Cochin au terminal qui appartenait autrefois à Kinder Morgan (aujourd’hui à Pembina), près de Fort Saskatchewan, en Alberta. Les condensats sont ensuite transférés aux terminaux de stockage de diluants à proximité (terminal de diluants de l’Alberta de Keyera, terminal d’Enbridge et carrefour canadien de diluants de Pembina). À partir d’Edmonton et de Fort Saskatchewan, les diluants sont acheminés vers le nord sur des pipelines sous réglementation provinciale de l’Alberta vers des installations d’exploitation des sables bitumineux près de Fort McMurray, en Alberta.",
   ],
   27: [
     "Kingsgate",
-    "Interconnect with the Gas Transmission Northwest Pipeline (GTN) at the Canada-U.S. border near Kingsgate, British Columbia. GTN supplies markets in the Pacific Northwest, California and Nevada.",
+    "Raccordement au réseau de Gas Transmission Northwest Pipeline (« GTN »), à la frontière canado-américaine, près de Kingsgate, en Colombie-Britannique. GTN alimente des marchés du Nord-Ouest du Pacifique, de la Californie et du Nevada.",
   ],
   28: [
     "Monchy",
-    "Interconnect with the Northern Border Pipeline at the Canada U.S. border near Monchy, Saskatchewan. Northern Border supplies markets in the mid-continent U.S.",
+    "Raccordement au pipeline Northern Border, à la frontière canado-américaine, près de Monchy, en Saskatchewan. Le pipeline Northern Border approvisionne des marchés du centre du continent américain et de Chicago.",
   ],
   29: [
     "Frontière internationale, près de Haskett, au Manitoba",
@@ -162,19 +162,19 @@ const points = {
   ],
   30: [
     "Poste d’entrée Est",
-    "NGTL interconnect with the TC Energy Canadian Mainline (near Empress, Alberta) and the Foothills Pipeline (near McNeill, Alberta). Most gas moves from East Gate to the TC Mainline for use in central and eastern Canada, and is exported to the US Midwest and Northeast.",
+    "Raccordement du réseau de NGTL au réseau principal au Canada de TransCanada PipeLines (près d’Empress, en Alberta) et au réseau de Foothills (près de McNeill, en Alberta).",
   ],
   31: [
     "Nord et Est",
-    "Throughputs to delivery areas in northern Alberta, including natural gas used for oil sands operations.",
+    "Points de réception pour l’acheminement de gaz naturel vers les régions de livraison du Nord de l’Alberta, notamment aux fins des activités d’exploitation des sables bitumineux.",
   ],
   32: [
     "Point en amont de la rivière James",
-    "Receives gas from the Horn River, North Montney Mainline and Groundbirch pipelines in the northwestern portion of the NGTL system. Typically the highest traffic key point on the system, capturing a significant amount of gas produced in the WCSB.",
+    "Partie nord-ouest du réseau de NGTL, comprenant les points de réception des pipelines Horn River, North Montney et Groundbirch. Point habituellement le plus achalandé du réseau de NGTL, où circule une quantité importante du gaz produit dans le BSOC.",
   ],
   33: [
     "Poste d’entrée Ouest",
-    "NGTL interconnect with TC Energy’s Foothills Pipeline in southwestern Alberta at the British Columbia border. Gas travels through the Foothills system for export into the western United States.",
+    "Raccordement du réseau de NGTL au réseau de Foothills, dans le Sud-Ouest de l’Alberta, à la frontière avec la Colombie-Britannique. Le gaz est acheminé par le réseau de Foothills en vue de son exportation vers les marchés du Nord‑Ouest du Pacifique, de la Californie et du Nevada.",
   ],
   34: [
     "Zama",
@@ -202,23 +202,23 @@ const points = {
   ],
   40: [
     "Calgary",
-    "Connection between the NGTL system and local distribution pipelines used to service the Calgary market area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
+    "Point de raccordement du réseau de NGTL et des pipelines de distribution locaux qui desservent le marché de Calgary. Les volumes sont très saisonniers, car la consommation de gaz augmente en hiver pour répondre aux besoins en chauffage.",
   ],
   41: [
     "Edmonton",
-    "Located northeast of Calgary, the Edmonton key point captures gas post Upstream of James River, bound north to service the Edmonton market area. Throughput here is highly seasonal as gas consumption increases in the city during the winter months for heating.",
+    "Réception du gaz provenant du point en amont de la rivière James, à acheminer vers le nord pour desservir le marché d’Edmonton. Les volumes sont très saisonniers, car la consommation de gaz augmente en hiver pour répondre aux besoins en chauffage.",
   ],
   42: [
     "Zone de livraison des sables bitumineux Kirby",
-    "Stands for Oil Sands Delivery Area. Gas throughput here is typically bound for use in nearby Cold Lake oil sands Steam-Assisted Gravity Drainage (SAGD) and Cyclic Steam Stimulation (CSS) operations. These unconventional oil production methods rely on gas to generate the steam used to heat underground reservoirs, allowing bitumen to reach the surface.",
+    "Le gaz qui passe par cet endroit est destiné aux activités de drainage par gravité au moyen de vapeur et de stimulation cyclique par la vapeur des sables bitumineux à Cold Lake qui se trouve à proximité. Ces méthodes de production de pétrole non classiques utilisent le gaz pour produire la vapeur qui sert à chauffer les réservoirs souterrains, permettant ainsi au bitume d’atteindre la surface.",
   ],
   43: [
     "Zone de livraison des sables bitumineux Liege",
-    "Stands for Oil Sands Delivery Area. Located just northwest of Fort McMurray, gas throughput here is typically bound for use in nearby Athabasca oil sands mining and in-situ operations. Bitumen mining operations use natural gas to convert mined bitumen into synthetic crude oil.",
+    "Le gaz qui passe par cette zone située au nord-ouest de Fort McMurray est habituellement destiné à l’extraction à ciel ouvert et à la récupération in situ des sables bitumineux de l’Athabasca. Les activités d’extraction à ciel ouvert utilisent le gaz naturel pour convertir le bitume extrait en pétrole brut synthétique.",
   ],
   44: [
     "Saturn",
-    "NGTL segment near the Saturn compressor station located southwest of Fort St. John in British Columbia. Connects NGTL with production from the North Montney Mainline and Aitken storage. Component of total deliveries at Upstream of James River key point.",
+    "Tronçon du réseau de NGTL près de la station de compression du même nom située au sud-ouest de Fort St. John, en Colombie-Britannique. Relie le réseau de NGTL à la production en provenance de la canalisation principale North Montney et à l’installation de stockage Aitken. Composante des livraisons totales au point principal en amont de la rivière James.",
   ],
 };
 
