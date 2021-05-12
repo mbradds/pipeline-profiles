@@ -61,6 +61,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       plot: timeSeries,
       langPillTitles: lang.dashboard.pillTitles,
       height: 70,
+      showClickText: false,
     });
 
     trendNav.makeBar("Substance", "substance-trend", "activated", false);
@@ -94,12 +95,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
           lang.dashboard.pillTitles
         );
         const trends = incidentTimeSeries(field, filters);
-        const volumeBtn = document.getElementById("incident-volume-btn");
         // user selection to show volume or incident frequency
+        const volumeBtn = document.getElementById("incident-volume-btn");
         document
           .getElementById("inline-radio")
           .addEventListener("click", (event) => {
-            if (event.target) {
+            if (event.target && !volumeBtn.disabled) {
               const btnValue = event.target.value;
               thisMap.filters.type = btnValue;
               trends.filters.type = btnValue;
@@ -119,6 +120,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         }
 
         // user selection to show map or trends
+        const countBtn = document.getElementById("incident-count-btn");
         document
           .getElementById("incident-view-type")
           .addEventListener("click", (event) => {
@@ -141,12 +143,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
               visibility(["time-series-section"], "hide");
               volumeBtn.disabled = false;
               thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
+              countBtn.click();
             } else {
               // if the user selects trends, the option to view volume should be disabled
               volumeBtn.disabled = true;
-              const countBtn = document.getElementById("incident-count-btn");
               countBtn.checked = true;
-              countBtn.click();
               visibility(dashboardDivs, "hide");
               visibility(["time-series-section"], "show");
             }

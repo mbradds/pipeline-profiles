@@ -531,7 +531,13 @@ export class EventMap {
 }
 
 export class EventNavigator {
-  constructor({ plot, langPillTitles, height = 125, data = false }) {
+  constructor({
+    plot,
+    langPillTitles,
+    height = 125,
+    data = false,
+    showClickText = true,
+  }) {
     this.plot = plot;
     this.langPillTitles = langPillTitles;
     this.currentActive = undefined;
@@ -543,6 +549,7 @@ export class EventNavigator {
     this.height = height;
     this.data = data;
     this.greyScale = greyScale;
+    this.showClickText = showClickText;
   }
 
   seriesify(name, series, yVal) {
@@ -725,7 +732,11 @@ export class EventNavigator {
   deactivateChart(bar) {
     const { chart } = bar;
     const activeDiv = document.getElementById(bar.div);
-    const clickText = this.langPillTitles.click;
+    let clickText = "";
+    if (this.showClickText) {
+      clickText = ` (${this.langPillTitles.click})`;
+    }
+
     if (chart) {
       const greyIndex = Math.floor(this.greyScale.length / chart.series.length);
       const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
@@ -742,7 +753,7 @@ export class EventNavigator {
       });
 
       chart.update({
-        title: { text: `${chart.title.textStr} (${clickText})` },
+        title: { text: `${chart.title.textStr}${clickText}` },
         plotOptions: {
           series: {
             borderWidth: 1,
@@ -759,9 +770,7 @@ export class EventNavigator {
         },
       });
     } else {
-      activeDiv.innerHTML = `<p>${this.pillName(bar.name)} (${
-        this.langPillTitles.click
-      })</p>`;
+      activeDiv.innerHTML = `<p>${this.pillName(bar.name)}${clickText}</p>`;
       activeDiv.style.padding = "5px";
     }
     activeDiv.style.borderStyle = "solid";
@@ -1128,9 +1137,8 @@ export class EventTrend extends EventMap {
           events: {
             click() {
               if (currentTrend.onClickDefinition) {
-                const definitionsPopUp = document.getElementById(
-                  "trend-definitions"
-                );
+                const definitionsPopUp =
+                  document.getElementById("trend-definitions");
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.name];
 

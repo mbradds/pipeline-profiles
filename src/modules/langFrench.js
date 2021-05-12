@@ -50,31 +50,31 @@ const unitsDisclaimerText = (commodity) => {
 const points = {
   0: [
     "Réseau",
-    "Pipeline throughput is measured at the system level (entire pipeline) instead of individual key points.",
+    "Le débit du pipeline est mesuré au niveau du système (tout le pipeline) au lieu de points clés individuels.",
   ],
   1: [
     "Frontière",
-    "Pipeline border crossing and interconnection between the Alliance Canada and Alliance USA pipeline near Elmore Saskatchewan (Sherwood, ND in the U.S.).  The CER’s regulation of the Alliance pipeline ends at this border point.",
+    "Franchissement de la frontière et raccordement du pipeline d’Alliance Canada à celui d’Alliance USA près d’Elmore, en Saskatchewan (à Sherwood, dans le Dakota du Nord, aux États-Unis). C’est à ce point frontalier que prend fin la réglementation du pipeline d’Alliance par la Régie.",
   ],
   2: [
     "Zone 2",
-    "Located near the Blueberry Compressor Station, Zone 2 aggregates liquids rich gas primarily from the Montney Basin in northeast BC & northwest AB. The majority of Alliance receipt points are upstream of Zone 2, with smaller volumes received by the system south of Zone 2.",
+    "Située près de la station de compression Blueberry, recueille principalement du gaz riche en liquides provenant de la formation Montney, dans le Nord-Est de la Colombie-Britannique et le Nord-Ouest de l’Alberta. La majorité des points de réception d’Alliance se trouvent en amont de la zone 2, et les volumes reçus par le réseau au sud de la zone 2 sont de moindre importance.",
   ],
   3: [
     "Huntingdon/FortisBC Lower Mainland",
-    "Export connection with the U.S. pipeline grid at Huntingdon, B.C. Exports to the U.S. are typically bound for use in crude oil refineries on the West Coast of Washington State. Intracanada throughput connects with the FortisBC local distribution network for use in Vancouver and the BC lower mainland.",
+    "Raccordement d’exportation au réseau pipelinier américain à Huntingdon, en Colombie-Britannique. Les exportations vers les États-Unis sont habituellement destinées aux raffineries de pétrole brut de la côte Ouest de l’État de Washington. Le réseau au Canada se raccorde au réseau de distribution local de FortisBC qui achemine le produit à Vancouver et dans la vallée du bas Fraser, en Colombie-Britannique.",
   ],
   4: [
     "Kingsvale",
-    "Connection with the FortisBC Southern Crossing pipeline. The Southern Crossing moves smaller volumes of natural gas across southern BC from the NGTL West Gate point.",
+    "Raccordement au gazoduc Southern Crossing de FortisBC, qui achemine de petits volumes de gaz naturel dans le Sud de la Colombie-Britannique à partir du poste d’entrée Ouest du réseau de NGTL.",
   ],
   5: [
     "NOVA/Gordondale",
-    "Connection with the NGTL System. The only Westcoast key point in Alberta. Most gas moving on Westcoast makes its way south through BC, but smaller volumes at NOVA/Gordondale & Sunset Creek move East into Alberta onto the NGTL system.",
+    "Raccordement au réseau de NGTL. C’est le seul point principal de Westcoast en Alberta. La plus grande partie du gaz acheminé par Westcoast traverse la Colombie-Britannique vers le sud, mais des volumes plus faibles à NOVA/Gordondale et Sunset Creek sont acheminés vers l’est, en Alberta, jusqu’au réseau de NGTL.",
   ],
   6: [
     "Sunset Creek",
-    "Connection with the NGTL System. Situated near the Station 2 trading point, where gas can either move south on the Westcoast system, or East into Alberta.",
+    "Raccordement au réseau de NGTL. Situé près du point de commerce de la station 2, où le gaz peut être acheminé vers le sud sur le réseau de Westcoast ou vers l’est, en Alberta.",
   ],
   7: [
     "St. Stephen",
@@ -86,7 +86,7 @@ const points = {
   ],
   9: [
     "Cromer/Regina",
-    "The Canadian Mainline receives U.S. crude oil from the Wascana Pipeline and connects to the Cooperative Refinery Complex.",
+    "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de raffinerie coopérative.",
   ],
   10: [
     "Triangle de l’Est – Points de réception de la CNO",
@@ -110,15 +110,15 @@ const points = {
   ],
   15: [
     "ex-Cromer",
-    "Canadian Mainline receives U.S. and Saskatchewan crude oil from the Enbridge Bakken Pipeline as well as Saskatchewan production from the Westspur Pipeline at the Cromer terminal just north of Cromer Manitoba. The Mainline moves near the Bakken production region (southern Saskatchewan, southwest Manitoba, & North Dakota), receiving light crude oil produced nearby.",
+    "La canalisation principale au Canada reçoit du pétrole brut des États-Unis et de la Saskatchewan par le pipeline Bakken d’Enbridge, et du pétrole produit en Saskatchewan par le pipeline Westspur, au terminal Cromer, juste au nord de Cromer, au Manitoba. La canalisation passe près de la région productrice de Bakken (dans le Sud de la Saskatchewan, le Sud-Ouest du Manitoba et le Dakota du Nord), où elle reçoit du pétrole brut léger produit à proximité.",
   ],
   16: [
     "ex-Gretna",
-    "Canadian Mainline crosses the Canada-U.S. border and joins with the Enbridge Lakehead system. The CER’s regulation of the Canadian Mainline ends at this border point.",
+    "La canalisation principale au Canada traverse la frontière canado-américaine et rejoint le réseau Lakehead d’Enbridge. C’est à ce point frontalier que prend fin la réglementation de la canalisation par la Régie.",
   ],
   17: [
     "Vers Sarnia",
-    "Enbridge Lakehead system delivers Canadian as well as some U.S. production into Sarnia, Ontario on Line 5 and Line 78. Line 5 carries light oil and NGLs while Line 78 carries primarily heavier crudes. From Sarnia, Line 9 delivers crude oil to Montreal, Quebec and Line 7/11 delivers to the Nanticoke refinery.",
+    "Le réseau Lakehead d’Enbridge achemine la production canadienne et une partie de la production américaine jusqu’à Sarnia, en Ontario, par les canalisations 5 et 78. La canalisation 5 transporte du pétrole léger et des liquides de gaz naturel (« LGN »), tandis que la canalisation 78 transporte surtout des bruts plus lourds. À partir de Sarnia, la canalisation 9 achemine du pétrole brut à Montréal, au Québec, et la canalisation 7/11, à la raffinerie de Nanticoke, en Ontario.",
   ],
   18: [
     "Iroquois",
@@ -146,7 +146,7 @@ const points = {
   ],
   24: [
     "Ft. Saskatchewan",
-    "The end of the Cochin pipeline near Ft. Saskatchewan AB. Condensate is transferred to provincially regulated pipelines and transported to oil sands operations in northern Alberta.",
+    "Extrémité du pipeline Cochin au terminal qui appartenait autrefois à Kinder Morgan (aujourd’hui à Pembina), près de Fort Saskatchewan, en Alberta. Les condensats sont ensuite transférés aux terminaux de stockage de diluants à proximité (terminal de diluants de l’Alberta de Keyera, terminal d’Enbridge et carrefour canadien de diluants de Pembina). À partir d’Edmonton et de Fort Saskatchewan, les diluants sont acheminés vers le nord sur des pipelines sous réglementation provinciale de l’Alberta vers des installations d’exploitation des sables bitumineux près de Fort McMurray, en Alberta.",
   ],
   27: [
     "Kingsgate",
@@ -158,7 +158,7 @@ const points = {
   ],
   29: [
     "Frontière internationale, près de Haskett, au Manitoba",
-    "Pipeline border crossing between Manitoba and North Dakota, U.S. The CER's regulation of the Keystone pipeline ends at the US/Canada border.",
+    "Point de franchissement de la frontière entre le Manitoba et le Dakota du Nord, aux États-Unis. C’est à ce point frontalier que prend fin la réglementation du pipeline Keystone par la Régie.",
   ],
   30: [
     "Poste d’entrée Est",
@@ -178,27 +178,27 @@ const points = {
   ],
   34: [
     "Zama",
-    "The end of the Norman Wells pipeline in northwest Alberta. The pipeline connects with provincially regulated systems, and enters the Alberta light crude oil market.",
+    "Fin du pipeline Norman Wells dans le Nord-Ouest de l’Alberta. Le pipeline se raccorde à des réseaux sous réglementation provinciale et accède au marché albertain du pétrole brut léger.",
   ],
   35: [
     "Burnaby",
-    "Delivers light crude oil to the 55,000 b/d Parkland Refinery in Burnaby BC, and delivers refined petroleum products for use in Burnaby and surrounding areas.",
+    "Achemine du pétrole brut léger à la raffinerie Parkland à Burnaby, en Colombie-Britannique, à hauteur de 55 000 b/j, ainsi que des produits pétroliers raffinés destinés à Burnaby et aux villes avoisinantes.",
   ],
   36: [
     "Sumas",
-    "Connection between the Trans Mountain Pipeline and the Trans Mountain Puget Sound Pipeline in Abbotsford, BC. Light crude oil and smaller volumes of heavy crude oil are diverted for export to nearby refineries in Anacortes, Cherry Point, and Ferndale on the west coast of Washington State.",
+    "Raccordement entre le pipeline Trans Mountain et le pipeline Puget Sound de Trans Mountain à Abbotsford, en Colombie-Britannique Du pétrole brut léger, et brut lourd en moindre quantité, est acheminé vers les raffineries voisines d’Anacortes, de Cherry Point et de Ferndale, sur la côte Ouest de l’État de Washington.",
   ],
   37: [
     "Westridge",
-    "The smallest delivery point on the system located within Port Metro Vancouver, the Westridge Marine Terminal is able to load crude oil tankers with primarily heavy crude oil for various markets, including Asia and California.",
+    "Plus petit point de livraison du réseau, le terminal maritime Westridge, situé à Port Metro Vancouver, peut charger des navires-citernes de pétrole brut (lourd, principalement) à destination de divers marchés, dont l’Asie et la Californie.",
   ],
   38: [
     "East Hereford",
-    "Export interconnect with the Portland Natural Gas Transmission System at the Canada-U.S. border near East Hereford, Québec. TQM delivers natural gas customers in the U.S. states of Vermont, New Hampshire, Maine and Massachusetts.",
+    "Point d’exportation où le réseau se raccorde au réseau de Portland Natural Gas Transmission System, à la frontière canado-américaine près d’East Hereford, au Québec, afin d’acheminer du gaz naturel vers des marchés du Vermont, du New Hampshire, du Maine et du Massachusetts.",
   ],
   39: [
     "Saint Lazare",
-    "Interconnect with the TC Canadian Mainline near Saint Lazare, Québec. TransCanada’s Canadian Mainline delivers natural gas produced in the WCSB and the Appalachian Basin for use in Montreal and surrounding areas.",
+    "Point d’interconnexion avec le réseau principal de TC près de Saint-Lazare, au Québec. Ce réseau transporte du gaz naturel produit dans le bassin sédimentaire de l’Ouest canadien et le bassin des Appalaches et destiné à Montréal et aux villes avoisinantes.",
   ],
   40: [
     "Calgary",
