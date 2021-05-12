@@ -585,6 +585,7 @@ export class EventNavigator {
   // usefull for names like "Status" that could use additional description
   pillName(name) {
     if (
+      this.langPillTitles &&
       Object.prototype.hasOwnProperty.call(this.langPillTitles.titles, name)
     ) {
       return this.langPillTitles.titles[name];
@@ -920,6 +921,7 @@ export class EventTrend extends EventMap {
     data,
     hcDiv,
     lang,
+    seriesed = false,
     definitions = {},
   }) {
     super({ eventType, field });
@@ -927,10 +929,25 @@ export class EventTrend extends EventMap {
     this.data = data;
     this.hcDiv = hcDiv;
     this.lang = lang;
+    this.seriesed = seriesed;
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
     this.ONETOMANY = ONETOMANY;
     this.displayDefinitions();
+  }
+
+  generateSeries(data, field) {
+    if (!this.seriesed) {
+      return this.processEventsData(data, field);
+    }
+    const xvalues = data[field].year;
+    return data[field].data.map((s) => {
+      const newSeries = {};
+      newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
+      newSeries.name = s.id;
+      newSeries.id = s.id;
+      return newSeries;
+    });
   }
 
   processEventsData(data, field) {
@@ -1150,15 +1167,14 @@ export class EventTrend extends EventMap {
           },
         },
       },
-
-      series: this.processEventsData(this.data, this.field),
+      series: this.generateSeries(this.data, this.field),
     });
   }
 
   fieldChange(newField) {
     if (newField !== this.field) {
       this.field = newField;
-      const newSeries = this.processEventsData(this.data, newField);
+      const newSeries = this.generateSeries(this.data, this.field);
       while (this.chart.series.length) {
         this.chart.series[0].remove();
       }
@@ -1172,7 +1188,7 @@ export class EventTrend extends EventMap {
   }
 
   updateRadius() {
-    const newSeries = this.processEventsData(this.data, this.field);
+    const newSeries = this.generateSeries(this.data, this.field);
     const currentTrend = this;
     this.chart.update({
       series: newSeries,

@@ -315,7 +315,7 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
 }
 
 export function oandmText(meta) {
-  console.log(meta);
+  // console.log(meta);
   const firstParagraph = `<p>There have been a total of ${dynamicValue(
     meta.totalEvents
   )} O&M activities reported by ${
