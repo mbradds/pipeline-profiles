@@ -6,7 +6,6 @@
         type="button"
         class="btn btn-default tablinks"
         onclick="openTab(event, 'condition-compliance')"
-        id="defaultClick"
       >
         {{text.safety.complianceBtn}}
       </button>
@@ -18,6 +17,16 @@
         onclick="openTab(event, 'pipeline-incidents')"
       >
         {{text.safety.incidentsBtn}}
+      </button>
+    </div>
+    <div class="btn-group tab">
+      <button
+        type="button"
+        class="btn btn-default tablinks"
+        onclick="openTab(event, 'operations-maintenance')"
+        id="defaultClick"
+      >
+        Operations &#38; Maintenance Activities
       </button>
     </div>
   </div>
@@ -223,7 +232,10 @@
           </div>
         </div>
       </details>
-      <div class="mrgn-tp-md mrgn-bttm-md" id="system-incidents-paragraph"></div>
+      <div
+        class="mrgn-tp-md mrgn-bttm-md"
+        id="system-incidents-paragraph"
+      ></div>
       <details>
         <summary>{{text.safety.incidentsDetails4.one}}</summary>
         <ul class="lst-spcd">
@@ -263,8 +275,7 @@
               value="frequency"
               checked="checked"
             />
-            {{text.safety.incidentsCountRadio}}</label
-          >
+            {{text.safety.incidentsCountRadio}}</label>
           <label for="incident-volume-btn" class="radio-inline">
             <input
               id="incident-volume-btn"
@@ -272,8 +283,7 @@
               name="type"
               value="volume"
             />
-            {{text.safety.incidentsVolRadio}}</label
-          >
+            {{text.safety.incidentsVolRadio}}</label>
         </form>
       </div>
 
@@ -389,6 +399,110 @@
     <div class="col-md-12 mrgn-tp-lg">
       <p>{{text.safety.incidentsOpenData}}</p>
       <p>{{text.safety.incidentsViz}}</p>
+    </div>
+  </div>
+</div>
+<div id="operations-maintenance" class="profile-section tabcontent">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Operations and Maintenance Activities</h3>
+      <p class="small">Section updated May 2021</p>
+      <p>
+        Pipeline operators regularly conduct routine operations and maintenance
+        activities (O&#38;M activities) on CER regualted pipelines. These
+        activities can include things such as pipeline repairs, investigative
+        &#38; integrity digs, and many other activities designed to protect the
+        safety and environment.
+      </p>
+      <p>
+        O&#38;M activities are evaluated by the CER as part of the original
+        application for the construction and operation of a pipeline; therefore,
+        companies are not required to apply for additional approval to undertake
+        most O&#38;M activities. However, companies/operators are required to
+        provide the CER with sufficient information to make a decision as to
+        whether to inspect O&#38;M activities that could result in safety
+        consequences to landowners or the public, environmental consequences, or
+        a negative impact on normal third-party use of the right-of-way (RoW) or
+        adjacent property.
+      </p>
+      <details>
+        <summary>
+          What activities are O&#38;M activities (eligible activities)
+        </summary>
+        <p>Operations and maintenance activities include:</p>
+        <ol type="1">
+          <li>
+            all activities necessary to safely operate an existing pipeline;
+          </li>
+          <li>
+            maintenance activities, upgrades or repairs to an existing pipeline
+            or part of a pipeline that do not increase the approved maximum
+            operating pressure (MOP), the stress level or diameter of the
+            pipeline; or
+          </li>
+          <li>
+            physically removing an existing section of pipe up to 5 km in
+            length, and putting a new section of pipe in its place, as long as
+            this replacement does not increase the approved MOP, stress level or
+            diameter of the pipeline.
+          </li>
+        </ol>
+      </details>
+      <details>
+        <summary>What O&#38;M Activities require CER approval?</summary>
+        <p>
+          Where any of the following restrictions exist, the company must apply
+          to the Board in accordance with the NEB Act and the related
+          Regulations and may not carry out the proposed activity until approval
+          from the Board has been obtained. The restrictions apply where:
+        </p>
+        <ol type="1">
+          <li>
+            all activities necessary to safely operate an existing pipeline;
+          </li>
+          <li>
+            the work includes welding on an in-service pipeline by a pipeline
+            company that has not previously performed in-service welding in
+            accordance with the requirements of CSA Z662-15, Clause 7.17,
+            ‘Welding on In-Service Piping’, or the equivalent clause in the most
+            recent edition of CSA Z662; or
+          </li>
+          <li>
+            the work involves the construction of an aerial crossing, excluding
+            work on company owned or leased land relating to facilities (e.g.,
+            terminal stations, processing plants, compressor/pump stations).
+          </li>
+        </ol>
+      </details>
+      <details>
+        <summary>What kinds of activities are not O&#38;M activities?</summary>
+        <p>O&#38;M activities do not include:</p>
+        <ol type="1">
+          <li>
+            upgrades that result in increases above previously approved and
+            specified levels to:
+            <ol type="A">
+              <li>the MOP,</li>
+              <li>stress levels,</li>
+              <li>the diameter of the pipeline, and/or</li>
+              <li>airborne emissions or noise levels.</li>
+            </ol>
+          </li>
+          <li>
+            "looping" (i.e., adding pipe parallel or adjacent to, and
+            interconnected with, an existing pipeline for the general purpose of
+            increasing capacity);
+          </li>
+          <li>construction of a new pipeline; or</li>
+          <li>
+            deactivation (for longer than 12 months), reactivation (where a
+            pipeline has been deactivated for more than 12 months),
+            decommissioning, or abandonment.
+          </li>
+        </ol>
+      </details>
+      <div class="mrgn-tp-md mrgn-bttm-md" id="oandm-dynamic-text"></div>
+      <div id="spacer" style="height: 400px"></div>
     </div>
   </div>
 </div>

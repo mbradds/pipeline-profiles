@@ -313,3 +313,23 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   }
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
+
+export function oandmText(meta) {
+  console.log(meta);
+  const firstParagraph = `<p>There have been a total of ${dynamicValue(
+    meta.totalEvents
+  )} O&M activities reported by ${
+    meta.company
+  }. As part of these events, there have been ${dynamicValue(
+    meta.totalDigs
+  )} integrity digs, and approximately ${dynamicValue(
+    `${meta.lengthReplaced} km`
+  )} of pipeline replaced.<p>`;
+
+  const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occured near ${dynamicValue(
+    meta.nearby.join(", ")
+  )}.<p>`;
+
+  const totalText = firstParagraph + secondParagraph;
+  document.getElementById("oandm-dynamic-text").innerHTML = totalText;
+}

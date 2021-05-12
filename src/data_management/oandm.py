@@ -15,6 +15,13 @@ ideas:
 '''
 
 
+def listify(series):
+    series = series.fillna(value=0)
+    series = [int(x) for x in series]
+    series = list(series)
+    return series
+
+
 def optimizeJson(df):
     delete_after_meta = ['Event Number',
                          'Company Name',
@@ -27,7 +34,6 @@ def optimizeJson(df):
         del df[delete]
 
     df['year'] = df['Commencement Date'].dt.year
-    # df = df.fillna(value=None)
     for col in df.columns:
         if "date" in col.lower():
             del df[col]
@@ -47,16 +53,19 @@ def optimizeJson(df):
             dfSeries = dfSeries.reset_index()
             dfSeries = dfSeries.sort_values(by="year")
             thisSeries = {}
+            thisData = []
             for sName in dfSeries.columns:
                 if sName != 'year':
-                    dfSeries[sName] = dfSeries[sName].fillna(value=0)
-                dfSeries[sName] = [int(x) for x in dfSeries[sName]]
-                thisSeries[sName] = list(dfSeries[sName])
+                    thisData.append({"id": sName,
+                                     "data": listify(dfSeries[sName])})
+                else:
+                    thisSeries[sName] = listify(dfSeries[sName])
+            thisSeries["data"] = thisData
             series[col] = thisSeries
     return series
 
 
-def metadata(df):
+def metadata(df, company):
     def filterNear(city):
         if len(city) <= 2:
             return False
@@ -85,6 +94,7 @@ def metadata(df):
     thisCompanyMeta["atRisk"] = sum([1 if x == "Yes" else 0 for x in df['Species At Risk Present At Activity Site']])
     thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
     thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
+    thisCompanyMeta["company"] = company
     return thisCompanyMeta
 
 
@@ -218,8 +228,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
         df_c = df_c.drop_duplicates(subset=['Event Number'])
         thisCompanyData = {}
         if not df_c.empty:
-            thisCompanyData["meta"] = metadata(df_c)
-            thisCompanyData["company"] = company
+            thisCompanyData["meta"] = metadata(df_c, company)
             thisCompanyData["build"] = True
             thisCompanyData["data"] = optimizeJson(df_c)
             if not test:
