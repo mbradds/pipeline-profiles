@@ -3,11 +3,7 @@
     <div class="col-md-12">
       <h2>{{text.traffic.header}}</h2>
       <p class="small">{{text.traffic.updated}}</p>
-      <p
-        class="cerlabel mrgn-tp-sm"
-        id="key-point-title"
-        style="margin-bottom: 0px"
-      >
+      <p class="cerlabel mrgn-tp-sm" id="key-point-title">
         {{text.traffic.selectKeyPt}}
       </p>
       <div
@@ -22,7 +18,7 @@
       <div class="traffic-hc-shared" id="traffic-hc-range"></div>
     </div>
     <div class="col-md-4">
-      <p class="cerlabel" id="select-units-title" style="margin-bottom: 0px">
+      <p class="cerlabel" id="select-units-title">
         {{text.selectUnits}}
       </p>
       <div id="select-units-radio-traffic"></div>
@@ -54,7 +50,7 @@
   </div>
   <div class="row wb-eqht wb-init" id="key-point-info">
     <div class="col-md-6">
-      <section class="panel panel-info hght-inhrt">
+      <section class="panel panel-info hght-inhrt traffic-panel">
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtTrends}}</h5>
         </header>
@@ -62,7 +58,7 @@
       </section>
     </div>
     <div class="col-md-6">
-      <section class="panel panel-info hght-inhrt">
+      <section class="panel panel-info hght-inhrt traffic-panel">
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtDescription}}</h5>
         </header>
@@ -88,9 +84,9 @@
           <strong>{{text.traffic.note}}</strong>
           {{text.traffic.instructions.five}}
         </p>
-      {{#ifeq text.commodity "natural-gas"}}
-        <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
-      {{/ifeq}}
+        {{#ifeq text.commodity "natural-gas"}}
+          <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
+        {{/ifeq}}
       </details>
 
       <details>

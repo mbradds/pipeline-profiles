@@ -94,7 +94,7 @@ const points = {
   ],
   11: [
     "Eastern Triangle - Parkway Deliveries",
-    "Delivery interconnect with the Union Gas Pipeline, near Milton, Ontario. Throughputs include nominations bound for Dawn storage, via the Union Gas System, and tend to be seasonal (primarily in the summer), depending on market conditions. ",
+    "Delivery interconnect with the Union Gas Pipeline, near Milton, Ontario. Throughputs include nominations bound for Dawn storage, via the Union Gas System, and tend to be seasonal (primarily in the summer), depending on market conditions.",
   ],
   12: [
     "Eastern Triangle - Parkway Receipts",
@@ -134,16 +134,16 @@ const points = {
   ],
   21: [
     "Other US Northeast",
-    "Interconnect with three U.S. pipelines at the Canada-U.S. border near Cornwall, Ontario and Napierville and Phillipsburg, Quebec. ‘Other US Northeast’ is an aggregate of these three export points and includes interconnects with the St. Lawrence Gas Company, North Country Gas Pipeline and Vermont Gas Systems respectively. ",
+    "Interconnect with three U.S. pipelines at the Canada-U.S. border near Cornwall, Ontario and Napierville and Phillipsburg, Quebec. ‘Other US Northeast’ is an aggregate of these three export points and includes interconnects with the St. Lawrence Gas Company, North Country Gas Pipeline and Vermont Gas Systems respectively.",
   ],
   22: [
     "Prairies",
-    "Interconnect with the NOVA Gas Transmission Ltd. (NGTL) system at the Alberta/Saskatchewan border. Empress is one of the primary receipt points on the Mainline. Gas moves east for use in Manitoba, Ontario, Quebec, and exports into the U.S. Midwest and U.S. Northeast. ",
+    "Interconnect with the NOVA Gas Transmission Ltd. (NGTL) system at the Alberta/Saskatchewan border. Empress is one of the primary receipt points on the Mainline. Gas moves east for use in Manitoba, Ontario, Quebec, and exports into the U.S. Midwest and U.S. Northeast.",
   ],
-  23: [
-    "St Clair",
-    "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
-  ],
+  // 23: [
+  //   "St Clair",
+  //   "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
+  // ],
   24: [
     "Ft. Saskatchewan",
     "The end of the Cochin pipeline near Ft. Saskatchewan AB. Condensate is transferred to provincially regulated pipelines and transported to oil sands operations in northern Alberta.",

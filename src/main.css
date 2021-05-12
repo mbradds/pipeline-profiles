@@ -6,6 +6,7 @@ body {
   font-family: Arial;
   font-weight: bold;
   color: #871455;
+  margin-bottom: 0px;
 }
 .tablinks {
   height: 75px !important;
@@ -104,6 +105,9 @@ body {
 .event-filter-nav:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
+.event-filter-nav p {
+  margin-bottom: 0px !important;
+}
 #incidents-near-me {
   min-height: 100px;
 }
@@ -148,6 +152,9 @@ body {
 }
 #map-panel-body {
   padding: 0px;
+}
+.traffic-panel {
+  min-height: fit-content;
 }
 /* small screen */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {

@@ -71,7 +71,7 @@ const en = {
     header: "Safety and Environment",
     complianceBtn: "Conditions Compliance",
     incidentsBtn: "Reported Incidents",
-    complianceUpdated: "Section updated March 2021",
+    complianceUpdated: "Section updated May 2021",
     conditionsp1:
       "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
     conditionsp2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
@@ -248,7 +248,7 @@ const fr = {
     header: "Sécurité et environnement",
     complianceBtn: "Conformité aux conditions",
     incidentsBtn: "Incidents signalés",
-    complianceUpdated: "Mise à jour mars 2021",
+    complianceUpdated: "Mise à jour mai 2021",
     conditionsp1:
       "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
     conditionsp2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des mesures <a href="/fr/safety-environment/compliance-enforcement/index.html">d’exécution</a> sont prises au besoin.`,

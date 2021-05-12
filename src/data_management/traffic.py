@@ -8,6 +8,8 @@ script_dir = os.path.dirname(__file__)
 
 
 def addIds(df):
+    df = df[df['Key Point'] != "FortisBC Lower Mainland"]
+    df = df[df['Key Point'] != "St Clair"]
     points = {'system': '0',
               'Border': '1',
               'Zone 2': '2',
@@ -145,7 +147,6 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
         df = normalize_text(df, ['Key Point', 'Corporate Entity'])
         df = normalize_numeric(df, ['Latitude', 'Longitude'], 3)
         df = fixCorporateEntity(df)
-        df = df[df['Key Point'] != "FortisBC Lower Mainland"]
         df = addIds(df)
 
     return df
