@@ -100,9 +100,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
       });
     } else {
       pointText = params.defaultPoint.name;
-      directionText = `(${lang.flow} ${
-        params.directions[params.defaultPoint.id]
-      })`;
+      let currentDirection = params.directions[params.defaultPoint.id];
+      if (
+        Object.prototype.hasOwnProperty.call(
+          lang.directions,
+          params.directions[params.defaultPoint.id]
+        )
+      ) {
+        currentDirection =
+          lang.directions[params.directions[params.defaultPoint.id]];
+      }
+      directionText = `(${lang.flow} ${currentDirection})`;
     }
     if (fiveYr) {
       return lang.fiveYrTitle(pointText);
