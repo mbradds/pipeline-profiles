@@ -10,6 +10,9 @@ import { englishDashboard } from "../modules/langEnglish";
 import { mainTraffic } from "../traffic/trafficDashboard";
 // apportionment
 import { mainApportion } from "../apportionment/apportionmentDashboard";
+// operations and maintenance activities
+import { mainOandM } from "../oandm/oandmDashboard";
+
 console.time(`first content loading`);
 bindToWindow();
 
@@ -22,6 +25,7 @@ export async function loadAllCharts(data, plains = false) {
       data.trafficData.meta,
       englishDashboard.traffic
     ),
+    mainApportion(data.apportionData, englishDashboard.apportion),
     mainConditions(
       JSON.parse(data.conditionsData.regions),
       data.canadaMap,
@@ -34,7 +38,7 @@ export async function loadAllCharts(data, plains = false) {
       data.incidentData.meta,
       englishDashboard.incidents
     ),
-    mainApportion(data.apportionData, englishDashboard.apportion),
+    mainOandM(data.oandmData),
   ];
 
   function plainsMidstreamProfile(lang, div) {
