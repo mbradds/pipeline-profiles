@@ -922,6 +922,7 @@ export class EventTrend extends EventMap {
     hcDiv,
     lang,
     seriesed = false,
+    seriesInfo = {},
     definitions = {},
   }) {
     super({ eventType, field });
@@ -930,6 +931,7 @@ export class EventTrend extends EventMap {
     this.hcDiv = hcDiv;
     this.lang = lang;
     this.seriesed = seriesed;
+    this.seriesInfo = seriesInfo;
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
     this.ONETOMANY = ONETOMANY;
@@ -941,10 +943,32 @@ export class EventTrend extends EventMap {
       return this.processEventsData(data, field);
     }
     const xvalues = data[field].year;
+    let colors = {};
+    let names = {};
+    let currentInfo = { colors: {}, names: {} };
+
+    if (this.seriesInfo.hasOwnProperty(this.field)) {
+      currentInfo = this.seriesInfo[this.field];
+    }
+
+    if (currentInfo.hasOwnProperty("colors")) {
+      colors = currentInfo.colors;
+    }
+    if (currentInfo.hasOwnProperty("names")) {
+      names = currentInfo.names;
+    }
     return data[field].data.map((s) => {
       const newSeries = {};
       newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
-      newSeries.name = s.id;
+      if (names.hasOwnProperty(s.id)) {
+        newSeries.name = names[s.id];
+      } else {
+        newSeries.name = s.id;
+      }
+
+      if (colors.hasOwnProperty(s.id)) {
+        newSeries.color = colors[s.id];
+      }
       newSeries.id = s.id;
       return newSeries;
     });

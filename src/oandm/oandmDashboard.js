@@ -1,14 +1,27 @@
 import { EventNavigator, EventTrend } from "../modules/dashboard";
 import { oandmText } from "../modules/dynamicText";
+import { regionColors, yesNoColors } from "../modules/colors";
 
 export function mainOandM(eventData) {
-  // console.log(eventData.data);
+  console.log(eventData);
   const eventType = "oandm-activities";
   const field = "Integrity Dig";
   const filters = { type: "frequency" };
   function loadDynamicText() {
     oandmText(eventData.meta);
   }
+
+  const engNames = { y: "Yes", n: "No" };
+  const seriesInfo = {
+    "Integrity Dig": { colors: yesNoColors, names: engNames },
+    "Fish Present": { colors: yesNoColors, names: engNames },
+    "In Stream Work Required": { colors: yesNoColors, names: engNames },
+    "Species At Risk Present": { colors: yesNoColors, names: engNames },
+    "Province/Territory": {
+      colors: regionColors,
+      names: { ab: "Alberta", bc: "British Columbia", sk: "Saskatchewan" },
+    },
+  };
 
   const incidentTimeSeries = (timeField, timeFilters) => {
     const timeSeries = new EventTrend({
@@ -17,6 +30,7 @@ export function mainOandM(eventData) {
       filters: timeFilters,
       data: eventData.data,
       seriesed: true,
+      seriesInfo,
       hcDiv: "time-series-oandm",
       lang: {},
     });
@@ -42,7 +56,7 @@ export function mainOandM(eventData) {
       false
     );
     trendNav.makeBar(
-      "Species At Risk Present At Activity Site",
+      "Species At Risk Present",
       "oandm-species-trend",
       "deactivated",
       false

@@ -173,5 +173,31 @@ def strip_cols(df):
     df = df.rename(columns=newCols)
     return df
 
+
+def idify(df, col, key):
+
+    region = {"alberta": "ab",
+              "british columbia": "bc",
+              "saskatchewan": "sk",
+              "manitoba": "mb",
+              "ontario": "on",
+              "quebec": "qc",
+              "québec": "qc",
+              "new brunswick": "nb",
+              "nova scotia": "ns",
+              "northwest territories": "nt",
+              "prince edward island": "pe",
+              "nunavut": "nu",
+              "yukon": "yt"}
+
+    if key == "region":
+        r = region
+    else:
+        r = {}
+    df[col] = [x.lower() for x in df[col]]
+    df[col] = df[col].replace(r)
+    return df
+
+
 if __name__ == "__main__":
     None
