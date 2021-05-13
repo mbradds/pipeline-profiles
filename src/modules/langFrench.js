@@ -332,9 +332,9 @@ export const frenchDashboard = {
           " Défectuosité au niveau des matériaux ou des processus de fabrication et détérioration attribuable à des dommages, au dépassement de la durée de vie utile, à l’absence d’inspection ou à un manque d’entretien.",
         "Corrosion et fissuration":
           "Corrosion externe ou fissuration du revêtement, en raison de dommages ou d’une défaillance, fissuration au niveau des soudures attribuable à des problèmes de contrainte ou de fabrication et corrosion interne due à la présence de contaminants dans les produits.",
-        "Défaillance d’équipement":
+        "Défaillance d’ équipement":
           "Défaillance d’une des composantes de l’équipement associées au pipeline comme, par exemple, les vannes, l’alimentation électrique ou les systèmes de contrôle.",
-        "Erreur d’exploitation":
+        "Erreur d’ exploitation":
           "En général, le personnel ne respecte pas les marches à suivre ou utilise l’équipement d’une manière non appropriée.",
         "Interférences extérieures":
           "Activités extérieures à l’origine de dommages au pipeline ou à ses composantes comme, par exemple, des travaux d’excavation ou du vandalisme.",
@@ -453,10 +453,10 @@ export const frenchDashboard = {
         what: {
           "Corrosion et fissuration": cerPalette.Aubergine,
           "Défectuosité et détérioration": cerPalette["Cool Grey"],
-          "Défaillance d’équipement": cerPalette["Dim Grey"],
+          "Défaillance d’ équipement": cerPalette["Dim Grey"],
           "Forces de la nature": cerPalette.Flame,
           "Autres causes": cerPalette.Forest,
-          "Erreur d’exploitation": cerPalette["Night Sky"],
+          "Erreur d’ exploitation": cerPalette["Night Sky"],
           "Interférences extérieures": cerPalette.Ocean,
           "To be determined": cerPalette.Sun,
         },
@@ -505,15 +505,15 @@ export const frenchDashboard = {
       im: "importation",
       in: "Intra-Canada",
       ex: "exportation",
-      cap: "Capacité",
+      cap: "capacité",
       dh: "lourd canadien",
       dln: "léger canadien / ngl",
       fl: "léger étranger",
       dl: "léger canadien",
       rp: "produits pétroliers raffinés",
       co: "condensat",
-      ecap: "Capacité exportation",
-      icap: "Capacité importation",
+      ecap: "capacité exportation",
+      icap: "capacité importation",
     },
     util: "Utilisation",
     months: {

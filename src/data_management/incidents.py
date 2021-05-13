@@ -160,6 +160,16 @@ def process_french(df):
                         "Essence"]
     df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
     df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
+    def formatSpace(word):
+        word = word.replace("d\x19", "d’")
+        # word = word.split(" ")
+        # last = " ".join(word[-2:])
+        # first = " ".join(word[:-2])
+        # return first+last
+        return word
+        
+    for accentCol in ["What Happened"]:
+        df[accentCol] = [formatSpace(x) for x in df[accentCol]]
     return df
 
 
@@ -326,7 +336,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta = process_incidents(remote=False, test=False, lang='en')
+    # df, volume, meta = process_incidents(remote=False, test=False, lang='en')
     df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
     print('completed incidents!')
 

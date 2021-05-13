@@ -17,7 +17,6 @@ body {
 .profile-show {
   display: block;
 }
-
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .container-chart-map {
     min-height: 550px;
