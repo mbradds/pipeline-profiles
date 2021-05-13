@@ -10,25 +10,29 @@
 <body>
   <div class="container">
   {{#if htmlWebpackPlugin.options.page.sections.traffic.map}}
-  <!-- start traffic -->
+  <!-- Start Throughput and capacity -->
     {{> components/traffic text=htmlWebpackPlugin.options.page.text}}
-  <!-- end traffic -->
+
+  <!-- End Throughput and capacity -->
   {{/if}}
   {{!-- pipeline has traffic data, but no leaflet map. Trans-Northern/group2 --}}
   {{#if htmlWebpackPlugin.options.page.sections.traffic.noMap}}
-  <!-- start traffic -->
+  <!-- Start Throughput and capacity -->
     {{> components/trafficNoMap text=htmlWebpackPlugin.options.page.text}}
-  <!-- end traffic -->
+
+  <!-- End Throughput and capacity -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.apportion}}
-  <!-- start apportionment -->
+  <!-- Start Apportionment -->
     {{> components/apportion text=htmlWebpackPlugin.options.page.text}}
-  <!-- end apportionment -->
+
+  <!-- End Apportionment -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.safety}}
-  <!-- start safety and environment -->
+  <!-- Start Safety and Environment -->
     {{> components/safety_environment text=htmlWebpackPlugin.options.page.text}}
-  <!-- end safety and environment -->
+
+  <!-- End Safety and Environment -->
   {{/if}}
   </div>
   {{> components/footer}}

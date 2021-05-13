@@ -127,7 +127,7 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, "src", "main.css"),
-          to: path.resolve(__dirname, "dist", "main.css"),
+          to: path.resolve(__dirname, "dist", "css/main.css"),
         },
         {
           from: path.resolve(__dirname, "src", "GCWeb"),

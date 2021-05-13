@@ -11,7 +11,7 @@ import { mainTraffic } from "../traffic/trafficDashboard";
 // apportionment
 import { mainApportion } from "../apportionment/apportionmentDashboard";
 
-console.time(`first content loading`);
+// console.time(`first content loading`);
 bindToWindow();
 
 generalTheme();
@@ -50,7 +50,6 @@ export async function loadAllCharts(data, plains = false) {
   }
 
   return Promise.allSettled(arrayOfCharts).then(() => {
-    // .then((value))
-    console.timeEnd(`first content loading`);
+    // console.timeEnd(`first content loading`);
   });
 }

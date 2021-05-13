@@ -390,7 +390,7 @@ export const englishDashboard = {
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       locationDisclaimer: "Waiting for your location...",
       countDisclaimer: (eventType, field) =>
-        `<p>${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.</p>`,
+        `${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.`,
       userPopUp:
         "Approximate location. You can drag this marker around to explore incident events in other locations.",
       locationError:

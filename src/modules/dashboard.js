@@ -1054,11 +1054,11 @@ export class EventTrend extends EventMap {
     if (this.ONETOMANY[this.field]) {
       destoryLabel(this.chart);
       this.chart.customLabel = undefined;
-      let text = `<section class="alert alert-warning" style="padding:4px">`;
-      text += `${this.lang.countDisclaimer(
+
+      const text = `<p class="alert alert-warning" style="padding:4px">${this.lang.countDisclaimer(
         this.eventType,
         this.pillNameSubstitution()
-      )}</section>`;
+      )}</p>`;
       const label = this.chart.renderer
         .label(text, null, null, null, null, null, true)
         .attr({
