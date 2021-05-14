@@ -179,6 +179,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Alliance Pipeline Limited Partnership,Border,southeast,export,45278.59,34711.0
 2020-11-01,Alliance Pipeline Limited Partnership,Border,southeast,export,45524.123,39751.1
 2020-12-01,Alliance Pipeline Limited Partnership,Border,southeast,export,45576.191,43066.787
+2021-01-01,Alliance Pipeline Limited Partnership,Border,southeast,export,47526.529,43250.835
+2021-02-01,Alliance Pipeline Limited Partnership,Border,southeast,export,47553.434,43971.168
+2021-03-01,Alliance Pipeline Limited Partnership,Border,southeast,export,47529.288,42359.823
 2006-01-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,13890.864,11653.477
 2006-02-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,14033.992,11596.545
 2006-03-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,13862.145,11423.737
@@ -359,6 +362,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,13942.256,8046.742
 2020-11-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,13990.726,6310.8
 2020-12-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,14014.477,6825.097
+2021-01-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,12712.019,7725.065
+2021-02-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,12798.971,9120.214
+2021-03-01,Alliance Pipeline Limited Partnership,Zone 2,southeast,intracanada,12790.025,8151.097
 2009-07-01,Emera Brunswick Pipeline Company Ltd.,system,west,export,28317.0,3165.434
 2009-08-01,Emera Brunswick Pipeline Company Ltd.,system,west,export,28317.0,4449.539
 2009-09-01,Emera Brunswick Pipeline Company Ltd.,system,west,export,28317.0,3092.881
@@ -5621,7 +5627,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2018-12-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,14133.247
 2019-01-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,22646.066
 2019-01-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,14118.295
-2019-02-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,17085.705
+2019-02-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,17085.704
 2019-02-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,22351.681
 2019-03-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,12977.358
 2019-03-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,23538.691
@@ -5667,8 +5673,14 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,23579.091
 2020-12-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,32286.619
 2020-12-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,14874.07
-2006-01-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,0.0
+2021-01-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,15025.512
+2021-01-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,30366.801
+2021-02-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,16302.605
+2021-02-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,28406.787
+2021-03-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,13469.873
+2021-03-01,Westcoast Energy Inc.,Huntingdon/FortisBC Lower Mainland,south,export,48214.0,30865.896
 2006-01-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
+2006-01-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,0.0
 2006-02-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
 2006-02-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,0.0
 2006-03-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,1.983
@@ -5842,7 +5854,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2013-03-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1230.213
 2013-03-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
 2013-04-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
-2013-04-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,377.53
+2013-04-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,377.529
 2013-05-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
 2013-05-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1101.359
 2013-06-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
@@ -5889,7 +5901,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2015-02-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,385.054
 2015-03-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,1217.948
 2015-03-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,217.567
-2015-04-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,949.986
+2015-04-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,949.985
 2015-04-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,0.215
 2015-05-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,0.0
 2015-05-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,1530.021
@@ -6027,6 +6039,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,2426.98
 2020-12-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1200.128
 2020-12-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
+2021-01-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
+2021-01-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1026.53
+2021-02-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
+2021-02-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1806.611
+2021-03-01,Westcoast Energy Inc.,Kingsvale,east,intracanada,2974.0,0.0
+2021-03-01,Westcoast Energy Inc.,Kingsvale,west,intracanada,2974.0,1148.25
 2006-01-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,5496.0,787.265
 2006-01-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,6722.0,0.0
 2006-02-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,6722.0,0.001
@@ -6150,7 +6168,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2011-01-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-01-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5055.108
 2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
-2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5531.614
+2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5531.615
 2011-03-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5842.319
 2011-03-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-04-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,7010.327
@@ -6388,6 +6406,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2020-12-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2020-12-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,1059.765
+2021-01-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
+2021-01-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,1481.674
+2021-02-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
+2021-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,374.936
+2021-03-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,2673.9
+2021-03-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2012-11-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,14164.0,113.733
 2012-12-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,14164.0,5696.261
 2013-01-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,14164.0,6597.284
@@ -6486,3 +6510,6 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,24252.0,11942.284
 2020-11-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,24252.0,12185.03
 2020-12-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,24252.0,7590.174
+2021-01-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,25807.0,5993.758
+2021-02-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,25807.0,6983.418
+2021-03-01,Westcoast Energy Inc.,Sunset Creek,east,intracanada,25807.0,4937.594
