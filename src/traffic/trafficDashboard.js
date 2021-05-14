@@ -669,7 +669,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       });
 
       // user selects key point
-      if (!chartParams.tm) {
+      if (!chartParams.tm && chartParams.defaultPoint.id !== "0") {
         document
           .getElementById("traffic-points-btn")
           .addEventListener("click", (event) => {
@@ -737,7 +737,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             lang.dynamicText(chartParams, lang.numberFormat, lang.series);
             displayPointDescription([chartParams.defaultPoint]);
           });
-      } else {
+      } else if (chartParams.defaultPoint.id !== "0") {
         // user is on trans mountain profile
         document
           .getElementById("traffic-points-btn")
@@ -854,25 +854,27 @@ export async function mainTraffic(trafficData, metaData, lang) {
         });
 
       // update map zoom
-      document
-        .getElementById("key-point-zoom-btn")
-        .addEventListener("click", (event) => {
-          const evt = event;
-          const allButtons = document.querySelectorAll(
-            `#key-point-zoom-btn .btn`
-          );
-          allButtons.forEach((elem) => {
-            const e = elem;
-            e.className = elem.className.replace(" active", "");
+      if (chartParams.defaultPoint.id !== "0") {
+        document
+          .getElementById("key-point-zoom-btn")
+          .addEventListener("click", (event) => {
+            const evt = event;
+            const allButtons = document.querySelectorAll(
+              `#key-point-zoom-btn .btn`
+            );
+            allButtons.forEach((elem) => {
+              const e = elem;
+              e.className = elem.className.replace(" active", "");
+            });
+            evt.target.className += " active";
+            const btnValue = evt.target.value;
+            if (btnValue === "zoom-in") {
+              pointMap.reZoom(true);
+            } else {
+              pointMap.reZoom(false);
+            }
           });
-          evt.target.className += " active";
-          const btnValue = evt.target.value;
-          if (btnValue === "zoom-in") {
-            pointMap.reZoom(true);
-          } else {
-            pointMap.reZoom(false);
-          }
-        });
+      }
     } catch (err) {
       console.log(err);
     }
