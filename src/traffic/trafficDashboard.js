@@ -167,14 +167,18 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function fiveYearTrend(fiveSeries, hasImports) {
     if (fiveSeries && !hasImports) {
       const [lastYrSeries, fiveYrAvg] = [fiveSeries[0], fiveSeries[1]];
+      const dataForAvg = lastYrSeries.data.slice(-3);
+      const monthsForAvg = dataForAvg.map((row) => row[0]);
       const fiveYrTrend = {};
       const lst = [
         [fiveYrAvg, "fiveYrQtr"],
         [lastYrSeries, "lastYrQtr"],
       ];
       lst.forEach((series) => {
-        let last3 = series[0].data.slice(-3);
-        last3 = last3.map((v) => v[1]);
+        let last3 = series[0].data.filter((row) =>
+          monthsForAvg.includes(row[0])
+        );
+        last3 = last3.map((row) => row[1]);
         fiveYrTrend[series[1]] = arrAvg(last3);
       });
       return fiveYrTrend;
