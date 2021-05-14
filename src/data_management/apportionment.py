@@ -152,4 +152,4 @@ def process_apportionment(test=False, sql=False, companies=False):
 
 
 if __name__ == "__main__":
-    df = process_apportionment(sql=False)
+    df = process_apportionment(sql=True)
