@@ -3,31 +3,6 @@ from util import get_company_names, company_rename, most_common
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
-# lastFullYear = 2021
-
-
-def incidentsPerKm(dfAll):
-    dfKm = pd.read_excel('./raw_data/pipeline_length.XLSX')
-    dfKm = dfKm[dfKm['Regulated KM Rounded'].notnull()]
-    dfKm['Company Name'] = [x.strip() for x in dfKm['Company Name']]
-    dfKm['Company Name'] = dfKm['Company Name'].replace(company_rename())
-
-    dfAll = dfAll.groupby('Company')['Incident Number'].count()
-    dfAll = dfAll.reset_index()
-    dfAll = dfAll.rename(columns={'Incident Number': 'Incident Count'})
-    dfAll = dfAll.merge(dfKm, how='inner', left_on='Company', right_on='Company Name')
-    for delete in ['Company Name', 'Regulated KM', 'PipelineID']:
-        del dfAll[delete]
-    dfAll['Incidents per 1000km'] = [round((i/l)*1000, 0) for i, l in zip(dfAll['Incident Count'], dfAll['Regulated KM Rounded'])]
-
-    # find the average incident per 1000km per group
-    dfAvg = dfAll.copy()
-    dfAvg = dfAvg.groupby(['Commodity'])['Incidents per 1000km'].mean().reset_index()
-    dfAvg = dfAvg.rename(columns={'Incidents per 1000km': 'Avg per 1000km'})
-    # merge the average with the company results
-    dfAll = dfAll.merge(dfAvg, how='inner', left_on='Commodity', right_on='Commodity')
-    dfAll['Avg per 1000km'] = dfAll['Avg per 1000km'].round(0)
-    return dfAll
 
 
 def incidentMetaData(df, dfPerKm, company, lang):
@@ -91,31 +66,6 @@ def incidentMetaData(df, dfPerKm, company, lang):
     return meta
 
 
-# def changes(df, volume=True):
-#     changeMeta = {}
-#     trend = df.copy().reset_index(drop=True)
-#     if volume:
-#         trend = trend[~trend['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
-#     trend = trend.groupby(['Year'])['Incident Number'].count()
-#     trend = trend.reset_index()
-#     trend = trend.sort_values(by='Year')
-#     trend = trend.rename(columns={'Incident Number': 'Incident Count'})
-#     max_year = max(trend['Year'])
-#     # isolate the five year range
-#     trend = trend[(trend['Year'] <= lastFullYear) & (trend['Year'] >= lastFullYear-5)]
-#     if lastFullYear in list(trend['Year']):
-#         recentIncidents = trend[trend['Year'] == lastFullYear].copy().reset_index()
-#         recentIncidents = recentIncidents.loc[0, "Incident Count"]
-#         fiveYearAvg = trend[trend['Year'] != lastFullYear].copy().reset_index()
-#         fiveYearAvg = fiveYearAvg['Incident Count'].mean()
-#         changeMeta['year'] = int(lastFullYear)
-#         changeMeta['pctChange'] = round(((int(recentIncidents)-int(fiveYearAvg))/int(fiveYearAvg))*100, 0)
-
-#     else:
-#         changeMeta["noneSince"] = max_year
-#     return changeMeta
-
-
 def fixColumns(df):
     new_cols = {x: x.split("(")[0].strip() for x in df.columns}
     df = df.rename(columns=new_cols)
@@ -160,6 +110,7 @@ def process_french(df):
                         "Essence"]
     df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
     df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
+
     def formatSpace(word):
         word = word.replace("d\x19", "d’")
         # word = word.split(" ")
@@ -167,7 +118,7 @@ def process_french(df):
         # first = " ".join(word[:-2])
         # return first+last
         return word
-        
+
     for accentCol in ["What Happened"]:
         df[accentCol] = [formatSpace(x) for x in df[accentCol]]
     return df
@@ -198,8 +149,8 @@ def optimizeJson(df):
                             "Approximate Volume Released": "vol",
                             "What Happened": "what",
                             "Why It Happened": "why"})
-    df["lat long"] = [[round(lat,4), round(long,4)] for lat, long in zip(df['Latitude'],
-                                                       df['Longitude'])]
+    df["lat long"] = [[round(lat, 4), round(long, 4)] for lat, long in zip(df['Latitude'],
+                                                                           df['Longitude'])]
     for delete in ['Latitude', 'Longitude']:
         del df[delete]
     return df
@@ -272,8 +223,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     if company_names:
         print(get_company_names(df['Company']))
 
-    # industryTrend = changes(df, volume=True)
-    # perKm = incidentsPerKm(df)
     perKm = None
 
     if companies:
@@ -313,8 +262,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
             meta = incidentMetaData(df, perKm, company, lang)
-            # companyTrend = changes(df_vol, volume=False)
-            # meta['trends'] = {"company": companyTrend, "industry": industryTrend}
             thisCompanyData['meta'] = meta
             del df_vol['Incident Types']
             del df_vol['Company']
@@ -336,7 +283,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    # df, volume, meta = process_incidents(remote=False, test=False, lang='en')
+    df, volume, meta = process_incidents(remote=False, test=False, lang='en')
     df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
     print('completed incidents!')
 

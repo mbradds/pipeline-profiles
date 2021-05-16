@@ -241,6 +241,28 @@ def process_french(df, fr):
     return df
 
 
+def add_links(df):
+    df_links = orca_regdocs_links()
+    l = {}
+    for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
+        l[name] = folder
+
+    regdocs = []
+    for proj in df['Project Name']:
+        try:
+            regdocs.append(l[proj])
+        except KeyError:
+            regdocs.append(np.nan)
+    df['Regdocs'] = regdocs
+    # calculate warning for number of projects with no regdocs link
+    df_no_link = df[~df['Regdocs'].notnull()].copy().reset_index(drop=True)
+    no_link_proj = df_no_link['Short Project Name'].nunique()
+    all_proj = df['Short Project Name'].nunique()
+    pct = round((no_link_proj/all_proj)*100, 1)
+    print("There are "+str(no_link_proj) +" projects without a regdocs link (" +str(pct) +"% of all projects)")
+    return df
+
+
 def process_conditions(remote=False,
                        nonStandard=True,
                        company_names=False,
@@ -248,21 +270,6 @@ def process_conditions(remote=False,
                        test=False,
                        lang='en',
                        save=True):
-
-    def add_links(df_c, df_links):
-        l = {}
-        for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
-            l[name] = folder
-
-        regdocs = []
-        for proj in df_c['Project Name']:
-            try:
-                regdocs.append(l[proj])
-            except KeyError:
-                regdocs.append(np.nan)
-        df_c['Regdocs'] = regdocs
-        return df_c
-
     if remote:
         print('downloading remote conditions file')
         if lang == 'en':
@@ -331,7 +338,7 @@ def process_conditions(remote=False,
                                              "No theme specified"})
 
     regions_map = import_simplified()
-    links = orca_regdocs_links()
+    df = add_links(df)
     if company_names:
         print(get_company_names(df['Company']))
 
@@ -369,7 +376,7 @@ def process_conditions(remote=False,
 
         df_c = df[df['Company'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
-            df_c = add_links(df_c, links)
+            # df_c = add_links(df_c, links)
             df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
             expanded_locations = []
             for unique in df_c['condition id']:
@@ -414,9 +421,9 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    # links = orca_regdocs_links(True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
+    # links = orca_regdocs_links(False)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=False)
+    # df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
     print('completed conditions!')
 
 #%%
