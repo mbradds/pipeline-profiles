@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common
+from util import get_company_names, company_rename, most_common, idify
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -126,6 +126,7 @@ def process_french(df):
 
 def process_english(df):
     df = fixColumns(df)
+    df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
     chosenSubstances = ["Propane",
                         "Natural Gas - Sweet",
                         "Natural Gas - Sour",
@@ -140,7 +141,22 @@ def process_english(df):
                         "Diesel Fuel",
                         "Gasoline"]
     df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]
-    df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
+    # custom codes for product
+    df['Substance'] = df['Substance'].replace({'Propane': 'pro',
+                                               'Natural Gas - Sweet': 'ngsweet',
+                                               'Natural Gas - Sour': 'ngsour',
+                                               'Fuel Gas': 'fgas',
+                                               'Lube Oil': 'loil',
+                                               'Crude Oil - Sweet': 'cosweet',
+                                               'Crude Oil - Synthetic': 'sco',
+                                               'Crude Oil - Sour': 'cosour',
+                                               'Natural Gas Liquids': 'ngl',
+                                               'Condensate': 'co',
+                                               'Diesel Fuel': 'diesel',
+                                               'Gasoline': 'gas'
+                                               })
+    df = idify(df, "Province", "region")
+    print(sorted(list(set(df["What Happened"]))))
     return df
 
 
@@ -284,7 +300,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 if __name__ == '__main__':
     print('starting incidents...')
     df, volume, meta = process_incidents(remote=False, test=False, lang='en')
-    df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
+    # df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
     print('completed incidents!')
 
 #%%
