@@ -125,6 +125,18 @@ def process_french(df):
 
 
 def process_english(df):
+
+    def replaceWhatWhy(df, colName, values):
+        newCol = []
+        for what in df[colName]:
+            what = what.split(",")
+            what = [x.strip() for x in what]
+            what = [values[x] for x in what]
+            newCol.append(what)
+
+        df[colName] = newCol
+        return df
+
     df = fixColumns(df)
     df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
     chosenSubstances = ["Propane",
@@ -156,7 +168,32 @@ def process_english(df):
                                                'Gasoline': 'gas'
                                                })
     df = idify(df, "Province", "region")
-    print(sorted(list(set(df["What Happened"]))))
+    what = {"Defect and Deterioration": "dd",
+            "Corrosion and Cracking": "cc",
+            "Equipment Failure": "ef",
+            "Incorrect Operation": "io",
+            "External Interference": "ei",
+            "Natural Force Damage": "nfd",
+            "Other Causes": "oc",
+            "To be determined": "tbd"}
+
+    why = {"Engineering and Planning": "ep",
+           "Maintenance": "m",
+           "Inadequate Procurement": "ip",
+           "Tools and Equipment": "te",
+           "Standards and Procedures": "sp",
+           "Failure in communication": "fc",
+           "Inadequate Supervision": "is",
+           "Human Factors": "hf",
+           "Natural or Environmental Forces": "ef",
+           "To be determined": "tbd"}
+
+    df = replaceWhatWhy(df, "What Happened", what)
+    df = replaceWhatWhy(df, "Why It Happened", why)
+    df['Status'] = df['Status'].replace({"Closed": "c",
+                                         "Initially Submitted": "is",
+                                         "Submitted": "s"})
+    print(sorted(list(set(df["Status"]))))
     return df
 
 
