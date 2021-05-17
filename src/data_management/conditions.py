@@ -422,7 +422,7 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # links = orca_regdocs_links(True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=False)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
     df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
     print('completed conditions!')
 
