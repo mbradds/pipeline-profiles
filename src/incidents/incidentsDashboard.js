@@ -75,17 +75,27 @@ export async function mainIncidents(incidentData, metaData, lang) {
   };
 
   function langCommon() {
+    const joinMultiple = (lst, sep = " & ") => lst.join(sep);
+
     const substance =
       lang.dashboard.EVENTCOLORS.Substance[
         metaData.mostCommonSubstance
       ].n.toLowerCase();
 
-    const why = metaData.mostCommonWhy.map((e) =>
+    let why = metaData.mostCommonWhy.map((e) =>
       lang.dashboard.EVENTCOLORS.why[e].n.toLowerCase()
     );
-    const what = metaData.mostCommonWhat.map((e) =>
+    let what = metaData.mostCommonWhat.map((e) =>
       lang.dashboard.EVENTCOLORS.what[e].n.toLowerCase()
     );
+
+    if (why.length > 1) {
+      why = joinMultiple(why);
+    }
+    if (what.length > 1) {
+      what = joinMultiple(what);
+    }
+
     return { substance, what, why };
   }
 
