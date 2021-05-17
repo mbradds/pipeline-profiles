@@ -13,7 +13,7 @@ script_dir = os.path.dirname(__file__)
 
 def orca_regdocs_links(sql=False):
     if sql:
-        df = execute_sql(os.path.join(script_dir, "/queries"), 'projects_regdocs.sql')
+        df = execute_sql(os.path.join(script_dir, "queries"), 'projects_regdocs.sql')
         df.to_csv('raw_data/projects_regdocs.csv', index=False)
     else:
         df = pd.read_csv('raw_data/projects_regdocs.csv')
@@ -421,8 +421,8 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    # links = orca_regdocs_links(False)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=False)
+    links = orca_regdocs_links(True)
+    # df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=False)
     # df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
     print('completed conditions!')
 

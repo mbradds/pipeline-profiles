@@ -650,6 +650,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Foothills Pipe Lines Ltd. (Foothills),Kingsgate,south,export,81200.0,66513.803
 2020-11-01,Foothills Pipe Lines Ltd. (Foothills),Kingsgate,south,export,85000.0,70349.897
 2020-12-01,Foothills Pipe Lines Ltd. (Foothills),Kingsgate,south,export,85000.0,71224.142
+2021-01-01,Foothills Pipe Lines Ltd. (Foothills),Kingsgate,south,export,85000.0,72912.306
+2021-02-01,Foothills Pipe Lines Ltd. (Foothills),Kingsgate,south,export,85000.0,70712.95
+2021-03-01,Foothills Pipe Lines Ltd. (Foothills),Kingsgate,south,export,85000.0,69576.987
 2006-01-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,57771.161
 2006-02-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,59686.643
 2006-03-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,56132.484
@@ -830,6 +833,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,61500.0,14846.306
 2020-11-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,14373.453
 2020-12-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,18814.355
+2021-01-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,20688.742
+2021-02-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,23475.911
+2021-03-01,Foothills Pipe Lines Ltd. (Foothills),Monchy,southeast,export,66100.0,16671.358
 2006-01-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",south,export,13334.9,7778.452
 2006-01-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",north,import,13334.9,0.0
 2006-02-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",south,export,13334.9,7627.286
@@ -1300,6 +1306,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,39560.0,16427.792
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,42825.0,19239.974
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,42825.0,20472.178
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,42825.0,21682.871
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,42825.0,26193.697
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,42825.0,17684.328
 2006-01-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,220461.0,227701.855
 2006-02-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,220461.0,224996.154
 2006-03-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,220461.0,212816.919
@@ -1480,6 +1489,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,116200.0,100420.384
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,129528.36,108248.27
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,129528.36,124937.15
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,129528.36,127089.974
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,129528.36,125486.733
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),East Gate,east & southeast,intracanada,129528.36,111321.151
 2011-11-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,,28803.7
 2011-12-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,,29703.389
 2012-01-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,,31631.726
@@ -1590,6 +1602,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,53515.0,28043.438
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,55052.0,31853.127
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,55052.0,33834.679
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,55052.0,35914.822
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,55052.0,39896.196
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),Edmonton,east & north,intracanada,55052.0,30904.584
 2006-01-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,64843.0,29444.412
 2006-02-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,64843.0,30810.903
 2006-03-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,64843.0,28852.993
@@ -1770,6 +1785,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,123664.0,109908.904
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,153518.0,120540.348
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,153518.0,125695.803
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,153518.0,128144.683
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,153518.0,134743.463
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),North and East,east & north,intracanada,153518.0,120462.135
 2010-11-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,19976.0,16159.347
 2010-12-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,19976.0,16218.566
 2011-01-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,19976.0,16407.358
@@ -1892,6 +1910,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,39124.0,33966.966
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,35862.0,35422.692
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,35862.0,36118.484
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,35862.0,36612.794
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,35862.0,36851.412
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Kirby,east & north,intracanada,35862.0,36868.73
 2010-11-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,35400.0,21645.297
 2010-12-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,35400.0,22100.306
 2011-01-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,35400.0,22339.284
@@ -2014,6 +2035,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,44097.0,35808.576
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,41642.0,40577.653
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,41642.0,41485.157
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,41642.0,41360.05
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,41642.0,42518.722
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),OSDA Liege,east & north,intracanada,41642.0,40826.418
 2016-01-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,,0.0
 2016-02-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,,0.0
 2016-03-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,,0.0
@@ -2074,6 +2098,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,53823.0,16363.481
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,53823.0,16768.019
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,53823.0,16222.351
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,53823.0,20141.331
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,53823.0,20246.414
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),Saturn,southeast,intracanada,53823.0,19337.236
 2006-01-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,187479.0,161667.552
 2006-02-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,187479.0,168826.762
 2006-03-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,187479.0,172676.233
@@ -2254,6 +2281,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,320300.0,281694.402
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,325900.0,289103.226
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,325900.0,288214.746
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,325900.0,289308.706
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,325900.0,288899.677
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),Upstream of James River,southeast & east,intracanada,325900.0,294619.566
 2006-01-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,81013.0,46734.142
 2006-02-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,81013.0,51648.039
 2006-03-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,81013.0,56051.726
@@ -2434,6 +2464,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,81400.0,73844.576
 2020-11-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,84490.0,78324.317
 2020-12-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,84490.0,77423.341
+2021-01-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,84490.0,79209.887
+2021-02-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,84490.0,79098.448
+2021-03-01,NOVA Gas Transmission Ltd. (NGTL),West Gate,west,intracanada,84490.0,75923.891
 2006-01-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,5600.0,4041.8
 2006-02-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,5600.0,4726.14
 2006-03-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,5600.0,4187.951
@@ -2614,6 +2647,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,8245.0,7020.963
 2020-11-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,8935.0,8787.946
 2020-12-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,8935.0,8821.538
+2021-01-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,8935.0,8971.017
+2021-02-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,8935.0,9048.799
+2021-03-01,Trans Québec & Maritimes Pipeline Inc,East Hereford,south,export,8935.0,8173.423
 2006-01-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,19690.0,14108.371
 2006-02-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,19690.0,15265.629
 2006-03-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,19690.0,14130.1
@@ -2794,6 +2830,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,24384.0,14993.377
 2020-11-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,24384.0,18055.97
 2020-12-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,24384.0,19236.974
+2021-01-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,24384.0,20071.852
+2021-02-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,24384.0,21068.957
+2021-03-01,Trans Québec & Maritimes Pipeline Inc,Saint Lazare,east,intracanada,24384.0,18479.945
 2006-01-01,TransCanada PipeLines Limited,Chippawa,east,export,13226.667,6931.677
 2006-02-01,TransCanada PipeLines Limited,Chippawa,east,export,13226.667,8861.844
 2006-03-01,TransCanada PipeLines Limited,Chippawa,east,export,13226.667,8757.328
@@ -3036,6 +3075,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,TransCanada PipeLines Limited,Chippawa,east,export,19760.0,0.0
 2020-12-01,TransCanada PipeLines Limited,Chippawa,west,import,3227.0,4294.038
 2020-12-01,TransCanada PipeLines Limited,Chippawa,east,export,19760.0,0.0
+2021-01-01,TransCanada PipeLines Limited,Chippawa,east,export,19760.0,0.0
+2021-01-01,TransCanada PipeLines Limited,Chippawa,west,import,3227.0,3817.357
+2021-02-01,TransCanada PipeLines Limited,Chippawa,west,import,3227.0,3228.18
+2021-02-01,TransCanada PipeLines Limited,Chippawa,east,export,19760.0,0.0
+2021-03-01,TransCanada PipeLines Limited,Chippawa,west,import,3227.0,4915.803
+2021-03-01,TransCanada PipeLines Limited,Chippawa,east,export,19760.0,0.0
 2006-01-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,101896.984,90452.108
 2006-02-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,101896.984,88641.602
 2006-03-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,101896.984,87242.489
@@ -3216,6 +3261,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,93074.867,30518.397
 2020-11-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,95158.987,30471.849
 2020-12-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,95158.987,33364.168
+2021-01-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,95158.987,34317.788
+2021-02-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,95158.987,33082.47
+2021-03-01,TransCanada PipeLines Limited,Eastern Triangle - NOL Receipts,east,intracanada,95158.987,31026.068
 2006-01-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,1725.87
 2006-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,1101.506
 2006-03-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,3321.806
@@ -3396,6 +3444,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,2.434
 2020-11-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,5.082
 2020-12-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,14.597
+2021-01-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,1.626
+2021-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,5.911
+2021-03-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,12.205
 2006-01-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,4858.516
 2006-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,13407.958
 2006-03-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,7347.967
@@ -3576,6 +3627,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,91843.0,14699.017
 2020-11-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,91843.0,25525.109
 2020-12-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,91843.0,51193.735
+2021-01-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,91843.0,59045.992
+2021-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,91843.0,63907.334
+2021-03-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,91843.0,37278.012
 2006-01-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,13095.596
 2006-02-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,13282.141
 2006-03-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,11917.865
@@ -3756,6 +3810,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,5405.563
 2020-11-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,8636.384
 2020-12-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,11531.833
+2021-01-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,11621.147
+2021-02-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,11518.103
+2021-03-01,TransCanada PipeLines Limited,Emerson I,south,export,20100.0,7990.2
 2006-01-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,62856.578
 2006-02-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,60481.089
 2006-03-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,58245.905
@@ -4058,6 +4115,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.0
 2020-12-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.001
 2020-12-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,36412.372
+2021-01-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,34689.327
+2021-01-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.0
+2021-02-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,26244.499
+2021-02-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.0
+2021-03-01,TransCanada PipeLines Limited,Emerson II,north,import,20180.0,0.001
+2021-03-01,TransCanada PipeLines Limited,Emerson II,south,export,83380.0,34875.308
 2006-01-01,TransCanada PipeLines Limited,Iroquois,east,export,39015.0,27895.478
 2006-02-01,TransCanada PipeLines Limited,Iroquois,east,export,39015.0,29297.874
 2006-03-01,TransCanada PipeLines Limited,Iroquois,east,export,39015.0,30409.819
@@ -4268,6 +4331,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,TransCanada PipeLines Limited,Iroquois,east,export,34224.0,6782.337
 2020-12-01,TransCanada PipeLines Limited,Iroquois,east,export,34224.0,22758.983
 2020-12-01,TransCanada PipeLines Limited,Iroquois,west,import,1430.0,0.0
+2021-01-01,TransCanada PipeLines Limited,Iroquois,east,export,34224.0,27477.753
+2021-01-01,TransCanada PipeLines Limited,Iroquois,west,import,1430.0,0.0
+2021-02-01,TransCanada PipeLines Limited,Iroquois,east,export,34224.0,27673.212
+2021-02-01,TransCanada PipeLines Limited,Iroquois,west,import,1430.0,0.0
+2021-03-01,TransCanada PipeLines Limited,Iroquois,west,import,1430.0,0.0
+2021-03-01,TransCanada PipeLines Limited,Iroquois,east,export,34224.0,14035.729
 2006-01-01,TransCanada PipeLines Limited,Niagara,east,export,30329.988,25907.204
 2006-02-01,TransCanada PipeLines Limited,Niagara,east,export,30329.988,26085.281
 2006-03-01,TransCanada PipeLines Limited,Niagara,east,export,30329.988,26694.062
@@ -4546,6 +4615,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,TransCanada PipeLines Limited,Niagara,west,import,18341.0,17345.793
 2020-12-01,TransCanada PipeLines Limited,Niagara,west,import,18341.0,16682.613
 2020-12-01,TransCanada PipeLines Limited,Niagara,east,export,30182.0,0.0
+2021-01-01,TransCanada PipeLines Limited,Niagara,west,import,18341.0,16002.288
+2021-01-01,TransCanada PipeLines Limited,Niagara,east,export,30182.0,0.0
+2021-02-01,TransCanada PipeLines Limited,Niagara,west,import,18341.0,14443.027
+2021-02-01,TransCanada PipeLines Limited,Niagara,east,export,30182.0,0.0
+2021-03-01,TransCanada PipeLines Limited,Niagara,east,export,30182.0,0.0
+2021-03-01,TransCanada PipeLines Limited,Niagara,west,import,18341.0,16457.344
 2006-01-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,111747.838,99192.803
 2006-02-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,111747.838,98230.483
 2006-03-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,111747.838,95189.049
@@ -4726,6 +4801,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,95680.2,34792.392
 2020-11-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,99058.4,35622.1
 2020-12-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,99058.4,39839.522
+2021-01-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,99058.4,41060.547
+2021-02-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,99058.4,40820.072
+2021-03-01,TransCanada PipeLines Limited,Northern Ontario Line,east,intracanada,99058.4,36596.674
 2006-01-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8112.0,3479.007
 2006-02-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8112.0,3754.833
 2006-03-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8112.0,3422.555
@@ -4906,6 +4984,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8742.0,1346.233
 2020-11-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8742.0,1752.978
 2020-12-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8742.0,2401.435
+2021-01-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8742.0,2746.619
+2021-02-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8742.0,2833.541
+2021-03-01,TransCanada PipeLines Limited,Other US Northeast,south,export,8742.0,2397.564
 2006-01-01,TransCanada PipeLines Limited,Prairies,east,intracanada,205253.333,187852.67
 2006-02-01,TransCanada PipeLines Limited,Prairies,east,intracanada,205253.333,186047.967
 2006-03-01,TransCanada PipeLines Limited,Prairies,east,intracanada,205253.333,176588.78
@@ -5086,6 +5167,9 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-10-01,TransCanada PipeLines Limited,Prairies,east,intracanada,171711.55,80746.54
 2020-11-01,TransCanada PipeLines Limited,Prairies,east,intracanada,182228.528,88380.185
 2020-12-01,TransCanada PipeLines Limited,Prairies,east,intracanada,182228.528,102428.893
+2021-01-01,TransCanada PipeLines Limited,Prairies,east,intracanada,182228.528,102930.357
+2021-02-01,TransCanada PipeLines Limited,Prairies,east,intracanada,182228.528,96627.548
+2021-03-01,TransCanada PipeLines Limited,Prairies,east,intracanada,182228.528,91475.04
 2006-01-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,40994.552
 2006-02-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,42874.982
 2006-03-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,42519.103
@@ -5123,7 +5207,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2008-11-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,30294.463
 2008-12-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,29604.343
 2009-01-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,39456.974
-2009-02-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,48506.302
+2009-02-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,48506.303
 2009-03-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,40694.257
 2009-04-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,42467.192
 2009-05-01,TransCanada PipeLines Limited,St Clair,east,import,61000.0,42285.523
@@ -6168,7 +6252,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2011-01-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-01-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5055.108
 2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
-2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5531.615
+2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5531.614
 2011-03-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5842.319
 2011-03-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-04-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,7010.327
