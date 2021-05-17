@@ -18,23 +18,17 @@ function leafletBaseMap(config) {
 }
 
 const substanceState = {
-  Propane: "gas",
-  "Natural Gas": "gas",
-  "Gaz Naturel": "gas",
-  "Fuel Gas": "liquid",
-  "Lube Oil": "liquid",
-  "Huile lubrifiante": "liquid",
-  "Crude Oil": "liquid",
-  "Pétrole brut non sulfureux": "liquid",
-  "Pétrole brut synthétique": "liquid",
-  "Pétrole brut sulfureux": "liquid",
-  "Diesel Fuel": "liquid",
-  Gasoline: "liquid",
-  Essence: "liquid",
-  "Natural Gas Liquids": "gas",
-  "Liquides de gaz naturel": "gas",
-  Condensate: "liquid",
-  Condensat: "liquid",
+  pro: "gas",
+  ngsweet: "gas",
+  fgas: "liquid",
+  loil: "liquid",
+  cosweet: "liquid",
+  cosour: "liquid",
+  sco: "liquid",
+  diesel: "liquid",
+  gas: "liquid",
+  ngl: "gas",
+  co: "liquid",
   Other: "other",
   Autre: "other",
 };
@@ -223,13 +217,11 @@ export class EventMap {
       return `&nbsp${text}`;
     };
 
+    const bubbleName =
+      this.lang.EVENTCOLORS[this.field][incidentParams[this.field]].n;
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${incidentParams.id}</strong></p>`;
     toolTipText += `<table>`;
-    toolTipText += `<tr><td>${
-      this.field
-    }:</td><td style="color:${fillColor}">&nbsp<strong>${
-      incidentParams[this.field]
-    }</strong></td></tr>`;
+    toolTipText += `<tr><td>${this.field}:</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
     toolTipText += `<tr><td>${
       this.lang.estRelease
     }</td><td>&nbsp<strong>${this.volumeText(
@@ -351,7 +343,7 @@ export class EventMap {
     years = years.sort((a, b) => b - a);
     const yearColors = {};
     years.forEach((yr, i) => {
-      yearColors[yr] = colors[i];
+      yearColors[yr] = { c: colors[i], n: yr };
     });
     this.colors.Year = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
@@ -497,10 +489,11 @@ export class EventMap {
 
   fieldChange(newField) {
     const newColors = this.colors[newField];
+
     this.field = newField;
     const currentDashboard = this;
     this.circles.eachLayer((layer) => {
-      const newFill = newColors[layer.options.incidentParams[newField]];
+      const newFill = newColors[layer.options.incidentParams[newField]].c;
       layer.setStyle({
         fillColor: newFill,
       });
@@ -557,9 +550,10 @@ export class EventNavigator {
       if (colors) {
         return function (key, value) {
           return {
-            name: key,
+            name: colors[key].n,
+            id: key,
             data: [{ name, y: value[yVal] }],
-            color: colors[name][key],
+            color: colors[key].c,
             filter: yVal,
           };
         };
@@ -567,18 +561,20 @@ export class EventNavigator {
       return function (key, value) {
         return {
           name: key,
+          id: key,
           data: [{ name, y: value[yVal] }],
           filter: yVal,
         };
       };
     };
 
-    const seriesParams = seriesProps(this.colors);
     const seriesList = [];
     Object.keys(series[name]).forEach((key) => {
+      const seriesParams = seriesProps(this.barColors[name]);
       const value = series[name][key];
-      seriesList.push(seriesParams(key, value, name, yVal, this.colors));
+      seriesList.push(seriesParams(key, value, name, this.barColors[name]));
     });
+    // console.log(seriesList);
     return seriesList;
   }
 
@@ -785,7 +781,7 @@ export class EventNavigator {
     if (chart) {
       const colors = this.barColors[bar.name];
       chart.series.forEach((s, i) => {
-        chart.series[i].options.color = colors[s.name];
+        chart.series[i].options.color = colors[s.options.id].c;
         chart.series[i].update(chart.series[i].options);
       });
       let activeTitle = chart.title.textStr;

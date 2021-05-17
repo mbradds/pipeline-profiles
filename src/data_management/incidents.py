@@ -60,8 +60,8 @@ def incidentMetaData(df, dfPerKm, company, lang):
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
-    meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
-    meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
+    meta = most_common(df_c, meta, "what common", "mostCommonWhat")
+    meta = most_common(df_c, meta, "why common", "mostCommonWhy")
     meta = most_common_substance(df_c, meta, lang)
     return meta
 
@@ -69,58 +69,6 @@ def incidentMetaData(df, dfPerKm, company, lang):
 def fixColumns(df):
     new_cols = {x: x.split("(")[0].strip() for x in df.columns}
     df = df.rename(columns=new_cols)
-    return df
-
-
-def process_french(df):
-    df = fixColumns(df)
-    df = df.rename(columns={"Numéro d'incident": "Incident Number",
-                            "Types d'incident": "Incident Types",
-                            "Date de l'événement signalé": "Reported Date",
-                            "Centre habité le plus près": "Nearest Populated Centre",
-                            "Province": "Province",
-                            "Société": "Company",
-                            "État": "Status",
-                            "Latitude": "Latitude",
-                            "Longitude": "Longitude",
-                            "Approximation du volume déversé": "Approximate Volume Released",
-                            "Substance": "Substance",
-                            "Type de Déversement": "Release Type",
-                            "Majeur": "Significant",
-                            "Année": "Year",
-                            "Ce qui s’est passé": "What Happened",
-                            "Cause": "Why It Happened"})
-
-    # take care of "what happened" french col error
-    for colName in df.columns:
-        if "est passé" in colName:
-            df = df.rename(columns={colName: "What Happened"})
-
-    chosenSubstances = ["Propane",
-                        "Gaz Naturel - non sulfureux",
-                        "Gaz naturel - sulfureux",
-                        "Huile lubrifiante",
-                        "Pétrole brut non sulfureux",
-                        "Pétrole brut synthétique",
-                        "Pétrole brut sulfureux",
-                        "Liquides de gaz naturel",
-                        "Condensat",
-                        # "Dioxyde de soufre",
-                        "Carburant diesel",
-                        "Essence"]
-    df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
-    df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
-
-    def formatSpace(word):
-        word = word.replace("d\x19", "d’")
-        # word = word.split(" ")
-        # last = " ".join(word[-2:])
-        # first = " ".join(word[:-2])
-        # return first+last
-        return word
-
-    for accentCol in ["What Happened"]:
-        df[accentCol] = [formatSpace(x) for x in df[accentCol]]
     return df
 
 
@@ -188,12 +136,14 @@ def process_english(df):
            "Natural or Environmental Forces": "ef",
            "To be determined": "tbd"}
 
+    df["what common"] = df["What Happened"]
+    df["why common"] = df["Why It Happened"]
     df = replaceWhatWhy(df, "What Happened", what)
     df = replaceWhatWhy(df, "Why It Happened", why)
     df['Status'] = df['Status'].replace({"Closed": "c",
                                          "Initially Submitted": "is",
                                          "Submitted": "s"})
-    print(sorted(list(set(df["Status"]))))
+    # print(sorted(list(set(df["Status"]))))
     return df
 
 
@@ -265,6 +215,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
+
+    df['Approximate Volume Released'] = [int(x) if x > 10 else round(x, 3) for x in df['Approximate Volume Released']]
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
 
     for delete in ['Significant',
@@ -316,8 +268,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
             # calculate metadata here, before non releases are filtered out
             meta = incidentMetaData(df, perKm, company, lang)
             thisCompanyData['meta'] = meta
-            del df_vol['Incident Types']
-            del df_vol['Company']
+            for delete in ['Incident Types', 'Company', 'why common', 'what common']:
+                del df_vol[delete]
             df_vol = optimizeJson(df_vol)
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             if not test:
