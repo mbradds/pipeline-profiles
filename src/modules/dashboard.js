@@ -205,20 +205,19 @@ export class EventMap {
   }
 
   toolTip(incidentParams, fillColor) {
-    const formatCommaList = (text) => {
-      if (text.includes(",")) {
-        const itemList = text.split(",");
+    const formatCommaList = (text, names) => {
+      if (text.length > 1) {
+        const itemList = text;
         let brokenText = ``;
         for (let i = 0; i < itemList.length; i += 1) {
-          brokenText += `&nbsp- ${itemList[i]}<br>`;
+          brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
         }
         return brokenText;
       }
-      return `&nbsp${text}`;
+      return `&nbsp${names[text].n}`;
     };
 
-    const bubbleName =
-      this.lang.EVENTCOLORS[this.field][incidentParams[this.field]].n;
+    const bubbleName = this.colors[this.field][incidentParams[this.field]].n;
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${incidentParams.id}</strong></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${this.field}:</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
@@ -231,10 +230,12 @@ export class EventMap {
     toolTipText += `<tr><td>${
       this.lang.what
     }?</td><td><strong>${formatCommaList(
-      incidentParams.what
+      incidentParams.what,
+      this.colors.what
     )}</strong></td></tr>`;
     toolTipText += `<tr><td>${this.lang.why}?</td><td><strong>${formatCommaList(
-      incidentParams.why
+      incidentParams.why,
+      this.colors.why
     )}</strong></td></tr>`;
     toolTipText += `</table></div>`;
     return toolTipText;
@@ -290,7 +291,7 @@ export class EventMap {
 
   applyColor(rowValue, field) {
     try {
-      return this.colors[field][rowValue];
+      return this.colors[field][rowValue].c;
     } catch (err) {
       return undefined;
     }
@@ -553,7 +554,6 @@ export class EventNavigator {
             name: colors[key].n,
             id: key,
             data: [{ name, y: value[yVal] }],
-            color: colors[key].c,
             filter: yVal,
           };
         };
@@ -961,8 +961,8 @@ export class EventTrend extends EventMap {
         events.forEach((row) => {
           let itemList;
           uniqueYears.add(row.Year);
-          if (row[field].includes(",")) {
-            itemList = row[field].split(",");
+          if (row[field].length > 1) {
+            itemList = row[field];
             itemList = itemList.map((value) => value.trim());
           } else {
             itemList = [row[field]];
@@ -1006,17 +1006,19 @@ export class EventTrend extends EventMap {
 
     dummySeries.data = dummyData;
     seriesList.push(dummySeries);
-    Object.keys(series).forEach((seriesName) => {
-      const seriesData = series[seriesName];
+    Object.keys(series).forEach((seriesId) => {
+      const seriesData = series[seriesId];
       const hcData = [];
       Object.keys(seriesData).forEach((xVal) => {
         const yVal = seriesData[xVal];
         hcData.push({ name: xVal, y: yVal });
       });
+      // console.log(this.colors[field][seriesId]);
       seriesList.push({
-        name: seriesName,
+        name: this.colors[field][seriesId].n,
+        id: seriesId,
         data: hcData,
-        color: this.applyColor(seriesName, field),
+        color: this.applyColor(seriesId, field),
       });
     });
     return seriesList;
@@ -1136,11 +1138,12 @@ export class EventTrend extends EventMap {
                 const definitionsPopUp =
                   document.getElementById("trend-definitions");
                 const keyColor =
-                  currentTrend.colors[currentTrend.field][this.name];
+                  currentTrend.colors[currentTrend.field][this.options.id].c;
 
                 const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
                 definitionsPopUp.innerHTML =
-                  key + currentTrend.definitions[currentTrend.field][this.name];
+                  key +
+                  currentTrend.definitions[currentTrend.field][this.options.id];
               }
             },
           },

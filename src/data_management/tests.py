@@ -34,8 +34,7 @@ class TestUtil(unittest.TestCase):
 
 
 class TestNovaIncidents(unittest.TestCase):
-    df, volume, meta = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True, lang='en')
-    dfFR, volumeFR, metaFR = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True, lang='fr')
+    df, volume, meta = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
 
     def countIncidentType(self, iType, df):
         count = 0
@@ -43,18 +42,6 @@ class TestNovaIncidents(unittest.TestCase):
             if iType in t:
                 count = count + 1
         return count
-
-    def testEngEqualToFra(self):
-        self.assertEqual(len(self.df), len(self.dfFR))
-        self.assertEqual(self.countIncidentType("Adverse Environmental Effects", self.df),
-                          self.countIncidentType("Effets environnementaux négatifs", self.dfFR))
-
-        self.assertEqual(self.meta["seriousEvents"]["Adverse Environmental Effects"],
-                          self.metaFR["seriousEvents"]["Adverse Environmental Effects"])
-        self.assertEqual(self.meta["seriousEvents"]["Serious Injury (CER or TSB)"],
-                          self.metaFR["seriousEvents"]["Serious Injury (CER or TSB)"])
-        self.assertEqual(self.meta["seriousEvents"]["Fatality"],
-                          self.metaFR["seriousEvents"]["Fatality"])
 
     def testTotal(self):
         self.assertEqual(len(self.df), 338)  # total incidents for NGTL
@@ -71,8 +58,8 @@ class TestNovaIncidents(unittest.TestCase):
         self.assertEqual(self.meta["seriousEvents"]["Fatality"], 1)
 
     def testVariableCounts(self):
-        substance = self.volume[self.volume['Substance'] == "Natural Gas - Sweet"].copy()
-        status = self.volume[self.volume['Status'] == "Closed"].copy()
+        substance = self.volume[self.volume['Substance'] == "ngsweet"].copy()
+        status = self.volume[self.volume['Status'] == "c"].copy()
         year = self.volume[self.volume['Year'] == 2013].copy()
         self.assertEqual(len(substance), 84)
         self.assertEqual(len(status), 86)

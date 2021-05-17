@@ -54,7 +54,6 @@ def incidentMetaData(df, dfPerKm, company, lang):
     # filter to specific company
     df_c = df[df['Company'] == company].copy()
     meta = {}
-    # meta['relativePct'] = thisCompanyPct(df, df_c)
     meta['companyName'] = company
     meta['seriousEvents'] = other_types(df_c, lang)
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
@@ -62,6 +61,9 @@ def incidentMetaData(df, dfPerKm, company, lang):
 
     meta = most_common(df_c, meta, "what common", "mostCommonWhat")
     meta = most_common(df_c, meta, "why common", "mostCommonWhy")
+
+    meta["mostCommonWhat"] = [x.strip() for x in meta["mostCommonWhat"].split(" & ")]
+    meta["mostCommonWhy"] = [x.strip() for x in meta["mostCommonWhy"].split(" & ")]
     meta = most_common_substance(df_c, meta, lang)
     return meta
 
@@ -136,14 +138,13 @@ def process_english(df):
            "Natural or Environmental Forces": "ef",
            "To be determined": "tbd"}
 
-    df["what common"] = df["What Happened"]
-    df["why common"] = df["Why It Happened"]
     df = replaceWhatWhy(df, "What Happened", what)
     df = replaceWhatWhy(df, "Why It Happened", why)
+    df["what common"] = [", ".join(x) for x in df["What Happened"]]
+    df["why common"] = [", ".join(x) for x in df["Why It Happened"]]
     df['Status'] = df['Status'].replace({"Closed": "c",
                                          "Initially Submitted": "is",
                                          "Submitted": "s"})
-    # print(sorted(list(set(df["Status"]))))
     return df
 
 
@@ -159,15 +160,12 @@ def optimizeJson(df):
     return df
 
 
-def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False, lang='en'):
-
+def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
+    lang = "en"
     if remote:
-        if lang == 'en':
-            link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2021-03-31-incident-data.csv"
-            process_func = process_english
-        else:
-            link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/2021-03-31-donnees-incidents.csv"
-            process_func = process_french
+        link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2021-03-31-incident-data.csv"
+        process_func = process_english
+
         print('downloading remote incidents file')
         df = pd.read_csv(link,
                          skiprows=0,
@@ -178,12 +176,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         df.to_csv("./raw_data/incidents_"+lang+".csv", index=False)
     elif test:
         print('reading test incidents file')
-        if lang == 'en':
-            path = "./raw_data/test_data/incidents_en.csv"
-            process_func = process_english
-        else:
-            path = "./raw_data/test_data/incidents_fr.csv"
-            process_func = process_french
+        path = "./raw_data/test_data/incidents_en.csv"
+        process_func = process_english
 
         df = pd.read_csv(path,
                          skiprows=0,
@@ -193,16 +187,9 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
     else:
         print('reading local incidents file')
-        if lang == 'en':
-            print('starting english incidents...')
-            path = "./raw_data/incidents_en.csv"
-            process_func = process_english
-            encoding = "utf-8"
-        else:
-            print('starting french incidents...')
-            path = "./raw_data/incidents_fr.csv"
-            process_func = process_french
-            encoding = "utf-8-sig"
+        path = "./raw_data/incidents_en.csv"
+        process_func = process_english
+        encoding = "utf-8"
 
         df = pd.read_csv(path,
                          skiprows=0,
@@ -216,7 +203,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
 
-    df['Approximate Volume Released'] = [int(x) if x > 10 else round(x, 3) for x in df['Approximate Volume Released']]
+    # df['Approximate Volume Released'] = [int(x) if x > 10 else round(x, 3) for x in df['Approximate Volume Released']]
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
 
     for delete in ['Significant',
@@ -273,14 +260,14 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
             df_vol = optimizeJson(df_vol)
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             if not test:
-                with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
+                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             if not test:
-                with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
+                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return df_c, df_vol, meta
@@ -288,8 +275,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta = process_incidents(remote=False, test=False, lang='en')
-    # df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
+    df, volume, meta = process_incidents(remote=False, test=False)
     print('completed incidents!')
 
 #%%

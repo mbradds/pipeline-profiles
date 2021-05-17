@@ -74,6 +74,21 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return timeSeries;
   };
 
+  function langCommon() {
+    const substance =
+      lang.dashboard.EVENTCOLORS.Substance[
+        metaData.mostCommonSubstance
+      ].n.toLowerCase();
+
+    const why = metaData.mostCommonWhy.map((e) =>
+      lang.dashboard.EVENTCOLORS.why[e].n.toLowerCase()
+    );
+    const what = metaData.mostCommonWhat.map((e) =>
+      lang.dashboard.EVENTCOLORS.what[e].n.toLowerCase()
+    );
+    return { substance, what, why };
+  }
+
   function buildDashboard() {
     if (incidentData.length > 0) {
       try {
@@ -84,7 +99,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
         } catch (err) {
           chartParams.systemName = metaData.companyName;
         }
-
+        // chartParams.mostCommonSubstance =
+        //   lang.dashboard.EVENTCOLORS.Substance[metaData.mostCommonSubstance].n;
+        const langParams = langCommon(chartParams, metaData);
+        chartParams.mostCommonSubstance = langParams.substance;
+        chartParams.mostCommonWhat = langParams.what;
+        chartParams.mostCommonWhy = langParams.why;
         lang.dynamicText("system-incidents-paragraph", chartParams);
 
         setTitle(lang, chartParams);
