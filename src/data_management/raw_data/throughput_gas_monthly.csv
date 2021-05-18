@@ -1196,6 +1196,12 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2020-11-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",north,import,13334.9,5250.133
 2020-12-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",south,export,13334.9,6.774
 2020-12-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",north,import,13334.9,4286.226
+2021-01-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",north,import,13334.9,5131.677
+2021-01-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",south,export,13334.9,3.935
+2021-02-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",south,export,13334.9,76.429
+2021-02-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",north,import,13334.9,5170.786
+2021-03-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",south,export,13334.9,83.968
+2021-03-01,Maritimes & Northeast Pipeline,"Baileyville, Ma. / St. Stephen N.B.",north,import,13334.9,5226.323
 2011-11-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,,14845.466
 2011-12-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,,14995.041
 2012-01-01,NOVA Gas Transmission Ltd. (NGTL),Calgary,west & south,intracanada,,17120.368
@@ -3448,7 +3454,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2021-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,5.911
 2021-03-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,12.205
 2006-01-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,4858.516
-2006-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,13407.957
+2006-02-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,13407.958
 2006-03-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,7347.967
 2006-04-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,0.0
 2006-05-01,TransCanada PipeLines Limited,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,0.0
@@ -6252,7 +6258,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2011-01-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-01-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5055.108
 2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
-2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5531.614
+2011-02-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5531.615
 2011-03-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,5842.319
 2011-03-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-04-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10807.0,7010.327
@@ -6317,7 +6323,7 @@ Date,Corporate Entity,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d
 2013-09-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,2198.396
 2013-10-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,3110.287
 2013-10-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,23.426
-2013-11-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,5088.653
+2013-11-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,5088.652
 2013-11-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2013-12-01,Westcoast Energy Inc.,NOVA/Gordondale,east,intracanada,10901.0,3190.659
 2013-12-01,Westcoast Energy Inc.,NOVA/Gordondale,west,intracanada,7854.0,0.0
