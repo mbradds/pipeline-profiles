@@ -30,7 +30,7 @@ const en = {
       other:
         "The interactive graph below shows data for nominations and apportionment on the pipeline system.",
       enbridge:
-        "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. Because there is no system wide apportionment figure, the graph below illustrates how much total pipeline capacity is being requested above what is available.",
+        "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. Because there is no system-wide apportionment figure, the graph below illustrates how much total pipeline capacity is being requested above what is available.",
     },
     selectUnits: unitsEn,
     description: {
@@ -58,14 +58,14 @@ const en = {
     trafficSourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
     instructions: {
       one: "Click on a key point button above the chart & map to view traffic at a different location. The map shows approximate locations on the pipeline where throughputs & capacity are recorded by the pipeline operator.",
-      two: "Click and drag your mouse on the area chart to zoom into a desired date range. Click on the Reset Zoom button to reset the full date range.",
+      two: "Click and drag your mouse on the area chart to zoom into the desired date range. Click on the Reset Zoom button to reset the full date range.",
       three:
         "Click on the chart legend items below the chart to remove & add sections of data as required.",
       four: "The key point trends are calculated using quarterly average traffic at the key point. Natural gas throughput trends are displayed year over year (last full quarter of data compared to the same quarter last year). Crude oil and liquids key point trends are displayed quarter over quarter (last full quarter of data compared to the previous quarter).",
-      five: "The five year average is calcualted for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five year average.",
+      five: "The five-year average is calculated for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five-year average.",
     },
     description:
-      "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five year average and five year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity is recorded.",
+      "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five-year average and five-year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity are recorded.",
   },
   safety: {
     header: "Safety and Environment",

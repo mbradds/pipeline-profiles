@@ -17,7 +17,6 @@ body {
 .profile-show {
   display: block;
 }
-
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .container-chart-map {
     min-height: 550px;
@@ -155,6 +154,10 @@ body {
 }
 .traffic-panel {
   min-height: fit-content;
+}
+#key-point-info p {
+  font-size: 16px !important;
+  line-height: 1.4375 !important;
 }
 /* small screen */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {

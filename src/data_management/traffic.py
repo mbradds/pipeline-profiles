@@ -480,5 +480,5 @@ if __name__ == "__main__":
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
     traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')

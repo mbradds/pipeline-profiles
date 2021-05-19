@@ -1,33 +1,8 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common
+from util import get_company_names, company_rename, most_common, idify
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
-# lastFullYear = 2021
-
-
-def incidentsPerKm(dfAll):
-    dfKm = pd.read_excel('./raw_data/pipeline_length.XLSX')
-    dfKm = dfKm[dfKm['Regulated KM Rounded'].notnull()]
-    dfKm['Company Name'] = [x.strip() for x in dfKm['Company Name']]
-    dfKm['Company Name'] = dfKm['Company Name'].replace(company_rename())
-
-    dfAll = dfAll.groupby('Company')['Incident Number'].count()
-    dfAll = dfAll.reset_index()
-    dfAll = dfAll.rename(columns={'Incident Number': 'Incident Count'})
-    dfAll = dfAll.merge(dfKm, how='inner', left_on='Company', right_on='Company Name')
-    for delete in ['Company Name', 'Regulated KM', 'PipelineID']:
-        del dfAll[delete]
-    dfAll['Incidents per 1000km'] = [round((i/l)*1000, 0) for i, l in zip(dfAll['Incident Count'], dfAll['Regulated KM Rounded'])]
-
-    # find the average incident per 1000km per group
-    dfAvg = dfAll.copy()
-    dfAvg = dfAvg.groupby(['Commodity'])['Incidents per 1000km'].mean().reset_index()
-    dfAvg = dfAvg.rename(columns={'Incidents per 1000km': 'Avg per 1000km'})
-    # merge the average with the company results
-    dfAll = dfAll.merge(dfAvg, how='inner', left_on='Commodity', right_on='Commodity')
-    dfAll['Avg per 1000km'] = dfAll['Avg per 1000km'].round(0)
-    return dfAll
 
 
 def incidentMetaData(df, dfPerKm, company, lang):
@@ -79,41 +54,18 @@ def incidentMetaData(df, dfPerKm, company, lang):
     # filter to specific company
     df_c = df[df['Company'] == company].copy()
     meta = {}
-    # meta['relativePct'] = thisCompanyPct(df, df_c)
     meta['companyName'] = company
     meta['seriousEvents'] = other_types(df_c, lang)
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
-    meta = most_common(df_c, meta, "What Happened", "mostCommonWhat")
-    meta = most_common(df_c, meta, "Why It Happened", "mostCommonWhy")
+    meta = most_common(df_c, meta, "what common", "mostCommonWhat")
+    meta = most_common(df_c, meta, "why common", "mostCommonWhy")
+
+    meta["mostCommonWhat"] = [x.strip() for x in meta["mostCommonWhat"].split(" & ")]
+    meta["mostCommonWhy"] = [x.strip() for x in meta["mostCommonWhy"].split(" & ")]
     meta = most_common_substance(df_c, meta, lang)
     return meta
-
-
-# def changes(df, volume=True):
-#     changeMeta = {}
-#     trend = df.copy().reset_index(drop=True)
-#     if volume:
-#         trend = trend[~trend['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
-#     trend = trend.groupby(['Year'])['Incident Number'].count()
-#     trend = trend.reset_index()
-#     trend = trend.sort_values(by='Year')
-#     trend = trend.rename(columns={'Incident Number': 'Incident Count'})
-#     max_year = max(trend['Year'])
-#     # isolate the five year range
-#     trend = trend[(trend['Year'] <= lastFullYear) & (trend['Year'] >= lastFullYear-5)]
-#     if lastFullYear in list(trend['Year']):
-#         recentIncidents = trend[trend['Year'] == lastFullYear].copy().reset_index()
-#         recentIncidents = recentIncidents.loc[0, "Incident Count"]
-#         fiveYearAvg = trend[trend['Year'] != lastFullYear].copy().reset_index()
-#         fiveYearAvg = fiveYearAvg['Incident Count'].mean()
-#         changeMeta['year'] = int(lastFullYear)
-#         changeMeta['pctChange'] = round(((int(recentIncidents)-int(fiveYearAvg))/int(fiveYearAvg))*100, 0)
-
-#     else:
-#         changeMeta["noneSince"] = max_year
-#     return changeMeta
 
 
 def fixColumns(df):
@@ -122,49 +74,21 @@ def fixColumns(df):
     return df
 
 
-def process_french(df):
-    df = fixColumns(df)
-    df = df.rename(columns={"Numéro d'incident": "Incident Number",
-                            "Types d'incident": "Incident Types",
-                            "Date de l'événement signalé": "Reported Date",
-                            "Centre habité le plus près": "Nearest Populated Centre",
-                            "Province": "Province",
-                            "Société": "Company",
-                            "État": "Status",
-                            "Latitude": "Latitude",
-                            "Longitude": "Longitude",
-                            "Approximation du volume déversé": "Approximate Volume Released",
-                            "Substance": "Substance",
-                            "Type de Déversement": "Release Type",
-                            "Majeur": "Significant",
-                            "Année": "Year",
-                            "Ce qui s’est passé": "What Happened",
-                            "Cause": "Why It Happened"})
-
-    # take care of "what happened" french col error
-    for colName in df.columns:
-        if "est passé" in colName:
-            df = df.rename(columns={colName: "What Happened"})
-
-    chosenSubstances = ["Propane",
-                        "Gaz Naturel - non sulfureux",
-                        "Gaz naturel - sulfureux",
-                        "Huile lubrifiante",
-                        "Pétrole brut non sulfureux",
-                        "Pétrole brut synthétique",
-                        "Pétrole brut sulfureux",
-                        "Liquides de gaz naturel",
-                        "Condensat",
-                        # "Dioxyde de soufre",
-                        "Carburant diesel",
-                        "Essence"]
-    df['Substance'] = [x if x in chosenSubstances else "Autre" for x in df['Substance']]
-    df['Substance'] = df['Substance'].replace({'Butane': 'Liquides de gaz naturel'})
-    return df
-
-
 def process_english(df):
+
+    def replaceWhatWhy(df, colName, values):
+        newCol = []
+        for what in df[colName]:
+            what = what.split(",")
+            what = [x.strip() for x in what]
+            what = [values[x] for x in what]
+            newCol.append(what)
+
+        df[colName] = newCol
+        return df
+
     df = fixColumns(df)
+    df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
     chosenSubstances = ["Propane",
                         "Natural Gas - Sweet",
                         "Natural Gas - Sour",
@@ -179,7 +103,48 @@ def process_english(df):
                         "Diesel Fuel",
                         "Gasoline"]
     df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]
-    df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
+    # custom codes for product
+    df['Substance'] = df['Substance'].replace({'Propane': 'pro',
+                                               'Natural Gas - Sweet': 'ngsweet',
+                                               'Natural Gas - Sour': 'ngsour',
+                                               'Fuel Gas': 'fgas',
+                                               'Lube Oil': 'loil',
+                                               'Crude Oil - Sweet': 'cosweet',
+                                               'Crude Oil - Synthetic': 'sco',
+                                               'Crude Oil - Sour': 'cosour',
+                                               'Natural Gas Liquids': 'ngl',
+                                               'Condensate': 'co',
+                                               'Diesel Fuel': 'diesel',
+                                               'Gasoline': 'gas'
+                                               })
+    df = idify(df, "Province", "region")
+    what = {"Defect and Deterioration": "dd",
+            "Corrosion and Cracking": "cc",
+            "Equipment Failure": "ef",
+            "Incorrect Operation": "io",
+            "External Interference": "ei",
+            "Natural Force Damage": "nfd",
+            "Other Causes": "oc",
+            "To be determined": "tbd"}
+
+    why = {"Engineering and Planning": "ep",
+           "Maintenance": "m",
+           "Inadequate Procurement": "ip",
+           "Tools and Equipment": "te",
+           "Standards and Procedures": "sp",
+           "Failure in communication": "fc",
+           "Inadequate Supervision": "is",
+           "Human Factors": "hf",
+           "Natural or Environmental Forces": "ef",
+           "To be determined": "tbd"}
+
+    df = replaceWhatWhy(df, "What Happened", what)
+    df = replaceWhatWhy(df, "Why It Happened", why)
+    df["what common"] = [", ".join(x) for x in df["What Happened"]]
+    df["why common"] = [", ".join(x) for x in df["Why It Happened"]]
+    df['Status'] = df['Status'].replace({"Closed": "c",
+                                         "Initially Submitted": "is",
+                                         "Submitted": "s"})
     return df
 
 
@@ -188,22 +153,19 @@ def optimizeJson(df):
                             "Approximate Volume Released": "vol",
                             "What Happened": "what",
                             "Why It Happened": "why"})
-    df["lat long"] = [[round(lat,4), round(long,4)] for lat, long in zip(df['Latitude'],
-                                                       df['Longitude'])]
+    df["lat long"] = [[round(lat, 4), round(long, 4)] for lat, long in zip(df['Latitude'],
+                                                                           df['Longitude'])]
     for delete in ['Latitude', 'Longitude']:
         del df[delete]
     return df
 
 
-def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False, lang='en'):
-
+def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
+    lang = "en"
     if remote:
-        if lang == 'en':
-            link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2021-03-31-incident-data.csv"
-            process_func = process_english
-        else:
-            link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/2021-03-31-donnees-incidents.csv"
-            process_func = process_french
+        link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2021-03-31-incident-data.csv"
+        process_func = process_english
+
         print('downloading remote incidents file')
         df = pd.read_csv(link,
                          skiprows=0,
@@ -214,12 +176,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         df.to_csv("./raw_data/incidents_"+lang+".csv", index=False)
     elif test:
         print('reading test incidents file')
-        if lang == 'en':
-            path = "./raw_data/test_data/incidents_en.csv"
-            process_func = process_english
-        else:
-            path = "./raw_data/test_data/incidents_fr.csv"
-            process_func = process_french
+        path = "./raw_data/test_data/incidents_en.csv"
+        process_func = process_english
 
         df = pd.read_csv(path,
                          skiprows=0,
@@ -229,16 +187,9 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
     else:
         print('reading local incidents file')
-        if lang == 'en':
-            print('starting english incidents...')
-            path = "./raw_data/incidents_en.csv"
-            process_func = process_english
-            encoding = "utf-8"
-        else:
-            print('starting french incidents...')
-            path = "./raw_data/incidents_fr.csv"
-            process_func = process_french
-            encoding = "utf-8-sig"
+        path = "./raw_data/incidents_en.csv"
+        process_func = process_english
+        encoding = "utf-8"
 
         df = pd.read_csv(path,
                          skiprows=0,
@@ -251,6 +202,8 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
+
+    # df['Approximate Volume Released'] = [int(x) if x > 10 else round(x, 3) for x in df['Approximate Volume Released']]
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
 
     for delete in ['Significant',
@@ -262,8 +215,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     if company_names:
         print(get_company_names(df['Company']))
 
-    # industryTrend = changes(df, volume=True)
-    # perKm = incidentsPerKm(df)
     perKm = None
 
     if companies:
@@ -303,22 +254,20 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
             meta = incidentMetaData(df, perKm, company, lang)
-            # companyTrend = changes(df_vol, volume=False)
-            # meta['trends'] = {"company": companyTrend, "industry": industryTrend}
             thisCompanyData['meta'] = meta
-            del df_vol['Incident Types']
-            del df_vol['Company']
+            for delete in ['Incident Types', 'Company', 'why common', 'what common']:
+                del df_vol[delete]
             df_vol = optimizeJson(df_vol)
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             if not test:
-                with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
+                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             if not test:
-                with open('../incidents/company_data/'+lang+'/'+folder_name+'.json', 'w') as fp:
+                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return df_c, df_vol, meta
@@ -326,8 +275,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta = process_incidents(remote=False, test=False, lang='en')
-    df, volume, meta = process_incidents(remote=False, test=False, lang='fr')
+    df, volume, meta = process_incidents(remote=False, test=False)
     print('completed incidents!')
 
 #%%

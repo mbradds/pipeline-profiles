@@ -84,7 +84,7 @@ const buildFiveText = (ft, tt, lang) => {
         pctChange,
         lang,
         false
-      )} the five year average.</p>`;
+      )} the five-year average.</p>`;
     }
     return `<p style="margin-bottom: 0px">Les débits au ${qtr} est ${changeText(
       pctChange,

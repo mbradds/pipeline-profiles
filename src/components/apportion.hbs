@@ -1,12 +1,12 @@
+{{#ifeq text.pipelineName.id "enbridge_mainline"}}
+  <h2 id="apportionment">{{text.apportion.header.enbridge}}</h2>
+{{/ifeq}}
+{{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+  <h2 id="apportionment">{{text.apportion.header.other}}</h2>
+{{/ifnoteq}}
 <div id="apportionment-section">
   <div class="row">
     <div class="col-md-12">
-      {{#ifeq text.pipelineName.id "enbridge_mainline"}}
-        <h2>{{text.apportion.header.enbridge}}</h2>
-      {{/ifeq}}
-      {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-        <h2>{{text.apportion.header.other}}</h2>
-      {{/ifnoteq}}
       <p class="small">{{text.apportion.updated}}</p>
       <p>{{text.apportion.p1}}</p>
       <p>{{text.apportion.p2}}</p>
@@ -16,7 +16,6 @@
       {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
         <p>{{text.apportion.p3.other}}</p>
       {{/ifnoteq}}
-
       <p class="cerlabel mrgn-tp-lg" id="select-units-title">
         {{text.selectUnits}}
       </p>

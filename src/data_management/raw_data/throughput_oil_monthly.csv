@@ -1357,6 +1357,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,13.43,15.1
 2020-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,14.13,15.1
 2020-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,16.55,15.1
+2021-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,15.52,15.1
+2021-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,13.19,15.1
+2021-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,16.41,15.1
 2014-07-01,PKM Cochin ULC,Cochin,Regina,east,refined petroleum products,0.01,
 2014-07-01,PKM Cochin ULC,Cochin,Windsor,east,refined petroleum products,0.0,12.08
 2014-08-01,PKM Cochin ULC,Cochin,Windsor,east,refined petroleum products,0.0,12.08
@@ -2018,6 +2021,15 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic heavy,0.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic light,10.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,refined petroleum products,3.0,53.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic heavy,0.0,50.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic light,9.0,50.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,refined petroleum products,3.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic heavy,0.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic light,10.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,refined petroleum products,3.0,50.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic heavy,0.0,54.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,domestic light,10.0,54.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Burnaby,west,refined petroleum products,4.0,54.0
 2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic heavy,1.0,35.0
 2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic light,15.0,35.0
 2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic heavy,2.0,36.0
@@ -2378,6 +2390,12 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic light,34.0,47.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic heavy,0.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic light,35.0,53.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic heavy,0.0,50.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic light,32.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic heavy,0.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic light,32.0,50.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic heavy,0.0,54.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Sumas,south,domestic light,37.0,54.0
 2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic heavy,4.0,35.0
 2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic light,0.0,35.0
 2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic heavy,3.0,36.0
@@ -2738,6 +2756,12 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic light,0.0,47.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic heavy,5.0,53.0
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic light,0.0,53.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic heavy,3.0,50.0
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic light,0.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic heavy,6.0,50.0
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic light,0.0,50.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic heavy,3.0,54.0
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,Westridge,west,domestic light,0.0,54.0
 2006-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,34.45,
 2006-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,34.82,
 2006-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,33.81,
@@ -2918,6 +2942,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,20.9,
 2020-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,19.4,
 2020-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,19.1,
+2021-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,18.0,
+2021-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,16.3,
+2021-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,18.8,
 2010-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,15.07,18.11
 2010-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,3.04,18.11
 2010-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,15.13,15.13
@@ -3170,3 +3197,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2020-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,0.0,93.43
 2020-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,94.52,95.03
 2020-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,0.51,95.03
+2021-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,98.22,98.22
+2021-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,0.0,98.22
+2021-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,95.26,95.39
+2021-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,0.0,95.39
+2021-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,95.83,95.87
+2021-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,0.0,95.87

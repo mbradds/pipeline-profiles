@@ -961,6 +961,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Ori
 2020-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.23,,0.0
 2020-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.96,,0.0
 2020-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,16.81,,0.0
+2021-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.53,,0.0
+2021-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.13,,0.0
+2021-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,17.21,,0.0
 2017-01-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
 2017-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
 2017-03-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
@@ -1167,6 +1170,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Ori
 2020-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,56.0,60.0,,0.07
 2020-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,54.0,,0.13
 2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,68.0,,0.23
+2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,69.0,,0.27
+2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,64.0,,0.21
+2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,54.0,62.0,,0.14
 2006-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
 2006-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
 2006-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
@@ -1347,6 +1353,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Ori
 2020-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
 2020-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
 2020-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
+2021-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
+2021-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
+2021-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
 2010-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",18.11,16.32,,0.0
 2010-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",15.13,16.9,,0.10456406423319764
 2010-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",41.5,18.99,,0.0
@@ -1473,3 +1482,6 @@ Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Ori
 2020-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.56,137.0,,0.31
 2020-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.43,244.11,,0.62
 2020-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.03,335.18,,0.72
+2021-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",98.22,1166.59,,0.92
+2021-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.39,343.37,,0.72
+2021-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.87,434.73,,0.78
