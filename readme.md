@@ -481,8 +481,10 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 - Company names as file names inside each "company_data" folder is probably going to lead to problems. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
 - The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
 - Apply the colors pattern in `src/modules/colors.js` to the entire project. All colors should be defined here for eng and fra, and then applied to the series id's.
-- Standardize the number and date format methods. There are methods for this in `src/modules/langEngish.js` but there are still instances of Highcharts.numberFormat scattered in the code.
+- Standardize the number and date format methods. There are methods for this in `src/modules/langEnglish.js` but there are still instances of Highcharts.numberFormat scattered in the code.
 - Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
+- Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
+- Add method in EventTrend to include a gap when there are no events in recent years.
 
 ### Completed TODO's
 

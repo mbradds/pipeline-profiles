@@ -944,27 +944,24 @@ export class EventTrend extends EventMap {
     let colors = {};
     let names = {};
     let currentInfo = { colors: {}, names: {} };
-
-    if (this.seriesInfo.hasOwnProperty(this.field)) {
+    if (Object.prototype.hasOwnProperty.call(this.seriesInfo, this.field)) {
       currentInfo = this.seriesInfo[this.field];
     }
-
-    if (currentInfo.hasOwnProperty("colors")) {
+    if (Object.prototype.hasOwnProperty.call(currentInfo, "colors")) {
       colors = currentInfo.colors;
     }
-    if (currentInfo.hasOwnProperty("names")) {
+    if (Object.prototype.hasOwnProperty.call(currentInfo, "names")) {
       names = currentInfo.names;
     }
     return data[field].data.map((s) => {
       const newSeries = {};
       newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
-      if (names.hasOwnProperty(s.id)) {
+      if (Object.prototype.hasOwnProperty.call(names, s.id)) {
         newSeries.name = names[s.id];
       } else {
         newSeries.name = s.id;
       }
-
-      if (colors.hasOwnProperty(s.id)) {
+      if (Object.prototype.hasOwnProperty.call(colors, s.id)) {
         newSeries.color = colors[s.id];
       }
       newSeries.id = s.id;

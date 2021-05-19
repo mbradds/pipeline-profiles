@@ -77,7 +77,7 @@ def metadata(df, company):
     thisCompanyMeta = {}
     thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
     thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
-    nearList = list(df['Nearest Populated Centre'])
+    nearList = list(df['Nearest Populated Centre']+" "+df['Province/Territory'].str.upper())
     nearList = filter(filterNear, nearList)
     nearList = [x.split(",")[0].strip() for x in nearList]
     nearDf = pd.DataFrame(nearList)
@@ -87,7 +87,7 @@ def metadata(df, company):
                 "nearby",
                 3,
                 "list",
-                True,
+                False,
                 False)
     thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
     thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())

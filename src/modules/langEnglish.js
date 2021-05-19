@@ -530,6 +530,9 @@ export const englishDashboard = {
   },
   oandm: {
     numberFormat,
+    companyToSystem,
+    title: (pipeline) =>
+      `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle: "Number of Events",
     pillTitles: {
       titles: {

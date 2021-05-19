@@ -3,9 +3,27 @@ import { oandmText } from "../modules/dynamicText";
 import { regionColors, yesNoColors } from "../modules/colors";
 
 export function mainOandM(eventData, lang) {
+  console.log(eventData);
   const eventType = "oandm";
   const field = "Integrity Dig";
   const filters = { type: "frequency" };
+
+  function addDashboardTitle() {
+    const titleElement = document.getElementById("oandm-dashboard-title");
+    if (
+      Object.prototype.hasOwnProperty.call(
+        lang.companyToSystem,
+        eventData.meta.company
+      )
+    ) {
+      titleElement.innerText = lang.title(
+        lang.companyToSystem[eventData.meta.company]
+      );
+    } else {
+      titleElement.innerHTML = lang.title(eventData.meta.company);
+    }
+  }
+
   function loadDynamicText() {
     oandmText(eventData.meta, lang);
   }
@@ -18,7 +36,14 @@ export function mainOandM(eventData, lang) {
     "Species At Risk Present": { colors: yesNoColors, names: engNames },
     "Province/Territory": {
       colors: regionColors,
-      names: { ab: "Alberta", bc: "British Columbia", sk: "Saskatchewan" },
+      names: {
+        ab: "Alberta",
+        bc: "British Columbia",
+        sk: "Saskatchewan",
+        mb: "Manitoba",
+        qc: "Quebec",
+        on: "Ontario",
+      },
     },
   };
 
@@ -78,6 +103,7 @@ export function mainOandM(eventData, lang) {
     return timeSeries;
   };
 
+  addDashboardTitle();
   loadDynamicText();
   incidentTimeSeries(field, filters);
 }
