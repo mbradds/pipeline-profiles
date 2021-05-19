@@ -2,13 +2,12 @@ import { EventNavigator, EventTrend } from "../modules/dashboard";
 import { oandmText } from "../modules/dynamicText";
 import { regionColors, yesNoColors } from "../modules/colors";
 
-export function mainOandM(eventData) {
-  console.log(eventData);
-  const eventType = "oandm-activities";
+export function mainOandM(eventData, lang) {
+  const eventType = "oandm";
   const field = "Integrity Dig";
   const filters = { type: "frequency" };
   function loadDynamicText() {
-    oandmText(eventData.meta);
+    oandmText(eventData.meta, lang);
   }
 
   const engNames = { y: "Yes", n: "No" };
@@ -23,6 +22,17 @@ export function mainOandM(eventData) {
     },
   };
 
+  const definitions = {
+    "Integrity Dig":
+      "Indicates If Activity Include Excavation To Expose, Assess, Or Repair An Existing Pipeline.",
+    "Fish Present":
+      "Indicates If Will There Be Ground Disturbance Using Power-Operated Equipment Within 30M Of A Wetland Or A Water Body Or Within 30 M Of The Substrate Of A Wetland Or Water Body At The Activity Site, and the water body is fish-bearing.",
+    "In Stream Work Required":
+      "Indicates If There Will Be Any In-Stream Work At Activity Site.",
+    "Species At Risk Present":
+      "Indicates If There Are Species Present Which Are Listed On Schedule 1 Of The Species At Risk Act at the Activity Site.",
+  };
+
   const incidentTimeSeries = (timeField, timeFilters) => {
     const timeSeries = new EventTrend({
       eventType,
@@ -31,12 +41,14 @@ export function mainOandM(eventData) {
       data: eventData.data,
       seriesed: true,
       seriesInfo,
+      definitions,
+      definitionsOn: "pill",
       hcDiv: "time-series-oandm",
-      lang: {},
+      lang,
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,
-      langPillTitles: false,
+      langPillTitles: lang.pillTitles,
       height: 70,
       showClickText: false,
     });

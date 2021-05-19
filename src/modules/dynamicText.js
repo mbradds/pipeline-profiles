@@ -314,16 +314,16 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
-export function oandmText(meta) {
+export function oandmText(meta, lang) {
   // console.log(meta);
   const firstParagraph = `<p>There have been a total of ${dynamicValue(
-    meta.totalEvents
+    lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
   }. As part of these events, there have been ${dynamicValue(
-    meta.totalDigs
+    lang.numberFormat(meta.totalDigs, 0)
   )} integrity digs, and approximately ${dynamicValue(
-    `${meta.lengthReplaced} km`
+    `${lang.numberFormat(meta.lengthReplaced, 0)} km`
   )} of pipeline replaced. On average, O&M activities take approximately ${dynamicValue(
     `${meta.avgDuration} days`
   )} from start to finish on this system.<p>`;

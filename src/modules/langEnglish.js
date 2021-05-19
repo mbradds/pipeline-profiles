@@ -528,4 +528,16 @@ export const englishDashboard = {
       ap: "Apportionment Percent",
     },
   },
+  oandm: {
+    numberFormat,
+    trendYTitle: "Number of Events",
+    pillTitles: {
+      titles: {
+        "Integrity Dig": "Integrity Dig?",
+        "Fish Present": "Fish Present?",
+        "In Stream Work Required": "In Stream Work Required?",
+        "Species At Risk Present": "Species At Risk Present?",
+      },
+    },
+  },
 };

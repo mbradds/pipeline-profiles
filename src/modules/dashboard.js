@@ -918,6 +918,7 @@ export class EventTrend extends EventMap {
     hcDiv,
     lang,
     seriesed = false,
+    definitionsOn = "bar", // show text on bar click, or pill click
     seriesInfo = {},
     definitions = {},
   }) {
@@ -927,6 +928,7 @@ export class EventTrend extends EventMap {
     this.hcDiv = hcDiv;
     this.lang = lang;
     this.seriesed = seriesed;
+    this.definitionsOn = definitionsOn;
     this.seriesInfo = seriesInfo;
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
@@ -1127,15 +1129,25 @@ export class EventTrend extends EventMap {
   }
 
   displayDefinitions() {
-    const definitionsPopUp = document.getElementById("trend-definitions");
+    const definitionDiv = `trend-definitions-${this.eventType}`; // make sure .hbs temaplate has correct id for event type
+    const definitionsPopUp = document.getElementById(definitionDiv);
     if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
-      visibility(["trend-definitions"], "show");
-      definitionsPopUp.innerHTML = this.lang.barClick(
-        this.pillNameSubstitution()
-      );
+      visibility([definitionDiv], "show");
+      // when on incidents, show text on bar click. When on oandm, show text on pill click
+      if (this.definitionsOn === "bar") {
+        // user click on highcharts bar for definition to appear
+        definitionsPopUp.innerHTML = this.lang.barClick(
+          this.pillNameSubstitution()
+        );
+      } else if (this.definitionsOn === "pill") {
+        // user clicks on pill to view info about that pill in definitions box
+        definitionsPopUp.innerHTML = this.definitions[this.field];
+      }
+
       this.onClickDefinition = true;
     } else {
-      visibility(["trend-definitions"], "hide");
+      visibility([definitionDiv], "hide");
+
       this.onClickDefinition = false;
     }
   }

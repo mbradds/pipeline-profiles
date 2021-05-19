@@ -6,7 +6,6 @@
         type="button"
         class="btn btn-default tablinks"
         onclick="openTab(event, 'condition-compliance')"
-        id="defaultClick"
       >
         {{text.safety.complianceBtn}}
       </button>
@@ -25,6 +24,7 @@
         type="button"
         class="btn btn-default tablinks"
         onclick="openTab(event, 'operations-maintenance')"
+        id="defaultClick"
       >
         Operations &#38; Maintenance Activities
       </button>
@@ -324,7 +324,10 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="alert alert-info" id="trend-definitions"></div>
+            <div
+              class="alert alert-info"
+              id="trend-definitions-incidents"
+            ></div>
           </div>
         </div>
       </div>
@@ -519,11 +522,11 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="alert alert-info" id="trend-definitions"></div>
+          <div class="alert alert-info" id="trend-definitions-oandm"></div>
         </div>
       </div>
 
-      <div id="spacer" style="height: 400px"></div>
+      <div id="spacer" style="height: 200px"></div>
     </div>
   </div>
 </div>

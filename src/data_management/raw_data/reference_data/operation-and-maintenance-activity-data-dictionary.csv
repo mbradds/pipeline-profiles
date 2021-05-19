@@ -1,0 +1,49 @@
+Term ,Description
+Event Number,The Unique Identifier For Event Notification
+Company Name,The Name Of Company Responsible For Event Notification
+Company Address,The Address Of The Company That Submitted Event Notification
+Company City,The City Where The Company Submitting Event Notification Is Located
+Company Postal Code,The Postal Code Of The Company That Submitted Event Notification
+Company Province/Territory,The Province Or Territory Where Company That Submitted Event Notification Is Located
+Circumstance(s),The Circumstance(s) That Required Company To Submit Event Notification
+Result Of A Class Location Change,Indicates If Activity Is The Result Of A Class Location Change
+Distance To Closest Building,The Distance (In Metres) From The Proposed Work Location To The Closest Residence Or Building Where People Routinely Congregate In Large Groups
+Length Of Replacement Pipe,The Length (In Metres) Of Pipe Being Replaced If Applicable
+Integrity Dig,"Indicates If Activity Include Excavation To Expose, Assess, Or Repair An Existing Pipeline"
+Dig Count,The Number Of Digs Expected For This Activity
+Activity Unplanned,Indicates If This Is An Unplanned Activity With Less Than 21 Working Days' Notice Given
+Commencement Date,The Date When The Activity Is To Occur
+Completion Date,The Date When The Activity Is To Be Completed
+Event Creation Date,The Date When The Event Notification Was Created
+Submission Date,The Date When The Event Notification Was First Submitted To The CER
+Pipeline Name,The Name Of Pipeline Related To Activity
+Pipeline Outside Diameter,"The Specified Outside Diameter (In Millimetres) Of The Pipe, Excluding The Manufacturing Tolerance Provided In The Applicable Pipe Specification Or Standard."
+Pipeline Length,The Length Of The Pipeline Related To The Activity
+Commodity Carried,The Substance Carried By The Pipeline Related To The Activity
+Facility Name,The Name Of The Facility Related To The Activity
+Facility Type,The Type Of Facility Related To The Activity
+Province/Territory,The Province Or Territory Where The Activity Site Is Located
+Nearest Populated Centre,The Nearest Populated Centre To Activity Site
+New Land Area Needed,The Total New Land (In Hectares) Needed For Activity
+New Permanent Land Needed,The Total Permanently Needed Land (In Hectares) That Will Be Acquired For Activity
+Activity Acquiring New Private Land,Indicates If Land Is Private
+Activity Acquiring New Land In Agreement With Landowner,Indicates If Fee Simple Landowner Is In Agreement
+Activity Acquiring New Land Under Compliance,Indicates If Company Will Comply With The Requirements Under Sections 320-322 Of The CER Act
+Land Within Critical Habitat,Indicates If Land Is Within Critical Habitat For Any Endangered Or Threatened Species Listed On Schedule 1 Of The Federal Species At Risk Act
+New Temporary Land Needed,The Land Temporarily Needed (In Hectares) For Activity
+Provincial and federal authorities been consulted,Indicates If Relevant Provincial And Federal Authorities Have Been Consulted
+Activity Crossing Water Body,"Indicates If There Will Be Ground Disturbance Using Power-Operated Equipment Within 30M Of A Wetland Or A Water Body, Or Within 30M Of The Substrate Of A Wetland Or Water Body, While Accessing The Activity Site"
+Vehicle Crossing Count,"The Number Of New Vehicle Crossings, Either Temporary Or Permanent, That Will Be Required In Accessing The Activity Site"
+Activity Following DFO Fish Measures For Crossing,Indicates If All Applicable Department Of Fisheries and Oceans Canada Measures To Avoid And Mitigate Harm To Fish And Fish Habitat Be Followed
+Ground Disturbance Near Water Required,Indicates If Will There Be Ground Disturbance Using Power-Operated Equipment Within 30M Of A Wetland Or A Water Body Or Within 30 M Of The Substrate Of A Wetland Or Water Body At The Activity Site
+Fish Present,Indicates If The Water Body Is Fish-Bearing
+In Stream Work Required,Indicates If There Will Be Any In-Stream Work At Activity Site
+Activity Following DFO Fish Measures For In Stream Work,Indicates If All Applicable Department Of Fisheries and Oceans Canada Measures To Avoid Harm To Fish And Fish Habitat Be Followed
+Species At Risk Present At Activity Site,Indicates If There Are Species Present Which Are Listed On Schedule 1 Of The Species At Risk Act at the Activity Site
+Activity Using Navigable Water,Indicates If A Navigable Water Body Will Be Crossed While Accessing The Activity Site Or If There Will Be Ground Disturbance Or Activity Within Or Across A Navigable Water Body's Wetted Perimeter
+Navigable Water Frozen Or Dry,"Indicates If The Activity Will Be Carried Out While The Navigable Water Body Is Frozen Or Seasonally Dry, Including All In-Stream Restoration And Removal Of Construction Debris"
+Navigable Water Activity Meeting Transport Canada Minor Works And Waters Order,"Indicates If All Activities With The Potential To Impact Navigation And Navigation Safety Meet The Criteria Of Transport Canada's Minor Works And Waters Order, As Amended"
+In Stream Activity Start Date,The In-Stream Activity Start Date
+In Stream Activity End Date,The In-Stream Activity End Date
+Restricted Activity Start Date,"The Provincial Timing Window (I.e., When In-Stream Activities Should Occur) Start Date For The Watercourse "
+Restricted Activity End Date,"The Provincial Timing Window (I.e., When In-Stream Activities Should Occur) End Date For The Watercourse "

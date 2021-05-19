@@ -38,7 +38,7 @@ export async function loadAllCharts(data, plains = false) {
       data.incidentData.meta,
       frenchDashboard.incidents
     ),
-    mainOandM(data.oandmData),
+    mainOandM(data.oandmData, frenchDashboard.oandm),
   ];
 
   function plainsMidstreamProfile(lang, div) {
