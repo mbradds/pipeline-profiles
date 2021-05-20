@@ -485,6 +485,8 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 - Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
 - Fix some of the dynamic french text based on feedback from translation.
+- Add more tests for public methods in `src/modules/dashboard.js`
+- Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 
 ### Completed TODO's
 

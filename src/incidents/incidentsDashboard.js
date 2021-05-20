@@ -130,7 +130,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         document
           .getElementById("inline-radio")
           .addEventListener("click", (event) => {
-            if (event.target && !volumeBtn.disabled) {
+            if (event.target && !volumeBtn.disabled && event.target.value) {
               const btnValue = event.target.value;
               thisMap.filters.type = btnValue;
               trends.filters.type = btnValue;

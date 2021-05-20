@@ -5,7 +5,7 @@ import { regionColors, yesNoColors } from "../modules/colors";
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
 export function mainOandM(eventData, lang) {
-  console.log(eventData);
+  // console.log(eventData);
   const eventType = "oandm";
   const field = "Integrity Dig";
   const filters = { type: "frequency" };

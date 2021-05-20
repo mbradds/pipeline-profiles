@@ -4,9 +4,12 @@ import {
   arrAvg,
   sortJson,
   sortJsonAlpha,
+  rangeInclusive,
   addSeriesParams,
   calculateFiveYrAvg,
 } from "../src/modules/util";
+
+import { EventTrend } from "../src/modules/dashboard";
 
 function macroIs(t, input, expected) {
   t.is(input, expected);
@@ -27,6 +30,15 @@ test("arrAvg", (t) => {
 test("arrAvg2", (t) => {
   const testArr = [5, 5, 5, 5, 5];
   t.is(arrAvg(testArr), 5);
+});
+
+test("rangeInclusive", (t) => {
+  const start = 3;
+  const end = 10;
+  const range = rangeInclusive(start, end);
+  t.is(range[0], 3);
+  t.is(range[range.length - 1], 10);
+  t.is(range.length, 8);
 });
 
 test("sortJson", (t) => {
@@ -104,4 +116,12 @@ test(
   1
 );
 test("five years, 6 months lastYear", macroIs, testData2.meta.lastYear, 2020);
-// console.log(testData2);
+
+test("EventTrend dummy series", (t) => {
+  const yearList = [2015, 2016, 2019];
+  const dummySeries = EventTrend.dummyYears(yearList, "list");
+  t.is(dummySeries.name, "dummy");
+  t.is(dummySeries.showInLegend, false);
+  t.is(dummySeries.data[0][0], 2015);
+  t.is(dummySeries.data[dummySeries.data.length - 1][0], 2021);
+});

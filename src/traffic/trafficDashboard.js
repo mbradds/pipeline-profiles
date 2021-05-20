@@ -797,7 +797,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       document
         .getElementById("select-units-radio-traffic")
         .addEventListener("click", (event) => {
-          if (event.target) {
+          if (event.target && event.target.value) {
             const radioValue = event.target.value;
             chartParams.unitsHolder.current = radioValue;
             [timeSeries, fiveSeries] = addSeriesParams(

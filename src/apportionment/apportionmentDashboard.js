@@ -151,7 +151,7 @@ export async function mainApportion(apportionData, lang) {
         document
           .getElementById("select-units-radio-apportion")
           .addEventListener("click", (event) => {
-            if (event.target) {
+            if (event.target && event.target.value) {
               const radioValue = event.target.value;
               unitsHolder.current = radioValue;
               series = buildApportionSeries(apportionData.series, unitsHolder);

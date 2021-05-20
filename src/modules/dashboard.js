@@ -1,4 +1,3 @@
-import { dateFormat } from "highcharts";
 import { cerPalette, conversions, visibility, rangeInclusive } from "./util";
 
 const haversine = require("haversine");

@@ -328,11 +328,11 @@ export function oandmText(meta, lang) {
     `${meta.avgDuration} days`
   )} from start to finish on this system.<p>`;
 
-  const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occured near ${dynamicValue(
+  const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occurred near ${dynamicValue(
     meta.nearby.join(", ")
   )}.</p>`;
 
-  let thirdParagraph = `<p>In order to accomodate the worksite and equipment, O&M activities may require a significant amount of land area outside of company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require a significant amount of land area outside of company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
     `${meta.landRequired} hectares`
   )}`;
   const iceRinks = `, an area of land equal to ${dynamicValue(
