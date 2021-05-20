@@ -484,7 +484,7 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 - Standardize the number and date format methods. There are methods for this in `src/modules/langEnglish.js` but there are still instances of Highcharts.numberFormat scattered in the code.
 - Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
-- Add method in EventTrend to include a gap when there are no events in recent years.
+- Fix some of the dynamic french text based on feedback from translation.
 
 ### Completed TODO's
 
@@ -493,3 +493,4 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 - Fully remove Jquery dependency
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
+- Add method in EventTrend to include a gap when there are no events in recent years.

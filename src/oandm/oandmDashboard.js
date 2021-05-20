@@ -2,6 +2,8 @@ import { EventNavigator, EventTrend } from "../modules/dashboard";
 import { oandmText } from "../modules/dynamicText";
 import { regionColors, yesNoColors } from "../modules/colors";
 
+// TODO: add regdocs folder for all company oandm submissions
+// TODO: add some more stuff from the oamdm filing guide
 export function mainOandM(eventData, lang) {
   console.log(eventData);
   const eventType = "oandm";
@@ -103,7 +105,19 @@ export function mainOandM(eventData, lang) {
     return timeSeries;
   };
 
-  addDashboardTitle();
-  loadDynamicText();
-  incidentTimeSeries(field, filters);
+  function buildDecision() {
+    if (eventData.build) {
+      addDashboardTitle();
+      loadDynamicText();
+      incidentTimeSeries(field, filters);
+    } else {
+      let noEventsHTML = `<section class="alert alert-warning"><h3>${lang.noEvents.header}</h3>`;
+      noEventsHTML += `<p>${lang.noEvents.note(
+        eventData.meta.companyName
+      )}</p></section>`;
+      document.getElementById("oandm-dashboard").innerHTML = noEventsHTML;
+    }
+  }
+
+  buildDecision();
 }

@@ -1,4 +1,5 @@
-import { cerPalette, conversions, visibility } from "./util";
+import { dateFormat } from "highcharts";
+import { cerPalette, conversions, visibility, rangeInclusive } from "./util";
 
 const haversine = require("haversine");
 
@@ -936,6 +937,47 @@ export class EventTrend extends EventMap {
     this.displayDefinitions();
   }
 
+  static dummyYears(yearList, dataFormat = "object") {
+    let uniqueYears = yearList;
+    const currentYear = new Date().getFullYear();
+    const maxYear = uniqueYears.slice(-1)[0];
+    let lastYears = [];
+    if (currentYear > maxYear) {
+      lastYears = rangeInclusive(maxYear + 1, currentYear);
+    }
+
+    uniqueYears = uniqueYears.concat(lastYears);
+    const dummySeries = { name: "dummy", showInLegend: false }; // makes sure that the x axis is in order
+    const dummyData = [];
+
+    const addMethod = () => {
+      if (dataFormat === "object") {
+        return (year) => ({ name: year.toString(), y: undefined });
+      }
+      return (year) => [year, undefined];
+    };
+
+    const adder = addMethod();
+    uniqueYears.forEach((y, index) => {
+      if (
+        y + 1 !== uniqueYears[index + 1] &&
+        index !== uniqueYears.length - 1
+      ) {
+        const firstYear = y;
+        const lastYear = uniqueYears[index + 1] - 1;
+        for (let i = firstYear; i <= lastYear; i += 1) {
+          // dummyData.push({ name: i.toString(), y: undefined });
+          dummyData.push(adder(i));
+        }
+      } else {
+        dummyData.push(adder(y));
+        // dummyData.push({ name: y.toString(), y: undefined });
+      }
+    });
+    dummySeries.data = dummyData;
+    return dummySeries;
+  }
+
   generateSeries(data, field) {
     if (!this.seriesed) {
       return this.processEventsData(data, field);
@@ -953,7 +995,8 @@ export class EventTrend extends EventMap {
     if (Object.prototype.hasOwnProperty.call(currentInfo, "names")) {
       names = currentInfo.names;
     }
-    return data[field].data.map((s) => {
+
+    const preparedSeries = data[field].data.map((s) => {
       const newSeries = {};
       newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
       if (Object.prototype.hasOwnProperty.call(names, s.id)) {
@@ -967,6 +1010,10 @@ export class EventTrend extends EventMap {
       newSeries.id = s.id;
       return newSeries;
     });
+
+    const dummySeries = EventTrend.dummyYears(data[field].year, "list");
+    preparedSeries.push(dummySeries);
+    return preparedSeries;
   }
 
   processEventsData(data, field) {
@@ -1026,25 +1073,9 @@ export class EventTrend extends EventMap {
     };
     const seriesCounter = yField(this.ONETOMANY[field]);
     const [series, uniqueYears] = seriesCounter(data);
-    const seriesList = [];
-    const dummySeries = { name: "dummy", showInLegend: false }; // makes sure that the x axis is in order
-    const dummyData = [];
-    uniqueYears.forEach((y, index) => {
-      if (
-        y + 1 !== uniqueYears[index + 1] &&
-        index !== uniqueYears.length - 1
-      ) {
-        const firstYear = y;
-        const lastYear = uniqueYears[index + 1] - 1;
-        for (let i = firstYear; i <= lastYear; i += 1) {
-          dummyData.push({ name: i.toString(), y: undefined });
-        }
-      } else {
-        dummyData.push({ name: y.toString(), y: undefined });
-      }
-    });
 
-    dummySeries.data = dummyData;
+    const dummySeries = EventTrend.dummyYears(uniqueYears, "object");
+    const seriesList = [];
     seriesList.push(dummySeries);
     Object.keys(series).forEach((seriesId) => {
       const seriesData = series[seriesId];

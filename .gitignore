@@ -21,3 +21,4 @@ connection.py
 src/wtfiles
 dist/
 todo.txt
+*.csv#

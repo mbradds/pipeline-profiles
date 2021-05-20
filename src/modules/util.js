@@ -25,6 +25,12 @@ export const conversions = {
   "bcf/d to million m3/d": 28.32,
 };
 
+export function rangeInclusive(start, end) {
+  return Array(end - start + 1)
+    .fill()
+    .map((_, idx) => start + idx);
+}
+
 export const sortJson = (obj, colName = "value") =>
   obj.slice().sort((a, b) => b[colName] - a[colName]);
 

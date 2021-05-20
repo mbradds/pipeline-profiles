@@ -538,8 +538,7 @@ export const frenchDashboard = {
   oandm: {
     numberFormat,
     companyToSystem,
-    title: (pipeline) =>
-      `Dashboard: ${pipeline} - O&M Activites by Year`,
+    title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle: "Number of Events",
     pillTitles: {
       titles: {
@@ -548,6 +547,10 @@ export const frenchDashboard = {
         "In Stream Work Required": "In Stream Work Required?",
         "Species At Risk Present": "Species At Risk Present?",
       },
+    },
+    noEvents: {
+      header: `No O&M data available`,
+      note: (company) => `There are no O&M activities reported for ${company}`,
     },
   },
 };
