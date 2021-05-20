@@ -153,6 +153,11 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
 
 
 def meta_throughput(df_c, meta, data):
+    def direction_list(dr):
+        dr = dr[0].split("&")
+        dr = [x.strip() for x in dr]
+        return dr
+
     df_meta = df_c[['Key Point', 'Direction of Flow', 'Trade Type']].copy()
     if data == "oil":
         df_meta['Trade Type'] = [x.split("-")[-1].strip() for x in df_meta['Trade Type']]
@@ -166,9 +171,21 @@ def meta_throughput(df_c, meta, data):
         df_meta[col] = [list(x) for x in df_meta[col]]
 
     directions = {}
+    directionId = {'north': 'n',
+                   'east': 'e',
+                   'south': 's',
+                   'west': 'w',
+                   'northeast': 'ne',
+                   'northwest': 'nw',
+                   'southeast': 'se',
+                   'southwest': 'sw'
+                   }
+    df_meta['direction'] = [direction_list(x) for x in df_meta['direction']]
     for key, flow, trade in zip(df_meta['Key Point'], df_meta['direction'], df_meta['trade']):
-        directions[key] = flow[0]
-
+        try:
+            directions[key] = [directionId[x.lower()] for x in flow]
+        except:
+            directions[key] = flow
     meta["directions"] = directions
     return meta
 
@@ -480,5 +497,5 @@ if __name__ == "__main__":
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
     traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    # traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')

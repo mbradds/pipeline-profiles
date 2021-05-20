@@ -3,7 +3,7 @@ const unitsFr = "Choisir une unité :";
 const trafficUpdatedEn =
   "Section updated quarterly (early March, mid-May, mid-August and mid-November)";
 const trafficUpdatedFr =
-  "Section mise à jour trimestrielle (début mars, mi-mai, mi-août et mi-novembre)";
+  "Section mise à jour tous les trimestres (début mars, mi-mai, mi-août et mi-novembre)";
 const instructionsEn = "Dashboard instructions";
 const instructionsFr = "Instructions pour le tableau de bord";
 const noteEn = "Note:";
@@ -375,7 +375,7 @@ const fr = {
     incidentsTrendBtn: "Tendance des incidents",
     incidentsNearMe: "Y a-t-il des incidents près de chez moi?",
     incidentsSelectRange: "Sélectionner une plage (100km):",
-    incidentsFind: "Rechercher les incidents dans 100km",
+    incidentsFind: "Rechercher les incidents dans un rayon de 100km",
     incidentsRefill: "Remplir les bulles de carte",
     incidentsDescription:
       "<strong>Description :</strong> La carte ci-dessus montre l’emplacement des déversements de produit survenus sur le réseau pipelinier depuis 2008. Par défaut, les incidents sont affichés sous forme de bulles qui sont colorées en fonction de la substance rejetée. Les incidents sur la carte peuvent aussi être classés en fonction de l’état d’avancement de l’examen de la Régie, de l’année à laquelle l’incident a été signalé et de la province ou du territoire où l’incident s’est produit. Les bulles de la carte des incidents peuvent également indiquer le volume estimatif des déversements, les bulles plus grandes correspondant à des volumes plus élevés. Il est également possible de présenter les données sur les incidents au fil du temps sous forme de graphique à barres empilées. Pour ce faire, il suffit de cliquer sur le bouton Tendance des incidents situé au-dessus de la carte. Les barres empilées représentent le nombre d’incidents de déversement de produit par année, et les segments de couleur des barres correspondent aux divers produits déversés. Comme sur la carte, les incidents peuvent être reclassés en cliquant sur les boutons latéraux pour afficher la répartition des incidents selon le statut, ce qui s’est produit et pourquoi, et la province ou le territoire touché.",
