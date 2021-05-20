@@ -42,7 +42,7 @@ const changeText = (num, lang, frontText = true) => {
       }
     } else if (val === 0 || val === null) {
       if (frontText) {
-        const langText = lang === "en" ? "not changed" : "inchangé";
+        const langText = lang === "en" ? "not changed" : "inchangés";
         styleList = ["bg-info", `${langText}`];
       } else {
         const langText = lang === "en" ? "equal to" : "égal à";
@@ -63,7 +63,8 @@ const trendSub = (commodity, lang) => {
   if (commodity === "gas") {
     subText = lang === "en" ? "year over year" : "d’une année à l’autre,";
   } else if (commodity === "oil") {
-    subText = lang === "en" ? "quarter over quarter" : "Un trimestre à l’autre";
+    subText =
+      lang === "en" ? "quarter over quarter" : "d’un trimestre à l’autre";
   }
   return subText;
 };
@@ -269,7 +270,7 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
       trend.throughChange.to,
       units,
       numberFormat
-    )} ${units.current} en ${quartersFr[trend.toDate[1]]} ${
+    )} ${units.current} en ${quartersFr[trend.toDate[1]]} de ${
       trend.toDate[0]
     } (dernier trimestre des données).`;
     return trendText;

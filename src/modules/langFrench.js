@@ -86,7 +86,7 @@ const points = {
   ],
   9: [
     "Cromer/Regina",
-    "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de raffinerie coopérative.",
+    "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de la raffinerie coopérative.",
   ],
   10: [
     "Triangle de l’Est – Points de réception de la CNO",
@@ -491,8 +491,8 @@ export const frenchDashboard = {
       in: "Intra-Canada",
       ex: "Exportation",
       cap: "Capacité",
-      dh: "Lourd Canadien",
-      dln: "Léger Canadien / NGL",
+      dh: "Lourd canadien",
+      dln: "Léger canadien / NGL",
       fl: "Léger étranger",
       dl: "Léger Canadien",
       rp: "Produits Pétroliers Raffinés",
