@@ -93,29 +93,24 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   const setTitle = (params, fiveYr) => {
     let pointText = "";
-    let directionText = "";
+    let dirLangList = ["unknown"];
     if (params.tm) {
       params.points.forEach((point) => {
         pointText += `${point.name} `;
       });
     } else {
+      dirLangList = params.directions[params.defaultPoint.id].map((dir) => {
+        if (Object.prototype.hasOwnProperty.call(lang.directions, dir)) {
+          return lang.directions[dir];
+        }
+        return "";
+      });
       pointText = params.defaultPoint.name;
-      let currentDirection = params.directions[params.defaultPoint.id];
-      if (
-        Object.prototype.hasOwnProperty.call(
-          lang.directions,
-          params.directions[params.defaultPoint.id]
-        )
-      ) {
-        currentDirection =
-          lang.directions[params.directions[params.defaultPoint.id]];
-      }
-      directionText = `(${lang.flow} ${currentDirection})`;
     }
     if (fiveYr) {
       return lang.fiveYrTitle(pointText);
     }
-    return lang.trafficTitle(pointText, directionText);
+    return lang.trafficTitle(pointText, dirLangList);
   };
 
   const createSeries = (data, params) => {

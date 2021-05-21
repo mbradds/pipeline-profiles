@@ -86,7 +86,7 @@ const points = {
   ],
   9: [
     "Cromer/Regina",
-    "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de raffinerie coopérative.",
+    "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de la raffinerie coopérative.",
   ],
   10: [
     "Triangle de l’Est – Points de réception de la CNO",
@@ -247,7 +247,7 @@ export const frenchDashboard = {
       noLocation: (companyName) =>
         `Tableau de bord: ${companyName} - aucun emplacement géographique`,
       location: (companyName, column) =>
-        `Tableau de bord: ${companyName} - ${column} Conditions par région`,
+        `Tableau de bord: ${companyName} - Conditions ${column} par région`,
     },
     table: {
       projectsTitle: (column) =>
@@ -356,10 +356,10 @@ export const frenchDashboard = {
       decimal: ",",
       pillTitles: {
         titles: {
-          Status: "REC État",
+          Status: "Situation Régie",
           Year: "Année",
           what: "Incident",
-          Why: "Cause",
+          why: "Pourquoi",
         },
         click: "clique pour voir",
       },
@@ -386,7 +386,7 @@ export const frenchDashboard = {
       legendClick:
         "Cliquez sur un élément de légende pour le supprimer du graphique",
       rangeTitle: "Sélectionner une plage",
-      findBtnTitle: "Rechercher les incidents dans",
+      findBtnTitle: "Rechercher les incidents dans un rayon de",
       trendYTitle: "Nombre d’incidents",
       EVENTCOLORS: {
         Substance: {
@@ -405,7 +405,7 @@ export const frenchDashboard = {
           Other: { c: cerPalette.Aubergine, n: "Autre" },
         },
         Status: {
-          is: { c: cerPalette.Flame, n: "Initialement Soumis" },
+          is: { c: cerPalette.Flame, n: "Initialement soumis" },
           c: { c: cerPalette["Cool Grey"], n: "Fermé" },
           s: { c: cerPalette.Ocean, n: "Soumis" },
         },
@@ -463,45 +463,42 @@ export const frenchDashboard = {
     dynamicText: trafficTrendTextFra,
     numberFormat,
     directions: {
-      north: "nord",
-      east: "est",
-      south: "sud",
-      west: "ouest",
-      northeast: "nord-est",
-      northwest: "nord-ouest",
-      southeast: "sud-est",
-      southwest: "sud-ouest",
-      "east & north": "est & nord",
-      "southeast & east": "sud-est & est",
-      "east & southeast": "est & sud-est",
-      "west & south": "ouest & sud",
+      n: "nord",
+      e: "est",
+      s: "sud",
+      w: "ouest",
+      ne: "nord-est",
+      nw: "nord-ouest",
+      se: "sud-est",
+      sw: "sud-ouest",
     },
     fiveYr: {
       lastYrName: (lastYear) => `Débit ${lastYear} (dernière année de données)`,
       avgName: "Moyenne sur cinq ans",
-      rangeName: (min, max) => `Gamme de cinq ans (${min + 1}-${max - 1})`,
+      rangeName: (min, max) => `Plage de cinq ans (${min + 1}-${max - 1})`,
       notEnough: "Données insuffisantes pour calculer la moyenne sur cinq ans",
     },
     exportAxis: (unit) => `Exportations (${unit})`,
     importAxis: (unit) => `Importations (${unit})`,
     fiveYrTitle: (pointText) =>
-      `${pointText} - Période de cinq ans et fourchette`,
+      `${pointText} - période de cinq ans et fourchette`,
     trafficTitle: (pointText, dirText) =>
-      `${pointText} - transport mensuel ${dirText}`,
-    flow: "Sens d’écoulement :",
+      `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(
+        " et "
+      )})`,
     series: {
-      im: "importation",
+      im: "Importation",
       in: "Intra-Canada",
-      ex: "exportation",
-      cap: "capacité",
-      dh: "lourd canadien",
-      dln: "léger canadien / ngl",
-      fl: "léger étranger",
-      dl: "léger canadien",
-      rp: "produits pétroliers raffinés",
-      co: "condensat",
-      ecap: "capacité exportation",
-      icap: "capacité importation",
+      ex: "Exportation",
+      cap: "Capacité",
+      dh: "Lourd canadien",
+      dln: "Léger canadien / NGL",
+      fl: "Léger étranger",
+      dl: "Léger Canadien",
+      rp: "Produits Pétroliers Raffinés",
+      co: "Condensat",
+      ecap: "Capacité Exportation",
+      icap: "Capacité Importation",
     },
     util: "Utilisation",
     months: {

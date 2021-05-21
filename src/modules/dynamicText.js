@@ -42,7 +42,7 @@ const changeText = (num, lang, frontText = true) => {
       }
     } else if (val === 0 || val === null) {
       if (frontText) {
-        const langText = lang === "en" ? "not changed" : "inchangé";
+        const langText = lang === "en" ? "not changed" : "inchangés";
         styleList = ["bg-info", `${langText}`];
       } else {
         const langText = lang === "en" ? "equal to" : "égal à";
@@ -61,9 +61,10 @@ const quartersFr = { 12: "T4", 9: "T3", 6: "T2", 3: "T1" };
 const trendSub = (commodity, lang) => {
   let subText = "";
   if (commodity === "gas") {
-    subText = lang === "en" ? "year over year" : "Une année à l’autre";
+    subText = lang === "en" ? "year over year" : "d’une année à l’autre,";
   } else if (commodity === "oil") {
-    subText = lang === "en" ? "quarter over quarter" : "Un trimestre à l’autre";
+    subText =
+      lang === "en" ? "quarter over quarter" : "d’un trimestre à l’autre";
   }
   return subText;
 };
@@ -78,19 +79,20 @@ const formatValue = (value, units, numberFormat) => {
 const buildFiveText = (ft, tt, lang) => {
   const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
   if (pctChange) {
-    const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
     if (lang === "en") {
+      const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
       return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
         pctChange,
         lang,
         false
       )} the five-year average.</p>`;
     }
-    return `<p style="margin-bottom: 0px">Les débits au ${qtr} est ${changeText(
+    const qtr = `${quartersFr[tt.toDate[1]]} de ${tt.toDate[0]}`;
+    return `<p style="margin-bottom: 0px">Les débits au ${qtr} sont ${changeText(
       pctChange,
       lang,
       false
-    )} à la moyenne sur cinq ans.</p>`;
+    )} de la moyenne sur cinq ans.</p>`;
   }
 
   return "";
@@ -162,10 +164,10 @@ export const incidentsTextFra = (id, meta) => {
   // most common reasons
   paragraphText += `<p>Dans le cadre de l’examen des incidents, la Régie classe ceux-ci en fonction des circonstances directement \
   liées à leur origine (ce qui s’est produit) et de leurs causes sous-jacentes (pourquoi cela s’est produit). \
-  Sur ce réseau pipelinier, ce qui s’est produit le plus souvent, c’est de ${dynamicValue(
+  Sur ce réseau pipelinier, ce qui s’est produit le plus souvent, ce sont des ${dynamicValue(
     meta.mostCommonWhat
   )} et la question de ${dynamicValue(meta.mostCommonWhy)}`;
-  paragraphText += ` explique le plus souvent pourquoi cela s’est produit. Jetez un coup d’œil à la section sur les tendances des incidents du tableau de bord ci-dessous pour obtenir des définitions et une explication de ce qui se produit et pourquoi.</p>`;
+  paragraphText += ` qui expliquent le plus souvent pourquoi cela s’est produit. Jetez un coup d’œil à la section sur les tendances des incidents du tableau de bord ci-dessous pour obtenir des définitions et une explication de ce qui se produit et pourquoi.</p>`;
 
   // other important non-release incident types
   paragraphText += `<p>`;
@@ -253,25 +255,22 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
     if (trend.name !== "default") {
       trendId = ` (${seriesId[trend.name]})`;
     }
-    const trendText = `Les débits au ${dynamicValue(
+    const trendText = `Les débits au point principal ${dynamicValue(
       point + trendId
-    )} point principal ont ${changeText(
-      trend.throughChange.pct,
-      "fr"
-    )} ${trendSub(
+    )} ont ${changeText(trend.throughChange.pct, "fr")} ${trendSub(
       params.commodity,
       "fr"
-    )}, par rapport à une moyenne de ${formatValue(
+    )} d’une moyenne de ${formatValue(
       trend.throughChange.from,
       units,
       numberFormat
-    )} ${units.current} en ${quartersFr[trend.fromDate[1]]} ${
+    )} ${units.current} en ${quartersFr[trend.fromDate[1]]} de ${
       trend.fromDate[0]
     } à une moyenne de ${formatValue(
       trend.throughChange.to,
       units,
       numberFormat
-    )} ${units.current} en ${quartersFr[trend.toDate[1]]} ${
+    )} ${units.current} en ${quartersFr[trend.toDate[1]]} de ${
       trend.toDate[0]
     } (dernier trimestre des données).`;
     return trendText;
