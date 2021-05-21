@@ -166,7 +166,7 @@ export const incidentsTextFra = (id, meta) => {
   liées à leur origine (ce qui s’est produit) et de leurs causes sous-jacentes (pourquoi cela s’est produit). \
   Sur ce réseau pipelinier, ce qui s’est produit le plus souvent, ce sont des ${dynamicValue(
     meta.mostCommonWhat
-  )} et la question de l'${dynamicValue(meta.mostCommonWhy)}`;
+  )} et la question de ${dynamicValue(meta.mostCommonWhy)}`;
   paragraphText += ` qui expliquent le plus souvent pourquoi cela s’est produit. Jetez un coup d’œil à la section sur les tendances des incidents du tableau de bord ci-dessous pour obtenir des définitions et une explication de ce qui se produit et pourquoi.</p>`;
 
   // other important non-release incident types
