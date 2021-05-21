@@ -968,8 +968,8 @@ export class EventTrend extends EventMap {
    * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
    * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
    * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
-   * @param {Object} constr.seriesInfo - When not "seriesed" this must contain info about the series names, colors, etc.
-   * @param {Object} constr.definitions - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
+   * @param {Object} [constr.seriesInfo={}] - When not "seriesed" this must contain info about the series names, colors, etc.
+   * @param {Object} [constr.definitions={}] - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
    */
   constructor({
     eventType,
@@ -1324,7 +1324,20 @@ export class EventTrend extends EventMap {
   }
 }
 
+/**
+ * Class for generating a very simple leaflet bubble map showing one or more selected bubbles, with large zoom in/out functionality
+ */
 export class KeyPointMap {
+  /**
+   *
+   * @param {Object} constr - KeyPointMap constructor.
+   * @param {Object[]} constr.points - Array of all key points for map: {id: number, name: string, loc:[lat, -long]}.
+   * @param {Object[]} constr.selected - Array of key point objects {id: number, name: string}, with each key point showing up "selected".
+   * @param {string} [constr.leafletDiv="traffic-map"] - HTML div id where key point map will load.
+   * @param {number[]} [constr.initZoomTo=[60, -97]] - Initial lat long for map before zooming to points.
+   * @param {string} [constr.companyName=""] - Used to get initial zooms and padding for specific companies.
+   * @param {Object} [constr.lang={}] - Object holding language switching items.
+   */
   constructor({
     points,
     selected,

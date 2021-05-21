@@ -6,8 +6,8 @@ import {
   sortJsonAlpha,
   rangeInclusive,
   addSeriesParams,
-  calculateFiveYrAvg,
 } from "../src/modules/util";
+import { calculateFiveYrAvg } from "../src/modules/fiveYear";
 
 import { EventTrend } from "../src/modules/dashboard";
 

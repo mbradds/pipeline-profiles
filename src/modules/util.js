@@ -297,52 +297,6 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }
 
-/**
- *
- * @param {number} lastDate - Serialized date integer representing the max date in the dataset/series.
- * @param {Object} dataObj - {date: value} pairs of the dataset, to be filtered and shaped into the five year series.
- * @returns {FiveYearReturn}
- */
-export function calculateFiveYrAvg(lastDate, dataObj) {
-  const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
-  const firstYear = lastYear - 6; // the first year of the five year average
-  const startYear = new Date(
-    parseInt(Object.keys(dataObj)[0], 10)
-  ).getFullYear();
-
-  const meta = { lastYear, firstYear };
-  const [currentYrData, rangeData, avgData] = [[], [], []];
-
-  const months = {};
-  if (startYear > firstYear + 1) {
-    return { currentYrData, avgData, rangeData, meta };
-  }
-
-  Object.keys(dataObj).forEach((dateKey) => {
-    const value = dataObj[dateKey];
-    const dateInt = new Date(parseInt(dateKey, 10));
-    const [month, year] = [dateInt.getMonth() + 1, dateInt.getFullYear()];
-    if (year === lastYear) {
-      currentYrData.push([month.toString(), value]);
-    }
-    if (year > firstYear && year < lastYear) {
-      if (month in months) {
-        months[month].push(value);
-      } else {
-        months[month] = [value];
-      }
-    }
-  });
-
-  Object.keys(months).forEach((monthNum) => {
-    const value = months[monthNum];
-    rangeData.push([monthNum, Math.min(...value), Math.max(...value)]);
-    avgData.push([monthNum, arrAvg(value)]);
-  });
-
-  return { currentYrData, avgData, rangeData, meta };
-}
-
 export function addUnitsDisclaimer(div, commodity, textFunction) {
   const unitsDisclaimer = document.getElementById(div);
   unitsDisclaimer.innerHTML = textFunction(commodity);
