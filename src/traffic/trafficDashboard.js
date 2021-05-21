@@ -46,7 +46,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   const setTitle = (params, fiveYr) => {
     let pointText = "";
-    let dirLangList = ["unknown"];
+    let dirLangList = [false];
     if (params.tm) {
       params.points.forEach((point) => {
         pointText += `${point.name} `;

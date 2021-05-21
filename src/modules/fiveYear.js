@@ -46,6 +46,12 @@ function calculateFiveYrAvg(lastDate, dataObj) {
   return { currentYrData, avgData, rangeData, meta };
 }
 
+/**
+ *
+ * @param {Object} dataWithDate - At least 60 (5 years) {date: value} pairs, with the last object entry containing the max date {"lastDate": date int}
+ * @param {Object} lang - Language parameters found in langEnglish.js or langFrench.js
+ * @returns {Object[]} - Highcharts ready list of series: [{lastYrSeries, fiveYrAvg, fiveYrRange}]
+ */
 export function createFiveYearSeries(dataWithDate, lang) {
   const { lastDate, ...dataObj } = dataWithDate;
   const { currentYrData, avgData, rangeData, meta } = calculateFiveYrAvg(
@@ -92,8 +98,15 @@ export function createFiveYearSeries(dataWithDate, lang) {
   return [lastYrSeries, fiveYrAvg, fiveYrRange];
 }
 
-export function fiveYearTrend(fiveSeries, hasImports) {
-  if (fiveSeries && !hasImports) {
+/**
+ *
+ * @param {Object} fiveSeries - The return array from createFiveYearSeries
+ * @param {boolean} dontCalculate - When true, the trend isnt calcualted, and the return value is undefined.
+ * @returns {(Object|undefined)} - Object containing trend info to be loaded in ./dynamicText.js
+ */
+export function fiveYearTrend(fiveSeries, dontCalculate) {
+  // console.log(fiveSeries);
+  if (fiveSeries && !dontCalculate) {
     const [lastYrSeries, fiveYrAvg] = [fiveSeries[0], fiveSeries[1]];
     const dataForAvg = lastYrSeries.data.slice(-3);
     const monthsForAvg = dataForAvg.map((row) => row[0]);
