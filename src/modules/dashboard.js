@@ -2,6 +2,18 @@ import { cerPalette, conversions, visibility, rangeInclusive } from "./util";
 
 const haversine = require("haversine");
 
+/**
+ *
+ * @param {Object} config - Options to set up a basic leaflet map.
+ * @param {string} config.div - HTML div where map will be loaded.
+ * @param {number} config.zoomSnap - Defines how precise things like zoomTo will be.
+ * @param {number} config.zoomDelta - Defines how much zoom happens on one scroll/click.
+ * @param {boolean} config.zoomContol - Whether to show the plus/minus zoom button on map.
+ * @param {number[]} config.initZoomTo - Initial [lat, -long] for map.
+ * @param {number} config.initZoomLevel - Initial map zoom on load, before zoomTo/fitBounds.
+ * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
+ * @returns leaflet map object.
+ */
 function leafletBaseMap(config) {
   const map = L.map(config.div, {
     zoomSnap: config.zoomSnap,
@@ -81,7 +93,21 @@ const ONETOMANY = {
   category: true,
 };
 
+/**
+ * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.
+ */
 export class EventMap {
+  /**
+   *
+   * @param {Object} constr - EventMap constructor.
+   * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
+   * @param {(string|undefined)} [constr.field=undefined] - The initial data column to display on the map.
+   * @param {(Object|undefined)} [constr.filters=undefined] - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
+   * @param {(number|undefined)} [constr.minRadius=undefined] - Minimum radius for leaflet map circles.
+   * @param {string} [constr.leafletDiv="map"] - HTML div id where map will be loaded.
+   * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
+   * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
+   */
   constructor({
     eventType,
     field = undefined,
@@ -524,7 +550,21 @@ export class EventMap {
   }
 }
 
+/**
+ * Class responsible for creating a navigation sidebar next to either a leaflet map, or highcharts bar chart.
+ * The navigator has "pills" that can be clicked to control the chart or map, and can be filled with a horizontal
+ * bar to act as a map legend/total visualization.
+ */
 export class EventNavigator {
+  /**
+   *
+   * @param {Object} constr - EventNavigator constructor
+   * @param {Object} constr.plot - EventMap(leaflet) or EventTrend(highcharts) instance.
+   * @param {Object} constr.langPillTitles - {id: pillname} pairs for handling custom pill titles & language switching.
+   * @param {number} [constr.height=125] - Height in px of each pill navigation button.
+   * @param {(boolean|Object[])} [constr.data=false] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
+   * @param {boolean} [constr.showClickText=false] - Whether to add additional text to pill title making click more obvious.
+   */
   constructor({
     plot,
     langPillTitles,
@@ -825,13 +865,14 @@ export class EventNavigator {
   }
 
   barEvents(bar) {
-    const barDiv = document.getElementById(bar.div);
+    const currentBar = bar;
+    const barDiv = document.getElementById(currentBar.div);
     const barNav = this;
     function mouseOver() {
-      if (bar.status !== "activated") {
+      if (currentBar.status !== "activated") {
         barDiv.style.opacity = 1;
-        if (bar.chart) {
-          bar.chart.update({
+        if (currentBar.chart) {
+          currentBar.chart.update({
             chart: {
               backgroundColor: "#F0F8FF",
             },
@@ -843,10 +884,10 @@ export class EventNavigator {
     }
 
     function mouseOut() {
-      if (bar.status !== "activated") {
+      if (currentBar.status !== "activated") {
         barDiv.style.opacity = 0.4;
-        if (bar.chart) {
-          bar.chart.update({
+        if (currentBar.chart) {
+          currentBar.chart.update({
             chart: {
               backgroundColor: "white",
             },
@@ -862,8 +903,8 @@ export class EventNavigator {
       barNav.deactivateChart(barNav.currentActive);
       barNav.currentActive.status = "deactivated";
       // activate the clicked bar
-      bar.status = "activated";
-      barNav.activateChart(bar);
+      currentBar.status = "activated";
+      barNav.activateChart(currentBar);
     }
 
     barDiv.addEventListener("mouseover", mouseOver);
@@ -909,7 +950,27 @@ export class EventNavigator {
   }
 }
 
+/**
+ * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
+ * This class inherits from EventMap so that color functionality can be shared, and so that the fieldChange() and
+ * updateRadius() methods can share functionality agnostic of whether they are acting on highcharts or leaflet.
+ * @extends EventMap
+ */
 export class EventTrend extends EventMap {
+  /**
+   *
+   * @param {Object} constr - EventTrend constructor
+   * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
+   * @param {string} constr.field - The initial data column to have selected by default.
+   * @param {string} constr.filters - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
+   * @param {(Object[]|Object)} constr.data - Dataset to be shaped into highcharts series.
+   * @param {string} constr.hcDiv - HTML div id where highchart will be loaded.
+   * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
+   * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
+   * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
+   * @param {Object} constr.seriesInfo - When not "seriesed" this must contain info about the series names, colors, etc.
+   * @param {Object} constr.definitions - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
+   */
   constructor({
     eventType,
     field,

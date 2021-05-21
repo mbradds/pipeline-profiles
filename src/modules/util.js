@@ -1,5 +1,22 @@
 import { mapDates } from "./datestone";
 
+/**
+ * @typedef {Object} SetupReturn
+ * @property {Object} unitsHolder - {base, current, conversion} info about units and units switching.
+ * @property {boolean} buildFive - Whether a five year average chart should be built given the key point.
+ * @property {boolean} hasImports - Whether the inital key point has imports that need a seperate chart.
+ * @property {boolean} tm - Whether the user is on the Trans Mountain page. This page is different!
+ * @property {string} commodity - Looks at the default unit and is assigned "oil" or "gas".
+ */
+
+/**
+ * @typedef {Object} FiveYearReturn
+ * @property {Array[]} currentYrData - 3 months - 1 year of data above the five year range.
+ * @property {Array[]} avgData - Array with 12 entries, each containing the five year average of a month from Dec-Jan.
+ * @property {Array[]} rangeData - Array with 12 entries, each containing five-year range info: ["month", "min", "max"].
+ * @property {Object} meta - Contains info on the five-year year range: {lastYear: XXXX, firstYear: XXXX}.
+ */
+
 export const cerPalette = {
   "Night Sky": "#054169",
   Sun: "#FFBE4B",
@@ -25,15 +42,33 @@ export const conversions = {
   "bcf/d to million m3/d": 28.32,
 };
 
+/**
+ *
+ * @param {number} start - Start year of the returned range.
+ * @param {number} end  - End year for the returned range.
+ * @returns {Array} - Sorted array from start date to end data inclusive.
+ */
 export function rangeInclusive(start, end) {
   return Array(end - start + 1)
     .fill()
     .map((_, idx) => start + idx);
 }
 
+/**
+ *
+ * @param {Object[]} obj - JSON style list of objects with a common numeric column to sort.
+ * @param {string} [colName="value"] - JSON column identifier to sort.
+ * @returns {Object[]} - Descending sorted JSON list of objects.
+ */
 export const sortJson = (obj, colName = "value") =>
   obj.slice().sort((a, b) => b[colName] - a[colName]);
 
+/**
+ *
+ * @param {Object[]} lst - JSON style list of ojects with a common string column to sort.
+ * @param {string} col - JSON column identifier to sort.
+ * @returns {Object[]} - Alphabetically sorted JSON list of objects.
+ */
 export function sortJsonAlpha(lst, col) {
   function compareStrings(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
@@ -41,6 +76,11 @@ export function sortJsonAlpha(lst, col) {
   return lst.sort((a, b) => compareStrings(a[col], b[col]));
 }
 
+/**
+ *
+ * @param {string[]} divList - Array of HTML div id's to be hidden or shown.
+ * @param {string} status - Set either to "hide" or "show".
+ */
 export function visibility(divList, status) {
   divList.forEach((div) => {
     const x = document.getElementById(div);
@@ -56,8 +96,19 @@ export function visibility(divList, status) {
   });
 }
 
+/**
+ *
+ * @param {number[]} arr - Array of numeric values to be averaged.
+ * @returns {number} - Simple numeric average of the input array.
+ */
 export const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
+/**
+ *
+ * @param {Object[]} itter - Array of objects containing one or more key point definitions.
+ * @param {string} textCol - Object key identifier for the text to be displayed.
+ * @returns {string} - HTML unordered list (itter.length > 1) or HTML paragraph (itter.length === 1).
+ */
 export function listOrParagraph(itter, textCol) {
   let [seperator, pointHtml, closing] = ["p", "", ""];
   if (itter.length > 1) {
@@ -74,6 +125,20 @@ export function listOrParagraph(itter, textCol) {
   return pointHtml;
 }
 
+/**
+ *
+ * @param {Object[]} seriesWithDate - Pre-processed highcharts series containing a starting date, and one or more objects containing data arrays.
+ * @param {Object} unitsHolder - Info about the current dataset/series units.
+ * @param {string} unitsHolder.base - The default dataset unit. Typcially Bcf/d or Mb/d.
+ * @param {string} unitsHolder.current - The default unit or updated unit based on user radio selection.
+ * @param {string} unitsHolder.conversion - The multiplication factor to convert from base unit to other radio selection.
+ * @param {boolean} buildFive - Whether a five-year average series needs to be created.
+ * @param {Object} seriesNames - Lookup object containing series id's and en/fr series names to be added to the series.
+ * @param {string} frequency - Set to "monthly" can only handle monthly data at this point.
+ * @param {string} [section="traffic"] - The profile section. Different sections will have different series properties.
+ * @param {boolean} [sorted=true] - Whether seriesWithDate should be sorted by series.id. Helps maintain chart order
+ * @returns {Array} Array with first element containing the chart series, and second element containing the five-year series.
+ */
 export function addSeriesParams(
   seriesWithDate,
   unitsHolder,
@@ -179,6 +244,14 @@ export function addSeriesParams(
   return [newSeries, undefined];
 }
 
+/**
+ *
+ * @param {string} defaultUnit - The en/fr unit to be placed as "default" in returned unitsHolder and radio button checked.
+ * @param {Object} defaultPoint - Contains initial key point id and name (en/fr) to be initially selected on load.
+ * @param {Object} units - Contains unit id's and names (en/fr) to be used in radio button text and HTML id.
+ * @param {string} section - Section name is added to radio id to avoid duplication between traffic and apportionment.
+ * @returns {SetupReturn}
+ */
 export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   const commodity = defaultUnit === "Mb/d" ? "oil" : "gas";
   const unitsHolder = {
@@ -224,6 +297,12 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }
 
+/**
+ *
+ * @param {number} lastDate - Serialized date integer representing the max date in the dataset/series.
+ * @param {Object} dataObj - {date: value} pairs of the dataset, to be filtered and shaped into the five year series.
+ * @returns {FiveYearReturn}
+ */
 export function calculateFiveYrAvg(lastDate, dataObj) {
   const lastYear = new Date(lastDate).getFullYear(); // the last year in the dataset
   const firstYear = lastYear - 6; // the first year of the five year average

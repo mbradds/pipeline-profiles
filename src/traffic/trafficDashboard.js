@@ -592,7 +592,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         lang.units,
         "traffic"
       );
-      // TODO: use speread operators here to make copies
+
       chartParams.defaultPoint = defaultPoint;
       chartParams.points = getPointList(metaData);
       chartParams.companyName = metaData.companyName;
