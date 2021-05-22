@@ -482,10 +482,14 @@ export const frenchDashboard = {
     importAxis: (unit) => `Importations (${unit})`,
     fiveYrTitle: (pointText) =>
       `${pointText} - période de cinq ans et fourchette`,
-    trafficTitle: (pointText, dirText) =>
-      `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(
+    trafficTitle: (pointText, dirText) => {
+      if (dirText[0] === false) {
+        return `${pointText} - transport mensuel`;
+      }
+      return `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(
         " et "
-      )})`,
+      )})`;
+    },
     series: {
       im: "Importation",
       in: "Intra-Canada",
