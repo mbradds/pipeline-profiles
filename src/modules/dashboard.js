@@ -629,7 +629,6 @@ export class EventNavigator {
       const value = series[name][key];
       seriesList.push(seriesParams(key, value, name, this.barColors[name]));
     });
-    // console.log(seriesList);
     return seriesList;
   }
 
@@ -971,8 +970,7 @@ export class EventNavigator {
 /**
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
  * Contains fieldChange and updateRadius methods similiar to EventMap methods and plotHeight parameter for
- * EventNavigator polymorphism pattern
- *
+ * EventNavigator polymorphism pattern.
  */
 export class EventTrend {
   /**
@@ -986,7 +984,7 @@ export class EventTrend {
    * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
    * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
    * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
-   * @param {Object} [constr.seriesInfo={}] - When not "seriesed" this must contain info about the series names, colors, etc.
+   * @param {Object} [constr.seriesInfo={}] - When "seriesed" this must contain info about the series names, colors, etc. {pillName: {id: {c: color, n: name}}}
    * @param {Object} [constr.definitions={}] - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
    */
   constructor({
@@ -1047,12 +1045,10 @@ export class EventTrend {
         const firstYear = y;
         const lastYear = uniqueYears[index + 1] - 1;
         for (let i = firstYear; i <= lastYear; i += 1) {
-          // dummyData.push({ name: i.toString(), y: undefined });
           dummyData.push(adder(i));
         }
       } else {
         dummyData.push(adder(y));
-        // dummyData.push({ name: y.toString(), y: undefined });
       }
     });
     dummySeries.data = dummyData;
@@ -1064,29 +1060,19 @@ export class EventTrend {
       return this.processEventsData(data, field);
     }
     const xvalues = data[field].year;
-    let colors = {};
-    let names = {};
-    let currentInfo = { colors: {}, names: {} };
+    let currentInfo = {};
     if (Object.prototype.hasOwnProperty.call(this.seriesInfo, this.field)) {
       currentInfo = this.seriesInfo[this.field];
-    }
-    if (Object.prototype.hasOwnProperty.call(currentInfo, "colors")) {
-      colors = currentInfo.colors;
-    }
-    if (Object.prototype.hasOwnProperty.call(currentInfo, "names")) {
-      names = currentInfo.names;
     }
 
     const preparedSeries = data[field].data.map((s) => {
       const newSeries = {};
       newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
-      if (Object.prototype.hasOwnProperty.call(names, s.id)) {
-        newSeries.name = names[s.id];
+      if (Object.prototype.hasOwnProperty.call(currentInfo, s.id)) {
+        newSeries.name = currentInfo[s.id].n;
+        newSeries.color = currentInfo[s.id].c;
       } else {
         newSeries.name = s.id;
-      }
-      if (Object.prototype.hasOwnProperty.call(colors, s.id)) {
-        newSeries.color = colors[s.id];
       }
       newSeries.id = s.id;
       return newSeries;
@@ -1173,7 +1159,6 @@ export class EventTrend {
         const yVal = seriesData[xVal];
         hcData.push({ name: xVal, y: yVal });
       });
-      // console.log(this.colors[field][seriesId]);
       seriesList.push({
         name: this.colors[field][seriesId].n,
         id: seriesId,

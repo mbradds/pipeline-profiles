@@ -1,6 +1,5 @@
 import { EventNavigator, EventTrend } from "../modules/dashboard";
 import { oandmText } from "../modules/dynamicText";
-import { regionColors, yesNoColors } from "../modules/colors";
 
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
@@ -30,25 +29,6 @@ export function mainOandM(eventData, lang) {
     oandmText(eventData.meta, lang);
   }
 
-  const engNames = { y: "Yes", n: "No" };
-  const seriesInfo = {
-    "Integrity Dig": { colors: yesNoColors, names: engNames },
-    "Fish Present": { colors: yesNoColors, names: engNames },
-    "In Stream Work Required": { colors: yesNoColors, names: engNames },
-    "Species At Risk Present": { colors: yesNoColors, names: engNames },
-    "Province/Territory": {
-      colors: regionColors,
-      names: {
-        ab: "Alberta",
-        bc: "British Columbia",
-        sk: "Saskatchewan",
-        mb: "Manitoba",
-        qc: "Quebec",
-        on: "Ontario",
-      },
-    },
-  };
-
   const definitions = {
     "Integrity Dig":
       "Indicates If Activity Include Excavation To Expose, Assess, Or Repair An Existing Pipeline.",
@@ -67,7 +47,7 @@ export function mainOandM(eventData, lang) {
       filters: timeFilters,
       data: eventData.data,
       seriesed: true,
-      seriesInfo,
+      seriesInfo: lang.seriesInfo,
       definitions,
       definitionsOn: "pill",
       divId: "time-series-oandm",

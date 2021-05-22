@@ -497,14 +497,11 @@ Making sure that all dependencies are updated and both package.json and package-
 - Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
 - The dynamic text modude `src/modules/dynamicText.js` is kind of split between english and french methods. Where possible, all these methods should be consolidated to take a language parameter. This might not always be possible because of the sentence structure between english and french.
 - Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
-- Apply the colors pattern in `src/modules/colors.js` to the entire project. All colors should be defined here for eng and fra, and then applied to the series id's.
 - Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
 - Add more tests for public methods in `src/modules/dashboard.js`
 - Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 - Use the same data/id/lookup pattern in traffic & incidents for conditions. Having english and french datasets creates an inconsistency risk, and using id's for project names/themes will massively reduce data/bundle size, possibly at the expense of large lookup time?
-- Look into the inheritance pattern in `src/modules/dashboard.js`. This might be adding more complexity than its worth.
-- Try to dynamically compute pill height in `src/modules/dashboard.js` instead of hard coding the height. This will make it easier to add pills, and optimize this style of dashboard for mobile/smaller screens.
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
 - Add jsDoc strings to all public modules/methods in `src/modules`.
 - Look into the benfits of splitting css files and adding a `src/css` folder that compiles into one main.css file in `dist`.
@@ -522,3 +519,5 @@ Making sure that all dependencies are updated and both package.json and package-
 - Fix some of the dynamic french text based on feedback from translation.
 - Standardize the number and date format methods. There are methods for this in `src/modules/langEnglish.js` but there are still instances of Highcharts.numberFormat scattered in the code.
 - The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
+- Try to dynamically compute pill height in `src/modules/dashboard.js` instead of hard coding the height. This will make it easier to add pills, and optimize this style of dashboard for mobile/smaller screens.
+- Look into the inheritance pattern in `src/modules/dashboard.js`. This might be adding more complexity than its worth.

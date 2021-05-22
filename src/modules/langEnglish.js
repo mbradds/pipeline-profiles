@@ -28,6 +28,26 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
 };
 
+const regionInfo = {
+  ab: { c: cerPalette.Sun, n: "Alberta" },
+  bc: { c: cerPalette.Forest, n: "British Columbia" },
+  sk: { c: cerPalette.Aubergine, n: "Saskatchewan" },
+  mb: { c: cerPalette.Ocean, n: "Manitoba" },
+  on: { c: cerPalette["Night Sky"], n: "Ontario" },
+  qc: { c: cerPalette.Flame, n: "Quebec" },
+  nb: { c: cerPalette.Forest, n: "New Brunswick" },
+  ns: { c: cerPalette["Night Sky"], n: "Nova Scotia" },
+  nt: { c: cerPalette.hcLightBlue, n: "Northwest Territories" },
+  pe: { c: cerPalette.hcRed, n: "Prince Edward Island" },
+  nu: { c: cerPalette.hcPurple, n: "Nunavut" },
+  yt: { c: cerPalette.hcGreen, n: "Yukon" },
+};
+
+const yesNoInfo = {
+  y: { c: cerPalette.Sun, n: "Yes" },
+  n: { c: cerPalette["Night Sky"], n: "No" },
+};
+
 const units = {
   "Bcf/d": "Bcf/d",
   "million m3/d": "million m3/d",
@@ -424,17 +444,7 @@ export const englishDashboard = {
           c: { c: cerPalette["Cool Grey"], n: "Closed" },
           s: { c: cerPalette.Ocean, n: "Submitted" },
         },
-        Province: {
-          ab: { c: cerPalette.Sun, n: "Alberta" },
-          bc: { c: cerPalette.Forest, n: "British Columbia" },
-          sk: { c: cerPalette.Aubergine, n: "Saskatchewan" },
-          mb: { c: cerPalette.Ocean, n: "Manitoba" },
-          on: { c: cerPalette["Night Sky"], n: "Ontario" },
-          qc: { c: cerPalette.Flame, n: "Quebec" },
-          nb: { c: cerPalette.Forest, n: "New Brunswick" },
-          ns: { c: cerPalette["Night Sky"], n: "Nova Scotia" },
-          nt: { c: cerPalette.hcLightBlue, n: "Northwest Territories" },
-        },
+        Province: regionInfo,
         why: {
           sp: { c: cerPalette.Flame, n: "Standards and Procedures" },
           te: { c: cerPalette.Forest, n: "Tools and Equipment" },
@@ -557,6 +567,13 @@ export const englishDashboard = {
     noEvents: {
       header: `No O&M data available`,
       note: (company) => `There are no O&M activities reported for ${company}`,
+    },
+    seriesInfo: {
+      "Integrity Dig": yesNoInfo,
+      "Fish Present": yesNoInfo,
+      "In Stream Work Required": yesNoInfo,
+      "Species At Risk Present": yesNoInfo,
+      "Province/Territory": regionInfo,
     },
   },
 };
