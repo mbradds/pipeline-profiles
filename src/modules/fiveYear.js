@@ -105,7 +105,6 @@ export function createFiveYearSeries(dataWithDate, lang) {
  * @returns {(Object|undefined)} - Object containing trend info to be loaded in ./dynamicText.js
  */
 export function fiveYearTrend(fiveSeries, dontCalculate) {
-  // console.log(fiveSeries);
   if (fiveSeries && !dontCalculate) {
     const [lastYrSeries, fiveYrAvg] = [fiveSeries[0], fiveSeries[1]];
     const dataForAvg = lastYrSeries.data.slice(-3);

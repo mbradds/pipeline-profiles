@@ -162,17 +162,11 @@ export class EventMap {
     if (state !== "other") {
       let imperial;
       if (state === "gas") {
-        imperial = `${Highcharts.numberFormat(
-          (m3 * convGas).toFixed(2),
-          2,
-          this.lang.decimal
-        )} ${this.lang.cf}`;
+        imperial = `${this.lang.numberFormat(m3 * convGas, 2)} ${this.lang.cf}`;
       } else {
-        imperial = `${Highcharts.numberFormat(
-          (m3 * convLiquid).toFixed(2),
-          2,
-          this.lang.decimal
-        )} ${this.lang.bbl}`;
+        imperial = `${this.lang.numberFormat(m3 * convLiquid, 2)} ${
+          this.lang.cf
+        }`;
       }
 
       return `${imperial} (${Highcharts.numberFormat(

@@ -420,8 +420,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function resize(params) {
-    // TODO: this needs to be cleaned up and tested more
-    // TODO: remove all the css classes that aernt needed now that oil has five year
     const mainTrafficDiv = document.getElementById("traffic-hc");
     if (params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
