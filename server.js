@@ -1,6 +1,7 @@
 const express = require("express");
-var compression = require("compression");
+const compression = require("compression");
 const path = require("path");
+
 const port = process.env.PORT || 8080;
 const app = express();
 

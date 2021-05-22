@@ -15,12 +15,13 @@
     "update-traffic-data": "sh ./src/data_management/npm_scripts/update-traffic-data.sh",
     "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
     "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
+    "update-apportionment-data": "sh ./src/data_management/npm_scripts/update-apportionment-data.sh",
     "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
     "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
     "test-frontend": "ava",
     "requirements-txt": "sh ./src/data_management/npm_scripts/requirements.sh"
   },
-  "author": "",
+  "author": "Grant Moss",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.14.0",

@@ -1,6 +1,10 @@
 # Pipeline Profiles
 
 [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mbradds/pipeline-profiles/pulls)
+[![dependencies](https://img.shields.io/david/mbradds/pipeline-profiles)](https://img.shields.io/david/mbradds/pipeline-profiles)
+[![Known Vulnerabilities](https://snyk.io/test/github/mbradds/pipeline-profiles/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mbradds/pipeline-profiles?targetFile=package.json)
+[![heroku](https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/)](https://pipeline-profiles.herokuapp.com/)
 
 - **Live version:** https://pipeline-profiles.herokuapp.com/
 
@@ -40,8 +44,8 @@ Sections being added:
   3. Operations & Maintenance Activities (TBD, under development)
   4. Contaminated Sites/Remediation (TBD, under development)
   5. Unauthorized Activities (TBD, under development)
-- **Traffic (Pipeline Throughput & Capacity)** (May 18, 2021, under development)
-- **Oil Pipeline Apportionment** (May 18, 2021, under development)
+- **Traffic (Pipeline Throughput & Capacity)** (May 25, 2021, under development)
+- **Oil Pipeline Apportionment** (May 25, 2021, under development)
 - **Pipeline Tolls** (TBD)
 - **Pipeline/Corporate Financial info** (TBD)
 
@@ -55,6 +59,7 @@ pipeline_profiles
 │   webpack.config.js (functionality for creating clean ../dist folder in english and french)
 |   index.html (main navigation page for profiles. Has entry links for all sub profiles in /dist)
 |   .babelrc (babel config with corejs 3 polyfills)
+|   .vscode/settings.json (please use vscode for this project!)
 |   ...
 |
 └───test
@@ -82,13 +87,17 @@ pipeline_profiles
 |   |
 |   └───conditions (conditions compliance code & data)
 |   |
-|   └───incidents (incidents dashboard code & data)
+|   └───incidents (incidents dashboard & data)
 |   |
-|   └───new sections (new dashboards/sections will be added!)
+|   └───apportionment (oil pipeline apportionment dashboard & data)
 |   |
-|   └───traffic (Pipeline throughput and capacity)
+|   └───oandm (operations and maintenance activities dashboard & data)
+|   |
+|   └───traffic (Pipeline throughput and capacity dashboard & data)
 |   |
 |   └───modules (shared dashboard code & utility functions)
+|   |
+|   └─── your_new_section (new dashboards/sections will be added!)
 │
 └───dist (tries to match dweb7 folder structure)
     │   en/ english js bundles & html for each profile (to be placed on web server)
@@ -97,8 +106,8 @@ pipeline_profiles
 
 ## Software prerequisites
 
-1. npm (v 7.11.1+)
-2. node (v 14.16.1+)
+1. npm (Im using v7.11.1)
+2. node (Im using v14.16.1+)
 3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
 4. Git (for contributing)
 5. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)
@@ -120,7 +129,7 @@ First time install:
 npm ci
 ```
 
-Or update dependencies
+Or install dependencies
 
 ```bash
 npm install
@@ -145,7 +154,7 @@ git checkout -b profile_improvement
 npm run dev
 ```
 
-6. distribution bundles are not tracked. Before publishing:
+6. distribution bundles are not tracked. Before publishing new version:
 
 ```diff
 -mode: "development",
@@ -158,7 +167,7 @@ then:
 npm run build
 ```
 
-This will overwrite everything in `/dist`. The js bundles in `/dist` can be placed on the web server.
+Create a new release on GitHub and add the compressed dist folder. Ask the web team to dump the latest production files onto dweb7 and add the new dist files/changes before sending in a production web request.
 
 ## Quick start for updating data
 
@@ -177,9 +186,10 @@ It is highly recommended that you first create the conda python environment desc
 Update datasets:
 
 ```bash
-npm run update-traffic-data
 npm run update-incidents-data
 npm run update-conditions-data
+npm run update-traffic-data
+npm run update-apportionment-data
 ```
 
 Note: depending on several factors, including the current state of the python scripts called with the above command, this may not actually update the data you want. Take a look at the sub sections below for update instructions specific to the dataset.
@@ -399,7 +409,7 @@ const profileWebpackConfig = (function () {
 
 ### Python unit tests (back end)
 
-The greatest risk for errors, such as incorrect values appearing in the front end, are likely to happen as a result of errors in the "back end" python code (npm run data). These python scripts compute large amounts of summary statistics, totals, metadata (number of incidents, most common, types, etc) from datasets that have inherent errors. This is made more risky by the fact that there are english and french datasets, and these datasets may have unrelated problems. Here is a list of embedded data errors I have noticed so far:
+The greatest risk for errors, such as incorrect values appearing in the front end, are likely to happen as a result of errors in the "back end" python code. These python scripts compute large amounts of summary statistics, totals, metadata (number of incidents, most common, types, etc) from datasets that have inherent errors. This is made more risky by the fact that there are english and french datasets (only for conditions), and these datasets may have unrelated problems. Here is a list of embedded data errors I have noticed so far:
 
 1. Trailing whitespace in text columns. This is a problem when filtering/grouping, because "NGTL" will be seperated from "NGTL ". This error is mainly mitigated by running `.strip()` on important text based columns.
 2. Duplicate or incorrect company names. For example "Enbridge Pipelines Ltd." and "Enbridge Pipelines Inc". Notice the difference? This is mainly corrected by exploring all company names at the beginning of development and running something like this:
@@ -422,7 +432,7 @@ The unit tests check a bunch of summary statistics and data validation metrics s
 
 ### AVA unit tests (front end)
 
-Test coverage is pretty low right now. Mainly focussing on major r-usable functionality in `src/modules/util.js` and major calcualtions done on the front end like the five year average. I would like to move more general/pure functions to `src/modules/util.js` so that they can be tested easier.
+Test coverage is pretty low right now. Mainly focussing on major re-usable functionality in `src/modules/util.js` and major calcualtions done on the front end like the five year average. I would like to move more general/pure functions to `src/modules/util.js` so that they can be tested easier.
 
 ```bash
 npm run test-frontend
@@ -441,6 +451,7 @@ npm run test-frontend
 
 ### Dev Dependencies
 
+- [ava](https://www.npmjs.com/package/ava)(runs the unit tests in `test/test.js`)
 - [@babel/core](https://babeljs.io/docs/en/babel-core)
 - [@babel/plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)
 - [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
@@ -480,25 +491,29 @@ Making sure that all dependencies are updated and both package.json and package-
 ## TODO list
 
 - Rewrite everything in TypeScript
-- Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Include documentation and instructions for getting regdocs links from the internal cer database.
-- Include documentation on updating traffic and apportionment sections.
+- Include documentation on updating traffic, apportionment, and oandm data sets.
 - Make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
-- Add an option in incidents and conditions py for direct connection to cer infrastructure.
-- Add missing (non consecutive) date/data handling for traffic and apportionment (in python)
+- Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
 - The dynamic text modude `src/modules/dynamicText.js` is kind of split between english and french methods. Where possible, all these methods should be consolidated to take a language parameter. This might not always be possible because of the sentence structure between english and french.
-- The data prep pattern used in the traffic section is pretty effective. Having id's for all the key points and trade types cuts down on data size a bit, makes on the fly translation safer, and allows for shared data between english and french. Try to re-create this pattern for the rest of the sections.
-- Company names as file names inside each "company_data" folder is probably going to lead to problems. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
-- The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
+- Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
 - Apply the colors pattern in `src/modules/colors.js` to the entire project. All colors should be defined here for eng and fra, and then applied to the series id's.
 - Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
 - Add more tests for public methods in `src/modules/dashboard.js`
 - Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
+- Use the same data/id/lookup pattern in traffic & incidents for conditions. Having english and french datasets creates an inconsistency risk, and using id's for project names/themes will massively reduce data/bundle size, possibly at the expense of large lookup time?
+- Look into the inheritance pattern in `src/modules/dashboard.js`. This might be adding more complexity than its worth.
+- Try to dynamically compute pill height in `src/modules/dashboard.js` instead of hard coding the height. This will make it easier to add pills, and optimize this style of dashboard for mobile/smaller screens.
+- Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
+- Add jsDoc strings to all public modules/methods in `src/modules`.
+- Look into the benfits of splitting css files and adding a `src/css` folder that compiles into one main.css file in `dist`.
+- Move `src/profile.hbs` into `src/components`. All templates should be kept together for readability.
 
 ### Completed TODO's
 
 - Create distribution bundle for highcharts + leaflet
+- Datasets can be further optimized to reduce file size. One example would be to have one json key, value for conditions total like so: `{numConditions: [In Progress (int), Closed (int)]}` instead of `{In Progress: int, Closed: int}`. Update: alot of this optimization has been done, but can be ramped up if needed.
 - Upgrade highcharts from 8.2.2 to 9.1.0
 - Fully remove Jquery dependency
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
@@ -506,3 +521,4 @@ Making sure that all dependencies are updated and both package.json and package-
 - Add method in EventTrend to include a gap when there are no events in recent years.
 - Fix some of the dynamic french text based on feedback from translation.
 - Standardize the number and date format methods. There are methods for this in `src/modules/langEnglish.js` but there are still instances of Highcharts.numberFormat scattered in the code.
+- The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
