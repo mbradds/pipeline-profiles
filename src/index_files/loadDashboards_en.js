@@ -10,6 +10,8 @@ import { englishDashboard } from "../modules/langEnglish";
 import { mainTraffic } from "../traffic/trafficDashboard";
 // apportionment
 import { mainApportion } from "../apportionment/apportionmentDashboard";
+// operations and maintenance activities
+import { mainOandM } from "../oandm/oandmDashboard";
 
 // console.time(`first content loading`);
 bindToWindow();
@@ -36,6 +38,7 @@ export async function loadAllCharts(data, plains = false) {
       data.incidentData.meta,
       englishDashboard.incidents
     ),
+    mainOandM(data.oandmData, englishDashboard.oandm),
   ];
 
   function plainsMidstreamProfile(lang, div) {

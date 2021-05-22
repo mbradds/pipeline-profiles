@@ -2,63 +2,16 @@ import {
   cerPalette,
   visibility,
   sortJsonAlpha,
-  arrAvg,
   listOrParagraph,
   addSeriesParams,
   addUnitsAndSetup,
   addUnitsDisclaimer,
-  calculateFiveYrAvg,
 } from "../modules/util";
+import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
 import { KeyPointMap } from "../modules/dashboard";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;
-
-  function createFiveYearSeries(dataWithDate) {
-    const { lastDate, ...dataObj } = dataWithDate;
-    const { currentYrData, avgData, rangeData, meta } = calculateFiveYrAvg(
-      lastDate,
-      dataObj
-    );
-
-    const lastYrSeries = {
-      data: [],
-      type: "line",
-      zIndex: 5,
-      name: lang.fiveYr.lastYrName(meta.lastYear),
-      color: cerPalette.hcRed,
-    };
-
-    const fiveYrRange = {
-      data: [],
-      name: lang.fiveYr.rangeName(meta.firstYear, meta.lastYear),
-      type: "arearange",
-      zIndex: 3,
-      marker: {
-        enabled: false,
-      },
-      color: cerPalette.Ocean,
-    };
-
-    const fiveYrAvg = {
-      data: [],
-      name: lang.fiveYr.avgName,
-      type: "line",
-      zIndex: 4,
-      marker: {
-        enabled: false,
-      },
-      lineWidth: 4,
-      color: "black",
-    };
-    lastYrSeries.id = lastYrSeries.name;
-    fiveYrRange.id = fiveYrRange.name;
-    fiveYrAvg.id = fiveYrAvg.name;
-    lastYrSeries.data = currentYrData;
-    fiveYrAvg.data = avgData;
-    fiveYrRange.data = rangeData;
-    return [lastYrSeries, fiveYrAvg, fiveYrRange];
-  }
 
   function addPointButtons(params) {
     const btnGroup = document.getElementById("traffic-points-btn");
@@ -158,28 +111,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
     return firstSeries;
   };
-
-  function fiveYearTrend(fiveSeries, hasImports) {
-    if (fiveSeries && !hasImports) {
-      const [lastYrSeries, fiveYrAvg] = [fiveSeries[0], fiveSeries[1]];
-      const dataForAvg = lastYrSeries.data.slice(-3);
-      const monthsForAvg = dataForAvg.map((row) => row[0]);
-      const fiveYrTrend = {};
-      const lst = [
-        [fiveYrAvg, "fiveYrQtr"],
-        [lastYrSeries, "lastYrQtr"],
-      ];
-      lst.forEach((series) => {
-        let last3 = series[0].data.filter((row) =>
-          monthsForAvg.includes(row[0])
-        );
-        last3 = last3.map((row) => row[1]);
-        fiveYrTrend[series[1]] = arrAvg(last3);
-      });
-      return fiveYrTrend;
-    }
-    return undefined;
-  }
 
   const addToolRow = (p, unit, round, extraStyle = "") => {
     const yVal = (pnt) => {
@@ -489,8 +420,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function resize(params) {
-    // TODO: this needs to be cleaned up and tested more
-    // TODO: remove all the css classes that aernt needed now that oil has five year
     const mainTrafficDiv = document.getElementById("traffic-hc");
     if (params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
@@ -560,7 +489,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
     let series;
     if (fiveSeries) {
-      series = createFiveYearSeries(fiveSeries);
+      series = createFiveYearSeries(fiveSeries, lang);
     }
     let newChart;
     if (fiveChart) {
@@ -592,7 +521,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         lang.units,
         "traffic"
       );
-      // TODO: use speread operators here to make copies
+
       chartParams.defaultPoint = defaultPoint;
       chartParams.points = getPointList(metaData);
       chartParams.companyName = metaData.companyName;
@@ -634,7 +563,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       );
 
       if (fiveSeries) {
-        fiveSeries = createFiveYearSeries(fiveSeries);
+        fiveSeries = createFiveYearSeries(fiveSeries, lang);
       }
 
       let trafficChart = createTrafficChart(
@@ -803,7 +732,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
             let newFiveSeries;
             if (fiveSeries) {
-              newFiveSeries = createFiveYearSeries(fiveSeries);
+              newFiveSeries = createFiveYearSeries(fiveSeries, lang);
             }
             trafficChart.update(
               {

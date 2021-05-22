@@ -3,6 +3,7 @@ import conditionsData from "../../../conditions/company_data/fr/Trans-NorthernPi
 import incidentData from "../../../incidents/company_data/Trans-NorthernPipelinesInc.json";
 import trafficData from "../../../traffic/company_data/Trans-NorthernPipelinesInc.json";
 import apportionData from "../../../apportionment/company_data/Trans-NorthernPipelinesInc.json";
+import oandmData from "../../../oandm/company_data/Trans-NorthernPipelinesInc.json";
 import { loadAllCharts } from "../../loadDashboards_fr";
 
 const data = {
@@ -11,6 +12,7 @@ const data = {
   incidentData,
   trafficData,
   apportionData,
+  oandmData,
 };
 
 loadAllCharts(data);

@@ -5,8 +5,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const webpack = require("webpack");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-//   .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const profileWebpackConfig = (function () {
   const language = ["en", "fr"];
@@ -107,8 +107,8 @@ const profileWebpackConfig = (function () {
 })();
 
 module.exports = {
-  // mode: "development",
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),

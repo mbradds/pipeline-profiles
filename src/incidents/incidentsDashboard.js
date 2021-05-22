@@ -103,14 +103,18 @@ export async function mainIncidents(incidentData, metaData, lang) {
     if (incidentData.length > 0) {
       try {
         const chartParams = metaData;
-        // add the system name to metadata
-        try {
+        // add the system name to chartParams
+        if (
+          Object.prototype.hasOwnProperty.call(
+            lang.companyToSystem,
+            metaData.companyName
+          )
+        ) {
           chartParams.systemName = lang.companyToSystem[metaData.companyName];
-        } catch (err) {
+        } else {
           chartParams.systemName = metaData.companyName;
         }
-        // chartParams.mostCommonSubstance =
-        //   lang.dashboard.EVENTCOLORS.Substance[metaData.mostCommonSubstance].n;
+
         const langParams = langCommon(chartParams, metaData);
         chartParams.mostCommonSubstance = langParams.substance;
         chartParams.mostCommonWhat = langParams.what;

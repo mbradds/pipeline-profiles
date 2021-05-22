@@ -4,9 +4,12 @@ import {
   arrAvg,
   sortJson,
   sortJsonAlpha,
+  rangeInclusive,
   addSeriesParams,
-  calculateFiveYrAvg,
 } from "../src/modules/util";
+import { englishDashboard } from "../src/modules/langEnglish";
+import { createFiveYearSeries, fiveYearTrend } from "../src/modules/fiveYear";
+import { EventTrend } from "../src/modules/dashboard";
 
 function macroIs(t, input, expected) {
   t.is(input, expected);
@@ -27,6 +30,15 @@ test("arrAvg", (t) => {
 test("arrAvg2", (t) => {
   const testArr = [5, 5, 5, 5, 5];
   t.is(arrAvg(testArr), 5);
+});
+
+test("rangeInclusive", (t) => {
+  const start = 3;
+  const end = 10;
+  const range = rangeInclusive(start, end);
+  t.is(range[0], 3);
+  t.is(range[range.length - 1], 10);
+  t.is(range.length, 8);
 });
 
 test("sortJson", (t) => {
@@ -81,27 +93,52 @@ function generateTestData(months = 60) {
     m0++;
   }
   timeSeries = mapDates(timeSeries, new Date(2015, 0, 1), "monthly");
-  // console.log(new Date(parseInt(timeSeries[0][0])));
   const timeObj = {};
 
   timeSeries.forEach((row) => {
     timeObj[row[0]] = new Date(parseInt(row[0])).getMonth() + 1;
   });
-  const lastDate = timeSeries.slice(-1)[0][0];
-
-  const fiveYr = calculateFiveYrAvg(lastDate, timeObj);
+  timeObj.lastDate = timeSeries[timeSeries.length - 1][0];
+  const fiveYr = createFiveYearSeries(timeObj, englishDashboard.traffic);
   return fiveYr;
 }
 
-const testData1 = generateTestData(59);
-test("not enough five year data", macroDeep, testData1.avgData, []);
+const fiveSeries1 = generateTestData(59);
+test("not enough five year data", macroDeep, fiveSeries1[1].data, []);
 
-const testData2 = generateTestData(65);
-test(
-  "five years, 6 months current year",
-  macroIs,
-  testData2.currentYrData[0][1],
-  1
-);
-test("five years, 6 months lastYear", macroIs, testData2.meta.lastYear, 2020);
-// console.log(testData2);
+const fiveSeries2 = generateTestData(65);
+
+test("five years (5.5 years) current year", (t) => {
+  t.is(fiveSeries2[0].data.length, 6);
+  t.is(fiveSeries2[0].data[0][1], 1);
+  t.is(fiveSeries2[0].name, "2020 Throughput (last year of data)");
+});
+
+test("five years (5.5 years) avg + range data", (t) => {
+  t.is(fiveSeries2[1].data.length, 12);
+  t.is(fiveSeries2[1].data[0][1], 1);
+  t.is(fiveSeries2[1].data[11][1], 12);
+
+  t.is(fiveSeries2[2].data.length, 12);
+  t.is(fiveSeries2[2].name, "Five-Year Range (2015-2019)");
+  t.is(fiveSeries2[2].data[0].length, 3);
+  t.is(fiveSeries2[2].data[0][0], "1");
+  t.is(fiveSeries2[2].data[0][1], 1);
+  t.is(fiveSeries2[2].data[0][2], 1);
+});
+
+test("five year trend", (t) => {
+  const trend = fiveYearTrend(fiveSeries2, false);
+  t.is(fiveYearTrend(fiveSeries2, true), undefined);
+  t.is(trend.fiveYrQtr, 5);
+  t.is(trend.lastYrQtr, 5);
+});
+
+test("EventTrend dummy series", (t) => {
+  const yearList = [2015, 2016, 2019];
+  const dummySeries = EventTrend.dummyYears(yearList, "list");
+  t.is(dummySeries.name, "dummy");
+  t.is(dummySeries.showInLegend, false);
+  t.is(dummySeries.data[0][0], 2015);
+  t.is(dummySeries.data[dummySeries.data.length - 1][0], 2021);
+});

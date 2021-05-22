@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, most_common, strip_cols
+from util import company_rename, most_common, strip_cols, idify
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -15,6 +15,13 @@ ideas:
 '''
 
 
+def listify(series):
+    series = series.fillna(value=0)
+    series = [int(x) for x in series]
+    series = list(series)
+    return series
+
+
 def optimizeJson(df):
     delete_after_meta = ['Event Number',
                          'Company Name',
@@ -27,7 +34,6 @@ def optimizeJson(df):
         del df[delete]
 
     df['year'] = df['Commencement Date'].dt.year
-    # df = df.fillna(value=None)
     for col in df.columns:
         if "date" in col.lower():
             del df[col]
@@ -47,16 +53,19 @@ def optimizeJson(df):
             dfSeries = dfSeries.reset_index()
             dfSeries = dfSeries.sort_values(by="year")
             thisSeries = {}
+            thisData = []
             for sName in dfSeries.columns:
                 if sName != 'year':
-                    dfSeries[sName] = dfSeries[sName].fillna(value=0)
-                dfSeries[sName] = [int(x) for x in dfSeries[sName]]
-                thisSeries[sName] = list(dfSeries[sName])
+                    thisData.append({"id": sName,
+                                     "data": listify(dfSeries[sName])})
+                else:
+                    thisSeries[sName] = listify(dfSeries[sName])
+            thisSeries["data"] = thisData
             series[col] = thisSeries
     return series
 
 
-def metadata(df):
+def metadata(df, company):
     def filterNear(city):
         if len(city) <= 2:
             return False
@@ -68,7 +77,7 @@ def metadata(df):
     thisCompanyMeta = {}
     thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
     thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
-    nearList = list(df['Nearest Populated Centre'])
+    nearList = list(df['Nearest Populated Centre']+" "+df['Province/Territory'].str.upper())
     nearList = filter(filterNear, nearList)
     nearList = [x.split(",")[0].strip() for x in nearList]
     nearDf = pd.DataFrame(nearList)
@@ -78,18 +87,20 @@ def metadata(df):
                 "nearby",
                 3,
                 "list",
-                True,
+                False,
                 False)
     thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
     thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
-    thisCompanyMeta["atRisk"] = sum([1 if x == "Yes" else 0 for x in df['Species At Risk Present At Activity Site']])
+    thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
     thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
     thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
+    thisCompanyMeta["company"] = company
     return thisCompanyMeta
 
 
 def column_insights(df):
     df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
+    df = idify(df, "Province/Territory", "region")
     return df
 
 
@@ -141,6 +152,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
     df = strip_cols(df)
 
     df = df.rename(columns={x: x.replace("\xa0", " ") for x in df.columns})
+    df = df.replace({"Yes": "y", "No": "n"})
     # Event Number and nearest populated center should be deleted later
     # New Land Area Needed is probably the total land
     for delete in ['Company Address',
@@ -181,6 +193,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
 
     df['Company Name'] = df['Company Name'].replace(company_rename())
     df = column_insights(df)
+    df = df.rename(columns={"Species At Risk Present At Activity Site": "Species At Risk Present"})
     # print(df.dtypes)
     # print(sorted(list(set(df['Company Name']))))
     if companies:
@@ -218,8 +231,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
         df_c = df_c.drop_duplicates(subset=['Event Number'])
         thisCompanyData = {}
         if not df_c.empty:
-            thisCompanyData["meta"] = metadata(df_c)
-            thisCompanyData["company"] = company
+            thisCompanyData["meta"] = metadata(df_c, company)
             thisCompanyData["build"] = True
             thisCompanyData["data"] = optimizeJson(df_c)
             if not test:

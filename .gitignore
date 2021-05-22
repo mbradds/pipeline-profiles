@@ -10,6 +10,7 @@ src/data_management/raw_data/*
 !src/data_management/raw_data/throughput_oil_monthly.csv
 !src/data_management/raw_data/apportionment.csv
 !src/data_management/raw_data/projects_regdocs.csv
+!src/data_management/raw_data/reference_data/
 **/__pycache__
 *.twb
 *.twbx
@@ -20,3 +21,4 @@ connection.py
 src/wtfiles
 dist/
 todo.txt
+*.csv#

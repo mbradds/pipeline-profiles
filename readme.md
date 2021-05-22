@@ -479,7 +479,12 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 - The dynamic text modude `src/modules/dynamicText.js` is kind of split between english and french methods. Where possible, all these methods should be consolidated to take a language parameter. This might not always be possible because of the sentence structure between english and french.
 - The data prep pattern used in the traffic section is pretty effective. Having id's for all the key points and trade types cuts down on data size a bit, makes on the fly translation safer, and allows for shared data between english and french. Try to re-create this pattern for the rest of the sections.
 - Company names as file names inside each "company_data" folder is probably going to lead to problems. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
-- The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends.
+- The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
+- Apply the colors pattern in `src/modules/colors.js` to the entire project. All colors should be defined here for eng and fra, and then applied to the series id's.
+- Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
+- Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
+- Add more tests for public methods in `src/modules/dashboard.js`
+- Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 
 ### Completed TODO's
 
@@ -488,3 +493,6 @@ Each pipeline profile webpage is essentially the same, but with different data. 
 - Fully remove Jquery dependency
 - Add better functionality for leaflet bubble size change on zoom: https://leafletjs.com/examples/zoom-levels/
 - Add in the html style changes requested by the web team (eg, replace all bold tags with strong)
+- Add method in EventTrend to include a gap when there are no events in recent years.
+- Fix some of the dynamic french text based on feedback from translation.
+- Standardize the number and date format methods. There are methods for this in `src/modules/langEnglish.js` but there are still instances of Highcharts.numberFormat scattered in the code.

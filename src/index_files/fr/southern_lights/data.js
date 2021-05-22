@@ -3,6 +3,7 @@ import conditionsData from "../../../conditions/company_data/fr/SouthernLightsPi
 import incidentData from "../../../incidents/company_data/SouthernLightsPipeline.json";
 import trafficData from "../../../traffic/company_data/EnbridgeSouthernLightsGPInc.json";
 import apportionData from "../../../apportionment/company_data/EnbridgeSouthernLightsGPInc.json";
+import oandmData from "../../../oandm/company_data/SouthernLightsPipeline.json";
 import { loadAllCharts } from "../../loadDashboards_fr";
 
 const data = {
@@ -11,6 +12,7 @@ const data = {
   incidentData,
   trafficData,
   apportionData,
+  oandmData,
 };
 
 loadAllCharts(data);

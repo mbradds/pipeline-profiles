@@ -1,7 +1,19 @@
-import { cerPalette, conversions, visibility } from "./util";
+import { cerPalette, conversions, visibility, rangeInclusive } from "./util";
 
 const haversine = require("haversine");
 
+/**
+ *
+ * @param {Object} config - Options to set up a basic leaflet map.
+ * @param {string} config.div - HTML div where map will be loaded.
+ * @param {number} config.zoomSnap - Defines how precise things like zoomTo will be.
+ * @param {number} config.zoomDelta - Defines how much zoom happens on one scroll/click.
+ * @param {boolean} config.zoomContol - Whether to show the plus/minus zoom button on map.
+ * @param {number[]} config.initZoomTo - Initial [lat, -long] for map.
+ * @param {number} config.initZoomLevel - Initial map zoom on load, before zoomTo/fitBounds.
+ * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
+ * @returns leaflet map object.
+ */
 function leafletBaseMap(config) {
   const map = L.map(config.div, {
     zoomSnap: config.zoomSnap,
@@ -81,7 +93,21 @@ const ONETOMANY = {
   category: true,
 };
 
+/**
+ * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.
+ */
 export class EventMap {
+  /**
+   *
+   * @param {Object} constr - EventMap constructor.
+   * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
+   * @param {(string|undefined)} [constr.field=undefined] - The initial data column to display on the map.
+   * @param {(Object|undefined)} [constr.filters=undefined] - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
+   * @param {(number|undefined)} [constr.minRadius=undefined] - Minimum radius for leaflet map circles.
+   * @param {string} [constr.leafletDiv="map"] - HTML div id where map will be loaded.
+   * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
+   * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
+   */
   constructor({
     eventType,
     field = undefined,
@@ -136,17 +162,11 @@ export class EventMap {
     if (state !== "other") {
       let imperial;
       if (state === "gas") {
-        imperial = `${Highcharts.numberFormat(
-          (m3 * convGas).toFixed(2),
-          2,
-          this.lang.decimal
-        )} ${this.lang.cf}`;
+        imperial = `${this.lang.numberFormat(m3 * convGas, 2)} ${this.lang.cf}`;
       } else {
-        imperial = `${Highcharts.numberFormat(
-          (m3 * convLiquid).toFixed(2),
-          2,
-          this.lang.decimal
-        )} ${this.lang.bbl}`;
+        imperial = `${this.lang.numberFormat(m3 * convLiquid, 2)} ${
+          this.lang.cf
+        }`;
       }
 
       return `${imperial} (${Highcharts.numberFormat(
@@ -524,7 +544,21 @@ export class EventMap {
   }
 }
 
+/**
+ * Class responsible for creating a navigation sidebar next to either a leaflet map, or highcharts bar chart.
+ * The navigator has "pills" that can be clicked to control the chart or map, and can be filled with a horizontal
+ * bar to act as a map legend/total visualization.
+ */
 export class EventNavigator {
+  /**
+   *
+   * @param {Object} constr - EventNavigator constructor
+   * @param {Object} constr.plot - EventMap(leaflet) or EventTrend(highcharts) instance.
+   * @param {Object} constr.langPillTitles - {id: pillname} pairs for handling custom pill titles & language switching.
+   * @param {number} [constr.height=125] - Height in px of each pill navigation button.
+   * @param {(boolean|Object[])} [constr.data=false] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
+   * @param {boolean} [constr.showClickText=false] - Whether to add additional text to pill title making click more obvious.
+   */
   constructor({
     plot,
     langPillTitles,
@@ -581,6 +615,7 @@ export class EventNavigator {
   // usefull for names like "Status" that could use additional description
   pillName(name) {
     if (
+      this.langPillTitles &&
       Object.prototype.hasOwnProperty.call(this.langPillTitles.titles, name)
     ) {
       return this.langPillTitles.titles[name];
@@ -824,13 +859,14 @@ export class EventNavigator {
   }
 
   barEvents(bar) {
-    const barDiv = document.getElementById(bar.div);
+    const currentBar = bar;
+    const barDiv = document.getElementById(currentBar.div);
     const barNav = this;
     function mouseOver() {
-      if (bar.status !== "activated") {
+      if (currentBar.status !== "activated") {
         barDiv.style.opacity = 1;
-        if (bar.chart) {
-          bar.chart.update({
+        if (currentBar.chart) {
+          currentBar.chart.update({
             chart: {
               backgroundColor: "#F0F8FF",
             },
@@ -842,10 +878,10 @@ export class EventNavigator {
     }
 
     function mouseOut() {
-      if (bar.status !== "activated") {
+      if (currentBar.status !== "activated") {
         barDiv.style.opacity = 0.4;
-        if (bar.chart) {
-          bar.chart.update({
+        if (currentBar.chart) {
+          currentBar.chart.update({
             chart: {
               backgroundColor: "white",
             },
@@ -861,8 +897,8 @@ export class EventNavigator {
       barNav.deactivateChart(barNav.currentActive);
       barNav.currentActive.status = "deactivated";
       // activate the clicked bar
-      bar.status = "activated";
-      barNav.activateChart(bar);
+      currentBar.status = "activated";
+      barNav.activateChart(currentBar);
     }
 
     barDiv.addEventListener("mouseover", mouseOver);
@@ -908,7 +944,27 @@ export class EventNavigator {
   }
 }
 
+/**
+ * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
+ * This class inherits from EventMap so that color functionality can be shared, and so that the fieldChange() and
+ * updateRadius() methods can share functionality agnostic of whether they are acting on highcharts or leaflet.
+ * @extends EventMap
+ */
 export class EventTrend extends EventMap {
+  /**
+   *
+   * @param {Object} constr - EventTrend constructor
+   * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
+   * @param {string} constr.field - The initial data column to have selected by default.
+   * @param {string} constr.filters - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
+   * @param {(Object[]|Object)} constr.data - Dataset to be shaped into highcharts series.
+   * @param {string} constr.hcDiv - HTML div id where highchart will be loaded.
+   * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
+   * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
+   * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
+   * @param {Object} [constr.seriesInfo={}] - When not "seriesed" this must contain info about the series names, colors, etc.
+   * @param {Object} [constr.definitions={}] - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
+   */
   constructor({
     eventType,
     field,
@@ -916,6 +972,9 @@ export class EventTrend extends EventMap {
     data,
     hcDiv,
     lang,
+    seriesed = false,
+    definitionsOn = "bar", // show text on bar click, or pill click
+    seriesInfo = {},
     definitions = {},
   }) {
     super({ eventType, field });
@@ -923,10 +982,92 @@ export class EventTrend extends EventMap {
     this.data = data;
     this.hcDiv = hcDiv;
     this.lang = lang;
+    this.seriesed = seriesed;
+    this.definitionsOn = definitionsOn;
+    this.seriesInfo = seriesInfo;
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
     this.ONETOMANY = ONETOMANY;
     this.displayDefinitions();
+  }
+
+  static dummyYears(yearList, dataFormat = "object") {
+    let uniqueYears = yearList;
+    const currentYear = new Date().getFullYear();
+    const maxYear = uniqueYears.slice(-1)[0];
+    let lastYears = [];
+    if (currentYear > maxYear) {
+      lastYears = rangeInclusive(maxYear + 1, currentYear);
+    }
+
+    uniqueYears = uniqueYears.concat(lastYears);
+    const dummySeries = { name: "dummy", showInLegend: false }; // makes sure that the x axis is in order
+    const dummyData = [];
+
+    const addMethod = () => {
+      if (dataFormat === "object") {
+        return (year) => ({ name: year.toString(), y: undefined });
+      }
+      return (year) => [year, undefined];
+    };
+
+    const adder = addMethod();
+    uniqueYears.forEach((y, index) => {
+      if (
+        y + 1 !== uniqueYears[index + 1] &&
+        index !== uniqueYears.length - 1
+      ) {
+        const firstYear = y;
+        const lastYear = uniqueYears[index + 1] - 1;
+        for (let i = firstYear; i <= lastYear; i += 1) {
+          // dummyData.push({ name: i.toString(), y: undefined });
+          dummyData.push(adder(i));
+        }
+      } else {
+        dummyData.push(adder(y));
+        // dummyData.push({ name: y.toString(), y: undefined });
+      }
+    });
+    dummySeries.data = dummyData;
+    return dummySeries;
+  }
+
+  generateSeries(data, field) {
+    if (!this.seriesed) {
+      return this.processEventsData(data, field);
+    }
+    const xvalues = data[field].year;
+    let colors = {};
+    let names = {};
+    let currentInfo = { colors: {}, names: {} };
+    if (Object.prototype.hasOwnProperty.call(this.seriesInfo, this.field)) {
+      currentInfo = this.seriesInfo[this.field];
+    }
+    if (Object.prototype.hasOwnProperty.call(currentInfo, "colors")) {
+      colors = currentInfo.colors;
+    }
+    if (Object.prototype.hasOwnProperty.call(currentInfo, "names")) {
+      names = currentInfo.names;
+    }
+
+    const preparedSeries = data[field].data.map((s) => {
+      const newSeries = {};
+      newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
+      if (Object.prototype.hasOwnProperty.call(names, s.id)) {
+        newSeries.name = names[s.id];
+      } else {
+        newSeries.name = s.id;
+      }
+      if (Object.prototype.hasOwnProperty.call(colors, s.id)) {
+        newSeries.color = colors[s.id];
+      }
+      newSeries.id = s.id;
+      return newSeries;
+    });
+
+    const dummySeries = EventTrend.dummyYears(data[field].year, "list");
+    preparedSeries.push(dummySeries);
+    return preparedSeries;
   }
 
   processEventsData(data, field) {
@@ -986,25 +1127,9 @@ export class EventTrend extends EventMap {
     };
     const seriesCounter = yField(this.ONETOMANY[field]);
     const [series, uniqueYears] = seriesCounter(data);
-    const seriesList = [];
-    const dummySeries = { name: "dummy", showInLegend: false }; // makes sure that the x axis is in order
-    const dummyData = [];
-    uniqueYears.forEach((y, index) => {
-      if (
-        y + 1 !== uniqueYears[index + 1] &&
-        index !== uniqueYears.length - 1
-      ) {
-        const firstYear = y;
-        const lastYear = uniqueYears[index + 1] - 1;
-        for (let i = firstYear; i <= lastYear; i += 1) {
-          dummyData.push({ name: i.toString(), y: undefined });
-        }
-      } else {
-        dummyData.push({ name: y.toString(), y: undefined });
-      }
-    });
 
-    dummySeries.data = dummyData;
+    const dummySeries = EventTrend.dummyYears(uniqueYears, "object");
+    const seriesList = [];
     seriesList.push(dummySeries);
     Object.keys(series).forEach((seriesId) => {
       const seriesData = series[seriesId];
@@ -1086,15 +1211,25 @@ export class EventTrend extends EventMap {
   }
 
   displayDefinitions() {
-    const definitionsPopUp = document.getElementById("trend-definitions");
+    const definitionDiv = `trend-definitions-${this.eventType}`; // make sure .hbs temaplate has correct id for event type
+    const definitionsPopUp = document.getElementById(definitionDiv);
     if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
-      visibility(["trend-definitions"], "show");
-      definitionsPopUp.innerHTML = this.lang.barClick(
-        this.pillNameSubstitution()
-      );
+      visibility([definitionDiv], "show");
+      // when on incidents, show text on bar click. When on oandm, show text on pill click
+      if (this.definitionsOn === "bar") {
+        // user click on highcharts bar for definition to appear
+        definitionsPopUp.innerHTML = this.lang.barClick(
+          this.pillNameSubstitution()
+        );
+      } else if (this.definitionsOn === "pill") {
+        // user clicks on pill to view info about that pill in definitions box
+        definitionsPopUp.innerHTML = this.definitions[this.field];
+      }
+
       this.onClickDefinition = true;
     } else {
-      visibility(["trend-definitions"], "hide");
+      visibility([definitionDiv], "hide");
+
       this.onClickDefinition = false;
     }
   }
@@ -1149,15 +1284,14 @@ export class EventTrend extends EventMap {
           },
         },
       },
-
-      series: this.processEventsData(this.data, this.field),
+      series: this.generateSeries(this.data, this.field),
     });
   }
 
   fieldChange(newField) {
     if (newField !== this.field) {
       this.field = newField;
-      const newSeries = this.processEventsData(this.data, newField);
+      const newSeries = this.generateSeries(this.data, this.field);
       while (this.chart.series.length) {
         this.chart.series[0].remove();
       }
@@ -1171,7 +1305,7 @@ export class EventTrend extends EventMap {
   }
 
   updateRadius() {
-    const newSeries = this.processEventsData(this.data, this.field);
+    const newSeries = this.generateSeries(this.data, this.field);
     const currentTrend = this;
     this.chart.update({
       series: newSeries,
@@ -1184,7 +1318,20 @@ export class EventTrend extends EventMap {
   }
 }
 
+/**
+ * Class for generating a very simple leaflet bubble map showing one or more selected bubbles, with large zoom in/out functionality
+ */
 export class KeyPointMap {
+  /**
+   *
+   * @param {Object} constr - KeyPointMap constructor.
+   * @param {Object[]} constr.points - Array of all key points for map: {id: number, name: string, loc:[lat, -long]}.
+   * @param {Object[]} constr.selected - Array of key point objects {id: number, name: string}, with each key point showing up "selected".
+   * @param {string} [constr.leafletDiv="traffic-map"] - HTML div id where key point map will load.
+   * @param {number[]} [constr.initZoomTo=[60, -97]] - Initial lat long for map before zooming to points.
+   * @param {string} [constr.companyName=""] - Used to get initial zooms and padding for specific companies.
+   * @param {Object} [constr.lang={}] - Object holding language switching items.
+   */
   constructor({
     points,
     selected,

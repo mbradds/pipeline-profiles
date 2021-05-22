@@ -312,3 +312,42 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   }
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
+
+export function oandmText(meta, lang) {
+  // console.log(meta);
+  const firstParagraph = `<p>There have been a total of ${dynamicValue(
+    lang.numberFormat(meta.totalEvents, 0)
+  )} O&M activities reported by ${
+    meta.company
+  }. As part of these events, there have been ${dynamicValue(
+    lang.numberFormat(meta.totalDigs, 0)
+  )} integrity digs, and approximately ${dynamicValue(
+    `${lang.numberFormat(meta.lengthReplaced, 0)} km`
+  )} of pipeline replaced. On average, O&M activities take approximately ${dynamicValue(
+    `${meta.avgDuration} days`
+  )} from start to finish on this system.<p>`;
+
+  const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occurred near ${dynamicValue(
+    meta.nearby.join(", ")
+  )}.</p>`;
+
+  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require a significant amount of land area outside of company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+    `${meta.landRequired} hectares`
+  )}`;
+  const iceRinks = `, an area of land equal to ${dynamicValue(
+    meta.iceRinks
+  )} ice hockey rinks.<p>`;
+  if (meta.landRequired > 0) {
+    thirdParagraph += iceRinks;
+  } else {
+    thirdParagraph += `.`;
+  }
+
+  const fourthParagraph = `<p>There have been ${dynamicValue(
+    meta.atRisk
+  )} O&M activities with a schedule 1 species at risk present at the activity site. When this happens, the company must take extra precautions, listed here.</p>`;
+
+  const totalText =
+    firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
+  document.getElementById("oandm-dynamic-text").innerHTML = totalText;
+}

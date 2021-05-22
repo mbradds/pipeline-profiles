@@ -222,9 +222,21 @@ const points = {
   ],
 };
 
+/**
+ * French number format.
+ * @param {number} value - Input number to format
+ * @param {number} [rounding=2] - number of decimal places to round to
+ * @returns {string} Highcharts.numberFormat(value, rounding, ",", " ");
+ */
 const numberFormat = (value, rounding = 2) =>
   Highcharts.numberFormat(value, rounding, ",", " ");
 
+  /**
+ * French date format.
+ * @param {number} value - Serialized date number.
+ * @param {string} format - Date format string for month, day, year.
+ * @returns {string} - Highcharts.dateFormat(format, value);
+ */
 const dateFormat = (value, format = "%b %d, %Y") =>
   Highcharts.dateFormat(format, value);
 
@@ -353,7 +365,7 @@ export const frenchDashboard = {
       estRelease: "Estimation du volume",
       cf: "pieds cubes",
       bbl: "b",
-      decimal: ",",
+      numberFormat,
       pillTitles: {
         titles: {
           Status: "Situation Régie",
@@ -534,6 +546,24 @@ export const frenchDashboard = {
       on: "Commandes d’expédition initiales",
       ac: "Capacité disponible",
       ap: "Pourcentage de répartition",
+    },
+  },
+  oandm: {
+    numberFormat,
+    companyToSystem,
+    title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
+    trendYTitle: "Number of Events",
+    pillTitles: {
+      titles: {
+        "Integrity Dig": "Integrity Dig?",
+        "Fish Present": "Fish Present?",
+        "In Stream Work Required": "In Stream Work Required?",
+        "Species At Risk Present": "Species At Risk Present?",
+      },
+    },
+    noEvents: {
+      header: `No O&M data available`,
+      note: (company) => `There are no O&M activities reported for ${company}`,
     },
   },
 };
