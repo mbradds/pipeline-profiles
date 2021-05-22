@@ -467,6 +467,16 @@ Note: the html-webpack-plugin and handlebars-loader is instrumental for this pro
 This was the old way before handlebars:
 Each pipeline profile webpage is essentially the same, but with different data. The two templates `src/profile_en.html` and `src/profile_fr.html` contain all the text and web resources (css, scripts tags) and the plugin injects the appropriate script tags for the profile. Changes made to these templates will appear on all 25 profile pages in english and french.
 
+### Updating dependencies
+
+This is a long term project, and dependencies should be updated every so often. Run `npm outdated` every so often. Regular updates to important dev dependencies like webpack and babel will likely improve compile time and code size. Updates to production dependencies like highcharts and leaflet will improve security and allow for the latest features to show up for users.
+
+Making sure that all dependencies are updated and both package.json and package-lock.json are updated is kind of weird. Here are the steps to make it happen:
+
+1. `npm install -g npm-check-updates`
+2. `ncu -u`
+3. `npm install`
+
 ## TODO list
 
 - Rewrite everything in TypeScript
