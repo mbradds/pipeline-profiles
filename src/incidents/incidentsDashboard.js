@@ -20,8 +20,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
   const incidentBar = (data, map, langPillTitles) => {
     const barNav = new EventNavigator({
       plot: map,
+      numberOfPills: 4,
       langPillTitles,
-      pillWidth: 124,
       data,
     });
     barNav.makeBar("Substance", "substance-bar", "activated", true);
@@ -59,8 +59,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,
+      numberOfPills: 5,
       langPillTitles: lang.dashboard.pillTitles,
-      height: 70,
+      fixedPillHeight: 70,
       showClickText: false,
     });
 
@@ -70,7 +71,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
     trendNav.makeBar("why", "why-trend", "deactivated", false);
     trendNav.makeBar("Province", "province-trend", "deactivated", false);
     trendNav.divEvents();
-    timeSeries.createChart();
+
     return timeSeries;
   };
 

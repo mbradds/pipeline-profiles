@@ -557,26 +557,29 @@ export class EventMap {
  * Class responsible for creating a navigation sidebar next to either a leaflet map, or highcharts bar chart.
  * The navigator has "pills" that can be clicked to control the chart or map, and can be filled with a horizontal
  * bar to act as a map legend/total visualization.
+ * This class uses a polymorphism patter by utilizing either EventMap or EventTrend fieldChange method and plotHeight parameter
  */
 export class EventNavigator {
   /**
    *
    * @param {Object} constr - EventNavigator constructor
    * @param {Object} constr.plot - EventMap(leaflet) or EventTrend(highcharts) instance.
+   * @param {Object} constr.numberOfPills - The total number of navigation pills. Used to calculate pill height dynamically.
    * @param {Object} constr.langPillTitles - {id: pillname} pairs for handling custom pill titles & language switching.
-   * @param {number} [constr.height=125] - Height in px of each pill navigation button.
+   * @param {number} [constr.fixedPillHeight=undefined] - Height in px of each pill navigation button. Overrides calculated height.
    * @param {(boolean|Object[])} [constr.data=false] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
    * @param {boolean} [constr.showClickText=false] - Whether to add additional text to pill title making click more obvious.
    */
   constructor({
     plot,
+    numberOfPills,
     langPillTitles,
-    height = 125,
+    fixedPillHeight = undefined,
     data = false,
     showClickText = true,
   }) {
-    console.log(plot);
     this.plot = plot;
+    this.numberOfPills = numberOfPills;
     this.langPillTitles = langPillTitles;
     this.currentActive = undefined;
     this.barList = [];
@@ -584,10 +587,18 @@ export class EventNavigator {
     this.barSeries = {};
     this.barColors = plot.colors;
     this.allDivs = [];
-    this.height = height;
+    this.fixedPillHeight = fixedPillHeight;
     this.data = data;
     this.greyScale = greyScale;
     this.showClickText = showClickText;
+    this.pillHeight = this.calculatePillHeight();
+  }
+
+  calculatePillHeight() {
+    const totalMargins = (this.numberOfPills - 1) * 5;
+    return Math.floor(
+      (this.plot.plotHeight - totalMargins) / this.numberOfPills
+    );
   }
 
   seriesify(name, series, yVal) {
@@ -917,7 +928,10 @@ export class EventNavigator {
   }
 
   makeBar(barName, div, status, bar = true) {
-    document.getElementById(div).style.height = `${this.height}px`;
+    const height = this.fixedPillHeight
+      ? this.fixedPillHeight
+      : this.pillHeight;
+    document.getElementById(div).style.height = `${height}px`;
     if (this.data) {
       this.prepareData(barName);
     }
@@ -956,8 +970,8 @@ export class EventNavigator {
 
 /**
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
- * This class inherits from EventMap so that color functionality can be shared, and so that the fieldChange() and
- * updateRadius() methods can share functionality agnostic of whether they are acting on highcharts or leaflet.
+ * Contains fieldChange and updateRadius methods similiar to EventMap methods and plotHeight parameter for
+ * EventNavigator polymorphism pattern
  *
  */
 export class EventTrend {
@@ -987,7 +1001,6 @@ export class EventTrend {
     seriesInfo = {},
     definitions = {},
   }) {
-    // super({ eventType, field });
     this.eventType = eventType;
     this.field = field;
     this.filters = filters;
@@ -1002,6 +1015,7 @@ export class EventTrend {
     this.ONETOMANY = ONETOMANY;
     this.definitionDiv = `trend-definitions-${eventType}`;
     this.hasDefinition = this.displayDefinitions();
+    this.createChart();
   }
 
   static dummyYears(yearList, dataFormat = "object") {
@@ -1254,7 +1268,7 @@ export class EventTrend {
 
   createChart() {
     const currentTrend = this;
-    this.chart = new Highcharts.chart(this.divId, {
+    const chart = new Highcharts.chart(this.divId, {
       chart: {
         type: "column",
         animation: false,
@@ -1308,6 +1322,8 @@ export class EventTrend {
       },
       series: this.generateSeries(this.data, this.field),
     });
+    this.chart = chart;
+    this.plotHeight = chart.chartHeight;
   }
 
   fieldChange(newField) {

@@ -75,8 +75,9 @@ export function mainOandM(eventData, lang) {
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,
+      numberOfPills: 5,
       langPillTitles: lang.pillTitles,
-      height: 70,
+      fixedPillHeight: 70,
       showClickText: false,
     });
 
@@ -101,7 +102,6 @@ export function mainOandM(eventData, lang) {
       false
     );
     trendNav.divEvents();
-    timeSeries.createChart();
     return timeSeries;
   };
 
