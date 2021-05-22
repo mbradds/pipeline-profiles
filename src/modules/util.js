@@ -1,3 +1,7 @@
+/**
+ * @file This file contains shared utility functions that are required throughout the project.
+ */
+
 import { mapDates } from "./datestone";
 
 /**
@@ -300,4 +304,31 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
 export function addUnitsDisclaimer(div, commodity, textFunction) {
   const unitsDisclaimer = document.getElementById(div);
   unitsDisclaimer.innerHTML = textFunction(commodity);
+}
+
+/**
+ *
+ * @param {Object} config - Options to set up a basic leaflet map.
+ * @param {string} config.div - HTML div where map will be loaded.
+ * @param {number} config.zoomSnap - Defines how precise things like zoomTo will be.
+ * @param {number} config.zoomDelta - Defines how much zoom happens on one scroll/click.
+ * @param {boolean} config.zoomContol - Whether to show the plus/minus zoom button on map.
+ * @param {number[]} config.initZoomTo - Initial [lat, -long] for map.
+ * @param {number} config.initZoomLevel - Initial map zoom on load, before zoomTo/fitBounds.
+ * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
+ * @returns leaflet map object.
+ */
+export function leafletBaseMap(config) {
+  const map = L.map(config.div, {
+    zoomSnap: config.zoomSnap,
+    zoomDelta: config.zoomDelta,
+    zoomControl: config.zoomControl,
+  }).setView(config.initZoomTo, config.initZoomLevel);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
+    foo: "bar",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  map.setMinZoom(config.minZoom);
+  return map;
 }

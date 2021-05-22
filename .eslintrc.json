@@ -10,7 +10,6 @@
   "rules": {
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",
-    "max-classes-per-file": "off",
     "no-underscore-dangle": "warn",
     "new-cap": "warn"
   }

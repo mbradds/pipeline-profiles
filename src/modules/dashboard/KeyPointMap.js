@@ -1,0 +1,171 @@
+import { cerPalette, leafletBaseMap } from "../util";
+
+/**
+ * Class for generating a very simple leaflet bubble map showing one or more selected bubbles, with large zoom in/out functionality
+ */
+export class KeyPointMap {
+  /**
+   *
+   * @param {Object} constr - KeyPointMap constructor.
+   * @param {Object[]} constr.points - Array of all key points for map: {id: number, name: string, loc:[lat, -long]}.
+   * @param {Object[]} constr.selected - Array of key point objects {id: number, name: string}, with each key point showing up "selected".
+   * @param {string} [constr.divId="traffic-map"] - HTML div id where key point map will load.
+   * @param {number[]} [constr.initZoomTo=[60, -97]] - Initial lat long for map before zooming to points.
+   * @param {string} [constr.companyName=""] - Used to get initial zooms and padding for specific companies.
+   * @param {Object} [constr.lang={}] - Object holding language switching items.
+   */
+  constructor({
+    points,
+    selected,
+    divId = "traffic-map",
+    initZoomTo = [60, -97],
+    companyName = "",
+    lang = {},
+  }) {
+    this.points = points;
+    this.selected = this.constructor.selectedPointNames(selected);
+    this.initZoomTo = initZoomTo;
+    this.divId = divId;
+    this.companyName = companyName;
+    this.lang = lang;
+    this.mapDisclaimer = undefined;
+    this.colors = {
+      active: cerPalette.Sun,
+      deactivated: cerPalette["Cool Grey"],
+    };
+    this.getInits(companyName, points);
+  }
+
+  static selectedPointNames(s) {
+    return s.map((p) => p.name);
+  }
+
+  getInits(companyName, points) {
+    let minRadius = 30000;
+    let padding = [30, 30];
+    let maxZoom;
+    if (
+      ["TransCanada PipeLines Limited", "Enbridge Pipelines Inc."].includes(
+        companyName
+      )
+    ) {
+      minRadius = 50000;
+      padding = [0, 0];
+    } else if (companyName === "Trans Mountain Pipeline ULC") {
+      minRadius = 2000;
+      padding = [60, 60];
+    } else if (points.length === 1) {
+      minRadius = 15000;
+      padding = [150, 150];
+      maxZoom = 6;
+    }
+    this.minRadius = minRadius;
+    this.padding = padding;
+    this.maxZoom = maxZoom;
+  }
+
+  addBaseMap() {
+    const map = leafletBaseMap({
+      div: this.divId,
+      zoomSnap: 0.25,
+      zoomDelta: 0.25,
+      zoomControl: false,
+      initZoomTo: this.initZoomTo,
+      initZoomLevel: 4,
+      minZoom: 2.5,
+    });
+    map.scrollWheelZoom.disable();
+    map.setMaxZoom(this.maxZoom);
+    this.map = map;
+  }
+
+  reZoom(zoomIn = true) {
+    if (zoomIn) {
+      const zoomRadius = this.minRadius;
+      this.keyPoints.eachLayer((layer) => {
+        layer.setRadius(zoomRadius);
+      });
+      this.map.fitBounds(this.keyPoints.getBounds(), { padding: this.padding });
+    } else {
+      this.keyPoints.eachLayer((layer) => {
+        layer.setRadius(100000);
+      });
+      this.map.setView(this.initZoomTo, 2.5);
+    }
+  }
+
+  addCircle(x, y, color, fillColor, fillOpacity, r, name) {
+    let toolText = name;
+    const toolList = name.split(" ");
+    if (toolList.length - 1 > 5) {
+      toolText = `${toolList.slice(0, 3).join(" ")}<br>${toolList
+        .slice(3)
+        .join(" ")}`;
+    }
+    return L.circle([x, y], {
+      color,
+      fillColor,
+      fillOpacity,
+      radius: this.minRadius,
+      volRadius: r,
+      weight: 1,
+      name,
+    }).bindTooltip(`<strong>${toolText}</strong>`);
+  }
+
+  addPoints() {
+    const allPoints = this.points.map((point) => {
+      let [pointColor, pointOpacity, toFront] = [
+        undefined,
+        undefined,
+        undefined,
+      ];
+      if (this.selected.includes(point.name)) {
+        pointColor = this.colors.active;
+        pointOpacity = 1;
+        toFront = true;
+      } else {
+        pointColor = this.colors.deactivated;
+        pointOpacity = 0.5;
+        toFront = false;
+      }
+      return this.addCircle(
+        point.loc[0],
+        point.loc[1],
+        "#42464B",
+        pointColor,
+        pointOpacity,
+        this.minRadius,
+        point.name,
+        toFront
+      );
+    });
+    this.keyPoints = L.featureGroup(allPoints).addTo(this.map);
+    const thisMap = this;
+    this.keyPoints.eachLayer((layer) => {
+      if (layer.options.name === thisMap.selected) {
+        layer.bringToFront();
+      }
+    });
+    this.reZoom();
+  }
+
+  pointChange(newPoint) {
+    this.selected = this.constructor.selectedPointNames(newPoint);
+    const thisMap = this;
+    this.keyPoints.eachLayer((layer) => {
+      if (thisMap.selected.includes(layer.options.name)) {
+        layer.setStyle({
+          fillColor: thisMap.colors.active,
+          fillOpacity: 1,
+        });
+        layer.bringToFront();
+      } else {
+        layer.setStyle({
+          fillColor: thisMap.colors.deactivated,
+          fillOpacity: 0.5,
+        });
+      }
+    });
+  }
+}

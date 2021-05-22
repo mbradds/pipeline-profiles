@@ -1,3 +1,8 @@
+/**
+ * @file Contains the all the five-year average functionality found in the traffic section.
+ * Creates a highcharts specific series array with a five-year average line, range, and current year values.
+ */
+
 import { arrAvg, cerPalette } from "./util";
 
 /**

@@ -8,7 +8,7 @@ import {
   addUnitsDisclaimer,
 } from "../modules/util";
 import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
-import { KeyPointMap } from "../modules/dashboard";
+import { KeyPointMap } from "../modules/dashboard/KeyPointMap";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;

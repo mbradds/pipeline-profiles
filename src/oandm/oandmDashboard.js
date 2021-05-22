@@ -1,4 +1,5 @@
-import { EventNavigator, EventTrend } from "../modules/dashboard";
+import { EventNavigator } from "../modules/dashboard/EventNavigator";
+import { EventTrend } from "../modules/dashboard/EventTrend";
 import { oandmText } from "../modules/dynamicText";
 
 // TODO: add regdocs folder for all company oandm submissions
@@ -61,25 +62,18 @@ export function mainOandM(eventData, lang) {
       showClickText: false,
     });
 
-    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "activated", false);
-    trendNav.makeBar(
-      "Province/Territory",
-      "oandm-region-trend",
-      "deactivated",
-      false
-    );
-    trendNav.makeBar("Fish Present", "oandm-fish-trend", "deactivated", false);
+    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "activated");
+    trendNav.makeBar("Province/Territory", "oandm-region-trend", "deactivated");
+    trendNav.makeBar("Fish Present", "oandm-fish-trend", "deactivated");
     trendNav.makeBar(
       "In Stream Work Required",
       "oandm-instream-trend",
-      "deactivated",
-      false
+      "deactivated"
     );
     trendNav.makeBar(
       "Species At Risk Present",
       "oandm-species-trend",
-      "deactivated",
-      false
+      "deactivated"
     );
     trendNav.divEvents();
     return timeSeries;

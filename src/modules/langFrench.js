@@ -1,3 +1,10 @@
+/**
+ * @file Contains all the {key: french} translations that are used to compile the English JavaScript code bundle.
+ * All the HTML translations are contained in ../components/htmlText.js
+ * Each object variable name and key must also appear in langEnglish.js
+ * The translation functionality is split into English and French to help save on code size because only English appears in the English bundle.
+ */
+
 import { cerPalette } from "./util";
 import { incidentsTextFra, trafficTrendTextFra } from "./dynamicText";
 

@@ -1,5 +1,7 @@
 import { visibility } from "../modules/util";
-import { EventMap, EventNavigator, EventTrend } from "../modules/dashboard";
+import { EventMap } from "../modules/dashboard/EventMap";
+import { EventNavigator } from "../modules/dashboard/EventNavigator";
+import { EventTrend } from "../modules/dashboard/EventTrend";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
@@ -24,10 +26,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
       langPillTitles,
       data,
     });
-    barNav.makeBar("Substance", "substance-bar", "activated", true);
-    barNav.makeBar("Status", "status-bar", "deactivated", true);
-    barNav.makeBar("Year", "year-bar", "deactivated", true);
-    barNav.makeBar("Province", "province-bar", "deactivated", true);
+    barNav.makeBar("Substance", "substance-bar", "activated");
+    barNav.makeBar("Status", "status-bar", "deactivated");
+    barNav.makeBar("Year", "year-bar", "deactivated");
+    barNav.makeBar("Province", "province-bar", "deactivated");
     barNav.divEvents();
     return barNav;
   };
@@ -65,11 +67,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
       showClickText: false,
     });
 
-    trendNav.makeBar("Substance", "substance-trend", "activated", false);
-    trendNav.makeBar("Status", "status-trend", "deactivated", false);
-    trendNav.makeBar("what", "what-trend", "deactivated", false);
-    trendNav.makeBar("why", "why-trend", "deactivated", false);
-    trendNav.makeBar("Province", "province-trend", "deactivated", false);
+    trendNav.makeBar("Substance", "substance-trend", "activated");
+    trendNav.makeBar("Status", "status-trend", "deactivated");
+    trendNav.makeBar("what", "what-trend", "deactivated");
+    trendNav.makeBar("why", "why-trend", "deactivated");
+    trendNav.makeBar("Province", "province-trend", "deactivated");
     trendNav.divEvents();
 
     return timeSeries;

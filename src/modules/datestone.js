@@ -1,14 +1,14 @@
+/**
+ * @file TODO: replace this file with the relevant npm package: https://www.npmjs.com/package/datestone
+ */
+
 function changeValue(u) {
   let valueTransformer;
   const dontConvert = function noTransform(row) {
     return row;
   };
-  const convertNoRound = (row) => {
-    return row * u.conversion;
-  };
-  const convertWithRound = (row) => {
-    return parseFloat((row * u.conversion).toFixed(u.round));
-  };
+  const convertNoRound = (row) => row * u.conversion;
+  const convertWithRound = (row) => parseFloat((row * u.conversion).toFixed(u.round));
   let rowFunction = convertNoRound;
   if (u.round >= 0) {
     rowFunction = convertWithRound;

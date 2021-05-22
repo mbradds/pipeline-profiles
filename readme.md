@@ -106,8 +106,8 @@ pipeline_profiles
 
 ## Software prerequisites
 
-1. npm (Im using v7.11.1)
-2. node (Im using v14.16.1+)
+1. npm (I'm using v7.11.1)
+2. node (I'm using v14.16.1)
 3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
 4. Git (for contributing)
 5. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)
@@ -506,6 +506,8 @@ Making sure that all dependencies are updated and both package.json and package-
 - Add jsDoc strings to all public modules/methods in `src/modules`.
 - Look into the benfits of splitting css files and adding a `src/css` folder that compiles into one main.css file in `dist`.
 - Move `src/profile.hbs` into `src/components`. All templates should be kept together for readability.
+- Update version in package.json
+- Rename default branch to main
 
 ### Completed TODO's
 
@@ -521,3 +523,5 @@ Making sure that all dependencies are updated and both package.json and package-
 - The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
 - Try to dynamically compute pill height in `src/modules/dashboard.js` instead of hard coding the height. This will make it easier to add pills, and optimize this style of dashboard for mobile/smaller screens.
 - Look into the inheritance pattern in `src/modules/dashboard.js`. This might be adding more complexity than its worth.
+- Specify npm engine/version in package.json for heroku
+- Split `src/modules/dashboard.js` into a folder with one file for each class.

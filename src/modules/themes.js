@@ -1,3 +1,10 @@
+/**
+ * @file Contains the highcharts theme defintions. Having a theme helps with a common look and feel, and reduces the need to
+ * re-define desired highcharts parameters over and over.
+ *
+ * Contains a generalTheme to be applied to all profiles, and a frenchTheme.
+ */
+
 import { cerPalette } from "./util";
 
 export const generalTheme = () => {
@@ -44,7 +51,7 @@ export const generalTheme = () => {
         },
       },
       labels: {
-        formatter () {
+        formatter() {
           return Highcharts.numberFormat(this.value, 0, ".", ",");
         },
         style: {

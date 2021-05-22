@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "sideEffects": false,
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "npm": "7.x"
   },
   "description": "",
   "main": "index.js",

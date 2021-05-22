@@ -1,3 +1,15 @@
+/**
+ * @file Contains functionality for generating dynamic HTML paragraphs with highlighted data points of interest.
+ *
+ * Currently contains functionality for:
+ * - Incidents: incidentsTextEng | incidentsTextFra
+ * - Traffic: trafficTrendTextEng | trafficTrendTextFra
+ * - Operations & Maintenance: oandmText
+ *
+ * The functionality is split into seperate English and French functions, because the paragraph structure can be very different,
+ * and would add alot of unneccecary weight to the code bundles.
+ */
+
 import { listOrParagraph } from "./util";
 
 const dynamicValue = (val) =>
