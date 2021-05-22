@@ -499,7 +499,7 @@ export const frenchDashboard = {
         return `${pointText} - transport mensuel`;
       }
       return `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(
-        " & "
+        " et "
       )})`;
     },
     series: {
