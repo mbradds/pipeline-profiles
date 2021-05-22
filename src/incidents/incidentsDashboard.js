@@ -38,7 +38,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       field: mapField,
       filters: mapFilters,
       minRadius: 14000,
-      leafletDiv: "incident-map",
+      divId: "incident-map",
       lang: mapLang,
     });
     map.addBaseMap();
@@ -53,7 +53,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       field: timeField,
       filters: timeFilters,
       data: incidentData,
-      hcDiv: "time-series",
+      divId: "time-series",
       lang: lang.dashboard,
       definitions: lang.definitions,
     });

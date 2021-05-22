@@ -70,7 +70,7 @@ export function mainOandM(eventData, lang) {
       seriesInfo,
       definitions,
       definitionsOn: "pill",
-      hcDiv: "time-series-oandm",
+      divId: "time-series-oandm",
       lang,
     });
     const trendNav = new EventNavigator({

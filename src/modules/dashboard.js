@@ -104,7 +104,7 @@ export class EventMap {
    * @param {(string|undefined)} [constr.field=undefined] - The initial data column to display on the map.
    * @param {(Object|undefined)} [constr.filters=undefined] - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
    * @param {(number|undefined)} [constr.minRadius=undefined] - Minimum radius for leaflet map circles.
-   * @param {string} [constr.leafletDiv="map"] - HTML div id where map will be loaded.
+   * @param {string} [constr.divId="map"] - HTML div id where map will be loaded.
    * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
    * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
    */
@@ -113,7 +113,7 @@ export class EventMap {
     field = undefined,
     filters = undefined,
     minRadius = undefined,
-    leafletDiv = "map",
+    divId = "map",
     initZoomTo = [55, -119],
     lang = {},
   }) {
@@ -125,14 +125,23 @@ export class EventMap {
     this.field = field;
     this.initZoomTo = initZoomTo;
     this.user = { latitude: undefined, longitude: undefined };
-    this.leafletDiv = leafletDiv;
+    this.divId = divId;
     this.lang = lang;
     this.mapDisclaimer = undefined;
+    this.findPlotHeight();
+  }
+
+  findPlotHeight() {
+    try {
+      this.plotHeight = document.getElementById(this.divId).clientHeight;
+    } catch (err) {
+      this.plotHeight = 0;
+    }
   }
 
   addBaseMap() {
     this.map = leafletBaseMap({
-      div: this.leafletDiv,
+      div: this.divId,
       zoomSnap: 0.5,
       zoomDelta: 0.5,
       zoomControl: true,
@@ -566,6 +575,7 @@ export class EventNavigator {
     data = false,
     showClickText = true,
   }) {
+    console.log(plot);
     this.plot = plot;
     this.langPillTitles = langPillTitles;
     this.currentActive = undefined;
@@ -948,9 +958,9 @@ export class EventNavigator {
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
  * This class inherits from EventMap so that color functionality can be shared, and so that the fieldChange() and
  * updateRadius() methods can share functionality agnostic of whether they are acting on highcharts or leaflet.
- * @extends EventMap
+ *
  */
-export class EventTrend extends EventMap {
+export class EventTrend {
   /**
    *
    * @param {Object} constr - EventTrend constructor
@@ -958,7 +968,7 @@ export class EventTrend extends EventMap {
    * @param {string} constr.field - The initial data column to have selected by default.
    * @param {string} constr.filters - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
    * @param {(Object[]|Object)} constr.data - Dataset to be shaped into highcharts series.
-   * @param {string} constr.hcDiv - HTML div id where highchart will be loaded.
+   * @param {string} constr.divId - HTML div id where highchart will be loaded.
    * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
    * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
    * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
@@ -970,17 +980,19 @@ export class EventTrend extends EventMap {
     field,
     filters,
     data,
-    hcDiv,
+    divId,
     lang,
     seriesed = false,
     definitionsOn = "bar", // show text on bar click, or pill click
     seriesInfo = {},
     definitions = {},
   }) {
-    super({ eventType, field });
+    // super({ eventType, field });
+    this.eventType = eventType;
+    this.field = field;
     this.filters = filters;
     this.data = data;
-    this.hcDiv = hcDiv;
+    this.divId = divId;
     this.lang = lang;
     this.seriesed = seriesed;
     this.definitionsOn = definitionsOn;
@@ -988,7 +1000,8 @@ export class EventTrend extends EventMap {
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
     this.ONETOMANY = ONETOMANY;
-    this.displayDefinitions();
+    this.definitionDiv = `trend-definitions-${eventType}`;
+    this.hasDefinition = this.displayDefinitions();
   }
 
   static dummyYears(yearList, dataFormat = "object") {
@@ -1068,6 +1081,14 @@ export class EventTrend extends EventMap {
     const dummySeries = EventTrend.dummyYears(data[field].year, "list");
     preparedSeries.push(dummySeries);
     return preparedSeries;
+  }
+
+  applyColor(rowValue, field) {
+    try {
+      return this.colors[field][rowValue].c;
+    } catch (err) {
+      return undefined;
+    }
   }
 
   processEventsData(data, field) {
@@ -1211,10 +1232,10 @@ export class EventTrend extends EventMap {
   }
 
   displayDefinitions() {
-    const definitionDiv = `trend-definitions-${this.eventType}`; // make sure .hbs temaplate has correct id for event type
-    const definitionsPopUp = document.getElementById(definitionDiv);
+    // const definitionDiv = `trend-definitions-${this.eventType}`; // make sure .hbs temaplate has correct id for event type
+    const definitionsPopUp = document.getElementById(this.definitionDiv);
     if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
-      visibility([definitionDiv], "show");
+      visibility([this.definitionDiv], "show");
       // when on incidents, show text on bar click. When on oandm, show text on pill click
       if (this.definitionsOn === "bar") {
         // user click on highcharts bar for definition to appear
@@ -1225,18 +1246,15 @@ export class EventTrend extends EventMap {
         // user clicks on pill to view info about that pill in definitions box
         definitionsPopUp.innerHTML = this.definitions[this.field];
       }
-
-      this.onClickDefinition = true;
-    } else {
-      visibility([definitionDiv], "hide");
-
-      this.onClickDefinition = false;
+      return true;
     }
+    visibility([this.definitionDiv], "hide");
+    return false;
   }
 
   createChart() {
     const currentTrend = this;
-    this.chart = new Highcharts.chart(this.hcDiv, {
+    this.chart = new Highcharts.chart(this.divId, {
       chart: {
         type: "column",
         animation: false,
@@ -1269,9 +1287,13 @@ export class EventTrend extends EventMap {
           animation: false,
           events: {
             click() {
-              if (currentTrend.onClickDefinition) {
-                const definitionsPopUp =
-                  document.getElementById("trend-definitions");
+              if (
+                currentTrend.definitionsOn === "bar" &&
+                currentTrend.hasDefintion
+              ) {
+                const definitionsPopUp = document.getElementById(
+                  currentTrend.definitionDiv
+                );
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.options.id].c;
 
@@ -1299,7 +1321,7 @@ export class EventTrend extends EventMap {
         this.chart.addSeries(series, false);
       });
       this.oneToManyDisclaimer();
-      this.displayDefinitions();
+      this.hasDefintion = this.displayDefinitions();
       this.chart.redraw();
     }
   }
@@ -1327,7 +1349,7 @@ export class KeyPointMap {
    * @param {Object} constr - KeyPointMap constructor.
    * @param {Object[]} constr.points - Array of all key points for map: {id: number, name: string, loc:[lat, -long]}.
    * @param {Object[]} constr.selected - Array of key point objects {id: number, name: string}, with each key point showing up "selected".
-   * @param {string} [constr.leafletDiv="traffic-map"] - HTML div id where key point map will load.
+   * @param {string} [constr.divId="traffic-map"] - HTML div id where key point map will load.
    * @param {number[]} [constr.initZoomTo=[60, -97]] - Initial lat long for map before zooming to points.
    * @param {string} [constr.companyName=""] - Used to get initial zooms and padding for specific companies.
    * @param {Object} [constr.lang={}] - Object holding language switching items.
@@ -1335,7 +1357,7 @@ export class KeyPointMap {
   constructor({
     points,
     selected,
-    leafletDiv = "traffic-map",
+    divId = "traffic-map",
     initZoomTo = [60, -97],
     companyName = "",
     lang = {},
@@ -1343,7 +1365,7 @@ export class KeyPointMap {
     this.points = points;
     this.selected = this.constructor.selectedPointNames(selected);
     this.initZoomTo = initZoomTo;
-    this.leafletDiv = leafletDiv;
+    this.divId = divId;
     this.companyName = companyName;
     this.lang = lang;
     this.mapDisclaimer = undefined;
@@ -1384,7 +1406,7 @@ export class KeyPointMap {
 
   addBaseMap() {
     const map = leafletBaseMap({
-      div: this.leafletDiv,
+      div: this.divId,
       zoomSnap: 0.25,
       zoomDelta: 0.25,
       zoomControl: false,
