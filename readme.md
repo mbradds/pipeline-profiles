@@ -4,9 +4,21 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mbradds/pipeline-profiles/pulls)
 [![dependencies](https://img.shields.io/david/mbradds/pipeline-profiles)](https://img.shields.io/david/mbradds/pipeline-profiles)
 [![Known Vulnerabilities](https://snyk.io/test/github/mbradds/pipeline-profiles/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mbradds/pipeline-profiles?targetFile=package.json)
-[![heroku](https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/)](https://pipeline-profiles.herokuapp.com/)
+[![website](https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/)](https://pipeline-profiles.herokuapp.com/)
 
-- **Live version:** https://pipeline-profiles.herokuapp.com/
+<h3>
+  <a href="https://pipeline-profiles.herokuapp.com/">
+    Heroku WebApp
+  </a>
+  <span> | </span>
+  <a href="https://github.com/mbradds/pipeline-profiles/projects/1">
+    Project Roadmap
+  </a>
+  <span> | </span>
+  <a href="https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/index.html">
+    CER Production Page
+  </a>
+</h3>
 
 ##### Table of Contents
 
@@ -66,11 +78,6 @@ pipeline_profiles
 |   |   test.js (AVA units tests for front end code, npm run test-frontend)
 |
 └───src
-│   │   profile.hbs (conditional handlebars template for a new profile)
-│   │   profileManager.js (manual logic for adding sections to a profile)
-|   |   main.css (custom css for all dashboards. Appears in ../dist via CopyWebpackPlugin)
-|   |   components/ (handlebars partials for each profile section)
-|   |   ...
 │   │
 │   └───data_management
 │   |   │   conditions.py (creates conditions data for front end)
@@ -82,6 +89,10 @@ pipeline_profiles
 |   |   |   npm_scripts/ (all the "data" automation scripts available in package.json)
 |   |   |   raw_data/ (pre-prepared data used by python when not pulling from remote locations)
 │   |   │   ...
+|   |
+|   └───components (handlebars partials + JavaScript logic for building a new profile section)
+|   |
+|   └───css (main.css, transferred over to dist/css/main[contenthash].css via MiniCssExtract)
 |   |
 |   └───index_files (entry points for all profile webpages)
 |   |
@@ -97,7 +108,7 @@ pipeline_profiles
 |   |
 |   └───modules (shared dashboard code & utility functions)
 |   |
-|   └─── your_new_section (new dashboards/sections will be added!)
+|   └───your_new_section (new dashboards/sections will be added!)
 │
 └───dist (tries to match dweb7 folder structure)
     │   en/ english js bundles & html for each profile (to be placed on web server)
@@ -352,7 +363,7 @@ export async function loadAllCharts(data, plains = false) {
 
 5. Start the project with `npm run dev` to open the webpack dev server on port 8000. Make sure that the data appears in the console, and you will be good to start developing the JavaScript.
 
-6. Pretty soon after step 5 you will need to set up the html and css infrastructure. CSS can be added to `src/main.css`. There is only one css file for the entire project. I might split this css file soon, but for now just keep all the css for each section roughly together.
+6. Pretty soon after step 5 you will need to set up the html and css infrastructure. CSS can be added to `src/css/main.css`. There is only one css file for the entire project. I might split this css file soon, but for now just keep all the css for each section roughly together.
 
 ### Aside: Why handlebars
 
@@ -380,7 +391,7 @@ const profileSections = {
 };
 ```
 
-9. Add the new handlbars template to the main handlebars file here: `src/profile.hbs`. Once this is done, then `npm run build` and `npm run dev` should load your html.
+9. Add the new handlbars template to the main handlebars file here: `src/components/profile.hbs`. Once this is done, then `npm run build` and `npm run dev` should load your html.
 
 ```handlebars
 {{#if htmlWebpackPlugin.options.page.sections.new_section}}
@@ -499,13 +510,12 @@ Making sure that all dependencies are updated and both package.json and package-
 - Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
 - Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
-- Add more tests for public methods in `src/modules/dashboard.js`
+- Add more tests for public methods in `src/modules/dashboard`
 - Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 - Use the same data/id/lookup pattern in traffic & incidents for conditions. Having english and french datasets creates an inconsistency risk, and using id's for project names/themes will massively reduce data/bundle size, possibly at the expense of large lookup time?
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
 - Add jsDoc strings to all public modules/methods in `src/modules`.
 - Look into the benfits of splitting css files and adding a `src/css` folder that compiles into one main.css file in `dist`.
-- Move `src/profile.hbs` into `src/components`. All templates should be kept together for readability.
 - Update version in package.json
 - Rename default branch to main
 
@@ -525,3 +535,4 @@ Making sure that all dependencies are updated and both package.json and package-
 - Look into the inheritance pattern in `src/modules/dashboard.js`. This might be adding more complexity than its worth.
 - Specify npm engine/version in package.json for heroku
 - Split `src/modules/dashboard.js` into a folder with one file for each class.
+- Move `src/profile.hbs` into `src/components`. All templates should be kept together for readability.

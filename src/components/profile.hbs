@@ -5,36 +5,36 @@
 <html lang="fr">
 {{/if}}
 <head>
-  {{> components/head}}
+  {{> head}}
 </head>
 <body>
   <div class="container">
   {{#if htmlWebpackPlugin.options.page.sections.traffic.map}}
   <!-- Start Throughput and capacity -->
-    {{> components/traffic text=htmlWebpackPlugin.options.page.text}}
+    {{> traffic text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Throughput and capacity -->
   {{/if}}
   {{!-- pipeline has traffic data, but no leaflet map. Trans-Northern/group2 --}}
   {{#if htmlWebpackPlugin.options.page.sections.traffic.noMap}}
   <!-- Start Throughput and capacity -->
-    {{> components/trafficNoMap text=htmlWebpackPlugin.options.page.text}}
+    {{> trafficNoMap text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Throughput and capacity -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.apportion}}
   <!-- Start Apportionment -->
-    {{> components/apportion text=htmlWebpackPlugin.options.page.text}}
+    {{> apportion text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Apportionment -->
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.safety}}
   <!-- Start Safety and Environment -->
-    {{> components/safety_environment text=htmlWebpackPlugin.options.page.text}}
+    {{> safety_environment text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Safety and Environment -->
   {{/if}}
   </div>
-  {{> components/footer}}
+  {{> footer}}
 </body>
 </html>

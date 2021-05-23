@@ -4,6 +4,7 @@ const profileText = require("./src/components/htmlText");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const webpack = require("webpack");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
@@ -61,7 +62,7 @@ const profileWebpackConfig = (function () {
               `${lang}/${name[1]}/js/data_${name[0]}_${lang}`,
             ],
             chunksSortMode: "auto",
-            template: `src/profile.hbs`,
+            template: `src/components/profile.hbs`,
             minify: {
               collapseWhitespace: false,
               keepClosingSlash: false,
@@ -123,12 +124,11 @@ module.exports = {
   devtool: false,
 
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/main.[contenthash].css",
+    }),
     new CopyWebpackPlugin({
       patterns: [
-        {
-          from: path.resolve(__dirname, "src", "main.css"),
-          to: path.resolve(__dirname, "dist", "css/main.css"),
-        },
         {
           from: path.resolve(__dirname, "src", "GCWeb"),
           to: path.resolve(__dirname, "dist", "GCWeb"),
@@ -162,9 +162,16 @@ module.exports = {
         },
       },
       {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.css$/,
+        include: /node_modules/,
         use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
+
       {
         test: /\.png$/,
         use: {
