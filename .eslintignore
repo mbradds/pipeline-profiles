@@ -1,4 +1,6 @@
-webpack.config.js
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
 dist
 node_modules
 test/test.js

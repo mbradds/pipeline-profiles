@@ -1,13 +1,10 @@
 const path = require("path");
-const pm = require("./src/components/profileManager");
-const profileText = require("./src/components/htmlText");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const webpack = require("webpack");
-// const BundleAnalyzerPlugin =
-//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const profileText = require("./src/components/htmlText");
+const pm = require("./src/components/profileManager");
 
 const profileWebpackConfig = (function () {
   const language = ["en", "fr"];
@@ -41,10 +38,10 @@ const profileWebpackConfig = (function () {
   ];
 
   function htmlWebpack() {
-    var html = [];
+    const html = [];
     language.forEach((lang) => {
       htmlFileNames.forEach((name) => {
-        const pageData = Object.assign({}, pm[name[0]]);
+        const pageData = { ...pm[name[0]] };
         if (lang === "en") {
           pageData.lang = { en: true, fr: false };
         } else if (lang === "fr") {
@@ -104,24 +101,16 @@ const profileWebpackConfig = (function () {
     return entryPoints;
   }
 
-  return { htmlWebpack: htmlWebpack, entry: entry };
+  return { htmlWebpack, entry };
 })();
 
 module.exports = {
-  // mode: "development",
-  mode: "production",
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
     publicPath: "/dist/",
   },
-
-  devServer: {
-    compress: true,
-  },
-
-  devtool: false,
 
   plugins: [
     new CopyWebpackPlugin({
@@ -139,20 +128,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     ...profileWebpackConfig.htmlWebpack(),
     new MiniCssExtractPlugin({
-      insert: function (linkTag) {
-        var reference = document.querySelector("#custom-css");
-        if (reference) {
-          reference.parentNode.insertBefore(linkTag, reference);
-        }
-      },
       filename: "css/main.[contenthash].css",
     }),
-    // uncomment these lines below for easier browser debugging in development mode
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: "dist/[file].map",
-    //   fileContext: "public",
-    // }),
-    // new BundleAnalyzerPlugin(),
   ],
 
   resolve: {
@@ -202,9 +179,7 @@ module.exports = {
   },
 
   optimization: {
-    minimize: true,
     usedExports: true,
-    // runtimeChunk: true, //TODO: look into if this is needed
     splitChunks: {
       cacheGroups: {
         leafletVendor: {

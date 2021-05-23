@@ -501,23 +501,17 @@ Making sure that all dependencies are updated and both package.json and package-
 
 ## TODO list
 
-- Rewrite everything in TypeScript
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Include documentation on updating traffic, apportionment, and oandm data sets.
-- Make sure that the narrative indicates that most commonly released substance is by event frequency, not volume.
 - Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
-- The dynamic text modude `src/modules/dynamicText.js` is kind of split between english and french methods. Where possible, all these methods should be consolidated to take a language parameter. This might not always be possible because of the sentence structure between english and french.
 - Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
-- Try to get wet4 tabs working for safety & environment navigation vs buttons. Tabs are more obvious.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
-- Add more tests for public methods in `src/modules/dashboard`
 - Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
-- Use the same data/id/lookup pattern in traffic & incidents for conditions. Having english and french datasets creates an inconsistency risk, and using id's for project names/themes will massively reduce data/bundle size, possibly at the expense of large lookup time?
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
 - Add jsDoc strings to all public modules/methods in `src/modules`.
-- Look into the benfits of splitting css files and adding a `src/css` folder that compiles into one main.css file in `dist`.
 - Update version in package.json
 - Rename default branch to main
+- Try to consolidate js files in `src/index_files` into one index.js file.
 
 ### Completed TODO's
 

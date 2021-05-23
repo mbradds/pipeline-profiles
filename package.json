@@ -9,10 +9,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.prod.js",
     "start": "node server.js",
-    "heroku-postbuild": "webpack",
-    "dev": "webpack serve --output-public-path=/dist/",
+    "heroku-postbuild": "webpack --config webpack.prod.js",
+    "dev": "webpack serve --output-public-path=/dist/ --config webpack.dev.js",
     "update-traffic-data": "sh ./src/data_management/npm_scripts/update-traffic-data.sh",
     "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
     "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
@@ -59,6 +59,7 @@
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^3.0.0"
   },
   "ava": {
