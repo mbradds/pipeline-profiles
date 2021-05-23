@@ -124,9 +124,6 @@ module.exports = {
   devtool: false,
 
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "css/main.[contenthash].css",
-    }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -140,13 +137,23 @@ module.exports = {
       ],
     }),
     new CleanWebpackPlugin(),
+    ...profileWebpackConfig.htmlWebpack(),
+    new MiniCssExtractPlugin({
+      insert: function (linkTag) {
+        var reference = document.querySelector("#custom-css");
+        if (reference) {
+          reference.parentNode.insertBefore(linkTag, reference);
+        }
+      },
+      filename: "css/main.[contenthash].css",
+    }),
     // uncomment these lines below for easier browser debugging in development mode
     // new webpack.SourceMapDevToolPlugin({
     //   filename: "dist/[file].map",
     //   fileContext: "public",
     // }),
     // new BundleAnalyzerPlugin(),
-  ].concat(profileWebpackConfig.htmlWebpack()),
+  ],
 
   resolve: {
     extensions: ["*", ".js"],

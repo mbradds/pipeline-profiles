@@ -152,9 +152,6 @@ body {
 #map-panel-body {
   padding: 0px;
 }
-.traffic-panel {
-  min-height: fit-content;
-}
 #key-point-info p {
   font-size: 16px !important;
   line-height: 1.4375 !important;
