@@ -152,31 +152,23 @@ npm install
 git checkout -b profile_improvement
 ```
 
-4. switch to development mode in `webpack.config.js` for faster compile time
-
-```diff
-+mode: "development",
--mode: "production",
-```
-
-5. start webpack dev server
+4. start webpack dev server
 
 ```bash
 npm run dev
 ```
 
-6. distribution bundles are not tracked. Before publishing new version:
+This runs webpack.dev.js
 
-```diff
--mode: "development",
-+mode: "production",
-```
-
-then:
+5. distribution bundles are not tracked. Before publishing new version:
 
 ```bash
 npm run build
 ```
+
+This runs webpack.prod.js and emits minified bundles in `/dist`
+
+Note: `npm run dev-min` runs the webpack dev server using the production configuration. Test this on all major browsers prior to new releases.
 
 Create a new release on GitHub and add the compressed dist folder. Ask the web team to dump the latest production files onto dweb7 and add the new dist files/changes before sending in a production web request.
 
@@ -396,13 +388,13 @@ const profileSections = {
 ```handlebars
 {{#if htmlWebpackPlugin.options.page.sections.new_section}}
   <!-- Start New Section -->
-    {{> components/new_section text=htmlWebpackPlugin.options.page.text}}
+    {{> new_section text=htmlWebpackPlugin.options.page.text}}
   <!-- End New Section -->
 {{/if}}
 
 ```
 
-10. Before running `npm run build` and `npm run dev`, you should remove "fr" from the `webpack.json.config` to avoid errors. Once you have added french to the data and code entrypoints (step 3 and step 4) then the js+html can compile in both `dist/en` and `dist/fr`
+10. Before running `npm run build` and `npm run dev`, you should remove "fr" from the `webpack.common.js` to avoid errors. Once you have added french to the data and code entrypoints (step 3 and step 4) then the js+html can compile in both `dist/en` and `dist/fr`
 
 ```diff
 const profileWebpackConfig = (function () {
@@ -504,7 +496,7 @@ Making sure that all dependencies are updated and both package.json and package-
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Include documentation on updating traffic, apportionment, and oandm data sets.
 - Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
-- Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.config.js` for each corporate entity across the entire project.
+- Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.common.js` for each corporate entity across the entire project.
 - Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
 - Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.

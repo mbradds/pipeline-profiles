@@ -1,5 +1,11 @@
+@import url("cer.css");
+
 body {
   overflow-x: hidden;
+}
+.dashboard-style {
+  font-size: 16px !important;
+  line-height: 1.4375 !important;
 }
 .cerlabel {
   position: center;
@@ -106,6 +112,8 @@ body {
 }
 .event-filter-nav p {
   margin-bottom: 0px !important;
+  font-size: 16px !important;
+  line-height: 1.4375 !important;
 }
 #incidents-near-me {
   min-height: 100px;
@@ -152,10 +160,7 @@ body {
 #map-panel-body {
   padding: 0px;
 }
-#key-point-info p {
-  font-size: 16px !important;
-  line-height: 1.4375 !important;
-}
+
 /* small screen */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .traffic-hc-single-gas {

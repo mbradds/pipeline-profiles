@@ -1,26 +1,26 @@
 <h2 id="throughput">{{text.traffic.header}}</h2>
+<p class="small">{{text.traffic.updated}}</p>
 <div id="traffic-section">
-  <div class="row">
+  <div class="row dashboard-style">
     <div class="col-md-12">
-      <p class="small">{{text.traffic.updated}}</p>
-      <p class="cerlabel mrgn-tp-sm" id="key-point-title">
+      <span class="cerlabel mrgn-tp-sm" id="key-point-title">
         {{text.traffic.selectKeyPt}}
-      </p>
+      </span>
       <div
         class="btn-group btn-group mrgn-bttm-md"
         id="traffic-points-btn"
       ></div>
     </div>
   </div>
-  <div class="row">
+  <div class="row dashboard-style">
     <div class="col-md-8 traffic-hc-column-map" id="traffic-hc-column">
       <div class="traffic-hc-shared" id="traffic-hc"></div>
       <div class="traffic-hc-shared" id="traffic-hc-range"></div>
     </div>
     <div class="col-md-4">
-      <p class="cerlabel" id="select-units-title">
+      <span class="cerlabel" id="select-units-title">
         {{text.selectUnits}}
-      </p>
+      </span>
       <div id="select-units-radio-traffic"></div>
       <section class="panel panel-info mrgn-tp-sm" id="traffic-container">
         <header class="panel-heading">
@@ -48,7 +48,7 @@
       </section>
     </div>
   </div>
-  <div class="row wb-eqht wb-init" id="key-point-info">
+  <div class="row wb-eqht wb-init dashboard-style" id="key-point-info">
     <div class="col-md-6">
       <section class="panel panel-info hght-inhrt traffic-panel">
         <header class="panel-heading">
