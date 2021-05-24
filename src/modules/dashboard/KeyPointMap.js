@@ -9,7 +9,7 @@ import { cerPalette, leafletBaseMap } from "../util";
  */
 export class KeyPointMap {
   /**
-   *
+   * Simple leaflet map generator showing one or more points "selected" in yellow, and other points in grey.
    * @param {Object} constr - KeyPointMap constructor.
    * @param {Object[]} constr.points - Array of all key points for map: {id: number, name: string, loc:[lat, -long]}.
    * @param {Object[]} constr.selected - Array of key point objects {id: number, name: string}, with each key point showing up "selected".
@@ -38,6 +38,7 @@ export class KeyPointMap {
       deactivated: cerPalette["Cool Grey"],
     };
     this.getInits(companyName, points);
+    this.addBaseMap();
   }
 
   static selectedPointNames(s) {
@@ -117,6 +118,9 @@ export class KeyPointMap {
     }).bindTooltip(`<strong>${toolText}</strong>`);
   }
 
+  /**
+   * Place filled circles on the base map.
+   */
   addPoints() {
     const allPoints = this.points.map((point) => {
       let [pointColor, pointOpacity, toFront] = [

@@ -1,3 +1,17 @@
+/**
+ * @file Contains functionality for a simple highcharts combination chart showing monthly oil pipeline apportionment with unit switching.
+ *
+ * Data pre-processing in ../data_management/apportionment.py configures most of the series parameters, and handles the difference
+ * between Enbridge and the other oil lines.
+ *
+ * Currently used on the following profiles:
+ *  - Enbridge mainline
+ *  - Keystone
+ *  - Trans Mountain
+ *  - PKM Cochin
+ *  - Enbridge Norman Wells
+ */
+
 import {
   cerPalette,
   addSeriesParams,

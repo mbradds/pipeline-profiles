@@ -23,7 +23,7 @@ import { visibility, rangeInclusive } from "../util";
  */
 export class EventTrend {
   /**
-   *
+   * Generare a highcharts stacked bar showing frequency of events by year.
    * @param {Object} constr - EventTrend constructor
    * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
    * @param {string} constr.field - The initial data column to have selected by default.

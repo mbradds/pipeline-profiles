@@ -34,7 +34,7 @@ const substanceState = {
  */
 export class EventMap {
   /**
-   *
+   * New leaflet map displaying lat/long as circles with a default metric shown as filled circle colors.
    * @param {Object} constr - EventMap constructor.
    * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
    * @param {(string|undefined)} [constr.field=undefined] - The initial data column to display on the map.

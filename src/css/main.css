@@ -17,6 +17,8 @@ body {
   font-weight: bold;
   color: #871455;
   margin-bottom: 0px;
+  font-size: 17px !important;
+  line-height: 1.4375 !important;
 }
 .tablinks {
   height: 75px !important;

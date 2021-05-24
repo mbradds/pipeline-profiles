@@ -1,3 +1,16 @@
+/**
+ * @file Contains functionality for building the classic traffic combination chart (throughput as area, capacity as line) chart
+ * and a new five-year average chart. The five-year average chart and series is generated dynamically from the same data as the first
+ * chart to save on code-size.
+ *
+ * Data pre-processing in ../data_management/traffic.py handles alot of the highcharts series parameters, and creates the metadata for the
+ * key point buttons and initially selected key point.
+ *
+ * The Trans Mountain corner case is handled throughout this file with the "tm" boolean variable contained in the "chartParams" object. Trans Mountain
+ * is a corner case because they file one capacity number for the system, but also report throughput at multiple key points. Therefore a
+ * radio multi-select has to be used instead of the buttons on other key points.
+ */
+
 import {
   cerPalette,
   visibility,
@@ -541,6 +554,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           : chartParams.points,
         companyName: chartParams.companyName,
       });
+
       if (chartParams.defaultPoint.id !== "0") {
         // 0 = system. These pipelines should be using trafficNoMap.hbs
         if (chartParams.points.length === 1) {
@@ -551,7 +565,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
         } else {
           addPointButtons(chartParams);
         }
-        pointMap.addBaseMap();
         pointMap.addPoints();
       }
 

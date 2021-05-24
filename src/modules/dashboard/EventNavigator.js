@@ -51,11 +51,10 @@ const greyScale = [
  * Class responsible for creating a navigation sidebar next to either a leaflet map, or highcharts bar chart.
  * The navigator has "pills" that can be clicked to control the chart or map, and can be filled with a horizontal
  * bar to act as a map legend/total visualization.
- * This class uses a polymorphism patter by utilizing either EventMap or EventTrend fieldChange method and plotHeight parameter
  */
 export class EventNavigator {
   /**
-   *
+   * Used alongside an EventMap or EventTrend instance to control which data columns the user can filter through.
    * @param {Object} constr - EventNavigator constructor
    * @param {Object} constr.plot - EventMap(leaflet) or EventTrend(highcharts) instance.
    * @param {Object} constr.numberOfPills - The total number of navigation pills. Used to calculate pill height dynamically.

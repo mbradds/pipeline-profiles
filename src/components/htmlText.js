@@ -1,3 +1,20 @@
+/**
+ * @file Contains all of the HTML text (mainly static paragraphs) in seperate english and french objects.
+ * These language objects are imported into webpack, and applied to each profile page via handlebars.
+ *
+ * This file only handles the HTML specific text. The dashboard text and dynamic text are handled seperately:
+ *
+ * Dashboard text:
+ * Contained in ../modules/langEnglish.js and langFrench.js These files handle the language parameters and text for the
+ * highcharts and leaflet based dashboards, including the wet4 buttons, titles, etc.
+ *
+ * Dynamic text:
+ * Handled in ../modules/dynamicText.js with seperate english and french functions. Functions are duplicated (en|fr) to 
+ * more easily accomodate the different sentence structure, and save on code size (only english methods appear in the 
+ * english profile-code bundle.)
+ *
+ */
+
 const unitsEn = "Select units:";
 const unitsFr = "Choisir une unité :";
 const trafficUpdatedEn =
