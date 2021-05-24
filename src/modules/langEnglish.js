@@ -62,6 +62,8 @@ const units = {
   "thousand m3/d": "thousand m3/d",
 };
 
+const legendClick = "Click on a legend item to remove it from the chart";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -426,7 +428,7 @@ export const englishDashboard = {
         `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       barClick: (field) =>
         `<p>Click on a bar to view ${field} sub definition</p>`,
-      legendClick: "Click on a legend item to remove it from the chart",
+      legendClick,
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
       trendYTitle: "Number of Incidents",
@@ -560,6 +562,7 @@ export const englishDashboard = {
   },
   oandm: {
     numberFormat,
+    legendClick,
     companyToSystem,
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle: "Number of Events",

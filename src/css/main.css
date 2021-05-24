@@ -1,5 +1,9 @@
 @import url("cer.css");
 
+/* 
+General styles for all dashboards/sections 
+*/
+
 body {
   overflow-x: hidden;
 }
@@ -23,6 +27,11 @@ body {
 .profile-show {
   display: block;
 }
+
+/* 
+Styles for conditions compliance dashboard 
+*/
+
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
   .container-chart-map {
     min-height: 550px;
@@ -86,6 +95,11 @@ body {
   color: #42464b;
   text-align: center;
 }
+
+/* 
+Styles for incidents dashboard 
+*/
+
 #incident-map {
   position: relative;
   height: 515px;
@@ -147,6 +161,11 @@ body {
 .map-disclaimer p {
   font-size: 13px;
 }
+
+/* 
+Styles for traffic and apportionment dashboards 
+*/
+
 #key-point-info .panel-body {
   padding-bottom: 0px;
 }

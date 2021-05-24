@@ -284,7 +284,7 @@ export class EventMap {
    *  Variable1: string,
    *  VariableN: string,
    *  Year: number
-   *  lat long: [number, number]
+   *  loc: [number, number]
    * }]
    */
   processEventsData(data) {
@@ -322,8 +322,8 @@ export class EventMap {
 
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
       return this.addCircle(
-        row["lat long"][0],
-        row["lat long"][1],
+        row.loc[0],
+        row.loc[1],
         cerPalette["Cool Grey"],
         this.applyColor(row[this.field], this.field), // fillColor
         radiusVol,

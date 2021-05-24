@@ -152,7 +152,7 @@ npm install
 git checkout -b profile_improvement
 ```
 
-4. start webpack dev server
+4. start webpack dev server and make changes to the source code
 
 ```bash
 npm run dev
@@ -160,7 +160,9 @@ npm run dev
 
 This runs webpack.dev.js
 
-5. distribution bundles are not tracked. Before publishing new version:
+5. Deploy to the CER
+
+Comment out all styles in `src/css/cer.css`. These styles emulate some of the extra styles on CER pages, and dont need to be added.
 
 ```bash
 npm run build
@@ -497,13 +499,12 @@ Making sure that all dependencies are updated and both package.json and package-
 - Include documentation on updating traffic, apportionment, and oandm data sets.
 - Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
 - Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.common.js` for each corporate entity across the entire project.
-- Add things like province id's and eng/fra names as constants in langEnglish and langFrench.
 - Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
-- Add jsDoc strings to all public modules/methods in `src/modules`.
 - Update version in package.json
 - Rename default branch to main
 - Try to consolidate js files in `src/index_files` into one index.js file.
+- Add better consistency to shared columns across datasets. Eg, lat/long should follow this pattern: [{loc: [lat, -long]}] across all datasets.
 
 ### Completed TODO's
 

@@ -153,8 +153,8 @@ def optimizeJson(df):
                             "Approximate Volume Released": "vol",
                             "What Happened": "what",
                             "Why It Happened": "why"})
-    df["lat long"] = [[round(lat, 4), round(long, 4)] for lat, long in zip(df['Latitude'],
-                                                                           df['Longitude'])]
+    df["loc"] = [[round(lat, 4), round(long, 4)] for lat, long in zip(df['Latitude'],
+                                                                      df['Longitude'])]
     for delete in ['Latitude', 'Longitude']:
         del df[delete]
     return df

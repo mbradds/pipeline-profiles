@@ -8,18 +8,13 @@
  * adding empty bars between the last year of data, and the current client year.
  *
  * Functionality for disclaimers, language switching, and automated axis titles is built in.
+ *
+ * TODO:
+ * - look into destructuring some of the "lang" options into their own configuration objects like the "legendClickText"
+ *   parameter. This will make this class more general purpose and improve usability/self documentation.
  */
 
 import { visibility, rangeInclusive } from "../util";
-
-const ONETOMANY = {
-  Substance: false,
-  Status: false,
-  Province: false,
-  what: true,
-  why: true,
-  category: true,
-};
 
 /**
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
@@ -36,6 +31,8 @@ export class EventTrend {
    * @param {(Object[]|Object)} constr.data - Dataset to be shaped into highcharts series.
    * @param {string} constr.divId - HTML div id where highchart will be loaded.
    * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
+   * @param {Object} [const.legendClickText={enabled: false, text: undefined}] - Configuration for a disclaimer above the chart legend explaining the legend click functionality.
+   * @param {Object} [const.oneToMany={}] - Enabled pill id's ({pillId: true}) contain double counting, and a disclaimer above the bars will explain the higher bar totals.
    * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
    * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
    * @param {Object} [constr.seriesInfo={}] - When "seriesed" this must contain info about the series names, colors, etc. {pillName: {id: {c: color, n: name}}}
@@ -48,6 +45,8 @@ export class EventTrend {
     data,
     divId,
     lang,
+    legendClickText = { enabled: false, text: undefined },
+    oneToMany = {},
     seriesed = false,
     definitionsOn = "bar", // show text on bar click, or pill click
     seriesInfo = {},
@@ -59,12 +58,14 @@ export class EventTrend {
     this.data = data;
     this.divId = divId;
     this.lang = lang;
+    this.legendClickText = legendClickText;
+    this.oneToMany = oneToMany;
     this.seriesed = seriesed;
     this.definitionsOn = definitionsOn;
     this.seriesInfo = seriesInfo;
     this.colors = lang.EVENTCOLORS;
     this.definitions = definitions;
-    this.ONETOMANY = ONETOMANY;
+    this.oneToMany = oneToMany;
     this.definitionDiv = `trend-definitions-${eventType}`;
     this.hasDefinition = this.displayDefinitions();
     this.createChart();
@@ -200,7 +201,7 @@ export class EventTrend {
         return [series, Array.from(uniqueYears)];
       };
     };
-    const seriesCounter = yField(this.ONETOMANY[field]);
+    const seriesCounter = yField(this.oneToMany[field]);
     const [series, uniqueYears] = seriesCounter(data);
 
     const dummySeries = EventTrend.dummyYears(uniqueYears, "object");
@@ -248,7 +249,7 @@ export class EventTrend {
         chart.customLabel.destroy();
       }
     };
-    if (this.ONETOMANY[this.field]) {
+    if (this.oneToMany[this.field]) {
       destoryLabel(this.chart);
       this.chart.customLabel = undefined;
 
@@ -320,7 +321,9 @@ export class EventTrend {
 
       legend: {
         title: {
-          text: currentTrend.lang.legendClick,
+          text: currentTrend.legendClickText.enabled
+            ? currentTrend.legendClickText.text
+            : undefined,
         },
         margin: 0,
         maxHeight: 120,

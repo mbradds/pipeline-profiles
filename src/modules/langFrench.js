@@ -62,6 +62,9 @@ const units = {
   "thousand m3/d": "km3/j",
 };
 
+const legendClick =
+  "Cliquez sur un élément de légende pour le supprimer du graphique";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -422,8 +425,7 @@ export const frenchDashboard = {
         `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
       barClick: (field) =>
         `<p>Cliquer sur une bande pour consulter la définition de ${field}</p>`,
-      legendClick:
-        "Cliquez sur un élément de légende pour le supprimer du graphique",
+      legendClick,
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les incidents dans un rayon de",
       trendYTitle: "Nombre d’incidents",
@@ -567,6 +569,7 @@ export const frenchDashboard = {
   },
   oandm: {
     numberFormat,
+    legendClick,
     companyToSystem,
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle: "Number of Events",

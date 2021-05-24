@@ -32,13 +32,13 @@ export function mainOandM(eventData, lang) {
 
   const definitions = {
     "Integrity Dig":
-      "Indicates If Activity Include Excavation To Expose, Assess, Or Repair An Existing Pipeline.",
+      "Indicates if the activity includes excavation to expose, assess, or repair an existing pipeline.",
     "Fish Present":
-      "Indicates If Will There Be Ground Disturbance Using Power-Operated Equipment Within 30M Of A Wetland Or A Water Body Or Within 30 M Of The Substrate Of A Wetland Or Water Body At The Activity Site, and the water body is fish-bearing.",
+      "Indicates if there will be ground disturbance using power-operated equipment within 30M of a wetland or a water body or within 30M of the substrate of a wetland or water body at the activity site, and the water body is fish-bearing.",
     "In Stream Work Required":
-      "Indicates If There Will Be Any In-Stream Work At Activity Site.",
+      "Indicates if there will be any in-stream work at activity site.",
     "Species At Risk Present":
-      "Indicates If There Are Species Present Which Are Listed On Schedule 1 Of The Species At Risk Act at the Activity Site.",
+      "Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
   };
 
   const incidentTimeSeries = (timeField, timeFilters) => {
@@ -52,6 +52,7 @@ export function mainOandM(eventData, lang) {
       definitions,
       definitionsOn: "pill",
       divId: "time-series-oandm",
+      legendClickText: { enabled: true, text: lang.legendClick },
       lang,
     });
     const trendNav = new EventNavigator({
