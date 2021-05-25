@@ -197,14 +197,67 @@ def conditionMetaData(df, folder_name):
 
 def frenchSubsets(df, colName):
     fr = df[[colName+'_en', colName+'_fr']].copy().drop_duplicates()
-    fr_replace = {x.strip(): y.strip() for x,y in zip(fr[colName+'_en'], fr[colName+'_fr'])}
+    fr = fr.reset_index(drop=True)
+    fr_replace = {str(i): [x.strip(), y.strip()] for x, y, i in zip(fr[colName+'_en'],
+                                                                    fr[colName+'_fr'],
+                                                                    fr.index)}
     return fr_replace
 
 
+def themeIds(df, col):
+
+    themes = {"Administrative": "0",
+              "Damage Prevention": "1",
+              "Emergency Management": "2",
+              "Enforcement": "3",
+              "Environmental Protection": "4",
+              "Financial": "5",
+              "Integrity Management": "6",
+              "Management System": "7",
+              "Safety Management": "8",
+              "Security": "9",
+              "Socio-Economic": "10",
+              "Standard Condition": "11",
+              "Sunset Clause": "12",
+              "nan": "13"}
+
+    totalList = []
+    for t in df[col]:
+        if "," in t:
+            [totalList.append(x.strip()) for x in t.split(",")]
+        else:
+            totalList.append(t)
+
+    totalList = sorted(list(set(totalList)))
+
+    # newThemes = []
+    # for t in df['Theme(s)']:
+    #     if "," in t:
+    #         t = [x.strip() for x in t.split(",")]
+    #         t = [themes[x] for x in t]
+    #         newThemes.append(",".join(t))
+    #     else:
+    #         newThemes.append(themes[t.strip()])
+
+    # df['Theme(s)'] = newThemes
+    return totalList
+
+
 def process_french(df, fr):
+
+    def idify(df, column, toReplace):
+        projectId = []
+        for project in df[column]:
+            for key, value in toReplace.items():
+                if value[0] == project:
+                    projectId.append(key)
+                    break
+        df[column] = projectId
+        return df
+
     df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
     en = df.copy()
-    en = en[en['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
+
     fr = fr.rename(columns={"Société": "Company",
                             "Nom du projet": "Project Name",
                             "Nom du projet court": "Short Project Name",
@@ -223,21 +276,31 @@ def process_french(df, fr):
                             "Type de Condition": "Condition Type",
                             "Dépôt pour condition": "Condition Filing",
                             "Thème(s)": "Theme(s)"})
-    fr = fr[fr['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
+    fr = fr[fr['Short Project Name'] != "Mécanismes de mise de côté et de prélèvement des fonds"].copy().reset_index(drop=True)
+    en = en[en['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
     fr['Company'] = fr['Company'].replace(company_rename())
+    en['Company'] = en['Company'].replace(company_rename())
 
     en = normalize_text(en, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
     fr = normalize_text(fr, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
+
     fr['french id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(fr['Instrument Number'], fr['Condition Number'])]
     en['english id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(en['Instrument Number'], en['Condition Number'])]
+
     fr = fr[['french id', 'Location', 'Short Project Name', 'Theme(s)']].copy().reset_index(drop=True)
     join = en.merge(fr, how='inner', left_on='english id', right_on='french id', suffixes=('_en', '_fr'))
     projectReplace = frenchSubsets(join, 'Short Project Name')
-    themeReplace = frenchSubsets(join, 'Theme(s)')
+
+    # themeReplace = frenchSubsets(join, 'Theme(s)')
+    # print(sorted(list(set(en['Theme(s)']))))
     locationReplace = frenchSubsets(join, 'Location')
-    df['Location'] = df['Location'].replace(locationReplace)
-    df['Theme(s)'] = df['Theme(s)'].replace(themeReplace)
-    df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
+
+    en = themeIds(en, "Location")
+    en = idify(en, "Short Project Name", projectReplace)
+
+    # df['Location'] = df['Location'].replace(locationReplace)
+    # df['Theme(s)'] = df['Theme(s)'].replace(themeReplace)
+    # df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
     return df
 
 
@@ -422,8 +485,8 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # links = orca_regdocs_links(True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=True)
+    # df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=False)
     print('completed conditions!')
 
 #%%
