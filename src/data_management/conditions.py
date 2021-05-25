@@ -11,12 +11,13 @@ ssl._create_default_https_context = ssl._create_unverified_context
 script_dir = os.path.dirname(__file__)
 
 
-def orca_regdocs_links(sql=False):
+def getSql(sql=False, query='projects_regdocs.sql'):
+    csvName = query.replace(".sql", ".csv")
     if sql:
-        df = execute_sql(os.path.join(script_dir, "queries"), 'projects_regdocs.sql')
-        df.to_csv('raw_data/projects_regdocs.csv', index=False)
+        df = execute_sql(os.path.join(script_dir, "queries"), query)
+        df.to_csv('raw_data/'+csvName, index=False)
     else:
-        df = pd.read_csv('raw_data/projects_regdocs.csv')
+        df = pd.read_csv('raw_data/'+csvName)
     return df
 
 
@@ -305,7 +306,7 @@ def process_french(df, fr):
 
 
 def add_links(df):
-    df_links = orca_regdocs_links()
+    df_links = getSql()
     l = {}
     for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
         l[name] = folder
@@ -484,9 +485,9 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    # links = orca_regdocs_links(True)
+    df = getSql(True, "conditionThemes.sql")
     # df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=False)
+    #df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=False)
     print('completed conditions!')
 
 #%%
