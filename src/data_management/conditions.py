@@ -196,113 +196,113 @@ def conditionMetaData(df, folder_name):
     return df_all, meta
 
 
-def frenchSubsets(df, colName):
-    fr = df[[colName+'_en', colName+'_fr']].copy().drop_duplicates()
-    fr = fr.reset_index(drop=True)
-    fr_replace = {str(i): [x.strip(), y.strip()] for x, y, i in zip(fr[colName+'_en'],
-                                                                    fr[colName+'_fr'],
-                                                                    fr.index)}
-    return fr_replace
+# def frenchSubsets(df, colName):
+#     fr = df[[colName+'_en', colName+'_fr']].copy().drop_duplicates()
+#     fr = fr.reset_index(drop=True)
+#     fr_replace = {str(i): [x.strip(), y.strip()] for x, y, i in zip(fr[colName+'_en'],
+#                                                                     fr[colName+'_fr'],
+#                                                                     fr.index)}
+#     return fr_replace
 
 
-def themeIds(df, col):
+# def themeIds(df, col):
 
-    themes = {"Administrative": "0",
-              "Damage Prevention": "1",
-              "Emergency Management": "2",
-              "Enforcement": "3",
-              "Environmental Protection": "4",
-              "Financial": "5",
-              "Integrity Management": "6",
-              "Management System": "7",
-              "Safety Management": "8",
-              "Security": "9",
-              "Socio-Economic": "10",
-              "Standard Condition": "11",
-              "Sunset Clause": "12",
-              "nan": "13"}
+#     themes = {"Administrative": "0",
+#               "Damage Prevention": "1",
+#               "Emergency Management": "2",
+#               "Enforcement": "3",
+#               "Environmental Protection": "4",
+#               "Financial": "5",
+#               "Integrity Management": "6",
+#               "Management System": "7",
+#               "Safety Management": "8",
+#               "Security": "9",
+#               "Socio-Economic": "10",
+#               "Standard Condition": "11",
+#               "Sunset Clause": "12",
+#               "nan": "13"}
 
-    totalList = []
-    for t in df[col]:
-        if "," in t:
-            [totalList.append(x.strip()) for x in t.split(",")]
-        else:
-            totalList.append(t)
+#     totalList = []
+#     for t in df[col]:
+#         if "," in t:
+#             [totalList.append(x.strip()) for x in t.split(",")]
+#         else:
+#             totalList.append(t)
 
-    totalList = sorted(list(set(totalList)))
+#     totalList = sorted(list(set(totalList)))
 
-    # newThemes = []
-    # for t in df['Theme(s)']:
-    #     if "," in t:
-    #         t = [x.strip() for x in t.split(",")]
-    #         t = [themes[x] for x in t]
-    #         newThemes.append(",".join(t))
-    #     else:
-    #         newThemes.append(themes[t.strip()])
+#     # newThemes = []
+#     # for t in df['Theme(s)']:
+#     #     if "," in t:
+#     #         t = [x.strip() for x in t.split(",")]
+#     #         t = [themes[x] for x in t]
+#     #         newThemes.append(",".join(t))
+#     #     else:
+#     #         newThemes.append(themes[t.strip()])
 
-    # df['Theme(s)'] = newThemes
-    return totalList
+#     # df['Theme(s)'] = newThemes
+#     return totalList
 
 
-def process_french(df, fr):
+# def process_french(df, fr):
 
-    def idify(df, column, toReplace):
-        projectId = []
-        for project in df[column]:
-            for key, value in toReplace.items():
-                if value[0] == project:
-                    projectId.append(key)
-                    break
-        df[column] = projectId
-        return df
+#     def idify(df, column, toReplace):
+#         projectId = []
+#         for project in df[column]:
+#             for key, value in toReplace.items():
+#                 if value[0] == project:
+#                     projectId.append(key)
+#                     break
+#         df[column] = projectId
+#         return df
 
-    df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
-    en = df.copy()
+#     df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
+#     en = df.copy()
 
-    fr = fr.rename(columns={"Société": "Company",
-                            "Nom du projet": "Project Name",
-                            "Nom du projet court": "Short Project Name",
-                            "État du projet": "Project Status",
-                            "Instrument no": "Instrument Number",
-                            "Activité liée à l'instrument": "Instrument Activity",
-                            "Entrée en vigueur": "Effective Date",
-                            "Date de délivrance": "Issuance Date",
-                            "Date de réexamen": "Sunset Date",
-                            "État de l'instrument": "Instrument Status",
-                            "Lieu": "Location",
-                            "Condition No": "Condition Number",
-                            "Condition": "Condition",
-                            "État de condition": "Condition Status",
-                            "Étape de condition": "Condition Phase",
-                            "Type de Condition": "Condition Type",
-                            "Dépôt pour condition": "Condition Filing",
-                            "Thème(s)": "Theme(s)"})
-    fr = fr[fr['Short Project Name'] != "Mécanismes de mise de côté et de prélèvement des fonds"].copy().reset_index(drop=True)
-    en = en[en['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
-    fr['Company'] = fr['Company'].replace(company_rename())
-    en['Company'] = en['Company'].replace(company_rename())
+#     fr = fr.rename(columns={"Société": "Company",
+#                             "Nom du projet": "Project Name",
+#                             "Nom du projet court": "Short Project Name",
+#                             "État du projet": "Project Status",
+#                             "Instrument no": "Instrument Number",
+#                             "Activité liée à l'instrument": "Instrument Activity",
+#                             "Entrée en vigueur": "Effective Date",
+#                             "Date de délivrance": "Issuance Date",
+#                             "Date de réexamen": "Sunset Date",
+#                             "État de l'instrument": "Instrument Status",
+#                             "Lieu": "Location",
+#                             "Condition No": "Condition Number",
+#                             "Condition": "Condition",
+#                             "État de condition": "Condition Status",
+#                             "Étape de condition": "Condition Phase",
+#                             "Type de Condition": "Condition Type",
+#                             "Dépôt pour condition": "Condition Filing",
+#                             "Thème(s)": "Theme(s)"})
+#     fr = fr[fr['Short Project Name'] != "Mécanismes de mise de côté et de prélèvement des fonds"].copy().reset_index(drop=True)
+#     en = en[en['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
+#     fr['Company'] = fr['Company'].replace(company_rename())
+#     en['Company'] = en['Company'].replace(company_rename())
 
-    en = normalize_text(en, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
-    fr = normalize_text(fr, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
+#     en = normalize_text(en, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
+#     fr = normalize_text(fr, ['Location', 'Short Project Name', 'Theme(s)', 'Condition Number', 'Instrument Number'])
 
-    fr['french id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(fr['Instrument Number'], fr['Condition Number'])]
-    en['english id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(en['Instrument Number'], en['Condition Number'])]
+#     fr['french id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(fr['Instrument Number'], fr['Condition Number'])]
+#     en['english id'] = [str(ins).strip()+'_'+str(cond).strip() for ins, cond in zip(en['Instrument Number'], en['Condition Number'])]
 
-    fr = fr[['french id', 'Location', 'Short Project Name', 'Theme(s)']].copy().reset_index(drop=True)
-    join = en.merge(fr, how='inner', left_on='english id', right_on='french id', suffixes=('_en', '_fr'))
-    projectReplace = frenchSubsets(join, 'Short Project Name')
+#     fr = fr[['french id', 'Location', 'Short Project Name', 'Theme(s)']].copy().reset_index(drop=True)
+#     join = en.merge(fr, how='inner', left_on='english id', right_on='french id', suffixes=('_en', '_fr'))
+#     projectReplace = frenchSubsets(join, 'Short Project Name')
 
-    # themeReplace = frenchSubsets(join, 'Theme(s)')
-    # print(sorted(list(set(en['Theme(s)']))))
-    locationReplace = frenchSubsets(join, 'Location')
+#     # themeReplace = frenchSubsets(join, 'Theme(s)')
+#     # print(sorted(list(set(en['Theme(s)']))))
+#     locationReplace = frenchSubsets(join, 'Location')
 
-    en = themeIds(en, "Location")
-    en = idify(en, "Short Project Name", projectReplace)
+#     en = themeIds(en, "Location")
+#     en = idify(en, "Short Project Name", projectReplace)
 
-    # df['Location'] = df['Location'].replace(locationReplace)
-    # df['Theme(s)'] = df['Theme(s)'].replace(themeReplace)
-    # df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
-    return df
+#     # df['Location'] = df['Location'].replace(locationReplace)
+#     # df['Theme(s)'] = df['Theme(s)'].replace(themeReplace)
+#     # df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
+#     return df
 
 
 def add_links(df):
@@ -327,6 +327,39 @@ def add_links(df):
     return df
 
 
+def idify(df, sql=False):
+
+    def listId(df, column, toReplace):
+        newThemes = []
+        for t in df[column]:
+            if "," in t:
+                t = [x.strip() for x in t.split(",")]
+                t = [toReplace[x] for x in t]
+                newThemes.append(t)
+            else:
+                try:
+                    newThemes.append([toReplace[t.strip()]])
+                except:
+                    newThemes.append([-1])
+
+        df[column] = newThemes
+        return df
+
+    projects = getSql(sql, "conditionProjects.sql")
+    themes = getSql(sql, "conditionThemes.sql")
+    regions = getSql(sql, "conditionRegions.sql")
+
+    projectReplace = {value: key for key, value in zip(projects['id'], projects['e'])}
+    themeReplace = {value: key for key, value in zip(themes['id'], themes['e'])}
+    regionReplace = {value: key for key, value in zip(projects['id'], themes['e'])}
+    df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
+
+
+    df = listId(df, "Theme(s)", themeReplace)
+    df = listId(df, "Location", regionReplace)
+
+    return df
+
 def process_conditions(remote=False,
                        nonStandard=True,
                        company_names=False,
@@ -336,28 +369,13 @@ def process_conditions(remote=False,
                        save=True):
     if remote:
         print('downloading remote conditions file')
-        if lang == 'en':
-            link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
-            df = pd.read_csv(link,
-                             sep='\t',
-                             lineterminator='\r',
-                             encoding="UTF-16",
-                             error_bad_lines=False)
-            df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
-        else:
-            link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
-            linkFR = 'https://www.cer-rec.gc.ca/ouvert/conditions/conditions.csv'
-            df = pd.read_csv(link,
-                             sep='\t',
-                             lineterminator='\r',
-                             encoding="UTF-16",
-                             error_bad_lines=False)
-            fr = pd.read_csv(linkFR,
-                             sep='\t',
-                             lineterminator='\r',
-                             encoding="UTF-16",
-                             error_bad_lines=False)
-            df = process_french(df, fr)
+        link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
+        df = pd.read_csv(link,
+                         sep='\t',
+                         lineterminator='\r',
+                         encoding="UTF-16",
+                         error_bad_lines=False)
+        df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
 
     elif test:
         print('reading test conditions data')
@@ -365,13 +383,8 @@ def process_conditions(remote=False,
         df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
     else:
         print('reading local conditions data')
-        if lang == 'en':
-            df = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
-            df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
-        else:
-            df = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
-            fr = pd.read_csv('./raw_data/conditions_fr.csv', encoding="UTF-16", sep='\t')
-            df = process_french(df, fr)
+        df = pd.read_csv('./raw_data/conditions_en.csv', encoding="UTF-16", sep='\t')
+        df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
 
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
@@ -398,13 +411,15 @@ def process_conditions(remote=False,
     df['Company'] = df['Company'].replace(company_rename())
 
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
-    df['Theme(s)'] = df['Theme(s)'].replace({"nan":
-                                             "No theme specified"})
+    # df['Theme(s)'] = df['Theme(s)'].replace({"nan":
+    #                                          "No theme specified"})
 
     regions_map = import_simplified()
     df = add_links(df)
     if company_names:
         print(get_company_names(df['Company']))
+
+    df = idify(df)
 
     if companies:  # used to set one company for testing
         company_files = companies
@@ -485,8 +500,8 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df = getSql(True, "conditionThemes.sql")
-    # df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
+    # df = getSql(False, "conditionThemes.sql")
+    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=False, companies=["NOVA Gas Transmission Ltd."])
     #df, regions, mapMeta, meta = process_conditions(remote=False, lang='fr', save=False)
     print('completed conditions!')
 
