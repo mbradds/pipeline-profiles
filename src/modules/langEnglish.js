@@ -365,7 +365,7 @@ export const englishDashboard = {
     title: (systemName) =>
       `Dashboard: ${systemName} - Incidents with a product release`,
     definitions: {
-      Status: {
+      s: {
         c: "The CER’s incident review has been completed and the file is closed.",
         s: "The company has submitted all of the required information and the CER is reviewing the incident.",
         is: "The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",

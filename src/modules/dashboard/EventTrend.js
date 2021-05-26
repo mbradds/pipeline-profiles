@@ -61,11 +61,10 @@ export class EventTrend {
     this.legendClickText = legendClickText;
     this.oneToMany = oneToMany;
     this.seriesed = seriesed;
-    this.definitionsOn = definitionsOn;
     this.seriesInfo = seriesInfo;
     this.colors = lang.seriesInfo;
     this.definitions = definitions;
-    this.oneToMany = oneToMany;
+    this.definitionsOn = definitionsOn;
     this.definitionDiv = `trend-definitions-${eventType}`;
     this.hasDefinition = this.displayDefinitions();
     this.createChart();
@@ -156,10 +155,7 @@ export class EventTrend {
             uniqueYears.add(row.y);
             if (Object.prototype.hasOwnProperty.call(series, row[field])) {
               if (
-                Object.prototype.hasOwnProperty.call(
-                  series[row[field]],
-                  row.y
-                )
+                Object.prototype.hasOwnProperty.call(series[row[field]], row.y)
               ) {
                 series[row[field]][row.y] += 1;
               } else {
@@ -186,9 +182,7 @@ export class EventTrend {
           }
           itemList.forEach((yVal) => {
             if (Object.prototype.hasOwnProperty.call(series, yVal)) {
-              if (
-                Object.prototype.hasOwnProperty.call(series[yVal], row.y)
-              ) {
+              if (Object.prototype.hasOwnProperty.call(series[yVal], row.y)) {
                 series[yVal][row.y] += 1;
               } else {
                 series[yVal][row.y] = 1;
@@ -201,6 +195,7 @@ export class EventTrend {
         return [series, Array.from(uniqueYears)];
       };
     };
+
     const seriesCounter = yField(this.oneToMany[field]);
     const [series, uniqueYears] = seriesCounter(data);
 

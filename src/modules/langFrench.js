@@ -361,7 +361,7 @@ export const frenchDashboard = {
     title: (systemName) =>
       `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`,
     definitions: {
-      Status: {
+      s: {
         c: "La Régie a terminé l’examen de l’incident et a clos le dossier.",
         s: "La société a fourni tous les renseignements exigés et la Régie examine ce qui s’est produit.",
         is: "La société a informé la Régie qu’un incident était survenu et a fourni les renseignements préliminaires sur celui-ci. Une enquête est en cours.",

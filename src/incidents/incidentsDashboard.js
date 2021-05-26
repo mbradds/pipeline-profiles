@@ -51,9 +51,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
   const incidentTimeSeries = (timeField, timeFilters) => {
     const ONETOMANY = {
-      Substance: false,
-      Status: false,
-      Province: false,
+      sub: false,
+      s: false,
+      p: false,
       what: true,
       why: true,
       category: true,
@@ -87,8 +87,15 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return timeSeries;
   };
 
+  /**
+   *
+   * @returns {Object} - {substance, what, why} Parameters that have id's substituted with correct language.
+   */
   function langCommon() {
-    const joinMultiple = (lst, sep = " & ") => lst.join(sep);
+    const joinMultiple = (lst, sep = " & ") => {
+      const langList = lst.join(sep);
+      return langList;
+    };
 
     const substance =
       lang.dashboard.seriesInfo.sub[
@@ -102,12 +109,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
       lang.dashboard.seriesInfo.what[e].n.toLowerCase()
     );
 
-    if (why.length > 1) {
-      why = joinMultiple(why);
-    }
-    if (what.length > 1) {
-      what = joinMultiple(what);
-    }
+    why = joinMultiple(why);
+    what = joinMultiple(what);
 
     return { substance, what, why };
   }
