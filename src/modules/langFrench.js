@@ -516,7 +516,7 @@ export const frenchDashboard = {
     fiveYrTitle: (pointText) =>
       `${pointText} - période de cinq ans et fourchette`,
     trafficTitle: (pointText, dirText) => {
-      if (dirText[0] === false) {
+      if (dirText[0] === false || dirText[0] !== "") {
         return `${pointText} - transport mensuel`;
       }
       return `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(

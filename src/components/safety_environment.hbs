@@ -1,34 +1,35 @@
 <h2 id="safety-environment">{{text.safety.header}}</h2>
-<div class="mrgn-tp-lg">
-  <div class="btn-group btn-group-justified" id="safety-env-navigation">
-    <div class="btn-group tab">
-      <button
-        type="button"
-        class="btn btn-default tablinks"
-        onclick="openTab(event, 'condition-compliance')"
-        id="defaultClick"
-      >
-        {{text.safety.complianceBtn}}
-      </button>
-    </div>
-    <div class="btn-group tab">
-      <button
-        type="button"
-        class="btn btn-default tablinks"
-        onclick="openTab(event, 'pipeline-incidents')"
-      >
-        {{text.safety.incidentsBtn}}
-      </button>
-    </div>
-    <div class="btn-group tab">
-      <button
-        type="button"
-        class="btn btn-default tablinks"
-        onclick="openTab(event, 'operations-maintenance')"
-      >
-        Operations &#38; Maintenance Activities
-      </button>
-    </div>
+<div
+  class="btn-group btn-group-justified mrgn-tp-lg"
+  id="safety-env-navigation"
+>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'condition-compliance')"
+      id="defaultClick"
+    >
+      {{text.safety.complianceBtn}}
+    </button>
+  </div>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'pipeline-incidents')"
+    >
+      {{text.safety.incidentsBtn}}
+    </button>
+  </div>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'operations-maintenance')"
+    >
+      Operations &#38; Maintenance Activities
+    </button>
   </div>
 </div>
 
@@ -41,38 +42,30 @@
       <p>{{text.safety.conditionsp2}}</p>
       <p>{{text.safety.conditionsp3}}</p>
       <p>{{text.safety.conditionsp4}}</p>
-      <div class="row">
-        <div class="col-md-12">
-          <details>
-            <summary>{{text.safety.inProgress}}</summary>
-            <p>{{text.safety.inProgressLst.one}}</p>
-            <ul class="lst-spcd">
-              <li>{{text.safety.inProgressLst.two}}</li>
-              <li>{{text.safety.inProgressLst.three}}</li>
-              <li>{{text.safety.inProgressLst.four}}</li>
-              <li>{{text.safety.inProgressLst.five}}</li>
-              <li>{{text.safety.inProgressLst.six}}</li>
-            </ul>
-          </details>
-          <details>
-            <summary>{{text.safety.closed}}</summary>
-            <p>{{text.safety.closedLst.one}}</p>
-            <ul class="lst-spcd">
-              <li>{{text.safety.closedLst.two}}</li>
-              <li>{{text.safety.closedLst.three}}</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+      <details>
+        <summary>{{text.safety.inProgress}}</summary>
+        <p>{{text.safety.inProgressLst.one}}</p>
+        <ul class="lst-spcd">
+          <li>{{text.safety.inProgressLst.two}}</li>
+          <li>{{text.safety.inProgressLst.three}}</li>
+          <li>{{text.safety.inProgressLst.four}}</li>
+          <li>{{text.safety.inProgressLst.five}}</li>
+          <li>{{text.safety.inProgressLst.six}}</li>
+        </ul>
+      </details>
+      <details>
+        <summary>{{text.safety.closed}}</summary>
+        <p>{{text.safety.closedLst.one}}</p>
+        <ul class="lst-spcd">
+          <li>{{text.safety.closedLst.two}}</li>
+          <li>{{text.safety.closedLst.three}}</li>
+        </ul>
+      </details>
       <div class="plains_disclaimer"></div>
       <div id="conditions-dashboard">
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
-            <h3 id="conditions-map-title"></h3>
-          </div>
-        </div>
         <div class="row mrgn-tp-sm">
-          <div class="col-md-12 col-lg-12">
+          <div class="col-md-12">
+            <h3 id="conditions-map-title"></h3>
             <div
               class="btn-group btn-group-justified"
               id="conditions-nav-group"
@@ -129,20 +122,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12 col-lg-12">
+          <div class="col-md-12">
             <div class="container-chart-map" id="container-map"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
             <div
               class="alert alert-info profile-hide"
               id="conditions-definitions"
             ></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
             <div
               class="alert alert-info profile-hide"
               id="no-location-info"
@@ -150,9 +135,9 @@
           </div>
         </div>
       </div>
-      <div class="row mrgn-tp-sm">
+      <div class="row">
         <div class="col-md-12">
-          <details>
+          <details class="mrgn-tp-sm">
             <summary>{{text.sourceTitle}}</summary>
             <p>
               <strong>{{text.dataSourceTitle}} </strong>
@@ -163,9 +148,7 @@
               {{text.safety.conditionsDescription}}
             </p>
           </details>
-        </div>
-        <div class="col-md-12 mrgn-tp-lg">
-          <p>{{text.safety.conditionsOpenData}}</p>
+          <p class="mrgn-tp-lg">{{text.safety.conditionsOpenData}}</p>
           <p>{{text.safety.conditionsViz}}</p>
         </div>
       </div>
@@ -282,20 +265,19 @@
             {{text.safety.incidentsVolRadio}}</label>
         </form>
       </div>
-      <div class="row">
-        <div class="col-md-12 mrgn-tp-md">
-          <div class="btn-group btn-group-justified" id="incident-view-type">
-            <div class="btn-group btn-incident-view-type">
-              <button type="button" class="btn btn-default active" value="map">
-                {{text.safety.incidentsMapBtn}}
-              </button>
-            </div>
-            <div class="btn-group btn-incident-view-type">
-              <button type="button" class="btn btn-default" value="trends">
-                {{text.safety.incidentsTrendBtn}}
-              </button>
-            </div>
-          </div>
+      <div
+        class="btn-group btn-group-justified mrgn-tp-xl"
+        id="incident-view-type"
+      >
+        <div class="btn-group btn-incident-view-type">
+          <button type="button" class="btn btn-default active" value="map">
+            {{text.safety.incidentsMapBtn}}
+          </button>
+        </div>
+        <div class="btn-group btn-incident-view-type">
+          <button type="button" class="btn btn-default" value="trends">
+            {{text.safety.incidentsTrendBtn}}
+          </button>
         </div>
       </div>
       <div class="row mrgn-tp-md">
@@ -394,9 +376,7 @@
         </p>
         <p>{{text.safety.incidentsDescription}}</p>
       </details>
-    </div>
-    <div class="col-md-12 mrgn-tp-lg">
-      <p>{{text.safety.incidentsOpenData}}</p>
+      <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
       <p>{{text.safety.incidentsViz}}</p>
     </div>
   </div>

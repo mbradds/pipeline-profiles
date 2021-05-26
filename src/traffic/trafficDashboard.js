@@ -565,6 +565,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         } else {
           addPointButtons(chartParams);
         }
+        pointMap.addBaseMap();
         pointMap.addPoints();
       }
 

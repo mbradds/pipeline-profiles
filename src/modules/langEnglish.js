@@ -515,7 +515,7 @@ export const englishDashboard = {
     importAxis: (unit) => `Imports (${unit})`,
     fiveYrTitle: (pointText) => `${pointText} - five-year average & range`,
     trafficTitle: (pointText, dirText) => {
-      if (dirText[0] === false) {
+      if (dirText[0] === false || dirText[0] === "") {
         return `${pointText} - monthly traffic`;
       }
       return `${pointText} - monthly traffic (direction of flow: ${dirText.join(

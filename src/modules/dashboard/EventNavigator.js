@@ -30,7 +30,6 @@ export class EventNavigator {
     fixedPillHeight = undefined,
     data = false,
   }) {
-    console.log(langPillTitles);
     this.plot = plot;
     this.numberOfPills = numberOfPills;
     this.langPillTitles = langPillTitles;
