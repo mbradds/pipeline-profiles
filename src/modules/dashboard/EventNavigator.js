@@ -19,10 +19,9 @@ export class EventNavigator {
    * @param {Object} constr - EventNavigator constructor
    * @param {Object} constr.plot - EventMap(leaflet) or EventTrend(highcharts) instance.
    * @param {Object} constr.numberOfPills - The total number of navigation pills. Used to calculate pill height dynamically.
-   * @param {Object} constr.langPillTitles - {id: pillname} pairs for handling custom pill titles & language switching.
+   * @param {Object} constr.langPillTitles - {titles: {id: "pill name"}, click: ""} pairs for handling custom pill titles & language switching. When click paramter is defined and not "", then this text will append to the pill name.
    * @param {number} [constr.fixedPillHeight=undefined] - Height in px of each pill navigation button. Overrides calculated height.
    * @param {(boolean|Object[])} [constr.data=false] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
-   * @param {boolean} [constr.showClickText=false] - Whether to add additional text to pill title making click more obvious.
    */
   constructor({
     plot,
@@ -30,8 +29,8 @@ export class EventNavigator {
     langPillTitles,
     fixedPillHeight = undefined,
     data = false,
-    showClickText = true,
   }) {
+    console.log(langPillTitles);
     this.plot = plot;
     this.numberOfPills = numberOfPills;
     this.langPillTitles = langPillTitles;
@@ -43,7 +42,6 @@ export class EventNavigator {
     this.allDivs = [];
     this.fixedPillHeight = fixedPillHeight;
     this.data = data;
-    this.showClickText = showClickText;
     this.pillHeight = this.calculatePillHeight();
   }
 
@@ -278,7 +276,7 @@ export class EventNavigator {
     const { chart } = bar;
     const activeDiv = document.getElementById(bar.div);
     let clickText = "";
-    if (this.showClickText) {
+    if (this.langPillTitles.click && this.langPillTitles.click !== "") {
       clickText = ` (${this.langPillTitles.click})`;
     }
 

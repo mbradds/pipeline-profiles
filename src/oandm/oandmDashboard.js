@@ -60,7 +60,6 @@ export function mainOandM(eventData, lang) {
       numberOfPills: 5,
       langPillTitles: lang.pillTitles,
       fixedPillHeight: 70,
-      showClickText: false,
     });
 
     trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "activated");

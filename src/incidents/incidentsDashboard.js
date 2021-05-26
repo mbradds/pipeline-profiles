@@ -69,12 +69,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
       lang: lang.dashboard,
       definitions: lang.definitions,
     });
+
     const trendNav = new EventNavigator({
       plot: timeSeries,
       numberOfPills: 5,
-      langPillTitles: lang.dashboard.pillTitles,
+      langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
       fixedPillHeight: 70,
-      showClickText: false,
     });
 
     trendNav.makeBar("sub", "substance-trend", "activated");
