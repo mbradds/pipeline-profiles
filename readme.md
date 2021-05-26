@@ -1,6 +1,10 @@
 <h1 align="center">Pipeline Profiles</h1>
 
 <div align="center">
+  <img src="https://www.cer-rec.gc.ca/Templates/wet4-gcwu/theme-gcwu-fegc/assets/landscape.png" alt="Logo" width="500" height="130"/>
+</div>
+
+<div align="center">
   <!-- prettier -->
   <a>
     <img src="https://img.shields.io/badge/code_style-prettier-brightgreen.svg" alt="Prettier" />
@@ -22,7 +26,7 @@
     <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/" alt="heroku" />
   </a>
 </div>
-<br>
+
 <div align="center">
   <h3>
     <a href="https://pipeline-profiles.herokuapp.com/">
@@ -42,7 +46,6 @@
 <div align="center">
   <sub>Designed, developed, and maintained by Grant Moss
 </div>
-<br>
 
 ##### Table of Contents
 
@@ -529,6 +532,7 @@ Making sure that all dependencies are updated and both package.json and package-
 - Rename default branch to main
 - Try to consolidate js files in `src/index_files` into one index.js file.
 - Add better consistency to shared columns across datasets. Eg, lat/long should follow this pattern: [{loc: [lat, -long]}] across all datasets.
+- Look into a monorepo structure for seperating the back end code (python+sql) and front end code (JS, Handlebars, CSS).
 
 ### Completed TODO's
 
