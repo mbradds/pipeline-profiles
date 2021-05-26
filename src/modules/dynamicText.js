@@ -93,14 +93,14 @@ const buildFiveText = (ft, tt, lang) => {
   if (pctChange) {
     if (lang === "en") {
       const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
-      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
+      return `<p>Throughputs in ${qtr} are ${changeText(
         pctChange,
         lang,
         false
       )} the five-year average.</p>`;
     }
     const qtr = `${quartersFr[tt.toDate[1]]} de ${tt.toDate[0]}`;
-    return `<p style="margin-bottom: 0px">Les débits au ${qtr} sont ${changeText(
+    return `<p>Les débits au ${qtr} sont ${changeText(
       pctChange,
       lang,
       false

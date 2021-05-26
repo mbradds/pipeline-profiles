@@ -19,6 +19,7 @@ import {
   addSeriesParams,
   addUnitsAndSetup,
   addUnitsDisclaimer,
+  equalizeHeight,
 } from "../modules/util";
 import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
 import { KeyPointMap } from "../modules/dashboard/KeyPointMap";
@@ -601,13 +602,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
       chartParams.fiveTrend = fiveYearTrend(fiveSeries, chartParams.hasImports);
       // this event listener possibly helps with the equal height not working properly
+
+      lang.dynamicText(chartParams, lang.numberFormat, lang.series);
+      if (!chartParams.tm) {
+        displayPointDescription([chartParams.defaultPoint]);
+      } else {
+        displayPointDescription(chartParams.points, chartParams.tm);
+      }
       window.addEventListener("DOMContentLoaded", () => {
-        lang.dynamicText(chartParams, lang.numberFormat, lang.series);
-        if (!chartParams.tm) {
-          displayPointDescription([chartParams.defaultPoint]);
-        } else {
-          displayPointDescription(chartParams.points, chartParams.tm);
-        }
+        equalizeHeight("eq-ht-1", "eq-ht-2");
       });
 
       // user selects key point
@@ -678,6 +681,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             );
             lang.dynamicText(chartParams, lang.numberFormat, lang.series);
             displayPointDescription([chartParams.defaultPoint]);
+            equalizeHeight("eq-ht-1", "eq-ht-2");
           });
       } else if (chartParams.defaultPoint.id !== "0") {
         // user is on trans mountain profile

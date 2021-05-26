@@ -168,9 +168,6 @@ Styles for incidents dashboard
 Styles for traffic and apportionment dashboards 
 */
 
-#key-point-info .panel-body {
-  padding-bottom: 0px;
-}
 .traffic-hc-column-map {
   padding-right: 0px !important;
   padding-left: 0px !important;
@@ -181,6 +178,13 @@ Styles for traffic and apportionment dashboards
 #map-panel-body {
   padding: 0px;
 }
+/* these were used in the old wet4 equal height pattern */
+/* #key-point-info .panel-body {
+  padding-bottom: 0px;
+} */
+/* .traffic-panel {
+  min-height: 180px !important;
+} */
 
 /* small screen */
 @media only screen and (max-height: 900px), screen and (max-width: 1440px) {
