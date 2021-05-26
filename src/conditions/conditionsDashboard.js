@@ -114,7 +114,7 @@ export async function mainConditions(
       if (dataSet === "projects") {
         validMetaData = function (row) {
           return {
-            name: row.name,
+            name: row.n,
             id: row.id,
             Regdocs: row.v[2],
             value: row.v[colSelector],

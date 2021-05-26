@@ -68,6 +68,13 @@ def conditions_on_map(df, shp, folder_name, lang):
             shp[numericCol] = shp[numericCol].fillna(0)
 
     df = df.fillna(0)
+    # df = df.rename(columns={"Flat Province": "p",
+    #                         "In Progress": "i",
+    #                         "Closed": "c"})
+    # further minify the file
+    # df['v'] = [[i, closed] for i, closed in zip(df['In Progress'], df['Closed'])]
+    # del df['In Progress']
+    # del df['Closed']
     return shp, df
 
 
@@ -146,7 +153,7 @@ def conditionMetaData(df, folder_name):
     project = convert_to_int(project)
     project['Regdocs'] = [int(x) for x in project['Regdocs']]
     # optimize json size
-    project = project.rename(columns={"Short Project Name": "name"})
+    project = project.rename(columns={"Short Project Name": "n"})
     project['v'] = [[inProgress, closed, regdocs] for inProgress, closed, regdocs in zip(project['In Progress'],
                                                                                          project['Closed'],
                                                                                          project['Regdocs'])]
