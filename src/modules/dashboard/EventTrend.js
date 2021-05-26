@@ -63,7 +63,7 @@ export class EventTrend {
     this.seriesed = seriesed;
     this.definitionsOn = definitionsOn;
     this.seriesInfo = seriesInfo;
-    this.colors = lang.EVENTCOLORS;
+    this.colors = lang.seriesInfo;
     this.definitions = definitions;
     this.oneToMany = oneToMany;
     this.definitionDiv = `trend-definitions-${eventType}`;
@@ -153,20 +153,20 @@ export class EventTrend {
           const series = {};
           const uniqueYears = new Set();
           events.forEach((row) => {
-            uniqueYears.add(row.Year);
+            uniqueYears.add(row.y);
             if (Object.prototype.hasOwnProperty.call(series, row[field])) {
               if (
                 Object.prototype.hasOwnProperty.call(
                   series[row[field]],
-                  row.Year
+                  row.y
                 )
               ) {
-                series[row[field]][row.Year] += 1;
+                series[row[field]][row.y] += 1;
               } else {
-                series[row[field]][row.Year] = 1;
+                series[row[field]][row.y] = 1;
               }
             } else {
-              series[row[field]] = { [row.Year]: 1 };
+              series[row[field]] = { [row.y]: 1 };
             }
           });
           return [series, Array.from(uniqueYears)];
@@ -177,7 +177,7 @@ export class EventTrend {
         const uniqueYears = new Set();
         events.forEach((row) => {
           let itemList;
-          uniqueYears.add(row.Year);
+          uniqueYears.add(row.y);
           if (row[field].length > 1) {
             itemList = row[field];
             itemList = itemList.map((value) => value.trim());
@@ -187,14 +187,14 @@ export class EventTrend {
           itemList.forEach((yVal) => {
             if (Object.prototype.hasOwnProperty.call(series, yVal)) {
               if (
-                Object.prototype.hasOwnProperty.call(series[yVal], row.Year)
+                Object.prototype.hasOwnProperty.call(series[yVal], row.y)
               ) {
-                series[yVal][row.Year] += 1;
+                series[yVal][row.y] += 1;
               } else {
-                series[yVal][row.Year] = 1;
+                series[yVal][row.y] = 1;
               }
             } else {
-              series[yVal] = { [row.Year]: 1 };
+              series[yVal] = { [row.y]: 1 };
             }
           });
         });
@@ -286,24 +286,30 @@ export class EventTrend {
   }
 
   displayDefinitions() {
-    // const definitionDiv = `trend-definitions-${this.eventType}`; // make sure .hbs temaplate has correct id for event type
-    const definitionsPopUp = document.getElementById(this.definitionDiv);
-    if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
-      visibility([this.definitionDiv], "show");
-      // when on incidents, show text on bar click. When on oandm, show text on pill click
-      if (this.definitionsOn === "bar") {
-        // user click on highcharts bar for definition to appear
-        definitionsPopUp.innerHTML = this.lang.barClick(
-          this.pillNameSubstitution()
-        );
-      } else if (this.definitionsOn === "pill") {
-        // user clicks on pill to view info about that pill in definitions box
-        definitionsPopUp.innerHTML = this.definitions[this.field];
+    try {
+      const definitionsPopUp = document.getElementById(this.definitionDiv);
+      if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
+        visibility([this.definitionDiv], "show");
+        // when on incidents, show text on bar click. When on oandm, show text on pill click
+        if (this.definitionsOn === "bar") {
+          // user click on highcharts bar for definition to appear
+          definitionsPopUp.innerHTML = this.lang.barClick(
+            this.pillNameSubstitution()
+          );
+        } else if (this.definitionsOn === "pill") {
+          // user clicks on pill to view info about that pill in definitions box
+          definitionsPopUp.innerHTML = this.definitions[this.field];
+        }
+        return true;
       }
-      return true;
+      visibility([this.definitionDiv], "hide");
+      return false;
+    } catch (err) {
+      console.warn(
+        `div ${this.definitionDiv} does not exist to display definition text`
+      );
+      return false;
     }
-    visibility([this.definitionDiv], "hide");
-    return false;
   }
 
   createChart() {

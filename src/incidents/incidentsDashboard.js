@@ -5,7 +5,7 @@ import { EventTrend } from "../modules/dashboard/EventTrend";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
-  const field = "Substance";
+  const field = "sub"; // Substance
   const filters = { type: "frequency" };
 
   const setTitle = (language, meta) => {
@@ -26,10 +26,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
       langPillTitles,
       data,
     });
-    barNav.makeBar("Substance", "substance-bar", "activated");
-    barNav.makeBar("Status", "status-bar", "deactivated");
-    barNav.makeBar("Year", "year-bar", "deactivated");
-    barNav.makeBar("Province", "province-bar", "deactivated");
+    barNav.makeBar("sub", "substance-bar", "activated");
+    barNav.makeBar("s", "status-bar", "deactivated");
+    barNav.makeBar("y", "year-bar", "deactivated");
+    barNav.makeBar("p", "province-bar", "deactivated");
     barNav.divEvents();
     return barNav;
   };
@@ -77,11 +77,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
       showClickText: false,
     });
 
-    trendNav.makeBar("Substance", "substance-trend", "activated");
-    trendNav.makeBar("Status", "status-trend", "deactivated");
+    trendNav.makeBar("sub", "substance-trend", "activated");
+    trendNav.makeBar("s", "status-trend", "deactivated");
     trendNav.makeBar("what", "what-trend", "deactivated");
     trendNav.makeBar("why", "why-trend", "deactivated");
-    trendNav.makeBar("Province", "province-trend", "deactivated");
+    trendNav.makeBar("p", "province-trend", "deactivated");
     trendNav.divEvents();
 
     return timeSeries;
@@ -91,15 +91,15 @@ export async function mainIncidents(incidentData, metaData, lang) {
     const joinMultiple = (lst, sep = " & ") => lst.join(sep);
 
     const substance =
-      lang.dashboard.EVENTCOLORS.Substance[
+      lang.dashboard.seriesInfo.sub[
         metaData.mostCommonSubstance
       ].n.toLowerCase();
 
     let why = metaData.mostCommonWhy.map((e) =>
-      lang.dashboard.EVENTCOLORS.why[e].n.toLowerCase()
+      lang.dashboard.seriesInfo.why[e].n.toLowerCase()
     );
     let what = metaData.mostCommonWhat.map((e) =>
-      lang.dashboard.EVENTCOLORS.what[e].n.toLowerCase()
+      lang.dashboard.seriesInfo.what[e].n.toLowerCase()
     );
 
     if (why.length > 1) {

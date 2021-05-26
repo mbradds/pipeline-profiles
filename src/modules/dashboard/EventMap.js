@@ -13,22 +13,6 @@ import { cerPalette, conversions, leafletBaseMap } from "../util";
 
 const haversine = require("haversine");
 
-const substanceState = {
-  pro: "gas",
-  ngsweet: "gas",
-  fgas: "liquid",
-  loil: "liquid",
-  cosweet: "liquid",
-  cosour: "liquid",
-  sco: "liquid",
-  diesel: "liquid",
-  gas: "liquid",
-  ngl: "gas",
-  co: "liquid",
-  Other: "other",
-  Autre: "other",
-};
-
 /**
  * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.
  */
@@ -44,6 +28,7 @@ export class EventMap {
    * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
    * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
    */
+
   constructor({
     eventType,
     field = undefined,
@@ -56,8 +41,7 @@ export class EventMap {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
-    this.colors = lang.EVENTCOLORS;
-    this.substanceState = substanceState;
+    this.colors = lang.seriesInfo;
     this.field = field;
     this.initZoomTo = initZoomTo;
     this.user = { latitude: undefined, longitude: undefined };
@@ -90,40 +74,69 @@ export class EventMap {
     });
   }
 
-  getState(substance) {
+  static getState(substance) {
     const shortSubstance = substance.split("-")[0].trim();
-    return this.substanceState[shortSubstance];
+    const state = {
+      pro: "gas",
+      ngsweet: "gas",
+      fgas: "liquid",
+      loil: "liquid",
+      cosweet: "liquid",
+      cosour: "liquid",
+      sco: "liquid",
+      diesel: "liquid",
+      gas: "liquid",
+      ngl: "gas",
+      co: "liquid",
+      Other: "other",
+      Autre: "other",
+    };
+    return state[shortSubstance];
   }
 
+  /**
+   * Used in the map tooltip, and the nearby panel to differentiate liquid vs gas units.
+   * @param {number} m3 - Volumes come in m3 by default.
+   * @param {string} substance - Short substance id defined in EventMap.getState(), and this.processEventsData(data)
+   * @param {boolean} gas - Overrides state definition.
+   * @param {boolean} liquid - Overrides state definition.
+   * @param {boolean} other - Overrides state definition.
+   * @returns {string} - Formatted En/Fr string displaying the imperial volumn, units and metric.
+   */
   volumeText(m3, substance, gas = false, liquid = false, other = false) {
     const convLiquid = conversions["m3 to bbl"];
     const convGas = conversions["m3 to cf"];
     let state = "other";
     if (!gas && !liquid && !other) {
-      state = this.getState(substance);
+      state = EventMap.getState(substance);
     } else if (!gas && liquid && !other) {
       state = "liquid";
     } else if (gas && !liquid && !other) {
       state = "gas";
     }
 
+    let digits = 2;
+    if (m3 > 50) {
+      digits = 0;
+    } else if (m3 < 5) {
+      digits = 3;
+    }
+
     if (state !== "other") {
       let imperial;
       if (state === "gas") {
-        imperial = `${this.lang.numberFormat(m3 * convGas, 2)} ${this.lang.cf}`;
-      } else {
-        imperial = `${this.lang.numberFormat(m3 * convLiquid, 2)} ${
+        imperial = `${this.lang.numberFormat(m3 * convGas, digits)} ${
           this.lang.cf
+        }`;
+      } else {
+        imperial = `${this.lang.numberFormat(m3 * convLiquid, digits)} ${
+          this.lang.bbl
         }`;
       }
 
-      return `${imperial} (${Highcharts.numberFormat(
-        m3,
-        2,
-        this.lang.decimal
-      )} m3)`;
+      return `${imperial} (${Highcharts.numberFormat(m3, digits)} m3)`;
     }
-    return `${Highcharts.numberFormat(m3, 2, this.lang.decimal)} m3`;
+    return `${Highcharts.numberFormat(m3, digits)} m3`;
   }
 
   /**
@@ -191,15 +204,27 @@ export class EventMap {
       return `&nbsp${names[text].n}`;
     };
 
+    let rowName = "";
+    if (
+      Object.prototype.hasOwnProperty.call(
+        this.lang.pillTitles.titles,
+        this.field
+      )
+    ) {
+      rowName = this.lang.pillTitles.titles[this.field];
+    } else {
+      rowName = this.field;
+    }
+
     const bubbleName = this.colors[this.field][incidentParams[this.field]].n;
     let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${incidentParams.id}</strong></p>`;
     toolTipText += `<table>`;
-    toolTipText += `<tr><td>${this.field}:</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
+    toolTipText += `<tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
     toolTipText += `<tr><td>${
       this.lang.estRelease
     }</td><td>&nbsp<strong>${this.volumeText(
       incidentParams.vol,
-      incidentParams.Substance
+      incidentParams.sub
     )}</strong></td></tr>`;
     toolTipText += `<tr><td>${
       this.lang.what
@@ -237,8 +262,8 @@ export class EventMap {
         try {
           layer.setRadius(layer.options.volRadius);
         } catch (err) {
-          layer.setRadius(0);
-          console.log("Error setting new radius");
+          layer.setRadius(this.minRadius);
+          console.warn("Error setting new radius");
         }
       });
     } else {
@@ -283,7 +308,7 @@ export class EventMap {
    *  id: string,
    *  Variable1: string,
    *  VariableN: string,
-   *  Year: number
+   *  y: number //Year
    *  loc: [number, number]
    * }]
    */
@@ -317,7 +342,7 @@ export class EventMap {
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     const maxRad = radiusCalc(maxVol);
     const allCircles = data.map((row) => {
-      years.push(row.Year);
+      years.push(row.y);
       let radiusVol = (row.vol - minVol) / (maxVol - minVol);
 
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
@@ -336,7 +361,7 @@ export class EventMap {
     years.forEach((yr, i) => {
       yearColors[yr] = { c: colors[i], n: yr };
     });
-    this.colors.Year = yearColors;
+    this.colors.y = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
     const currentDashboard = this;
     this.map.on("zoom", () => {
@@ -405,7 +430,6 @@ export class EventMap {
         layer.setStyle({ fillOpacity: 0.7 });
       }
     });
-    const incidentFlag = document.getElementById("nearby-flag");
 
     const userDummy = L.circle([this.user.latitude, this.user.longitude], {
       color: undefined,
@@ -416,6 +440,8 @@ export class EventMap {
     });
     userDummy.addTo(this.map);
 
+    const incidentFlag = document.getElementById("nearby-flag");
+
     if (nearbyCircles.length > 0) {
       this.nearby = L.featureGroup(nearbyCircles);
       const bounds = this.nearby.getBounds();
@@ -425,9 +451,7 @@ export class EventMap {
       let [nearbyGas, nearbyLiquid, nearbyOther] = [0, 0, 0];
       // const currentDashboard = this;
       this.nearby.eachLayer((layer) => {
-        const layerState = currentDashboard.getState(
-          layer.options.incidentParams.Substance
-        );
+        const layerState = EventMap.getState(layer.options.incidentParams.sub);
         if (layerState === "gas") {
           nearbyGas += layer.options.incidentParams.vol;
         } else if (layerState === "liquid") {

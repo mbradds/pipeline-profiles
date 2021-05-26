@@ -1,10 +1,6 @@
 <h1 align="center">Pipeline Profiles</h1>
 
 <div align="center">
-  <img src="https://www.cer-rec.gc.ca/Templates/wet4-gcwu/theme-gcwu-fegc/assets/landscape.png" alt="Logo" width="500" height="130"/>
-</div>
-
-<div align="center">
   <!-- prettier -->
   <a>
     <img src="https://img.shields.io/badge/code_style-prettier-brightgreen.svg" alt="Prettier" />

@@ -152,7 +152,11 @@ def optimizeJson(df):
     df = df.rename(columns={"Incident Number": "id",
                             "Approximate Volume Released": "vol",
                             "What Happened": "what",
-                            "Why It Happened": "why"})
+                            "Why It Happened": "why",
+                            "Province": "p",
+                            "Substance": "sub",
+                            "Year": "y",
+                            "Status": "s"})
     df["loc"] = [[round(lat, 4), round(long, 4)] for lat, long in zip(df['Latitude'],
                                                                       df['Longitude'])]
     for delete in ['Latitude', 'Longitude']:

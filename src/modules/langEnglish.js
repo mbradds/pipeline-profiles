@@ -396,13 +396,16 @@ export const englishDashboard = {
     dashboard: {
       what: "What Happened",
       why: "Why It Happened",
-      estRelease: "Est. Release Volume:",
+      estRelease: "Est. Release Volume",
       cf: "cubic feet",
       numberFormat,
       bbl: "bbl",
       pillTitles: {
         titles: {
-          Status: "CER Status",
+          sub: "Substance",
+          p: "Province",
+          s: "CER Status",
+          y: "Year",
           why: "Why It Happened",
           what: "What Happened",
         },
@@ -432,8 +435,9 @@ export const englishDashboard = {
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
       trendYTitle: "Number of Incidents",
-      EVENTCOLORS: {
-        Substance: {
+      seriesInfo: {
+        // Substance
+        sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
           ngsweet: { c: cerPalette.Flame, n: "Natural Gas - Sweet" },
           ngsour: { c: cerPalette["Dim Grey"], n: "Natural Gas - Sour" },
@@ -448,12 +452,13 @@ export const englishDashboard = {
           gas: { c: cerPalette.Flame, n: "Gasoline" },
           Other: { c: cerPalette.Aubergine, n: "Other" },
         },
-        Status: {
+        // Status
+        s: {
           is: { c: cerPalette.Flame, n: "Initially Submitted" },
           c: { c: cerPalette["Cool Grey"], n: "Closed" },
           s: { c: cerPalette.Ocean, n: "Submitted" },
         },
-        Province: regionInfo,
+        p: regionInfo, // Province
         why: {
           sp: { c: cerPalette.Flame, n: "Standards and Procedures" },
           te: { c: cerPalette.Forest, n: "Tools and Equipment" },

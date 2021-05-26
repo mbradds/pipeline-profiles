@@ -391,15 +391,17 @@ export const frenchDashboard = {
     },
     dashboard: {
       what: "Incident",
-      why: "Cause",
+      why: "Pourquoi",
       estRelease: "Estimation du volume",
       cf: "pieds cubes",
       bbl: "b",
       numberFormat,
       pillTitles: {
         titles: {
-          Status: "Situation Régie",
-          Year: "Année",
+          sub: "Substance",
+          p: "Province",
+          s: "Situation Régie",
+          y: "Année",
           what: "Incident",
           why: "Pourquoi",
         },
@@ -429,8 +431,8 @@ export const frenchDashboard = {
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les incidents dans un rayon de",
       trendYTitle: "Nombre d’incidents",
-      EVENTCOLORS: {
-        Substance: {
+      seriesInfo: {
+        sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
           ngsweet: { c: cerPalette.Flame, n: "Gaz Naturel - non sulfureux" },
           ngsour: { c: cerPalette["Dim Grey"], n: "Gaz naturel - sulfureux" },
@@ -445,12 +447,12 @@ export const frenchDashboard = {
           gas: { c: cerPalette.Flame, n: "Essence" },
           Other: { c: cerPalette.Aubergine, n: "Autre" },
         },
-        Status: {
+        s: {
           is: { c: cerPalette.Flame, n: "Initialement soumis" },
           c: { c: cerPalette["Cool Grey"], n: "Fermé" },
           s: { c: cerPalette.Ocean, n: "Soumis" },
         },
-        Province: regionInfo,
+        p: regionInfo,
         why: {
           sp: { c: cerPalette.Flame, n: "Normes et procédures" },
           te: { c: cerPalette.Forest, n: "Outils et équipement" },
