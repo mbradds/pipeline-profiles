@@ -9,6 +9,8 @@
  * - Dynamic tooltip displaying the currently selected, or default data column value.
  */
 
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
 import { cerPalette, conversions, leafletBaseMap } from "../util";
 
 const haversine = require("haversine");
@@ -379,6 +381,11 @@ export class EventMap {
         }) /* This will return map so you can do chaining */
         .on("locationfound", (e) => {
           const marker = L.marker([e.latitude, e.longitude], {
+            icon: new Icon({
+              iconUrl: markerIconPng,
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+            }),
             draggable: true,
           }).bindPopup(currentDashboard.lang.userPopUp);
           marker.on("drag", (d) => {
