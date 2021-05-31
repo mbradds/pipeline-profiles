@@ -360,7 +360,8 @@ def process_throughput(test=False,
 
     group2 = ['TEML Westpur Pipelines Limited (TEML)',
               'Enbridge Southern Lights GP Inc.',
-              'Emera Brunswick Pipeline Company Ltd.']
+              'Emera Brunswick Pipeline Company Ltd.',
+              'Enbridge Pipelines Inc.']
 
     if companies:
         company_files = companies
@@ -496,6 +497,6 @@ if __name__ == "__main__":
     # points = get_data(False, False, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    # traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil', companies=['Trans-Northern Pipelines Inc.'])
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
     print('completed throughput!')

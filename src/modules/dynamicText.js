@@ -357,7 +357,7 @@ export function oandmText(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities with a schedule 1 species at risk present at the activity site. When this happens, the company must take extra precautions, listed here.</p>`;
+  )} O&M activities with a Schedule 1 species at risk present at the activity site. When this happens, the company may be required to meet additional regulatory obligations outside of the CER Act, such as the Migratory Birds Convention Act and the Species at Risk Act.</p>`;
 
   const totalText =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
