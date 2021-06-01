@@ -1,10 +1,9 @@
 import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
-// import { visibility } from "../modules/util";
-// import { EventTrend } from "../modules/dashboard/EventTrend";
+import { visibility } from "../modules/util";
+import { EventTrend } from "../modules/dashboard/EventTrend";
 
 export async function mainRemediation(data, lang) {
-  // console.log(data);
   const eventType = "remediation";
   const field = "w"; // within 30m of a water body
   const filters = { type: "frequency" };
@@ -36,13 +35,48 @@ export async function mainRemediation(data, lang) {
       filters: mapFilters,
       minRadius: 14000,
       divId: "remediation-map",
-      toolTipFields: ["vol"],
+      toolTipFields: ["vol", "use", "c"],
       lang: mapLang,
     });
     map.addBaseMap();
     map.processEventsData(events);
     map.lookForSize();
     return map;
+  };
+
+  const remediationTimeSeries = (timeField, timeFilters) => {
+    const ONETOMANY = {
+      w: false,
+      s: false,
+      p: false,
+      use: false,
+    };
+    const timeSeries = new EventTrend({
+      eventType,
+      field: timeField,
+      filters: timeFilters,
+      data: data.data,
+      divId: "remediation-time-series",
+      oneToMany: ONETOMANY,
+      lang: lang.dashboard,
+      // definitions: lang.definitions,
+    });
+
+    const trendNav = new EventNavigator({
+      plot: timeSeries,
+      numberOfPills: 5,
+      langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
+      fixedPillHeight: 70,
+    });
+
+    trendNav.makeBar("w", "rem-water-trend", "activated");
+    trendNav.makeBar("s", "rem-status-trend", "deactivated");
+    trendNav.makeBar("use", "rem-use-trend", "deactivated");
+    trendNav.makeBar("a", "rem-activity-trend", "deactivated");
+    trendNav.makeBar("p", "rem-province-trend", "deactivated");
+    trendNav.divEvents();
+
+    return timeSeries;
   };
 
   function buildDashboard() {
@@ -73,6 +107,44 @@ export async function mainRemediation(data, lang) {
           thisMap,
           lang.dashboard.pillTitles
         );
+        const trends = remediationTimeSeries(field, filters);
+
+        const countBtn = false;
+        const volumeBtn = false;
+        document
+          .getElementById("remediation-view-type")
+          .addEventListener("click", (event) => {
+            const evt = event;
+            const allButtons = document.querySelectorAll(
+              `#remediation-view-type .btn`
+            );
+            allButtons.forEach((elem) => {
+              const e = elem;
+              e.className = elem.className.replace(" active", "");
+            });
+            evt.target.className += " active";
+            const btnValue = evt.target.value;
+            const dashboardDivs = ["remediation-map"].concat(bars.allDivs);
+            if (btnValue !== "trends") {
+              visibility(dashboardDivs, "show");
+              visibility(["remediation-time-series-section"], "hide");
+              if (volumeBtn) {
+                volumeBtn.disabled = false;
+              }
+              thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
+              if (countBtn) {
+                countBtn.click();
+              }
+            } else {
+              // if the user selects trends, the option to view volume should be disabled
+              if (volumeBtn && countBtn) {
+                volumeBtn.disabled = true;
+                countBtn.checked = true;
+              }
+              visibility(dashboardDivs, "hide");
+              visibility(["remediation-time-series-section"], "show");
+            }
+          });
       } catch (err) {
         console.log(err);
       }

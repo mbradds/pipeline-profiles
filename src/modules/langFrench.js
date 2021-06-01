@@ -390,14 +390,12 @@ export const frenchDashboard = {
       },
     },
     dashboard: {
-      what: "Incident",
-      why: "Pourquoi",
-      estRelease: "Estimation du volume",
       cf: "pieds cubes",
       bbl: "b",
       numberFormat,
       pillTitles: {
         titles: {
+          vol: "Estimation du volume",
           sub: "Substance",
           p: "Province",
           s: "Situation Régie",
@@ -601,18 +599,47 @@ export const frenchDashboard = {
     title: (company) => `Dashboard: ${company} - Contaminated Sites`,
     dashboard: {
       numberFormat,
-      cf: "pieds cubes",
-      bbl: "b",
+      cf: "cubic feet",
+      bbl: "bbl",
       volumeDisclaimer: undefined,
       locationDisclaimer: undefined,
       pillTitles: {
         titles: {
+          vol: "Initial estimate of contaminated soil",
           w: "Within 30M of water-body",
+          use: "Applicable Land Use",
           p: "Province",
+          c: "Contaminants at the Site",
           s: "Site Status",
           y: "Year",
         },
         click: "click to view",
+      },
+      seriesInfo: {
+        w: {
+          true: { c: cerPalette.Sun, n: "True" },
+          false: { c: cerPalette["Night Sky"], n: "False" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        s: {
+          prm: { c: cerPalette.Forest, n: "Post-remediation monitoring" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          rm: { c: cerPalette.Ocean, n: "Risk managed" },
+          sa: { c: cerPalette.Aubergine, n: "Site assessment" },
+          fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
+          or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+        },
+        p: regionInfo, // Province
+        use: {
+          pa: { c: cerPalette.Forest, n: "Protected area" },
+          ndl: { c: cerPalette.Flame, n: "Non-developed land" },
+          al: { c: cerPalette.Ocean, n: "Agricultural land" },
+          dlr: {
+            c: cerPalette.Aubergine,
+            n: "Developed land - residential",
+          },
+          dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+        },
       },
     },
   },

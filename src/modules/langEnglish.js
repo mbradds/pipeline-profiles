@@ -394,14 +394,12 @@ export const englishDashboard = {
       },
     },
     dashboard: {
-      what: "What Happened",
-      why: "Why It Happened",
-      estRelease: "Est. Release Volume",
       cf: "cubic feet",
       bbl: "bbl",
       numberFormat,
       pillTitles: {
         titles: {
+          vol: "Est. Release Volume",
           sub: "Substance",
           p: "Province",
           s: "CER Status",
@@ -600,13 +598,16 @@ export const englishDashboard = {
       numberFormat,
       cf: "cubic feet",
       bbl: "bbl",
-      estRelease: "Initial estimate of contaminated soil",
       volumeDisclaimer: undefined,
       locationDisclaimer: undefined,
       pillTitles: {
         titles: {
+          vol: "Initial estimate of contaminated soil",
           w: "Within 30M of water-body",
+          use: "Applicable Land Use",
           p: "Province",
+          a: "Activity At Time",
+          c: "Contaminants at the Site",
           s: "Site Status",
           y: "Year",
         },
@@ -627,6 +628,24 @@ export const englishDashboard = {
           or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
         },
         p: regionInfo, // Province
+        use: {
+          pa: { c: cerPalette.Forest, n: "Protected area" },
+          ndl: { c: cerPalette.Flame, n: "Non-developed land" },
+          al: { c: cerPalette.Ocean, n: "Agricultural land" },
+          dlr: {
+            c: cerPalette.Aubergine,
+            n: "Developed land - residential",
+          },
+          dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        a: {
+          m: { c: cerPalette["Night Sky"], n: "Maintenance" },
+          o: { c: cerPalette.Flame, n: "Operation" },
+          c: { c: cerPalette.Ocean, n: "Construction" },
+          a: { c: cerPalette.Aubergine, n: "Abandonment" },
+          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+        },
       },
     },
   },

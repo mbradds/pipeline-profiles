@@ -35,7 +35,8 @@ def process_remediation(sql=False, companies=False, test=False):
         del df[delete]
 
     for stringCol in ['Applicable Land Use',
-                      'Site Status']:
+                      'Site Status',
+                      'Activity At Time']:
 
         df[stringCol] = [str(x) for x in df[stringCol]]
 
@@ -53,11 +54,17 @@ def process_remediation(sql=False, companies=False, test=False):
                  "site assessment": "sa",
                  "risk managed": "rm"}
 
+    activityIds = {"maintenance": "m",
+                   "operation": "o",
+                   "construction": "c",
+                   "abandonment": "a"}
+
     df = idify(df, "Applicable Land Use", landUseId)
     df = idify(df, "Province", "region")
     df = idify(df, "Site Status", statusIds)
+    df = idify(df, "Activity At Time", activityIds)
 
-    # print(set(list(df['Site Status'])))
+    # print(set(list(df['Activity At Time'])))
     df['Final Submission Date'] = pd.to_datetime(df['Final Submission Date'])
     df['y'] = df['Final Submission Date'].dt.year
     del df['Final Submission Date']
@@ -89,6 +96,18 @@ def process_remediation(sql=False, companies=False, test=False):
                                                   df['Longitude'])]
     del df['Latitude']
     del df['Longitude']
+
+    # get a list of site contaminants
+    chemicalList = []
+    for chemical in df['Contaminants at the Site']:
+        if chemical != None:
+            chemical = chemical.replace(";", ",").split(",")
+            chemical = [x.strip() for x in chemical]
+            chemicalList.append(chemical)
+        else:
+            chemicalList.append(None)
+
+    df['Contaminants at the Site'] = chemicalList
 
     df = df.rename(columns={"EventNumber": "id",
                             "Product Carried": "sub",

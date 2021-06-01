@@ -28,6 +28,7 @@ export class EventMap {
    * @param {(number|undefined)} [constr.minRadius=undefined] - Minimum radius for leaflet map circles.
    * @param {string} [constr.divId="map"] - HTML div id where map will be loaded.
    * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
+   * @param {string[]} [constr.toolTipFields=[]] - Add the columns that should appear in the tooltip, extra to the selected column.
    * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
    */
 
@@ -208,11 +209,21 @@ export class EventMap {
         const itemList = text;
         let brokenText = ``;
         for (let i = 0; i < itemList.length; i += 1) {
-          brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
+          if (
+            names &&
+            Object.prototype.hasOwnProperty.call(names, itemList[i])
+          ) {
+            brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
+          } else {
+            brokenText += `&nbsp- ${itemList[i]}<br>`;
+          }
         }
         return brokenText;
       }
-      return `&nbsp${names[text].n}`;
+      if (names && Object.prototype.hasOwnProperty.call(names, text)) {
+        return `&nbsp${names[text].n}`;
+      }
+      return `&nbsp${text}`;
     };
 
     let rowName = "";
@@ -236,16 +247,16 @@ export class EventMap {
       if (toolCol === "vol") {
         if (eventParams.vol && eventParams.vol >= 0) {
           toolTipText += `<tr><td>${
-            this.lang.estRelease
+            this.lang.pillTitles.titles.vol
           }</td><td>&nbsp<strong>${this.volumeText(
             eventParams.vol,
             eventParams.sub
           )}</strong></td></tr>`;
         }
-      } else {
+      } else if (eventParams[toolCol]) {
         toolTipText += `<tr><td>${
-          this.lang[toolCol]
-        }?</td><td><strong>${formatCommaList(
+          this.lang.pillTitles.titles[toolCol]
+        }</td><td><strong>${formatCommaList(
           eventParams[toolCol],
           this.colors[toolCol]
         )}</strong></td></tr>`;
