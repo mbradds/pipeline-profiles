@@ -1,6 +1,6 @@
 import pandas as pd
 from util import execute_sql, normalize_text, normalize_numeric, conversion
-from errors import TradeIdError
+from errors import IdError
 import os
 import json
 import dateutil.relativedelta
@@ -79,7 +79,7 @@ def applyTradeId(df):
     df['Trade Type'] = df['Trade Type'].replace(trade)
     for tt in df['Trade Type']:
         if tt not in trade.values():
-            raise TradeIdError(tt)
+            raise IdError(tt)
     return df
 
 

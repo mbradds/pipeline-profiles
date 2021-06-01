@@ -15,15 +15,15 @@ class ApportionSeriesCombinationError(Exception):
         return f'{self.message} {self.company}'
 
 
-class TradeIdError(Exception):
+class IdError(Exception):
     """Exception raised when the pre-set trade/product id's are not applied
     to traffic data, likely because of a new product in the database.
 
     Attributes:
-        trade -- input trade type that doesnt have an id
+        trade -- input column category that doesnt have an id
     """
 
-    def __init__(self, trade, message="No trade type id for: "):
+    def __init__(self, trade, message="No id for: "):
         self.trade = trade
         self.message = message
         super().__init__(self.message)

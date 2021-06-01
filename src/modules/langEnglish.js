@@ -394,14 +394,12 @@ export const englishDashboard = {
       },
     },
     dashboard: {
-      what: "What Happened",
-      why: "Why It Happened",
-      estRelease: "Est. Release Volume",
       cf: "cubic feet",
-      numberFormat,
       bbl: "bbl",
+      numberFormat,
       pillTitles: {
         titles: {
+          vol: "Est. Release Volume",
           sub: "Substance",
           p: "Province",
           s: "CER Status",
@@ -589,6 +587,68 @@ export const englishDashboard = {
       "In Stream Work Required": yesNoInfo,
       "Species At Risk Present": yesNoInfo,
       "Province/Territory": regionInfo,
+    },
+  },
+  remediation: {
+    numberFormat,
+    companyToSystem,
+    title: (company) => `Dashboard: ${company} - Contaminated Sites`,
+    // TODO: reduce language duplication between remediation and incidents
+    dashboard: {
+      trendYTitle: "Number of Contaminated Sites",
+      numberFormat,
+      cf: "cubic feet",
+      bbl: "bbl",
+      volumeDisclaimer: undefined,
+      locationDisclaimer: undefined,
+      pillTitles: {
+        titles: {
+          vol: "Initial estimate of contaminated soil",
+          w: "Within 30M of water-body",
+          use: "Applicable Land Use",
+          p: "Province",
+          a: "Activity At Time",
+          c: "Contaminants at the Site",
+          s: "Site Status",
+          y: "Year",
+        },
+        click: "click to view",
+      },
+      seriesInfo: {
+        w: {
+          true: { c: cerPalette.Sun, n: "True" },
+          false: { c: cerPalette["Night Sky"], n: "False" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        s: {
+          prm: { c: cerPalette.Flame, n: "Post-remediation monitoring" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          rm: { c: cerPalette.Forest, n: "Risk managed" },
+          sa: { c: cerPalette.Aubergine, n: "Site assessment" },
+          fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
+          or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+          m: { c: cerPalette.Sun, n: "Monitored" },
+        },
+        p: regionInfo, // Province
+        use: {
+          pa: { c: cerPalette.Forest, n: "Protected area" },
+          ndl: { c: cerPalette.Flame, n: "Non-developed land" },
+          al: { c: cerPalette.Ocean, n: "Agricultural land" },
+          dlr: {
+            c: cerPalette.Aubergine,
+            n: "Developed land - residential",
+          },
+          dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        a: {
+          m: { c: cerPalette["Night Sky"], n: "Maintenance" },
+          o: { c: cerPalette.Flame, n: "Operation" },
+          c: { c: cerPalette.Ocean, n: "Construction" },
+          a: { c: cerPalette.Aubergine, n: "Abandonment" },
+          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+        },
+      },
     },
   },
 };

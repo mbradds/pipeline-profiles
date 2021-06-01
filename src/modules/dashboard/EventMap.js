@@ -11,7 +11,7 @@
 
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
-import { cerPalette, conversions, leafletBaseMap } from "../util";
+import { cerPalette, conversions, leafletBaseMap, visibility } from "../util";
 
 const haversine = require("haversine");
 
@@ -28,6 +28,7 @@ export class EventMap {
    * @param {(number|undefined)} [constr.minRadius=undefined] - Minimum radius for leaflet map circles.
    * @param {string} [constr.divId="map"] - HTML div id where map will be loaded.
    * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
+   * @param {string[]} [constr.toolTipFields=[]] - Add the columns that should appear in the tooltip, extra to the selected column.
    * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
    */
 
@@ -38,6 +39,7 @@ export class EventMap {
     minRadius = undefined,
     divId = "map",
     initZoomTo = [55, -119],
+    toolTipFields = [],
     lang = {},
   }) {
     this.eventType = eventType;
@@ -48,6 +50,7 @@ export class EventMap {
     this.initZoomTo = initZoomTo;
     this.user = { latitude: undefined, longitude: undefined };
     this.divId = divId;
+    this.toolTipFields = toolTipFields;
     this.lang = lang;
     this.mapDisclaimer = undefined;
     this.findPlotHeight();
@@ -77,6 +80,9 @@ export class EventMap {
   }
 
   static getState(substance) {
+    if (!substance) {
+      return "other";
+    }
     const shortSubstance = substance.split("-")[0].trim();
     const state = {
       pro: "gas",
@@ -106,39 +112,43 @@ export class EventMap {
    * @returns {string} - Formatted En/Fr string displaying the imperial volumn, units and metric.
    */
   volumeText(m3, substance, gas = false, liquid = false, other = false) {
-    const convLiquid = conversions["m3 to bbl"];
-    const convGas = conversions["m3 to cf"];
-    let state = "other";
-    if (!gas && !liquid && !other) {
-      state = EventMap.getState(substance);
-    } else if (!gas && liquid && !other) {
-      state = "liquid";
-    } else if (gas && !liquid && !other) {
-      state = "gas";
-    }
-
-    let digits = 2;
-    if (m3 > 50) {
-      digits = 0;
-    } else if (m3 < 5) {
-      digits = 3;
-    }
-
-    if (state !== "other") {
-      let imperial;
-      if (state === "gas") {
-        imperial = `${this.lang.numberFormat(m3 * convGas, digits)} ${
-          this.lang.cf
-        }`;
-      } else {
-        imperial = `${this.lang.numberFormat(m3 * convLiquid, digits)} ${
-          this.lang.bbl
-        }`;
+    if (m3 && m3 >= 0) {
+      const convLiquid = conversions["m3 to bbl"];
+      const convGas = conversions["m3 to cf"];
+      let state = "other";
+      if (!gas && !liquid && !other) {
+        state = EventMap.getState(substance);
+      } else if (!gas && liquid && !other) {
+        state = "liquid";
+      } else if (gas && !liquid && !other) {
+        state = "gas";
       }
 
-      return `${imperial} (${Highcharts.numberFormat(m3, digits)} m3)`;
+      let digits = 2;
+      if (m3 > 50) {
+        digits = 0;
+      } else if (m3 < 5) {
+        digits = 3;
+      }
+
+      if (state !== "other") {
+        let imperial;
+        if (state === "gas") {
+          imperial = `${this.lang.numberFormat(m3 * convGas, digits)} ${
+            this.lang.cf
+          }`;
+        } else {
+          imperial = `${this.lang.numberFormat(m3 * convLiquid, digits)} ${
+            this.lang.bbl
+          }`;
+        }
+
+        return `${imperial} (${Highcharts.numberFormat(m3, digits)} m3)`;
+      }
+      return `${Highcharts.numberFormat(m3, digits)} m3`;
     }
-    return `${Highcharts.numberFormat(m3, digits)} m3`;
+
+    return ``;
   }
 
   /**
@@ -193,17 +203,27 @@ export class EventMap {
     }
   }
 
-  toolTip(incidentParams, fillColor) {
+  toolTip(eventParams, fillColor) {
     const formatCommaList = (text, names) => {
-      if (text.length > 1) {
+      if (typeof text !== "string" && text.length > 1) {
         const itemList = text;
         let brokenText = ``;
         for (let i = 0; i < itemList.length; i += 1) {
-          brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
+          if (
+            names &&
+            Object.prototype.hasOwnProperty.call(names, itemList[i])
+          ) {
+            brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
+          } else {
+            brokenText += `&nbsp- ${itemList[i]}<br>`;
+          }
         }
         return brokenText;
       }
-      return `&nbsp${names[text].n}`;
+      if (names && Object.prototype.hasOwnProperty.call(names, text)) {
+        return `&nbsp${names[text].n}`;
+      }
+      return `&nbsp${text}`;
     };
 
     let rowName = "";
@@ -218,32 +238,36 @@ export class EventMap {
       rowName = this.field;
     }
 
-    const bubbleName = this.colors[this.field][incidentParams[this.field]].n;
-    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${incidentParams.id}</strong></p>`;
+    const bubbleName = this.colors[this.field][eventParams[this.field]].n;
+    let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${eventParams.id}</strong></p>`;
     toolTipText += `<table>`;
     toolTipText += `<tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
-    toolTipText += `<tr><td>${
-      this.lang.estRelease
-    }</td><td>&nbsp<strong>${this.volumeText(
-      incidentParams.vol,
-      incidentParams.sub
-    )}</strong></td></tr>`;
-    toolTipText += `<tr><td>${
-      this.lang.what
-    }?</td><td><strong>${formatCommaList(
-      incidentParams.what,
-      this.colors.what
-    )}</strong></td></tr>`;
-    toolTipText += `<tr><td>${this.lang.why}?</td><td><strong>${formatCommaList(
-      incidentParams.why,
-      this.colors.why
-    )}</strong></td></tr>`;
-    toolTipText += `</table></div>`;
+
+    this.toolTipFields.forEach((toolCol) => {
+      if (toolCol === "vol") {
+        if (eventParams.vol && eventParams.vol >= 0) {
+          toolTipText += `<tr><td>${
+            this.lang.pillTitles.titles.vol
+          }</td><td>&nbsp<strong>${this.volumeText(
+            eventParams.vol,
+            eventParams.sub
+          )}</strong></td></tr>`;
+        }
+      } else if (eventParams[toolCol]) {
+        toolTipText += `<tr><td>${
+          this.lang.pillTitles.titles[toolCol]
+        }</td><td><strong>${formatCommaList(
+          eventParams[toolCol],
+          this.colors[toolCol]
+        )}</strong></td></tr>`;
+      }
+    });
+
     return toolTipText;
   }
 
   addCircle(x, y, color, fillColor, r, incidentParams = {}) {
-    return L.circle([x, y], {
+    const circle = L.circle([x, y], {
       color,
       fillColor,
       fillOpacity: 0.7,
@@ -252,6 +276,12 @@ export class EventMap {
       weight: 1,
       incidentParams,
     });
+
+    circle.on("click", (e) => {
+      console.log("clicked!", e);
+    });
+
+    return circle;
   }
 
   /**
@@ -311,7 +341,7 @@ export class EventMap {
    *  Variable1: string,
    *  VariableN: string,
    *  y: number //Year
-   *  loc: [number, number]
+   *  loc: [lat, -long]
    * }]
    */
   processEventsData(data) {
@@ -339,29 +369,38 @@ export class EventMap {
       "#cdd9e1",
       "#e6ecf0",
       "#ffffff",
+      "#ffffff",
+      "#ffffff",
     ];
     const volumes = data.map((row) => row.vol);
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     const maxRad = radiusCalc(maxVol);
-    const allCircles = data.map((row) => {
+    let allCircles = data.map((row) => {
       years.push(row.y);
       let radiusVol = (row.vol - minVol) / (maxVol - minVol);
-
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
-      return this.addCircle(
-        row.loc[0],
-        row.loc[1],
-        cerPalette["Cool Grey"],
-        this.applyColor(row[this.field], this.field), // fillColor
-        radiusVol,
-        row
-      );
+      if (row.loc[0] && row.loc[0] > 0) {
+        return this.addCircle(
+          row.loc[0],
+          row.loc[1],
+          cerPalette["Cool Grey"],
+          this.applyColor(row[this.field], this.field), // fillColor
+          radiusVol,
+          row
+        );
+      }
+      return false;
     });
+    allCircles = allCircles.filter((circle) => circle !== false);
     years = years.filter((v, i, a) => a.indexOf(v) === i); // get unique years
     years = years.sort((a, b) => b - a);
     const yearColors = {};
     years.forEach((yr, i) => {
-      yearColors[yr] = { c: colors[i], n: yr };
+      if (yr < 0) {
+        yearColors[yr] = { c: cerPalette["Dim Grey"], n: "n/a" };
+      } else {
+        yearColors[yr] = { c: colors[i], n: yr };
+      }
     });
     this.colors.y = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
@@ -555,6 +594,60 @@ export class EventMap {
           currentDashboard.map.invalidateSize(false);
         }
         currentDashboard.reZoom();
+      });
+  }
+
+  /**
+   * Switches the user view between event map and event trends.
+   * Requires the following div id's in HTML:
+   *  - this.eventType-view-type (button group with value="map" and value="trends")
+   *  - this.divId (leaflet map container)
+   *  - ${this.eventType}-time-series-section (initially hidden trends section)
+   *  - nearby-${this.eventType}-popup (optional, will hide if exists)
+   * @param {Object} mapBars - EventNavigator instance with bars placed next to the leaflet map. mapBars.allDivs are hidden on click
+   * @param {boolean} [cBtn=false] - Optional count button for switching between event frequency/volume. Must be added to this method
+   * to control if event frequency/volume is selected/available when looking at trends or map.
+   * @param {boolean} [vBtn=false] - Volume button
+   */
+  switchDashboards(mapBars, cBtn = false, vBtn = false) {
+    const countBtn = cBtn;
+    const volumeBtn = vBtn;
+    document
+      .getElementById(`${this.eventType}-view-type`)
+      .addEventListener("click", (event) => {
+        const evt = event;
+        const allButtons = document.querySelectorAll(
+          `#${this.eventType}-view-type .btn`
+        );
+        allButtons.forEach((elem) => {
+          const e = elem;
+          e.className = elem.className.replace(" active", "");
+        });
+        evt.target.className += " active";
+        const btnValue = evt.target.value;
+        const dashboardDivs = [
+          `${this.divId}`,
+          `nearby-${this.eventType}-popup`,
+        ].concat(mapBars.allDivs);
+        if (btnValue !== "trends") {
+          visibility(dashboardDivs, "show");
+          visibility([`${this.eventType}-time-series-section`], "hide");
+          if (volumeBtn) {
+            volumeBtn.disabled = false;
+          }
+          this.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
+          if (countBtn) {
+            countBtn.click();
+          }
+        } else {
+          // if the user selects trends, the option to view volume should be disabled
+          if (volumeBtn && countBtn) {
+            volumeBtn.disabled = true;
+            countBtn.checked = true;
+          }
+          visibility(dashboardDivs, "hide");
+          visibility([`${this.eventType}-time-series-section`], "show");
+        }
       });
   }
 }
