@@ -11,7 +11,7 @@
 
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
-import { cerPalette, conversions, leafletBaseMap } from "../util";
+import { cerPalette, conversions, leafletBaseMap, visibility } from "../util";
 
 const haversine = require("haversine");
 
@@ -582,6 +582,61 @@ export class EventMap {
           currentDashboard.map.invalidateSize(false);
         }
         currentDashboard.reZoom();
+      });
+  }
+
+  /**
+   * Switches the user view between event map and event trends.
+   * Requires the following div id's in HTML:
+   *  - this.eventType-view-type (button group with value="map" and value="trends")
+   *  - this.divId (leaflet map container)
+   *  - ${this.eventType}-time-series-section (initially hidden trends section)
+   *  - nearby-${this.eventType}-popup (optional, will hide if exists)
+   * @param {Object} mapBars - EventNavigator instance with bars placed next to the leaflet map. mapBars.allDivs are hidden on click
+   * @param {boolean} [cBtn=false] - Optional count button for switching between event frequency/volume. Must be added to this method
+   * to control if event frequency/volume is selected/available when looking at trends or map.
+   * @param {boolean} [vBtn=false] - Volume button
+   */
+  switchDashboards(mapBars, cBtn = false, vBtn = false) {
+    console.log(mapBars);
+    const countBtn = cBtn;
+    const volumeBtn = vBtn;
+    document
+      .getElementById(`${this.eventType}-view-type`)
+      .addEventListener("click", (event) => {
+        const evt = event;
+        const allButtons = document.querySelectorAll(
+          `#${this.eventType}-view-type .btn`
+        );
+        allButtons.forEach((elem) => {
+          const e = elem;
+          e.className = elem.className.replace(" active", "");
+        });
+        evt.target.className += " active";
+        const btnValue = evt.target.value;
+        const dashboardDivs = [
+          `${this.divId}`,
+          `nearby-${this.eventType}-popup`,
+        ].concat(mapBars.allDivs);
+        if (btnValue !== "trends") {
+          visibility(dashboardDivs, "show");
+          visibility([`${this.eventType}-time-series-section`], "hide");
+          if (volumeBtn) {
+            volumeBtn.disabled = false;
+          }
+          this.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
+          if (countBtn) {
+            countBtn.click();
+          }
+        } else {
+          // if the user selects trends, the option to view volume should be disabled
+          if (volumeBtn && countBtn) {
+            volumeBtn.disabled = true;
+            countBtn.checked = true;
+          }
+          visibility(dashboardDivs, "hide");
+          visibility([`${this.eventType}-time-series-section`], "show");
+        }
       });
   }
 }

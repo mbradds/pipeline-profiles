@@ -595,6 +595,7 @@ export const englishDashboard = {
     title: (company) => `Dashboard: ${company} - Contaminated Sites`,
     // TODO: reduce language duplication between remediation and incidents
     dashboard: {
+      trendYTitle: "Number of Contaminated Sites",
       numberFormat,
       cf: "cubic feet",
       bbl: "bbl",

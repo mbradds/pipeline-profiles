@@ -1,6 +1,5 @@
 import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
-import { visibility } from "../modules/util";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 
 export async function mainRemediation(data, lang) {
@@ -107,44 +106,10 @@ export async function mainRemediation(data, lang) {
           thisMap,
           lang.dashboard.pillTitles
         );
-        const trends = remediationTimeSeries(field, filters);
 
-        const countBtn = false;
-        const volumeBtn = false;
-        document
-          .getElementById("remediation-view-type")
-          .addEventListener("click", (event) => {
-            const evt = event;
-            const allButtons = document.querySelectorAll(
-              `#remediation-view-type .btn`
-            );
-            allButtons.forEach((elem) => {
-              const e = elem;
-              e.className = elem.className.replace(" active", "");
-            });
-            evt.target.className += " active";
-            const btnValue = evt.target.value;
-            const dashboardDivs = ["remediation-map"].concat(bars.allDivs);
-            if (btnValue !== "trends") {
-              visibility(dashboardDivs, "show");
-              visibility(["remediation-time-series-section"], "hide");
-              if (volumeBtn) {
-                volumeBtn.disabled = false;
-              }
-              thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
-              if (countBtn) {
-                countBtn.click();
-              }
-            } else {
-              // if the user selects trends, the option to view volume should be disabled
-              if (volumeBtn && countBtn) {
-                volumeBtn.disabled = true;
-                countBtn.checked = true;
-              }
-              visibility(dashboardDivs, "hide");
-              visibility(["remediation-time-series-section"], "show");
-            }
-          });
+        remediationTimeSeries(field, filters);
+
+        thisMap.switchDashboards(bars);
       } catch (err) {
         console.log(err);
       }

@@ -1,4 +1,3 @@
-import { visibility } from "../modules/util";
 import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
@@ -40,7 +39,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       field: mapField,
       filters: mapFilters,
       minRadius: 14000,
-      divId: "incident-map",
+      divId: "incidents-map",
       toolTipFields: ["vol", "what", "why"],
       lang: mapLang,
     });
@@ -64,7 +63,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       field: timeField,
       filters: timeFilters,
       data: incidentData,
-      divId: "time-series",
+      divId: "incidents-time-series",
       legendClickText: { enabled: true, text: lang.dashboard.legendClick },
       oneToMany: ONETOMANY,
       lang: lang.dashboard,
@@ -173,37 +172,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         // user selection to show map or trends
         // TODO: add this to EventMap class
         const countBtn = document.getElementById("incident-count-btn");
-        document
-          .getElementById("incident-view-type")
-          .addEventListener("click", (event) => {
-            const evt = event;
-            const allButtons = document.querySelectorAll(
-              `#incident-view-type .btn`
-            );
-            allButtons.forEach((elem) => {
-              const e = elem;
-              e.className = elem.className.replace(" active", "");
-            });
-            evt.target.className += " active";
-            const btnValue = evt.target.value;
-            const dashboardDivs = [
-              "incident-map",
-              "nearby-incidents-popup",
-            ].concat(bars.allDivs);
-            if (btnValue !== "trends") {
-              visibility(dashboardDivs, "show");
-              visibility(["incidents-time-series-section"], "hide");
-              volumeBtn.disabled = false;
-              thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
-              countBtn.click();
-            } else {
-              // if the user selects trends, the option to view volume should be disabled
-              volumeBtn.disabled = true;
-              countBtn.checked = true;
-              visibility(dashboardDivs, "hide");
-              visibility(["incidents-time-series-section"], "show");
-            }
-          });
+        thisMap.switchDashboards(bars, countBtn, volumeBtn);
 
         // user selection for finding nearby incidents
         const slider = document.getElementById("incident-range-slide");
@@ -274,5 +243,5 @@ export async function mainIncidents(incidentData, metaData, lang) {
       noIncidents.innerHTML = noIncidentsHTML;
     }
   }
-  // return buildDashboard();
+  return buildDashboard();
 }

@@ -88,14 +88,18 @@ export function sortJsonAlpha(lst, col) {
 export function visibility(divList, status) {
   divList.forEach((div) => {
     const x = document.getElementById(div);
-    if (status === "hide") {
-      if (x.style.display !== "none") {
-        x.style.display = "none";
+    if (x) {
+      if (status === "hide") {
+        if (x.style.display !== "none") {
+          x.style.display = "none";
+        }
+      } else if (status === "show") {
+        if (x.style.display !== "block") {
+          x.style.display = "block";
+        }
       }
-    } else if (status === "show") {
-      if (x.style.display !== "block") {
-        x.style.display = "block";
-      }
+    } else {
+      console.warn(`tried to hide non existent div: ${div}`);
     }
   });
 }

@@ -80,12 +80,12 @@ Styles for conditions compliance dashboard
 Styles for incidents dashboard 
 */
 
-#incident-map {
+#incidents-map {
   position: relative;
   height: 515px;
   margin-right: -15px;
 }
-#time-series {
+.time-series {
   height: 400px;
 }
 #inline-radio {
