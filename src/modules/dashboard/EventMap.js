@@ -267,7 +267,7 @@ export class EventMap {
   }
 
   addCircle(x, y, color, fillColor, r, incidentParams = {}) {
-    return L.circle([x, y], {
+    const circle = L.circle([x, y], {
       color,
       fillColor,
       fillOpacity: 0.7,
@@ -276,6 +276,12 @@ export class EventMap {
       weight: 1,
       incidentParams,
     });
+
+    circle.on("click", (e) => {
+      console.log("clicked!", e);
+    });
+
+    return circle;
   }
 
   /**
@@ -335,7 +341,7 @@ export class EventMap {
    *  Variable1: string,
    *  VariableN: string,
    *  y: number //Year
-   *  loc: [number, number]
+   *  loc: [lat, -long]
    * }]
    */
   processEventsData(data) {
@@ -363,6 +369,8 @@ export class EventMap {
       "#cdd9e1",
       "#e6ecf0",
       "#ffffff",
+      "#ffffff",
+      "#ffffff",
     ];
     const volumes = data.map((row) => row.vol);
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
@@ -388,7 +396,11 @@ export class EventMap {
     years = years.sort((a, b) => b - a);
     const yearColors = {};
     years.forEach((yr, i) => {
-      yearColors[yr] = { c: colors[i], n: yr };
+      if (yr < 0) {
+        yearColors[yr] = { c: cerPalette["Dim Grey"], n: "n/a" };
+      } else {
+        yearColors[yr] = { c: colors[i], n: yr };
+      }
     });
     this.colors.y = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
@@ -598,7 +610,6 @@ export class EventMap {
    * @param {boolean} [vBtn=false] - Volume button
    */
   switchDashboards(mapBars, cBtn = false, vBtn = false) {
-    console.log(mapBars);
     const countBtn = cBtn;
     const volumeBtn = vBtn;
     document

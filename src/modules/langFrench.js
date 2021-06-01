@@ -630,6 +630,7 @@ export const frenchDashboard = {
           sa: { c: cerPalette.Aubergine, n: "Site assessment" },
           fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
           or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+          m: { c: cerPalette.Sun, n: "Monitored" },
         },
         p: regionInfo, // Province
         use: {

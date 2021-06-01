@@ -113,6 +113,12 @@ export async function mainRemediation(data, lang) {
       } catch (err) {
         console.log(err);
       }
+    } else {
+      // no remediation data
+      const noIncidents = document.getElementById("remediation-dashboard");
+      let noIncidentsHTML = `<section class="alert alert-warning"><h3>No Contaminated Sites Data</h3>`;
+      noIncidentsHTML += `<p>There are no records in the CER's contaminated data for ${data.meta.companyName}. If new events are reported to the CER for this pipeline, they will appear here following the quarterly data update.</p></section>`;
+      noIncidents.innerHTML = noIncidentsHTML;
     }
   }
   return buildDashboard();

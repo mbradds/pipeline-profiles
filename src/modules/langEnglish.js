@@ -621,12 +621,13 @@ export const englishDashboard = {
           null: { c: cerPalette["Dim Grey"], n: "Not provided" },
         },
         s: {
-          prm: { c: cerPalette.Forest, n: "Post-remediation monitoring" },
+          prm: { c: cerPalette.Flame, n: "Post-remediation monitoring" },
           null: { c: cerPalette["Dim Grey"], n: "Not provided" },
-          rm: { c: cerPalette.Ocean, n: "Risk managed" },
+          rm: { c: cerPalette.Forest, n: "Risk managed" },
           sa: { c: cerPalette.Aubergine, n: "Site assessment" },
           fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
           or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+          m: { c: cerPalette.Sun, n: "Monitored" },
         },
         p: regionInfo, // Province
         use: {

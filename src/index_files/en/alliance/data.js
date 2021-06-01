@@ -4,6 +4,7 @@ import incidentData from "../../../incidents/company_data/AlliancePipelineLtd.js
 import trafficData from "../../../traffic/company_data/AlliancePipelineLtd.json";
 import apportionData from "../../../apportionment/company_data/AlliancePipelineLtd.json";
 import oandmData from "../../../oandm/company_data/AlliancePipelineLtd.json";
+import remediationData from "../../../remediation/company_data/AlliancePipelineLtd.json";
 import { loadAllCharts } from "../../loadDashboards_en";
 
 const data = {
@@ -13,6 +14,7 @@ const data = {
   trafficData,
   apportionData,
   oandmData,
+  remediationData,
 };
 
 loadAllCharts(data);
