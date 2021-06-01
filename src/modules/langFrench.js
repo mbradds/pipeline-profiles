@@ -595,4 +595,25 @@ export const frenchDashboard = {
       "Province/Territory": regionInfo,
     },
   },
+  remediation: {
+    numberFormat,
+    companyToSystem,
+    title: (company) => `Dashboard: ${company} - Contaminated Sites`,
+    dashboard: {
+      numberFormat,
+      cf: "pieds cubes",
+      bbl: "b",
+      volumeDisclaimer: undefined,
+      locationDisclaimer: undefined,
+      pillTitles: {
+        titles: {
+          w: "Within 30M of water-body",
+          p: "Province",
+          s: "Site Status",
+          y: "Year",
+        },
+        click: "click to view",
+      },
+    },
+  },
 };

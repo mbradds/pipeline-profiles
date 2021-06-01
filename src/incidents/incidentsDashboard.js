@@ -41,6 +41,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       filters: mapFilters,
       minRadius: 14000,
       divId: "incident-map",
+      toolTipFields: ["vol", "what", "why"],
       lang: mapLang,
     });
     map.addBaseMap();
@@ -170,6 +171,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         }
 
         // user selection to show map or trends
+        // TODO: add this to EventMap class
         const countBtn = document.getElementById("incident-count-btn");
         document
           .getElementById("incident-view-type")
@@ -190,7 +192,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
             ].concat(bars.allDivs);
             if (btnValue !== "trends") {
               visibility(dashboardDivs, "show");
-              visibility(["time-series-section"], "hide");
+              visibility(["incidents-time-series-section"], "hide");
               volumeBtn.disabled = false;
               thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
               countBtn.click();
@@ -199,13 +201,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
               volumeBtn.disabled = true;
               countBtn.checked = true;
               visibility(dashboardDivs, "hide");
-              visibility(["time-series-section"], "show");
+              visibility(["incidents-time-series-section"], "show");
             }
           });
 
         // user selection for finding nearby incidents
         const slider = document.getElementById("incident-range-slide");
-
         slider.addEventListener("change", () => {
           const currentValue = slider.value;
           const findIncidentBtn = document.getElementById("find-incidents-btn");
@@ -273,5 +274,5 @@ export async function mainIncidents(incidentData, metaData, lang) {
       noIncidents.innerHTML = noIncidentsHTML;
     }
   }
-  return buildDashboard();
+  // return buildDashboard();
 }

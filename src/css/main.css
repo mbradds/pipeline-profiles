@@ -121,7 +121,7 @@ Styles for incidents dashboard
   align-items: center;
   justify-content: center;
 }
-#incident-tooltip tr {
+.map-tooltip tr {
   border-bottom: 1pt solid #dcdcdc;
 }
 .section-border {
@@ -155,6 +155,16 @@ Styles for traffic and apportionment dashboards
 }
 #map-panel-body {
   padding: 0px;
+}
+
+/* 
+styles for remediation dashboard 
+*/
+
+#remediation-map {
+  position: relative;
+  height: 515px;
+  margin-right: -15px;
 }
 
 /* 

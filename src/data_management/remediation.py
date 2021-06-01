@@ -8,7 +8,10 @@ script_dir = os.path.dirname(__file__)
 '''
 TODO:
     - add get_data from util to other py scripts
-
+    - raise error after id's are applied if a record is longer
+      than the max length of id's'
+    - create a general purpose function for thisCompanyData creation
+      with data, meta, build parameters
 '''
 
 
@@ -31,7 +34,30 @@ def process_remediation(sql=False, companies=False, test=False):
 
         del df[delete]
 
+    for stringCol in ['Applicable Land Use',
+                      'Site Status']:
+
+        df[stringCol] = [str(x) for x in df[stringCol]]
+
+    # add id's
+    landUseId = {"protected area": "pa",
+                 "non-developed land": "ndl",
+                 "agricultural land": "al",
+                 "developed land - residential": "dlr",
+                 "developed land - industrial": "dli"}
+
+    statusIds = {"monitored": "m",
+                 "post-remediation monitoring": "prm",
+                 "facility monitoring": "fm",
+                 "ongoing remediation": "or",
+                 "site assessment": "sa",
+                 "risk managed": "rm"}
+
+    df = idify(df, "Applicable Land Use", landUseId)
     df = idify(df, "Province", "region")
+    df = idify(df, "Site Status", statusIds)
+
+    # print(set(list(df['Site Status'])))
     df['Final Submission Date'] = pd.to_datetime(df['Final Submission Date'])
     df['y'] = df['Final Submission Date'].dt.year
     del df['Final Submission Date']
@@ -71,7 +97,7 @@ def process_remediation(sql=False, companies=False, test=False):
                             "Province": "p",
                             "Applicable Land Use": "use",
                             "Contaminants at the Site": "c",
-                            "Initial Estimate of Contaminated soil m3": "m3",
+                            "Initial Estimate of Contaminated soil m3": "vol",
                             "Is site within 30 m of waterbody": "w"})
 
     if companies:

@@ -26,6 +26,8 @@ import { mainTraffic } from "../traffic/trafficDashboard";
 import { mainApportion } from "../apportionment/apportionmentDashboard";
 // operations and maintenance activities
 import { mainOandM } from "../oandm/oandmDashboard";
+// contaminated sites and remediation
+import { mainRemediation } from "../remediation/remediationDashboard";
 
 // console.time(`first content loading`);
 bindToWindow();
@@ -53,6 +55,7 @@ export async function loadAllCharts(data, plains = false) {
       englishDashboard.incidents
     ),
     mainOandM(data.oandmData, englishDashboard.oandm),
+    mainRemediation(data.remediationData, englishDashboard.remediation),
   ];
 
   function plainsMidstreamProfile(lang, div) {

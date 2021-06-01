@@ -1,1 +1,1 @@
-{"meta": {"companyName": "Foothills Pipe Lines Ltd."}, "build": true, "data": [{"id": "REM-0267", "sub": null, "p": "sk", "use": null, "s": "Risk managed", "a": null, "c": null, "m3": -1, "w": null, "y": 2013, "loc": [50.52, -109.81]}]}
+{"meta": {"companyName": "Foothills Pipe Lines Ltd."}, "build": true, "data": [{"id": "REM-0267", "sub": null, "p": "sk", "use": null, "s": "rm", "a": null, "c": null, "vol": -1, "w": null, "y": 2013, "loc": [50.52, -109.81]}]}

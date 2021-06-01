@@ -398,8 +398,8 @@ export const englishDashboard = {
       why: "Why It Happened",
       estRelease: "Est. Release Volume",
       cf: "cubic feet",
-      numberFormat,
       bbl: "bbl",
+      numberFormat,
       pillTitles: {
         titles: {
           sub: "Substance",
@@ -589,6 +589,45 @@ export const englishDashboard = {
       "In Stream Work Required": yesNoInfo,
       "Species At Risk Present": yesNoInfo,
       "Province/Territory": regionInfo,
+    },
+  },
+  remediation: {
+    numberFormat,
+    companyToSystem,
+    title: (company) => `Dashboard: ${company} - Contaminated Sites`,
+    // TODO: reduce language duplication between remediation and incidents
+    dashboard: {
+      numberFormat,
+      cf: "cubic feet",
+      bbl: "bbl",
+      estRelease: "Initial estimate of contaminated soil",
+      volumeDisclaimer: undefined,
+      locationDisclaimer: undefined,
+      pillTitles: {
+        titles: {
+          w: "Within 30M of water-body",
+          p: "Province",
+          s: "Site Status",
+          y: "Year",
+        },
+        click: "click to view",
+      },
+      seriesInfo: {
+        w: {
+          true: { c: cerPalette.Sun, n: "True" },
+          false: { c: cerPalette["Night Sky"], n: "False" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        s: {
+          prm: { c: cerPalette.Forest, n: "Post-remediation monitoring" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          rm: { c: cerPalette.Ocean, n: "Risk managed" },
+          sa: { c: cerPalette.Aubergine, n: "Site assessment" },
+          fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
+          or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+        },
+        p: regionInfo, // Province
+      },
     },
   },
 };
