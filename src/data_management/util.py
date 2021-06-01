@@ -199,5 +199,18 @@ def idify(df, col, key):
     return df
 
 
+def get_data(script_dir, query, db="", sql=False, csv_encoding="utf-8"):
+    csvName = query.split(".")[0]+".csv"
+    if sql:
+        print('reading SQL '+query.split(".")[0])
+        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db="")
+        df.to_csv('raw_data/'+csvName, index=False)
+    else:
+        print('reading local '+query.split(".")[0])
+        df = pd.read_csv('raw_data/'+csvName, encoding=csv_encoding)
+
+    return df
+
+
 if __name__ == "__main__":
     None

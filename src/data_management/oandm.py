@@ -237,7 +237,7 @@ def process_oandm(remote=False, companies=False, test=False):
                     json.dump(thisCompanyData, fp)
         else:
             # there are no o and m events
-            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            thisCompanyData['data'] = df_c.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             thisCompanyData["build"] = False
             if not test:
