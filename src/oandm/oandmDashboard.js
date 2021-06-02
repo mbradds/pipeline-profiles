@@ -7,7 +7,7 @@ import { oandmText } from "../modules/dynamicText";
 export async function mainOandM(eventData, lang) {
   // console.log(eventData);
   const eventType = "oandm";
-  const field = "Integrity Dig";
+  const field = "Province/Territory";
   const filters = { type: "frequency" };
 
   function addDashboardTitle() {
@@ -62,8 +62,8 @@ export async function mainOandM(eventData, lang) {
       fixedPillHeight: 70,
     });
 
-    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "activated");
-    trendNav.makeBar("Province/Territory", "oandm-region-trend", "deactivated");
+    trendNav.makeBar("Province/Territory", "oandm-region-trend", "activated");
+    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "deactivated");
     trendNav.makeBar("Fish Present", "oandm-fish-trend", "deactivated");
     trendNav.makeBar(
       "In Stream Work Required",

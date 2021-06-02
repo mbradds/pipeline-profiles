@@ -8,6 +8,7 @@
       type="button"
       class="btn btn-default tablinks"
       onclick="openTab(event, 'condition-compliance')"
+      id="defaultClick"
     >
       {{text.safety.complianceBtn}}
     </button>
@@ -35,7 +36,6 @@
       type="button"
       class="btn btn-default tablinks"
       onclick="openTab(event, 'remediation')"
-      id="defaultClick"
     >
       Contaminated Sites &#38; Remediation
     </button>
@@ -440,9 +440,9 @@
         <summary>What O&#38;M Activities require CER approval?</summary>
         <p>
           Where any of the following restrictions exist, the company must apply
-          to the Board in accordance with the NEB Act and the related
+          to the Commission in accordance with the CER Act and the related
           Regulations and may not carry out the proposed activity until approval
-          from the Board has been obtained. The restrictions apply where:
+          from the Commission has been obtained. The restrictions apply where:
         </p>
         <ol type="1">
           <li>
@@ -489,9 +489,9 @@
           </li>
         </ol>
       </details>
-      <details>
+      {{! <details>
         <summary>
-          Is the public consulted about O&#38;M activities?
+          Is the public engaged concerning about O&#38;M activities?
         </summary>
         <p>The CER requires companies to engage parties whose rights or
           interests may be affected by O&M, prior to undertaking those
@@ -515,28 +515,38 @@
           consider establishing a consultation protocol with these communities
           that takes into consideration their rights, interests, and cultural
           elements.</p>
-      </details>
-      <div class="mrgn-tp-md mrgn-bttm-lg" id="oandm-dynamic-text"></div>
+      </details> }}
+
       <div id="oandm-dashboard">
+        <div
+          class="alert alert-warning mrgn-tp-md"
+          style="line-height: 1.25em !important;"
+          id="oandm-reported-disclaimer"
+        >
+          <small>The dashboard and figures presented below only include O&M
+            activities from 2015 onwards that require notification to the CER.
+            Take a look at the O&M Requirements and Guidance Notes for a list of
+            O&M event criteria that require a filing with the Commission.
+          </small>
+        </div>
+        <div class="mrgn-bttm-lg" id="oandm-dynamic-text"></div>
         <div class="dashboard-title" id="oandm-dashboard-title"></div>
         <div class="row">
           <div class="col-md-9">
             <div id="time-series-oandm"></div>
           </div>
           <div class="col-md-3">
-            <div class="event-filter-nav" id="oandm-dig-trend"></div>
-            <div
-              class="event-filter-nav mrgn-tp-sm"
-              id="oandm-fish-trend"
-            ></div>
+            <div class="event-filter-nav" id="oandm-region-trend"></div>
+            <div class="event-filter-nav mrgn-tp-sm" id="oandm-dig-trend"></div>
             <div
               class="event-filter-nav mrgn-tp-sm"
               id="oandm-instream-trend"
             ></div>
             <div
               class="event-filter-nav mrgn-tp-sm"
-              id="oandm-region-trend"
+              id="oandm-fish-trend"
             ></div>
+
             <div
               class="event-filter-nav mrgn-tp-sm"
               id="oandm-species-trend"
@@ -556,7 +566,7 @@
             </details>
             <p class="mrgn-tp-lg">Take a look at the
               <a
-                href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes.html"
+                href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
                 target="_blank"
               >requirements and guidance notes</a>
               (O&#38;M Guidelines) for more information on how these events are

@@ -2,11 +2,12 @@ import pandas as pd
 from util import company_rename, most_common, strip_cols, idify
 import ssl
 import json
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 ssl._create_default_https_context = ssl._create_unverified_context
 
 '''
 ideas:
-    -number of days aggregated between start and end date highlighted
     -total number of integrity digs highlighted
     -top 3 nearest populated centers highlighted
     -total land needed relative to something
@@ -28,8 +29,8 @@ def optimizeJson(df):
                          'Dig Count',
                          'Nearest Populated Centre',
                          'New Land Area Needed',
-                         'Length Of Replacement Pipe',
-                         'event duration']
+                         'Length Of Replacement Pipe']
+
     for delete in delete_after_meta:
         del df[delete]
 
@@ -75,6 +76,8 @@ def metadata(df, company):
     thisCompanyMeta = {}
     thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
     thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
+
+    # nearby in the last year
     df['Nearest Populated Centre'] = [x.split(",")[0].strip() for x in df['Nearest Populated Centre']]
 
     dfNear = df.copy()
@@ -85,23 +88,28 @@ def metadata(df, company):
                   'business']
 
     dfNear = dfNear[~dfNear['Nearest Populated Centre'].str.lower().isin(filterList)]
+    oneYearAgo = datetime.today() - relativedelta(years=1)
+    dfNear = dfNear[dfNear['Commencement Date'] >= oneYearAgo]
+    if not dfNear.empty:
+        for splitChar in [",", "("]:
+            dfNear['Nearest Populated Centre'] = [x.split(splitChar)[0].strip() for x in dfNear['Nearest Populated Centre']]
+        nearList = list(dfNear['Nearest Populated Centre']+" "+dfNear['Province/Territory'].str.upper())
+        nearList = [x.replace("Jasper BC", "Jasper AB") for x in nearList]
+        nearList = filter(filterNear, nearList)
 
-    for splitChar in [",", "("]:
-        dfNear['Nearest Populated Centre'] = [x.split(splitChar)[0].strip() for x in dfNear['Nearest Populated Centre']]
-    nearList = list(dfNear['Nearest Populated Centre']+" "+dfNear['Province/Territory'].str.upper())
-    nearList = filter(filterNear, nearList)
-
-    dfNear = pd.DataFrame(nearList)
-    most_common(dfNear,
-                thisCompanyMeta,
-                0,
-                "nearby",
-                3,
-                "list",
-                False,
-                False)
+        dfNear = pd.DataFrame(nearList)
+        most_common(dfNear,
+                    thisCompanyMeta,
+                    0,
+                    "nearby",
+                    3,
+                    "list",
+                    False,
+                    False)
+    else:
+        thisCompanyMeta["nearby"] = None
     thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
-    thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
+    # thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
     thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
     thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
     thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
@@ -110,7 +118,7 @@ def metadata(df, company):
 
 
 def column_insights(df):
-    df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
+    # df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
     df = idify(df, "Province/Territory", "region")
     return df
 
@@ -248,5 +256,5 @@ def process_oandm(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False)
+    df = process_oandm(remote=False, test=False, companies=["Trans Mountain Pipeline ULC"])
     print('completed oandm!')

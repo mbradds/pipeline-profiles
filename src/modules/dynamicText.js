@@ -325,28 +325,35 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
+function lengthText(number, numberFormat) {
+  if (number > 1000) {
+    return `${numberFormat(number / 1000, 1)} km`;
+  }
+  return `${numberFormat(number, 0)} m`;
+}
+
 export function oandmText(meta, lang) {
-  // console.log(meta);
-  const firstParagraph = `<p>There have been a total of ${dynamicValue(
+  const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
-  }. As part of these events, there have been ${dynamicValue(
+  }. If the event involves an integrity dig, one or more individual digs are conducted to expose an area of pipeline. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} integrity digs, and approximately ${dynamicValue(
-    `${lang.numberFormat(meta.lengthReplaced, 0)} km`
-  )} of pipeline replaced. On average, O&M activities take approximately ${dynamicValue(
-    `${meta.avgDuration} days`
-  )} from start to finish on this system.<p>`;
+    `${lengthText(meta.lengthReplaced, lang.numberFormat)}`
+  )} of pipeline replaced as part of O&M activities on this system.<p>`;
 
-  const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occurred near ${dynamicValue(
-    meta.nearby.join(", ")
-  )}.</p>`;
+  let secondParagraph = "";
+  if (meta.nearby) {
+    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year, O&M events have occurred most often near ${dynamicValue(
+      meta.nearby.join(", ")
+    )} among others.</p>`;
+  }
 
-  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require a significant amount of land area outside of company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require additional new permanent or temporary land outside company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
     `${meta.landRequired} hectares`
   )}`;
-  const iceRinks = `, an area of land equal to ${dynamicValue(
+  const iceRinks = ` of new land, an area equal to ${dynamicValue(
     meta.iceRinks
   )} ice hockey rinks.<p>`;
   if (meta.landRequired > 0) {
