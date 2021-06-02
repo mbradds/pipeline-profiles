@@ -29,6 +29,9 @@ body {
 .profile-show {
   display: block;
 }
+.disclaimer-style {
+  line-height: 1.25em !important;
+}
 
 /* 
 Styles for conditions compliance dashboard 
@@ -87,6 +90,7 @@ Styles for incidents dashboard
 }
 .time-series {
   height: 400px;
+  margin-right: -15px;
 }
 #inline-radio {
   padding-right: 35px;

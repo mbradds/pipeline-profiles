@@ -293,7 +293,9 @@ export class EventTrend {
           );
         } else if (this.definitionsOn === "pill") {
           // user clicks on pill to view info about that pill in definitions box
-          definitionsPopUp.innerHTML = this.definitions[this.field];
+          definitionsPopUp.innerHTML = `<small>${
+            this.definitions[this.field]
+          }</small>`;
         }
         return true;
       }
@@ -355,9 +357,9 @@ export class EventTrend {
                   currentTrend.colors[currentTrend.field][this.options.id].c;
 
                 const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
-                definitionsPopUp.innerHTML =
-                  key +
-                  currentTrend.definitions[currentTrend.field][this.options.id];
+                definitionsPopUp.innerHTML = `<small>${key} ${
+                  currentTrend.definitions[currentTrend.field][this.options.id]
+                }</small>`;
               }
             },
           },

@@ -509,28 +509,24 @@ export class EventMap {
       let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
         nearbyCircles.length,
         range
-      )}</h4><table>`;
-      nearbyText += `<tr><td>
-          ${this.lang.gasRelease}&nbsp&nbsp</td><td>${this.volumeText(
-        nearbyGas,
-        undefined,
-        true
-      )}`;
-      nearbyText += `<tr><td>
-        ${this.lang.liquidRelease}&nbsp&nbsp</td><td>${this.volumeText(
-        nearbyLiquid,
-        undefined,
-        false,
-        true
-      )}`;
-      nearbyText += `<tr><td>
-        ${this.lang.otherRelease}&nbsp&nbsp</td><td>${this.volumeText(
-        nearbyOther,
-        undefined,
-        false,
-        true
-      )}`;
-      nearbyText += `</table><br><small>${this.lang.exploreOther}</small>
+      )}</h4><table class="mrgn-bttm-sm">`;
+
+      [
+        [this.lang.gasRelease, nearbyGas],
+        [this.lang.liquidRelease, nearbyLiquid],
+        [this.lang.otherRelease, nearbyOther],
+      ].forEach((release) => {
+        if (release[1] > 0) {
+          nearbyText += `<tr><td>
+          ${release[0]}&nbsp&nbsp</td><td>${this.volumeText(
+            release[1],
+            undefined,
+            true
+          )}`;
+        }
+      });
+
+      nearbyText += `</table><small>${this.lang.exploreOther}</small>
           </section>`;
       incidentFlag.innerHTML = nearbyText;
     } else {

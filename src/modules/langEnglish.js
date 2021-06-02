@@ -428,7 +428,7 @@ export const englishDashboard = {
       noNearby: (eventType) =>
         `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       barClick: (field) =>
-        `<p>Click on a bar to view ${field} sub definition</p>`,
+        `<small>Click on a bar to view ${field} sub definition</small>`,
       legendClick,
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
