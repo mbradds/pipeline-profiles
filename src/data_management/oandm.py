@@ -108,7 +108,7 @@ def metadata(df, company):
                     False)
     else:
         thisCompanyMeta["nearby"] = None
-    thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
+    # thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
     # thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
     thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
     thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())

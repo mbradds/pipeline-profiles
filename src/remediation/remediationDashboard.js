@@ -1,6 +1,7 @@
 import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
+import { remediationText } from "../modules/dynamicText";
 
 export async function mainRemediation(data, lang) {
   const eventType = "remediation";
@@ -9,7 +10,7 @@ export async function mainRemediation(data, lang) {
 
   const setTitle = (language, meta) => {
     document.getElementById("remediation-dashboard-title").innerHTML =
-      language.title(meta.systemName);
+      language.title(meta.systemName, meta.cutoffDate);
   };
 
   const remediationBar = (events, map, langPillTitles) => {
@@ -81,17 +82,21 @@ export async function mainRemediation(data, lang) {
   function buildDashboard() {
     if (data.data.length > 0) {
       const chartParams = data.meta;
-      // add the system name to chartParams
       if (
         Object.prototype.hasOwnProperty.call(
           lang.companyToSystem,
-          data.meta.companyName
+          data.meta.company
         )
       ) {
-        chartParams.systemName = lang.companyToSystem[data.meta.companyName];
+        chartParams.systemName = lang.companyToSystem[data.meta.company];
       } else {
-        chartParams.systemName = data.meta.companyName;
+        chartParams.systemName = data.meta.company;
       }
+
+      // add the cutoff date to the chartParams
+      // const cutoffDate = new Date(2018, 9,15)
+      chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
+      remediationText(data.meta, lang);
 
       setTitle(lang, chartParams);
       try {

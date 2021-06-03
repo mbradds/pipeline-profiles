@@ -2,6 +2,7 @@ import pandas as pd
 from util import get_data, idify
 import os
 import json
+import datetime
 import numpy as np
 script_dir = os.path.dirname(__file__)
 
@@ -14,11 +15,37 @@ TODO:
       with data, meta, build parameters
 '''
 
+# all data before August 15, 2018 is unreliable, and should be cut out
+minDate = datetime.datetime(2018, 9, 15)
+
 
 def optimizeJson(df):
     del df['Company Name']
+    df = df[df['Final Submission Date'] >= minDate].copy().reset_index(drop=True)
+    del df['Final Submission Date']
+    # filter out non valid years. This needs to be dealt with better
+    df = df[df['y'] >= 0].copy().reset_index(drop=True)
+    df = df.sort_values(by=['y'])
     df = df.to_dict(orient="records")
     return df
+
+
+def meta(df, company):
+    metaData = {}
+    metaData["company"] = company
+
+    df_old = df[df['Final Submission Date'] < minDate].copy().reset_index(drop=True)
+    df = df[df['Final Submission Date'] >= minDate].copy().reset_index(drop=True)
+
+    metaData['old'] = int(len(df_old.index))
+    metaData['new'] = int(len(df.index))
+    # this is better added in the front end
+    # metaData["cutoff"] = [minDate.year, minDate.month, minDate.day]
+    soilVolume = df["vol"].sum()
+    metaData["soil"] = {'total': int(soilVolume),
+                        'pools': round((soilVolume/2500), 1)}
+
+    return metaData
 
 
 def process_remediation(sql=False, companies=False, test=False):
@@ -67,7 +94,6 @@ def process_remediation(sql=False, companies=False, test=False):
     # print(set(list(df['Activity At Time'])))
     df['Final Submission Date'] = pd.to_datetime(df['Final Submission Date'])
     df['y'] = df['Final Submission Date'].dt.year
-    del df['Final Submission Date']
 
     df = df.fillna(value=np.nan)
     for ns in ['Product Carried',
@@ -100,7 +126,7 @@ def process_remediation(sql=False, companies=False, test=False):
     # get a list of site contaminants
     chemicalList = []
     for chemical in df['Contaminants at the Site']:
-        if chemical != None:
+        if chemical is not None:
             chemical = chemical.replace(";", ",").split(",")
             chemical = [x.strip() for x in chemical]
             chemicalList.append(chemical)
@@ -154,7 +180,7 @@ def process_remediation(sql=False, companies=False, test=False):
         thisCompanyData = {}
 
         if not df_c.empty:
-            thisCompanyData["meta"] = {"companyName": company}
+            thisCompanyData["meta"] = meta(df_c, company)
             thisCompanyData["build"] = True
             thisCompanyData["data"] = optimizeJson(df_c)
             if not test:
@@ -173,5 +199,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(False)
+    df = process_remediation(False) # , companies=["NOVA Gas Transmission Ltd."])
 

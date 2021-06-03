@@ -325,23 +325,21 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
-function lengthText(number, numberFormat) {
-  if (number > 1000) {
-    return `${numberFormat(number / 1000, 1)} km`;
-  }
-  return `${numberFormat(number, 0)} m`;
-}
+// function lengthText(number, numberFormat) {
+//   if (number > 1000) {
+//     return `${numberFormat(number / 1000, 1)} km`;
+//   }
+//   return `${numberFormat(number, 0)} m`;
+// }
 
 export function oandmText(meta, lang) {
   const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
-  }. If the event involves an integrity dig, one or more individual digs are conducted to expose an area of pipeline. There have been ${dynamicValue(
+  }. If the activity involves an integrity dig, one or more digs are conducted to expose an area of pipeline. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
-  )} integrity digs, and approximately ${dynamicValue(
-    `${lengthText(meta.lengthReplaced, lang.numberFormat)}`
-  )} of pipeline replaced as part of O&M activities on this system.<p>`;
+  )} individual integrity digs as part of the reported O&M activities.<p>`;
 
   let secondParagraph = "";
   if (meta.nearby) {
@@ -369,4 +367,30 @@ export function oandmText(meta, lang) {
   const totalText =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
   document.getElementById("oandm-dynamic-text").innerHTML = totalText;
+}
+
+export function remediationText(meta, lang) {
+  console.log(meta);
+  const firstParagraph = `<p>${
+    meta.company
+  } has reported a total of ${dynamicValue(
+    lang.numberFormat(meta.new + meta.old, 0)
+  )} contaminated sites. The CER publishes NOCs that have been submitted to the CER since August 2018, and annual updates that have been submitted since 2021. There have been ${dynamicValue(
+    meta.new
+  )} contaiminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
+
+  let secondParagraph = `<p>Where applicable, an estimate of the contaminated soil volume is reported to the CER. Since August 2018, ${dynamicValue(
+    lang.numberFormat(meta.soil.total, 0)
+  )} cubic metres of soil have been contaminated`;
+
+  if (meta.soil.total > 0 && meta.soil.pools > 0) {
+    secondParagraph += `, a volume equivalent to approximately ${dynamicValue(
+      `${meta.soil.pools} olympic sized swimming pools`
+    )}.</p>`;
+  } else {
+    secondParagraph += `.</p>`;
+  }
+
+  const totalText = firstParagraph + secondParagraph;
+  document.getElementById("remediation-dynamic-text").innerHTML = totalText;
 }

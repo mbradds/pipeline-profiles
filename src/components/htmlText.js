@@ -9,8 +9,8 @@
  * highcharts and leaflet based dashboards, including the wet4 buttons, titles, etc.
  *
  * Dynamic text:
- * Handled in ../modules/dynamicText.js with seperate english and french functions. Functions are duplicated (en|fr) to 
- * more easily accomodate the different sentence structure, and save on code size (only english methods appear in the 
+ * Handled in ../modules/dynamicText.js with seperate english and french functions. Functions are duplicated (en|fr) to
+ * more easily accomodate the different sentence structure, and save on code size (only english methods appear in the
  * english profile-code bundle.)
  *
  */
@@ -40,7 +40,7 @@ const en = {
   apportion: {
     header: { other: "Apportionment", enbridge: "Nominations" },
     updated: trafficUpdatedEn,
-    p1: "A shipper must submit nominations each month to it wishes to move its oil on a pipeline. Shippers must submit nominations for both committed (or contracted) transportation service, if available, as well as uncommitted transportation service. If the total volume of nominations for uncommitted capacity is more than what is available, the pipeline company must “apportion” the nominations.",
+    p1: "A shipper must submit nominations each month it wishes to move its oil on a pipeline. Shippers must submit nominations for both committed (or contracted) transportation service, if available, as well as uncommitted transportation service. If the total volume of nominations for uncommitted capacity is more than what is available, the pipeline company must “apportion” the nominations.",
 
     p2: "Apportionment is the percentage by which each shipper’s nominated volume is reduced in order to match the pipeline’s uncommitted capacity. Generally, apportionment is applied equally across all shippers seeking to use that capacity: for example, if shipper&nbsp;A nominates 100&nbsp;barrels and shipper&nbsp;B nominates 1&nbsp;000&nbsp;barrels, then, under 10% apportionment, shipper&nbsp;A will be able to ship 90&nbsp;barrels, and shipper&nbsp;B will ship 900&nbsp;barrels.",
     p3: {

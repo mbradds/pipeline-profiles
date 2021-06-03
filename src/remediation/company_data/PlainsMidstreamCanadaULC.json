@@ -1,1 +1,1 @@
-{"meta": {"companyName": "Plains Midstream Canada ULC"}, "build": true, "data": [{"id": "REM-0309", "sub": null, "p": "on", "use": null, "s": "fm", "a": null, "c": null, "vol": -1, "w": null, "y": 2015, "loc": [-1.0, -1.0]}]}
+{"meta": {"company": "Plains Midstream Canada ULC", "old": 1, "new": 0, "soil": {"total": 0, "pools": 0.0}}, "build": true, "data": []}

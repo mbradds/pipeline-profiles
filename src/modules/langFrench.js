@@ -595,8 +595,10 @@ export const frenchDashboard = {
   },
   remediation: {
     numberFormat,
+    dateFormat,
     companyToSystem,
-    title: (company) => `Dashboard: ${company} - Contaminated Sites`,
+    title: (company, cutoffDate) =>
+      `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
     dashboard: {
       trendYTitle: "Number of Contaminated Sites",
       numberFormat,
