@@ -141,23 +141,23 @@
               class="alert alert-info profile-hide"
               id="no-location-info"
             ></div>
+            <details class="mrgn-tp-sm">
+              <summary>{{text.sourceTitle}}</summary>
+              <p>
+                <strong>{{text.dataSourceTitle}} </strong>
+                {{text.safety.conditionsSourceLink}}
+              </p>
+              <p>
+                <strong>{{text.descriptionTitle}} </strong>
+                {{text.safety.conditionsDescription}}
+              </p>
+            </details>
+            <p class="mrgn-tp-lg">{{text.safety.conditionsOpenData}}</p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <details class="mrgn-tp-sm">
-            <summary>{{text.sourceTitle}}</summary>
-            <p>
-              <strong>{{text.dataSourceTitle}} </strong>
-              {{text.safety.conditionsSourceLink}}
-            </p>
-            <p>
-              <strong>{{text.descriptionTitle}} </strong>
-              {{text.safety.conditionsDescription}}
-            </p>
-          </details>
-          <p class="mrgn-tp-lg">{{text.safety.conditionsOpenData}}</p>
           <p>{{text.safety.conditionsViz}}</p>
         </div>
       </div>
@@ -373,19 +373,23 @@
           </div>
         </div>
       </section>
+      <div class="row">
+        <div class="col-md-12">
+          <details>
+            <summary>{{text.sourceTitle}}</summary>
+            <p>
+              <strong>{{text.dataSourceTitle}} </strong>
+              {{text.safety.incidentsSourceLink}}
+            </p>
+            <p>{{text.safety.incidentsDescription}}</p>
+          </details>
+          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <details>
-        <summary>{{text.sourceTitle}}</summary>
-        <p>
-          <strong>{{text.dataSourceTitle}} </strong>
-          {{text.safety.incidentsSourceLink}}
-        </p>
-        <p>{{text.safety.incidentsDescription}}</p>
-      </details>
-      <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
       <p>{{text.safety.incidentsViz}}</p>
     </div>
   </div>
@@ -615,11 +619,11 @@
     <div class="col-md-12" id="remediation-dashboard">
       <div class="plains_disclaimer"></div>
       <div class="mrgn-bttm-lg" id="remediation-dynamic-text"></div>
-      <div class="dashboard-title mrgn-bttm-sm" id="remediation-dashboard-title"></div>
       <div
-        class="btn-group btn-group-justified"
-        id="remediation-view-type"
-      >
+        class="dashboard-title mrgn-bttm-sm"
+        id="remediation-dashboard-title"
+      ></div>
+      <div class="btn-group btn-group-justified" id="remediation-view-type">
         <div class="btn-group">
           <button type="button" class="btn btn-default active" value="map">
             Contaminated Site Map
@@ -724,17 +728,18 @@
           </div>
         </div>
       </section> --}}
-    </div>
-  </div>
-  <div class="row mrgn-tp-md">
-    <div class="col-md-12">
-      <details>
-        <summary>{{text.sourceTitle}}</summary>
-        <p>
-          <strong>{{text.dataSourceTitle}} </strong>
-        </p>
-      </details>
-      <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
+
+      <div class="row mrgn-tp-md">
+        <div class="col-md-12">
+          <details>
+            <summary>{{text.sourceTitle}}</summary>
+            <p>
+              <strong>{{text.dataSourceTitle}} </strong>
+            </p>
+          </details>
+          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
+        </div>
+      </div>
     </div>
   </div>
   <div id="spacer" style="height: 100px"></div>
