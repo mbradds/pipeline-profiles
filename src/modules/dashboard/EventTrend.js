@@ -356,7 +356,7 @@ export class EventTrend {
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.options.id].c;
 
-                const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
+                const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp;`;
                 definitionsPopUp.innerHTML = `<small>${key} ${
                   currentTrend.definitions[currentTrend.field][this.options.id]
                 }</small>`;

@@ -64,6 +64,11 @@ const units = {
 
 const legendClick = "Click on a legend item to remove it from the chart";
 
+const userPopUp =
+  "Approximate location. You can drag this marker around to explore events in other locations.";
+const locationError =
+  "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -394,9 +399,12 @@ export const englishDashboard = {
       },
     },
     dashboard: {
+      numberFormat,
+      userPopUp,
+      locationError,
+      legendClick,
       cf: "cubic feet",
       bbl: "bbl",
-      numberFormat,
       pillTitles: {
         titles: {
           vol: "Est. Release Volume",
@@ -414,10 +422,6 @@ export const englishDashboard = {
       locationDisclaimer: "Waiting for your location...",
       countDisclaimer: (eventType, field) =>
         `${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.`,
-      userPopUp:
-        "Approximate location. You can drag this marker around to explore incident events in other locations.",
-      locationError:
-        "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.",
       nearbyHeader: (numCircles, range) =>
         `There are ${numCircles} incidents within ${range} km`,
       gasRelease: "Estimated gas volume released:",
@@ -429,7 +433,6 @@ export const englishDashboard = {
         `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       barClick: (field) =>
         `<small>Click on a bar to view ${field} sub definition</small>`,
-      legendClick,
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
       trendYTitle: "Number of Incidents",
@@ -597,12 +600,20 @@ export const englishDashboard = {
       `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
     // TODO: reduce language duplication between remediation and incidents
     dashboard: {
+      userPopUp,
+      locationError,
       trendYTitle: "Number of Contaminated Sites",
       numberFormat,
       cf: "cubic feet",
       bbl: "bbl",
       volumeDisclaimer: undefined,
       locationDisclaimer: undefined,
+      rangeTitle: "Select range",
+      findBtnTitle: "Find sites within",
+      nearbyHeader: (numCircles, range) =>
+        `There are ${numCircles} contaminated sites within ${range} km`,
+      noNearby: () =>
+        `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       pillTitles: {
         titles: {
           vol: "Initial estimate of contaminated soil",

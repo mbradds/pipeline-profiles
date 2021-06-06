@@ -329,7 +329,7 @@
         <div class="panel-body incidents-near-me">
           <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
             <div
-              class="col-md-12 cerlabel dashboard-style"
+              class="col-md-12 cerlabel dashboard-style nearby-title"
               id="find-incidents-title"
             >
               {{text.safety.incidentsSelectRange}}
@@ -339,7 +339,7 @@
             <div class="col-md-6 center-stuff">
               <input
                 name="html5shim-1"
-                id="incident-range-slide"
+                id="incidents-range-slide"
                 type="range"
                 min="0"
                 max="200"
@@ -369,7 +369,7 @@
             </div>
           </div>
           <div class="row mrgn-tp-lg">
-            <div class="col-md-12" id="nearby-flag"></div>
+            <div class="col-md-12" id="nearby-incidents-flag"></div>
           </div>
         </div>
       </section>
@@ -620,7 +620,7 @@
       <div class="plains_disclaimer"></div>
       <div class="mrgn-bttm-lg" id="remediation-dynamic-text"></div>
       <div
-        class="dashboard-title mrgn-bttm-sm"
+        class="dashboard-title mrgn-bttm-md"
         id="remediation-dashboard-title"
       ></div>
       <div class="btn-group btn-group-justified" id="remediation-view-type">
@@ -677,15 +677,19 @@
           </div>
         </div>
       </div>
-      {{!-- <section class="panel panel-info mrgn-tp-md" id="nearby-incidents-popup">
+
+      <section
+        class="panel panel-info mrgn-tp-md"
+        id="nearby-remediation-popup"
+      >
         <header class="panel-heading">
-          <h5 class="panel-title">{{text.safety.incidentsNearMe}}</h5>
+          <h5 class="panel-title">Are there any contaminated sites near me?</h5>
         </header>
         <div class="panel-body incidents-near-me">
           <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
             <div
-              class="col-md-12 cerlabel dashboard-style"
-              id="find-incidents-title"
+              class="col-md-12 cerlabel dashboard-style nearby-title"
+              id="find-remediation-title"
             >
               {{text.safety.incidentsSelectRange}}
             </div>
@@ -694,7 +698,7 @@
             <div class="col-md-6 center-stuff">
               <input
                 name="html5shim-1"
-                id="incident-range-slide"
+                id="remediation-range-slide"
                 type="range"
                 min="0"
                 max="200"
@@ -706,16 +710,16 @@
               <button
                 type="button"
                 value="100"
-                id="find-incidents-btn"
+                id="find-remediation-btn"
                 class="btn btn-default col-md-12"
               >
-                {{text.safety.incidentsFind}}
+                Find sites within 100km
               </button>
             </div>
             <div class="col-md-3 center-stuff">
               <button
                 type="button"
-                id="reset-incidents-btn"
+                id="reset-remediation-btn"
                 class="btn btn-default col-md-12"
                 disabled="disabled"
               >
@@ -724,10 +728,10 @@
             </div>
           </div>
           <div class="row mrgn-tp-lg">
-            <div class="col-md-12" id="nearby-flag"></div>
+            <div class="col-md-12" id="nearby-remediation-flag"></div>
           </div>
         </div>
-      </section> --}}
+      </section>
 
       <div class="row mrgn-tp-md">
         <div class="col-md-12">

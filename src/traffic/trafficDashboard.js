@@ -143,11 +143,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const yFunction = yVal(p);
     let colorCircle = "";
     if (unit !== "%" && p.series.name !== "Total") {
-      colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp`;
+      colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp;`;
     }
     return `<tr style="${extraStyle}"><th>${colorCircle}${
       p.series.name
-    }:</th><th>&nbsp${yFunction(p)} ${unit}</th></tr>`;
+    }:</th><th>&nbsp;${yFunction(p)} ${unit}</th></tr>`;
   };
 
   function tooltipText(event, units) {

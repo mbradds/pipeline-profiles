@@ -5,7 +5,6 @@ import { oandmText } from "../modules/dynamicText";
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
 export async function mainOandM(eventData, lang) {
-  // console.log(eventData);
   const eventType = "oandm";
   const field = "Province/Territory";
   const filters = { type: "frequency" };

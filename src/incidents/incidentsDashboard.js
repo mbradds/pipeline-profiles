@@ -170,66 +170,20 @@ export async function mainIncidents(incidentData, metaData, lang) {
         }
 
         // user selection to show map or trends
-        // TODO: add this to EventMap class
         const countBtn = document.getElementById("incident-count-btn");
         thisMap.switchDashboards(bars, countBtn, volumeBtn);
 
         // user selection for finding nearby incidents
-        const slider = document.getElementById("incident-range-slide");
-        slider.addEventListener("change", () => {
-          const currentValue = slider.value;
-          const findIncidentBtn = document.getElementById("find-incidents-btn");
-          const findIncidentTitle = document.getElementById(
-            "find-incidents-title"
-          );
-          findIncidentBtn.innerText = `${lang.dashboard.findBtnTitle} ${currentValue}km`;
-          findIncidentTitle.innerText = `${lang.dashboard.rangeTitle} (${currentValue}km):`;
-          findIncidentBtn.value = currentValue;
-        });
+        thisMap.nearbySlider(
+          lang.dashboard.rangeTitle,
+          lang.dashboard.findBtnTitle
+        );
 
-        // user selects a range to find nearby incidents
-        document
-          .getElementById("find-incidents-btn")
-          .addEventListener("click", () => {
-            const resetBtn = document.getElementById("reset-incidents-btn");
-            const range = document.getElementById("find-incidents-btn").value;
-            if (!thisMap.user.latitude && !thisMap.user.longitude) {
-              const loadDisclaimer = setTimeout(() => {
-                thisMap.addMapDisclaimer("location");
-              }, 200);
-              thisMap
-                .waitOnUser()
-                .then(() => {
-                  thisMap.nearbyIncidents(range); // .then((userAdded))
-                  clearTimeout(loadDisclaimer);
-                  thisMap.removeMapDisclaimer("location");
-                  resetBtn.disabled = false;
-                  resetBtn.className =
-                    "btn btn-primary col-md-12 notice-me-btn";
-                })
-                .catch(() => {
-                  const incidentFlag = document.getElementById("nearby-flag"); // .catch((error))
-                  incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
-                  clearTimeout(loadDisclaimer);
-                  thisMap.removeMapDisclaimer("location");
-                });
-            } else {
-              thisMap.nearbyIncidents(range);
-              resetBtn.disabled = false;
-              resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
-            }
-          });
+        // user wants to find nearby incidents
+        thisMap.nearbyListener(lang.dashboard.locationError);
 
         // reset map after user has selected a range
-        document
-          .getElementById("reset-incidents-btn")
-          .addEventListener("click", () => {
-            thisMap.resetMap();
-            const resetBtn = document.getElementById("reset-incidents-btn");
-            resetBtn.disabled = true;
-            resetBtn.className = "btn btn-default col-md-12";
-            document.getElementById("nearby-flag").innerHTML = ``;
-          });
+        thisMap.resetCirclesListener();
       } catch (err) {
         console.log(err);
       }

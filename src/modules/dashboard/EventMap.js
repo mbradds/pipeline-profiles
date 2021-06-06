@@ -213,17 +213,17 @@ export class EventMap {
             names &&
             Object.prototype.hasOwnProperty.call(names, itemList[i])
           ) {
-            brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
+            brokenText += `&nbsp;- ${names[itemList[i]].n}<br>`;
           } else {
-            brokenText += `&nbsp- ${itemList[i]}<br>`;
+            brokenText += `&nbsp;- ${itemList[i]}<br>`;
           }
         }
         return brokenText;
       }
       if (names && Object.prototype.hasOwnProperty.call(names, text)) {
-        return `&nbsp${names[text].n}`;
+        return `&nbsp;${names[text].n}`;
       }
-      return `&nbsp${text}`;
+      return `&nbsp;${text}`;
     };
 
     let rowName = "";
@@ -241,14 +241,14 @@ export class EventMap {
     const bubbleName = this.colors[this.field][eventParams[this.field]].n;
     let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${eventParams.id}</strong></p>`;
     toolTipText += `<table>`;
-    toolTipText += `<tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
+    toolTipText += `<tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
 
     this.toolTipFields.forEach((toolCol) => {
       if (toolCol === "vol") {
         if (eventParams.vol && eventParams.vol >= 0) {
           toolTipText += `<tr><td>${
             this.lang.pillTitles.titles.vol
-          }</td><td>&nbsp<strong>${this.volumeText(
+          }</td><td>&nbsp;<strong>${this.volumeText(
             eventParams.vol,
             eventParams.sub
           )}</strong></td></tr>`;
@@ -456,7 +456,9 @@ export class EventMap {
   }
 
   /**
-   *
+   * Finds all nearby events within a given range.
+   * Requires the following HTML div is's:
+   *  - nearby-this.eventType-flag (displays the analysis text number of nearby incidents, or location error message)
    * @param {number} range - User input range in kilometers (from range slider) to compare with distance between user and all events.
    */
   nearbyIncidents(range) {
@@ -486,7 +488,9 @@ export class EventMap {
     });
     userDummy.addTo(this.map);
 
-    const incidentFlag = document.getElementById("nearby-flag");
+    const incidentFlag = document.getElementById(
+      `nearby-${this.eventType}-flag`
+    );
 
     if (nearbyCircles.length > 0) {
       this.nearby = L.featureGroup(nearbyCircles);
@@ -495,7 +499,6 @@ export class EventMap {
       this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
       let [nearbyGas, nearbyLiquid, nearbyOther] = [0, 0, 0];
-      // const currentDashboard = this;
       this.nearby.eachLayer((layer) => {
         const layerState = EventMap.getState(layer.options.incidentParams.sub);
         if (layerState === "gas") {
@@ -518,7 +521,7 @@ export class EventMap {
       ].forEach((release) => {
         if (release[1] > 0) {
           nearbyText += `<tr><td>
-          ${release[0]}&nbsp&nbsp</td><td>${this.volumeText(
+          ${release[0]}&nbsp;&nbsp;</td><td>${this.volumeText(
             release[1],
             undefined,
             true
@@ -645,5 +648,87 @@ export class EventMap {
           visibility([`${this.eventType}-time-series-section`], "show");
         }
       });
+  }
+
+  /**
+   * Sets up the select range slider for finding nearby events on the map. Contains event listener to update title+button with selected range.
+   * Requires the following HTML div id's in HTML:
+   *  - this.eventType-range-slide (html slider)
+   *  - find-this.eventType-btn (button that triggers nearby analysis, with updating title based on desired range)
+   *  - find-this.eventTyle-title (range slider title, with updating title based on desired range)
+   * @param {string} rangeTitle - HTML text to be displayed above range slider.
+   * @param {string} findBtnTitle - HTML text to be displayed on find-this.eventType-btn button.
+   */
+  nearbySlider(rangeTitle, findBtnTitle) {
+    const slider = document.getElementById(`${this.eventType}-range-slide`);
+    slider.addEventListener("change", () => {
+      const currentValue = slider.value;
+      const findIncidentBtn = document.getElementById(
+        `find-${this.eventType}-btn`
+      );
+      const findIncidentTitle = document.getElementById(
+        `find-${this.eventType}-title`
+      );
+      findIncidentBtn.innerText = `${findBtnTitle} ${currentValue}km`;
+      findIncidentTitle.innerText = `${rangeTitle} (${currentValue}km):`;
+      findIncidentBtn.value = currentValue;
+    });
+  }
+
+  /**
+   * Binds event listener when the user clicks on find events within a seleted range.
+   * Requires the following HTML div id's:
+   *  - find-${this.eventType}-btn (button used to initiate nearby analysis)
+   *  - reset-${this.eventType}-btn (used to enable or disable button when find nearby is clicked)
+   *  - nearby-${this.eventType}-flag (displays nearby analysis, or location error text)
+   * @param {string} errorText - text to display if there is a location error, or user declines to share location.
+   */
+  nearbyListener(errorText) {
+    // user selects a range to find nearby incidents
+    document
+      .getElementById(`find-${this.eventType}-btn`)
+      .addEventListener("click", () => {
+        const resetBtn = document.getElementById(`reset-${this.eventType}-btn`);
+        const range = document.getElementById(
+          `find-${this.eventType}-btn`
+        ).value;
+        if (!this.user.latitude && !this.user.longitude) {
+          const loadDisclaimer = setTimeout(() => {
+            this.addMapDisclaimer("location");
+          }, 200);
+          this.waitOnUser()
+            .then(() => {
+              this.nearbyIncidents(range); // .then((userAdded))
+              clearTimeout(loadDisclaimer);
+              this.removeMapDisclaimer("location");
+              resetBtn.disabled = false;
+              resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+            })
+            .catch(() => {
+              const incidentFlag = document.getElementById(
+                `nearby-${this.eventType}-flag`
+              ); // .catch((error))
+              incidentFlag.innerHTML = `<section class="alert alert-warning">${errorText}</section>`;
+              clearTimeout(loadDisclaimer);
+              this.removeMapDisclaimer("location");
+            });
+        } else {
+          this.nearbyIncidents(range);
+          resetBtn.disabled = false;
+          resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+        }
+      });
+  }
+
+  resetCirclesListener() {
+    // reset map after user has selected a range
+    const resetBtnDiv = `reset-${this.eventType}-btn`;
+    document.getElementById(resetBtnDiv).addEventListener("click", () => {
+      this.resetMap();
+      const resetBtn = document.getElementById(resetBtnDiv);
+      resetBtn.disabled = true;
+      resetBtn.className = "btn btn-default col-md-12";
+      document.getElementById(`nearby-${this.eventType}-flag`).innerHTML = ``;
+    });
   }
 }

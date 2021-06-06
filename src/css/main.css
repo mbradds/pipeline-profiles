@@ -33,6 +33,10 @@ body {
   line-height: 1.25em !important;
 }
 
+.nearby-title {
+  padding-left: 0px;
+}
+
 /* 
 Styles for conditions compliance dashboard 
 */

@@ -13,7 +13,7 @@
 import { listOrParagraph } from "./util";
 
 const dynamicValue = (val) =>
-  `<i class="bg-primary" style="font-style: normal"><strong>&nbsp${val}&nbsp</strong></i>`;
+  `<i class="bg-primary" style="font-style: normal"><strong>&nbsp;${val}&nbsp;</strong></i>`;
 
 const postWord = (val, type) => {
   let wrd = "";
@@ -370,7 +370,6 @@ export function oandmText(meta, lang) {
 }
 
 export function remediationText(meta, lang) {
-  console.log(meta);
   const firstParagraph = `<p>${
     meta.company
   } has reported a total of ${dynamicValue(

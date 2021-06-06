@@ -65,6 +65,11 @@ const units = {
 const legendClick =
   "Cliquez sur un élément de légende pour le supprimer du graphique";
 
+const userPopUp =
+  "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer survenus ailleurs.";
+const locationError =
+  "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -390,9 +395,12 @@ export const frenchDashboard = {
       },
     },
     dashboard: {
+      numberFormat,
+      legendClick,
+      userPopUp,
+      locationError,
       cf: "pieds cubes",
       bbl: "b",
-      numberFormat,
       pillTitles: {
         titles: {
           vol: "Estimation du volume",
@@ -410,10 +418,6 @@ export const frenchDashboard = {
       locationDisclaimer: "En attente de votre position...",
       countDisclaimer: (eventType, field) =>
         `Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`,
-      userPopUp:
-        "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
-      locationError:
-        "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.",
       nearbyHeader: (numCircles, range) =>
         `Il y a ${numCircles} incidents dans un rayon de ${range} km`,
       gasRelease: "Estimation du volume de gaz rejeté:",
@@ -425,7 +429,7 @@ export const frenchDashboard = {
         `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
       barClick: (field) =>
         `<p>Cliquer sur une bande pour consulter la définition de ${field}</p>`,
-      legendClick,
+
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les incidents dans un rayon de",
       trendYTitle: "Nombre d’incidents",
@@ -596,6 +600,8 @@ export const frenchDashboard = {
   remediation: {
     numberFormat,
     dateFormat,
+    userPopUp,
+    locationError,
     companyToSystem,
     title: (company, cutoffDate) =>
       `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
@@ -606,6 +612,12 @@ export const frenchDashboard = {
       bbl: "bbl",
       volumeDisclaimer: undefined,
       locationDisclaimer: undefined,
+      rangeTitle: "Sélectionner une plage",
+      findBtnTitle: "Rechercher les sites dans un rayon de",
+      nearbyHeader: (numCircles, range) =>
+        `There are ${numCircles} contaminated sites within ${range} km`,
+      noNearby: () =>
+        `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       pillTitles: {
         titles: {
           vol: "Initial estimate of contaminated soil",

@@ -115,6 +115,12 @@ export async function mainRemediation(data, lang) {
         remediationTimeSeries(field, filters);
 
         thisMap.switchDashboards(bars);
+        thisMap.nearbySlider(
+          lang.dashboard.rangeTitle,
+          lang.dashboard.findBtnTitle
+        );
+        thisMap.nearbyListener(lang.dashboard.locationError);
+        thisMap.resetCirclesListener();
       } catch (err) {
         console.log(err);
       }
