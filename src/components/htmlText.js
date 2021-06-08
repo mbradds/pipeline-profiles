@@ -88,7 +88,7 @@ const en = {
     header: "Safety and Environment",
     complianceBtn: "Conditions Compliance",
     incidentsBtn: "Reported Incidents",
-    complianceUpdated: "Section updated May 2021",
+    complianceUpdated: "Section updated June 2021",
     conditionsp1:
       "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
     conditionsp2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
@@ -121,7 +121,7 @@ const en = {
     conditionsOpenData: `Open data can be freely used and shared by anyone for any purpose. The <a href="/open/conditions/conditions.csv">data for these graphs are available [CSV]</a>.`,
     conditionsViz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/" target="_blank" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
     incidentsHeader: "Pipeline Incidents",
-    incidentsUpdated: "Section updated March 2021",
+    incidentsUpdated: "Section updated June 2021",
     incidentsp1: `The information presented here is based on CER data (2008 to current) for incidents reported under the
     <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html" target="_blank">Onshore Pipeline
       Regulations</a>
@@ -265,7 +265,7 @@ const fr = {
     header: "Sécurité et environnement",
     complianceBtn: "Conformité aux conditions",
     incidentsBtn: "Incidents signalés",
-    complianceUpdated: "Mise à jour mai 2021",
+    complianceUpdated: "Mise à jour juin 2021",
     conditionsp1:
       "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
     conditionsp2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des mesures <a href="/fr/safety-environment/compliance-enforcement/index.html">d’exécution</a> sont prises au besoin.`,
@@ -298,7 +298,7 @@ const fr = {
     conditionsOpenData: `Les données ouvertes peuvent être utilisées et transmises librement. Les <a href="/ouvert/conditions/conditions.csv">données pour ces graphiques sont disponibles [CSV]</a>.`,
     conditionsViz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" target="_blank" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
     incidentsHeader: "Incidents pipeliniers",
-    incidentsUpdated: "Mise à jour mars 2021",
+    incidentsUpdated: "Mise à jour juin 2021",
     incidentsp1: `L’information présentée ici provient des données de la Régie de
     l’énergie du Canada de 2008 à aujourd’hui sur les incidents signalés en
     application du

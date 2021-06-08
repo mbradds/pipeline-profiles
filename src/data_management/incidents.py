@@ -193,7 +193,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         print('reading local incidents file')
         path = "./raw_data/incidents_en.csv"
         process_func = process_english
-        encoding = "utf-8"
+        encoding = "latin-1"
 
         df = pd.read_csv(path,
                          skiprows=0,
@@ -203,11 +203,9 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
     # initial data processing
     df['Company'] = df['Company'].replace(company_rename())
-
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
 
-    # df['Approximate Volume Released'] = [int(x) if x > 10 else round(x, 3) for x in df['Approximate Volume Released']]
     df['Reported Date'] = pd.to_datetime(df['Reported Date'], errors='raise')
 
     for delete in ['Significant',
