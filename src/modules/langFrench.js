@@ -70,6 +70,9 @@ const userPopUp =
 const locationError =
   "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.";
 
+const exploreOther =
+  "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -399,6 +402,7 @@ export const frenchDashboard = {
       legendClick,
       userPopUp,
       locationError,
+      exploreOther,
       cf: "pieds cubes",
       bbl: "b",
       pillTitles: {
@@ -423,8 +427,6 @@ export const frenchDashboard = {
       gasRelease: "Estimation du volume de gaz rejeté:",
       liquidRelease: "Estimation du volume de liquide déversé:",
       otherRelease: "Estimation du rejet (divers):",
-      exploreOther:
-        "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.",
       noNearby: (eventType) =>
         `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
       barClick: (field) =>
@@ -600,14 +602,15 @@ export const frenchDashboard = {
   remediation: {
     numberFormat,
     dateFormat,
-    userPopUp,
-    locationError,
     companyToSystem,
     title: (company, cutoffDate) =>
       `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
     dashboard: {
-      trendYTitle: "Number of Contaminated Sites",
+      userPopUp,
       numberFormat,
+      exploreOther,
+      locationError,
+      trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",
       volumeDisclaimer: undefined,

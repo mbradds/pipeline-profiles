@@ -37,6 +37,13 @@ body {
   padding-left: 0px;
 }
 
+.center-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
 /* 
 Styles for conditions compliance dashboard 
 */

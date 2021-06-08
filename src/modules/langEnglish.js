@@ -69,6 +69,9 @@ const userPopUp =
 const locationError =
   "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.";
 
+const exploreOther =
+  "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -403,6 +406,7 @@ export const englishDashboard = {
       userPopUp,
       locationError,
       legendClick,
+      exploreOther,
       cf: "cubic feet",
       bbl: "bbl",
       pillTitles: {
@@ -427,8 +431,6 @@ export const englishDashboard = {
       gasRelease: "Estimated gas volume released:",
       liquidRelease: "Estimated liquid volume released:",
       otherRelease: "Estimated miscellaneous release:",
-      exploreOther:
-        "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.",
       noNearby: (eventType) =>
         `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       barClick: (field) =>
@@ -602,8 +604,9 @@ export const englishDashboard = {
     dashboard: {
       userPopUp,
       locationError,
-      trendYTitle: "Number of Contaminated Sites",
       numberFormat,
+      exploreOther,
+      trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",
       volumeDisclaimer: undefined,

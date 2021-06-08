@@ -37,6 +37,7 @@ export async function mainRemediation(data, lang) {
       divId: "remediation-map",
       toolTipFields: ["vol", "use", "c"],
       lang: mapLang,
+      regdocsClick: true,
     });
     map.addBaseMap();
     map.processEventsData(events);
