@@ -515,16 +515,32 @@ export class EventMap {
       )}</h4><table class="mrgn-bttm-sm">`;
 
       [
-        [this.lang.gasRelease, nearbyGas],
-        [this.lang.liquidRelease, nearbyLiquid],
-        [this.lang.otherRelease, nearbyOther],
+        [this.lang.gasRelease, nearbyGas, "gas"],
+        [this.lang.liquidRelease, nearbyLiquid, "liquid"],
+        [this.lang.otherRelease, nearbyOther, "other"],
       ].forEach((release) => {
         if (release[1] > 0) {
+          let [g, l, o] = [false, false, false];
+          if (release[2] === "gas") {
+            g = true;
+            l = false;
+            o = false;
+          } else if (release[2] === "liquid") {
+            g = false;
+            l = true;
+            o = false;
+          } else {
+            g = false;
+            l = false;
+            o = true;
+          }
           nearbyText += `<tr><td>
           ${release[0]}&nbsp;&nbsp;</td><td>${this.volumeText(
             release[1],
             undefined,
-            true
+            g,
+            l,
+            o
           )}`;
         }
       });
