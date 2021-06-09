@@ -1,6 +1,8 @@
 from connection import cer_connection
 import pandas as pd
+import numpy as np
 import os
+from errors import IdError
 from datetime import date
 import io
 
@@ -193,9 +195,28 @@ def idify(df, col, key):
     if key == "region":
         r = region
     else:
-        r = {}
+        r = key
     df[col] = [x.lower() for x in df[col]]
     df[col] = df[col].replace(r)
+
+    # check if column has non id's
+    for value in df[col]:
+        if value not in r.values() and value not in [np.nan, "nan", None]:
+            raise IdError(value)
+
+    return df
+
+
+def get_data(script_dir, query, db="", sql=False, csv_encoding="utf-8"):
+    csvName = query.split(".")[0]+".csv"
+    if sql:
+        print('reading SQL '+query.split(".")[0])
+        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db="")
+        df.to_csv('raw_data/'+csvName, index=False)
+    else:
+        print('reading local '+query.split(".")[0])
+        df = pd.read_csv('raw_data/'+csvName, encoding=csv_encoding)
+
     return df
 
 

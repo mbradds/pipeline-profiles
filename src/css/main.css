@@ -29,33 +29,25 @@ body {
 .profile-show {
   display: block;
 }
+.disclaimer-style {
+  line-height: 1.25em !important;
+}
+
+.nearby-title {
+  padding-left: 0px;
+}
+
+.center-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
 
 /* 
 Styles for conditions compliance dashboard 
 */
 
-@media only screen and (max-height: 900px), screen and (max-width: 1440px) {
-  .container-chart-map {
-    min-height: 550px;
-    position: relative;
-    z-index: 10;
-  }
-  #conditions-insert {
-    overflow-y: scroll;
-    max-height: 500px;
-  }
-}
-@media only screen and (min-height: 901px), screen and (min-width: 1441px) {
-  .container-chart-map {
-    min-height: 600px;
-    position: relative;
-    z-index: 10;
-  }
-  #conditions-insert {
-    overflow-y: scroll;
-    max-height: 550px;
-  }
-}
 .conditions-summary-title {
   pointer-events: none;
 }
@@ -102,13 +94,14 @@ Styles for conditions compliance dashboard
 Styles for incidents dashboard 
 */
 
-#incident-map {
+#incidents-map {
   position: relative;
   height: 515px;
   margin-right: -15px;
 }
-#time-series {
+.time-series {
   height: 400px;
+  margin-right: -15px;
 }
 #inline-radio {
   padding-right: 35px;
@@ -143,7 +136,7 @@ Styles for incidents dashboard
   align-items: center;
   justify-content: center;
 }
-#incident-tooltip tr {
+.map-tooltip tr {
   border-bottom: 1pt solid #dcdcdc;
 }
 .section-border {
@@ -168,9 +161,6 @@ Styles for incidents dashboard
 Styles for traffic and apportionment dashboards 
 */
 
-#key-point-info .panel-body {
-  padding-bottom: 0px;
-}
 .traffic-hc-column-map {
   padding-right: 0px !important;
   padding-left: 0px !important;
@@ -182,21 +172,83 @@ Styles for traffic and apportionment dashboards
   padding: 0px;
 }
 
+/* 
+styles for remediation dashboard 
+*/
+
+#remediation-map {
+  position: relative;
+  height: 515px;
+  margin-right: -15px;
+}
+
+/* 
+responsive style options 
+*/
+
 /* small screen */
-@media only screen and (max-height: 900px), screen and (max-width: 1440px) {
+@media only screen and (min-width: 768px) {
+  /* traffic */
   .traffic-hc-single-gas {
-    height: 490px;
+    height: 480px;
   }
   .traffic-map-shared {
-    height: 340px;
+    height: 330px;
     margin-bottom: 5px;
   }
   .traffic-hc-shared {
-    height: 245px;
+    height: 235px;
+  }
+  /* conditions */
+  .container-chart-map {
+    min-height: 530px;
+    position: relative;
+    z-index: 10;
+  }
+  #conditions-insert {
+    overflow-y: scroll;
+    max-height: 500px;
+  }
+  #incidents-map {
+    height: 445px;
+  }
+  #remediation-map {
+    height: 445px;
+  }
+}
+/* medium screen */
+@media only screen and (min-width: 1000px) {
+  /* traffic */
+  .traffic-hc-single-gas {
+    height: 480px;
+  }
+  .traffic-map-shared {
+    height: 330px;
+    margin-bottom: 5px;
+  }
+  .traffic-hc-shared {
+    height: 235px;
+  }
+  /* conditions */
+  .container-chart-map {
+    min-height: 530px;
+    position: relative;
+    z-index: 10;
+  }
+  #conditions-insert {
+    overflow-y: scroll;
+    max-height: 500px;
+  }
+  #incidents-map {
+    height: 500px;
+  }
+  #remediation-map {
+    height: 500px;
   }
 }
 /* large screens */
-@media only screen and (min-height: 900px), screen and (min-width: 1440px) {
+@media only screen and (min-width: 1600px) {
+  /* traffic */
   .traffic-hc-single-gas {
     height: 520px;
   }
@@ -206,5 +258,21 @@ Styles for traffic and apportionment dashboards
   }
   .traffic-hc-shared {
     height: 265px;
+  }
+  /* conditions */
+  .container-chart-map {
+    min-height: 600px;
+    position: relative;
+    z-index: 10;
+  }
+  #conditions-insert {
+    overflow-y: scroll;
+    max-height: 550px;
+  }
+  #incidents-map {
+    height: 515px;
+  }
+  #remediation-map {
+    height: 515px;
   }
 }

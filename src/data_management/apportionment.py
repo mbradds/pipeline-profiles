@@ -85,6 +85,8 @@ def process_apportionment(test=False, sql=False, companies=False):
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
+        if company == "Enbridge Pipelines Inc.":
+            df_c = pd.DataFrame()
         if not df_c.empty:
             thisCompanyData['build'] = True
             df_c = df_c.drop_duplicates(subset=['Date'])

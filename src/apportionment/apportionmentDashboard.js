@@ -49,8 +49,8 @@ export async function mainApportion(apportionData, lang) {
     let toolTable = `<table>`;
     event.points.forEach((p) => {
       const [y, yUnit] = valFormat(p, unit);
-      const colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp`;
-      toolTable += `<tr><th>${colorCircle}${p.series.name}:</th><th>&nbsp${y} ${yUnit}</th></tr>`;
+      const colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp;`;
+      toolTable += `<tr><th>${colorCircle}${p.series.name}:</th><th>&nbsp;${y} ${yUnit}</th></tr>`;
     });
     toolText += toolTable;
     return toolText;

@@ -38,7 +38,6 @@ export class KeyPointMap {
       deactivated: cerPalette["Cool Grey"],
     };
     this.getInits(companyName, points);
-    this.addBaseMap();
   }
 
   static selectedPointNames(s) {
@@ -69,6 +68,10 @@ export class KeyPointMap {
     this.maxZoom = maxZoom;
   }
 
+  /**
+   * When called, loads the leaflet base map on the instantiated "divId".
+   * This method is placed outside the constructor to help with conditonally loading map when key point data is available.
+   */
   addBaseMap() {
     const map = leafletBaseMap({
       div: this.divId,

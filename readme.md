@@ -1,24 +1,47 @@
-# Pipeline Profiles
+<h1 align="center">Pipeline Profiles</h1>
 
-[![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mbradds/pipeline-profiles/pulls)
-[![dependencies](https://img.shields.io/david/mbradds/pipeline-profiles)](https://img.shields.io/david/mbradds/pipeline-profiles)
-[![Known Vulnerabilities](https://snyk.io/test/github/mbradds/pipeline-profiles/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mbradds/pipeline-profiles?targetFile=package.json)
-[![website](https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/)](https://pipeline-profiles.herokuapp.com/)
+<div align="center">
+  <!-- prettier -->
+  <a>
+    <img src="https://img.shields.io/badge/code_style-prettier-brightgreen.svg" alt="Prettier" />
+  </a>
+  <!-- contributors welcome -->
+  <a>
+    <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributors" />
+  </a>
+  <!-- Project Dependencies -->
+  <a>
+    <img src="https://img.shields.io/david/mbradds/pipeline-profiles" alt="Dependencies" />
+  </a>
+  <!-- Known Vulnerabilities -->
+  <a>
+    <img src="https://snyk.io/test/github/mbradds/pipeline-profiles/badge.svg?targetFile=package.json" alt="Vulnerabilities" />
+  </a>
+  <!-- Heroku -->
+  <a>
+    <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/" alt="heroku" />
+  </a>
+</div>
 
-<h3>
-  <a href="https://pipeline-profiles.herokuapp.com/">
-    Heroku WebApp
-  </a>
-  <span> | </span>
-  <a href="https://github.com/mbradds/pipeline-profiles/projects/1">
-    Project Roadmap
-  </a>
-  <span> | </span>
-  <a href="https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/index.html">
-    CER Production Page
-  </a>
-</h3>
+<div align="center">
+  <h3>
+    <a href="https://pipeline-profiles.herokuapp.com/">
+      Heroku WebApp
+    </a>
+    <span> | </span>
+    <a href="https://github.com/mbradds/pipeline-profiles/projects/1">
+      Project Roadmap
+    </a>
+    <span> | </span>
+    <a href="https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/index.html">
+      CER Production Page
+    </a>
+  </h3>
+</div>
+
+<div align="center">
+  <sub>Designed, developed, and maintained by Grant Moss
+</div>
 
 ##### Table of Contents
 
@@ -27,10 +50,10 @@
 - [Software prerequisites](#software-prerequisites)
 - [Quick start for contributing](#quick-start-for-contributing)
 - [Quick start for updating data](#quick-start-for-updating-data)
-  - [Dataset 1: Incidents](#dataset-1:-incidents)
-  - [Dataset 2: Conditions](#dataset-2:-conditions)
-  - [Dataset 3: Traffic](dataset-3:-Traffic)
-  - [Dataset 4: Apportionment](dataset-4:-apportionment)
+  - [Dataset 1: Incidents](#dataset-1-incidents)
+  - [Dataset 2: Conditions](#dataset-2-conditions)
+  - [Dataset 3: Traffic](dataset-3-traffic)
+  - [Dataset 4: Apportionment](dataset-4-apportionment)
 - [Adding a new profile section](#adding-a-new-profile-section)
 - [Tests](#tests)
   - [Python unit tests (back end)](<#python-unit-tests-(back-end)>)
@@ -505,6 +528,7 @@ Making sure that all dependencies are updated and both package.json and package-
 - Rename default branch to main
 - Try to consolidate js files in `src/index_files` into one index.js file.
 - Add better consistency to shared columns across datasets. Eg, lat/long should follow this pattern: [{loc: [lat, -long]}] across all datasets.
+- Look into a monorepo structure for seperating the back end code (python+sql) and front end code (JS, Handlebars, CSS).
 
 ### Completed TODO's
 

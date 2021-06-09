@@ -4,10 +4,9 @@ import { oandmText } from "../modules/dynamicText";
 
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
-export function mainOandM(eventData, lang) {
-  // console.log(eventData);
+export async function mainOandM(eventData, lang) {
   const eventType = "oandm";
-  const field = "Integrity Dig";
+  const field = "Province/Territory";
   const filters = { type: "frequency" };
 
   function addDashboardTitle() {
@@ -60,11 +59,10 @@ export function mainOandM(eventData, lang) {
       numberOfPills: 5,
       langPillTitles: lang.pillTitles,
       fixedPillHeight: 70,
-      showClickText: false,
     });
 
-    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "activated");
-    trendNav.makeBar("Province/Territory", "oandm-region-trend", "deactivated");
+    trendNav.makeBar("Province/Territory", "oandm-region-trend", "activated");
+    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "deactivated");
     trendNav.makeBar("Fish Present", "oandm-fish-trend", "deactivated");
     trendNav.makeBar(
       "In Stream Work Required",

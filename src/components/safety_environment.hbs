@@ -1,34 +1,44 @@
 <h2 id="safety-environment">{{text.safety.header}}</h2>
-<div class="mrgn-tp-lg">
-  <div class="btn-group btn-group-justified" id="safety-env-navigation">
-    <div class="btn-group tab">
-      <button
-        type="button"
-        class="btn btn-default tablinks"
-        onclick="openTab(event, 'condition-compliance')"
-        id="defaultClick"
-      >
-        {{text.safety.complianceBtn}}
-      </button>
-    </div>
-    <div class="btn-group tab">
-      <button
-        type="button"
-        class="btn btn-default tablinks"
-        onclick="openTab(event, 'pipeline-incidents')"
-      >
-        {{text.safety.incidentsBtn}}
-      </button>
-    </div>
-    <div class="btn-group tab">
-      <button
-        type="button"
-        class="btn btn-default tablinks"
-        onclick="openTab(event, 'operations-maintenance')"
-      >
-        Operations &#38; Maintenance Activities
-      </button>
-    </div>
+<div
+  class="btn-group btn-group-justified mrgn-tp-lg"
+  id="safety-env-navigation"
+>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'condition-compliance')"
+      id="defaultClick"
+    >
+      {{text.safety.complianceBtn}}
+    </button>
+  </div>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'pipeline-incidents')"
+    >
+      {{text.safety.incidentsBtn}}
+    </button>
+  </div>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'operations-maintenance')"
+    >
+      Operations &#38; Maintenance Activities
+    </button>
+  </div>
+  <div class="btn-group tab">
+    <button
+      type="button"
+      class="btn btn-default tablinks"
+      onclick="openTab(event, 'remediation')"
+    >
+      Contaminated Sites &#38; Remediation
+    </button>
   </div>
 </div>
 
@@ -41,38 +51,30 @@
       <p>{{text.safety.conditionsp2}}</p>
       <p>{{text.safety.conditionsp3}}</p>
       <p>{{text.safety.conditionsp4}}</p>
-      <div class="row">
-        <div class="col-md-12">
-          <details>
-            <summary>{{text.safety.inProgress}}</summary>
-            <p>{{text.safety.inProgressLst.one}}</p>
-            <ul class="lst-spcd">
-              <li>{{text.safety.inProgressLst.two}}</li>
-              <li>{{text.safety.inProgressLst.three}}</li>
-              <li>{{text.safety.inProgressLst.four}}</li>
-              <li>{{text.safety.inProgressLst.five}}</li>
-              <li>{{text.safety.inProgressLst.six}}</li>
-            </ul>
-          </details>
-          <details>
-            <summary>{{text.safety.closed}}</summary>
-            <p>{{text.safety.closedLst.one}}</p>
-            <ul class="lst-spcd">
-              <li>{{text.safety.closedLst.two}}</li>
-              <li>{{text.safety.closedLst.three}}</li>
-            </ul>
-          </details>
-        </div>
-      </div>
+      <details>
+        <summary>{{text.safety.inProgress}}</summary>
+        <p>{{text.safety.inProgressLst.one}}</p>
+        <ul class="lst-spcd">
+          <li>{{text.safety.inProgressLst.two}}</li>
+          <li>{{text.safety.inProgressLst.three}}</li>
+          <li>{{text.safety.inProgressLst.four}}</li>
+          <li>{{text.safety.inProgressLst.five}}</li>
+          <li>{{text.safety.inProgressLst.six}}</li>
+        </ul>
+      </details>
+      <details>
+        <summary>{{text.safety.closed}}</summary>
+        <p>{{text.safety.closedLst.one}}</p>
+        <ul class="lst-spcd">
+          <li>{{text.safety.closedLst.two}}</li>
+          <li>{{text.safety.closedLst.three}}</li>
+        </ul>
+      </details>
       <div class="plains_disclaimer"></div>
       <div id="conditions-dashboard">
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
-            <h3 id="conditions-map-title"></h3>
-          </div>
-        </div>
         <div class="row mrgn-tp-sm">
-          <div class="col-md-12 col-lg-12">
+          <div class="col-md-12">
+            <h3 id="conditions-map-title"></h3>
             <div
               class="btn-group btn-group-justified"
               id="conditions-nav-group"
@@ -129,43 +131,33 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12 col-lg-12">
+          <div class="col-md-12">
             <div class="container-chart-map" id="container-map"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 col-lg-12">
             <div
               class="alert alert-info profile-hide"
               id="conditions-definitions"
             ></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
             <div
               class="alert alert-info profile-hide"
               id="no-location-info"
             ></div>
+            <details class="mrgn-tp-sm">
+              <summary>{{text.sourceTitle}}</summary>
+              <p>
+                <strong>{{text.dataSourceTitle}} </strong>
+                {{text.safety.conditionsSourceLink}}
+              </p>
+              <p>
+                <strong>{{text.descriptionTitle}} </strong>
+                {{text.safety.conditionsDescription}}
+              </p>
+            </details>
+            <p class="mrgn-tp-lg">{{text.safety.conditionsOpenData}}</p>
           </div>
         </div>
       </div>
-      <div class="row mrgn-tp-sm">
+      <div class="row">
         <div class="col-md-12">
-          <details>
-            <summary>{{text.sourceTitle}}</summary>
-            <p>
-              <strong>{{text.dataSourceTitle}} </strong>
-              {{text.safety.conditionsSourceLink}}
-            </p>
-            <p>
-              <strong>{{text.descriptionTitle}} </strong>
-              {{text.safety.conditionsDescription}}
-            </p>
-          </details>
-        </div>
-        <div class="col-md-12 mrgn-tp-lg">
-          <p>{{text.safety.conditionsOpenData}}</p>
           <p>{{text.safety.conditionsViz}}</p>
         </div>
       </div>
@@ -282,25 +274,24 @@
             {{text.safety.incidentsVolRadio}}</label>
         </form>
       </div>
-      <div class="row">
-        <div class="col-md-12 mrgn-tp-md">
-          <div class="btn-group btn-group-justified" id="incident-view-type">
-            <div class="btn-group btn-incident-view-type">
-              <button type="button" class="btn btn-default active" value="map">
-                {{text.safety.incidentsMapBtn}}
-              </button>
-            </div>
-            <div class="btn-group btn-incident-view-type">
-              <button type="button" class="btn btn-default" value="trends">
-                {{text.safety.incidentsTrendBtn}}
-              </button>
-            </div>
-          </div>
+      <div
+        class="btn-group btn-group-justified mrgn-tp-xl"
+        id="incidents-view-type"
+      >
+        <div class="btn-group">
+          <button type="button" class="btn btn-default active" value="map">
+            {{text.safety.incidentsMapBtn}}
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" value="trends">
+            {{text.safety.incidentsTrendBtn}}
+          </button>
         </div>
       </div>
       <div class="row mrgn-tp-md">
         <div class="col-md-8">
-          <div id="incident-map"></div>
+          <div id="incidents-map"></div>
         </div>
         <div class="col-md-4 event-navigator">
           <div class="event-filter-nav" id="substance-bar"></div>
@@ -309,10 +300,10 @@
           <div class="event-filter-nav mrgn-tp-sm" id="province-bar"></div>
         </div>
       </div>
-      <div id="time-series-section" class="profile-hide">
+      <div id="incidents-time-series-section" class="profile-hide">
         <div class="row">
           <div class="col-md-9">
-            <div id="time-series"></div>
+            <div class="time-series" id="incidents-time-series"></div>
           </div>
           <div class="col-md-3">
             <div class="event-filter-nav" id="substance-trend"></div>
@@ -325,7 +316,7 @@
         <div class="row">
           <div class="col-md-12">
             <div
-              class="alert alert-info"
+              class="alert alert-info disclaimer-style"
               id="trend-definitions-incidents"
             ></div>
           </div>
@@ -338,7 +329,7 @@
         <div class="panel-body incidents-near-me">
           <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
             <div
-              class="col-md-12 cerlabel dashboard-style"
+              class="col-md-12 cerlabel dashboard-style nearby-title"
               id="find-incidents-title"
             >
               {{text.safety.incidentsSelectRange}}
@@ -348,7 +339,7 @@
             <div class="col-md-6 center-stuff">
               <input
                 name="html5shim-1"
-                id="incident-range-slide"
+                id="incidents-range-slide"
                 type="range"
                 min="0"
                 max="200"
@@ -378,25 +369,27 @@
             </div>
           </div>
           <div class="row mrgn-tp-lg">
-            <div class="col-md-12" id="nearby-flag"></div>
+            <div class="col-md-12" id="nearby-incidents-flag"></div>
           </div>
         </div>
       </section>
+      <div class="row">
+        <div class="col-md-12">
+          <details>
+            <summary>{{text.sourceTitle}}</summary>
+            <p>
+              <strong>{{text.dataSourceTitle}} </strong>
+              {{text.safety.incidentsSourceLink}}
+            </p>
+            <p>{{text.safety.incidentsDescription}}</p>
+          </details>
+          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <details>
-        <summary>{{text.sourceTitle}}</summary>
-        <p>
-          <strong>{{text.dataSourceTitle}} </strong>
-          {{text.safety.incidentsSourceLink}}
-        </p>
-        <p>{{text.safety.incidentsDescription}}</p>
-      </details>
-    </div>
-    <div class="col-md-12 mrgn-tp-lg">
-      <p>{{text.safety.incidentsOpenData}}</p>
       <p>{{text.safety.incidentsViz}}</p>
     </div>
   </div>
@@ -405,13 +398,13 @@
   <div class="row">
     <div class="col-md-12">
       <h3>Operations and Maintenance Activities</h3>
-      <p class="small">Section updated May 2021</p>
+      <p class="small">Section updated June 2021</p>
       <p>
         Pipeline operators regularly conduct routine operations and maintenance
-        activities (O&#38;M activities) on CER regualted pipelines. These
+        activities (O&#38;M activities) on CER regulated pipelines. These
         activities can include things such as pipeline repairs, investigative
         &#38; integrity digs, and many other activities designed to protect the
-        safety and environment.
+        environment.
       </p>
       <p>
         O&#38;M activities are evaluated by the CER as part of the original
@@ -426,7 +419,7 @@
       </p>
       <details>
         <summary>
-          What activities are O&#38;M activities (eligible activities)
+          What activities are O&#38;M activities (eligible activities)?
         </summary>
         <p>Operations and maintenance activities include:</p>
         <ol type="1">
@@ -451,9 +444,9 @@
         <summary>What O&#38;M Activities require CER approval?</summary>
         <p>
           Where any of the following restrictions exist, the company must apply
-          to the Board in accordance with the NEB Act and the related
+          to the Commission in accordance with the CER Act and the related
           Regulations and may not carry out the proposed activity until approval
-          from the Board has been obtained. The restrictions apply where:
+          from the Commission has been obtained. The restrictions apply where:
         </p>
         <ol type="1">
           <li>
@@ -500,27 +493,63 @@
           </li>
         </ol>
       </details>
-      <div class="mrgn-tp-md mrgn-bttm-lg" id="oandm-dynamic-text"></div>
+      {{! <details>
+        <summary>
+          Is the public engaged concerning about O&#38;M activities?
+        </summary>
+        <p>The CER requires companies to engage parties whose rights or
+          interests may be affected by O&M, prior to undertaking those
+          activities.</p>
+        <p>"Public consultation" refers to the range of activities a company can
+          undertake to share information with members of the public who may be
+          affected by O&M activities, and to identify and resolve issues or
+          concerns related to these activities. Examples of potentially-affected
+          members of the public include landowners, tenants, residents,
+          Aboriginal communities, government agencies, non-governmental
+          organizations, trappers, guides, outfitters, recreational users, other
+          land or resource users (e.g., forestry, mining), and commercial third
+          parties. The Board recognizes that effective public consultation goes
+          beyond simply informing 9 potentially-affected members of the public,
+          and includes involving them in decisions or plans that may affect
+          their lives. Companies must carry out public consultation activities
+          that are reasonable for the scope and nature of the planned activity,
+          and must justify the extent of public consultation carried out,
+          particularly if no consultation is undertaken</p>
+        <p>When consultation includes Aboriginal communities, companies should
+          consider establishing a consultation protocol with these communities
+          that takes into consideration their rights, interests, and cultural
+          elements.</p>
+      </details> }}
+
       <div id="oandm-dashboard">
+        <div
+          class="alert alert-warning mrgn-tp-md disclaimer-style"
+          id="oandm-reported-disclaimer"
+        >
+          <small>The dashboard and figures presented below only include O&M
+            activities from 2015 onwards that require notification to the CER.
+            Take a look at the O&M Requirements and Guidance Notes for a list of
+            O&M event criteria that require a filing with the Commission.
+          </small>
+        </div>
+        <div class="mrgn-bttm-lg" id="oandm-dynamic-text"></div>
         <div class="dashboard-title" id="oandm-dashboard-title"></div>
         <div class="row">
           <div class="col-md-9">
-            <div id="time-series-oandm"></div>
+            <div class="time-series" id="time-series-oandm"></div>
           </div>
           <div class="col-md-3">
-            <div class="event-filter-nav" id="oandm-dig-trend"></div>
-            <div
-              class="event-filter-nav mrgn-tp-sm"
-              id="oandm-fish-trend"
-            ></div>
+            <div class="event-filter-nav" id="oandm-region-trend"></div>
+            <div class="event-filter-nav mrgn-tp-sm" id="oandm-dig-trend"></div>
             <div
               class="event-filter-nav mrgn-tp-sm"
               id="oandm-instream-trend"
             ></div>
             <div
               class="event-filter-nav mrgn-tp-sm"
-              id="oandm-region-trend"
+              id="oandm-fish-trend"
             ></div>
+
             <div
               class="event-filter-nav mrgn-tp-sm"
               id="oandm-species-trend"
@@ -529,7 +558,10 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="alert alert-info" id="trend-definitions-oandm"></div>
+            <div
+              class="alert alert-info disclaimer-style"
+              id="trend-definitions-oandm"
+            ></div>
             <details>
               <summary>Source and description</summary>
               <p>
@@ -538,10 +570,181 @@
               </p>
               <p><strong>Description:</strong> Coming soon!</p>
             </details>
+            <p class="mrgn-tp-lg">Take a look at the
+              <a
+                href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+                target="_blank"
+              >requirements and guidance notes</a>
+              (O&#38;M Guidelines) for more information on how these events are
+              regulated while promoting safety, security, environmental
+              protection, economic efficiency, and respect for the rights of
+              those that may be affected.</p>
           </div>
         </div>
       </div>
-      <div id="spacer" style="height: 200px"></div> 
+      <div id="spacer" style="height: 100px"></div>
     </div>
   </div>
+</div>
+
+<div id="remediation" class="profile-section tabcontent">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Contaminated Sites and Remediation</h3>
+      <p class="small">Section updated June 2021</p>
+      <p>Regulated companies are required to report contamination to the CER
+        through the online submission of a Notice of Contamination (NOC) as
+        stated in the
+        <a
+          href="/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html"
+        >Remediation Process Guide</a>.</p>
+
+      <p>The progress of remedial activities is captured in the annual update
+        submitted by a company each year for a contaminated site.</p>
+
+      <p>The dashboard below contains a portion of the inforamtion contained in
+        the NOC's and annual updates found in the REGDOCS NOC's. The CER
+        publishes NOCs that have been submitted to the CER since August 2018,
+        and annual updates that have been submitted since 2021</p>
+
+      <p>Third-party contamination is on-site contamination that is shown to not
+        be emanating or migrating from the company’s facilities or company owned
+        or leased lands or Right-of-Way. While third party contamination is not
+        the result of company activities, the CER still requires that this
+        contamination is reported to the CER through the submission of a NOC.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" id="remediation-dashboard">
+      <div class="plains_disclaimer"></div>
+      <div class="mrgn-bttm-lg" id="remediation-dynamic-text"></div>
+      <div
+        class="dashboard-title mrgn-bttm-md"
+        id="remediation-dashboard-title"
+      ></div>
+      <div class="btn-group btn-group-justified" id="remediation-view-type">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default active" value="map">
+            Contaminated Site Map
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" value="trends">
+            Contaminated Site Trends
+          </button>
+        </div>
+      </div>
+      <div class="row mrgn-tp-md">
+        <div class="col-md-8">
+          <div id="remediation-map"></div>
+        </div>
+        <div class="col-md-4 event-navigator">
+          <div class="event-filter-nav" id="rem-water-bar"></div>
+          <div class="event-filter-nav mrgn-tp-sm" id="rem-status-bar"></div>
+          <div class="event-filter-nav mrgn-tp-sm" id="rem-year-bar"></div>
+          <div class="event-filter-nav mrgn-tp-sm" id="rem-province-bar"></div>
+        </div>
+      </div>
+      <div id="remediation-time-series-section" class="profile-hide">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="time-series" id="remediation-time-series"></div>
+          </div>
+          <div class="col-md-3">
+            <div class="event-filter-nav" id="rem-water-trend"></div>
+            <div
+              class="event-filter-nav mrgn-tp-sm"
+              id="rem-status-trend"
+            ></div>
+            <div class="event-filter-nav mrgn-tp-sm" id="rem-use-trend"></div>
+            <div
+              class="event-filter-nav mrgn-tp-sm"
+              id="rem-activity-trend"
+            ></div>
+            <div
+              class="event-filter-nav mrgn-tp-sm"
+              id="rem-province-trend"
+            ></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div
+              class="alert alert-info"
+              id="trend-definitions-remediation"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <section
+        class="panel panel-info mrgn-tp-md"
+        id="nearby-remediation-popup"
+      >
+        <header class="panel-heading">
+          <h5 class="panel-title">Are there any contaminated sites near me?</h5>
+        </header>
+        <div class="panel-body incidents-near-me">
+          <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
+            <div
+              class="col-md-12 cerlabel dashboard-style nearby-title"
+              id="find-remediation-title"
+            >
+              {{text.safety.incidentsSelectRange}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 center-stuff">
+              <input
+                name="html5shim-1"
+                id="remediation-range-slide"
+                type="range"
+                min="0"
+                max="200"
+                step="1"
+                value="100"
+              />
+            </div>
+            <div class="col-md-3 center-stuff">
+              <button
+                type="button"
+                value="100"
+                id="find-remediation-btn"
+                class="btn btn-default col-md-12"
+              >
+                Find sites within 100km
+              </button>
+            </div>
+            <div class="col-md-3 center-stuff">
+              <button
+                type="button"
+                id="reset-remediation-btn"
+                class="btn btn-default col-md-12"
+                disabled="disabled"
+              >
+                {{text.safety.incidentsRefill}}
+              </button>
+            </div>
+          </div>
+          <div class="row mrgn-tp-lg">
+            <div class="col-md-12" id="nearby-remediation-flag"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="row mrgn-tp-md">
+        <div class="col-md-12">
+          <details>
+            <summary>{{text.sourceTitle}}</summary>
+            <p>
+              <strong>{{text.dataSourceTitle}} </strong>
+            </p>
+          </details>
+          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="spacer" style="height: 100px"></div>
 </div>

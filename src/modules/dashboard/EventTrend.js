@@ -61,11 +61,10 @@ export class EventTrend {
     this.legendClickText = legendClickText;
     this.oneToMany = oneToMany;
     this.seriesed = seriesed;
-    this.definitionsOn = definitionsOn;
     this.seriesInfo = seriesInfo;
-    this.colors = lang.EVENTCOLORS;
+    this.colors = lang.seriesInfo;
     this.definitions = definitions;
-    this.oneToMany = oneToMany;
+    this.definitionsOn = definitionsOn;
     this.definitionDiv = `trend-definitions-${eventType}`;
     this.hasDefinition = this.displayDefinitions();
     this.createChart();
@@ -153,20 +152,17 @@ export class EventTrend {
           const series = {};
           const uniqueYears = new Set();
           events.forEach((row) => {
-            uniqueYears.add(row.Year);
+            uniqueYears.add(row.y);
             if (Object.prototype.hasOwnProperty.call(series, row[field])) {
               if (
-                Object.prototype.hasOwnProperty.call(
-                  series[row[field]],
-                  row.Year
-                )
+                Object.prototype.hasOwnProperty.call(series[row[field]], row.y)
               ) {
-                series[row[field]][row.Year] += 1;
+                series[row[field]][row.y] += 1;
               } else {
-                series[row[field]][row.Year] = 1;
+                series[row[field]][row.y] = 1;
               }
             } else {
-              series[row[field]] = { [row.Year]: 1 };
+              series[row[field]] = { [row.y]: 1 };
             }
           });
           return [series, Array.from(uniqueYears)];
@@ -177,7 +173,7 @@ export class EventTrend {
         const uniqueYears = new Set();
         events.forEach((row) => {
           let itemList;
-          uniqueYears.add(row.Year);
+          uniqueYears.add(row.y);
           if (row[field].length > 1) {
             itemList = row[field];
             itemList = itemList.map((value) => value.trim());
@@ -186,21 +182,20 @@ export class EventTrend {
           }
           itemList.forEach((yVal) => {
             if (Object.prototype.hasOwnProperty.call(series, yVal)) {
-              if (
-                Object.prototype.hasOwnProperty.call(series[yVal], row.Year)
-              ) {
-                series[yVal][row.Year] += 1;
+              if (Object.prototype.hasOwnProperty.call(series[yVal], row.y)) {
+                series[yVal][row.y] += 1;
               } else {
-                series[yVal][row.Year] = 1;
+                series[yVal][row.y] = 1;
               }
             } else {
-              series[yVal] = { [row.Year]: 1 };
+              series[yVal] = { [row.y]: 1 };
             }
           });
         });
         return [series, Array.from(uniqueYears)];
       };
     };
+
     const seriesCounter = yField(this.oneToMany[field]);
     const [series, uniqueYears] = seriesCounter(data);
 
@@ -286,24 +281,32 @@ export class EventTrend {
   }
 
   displayDefinitions() {
-    // const definitionDiv = `trend-definitions-${this.eventType}`; // make sure .hbs temaplate has correct id for event type
-    const definitionsPopUp = document.getElementById(this.definitionDiv);
-    if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
-      visibility([this.definitionDiv], "show");
-      // when on incidents, show text on bar click. When on oandm, show text on pill click
-      if (this.definitionsOn === "bar") {
-        // user click on highcharts bar for definition to appear
-        definitionsPopUp.innerHTML = this.lang.barClick(
-          this.pillNameSubstitution()
-        );
-      } else if (this.definitionsOn === "pill") {
-        // user clicks on pill to view info about that pill in definitions box
-        definitionsPopUp.innerHTML = this.definitions[this.field];
+    try {
+      const definitionsPopUp = document.getElementById(this.definitionDiv);
+      if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
+        visibility([this.definitionDiv], "show");
+        // when on incidents, show text on bar click. When on oandm, show text on pill click
+        if (this.definitionsOn === "bar") {
+          // user click on highcharts bar for definition to appear
+          definitionsPopUp.innerHTML = this.lang.barClick(
+            this.pillNameSubstitution()
+          );
+        } else if (this.definitionsOn === "pill") {
+          // user clicks on pill to view info about that pill in definitions box
+          definitionsPopUp.innerHTML = `<small>${
+            this.definitions[this.field]
+          }</small>`;
+        }
+        return true;
       }
-      return true;
+      visibility([this.definitionDiv], "hide");
+      return false;
+    } catch (err) {
+      console.warn(
+        `div ${this.definitionDiv} does not exist to display definition text`
+      );
+      return false;
     }
-    visibility([this.definitionDiv], "hide");
-    return false;
   }
 
   createChart() {
@@ -353,10 +356,10 @@ export class EventTrend {
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.options.id].c;
 
-                const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp`;
-                definitionsPopUp.innerHTML =
-                  key +
-                  currentTrend.definitions[currentTrend.field][this.options.id];
+                const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp;`;
+                definitionsPopUp.innerHTML = `<small>${key} ${
+                  currentTrend.definitions[currentTrend.field][this.options.id]
+                }</small>`;
               }
             },
           },

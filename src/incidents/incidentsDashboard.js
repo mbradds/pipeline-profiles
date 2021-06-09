@@ -1,11 +1,10 @@
-import { visibility } from "../modules/util";
 import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
-  const field = "Substance";
+  const field = "sub"; // Substance
   const filters = { type: "frequency" };
 
   const setTitle = (language, meta) => {
@@ -26,10 +25,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
       langPillTitles,
       data,
     });
-    barNav.makeBar("Substance", "substance-bar", "activated");
-    barNav.makeBar("Status", "status-bar", "deactivated");
-    barNav.makeBar("Year", "year-bar", "deactivated");
-    barNav.makeBar("Province", "province-bar", "deactivated");
+    barNav.makeBar("sub", "substance-bar", "activated");
+    barNav.makeBar("s", "status-bar", "deactivated");
+    barNav.makeBar("y", "year-bar", "deactivated");
+    barNav.makeBar("p", "province-bar", "deactivated");
     barNav.divEvents();
     return barNav;
   };
@@ -40,7 +39,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
       field: mapField,
       filters: mapFilters,
       minRadius: 14000,
-      divId: "incident-map",
+      divId: "incidents-map",
+      toolTipFields: ["vol", "what", "why"],
       lang: mapLang,
     });
     map.addBaseMap();
@@ -51,9 +51,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
   const incidentTimeSeries = (timeField, timeFilters) => {
     const ONETOMANY = {
-      Substance: false,
-      Status: false,
-      Province: false,
+      sub: false,
+      s: false,
+      p: false,
       what: true,
       why: true,
       category: true,
@@ -63,51 +63,54 @@ export async function mainIncidents(incidentData, metaData, lang) {
       field: timeField,
       filters: timeFilters,
       data: incidentData,
-      divId: "time-series",
+      divId: "incidents-time-series",
       legendClickText: { enabled: true, text: lang.dashboard.legendClick },
       oneToMany: ONETOMANY,
       lang: lang.dashboard,
       definitions: lang.definitions,
     });
+
     const trendNav = new EventNavigator({
       plot: timeSeries,
       numberOfPills: 5,
-      langPillTitles: lang.dashboard.pillTitles,
+      langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
       fixedPillHeight: 70,
-      showClickText: false,
     });
 
-    trendNav.makeBar("Substance", "substance-trend", "activated");
-    trendNav.makeBar("Status", "status-trend", "deactivated");
+    trendNav.makeBar("sub", "substance-trend", "activated");
+    trendNav.makeBar("s", "status-trend", "deactivated");
     trendNav.makeBar("what", "what-trend", "deactivated");
     trendNav.makeBar("why", "why-trend", "deactivated");
-    trendNav.makeBar("Province", "province-trend", "deactivated");
+    trendNav.makeBar("p", "province-trend", "deactivated");
     trendNav.divEvents();
 
     return timeSeries;
   };
 
+  /**
+   *
+   * @returns {Object} - {substance, what, why} Parameters that have id's substituted with correct language.
+   */
   function langCommon() {
-    const joinMultiple = (lst, sep = " & ") => lst.join(sep);
+    const joinMultiple = (lst, sep = " & ") => {
+      const langList = lst.join(sep);
+      return langList;
+    };
 
     const substance =
-      lang.dashboard.EVENTCOLORS.Substance[
+      lang.dashboard.seriesInfo.sub[
         metaData.mostCommonSubstance
       ].n.toLowerCase();
 
     let why = metaData.mostCommonWhy.map((e) =>
-      lang.dashboard.EVENTCOLORS.why[e].n.toLowerCase()
+      lang.dashboard.seriesInfo.why[e].n.toLowerCase()
     );
     let what = metaData.mostCommonWhat.map((e) =>
-      lang.dashboard.EVENTCOLORS.what[e].n.toLowerCase()
+      lang.dashboard.seriesInfo.what[e].n.toLowerCase()
     );
 
-    if (why.length > 1) {
-      why = joinMultiple(why);
-    }
-    if (what.length > 1) {
-      what = joinMultiple(what);
-    }
+    why = joinMultiple(why);
+    what = joinMultiple(what);
 
     return { substance, what, why };
   }
@@ -168,95 +171,19 @@ export async function mainIncidents(incidentData, metaData, lang) {
 
         // user selection to show map or trends
         const countBtn = document.getElementById("incident-count-btn");
-        document
-          .getElementById("incident-view-type")
-          .addEventListener("click", (event) => {
-            const evt = event;
-            const allButtons = document.querySelectorAll(
-              `#incident-view-type .btn`
-            );
-            allButtons.forEach((elem) => {
-              const e = elem;
-              e.className = elem.className.replace(" active", "");
-            });
-            evt.target.className += " active";
-            const btnValue = evt.target.value;
-            const dashboardDivs = [
-              "incident-map",
-              "nearby-incidents-popup",
-            ].concat(bars.allDivs);
-            if (btnValue !== "trends") {
-              visibility(dashboardDivs, "show");
-              visibility(["time-series-section"], "hide");
-              volumeBtn.disabled = false;
-              thisMap.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
-              countBtn.click();
-            } else {
-              // if the user selects trends, the option to view volume should be disabled
-              volumeBtn.disabled = true;
-              countBtn.checked = true;
-              visibility(dashboardDivs, "hide");
-              visibility(["time-series-section"], "show");
-            }
-          });
+        thisMap.switchDashboards(bars, countBtn, volumeBtn);
 
         // user selection for finding nearby incidents
-        const slider = document.getElementById("incident-range-slide");
+        thisMap.nearbySlider(
+          lang.dashboard.rangeTitle,
+          lang.dashboard.findBtnTitle
+        );
 
-        slider.addEventListener("change", () => {
-          const currentValue = slider.value;
-          const findIncidentBtn = document.getElementById("find-incidents-btn");
-          const findIncidentTitle = document.getElementById(
-            "find-incidents-title"
-          );
-          findIncidentBtn.innerText = `${lang.dashboard.findBtnTitle} ${currentValue}km`;
-          findIncidentTitle.innerText = `${lang.dashboard.rangeTitle} (${currentValue}km):`;
-          findIncidentBtn.value = currentValue;
-        });
-
-        // user selects a range to find nearby incidents
-        document
-          .getElementById("find-incidents-btn")
-          .addEventListener("click", () => {
-            const resetBtn = document.getElementById("reset-incidents-btn");
-            const range = document.getElementById("find-incidents-btn").value;
-            if (!thisMap.user.latitude && !thisMap.user.longitude) {
-              const loadDisclaimer = setTimeout(() => {
-                thisMap.addMapDisclaimer("location");
-              }, 200);
-              thisMap
-                .waitOnUser()
-                .then(() => {
-                  thisMap.nearbyIncidents(range); // .then((userAdded))
-                  clearTimeout(loadDisclaimer);
-                  thisMap.removeMapDisclaimer("location");
-                  resetBtn.disabled = false;
-                  resetBtn.className =
-                    "btn btn-primary col-md-12 notice-me-btn";
-                })
-                .catch(() => {
-                  const incidentFlag = document.getElementById("nearby-flag"); // .catch((error))
-                  incidentFlag.innerHTML = `<section class="alert alert-warning">${lang.dashboard.locationError}</section>`;
-                  clearTimeout(loadDisclaimer);
-                  thisMap.removeMapDisclaimer("location");
-                });
-            } else {
-              thisMap.nearbyIncidents(range);
-              resetBtn.disabled = false;
-              resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
-            }
-          });
+        // user wants to find nearby incidents
+        thisMap.nearbyListener(lang.dashboard.locationError);
 
         // reset map after user has selected a range
-        document
-          .getElementById("reset-incidents-btn")
-          .addEventListener("click", () => {
-            thisMap.resetMap();
-            const resetBtn = document.getElementById("reset-incidents-btn");
-            resetBtn.disabled = true;
-            resetBtn.className = "btn btn-default col-md-12";
-            document.getElementById("nearby-flag").innerHTML = ``;
-          });
+        thisMap.resetCirclesListener();
       } catch (err) {
         console.log(err);
       }

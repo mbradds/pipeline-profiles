@@ -66,6 +66,13 @@ def conditions_on_map(df, shp, folder_name, lang):
             shp[numericCol] = shp[numericCol].fillna(0)
 
     df = df.fillna(0)
+    # df = df.rename(columns={"Flat Province": "p",
+    #                         "In Progress": "i",
+    #                         "Closed": "c"})
+    # further minify the file
+    # df['v'] = [[i, closed] for i, closed in zip(df['In Progress'], df['Closed'])]
+    # del df['In Progress']
+    # del df['Closed']
     return shp, df
 
 

@@ -13,7 +13,7 @@
 import { listOrParagraph } from "./util";
 
 const dynamicValue = (val) =>
-  `<i class="bg-primary" style="font-style: normal"><strong>&nbsp${val}&nbsp</strong></i>`;
+  `<i class="bg-primary" style="font-style: normal"><strong>&nbsp;${val}&nbsp;</strong></i>`;
 
 const postWord = (val, type) => {
   let wrd = "";
@@ -93,14 +93,14 @@ const buildFiveText = (ft, tt, lang) => {
   if (pctChange) {
     if (lang === "en") {
       const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
-      return `<p style="margin-bottom: 0px">Throughputs in ${qtr} are ${changeText(
+      return `<p>Throughputs in ${qtr} are ${changeText(
         pctChange,
         lang,
         false
       )} the five-year average.</p>`;
     }
     const qtr = `${quartersFr[tt.toDate[1]]} de ${tt.toDate[0]}`;
-    return `<p style="margin-bottom: 0px">Les débits au ${qtr} sont ${changeText(
+    return `<p>Les débits au ${qtr} sont ${changeText(
       pctChange,
       lang,
       false
@@ -325,28 +325,33 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
+// function lengthText(number, numberFormat) {
+//   if (number > 1000) {
+//     return `${numberFormat(number / 1000, 1)} km`;
+//   }
+//   return `${numberFormat(number, 0)} m`;
+// }
+
 export function oandmText(meta, lang) {
-  // console.log(meta);
-  const firstParagraph = `<p>There have been a total of ${dynamicValue(
+  const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
-  }. As part of these events, there have been ${dynamicValue(
+  }. If the activity involves an integrity dig, one or more digs are conducted to expose an area of pipeline. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
-  )} integrity digs, and approximately ${dynamicValue(
-    `${lang.numberFormat(meta.lengthReplaced, 0)} km`
-  )} of pipeline replaced. On average, O&M activities take approximately ${dynamicValue(
-    `${meta.avgDuration} days`
-  )} from start to finish on this system.<p>`;
+  )} individual integrity digs as part of the reported O&M activities.<p>`;
 
-  const secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. On this system, O&M events have occurred near ${dynamicValue(
-    meta.nearby.join(", ")
-  )}.</p>`;
+  let secondParagraph = "";
+  if (meta.nearby) {
+    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year, O&M events have occurred most often near ${dynamicValue(
+      meta.nearby.join(", ")
+    )} among others.</p>`;
+  }
 
-  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require a significant amount of land area outside of company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require additional new permanent or temporary land outside company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
     `${meta.landRequired} hectares`
   )}`;
-  const iceRinks = `, an area of land equal to ${dynamicValue(
+  const iceRinks = ` of new land, an area equal to ${dynamicValue(
     meta.iceRinks
   )} ice hockey rinks.<p>`;
   if (meta.landRequired > 0) {
@@ -357,9 +362,34 @@ export function oandmText(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities with a schedule 1 species at risk present at the activity site. When this happens, the company must take extra precautions, listed here.</p>`;
+  )} O&M activities with a Schedule 1 species at risk present at the activity site. When this happens, the company may be required to meet additional regulatory obligations outside of the CER Act, such as the Migratory Birds Convention Act and the Species at Risk Act.</p>`;
 
   const totalText =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
   document.getElementById("oandm-dynamic-text").innerHTML = totalText;
+}
+
+export function remediationText(meta, lang) {
+  const firstParagraph = `<p>${
+    meta.company
+  } has reported a total of ${dynamicValue(
+    lang.numberFormat(meta.new + meta.old, 0)
+  )} contaminated sites. The CER publishes NOCs that have been submitted to the CER since August 2018, and annual updates that have been submitted since 2021. There have been ${dynamicValue(
+    meta.new
+  )} contaiminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
+
+  let secondParagraph = `<p>Where applicable, an estimate of the contaminated soil volume is reported to the CER. Since August 2018, ${dynamicValue(
+    lang.numberFormat(meta.soil.total, 0)
+  )} cubic metres of soil have been contaminated`;
+
+  if (meta.soil.total > 0 && meta.soil.pools > 0) {
+    secondParagraph += `, a volume equivalent to approximately ${dynamicValue(
+      `${meta.soil.pools} olympic sized swimming pools`
+    )}.</p>`;
+  } else {
+    secondParagraph += `.</p>`;
+  }
+
+  const totalText = firstParagraph + secondParagraph;
+  document.getElementById("remediation-dynamic-text").innerHTML = totalText;
 }

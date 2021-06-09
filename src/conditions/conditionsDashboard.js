@@ -114,7 +114,7 @@ export async function mainConditions(
       if (dataSet === "projects") {
         validMetaData = function (row) {
           return {
-            name: row.name,
+            name: row.n,
             id: row.id,
             Regdocs: row.v[2],
             value: row.v[colSelector],
@@ -246,12 +246,12 @@ export async function mainConditions(
       lang.popUp.lastUpdated
     }</td><td style="padding:0;font-weight: bold;color:${
       cerPalette["Cool Grey"]
-    };">&nbsp${lang.dateFormat(updateDate)}</li></td></tr>`;
-    text += `<tr><td><li> ${
-      params.colNames[params.conditionsFilter.column]
-    } Conditions:</td><td style="padding:0;font-weight: bold;color:${
+    };">&nbsp;${lang.dateFormat(updateDate)}</li></td></tr>`;
+    text += `<tr><td><li> ${params.colNames[params.conditionsFilter.column]} ${
+      lang.conditions
+    }${lang.popUpTotal}</td><td style="padding:0;font-weight: bold;color:${
       cerPalette["Cool Grey"]
-    };">&nbsp${e.value}</li></td></tr></table><br>`;
+    };">&nbsp;${e.value}</li></td></tr></table><br>`;
     text += `${generateTable(metaSelect, params, e.id, "projects")}<br>`;
     text += `${generateTable(
       metaSelect,

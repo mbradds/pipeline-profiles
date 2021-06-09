@@ -65,6 +65,14 @@ const units = {
 const legendClick =
   "Cliquez sur un élément de légende pour le supprimer du graphique";
 
+const userPopUp =
+  "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer survenus ailleurs.";
+const locationError =
+  "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.";
+
+const exploreOther =
+  "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -279,11 +287,12 @@ export const frenchDashboard = {
     companyToSystem,
     colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",
+    popUpTotal: " :",
     noLocation: {
       title:
         "Certaines conditions ne sont pas liées à un emplacement géographique.",
       summary: (companyName) =>
-        `Aucun résumé de l’emplacement géographique de ${companyName}:`,
+        `Aucun résumé de l’emplacement géographique de ${companyName} :`,
     },
     title: {
       noLocation: (companyName) =>
@@ -293,9 +302,9 @@ export const frenchDashboard = {
     },
     table: {
       projectsTitle: (column) =>
-        `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*):`,
+        `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*) :`,
       themesTitle: (column) =>
-        `${column} Thèmes de condition (cliquer pour voir la définition du thème):`,
+        `${column} Thèmes de condition (cliquer pour voir la définition du thème) :`,
       regdocsDefinition:
         "*REGDOCS est une base de données sur les activités de réglementation et opérations réglementaires menées par la Régie.",
     },
@@ -314,9 +323,9 @@ export const frenchDashboard = {
         "Certaines conditions s’appliquent à plusieurs régions. Certaines conditions peuvent être comptées en double d’une région à l’autre, ce qui donne un nombre plus élevé de conditions que les totaux indiqués dans les boutons ci-dessus.",
     },
     tooltip: {
-      text: "Cliquer sur une région pour consulter le sommaire.",
+      text: "Cliquer sur une région pour consulter le sommaire",
     },
-    themeDefinitionsTitle: "Définitions du thème:",
+    themeDefinitionsTitle: "Définitions du thème :",
     themeDefinitions: {
       "No theme specified":
         "La Régie n’a pas attribué de thème à certaines conditions.",
@@ -361,7 +370,7 @@ export const frenchDashboard = {
     title: (systemName) =>
       `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`,
     definitions: {
-      Status: {
+      s: {
         c: "La Régie a terminé l’examen de l’incident et a clos le dossier.",
         s: "La société a fourni tous les renseignements exigés et la Régie examine ce qui s’est produit.",
         is: "La société a informé la Régie qu’un incident était survenu et a fourni les renseignements préliminaires sur celui-ci. Une enquête est en cours.",
@@ -390,16 +399,20 @@ export const frenchDashboard = {
       },
     },
     dashboard: {
-      what: "Incident",
-      why: "Cause",
-      estRelease: "Estimation du volume",
+      numberFormat,
+      legendClick,
+      userPopUp,
+      locationError,
+      exploreOther,
       cf: "pieds cubes",
       bbl: "b",
-      numberFormat,
       pillTitles: {
         titles: {
-          Status: "Situation Régie",
-          Year: "Année",
+          vol: "Estimation du volume",
+          sub: "Substance",
+          p: "Province",
+          s: "Situation Régie",
+          y: "Année",
           what: "Incident",
           why: "Pourquoi",
         },
@@ -410,27 +423,21 @@ export const frenchDashboard = {
       locationDisclaimer: "En attente de votre position...",
       countDisclaimer: (eventType, field) =>
         `Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`,
-      userPopUp:
-        "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer les incidents survenus ailleurs.",
-      locationError:
-        "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.",
       nearbyHeader: (numCircles, range) =>
         `Il y a ${numCircles} incidents dans un rayon de ${range} km`,
       gasRelease: "Estimation du volume de gaz rejeté:",
       liquidRelease: "Estimation du volume de liquide déversé:",
       otherRelease: "Estimation du rejet (divers):",
-      exploreOther:
-        "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.",
       noNearby: (eventType) =>
         `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
       barClick: (field) =>
         `<p>Cliquer sur une bande pour consulter la définition de ${field}</p>`,
-      legendClick,
+
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les incidents dans un rayon de",
       trendYTitle: "Nombre d’incidents",
-      EVENTCOLORS: {
-        Substance: {
+      seriesInfo: {
+        sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
           ngsweet: { c: cerPalette.Flame, n: "Gaz Naturel - non sulfureux" },
           ngsour: { c: cerPalette["Dim Grey"], n: "Gaz naturel - sulfureux" },
@@ -445,12 +452,12 @@ export const frenchDashboard = {
           gas: { c: cerPalette.Flame, n: "Essence" },
           Other: { c: cerPalette.Aubergine, n: "Autre" },
         },
-        Status: {
+        s: {
           is: { c: cerPalette.Flame, n: "Initialement soumis" },
           c: { c: cerPalette["Cool Grey"], n: "Fermé" },
           s: { c: cerPalette.Ocean, n: "Soumis" },
         },
-        Province: regionInfo,
+        p: regionInfo,
         why: {
           sp: { c: cerPalette.Flame, n: "Normes et procédures" },
           te: { c: cerPalette.Forest, n: "Outils et équipement" },
@@ -514,7 +521,7 @@ export const frenchDashboard = {
     fiveYrTitle: (pointText) =>
       `${pointText} - période de cinq ans et fourchette`,
     trafficTitle: (pointText, dirText) => {
-      if (dirText[0] === false) {
+      if (dirText[0] === false || dirText[0] !== "") {
         return `${pointText} - transport mensuel`;
       }
       return `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(
@@ -591,6 +598,78 @@ export const frenchDashboard = {
       "In Stream Work Required": yesNoInfo,
       "Species At Risk Present": yesNoInfo,
       "Province/Territory": regionInfo,
+    },
+  },
+  remediation: {
+    numberFormat,
+    dateFormat,
+    companyToSystem,
+    title: (company, cutoffDate) =>
+      `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
+    dashboard: {
+      userPopUp,
+      numberFormat,
+      exploreOther,
+      locationError,
+      trendYTitle: "Number of Contaminated Sites",
+      cf: "cubic feet",
+      bbl: "bbl",
+      volumeDisclaimer: undefined,
+      locationDisclaimer: undefined,
+      rangeTitle: "Sélectionner une plage",
+      findBtnTitle: "Rechercher les sites dans un rayon de",
+      nearbyHeader: (numCircles, range) =>
+        `There are ${numCircles} contaminated sites within ${range} km`,
+      noNearby: () =>
+        `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
+      pillTitles: {
+        titles: {
+          vol: "Initial estimate of contaminated soil",
+          w: "Within 30M of water-body",
+          use: "Applicable Land Use",
+          p: "Province",
+          a: "Activity At Time",
+          c: "Contaminants at the Site",
+          s: "Site Status",
+          y: "Year",
+        },
+        click: "click to view",
+      },
+      seriesInfo: {
+        w: {
+          true: { c: cerPalette.Sun, n: "True" },
+          false: { c: cerPalette["Night Sky"], n: "False" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        s: {
+          prm: { c: cerPalette.Forest, n: "Post-remediation monitoring" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          rm: { c: cerPalette.Ocean, n: "Risk managed" },
+          sa: { c: cerPalette.Aubergine, n: "Site assessment" },
+          fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
+          or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+          m: { c: cerPalette.Sun, n: "Monitored" },
+        },
+        p: regionInfo, // Province
+        use: {
+          pa: { c: cerPalette.Forest, n: "Protected area" },
+          ndl: { c: cerPalette.Flame, n: "Non-developed land" },
+          al: { c: cerPalette.Ocean, n: "Agricultural land" },
+          dlr: {
+            c: cerPalette.Aubergine,
+            n: "Developed land - residential",
+          },
+          dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        a: {
+          m: { c: cerPalette["Night Sky"], n: "Maintenance" },
+          o: { c: cerPalette.Flame, n: "Operation" },
+          c: { c: cerPalette.Ocean, n: "Construction" },
+          a: { c: cerPalette.Aubergine, n: "Abandonment" },
+          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+        },
+      },
     },
   },
 };

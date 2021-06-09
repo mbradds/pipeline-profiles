@@ -4,6 +4,7 @@ import incidentData from "../../../incidents/company_data/PKMCochinULC.json";
 import trafficData from "../../../traffic/company_data/PKMCochinULC.json";
 import apportionData from "../../../apportionment/company_data/PKMCochinULC.json";
 import oandmData from "../../../oandm/company_data/PKMCochinULC.json";
+import remediationData from "../../../remediation/company_data/PKMCochinULC.json";
 import { loadAllCharts } from "../../loadDashboards_en";
 
 const data = {
@@ -13,6 +14,7 @@ const data = {
   trafficData,
   apportionData,
   oandmData,
+  remediationData,
 };
 
 loadAllCharts(data);

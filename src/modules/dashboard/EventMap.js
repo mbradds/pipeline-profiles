@@ -7,30 +7,20 @@
  * - Switch between data "columns" when paired with an EventNavigator.
  * - Reset zoom.
  * - Dynamic tooltip displaying the currently selected, or default data column value.
+ * - Optional REDOCS search attached to circle click event.
  */
 
-import { cerPalette, conversions, leafletBaseMap } from "../util";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import { Icon } from "leaflet";
+import { cerPalette, conversions, leafletBaseMap, visibility } from "../util";
 
 const haversine = require("haversine");
 
-const substanceState = {
-  pro: "gas",
-  ngsweet: "gas",
-  fgas: "liquid",
-  loil: "liquid",
-  cosweet: "liquid",
-  cosour: "liquid",
-  sco: "liquid",
-  diesel: "liquid",
-  gas: "liquid",
-  ngl: "gas",
-  co: "liquid",
-  Other: "other",
-  Autre: "other",
-};
-
 /**
  * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.
+ * TODO:
+ *  - Look into a class variable that contains some of the common translations. Pass "en" or "fr" to to constructor to set up
+ *    some of the language strings in a more re-usable/transparent way.
  */
 export class EventMap {
   /**
@@ -42,8 +32,12 @@ export class EventMap {
    * @param {(number|undefined)} [constr.minRadius=undefined] - Minimum radius for leaflet map circles.
    * @param {string} [constr.divId="map"] - HTML div id where map will be loaded.
    * @param {number[]} [constr.initZoomTo=[55, -119]] - Set to the middle of Canada, just North of Winnipeg.
+   * @param {string[]} [constr.toolTipFields=[]] - Add the columns that should appear in the tooltip, extra to the selected column.
    * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
+   * @param {boolean} constr.regdocsClick - Adds on click event to circle + tooltip instructions for opening regdocs event info in new tab. Searches regdocs based on dataset "id" column.
+   *
    */
+
   constructor({
     eventType,
     field = undefined,
@@ -51,18 +45,21 @@ export class EventMap {
     minRadius = undefined,
     divId = "map",
     initZoomTo = [55, -119],
+    toolTipFields = [],
     lang = {},
+    regdocsClick = false,
   }) {
     this.eventType = eventType;
     this.filters = filters;
     this.minRadius = minRadius;
-    this.colors = lang.EVENTCOLORS;
-    this.substanceState = substanceState;
+    this.colors = lang.seriesInfo;
     this.field = field;
     this.initZoomTo = initZoomTo;
     this.user = { latitude: undefined, longitude: undefined };
     this.divId = divId;
+    this.toolTipFields = toolTipFields;
     this.lang = lang;
+    this.regdocsClick = regdocsClick;
     this.mapDisclaimer = undefined;
     this.findPlotHeight();
   }
@@ -90,40 +87,76 @@ export class EventMap {
     });
   }
 
-  getState(substance) {
+  static getState(substance) {
+    if (!substance) {
+      return "other";
+    }
     const shortSubstance = substance.split("-")[0].trim();
-    return this.substanceState[shortSubstance];
+    const state = {
+      pro: "gas",
+      ngsweet: "gas",
+      fgas: "liquid",
+      loil: "liquid",
+      cosweet: "liquid",
+      cosour: "liquid",
+      sco: "liquid",
+      diesel: "liquid",
+      gas: "liquid",
+      ngl: "gas",
+      co: "liquid",
+      Other: "other",
+      Autre: "other",
+    };
+    return state[shortSubstance];
   }
 
+  /**
+   * Used in the map tooltip, and the nearby panel to differentiate liquid vs gas units.
+   * @param {number} m3 - Volumes come in m3 by default.
+   * @param {string} substance - Short substance id defined in EventMap.getState(), and this.processEventsData(data)
+   * @param {boolean} gas - Overrides state definition.
+   * @param {boolean} liquid - Overrides state definition.
+   * @param {boolean} other - Overrides state definition.
+   * @returns {string} - Formatted En/Fr string displaying the imperial volumn, units and metric.
+   */
   volumeText(m3, substance, gas = false, liquid = false, other = false) {
-    const convLiquid = conversions["m3 to bbl"];
-    const convGas = conversions["m3 to cf"];
-    let state = "other";
-    if (!gas && !liquid && !other) {
-      state = this.getState(substance);
-    } else if (!gas && liquid && !other) {
-      state = "liquid";
-    } else if (gas && !liquid && !other) {
-      state = "gas";
-    }
-
-    if (state !== "other") {
-      let imperial;
-      if (state === "gas") {
-        imperial = `${this.lang.numberFormat(m3 * convGas, 2)} ${this.lang.cf}`;
-      } else {
-        imperial = `${this.lang.numberFormat(m3 * convLiquid, 2)} ${
-          this.lang.cf
-        }`;
+    if (m3 && m3 >= 0) {
+      const convLiquid = conversions["m3 to bbl"];
+      const convGas = conversions["m3 to cf"];
+      let state = "other";
+      if (!gas && !liquid && !other) {
+        state = EventMap.getState(substance);
+      } else if (!gas && liquid && !other) {
+        state = "liquid";
+      } else if (gas && !liquid && !other) {
+        state = "gas";
       }
 
-      return `${imperial} (${Highcharts.numberFormat(
-        m3,
-        2,
-        this.lang.decimal
-      )} m3)`;
+      let digits = 2;
+      if (m3 > 50) {
+        digits = 0;
+      } else if (m3 < 5) {
+        digits = 3;
+      }
+
+      if (state !== "other") {
+        let imperial;
+        if (state === "gas") {
+          imperial = `${this.lang.numberFormat(m3 * convGas, digits)} ${
+            this.lang.cf
+          }`;
+        } else {
+          imperial = `${this.lang.numberFormat(m3 * convLiquid, digits)} ${
+            this.lang.bbl
+          }`;
+        }
+
+        return `${imperial} (${Highcharts.numberFormat(m3, digits)} m3)`;
+      }
+      return `${Highcharts.numberFormat(m3, digits)} m3`;
     }
-    return `${Highcharts.numberFormat(m3, 2, this.lang.decimal)} m3`;
+
+    return ``;
   }
 
   /**
@@ -178,53 +211,95 @@ export class EventMap {
     }
   }
 
-  toolTip(incidentParams, fillColor) {
+  toolTip(eventParams, fillColor) {
     const formatCommaList = (text, names) => {
-      if (text.length > 1) {
+      if (typeof text !== "string" && text.length > 1) {
         const itemList = text;
         let brokenText = ``;
         for (let i = 0; i < itemList.length; i += 1) {
-          brokenText += `&nbsp- ${names[itemList[i]].n}<br>`;
+          if (
+            names &&
+            Object.prototype.hasOwnProperty.call(names, itemList[i])
+          ) {
+            brokenText += `&nbsp;- ${names[itemList[i]].n}<br>`;
+          } else {
+            brokenText += `&nbsp;- ${itemList[i]}<br>`;
+          }
         }
         return brokenText;
       }
-      return `&nbsp${names[text].n}`;
+      if (names && Object.prototype.hasOwnProperty.call(names, text)) {
+        return `&nbsp;${names[text].n}`;
+      }
+      return `&nbsp;${text}`;
     };
 
-    const bubbleName = this.colors[this.field][incidentParams[this.field]].n;
-    let toolTipText = `<div id="incident-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${incidentParams.id}</strong></p>`;
+    let rowName = "";
+    if (
+      Object.prototype.hasOwnProperty.call(
+        this.lang.pillTitles.titles,
+        this.field
+      )
+    ) {
+      rowName = this.lang.pillTitles.titles[this.field];
+    } else {
+      rowName = this.field;
+    }
+
+    const bubbleName = this.colors[this.field][eventParams[this.field]].n;
+    let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${eventParams.id}</strong></p>`;
     toolTipText += `<table>`;
-    toolTipText += `<tr><td>${this.field}:</td><td style="color:${fillColor}">&nbsp<strong>${bubbleName}</strong></td></tr>`;
-    toolTipText += `<tr><td>${
-      this.lang.estRelease
-    }</td><td>&nbsp<strong>${this.volumeText(
-      incidentParams.vol,
-      incidentParams.Substance
-    )}</strong></td></tr>`;
-    toolTipText += `<tr><td>${
-      this.lang.what
-    }?</td><td><strong>${formatCommaList(
-      incidentParams.what,
-      this.colors.what
-    )}</strong></td></tr>`;
-    toolTipText += `<tr><td>${this.lang.why}?</td><td><strong>${formatCommaList(
-      incidentParams.why,
-      this.colors.why
-    )}</strong></td></tr>`;
-    toolTipText += `</table></div>`;
+    toolTipText += `<tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
+
+    this.toolTipFields.forEach((toolCol) => {
+      if (toolCol === "vol") {
+        if (eventParams.vol && eventParams.vol >= 0) {
+          toolTipText += `<tr><td>${
+            this.lang.pillTitles.titles.vol
+          }</td><td>&nbsp;<strong>${this.volumeText(
+            eventParams.vol,
+            eventParams.sub
+          )}</strong></td></tr>`;
+        }
+      } else if (eventParams[toolCol]) {
+        toolTipText += `<tr><td>${
+          this.lang.pillTitles.titles[toolCol]
+        }</td><td><strong>${formatCommaList(
+          eventParams[toolCol],
+          this.colors[toolCol]
+        )}</strong></td></tr>`;
+      }
+    });
+
+    toolTipText += `</table>`;
+
+    if (this.regdocsClick) {
+      toolTipText += `<i class="center-footer">Click circle to open REGDOCS search for ${eventParams.id}</i>`;
+    }
+
     return toolTipText;
   }
 
-  addCircle(x, y, color, fillColor, r, incidentParams = {}) {
-    return L.circle([x, y], {
+  addCircle(x, y, color, fillColor, r, eventParams = {}) {
+    const circle = L.circle([x, y], {
       color,
       fillColor,
       fillOpacity: 0.7,
       radius: this.minRadius,
       volRadius: r,
       weight: 1,
-      incidentParams,
+      eventParams,
     });
+
+    if (this.regdocsClick) {
+      circle.on("click", (e) => {
+        const idForSearch = e.target.options.eventParams.id;
+        const url = `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${idForSearch}`;
+        window.open(url);
+      });
+    }
+
+    return circle;
   }
 
   /**
@@ -237,8 +312,8 @@ export class EventMap {
         try {
           layer.setRadius(layer.options.volRadius);
         } catch (err) {
-          layer.setRadius(0);
-          console.log("Error setting new radius");
+          layer.setRadius(this.minRadius);
+          console.warn("Error setting new radius");
         }
       });
     } else {
@@ -283,8 +358,8 @@ export class EventMap {
    *  id: string,
    *  Variable1: string,
    *  VariableN: string,
-   *  Year: number
-   *  loc: [number, number]
+   *  y: number //Year
+   *  loc: [lat, -long]
    * }]
    */
   processEventsData(data) {
@@ -312,31 +387,40 @@ export class EventMap {
       "#cdd9e1",
       "#e6ecf0",
       "#ffffff",
+      "#ffffff",
+      "#ffffff",
     ];
     const volumes = data.map((row) => row.vol);
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     const maxRad = radiusCalc(maxVol);
-    const allCircles = data.map((row) => {
-      years.push(row.Year);
+    let allCircles = data.map((row) => {
+      years.push(row.y);
       let radiusVol = (row.vol - minVol) / (maxVol - minVol);
-
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
-      return this.addCircle(
-        row.loc[0],
-        row.loc[1],
-        cerPalette["Cool Grey"],
-        this.applyColor(row[this.field], this.field), // fillColor
-        radiusVol,
-        row
-      );
+      if (row.loc[0] && row.loc[0] > 0) {
+        return this.addCircle(
+          row.loc[0],
+          row.loc[1],
+          cerPalette["Cool Grey"],
+          this.applyColor(row[this.field], this.field), // fillColor
+          radiusVol,
+          row
+        );
+      }
+      return false;
     });
+    allCircles = allCircles.filter((circle) => circle !== false);
     years = years.filter((v, i, a) => a.indexOf(v) === i); // get unique years
     years = years.sort((a, b) => b - a);
     const yearColors = {};
     years.forEach((yr, i) => {
-      yearColors[yr] = { c: colors[i], n: yr };
+      if (yr < 0) {
+        yearColors[yr] = { c: cerPalette["Dim Grey"], n: "n/a" };
+      } else {
+        yearColors[yr] = { c: colors[i], n: yr };
+      }
     });
-    this.colors.Year = yearColors;
+    this.colors.y = yearColors;
     this.circles = L.featureGroup(allCircles).addTo(this.map);
     const currentDashboard = this;
     this.map.on("zoom", () => {
@@ -354,6 +438,11 @@ export class EventMap {
         }) /* This will return map so you can do chaining */
         .on("locationfound", (e) => {
           const marker = L.marker([e.latitude, e.longitude], {
+            icon: new Icon({
+              iconUrl: markerIconPng,
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+            }),
             draggable: true,
           }).bindPopup(currentDashboard.lang.userPopUp);
           marker.on("drag", (d) => {
@@ -385,7 +474,9 @@ export class EventMap {
   }
 
   /**
-   *
+   * Finds all nearby events within a given range.
+   * Requires the following HTML div is's:
+   *  - nearby-this.eventType-flag (displays the analysis text number of nearby incidents, or location error message)
    * @param {number} range - User input range in kilometers (from range slider) to compare with distance between user and all events.
    */
   nearbyIncidents(range) {
@@ -405,7 +496,6 @@ export class EventMap {
         layer.setStyle({ fillOpacity: 0.7 });
       }
     });
-    const incidentFlag = document.getElementById("nearby-flag");
 
     const userDummy = L.circle([this.user.latitude, this.user.longitude], {
       color: undefined,
@@ -416,51 +506,73 @@ export class EventMap {
     });
     userDummy.addTo(this.map);
 
+    const incidentFlag = document.getElementById(
+      `nearby-${this.eventType}-flag`
+    );
+
     if (nearbyCircles.length > 0) {
       this.nearby = L.featureGroup(nearbyCircles);
       const bounds = this.nearby.getBounds();
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
-      let [nearbyGas, nearbyLiquid, nearbyOther] = [0, 0, 0];
-      // const currentDashboard = this;
+      let [nearbyGas, nearbyLiquid, nearbyOther, nearbyAll] = [0, 0, 0, 0];
       this.nearby.eachLayer((layer) => {
-        const layerState = currentDashboard.getState(
-          layer.options.incidentParams.Substance
-        );
+        const layerState = EventMap.getState(layer.options.eventParams.sub);
         if (layerState === "gas") {
-          nearbyGas += layer.options.incidentParams.vol;
+          nearbyGas += layer.options.eventParams.vol;
         } else if (layerState === "liquid") {
-          nearbyLiquid += layer.options.incidentParams.vol;
+          nearbyLiquid += layer.options.eventParams.vol;
         } else {
-          nearbyOther += layer.options.incidentParams.vol;
+          nearbyOther += layer.options.eventParams.vol;
         }
+        nearbyAll += layer.options.eventParams.vol;
       });
       let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
         nearbyCircles.length,
         range
-      )}</h4><table>`;
-      nearbyText += `<tr><td>
-          ${this.lang.gasRelease}&nbsp&nbsp</td><td>${this.volumeText(
-        nearbyGas,
-        undefined,
-        true
-      )}`;
-      nearbyText += `<tr><td>
-        ${this.lang.liquidRelease}&nbsp&nbsp</td><td>${this.volumeText(
-        nearbyLiquid,
-        undefined,
-        false,
-        true
-      )}`;
-      nearbyText += `<tr><td>
-        ${this.lang.otherRelease}&nbsp&nbsp</td><td>${this.volumeText(
-        nearbyOther,
-        undefined,
-        false,
-        true
-      )}`;
-      nearbyText += `</table><br><small>${this.lang.exploreOther}</small>
+      )}</h4><table class="mrgn-bttm-sm">`;
+
+      if (this.eventType === "incidents") {
+        [
+          [this.lang.gasRelease, nearbyGas, "gas"],
+          [this.lang.liquidRelease, nearbyLiquid, "liquid"],
+          [this.lang.otherRelease, nearbyOther, "other"],
+        ].forEach((release) => {
+          if (release[1] > 0) {
+            let [g, l, o] = [false, false, false];
+            if (release[2] === "gas") {
+              g = true;
+              l = false;
+              o = false;
+            } else if (release[2] === "liquid") {
+              g = false;
+              l = true;
+              o = false;
+            } else {
+              g = false;
+              l = false;
+              o = true;
+            }
+            nearbyText += `<tr><td>
+          ${release[0]}&nbsp;&nbsp;</td><td>${this.volumeText(
+              release[1],
+              undefined,
+              g,
+              l,
+              o
+            )}</td>`;
+          }
+        });
+      } else if (this.eventType === "remediation") {
+        nearbyText += `<tr><td>
+        Contaminated soil nearby:&nbsp;&nbsp;</td><td>${this.lang.numberFormat(
+          nearbyAll,
+          0
+        )} m3</td>`;
+      }
+
+      nearbyText += `</table><small>${this.lang.exploreOther}</small>
           </section>`;
       incidentFlag.innerHTML = nearbyText;
     } else {
@@ -495,12 +607,12 @@ export class EventMap {
     this.field = newField;
     const currentDashboard = this;
     this.circles.eachLayer((layer) => {
-      const newFill = newColors[layer.options.incidentParams[newField]].c;
+      const newFill = newColors[layer.options.eventParams[newField]].c;
       layer.setStyle({
         fillColor: newFill,
       });
       layer.bindTooltip(
-        currentDashboard.toolTip(layer.options.incidentParams, newFill)
+        currentDashboard.toolTip(layer.options.eventParams, newFill)
       );
     });
   }
@@ -525,5 +637,141 @@ export class EventMap {
         }
         currentDashboard.reZoom();
       });
+  }
+
+  /**
+   * Switches the user view between event map and event trends.
+   * Requires the following div id's in HTML:
+   *  - this.eventType-view-type (button group with value="map" and value="trends")
+   *  - this.divId (leaflet map container)
+   *  - ${this.eventType}-time-series-section (initially hidden trends section)
+   *  - nearby-${this.eventType}-popup (optional, will hide if exists)
+   * @param {Object} mapBars - EventNavigator instance with bars placed next to the leaflet map. mapBars.allDivs are hidden on click
+   * @param {boolean} [cBtn=false] - Optional count button for switching between event frequency/volume. Must be added to this method
+   * to control if event frequency/volume is selected/available when looking at trends or map.
+   * @param {boolean} [vBtn=false] - Volume button
+   */
+  switchDashboards(mapBars, cBtn = false, vBtn = false) {
+    const countBtn = cBtn;
+    const volumeBtn = vBtn;
+    document
+      .getElementById(`${this.eventType}-view-type`)
+      .addEventListener("click", (event) => {
+        const evt = event;
+        const allButtons = document.querySelectorAll(
+          `#${this.eventType}-view-type .btn`
+        );
+        allButtons.forEach((elem) => {
+          const e = elem;
+          e.className = elem.className.replace(" active", "");
+        });
+        evt.target.className += " active";
+        const btnValue = evt.target.value;
+        const dashboardDivs = [
+          `${this.divId}`,
+          `nearby-${this.eventType}-popup`,
+        ].concat(mapBars.allDivs);
+        if (btnValue !== "trends") {
+          visibility(dashboardDivs, "show");
+          visibility([`${this.eventType}-time-series-section`], "hide");
+          if (volumeBtn) {
+            volumeBtn.disabled = false;
+          }
+          this.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
+          if (countBtn) {
+            countBtn.click();
+          }
+        } else {
+          // if the user selects trends, the option to view volume should be disabled
+          if (volumeBtn && countBtn) {
+            volumeBtn.disabled = true;
+            countBtn.checked = true;
+          }
+          visibility(dashboardDivs, "hide");
+          visibility([`${this.eventType}-time-series-section`], "show");
+        }
+      });
+  }
+
+  /**
+   * Sets up the select range slider for finding nearby events on the map. Contains event listener to update title+button with selected range.
+   * Requires the following HTML div id's in HTML:
+   *  - this.eventType-range-slide (html slider)
+   *  - find-this.eventType-btn (button that triggers nearby analysis, with updating title based on desired range)
+   *  - find-this.eventTyle-title (range slider title, with updating title based on desired range)
+   * @param {string} rangeTitle - HTML text to be displayed above range slider.
+   * @param {string} findBtnTitle - HTML text to be displayed on find-this.eventType-btn button.
+   */
+  nearbySlider(rangeTitle, findBtnTitle) {
+    const slider = document.getElementById(`${this.eventType}-range-slide`);
+    slider.addEventListener("change", () => {
+      const currentValue = slider.value;
+      const findIncidentBtn = document.getElementById(
+        `find-${this.eventType}-btn`
+      );
+      const findIncidentTitle = document.getElementById(
+        `find-${this.eventType}-title`
+      );
+      findIncidentBtn.innerText = `${findBtnTitle} ${currentValue}km`;
+      findIncidentTitle.innerText = `${rangeTitle} (${currentValue}km):`;
+      findIncidentBtn.value = currentValue;
+    });
+  }
+
+  /**
+   * Binds event listener when the user clicks on find events within a seleted range.
+   * Requires the following HTML div id's:
+   *  - find-${this.eventType}-btn (button used to initiate nearby analysis)
+   *  - reset-${this.eventType}-btn (used to enable or disable button when find nearby is clicked)
+   *  - nearby-${this.eventType}-flag (displays nearby analysis, or location error text)
+   * @param {string} errorText - text to display if there is a location error, or user declines to share location.
+   */
+  nearbyListener(errorText) {
+    // user selects a range to find nearby incidents
+    document
+      .getElementById(`find-${this.eventType}-btn`)
+      .addEventListener("click", () => {
+        const resetBtn = document.getElementById(`reset-${this.eventType}-btn`);
+        const range = document.getElementById(
+          `find-${this.eventType}-btn`
+        ).value;
+        if (!this.user.latitude && !this.user.longitude) {
+          const loadDisclaimer = setTimeout(() => {
+            this.addMapDisclaimer("location");
+          }, 200);
+          this.waitOnUser()
+            .then(() => {
+              this.nearbyIncidents(range); // .then((userAdded))
+              clearTimeout(loadDisclaimer);
+              this.removeMapDisclaimer("location");
+              resetBtn.disabled = false;
+              resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+            })
+            .catch(() => {
+              const incidentFlag = document.getElementById(
+                `nearby-${this.eventType}-flag`
+              ); // .catch((error))
+              incidentFlag.innerHTML = `<section class="alert alert-warning">${errorText}</section>`;
+              clearTimeout(loadDisclaimer);
+              this.removeMapDisclaimer("location");
+            });
+        } else {
+          this.nearbyIncidents(range);
+          resetBtn.disabled = false;
+          resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+        }
+      });
+  }
+
+  resetCirclesListener() {
+    // reset map after user has selected a range
+    const resetBtnDiv = `reset-${this.eventType}-btn`;
+    document.getElementById(resetBtnDiv).addEventListener("click", () => {
+      this.resetMap();
+      const resetBtn = document.getElementById(resetBtnDiv);
+      resetBtn.disabled = true;
+      resetBtn.className = "btn btn-default col-md-12";
+      document.getElementById(`nearby-${this.eventType}-flag`).innerHTML = ``;
+    });
   }
 }

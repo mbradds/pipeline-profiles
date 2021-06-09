@@ -64,6 +64,14 @@ const units = {
 
 const legendClick = "Click on a legend item to remove it from the chart";
 
+const userPopUp =
+  "Approximate location. You can drag this marker around to explore events in other locations.";
+const locationError =
+  "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.";
+
+const exploreOther =
+  "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -278,6 +286,7 @@ export const englishDashboard = {
     companyToSystem,
     colNames: { "In Progress": "In Progress", Closed: "Closed" },
     conditions: "conditions",
+    popUpTotal: ":",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
       summary: (companyName) =>
@@ -365,7 +374,7 @@ export const englishDashboard = {
     title: (systemName) =>
       `Dashboard: ${systemName} - Incidents with a product release`,
     definitions: {
-      Status: {
+      s: {
         c: "The CER’s incident review has been completed and the file is closed.",
         s: "The company has submitted all of the required information and the CER is reviewing the incident.",
         is: "The company has notified the CER that an incident has occurred and provided preliminary information. An investigation is has been initiated.",
@@ -394,15 +403,20 @@ export const englishDashboard = {
       },
     },
     dashboard: {
-      what: "What Happened",
-      why: "Why It Happened",
-      estRelease: "Est. Release Volume:",
-      cf: "cubic feet",
       numberFormat,
+      userPopUp,
+      locationError,
+      legendClick,
+      exploreOther,
+      cf: "cubic feet",
       bbl: "bbl",
       pillTitles: {
         titles: {
-          Status: "CER Status",
+          vol: "Est. Release Volume",
+          sub: "Substance",
+          p: "Province",
+          s: "CER Status",
+          y: "Year",
           why: "Why It Happened",
           what: "What Happened",
         },
@@ -413,27 +427,21 @@ export const englishDashboard = {
       locationDisclaimer: "Waiting for your location...",
       countDisclaimer: (eventType, field) =>
         `${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.`,
-      userPopUp:
-        "Approximate location. You can drag this marker around to explore incident events in other locations.",
-      locationError:
-        "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.",
       nearbyHeader: (numCircles, range) =>
         `There are ${numCircles} incidents within ${range} km`,
       gasRelease: "Estimated gas volume released:",
       liquidRelease: "Estimated liquid volume released:",
       otherRelease: "Estimated miscellaneous release:",
-      exploreOther:
-        "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.",
       noNearby: (eventType) =>
         `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       barClick: (field) =>
-        `<p>Click on a bar to view ${field} sub definition</p>`,
-      legendClick,
+        `<small>Click on a bar to view ${field} sub definition</small>`,
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
       trendYTitle: "Number of Incidents",
-      EVENTCOLORS: {
-        Substance: {
+      seriesInfo: {
+        // Substance
+        sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
           ngsweet: { c: cerPalette.Flame, n: "Natural Gas - Sweet" },
           ngsour: { c: cerPalette["Dim Grey"], n: "Natural Gas - Sour" },
@@ -448,12 +456,13 @@ export const englishDashboard = {
           gas: { c: cerPalette.Flame, n: "Gasoline" },
           Other: { c: cerPalette.Aubergine, n: "Other" },
         },
-        Status: {
+        // Status
+        s: {
           is: { c: cerPalette.Flame, n: "Initially Submitted" },
           c: { c: cerPalette["Cool Grey"], n: "Closed" },
           s: { c: cerPalette.Ocean, n: "Submitted" },
         },
-        Province: regionInfo,
+        p: regionInfo, // Province
         why: {
           sp: { c: cerPalette.Flame, n: "Standards and Procedures" },
           te: { c: cerPalette.Forest, n: "Tools and Equipment" },
@@ -510,7 +519,7 @@ export const englishDashboard = {
     importAxis: (unit) => `Imports (${unit})`,
     fiveYrTitle: (pointText) => `${pointText} - five-year average & range`,
     trafficTitle: (pointText, dirText) => {
-      if (dirText[0] === false) {
+      if (dirText[0] === false || dirText[0] === "") {
         return `${pointText} - monthly traffic`;
       }
       return `${pointText} - monthly traffic (direction of flow: ${dirText.join(
@@ -584,6 +593,79 @@ export const englishDashboard = {
       "In Stream Work Required": yesNoInfo,
       "Species At Risk Present": yesNoInfo,
       "Province/Territory": regionInfo,
+    },
+  },
+  remediation: {
+    numberFormat,
+    dateFormat,
+    companyToSystem,
+    title: (company, cutoffDate) =>
+      `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
+    // TODO: reduce language duplication between remediation and incidents
+    dashboard: {
+      userPopUp,
+      locationError,
+      numberFormat,
+      exploreOther,
+      trendYTitle: "Number of Contaminated Sites",
+      cf: "cubic feet",
+      bbl: "bbl",
+      volumeDisclaimer: undefined,
+      locationDisclaimer: undefined,
+      rangeTitle: "Select range",
+      findBtnTitle: "Find sites within",
+      nearbyHeader: (numCircles, range) =>
+        `There are ${numCircles} contaminated sites within ${range} km`,
+      noNearby: () =>
+        `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
+      pillTitles: {
+        titles: {
+          vol: "Initial estimate of contaminated soil",
+          w: "Within 30M of water-body",
+          use: "Applicable Land Use",
+          p: "Province",
+          a: "Activity At Time",
+          c: "Contaminants at the Site",
+          s: "Site Status",
+          y: "Year",
+        },
+        click: "click to view",
+      },
+      seriesInfo: {
+        w: {
+          true: { c: cerPalette.Sun, n: "True" },
+          false: { c: cerPalette["Night Sky"], n: "False" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        s: {
+          prm: { c: cerPalette.Flame, n: "Post-remediation monitoring" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          rm: { c: cerPalette.Forest, n: "Risk managed" },
+          sa: { c: cerPalette.Aubergine, n: "Site assessment" },
+          fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
+          or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
+          m: { c: cerPalette.Sun, n: "Monitored" },
+        },
+        p: regionInfo, // Province
+        use: {
+          pa: { c: cerPalette.Forest, n: "Protected area" },
+          ndl: { c: cerPalette.Flame, n: "Non-developed land" },
+          al: { c: cerPalette.Ocean, n: "Agricultural land" },
+          dlr: {
+            c: cerPalette.Aubergine,
+            n: "Developed land - residential",
+          },
+          dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+        },
+        a: {
+          m: { c: cerPalette["Night Sky"], n: "Maintenance" },
+          o: { c: cerPalette.Flame, n: "Operation" },
+          c: { c: cerPalette.Ocean, n: "Construction" },
+          a: { c: cerPalette.Aubergine, n: "Abandonment" },
+          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+        },
+      },
     },
   },
 };

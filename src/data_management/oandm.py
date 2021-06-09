@@ -2,11 +2,12 @@ import pandas as pd
 from util import company_rename, most_common, strip_cols, idify
 import ssl
 import json
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 ssl._create_default_https_context = ssl._create_unverified_context
 
 '''
 ideas:
-    -number of days aggregated between start and end date highlighted
     -total number of integrity digs highlighted
     -top 3 nearest populated centers highlighted
     -total land needed relative to something
@@ -28,8 +29,8 @@ def optimizeJson(df):
                          'Dig Count',
                          'Nearest Populated Centre',
                          'New Land Area Needed',
-                         'Length Of Replacement Pipe',
-                         'event duration']
+                         'Length Of Replacement Pipe']
+
     for delete in delete_after_meta:
         del df[delete]
 
@@ -69,28 +70,46 @@ def metadata(df, company):
     def filterNear(city):
         if len(city) <= 2:
             return False
-        elif city in ['as per the attached document', 'various']:
-            return False
         else:
             return True
 
     thisCompanyMeta = {}
     thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
     thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
-    nearList = list(df['Nearest Populated Centre']+" "+df['Province/Territory'].str.upper())
-    nearList = filter(filterNear, nearList)
-    nearList = [x.split(",")[0].strip() for x in nearList]
-    nearDf = pd.DataFrame(nearList)
-    most_common(nearDf,
-                thisCompanyMeta,
-                0,
-                "nearby",
-                3,
-                "list",
-                False,
-                False)
-    thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
-    thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
+
+    # nearby in the last year
+    df['Nearest Populated Centre'] = [x.split(",")[0].strip() for x in df['Nearest Populated Centre']]
+
+    dfNear = df.copy()
+    filterList = ['various',
+                  'various locations as per the attached documents.',
+                  'as per the attached documents',
+                  'as per the attached document',
+                  'business']
+
+    dfNear = dfNear[~dfNear['Nearest Populated Centre'].str.lower().isin(filterList)]
+    oneYearAgo = datetime.today() - relativedelta(years=1)
+    dfNear = dfNear[dfNear['Commencement Date'] >= oneYearAgo]
+    if not dfNear.empty:
+        for splitChar in [",", "("]:
+            dfNear['Nearest Populated Centre'] = [x.split(splitChar)[0].strip() for x in dfNear['Nearest Populated Centre']]
+        nearList = list(dfNear['Nearest Populated Centre']+" "+dfNear['Province/Territory'].str.upper())
+        nearList = [x.replace("Jasper BC", "Jasper AB") for x in nearList]
+        nearList = filter(filterNear, nearList)
+
+        dfNear = pd.DataFrame(nearList)
+        most_common(dfNear,
+                    thisCompanyMeta,
+                    0,
+                    "nearby",
+                    3,
+                    "list",
+                    False,
+                    False)
+    else:
+        thisCompanyMeta["nearby"] = None
+    # thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
+    # thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
     thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
     thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
     thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
@@ -99,18 +118,16 @@ def metadata(df, company):
 
 
 def column_insights(df):
-    df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
+    # df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
     df = idify(df, "Province/Territory", "region")
     return df
 
 
-def process_oandm(remote=False, companies=False, test=False, lang='en'):
+def process_oandm(remote=False, companies=False, test=False):
 
+    lang = "en"
     if remote:
-        if lang == 'en':
-            link = "https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.cer-rec.gc.ca%2Fopen%2Foperations%2Foperation-and-maintenance-activity.csv&data=04%7C01%7CMichelle.Shabits%40cer-rec.gc.ca%7Cbbc3fece7b3a439e253908d8f9ec4eab%7C56e9b8d38a3549abbdfc27de59608f01%7C0%7C0%7C637534140608125634%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=HvG6KtuvEzJiNy4CZ4OyplKnfx2Zk5sPjUNNutoohic%3D&reserved=0"
-        else:
-            link = "https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.cer-rec.gc.ca%2Fouvert%2Foperations%2Factivites-d-exploitation-et-d-entretien.csv&data=04%7C01%7CMichelle.Shabits%40cer-rec.gc.ca%7Cbbc3fece7b3a439e253908d8f9ec4eab%7C56e9b8d38a3549abbdfc27de59608f01%7C0%7C0%7C637534140608175607%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=0NRT6o0XbRNw7ipBj3wjIyCujF4NjZF8HQHqfBBF%2B0M%3D&reserved=0"
+        link = "https://can01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.cer-rec.gc.ca%2Fopen%2Foperations%2Foperation-and-maintenance-activity.csv&data=04%7C01%7CMichelle.Shabits%40cer-rec.gc.ca%7Cbbc3fece7b3a439e253908d8f9ec4eab%7C56e9b8d38a3549abbdfc27de59608f01%7C0%7C0%7C637534140608125634%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=HvG6KtuvEzJiNy4CZ4OyplKnfx2Zk5sPjUNNutoohic%3D&reserved=0"
 
         print('downloading remote oandm file')
         df = pd.read_csv(link,
@@ -122,12 +139,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
         df.to_csv("./raw_data/oandm_"+lang+".csv", index=False)
     elif test:
         print('reading test oandm file')
-        if lang == 'en':
-            path = "./raw_data/test_data/oandm_en.csv"
-
-        else:
-            path = "./raw_data/test_data/oandm_fr.csv"
-
+        path = "./raw_data/test_data/oandm_en.csv"
         df = pd.read_csv(path,
                          skiprows=0,
                          encoding="utf-8",
@@ -137,12 +149,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
         print('reading local oandm file')
         if lang == 'en':
             path = "./raw_data/oandm_en.csv"
-
             encoding = "utf-8"
-        else:
-            print('starting french incidents...')
-            path = "./raw_data/oandm_fr.csv"
-            encoding = "utf-8-sig"
 
         df = pd.read_csv(path,
                          skiprows=0,
@@ -186,7 +193,6 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
                    'Navigable Water Activity Meeting Transport Canada Minor Works And Waters Order']:
         del df[delete]
 
-        # deal with dates
     for dateCol in df.columns:
         if "date" in dateCol.lower():
             df[dateCol] = pd.to_datetime(df[dateCol])
@@ -239,7 +245,7 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
                     json.dump(thisCompanyData, fp)
         else:
             # there are no o and m events
-            thisCompanyData['events'] = df_c.to_dict(orient='records')
+            thisCompanyData['data'] = df_c.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             thisCompanyData["build"] = False
             if not test:
@@ -250,6 +256,5 @@ def process_oandm(remote=False, companies=False, test=False, lang='en'):
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False, lang='en') #, companies=['NOVA Gas Transmission Ltd.'])
-    # df = process_oandm(remote=False, test=False, lang='fr')
+    df = process_oandm(remote=False, test=False, companies=["Trans Mountain Pipeline ULC"])
     print('completed oandm!')

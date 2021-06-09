@@ -8,45 +8,6 @@
 
 import { cerPalette } from "../util";
 
-const greyScale = [
-  "#101010",
-  "#181818",
-  "#202020",
-  "#282828",
-  "#303030",
-  "#383838",
-  "#404040",
-  "#484848",
-  "#505050",
-  "#585858",
-  "#606060",
-  "#686868",
-  "#696969",
-  "#707070",
-  "#787878",
-  "#808080",
-  "#888888",
-  "#909090",
-  "#989898",
-  "#A0A0A0",
-  "#A8A8A8",
-  "#A9A9A9",
-  "#B0B0B0",
-  "#B8B8B8",
-  "#BEBEBE",
-  "#C0C0C0",
-  "#C8C8C8",
-  "#D0D0D0",
-  "#D3D3D3",
-  "#D8D8D8",
-  "#DCDCDC",
-  "#E0E0E0",
-  "#E8E8E8",
-  "#F0F0F0",
-  "#F5F5F5",
-  "#F8F8F8",
-];
-
 /**
  * Class responsible for creating a navigation sidebar next to either a leaflet map, or highcharts bar chart.
  * The navigator has "pills" that can be clicked to control the chart or map, and can be filled with a horizontal
@@ -58,10 +19,9 @@ export class EventNavigator {
    * @param {Object} constr - EventNavigator constructor
    * @param {Object} constr.plot - EventMap(leaflet) or EventTrend(highcharts) instance.
    * @param {Object} constr.numberOfPills - The total number of navigation pills. Used to calculate pill height dynamically.
-   * @param {Object} constr.langPillTitles - {id: pillname} pairs for handling custom pill titles & language switching.
+   * @param {Object} constr.langPillTitles - {titles: {id: "pill name"}, click: ""} pairs for handling custom pill titles & language switching. When click paramter is defined and not "", then this text will append to the pill name.
    * @param {number} [constr.fixedPillHeight=undefined] - Height in px of each pill navigation button. Overrides calculated height.
    * @param {(boolean|Object[])} [constr.data=false] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
-   * @param {boolean} [constr.showClickText=false] - Whether to add additional text to pill title making click more obvious.
    */
   constructor({
     plot,
@@ -69,7 +29,6 @@ export class EventNavigator {
     langPillTitles,
     fixedPillHeight = undefined,
     data = false,
-    showClickText = true,
   }) {
     this.plot = plot;
     this.numberOfPills = numberOfPills;
@@ -82,8 +41,6 @@ export class EventNavigator {
     this.allDivs = [];
     this.fixedPillHeight = fixedPillHeight;
     this.data = data;
-    this.greyScale = greyScale;
-    this.showClickText = showClickText;
     this.pillHeight = this.calculatePillHeight();
   }
 
@@ -92,6 +49,47 @@ export class EventNavigator {
     return Math.floor(
       (this.plot.plotHeight - totalMargins) / this.numberOfPills
     );
+  }
+
+  static get greyTheme() {
+    return [
+      "#101010",
+      "#181818",
+      "#202020",
+      "#282828",
+      "#303030",
+      "#383838",
+      "#404040",
+      "#484848",
+      "#505050",
+      "#585858",
+      "#606060",
+      "#686868",
+      "#696969",
+      "#707070",
+      "#787878",
+      "#808080",
+      "#888888",
+      "#909090",
+      "#989898",
+      "#A0A0A0",
+      "#A8A8A8",
+      "#A9A9A9",
+      "#B0B0B0",
+      "#B8B8B8",
+      "#BEBEBE",
+      "#C0C0C0",
+      "#C8C8C8",
+      "#D0D0D0",
+      "#D3D3D3",
+      "#D8D8D8",
+      "#DCDCDC",
+      "#E0E0E0",
+      "#E8E8E8",
+      "#F0F0F0",
+      "#F5F5F5",
+      "#F8F8F8",
+    ];
   }
 
   seriesify(name, series, yVal) {
@@ -192,7 +190,7 @@ export class EventNavigator {
         formatter() {
           let toolText = "";
           if (this.series.options.filter === "frequency") {
-            toolText = `${this.series.name} - ${this.y}`;
+            toolText = `${this.series.name} - <strong>${this.y}</strong>`;
           }
           if (this.series.options.filter === "volume") {
             toolText = `${this.series.name} - <strong>${Highcharts.numberFormat(
@@ -277,18 +275,19 @@ export class EventNavigator {
     const { chart } = bar;
     const activeDiv = document.getElementById(bar.div);
     let clickText = "";
-    if (this.showClickText) {
+    if (this.langPillTitles.click && this.langPillTitles.click !== "") {
       clickText = ` (${this.langPillTitles.click})`;
     }
 
     if (chart) {
-      const greyIndex = Math.floor(this.greyScale.length / chart.series.length);
+      const grey = EventNavigator.greyTheme;
+      const greyIndex = Math.floor(grey.length / chart.series.length);
       const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
       let greyColors;
       if (chart.series.length > 1) {
-        greyColors = everyNth(this.greyScale, greyIndex).reverse();
+        greyColors = everyNth(grey, greyIndex).reverse();
       } else {
-        greyColors = [this.greyScale[0]];
+        greyColors = [grey[0]];
       }
 
       chart.series.forEach((s, i) => {

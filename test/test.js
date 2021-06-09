@@ -9,7 +9,7 @@ import {
 } from "../src/modules/util";
 import { englishDashboard } from "../src/modules/langEnglish";
 import { createFiveYearSeries, fiveYearTrend } from "../src/modules/fiveYear";
-import { EventTrend } from "../src/modules/dashboard";
+import { EventTrend } from "../src/modules/dashboard/EventTrend";
 
 function macroIs(t, input, expected) {
   t.is(input, expected);

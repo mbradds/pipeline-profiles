@@ -4,6 +4,7 @@ import incidentData from "../../../incidents/company_data/EnbridgeBakkenPipeline
 import trafficData from "../../../traffic/company_data/EnbridgeBakkenPipelineCompanyInc.json";
 import apportionData from "../../../apportionment/company_data/EnbridgeBakkenPipelineCompanyInc.json";
 import oandmData from "../../../oandm/company_data/EnbridgeBakkenPipelineCompanyInc.json";
+import remediationData from "../../../remediation/company_data/EnbridgeBakkenPipelineCompanyInc.json";
 import { loadAllCharts } from "../../loadDashboards_fr";
 
 const data = {
@@ -13,6 +14,7 @@ const data = {
   trafficData,
   apportionData,
   oandmData,
+  remediationData,
 };
 
 loadAllCharts(data);
