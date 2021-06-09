@@ -287,11 +287,12 @@ export const frenchDashboard = {
     companyToSystem,
     colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",
+    popUpTotal: " :",
     noLocation: {
       title:
         "Certaines conditions ne sont pas liées à un emplacement géographique.",
       summary: (companyName) =>
-        `Aucun résumé de l’emplacement géographique de ${companyName}:`,
+        `Aucun résumé de l’emplacement géographique de ${companyName} :`,
     },
     title: {
       noLocation: (companyName) =>
@@ -301,9 +302,9 @@ export const frenchDashboard = {
     },
     table: {
       projectsTitle: (column) =>
-        `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*):`,
+        `Projets assortis de ${column} conditions (cliquer pour ouvrir le dossier du projet dans REGDOCS*) :`,
       themesTitle: (column) =>
-        `${column} Thèmes de condition (cliquer pour voir la définition du thème):`,
+        `${column} Thèmes de condition (cliquer pour voir la définition du thème) :`,
       regdocsDefinition:
         "*REGDOCS est une base de données sur les activités de réglementation et opérations réglementaires menées par la Régie.",
     },
@@ -322,9 +323,9 @@ export const frenchDashboard = {
         "Certaines conditions s’appliquent à plusieurs régions. Certaines conditions peuvent être comptées en double d’une région à l’autre, ce qui donne un nombre plus élevé de conditions que les totaux indiqués dans les boutons ci-dessus.",
     },
     tooltip: {
-      text: "Cliquer sur une région pour consulter le sommaire.",
+      text: "Cliquer sur une région pour consulter le sommaire",
     },
-    themeDefinitionsTitle: "Définitions du thème:",
+    themeDefinitionsTitle: "Définitions du thème :",
     themeDefinitions: {
       "No theme specified":
         "La Régie n’a pas attribué de thème à certaines conditions.",

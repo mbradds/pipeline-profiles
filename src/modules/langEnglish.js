@@ -286,6 +286,7 @@ export const englishDashboard = {
     companyToSystem,
     colNames: { "In Progress": "In Progress", Closed: "Closed" },
     conditions: "conditions",
+    popUpTotal: ":",
     noLocation: {
       title: "Some conditions are not tied to a geographic location.",
       summary: (companyName) =>
