@@ -284,6 +284,7 @@ export const englishDashboard = {
   conditions: {
     dateFormat,
     companyToSystem,
+    lang: "e",
     colNames: { "In Progress": "In Progress", Closed: "Closed" },
     conditions: "conditions",
     popUpTotal: ":",
@@ -325,6 +326,7 @@ export const englishDashboard = {
     themeDefinitions: {
       "No theme specified":
         "Some conditions have not been assigned a theme by the CER.",
+      "n/a": "Some conditions have not been assigned a theme by the CER.",
       Administrative: "Conditions that help track organizational tasks.",
 
       "Damage Prevention":

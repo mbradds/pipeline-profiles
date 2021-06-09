@@ -11,6 +11,9 @@ src/data_management/raw_data/*
 !src/data_management/raw_data/apportionment.csv
 !src/data_management/raw_data/remediation.csv
 !src/data_management/raw_data/projects_regdocs.csv
+!src/data_management/raw_data/conditionProjects.csv
+!src/data_management/raw_data/conditionRegions.csv
+!src/data_management/raw_data/conditionThemes.csv
 !src/data_management/raw_data/reference_data/
 **/__pycache__
 *.twb
