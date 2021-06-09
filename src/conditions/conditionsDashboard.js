@@ -247,9 +247,9 @@ export async function mainConditions(
     }</td><td style="padding:0;font-weight: bold;color:${
       cerPalette["Cool Grey"]
     };">&nbsp;${lang.dateFormat(updateDate)}</li></td></tr>`;
-    text += `<tr><td><li> ${
-      params.colNames[params.conditionsFilter.column]
-    } Conditions:</td><td style="padding:0;font-weight: bold;color:${
+    text += `<tr><td><li> ${params.colNames[params.conditionsFilter.column]} ${
+      lang.conditions
+    }${lang.popUpTotal}</td><td style="padding:0;font-weight: bold;color:${
       cerPalette["Cool Grey"]
     };">&nbsp;${e.value}</li></td></tr></table><br>`;
     text += `${generateTable(metaSelect, params, e.id, "projects")}<br>`;

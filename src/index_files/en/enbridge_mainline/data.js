@@ -3,18 +3,18 @@ import conditionsData from "../../../conditions/company_data/en/EnbridgePipeline
 import incidentData from "../../../incidents/company_data/EnbridgePipelinesInc.json";
 import trafficData from "../../../traffic/company_data/EnbridgePipelinesInc.json";
 import apportionData from "../../../apportionment/company_data/EnbridgePipelinesInc.json";
-import oandmData from "../../../oandm/company_data/EnbridgePipelinesInc.json";
-import remediationData from "../../../remediation/company_data/EnbridgePipelinesInc.json";
+// import oandmData from "../../../oandm/company_data/EnbridgePipelinesInc.json";
+// import remediationData from "../../../remediation/company_data/EnbridgePipelinesInc.json";
 import { loadAllCharts } from "../../loadDashboards_en";
 
 const data = {
   canadaMap,
   conditionsData,
   incidentData,
-  oandmData,
   trafficData,
   apportionData,
-  remediationData,
+  // oandmData,
+  // remediationData,
 };
 
 loadAllCharts(data);
