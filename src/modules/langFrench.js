@@ -285,6 +285,7 @@ export const frenchDashboard = {
   conditions: {
     dateFormat,
     companyToSystem,
+    lang: "f",
     colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",
     popUpTotal: " :",
@@ -329,6 +330,7 @@ export const frenchDashboard = {
     themeDefinitions: {
       "No theme specified":
         "La Régie n’a pas attribué de thème à certaines conditions.",
+      "n/a": "La Régie n’a pas attribué de thème à certaines conditions.",
       Administratif:
         "Conditions permettant de faire le suivi des tâches organisationnelles.",
       "Condition standard":

@@ -1,5 +1,7 @@
 import { sortJson, cerPalette, visibility } from "../modules/util";
 import { mapInits } from "./hcMapConfig";
+import conditionsRegions from "./company_data/metadata/regions.json";
+import conditionsThemes from "./company_data/metadata/themes.json";
 
 export async function mainConditions(
   econRegions,
@@ -71,11 +73,20 @@ export async function mainConditions(
       )}</caption>`;
       summary.projects.forEach((proj) => {
         if (proj.id === selectedRegion && proj.value > 0) {
+          let displayName = "n/a";
+          if (
+            Object.prototype.hasOwnProperty.call(
+              params.projectLookup,
+              proj.name
+            )
+          ) {
+            displayName = params.projectLookup[proj.name][lang.lang];
+          }
           if (proj.Regdocs !== undefined) {
             const regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
-            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${proj.name}</a></td><td>${proj.value}</td></tr>`;
+            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${displayName}</a></td><td>${proj.value}</td></tr>`;
           } else {
-            projectsHTML += `<tr><td>${proj.name}</td><td>${proj.value}</td></tr>`;
+            projectsHTML += `<tr><td>${displayName}</td><td>${proj.value}</td></tr>`;
           }
         }
       });
@@ -85,9 +96,17 @@ export async function mainConditions(
       projectsHTML += `<caption style="text-align:left;">${lang.table.themesTitle(
         params.colNames[params.conditionsFilter.column]
       )}</caption>`;
-      summary.themes.forEach((proj) => {
-        if (proj.id === selectedRegion && proj.value > 0) {
-          projectsHTML += `<tr><td>${proj.Theme}</td><td>${proj.value}</td></tr>`;
+      summary.themes.forEach((thm) => {
+        const displayName = thm.Theme.map((tId) => {
+          if (Object.prototype.hasOwnProperty.call(conditionsThemes, tId)) {
+            return conditionsThemes[tId][lang.lang];
+          }
+          return "n/a";
+        });
+        if (thm.id === selectedRegion && thm.value > 0) {
+          projectsHTML += `<tr><td>${displayName.join(", ")}</td><td>${
+            thm.value
+          }</td></tr>`;
         }
       });
       projectsHTML += `</table>`;
@@ -240,7 +259,9 @@ export async function mainConditions(
       metaSelect.summary.updated[2]
     );
 
-    let text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><strong>${e.id} ${lang.popUp.econRegion}</strong></p>`;
+    let text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><strong>${
+      conditionsRegions[e.id][lang.lang]
+    } ${lang.popUp.econRegion}</strong></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
     text += `<tr><td><li>${
       lang.popUp.lastUpdated
@@ -399,7 +420,9 @@ export async function mainConditions(
         zIndex: 0,
         useHTML: false,
         formatter() {
-          let toolText = `<strong>${this.point.properties.id} - ${this.point.properties["Flat Province"]}</strong><br>`;
+          let toolText = `<strong>${
+            conditionsRegions[this.point.id][lang.lang]
+          }</strong><br>`;
           toolText += lang.tooltip.text;
           return toolText;
         },
