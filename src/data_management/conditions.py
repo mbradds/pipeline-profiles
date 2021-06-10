@@ -50,7 +50,7 @@ def export_files(df, folder, name):
     print(folder+' done ', 'CRS: '+str(df.crs))
 
 
-def conditions_on_map(df, shp, folder_name, lang):
+def conditions_on_map(df, shp, folder_name):
     shp = pd.merge(shp,
                    df,
                    how='inner',
@@ -64,7 +64,12 @@ def conditions_on_map(df, shp, folder_name, lang):
         if numericCol in shp.columns:
             shp[numericCol] = shp[numericCol].fillna(0)
 
+    # df becomes map metadata
     df = df.fillna(0)
+    for cols in [["Closed", "c"], ["In Progress", "i"]]:
+        if cols[0] in df:
+            # df = df.rename(columns={cols[0]: cols[1]})
+            df[cols[0]] = [int(x) for x in df[cols[0]]]
     return shp, df
 
 
@@ -252,12 +257,21 @@ def idify(df, sql=False):
     themes = getSql(sql, "conditionThemes.sql")
     regions = getSql(sql, "conditionRegions.sql")
 
+    # fix the Northeast db error
+    regions = regions.reset_index()
+    del regions['id']
+    regions = regions.rename(columns={"index": "id"})
+
     for ids in [projects, themes, regions]:
         ids['id'] = [str(x) for x in ids['id']]
 
-    projectReplace = {value: key for key, value in zip(projects['id'], projects['e'])}
-    themeReplace = {value: key for key, value in zip(themes['id'], themes['e'])}
-    regionReplace = {value: key for key, value in zip(regions['id'], regions['e'])}
+    projectReplace = {value: key for key, value in zip(projects['id'],
+                                                       projects['e'])}
+    themeReplace = {value: key for key, value in zip(themes['id'],
+                                                     themes['e'])}
+    regionReplace = {value: key for key, value in zip(regions['id'],
+                                                      regions['e'])}
+
     df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
 
     df = listId(df, "Theme(s)", themeReplace)
@@ -279,7 +293,6 @@ def process_conditions(remote=False,
                        company_names=False,
                        companies=False,
                        test=False,
-                       lang='en',
                        save=True):
     if remote:
         print('downloading remote conditions file')
@@ -325,8 +338,6 @@ def process_conditions(remote=False,
     df['Company'] = df['Company'].replace(company_rename())
 
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
-    # df['Theme(s)'] = df['Theme(s)'].replace({"nan":
-    #                                          "No theme specified"})
 
     df = add_links(df)
     if company_names:
@@ -382,14 +393,14 @@ def process_conditions(remote=False,
             dfmeta, meta = conditionMetaData(df_all, folder_name, projectNames)
             meta["build"] = True
             thisCompanyData['meta'] = meta
-            shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name, lang)
+            shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name)
 
             thisCompanyData['regions'] = shp.to_json()
             thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
             if not test and save:
                 with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
-                print('completed+saved '+lang+' conditions: '+company)
+                print('completed+saved: '+company)
         else:
             meta = {"companyName": company}
             thisCompanyData = {'meta': {"companyName": company,
@@ -400,7 +411,7 @@ def process_conditions(remote=False,
             if not test and save:
                 with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
-                print('completed+saved '+lang+' conditions: '+company)
+                print('completed+saved: '+company)
 
     return df_c, shp, dfmeta, meta
 
@@ -408,7 +419,5 @@ def process_conditions(remote=False,
 if __name__ == "__main__":
     print('starting conditions...')
     # df = getSql(False, "conditionRegions.sql")
-    df, regions, mapMeta, meta = process_conditions(remote=False, lang='en', save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=False, save=True)
     print('completed conditions!')
-
-#%%

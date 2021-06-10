@@ -175,17 +175,13 @@ export async function mainConditions(
   }
 
   const destroyInsert = (chart) => {
-    document.getElementById("conditions-definitions").innerHTML = "";
+    visibility(["conditions-definitions"], "hide");
     if (chart.customTooltip) {
       const currentPopUp = document.getElementById("conditions-insert");
       if (currentPopUp) {
         currentPopUp.innerHTML = "";
       }
       chart.customTooltip.destroy();
-    }
-    const definitionDiv = document.getElementById("conditions-definitions");
-    if (definitionDiv.classList.contains("profile-show")) {
-      definitionDiv.classList.remove("profile-show");
     }
   };
 
@@ -318,6 +314,7 @@ export async function mainConditions(
       tr.onclick = function themeClick() {
         const definitions = lang.themeDefinitions;
         const definitionDiv = document.getElementById("conditions-definitions");
+        visibility(["conditions-definitions"], "show");
         if (definitionDiv.classList.contains("profile-hide")) {
           definitionDiv.classList.add("profile-show");
         }
@@ -522,7 +519,7 @@ export async function mainConditions(
           if (btnValue !== "not-shown") {
             destroyInsert(chart);
             chart.customTooltip = undefined;
-            visibility(["no-location-info"], "hide");
+            visibility(["no-location-info", "conditions-definitions"], "hide");
             visibility(["container-map"], "show");
           } else {
             visibility(["no-location-info"], "show");
