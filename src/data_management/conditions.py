@@ -418,6 +418,5 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    # df = getSql(False, "conditionRegions.sql")
     df, regions, mapMeta, meta = process_conditions(remote=False, save=True)
     print('completed conditions!')

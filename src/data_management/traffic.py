@@ -489,7 +489,6 @@ def process_throughput(test=False,
     return thisCompanyData, df_c
 
 
-# TODO: the object can be optimized the same as incidents: loc: [lat, long], etc
 # TODO: enforce case on text columns
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":

@@ -13,7 +13,6 @@
     "start": "node server.js",
     "heroku-postbuild": "webpack --config webpack.prod.js",
     "dev": "webpack serve --output-public-path=/dist/ --config webpack.dev.js",
-    "dev-min": "webpack serve --output-public-path=/dist/ --config webpack.prod.js",
     "update-traffic-data": "sh ./src/data_management/npm_scripts/update-traffic-data.sh",
     "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
     "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",

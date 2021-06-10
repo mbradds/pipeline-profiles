@@ -76,11 +76,11 @@ Sections being added:
 - **Safety & Environment**
   1. Conditions Compliance (Released, March 31, 2021)
   2. Reported Incidents (Released, March 31, 2021)
-  3. Operations & Maintenance Activities (TBD, under development)
-  4. Contaminated Sites/Remediation (TBD, under development)
+  3. Operations & Maintenance Activities (Summer 2021, under development)
+  4. Contaminated Sites/Remediation (Summer 2021, under development)
   5. Unauthorized Activities (TBD, under development)
-- **Traffic (Pipeline Throughput & Capacity)** (May 25, 2021, under development)
-- **Oil Pipeline Apportionment** (May 25, 2021, under development)
+- **Traffic (Pipeline Throughput & Capacity)** (Released, May 25, 2021)
+- **Oil Pipeline Apportionment** (Released, May 25, 2021)
 - **Pipeline Tolls** (TBD)
 - **Pipeline/Corporate Financial info** (TBD)
 
@@ -91,7 +91,9 @@ pipeline_profiles
 │   README.md (you are here!)
 │   server.js (express js server configuration for heroku)
 |   requirements.txt (conda python 3 environment used in ./src/data_management)
-│   webpack.config.js (functionality for creating clean ../dist folder in english and french)
+│   webpack.common.js (functionality for creating clean ../dist folder in english and french)
+|   webpack.dev.js (webpack dev server functionality)
+|   webpack.prod.js (npm run build for minimized production files)
 |   index.html (main navigation page for profiles. Has entry links for all sub profiles in /dist)
 |   .babelrc (babel config with corejs 3 polyfills)
 |   .vscode/settings.json (please use vscode for this project!)
@@ -163,7 +165,7 @@ First time install:
 npm ci
 ```
 
-Or install dependencies
+or
 
 ```bash
 npm install
@@ -193,7 +195,7 @@ npm run build
 
 This runs webpack.prod.js and emits minified bundles in `/dist`
 
-Note: `npm run dev-min` runs the webpack dev server using the production configuration. Test this on all major browsers prior to new releases.
+Note: `npm run build && npm start` runs the express server using the production files. Test this on all major browsers prior to new releases.
 
 Create a new release on GitHub and add the compressed dist folder. Ask the web team to dump the latest production files onto dweb7 and add the new dist files/changes before sending in a production web request.
 
@@ -224,22 +226,24 @@ Note: depending on several factors, including the current state of the python sc
 
 ### Dataset 1: Incidents
 
-Incident data is updated every calendar quarter. When new data becomes available, it can be pulled directly from the CER website and build into seperate json datasets for each profile with npm run data, after the steps described below.
+Incident data is updated every month on open gov. When new data becomes available, it can be pulled directly from the CER website and build into seperate json datasets for each profile with npm run data, after the steps described below.
+
+Note that the data output is language (en/fr) agnostic, so only the english dataset needs to be used.
 
 #### Option 1 (recommended): Pull incident data directly from CER website
 
 1. Open the [incidents.py](./src/data_management/incidents.py) file.
 
-2. Update the english and french links found in the first few lines of the <i>process_incidents</i> function as follows, with whatever the most recent quaterly links (english and french) can be found on the [CER incident data page](https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/incident-data.html):
+2. Make sure that the open gov link is correct. Its a permanent link, so it shouldnt change often.
 
 ```diff
-if remote:
-    if lang == 'en':
--        link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2020-12-31-incident-data.csv"
-+        link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/YYYY-MM-DD-incident-data.csv"
-    else:
--        link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/2020-12-31-donnees-incidents.csv"
-+        link = "https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/carte-interactive-pipelines/carte/YYY-MM-DD-donnees-incidents.csv"
+
+def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
+    if remote:
+-       link = "https://www.cer-rec.gc.ca/open/incident/pipeline-incidents-data.csv"
++       link = "new link from open gov"
+        process_func = process_english
+        print('downloading remote incidents file')
 ```
 
 3. Make sure that the python script is configured to point to these remote files, as opposed to the raw data files in `src/data_mangagement/raw_data`.
@@ -247,18 +251,16 @@ if remote:
 ```diff
 if __name__ == '__main__':
     print('starting incidents...')
--    process_incidents(remote=False, lang='en')
--    process_incidents(remote=False, lang='fr')
-+    process_incidents(remote=True, lang='en')
-+    process_incidents(remote=True, lang='fr')
+-    df, volume, meta = process_incidents(remote=False, test=False)
++    df, volume, meta = process_incidents(remote=True, test=False)
     print('completed incidents!')
 ```
 
 4. `npm run update-incidents-data && npm run build`
 
-#### Option 2: Use local CSV's in your possession for update
+#### Option 2: Use local CSV in your possession for update
 
-Alternatively, if the remote data fetch doesnt work, or you have the incident data before its uploaded onto the web, then the new incident data csv files can be placed into the `src/data_mangagement/raw_data` folder, overwriting the <i>incidents_en.csv</i> and <i>incidents_fr.csv</i> that are already there.
+Alternatively, if the remote data fetch doesnt work, or you have the incident data before its uploaded onto the web, then the new incident data csv files can be placed into the `src/data_mangagement/raw_data` folder, overwriting the <i>incidents_en.csv</i> that are already there.
 
 1. Open the [incidents.py](./src/data_management/incidents.py) file.
 
@@ -267,10 +269,8 @@ Alternatively, if the remote data fetch doesnt work, or you have the incident da
 ```diff
 if __name__ == '__main__':
     print('starting incidents...')
-+    process_incidents(remote=False, lang='en')
-+    process_incidents(remote=False, lang='fr')
--    process_incidents(remote=True, lang='en')
--    process_incidents(remote=True, lang='fr')
+-    df, volume, meta = process_incidents(remote=True, test=False)
++    df, volume, meta = process_incidents(remote=False, test=False)
     print('completed incidents!')
 ```
 
@@ -280,29 +280,29 @@ if __name__ == '__main__':
 
 Condition data is updated every day on open gov through the CER's incident data viz ETL.
 
+Note that the data output is language (en/fr) agnostic, so only the english dataset needs to be used.
+
 #### Option 1 (recommended): Pull conditions data directly from Open Government website
 
 1. Open the [conditions.py](./src/data_management/conditions) file.
 
-2. Unlike incidents, the conditions dataset is available through a permanent link. You shouldnt need to update the links, unless Open Gov infrastructure changes!
+2. Similiar to incidents on open gov, the link shouldnt change, but if the process fails check that the link is ok.
 
 3. Make sure that the python script is configured to point to the remote open gov files, as opposed to the raw data files in `src/data_mangagement/raw_data`.
 
 ```diff
 if __name__ == "__main__":
     print('starting conditions...')
--    process_conditions(remote=False, lang='en')
--    process_conditions(remote=False, lang='fr')
-+    process_conditions(remote=True, lang='en')
-+    process_conditions(remote=True, lang='fr')
+-    df, regions, mapMeta, meta = process_conditions(remote=False, save=True)
++    df, regions, mapMeta, meta = process_conditions(remote=True, save=True)
     print('completed conditions!')
 ```
 
 4. `npm run update-conditions-data && npm run build`
 
-#### Option 2: Use local CSV's in your possession for update
+#### Option 2: Use local CSV in your possession for update
 
-Alternatively, if the remote data fetch doesnt work, then the new conditions data csv files can be placed into `src/data_mangagement/raw_data`, overwriting the <i>conditions_en.csv</i> and <i>conditions_fr.csv</i> that are already there.
+Alternatively, if the remote data fetch doesnt work, then the new conditions data csv files can be placed into `src/data_mangagement/raw_data`, overwriting the <i>conditions_en.csv</i> that are already there.
 
 1. Open the [conditions.py](./src/data_management/conditions.py) file.
 
@@ -311,21 +311,48 @@ Alternatively, if the remote data fetch doesnt work, then the new conditions dat
 ```diff
 if __name__ == "__main__":
     print('starting conditions...')
-+    process_conditions(remote=False, lang='en')
-+    process_conditions(remote=False, lang='fr')
--    process_conditions(remote=True, lang='en')
--    process_conditions(remote=True, lang='fr')4. `npm run update-conditions-data && npm run build`
+-    df, regions, mapMeta, meta = process_conditions(remote=True, save=True)
++    df, regions, mapMeta, meta = process_conditions(remote=False, save=True)
+    print('completed conditions!')
 ```
 
 3. `npm run update-conditions-data && npm run build`
 
 ### Dataset 3: Traffic
 
-- Instructions coming soon!
+Traffic data is updated every quarter (early March, mid-May, mid-August and mid-November) on open gov and CERSEI database. When new data becomes available, it can be pulled directly from CERSEI and build into seperate json datasets for each profile with npm run data, after the steps described below.
+
+Note that the data output is language (en/fr) agnostic.
+
+1. Make sure that you have entered all the connection strings in `src/data_management/connection.py` and confirm that you have read permission on CERSEI.
+
+2. Make sure that `src/data_management/traffic.py` is configured to pull from SQL.
+
+```python
+if __name__ == "__main__":
+    print('starting throughput...')
+    traffic, df = process_throughput(test=False, sql=True, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=True, commodity='oil')
+    print('completed throughput!')
+```
+
+if this doesnt work, then get the CERSEI data through other means, and read from local files in `src/data_management/raw_data/throughput_gas_monthly.csv` and `src/data_management/raw_data/throughput_oil_monthly.csv`
+
+```python
+if __name__ == "__main__":
+    print('starting throughput...')
+    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    print('completed throughput!')
+```
+
+3. `npm run update-traffic-data && npm run build`
 
 ### Dataset 4: Apportionment
 
-- Instructions coming soon!
+Pretty much the same as traffic, but using `src/data_management/apportionment.py`
+
+`npm run update-apportionment data && npm run build`
 
 ## Adding a new profile section
 
@@ -517,6 +544,8 @@ Making sure that all dependencies are updated and both package.json and package-
 3. `npm install`
 
 ## TODO list
+
+Take a look at the issues tab for a more up to date list. I dont update this section of the readme anymore.
 
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Include documentation on updating traffic, apportionment, and oandm data sets.

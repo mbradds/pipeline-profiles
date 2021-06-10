@@ -5,35 +5,18 @@ import json
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-def incidentMetaData(df, dfPerKm, company, lang):
+def incidentMetaData(df, dfPerKm, company):
 
-    def most_common_substance(df, meta, lang):
-        if lang == 'en':
-            df_substance = df[df['Substance'] != "Not Applicable"].copy()
-        else:
-            df_substance = df[df['Substance'] != "Sans object"].copy()
+    def most_common_substance(df, meta):
+        df_substance = df[df['Substance'] != "Not Applicable"].copy()
         meta = most_common(df_substance, meta, "Substance", "mostCommonSubstance")
         return meta
 
-    def other_types(df, lang):
-        if lang == 'en':
-            serious = {"Adverse Environmental Effects": 0,
-                       "Fatality": 0,
-                       "Serious Injury (CER or TSB)": 0}
-        else:
-            newTxt = []
-            for txt in df['Incident Types']:
-                newTxt.append(txt.replace("Effets environnementaux négatifs",
-                                          "Adverse Environmental Effects")
-                              .replace("Blessure grave (Régie ou BST)",
-                                       "Serious Injury (CER or TSB)")
-                              .replace("Décès", "Fatality"))
+    def other_types(df):
+        serious = {"Adverse Environmental Effects": 0,
+                   "Fatality": 0,
+                   "Serious Injury (CER or TSB)": 0}
 
-            df['Incident Types'] = newTxt
-
-            serious = {"Adverse Environmental Effects": 0,
-                       "Fatality": 0,
-                       "Serious Injury (CER or TSB)": 0}
         for type_list in df['Incident Types']:
             type_list = [x.strip() for x in type_list.split(",")]
             for t in type_list:
@@ -55,7 +38,7 @@ def incidentMetaData(df, dfPerKm, company, lang):
     df_c = df[df['Company'] == company].copy()
     meta = {}
     meta['companyName'] = company
-    meta['seriousEvents'] = other_types(df_c, lang)
+    meta['seriousEvents'] = other_types(df_c)
     meta['release'] = int(df_c['Approximate Volume Released'].notnull().sum())
     meta['nonRelease'] = int(df_c['Approximate Volume Released'].isna().sum())
 
@@ -64,7 +47,7 @@ def incidentMetaData(df, dfPerKm, company, lang):
 
     meta["mostCommonWhat"] = [x.strip() for x in meta["mostCommonWhat"].split(" & ")]
     meta["mostCommonWhy"] = [x.strip() for x in meta["mostCommonWhy"].split(" & ")]
-    meta = most_common_substance(df_c, meta, lang)
+    meta = most_common_substance(df_c, meta)
     return meta
 
 
@@ -165,11 +148,9 @@ def optimizeJson(df):
 
 
 def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
-    lang = "en"
     if remote:
-        link = "https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/interactive-pipeline/map/2021-03-31-incident-data.csv"
+        link = "https://www.cer-rec.gc.ca/open/incident/pipeline-incidents-data.csv"
         process_func = process_english
-
         print('downloading remote incidents file')
         df = pd.read_csv(link,
                          skiprows=0,
@@ -177,7 +158,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                          engine="python",
                          error_bad_lines=False)
         df = process_func(df)
-        df.to_csv("./raw_data/incidents_"+lang+".csv", index=False)
+        df.to_csv("./raw_data/incidents_"+"en"+".csv", index=False)
     elif test:
         print('reading test incidents file')
         path = "./raw_data/test_data/incidents_en.csv"
@@ -255,7 +236,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         thisCompanyData = {}
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
-            meta = incidentMetaData(df, perKm, company, lang)
+            meta = incidentMetaData(df, perKm, company)
             thisCompanyData['meta'] = meta
             for delete in ['Incident Types', 'Company', 'why common', 'what common']:
                 del df_vol[delete]
@@ -279,5 +260,3 @@ if __name__ == '__main__':
     print('starting incidents...')
     df, volume, meta = process_incidents(remote=False, test=False)
     print('completed incidents!')
-
-#%%

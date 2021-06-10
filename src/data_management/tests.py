@@ -58,9 +58,9 @@ class TestNovaIncidents(unittest.TestCase):
         self.assertEqual(self.meta["seriousEvents"]["Fatality"], 1)
 
     def testVariableCounts(self):
-        substance = self.volume[self.volume['Substance'] == "ngsweet"].copy()
-        status = self.volume[self.volume['Status'] == "c"].copy()
-        year = self.volume[self.volume['Year'] == 2013].copy()
+        substance = self.volume[self.volume['sub'] == "ngsweet"].copy()
+        status = self.volume[self.volume['s'] == "c"].copy()
+        year = self.volume[self.volume['y'] == 2013].copy()
         self.assertEqual(len(substance), 84)
         self.assertEqual(len(status), 86)
         self.assertEqual(len(year), 2)
@@ -72,12 +72,12 @@ class TestNovaIncidents(unittest.TestCase):
         self.assertTrue(trueYearRelease-1 <= int(year['vol'].sum()) <= trueYearRelease+1)
 
     def testTrends(self):
-        year = self.volume[self.volume['Year'] == 2016].copy()
+        year = self.volume[self.volume['y'] == 2016].copy()
         self.assertEqual(len(year), 8)
 
 
 class NovaTotalConditions(unittest.TestCase):
-    company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True, lang='en')
+    company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
 
     def testCompanyData(self):
         in_Progress = self.company_df[self.company_df['Condition Status'] == "In Progress"].copy().reset_index(drop=True)
@@ -87,6 +87,7 @@ class NovaTotalConditions(unittest.TestCase):
         self.assertEqual(len(closed), 1412)
 
     def testMeta(self):
+        self.assertEqual(self.meta["build"], True)
         self.assertEqual(self.meta["summary"]["Closed"], 1367)
         self.assertEqual(self.meta["summary"]["In Progress"], 151)
         self.assertEqual(self.meta["summary"]["notOnMap"]["total"], 51)
@@ -96,7 +97,7 @@ class NovaTotalConditions(unittest.TestCase):
         self.assertEqual(total, 1569)
 
     def testMapMeta(self):
-        red_deer = self.mapMeta[self.mapMeta['id'] == "Red Deer"].copy().reset_index(drop=True)
+        red_deer = self.mapMeta[self.mapMeta['id'] == "29"].copy().reset_index(drop=True)
         self.assertEqual(red_deer.loc[0, "In Progress"], 9)
         self.assertEqual(red_deer.loc[0, "Closed"], 35)
 
