@@ -337,7 +337,7 @@ export function oandmText(meta, lang) {
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
-  }. If the activity involves an integrity dig, one or more digs are conducted to expose an area of pipeline. There have been ${dynamicValue(
+  }. If the activity involves an integrity dig, one or more digs are conducted to expose an area of the pipeline. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} individual integrity digs as part of the reported O&M activities.<p>`;
 
