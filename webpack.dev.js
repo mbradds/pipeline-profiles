@@ -8,6 +8,8 @@ module.exports = merge(common, {
     compress: true,
   },
 
+  devtool: false,
+
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: "dist/[file].map",

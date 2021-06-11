@@ -11,30 +11,30 @@ const profileWebpackConfig = (function () {
 
   const htmlFileNames = [
     ["ngtl", "natural-gas"],
-    ["alliance", "natural-gas"],
-    ["tcpl", "natural-gas"],
-    ["westcoast", "natural-gas"],
-    ["emera_brunswick", "natural-gas"],
-    ["maritimes_northeast", "natural-gas"],
-    ["many_islands", "natural-gas"],
-    ["tqm", "natural-gas"],
-    ["vector", "natural-gas"],
-    ["foothills", "natural-gas"],
-    ["enbridge_mainline", "oil-and-liquids"],
-    ["keystone", "oil-and-liquids"],
-    ["trans_mountain", "oil-and-liquids"],
-    ["cochin", "oil-and-liquids"],
-    ["southern_lights", "oil-and-liquids"],
-    ["bakken", "oil-and-liquids"],
-    ["norman_wells", "oil-and-liquids"],
-    ["express_pipeline", "oil-and-liquids"],
-    ["trans_northern", "oil-and-liquids"],
-    ["genesis", "oil-and-liquids"],
-    ["montreal", "oil-and-liquids"],
-    ["westspur", "oil-and-liquids"],
-    ["aurora", "oil-and-liquids"],
-    ["milk_river", "oil-and-liquids"],
-    ["wascana", "oil-and-liquids"],
+    // ["alliance", "natural-gas"],
+    // ["tcpl", "natural-gas"],
+    // ["westcoast", "natural-gas"],
+    // ["emera_brunswick", "natural-gas"],
+    // ["maritimes_northeast", "natural-gas"],
+    // ["many_islands", "natural-gas"],
+    // ["tqm", "natural-gas"],
+    // ["vector", "natural-gas"],
+    // ["foothills", "natural-gas"],
+    // ["enbridge_mainline", "oil-and-liquids"],
+    // ["keystone", "oil-and-liquids"],
+    // ["trans_mountain", "oil-and-liquids"],
+    // ["cochin", "oil-and-liquids"],
+    // ["southern_lights", "oil-and-liquids"],
+    // ["bakken", "oil-and-liquids"],
+    // ["norman_wells", "oil-and-liquids"],
+    // ["express_pipeline", "oil-and-liquids"],
+    // ["trans_northern", "oil-and-liquids"],
+    // ["genesis", "oil-and-liquids"],
+    // ["montreal", "oil-and-liquids"],
+    // ["westspur", "oil-and-liquids"],
+    // ["aurora", "oil-and-liquids"],
+    // ["milk_river", "oil-and-liquids"],
+    // ["wascana", "oil-and-liquids"],
   ];
 
   function htmlWebpack() {
@@ -55,8 +55,9 @@ const profileWebpackConfig = (function () {
             page: JSON.parse(JSON.stringify(pageData)),
             filename: `${lang}/${name[1]}/${name[0]}_${lang}.html`,
             chunks: [
+              `${lang}/${name[1]}/js/entry_${name[0]}`,
               `${lang}/profile_code_${lang}`,
-              `${lang}/${name[1]}/js/data_${name[0]}_${lang}`,
+              `data/${name[0]}`,
             ],
             chunksSortMode: "auto",
             template: `src/components/profile.hbs`,
@@ -79,6 +80,17 @@ const profileWebpackConfig = (function () {
   function entry(sections = ["data"]) {
     const entryPoints = {};
     language.forEach((lang) => {
+      // order of script addition to "entryPoints" matters for chunkSortMode
+      entryPoints[`data/ngtl`] = `./src/index_files/data/ngtl.js`;
+      entryPoints[
+        `${lang}/profile_code_${lang}`
+      ] = `./src/index_files/loadDashboards_${lang}.js`;
+
+      // entryPoints["page"] = [
+      //   `./src/index_files/data/ngtl.js`,
+      //   `./src/index_files/loadDashboards_${lang}.js`,
+      // ];
+
       sections.forEach((section) => {
         htmlFileNames.forEach((name) => {
           if (["milk_river", "wascana"].includes(name[0])) {
@@ -86,18 +98,16 @@ const profileWebpackConfig = (function () {
           } else {
             var folderName = name[0];
           }
-          entryPoints[`${lang}/${name[1]}/js/${section}_${name[0]}_${lang}`] = {
+          entryPoints[`${lang}/${name[1]}/js/entry_${name[0]}`] = {
             import: `./src/index_files/${lang}/${folderName}/${section}.js`,
-            dependOn: `${lang}/profile_code_${lang}`,
+            // dependOn: "page",
+            dependOn: [`${section}/${name[0]}`, `${lang}/profile_code_${lang}`],
           };
         });
       });
-      // order of script addition to "entryPoints" matters for chunkSortMode
-      entryPoints[
-        `${lang}/profile_code_${lang}`
-      ] = `./src/index_files/loadDashboards_${lang}.js`;
     });
 
+    console.log(entryPoints);
     return entryPoints;
   }
 
@@ -180,6 +190,7 @@ module.exports = {
 
   optimization: {
     usedExports: true,
+    runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         leafletVendor: {
