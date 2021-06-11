@@ -11,8 +11,8 @@ const profileWebpackConfig = (function () {
 
   const htmlFileNames = [
     ["ngtl", "natural-gas"],
-    // ["alliance", "natural-gas"],
-    // ["tcpl", "natural-gas"],
+    ["alliance", "natural-gas"],
+    ["tcpl", "natural-gas"],
     // ["westcoast", "natural-gas"],
     // ["emera_brunswick", "natural-gas"],
     // ["maritimes_northeast", "natural-gas"],
@@ -32,7 +32,7 @@ const profileWebpackConfig = (function () {
     // ["genesis", "oil-and-liquids"],
     // ["montreal", "oil-and-liquids"],
     // ["westspur", "oil-and-liquids"],
-    // ["aurora", "oil-and-liquids"],
+    ["aurora", "oil-and-liquids"],
     // ["milk_river", "oil-and-liquids"],
     // ["wascana", "oil-and-liquids"],
   ];
@@ -57,7 +57,7 @@ const profileWebpackConfig = (function () {
             chunks: [
               `${lang}/${name[1]}/js/entry_${name[0]}`,
               `${lang}/profile_code_${lang}`,
-              `data/${name[0]}`,
+              `data/data_${name[0]}`,
             ],
             chunksSortMode: "auto",
             template: `src/components/profile.hbs`,
@@ -81,15 +81,6 @@ const profileWebpackConfig = (function () {
     const entryPoints = {};
     language.forEach((lang) => {
       // order of script addition to "entryPoints" matters for chunkSortMode
-      entryPoints[`data/ngtl`] = `./src/index_files/data/ngtl.js`;
-      entryPoints[
-        `${lang}/profile_code_${lang}`
-      ] = `./src/index_files/loadDashboards_${lang}.js`;
-
-      // entryPoints["page"] = [
-      //   `./src/index_files/data/ngtl.js`,
-      //   `./src/index_files/loadDashboards_${lang}.js`,
-      // ];
 
       sections.forEach((section) => {
         htmlFileNames.forEach((name) => {
@@ -98,13 +89,21 @@ const profileWebpackConfig = (function () {
           } else {
             var folderName = name[0];
           }
+          entryPoints[
+            `${section}/${section}_${name[0]}`
+          ] = `./src/index_files/data/${name[0]}.js`;
           entryPoints[`${lang}/${name[1]}/js/entry_${name[0]}`] = {
             import: `./src/index_files/${lang}/${folderName}/${section}.js`,
-            // dependOn: "page",
-            dependOn: [`${section}/${name[0]}`, `${lang}/profile_code_${lang}`],
+            dependOn: [
+              `${section}/${section}_${name[0]}`,
+              `${lang}/profile_code_${lang}`,
+            ],
           };
         });
       });
+      entryPoints[
+        `${lang}/profile_code_${lang}`
+      ] = `./src/index_files/loadDashboards_${lang}.js`;
     });
 
     console.log(entryPoints);
@@ -190,7 +189,9 @@ module.exports = {
 
   optimization: {
     usedExports: true,
-    runtimeChunk: "single",
+    runtimeChunk: {
+      name: "shared/runtime",
+    },
     splitChunks: {
       cacheGroups: {
         leafletVendor: {
@@ -198,14 +199,14 @@ module.exports = {
           chunks: "initial",
           reuseExistingChunk: true,
           enforce: true,
-          filename: "vendor/leaflet.[contenthash].js",
+          filename: "shared/leaflet.[contenthash].js",
         },
         highchartsVendor: {
           test: /[\\/]node_modules[\\/](highcharts)[\\/]/,
           chunks: "initial",
           reuseExistingChunk: true,
           enforce: true,
-          filename: "vendor/highcharts.[contenthash].js",
+          filename: "shared/highcharts.[contenthash].js",
         },
       },
     },
