@@ -29,15 +29,13 @@ export async function mainConditions(
     infoAlert.innerHTML = infohtml;
   };
   const statusInit = (metaData) => {
-    document.addEventListener("DOMContentLoaded", () => {
-      const inProgress = document.getElementById("in-progress-btn");
-      if (metaData.summary["In Progress"] > 0) {
-        inProgress.classList.add("active");
-      } else if (metaData.summary["In Progress"] === 0) {
-        inProgress.disabled = true;
-        document.getElementById("closed-btn").classList.add("active");
-      }
-    });
+    const inProgress = document.getElementById("in-progress-btn");
+    if (metaData.summary["In Progress"] > 0) {
+      inProgress.classList.add("active");
+    } else if (metaData.summary["In Progress"] === 0) {
+      inProgress.disabled = true;
+      document.getElementById("closed-btn").classList.add("active");
+    }
     const conditionsFilter = {
       column: metaData.summary["In Progress"] > 0 ? "In Progress" : "Closed",
     };

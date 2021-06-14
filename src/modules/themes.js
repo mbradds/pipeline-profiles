@@ -73,6 +73,14 @@ export const generalTheme = () => {
       },
     },
 
+    noData: {
+      style: {
+        fontWeight: "bold",
+        fontSize: "15px",
+        color: "#303030",
+      },
+    },
+
     credits: {
       text: "",
     },
@@ -131,6 +139,7 @@ export const frenchTheme = () => {
       ],
       decimalPoint: ",",
       resetZoom: "réinitialiser le zoom",
+      noData: "aucune donnée à afficher",
     },
   };
   Highcharts.setOptions(Highcharts.french);

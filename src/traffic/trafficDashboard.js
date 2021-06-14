@@ -303,13 +303,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       lang: {
         noData: lang.fiveYr.notEnough,
       },
-      noData: {
-        style: {
-          fontWeight: "bold",
-          fontSize: "15px",
-          color: "#303030",
-        },
-      },
       tooltip: {
         shared: true,
         borderColor: cerPalette["Dim Grey"],
@@ -486,7 +479,12 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function displayPointDescription(points) {
-    const pointsText = points.map((p) => {
+    let pointList = points;
+    if (points.length > 1) {
+      pointList = sortJsonAlpha(points, "name");
+    }
+
+    const pointsText = pointList.map((p) => {
       let textCol = "";
       if (points.length > 1) {
         textCol = `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`;
@@ -609,9 +607,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       } else {
         displayPointDescription(chartParams.points, chartParams.tm);
       }
-      window.addEventListener("DOMContentLoaded", () => {
-        equalizeHeight("eq-ht-1", "eq-ht-2");
-      });
+
+      equalizeHeight("eq-ht-1", "eq-ht-2");
 
       // user selects key point
       if (!chartParams.tm && chartParams.defaultPoint.id !== "0") {
@@ -705,7 +702,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 trafficChart.series[0].remove(false, false, false);
               }
 
-              if (chartParams.points.length > 0) {
+              if (chartParams.points.length >= 0) {
                 [timeSeries, fiveSeries] = addSeriesParams(
                   createSeries(trafficData, chartParams),
                   chartParams.unitsHolder,
@@ -731,6 +728,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               }
               displayPointDescription(chartParams.points);
               lang.dynamicText(chartParams, lang.numberFormat, lang.series);
+              equalizeHeight("eq-ht-1", "eq-ht-2");
             }
           });
       }

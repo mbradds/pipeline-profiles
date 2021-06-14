@@ -156,6 +156,10 @@ export function addSeriesParams(
   section = "traffic",
   sorted = true
 ) {
+  if (seriesWithDate.length === 0) {
+    return [[undefined], [undefined]];
+  }
+
   const minDate = seriesWithDate[0].min;
   let series = seriesWithDate.slice(1);
   if (sorted) {
