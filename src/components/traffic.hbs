@@ -13,15 +13,20 @@
     </div>
   </div>
   <div class="row dashboard-style">
-    <div class="col-md-8 traffic-hc-column-map" id="traffic-hc-column">
+    <div
+      class="col-md-8 col-sm-8 col-xs-12 traffic-hc-column-map"
+      id="traffic-hc-column"
+    >
       <div class="traffic-hc-shared" id="traffic-hc"></div>
       <div class="traffic-hc-shared" id="traffic-hc-range"></div>
     </div>
-    <div class="col-md-4">
-      <p class="cerlabel">
-        {{text.selectUnits}}
-      </p>
-      <div id="select-units-radio-traffic"></div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div id="radio-align">
+        <p class="cerlabel">
+          {{text.selectUnits}}&nbsp;&nbsp;
+        </p>
+        <div id="select-units-radio-traffic"></div>
+      </div>
       <section class="panel panel-info mrgn-tp-sm" id="traffic-container">
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtMap}}</h5>
@@ -49,7 +54,7 @@
     </div>
   </div>
   <div class="row dashboard-style" id="key-point-info">
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-6">
       <section class="panel panel-info traffic-panel" id="eq-ht-1">
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtTrends}}</h5>
@@ -57,7 +62,7 @@
         <div class="panel-body" id="traffic-trends"></div>
       </section>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-6">
       <section class="panel panel-info traffic-panel" id="eq-ht-2">
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtDescription}}</h5>

@@ -355,7 +355,7 @@ export async function mainConditions(
               zooms["In Progress"][1],
               zooms["In Progress"][2]
             );
-            let text = `<div class="alert alert-warning" style="padding:3px">`;
+            let text = `<div class="alert alert-warning" id="conditions-instructions" style="padding:3px">`;
             text += `<h4>${lang.instructions.header}</h4>`;
             text += `<ol><li>${lang.instructions.line1}</li>`;
             text += `<li>${lang.instructions.line2}</li></ol>`;

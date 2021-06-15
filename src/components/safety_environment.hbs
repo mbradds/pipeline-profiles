@@ -290,10 +290,10 @@
         </div>
       </div>
       <div class="row mrgn-tp-md">
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-8 col-xs-12">
           <div id="incidents-map"></div>
         </div>
-        <div class="col-md-4 event-navigator">
+        <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
           <div class="event-filter-nav" id="substance-bar"></div>
           <div class="event-filter-nav mrgn-tp-sm" id="status-bar"></div>
           <div class="event-filter-nav mrgn-tp-sm" id="year-bar"></div>
@@ -302,10 +302,10 @@
       </div>
       <div id="incidents-time-series-section" class="profile-hide">
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-9 col-sm-9">
             <div class="time-series" id="incidents-time-series"></div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 event-navigator">
             <div class="event-filter-nav" id="substance-trend"></div>
             <div class="event-filter-nav mrgn-tp-sm" id="status-trend"></div>
             <div class="event-filter-nav mrgn-tp-sm" id="what-trend"></div>
@@ -336,7 +336,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 center-stuff">
+            <div class="col-md-6 col-sm-6 col-xs-12 center-stuff">
               <input
                 name="html5shim-1"
                 id="incidents-range-slide"
@@ -347,7 +347,7 @@
                 value="100"
               />
             </div>
-            <div class="col-md-3 center-stuff">
+            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
               <button
                 type="button"
                 value="100"
@@ -357,7 +357,7 @@
                 {{text.safety.incidentsFind}}
               </button>
             </div>
-            <div class="col-md-3 center-stuff">
+            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
               <button
                 type="button"
                 id="reset-incidents-btn"
@@ -540,10 +540,10 @@
         <div class="mrgn-bttm-lg" id="oandm-dynamic-text"></div>
         <div class="dashboard-title" id="oandm-dashboard-title"></div>
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-9 col-sm-9 col-xs-12">
             <div class="time-series" id="time-series-oandm"></div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 col-xs-12 event-navigator">
             <div class="event-filter-nav" id="oandm-region-trend"></div>
             <div class="event-filter-nav mrgn-tp-sm" id="oandm-dig-trend"></div>
             <div
@@ -641,10 +641,10 @@
         </div>
       </div>
       <div class="row mrgn-tp-md">
-        <div class="col-md-8">
-          <div id="remediation-map"></div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div id="remediation-map" class="leaflet-map"></div>
         </div>
-        <div class="col-md-4 event-navigator">
+        <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
           <div class="event-filter-nav" id="rem-water-bar"></div>
           <div class="event-filter-nav mrgn-tp-sm" id="rem-status-bar"></div>
           <div class="event-filter-nav mrgn-tp-sm" id="rem-year-bar"></div>
@@ -653,10 +653,10 @@
       </div>
       <div id="remediation-time-series-section" class="profile-hide">
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-9 col-sm-9 col-xs-12">
             <div class="time-series" id="remediation-time-series"></div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3 col-sm-3 col-xs-12 event-navigator">
             <div class="event-filter-nav" id="rem-water-trend"></div>
             <div
               class="event-filter-nav mrgn-tp-sm"
@@ -700,7 +700,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 center-stuff">
+            <div class="col-md-6 col-sm-6 col-xs-12 center-stuff">
               <input
                 name="html5shim-1"
                 id="remediation-range-slide"
@@ -711,7 +711,7 @@
                 value="100"
               />
             </div>
-            <div class="col-md-3 center-stuff">
+            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
               <button
                 type="button"
                 value="100"
@@ -721,7 +721,7 @@
                 Find sites within 100km
               </button>
             </div>
-            <div class="col-md-3 center-stuff">
+            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
               <button
                 type="button"
                 id="reset-remediation-btn"

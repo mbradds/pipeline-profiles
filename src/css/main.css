@@ -171,6 +171,12 @@ Styles for traffic and apportionment dashboards
 #map-panel-body {
   padding: 0px;
 }
+#radio-align {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
 
 /* 
 styles for remediation dashboard 
@@ -186,18 +192,78 @@ styles for remediation dashboard
 responsive style options 
 */
 
-/* small screen */
-@media only screen and (min-width: 768px) {
+/* extra small screen phones (col-xs) */
+@media only screen and (max-width: 767px) {
+  /* h2 {
+    color: orange;
+  } */
+  .tablinks {
+    height: 110px !important;
+  }
   /* traffic */
+  #traffic-container {
+    display: none;
+  }
+  .traffic-hc-column-map {
+    padding-right: 25px !important;
+  }
   .traffic-hc-single-gas {
-    height: 480px;
+    height: 450px;
   }
   .traffic-map-shared {
-    height: 330px;
+    height: 275px;
     margin-bottom: 5px;
   }
   .traffic-hc-shared {
-    height: 235px;
+    height: 180px;
+  }
+  /* conditions */
+  .container-chart-map {
+    height: 300px;
+    position: relative;
+    z-index: 10;
+  }
+  #conditions-instructions {
+    display: none;
+  }
+  #conditions-insert {
+    overflow-y: scroll;
+    max-height: 500px;
+  }
+  #incidents-map {
+    height: 400px;
+    margin-right: 0px;
+  }
+  .time-series {
+    margin-right: 0px;
+  }
+  .event-navigator {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    max-height: 120px;
+    overflow-y: scroll;
+  }
+  #remediation-map {
+    height: 400px;
+    margin-right: 0px;
+  }
+}
+
+/* small screen tablet (col-sm) */
+@media only screen and (min-width: 768px) {
+  /* h2 {
+    color: blue;
+  } */
+  /* traffic */
+  .traffic-hc-single-gas {
+    height: 450px;
+  }
+  .traffic-map-shared {
+    height: 260px;
+    margin-bottom: 5px;
+  }
+  .traffic-hc-shared {
+    height: 200px;
   }
   /* conditions */
   .container-chart-map {
@@ -216,11 +282,15 @@ responsive style options
     height: 445px;
   }
 }
+
 /* medium screen */
 @media only screen and (min-width: 1000px) {
+  /* h2 {
+    color: red;
+  } */
   /* traffic */
   .traffic-hc-single-gas {
-    height: 480px;
+    height: 460px;
   }
   .traffic-map-shared {
     height: 330px;
@@ -248,16 +318,19 @@ responsive style options
 }
 /* large screens */
 @media only screen and (min-width: 1600px) {
+  /* h2 {
+    color: green;
+  } */
   /* traffic */
   .traffic-hc-single-gas {
-    height: 520px;
+    height: 490px;
   }
   .traffic-map-shared {
-    height: 375px;
+    height: 365px;
     margin-bottom: 5px;
   }
   .traffic-hc-shared {
-    height: 265px;
+    height: 250px;
   }
   /* conditions */
   .container-chart-map {

@@ -66,9 +66,17 @@ export class EventMap {
 
   findPlotHeight() {
     try {
-      this.plotHeight = document.getElementById(this.divId).clientHeight;
+      const ch = document.getElementById(this.divId).clientHeight;
+      if (ch > 0) {
+        this.plotHeight = document.getElementById(this.divId).clientHeight;
+      } else {
+        const style = document.getElementById(this.divId);
+        const { height } = getComputedStyle(style);
+        const heightInt = parseInt(height.replace("px", ""), 10);
+        this.plotHeight = heightInt;
+      }
     } catch (err) {
-      this.plotHeight = 0;
+      this.plotHeight = 500;
     }
   }
 
