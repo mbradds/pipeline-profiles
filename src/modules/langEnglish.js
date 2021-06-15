@@ -609,6 +609,7 @@ export const englishDashboard = {
       locationError,
       numberFormat,
       exploreOther,
+      legendClick,
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",

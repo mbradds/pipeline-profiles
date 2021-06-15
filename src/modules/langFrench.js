@@ -613,6 +613,7 @@ export const frenchDashboard = {
       numberFormat,
       exploreOther,
       locationError,
+      legendClick,
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",

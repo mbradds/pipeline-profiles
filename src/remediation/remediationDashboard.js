@@ -58,6 +58,7 @@ export async function mainRemediation(data, lang) {
       filters: timeFilters,
       data: data.data,
       divId: "remediation-time-series",
+      legendClickText: { enabled: true, text: lang.dashboard.legendClick },
       oneToMany: ONETOMANY,
       lang: lang.dashboard,
       // definitions: lang.definitions,

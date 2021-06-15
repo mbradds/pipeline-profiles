@@ -239,44 +239,30 @@ export class EventTrend {
   }
 
   oneToManyDisclaimer() {
-    const destoryLabel = (chart) => {
-      if (chart.customLabel) {
-        chart.customLabel.destroy();
-      }
-    };
     if (this.oneToMany[this.field]) {
-      destoryLabel(this.chart);
-      this.chart.customLabel = undefined;
-
-      const text = `<p class="alert alert-warning" style="padding:4px">${this.lang.countDisclaimer(
+      const text = `<div class="alert alert-warning count-disclaimer"><p>${this.lang.countDisclaimer(
         this.eventType,
         this.pillNameSubstitution()
-      )}</p>`;
-      const label = this.chart.renderer
-        .label(text, null, null, null, null, null, true)
-        .attr({
-          padding: 0,
-        })
-        .css({
-          "max-width": "700px",
-          margin: 0,
-        })
-        .add(this.chart.rGroup);
+      )}</p></div>`;
 
-      label.align(
-        Highcharts.extend(label.getBBox(), {
+      this.chart.update({
+        title: {
+          text,
+          useHTML: true,
           align: "left",
-          x: 50, // offset
-          verticalAlign: "top",
-          y: -27, // offset
-        }),
-        null,
-        "spacingBox"
-      );
-      this.chart.customLabel = label;
+          margin: 0,
+          style: {
+            fontSize: "14px",
+            fontWeight: "normal",
+          },
+        },
+      });
     } else {
-      destoryLabel(this.chart);
-      this.chart.customLabel = undefined;
+      this.chart.update({
+        title: {
+          text: "",
+        },
+      });
     }
   }
 
@@ -315,7 +301,7 @@ export class EventTrend {
       chart: {
         type: "column",
         animation: false,
-        spacingTop: 25,
+        spacingTop: 5,
       },
 
       xAxis: {
