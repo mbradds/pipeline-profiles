@@ -6,6 +6,8 @@ module.exports = merge(common, {
   mode: "development",
   devServer: {
     compress: true,
+    inline: true,
+    hot: true,
   },
 
   devtool: false,

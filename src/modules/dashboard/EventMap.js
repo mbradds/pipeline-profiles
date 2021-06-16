@@ -145,7 +145,7 @@ export class EventMap {
       let digits = 2;
       if (m3 > 50) {
         digits = 0;
-      } else if (m3 < 5) {
+      } else if (m3 < 1) {
         digits = 3;
       }
 

@@ -59,7 +59,7 @@ const yesNoInfo = {
 const units = {
   "Bcf/d": "Bcf/d",
   "million m3/d": "million m3/d",
-  "Mb/d": "thousand b/d",
+  "Mb/d": "Mb/d",
   "thousand m3/d": "thousand m3/d",
 };
 

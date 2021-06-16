@@ -181,8 +181,13 @@ Styles for traffic and apportionment dashboards
 #radio-align {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: left;
+}
+
+#traffic-container {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 /* 
@@ -297,14 +302,14 @@ responsive style options
   } */
   /* traffic */
   .traffic-hc-single-gas {
-    height: 460px;
-  }
-  .traffic-map-shared {
-    height: 330px;
-    margin-bottom: 5px;
+    height: 470px;
   }
   .traffic-hc-shared {
     height: 235px;
+  }
+  .traffic-map-shared {
+    height: 325px;
+    margin-bottom: 5px;
   }
   /* conditions */
   .container-chart-map {
@@ -330,14 +335,14 @@ responsive style options
   } */
   /* traffic */
   .traffic-hc-single-gas {
-    height: 490px;
-  }
-  .traffic-map-shared {
-    height: 365px;
-    margin-bottom: 5px;
+    height: 500px;
   }
   .traffic-hc-shared {
     height: 250px;
+  }
+  .traffic-map-shared {
+    height: 355px;
+    margin-bottom: 5px;
   }
   /* conditions */
   .container-chart-map {
