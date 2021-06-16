@@ -5,6 +5,7 @@
  * The translation functionality is split into English and French to help save on code size because only English appears in the English bundle.
  */
 
+import Highcharts from "highcharts";
 import { cerPalette } from "./util";
 import { incidentsTextEng, trafficTrendTextEng } from "./dynamicText";
 

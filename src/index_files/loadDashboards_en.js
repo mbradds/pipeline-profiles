@@ -11,8 +11,6 @@
  * of dead french text, with if statements selecting english strings. Its unlikely that external users are going to regularly switch
  * between languages past the profiles landing page, so this is probably the most cache efficent pattern.
  */
-
-import { bindToWindow } from "./vendor";
 import { generalTheme } from "../modules/themes";
 // conditions
 import { mainConditions } from "../conditions/conditionsDashboard";
@@ -29,8 +27,9 @@ import { mainOandM } from "../oandm/oandmDashboard";
 // contaminated sites and remediation
 import { mainRemediation } from "../remediation/remediationDashboard";
 
+require("../css/main.css");
+
 // console.time(`first content loading`);
-bindToWindow();
 
 generalTheme();
 

@@ -1,7 +1,11 @@
+import Highcharts from "highcharts";
+import MapModule from "highcharts/modules/map";
 import { sortJson, cerPalette, visibility } from "../modules/util";
 import { mapInits } from "./hcMapConfig";
 import conditionsRegions from "./company_data/metadata/regions.json";
 import conditionsThemes from "./company_data/metadata/themes.json";
+
+MapModule(Highcharts);
 
 export async function mainConditions(
   econRegions,

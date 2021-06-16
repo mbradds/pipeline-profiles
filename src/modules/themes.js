@@ -5,7 +5,11 @@
  * Contains a generalTheme to be applied to all profiles, and a frenchTheme.
  */
 
+import Highcharts from "highcharts";
+import NoDataToDisplay from "highcharts/modules/no-data-to-display";
 import { cerPalette } from "./util";
+
+NoDataToDisplay(Highcharts);
 
 export const generalTheme = () => {
   Highcharts.profiles = {

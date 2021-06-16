@@ -14,6 +14,7 @@
  *   parameter. This will make this class more general purpose and improve usability/self documentation.
  */
 
+import Highcharts from "highcharts";
 import { visibility, rangeInclusive } from "../util";
 
 /**

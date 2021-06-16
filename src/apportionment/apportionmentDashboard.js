@@ -12,6 +12,8 @@
  *  - Enbridge Norman Wells
  */
 
+import Highcharts from "highcharts";
+
 import {
   cerPalette,
   addSeriesParams,

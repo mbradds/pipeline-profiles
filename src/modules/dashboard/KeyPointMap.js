@@ -2,6 +2,8 @@
  * @file Class definition for a simple leaflet map used to display a key point map beside the throughput and capacity charts.
  */
 
+import * as L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import { cerPalette, leafletBaseMap } from "../util";
 
 /**

@@ -1,4 +1,3 @@
-import { bindToWindow } from "./vendor";
 import { generalTheme, frenchTheme } from "../modules/themes";
 // conditions
 import { mainConditions } from "../conditions/conditionsDashboard";
@@ -15,8 +14,9 @@ import { mainOandM } from "../oandm/oandmDashboard";
 // contaminated sites and remediation
 import { mainRemediation } from "../remediation/remediationDashboard";
 
+require("../css/main.css");
 // console.time(`first content loading`);
-bindToWindow();
+
 generalTheme();
 frenchTheme();
 

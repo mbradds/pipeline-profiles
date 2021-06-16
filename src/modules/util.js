@@ -2,6 +2,7 @@
  * @file This file contains shared utility functions that are required throughout the project.
  */
 
+import * as L from "leaflet";
 import { mapDates } from "./datestone";
 
 /**

@@ -6,6 +6,7 @@
  * serve as a legend/total indicator.
  */
 
+import Highcharts from "highcharts";
 import { cerPalette } from "../util";
 
 /**

@@ -3,10 +3,6 @@
   "env": {
     "browser": true
   },
-  "globals": {
-    "Highcharts": true,
-    "L": true
-  },
   "rules": {
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",

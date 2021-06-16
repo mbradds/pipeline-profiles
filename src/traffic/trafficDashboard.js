@@ -11,6 +11,9 @@
  * radio multi-select has to be used instead of the buttons on other key points.
  */
 
+import Highcharts from "highcharts";
+import HighchartsMore from "highcharts/highcharts-more";
+
 import {
   cerPalette,
   visibility,
@@ -23,6 +26,8 @@ import {
 } from "../modules/util";
 import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
 import { KeyPointMap } from "../modules/dashboard/KeyPointMap";
+
+HighchartsMore(Highcharts);
 
 export async function mainTraffic(trafficData, metaData, lang) {
   const rounding = 2;
@@ -794,6 +799,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               );
             }
             lang.dynamicText(chartParams, lang.numberFormat, lang.series);
+            equalizeHeight("eq-ht-1", "eq-ht-2");
           }
         });
 

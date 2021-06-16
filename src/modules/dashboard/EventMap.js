@@ -10,8 +10,10 @@
  * - Optional REDOCS search attached to circle click event.
  */
 
+import * as L from "leaflet";
+import Highcharts from "highcharts";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
-import { Icon } from "leaflet";
+import "leaflet/dist/leaflet.css";
 import { cerPalette, conversions, leafletBaseMap, visibility } from "../util";
 
 const haversine = require("haversine");
@@ -446,7 +448,7 @@ export class EventMap {
         }) /* This will return map so you can do chaining */
         .on("locationfound", (e) => {
           const marker = L.marker([e.latitude, e.longitude], {
-            icon: new Icon({
+            icon: new L.Icon({
               iconUrl: markerIconPng,
               iconSize: [25, 41],
               iconAnchor: [12, 41],
