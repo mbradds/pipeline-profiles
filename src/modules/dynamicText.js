@@ -369,9 +369,9 @@ export function remediationText(meta, lang) {
     meta.company
   } has reported a total of ${dynamicValue(
     lang.numberFormat(meta.new + meta.old, 0)
-  )} contaminated sites. The CER publishes NOCs that have been submitted to the CER since August 2018, and annual updates that have been submitted since 2021. There have been ${dynamicValue(
+  )} contaminated sites since 2011 when the first Remediation Process Guide was first published. There have been ${dynamicValue(
     meta.new
-  )} contaiminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
+  )} contaminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
 
   let secondParagraph = `<p>Where applicable, an estimate of the contaminated soil volume is reported to the CER. Since August 2018, ${dynamicValue(
     lang.numberFormat(meta.soil.total, 0)
@@ -379,7 +379,7 @@ export function remediationText(meta, lang) {
 
   if (meta.soil.total > 0 && meta.soil.pools > 0) {
     secondParagraph += `, a volume equivalent to approximately ${dynamicValue(
-      `${meta.soil.pools} olympic sized swimming pools`
+      `${meta.soil.pools} Olympic-sized swimming pools`
     )}.</p>`;
   } else {
     secondParagraph += `.</p>`;
