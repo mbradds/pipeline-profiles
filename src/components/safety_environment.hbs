@@ -8,6 +8,7 @@
       type="button"
       class="btn btn-default tablinks"
       onclick="openTab(event, 'condition-compliance')"
+      id="defaultClick"
     >
       {{text.safety.complianceBtn}}
     </button>
@@ -26,7 +27,6 @@
       type="button"
       class="btn btn-default tablinks"
       onclick="openTab(event, 'operations-maintenance')"
-      id="defaultClick"
     >
       Operations &#38; Maintenance Activities
     </button>
@@ -493,34 +493,6 @@
           </li>
         </ol>
       </details>
-      {{! <details>
-        <summary>
-          Is the public engaged concerning about O&#38;M activities?
-        </summary>
-        <p>The CER requires companies to engage parties whose rights or
-          interests may be affected by O&M, prior to undertaking those
-          activities.</p>
-        <p>"Public consultation" refers to the range of activities a company can
-          undertake to share information with members of the public who may be
-          affected by O&M activities, and to identify and resolve issues or
-          concerns related to these activities. Examples of potentially-affected
-          members of the public include landowners, tenants, residents,
-          Aboriginal communities, government agencies, non-governmental
-          organizations, trappers, guides, outfitters, recreational users, other
-          land or resource users (e.g., forestry, mining), and commercial third
-          parties. The Board recognizes that effective public consultation goes
-          beyond simply informing 9 potentially-affected members of the public,
-          and includes involving them in decisions or plans that may affect
-          their lives. Companies must carry out public consultation activities
-          that are reasonable for the scope and nature of the planned activity,
-          and must justify the extent of public consultation carried out,
-          particularly if no consultation is undertaken</p>
-        <p>When consultation includes Aboriginal communities, companies should
-          consider establishing a consultation protocol with these communities
-          that takes into consideration their rights, interests, and cultural
-          elements.</p>
-      </details> }}
-
       <div id="oandm-dashboard">
         <div
           class="alert alert-warning mrgn-tp-md disclaimer-style"
@@ -738,7 +710,7 @@
         </div>
       </section>
 
-      <div class="row mrgn-tp-md">
+      <div class="row">
         <div class="col-md-12">
           <details>
             <summary>{{text.sourceTitle}}</summary>

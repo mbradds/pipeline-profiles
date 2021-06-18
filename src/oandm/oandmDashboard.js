@@ -58,7 +58,7 @@ export async function mainOandM(eventData, lang) {
       plot: timeSeries,
       numberOfPills: 5,
       langPillTitles: lang.pillTitles,
-      fixedPillHeight: 70,
+      fixedPillHeight: 72,
     });
 
     trendNav.makeBar("Province/Territory", "oandm-region-trend", "activated");
