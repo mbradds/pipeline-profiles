@@ -337,18 +337,18 @@ export function oandmText(meta, lang) {
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
-  }. If the activity involves an integrity dig, one or more digs are conducted to expose an area of the pipeline. There have been ${dynamicValue(
+  }. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity digs. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} individual integrity digs as part of the reported O&M activities.<p>`;
 
   let secondParagraph = "";
   if (meta.nearby) {
-    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year, O&M events have occurred most often near ${dynamicValue(
+    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year, O&M activities have occurred most often near ${dynamicValue(
       meta.nearby.join(", ")
     )} among others.</p>`;
   }
 
-  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require additional new permanent or temporary land outside company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require the acquisition of additional new permanent or temporary land outside company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
     `${meta.landRequired} hectares`
   )}`;
   const iceRinks = ` of new land, an area equal to ${dynamicValue(
@@ -362,7 +362,7 @@ export function oandmText(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities with a Schedule 1 species at risk present at the activity site. When this happens, the company may be required to meet additional regulatory obligations outside of the CER Act, such as the Migratory Birds Convention Act and the Species at Risk Act.</p>`;
+  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal Species at Risk Act. When this happens, the company may be required to meet additional regulatory obligations outside of the CER Act, such as the Migratory Birds Convention Act and the Species at Risk Act.</p>`;
 
   const totalText =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
