@@ -62,7 +62,7 @@
           <li>{{text.safety.inProgressLst.six}}</li>
         </ul>
       </details>
-      <details>
+      <details class="mrgn-bttm-md">
         <summary>{{text.safety.closed}}</summary>
         <p>{{text.safety.closedLst.one}}</p>
         <ul class="lst-spcd">
@@ -70,10 +70,10 @@
           <li>{{text.safety.closedLst.three}}</li>
         </ul>
       </details>
-      <div class="plains_disclaimer"></div>
       <div id="conditions-dashboard">
         <div class="row mrgn-tp-sm">
           <div class="col-md-12">
+            <div class="plains_disclaimer"></div>
             <h3 id="conditions-map-title"></h3>
             <div
               class="btn-group btn-group-justified"
@@ -225,7 +225,7 @@
         class="mrgn-tp-md mrgn-bttm-md"
         id="system-incidents-paragraph"
       ></div>
-      <details>
+      <details class="mrgn-bttm-md">
         <summary>{{text.safety.incidentsDetails4.one}}</summary>
         <ul class="lst-spcd">
           <li>{{text.safety.incidentsDetails4.two}}</li>
@@ -250,10 +250,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 mrgn-tp-lg" id="incidents-dashboard">
+    <div class="col-md-12" id="incidents-dashboard">
       <div class="plains_disclaimer"></div>
-      <div class="dashboard-title" id="incidents-dashboard-title"></div>
-      <div id="inline-radio" class="radio-inline pull-right mrgn-tp-sm">
+      <h3 class="dashboard-title" id="incidents-dashboard-title"></h3>
+      <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
         <form>
           <label for="incident-count-btn" class="radio-inline">
             <input
@@ -274,10 +274,7 @@
             {{text.safety.incidentsVolRadio}}</label>
         </form>
       </div>
-      <div
-        class="btn-group btn-group-justified mrgn-tp-xl"
-        id="incidents-view-type"
-      >
+      <div class="btn-group btn-group-justified" id="incidents-view-type">
         <div class="btn-group">
           <button type="button" class="btn btn-default active" value="map">
             {{text.safety.incidentsMapBtn}}
@@ -408,15 +405,19 @@
         the rights of those that may be affected.
       </p>
       <p>
-        O&#38;M activities are evaluated by the CER as part of the original
-        application for the construction and operation of a pipeline; therefore,
-        companies are not required to apply for additional approval to undertake
-        most O&#38;M activities. However, companies are required to provide the
-        CER with sufficient information to make a decision as to whether to
-        inspect O&#38;M activities that could result in safety consequences to
-        landowners or the public, environmental consequences, or a negative
-        impact on normal third-party use of the right-of-way (RoW) or adjacent
-        property.
+        Under the
+        <i>Canadian Regulator Onshore Pipeline Regulations Act</i>, companies
+        are required develop, regularly review and update as required, operation
+        and maintenance manuals that provide information and procedures to
+        promote safety, environmental protection and efficiency in the operation
+        of the pipeline. As orders typically include authorization to construct
+        and operate a facility, companies are not required to apply for
+        additional approval to undertake most O&#38;M activities. However,
+        companies are required to provide the CER with sufficient information to
+        make a determination as to whether to inspect O&#38;M activities that
+        could result in safety consequences to landowners or the public,
+        environmental consequences, or a negative impact on normal third-party
+        use of the right-of-way (RoW) or adjacent property.
       </p>
       <details>
         <summary>
@@ -505,12 +506,13 @@
               href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
               target="_blank"
             >O&M Requirements and Guidance Notes</a>
-            for a list of O&M event requirements that call for notification to
-            the Commission.
+            for a list of O&M event activities that call for notification to be
+            filed with the CER.
           </small>
         </div>
-        <div class="mrgn-bttm-lg" id="oandm-dynamic-text"></div>
-        <div class="dashboard-title" id="oandm-dashboard-title"></div>
+        <div id="oandm-dynamic-text"></div>
+        <div class="plains_disclaimer"></div>
+        <h3 class="dashboard-title" id="oandm-dashboard-title"></h3>
         <div class="row">
           <div class="col-md-9 col-sm-9 col-xs-12">
             <div class="time-series" id="time-series-oandm"></div>
@@ -595,11 +597,8 @@
   <div class="row">
     <div class="col-md-12" id="remediation-dashboard">
       <div class="plains_disclaimer"></div>
-      <div class="mrgn-bttm-lg" id="remediation-dynamic-text"></div>
-      <div
-        class="dashboard-title mrgn-bttm-md"
-        id="remediation-dashboard-title"
-      ></div>
+      <div id="remediation-dynamic-text"></div>
+      <h3 class="dashboard-title" id="remediation-dashboard-title"></h3>
       <div class="btn-group btn-group-justified" id="remediation-view-type">
         <div class="btn-group">
           <button type="button" class="btn btn-default active" value="map">

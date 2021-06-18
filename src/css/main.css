@@ -152,10 +152,7 @@ Styles for incidents dashboard
   border-bottom: 1px solid #ccc;
 }
 .dashboard-title {
-  font-weight: bold;
-  font-size: 1.17em;
   float: left;
-  font-family: Lato, sans-serif;
 }
 .notice-me-btn {
   box-shadow: 0 0 11px #ffbe4b;

@@ -60,7 +60,7 @@ export async function loadAllCharts(data, plains = false) {
   function plainsMidstreamProfile(lang, div) {
     [...document.querySelectorAll(`.${div}`)].forEach((warn) => {
       const plainsDiv = warn;
-      plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><h4>${lang.plains}</h4></section>`;
+      plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><p>${lang.plains}</p></section>`;
     });
   }
 

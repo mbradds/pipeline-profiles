@@ -325,25 +325,20 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
   document.getElementById("traffic-trends").innerHTML = trendText;
 }
 
-// function lengthText(number, numberFormat) {
-//   if (number > 1000) {
-//     return `${numberFormat(number / 1000, 1)} km`;
-//   }
-//   return `${numberFormat(number, 0)} m`;
-// }
-
 export function oandmText(meta, lang) {
   const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${
     meta.company
-  }. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity digs. There have been ${dynamicValue(
+  }. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} individual integrity digs as part of the reported O&M activities.<p>`;
 
   let secondParagraph = "";
   if (meta.nearby) {
-    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year, O&M activities have occurred most often near ${dynamicValue(
+    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year (${
+      meta.nearbyYear
+    }), O&M activities have occurred most often near ${dynamicValue(
       meta.nearby.join(", ")
     )} among others.</p>`;
   }
@@ -362,7 +357,7 @@ export function oandmText(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal Species at Risk Act. When this happens, the company may be required to meet additional regulatory obligations outside of the CER Act, such as the Migratory Birds Convention Act and the Species at Risk Act.</p>`;
+  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <i>Species at Risk Act</i>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <i>Migratory Birds Convention Act</i> and the <i>Species at Risk Act</i>.</p>`;
 
   const totalText =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;

@@ -88,9 +88,18 @@ def metadata(df, company):
                   'business']
 
     dfNear = dfNear[~dfNear['Nearest Populated Centre'].str.lower().isin(filterList)]
-    oneYearAgo = datetime.today() - relativedelta(years=1)
-    dfNear = dfNear[dfNear['Commencement Date'] >= oneYearAgo]
+    # oneYearAgo = datetime.today() - relativedelta(years=1)
+    lastFullYear = datetime.today().year - 1
+    dfNear = dfNear[dfNear['Commencement Date'].dt.year == lastFullYear]
     if not dfNear.empty:
+        # deal with mnp
+        city = []
+        for cityString in dfNear["Nearest Populated Centre"]:
+            if "The project is located" in cityString:
+                city.append(cityString.split("of")[-1].strip())
+            else:
+                city.append(cityString)
+        dfNear["Nearest Populated Centre"] = city
         for splitChar in [",", "("]:
             dfNear['Nearest Populated Centre'] = [x.split(splitChar)[0].strip() for x in dfNear['Nearest Populated Centre']]
         nearList = list(dfNear['Nearest Populated Centre']+" "+dfNear['Province/Territory'].str.upper())
@@ -106,6 +115,7 @@ def metadata(df, company):
                     "list",
                     False,
                     False)
+        thisCompanyMeta["nearbyYear"] = lastFullYear
     else:
         thisCompanyMeta["nearby"] = None
     # thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
@@ -256,5 +266,5 @@ def process_oandm(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False, companies=["Trans Mountain Pipeline ULC"])
+    df = process_oandm(remote=False, test=False, companies=["Maritimes & Northeast Pipeline Management Ltd."])
     print('completed oandm!')
