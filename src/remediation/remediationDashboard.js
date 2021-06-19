@@ -2,6 +2,7 @@ import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 import { remediationText } from "../modules/dynamicText";
+import { loadChartError } from "../modules/util";
 
 export async function mainRemediation(data, lang) {
   const eventType = "remediation";
@@ -134,5 +135,9 @@ export async function mainRemediation(data, lang) {
       noIncidents.innerHTML = noIncidentsHTML;
     }
   }
-  return buildDashboard();
+  try {
+    return buildDashboard();
+  } catch (err) {
+    return loadChartError("remediation-dashboard", lang.dashboardError);
+  }
 }

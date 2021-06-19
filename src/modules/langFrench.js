@@ -36,6 +36,12 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "Gazoduc M&NP",
 };
 
+const dashboardError = {
+  title: "Erreur de tableau de bord",
+  message:
+    "Essayez d'actualiser la page. Veuillez envoyer un courriel à energy.markets@cer-rec.gc.ca si le problème persiste.",
+};
+
 const regionInfo = {
   ab: { c: cerPalette.Sun, n: "Alberta" },
   bc: { c: cerPalette.Forest, n: "Colombie-Britannique" },
@@ -179,10 +185,6 @@ const points = {
     "Prairies",
     "Raccordement au réseau de NGTL près d’Empress, en Alberta, à la limite entre l’Alberta et la Saskatchewan, et points de réception de la Saskatchewan. Empress est l’un des principaux points de réception du réseau. Le gaz est acheminé vers l’est à destination du Manitoba, de l’Ontario et du Québec, ainsi qu’en vue de son exportation vers le Midwest américain et le Nord-Est des États-Unis.",
   ],
-  // 23: [
-  //   "St Clair",
-  //   "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
-  // ],
   24: [
     "Ft. Saskatchewan",
     "Extrémité du pipeline Cochin au terminal qui appartenait autrefois à Kinder Morgan (aujourd’hui à Pembina), près de Fort Saskatchewan, en Alberta. Les condensats sont ensuite transférés aux terminaux de stockage de diluants à proximité (terminal de diluants de l’Alberta de Keyera, terminal d’Enbridge et carrefour canadien de diluants de Pembina). À partir d’Edmonton et de Fort Saskatchewan, les diluants sont acheminés vers le nord sur des pipelines sous réglementation provinciale de l’Alberta vers des installations d’exploitation des sables bitumineux près de Fort McMurray, en Alberta.",
@@ -284,6 +286,7 @@ export const frenchDashboard = {
     "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana",
 
   conditions: {
+    dashboardError,
     dateFormat,
     companyToSystem,
     lang: "f",
@@ -368,6 +371,7 @@ export const frenchDashboard = {
     },
   },
   incidents: {
+    dashboardError,
     dynamicText: incidentsTextFra,
     companyToSystem,
     title: (systemName) =>
@@ -498,6 +502,7 @@ export const frenchDashboard = {
     },
   },
   traffic: {
+    dashboardError,
     unitsDisclaimerText,
     units,
     points,
@@ -562,6 +567,7 @@ export const frenchDashboard = {
     },
   },
   apportion: {
+    dashboardError,
     unitsDisclaimerText,
     units,
     points,
@@ -578,6 +584,7 @@ export const frenchDashboard = {
     },
   },
   oandm: {
+    dashboardError,
     numberFormat,
     legendClick,
     companyToSystem,
@@ -604,6 +611,7 @@ export const frenchDashboard = {
     },
   },
   remediation: {
+    dashboardError,
     numberFormat,
     dateFormat,
     companyToSystem,

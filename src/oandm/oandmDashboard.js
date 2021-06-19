@@ -1,6 +1,7 @@
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 import { oandmText } from "../modules/dynamicText";
+import { loadChartError } from "../modules/util";
 
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
@@ -92,5 +93,9 @@ export async function mainOandM(eventData, lang) {
     }
   }
 
-  buildDecision();
+  try {
+    return buildDecision();
+  } catch (err) {
+    return loadChartError("oandm-dashboard", lang.dashboardError);
+  }
 }

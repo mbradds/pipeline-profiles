@@ -20,6 +20,7 @@ import {
   addUnitsAndSetup,
   visibility,
   addUnitsDisclaimer,
+  loadChartError,
 } from "../modules/util";
 
 export async function mainApportion(apportionData, lang) {
@@ -194,8 +195,13 @@ export async function mainApportion(apportionData, lang) {
     } else if (document.getElementById("apportionment-section")) {
       // handles when profileManager is configured to show section without data
       visibility(["apportionment-section"], "hide");
-      console.warn("no apportionment data, but still tried to build section");
+      // console.warn("no apportionment data, but still tried to build section");
     }
   }
-  return buildDecision();
+  try {
+    return buildDecision();
+  } catch (err) {
+    loadChartError("apportionment-dashboard", lang.dashboardError);
+    return false;
+  }
 }

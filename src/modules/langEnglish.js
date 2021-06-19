@@ -36,6 +36,12 @@ const companyToSystem = {
   "Maritimes & Northeast Pipeline Management Ltd.": "M&NP Pipeline",
 };
 
+const dashboardError = {
+  title: "Dashboard error",
+  message:
+    "Try refreshing the page. Please email energy.markets@cer-rec.gc.ca if the problem persists.",
+};
+
 const regionInfo = {
   ab: { c: cerPalette.Sun, n: "Alberta" },
   bc: { c: cerPalette.Forest, n: "British Columbia" },
@@ -178,10 +184,6 @@ const points = {
     "Prairies",
     "Interconnect with the NOVA Gas Transmission Ltd. (NGTL) system at the Alberta/Saskatchewan border. Empress is one of the primary receipt points on the Mainline. Gas moves east for use in Manitoba, Ontario, Quebec, and exports into the U.S. Midwest and U.S. Northeast.",
   ],
-  // 23: [
-  //   "St Clair",
-  //   "Interconnect with the Great Lakes Gas Transmission pipeline, at the Canada-U.S. border near St. Clair, Ontario. St Clair key point is bi-directional.",
-  // ],
   24: [
     "Ft. Saskatchewan",
     "The end of the Cochin pipeline near Ft. Saskatchewan AB. Condensate is transferred to provincially regulated pipelines and transported to oil sands operations in northern Alberta.",
@@ -283,6 +285,7 @@ export const englishDashboard = {
     "Plains Midstream Canada ULC includes the Milk River and Wascana pipelines",
 
   conditions: {
+    dashboardError,
     dateFormat,
     companyToSystem,
     lang: "e",
@@ -372,6 +375,7 @@ export const englishDashboard = {
     },
   },
   incidents: {
+    dashboardError,
     dynamicText: incidentsTextEng,
     companyToSystem,
     title: (systemName) =>
@@ -497,6 +501,7 @@ export const englishDashboard = {
     },
   },
   traffic: {
+    dashboardError,
     unitsDisclaimerText,
     units,
     dynamicText: trafficTrendTextEng,
@@ -560,6 +565,7 @@ export const englishDashboard = {
     },
   },
   apportion: {
+    dashboardError,
     unitsDisclaimerText,
     units,
     points,
@@ -573,6 +579,7 @@ export const englishDashboard = {
     },
   },
   oandm: {
+    dashboardError,
     numberFormat,
     legendClick,
     companyToSystem,
@@ -599,6 +606,7 @@ export const englishDashboard = {
     },
   },
   remediation: {
+    dashboardError,
     numberFormat,
     dateFormat,
     companyToSystem,

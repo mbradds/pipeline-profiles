@@ -363,3 +363,13 @@ export function equalizeHeight(divId1, divId2) {
     d2.style.height = `${maxHeight}px`;
   }
 }
+
+export function loadChartError(errorDiv, lang, hideDivs = []) {
+  if (hideDivs.length > 0) {
+    visibility(hideDivs, "hide");
+  }
+  const e = document.getElementById(errorDiv);
+  const errHtml = `<section class="alert alert-danger"><h3>${lang.title}</h3>${lang.message}</section>`;
+  e.innerHTML = errHtml;
+  return false;
+}

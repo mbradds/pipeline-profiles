@@ -175,7 +175,7 @@ Styles for traffic and apportionment dashboards
 #map-panel-body {
   padding: 0px;
 }
-#radio-align {
+.radio-align {
   width: 100%;
   display: flex;
   flex-direction: column;

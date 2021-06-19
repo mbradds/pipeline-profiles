@@ -1,6 +1,11 @@
 import Highcharts from "highcharts";
 import MapModule from "highcharts/modules/map";
-import { sortJson, cerPalette, visibility } from "../modules/util";
+import {
+  sortJson,
+  cerPalette,
+  visibility,
+  loadChartError,
+} from "../modules/util";
 import { mapInits } from "./hcMapConfig";
 import conditionsRegions from "./company_data/metadata/regions.json";
 import conditionsThemes from "./company_data/metadata/themes.json";
@@ -575,8 +580,8 @@ export async function mainConditions(
     }
   }
   try {
-    buildDashboard();
+    return buildDashboard();
   } catch (err) {
-    console.log(err);
+    return loadChartError("conditions-dashboard", lang.dashboardError);
   }
 }

@@ -16,28 +16,32 @@
       {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
         <p>{{text.apportion.p3.other}}</p>
       {{/ifnoteq}}
-      <p class="cerlabel mrgn-tp-lg dashboard-style">
-        {{text.selectUnits}}
-      </p>
-      <div id="select-units-radio-apportion"></div>
-      <div class="mrgn-tp-sm" id="apportion-hc"></div>
-      <details>
-        <summary>{{text.sourceTitle}}</summary>
-        <p>
-          <strong>{{text.dataSourceTitle}} </strong>
-          {{text.traffic.trafficSourceLink}}
-        </p>
-        <p>
-          <strong>{{text.descriptionTitle}} </strong>
-          {{#ifeq text.pipelineName.id "enbridge_mainline"}}
-            {{text.apportion.description.enbridge}}
-          {{/ifeq}}
-          {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-            {{text.apportion.description.other}}
-          {{/ifnoteq}}
-        </p>
-        <small id="conversion-disclaimer-apportion"></small>
-      </details>
+      <div id="apportionment-dashboard" class="mrgn-tp-lg dashboard-style">
+        <div class="radio-align">
+          <p class="cerlabel">
+            {{text.selectUnits}}&nbsp;&nbsp;
+          </p>
+          <div id="select-units-radio-apportion"></div>
+        </div>
+        <div class="mrgn-tp-sm" id="apportion-hc"></div>
+        <details>
+          <summary>{{text.sourceTitle}}</summary>
+          <p>
+            <strong>{{text.dataSourceTitle}} </strong>
+            {{text.traffic.trafficSourceLink}}
+          </p>
+          <p>
+            <strong>{{text.descriptionTitle}} </strong>
+            {{#ifeq text.pipelineName.id "enbridge_mainline"}}
+              {{text.apportion.description.enbridge}}
+            {{/ifeq}}
+            {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+              {{text.apportion.description.other}}
+            {{/ifnoteq}}
+          </p>
+          <small id="conversion-disclaimer-apportion"></small>
+        </details>
+      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
+import { loadChartError } from "../modules/util";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
@@ -197,5 +198,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
       noIncidents.innerHTML = noIncidentsHTML;
     }
   }
-  return buildDashboard();
+
+  try {
+    return buildDashboard();
+  } catch (err) {
+    return loadChartError("incidents-dashboard", lang.dashboardError);
+  }
 }
