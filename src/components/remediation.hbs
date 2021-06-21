@@ -1,0 +1,165 @@
+<div id="remediation" class="profile-section tabcontent">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Contaminated Sites and Remediation</h3>
+      <p class="small">Section updated June 2021</p>
+      <p>As part of the CER’s environmental protection activities, we require
+        companies to manage and remediate contamination throughout the lifecycle
+        of the facilities. As a first step, regulated companies are required to
+        report contamination to the CER through the online submission of the
+        Notification of Contamination (NOC).</p>
+      <p>After the NOC is submitted, companies must demonstrate they are
+        actively managing the contamination according to the
+        <a
+          href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html"
+          target="_blank"
+        >Remediation Process Guide</a>. The progress of remediation at the
+        contaminated site, and its current status, are captured in the annual
+        update submitted by a company each year for a contaminated site.
+      </p>
+      <p>Third-party contamination is on-site contamination that is shown to not
+        be emanating or migrating from the company’s facilities or company-owned
+        or leased lands or Right-of-Way. While third-party contamination is not
+        the result of company activities, the CER still requires that this
+        contamination is reported to the CER through the submission of the NOC.</p>
+      <p>The dashboard below contains information that is contained in the NOC's
+        and annual updates found in REGDOCS. The CER publishes NOCs that have
+        been submitted to the CER since August 2018, when the CER started
+        collecting this information electronically and annual updates that have
+        been submitted since 2021. For information on contaminated sites for
+        which NOCs were submitted prior to August 2018, email
+        <a
+          href="mailto:remediation@cer-rec.gc.ca"
+        >remediation@cer-rec.gc.ca</a>.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" id="remediation-dashboard">
+      <div class="plains_disclaimer"></div>
+      <div id="remediation-dynamic-text"></div>
+      <h3 class="dashboard-title" id="remediation-dashboard-title"></h3>
+      <div class="btn-group btn-group-justified" id="remediation-view-type">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default active" value="map">
+            Contaminated Site Map
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" value="trends">
+            Contaminated Site Trends
+          </button>
+        </div>
+      </div>
+      <div class="row mrgn-tp-md">
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div id="remediation-map" class="leaflet-map"></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
+          <div class="event-filter-nav" id="rem-water-bar"></div>
+          <div class="event-filter-nav mrgn-tp-sm" id="rem-status-bar"></div>
+          <div class="event-filter-nav mrgn-tp-sm" id="rem-year-bar"></div>
+          <div class="event-filter-nav mrgn-tp-sm" id="rem-province-bar"></div>
+        </div>
+      </div>
+      <div id="remediation-time-series-section" class="profile-hide">
+        <div class="row">
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="time-series" id="remediation-time-series"></div>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12 event-navigator">
+            <div class="event-filter-nav" id="rem-water-trend"></div>
+            <div
+              class="event-filter-nav mrgn-tp-sm"
+              id="rem-status-trend"
+            ></div>
+            <div class="event-filter-nav mrgn-tp-sm" id="rem-use-trend"></div>
+            <div
+              class="event-filter-nav mrgn-tp-sm"
+              id="rem-activity-trend"
+            ></div>
+            <div
+              class="event-filter-nav mrgn-tp-sm"
+              id="rem-province-trend"
+            ></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div
+              class="alert alert-info"
+              id="trend-definitions-remediation"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <section
+        class="panel panel-info mrgn-tp-md"
+        id="nearby-remediation-popup"
+      >
+        <header class="panel-heading">
+          <h5 class="panel-title">Are there any contaminated sites near me?</h5>
+        </header>
+        <div class="panel-body incidents-near-me">
+          <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
+            <div
+              class="col-md-12 cerlabel dashboard-style nearby-title"
+              id="find-remediation-title"
+            >
+              {{text.safety.incidentsSelectRange}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 center-stuff">
+              <input
+                name="html5shim-1"
+                id="remediation-range-slide"
+                type="range"
+                min="0"
+                max="200"
+                step="1"
+                value="100"
+              />
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
+              <button
+                type="button"
+                value="100"
+                id="find-remediation-btn"
+                class="btn btn-default col-md-12"
+              >
+                Find sites within 100km
+              </button>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
+              <button
+                type="button"
+                id="reset-remediation-btn"
+                class="btn btn-default col-md-12"
+                disabled="disabled"
+              >
+                {{text.safety.incidentsRefill}}
+              </button>
+            </div>
+          </div>
+          <div class="row mrgn-tp-lg">
+            <div class="col-md-12" id="nearby-remediation-flag"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="row">
+        <div class="col-md-12">
+          <details>
+            <summary>{{text.sourceTitle}}</summary>
+            <p>
+              <strong>{{text.dataSourceTitle}} </strong>
+            </p>
+          </details>
+          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="spacer" style="height: 100px"></div>
+</div>
