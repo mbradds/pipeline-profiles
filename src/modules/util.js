@@ -364,12 +364,30 @@ export function equalizeHeight(divId1, divId2) {
   }
 }
 
+/**
+ *
+ * @param {string} errorDiv - The div containing all the dashboard elements to be hidden and replaced with an error message.
+ * @param {{title: string, message: string}} lang - En/Fr title and error message.
+ * @param {Array} [hideDivs=[]] - Optional array of HTML div id's to be hidden on error.
+ * @returns false
+ */
 export function loadChartError(errorDiv, lang, hideDivs = []) {
   if (hideDivs.length > 0) {
     visibility(hideDivs, "hide");
   }
-  const e = document.getElementById(errorDiv);
   const errHtml = `<section class="alert alert-danger"><h3>${lang.title}</h3>${lang.message}</section>`;
-  e.innerHTML = errHtml;
+  document.getElementById(errorDiv).innerHTML = errHtml;
   return false;
+}
+
+/**
+ *
+ * @param {object} lang - Top level language object. Should contain {plains: string}.
+ * @param {string} div - HTML class for all plains disclaimers.
+ */
+export function plainsMidstreamProfile(lang, div) {
+  [...document.querySelectorAll(`.${div}`)].forEach((warn) => {
+    const plainsDiv = warn;
+    plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><small>${lang.plains}</small></section>`;
+  });
 }

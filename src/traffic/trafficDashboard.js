@@ -250,7 +250,16 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   const sharedHcParams = {
-    legend: { alignColumns: false, margin: 0, symbolPadding: 2 },
+    legend: {
+      alignColumns: false,
+      margin: 0,
+      padding: 0,
+      itemDistance: 15,
+      symbolPadding: 2,
+      labelFormatter() {
+        return this.name;
+      },
+    },
     plotOptions: {
       series: {
         animation: false,
@@ -360,14 +369,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           return tooltipText(this, params.unitsHolder.current);
         },
       },
-      legend: {
-        alignColumns: false,
-        margin: 0,
-        symbolPadding: 2,
-        labelFormatter() {
-          return this.name;
-        },
-      },
+      legend: sharedHcParams.legend,
       plotOptions: sharedHcParams.plotOptions,
       series,
     });

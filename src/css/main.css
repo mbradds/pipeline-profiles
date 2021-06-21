@@ -217,14 +217,10 @@ responsive style options
     padding-right: 25px !important;
   }
   .traffic-hc-single-gas {
-    height: 450px;
-  }
-  .traffic-map-shared {
-    height: 275px;
-    margin-bottom: 5px;
+    height: 420px;
   }
   .traffic-hc-shared {
-    height: 180px;
+    height: 210px;
   }
   /* conditions */
   .container-chart-map {
@@ -319,10 +315,10 @@ responsive style options
     max-height: 500px;
   }
   #incidents-map {
-    height: 500px;
+    height: 480px;
   }
   #remediation-map {
-    height: 500px;
+    height: 480px;
   }
 }
 /* large screens */

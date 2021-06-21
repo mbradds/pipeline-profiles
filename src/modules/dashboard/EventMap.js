@@ -475,15 +475,6 @@ export class EventMap {
   }
 
   /**
-   * Request user latitude and longitude prior to nearby analysis.
-   * @returns {Promise} - Promise object resolved if user location is accepted. User lat/long is stored in EventMap.user.latitude & EventMap.user.longitude
-   */
-  async waitOnUser() {
-    // this promise is handled one level above in ../indidents/incidentDashboard.js
-    return this.findUser();
-  }
-
-  /**
    * Finds all nearby events within a given range.
    * Requires the following HTML div is's:
    *  - nearby-this.eventType-flag (displays the analysis text number of nearby incidents, or location error message)
@@ -749,7 +740,7 @@ export class EventMap {
           const loadDisclaimer = setTimeout(() => {
             this.addMapDisclaimer("location");
           }, 200);
-          this.waitOnUser()
+          this.findUser()
             .then(() => {
               this.nearbyIncidents(range); // .then((userAdded))
               clearTimeout(loadDisclaimer);

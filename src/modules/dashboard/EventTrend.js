@@ -302,7 +302,7 @@ export class EventTrend {
       chart: {
         type: "column",
         animation: false,
-        spacingTop: 5,
+        spacingTop: 7,
       },
 
       xAxis: {

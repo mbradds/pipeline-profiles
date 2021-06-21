@@ -153,8 +153,7 @@ export class EventNavigator {
         style: {
           fontWeight: "normal",
         },
-        padding: -5,
-        margin: 0,
+        margin: -5,
       },
 
       xAxis: {

@@ -26,6 +26,8 @@ import { mainApportion } from "../apportionment/apportionmentDashboard";
 import { mainOandM } from "../oandm/oandmDashboard";
 // contaminated sites and remediation
 import { mainRemediation } from "../remediation/remediationDashboard";
+// plains disclaimers
+import { plainsMidstreamProfile } from "../modules/util";
 
 require("../css/main.css");
 
@@ -57,18 +59,10 @@ export async function loadAllCharts(data, plains = false) {
     mainRemediation(data.remediationData, englishDashboard.remediation),
   ];
 
-  function plainsMidstreamProfile(lang, div) {
-    [...document.querySelectorAll(`.${div}`)].forEach((warn) => {
-      const plainsDiv = warn;
-      plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><p>${lang.plains}</p></section>`;
-    });
-  }
-
-  if (plains) {
-    plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
-  }
-
   return Promise.allSettled(arrayOfCharts).then(() => {
     // console.timeEnd(`first content loading`);
+    if (plains) {
+      plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
+    }
   });
 }
