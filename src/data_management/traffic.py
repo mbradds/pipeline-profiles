@@ -476,14 +476,14 @@ def process_throughput(test=False,
             thisCompanyData["traffic"] = point_data
             thisCompanyData['meta'] = meta
             if not test:
-                with open('../traffic/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp, default=str)
         else:
             # there is no traffic data
             thisCompanyData['traffic'] = {}
             thisCompanyData['meta'] = {"companyName": company, "build": False}
             if not test:
-                with open('../traffic/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return thisCompanyData, df_c
@@ -493,7 +493,7 @@ def process_throughput(test=False,
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    # points = get_data(False, False, "key_points.sql")
+    points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
     traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')

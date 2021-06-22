@@ -1,18 +1,18 @@
 import { generalTheme, frenchTheme } from "../modules/themes";
 // conditions
-import { mainConditions } from "../conditions/conditionsDashboard";
+import { mainConditions } from "../dashboards/conditionsDashboard";
 // incidents
-import { mainIncidents } from "../incidents/incidentsDashboard";
+import { mainIncidents } from "../dashboards/incidentsDashboard";
 // language;
 import { frenchDashboard } from "../modules/langFrench";
 // traffic
-import { mainTraffic } from "../traffic/trafficDashboard";
+import { mainTraffic } from "../dashboards/trafficDashboard";
 // apportionment
-import { mainApportion } from "../apportionment/apportionmentDashboard";
+import { mainApportion } from "../dashboards/apportionmentDashboard";
 // operations and maintenance activities
-import { mainOandM } from "../oandm/oandmDashboard";
+import { mainOandM } from "../dashboards/oandmDashboard";
 // contaminated sites and remediation
-import { mainRemediation } from "../remediation/remediationDashboard";
+import { mainRemediation } from "../dashboards/remediationDashboard";
 // plains disclaimers
 import { plainsMidstreamProfile } from "../modules/util";
 

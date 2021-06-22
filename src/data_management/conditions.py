@@ -398,7 +398,7 @@ def process_conditions(remote=False,
             thisCompanyData['regions'] = shp.to_json()
             thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
             if not test and save:
-                with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/conditions/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
                 print('completed+saved: '+company)
         else:
@@ -409,7 +409,7 @@ def process_conditions(remote=False,
                                'mapMeta': []}
 
             if not test and save:
-                with open('../conditions/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/conditions/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
                 print('completed+saved: '+company)
 

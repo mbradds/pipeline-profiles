@@ -243,14 +243,14 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
             df_vol = optimizeJson(df_vol)
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             if not test:
-                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/incidents/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no product release incidents
             thisCompanyData['events'] = df_vol.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             if not test:
-                with open('../incidents/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/incidents/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return df_c, df_vol, meta
