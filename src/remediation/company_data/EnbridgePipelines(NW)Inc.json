@@ -1,1 +1,0 @@
-{"meta": {"company": "Enbridge Pipelines (NW) Inc.", "old": 5, "new": 1, "soil": {"total": 44, "pools": 0.0}}, "build": true, "data": [{"id": "REM2019-003", "sub": "Crude Oil", "p": "nt", "use": "ndl", "s": "rm", "a": "c", "c": ["Benzene", "Toluene", "Ethylbenzene", "Xylenes (BTEX)"], "vol": 44, "w": false, "y": 2019, "loc": [61.83, -121.18]}]}

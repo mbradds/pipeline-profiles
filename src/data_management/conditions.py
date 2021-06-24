@@ -22,7 +22,7 @@ def getSql(sql=False, query='projects_regdocs.sql'):
 
 
 def import_simplified(replace, name='economic_regions.json'):
-    read_path = os.path.join(script_dir, "../conditions/base_maps/", name)
+    read_path = os.path.join(script_dir, "../data/conditions/base_maps/", name)
     df = gpd.read_file(read_path)
     df = df.set_geometry('geometry')
     fr_cols = ['PRNAME', 'ERNAME']
@@ -282,7 +282,7 @@ def idify(df, sql=False):
     files = [[themes, "themes"], [regions, "regions"]]
     for file in files:
         idSave = prepareIds(file[0])
-        with open('../conditions/company_data/metadata/'+file[1]+'.json', 'w') as fp:
+        with open('../data/conditions/metadata/'+file[1]+'.json', 'w') as fp:
             json.dump(idSave, fp)
 
     return df, regionReplace, projects

@@ -6,9 +6,9 @@ import {
   visibility,
   loadChartError,
 } from "../modules/util";
-import { mapInits } from "../conditions/hcMapConfig";
-import conditionsRegions from "../conditions/company_data/metadata/regions.json";
-import conditionsThemes from "../conditions/company_data/metadata/themes.json";
+import { mapInits } from "./hcMapConfig";
+import conditionsRegions from "../data/conditions/metadata/regions.json";
+import conditionsThemes from "../data/conditions/metadata/themes.json";
 
 MapModule(Highcharts);
 

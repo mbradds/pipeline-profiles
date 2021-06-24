@@ -1,10 +1,10 @@
-import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/GenesisPipelineCanadaLtd.json";
-import incidentData from "../../incidents/company_data/GenesisPipelineCanadaLtd.json";
-import trafficData from "../../traffic/company_data/GenesisPipelineCanadaLtd.json";
-import apportionData from "../../apportionment/company_data/GenesisPipelineCanadaLtd.json";
-import oandmData from "../../oandm/company_data/GenesisPipelineCanadaLtd.json";
-import remediationData from "../../remediation/company_data/GenesisPipelineCanadaLtd.json";
+import canadaMap from "../../data/conditions/base_maps/base_map.json";
+import conditionsData from "../../data/conditions/GenesisPipelineCanadaLtd.json";
+import incidentData from "../../data/incidents/GenesisPipelineCanadaLtd.json";
+import trafficData from "../../data/traffic/GenesisPipelineCanadaLtd.json";
+import apportionData from "../../data/apportionment/GenesisPipelineCanadaLtd.json";
+import oandmData from "../../data/oandm/GenesisPipelineCanadaLtd.json";
+import remediationData from "../../data/remediation/GenesisPipelineCanadaLtd.json";
 
 export const data = {
   canadaMap,
