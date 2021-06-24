@@ -94,7 +94,7 @@ const profileSections = {
   },
   enbridge_mainline: {
     sections: {
-      traffic: { map: false, noMap: false },
+      traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },

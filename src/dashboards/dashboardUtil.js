@@ -6,6 +6,15 @@
 import { mapDates } from "../modules/datestone";
 import { cerPalette, sortJsonAlpha, conversions } from "../modules/util";
 
+/**
+ * @typedef {Object} SetupReturn
+ * @property {Object} unitsHolder - {base, current, conversion} info about units and units switching.
+ * @property {boolean} buildFive - Whether a five year average chart should be built given the key point.
+ * @property {boolean} hasImports - Whether the inital key point has imports that need a seperate chart.
+ * @property {boolean} tm - Whether the user is on the Trans Mountain page. This page is different!
+ * @property {string} commodity - Looks at the default unit and is assigned "oil" or "gas".
+ */
+
 export const mapInits = {
   mode: "production", // setting mode to "development" will allow pan,zoom, and x,y location console logging.
   zooms: {

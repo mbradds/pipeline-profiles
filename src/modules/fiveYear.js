@@ -6,6 +6,14 @@
 import { arrAvg, cerPalette } from "./util";
 
 /**
+ * @typedef {Object} FiveYearReturn
+ * @property {Array[]} currentYrData - 3 months - 1 year of data above the five year range.
+ * @property {Array[]} avgData - Array with 12 entries, each containing the five year average of a month from Dec-Jan.
+ * @property {Array[]} rangeData - Array with 12 entries, each containing five-year range info: ["month", "min", "max"].
+ * @property {Object} meta - Contains info on the five-year year range: {lastYear: XXXX, firstYear: XXXX}.
+ */
+
+/**
  *
  * @param {number} lastDate - Serialized date integer representing the max date in the dataset/series.
  * @param {Object} dataObj - {date: value} pairs of the dataset, to be filtered and shaped into the five year series.

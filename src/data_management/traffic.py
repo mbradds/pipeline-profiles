@@ -294,9 +294,6 @@ def process_throughput(test=False,
             arr.append(round(float(t), rounding))
         return arr
 
-    if not os.path.exists("../traffic/company_data"):
-        os.mkdir("../traffic/company_data")
-
     if commodity == 'gas':
         if frequency == "monthly":
             query = 'throughput_gas_monthly.sql'
@@ -360,8 +357,7 @@ def process_throughput(test=False,
 
     group2 = ['TEML Westpur Pipelines Limited (TEML)',
               'Enbridge Southern Lights GP Inc.',
-              'Emera Brunswick Pipeline Company Ltd.',
-              'Enbridge Pipelines Inc.']
+              'Emera Brunswick Pipeline Company Ltd.']
 
     if companies:
         company_files = companies
@@ -493,7 +489,7 @@ def process_throughput(test=False,
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    points = get_data(False, True, "key_points.sql")
+    # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
     traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
