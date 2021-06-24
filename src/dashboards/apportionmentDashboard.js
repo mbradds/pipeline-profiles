@@ -14,14 +14,13 @@
 
 import Highcharts from "highcharts";
 
+import { cerPalette, visibility, loadChartError } from "../modules/util";
+
 import {
-  cerPalette,
   addSeriesParams,
   addUnitsAndSetup,
-  visibility,
   addUnitsDisclaimer,
-  loadChartError,
-} from "../modules/util";
+} from "./dashboardUtil";
 
 export async function mainApportion(apportionData, lang) {
   function buildApportionSeries(seriesWithDate, unitsHolder) {

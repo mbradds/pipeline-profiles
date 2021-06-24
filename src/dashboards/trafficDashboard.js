@@ -19,12 +19,15 @@ import {
   visibility,
   sortJsonAlpha,
   listOrParagraph,
-  addSeriesParams,
-  addUnitsAndSetup,
-  addUnitsDisclaimer,
   equalizeHeight,
   loadChartError,
 } from "../modules/util";
+
+import {
+  addSeriesParams,
+  addUnitsAndSetup,
+  addUnitsDisclaimer,
+} from "./dashboardUtil";
 import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
 import { KeyPointMap } from "../modules/dashboard/KeyPointMap";
 
@@ -252,7 +255,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
   const sharedHcParams = {
     legend: {
       alignColumns: false,
-      margin: 0,
+      margin: 3,
       padding: 0,
       itemDistance: 15,
       symbolPadding: 2,

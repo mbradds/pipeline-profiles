@@ -15,6 +15,13 @@ import { listOrParagraph } from "./util";
 const dynamicValue = (val) =>
   `<i class="bg-primary" style="font-style: normal"><strong>&nbsp;${val}&nbsp;</strong></i>`;
 
+/**
+ * Usefull when the company name has a period and appears at the end of the sentence.
+ * @param {string} name - The full company name to be formatted.
+ * @returns {string} - Company name with the period stripped.
+ */
+const formatCompanyName = (name) => name.replace(".", "");
+
 const postWord = (val, type) => {
   let wrd = "";
   if (type === "have") {
@@ -328,9 +335,9 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
 export function oandmText(meta, lang) {
   const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
-  )} O&M activities reported by ${
+  )} O&M activities reported by ${formatCompanyName(
     meta.company
-  }. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
+  )}. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} individual integrity digs as part of the reported O&M activities.<p>`;
 

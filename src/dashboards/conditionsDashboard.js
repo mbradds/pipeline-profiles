@@ -6,7 +6,7 @@ import {
   visibility,
   loadChartError,
 } from "../modules/util";
-import { mapInits } from "./hcMapConfig";
+import { mapInits } from "./dashboardUtil";
 import conditionsRegions from "../data/conditions/metadata/regions.json";
 import conditionsThemes from "../data/conditions/metadata/themes.json";
 
