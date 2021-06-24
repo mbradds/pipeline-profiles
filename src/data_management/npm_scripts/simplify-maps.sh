@@ -7,9 +7,9 @@ ext=json
 #base map used for all companies
 mapshaper -i src/data_management/raw_data/lpr_000b16a_e/lpr_000b16a_e.shp \
 -proj EPSG:3857 -simplify $simplify_base_pct% keep-shapes -erase bbox=-15957605,9744803,-6711782,17865473 \
--o src/conditions/base_maps/base_map.$ext precision=$simplify_prs
+-o src/data/conditions/base_maps/base_map.$ext precision=$simplify_prs
 #ngtl
 mapshaper -i src/data_management/raw_data/ler_000b16a_e/ler_000b16a_e.shp \
 -proj EPSG:3857 -simplify $simplify_econ_pct% keep-shapes \
--o src/conditions/base_maps/economic_regions.$ext precision=$simplify_prs
+-o src/data/conditions/base_maps/economic_regions.$ext precision=$simplify_prs
 

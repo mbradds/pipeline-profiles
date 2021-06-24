@@ -147,7 +147,7 @@ def process_apportionment(test=False, sql=False, companies=False):
             thisCompanyData["build"] = False
 
         if not test:
-            with open('../apportionment/company_data/'+folder_name+'.json', 'w') as fp:
+            with open('../data/apportionment/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp, default=str)
 
     return df

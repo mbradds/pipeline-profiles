@@ -1,10 +1,10 @@
-import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/AuroraPipelineCompanyLtd.json";
-import incidentData from "../../incidents/company_data/AuroraPipelineCompanyLtd.json";
-import trafficData from "../../traffic/company_data/AuroraPipelineCompanyLtd.json";
-import apportionData from "../../apportionment/company_data/AuroraPipelineCompanyLtd.json";
-import oandmData from "../../oandm/company_data/AuroraPipelineCompanyLtd.json";
-import remediationData from "../../remediation/company_data/AuroraPipelineCompanyLtd.json";
+import canadaMap from "../../data/conditions/base_maps/base_map.json";
+import conditionsData from "../../data/conditions/AuroraPipelineCompanyLtd.json";
+import incidentData from "../../data/incidents/AuroraPipelineCompanyLtd.json";
+import trafficData from "../../data/traffic/AuroraPipelineCompanyLtd.json";
+import apportionData from "../../data/apportionment/AuroraPipelineCompanyLtd.json";
+import oandmData from "../../data/oandm/AuroraPipelineCompanyLtd.json";
+import remediationData from "../../data/remediation/AuroraPipelineCompanyLtd.json";
 
 export const data = {
   canadaMap,

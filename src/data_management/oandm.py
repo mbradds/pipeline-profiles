@@ -251,7 +251,7 @@ def process_oandm(remote=False, companies=False, test=False):
             thisCompanyData["build"] = True
             thisCompanyData["data"] = optimizeJson(df_c)
             if not test:
-                with open('../oandm/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/oandm/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no o and m events
@@ -259,12 +259,12 @@ def process_oandm(remote=False, companies=False, test=False):
             thisCompanyData['meta'] = {"companyName": company}
             thisCompanyData["build"] = False
             if not test:
-                with open('../oandm/company_data/'+folder_name+'.json', 'w') as fp:
+                with open('../data/oandm/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
     return df
 
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False, companies=["Maritimes & Northeast Pipeline Management Ltd."])
+    df = process_oandm(remote=False, test=False)
     print('completed oandm!')

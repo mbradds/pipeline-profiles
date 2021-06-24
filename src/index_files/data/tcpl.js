@@ -1,10 +1,10 @@
-import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/TransCanadaPipeLinesLimited.json";
-import incidentData from "../../incidents/company_data/TransCanadaPipeLinesLimited.json";
-import trafficData from "../../traffic/company_data/TransCanadaPipeLinesLimited.json";
-import apportionData from "../../apportionment/company_data/TransCanadaPipeLinesLimited.json";
-import oandmData from "../../oandm/company_data/TransCanadaPipeLinesLimited.json";
-import remediationData from "../../remediation/company_data/TransCanadaPipeLinesLimited.json";
+import canadaMap from "../../data/conditions/base_maps/base_map.json";
+import conditionsData from "../../data/conditions/TransCanadaPipeLinesLimited.json";
+import incidentData from "../../data/incidents/TransCanadaPipeLinesLimited.json";
+import trafficData from "../../data/traffic/TransCanadaPipeLinesLimited.json";
+import apportionData from "../../data/apportionment/TransCanadaPipeLinesLimited.json";
+import oandmData from "../../data/oandm/TransCanadaPipeLinesLimited.json";
+import remediationData from "../../data/remediation/TransCanadaPipeLinesLimited.json";
 
 export const data = {
   canadaMap,

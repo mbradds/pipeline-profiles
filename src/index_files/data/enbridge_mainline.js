@@ -1,10 +1,10 @@
-import canadaMap from "../../conditions/base_maps/base_map.json";
-import conditionsData from "../../conditions/company_data/EnbridgePipelinesInc.json";
-import incidentData from "../../incidents/company_data/EnbridgePipelinesInc.json";
-import trafficData from "../../traffic/company_data/EnbridgePipelinesInc.json";
-import apportionData from "../../apportionment/company_data/EnbridgePipelinesInc.json";
-import oandmData from "../../oandm/company_data/EnbridgePipelinesInc.json";
-import remediationData from "../../remediation/company_data/EnbridgePipelinesInc.json";
+import canadaMap from "../../data/conditions/base_maps/base_map.json";
+import conditionsData from "../../data/conditions/EnbridgePipelinesInc.json";
+import incidentData from "../../data/incidents/EnbridgePipelinesInc.json";
+import trafficData from "../../data/traffic/EnbridgePipelinesInc.json";
+import apportionData from "../../data/apportionment/EnbridgePipelinesInc.json";
+import oandmData from "../../data/oandm/EnbridgePipelinesInc.json";
+import remediationData from "../../data/remediation/EnbridgePipelinesInc.json";
 
 export const data = {
   canadaMap,

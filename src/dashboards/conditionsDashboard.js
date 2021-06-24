@@ -7,8 +7,8 @@ import {
   loadChartError,
 } from "../modules/util";
 import { mapInits } from "./hcMapConfig";
-import conditionsRegions from "./company_data/metadata/regions.json";
-import conditionsThemes from "./company_data/metadata/themes.json";
+import conditionsRegions from "../data/conditions/metadata/regions.json";
+import conditionsThemes from "../data/conditions/metadata/themes.json";
 
 MapModule(Highcharts);
 
