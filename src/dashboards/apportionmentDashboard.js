@@ -85,6 +85,7 @@ export async function mainApportion(apportionData, lang) {
         type: "datetime",
         crosshair: true,
       },
+
       title: buildTitle(apportionData),
       yAxis: [
         {
@@ -156,6 +157,11 @@ export async function mainApportion(apportionData, lang) {
         );
 
         let series = buildApportionSeries(apportionData.series, unitsHolder);
+        // TODO: loop through pointSeries and create div + chart for each entry
+        // console.log(apportionData.pointSeries);
+        // if (apportionData.pointSeries.length > 0) {
+        //   series = series.concat(apportionData.pointSeries);
+        // }
         const chart = buildApportionChart(series, unitsHolder.current);
         addUnitsDisclaimer(
           "conversion-disclaimer-apportion",

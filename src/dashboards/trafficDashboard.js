@@ -611,8 +611,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
         const rowValues = Object.values(product.data);
         rowValues.unshift(product.name);
         let tr = `<tr>`;
-        rowValues.forEach((annualValue) => {
-          tr += `<td>${annualValue}</td>`;
+        rowValues.forEach((annualValue, i) => {
+          if (i === 0) {
+            tr += `<td><strong>${annualValue}</strong></td>`;
+          } else {
+            // TODO: format language numbers here?
+            tr += `<td>${annualValue}</td>`;
+          }
         });
         tr += `</tr>`;
         tableHtml += tr;

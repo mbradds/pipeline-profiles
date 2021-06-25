@@ -3,6 +3,7 @@ from util import normalize_dates, conversion, normalize_numeric, normalize_text
 from errors import ApportionSeriesCombinationError
 import dateutil.relativedelta
 from traffic import get_data, addIds
+import time
 import json
 
 enbridgePoints = {
@@ -47,8 +48,7 @@ def apportionLine(df_p,
                   pctData,
                   lineData,
                   areaData,
-                  series,
-                  thisCompanyData):
+                  series):
 
     hasPct = hasNotNull(df_p, "Apportionment Percentage")
     hasCap = hasData(df_p, "Available Capacity")
@@ -77,25 +77,37 @@ def apportionLine(df_p,
         lineData.append(linePoint)
         areaData.append(areaPoint)
 
-        series.append({"id": lineName,
-                       "data": lineData,
-                       "yAxis": 0,
-                       "type": "line"})
-        series.append({"id": areaName,
-                       "data": areaData,
-                       "yAxis": 0,
-                       "type": "area"})
-        if hasPct:
-            series.append({"id": "ap",  # Apportionment Percent
-                           "data": pctData,
-                           "yAxis": 1,
-                           "type": "line",
-                           "visible": False,
-                           # "showInLegend": False
-                           })
+    series.append({"id": lineName,
+                   "data": lineData,
+                   "yAxis": 0,
+                   "type": "line"})
+    series.append({"id": areaName,
+                   "data": areaData,
+                   "yAxis": 0,
+                   "type": "area"})
+    if hasPct:
+        series.append({"id": "ap",  # Apportionment Percent
+                       "data": pctData,
+                       "yAxis": 1,
+                       "type": "line",
+                       "visible": False,
+                      })
+    return series
 
-        thisCompanyData["series"] = series
-        return thisCompanyData
+
+def apportionPoint(df_p, company, pctData, series, kp, yAxis):
+    data = df_p[['Date', 'Apportionment Percentage']]
+    data = data.rename(columns={"Date": "x", "Apportionment Percentage": "y"})
+    data['x'] = [int(time.mktime(t.timetuple())) for t in data['x']]
+    # for testing one point
+    if yAxis == 1:
+        series.append({
+            "id": kp,
+            "data": data.to_dict(orient='records'),
+            "yAxis": 1,
+            "type": "column"
+            })
+    return series
 
 
 def process_apportionment(save=False, sql=False, companies=False):
@@ -171,16 +183,24 @@ def process_apportionment(save=False, sql=False, companies=False):
             df_c = df_c.sort_values(by='Date')
             minDate = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
             thisCompanyData["company"] = company
-
-            lineData, areaData, pctData = [], [], []
+            pointSeries = []
             series = []
             series.append({"name": "date",
                            "min": [minDate.year, minDate.month-1, minDate.day]})
 
+            yAxis = 1
             for kp in list(set(df_c["Key Point"])):
+                lineData, areaData, pctData = [], [], []
                 df_p = df_c[df_c["Key Point"] == kp].copy().reset_index(drop=True)
                 if kp not in enbridgePoints.values():
-                    thisCompanyData = apportionLine(df_p, company, pctData, lineData, areaData, series, thisCompanyData)
+                    series = apportionLine(df_p, company, pctData, lineData, areaData, series)
+                else:
+                    # enbridge apportionment by line
+                    pointSeries = apportionPoint(df_p, company, pctData, pointSeries, kp, yAxis)
+                    yAxis = yAxis + 1
+
+            thisCompanyData["series"] = series
+            thisCompanyData["pointSeries"] = pointSeries
         else:
             thisCompanyData["build"] = False
 
@@ -192,4 +212,4 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 
 if __name__ == "__main__":
-    df = process_apportionment(sql=False, save=True) #, companies=["Enbridge Pipelines Inc."])
+    df = process_apportionment(sql=False, save=True, companies=["Enbridge Pipelines Inc."])
