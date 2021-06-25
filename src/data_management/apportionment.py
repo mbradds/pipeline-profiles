@@ -5,6 +5,22 @@ import dateutil.relativedelta
 from traffic import get_data, addIds
 import json
 
+enbridgePoints = {
+    "Cromer - Line 2/93": "crom2/93",
+    "Kerrobert - Line 2/3": "kerr2/3",
+    "Clearbrook - Line 2/3": "clea2/3",
+    "Kerrobert - Line 2/93": "kerr2/93",
+    "Kerrobert - Line 4/67": "kerr4/67",
+    "Westover - Line 10": "west10",
+    "Kerrobert - Line 1": "kerr1",
+    "Regina - Line 4/67": "regi4/67",
+    "Hardisty - Line 4/67": "hard4/67",
+    "Cromer - Line 2/3": "crom2/3",
+    "Cromer - Line 2/3/65": "crom2/3/65",
+    "Westover - Line 11": "west11",
+    "Edmonton - Line 2/3": "edmo2/3",
+    }
+
 
 def hasData(df, col):
     if df[col].sum() > 0:
@@ -20,12 +36,72 @@ def hasNotNull(df, col):
     return False
 
 
-def process_apportionment(test=False, sql=False, companies=False):
+def apportionmentIds(df):
+    df['Key Point'] = [x.replace("line", "Line") for x in df["Key Point"]]
+    df['Key Point'] = df['Key Point'].replace(enbridgePoints)
+    return df
+
+
+def apportionLine(df_p,
+                  company,
+                  pctData,
+                  lineData,
+                  areaData,
+                  series,
+                  thisCompanyData):
+
+    hasPct = hasNotNull(df_p, "Apportionment Percentage")
+    hasCap = hasData(df_p, "Available Capacity")
+    hasOrigNom = hasData(df_p, "Original Nominations")
+    hasAccepNom = hasData(df_p, "Accepted Nominations")
+
+    for cap, oNom, aNom, aPct in zip(df_p['Available Capacity'],
+                                     df_p['Original Nominations'],
+                                     df_p['Accepted Nominations'],
+                                     df_p['Apportionment Percentage']):
+
+        if hasCap and hasOrigNom:
+            linePoint = cap
+            areaPoint = oNom
+            areaName = "on"  # Original Nominations
+            lineName = "ac"  # Available Capacity
+        elif hasOrigNom and hasAccepNom:
+            linePoint = aNom
+            areaPoint = oNom
+            areaName = "on"
+            lineName = "an"
+        else:
+            raise ApportionSeriesCombinationError(company)
+
+        pctData.append(aPct)
+        lineData.append(linePoint)
+        areaData.append(areaPoint)
+
+        series.append({"id": lineName,
+                       "data": lineData,
+                       "yAxis": 0,
+                       "type": "line"})
+        series.append({"id": areaName,
+                       "data": areaData,
+                       "yAxis": 0,
+                       "type": "area"})
+        if hasPct:
+            series.append({"id": "ap",  # Apportionment Percent
+                           "data": pctData,
+                           "yAxis": 1,
+                           "type": "line",
+                           "visible": False,
+                           # "showInLegend": False
+                           })
+
+        thisCompanyData["series"] = series
+        return thisCompanyData
+
+
+def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
         df = get_data(False, True, "apportionment.sql")
-    elif test:
-        print('no tests for apportionment data!')
     else:
         print('reading local apportionment csv...')
         df = pd.read_csv("./raw_data/apportionment.csv")
@@ -33,7 +109,7 @@ def process_apportionment(test=False, sql=False, companies=False):
     df = normalize_dates(df, ['Date'])
     df = normalize_text(df, ['Corporate Entity'])
     # enbridge processing
-    df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Key Point'] != 'system')].index)
+    df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Key Point'].isin(['ex-Gretna', 'Into-Sarnia']))].index)
     df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Date'].dt.year < 2016)].index)
     # cochin processing
     df = df.drop(df[(df['Corporate Entity'] == 'PKM Cochin ULC') & (df['Key Point'] != 'Ft. Saskatchewan')].index)
@@ -44,7 +120,9 @@ def process_apportionment(test=False, sql=False, companies=False):
     df['Key Point'] = df['Key Point'].replace("All", "system")
     df = addIds(df)
     del df['Pipeline Name']
+    df = df[df['Key Point'] != "- - -"]
     df = df.rename(columns={x: x.split("(")[0].strip() for x in df.columns})
+    df = apportionmentIds(df)
     numCols = ['Available Capacity', 'Original Nominations', 'Accepted Nominations', 'Apportionment Percentage']
     df = normalize_numeric(df, numCols, 2)
     df = conversion(df, "oil", numCols[:-1], 2, False)
@@ -80,73 +158,33 @@ def process_apportionment(test=False, sql=False, companies=False):
                      'Enbridge Southern Lights GP Inc.',
                      'Emera Brunswick Pipeline Company Ltd.']
 
-    # for company in ['Enbridge Pipelines (NW) Inc.']:
+    if companies:
+        company_files = companies
+
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
-        if company == "Enbridge Pipelines Inc.":
-            df_c = pd.DataFrame()
         if not df_c.empty:
             thisCompanyData['build'] = True
-            df_c = df_c.drop_duplicates(subset=['Date'])
+            df_c = df_c.drop_duplicates(subset=['Date', 'Key Point'])
             df_c = df_c.sort_values(by='Date')
             minDate = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
-            thisCompanyData["keyPoint"] = list(df_c['Key Point'])[0]
             thisCompanyData["company"] = company
-            hasCap = hasData(df_c, "Available Capacity")
-            hasOrigNom = hasData(df_c, "Original Nominations")
-            hasAccepNom = hasData(df_c, "Accepted Nominations")
-            hasPct = hasNotNull(df_c, "Apportionment Percentage")
+
             lineData, areaData, pctData = [], [], []
             series = []
             series.append({"name": "date",
                            "min": [minDate.year, minDate.month-1, minDate.day]})
-            for cap, oNom, aNom, aPct in zip(df_c['Available Capacity'],
-                                             df_c['Original Nominations'],
-                                             df_c['Accepted Nominations'],
-                                             df_c['Apportionment Percentage']):
 
-                if hasCap and hasOrigNom:
-                    linePoint = cap
-                    areaPoint = oNom
-                    areaName = "on"  # Original Nominations
-                    lineName = "ac"  # Available Capacity
-                elif hasOrigNom and hasAccepNom:
-                    linePoint = aNom
-                    areaPoint = oNom
-                    areaName = "on"
-                    lineName = "an"
-                else:
-                    raise ApportionSeriesCombinationError(company)
-
-                pctData.append(aPct)
-                lineData.append(linePoint)
-                areaData.append(areaPoint)
-
-            series.append({"id": lineName,
-                           "data": lineData,
-                           "yAxis": 0,
-                           "type": "line"})
-            series.append({"id": areaName,
-                           "data": areaData,
-                           "yAxis": 0,
-                           "type": "area"})
-            if hasPct:
-                series.append({"id": "ap",  # Apportionment Percent
-                               "data": pctData,
-                               "yAxis": 1,
-                               "type": "line",
-                               "visible": False,
-                               # "showInLegend": False
-                               })
-
-            thisCompanyData["series"] = series
-
+            for kp in list(set(df_c["Key Point"])):
+                df_p = df_c[df_c["Key Point"] == kp].copy().reset_index(drop=True)
+                if kp not in enbridgePoints.values():
+                    thisCompanyData = apportionLine(df_p, company, pctData, lineData, areaData, series, thisCompanyData)
         else:
             thisCompanyData["build"] = False
 
-        if not test:
+        if save:
             with open('../data/apportionment/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp, default=str)
 
@@ -154,4 +192,4 @@ def process_apportionment(test=False, sql=False, companies=False):
 
 
 if __name__ == "__main__":
-    df = process_apportionment(sql=False)
+    df = process_apportionment(sql=False, save=True) #, companies=["Enbridge Pipelines Inc."])

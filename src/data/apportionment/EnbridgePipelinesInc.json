@@ -1,1 +1,1 @@
-{"build": false}
+{"build": true, "company": "Enbridge Pipelines Inc.", "series": [{"name": "date", "min": [2015, 11, 1]}, {"id": "an", "data": [3706.33], "yAxis": 0, "type": "line"}, {"id": "on", "data": [4038.24], "yAxis": 0, "type": "area"}]}
