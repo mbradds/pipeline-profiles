@@ -121,19 +121,11 @@ pipeline_profiles
 |   |
 |   └───index_files (entry points for all profile webpages)
 |   |
-|   └───conditions (conditions compliance code & data)
+|   └───data (output data folders for each section. Contains prepared data ready for charts)
 |   |
-|   └───incidents (incidents dashboard & data)
-|   |
-|   └───apportionment (oil pipeline apportionment dashboard & data)
-|   |
-|   └───oandm (operations and maintenance activities dashboard & data)
-|   |
-|   └───traffic (Pipeline throughput and capacity dashboard & data)
+|   └───dashboards (Higher level files/functions for creating each dashboard)
 |   |
 |   └───modules (shared dashboard code & utility functions)
-|   |
-|   └───your_new_section (new dashboards/sections will be added!)
 │
 └───dist (tries to match dweb7 folder structure)
     │   en/ english js bundles & html for each profile (to be placed on web server)
@@ -362,7 +354,7 @@ raw data (sql or web) -> python -> json -> es6 import -> JavaScript/css -> handl
 
 ### Python data prep
 
-1. Create a new python file in `src/data_management`. Prepate a reliable connection to the dataset, either a remote datafile or internal sql. The profiles are segmented by pipeline, so the data prep will involve splitting the dataset by the pipeline/company column, and creating one dataset for each company. Output files in json format to `../new_section/company_data/company_name.json`.
+1. Create a new python file in `src/data_management`. Prepate a reliable connection to the dataset, either a remote datafile or internal sql. The profiles are segmented by pipeline, so the data prep will involve splitting the dataset by the pipeline/company column, and creating one dataset for each company. Output files in json format to `../data/new_section/company_name.json`.
 
 2. Start to pay attention to file size of the outputs. Try to keep the average dataset around 15-20kb.
 
@@ -370,7 +362,7 @@ raw data (sql or web) -> python -> json -> es6 import -> JavaScript/css -> handl
 
 Start with just one profile (ngtl)
 
-1. Create a new folder: `src/new_section` and add a js file like so: `src/new_section/newSectionDashboard.js`.
+1. Create a new folder/file: `src/dashboards/newDashboard.js`.
 2. In this file, create a really simple "hello world" kind of function to accept the data:
 
 ```javascript
@@ -379,17 +371,28 @@ export function mainNewSection(data) {
 }
 ```
 
-3. Add the new data to the data entry point in `src/index_files/en/ngtl/data.js`:
+3. Add the new data to the data entry point in `src/index_files/data/ngtl.js`The data should (eventually) be made language agnostic.
 
-```javascript
-import newSectionData from "../../../new_section/company_data/NOVAGasTransmissionLtd.json";
-import { loadAllCharts } from "../../loadDashboards_en";
+```diff
+import canadaMap from "../../data/conditions/base_maps/base_map.json";
+import conditionsData from "../../data/conditions/NOVAGasTransmissionLtd.json";
+import incidentData from "../../data/incidents/NOVAGasTransmissionLtd.json";
+import trafficData from "../../data/traffic/NOVAGasTransmissionLtd.json";
+import apportionData from "../../data/apportionment/NOVAGasTransmissionLtd.json";
+import oandmData from "../../data/oandm/NOVAGasTransmissionLtd.json";
+import remediationData from "../../data/remediation/NOVAGasTransmissionLtd.json";
++import newData from "../../data/newSection/NOVAGasTransmissionLtd.json";
 
-const data = {
-  newSectionData,
+export const data = {
+  canadaMap,
+  conditionsData,
+  incidentData,
+  trafficData,
+  apportionData,
+  oandmData,
+  remediationData,
++ newData
 };
-
-loadAllCharts(data);
 ```
 
 4. Add the es6 export from step 2 to the code entry point in `src/index_files/loadDashboards_en.js`:

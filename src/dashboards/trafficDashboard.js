@@ -13,20 +13,20 @@
 
 import Highcharts from "highcharts";
 import HighchartsMore from "highcharts/highcharts-more";
-
 import {
   cerPalette,
+  arrAvg,
   visibility,
   sortJsonAlpha,
   listOrParagraph,
   equalizeHeight,
   loadChartError,
 } from "../modules/util";
-
 import {
   addSeriesParams,
   addUnitsAndSetup,
   addUnitsDisclaimer,
+  isCapacity,
 } from "./dashboardUtil";
 import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
 import { KeyPointMap } from "../modules/dashboard/KeyPointMap";
@@ -42,7 +42,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     if (params.defaultPoint.id !== "35") {
       params.points.forEach((point) => {
         const checkTxt = point.id === params.defaultPoint.id ? " active" : "";
-        html = `<div class="btn-group btn-point"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`;
+        html = `<div class="btn-group"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`;
         btnGroup.insertAdjacentHTML("beforeend", html);
       });
     } else {
@@ -67,13 +67,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return sortJsonAlpha(pointList, "name");
   }
 
+  const tmTitle = (params) => {
+    let text = "";
+    params.points.forEach((point) => {
+      text += `${point.name} `;
+    });
+    return text;
+  };
+
   const setTitle = (params, fiveYr) => {
     let pointText = "";
     let dirLangList = [false];
     if (params.tm) {
-      params.points.forEach((point) => {
-        pointText += `${point.name} `;
-      });
+      pointText = tmTitle(params);
     } else {
       dirLangList = params.directions[params.defaultPoint.id].map((dir) => {
         if (Object.prototype.hasOwnProperty.call(lang.directions, dir)) {
@@ -535,6 +541,99 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return [series, newChart];
   }
 
+  const tableRound = (v) => {
+    let val = v;
+    if (val > 100 || val <= 0) {
+      val = Math.round(val);
+    } else if (val > 1) {
+      val = val.toFixed(1);
+    } else {
+      val = val.toFixed(2);
+    }
+    return val;
+  };
+
+  function calculateAnnualAvg(series) {
+    const annualSeries = [];
+    const total = {};
+    let seriesCounter = 0;
+    series.forEach((s) => {
+      if (!isCapacity(s.id)) {
+        seriesCounter += 1;
+        const annual = {};
+        s.data.forEach((row) => {
+          const date = new Date(row[0]);
+          const year = date.getFullYear();
+          if (Object.prototype.hasOwnProperty.call(annual, year)) {
+            annual[year].push(row[1]);
+          } else {
+            annual[year] = [row[1]];
+          }
+        });
+
+        const annualAvg = {};
+        Object.keys(annual).forEach((yr) => {
+          let yearlyAvg = arrAvg(annual[yr]);
+          if (Object.prototype.hasOwnProperty.call(total, yr)) {
+            total[yr] += yearlyAvg;
+          } else {
+            total[yr] = yearlyAvg;
+          }
+          yearlyAvg = tableRound(yearlyAvg);
+          annualAvg[yr] = yearlyAvg;
+        });
+        annualSeries.push({ name: s.name, data: annualAvg });
+      }
+    });
+
+    const yearList = Object.keys(total);
+    yearList.unshift("");
+    Object.keys(total).forEach((yr) => {
+      total[yr] = tableRound(total[yr]);
+    });
+    if (seriesCounter > 1) {
+      annualSeries.push({ name: "Total", data: total });
+    }
+    return { annualSeries, yearList };
+  }
+
+  function buildAnnualTable(series, titleParams) {
+    try {
+      const { annualSeries, yearList } = calculateAnnualAvg(series);
+      let tableHtml = `<table class="table table-condensed">`;
+      tableHtml += `<thead><tr>`;
+      yearList.forEach((yr) => {
+        tableHtml += `<th scope="col">${yr}</th>`;
+      });
+      tableHtml += `</tr></thead>`;
+      tableHtml += `<tbody>`;
+      annualSeries.forEach((product) => {
+        const rowValues = Object.values(product.data);
+        rowValues.unshift(product.name);
+        let tr = `<tr>`;
+        rowValues.forEach((annualValue) => {
+          tr += `<td>${annualValue}</td>`;
+        });
+        tr += `</tr>`;
+        tableHtml += tr;
+      });
+      tableHtml += `</tbody></table>`;
+
+      let pointText = "";
+      if (titleParams.tm) {
+        pointText = tmTitle(titleParams);
+      } else {
+        pointText = titleParams.defaultPoint.name;
+      }
+      const titleText = `Annual Average Throughput: ${pointText} (${titleParams.unitsHolder.current})`;
+      document.getElementById("annual-traffic-table-title").innerText =
+        titleText;
+      document.getElementById("annual-traffic-table").innerHTML = tableHtml;
+    } catch (err) {
+      console.log("traffic table error", err);
+    }
+  }
+
   function buildDashboard() {
     const defaultPoint = getKeyPoint(metaData.defaultPoint);
     const chartParams = addUnitsAndSetup(
@@ -619,6 +718,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
 
     equalizeHeight("eq-ht-1", "eq-ht-2");
+    // create annual table after charts are loaded
+    buildAnnualTable(timeSeries, chartParams);
 
     // user selects key point
     if (!chartParams.tm && chartParams.defaultPoint.id !== "0") {
@@ -689,6 +790,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           lang.dynamicText(chartParams, lang.numberFormat, lang.series);
           displayPointDescription([chartParams.defaultPoint]);
           equalizeHeight("eq-ht-1", "eq-ht-2");
+          buildAnnualTable(timeSeries, chartParams);
         });
     } else if (chartParams.defaultPoint.id !== "0") {
       // user is on trans mountain profile
@@ -739,6 +841,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             displayPointDescription(chartParams.points);
             lang.dynamicText(chartParams, lang.numberFormat, lang.series);
             equalizeHeight("eq-ht-1", "eq-ht-2");
+            buildAnnualTable(timeSeries, chartParams);
           }
         });
     }
@@ -805,6 +908,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
           lang.dynamicText(chartParams, lang.numberFormat, lang.series);
           equalizeHeight("eq-ht-1", "eq-ht-2");
+          buildAnnualTable(timeSeries, chartParams);
         }
       });
 

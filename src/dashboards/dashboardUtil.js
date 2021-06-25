@@ -106,6 +106,18 @@ export const mapInits = {
 };
 
 /**
+ * Checks if a highcharts series id corresponds to pipeline capacity. This series's are treaded differently.
+ * @param {string} seriesId
+ * @returns {boolean}
+ */
+export const isCapacity = (seriesId) => {
+  if (seriesId === "cap" || seriesId === "icap" || seriesId === "ecap") {
+    return true;
+  }
+  return false;
+};
+
+/**
  *
  * @param {Object[]} seriesWithDate - Pre-processed highcharts series containing a starting date, and one or more objects containing data arrays.
  * @param {Object} unitsHolder - Info about the current dataset/series units.
@@ -137,13 +149,6 @@ export function addSeriesParams(
   if (sorted) {
     series = sortJsonAlpha(series, "id");
   }
-
-  const isCapacity = (seriesId) => {
-    if (seriesId === "cap" || seriesId === "icap" || seriesId === "ecap") {
-      return true;
-    }
-    return false;
-  };
 
   const fiveYearData = {};
   const newSeries = series.map((s) => {

@@ -181,9 +181,11 @@ Styles for traffic and apportionment dashboards
   flex-direction: column;
   justify-content: left;
 }
-
 #traffic-container {
   padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+#annual-traffic-table .table {
   margin-bottom: 0px;
 }
 
