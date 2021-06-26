@@ -36,9 +36,9 @@ export async function mainApportion(apportionData, lang) {
     return series[0];
   }
 
-  function tooltipText(event, unit) {
-    const valFormat = (pnt, suffix) => {
-      if (pnt.series.options.yAxis === 1) {
+  function tooltipText(event, unit, point = false) {
+    const valFormat = (pnt, suffix, isPoint) => {
+      if (pnt.series.options.yAxis === 1 || isPoint) {
         return [(pnt.y * 100).toFixed(0), "%"];
       }
       return [lang.numberFormat(pnt.y, 1), suffix];
@@ -50,7 +50,7 @@ export async function mainApportion(apportionData, lang) {
     )}</strong>`;
     let toolTable = `<table>`;
     event.points.forEach((p) => {
-      const [y, yUnit] = valFormat(p, unit);
+      const [y, yUnit] = valFormat(p, unit, point);
       const colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp;`;
       toolTable += `<tr><th>${colorCircle}${p.series.name}:</th><th>&nbsp;${y} ${yUnit}</th></tr>`;
     });
@@ -75,7 +75,6 @@ export async function mainApportion(apportionData, lang) {
   }
 
   function buildApportionPointCharts(seriesList, chart) {
-    // console.log(chart);
     const xAxisInfo = chart.xAxis[0];
     const topChart = document.getElementById("apportion-point-panel");
     topChart.innerHTML = `<section class="panel panel-default">
@@ -89,18 +88,18 @@ export async function mainApportion(apportionData, lang) {
     const colorList = Object.values(cerPalette);
     seriesList.forEach((pointSeries, i) => {
       const series = pointSeries;
-      series.name = pointSeries.id;
+      series.name = lang.enbridgePoints[pointSeries.id];
       series.color = colorList[i];
       const pointDiv = document.createElement("div");
       const divId = `${series.id}-apportion`;
       pointDiv.setAttribute("id", divId);
-
-      // topChart.appendChild(pointDiv);
       document.getElementById("apportion-points").appendChild(pointDiv);
 
       let timeLabel = false;
+      let yOffset = 0;
       if (i === seriesList.length - 1) {
         timeLabel = true;
+        yOffset = -10;
         pointDiv.setAttribute("class", "apportion-point-hc-last");
       } else {
         pointDiv.setAttribute("class", "apportion-point-hc");
@@ -114,7 +113,10 @@ export async function mainApportion(apportionData, lang) {
         },
         plotOptions: {
           column: {
-            pointWidth: 14,
+            pointWidth: 13,
+          },
+          series: {
+            stickyTracking: false,
           },
         },
         xAxis: {
@@ -130,17 +132,21 @@ export async function mainApportion(apportionData, lang) {
           layout: "vertical",
           align: "right",
           verticalAlign: "middle",
-          width: "10%",
+          width: "20%",
+          y: yOffset,
         },
         tooltip: {
           shared: true,
           borderColor: cerPalette["Dim Grey"],
-          xDateFormat: "%b, %Y",
+          useHTML: true,
+          formatter() {
+            return tooltipText(this, "%", true);
+          },
         },
         yAxis: {
-          // gridLineColor: "transparent",
           min: 0,
           tickAmount: 3,
+          // gridLineColor: "transparent",
           // startOnTick: false,
           // endOnTick: false,
           title: {
@@ -252,12 +258,13 @@ export async function mainApportion(apportionData, lang) {
 
       // TODO: loop through pointSeries and create div + chart for each entry
       if (apportionData.pointSeries.length > 0) {
-        buildApportionPointCharts(apportionData.pointSeries, chart);
+        try {
+          buildApportionPointCharts(apportionData.pointSeries, chart);
+        } catch (err) {
+          console.log(err);
+          loadChartError("apportion-point-panel", lang.dashboardError);
+        }
       }
-
-      // if (apportionData.pointSeries.length > 0) {
-      //   series = series.concat(apportionData.pointSeries);
-      // }
 
       // user selects units
       document
