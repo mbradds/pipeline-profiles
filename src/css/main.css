@@ -188,6 +188,12 @@ Styles for traffic and apportionment dashboards
 #annual-traffic-table .table {
   margin-bottom: 0px;
 }
+.apportion-point-hc {
+  height: 45px;
+}
+.apportion-point-hc-last {
+  height: 65px;
+}
 
 /* 
 styles for remediation dashboard 

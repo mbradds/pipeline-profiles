@@ -38,7 +38,7 @@ const en = {
   descriptionTitle: descriptionEn,
   selectUnits: unitsEn,
   apportion: {
-    header: { other: "Apportionment", enbridge: "Nominations" },
+    header: { other: "Apportionment", enbridge: "Apportionment" },
     updated: trafficUpdatedEn,
     p1: "A shipper must submit nominations each month it wishes to move its oil on a pipeline. Shippers must submit nominations for both committed (or contracted) transportation service, if available, as well as uncommitted transportation service. If the total volume of nominations for uncommitted capacity is more than what is available, the pipeline company must “apportion” the nominations.",
 
@@ -220,7 +220,7 @@ const fr = {
   descriptionTitle: descriptionFr,
   selectUnits: unitsFr,
   apportion: {
-    header: { other: "Répartition", enbridge: "Commandes d’expédition" },
+    header: { other: "Répartition", enbridge: "Répartition" },
     updated: trafficUpdatedFr,
     p1: "Les expéditeurs doivent soumettre tous les mois une commande à chaque pipeline que doit traverser leur pétrole. Il leur faut présenter une commande pour le service de transport souscrit (sous contrat), s’il est offert, et pour le service de transport non souscrit. Si le total des commandes dépasse la capacité non souscrite disponible, les transporteurs doivent «&nbsp;répartir&nbsp;» les commandes.",
     p2: "La répartition est le pourcentage de réduction appliqué à la commande de chacun des expéditeurs afin de ne pas dépasser la capacité non souscrite disponible. En général, ce pourcentage est appliqué également à tous les expéditeurs ayant passé une commande. Par exemple, si la commande de l’expéditeur&nbsp;A vise 100&nbsp;barils et celle de l’expéditeur&nbsp;B, 1&nbsp;000&nbsp;barils, selon un taux de répartition de 10&nbsp;%, les deux expéditeurs pourront faire transporter 90&nbsp;barils et 900&nbsp;barils.",

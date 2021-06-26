@@ -74,6 +74,92 @@ export async function mainApportion(apportionData, lang) {
     };
   }
 
+  function buildApportionPointCharts(seriesList, chart) {
+    // console.log(chart);
+    const xAxisInfo = chart.xAxis[0];
+    const topChart = document.getElementById("apportion-point-panel");
+    topChart.innerHTML = `<section class="panel panel-default">
+    <header class="panel-heading">
+     <h5 class="panel-title">Apportionment at key points</h5>
+    </header>
+    <div class="panel-body" id="apportion-points">
+    </div>
+  </section>`;
+
+    const colorList = Object.values(cerPalette);
+    seriesList.forEach((pointSeries, i) => {
+      const series = pointSeries;
+      series.name = pointSeries.id;
+      series.color = colorList[i];
+      const pointDiv = document.createElement("div");
+      const divId = `${series.id}-apportion`;
+      pointDiv.setAttribute("id", divId);
+
+      // topChart.appendChild(pointDiv);
+      document.getElementById("apportion-points").appendChild(pointDiv);
+
+      let timeLabel = false;
+      if (i === seriesList.length - 1) {
+        timeLabel = true;
+        pointDiv.setAttribute("class", "apportion-point-hc-last");
+      } else {
+        pointDiv.setAttribute("class", "apportion-point-hc");
+      }
+
+      Highcharts.chart(divId, {
+        chart: {
+          type: "column",
+          spacingBottom: 0,
+          spacingTop: 0,
+        },
+        plotOptions: {
+          column: {
+            pointWidth: 14,
+          },
+        },
+        xAxis: {
+          type: "datetime",
+          tickLength: 1,
+          min: xAxisInfo.dataMin,
+          max: xAxisInfo.dataMax,
+          labels: {
+            enabled: timeLabel,
+          },
+        },
+        legend: {
+          layout: "vertical",
+          align: "right",
+          verticalAlign: "middle",
+          width: "10%",
+        },
+        tooltip: {
+          shared: true,
+          borderColor: cerPalette["Dim Grey"],
+          xDateFormat: "%b, %Y",
+        },
+        yAxis: {
+          // gridLineColor: "transparent",
+          min: 0,
+          tickAmount: 3,
+          // startOnTick: false,
+          // endOnTick: false,
+          title: {
+            text: "",
+          },
+          labels: {
+            formatter() {
+              if (!this.isLast && !this.isFirst) {
+                return `${lang.numberFormat(this.value * 100, 0)}%`;
+              }
+              return undefined;
+            },
+          },
+        },
+        series: [series],
+      });
+    });
+  }
+
   function buildApportionChart(series, units, div = "apportion-hc") {
     return new Highcharts.chart(div, {
       chart: {
@@ -156,17 +242,22 @@ export async function mainApportion(apportionData, lang) {
       );
 
       let series = buildApportionSeries(apportionData.series, unitsHolder);
-      // TODO: loop through pointSeries and create div + chart for each entry
-      // console.log(apportionData.pointSeries);
-      // if (apportionData.pointSeries.length > 0) {
-      //   series = series.concat(apportionData.pointSeries);
-      // }
       const chart = buildApportionChart(series, unitsHolder.current);
+
       addUnitsDisclaimer(
         "conversion-disclaimer-apportion",
         "oil",
         lang.unitsDisclaimerText
       );
+
+      // TODO: loop through pointSeries and create div + chart for each entry
+      if (apportionData.pointSeries.length > 0) {
+        buildApportionPointCharts(apportionData.pointSeries, chart);
+      }
+
+      // if (apportionData.pointSeries.length > 0) {
+      //   series = series.concat(apportionData.pointSeries);
+      // }
 
       // user selects units
       document

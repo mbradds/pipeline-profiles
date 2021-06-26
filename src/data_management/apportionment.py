@@ -98,15 +98,14 @@ def apportionLine(df_p,
 def apportionPoint(df_p, company, pctData, series, kp, yAxis):
     data = df_p[['Date', 'Apportionment Percentage']]
     data = data.rename(columns={"Date": "x", "Apportionment Percentage": "y"})
-    data['x'] = [int(time.mktime(t.timetuple())) for t in data['x']]
+    # data['x'] = [int(time.mktime(t.timetuple())) for t in data['x']]
+    data = [[int(time.mktime(x.timetuple()))*1000, y] for x, y in zip(data['x'], data['y'])]
     # for testing one point
-    if yAxis == 1:
-        series.append({
-            "id": kp,
-            "data": data.to_dict(orient='records'),
-            "yAxis": 1,
-            "type": "column"
-            })
+    # if yAxis == 1:
+    series.append({
+        "id": kp,
+        "data": data,
+        })
     return series
 
 
