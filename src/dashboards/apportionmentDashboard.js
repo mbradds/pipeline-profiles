@@ -148,55 +148,51 @@ export async function mainApportion(apportionData, lang) {
 
   function buildDecision() {
     if (apportionData.build) {
-      try {
-        const { unitsHolder } = addUnitsAndSetup(
-          "Mb/d",
-          { id: undefined },
-          lang.units,
-          "apportion"
-        );
+      const { unitsHolder } = addUnitsAndSetup(
+        "Mb/d",
+        { id: undefined },
+        lang.units,
+        "apportion"
+      );
 
-        let series = buildApportionSeries(apportionData.series, unitsHolder);
-        // TODO: loop through pointSeries and create div + chart for each entry
-        // console.log(apportionData.pointSeries);
-        // if (apportionData.pointSeries.length > 0) {
-        //   series = series.concat(apportionData.pointSeries);
-        // }
-        const chart = buildApportionChart(series, unitsHolder.current);
-        addUnitsDisclaimer(
-          "conversion-disclaimer-apportion",
-          "oil",
-          lang.unitsDisclaimerText
-        );
+      let series = buildApportionSeries(apportionData.series, unitsHolder);
+      // TODO: loop through pointSeries and create div + chart for each entry
+      // console.log(apportionData.pointSeries);
+      // if (apportionData.pointSeries.length > 0) {
+      //   series = series.concat(apportionData.pointSeries);
+      // }
+      const chart = buildApportionChart(series, unitsHolder.current);
+      addUnitsDisclaimer(
+        "conversion-disclaimer-apportion",
+        "oil",
+        lang.unitsDisclaimerText
+      );
 
-        // user selects units
-        document
-          .getElementById("select-units-radio-apportion")
-          .addEventListener("click", (event) => {
-            if (event.target && event.target.value) {
-              const radioValue = event.target.value;
-              unitsHolder.current = radioValue;
-              series = buildApportionSeries(apportionData.series, unitsHolder);
-              chart.update({
-                series,
-                yAxis: [
-                  {
-                    title: {
-                      text: unitsHolder.current,
-                    },
-                  },
-                ],
-                tooltip: {
-                  formatter() {
-                    return tooltipText(this, unitsHolder.current);
+      // user selects units
+      document
+        .getElementById("select-units-radio-apportion")
+        .addEventListener("click", (event) => {
+          if (event.target && event.target.value) {
+            const radioValue = event.target.value;
+            unitsHolder.current = radioValue;
+            series = buildApportionSeries(apportionData.series, unitsHolder);
+            chart.update({
+              series,
+              yAxis: [
+                {
+                  title: {
+                    text: unitsHolder.current,
                   },
                 },
-              });
-            }
-          });
-      } catch (err) {
-        console.log(err);
-      }
+              ],
+              tooltip: {
+                formatter() {
+                  return tooltipText(this, unitsHolder.current);
+                },
+              },
+            });
+          }
+        });
     } else if (document.getElementById("apportionment-section")) {
       // handles when profileManager is configured to show section without data
       visibility(["apportionment-section"], "hide");
@@ -206,6 +202,7 @@ export async function mainApportion(apportionData, lang) {
   try {
     return buildDecision();
   } catch (err) {
+    console.log(err);
     loadChartError("apportionment-dashboard", lang.dashboardError);
     return false;
   }

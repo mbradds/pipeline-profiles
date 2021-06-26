@@ -194,10 +194,12 @@ def process_apportionment(save=False, sql=False, companies=False):
                 df_p = df_c[df_c["Key Point"] == kp].copy().reset_index(drop=True)
                 if kp not in enbridgePoints.values():
                     series = apportionLine(df_p, company, pctData, lineData, areaData, series)
+                    thisCompanyData["keyPoint"] = kp
                 else:
                     # enbridge apportionment by line
                     pointSeries = apportionPoint(df_p, company, pctData, pointSeries, kp, yAxis)
                     yAxis = yAxis + 1
+                    thisCompanyData["keyPoint"] = False
 
             thisCompanyData["series"] = series
             thisCompanyData["pointSeries"] = pointSeries
@@ -212,4 +214,4 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 
 if __name__ == "__main__":
-    df = process_apportionment(sql=False, save=True, companies=["Enbridge Pipelines Inc."])
+    df = process_apportionment(sql=False, save=True) #, companies=["Enbridge Pipelines Inc."])
