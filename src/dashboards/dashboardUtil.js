@@ -263,8 +263,10 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   if (defaultPoint.id === "7") {
     // 7 = St. Stephen
     hasImports = true;
+  } else {
+    buildFive = true;
   }
-  buildFive = true;
+
   if (defaultUnit === "Bcf/d") {
     secondUnit = "million m3/d";
     unitsHolder.conversion = conversions["bcf/d to million m3/d"];

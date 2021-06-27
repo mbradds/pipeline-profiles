@@ -300,6 +300,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function createFiveYearChart(series, params) {
+    if (!series) {
+      return false;
+    }
     return new Highcharts.chart("traffic-hc-range", {
       chart: {
         type: "line",
@@ -446,10 +449,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
       false,
       false
     );
+    chart.redraw(false);
     return chart;
   };
 
-  function resize(params) {
+  function resize(params, chart = undefined) {
     const mainTrafficDiv = document.getElementById("traffic-hc");
     if (params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
@@ -461,6 +465,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
         mainTrafficDiv.classList.add("traffic-hc-shared");
       }
       visibility(["traffic-hc-range"], "show");
+    }
+    if (chart) {
+      chart.reflow();
+      chart.redraw(false);
     }
   }
 
@@ -501,7 +509,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return { id: defaultId, name: lang.points[defaultId][0] };
   }
 
-  function displayPointDescription(points) {
+  function displayPointDescription(params) {
+    let points;
+    if (!params.tm) {
+      points = [params.defaultPoint];
+    } else {
+      points = params.points;
+    }
     let pointList = points;
     if (points.length > 1) {
       pointList = sortJsonAlpha(points, "name");
@@ -624,8 +638,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               tr += `<td>${annualValue}</td>`;
             }
           });
-          tr += `</tr>`;
-          tableHtml += tr;
+          tableHtml += `${tr}</tr>`;
         });
         tableHtml += `</tbody></table>`;
 
@@ -648,6 +661,13 @@ export async function mainTraffic(trafficData, metaData, lang) {
     } catch (err) {
       console.log("traffic table error", err);
     }
+  }
+
+  function updateDynamicComponents(params, timeSeries) {
+    lang.dynamicText(params, lang.numberFormat, lang.series);
+    displayPointDescription(params);
+    equalizeHeight("eq-ht-1", "eq-ht-2");
+    buildAnnualTable(timeSeries, params);
   }
 
   function buildDashboard() {
@@ -699,6 +719,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
     if (fiveSeries) {
       fiveSeries = createFiveYearSeries(fiveSeries, lang);
+      chartParams.fiveTrend = fiveYearTrend(fiveSeries, chartParams.hasImports);
+    } else {
+      chartParams.fiveTrend = false;
     }
 
     let trafficChart = createTrafficChart(
@@ -707,32 +730,14 @@ export async function mainTraffic(trafficData, metaData, lang) {
       chartParams
     );
 
-    let fiveChart = false; // TODO: add buildFive and hasImports to createFiveYearChart and return undefined
+    let fiveChart = createFiveYearChart(fiveSeries, chartParams);
 
     // only m&np should meet this criteria on load
     if (chartParams.hasImports) {
       hasImportsRedraw(trafficChart, chartParams);
-      trafficChart.redraw(true);
-    } else if (chartParams.buildFive && !chartParams.hasImports) {
-      // user is on gas profile that isnt m&np
-      fiveChart = createFiveYearChart(fiveSeries, chartParams);
-    } else {
-      // user is on oil profile
-      fiveChart = false;
-    }
-    chartParams.fiveTrend = fiveYearTrend(fiveSeries, chartParams.hasImports);
-    // this event listener possibly helps with the equal height not working properly
-
-    lang.dynamicText(chartParams, lang.numberFormat, lang.series);
-    if (!chartParams.tm) {
-      displayPointDescription([chartParams.defaultPoint]);
-    } else {
-      displayPointDescription(chartParams.points, chartParams.tm);
     }
 
-    equalizeHeight("eq-ht-1", "eq-ht-2");
-    // create annual table after charts are loaded
-    buildAnnualTable(timeSeries, chartParams);
+    updateDynamicComponents(chartParams, timeSeries);
 
     // user selects key point
     if (!chartParams.tm && chartParams.defaultPoint.id !== "0") {
@@ -758,7 +763,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           );
 
           if (chartParams.hasImports) {
-            hasImportsRedraw(trafficChart, chartParams);
+            trafficChart = hasImportsRedraw(trafficChart, chartParams);
           } else {
             trafficChart.update(
               {
@@ -784,17 +789,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
               chartParams
             );
           }
-          resize(chartParams);
-          trafficChart.redraw(true);
+          resize(chartParams, trafficChart);
           pointMap.pointChange([chartParams.defaultPoint]);
           chartParams.fiveTrend = fiveYearTrend(
             fiveSeries,
             chartParams.hasImports
           );
-          lang.dynamicText(chartParams, lang.numberFormat, lang.series);
-          displayPointDescription([chartParams.defaultPoint]);
-          equalizeHeight("eq-ht-1", "eq-ht-2");
-          buildAnnualTable(timeSeries, chartParams);
+
+          updateDynamicComponents(chartParams, timeSeries);
+
         });
     } else if (chartParams.defaultPoint.id !== "0") {
       // user is on trans mountain profile
@@ -842,10 +845,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               );
               pointMap.pointChange(chartParams.points);
             }
-            displayPointDescription(chartParams.points);
-            lang.dynamicText(chartParams, lang.numberFormat, lang.series);
-            equalizeHeight("eq-ht-1", "eq-ht-2");
-            buildAnnualTable(timeSeries, chartParams);
+            updateDynamicComponents(chartParams, timeSeries);
           }
         });
     }
