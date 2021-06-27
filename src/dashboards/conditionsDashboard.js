@@ -5,6 +5,7 @@ import {
   cerPalette,
   visibility,
   loadChartError,
+  btnGroupClick,
 } from "../modules/util";
 import { mapInits } from "./dashboardUtil";
 import conditionsRegions from "../data/conditions/metadata/regions.json";
@@ -512,16 +513,8 @@ export async function mainConditions(
       document
         .getElementById("conditions-nav-group")
         .addEventListener("click", (event) => {
-          const evt = event;
-          const allButtons = document.querySelectorAll(
-            `#conditions-nav-group .btn`
-          );
-          allButtons.forEach((elem) => {
-            const e = elem;
-            e.className = elem.className.replace(" active", "");
-          });
-          evt.target.className += " active";
-          const btnValue = evt.target.value;
+          btnGroupClick("conditions-nav-group", event);
+          const btnValue = event.target.value;
           chartParams.conditionsFilter.column = btnValue;
           if (btnValue !== "not-shown") {
             destroyInsert(chart);

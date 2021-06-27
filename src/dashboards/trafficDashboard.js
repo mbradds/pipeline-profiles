@@ -21,6 +21,7 @@ import {
   listOrParagraph,
   equalizeHeight,
   loadChartError,
+  btnGroupClick,
 } from "../modules/util";
 import {
   addSeriesParams,
@@ -600,13 +601,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function buildAnnualTable(series, titleParams) {
     try {
       const { annualSeries, yearList } = calculateAnnualAvg(series);
-      let tableHtml = `<table class="table table-condensed">`;
-      tableHtml += `<thead><tr>`;
+      let tableHtml = `<table class="table table-condensed"><thead><tr>`;
       yearList.forEach((yr) => {
         tableHtml += `<th scope="col">${yr}</th>`;
       });
-      tableHtml += `</tr></thead>`;
-      tableHtml += `<tbody>`;
+      tableHtml += `</tr></thead><tbody>`;
       annualSeries.forEach((product) => {
         const rowValues = Object.values(product.data);
         rowValues.unshift(product.name);
@@ -671,10 +670,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     if (chartParams.defaultPoint.id !== "0") {
       // 0 = system. These pipelines should be using trafficNoMap.hbs
       if (chartParams.points.length === 1) {
-        // eg, Keystone
-        ["traffic-points-btn", "key-point-title"].forEach((hideDiv) => {
-          document.getElementById(hideDiv).style.display = "none";
-        });
+        visibility(["traffic-points-btn", "key-point-title"], "hide");
       } else {
         addPointButtons(chartParams);
       }
@@ -731,18 +727,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
       document
         .getElementById("traffic-points-btn")
         .addEventListener("click", (event) => {
-          const evt = event;
-          const allButtons = document.querySelectorAll(
-            `#traffic-points-btn .btn`
-          );
-          allButtons.forEach((elem) => {
-            const e = elem;
-            e.className = elem.className.replace(" active", "");
-          });
-          evt.target.className += " active";
-          const btnValue = evt.target.value;
+          btnGroupClick("traffic-points-btn", event);
           chartParams.hasImports = false;
-          chartParams.defaultPoint = getKeyPoint(btnValue);
+          chartParams.defaultPoint = getKeyPoint(event.target.value);
+
           [timeSeries, fiveSeries] = addSeriesParams(
             trafficData[chartParams.defaultPoint.id],
             chartParams.unitsHolder,
@@ -786,7 +774,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
           }
           resize(chartParams);
           trafficChart.redraw(true);
-          trafficChart.reflow();
           pointMap.pointChange([chartParams.defaultPoint]);
           chartParams.fiveTrend = fiveYearTrend(
             fiveSeries,
@@ -856,8 +843,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       .getElementById("select-units-radio-traffic")
       .addEventListener("click", (event) => {
         if (event.target && event.target.value) {
-          const radioValue = event.target.value;
-          chartParams.unitsHolder.current = radioValue;
+          chartParams.unitsHolder.current = event.target.value;
           [timeSeries, fiveSeries] = addSeriesParams(
             createSeries(trafficData, chartParams),
             chartParams.unitsHolder,
@@ -922,17 +908,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       document
         .getElementById("key-point-zoom-btn")
         .addEventListener("click", (event) => {
-          const evt = event;
-          const allButtons = document.querySelectorAll(
-            `#key-point-zoom-btn .btn`
-          );
-          allButtons.forEach((elem) => {
-            const e = elem;
-            e.className = elem.className.replace(" active", "");
-          });
-          evt.target.className += " active";
-          const btnValue = evt.target.value;
-          if (btnValue === "zoom-in") {
+          btnGroupClick("key-point-zoom-btn", event);
+          if (event.target.value === "zoom-in") {
             pointMap.reZoom(true);
           } else {
             pointMap.reZoom(false);

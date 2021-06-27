@@ -14,7 +14,13 @@ import * as L from "leaflet";
 import Highcharts from "highcharts";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/leaflet.css";
-import { cerPalette, conversions, leafletBaseMap, visibility } from "../util";
+import {
+  cerPalette,
+  conversions,
+  leafletBaseMap,
+  visibility,
+  btnGroupClick,
+} from "../util";
 
 const haversine = require("haversine");
 
@@ -658,21 +664,12 @@ export class EventMap {
     document
       .getElementById(`${this.eventType}-view-type`)
       .addEventListener("click", (event) => {
-        const evt = event;
-        const allButtons = document.querySelectorAll(
-          `#${this.eventType}-view-type .btn`
-        );
-        allButtons.forEach((elem) => {
-          const e = elem;
-          e.className = elem.className.replace(" active", "");
-        });
-        evt.target.className += " active";
-        const btnValue = evt.target.value;
+        btnGroupClick(`${this.eventType}-view-type`, event);
         const dashboardDivs = [
           `${this.divId}`,
           `nearby-${this.eventType}-popup`,
         ].concat(mapBars.allDivs);
-        if (btnValue !== "trends") {
+        if (event.target.value !== "trends") {
           visibility(dashboardDivs, "show");
           visibility([`${this.eventType}-time-series-section`], "hide");
           if (volumeBtn) {
@@ -764,8 +761,10 @@ export class EventMap {
       });
   }
 
+  /**
+   * reset map after user has selected a range
+   */
   resetCirclesListener() {
-    // reset map after user has selected a range
     const resetBtnDiv = `reset-${this.eventType}-btn`;
     document.getElementById(resetBtnDiv).addEventListener("click", () => {
       this.resetMap();

@@ -193,3 +193,18 @@ export function plainsMidstreamProfile(lang, div) {
     plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><small>${lang.plains}</small></section>`;
   });
 }
+
+/**
+ * Handles user interaction with a button group.
+ * @param {string} btnDiv - HTML id of the target button group.
+ * @param {Object} event - Event listener callback object.
+ */
+export function btnGroupClick(btnDiv, event) {
+  const evt = event;
+  const allButtons = document.querySelectorAll(`#${btnDiv} .btn`);
+  allButtons.forEach((elem) => {
+    const e = elem;
+    e.className = elem.className.replace(" active", "");
+  });
+  evt.target.className += " active";
+}

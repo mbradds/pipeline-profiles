@@ -24,7 +24,7 @@ import {
 
 export async function mainApportion(apportionData, lang) {
   function buildApportionSeries(seriesWithDate, unitsHolder) {
-    const series = addSeriesParams(
+    return addSeriesParams(
       seriesWithDate,
       unitsHolder,
       false,
@@ -32,8 +32,7 @@ export async function mainApportion(apportionData, lang) {
       "monthly",
       "apportionment",
       false
-    );
-    return series[0];
+    )[0];
   }
 
   function tooltipText(event, unit, point = false) {
@@ -146,9 +145,6 @@ export async function mainApportion(apportionData, lang) {
         yAxis: {
           min: 0,
           tickAmount: 3,
-          // gridLineColor: "transparent",
-          // startOnTick: false,
-          // endOnTick: false,
           title: {
             text: "",
           },
@@ -167,7 +163,7 @@ export async function mainApportion(apportionData, lang) {
   }
 
   function buildApportionChart(series, units, div = "apportion-hc") {
-    return new Highcharts.chart(div, {
+    return Highcharts.chart(div, {
       chart: {
         zoomType: "x",
         spacingLeft: 0,
@@ -256,12 +252,10 @@ export async function mainApportion(apportionData, lang) {
         lang.unitsDisclaimerText
       );
 
-      // TODO: loop through pointSeries and create div + chart for each entry
       if (apportionData.pointSeries.length > 0) {
         try {
           buildApportionPointCharts(apportionData.pointSeries, chart);
         } catch (err) {
-          console.log(err);
           loadChartError("apportion-point-panel", lang.dashboardError);
         }
       }
@@ -300,7 +294,6 @@ export async function mainApportion(apportionData, lang) {
   try {
     return buildDecision();
   } catch (err) {
-    console.log(err);
     loadChartError("apportionment-dashboard", lang.dashboardError);
     return false;
   }
