@@ -290,3 +290,9 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
   const unitsDisclaimer = document.getElementById(div);
   unitsDisclaimer.innerHTML = textFunction(commodity);
 }
+
+export function noEventsFlag(header, note, companyName, dashboardId) {
+  let noEventsHTML = `<section class="alert alert-warning"><h3>${header}</h3>`;
+  noEventsHTML += `<p>${note(companyName)}</p></section>`;
+  document.getElementById(dashboardId).innerHTML = noEventsHTML;
+}

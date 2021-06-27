@@ -39,33 +39,38 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function addPointButtons(params) {
     const btnGroup = document.getElementById("traffic-points-btn");
-    let html = "";
     if (params.defaultPoint.id !== "35") {
       params.points.forEach((point) => {
         const checkTxt = point.id === params.defaultPoint.id ? " active" : "";
-        html = `<div class="btn-group"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`;
-        btnGroup.insertAdjacentHTML("beforeend", html);
+        btnGroup.insertAdjacentHTML(
+          "beforeend",
+          `<div class="btn-group"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`
+        );
       });
     } else {
       params.points.forEach((point, i) => {
-        html = `<div class="checkbox-inline">
+        btnGroup.insertAdjacentHTML(
+          "beforeend",
+          `<div class="checkbox-inline">
         <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point.id}">${point.name}</label>
-     </div>`;
-        btnGroup.insertAdjacentHTML("beforeend", html);
+     </div>`
+        );
       });
     }
   }
 
   function getPointList(meta) {
-    const pointList = meta.keyPoints.map((point) => {
-      const pointName = lang.points[point["Key Point"]][0];
-      return {
-        id: point["Key Point"],
-        name: pointName,
-        loc: point.loc,
-      };
-    });
-    return sortJsonAlpha(pointList, "name");
+    return sortJsonAlpha(
+      meta.keyPoints.map((point) => {
+        const pointName = lang.points[point["Key Point"]][0];
+        return {
+          id: point["Key Point"],
+          name: pointName,
+          loc: point.loc,
+        };
+      }),
+      "name"
+    );
   }
 
   const tmTitle = (params) => {
@@ -601,38 +606,45 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function buildAnnualTable(series, titleParams) {
     try {
-      const { annualSeries, yearList } = calculateAnnualAvg(series);
-      let tableHtml = `<table class="table table-condensed"><thead><tr>`;
-      yearList.forEach((yr) => {
-        tableHtml += `<th scope="col">${yr}</th>`;
-      });
-      tableHtml += `</tr></thead><tbody>`;
-      annualSeries.forEach((product) => {
-        const rowValues = Object.values(product.data);
-        rowValues.unshift(product.name);
-        let tr = `<tr>`;
-        rowValues.forEach((annualValue, i) => {
-          if (i === 0) {
-            tr += `<td><strong>${annualValue}</strong></td>`;
-          } else {
-            tr += `<td>${annualValue}</td>`;
-          }
+      if (series[0]) {
+        const { annualSeries, yearList } = calculateAnnualAvg(series);
+        let tableHtml = `<table class="table table-condensed"><thead><tr>`;
+        yearList.forEach((yr) => {
+          tableHtml += `<th scope="col">${yr}</th>`;
         });
-        tr += `</tr>`;
-        tableHtml += tr;
-      });
-      tableHtml += `</tbody></table>`;
+        tableHtml += `</tr></thead><tbody>`;
+        annualSeries.forEach((product) => {
+          const rowValues = Object.values(product.data);
+          rowValues.unshift(product.name);
+          let tr = `<tr>`;
+          rowValues.forEach((annualValue, i) => {
+            if (i === 0) {
+              tr += `<td><strong>${annualValue}</strong></td>`;
+            } else {
+              tr += `<td>${annualValue}</td>`;
+            }
+          });
+          tr += `</tr>`;
+          tableHtml += tr;
+        });
+        tableHtml += `</tbody></table>`;
 
-      let pointText = "";
-      if (titleParams.tm) {
-        pointText = tmTitle(titleParams);
+        let pointText = "";
+        if (titleParams.tm) {
+          pointText = tmTitle(titleParams);
+        } else {
+          pointText = titleParams.defaultPoint.name;
+        }
+        const titleText = `Annual Average Throughput: ${pointText} (${titleParams.unitsHolder.current})`;
+        document.getElementById("annual-traffic-table-title").innerText =
+          titleText;
+        document.getElementById("annual-traffic-table").innerHTML = tableHtml;
       } else {
-        pointText = titleParams.defaultPoint.name;
+        const titleText = `Annual Average Throughput:`;
+        document.getElementById("annual-traffic-table-title").innerText =
+          titleText;
+        document.getElementById("annual-traffic-table").innerHTML = "";
       }
-      const titleText = `Annual Average Throughput: ${pointText} (${titleParams.unitsHolder.current})`;
-      document.getElementById("annual-traffic-table-title").innerText =
-        titleText;
-      document.getElementById("annual-traffic-table").innerHTML = tableHtml;
     } catch (err) {
       console.log("traffic table error", err);
     }
@@ -850,10 +862,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             chartParams.buildFive,
             lang.series
           );
-          let newFiveSeries;
-          if (fiveSeries) {
-            newFiveSeries = createFiveYearSeries(fiveSeries, lang);
-          }
+
           trafficChart.update(
             {
               series: timeSeries,
@@ -879,7 +888,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           if (fiveChart) {
             fiveChart.update(
               {
-                series: newFiveSeries,
+                series: createFiveYearSeries(fiveSeries, lang),
                 tooltip: {
                   formatter() {
                     return fiveYearTooltipText(
@@ -925,7 +934,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
       if (document.getElementById("traffic-section")) {
         visibility(["traffic-section"], "hide");
-        // console.warn("no traffic data but still tried to build");
       }
       return false;
     } catch (err) {

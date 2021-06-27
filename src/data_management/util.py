@@ -2,7 +2,7 @@ from connection import cer_connection
 import pandas as pd
 import numpy as np
 import os
-from errors import IdError
+from errors import IdError, IdLengthError
 from datetime import date
 import io
 
@@ -176,7 +176,7 @@ def strip_cols(df):
     return df
 
 
-def idify(df, col, key):
+def idify(df, col, key, lcase=True):
 
     region = {"alberta": "ab",
               "british columbia": "bc",
@@ -196,13 +196,20 @@ def idify(df, col, key):
         r = region
     else:
         r = key
-    df[col] = [x.lower() for x in df[col]]
+
+    if lcase:
+        df[col] = [x.lower() for x in df[col]]
     df[col] = df[col].replace(r)
 
     # check if column has non id's
+    # maxColLength = max([len(str(x)) for x in df[col]])
+    maxIdLength = max([len(str(x)) for x in r.values()])
+
     for value in df[col]:
         if value not in r.values() and value not in [np.nan, "nan", None]:
             raise IdError(value)
+        if len(str(value)) > maxIdLength:
+            raise IdLengthError(value)
 
     return df
 

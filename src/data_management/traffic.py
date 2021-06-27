@@ -1,6 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_text, normalize_numeric, conversion
-from errors import IdError
+from util import execute_sql, normalize_text, normalize_numeric, conversion, idify
 import os
 import json
 import dateutil.relativedelta
@@ -60,6 +59,8 @@ def addIds(df):
     df['Key Point'] = df['Key Point'].replace(points)
     return df
 
+# TODO: use the idify method here!
+
 
 def applyTradeId(df):
     trade = {"intracanada": "in",
@@ -76,10 +77,7 @@ def applyTradeId(df):
              "diluent": "di",
              "south east sask (ses) crude": "ses",
              "westspur midale (msm) crude": "msm"}
-    df['Trade Type'] = df['Trade Type'].replace(trade)
-    for tt in df['Trade Type']:
-        if tt not in trade.values():
-            raise IdError(tt)
+    df = idify(df, "Trade Type", trade, False)
     return df
 
 
@@ -126,10 +124,7 @@ def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
         print('reading sql '+query.split(".")[0])
         df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db='EnergyData')
         df.to_csv('raw_data/'+csvName, index=False)
-    # traffic probaby doesnt need test data!
-    # elif test:
-    #     print('reading test '+query.split(".")[0])
-    #     df = pd.read_csv('raw_data/test_data/'+csvName)
+
     else:
         print('reading local '+query.split(".")[0])
         df = pd.read_csv('raw_data/'+csvName, encoding='latin-1')

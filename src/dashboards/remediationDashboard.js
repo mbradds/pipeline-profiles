@@ -102,33 +102,24 @@ export async function mainRemediation(data, lang) {
       remediationText(data.meta, lang);
 
       setTitle(lang, chartParams);
-      try {
-        const thisMap = remediationMap(
-          data.data,
-          field,
-          filters,
-          lang.dashboard
-        );
-        const bars = remediationBar(
-          data.data,
-          thisMap,
-          lang.dashboard.pillTitles
-        );
+      const thisMap = remediationMap(data.data, field, filters, lang.dashboard);
+      const bars = remediationBar(
+        data.data,
+        thisMap,
+        lang.dashboard.pillTitles
+      );
 
-        remediationTimeSeries(field, filters);
+      remediationTimeSeries(field, filters);
 
-        thisMap.switchDashboards(bars);
-        thisMap.nearbySlider(
-          lang.dashboard.rangeTitle,
-          lang.dashboard.findBtnTitle
-        );
-        thisMap.nearbyListener(lang.dashboard.locationError);
-        thisMap.resetCirclesListener();
-      } catch (err) {
-        console.log(err);
-      }
+      thisMap.switchDashboards(bars);
+      thisMap.nearbySlider(
+        lang.dashboard.rangeTitle,
+        lang.dashboard.findBtnTitle
+      );
+      thisMap.nearbyListener(lang.dashboard.locationError);
+      thisMap.resetCirclesListener();
     } else {
-      // no remediation data
+      // TODO: add noEventsFlag here once translation is ready
       const noIncidents = document.getElementById("remediation-dashboard");
       let noIncidentsHTML = `<section class="alert alert-warning"><h3>No Contaminated Sites Data</h3>`;
       noIncidentsHTML += `<p>There are no records in the CER's contaminated data for ${data.meta.companyName}. If new events are reported to the CER for this pipeline, they will appear here following the quarterly data update.</p></section>`;

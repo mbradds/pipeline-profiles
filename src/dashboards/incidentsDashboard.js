@@ -2,6 +2,7 @@ import { EventMap } from "../modules/dashboard/EventMap";
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 import { loadChartError } from "../modules/util";
+import { noEventsFlag } from "./dashboardUtil";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
@@ -9,14 +10,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
   const filters = { type: "frequency" };
 
   const setTitle = (language, meta) => {
-    try {
-      document.getElementById("incidents-dashboard-title").innerHTML =
-        language.title(meta.systemName);
-    } catch (err) {
-      document.getElementById(
-        "incidents-dashboard-title"
-      ).innerText = `Dashboard: Incidents with a product release`;
-    }
+    document.getElementById("incidents-dashboard-title").innerHTML =
+      language.title(meta.systemName);
   };
 
   const incidentBar = (data, map, langPillTitles) => {
@@ -117,85 +112,79 @@ export async function mainIncidents(incidentData, metaData, lang) {
   }
 
   function buildDashboard() {
-    if (incidentData.length > 0) {
-      try {
-        const chartParams = metaData;
-        // add the system name to chartParams
-        if (
-          Object.prototype.hasOwnProperty.call(
-            lang.companyToSystem,
-            metaData.companyName
-          )
-        ) {
-          chartParams.systemName = lang.companyToSystem[metaData.companyName];
-        } else {
-          chartParams.systemName = metaData.companyName;
-        }
-
-        const langParams = langCommon(chartParams, metaData);
-        chartParams.mostCommonSubstance = langParams.substance;
-        chartParams.mostCommonWhat = langParams.what;
-        chartParams.mostCommonWhy = langParams.why;
-        lang.dynamicText("system-incidents-paragraph", chartParams);
-
-        setTitle(lang, chartParams);
-        const thisMap = incidentMap(field, filters, lang.dashboard);
-        const bars = incidentBar(
-          incidentData,
-          thisMap,
-          lang.dashboard.pillTitles
-        );
-        const trends = incidentTimeSeries(field, filters);
-        // user selection to show volume or incident frequency
-        const volumeBtn = document.getElementById("incident-volume-btn");
-        document
-          .getElementById("inline-radio")
-          .addEventListener("click", (event) => {
-            if (event.target && !volumeBtn.disabled && event.target.value) {
-              const btnValue = event.target.value;
-              thisMap.filters.type = btnValue;
-              trends.filters.type = btnValue;
-              bars.switchY(btnValue);
-              thisMap.updateRadius();
-              if (btnValue !== "frequency") {
-                thisMap.addMapDisclaimer("volume");
-              } else {
-                thisMap.removeMapDisclaimer("volume");
-              }
-            }
-          });
-
-        if (incidentData.length === 1) {
-          // if there is only one incident, then disable the select volume option
-          volumeBtn.disabled = true;
-        }
-
-        // user selection to show map or trends
-        const countBtn = document.getElementById("incident-count-btn");
-        thisMap.switchDashboards(bars, countBtn, volumeBtn);
-
-        // user selection for finding nearby incidents
-        thisMap.nearbySlider(
-          lang.dashboard.rangeTitle,
-          lang.dashboard.findBtnTitle
-        );
-
-        // user wants to find nearby incidents
-        thisMap.nearbyListener(lang.dashboard.locationError);
-
-        // reset map after user has selected a range
-        thisMap.resetCirclesListener();
-      } catch (err) {
-        console.log(err);
+    if (metaData.build) {
+      const chartParams = metaData;
+      // add the system name to chartParams
+      if (
+        Object.prototype.hasOwnProperty.call(
+          lang.companyToSystem,
+          metaData.companyName
+        )
+      ) {
+        chartParams.systemName = lang.companyToSystem[metaData.companyName];
+      } else {
+        chartParams.systemName = metaData.companyName;
       }
+
+      const langParams = langCommon(chartParams, metaData);
+      chartParams.mostCommonSubstance = langParams.substance;
+      chartParams.mostCommonWhat = langParams.what;
+      chartParams.mostCommonWhy = langParams.why;
+      lang.dynamicText("system-incidents-paragraph", chartParams);
+
+      setTitle(lang, chartParams);
+      const thisMap = incidentMap(field, filters, lang.dashboard);
+      const bars = incidentBar(
+        incidentData,
+        thisMap,
+        lang.dashboard.pillTitles
+      );
+      const trends = incidentTimeSeries(field, filters);
+      // user selection to show volume or incident frequency
+      const volumeBtn = document.getElementById("incident-volume-btn");
+      document
+        .getElementById("inline-radio")
+        .addEventListener("click", (event) => {
+          if (event.target && !volumeBtn.disabled && event.target.value) {
+            const btnValue = event.target.value;
+            thisMap.filters.type = btnValue;
+            trends.filters.type = btnValue;
+            bars.switchY(btnValue);
+            thisMap.updateRadius();
+            if (btnValue !== "frequency") {
+              thisMap.addMapDisclaimer("volume");
+            } else {
+              thisMap.removeMapDisclaimer("volume");
+            }
+          }
+        });
+
+      if (incidentData.length === 1) {
+        volumeBtn.disabled = true;
+      }
+
+      // user selection to show map or trends
+      const countBtn = document.getElementById("incident-count-btn");
+      thisMap.switchDashboards(bars, countBtn, volumeBtn);
+
+      // user selection for finding nearby incidents
+      thisMap.nearbySlider(
+        lang.dashboard.rangeTitle,
+        lang.dashboard.findBtnTitle
+      );
+
+      // user wants to find nearby incidents
+      thisMap.nearbyListener(lang.dashboard.locationError);
+
+      // reset map after user has selected a range
+      thisMap.resetCirclesListener();
     } else {
-      // no incidents data
-      const noIncidents = document.getElementById("incidents-dashboard");
-      let noIncidentsHTML = `<section class="alert alert-warning"><h3>${lang.noIncidents.header}</h3>`;
-      noIncidentsHTML += `<p>${lang.noIncidents.note(
-        metaData.companyName
-      )}</p></section>`;
-      noIncidents.innerHTML = noIncidentsHTML;
+      noEventsFlag(
+        lang.noIncidents.header,
+        lang.noIncidents.note,
+        metaData.companyName,
+        "incidents-dashboard"
+      );
     }
   }
 

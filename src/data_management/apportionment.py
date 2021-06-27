@@ -1,6 +1,6 @@
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric, normalize_text
-from errors import ApportionSeriesCombinationError
+from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify
+from errors import ApportionSeriesCombinationError, IdLengthError, IdError
 import dateutil.relativedelta
 from traffic import get_data, addIds
 import time
@@ -39,7 +39,12 @@ def hasNotNull(df, col):
 
 def apportionmentIds(df):
     df['Key Point'] = [x.replace("line", "Line") for x in df["Key Point"]]
-    df['Key Point'] = df['Key Point'].replace(enbridgePoints)
+    try:
+        df = idify(df, "Key Point", enbridgePoints, False)
+    except IdLengthError:
+        raise
+    except IdError:
+        pass
     return df
 
 
@@ -98,10 +103,7 @@ def apportionLine(df_p,
 def apportionPoint(df_p, company, pctData, series, kp, yAxis):
     data = df_p[['Date', 'Apportionment Percentage']]
     data = data.rename(columns={"Date": "x", "Apportionment Percentage": "y"})
-    # data['x'] = [int(time.mktime(t.timetuple())) for t in data['x']]
     data = [[int(time.mktime(x.timetuple()))*1000, y] for x, y in zip(data['x'], data['y'])]
-    # for testing one point
-    # if yAxis == 1:
     series.append({
         "id": kp,
         "data": data,

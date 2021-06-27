@@ -2,6 +2,7 @@ import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 import { oandmText } from "../modules/dynamicText";
 import { loadChartError } from "../modules/util";
+import { noEventsFlag } from "./dashboardUtil";
 
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
@@ -85,11 +86,12 @@ export async function mainOandM(eventData, lang) {
       loadDynamicText();
       incidentTimeSeries(field, filters);
     } else {
-      let noEventsHTML = `<section class="alert alert-warning"><h3>${lang.noEvents.header}</h3>`;
-      noEventsHTML += `<p>${lang.noEvents.note(
-        eventData.meta.companyName
-      )}</p></section>`;
-      document.getElementById("oandm-dashboard").innerHTML = noEventsHTML;
+      noEventsFlag(
+        lang.noEvents.header,
+        lang.noEvents.note,
+        eventData.meta.companyName,
+        "oandm-dashboard"
+      );
     }
   }
 
