@@ -265,12 +265,13 @@ const points = {
 
 /**
  * French number format.
- * @param {number} value - Input number to format
- * @param {number} [rounding=2] - number of decimal places to round to
+ * @param {number} value - Input number to format.
+ * @param {number} [rounding=2] - number of decimal places to round to.
+ * @param {string} [thousands=" "] - Thousands seperator. Can be set to "" when eng numbers need to be fit better.
  * @returns {string} Highcharts.numberFormat(value, rounding, ",", " ");
  */
-const numberFormat = (value, rounding = 2) =>
-  Highcharts.numberFormat(value, rounding, ",", " ");
+const numberFormat = (value, rounding = 2, thousands = " ") =>
+  Highcharts.numberFormat(value, rounding, ",", thousands);
 
 /**
  * French date format.
@@ -508,6 +509,7 @@ export const frenchDashboard = {
     points,
     dynamicText: trafficTrendTextFra,
     numberFormat,
+    total: "Le total",
     directions: {
       n: "nord",
       e: "est",

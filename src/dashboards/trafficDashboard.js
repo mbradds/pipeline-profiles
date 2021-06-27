@@ -543,15 +543,16 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   const tableRound = (v) => {
-    let val = v;
+    const val = v;
+    let round = 0;
     if (val > 100 || val <= 0) {
-      val = Math.round(val);
+      round = 0;
     } else if (val > 1) {
-      val = val.toFixed(1);
+      round = 1;
     } else {
-      val = val.toFixed(2);
+      round = 2;
     }
-    return val;
+    return lang.numberFormat(val, round, "");
   };
 
   function calculateAnnualAvg(series) {
@@ -593,7 +594,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       total[yr] = tableRound(total[yr]);
     });
     if (seriesCounter > 1) {
-      annualSeries.push({ name: "Total", data: total });
+      annualSeries.push({ name: lang.total, data: total });
     }
     return { annualSeries, yearList };
   }
@@ -614,7 +615,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
           if (i === 0) {
             tr += `<td><strong>${annualValue}</strong></td>`;
           } else {
-            // TODO: format language numbers here?
             tr += `<td>${annualValue}</td>`;
           }
         });

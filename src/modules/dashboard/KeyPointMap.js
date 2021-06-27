@@ -75,17 +75,21 @@ export class KeyPointMap {
    * This method is placed outside the constructor to help with conditonally loading map when key point data is available.
    */
   addBaseMap() {
-    const map = leafletBaseMap({
-      div: this.divId,
-      zoomSnap: 0.25,
-      zoomDelta: 0.25,
-      zoomControl: false,
-      initZoomTo: this.initZoomTo,
-      initZoomLevel: 4,
-      minZoom: 2.5,
-    });
+    const map = leafletBaseMap(
+      {
+        div: this.divId,
+        zoomSnap: 0.25,
+        zoomDelta: 0.25,
+        zoomControl: false,
+        initZoomTo: this.initZoomTo,
+        initZoomLevel: 4,
+        minZoom: 2.5,
+      },
+      L
+    );
     map.scrollWheelZoom.disable();
     map.setMaxZoom(this.maxZoom);
+    map.dragging.disable();
     this.map = map;
   }
 

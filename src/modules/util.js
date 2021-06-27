@@ -3,8 +3,6 @@
  * general functions. Higher level functions more specific to the dashboards should be placed in src/dashboards/dashboardUtils.js
  */
 
-import * as L from "leaflet";
-
 export const cerPalette = {
   "Night Sky": "#054169",
   Sun: "#FFBE4B",
@@ -129,7 +127,7 @@ export function listOrParagraph(itter, textCol) {
  * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
  * @returns leaflet map object.
  */
-export function leafletBaseMap(config) {
+export function leafletBaseMap(config, L) {
   const map = L.map(config.div, {
     zoomSnap: config.zoomSnap,
     zoomDelta: config.zoomDelta,
@@ -177,8 +175,9 @@ export function loadChartError(errorDiv, lang, hideDivs = []) {
   if (hideDivs.length > 0) {
     visibility(hideDivs, "hide");
   }
-  const errHtml = `<section class="alert alert-danger"><h3>${lang.title}</h3>${lang.message}</section>`;
-  document.getElementById(errorDiv).innerHTML = errHtml;
+  document.getElementById(
+    errorDiv
+  ).innerHTML = `<section class="alert alert-danger"><h3>${lang.title}</h3>${lang.message}</section>`;
   return false;
 }
 

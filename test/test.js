@@ -5,8 +5,8 @@ import {
   sortJson,
   sortJsonAlpha,
   rangeInclusive,
-  addSeriesParams,
 } from "../src/modules/util";
+import { addSeriesParams } from "../src/dashboards/dashboardUtil";
 import { englishDashboard } from "../src/modules/langEnglish";
 import { createFiveYearSeries, fiveYearTrend } from "../src/modules/fiveYear";
 import { EventTrend } from "../src/modules/dashboard/EventTrend";

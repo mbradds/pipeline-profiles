@@ -92,15 +92,18 @@ export class EventMap {
    * Generate a blank leaflet base map using src/modules/util/leafletBaseMap() method.
    */
   addBaseMap() {
-    this.map = leafletBaseMap({
-      div: this.divId,
-      zoomSnap: 0.5,
-      zoomDelta: 0.5,
-      zoomControl: true,
-      initZoomTo: this.initZoomTo,
-      initZoomLevel: 5,
-      minZoom: 4,
-    });
+    this.map = leafletBaseMap(
+      {
+        div: this.divId,
+        zoomSnap: 0.5,
+        zoomDelta: 0.5,
+        zoomControl: true,
+        initZoomTo: this.initZoomTo,
+        initZoomLevel: 5,
+        minZoom: 4,
+      },
+      L
+    );
   }
 
   static getState(substance) {
