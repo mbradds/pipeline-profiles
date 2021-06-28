@@ -52,7 +52,7 @@ const en = {
     selectUnits: unitsEn,
     description: {
       enbridge:
-        "The above chart displays pipeline nomination data for the Enbridge Canadian Mainline at the system level. Original nominations are shown as a blue area on the chart, and accepted nominations are shown as a yellow line. Detailed apportionment data at the key point level for the Enbridge Canadian Mainline is available for download through the open government link above.",
+        "The first chart displays pipeline nomination data for the Enbridge Canadian Mainline at the system level. Original nominations are shown as a blue area on the chart, and accepted nominations are shown as a yellow line. The second series of charts shows detailed apportionment data at the key point level for the Enbridge Canadian Mainline.",
       other:
         "The above chart displays pipeline nomination data for the pipeline system. Original nominations are shown as a blue area on the chart, with available pipeline capacity shown as a yellow line. If available, the apportionment percent can be toggled onto the chart as a green line by clicking on “Apportionment Percent” directly below the chart.",
     },

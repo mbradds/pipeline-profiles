@@ -45,6 +45,25 @@ def apportionmentIds(df):
         raise
     except IdError:
         pass
+
+    sortPoints = {
+        "crom2/93": 9,
+        "kerr2/3": 3,
+        "clea2/3": 11,
+        "kerr2/93": 4,
+        "kerr4/67": 5,
+        "west10": 12,
+        "kerr1": 6,
+        "regi4/67": 7,
+        "hard4/67": 2,
+        "crom2/3": 8,
+        "crom2/3/65": 10,
+        "west11": 13,
+        "edmo2/3": 1,
+    }
+    df['sort'] = [sortPoints[x] if x in sortPoints.keys() else 999 for x in df['Key Point']]
+    df = df.sort_values(by=['sort', 'Date'])
+    del df['sort']
     return df
 
 
@@ -181,7 +200,6 @@ def process_apportionment(save=False, sql=False, companies=False):
         if not df_c.empty:
             thisCompanyData['build'] = True
             df_c = df_c.drop_duplicates(subset=['Date', 'Key Point'])
-            df_c = df_c.sort_values(by='Date')
             minDate = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
             thisCompanyData["company"] = company
             pointSeries = []
@@ -190,9 +208,11 @@ def process_apportionment(save=False, sql=False, companies=False):
                            "min": [minDate.year, minDate.month-1, minDate.day]})
 
             yAxis = 1
-            for kp in list(set(df_c["Key Point"])):
+            c = df_c["Key Point"].unique()
+            for kp in df_c["Key Point"].unique():
                 lineData, areaData, pctData = [], [], []
                 df_p = df_c[df_c["Key Point"] == kp].copy().reset_index(drop=True)
+                df_p = df_p.sort_values(by='Date')
                 if kp not in enbridgePoints.values():
                     series = apportionLine(df_p, company, pctData, lineData, areaData, series)
                     thisCompanyData["keyPoint"] = kp

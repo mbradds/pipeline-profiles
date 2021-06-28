@@ -90,6 +90,7 @@ export class KeyPointMap {
     map.scrollWheelZoom.disable();
     map.setMaxZoom(this.maxZoom);
     map.dragging.disable();
+    map.doubleClickZoom.disable(); 
     this.map = map;
   }
 
