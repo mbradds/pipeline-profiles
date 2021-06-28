@@ -468,7 +468,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
     if (chart) {
       chart.reflow();
-      chart.redraw(false);
+      chart.redraw(true);
     }
   }
 
@@ -510,36 +510,26 @@ export async function mainTraffic(trafficData, metaData, lang) {
   }
 
   function displayPointDescription(params) {
-    let points;
-    if (!params.tm) {
-      points = [params.defaultPoint];
-    } else {
-      points = params.points;
-    }
-    let pointList = points;
-    if (points.length > 1) {
-      pointList = sortJsonAlpha(points, "name");
-    }
+    const points = !params.tm ? [params.defaultPoint] : params.points;
+
+    const pointList =
+      points.length > 1 ? sortJsonAlpha(points, "name") : points;
 
     const pointsText = pointList.map((p) => {
-      let textCol = "";
-      if (points.length > 1) {
-        textCol = `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`;
-      } else {
-        textCol = `${lang.points[p.id][1]}`;
-      }
-      const newP = { ...p, textCol };
-      return newP;
+      const textCol =
+        points.length > 1
+          ? `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`
+          : `${lang.points[p.id][1]}`;
+      return { ...p, textCol };
     });
     document.getElementById("traffic-point-description").innerHTML =
       listOrParagraph(pointsText, "textCol");
   }
 
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
-    let series;
-    if (fiveSeries) {
-      series = createFiveYearSeries(fiveSeries, lang);
-    }
+    const series = fiveSeries
+      ? createFiveYearSeries(fiveSeries, lang)
+      : undefined;
     let newChart;
     if (fiveChart) {
       newChart = updateSeries(fiveChart, series, undefined, false);
@@ -663,9 +653,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
   }
 
-  function updateDynamicComponents(params, timeSeries) {
+  function updateDynamicComponents(params, timeSeries, runDescription = true) {
     lang.dynamicText(params, lang.numberFormat, lang.series);
-    displayPointDescription(params);
+    if (runDescription) {
+      displayPointDescription(params);
+    }
     equalizeHeight("eq-ht-1", "eq-ht-2");
     buildAnnualTable(timeSeries, params);
   }
@@ -691,15 +683,15 @@ export async function mainTraffic(trafficData, metaData, lang) {
       lang.unitsDisclaimerText
     );
 
-    const pointMap = new KeyPointMap({
-      points: chartParams.points,
-      selected: !chartParams.tm
-        ? [chartParams.defaultPoint]
-        : chartParams.points,
-      companyName: chartParams.companyName,
-    });
-
+    let pointMap;
     if (chartParams.defaultPoint.id !== "0") {
+      pointMap = new KeyPointMap({
+        points: chartParams.points,
+        selected: !chartParams.tm
+          ? [chartParams.defaultPoint]
+          : chartParams.points,
+        companyName: chartParams.companyName,
+      });
       // 0 = system. These pipelines should be using trafficNoMap.hbs
       if (chartParams.points.length === 1) {
         visibility(["traffic-points-btn", "key-point-title"], "hide");
@@ -795,9 +787,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
             fiveSeries,
             chartParams.hasImports
           );
-
           updateDynamicComponents(chartParams, timeSeries);
-
         });
     } else if (chartParams.defaultPoint.id !== "0") {
       // user is on trans mountain profile
@@ -906,9 +896,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
               false
             );
           }
-          lang.dynamicText(chartParams, lang.numberFormat, lang.series);
-          equalizeHeight("eq-ht-1", "eq-ht-2");
-          buildAnnualTable(timeSeries, chartParams);
+          updateDynamicComponents(chartParams, timeSeries, false);
         }
       });
 
@@ -932,10 +920,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       if (metaData.build) {
         return buildDashboard();
       }
-      if (document.getElementById("traffic-section")) {
-        visibility(["traffic-section"], "hide");
-      }
-      return false;
+      return undefined;
     } catch (err) {
       return loadChartError("traffic-section", lang.dashboardError);
     }

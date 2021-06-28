@@ -293,6 +293,13 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
   unitsDisclaimer.innerHTML = textFunction(commodity);
 }
 
+/**
+ * Replaces the dashboard div with a warning flag indicating there is no data for the section.
+ * @param {string} header - Warning flag title.
+ * @param {function} note - String template arrow for inserting company name into warning flag body.
+ * @param {string} companyName - Company or system name inserted into warning flag body.
+ * @param {string} dashboardId - HTML div id for the dashboard section.
+ */
 export function noEventsFlag(header, note, companyName, dashboardId) {
   let noEventsHTML = `<section class="alert alert-warning"><h3>${header}</h3>`;
   noEventsHTML += `<p>${note(companyName)}</p></section>`;

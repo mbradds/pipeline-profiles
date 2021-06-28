@@ -22,6 +22,9 @@ const dynamicValue = (val) =>
  */
 const formatCompanyName = (name) => name.replace(".", "");
 
+const quartersEn = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
+const quartersFr = { 12: "T4", 9: "T3", 6: "T2", 3: "T1" };
+
 const postWord = (val, type) => {
   let wrd = "";
   if (type === "have") {
@@ -74,9 +77,6 @@ const changeText = (num, lang, frontText = true) => {
   return `<i class="${flag}" style="font-style: normal"><strong>${text}</strong></i>`;
 };
 
-const quartersEn = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
-const quartersFr = { 12: "T4", 9: "T3", 6: "T2", 3: "T1" };
-
 const trendSub = (commodity, lang) => {
   let subText = "";
   if (commodity === "gas") {
@@ -99,15 +99,13 @@ const buildFiveText = (ft, tt, lang) => {
   const pctChange = ((ft.lastYrQtr - ft.fiveYrQtr) / ft.fiveYrQtr) * 100;
   if (pctChange) {
     if (lang === "en") {
-      const qtr = `${quartersEn[tt.toDate[1]]} ${tt.toDate[0]}`;
-      return `<p>Throughputs in ${qtr} are ${changeText(
-        pctChange,
-        lang,
-        false
-      )} the five-year average.</p>`;
+      return `<p>Throughputs in ${quartersEn[tt.toDate[1]]} ${
+        tt.toDate[0]
+      } are ${changeText(pctChange, lang, false)} the five-year average.</p>`;
     }
-    const qtr = `${quartersFr[tt.toDate[1]]} de ${tt.toDate[0]}`;
-    return `<p>Les débits au ${qtr} sont ${changeText(
+    return `<p>Les débits au ${quartersFr[tt.toDate[1]]} de ${
+      tt.toDate[0]
+    } sont ${changeText(
       pctChange,
       lang,
       false
@@ -118,10 +116,8 @@ const buildFiveText = (ft, tt, lang) => {
 };
 
 export const incidentsTextEng = (id, meta) => {
-  const paragraph = document.getElementById(id);
-  let paragraphText = `<p>`;
   // total incidents.
-  paragraphText += `The ${
+  let paragraphText = `<p>The ${
     meta.systemName
   } has reported a total of ${dynamicValue(
     meta.release + meta.nonRelease
@@ -130,8 +126,7 @@ export const incidentsTextEng = (id, meta) => {
   )} have resulted in some volume of product being released, with ${dynamicValue(
     meta.mostCommonSubstance
   )} being the most commonly released substance. \
-        The dashboard below provides some more information about these product release incidents.`;
-  paragraphText += `</p>`;
+        The dashboard below provides some more information about these product release incidents.</p>`;
 
   // most common reasons
   paragraphText += `<p>Part of the CER's incident review classifies incidents based on the 
@@ -144,8 +139,7 @@ export const incidentsTextEng = (id, meta) => {
   paragraphText += ` Take a look at the incident trends section of the dashboard below for definitions and a breakdown of what and why.</p>`;
 
   // other important non-release incident types
-  paragraphText += `<p>`;
-  paragraphText += `The dashboard below displays only the incidents that resulted in a release of product from the pipeline, however there are other \
+  paragraphText += `<p>The dashboard below displays only the incidents that resulted in a release of product from the pipeline, however there are other \
         important incident types that may not appear on the dashboard. \
         Of ${meta.systemName}'s reported incidents, ${dynamicValue(
     meta.seriousEvents["Adverse Environmental Effects"]
@@ -160,16 +154,13 @@ export const incidentsTextEng = (id, meta) => {
   )} ${postWord(
     meta.seriousEvents.Fatality,
     "fatality"
-  )} related to incident events. Open the dropdown below to view the definitions of these incident types.`;
-  paragraphText += `</p>`;
-  paragraph.innerHTML = paragraphText;
+  )} related to incident events. Open the dropdown below to view the definitions of these incident types.</p>`;
+  document.getElementById(id).innerHTML = paragraphText;
 };
 
 export const incidentsTextFra = (id, meta) => {
-  const paragraph = document.getElementById(id);
-  let paragraphText = `<p>`;
   // total incidents.
-  paragraphText += `Un total de ${dynamicValue(
+  let paragraphText = `<p>Un total de ${dynamicValue(
     meta.release + meta.nonRelease
   )} incidents ont été signalés à l’égard du réseau de ${
     meta.systemName
@@ -177,8 +168,7 @@ export const incidentsTextFra = (id, meta) => {
     meta.release
   )} ont entraîné le rejet d’un certain volume de produit. Le ${dynamicValue(
     meta.mostCommonSubstance
-  )} est la substance la plus couramment rejetée. Le tableau de bord ci-dessous renferme de plus amples renseignements sur ces incidents.`;
-  paragraphText += `</p>`;
+  )} est la substance la plus couramment rejetée. Le tableau de bord ci-dessous renferme de plus amples renseignements sur ces incidents.</p>`;
 
   // most common reasons
   paragraphText += `<p>Dans le cadre de l’examen des incidents, la Régie classe ceux-ci en fonction des circonstances directement \
@@ -189,8 +179,7 @@ export const incidentsTextFra = (id, meta) => {
   paragraphText += ` qui expliquent le plus souvent pourquoi cela s’est produit. Jetez un coup d’œil à la section sur les tendances des incidents du tableau de bord ci-dessous pour obtenir des définitions et une explication de ce qui se produit et pourquoi.</p>`;
 
   // other important non-release incident types
-  paragraphText += `<p>`;
-  paragraphText += `Le tableau de bord ci-dessous ne montre que les incidents qui ont entraîné un déversement de produit à partir du pipeline,\
+  paragraphText += `<p>Le tableau de bord ci-dessous ne montre que les incidents qui ont entraîné un déversement de produit à partir du pipeline,\
    mais il y a d’autres types d’incidents importants qui peuvent ne pas y figurer. \
    Parmi les incidents signalés pour le ${meta.systemName}, ${dynamicValue(
     meta.seriousEvents["Adverse Environmental Effects"]
@@ -199,18 +188,15 @@ export const incidentsTextFra = (id, meta) => {
     meta.seriousEvents["Serious Injury (CER or TSB)"]
   )} cas de blessures graves et ${dynamicValue(
     meta.seriousEvents.Fatality
-  )} décès liés à des incidents. Cliquez sur le menu déroulant ci-dessous pour voir les définitions de ces types d’incidents.`;
-  paragraphText += `</p>`;
-  paragraph.innerHTML = paragraphText;
+  )} décès liés à des incidents. Cliquez sur le menu déroulant ci-dessous pour voir les définitions de ces types d’incidents.</p>`;
+  document.getElementById(id).innerHTML = paragraphText;
 };
 
 export function trafficTrendTextEng(params, numberFormat, seriesId) {
   const buildText = (trend, point, units) => {
-    let trendId = "";
-    if (trend.name !== "default") {
-      trendId = ` (${seriesId[trend.name]})`;
-    }
-    const trendText = `Throughputs at the ${dynamicValue(
+    const trendId =
+      trend.name !== "default" ? ` (${seriesId[trend.name]})` : "";
+    return `Throughputs at the ${dynamicValue(
       point + trendId
     )} key point have ${changeText(trend.throughChange.pct, "en")} ${trendSub(
       params.commodity,
@@ -228,7 +214,6 @@ export function trafficTrendTextEng(params, numberFormat, seriesId) {
     )} ${units.current} in ${quartersEn[trend.toDate[1]]} ${
       trend.toDate[0]
     } (most recent quarter of data).`;
-    return trendText;
   };
 
   let trendText = "";
@@ -270,11 +255,9 @@ export function trafficTrendTextEng(params, numberFormat, seriesId) {
 
 export function trafficTrendTextFra(params, numberFormat, seriesId) {
   const buildText = (trend, point, units) => {
-    let trendId = "";
-    if (trend.name !== "default") {
-      trendId = ` (${seriesId[trend.name]})`;
-    }
-    const trendText = `Les débits au point principal ${dynamicValue(
+    const trendId =
+      trend.name !== "default" ? ` (${seriesId[trend.name]})` : "";
+    return `Les débits au point principal ${dynamicValue(
       point + trendId
     )} ont ${changeText(trend.throughChange.pct, "fr")} ${trendSub(
       params.commodity,
@@ -292,7 +275,6 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
     )} ${units.current} en ${quartersFr[trend.toDate[1]]} de ${
       trend.toDate[0]
     } (dernier trimestre des données).`;
-    return trendText;
   };
 
   let trendText = "";
