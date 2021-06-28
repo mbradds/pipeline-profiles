@@ -90,15 +90,14 @@ export class KeyPointMap {
     map.scrollWheelZoom.disable();
     map.setMaxZoom(this.maxZoom);
     map.dragging.disable();
-    map.doubleClickZoom.disable(); 
+    map.doubleClickZoom.disable();
     this.map = map;
   }
 
   reZoom(zoomIn = true) {
     if (zoomIn) {
-      const zoomRadius = this.minRadius;
       this.keyPoints.eachLayer((layer) => {
-        layer.setRadius(zoomRadius);
+        layer.setRadius(this.minRadius);
       });
       this.map.fitBounds(this.keyPoints.getBounds(), { padding: this.padding });
     } else {
@@ -159,9 +158,8 @@ export class KeyPointMap {
       );
     });
     this.keyPoints = L.featureGroup(allPoints).addTo(this.map);
-    const thisMap = this;
     this.keyPoints.eachLayer((layer) => {
-      if (layer.options.name === thisMap.selected) {
+      if (layer.options.name === this.selected) {
         layer.bringToFront();
       }
     });
@@ -170,17 +168,16 @@ export class KeyPointMap {
 
   pointChange(newPoint) {
     this.selected = this.constructor.selectedPointNames(newPoint);
-    const thisMap = this;
     this.keyPoints.eachLayer((layer) => {
-      if (thisMap.selected.includes(layer.options.name)) {
+      if (this.selected.includes(layer.options.name)) {
         layer.setStyle({
-          fillColor: thisMap.colors.active,
+          fillColor: this.colors.active,
           fillOpacity: 1,
         });
         layer.bringToFront();
       } else {
         layer.setStyle({
-          fillColor: thisMap.colors.deactivated,
+          fillColor: this.colors.deactivated,
           fillOpacity: 0.5,
         });
       }

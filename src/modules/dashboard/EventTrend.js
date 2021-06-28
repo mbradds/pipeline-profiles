@@ -75,14 +75,12 @@ export class EventTrend {
     let uniqueYears = yearList;
     const currentYear = new Date().getFullYear();
     const maxYear = uniqueYears.slice(-1)[0];
-    let lastYears = [];
-    if (currentYear > maxYear) {
-      lastYears = rangeInclusive(maxYear + 1, currentYear);
-    }
+
+    const lastYears =
+      currentYear > maxYear ? rangeInclusive(maxYear + 1, currentYear) : [];
 
     uniqueYears = uniqueYears.concat(lastYears);
     const dummySeries = { name: "dummy", showInLegend: false }; // makes sure that the x axis is in order
-    const dummyData = [];
 
     const addMethod = () => {
       if (dataFormat === "object") {
@@ -92,21 +90,18 @@ export class EventTrend {
     };
 
     const adder = addMethod();
-    uniqueYears.forEach((y, index) => {
+    dummySeries.data = uniqueYears.map((y, index) => {
       if (
         y + 1 !== uniqueYears[index + 1] &&
         index !== uniqueYears.length - 1
       ) {
-        const firstYear = y;
         const lastYear = uniqueYears[index + 1] - 1;
-        for (let i = firstYear; i <= lastYear; i += 1) {
-          dummyData.push(adder(i));
+        for (let i = y; i <= lastYear; i += 1) {
+          return adder(i);
         }
-      } else {
-        dummyData.push(adder(y));
       }
+      return adder(y);
     });
-    dummySeries.data = dummyData;
     return dummySeries;
   }
 
@@ -114,7 +109,6 @@ export class EventTrend {
     if (!this.seriesed) {
       return this.processEventsData(data, field);
     }
-    const xvalues = data[field].year;
     let currentInfo = {};
     if (Object.prototype.hasOwnProperty.call(this.seriesInfo, this.field)) {
       currentInfo = this.seriesInfo[this.field];
@@ -122,7 +116,7 @@ export class EventTrend {
 
     const preparedSeries = data[field].data.map((s) => {
       const newSeries = {};
-      newSeries.data = s.data.map((row, i) => [xvalues[i], row]);
+      newSeries.data = s.data.map((row, i) => [data[field].year[i], row]);
       if (Object.prototype.hasOwnProperty.call(currentInfo, s.id)) {
         newSeries.name = currentInfo[s.id].n;
         newSeries.color = currentInfo[s.id].c;
@@ -133,8 +127,7 @@ export class EventTrend {
       return newSeries;
     });
 
-    const dummySeries = EventTrend.dummyYears(data[field].year, "list");
-    preparedSeries.push(dummySeries);
+    preparedSeries.push(EventTrend.dummyYears(data[field].year, "list"));
     return preparedSeries;
   }
 
@@ -148,10 +141,10 @@ export class EventTrend {
 
   processEventsData(data, field) {
     const yField = (multipleValues) => {
+      const uniqueYears = new Set();
+      const series = {};
       if (!multipleValues) {
         return function (events) {
-          const series = {};
-          const uniqueYears = new Set();
           events.forEach((row) => {
             uniqueYears.add(row.y);
             if (Object.prototype.hasOwnProperty.call(series, row[field])) {
@@ -170,8 +163,6 @@ export class EventTrend {
         };
       }
       return function (events) {
-        const series = {};
-        const uniqueYears = new Set();
         events.forEach((row) => {
           let itemList;
           uniqueYears.add(row.y);
@@ -199,10 +190,9 @@ export class EventTrend {
 
     const seriesCounter = yField(this.oneToMany[field]);
     const [series, uniqueYears] = seriesCounter(data);
-
-    const dummySeries = EventTrend.dummyYears(uniqueYears, "object");
     const seriesList = [];
-    seriesList.push(dummySeries);
+
+    seriesList.push(EventTrend.dummyYears(uniqueYears, "object"));
     Object.keys(series).forEach((seriesId) => {
       const seriesData = series[seriesId];
       const hcData = [];
@@ -221,10 +211,7 @@ export class EventTrend {
   }
 
   yAxisTitle() {
-    if (this.filters.type === "frequency") {
-      return `${this.lang.trendYTitle}`;
-    }
-    return "";
+    return this.filters.type === "frequency" ? this.lang.trendYTitle : "";
   }
 
   pillNameSubstitution() {
@@ -241,14 +228,12 @@ export class EventTrend {
 
   oneToManyDisclaimer() {
     if (this.oneToMany[this.field]) {
-      const text = `<div class="alert alert-warning count-disclaimer"><p>${this.lang.countDisclaimer(
-        this.eventType,
-        this.pillNameSubstitution()
-      )}</p></div>`;
-
       this.chart.update({
         title: {
-          text,
+          text: `<div class="alert alert-warning count-disclaimer"><p>${this.lang.countDisclaimer(
+            this.eventType,
+            this.pillNameSubstitution()
+          )}</p></div>`,
           useHTML: true,
           align: "left",
           margin: 0,
@@ -337,14 +322,13 @@ export class EventTrend {
                 currentTrend.definitionsOn === "bar" &&
                 currentTrend.hasDefintion
               ) {
-                const definitionsPopUp = document.getElementById(
-                  currentTrend.definitionDiv
-                );
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.options.id].c;
 
                 const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp;`;
-                definitionsPopUp.innerHTML = `<small>${key} ${
+                document.getElementById(
+                  currentTrend.definitionDiv
+                ).innerHTML = `<small>${key} ${
                   currentTrend.definitions[currentTrend.field][this.options.id]
                 }</small>`;
               }
@@ -361,11 +345,10 @@ export class EventTrend {
   fieldChange(newField) {
     if (newField !== this.field) {
       this.field = newField;
-      const newSeries = this.generateSeries(this.data, this.field);
       while (this.chart.series.length) {
         this.chart.series[0].remove();
       }
-      newSeries.forEach((series) => {
+      this.generateSeries(this.data, this.field).forEach((series) => {
         this.chart.addSeries(series, false);
       });
       this.oneToManyDisclaimer();
@@ -375,10 +358,12 @@ export class EventTrend {
   }
 
   updateRadius() {
-    const newSeries = this.generateSeries(this.data, this.field);
     const currentTrend = this;
     this.chart.update({
-      series: newSeries,
+      series: currentTrend.generateSeries(
+        currentTrend.data,
+        currentTrend.field
+      ),
       yAxis: {
         title: {
           text: currentTrend.yAxisTitle(),

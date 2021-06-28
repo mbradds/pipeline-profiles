@@ -46,9 +46,8 @@ export class EventNavigator {
   }
 
   calculatePillHeight() {
-    const totalMargins = (this.numberOfPills - 1) * 5;
     return Math.floor(
-      (this.plot.plotHeight - totalMargins) / this.numberOfPills
+      (this.plot.plotHeight - (this.numberOfPills - 1) * 5) / this.numberOfPills
     );
   }
 
@@ -96,7 +95,7 @@ export class EventNavigator {
   seriesify(name, series, yVal) {
     const seriesProps = (colors) => {
       if (colors) {
-        return function (key, value) {
+        return function hasColors(key, value) {
           return {
             name: colors[key].n,
             id: key,
@@ -105,7 +104,7 @@ export class EventNavigator {
           };
         };
       }
-      return function (key, value) {
+      return function noColors(key, value) {
         return {
           name: key,
           id: key,
@@ -115,16 +114,18 @@ export class EventNavigator {
       };
     };
 
-    const seriesList = [];
-    Object.keys(series[name]).forEach((key) => {
+    return Object.keys(series[name]).map((key) => {
       const seriesParams = seriesProps(this.barColors[name]);
       const value = series[name][key];
-      seriesList.push(seriesParams(key, value, name, this.barColors[name]));
+      return seriesParams(key, value, name, this.barColors[name]);
     });
-    return seriesList;
   }
 
-  // usefull for names like "Status" that could use additional description
+  /**
+   * usefull for names like "Status" that could use additional description
+   * @param {string} name
+   * @returns {string}
+   */
   pillName(name) {
     if (
       this.langPillTitles &&
@@ -132,7 +133,7 @@ export class EventNavigator {
     ) {
       return this.langPillTitles.titles[name];
     }
-    return `${name}`;
+    return name;
   }
 
   createBar(div, name, series) {
@@ -188,18 +189,17 @@ export class EventNavigator {
         snap: 0,
         useHTML: true,
         formatter() {
-          let toolText = "";
           if (this.series.options.filter === "frequency") {
-            toolText = `${this.series.name} - <strong>${this.y}</strong>`;
+            return `${this.series.name} - <strong>${this.y}</strong>`;
           }
           if (this.series.options.filter === "volume") {
-            toolText = `${this.series.name} - <strong>${Highcharts.numberFormat(
+            return `${this.series.name} - <strong>${Highcharts.numberFormat(
               this.y,
               0,
               "."
             )} m3</strong>`;
           }
-          return toolText;
+          return "";
         },
       },
 
@@ -283,12 +283,11 @@ export class EventNavigator {
       const grey = EventNavigator.greyTheme;
       const greyIndex = Math.floor(grey.length / chart.series.length);
       const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
-      let greyColors;
-      if (chart.series.length > 1) {
-        greyColors = everyNth(grey, greyIndex).reverse();
-      } else {
-        greyColors = [grey[0]];
-      }
+
+      const greyColors =
+        chart.series.length > 1
+          ? everyNth(grey, greyIndex).reverse()
+          : [grey[0]];
 
       chart.series.forEach((s, i) => {
         chart.series[i].options.color = greyColors[i];
@@ -331,16 +330,16 @@ export class EventNavigator {
         chart.series[i].options.color = colors[s.options.id].c;
         chart.series[i].update(chart.series[i].options);
       });
-      let activeTitle = chart.title.textStr;
-      if (activeTitle.includes("(")) {
-        [activeTitle] = activeTitle.split("(");
-      }
+      const activeTitle = chart.title.textStr;
+
       chart.update({
         chart: {
           backgroundColor: "white",
         },
         title: {
-          text: activeTitle,
+          text: activeTitle.includes("(")
+            ? activeTitle.split("(")[0]
+            : activeTitle,
         },
         plotOptions: {
           series: {
@@ -461,9 +460,8 @@ export class EventNavigator {
    */
   switchY(newY) {
     this.barList.forEach((bar) => {
-      const newSeries = this.seriesify(bar.name, this.barSeries, newY);
       bar.chart.update({
-        series: newSeries,
+        series: this.seriesify(bar.name, this.barSeries, newY),
       });
     });
   }
