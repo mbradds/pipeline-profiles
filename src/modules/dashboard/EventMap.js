@@ -110,7 +110,6 @@ export class EventMap {
     if (!substance) {
       return "other";
     }
-    const shortSubstance = substance.split("-")[0].trim();
     const state = {
       pro: "gas",
       ngsweet: "gas",
@@ -126,7 +125,7 @@ export class EventMap {
       Other: "other",
       Autre: "other",
     };
-    return state[shortSubstance];
+    return state[substance];
   }
 
   /**
@@ -159,22 +158,17 @@ export class EventMap {
       }
 
       if (state !== "other") {
-        let imperial;
         if (state === "gas") {
-          imperial = `${this.lang.numberFormat(m3 * convGas, digits)} ${
+          return `${this.lang.numberFormat(m3 * convGas, digits)} ${
             this.lang.cf
-          }`;
-        } else {
-          imperial = `${this.lang.numberFormat(m3 * convLiquid, digits)} ${
-            this.lang.bbl
-          }`;
+          } (${Highcharts.numberFormat(m3, digits)} m3)`;
         }
-
-        return `${imperial} (${Highcharts.numberFormat(m3, digits)} m3)`;
+        return `${this.lang.numberFormat(m3 * convLiquid, digits)} ${
+          this.lang.bbl
+        } (${Highcharts.numberFormat(m3, digits)} m3)`;
       }
       return `${Highcharts.numberFormat(m3, digits)} m3`;
     }
-
     return ``;
   }
 
@@ -187,7 +181,7 @@ export class EventMap {
   addMapDisclaimer(type = "volume") {
     const disclaimerL = (map, position, alertStyle, text) => {
       const info = L.control({ position });
-      info.onAdd = function () {
+      info.onAdd = function onAddDisclaimer() {
         const disclaimerDiv = L.DomUtil.create("div", "map-disclaimer");
         disclaimerDiv.innerHTML = `<div class="alert ${alertStyle}" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
         return disclaimerDiv;
@@ -231,44 +225,32 @@ export class EventMap {
   }
 
   toolTip(eventParams, fillColor) {
+    const getNameText = (val, lookup, hash) => {
+      if (lookup && Object.prototype.hasOwnProperty.call(lookup, val)) {
+        return hash ? lookup[val][hash] : lookup[val];
+        // return lookup[val].n;
+      }
+      return val;
+    };
     const formatCommaList = (text, names) => {
       if (typeof text !== "string" && text.length > 1) {
         const itemList = text;
-        let brokenText = ``;
-        for (let i = 0; i < itemList.length; i += 1) {
-          if (
-            names &&
-            Object.prototype.hasOwnProperty.call(names, itemList[i])
-          ) {
-            brokenText += `&nbsp;- ${names[itemList[i]].n}<br>`;
-          } else {
-            brokenText += `&nbsp;- ${itemList[i]}<br>`;
-          }
-        }
-        return brokenText;
+        return itemList.reduce((preVal, currVal, i) => {
+          const currName = `&nbsp;-&nbsp;${getNameText(currVal, names, "n")}`;
+          const preName =
+            i === 1
+              ? `&nbsp;-&nbsp;${getNameText(preVal, names, "n")}`
+              : preVal;
+          return `${preName}<br>${currName}`;
+        });
       }
-      if (names && Object.prototype.hasOwnProperty.call(names, text)) {
-        return `&nbsp;${names[text].n}`;
-      }
-      return `&nbsp;${text}`;
+      return `&nbsp;${getNameText(text, names, "n")}`;
     };
 
-    let rowName = "";
-    if (
-      Object.prototype.hasOwnProperty.call(
-        this.lang.pillTitles.titles,
-        this.field
-      )
-    ) {
-      rowName = this.lang.pillTitles.titles[this.field];
-    } else {
-      rowName = this.field;
-    }
-
+    const rowName = getNameText(this.field, this.lang.pillTitles.titles);
     const bubbleName = this.colors[this.field][eventParams[this.field]].n;
     let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${eventParams.id}</strong></p>`;
-    toolTipText += `<table>`;
-    toolTipText += `<tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
+    toolTipText += `<table><tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
 
     this.toolTipFields.forEach((toolCol) => {
       if (toolCol === "vol") {
@@ -312,9 +294,9 @@ export class EventMap {
 
     if (this.regdocsClick) {
       circle.on("click", (e) => {
-        const idForSearch = e.target.options.eventParams.id;
-        const url = `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${idForSearch}`;
-        window.open(url);
+        window.open(
+          `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${e.target.options.eventParams.id}`
+        );
       });
     }
 
@@ -382,14 +364,8 @@ export class EventMap {
    * }]
    */
   processEventsData(data) {
-    const radiusCalc = (maxVolume) => {
-      if (maxVolume > 500) {
-        return 150000;
-      }
-      return 100000;
-    };
+    const radiusCalc = (maxVolume) => (maxVolume > 500 ? 150000 : 100000);
 
-    let years = []; // piggyback on data processing pass to get the year colors
     const colors = [
       cerPalette.Sun,
       "#022034",
@@ -412,6 +388,7 @@ export class EventMap {
     const volumes = data.map((row) => row.vol);
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     const maxRad = radiusCalc(maxVol);
+    let years = []; // piggyback on data processing pass to get the year colors
     let allCircles = data.map((row) => {
       years.push(row.y);
       let radiusVol = (row.vol - minVol) / (maxVol - minVol);
@@ -586,8 +563,7 @@ export class EventMap {
           </section>`;
       incidentFlag.innerHTML = nearbyText;
     } else {
-      const userZoom = L.featureGroup(allCircles);
-      const bounds = userZoom.getBounds();
+      const bounds = L.featureGroup(allCircles).getBounds();
       bounds.extend(userDummy.getBounds());
       this.map.fitBounds(bounds, { maxZoom: 15 });
       incidentFlag.innerHTML = `<section class="alert alert-warning">${this.lang.noNearby(
@@ -597,8 +573,7 @@ export class EventMap {
   }
 
   reZoom() {
-    const bounds = this.circles.getBounds();
-    this.map.fitBounds(bounds);
+    this.map.fitBounds(this.circles.getBounds());
   }
 
   /**
@@ -612,12 +587,11 @@ export class EventMap {
   }
 
   fieldChange(newField) {
-    const newColors = this.colors[newField];
-
     this.field = newField;
     const currentDashboard = this;
     this.circles.eachLayer((layer) => {
-      const newFill = newColors[layer.options.eventParams[newField]].c;
+      const newFill =
+        this.colors[newField][layer.options.eventParams[newField]].c;
       layer.setStyle({
         fillColor: newFill,
       });
@@ -710,11 +684,11 @@ export class EventMap {
       const findIncidentBtn = document.getElementById(
         `find-${this.eventType}-btn`
       );
-      const findIncidentTitle = document.getElementById(
+      document.getElementById(
         `find-${this.eventType}-title`
-      );
+      ).innerText = `${rangeTitle} (${currentValue}km):`;
+
       findIncidentBtn.innerText = `${findBtnTitle} ${currentValue}km`;
-      findIncidentTitle.innerText = `${rangeTitle} (${currentValue}km):`;
       findIncidentBtn.value = currentValue;
     });
   }
@@ -751,7 +725,7 @@ export class EventMap {
             .catch(() => {
               const incidentFlag = document.getElementById(
                 `nearby-${this.eventType}-flag`
-              ); // .catch((error))
+              );
               incidentFlag.innerHTML = `<section class="alert alert-warning">${errorText}</section>`;
               clearTimeout(loadDisclaimer);
               this.removeMapDisclaimer("location");
