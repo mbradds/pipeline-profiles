@@ -8,8 +8,8 @@ import {
   btnGroupClick,
 } from "../modules/util";
 import { mapInits, noEventsFlag } from "./dashboardUtil";
-import conditionsRegions from "../data/conditions/metadata/regions.json";
-import conditionsThemes from "../data/conditions/metadata/themes.json";
+import conditionsRegions from "../data_output/conditions/metadata/regions.json";
+import conditionsThemes from "../data_output/conditions/metadata/themes.json";
 
 MapModule(Highcharts);
 

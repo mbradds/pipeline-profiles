@@ -91,11 +91,11 @@ const profileWebpackConfig = (function () {
           // data entry point
           entryPoints[
             `${section}/${section}_${name[0]}`
-          ] = `./src/index_files/data/${folderName}.js`;
+          ] = `./src/entry/data/${folderName}.js`;
 
           // main entry point
           entryPoints[`${lang}/${name[1]}/js/entry_${name[0]}`] = {
-            import: `./src/index_files/${lang}/${folderName}/index.js`,
+            import: `./src/entry/${lang}/${folderName}/index.js`,
             dependOn: [
               `${section}/${section}_${name[0]}`,
               `${lang}/profile_code_${lang}`,
@@ -105,7 +105,7 @@ const profileWebpackConfig = (function () {
       });
       entryPoints[
         `${lang}/profile_code_${lang}`
-      ] = `./src/index_files/loadDashboards_${lang}.js`;
+      ] = `./src/entry/loadDashboards_${lang}.js`;
     });
 
     return entryPoints;

@@ -119,9 +119,9 @@ pipeline_profiles
 |   |
 |   └───css (main.css, transferred over to dist/css/main[contenthash].css via MiniCssExtract)
 |   |
-|   └───index_files (entry points for all profile webpages)
+|   └───entry (entry points for all profile webpages)
 |   |
-|   └───data (output data folders for each section. Contains prepared data ready for charts)
+|   └───data_output (output data folders for each section. Contains prepared data ready for charts)
 |   |
 |   └───dashboards (Higher level files/functions for creating each dashboard)
 |   |
@@ -354,7 +354,7 @@ raw data (sql or web) -> python -> json -> es6 import -> JavaScript/css -> handl
 
 ### Python data prep
 
-1. Create a new python file in `src/data_management`. Prepate a reliable connection to the dataset, either a remote datafile or internal sql. The profiles are segmented by pipeline, so the data prep will involve splitting the dataset by the pipeline/company column, and creating one dataset for each company. Output files in json format to `../data/new_section/company_name.json`.
+1. Create a new python file in `src/data_management`. Prepate a reliable connection to the dataset, either a remote datafile or internal sql. The profiles are segmented by pipeline, so the data prep will involve splitting the dataset by the pipeline/company column, and creating one dataset for each company. Output files in json format to `../data_output/new_section/company_name.json`.
 
 2. Start to pay attention to file size of the outputs. Try to keep the average dataset around 15-20kb.
 
@@ -371,17 +371,17 @@ export function mainNewSection(data) {
 }
 ```
 
-3. Add the new data to the data entry point in `src/index_files/data/ngtl.js`The data should (eventually) be made language agnostic.
+3. Add the new data to the data entry point in `src/entry/data/ngtl.js`The data should (eventually) be made language agnostic.
 
 ```diff
-import canadaMap from "../../data/conditions/base_maps/base_map.json";
-import conditionsData from "../../data/conditions/NOVAGasTransmissionLtd.json";
-import incidentData from "../../data/incidents/NOVAGasTransmissionLtd.json";
-import trafficData from "../../data/traffic/NOVAGasTransmissionLtd.json";
-import apportionData from "../../data/apportionment/NOVAGasTransmissionLtd.json";
-import oandmData from "../../data/oandm/NOVAGasTransmissionLtd.json";
-import remediationData from "../../data/remediation/NOVAGasTransmissionLtd.json";
-+import newData from "../../data/newSection/NOVAGasTransmissionLtd.json";
+import canadaMap from "../../data_output/conditions/base_maps/base_map.json";
+import conditionsData from "../../data_output/conditions/NOVAGasTransmissionLtd.json";
+import incidentData from "../../data_output/incidents/NOVAGasTransmissionLtd.json";
+import trafficData from "../../data_output/traffic/NOVAGasTransmissionLtd.json";
+import apportionData from "../../data_output/apportionment/NOVAGasTransmissionLtd.json";
+import oandmData from "../../data_output/oandm/NOVAGasTransmissionLtd.json";
+import remediationData from "../../data_output/remediation/NOVAGasTransmissionLtd.json";
++import newData from "../../data_output/newSection/NOVAGasTransmissionLtd.json";
 
 export const data = {
   canadaMap,
@@ -395,7 +395,7 @@ export const data = {
 };
 ```
 
-4. Add the es6 export from step 2 to the code entry point in `src/index_files/loadDashboards_en.js`:
+4. Add the es6 export from step 2 to the code entry point in `src/entry/loadDashboards_en.js`:
 
 ```javascript
 import { mainNewSection } from "../new_section/newSectionDashboard";
@@ -558,7 +558,7 @@ Take a look at the issues tab for a more up to date list. I dont update this sec
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
 - Update version in package.json
 - Rename default branch to main
-- Try to consolidate js files in `src/index_files` into one index.js file.
+- Try to consolidate js files in `src/entry` into one index.js file.
 - Add better consistency to shared columns across datasets. Eg, lat/long should follow this pattern: [{loc: [lat, -long]}] across all datasets.
 - Look into a monorepo structure for seperating the back end code (python+sql) and front end code (JS, Handlebars, CSS).
 

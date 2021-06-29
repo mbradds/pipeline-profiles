@@ -204,11 +204,11 @@ def idify(df, col, key, lcase=True):
     # check if column has non id's
     # maxColLength = max([len(str(x)) for x in df[col]])
     maxIdLength = max([len(str(x)) for x in r.values()])
-
+    doesntCount = [np.nan, "nan", None]
     for value in df[col]:
-        if value not in r.values() and value not in [np.nan, "nan", None]:
+        if value not in r.values() and value not in doesntCount:
             raise IdError(value)
-        if len(str(value)) > maxIdLength:
+        if len(str(value)) > maxIdLength and value not in doesntCount:
             raise IdLengthError(value)
 
     return df

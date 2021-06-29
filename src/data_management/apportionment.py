@@ -208,7 +208,6 @@ def process_apportionment(save=False, sql=False, companies=False):
                            "min": [minDate.year, minDate.month-1, minDate.day]})
 
             yAxis = 1
-            c = df_c["Key Point"].unique()
             for kp in df_c["Key Point"].unique():
                 lineData, areaData, pctData = [], [], []
                 df_p = df_c[df_c["Key Point"] == kp].copy().reset_index(drop=True)
@@ -228,7 +227,7 @@ def process_apportionment(save=False, sql=False, companies=False):
             thisCompanyData["build"] = False
 
         if save:
-            with open('../data/apportionment/'+folder_name+'.json', 'w') as fp:
+            with open('../data_output/apportionment/'+folder_name+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp, default=str)
 
     return df

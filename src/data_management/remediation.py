@@ -184,7 +184,7 @@ def process_remediation(sql=False, companies=False, test=False):
             thisCompanyData["build"] = True
             thisCompanyData["data"] = optimizeJson(df_c)
             if not test:
-                with open('../data/remediation/'+folder_name+'.json', 'w') as fp:
+                with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no o and m events
@@ -192,7 +192,7 @@ def process_remediation(sql=False, companies=False, test=False):
             thisCompanyData['meta'] = {"companyName": company}
             thisCompanyData["build"] = False
             if not test:
-                with open('../data/remediation/'+folder_name+'.json', 'w') as fp:
+                with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return df

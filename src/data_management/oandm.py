@@ -3,7 +3,7 @@ from util import company_rename, most_common, strip_cols, idify
 import ssl
 import json
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
+# from dateutil.relativedelta import relativedelta
 ssl._create_default_https_context = ssl._create_unverified_context
 
 '''
@@ -251,7 +251,7 @@ def process_oandm(remote=False, companies=False, test=False):
             thisCompanyData["build"] = True
             thisCompanyData["data"] = optimizeJson(df_c)
             if not test:
-                with open('../data/oandm/'+folder_name+'.json', 'w') as fp:
+                with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
             # there are no o and m events
@@ -259,7 +259,7 @@ def process_oandm(remote=False, companies=False, test=False):
             thisCompanyData['meta'] = {"companyName": company}
             thisCompanyData["build"] = False
             if not test:
-                with open('../data/oandm/'+folder_name+'.json', 'w') as fp:
+                with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
     return df
 
