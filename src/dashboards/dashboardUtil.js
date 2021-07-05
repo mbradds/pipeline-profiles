@@ -178,7 +178,7 @@ export function addSeriesParams(
       round: -1,
     };
 
-    if (unitsHolder.current !== unitsHolder.base) {
+    if (unitsHolder.current !== unitsHolder.base && s.id !== "ap") {
       transform = {
         convert: true,
         operation: "*",

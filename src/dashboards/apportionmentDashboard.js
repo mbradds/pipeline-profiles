@@ -265,8 +265,7 @@ export async function mainApportion(apportionData, lang) {
         .getElementById("select-units-radio-apportion")
         .addEventListener("click", (event) => {
           if (event.target && event.target.value) {
-            const radioValue = event.target.value;
-            unitsHolder.current = radioValue;
+            unitsHolder.current = event.target.value;
             series = buildApportionSeries(apportionData.series, unitsHolder);
             chart.update({
               series,
@@ -294,7 +293,6 @@ export async function mainApportion(apportionData, lang) {
   try {
     return buildDecision();
   } catch (err) {
-    loadChartError("apportionment-dashboard", lang.dashboardError);
-    return false;
+    return loadChartError("apportionment-dashboard", lang.dashboardError);
   }
 }
