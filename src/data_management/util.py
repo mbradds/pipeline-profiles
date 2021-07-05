@@ -7,6 +7,55 @@ from datetime import date
 import io
 
 
+def get_company_list(commodity="all"):
+    company_list = [['NOVA Gas Transmission Ltd.', 'gas'],
+                    ['TransCanada PipeLines Limited', 'gas'],
+                    ['Enbridge Pipelines Inc.', 'oil'],
+                    ['Enbridge Pipelines (NW) Inc.', 'oil'],
+                    ['Enbridge Bakken Pipeline Company Inc.', 'oil'],
+                    ['Express Pipeline Ltd.', 'oil'],
+                    ['Trans Mountain Pipeline ULC', 'oil'],
+                    ['Trans Quebec and Maritimes Pipeline Inc.', 'gas'],
+                    ['Trans-Northern Pipelines Inc.', 'oil'],
+                    ['TransCanada Keystone Pipeline GP Ltd.', 'oil'],
+                    ['Westcoast Energy Inc.', 'gas'],
+                    ['Alliance Pipeline Ltd.', 'gas'],
+                    ['PKM Cochin ULC', 'oil'],
+                    ['Foothills Pipe Lines Ltd.', 'gas'],
+                    ['Southern Lights Pipeline', 'oil'],
+                    ['Emera Brunswick Pipeline Company Ltd.', 'gas'],
+                    ['Plains Midstream Canada ULC', 'oil'],
+                    ['Genesis Pipeline Canada Ltd.', 'gas'],
+                    ['Montreal Pipe Line Limited', 'oil'],
+                    ['Kingston Midstream Westspur Limited', 'oil'],
+                    ['Many Islands Pipe Lines (Canada) Limited', 'gas'],
+                    ['Vector Pipeline Limited Partnership', 'gas'],
+                    ['Maritimes & Northeast Pipeline Management Ltd.', 'gas'],
+                    ['Aurora Pipeline Company Ltd', 'oil']]
+
+    if commodity == "all":
+        return [x[0] for x in company_list]
+    elif commodity == "gas" or commodity == "oil":
+        return [x[0] for x in company_list if x[1] == commodity]
+    else:
+        return []
+
+
+def company_rename():
+    names = {'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
+             'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
+             'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
+             'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline',
+             'Enbridge Southern Lights GP Inc.': 'Southern Lights Pipeline',
+             'Alliance Pipeline Ltd as General Partner of Alliance Pipeline Limited Partnership': 'Alliance Pipeline Ltd.',
+             'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
+             'Kinder Morgan Cochin ULC': 'PKM Cochin ULC',
+             'Enbridge Bakken Pipeline Company Inc., on behalf of Enbridge Bakken Pipeline Limited Partnership': 'Enbridge Bakken Pipeline Company Inc.',
+             'TEML Westspur Pipelines Limited': 'Kingston Midstream Westspur Limited',
+             'Plains Marketing Canada, L.P.': 'Plains Midstream Canada ULC'}
+    return names
+
+
 def execute_sql(path, query_name, db='tsql23cap'):
     query_path = os.path.join(path, query_name)
     conn, engine = cer_connection(db=db)
@@ -136,20 +185,6 @@ def saveJson(df, write_path, precision=2):
 
 def get_company_names(col):
     return sorted(list(set(col)))
-
-
-def company_rename():
-    names = {'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
-             'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
-             'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
-             'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline',
-             'Alliance Pipeline Ltd as General Partner of Alliance Pipeline Limited Partnership': 'Alliance Pipeline Ltd.',
-             'Trans Mountain Pipeline Inc.': 'Trans Mountain Pipeline ULC',
-             'Kinder Morgan Cochin ULC': 'PKM Cochin ULC',
-             'Enbridge Bakken Pipeline Company Inc., on behalf of Enbridge Bakken Pipeline Limited Partnership': 'Enbridge Bakken Pipeline Company Inc.',
-             'TEML Westspur Pipelines Limited': 'Kingston Midstream Westspur Limited',
-             'Plains Marketing Canada, L.P.': 'Plains Midstream Canada ULC'}
-    return names
 
 
 def conversion(df, commodity, dataCols, rounding=False, fillna=False):

@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_data, idify
+from util import get_data, idify, company_rename, get_company_list
 import os
 import json
 import datetime
@@ -145,34 +145,12 @@ def process_remediation(sql=False, companies=False, test=False):
                             "Initial Estimate of Contaminated soil m3": "vol",
                             "Is site within 30 m of waterbody": "w"})
 
+    df['Company Name'] = df['Company Name'].replace(company_rename())
+
     if companies:
         company_files = companies
     else:
-        company_files = ['NOVA Gas Transmission Ltd.',
-                         'TransCanada PipeLines Limited',
-                         'Enbridge Pipelines Inc.',
-                         'Enbridge Pipelines (NW) Inc.',
-                         'Enbridge Bakken Pipeline Company Inc.',
-                         'Express Pipeline Ltd.',
-                         'Trans Mountain Pipeline ULC',
-                         'Trans Quebec and Maritimes Pipeline Inc.',
-                         'Trans-Northern Pipelines Inc.',
-                         'TransCanada Keystone Pipeline GP Ltd.',
-                         'Westcoast Energy Inc.',
-                         'Alliance Pipeline Ltd.',
-                         'PKM Cochin ULC',
-                         'Foothills Pipe Lines Ltd.',
-                         'Southern Lights Pipeline',
-                         'Emera Brunswick Pipeline Company Ltd.',
-                         'Plains Midstream Canada ULC',
-                         'Genesis Pipeline Canada Ltd.',
-                         'Montreal Pipe Line Limited',
-                         'Trans-Northern Pipelines Inc.',
-                         'Kingston Midstream Westspur Limited',
-                         'Many Islands Pipe Lines (Canada) Limited',
-                         'Vector Pipeline Limited Partnership',
-                         'Maritimes & Northeast Pipeline Management Ltd.',
-                         'Aurora Pipeline Company Ltd']
+        company_files = get_company_list("all")
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')
@@ -187,7 +165,6 @@ def process_remediation(sql=False, companies=False, test=False):
                 with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
         else:
-            # there are no o and m events
             thisCompanyData['data'] = df_c.to_dict(orient='records')
             thisCompanyData['meta'] = {"companyName": company}
             thisCompanyData["build"] = False

@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, most_common, strip_cols, idify
+from util import company_rename, most_common, strip_cols, idify, get_company_list
 import ssl
 import json
 from datetime import datetime
@@ -210,36 +210,10 @@ def process_oandm(remote=False, companies=False, test=False):
     df['Company Name'] = df['Company Name'].replace(company_rename())
     df = column_insights(df)
     df = df.rename(columns={"Species At Risk Present At Activity Site": "Species At Risk Present"})
-    # print(df.dtypes)
-    # print(sorted(list(set(df['Company Name']))))
     if companies:
         company_files = companies
     else:
-        company_files = ['NOVA Gas Transmission Ltd.',
-                         'TransCanada PipeLines Limited',
-                         'Enbridge Pipelines Inc.',
-                         'Enbridge Pipelines (NW) Inc.',
-                         'Enbridge Bakken Pipeline Company Inc.',
-                         'Express Pipeline Ltd.',
-                         'Trans Mountain Pipeline ULC',
-                         'Trans Quebec and Maritimes Pipeline Inc.',
-                         'Trans-Northern Pipelines Inc.',
-                         'TransCanada Keystone Pipeline GP Ltd.',
-                         'Westcoast Energy Inc.',
-                         'Alliance Pipeline Ltd.',
-                         'PKM Cochin ULC',
-                         'Foothills Pipe Lines Ltd.',
-                         'Southern Lights Pipeline',
-                         'Emera Brunswick Pipeline Company Ltd.',
-                         'Plains Midstream Canada ULC',
-                         'Genesis Pipeline Canada Ltd.',
-                         'Montreal Pipe Line Limited',
-                         'Trans-Northern Pipelines Inc.',
-                         'Kingston Midstream Westspur Limited',
-                         'Many Islands Pipe Lines (Canada) Limited',
-                         'Vector Pipeline Limited Partnership',
-                         'Maritimes & Northeast Pipeline Management Ltd.',
-                         'Aurora Pipeline Company Ltd']
+        company_files = get_company_list("all")
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

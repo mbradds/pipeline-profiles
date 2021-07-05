@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common, idify
+from util import get_company_names, company_rename, most_common, idify, get_company_list
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -203,31 +203,7 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     if companies:
         company_files = companies
     else:
-        company_files = ['NOVA Gas Transmission Ltd.',
-                         'TransCanada PipeLines Limited',
-                         'Enbridge Pipelines Inc.',
-                         'Enbridge Pipelines (NW) Inc.',
-                         'Enbridge Bakken Pipeline Company Inc.',
-                         'Express Pipeline Ltd.',
-                         'Trans Mountain Pipeline ULC',
-                         'Trans Quebec and Maritimes Pipeline Inc.',
-                         'Trans-Northern Pipelines Inc.',
-                         'TransCanada Keystone Pipeline GP Ltd.',
-                         'Westcoast Energy Inc.',
-                         'Alliance Pipeline Ltd.',
-                         'PKM Cochin ULC',
-                         'Foothills Pipe Lines Ltd.',
-                         'Southern Lights Pipeline',
-                         'Emera Brunswick Pipeline Company Ltd.',
-                         'Plains Midstream Canada ULC',
-                         'Genesis Pipeline Canada Ltd.',
-                         'Montreal Pipe Line Limited',
-                         'Trans-Northern Pipelines Inc.',
-                         'Kingston Midstream Westspur Limited',
-                         'Many Islands Pipe Lines (Canada) Limited',
-                         'Vector Pipeline Limited Partnership',
-                         'Maritimes & Northeast Pipeline Management Ltd.',
-                         'Aurora Pipeline Company Ltd']
+        company_files = get_company_list("all")
 
     for company in company_files:
         folder_name = company.replace(' ', '').replace('.', '')

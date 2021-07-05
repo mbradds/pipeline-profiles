@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_text, normalize_numeric, conversion, idify
+from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list
 import os
 import json
 import dateutil.relativedelta
@@ -323,32 +323,9 @@ def process_throughput(test=False,
     df = fixCorporateEntity(df)
 
     if commodity == 'gas':
-        company_files = ['NOVA Gas Transmission Ltd.',
-                         'Westcoast Energy Inc.',
-                         'TransCanada PipeLines Limited',
-                         'Alliance Pipeline Ltd.',
-                         'Trans Quebec and Maritimes Pipeline Inc.',
-                         'Maritimes & Northeast Pipeline Management Ltd.',
-                         'Many Islands Pipe Lines (Canada) Limited',
-                         'Emera Brunswick Pipeline Company Ltd.',
-                         'Foothills Pipe Lines Ltd.']
+        company_files = get_company_list("gas")
     else:
-        company_files = ['Enbridge Pipelines Inc.',
-                         'TransCanada Keystone Pipeline GP Ltd.',
-                         'Trans Mountain Pipeline ULC',
-                         'PKM Cochin ULC',
-                         'Trans-Northern Pipelines Inc.',
-                         'Enbridge Pipelines (NW) Inc.',
-                         'Enbridge Southern Lights GP Inc.',
-                         'Kingston Midstream Westspur Limited',
-                         'Vector Pipeline Limited Partnership',
-                         'Many Islands Pipe Lines (Canada) Limited',
-                         'Plains Midstream Canada ULC',
-                         'Enbridge Bakken Pipeline Company Inc.',
-                         'Express Pipeline Ltd.',
-                         'Genesis Pipeline Canada Ltd.',
-                         'Montreal Pipe Line Limited',
-                         'Aurora Pipeline Company Ltd']
+        company_files = get_company_list("oil")
 
     group2 = ['TEML Westpur Pipelines Limited (TEML)',
               'Enbridge Southern Lights GP Inc.',
@@ -467,14 +444,14 @@ def process_throughput(test=False,
             thisCompanyData["traffic"] = point_data
             thisCompanyData['meta'] = meta
             if not test:
-                with open('../data/traffic/'+folder_name+'.json', 'w') as fp:
+                with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp, default=str)
         else:
             # there is no traffic data
             thisCompanyData['traffic'] = {}
             thisCompanyData['meta'] = {"companyName": company, "build": False}
             if not test:
-                with open('../data/traffic/'+folder_name+'.json', 'w') as fp:
+                with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
     return thisCompanyData, df_c

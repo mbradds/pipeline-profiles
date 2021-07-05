@@ -1,5 +1,5 @@
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify
+from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify, get_company_list, company_rename
 from errors import ApportionSeriesCombinationError, IdLengthError, IdError
 import dateutil.relativedelta
 from traffic import get_data, addIds
@@ -158,37 +158,9 @@ def process_apportionment(save=False, sql=False, companies=False):
     numCols = ['Available Capacity', 'Original Nominations', 'Accepted Nominations', 'Apportionment Percentage']
     df = normalize_numeric(df, numCols, 2)
     df = conversion(df, "oil", numCols[:-1], 2, False)
-
     df['Apportionment Percentage'] = df['Apportionment Percentage'].round(2)
-
-    company_files = ['NOVA Gas Transmission Ltd.',
-                     'Westcoast Energy Inc.',
-                     'TransCanada PipeLines Limited',
-                     'Alliance Pipeline Ltd.',
-                     'Trans Quebec and Maritimes Pipeline Inc.',
-                     'Maritimes & Northeast Pipeline Management Ltd.',
-                     'Many Islands Pipe Lines (Canada) Limited',
-                     'Emera Brunswick Pipeline Company Ltd.',
-                     'Foothills Pipe Lines Ltd.',
-                     'Enbridge Pipelines Inc.',
-                     'TransCanada Keystone Pipeline GP Ltd.',
-                     'Trans Mountain Pipeline ULC',
-                     'PKM Cochin ULC',
-                     'Trans-Northern Pipelines Inc.',
-                     'Enbridge Pipelines (NW) Inc.',
-                     'Enbridge Southern Lights GP Inc.',
-                     'Kingston Midstream Westspur Limited',
-                     'Vector Pipeline Limited Partnership',
-                     'Many Islands Pipe Lines (Canada) Limited',
-                     'Plains Midstream Canada ULC',
-                     'Enbridge Bakken Pipeline Company Inc.',
-                     'Express Pipeline Ltd.',
-                     'Genesis Pipeline Canada Ltd.',
-                     'Montreal Pipe Line Limited',
-                     'Aurora Pipeline Company Ltd',
-                     'Kingston Midstream Westspur Limited',
-                     'Enbridge Southern Lights GP Inc.',
-                     'Emera Brunswick Pipeline Company Ltd.']
+    df['Corporate Entity'] = df['Corporate Entity'].replace(company_rename())
+    company_files = get_company_list("all")
 
     if companies:
         company_files = companies

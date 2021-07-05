@@ -2,7 +2,7 @@ from util import execute_sql
 import pandas as pd
 import json
 import os
-from util import normalize_text, get_company_names, company_rename
+from util import normalize_text, get_company_names, company_rename, get_company_list
 import geopandas as gpd
 from datetime import date
 import numpy as np
@@ -235,7 +235,7 @@ def add_links(df):
     return df
 
 
-def idify(df, sql=False):
+def idify_conditions(df, sql=False):
 
     def listId(df, column, toReplace):
         newThemes = []
@@ -298,10 +298,10 @@ def process_conditions(remote=False,
         print('downloading remote conditions file')
         link = 'http://www.cer-rec.gc.ca/open/conditions/conditions.csv'
         df = pd.read_csv(link,
-                         sep='\t',
-                         lineterminator='\r',
-                         encoding="UTF-16",
-                         error_bad_lines=False)
+                         # sep='\t',
+                         # lineterminator='\r',
+                         encoding="latin-1",
+                         error_bad_lines=True)
         df = normalize_text(df, ['Location', 'Short Project Name', 'Theme(s)'])
 
     elif test:
@@ -343,41 +343,17 @@ def process_conditions(remote=False,
     if company_names:
         print(get_company_names(df['Company']))
 
-    df, regionReplace, projectNames = idify(df)
+    df, regionReplace, projectNames = idify_conditions(df)
     regions_map = import_simplified(regionReplace)
 
-    if companies:  # used to set one company for testing
+    if companies:
         company_files = companies
     else:
-        company_files = ['NOVA Gas Transmission Ltd.',
-                         'TransCanada PipeLines Limited',
-                         'Enbridge Pipelines Inc.',
-                         'Enbridge Pipelines (NW) Inc.',
-                         'Express Pipeline Ltd.',
-                         'Trans Mountain Pipeline ULC',
-                         'Trans Quebec and Maritimes Pipeline Inc.',
-                         'Trans-Northern Pipelines Inc.',
-                         'TransCanada Keystone Pipeline GP Ltd.',
-                         'Westcoast Energy Inc.',
-                         'Alliance Pipeline Ltd.',
-                         'PKM Cochin ULC',
-                         'Foothills Pipe Lines Ltd.',
-                         'Southern Lights Pipeline',
-                         'Emera Brunswick Pipeline Company Ltd.',
-                         'Many Islands Pipe Lines (Canada) Limited',
-                         'Maritimes & Northeast Pipeline Management Ltd.',
-                         'Vector Pipeline Limited Partnership',
-                         'Plains Midstream Canada ULC',
-                         'Enbridge Bakken Pipeline Company Inc.',
-                         'Genesis Pipeline Canada Ltd.',
-                         'Montreal Pipe Line Limited',
-                         'Kingston Midstream Westspur Limited',
-                         'Aurora Pipeline Company Ltd']
+        company_files = get_company_list("all")
 
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
-
         df_c = df[df['Company'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
             df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
