@@ -572,7 +572,7 @@ export const englishDashboard = {
     units,
     points,
     numberFormat,
-    title: { enbridge: "System wide nominations", other: "Apportionment at:" },
+    title: { enbridge: "System-wide nominations", other: "Apportionment at:" },
     series: {
       an: "Accepted Nominations",
       on: "Original Nominations",

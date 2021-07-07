@@ -47,7 +47,7 @@ const en = {
       other:
         "The interactive graph below shows data for nominations and apportionment on the pipeline system.",
       enbridge:
-        "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. Because there is no system-wide apportionment figure, the graph below illustrates how much total pipeline capacity is being requested above what is available.",
+        "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. Because there is no system-wide apportionment figure, the graph below illustrates how much total pipeline capacity is requested above what is available.",
     },
     selectUnits: unitsEn,
     description: {
