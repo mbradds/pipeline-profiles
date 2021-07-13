@@ -8,7 +8,7 @@ import { noEventsFlag } from "./dashboardUtil";
 // TODO: add some more stuff from the oamdm filing guide
 export async function mainOandM(eventData, lang) {
   const eventType = "oandm";
-  const field = "Province/Territory";
+  const field = "p";
   const filters = { type: "frequency" };
 
   function addDashboardTitle() {
@@ -31,17 +31,6 @@ export async function mainOandM(eventData, lang) {
     oandmText(eventData.meta, lang);
   }
 
-  const definitions = {
-    "Integrity Dig":
-      "Indicates if the activity includes excavation to expose, assess, or repair an existing pipeline.",
-    "Fish Present":
-      "Indicates if there will be ground disturbance using power-operated equipment within 30M of a wetland or a water body or within 30M of the substrate of a wetland or water body at the activity site, and the water body is fish-bearing.",
-    "In Stream Work Required":
-      "Indicates if there will be any in-stream work at activity site.",
-    "Species At Risk Present":
-      "Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
-  };
-
   const incidentTimeSeries = (timeField, timeFilters) => {
     const timeSeries = new EventTrend({
       eventType,
@@ -50,7 +39,7 @@ export async function mainOandM(eventData, lang) {
       data: eventData.data,
       seriesed: true,
       seriesInfo: lang.seriesInfo,
-      definitions,
+      definitions: lang.definitions,
       definitionsOn: "pill",
       divId: "time-series-oandm",
       legendClickText: { enabled: true, text: lang.legendClick },
@@ -63,19 +52,11 @@ export async function mainOandM(eventData, lang) {
       fixedPillHeight: 72,
     });
 
-    trendNav.makeBar("Province/Territory", "oandm-region-trend", "activated");
-    trendNav.makeBar("Integrity Dig", "oandm-dig-trend", "deactivated");
-    trendNav.makeBar("Fish Present", "oandm-fish-trend", "deactivated");
-    trendNav.makeBar(
-      "In Stream Work Required",
-      "oandm-instream-trend",
-      "deactivated"
-    );
-    trendNav.makeBar(
-      "Species At Risk Present",
-      "oandm-species-trend",
-      "deactivated"
-    );
+    trendNav.makeBar("p", "oandm-region-trend", "activated");
+    trendNav.makeBar("id", "oandm-dig-trend", "deactivated");
+    trendNav.makeBar("fp", "oandm-fish-trend", "deactivated");
+    trendNav.makeBar("is", "oandm-instream-trend", "deactivated");
+    trendNav.makeBar("sr", "oandm-species-trend", "deactivated");
     trendNav.divEvents();
     return timeSeries;
   };

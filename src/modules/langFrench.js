@@ -609,10 +609,11 @@ export const frenchDashboard = {
     trendYTitle: "Number of Events",
     pillTitles: {
       titles: {
-        "Integrity Dig": "Integrity Dig?",
-        "Fish Present": "Fish Present?",
-        "In Stream Work Required": "In Stream Work Required?",
-        "Species At Risk Present": "Species At Risk Present?",
+        id: "FR: Integrity Dig?",
+        fp: "FR: Fish Present?",
+        is: "FR: In Stream Work Required?",
+        sr: "FR: Species At Risk Present?",
+        p: "FR: Province/Territory",
       },
     },
     noEvents: {
@@ -620,11 +621,17 @@ export const frenchDashboard = {
       note: (company) => `There are no O&M activities reported for ${company}`,
     },
     seriesInfo: {
-      "Integrity Dig": yesNoInfo,
-      "Fish Present": yesNoInfo,
-      "In Stream Work Required": yesNoInfo,
-      "Species At Risk Present": yesNoInfo,
-      "Province/Territory": regionInfo,
+      id: yesNoInfo,
+      fp: yesNoInfo,
+      is: yesNoInfo,
+      sr: yesNoInfo,
+      p: regionInfo,
+    },
+    definitions: {
+      id: "FR: Indicates if the activity includes excavation to expose, assess, or repair an existing pipeline.",
+      fp: "FR: Indicates if there will be ground disturbance using power-operated equipment within 30M of a wetland or a water body or within 30M of the substrate of a wetland or water body at the activity site, and the water body is fish-bearing.",
+      is: "FR: Indicates if there will be any in-stream work at activity site.",
+      sr: "FR: Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
     },
   },
   remediation: {

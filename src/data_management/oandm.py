@@ -27,6 +27,8 @@ def optimizeJson(df):
     delete_after_meta = ['Event Number',
                          'Company Name',
                          'Dig Count',
+                         'Activity Unplanned',
+                         'Activity Acquiring New Land In Agreement With Landowner',
                          'Nearest Populated Centre',
                          'New Land Area Needed',
                          'Length Of Replacement Pipe']
@@ -38,6 +40,13 @@ def optimizeJson(df):
     for col in df.columns:
         if "date" in col.lower():
             del df[col]
+
+    # turn column names into id's
+    df = df.rename(columns={"Integrity Dig": "id",
+                            "Province/Territory": "p",
+                            "Fish Present": "fp",
+                            "In Stream Work Required": "is",
+                            "Species At Risk Present": "sr"})
     # group data here
     series = {}
     for col in df.columns:
@@ -118,8 +127,7 @@ def metadata(df, company):
         thisCompanyMeta["nearbyYear"] = lastFullYear
     else:
         thisCompanyMeta["nearby"] = None
-    # thisCompanyMeta["lengthReplaced"] = int(df['Length Of Replacement Pipe'].sum())
-    # thisCompanyMeta["avgDuration"] = int(df['event duration'].mean())
+
     thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
     thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
     thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
