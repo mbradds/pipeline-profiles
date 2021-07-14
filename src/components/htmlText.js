@@ -211,6 +211,8 @@ const en = {
     incidentsSourceLink: `<a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>`,
     incidentsOpenData: `Open data can be freely used and shared by anyone for any purpose. The <a href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6" target="_blank" rel="external">data for these graphs are available</a>.`,
     incidentsViz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
+    oandmUpdated: "Section updated June 2021",
+    remediationUpdated: "Section updated June 2021",
   },
 };
 
@@ -405,6 +407,8 @@ const fr = {
     incidentsSourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Gouvernement ouvert</a>`,
     incidentsOpenData: `Les données ouvertes peuvent être utilisées et transmises librement. Les <a href="https://ouvert.canada.ca/data/fr/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6" target="_blank" rel="external">données pour ces graphiques sont disponibles</a>.`,
     incidentsViz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" target="_blank" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
+    oandmUpdated: "Mise à jour juin 2021",
+    remediationUpdated: "Mise à jour juin 2021",
   },
 };
 
