@@ -2,7 +2,7 @@ from util import execute_sql
 import pandas as pd
 import json
 import os
-from util import normalize_text, get_company_names, company_rename, get_company_list
+from util import normalize_text, get_company_names, company_rename, get_company_list, prepareIds
 import geopandas as gpd
 from datetime import date
 import numpy as np
@@ -204,13 +204,6 @@ def conditionMetaData(df, folder_name, projectNames):
                             columns='Condition Status').reset_index()
 
     return df_all, meta
-
-
-def prepareIds(df):
-    idSave = {}
-    for key, e, f in zip(df.id, df.e, df.f):
-        idSave[key] = {"e": e, "f": f}
-    return idSave
 
 
 def add_links(df):

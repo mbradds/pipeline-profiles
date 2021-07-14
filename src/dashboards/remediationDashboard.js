@@ -3,6 +3,7 @@ import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
 import { remediationText } from "../modules/dynamicText";
 import { loadChartError } from "../modules/util";
+import { noEventsFlag } from "./dashboardUtil";
 
 export async function mainRemediation(data, lang) {
   const eventType = "remediation";
@@ -119,11 +120,12 @@ export async function mainRemediation(data, lang) {
       thisMap.nearbyListener(lang.dashboard.locationError);
       thisMap.resetCirclesListener();
     } else {
-      // TODO: add noEventsFlag here once translation is ready
-      const noIncidents = document.getElementById("remediation-dashboard");
-      let noIncidentsHTML = `<section class="alert alert-warning"><h3>No Contaminated Sites Data</h3>`;
-      noIncidentsHTML += `<p>There are no records in the CER's contaminated data for ${data.meta.companyName}. If new events are reported to the CER for this pipeline, they will appear here following the quarterly data update.</p></section>`;
-      noIncidents.innerHTML = noIncidentsHTML;
+      noEventsFlag(
+        lang.noEvents.header,
+        lang.noEvents.note,
+        data.meta.companyName,
+        "remediation-dashboard"
+      );
     }
   }
   try {

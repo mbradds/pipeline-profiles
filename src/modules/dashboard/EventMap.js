@@ -228,7 +228,6 @@ export class EventMap {
     const getNameText = (val, lookup, hash) => {
       if (lookup && Object.prototype.hasOwnProperty.call(lookup, val)) {
         return hash ? lookup[val][hash] : lookup[val];
-        // return lookup[val].n;
       }
       return val;
     };

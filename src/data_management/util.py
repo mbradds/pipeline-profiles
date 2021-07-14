@@ -239,7 +239,7 @@ def idify(df, col, key, lcase=True):
     # check if column has non id's
     # maxColLength = max([len(str(x)) for x in df[col]])
     maxIdLength = max([len(str(x)) for x in r.values()])
-    doesntCount = [np.nan, "nan", None]
+    doesntCount = [np.nan, "nan", None, "none"]
     for value in df[col]:
         if value not in r.values() and value not in doesntCount:
             raise IdError(value)
@@ -253,13 +253,19 @@ def get_data(script_dir, query, db="", sql=False, csv_encoding="utf-8"):
     csvName = query.split(".")[0]+".csv"
     if sql:
         print('reading SQL '+query.split(".")[0])
-        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db="")
+        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db=db)
         df.to_csv('raw_data/'+csvName, index=False)
     else:
         print('reading local '+query.split(".")[0])
         df = pd.read_csv('raw_data/'+csvName, encoding=csv_encoding)
-
     return df
+
+
+def prepareIds(df):
+    idSave = {}
+    for key, e, f in zip(df.id, df.e, df.f):
+        idSave[key] = {"e": e, "f": f}
+    return idSave
 
 
 if __name__ == "__main__":

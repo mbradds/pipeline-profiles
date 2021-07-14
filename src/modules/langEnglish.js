@@ -694,6 +694,10 @@ export const englishDashboard = {
             n: "Developed land - residential",
           },
           dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+          dls: {
+            c: cerPalette["Night Sky"],
+            n: "Developed land - small commercial",
+          },
           null: { c: cerPalette["Dim Grey"], n: "Not provided" },
         },
         a: {
@@ -703,7 +707,31 @@ export const englishDashboard = {
           a: { c: cerPalette.Aubergine, n: "Abandonment" },
           null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
         },
+        c: {
+          1: { n: "Other" },
+          2: { n: "Petroleum Hydrocarbons (PHC)" },
+          3: { n: "Polycyclic Aromatic Hydrocarbons (PAH)" },
+          4: { n: "Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)" },
+          5: { n: "Volatile Organic Compounds (VOC) other than BTEX" },
+          6: { n: "Semi-volatile Organic Compounds (SVOC)" },
+          7: { n: "Salts" },
+          8: { n: "Methyl Tertiary Butyl Ether (MTBE)" },
+          9: { n: "Polychlorinated Biphenyls (PCB)" },
+          10: { n: "Metals" },
+          11: { n: "Glycol" },
+          12: { n: "Amine" },
+          13: { n: "Phenols" },
+          14: { n: "Sulphur" },
+          15: { n: "Pesticide / Herbicide" },
+          16: { n: "Light Non-aqueous Phase Liquid (LNAPL)" },
+          17: { n: "Dense Non-aqueous Phase Liquid (DNAPL)" },
+        },
       },
+    },
+    noEvents: {
+      header: `No Contaminated Sites Data`,
+      note: (company) =>
+        `There are no reported contaminated sites for ${company}`,
     },
   },
 };

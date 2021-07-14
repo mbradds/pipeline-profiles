@@ -48,11 +48,34 @@ def meta(df, company):
     return metaData
 
 
+# TODO: make this into general purpose util and use in conditions
+def applyContaminantIds(df, cont, colName="Contaminants at the Site"):
+    values = {en.strip(): str(i) for i, en in zip(cont['id'], cont['e'])}
+    newCol = []
+    for what in df[colName]:
+        if str(what) != "nan":
+            what = what.split(";")
+            what = [x.strip() for x in what]
+            what = [values[x] for x in what]
+            newCol.append(what)
+        else:
+            newCol.append(None)
+    df[colName] = newCol
+    return df
+
+
 def process_remediation(sql=False, companies=False, test=False):
     df = get_data(sql=sql,
                   script_dir=script_dir,
                   query="remediation.sql",
                   db="dsql22cap")
+    
+    contaminants = get_data(sql=sql,
+                            script_dir=script_dir, 
+                            query="remediationContaminants.sql", 
+                            db="dsql22cap")
+    
+    df = applyContaminantIds(df, contaminants)
 
     for delete in ['Pipeline Name',
                    'Facility Name',
@@ -73,6 +96,7 @@ def process_remediation(sql=False, companies=False, test=False):
                  "non-developed land": "ndl",
                  "agricultural land": "al",
                  "developed land - residential": "dlr",
+                 "developed land - small commercial": "dls",
                  "developed land - industrial": "dli"}
 
     statusIds = {"monitored": "m",
@@ -123,20 +147,7 @@ def process_remediation(sql=False, companies=False, test=False):
     del df['Latitude']
     del df['Longitude']
 
-    # get a list of site contaminants
-    chemicalList = []
-    for chemical in df['Contaminants at the Site']:
-        if chemical is not None:
-            chemical = chemical.replace(";", ",").split(",")
-            chemical = [x.strip() for x in chemical]
-            chemicalList.append(chemical)
-        else:
-            chemicalList.append(None)
-
-    df['Contaminants at the Site'] = chemicalList
-
     df = df.rename(columns={"EventNumber": "id",
-                            # "Product Carried": "sub",
                             "Site Status": "s",
                             "Activity At Time": "a",
                             "Province": "p",
