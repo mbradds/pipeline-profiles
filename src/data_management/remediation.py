@@ -57,6 +57,7 @@ def process_remediation(sql=False, companies=False, test=False):
     for delete in ['Pipeline Name',
                    'Facility Name',
                    'Facility Type',
+                   'Product Carried',
                    'NearestPopulatedCentre']:
 
         del df[delete]
@@ -96,8 +97,7 @@ def process_remediation(sql=False, companies=False, test=False):
     df['y'] = df['Final Submission Date'].dt.year
 
     df = df.fillna(value=np.nan)
-    for ns in ['Product Carried',
-               'Applicable Land Use',
+    for ns in ['Applicable Land Use',
                'Activity At Time',
                'Contaminants at the Site',
                'Initial Estimate of Contaminated soil m3',
@@ -136,7 +136,7 @@ def process_remediation(sql=False, companies=False, test=False):
     df['Contaminants at the Site'] = chemicalList
 
     df = df.rename(columns={"EventNumber": "id",
-                            "Product Carried": "sub",
+                            # "Product Carried": "sub",
                             "Site Status": "s",
                             "Activity At Time": "a",
                             "Province": "p",

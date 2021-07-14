@@ -126,7 +126,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
         chartParams.systemName = metaData.companyName;
       }
 
-      const langParams = langCommon(chartParams, metaData);
+      const langParams = langCommon();
       chartParams.mostCommonSubstance = langParams.substance;
       chartParams.mostCommonWhat = langParams.what;
       chartParams.mostCommonWhy = langParams.why;

@@ -80,6 +80,8 @@ const locationError =
 const exploreOther =
   "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.";
 
+const click = "clique pour voir";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -424,7 +426,7 @@ export const frenchDashboard = {
           what: "Incident",
           why: "Pourquoi",
         },
-        click: "clique pour voir",
+        click,
       },
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
@@ -660,16 +662,16 @@ export const frenchDashboard = {
         `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
       pillTitles: {
         titles: {
-          vol: "Initial estimate of contaminated soil",
-          w: "Within 30M of water-body",
-          use: "Applicable Land Use",
-          p: "Province",
-          a: "Activity At Time",
-          c: "Contaminants at the Site",
-          s: "Site Status",
-          y: "Year",
+          vol: "FR: Initial estimate of contaminated soil",
+          w: "FR: Within 30M of water-body",
+          use: "FR: Applicable Land Use",
+          p: "FR: Province",
+          a: "FR: Activity At Time",
+          c: "FR: Contaminants at the Site",
+          s: "FR: Site Status",
+          y: "FR: Year",
         },
-        click: "click to view",
+        click,
       },
       seriesInfo: {
         w: {

@@ -79,6 +79,8 @@ const locationError =
 const exploreOther =
   "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.";
 
+const click = "click to view";
+
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
   if (commodity === "oil") {
@@ -428,7 +430,7 @@ export const englishDashboard = {
           why: "Why It Happened",
           what: "What Happened",
         },
-        click: "click to view",
+        click,
       },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
@@ -665,7 +667,7 @@ export const englishDashboard = {
           s: "Site Status",
           y: "Year",
         },
-        click: "click to view",
+        click,
       },
       seriesInfo: {
         w: {
