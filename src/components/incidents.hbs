@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>{{text.safety.incidentsHeader}}</h3>
-      <p class="small">{{text.safety.incidentsUpdated}}</p>
+      <p class="small">{{text.safety.updated.incidents}}</p>
       <p>{{text.safety.incidentsp1}}</p>
       <p>{{text.safety.incidentsp2}}</p>
       <details>
@@ -203,19 +203,7 @@
           </div>
         </div>
       </section>
-      <div class="row">
-        <div class="col-md-12">
-          <details>
-            <summary>{{text.sourceTitle}}</summary>
-            <p>
-              <strong>{{text.dataSourceTitle}} </strong>
-              {{text.safety.incidentsSourceLink}}
-            </p>
-            <p>{{text.safety.incidentsDescription}}</p>
-          </details>
-          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
-        </div>
-      </div>
+      {{> shared/source text=text.safety.sources.incidents}}
     </div>
   </div>
   <div class="row">

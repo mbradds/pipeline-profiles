@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>Operations and Maintenance Activities</h3>
-      <p class="small">{{text.safety.oandmUpdated}}</p>
+      <p class="small">{{text.safety.updated.oandm}}</p>
       <p>
         Oil and gas pipeline companies regularly conduct routine operations and
         maintenance activities (O&#38;M activities) on CER regulated pipelines.
@@ -149,14 +149,7 @@
               class="alert alert-info disclaimer-style"
               id="trend-definitions-oandm"
             ></div>
-            <details>
-              <summary>{{text.sourceTitle}}</summary>
-              <p>
-                <strong>{{text.dataSourceTitle}}</strong>
-                Open Government
-              </p>
-              <p><strong>{{text.descriptionTitle}}</strong> Coming soon!</p>
-            </details>
+            {{> shared/source text=text.safety.sources.oandm}}
             <p class="mrgn-tp-lg">Take a look at the
               <a
                 href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"

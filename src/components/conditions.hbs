@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>{{text.safety.complianceBtn}}</h3>
-      <p class="small">{{text.safety.complianceUpdated}}</p>
+      <p class="small">{{text.safety.updated.conditions}}</p>
       <p>{{text.safety.conditionsp1}}</p>
       <p>{{text.safety.conditionsp2}}</p>
       <p>{{text.safety.conditionsp3}}</p>
@@ -97,18 +97,7 @@
               class="alert alert-info profile-hide"
               id="no-location-info"
             ></div>
-            <details class="mrgn-tp-sm">
-              <summary>{{text.sourceTitle}}</summary>
-              <p>
-                <strong>{{text.dataSourceTitle}} </strong>
-                {{text.safety.conditionsSourceLink}}
-              </p>
-              <p>
-                <strong>{{text.descriptionTitle}} </strong>
-                {{text.safety.conditionsDescription}}
-              </p>
-            </details>
-            <p class="mrgn-tp-lg">{{text.safety.conditionsOpenData}}</p>
+            {{> shared/source text=text.safety.sources.conditions}}
           </div>
         </div>
       </div>

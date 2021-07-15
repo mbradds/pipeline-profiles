@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>Contaminated Sites and Remediation</h3>
-      <p class="small">{{text.safety.remediationUpdated}}</p>
+      <p class="small">{{text.safety.updated.remediation}}</p>
       <p>As part of the CER’s environmental protection activities, we require
         companies to manage and remediate contamination throughout the lifecycle
         of the facilities. As a first step, regulated companies are required to
@@ -156,18 +156,7 @@
           </div>
         </div>
       </section>
-      <div class="row">
-        <div class="col-md-12">
-          <details>
-            <summary>{{text.sourceTitle}}</summary>
-            <p>
-              <strong>{{text.dataSourceTitle}} </strong>
-            </p>
-            <p><strong>{{text.descriptionTitle}}</strong> Coming soon!</p>
-          </details>
-          <p class="mrgn-tp-lg">{{text.safety.incidentsOpenData}}</p>
-        </div>
-      </div>
+      {{> shared/source text=text.safety.sources.remediation}}
     </div>
   </div>
   <div id="spacer" style="height: 100px"></div>
