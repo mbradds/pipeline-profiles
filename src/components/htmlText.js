@@ -29,14 +29,13 @@ const sourceAndDescEn = "Source and description";
 const sourceAndDescFr = "Source et description de la figure";
 const dataSourceEn = "Data Source:";
 const dataSourceFr = "Source de données :";
-const descriptionEn = "Description:";
-const descriptionFr = "Description :";
+const descriptionEn = "Description: ";
+const descriptionFr = "Description : ";
 
 const en = {
   sourceTitle: sourceAndDescEn,
   dataSourceTitle: dataSourceEn,
   descriptionTitle: descriptionEn,
-  selectUnits: unitsEn,
   apportion: {
     header: { other: "Apportionment", enbridge: "Apportionment" },
     updated: trafficUpdatedEn,
@@ -72,7 +71,6 @@ const en = {
     capacityNote:
       "The physical capacity of a pipeline is based on many factors such as the products being carried, direction of flow, pipeline pumping capacity, and maintenance work or other pressure restrictions. The actual physical capacity of the pipeline may, at times, be higher than the assumed operational capacity stated here.",
     dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>.`,
-    trafficSourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
     instructions: {
       one: "Click on a key point button above the chart & map to view traffic at a different location. The map shows approximate locations on the pipeline where throughputs & capacity are recorded by the pipeline operator.",
       two: "Click and drag your mouse on the area chart to zoom into the desired date range. Click on the Reset Zoom button to reset the full date range.",
@@ -81,15 +79,22 @@ const en = {
       four: "The key point trends are calculated using quarterly average traffic at the key point. Natural gas throughput trends are displayed year over year (last full quarter of data compared to the same quarter last year). Crude oil and liquids key point trends are displayed quarter over quarter (last full quarter of data compared to the previous quarter).",
       five: "The five-year average is calculated for natural gas key points using the total throughput across all trade types and direction of flows. For bi-directional key points (both export and import) the throughput is displayed for both directions, instead of the five-year average.",
     },
-    description:
-      "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five-year average and five-year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity are recorded.",
+    source: {
+      sourceTitle: sourceAndDescEn,
+      dataSourceTitle: dataSourceEn,
+      sourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
+      description:
+        "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five-year average and five-year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity are recorded.",
+    },
   },
   safety: {
     header: "Safety and Environment",
-    complianceBtn: "Conditions Compliance",
-    incidentsBtn: "Reported Incidents",
-    oandmBtn: "Operations &#38; Maintenance Activities",
-    remediationBtn: "Contaminated Sites &#38; Remediation",
+    buttons: {
+      conditions: "Conditions Compliance",
+      incidents: "Reported Incidents",
+      oandm: "Operations &#38; Maintenance Activities",
+      remediation: "Contaminated Sites &#38; Remediation",
+    },
     conditionsp1:
       "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
     conditionsp2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
@@ -117,7 +122,6 @@ const en = {
     closedBtn: "Closed Conditions with location:",
     noLocationBtn: "No Geographic Location (not on map):",
     conditionsViz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/" target="_blank" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
-    incidentsHeader: "Pipeline Incidents",
     incidentsp1: `The information presented here is based on CER data (2008 to current) for incidents reported under the
     <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html" target="_blank">Onshore Pipeline
       Regulations</a>
@@ -195,11 +199,21 @@ const en = {
     incidentsVolRadio: "Incident Volume",
     incidentsMapBtn: "Incident Map",
     incidentsTrendBtn: "Incident Trends",
-    incidentsNearMe: "Are there any incidents near me?",
-    incidentsSelectRange: "Select range (100km):",
-    incidentsFind: "Find Incidents within 100km",
-    incidentsRefill: "Refill Map Bubbles",
     incidentsViz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
+    nearbyIncidents: {
+      type: "incidents",
+      header: "Are there any incidents near me?",
+      selectRange: "Select range (100km):",
+      find: "Find Incidents within 100km",
+      refill: "Refill Map Bubbles",
+    },
+    nearbyRemediation: {
+      type: "remediation",
+      header: "Are there any contaminated sites near me?",
+      selectRange: "Select range (100km):",
+      find: "Find sites within 100km",
+      refill: "Refill Map Bubbles",
+    },
     updated: {
       conditions: "Section updated June 2021",
       incidents: "Section updated June 2021",
@@ -210,6 +224,7 @@ const en = {
       conditions: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
+        descriptionTitle: descriptionEn,
         sourceLink: `<a href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Open Government</a>`,
         description:
           "The above map displays the number of CER conditions associated with projects approved by the Commission. The map is split into two tabs which show in-progress and closed conditions separately, mapped to an economic region. If a company has no in-progress conditions specific to an economic region, the dashboard will default to show the closed conditions by region. An additional view is available which contains the number of in-progress and closed conditions that don't have a corresponding economic region in the dataset. The map regions are shaded based on the number of conditions, with lighter colored regions containing fewer conditions compared to darker colors. Conditions that apply to more than one region are double counted in the map, and these conditions will appear in the map region total and map region breakdown for each applicable region. The condition counts contained in the map navigation buttons represent total conditions without region double counting.",
@@ -218,6 +233,7 @@ const en = {
       incidents: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
+        descriptionTitle: descriptionEn,
         sourceLink: `<a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>`,
         description:
           "<strong>Description:</strong> The above map displays the location of product release incidents that have occured on the pipeline system since 2008. The map defaults to show incidents as bubbles which are colored based on the substance released. Incidents on the map can be re-categorized based on the most recently available status of the CER's incident review, the year in which the incident was reported, and the province/territory where the incident occured. The incident map bubble can be switched to show the estimated volume of product released, with larger map bubbles showing larger release volumes relative to other product releases on the system. The incident data can also be toggled to display a stacked bar chart of incidents over time by clicking on the incident trends button above the map. The stacked bars dispaly the number of product release incidents by year, with bar color segments corresponding to the various products released. Similiar to the map, incidents can be re-categorized by clicking on the side buttons to view a breakdown of incidents by status, what happened, why it happened, and province/territory.",
@@ -226,6 +242,7 @@ const en = {
       oandm: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
+        descriptionTitle: descriptionEn,
         sourceLink: "Coming soon!",
         description: "Coming soon!",
         openGov: "Coming soon!",
@@ -233,6 +250,7 @@ const en = {
       remediation: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
+        descriptionTitle: descriptionEn,
         sourceLink: "Coming soon!",
         description: "Coming soon!",
         openGov: false,
@@ -245,7 +263,6 @@ const fr = {
   sourceTitle: sourceAndDescFr,
   dataSourceTitle: dataSourceFr,
   descriptionTitle: descriptionFr,
-  selectUnits: unitsFr,
   apportion: {
     header: { other: "Répartition", enbridge: "Répartition" },
     updated: trafficUpdatedFr,
@@ -268,6 +285,7 @@ const fr = {
   traffic: {
     header: "Débit et capacité",
     updated: trafficUpdatedFr,
+    selectUnits: unitsFr,
     selectKeyPt: "Sélectionnez un point principal :",
     keyPtMap: "Carte des principaux points",
     zoomIn: "Zoom avant",
@@ -279,7 +297,6 @@ const fr = {
     capacityNote:
       "La capacité physique d’un pipeline dépend de nombreux facteurs, tels que les produits transportés, le sens d’écoulement, la capacité de pompage du pipeline, les travaux d’entretien et les restrictions de pression. La capacité physique réelle du pipeline peut parfois être supérieure à la capacité opérationnelle hypothétique indiquée ici.",
     dailyData: `Vous recherchez des  <strong>données quotidiennes</strong>? Des ensembles de données quotidiennes sur le trafic de gaz naturel sont disponibles sur <a href="https://open.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>.`,
-    trafficSourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>`,
     instructions: {
       one: "Cliquez sur un point principal au-dessus du graphique et de la carte pour voir le transport à un autre endroit. La carte montre les emplacements approximatifs sur le pipeline où l’exploitant du pipeline enregistre les débits et la capacité.",
       two: "Cliquez et faites glisser votre souris sur le graphique pour faire un zoom jusqu’à la plage de dates souhaitée. Cliquez sur le bouton Réinitialiser le zoom pour réinitialiser toute la plage de dates.",
@@ -288,15 +305,22 @@ const fr = {
       four: "Les tendances des principaux points sont calculées à partir du transport moyen trimestriel au point principal. Les tendances de débit de gaz naturel sont présentées d’une année à l’autre (données du dernier trimestre complet par rapport au même trimestre l’année précédente). Les tendances pour le pétrole brut et les liquides aux principaux points sont présentées d’un trimestre à l’autre (dernier trimestre complet par rapport au trimestre précédent).",
       five: "La moyenne sur cinq ans est calculée pour les principaux points pour le gaz naturel à partir du débit total pour tous les types d’échanges commerciaux et le sens d’écoulement. Pour les principaux points dans les deux sens (exportations et importations), le débit est affiché pour les deux directions, au lieu de la moyenne sur cinq ans.",
     },
-    description:
-      "Le tableau de bord ci-dessus indique le débit et la capacité du pipeline aux principaux points sur le réseau. Lorsque cela est possible, la moyenne sur cinq ans et la fourchette de débit sur cinq ans sont illustrées avec le débit de l’année en cours pour mieux faire ressortir les tendances. Pour les principaux points du pipeline dont l’emplacement est défini, une carte est affichée à côté du graphique, montrant l’emplacement approximatif où le débit et la capacité du pipeline sont enregistrés.",
+    source: {
+      sourceTitle: sourceAndDescFr,
+      dataSourceTitle: dataSourceFr,
+      sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>`,
+      description:
+        "Le tableau de bord ci-dessus indique le débit et la capacité du pipeline aux principaux points sur le réseau. Lorsque cela est possible, la moyenne sur cinq ans et la fourchette de débit sur cinq ans sont illustrées avec le débit de l’année en cours pour mieux faire ressortir les tendances. Pour les principaux points du pipeline dont l’emplacement est défini, une carte est affichée à côté du graphique, montrant l’emplacement approximatif où le débit et la capacité du pipeline sont enregistrés.",
+    },
   },
   safety: {
     header: "Sécurité et environnement",
-    complianceBtn: "Conformité aux conditions",
-    incidentsBtn: "Incidents signalés",
-    oandmBtn: "Operations &#38; Maintenance Activities",
-    remediationBtn: "Contaminated Sites &#38; Remediation",
+    buttons: {
+      conditions: "Conformité aux conditions",
+      incidents: "Incidents signalés",
+      oandm: "Operations &#38; Maintenance Activities",
+      remediation: "Contaminated Sites &#38; Remediation",
+    },
     conditionsp1:
       "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
     conditionsp2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des mesures <a href="/fr/safety-environment/compliance-enforcement/index.html">d’exécution</a> sont prises au besoin.`,
@@ -324,7 +348,6 @@ const fr = {
     closedBtn: "Conditions remplies avec emplacement :",
     noLocationBtn: "Aucun lieu (non indiqué sur la carte) :",
     conditionsViz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" target="_blank" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
-    incidentsHeader: "Incidents pipeliniers",
     incidentsp1: `L’information présentée ici provient des données de la Régie de
     l’énergie du Canada de 2008 à aujourd’hui sur les incidents signalés en
     application du
@@ -416,11 +439,21 @@ const fr = {
     incidentsVolRadio: "Volume des incidents",
     incidentsMapBtn: "Carte des incidents",
     incidentsTrendBtn: "Tendance des incidents",
-    incidentsNearMe: "Y a-t-il des incidents près de chez moi?",
-    incidentsSelectRange: "Sélectionner une plage (100km):",
-    incidentsFind: "Rechercher les incidents dans un rayon de 100km",
-    incidentsRefill: "Remplir les bulles de carte",
     incidentsViz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" target="_blank" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
+    nearbyIncidents: {
+      type: "incidents",
+      header: "Y a-t-il des incidents près de chez moi?",
+      selectRange: "Sélectionner une plage (100km) :",
+      find: "Rechercher les incidents dans un rayon de 100km",
+      refill: "Remplir les bulles de carte",
+    },
+    nearbyRemediation: {
+      type: "remediation",
+      header: "Are there any contaminated sites near me?",
+      selectRange: "Sélectionner une plage (100km) :",
+      find: "Find sites within 100km",
+      refill: "Remplir les bulles de carte",
+    },
     updated: {
       conditions: "Mise à jour juin 2021",
       incidents: "Mise à jour juin 2021",
@@ -431,6 +464,7 @@ const fr = {
       conditions: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
+        descriptionTitle: descriptionFr,
         sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Gouvernement ouvert</a>`,
         description:
           "La carte ci-dessus indique le nombre de conditions imposées par la Régie aux projets approuvés par la Commission. La carte est divisée en deux onglets. Les conditions en cours et les conditions remplies sont ainsi montrées séparément en fonction des régions économiques. Si aucune condition en cours n’est associée à une société pour une région économique précise, le tableau de bord affichera par défaut les conditions remplies par régions. Un autre affichage présente le nombre de conditions en cours et de conditions conformes qui ne sont pas associées à une région économique dans l’ensemble de données. Les régions de la carte sont colorées en fonction du nombre de conditions, celles de couleur plus pâle affichant un nombre réduit de conditions par rapport aux régions plus foncées. Les conditions qui visent plus d’une région sont comptabilisées en double sur la carte et figurent dans le total et la ventilation pour chaque région applicable. Les nombres de conditions qui figurent sur les boutons de navigation de la carte représentent le total des conditions, sans double comptabilisation.",
@@ -439,6 +473,7 @@ const fr = {
       incidents: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
+        descriptionTitle: descriptionFr,
         sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Gouvernement ouvert</a>`,
         description:
           "<strong>Description :</strong> La carte ci-dessus montre l’emplacement des déversements de produit survenus sur le réseau pipelinier depuis 2008. Par défaut, les incidents sont affichés sous forme de bulles qui sont colorées en fonction de la substance rejetée. Les incidents sur la carte peuvent aussi être classés en fonction de l’état d’avancement de l’examen de la Régie, de l’année à laquelle l’incident a été signalé et de la province ou du territoire où l’incident s’est produit. Les bulles de la carte des incidents peuvent également indiquer le volume estimatif des déversements, les bulles plus grandes correspondant à des volumes plus élevés. Il est également possible de présenter les données sur les incidents au fil du temps sous forme de graphique à barres empilées. Pour ce faire, il suffit de cliquer sur le bouton Tendance des incidents situé au-dessus de la carte. Les barres empilées représentent le nombre d’incidents de déversement de produit par année, et les segments de couleur des barres correspondent aux divers produits déversés. Comme sur la carte, les incidents peuvent être reclassés en cliquant sur les boutons latéraux pour afficher la répartition des incidents selon le statut, ce qui s’est produit et pourquoi, et la province ou le territoire touché.",
@@ -447,6 +482,7 @@ const fr = {
       oandm: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
+        descriptionTitle: descriptionFr,
         sourceLink: "Coming soon!",
         description: "Coming soon!",
         openGov: "Coming soon!",
@@ -454,6 +490,7 @@ const fr = {
       remediation: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
+        descriptionTitle: descriptionFr,
         sourceLink: "Coming soon!",
         description: "Coming soon!",
         openGov: false,

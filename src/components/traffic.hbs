@@ -20,7 +20,7 @@
     <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="radio-align">
         <p class="cerlabel">
-          {{text.selectUnits}}
+          {{text.traffic.selectUnits}}
         </p>
         <div id="select-units-radio-traffic"></div>
       </div>
@@ -98,16 +98,15 @@
           <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
         {{/ifeq}}
       </details>
-
       <details>
-        <summary>{{text.sourceTitle}}</summary>
+        <summary>{{text.traffic.source.sourceTitle}}</summary>
         <p>
-          <strong>{{text.dataSourceTitle}} </strong>
-          {{text.traffic.trafficSourceLink}}
+          <strong>{{text.traffic.source.dataSourceTitle}} </strong>
+          {{text.traffic.source.sourceLink}}
         </p>
         <p>
           <strong>{{text.descriptionTitle}} </strong>
-          {{text.traffic.description}}
+          {{text.traffic.source.description}}
         </p>
         <small id="conversion-disclaimer-traffic"></small>
       </details>

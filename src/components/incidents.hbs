@@ -1,7 +1,7 @@
 <div id="pipeline-incidents" class="profile-section tabcontent">
   <div class="row">
     <div class="col-md-12">
-      <h3>{{text.safety.incidentsHeader}}</h3>
+      <h3>{{text.safety.buttons.incidents}}</h3>
       <p class="small">{{text.safety.updated.incidents}}</p>
       <p>{{text.safety.incidentsp1}}</p>
       <p>{{text.safety.incidentsp2}}</p>
@@ -152,57 +152,7 @@
           </div>
         </div>
       </div>
-      <section class="panel panel-info mrgn-tp-md" id="nearby-incidents-popup">
-        <header class="panel-heading">
-          <h5 class="panel-title">{{text.safety.incidentsNearMe}}</h5>
-        </header>
-        <div class="panel-body incidents-near-me">
-          <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
-            <div
-              class="col-md-12 cerlabel dashboard-style nearby-title"
-              id="find-incidents-title"
-            >
-              {{text.safety.incidentsSelectRange}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12 center-stuff">
-              <input
-                name="html5shim-1"
-                id="incidents-range-slide"
-                type="range"
-                min="0"
-                max="200"
-                step="1"
-                value="100"
-              />
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
-              <button
-                type="button"
-                value="100"
-                id="find-incidents-btn"
-                class="btn btn-default col-md-12"
-              >
-                {{text.safety.incidentsFind}}
-              </button>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
-              <button
-                type="button"
-                id="reset-incidents-btn"
-                class="btn btn-default col-md-12"
-                disabled="disabled"
-              >
-                {{text.safety.incidentsRefill}}
-              </button>
-            </div>
-          </div>
-          <div class="row mrgn-tp-lg">
-            <div class="col-md-12" id="nearby-incidents-flag"></div>
-          </div>
-        </div>
-      </section>
+      {{> shared/nearbyEvents text=text.safety.nearbyIncidents}}
       {{> shared/source text=text.safety.sources.incidents}}
     </div>
   </div>

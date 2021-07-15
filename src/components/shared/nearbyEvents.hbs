@@ -1,0 +1,51 @@
+<section class="panel panel-info mrgn-tp-md" id="nearby-{{text.type}}-popup">
+  <header class="panel-heading">
+    <h5 class="panel-title">{{text.header}}</h5>
+  </header>
+  <div class="panel-body {{text.type}}-near-me">
+    <div class="row mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0 mrgn-rght-0">
+      <div
+        class="col-md-12 cerlabel dashboard-style nearby-title"
+        id="find-{{text.type}}-title"
+      >
+        {{text.selectRange}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12 center-stuff">
+        <input
+          name="html5shim-1"
+          id="{{text.type}}-range-slide"
+          type="range"
+          min="0"
+          max="200"
+          step="1"
+          value="100"
+        />
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
+        <button
+          type="button"
+          value="100"
+          id="find-{{text.type}}-btn"
+          class="btn btn-default col-md-12"
+        >
+          {{text.find}}
+        </button>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6 center-stuff">
+        <button
+          type="button"
+          id="reset-{{text.type}}-btn"
+          class="btn btn-default col-md-12"
+          disabled="disabled"
+        >
+          {{text.refill}}
+        </button>
+      </div>
+    </div>
+    <div class="row mrgn-tp-lg">
+      <div class="col-md-12" id="nearby-{{text.type}}-flag"></div>
+    </div>
+  </div>
+</section>
