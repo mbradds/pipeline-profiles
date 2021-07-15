@@ -181,8 +181,13 @@ module.exports = {
         test: /\.hbs$/,
         loader: "handlebars-loader",
         options: {
-          precompileOptions: { noEscape: true, strict: true },
+          precompileOptions: {
+            noEscape: true,
+            strict: true,
+            knownHelpersOnly: false,
+          },
           runtime: path.resolve(__dirname, "src/components/helpers.js"),
+          // knownHelpersOnly: false,
         },
       },
     ],

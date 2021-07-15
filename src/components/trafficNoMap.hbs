@@ -65,19 +65,7 @@
         </p>
         <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
       </details>
-
-      <details>
-        <summary>{{text.traffic.source.sourceTitle}}</summary>
-        <p>
-          <strong>{{text.traffic.source.dataSourceTitle}} </strong>
-          {{text.traffic.source.sourceLink}}
-        </p>
-        <p>
-          <strong>{{text.descriptionTitle}} </strong>
-          {{text.traffic.source.description}}
-        </p>
-        <small id="conversion-disclaimer-traffic"></small>
-      </details>
+      {{> shared/source text=text.traffic.source}}
     </div>
   </div>
 </div>

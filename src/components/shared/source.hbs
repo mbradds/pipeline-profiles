@@ -5,6 +5,9 @@
     {{text.sourceLink}}
   </p>
   <p><strong>{{text.descriptionTitle}}</strong>{{text.description}}</p>
+  {{#if text.subTextId}}
+    <p><small id="{{text.subTextId}}"></small></p>
+  {{/if}}
 </details>
 {{#if text.openGov}}
   <p>{{text.openGov}}</p>
