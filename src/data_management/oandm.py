@@ -87,6 +87,7 @@ def metadata(df, company):
     thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
 
     # nearby in the last year
+    df['Nearest Populated Centre'] = [str(x) for x in df['Nearest Populated Centre']]
     df['Nearest Populated Centre'] = [x.split(",")[0].strip() for x in df['Nearest Populated Centre']]
 
     dfNear = df.copy()
@@ -175,13 +176,11 @@ def process_oandm(remote=False, companies=False, test=False):
                          error_bad_lines=False)
 
     df = strip_cols(df)
-
     df = df.rename(columns={x: x.replace("\xa0", " ") for x in df.columns})
     df = df.replace({"Yes": "y", "No": "n"})
     # Event Number and nearest populated center should be deleted later
     # New Land Area Needed is probably the total land
-    for delete in ['Company Address',
-                   'Company City',
+    for delete in ['Company City',
                    'Company Postal Code',
                    'Company Province/Territory',
                    'Circumstance(s)',
@@ -218,6 +217,7 @@ def process_oandm(remote=False, companies=False, test=False):
     df['Company Name'] = df['Company Name'].replace(company_rename())
     df = column_insights(df)
     df = df.rename(columns={"Species At Risk Present At Activity Site": "Species At Risk Present"})
+    df = df[df['Commencement Date'].dt.year >= 2015].reset_index(drop=True)
     if companies:
         company_files = companies
     else:
@@ -248,5 +248,5 @@ def process_oandm(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False)
+    df = process_oandm(remote=True, test=False)
     print('completed oandm!')

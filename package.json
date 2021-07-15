@@ -17,6 +17,7 @@
     "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
     "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
     "update-apportionment-data": "sh ./src/data_management/npm_scripts/update-apportionment-data.sh",
+    "update-oandm-data": "sh ./src/data_management/npm_scripts/update-oandm-data.sh",
     "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
     "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
     "test-frontend": "ava",

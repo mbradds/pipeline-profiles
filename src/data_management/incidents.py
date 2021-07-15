@@ -235,5 +235,5 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta = process_incidents(remote=False, test=False)
+    df, volume, meta = process_incidents(remote=True, test=False)
     print('completed incidents!')

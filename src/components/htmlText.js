@@ -217,10 +217,10 @@ const en = {
       refill: "Refill Map Bubbles",
     },
     updated: {
-      conditions: "Section updated June 2021",
-      incidents: "Section updated June 2021",
-      oandm: "Section updated June 2021",
-      remediation: "Section updated June 2021",
+      conditions: "Section updated July 2021",
+      incidents: "Section updated July 2021",
+      oandm: "Section updated July 2021",
+      remediation: "Section updated July 2021",
     },
     sources: {
       conditions: {
@@ -459,10 +459,10 @@ const fr = {
       refill: "Remplir les bulles de carte",
     },
     updated: {
-      conditions: "Mise à jour juin 2021",
-      incidents: "Mise à jour juin 2021",
-      oandm: "Mise à jour juin 2021",
-      remediation: "Mise à jour juin 2021",
+      conditions: "Mise à jour juillet 2021",
+      incidents: "Mise à jour juillet 2021",
+      oandm: "Mise à jour juillet 2021",
+      remediation: "Mise à jour juillet 2021",
     },
     sources: {
       conditions: {
