@@ -52,8 +52,10 @@
 - [Quick start for updating data](#quick-start-for-updating-data)
   - [Dataset 1: Incidents](#dataset-1-incidents)
   - [Dataset 2: Conditions](#dataset-2-conditions)
-  - [Dataset 3: Traffic](dataset-3-traffic)
-  - [Dataset 4: Apportionment](dataset-4-apportionment)
+  - [Dataset 3: Traffic](#dataset-3-traffic)
+  - [Dataset 4: Apportionment](#dataset-4-apportionment)
+  - [Dataset 5: Operations and Maintenance Activities](#dataset-5-operations-and-maintenance-activities)
+  - [Dataset 6: Contaminated sites and Remediation](#dataset-6-contaminated-sites-and-remediation)
 - [Adding a new profile section](#adding-a-new-profile-section)
 - [Tests](#tests)
   - [Python unit tests (back end)](<#python-unit-tests-(back-end)>)
@@ -212,6 +214,7 @@ npm run update-incidents-data
 npm run update-conditions-data
 npm run update-traffic-data
 npm run update-apportionment-data
+npm run update-oandm-data
 ```
 
 Note: depending on several factors, including the current state of the python scripts called with the above command, this may not actually update the data you want. Take a look at the sub sections below for update instructions specific to the dataset.
@@ -338,13 +341,29 @@ if __name__ == "__main__":
     print('completed throughput!')
 ```
 
-3. `npm run update-traffic-data && npm run build`
+3.
+
+```bash
+npm run update-traffic-data && npm run build
+```
 
 ### Dataset 4: Apportionment
 
 Pretty much the same as traffic, but using `src/data_management/apportionment.py`
 
-`npm run update-apportionment data && npm run build`
+```bash
+npm run update-apportionment data
+```
+
+### Dataset 5: Operations and Maintenance Activities
+
+```bash
+npm run update-oandm-data
+```
+
+### Dataset 6: Contaminated sites and Remediation
+
+Instructions coming soon!
 
 ## Adding a new profile section
 

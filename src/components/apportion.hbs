@@ -1,9 +1,4 @@
-{{#ifeq text.pipelineName.id "enbridge_mainline"}}
-  <h2 id="apportionment">{{text.apportion.header.enbridge}}</h2>
-{{/ifeq}}
-{{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-  <h2 id="apportionment">{{text.apportion.header.other}}</h2>
-{{/ifnoteq}}
+<h2 id="apportionment">{{text.apportion.header}}</h2>
 <p class="small">{{text.apportion.updated}}</p>
 <div id="apportionment-section">
   <div class="row">

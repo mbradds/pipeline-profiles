@@ -32,12 +32,28 @@ const dataSourceFr = "Source de données :";
 const descriptionEn = "Description: ";
 const descriptionFr = "Description : ";
 
+const openGovLink = (link, lang) => {
+  let [p1, p2] = ["", ""];
+  if (lang === "en") {
+    p1 =
+      "Open data can be freely used and shared by anyone for any purpose. The ";
+    p2 = "data for these graphs are available [CSV]";
+  } else if (lang === "fr") {
+    p1 =
+      "Les données ouvertes peuvent être utilisées et transmises librement. Les ";
+    p2 = "données pour ces graphiques sont disponibles [CSV]";
+  } else {
+    return false;
+  }
+  return `${p1}<a href="${link}" target="_blank" rel="external">${p2}</a>.`;
+};
+
 const en = {
   sourceTitle: sourceAndDescEn,
   dataSourceTitle: dataSourceEn,
   descriptionTitle: descriptionEn,
   apportion: {
-    header: { other: "Apportionment", enbridge: "Apportionment" },
+    header: "Apportionment",
     updated: trafficUpdatedEn,
     p1: "A shipper must submit nominations each month it wishes to move its oil on a pipeline. Shippers must submit nominations for both committed (or contracted) transportation service, if available, as well as uncommitted transportation service. If the total volume of nominations for uncommitted capacity is more than what is available, the pipeline company must “apportion” the nominations.",
 
@@ -230,7 +246,7 @@ const en = {
         sourceLink: `<a href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Open Government</a>`,
         description:
           "The above map displays the number of CER conditions associated with projects approved by the Commission. The map is split into two tabs which show in-progress and closed conditions separately, mapped to an economic region. If a company has no in-progress conditions specific to an economic region, the dashboard will default to show the closed conditions by region. An additional view is available which contains the number of in-progress and closed conditions that don't have a corresponding economic region in the dataset. The map regions are shaded based on the number of conditions, with lighter colored regions containing fewer conditions compared to darker colors. Conditions that apply to more than one region are double counted in the map, and these conditions will appear in the map region total and map region breakdown for each applicable region. The condition counts contained in the map navigation buttons represent total conditions without region double counting.",
-        openGov: `Open data can be freely used and shared by anyone for any purpose. The <a href="/open/conditions/conditions.csv">data for these graphs are available [CSV]</a>.`,
+        openGov: openGovLink("/open/conditions/conditions.csv", "en"),
       },
       incidents: {
         sourceTitle: sourceAndDescEn,
@@ -239,7 +255,10 @@ const en = {
         sourceLink: `<a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>`,
         description:
           "The above map displays the location of product release incidents that have occured on the pipeline system since 2008. The map defaults to show incidents as bubbles which are colored based on the substance released. Incidents on the map can be re-categorized based on the most recently available status of the CER's incident review, the year in which the incident was reported, and the province/territory where the incident occured. The incident map bubble can be switched to show the estimated volume of product released, with larger map bubbles showing larger release volumes relative to other product releases on the system. The incident data can also be toggled to display a stacked bar chart of incidents over time by clicking on the incident trends button above the map. The stacked bars dispaly the number of product release incidents by year, with bar color segments corresponding to the various products released. Similiar to the map, incidents can be re-categorized by clicking on the side buttons to view a breakdown of incidents by status, what happened, why it happened, and province/territory.",
-        openGov: `Open data can be freely used and shared by anyone for any purpose. The <a href="https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6" target="_blank" rel="external">data for these graphs are available</a>.`,
+        openGov: openGovLink(
+          "https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
+          "en"
+        ),
       },
       oandm: {
         sourceTitle: sourceAndDescEn,
@@ -247,7 +266,10 @@ const en = {
         descriptionTitle: descriptionEn,
         sourceLink: "Coming soon!",
         description: "Coming soon!",
-        openGov: "Coming soon!",
+        openGov: openGovLink(
+          "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
+          "en"
+        ),
       },
       remediation: {
         sourceTitle: sourceAndDescEn,
@@ -266,7 +288,7 @@ const fr = {
   dataSourceTitle: dataSourceFr,
   descriptionTitle: descriptionFr,
   apportion: {
-    header: { other: "Répartition", enbridge: "Répartition" },
+    header: "Répartition",
     updated: trafficUpdatedFr,
     p1: "Les expéditeurs doivent soumettre tous les mois une commande à chaque pipeline que doit traverser leur pétrole. Il leur faut présenter une commande pour le service de transport souscrit (sous contrat), s’il est offert, et pour le service de transport non souscrit. Si le total des commandes dépasse la capacité non souscrite disponible, les transporteurs doivent «&nbsp;répartir&nbsp;» les commandes.",
     p2: "La répartition est le pourcentage de réduction appliqué à la commande de chacun des expéditeurs afin de ne pas dépasser la capacité non souscrite disponible. En général, ce pourcentage est appliqué également à tous les expéditeurs ayant passé une commande. Par exemple, si la commande de l’expéditeur&nbsp;A vise 100&nbsp;barils et celle de l’expéditeur&nbsp;B, 1&nbsp;000&nbsp;barils, selon un taux de répartition de 10&nbsp;%, les deux expéditeurs pourront faire transporter 90&nbsp;barils et 900&nbsp;barils.",
@@ -472,7 +494,7 @@ const fr = {
         sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Gouvernement ouvert</a>`,
         description:
           "La carte ci-dessus indique le nombre de conditions imposées par la Régie aux projets approuvés par la Commission. La carte est divisée en deux onglets. Les conditions en cours et les conditions remplies sont ainsi montrées séparément en fonction des régions économiques. Si aucune condition en cours n’est associée à une société pour une région économique précise, le tableau de bord affichera par défaut les conditions remplies par régions. Un autre affichage présente le nombre de conditions en cours et de conditions conformes qui ne sont pas associées à une région économique dans l’ensemble de données. Les régions de la carte sont colorées en fonction du nombre de conditions, celles de couleur plus pâle affichant un nombre réduit de conditions par rapport aux régions plus foncées. Les conditions qui visent plus d’une région sont comptabilisées en double sur la carte et figurent dans le total et la ventilation pour chaque région applicable. Les nombres de conditions qui figurent sur les boutons de navigation de la carte représentent le total des conditions, sans double comptabilisation.",
-        openGov: `Les données ouvertes peuvent être utilisées et transmises librement. Les <a href="/ouvert/conditions/conditions.csv">données pour ces graphiques sont disponibles [CSV]</a>.`,
+        openGov: openGovLink("/ouvert/conditions/conditions.csv", "fr"),
       },
       incidents: {
         sourceTitle: sourceAndDescFr,
@@ -481,7 +503,10 @@ const fr = {
         sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Gouvernement ouvert</a>`,
         description:
           "La carte ci-dessus montre l’emplacement des déversements de produit survenus sur le réseau pipelinier depuis 2008. Par défaut, les incidents sont affichés sous forme de bulles qui sont colorées en fonction de la substance rejetée. Les incidents sur la carte peuvent aussi être classés en fonction de l’état d’avancement de l’examen de la Régie, de l’année à laquelle l’incident a été signalé et de la province ou du territoire où l’incident s’est produit. Les bulles de la carte des incidents peuvent également indiquer le volume estimatif des déversements, les bulles plus grandes correspondant à des volumes plus élevés. Il est également possible de présenter les données sur les incidents au fil du temps sous forme de graphique à barres empilées. Pour ce faire, il suffit de cliquer sur le bouton Tendance des incidents situé au-dessus de la carte. Les barres empilées représentent le nombre d’incidents de déversement de produit par année, et les segments de couleur des barres correspondent aux divers produits déversés. Comme sur la carte, les incidents peuvent être reclassés en cliquant sur les boutons latéraux pour afficher la répartition des incidents selon le statut, ce qui s’est produit et pourquoi, et la province ou le territoire touché.",
-        openGov: `Les données ouvertes peuvent être utilisées et transmises librement. Les <a href="https://ouvert.canada.ca/data/fr/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6" target="_blank" rel="external">données pour ces graphiques sont disponibles</a>.`,
+        openGov: openGovLink(
+          "https://ouvert.canada.ca/data/fr/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
+          "fr"
+        ),
       },
       oandm: {
         sourceTitle: sourceAndDescFr,
@@ -489,7 +514,10 @@ const fr = {
         descriptionTitle: descriptionFr,
         sourceLink: "Coming soon!",
         description: "Coming soon!",
-        openGov: "Coming soon!",
+        openGov: openGovLink(
+          "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
+          "fr"
+        ),
       },
       remediation: {
         sourceTitle: sourceAndDescFr,
