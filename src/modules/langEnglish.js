@@ -686,18 +686,28 @@ export const englishDashboard = {
         },
         p: regionInfo, // Province
         use: {
-          pa: { c: cerPalette.Forest, n: "Protected area" },
-          ndl: { c: cerPalette.Flame, n: "Non-developed land" },
-          al: { c: cerPalette.Ocean, n: "Agricultural land" },
-          dlr: {
-            c: cerPalette.Aubergine,
-            n: "Developed land - residential",
-          },
-          dli: { c: cerPalette["Cool Grey"], n: "Developed land - industrial" },
+          dli: { c: cerPalette["Cool Grey"], n: "Developed Land - Industrial" },
           dls: {
             c: cerPalette["Night Sky"],
-            n: "Developed land - small commercial",
+            n: "Developed Land - Small Commercial",
           },
+          dlr: {
+            c: cerPalette.Aubergine,
+            n: "Developed Land - Residential",
+          },
+          bl: { c: cerPalette.Sun, n: "Barren Land" },
+          sl: { c: cerPalette.hcAqua, n: "Shrub Land" },
+          vb: { c: cerPalette.hcRed, n: "Vegetative Barren" },
+          f: { c: cerPalette.hcGreen, n: "Forests" },
+          ac: { c: cerPalette.hcPink, n: "Agricultural Cropland" },
+          w: { c: cerPalette.hcLightBlue, n: "Water / Wetlands" },
+          t: {
+            c: cerPalette.hcPurple,
+            n: "Tundra / Native Prairie / Parks",
+          },
+          al: { c: cerPalette.Ocean, n: "Agricultural Land" },
+          pa: { c: cerPalette.Forest, n: "Protected Area" },
+          ndl: { c: cerPalette.Flame, n: "Non-developed Land" },
           null: { c: cerPalette["Dim Grey"], n: "Not provided" },
         },
         a: {

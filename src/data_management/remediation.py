@@ -53,7 +53,8 @@ def applyContaminantIds(df, cont, colName="Contaminants at the Site"):
     values = {en.strip(): str(i) for i, en in zip(cont['id'], cont['e'])}
     newCol = []
     for what in df[colName]:
-        if str(what) != "nan":
+        what = str(what)
+        if ";" in what:
             what = what.split(";")
             what = [x.strip() for x in what]
             what = [values[x] for x in what]
@@ -69,12 +70,12 @@ def process_remediation(sql=False, companies=False, test=False):
                   script_dir=script_dir,
                   query="remediation.sql",
                   db="dsql22cap")
-    
+
     contaminants = get_data(sql=sql,
-                            script_dir=script_dir, 
-                            query="remediationContaminants.sql", 
+                            script_dir=script_dir,
+                            query="remediationContaminants.sql",
                             db="dsql22cap")
-    
+
     df = applyContaminantIds(df, contaminants)
 
     for delete in ['Pipeline Name',
@@ -88,28 +89,40 @@ def process_remediation(sql=False, companies=False, test=False):
     for stringCol in ['Applicable Land Use',
                       'Site Status',
                       'Activity At Time']:
-
-        df[stringCol] = [str(x) for x in df[stringCol]]
+        df[stringCol] = [str(x).strip() for x in df[stringCol]]
 
     # add id's
-    landUseId = {"protected area": "pa",
-                 "non-developed land": "ndl",
-                 "agricultural land": "al",
-                 "developed land - residential": "dlr",
-                 "developed land - small commercial": "dls",
-                 "developed land - industrial": "dli"}
+    landUseId = {
+        "developed land - industrial": "dli",
+        "developed land - small commercial": "dls",
+        "developed land - residential": "dlr",
+        "barren land": "bl",
+        "shrub land": "sl",
+        "vegetative barren": "vb",
+        "forests": "f",
+        "Agricultural Cropland": "ac",
+        "water / wetlands": "w",
+        "Tundra / Native Prairie / Parks": "t",
+        "agricultural land": "al",
+        "protected area": "pa",
+        "non-developed land": "ndl"
+        }
 
-    statusIds = {"monitored": "m",
-                 "post-remediation monitoring": "prm",
-                 "facility monitoring": "fm",
-                 "ongoing remediation": "or",
-                 "site assessment": "sa",
-                 "risk managed": "rm"}
+    statusIds = {
+        "monitored": "m",
+        "post-remediation monitoring": "prm",
+        "facility monitoring": "fm",
+        "ongoing remediation": "or",
+        "site assessment": "sa",
+        "risk managed": "rm"
+        }
 
-    activityIds = {"maintenance": "m",
-                   "operation": "o",
-                   "construction": "c",
-                   "abandonment": "a"}
+    activityIds = {
+        "maintenance": "m",
+        "operation": "o",
+        "construction": "c",
+        "abandonment": "a"
+        }
 
     df = idify(df, "Applicable Land Use", landUseId)
     df = idify(df, "Province", "region")
@@ -187,5 +200,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(False) # , companies=["NOVA Gas Transmission Ltd."])
+    df = process_remediation(True)  # , companies=["NOVA Gas Transmission Ltd."])
 
