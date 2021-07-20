@@ -21,7 +21,7 @@
     "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
     "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
     "test-frontend": "ava",
-    "requirements-txt": "sh ./src/data_management/npm_scripts/requirements.sh"
+    "save-conda-env": "sh ./src/data_management/npm_scripts/save-environment.sh"
   },
   "author": "Grant Moss",
   "license": "MIT",

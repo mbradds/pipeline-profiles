@@ -96,7 +96,7 @@ Sections being added:
 pipeline_profiles
 │   README.md (you are here!)
 │   server.js (express js server configuration for heroku)
-|   requirements.txt (conda python 3 environment used in ./src/data_management)
+|   environment.yml (cross platform conda python 3 environment used in ./src/data_management)
 │   webpack.common.js (functionality for creating clean ../dist folder in english and french)
 |   webpack.dev.js (webpack dev server functionality)
 |   webpack.prod.js (npm run build for minimized production files)
@@ -209,7 +209,7 @@ Several datasets are pulled directly from CER internal databases. A single pytho
 
 ### Have you set up the pipeline-profiles conda environment?
 
-It is highly recommended that you first create the conda python environment described in [requirements.txt](requirements.txt). The npm scripts for data updates expect a conda python environment called pipeline-profiles.
+It is highly recommended that you first create the conda python environment described in [environment.yml](environment.yml). The npm scripts for data updates expect a conda python environment called pipeline-profiles.
 
 Update datasets:
 

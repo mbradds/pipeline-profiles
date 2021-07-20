@@ -1,4 +1,5 @@
 #!/bin/bash
 eval "$(conda shell.bash hook)"
 conda activate pipeline-profiles
-conda list -e > requirements.txt
+conda env export --from-history > environment.yml
+conda deactivate
