@@ -14,9 +14,11 @@ script_dir = os.path.dirname(__file__)
 def getSql(sql=False, query='projects_regdocs.sql'):
     csvName = query.replace(".sql", ".csv")
     if sql:
+        print('reading sql '+query)
         df = execute_sql(os.path.join(script_dir, "queries"), query)
         df.to_csv('raw_data/'+csvName, index=False)
     else:
+        print('reading local csv '+csvName)
         df = pd.read_csv('raw_data/'+csvName)
     return df
 
@@ -206,8 +208,8 @@ def conditionMetaData(df, folder_name, projectNames):
     return df_all, meta
 
 
-def add_links(df):
-    df_links = getSql()
+def add_links(df, sql):
+    df_links = getSql(sql)
     l = {}
     for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
         l[name] = folder
@@ -228,7 +230,7 @@ def add_links(df):
     return df
 
 
-def idify_conditions(df, sql=False):
+def idify_conditions(df, sql):
 
     def listId(df, column, toReplace):
         newThemes = []
@@ -282,6 +284,7 @@ def idify_conditions(df, sql=False):
 
 
 def process_conditions(remote=False,
+                       sql=False,
                        nonStandard=True,
                        company_names=False,
                        companies=False,
@@ -332,11 +335,11 @@ def process_conditions(remote=False,
 
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
 
-    df = add_links(df)
+    df = add_links(df, sql)
     if company_names:
         print(get_company_names(df['Company']))
 
-    df, regionReplace, projectNames = idify_conditions(df)
+    df, regionReplace, projectNames = idify_conditions(df, sql)
     regions_map = import_simplified(regionReplace)
 
     if companies:
@@ -387,5 +390,5 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, regions, mapMeta, meta = process_conditions(remote=True, save=True)
+    df, regions, mapMeta, meta = process_conditions(remote=True, save=True, sql=True)
     print('completed conditions!')

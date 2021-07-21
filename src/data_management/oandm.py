@@ -238,5 +238,5 @@ def process_oandm(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=False, test=False)  # , companies=['NOVA Gas Transmission Ltd.'])
+    df = process_oandm(remote=False, test=True, companies=['NOVA Gas Transmission Ltd.'])
     print('completed oandm!')

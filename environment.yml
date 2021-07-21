@@ -1,0 +1,14 @@
+name: pipeline-profiles
+channels:
+  - defaults
+dependencies:
+  - urllib3
+  - spyder==5.0.0
+  - openpyxl
+  - pandas=1.1.3
+  - jinja2
+  - sqlalchemy=1.3.19
+  - geopandas
+  - xlrd
+  - pyodbc
+prefix: C:\Users\mossgran\Anaconda3\envs\pipeline-profiles

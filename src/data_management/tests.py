@@ -34,7 +34,7 @@ class TestUtil(unittest.TestCase):
         self.assertEqual(meta["testTie"], "4 & 8")
 
 
-# class TestNovaIncidents(unittest.TestCase):
+# class TestIncidents(unittest.TestCase):
 #     df, volume, meta = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
 
 #     def countIncidentType(self, iType, df):
@@ -77,7 +77,7 @@ class TestUtil(unittest.TestCase):
 #         self.assertEqual(len(year), 8)
 
 
-# class NovaTotalConditions(unittest.TestCase):
+# class TestConditions(unittest.TestCase):
 #     company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
 
 #     def testCompanyData(self):
@@ -103,7 +103,7 @@ class TestUtil(unittest.TestCase):
 #         self.assertEqual(red_deer.loc[0, "Closed"], 35)
 
 
-class NovaTraffic(unittest.TestCase):
+class TrafficTest(unittest.TestCase):
     traffic, df = process_throughput(save=False, sql=False, commodity='gas', frequency='monthly', companies=['NOVA Gas Transmission Ltd.'])
 
     def testMeta(self):
@@ -125,6 +125,8 @@ class NovaTraffic(unittest.TestCase):
         self.assertEqual(point[2]["id"], "cap")
         self.assertEqual(point[2]["data"][0], 6.62)
 
+# TODO: this is a good model for testing datasets. Apply this to other data
+
 
 class OandmTest(unittest.TestCase):
     oandm = process_oandm(remote=False, test=True, companies=['NOVA Gas Transmission Ltd.'])
@@ -140,6 +142,13 @@ class OandmTest(unittest.TestCase):
         self.assertEqual(self.oandm["meta"]["iceRinks"], 95)
         self.assertEqual(self.oandm["meta"]["landRequired"], 14)
         self.assertEqual(self.oandm["meta"]["nearby"], ['Fort McMurray AB', 'Manning AB', 'Keg River AB'])
+
+    def testData(self):
+        self.assertEqual(self.oandm["data"]["id"]["year"][0], 2015)
+        self.assertEqual(self.oandm["data"]["id"]["data"][0]["id"], "n")
+        self.assertEqual(self.oandm["data"]["id"]["data"][1]["id"], "y")
+        self.assertEqual(self.oandm["data"]["id"]["data"][0]["data"][0], 41)
+        self.assertEqual(self.oandm["data"]["id"]["data"][1]["data"][0], 45)
 
 
 if __name__ == "__main__":

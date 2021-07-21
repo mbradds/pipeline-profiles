@@ -10,12 +10,12 @@ script_dir = os.path.dirname(__file__)
 TODO:
     - add get_data from util to other py scripts
     - raise error after id's are applied if a record is longer
-      than the max length of id's'
+      than the max length of id's' (done)
     - create a general purpose function for thisCompanyData creation
       with data, meta, build parameters
 '''
 
-# all data before August 15, 2018 is unreliable, and should be cut out
+# all data before August 15, 2018 is unreliable and should be cut out
 minDate = datetime.datetime(2018, 9, 15)
 
 
@@ -129,7 +129,6 @@ def process_remediation(sql=False, companies=False, test=False):
     df = idify(df, "Site Status", statusIds)
     df = idify(df, "Activity At Time", activityIds)
 
-    # print(set(list(df['Activity At Time'])))
     df['Final Submission Date'] = pd.to_datetime(df['Final Submission Date'])
     df['y'] = df['Final Submission Date'].dt.year
 
@@ -200,5 +199,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(True)  # , companies=["NOVA Gas Transmission Ltd."])
+    df = process_remediation(sql=True)  # , companies=["NOVA Gas Transmission Ltd."])
 
