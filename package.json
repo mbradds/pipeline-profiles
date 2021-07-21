@@ -21,7 +21,9 @@
     "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
     "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
     "test-frontend": "ava",
-    "save-conda-env": "sh ./src/data_management/npm_scripts/save-environment.sh"
+    "save-conda-env": "sh ./src/data_management/npm_scripts/save-environment.sh",
+    "set-remote-work": "git remote set-url origin https://CER-REC@dev.azure.com/CER-REC/Pipeline%20Information/_git/pipeline-profiles",
+    "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git"
   },
   "author": "Grant Moss",
   "license": "MIT",
