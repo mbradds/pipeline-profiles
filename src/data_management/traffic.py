@@ -59,8 +59,6 @@ def addIds(df):
     df['Key Point'] = df['Key Point'].replace(points)
     return df
 
-# TODO: use the idify method here!
-
 
 def applyTradeId(df):
     trade = {"intracanada": "in",
@@ -117,7 +115,7 @@ def fixKeyPoint(df):
     return df
 
 
-def get_data(test, sql=False, query='throughput_gas_monthly.sql'):
+def get_data(sql=False, query='throughput_gas_monthly.sql'):
 
     csvName = query.split(".")[0]+'.csv'
     if sql:
@@ -276,7 +274,7 @@ def getDefaultPoint(company):
         return None
 
 
-def process_throughput(test=False,
+def process_throughput(save=False,
                        sql=False,
                        commodity='gas',
                        companies=False,
@@ -295,7 +293,7 @@ def process_throughput(test=False,
         else:
             query = 'throughput_gas.sql'
 
-        df = get_data(test, sql, query)
+        df = get_data(sql, query)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
 
@@ -304,7 +302,7 @@ def process_throughput(test=False,
 
     else:
         query = 'throughput_oil_monthly.sql'
-        df = get_data(test, sql, query)
+        df = get_data(sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df['Trade Type'] = [str(p).strip() for p in df['Product']]
@@ -316,7 +314,7 @@ def process_throughput(test=False,
     df = fixKeyPoint(df)
     df = addIds(df)
     df = applyTradeId(df)
-    points = get_data(False, sql, 'key_points.sql')
+    points = get_data(sql, 'key_points.sql')
 
     df['Date'] = pd.to_datetime(df['Date'])
 
@@ -443,14 +441,15 @@ def process_throughput(test=False,
 
             thisCompanyData["traffic"] = point_data
             thisCompanyData['meta'] = meta
-            if not test:
+            if save:
+                print('saving!')
                 with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp, default=str)
         else:
             # there is no traffic data
             thisCompanyData['traffic'] = {}
             thisCompanyData['meta'] = {"companyName": company, "build": False}
-            if not test:
+            if save:
                 with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
@@ -464,6 +463,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
+    traffic, df = process_throughput(save=True, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(save=True, sql=False, commodity='oil')
     print('completed throughput!')

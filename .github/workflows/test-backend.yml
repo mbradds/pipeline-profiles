@@ -21,6 +21,7 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         $CONDA/bin/conda env update --file environment.yml --name pipeline-profiles
+        conda init bash
         conda activate pipeline-profiles
         cd src/data_management
         python tests.py

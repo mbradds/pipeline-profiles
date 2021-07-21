@@ -3,17 +3,7 @@ from util import company_rename, most_common, strip_cols, idify, get_company_lis
 import ssl
 import json
 from datetime import datetime
-# from dateutil.relativedelta import relativedelta
 ssl._create_default_https_context = ssl._create_unverified_context
-
-'''
-ideas:
-    -total number of integrity digs highlighted
-    -top 3 nearest populated centers highlighted
-    -total land needed relative to something
-    -group o and m categories by year before front end. Test the sizes!
-
-'''
 
 
 def listify(series):
@@ -130,14 +120,14 @@ def metadata(df, company):
         thisCompanyMeta["nearby"] = None
 
     thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
-    thisCompanyMeta["landRequired"] = int(df['New Land Area Needed'].sum())
-    thisCompanyMeta["iceRinks"] = int(round((thisCompanyMeta["landRequired"]*2.471)/0.375, 0))
+    newLand = df['New Land Area Needed'].sum()
+    thisCompanyMeta["landRequired"] = int(newLand)
+    thisCompanyMeta["iceRinks"] = int(round((newLand*2.471)/0.375, 0))
     thisCompanyMeta["company"] = company
     return thisCompanyMeta
 
 
 def column_insights(df):
-    # df['event duration'] = [(t1-t0).days for t1, t0 in zip(df['Completion Date'], df['Commencement Date'])]
     df = idify(df, "Province/Territory", "region")
     return df
 
@@ -243,10 +233,10 @@ def process_oandm(remote=False, companies=False, test=False):
             if not test:
                 with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
-    return df
+    return thisCompanyData
 
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=True, test=False)
+    df = process_oandm(remote=False, test=False)  # , companies=['NOVA Gas Transmission Ltd.'])
     print('completed oandm!')
