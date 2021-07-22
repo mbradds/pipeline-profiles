@@ -65,6 +65,7 @@
   - [Python unit tests (back end)](<#python-unit-tests-(back-end)>)
   - [AVA unit tests (front end)](<#ava-unit-tests-(front-end)>)
 - [Dependencies](#dependencies)
+- [I need help list](#i-need-help-list)
 - [TODO list](#todo-list)
 
 ## Introduction
@@ -196,6 +197,21 @@ This runs webpack.prod.js and emits minified bundles in `/dist`
 Note: `npm run build && npm start` runs the express server using the production files. Test this on all major browsers prior to new releases.
 
 Create a new release on GitHub and add the compressed dist folder. Ask the web team to dump the latest production files onto dweb7 and add the new dist files/changes before sending in a production web request.
+
+### Remotes
+
+There are three remote repositories.
+
+1. **GitHub** This should continue to be the main repo for my development + managing other contributors pull requests.
+2. **Azure Dev Ops** This is the main repo for "work" and will eventually serve as the main ci/cd pipeline for deployment once the CER can handle such things.
+3. **Heroku** The heroku git client isnt allowed on CER infrastructure, so I'll continue to manage the heroku deployments.
+
+I've added some convenient npm scripts for switching remotes:
+
+```bash
+npm run switch-remote-personal
+npm run switch-remote-work
+```
 
 ## Quick start for updating data
 
@@ -532,7 +548,7 @@ npm run test-frontend
 
 ### Dev Dependencies
 
-- [ava](https://www.npmjs.com/package/ava)(runs the unit tests in `test/test.js`)
+- [ava](https://www.npmjs.com/package/ava) (runs the unit tests in `test/test.js`)
 - [@babel/core](https://babeljs.io/docs/en/babel-core)
 - [@babel/plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)
 - [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
@@ -552,7 +568,6 @@ npm run test-frontend
 - [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 - [webpack-cli](https://www.npmjs.com/package/webpack-cli)
 - [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)
-- [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals)
 
 Note: the html-webpack-plugin and handlebars-loader is instrumental for this project. Older versions of this repo only had two templates, one for english and one for french. As the project grew, I needed a tempalte engine. A good example of this need is the apportionment section. There are only around 5 oil pipeline profiles with apportionment data (there could be more in the future though!) so i dont want to include the apportionment html in 20 profiles that dont need it, and then hide/show divs conditionally after the dom is ready. This probably causes layout thrashing. With handlebars, i can conditionally render components/sections based on the logic in `src/profileManager.js`. Even better, with handlebars-loader, one html is compiled for each profile (web team can only handle html) and html-webpack-plugin still injects all the scripts.
 
@@ -569,19 +584,35 @@ Making sure that all dependencies are updated and both package.json and package-
 2. `ncu -u`
 3. `npm install`
 
+## I need help list
+
+Here is a list of things I'm stuck on and potentially need help with!
+
+1. **GitHub action for backend tests**
+
+I've got an action started for setting up the pipeline-profiles conda environment and running the python units tests but its not working. I've disabled the action on GitHub. The yml file is here: `.github/test-backend.yml`
+
+2. **Webpack runtime chunk**
+
+It looks like a runtime chunk is required based on the webpack pattern I've set up. Each profile has a runtime chunk that serves as the main entrypoint for the other chunks. I would like to avoid this if possible!
+
+3. **vendor chunk structure**
+
+Right now, I've got two vendor chunks. One for highcharts and one for leaflet. Should these be combined into one large vendor chunk?
+
+4. **CER databases or Open Gov?**
+
+The core datasets are all pulled directly from Open Gov. I need to do this to maintain consistency with Open Gov, but connecting to CER databases would allow for really cool daily updates once the ci/cd pipeline is ready. This is going to take some time to migrate!
+
 ## TODO list
 
 Take a look at the issues tab for a more up to date list. I dont update this section of the readme anymore.
 
 - Include documentation and instructions for getting regdocs links from the internal cer database.
-- Include documentation on updating traffic, apportionment, and oandm data sets.
 - Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
 - Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.common.js` for each corporate entity across the entire project.
-- Modify public path in .png file-loader so that image folder doesnt need to be two levels up.
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
-- Update version in package.json
 - Rename default branch to main
-- Try to consolidate js files in `src/entry` into one index.js file.
 - Add better consistency to shared columns across datasets. Eg, lat/long should follow this pattern: [{loc: [lat, -long]}] across all datasets.
 - Look into a monorepo structure for seperating the back end code (python+sql) and front end code (JS, Handlebars, CSS).
 
