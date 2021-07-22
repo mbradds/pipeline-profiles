@@ -32,18 +32,15 @@ body {
 .disclaimer-style {
   line-height: 1.25em !important;
 }
-
 .nearby-title {
   padding-left: 0px;
 }
-
 .center-footer {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5px;
 }
-
 .count-disclaimer {
   padding: 4px;
 }
@@ -65,11 +62,6 @@ Styles for conditions compliance dashboard
   font-weight: bold;
   color: #42464b;
   text-align: center;
-}
-.conditions-summary-border {
-  border-style: solid;
-  border-color: #8c8c96;
-  border-radius: 5px;
 }
 .conditions-table {
   font-family: Arial;
@@ -131,12 +123,6 @@ Styles for incidents dashboard
   font-size: 16px !important;
   line-height: 1.4375 !important;
 }
-#incidents-near-me {
-  min-height: 100px;
-}
-#nearby-flag {
-  margin-bottom: -15px;
-}
 .center-stuff {
   height: 50px;
   display: flex;
@@ -145,11 +131,6 @@ Styles for incidents dashboard
 }
 .map-tooltip tr {
   border-bottom: 1pt solid #dcdcdc;
-}
-.section-border {
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
 }
 .dashboard-title {
   float: left;
@@ -214,8 +195,10 @@ responsive style options
   /* h2 {
     color: orange;
   } */
-  .tablinks {
-    height: 110px !important;
+  #conditions-nav-group .btn-group .btn-default {
+    height: 120px !important;
+    font-size: 13px;
+    padding: 4px !important;
   }
   /* traffic */
   #traffic-container {
