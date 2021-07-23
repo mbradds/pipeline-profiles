@@ -229,46 +229,72 @@ const en = {
         fourteen:
           "<strong>Serious Injury (CER or Transportation Safety Board)</strong> - Any serious injury involving employees, contractors or members of the public related to the construction, operation or maintenance of pipelines.",
       },
-      countRadio: "Incident Count",
-      volRadio: "Incident Volume",
-      mapBtn: "Incident Map",
-      trendBtn: "Incident Trends",
+      dashboard: {
+        id: "incidents",
+        mapPillIds: ["substance-bar", "status-bar", "year-bar", "province-bar"],
+        chartPillIds: [
+          "substance-trend",
+          "status-trend",
+          "what-trend",
+          "why-trend",
+          "province-trend",
+        ],
+        hasRadio: true,
+        countRadio: "Incident Count",
+        volRadio: "Incident Volume",
+        mapBtn: "Incident Map",
+        trendBtn: "Incident Trends",
+        nearby: {
+          type: "incidents",
+          header: "Are there any incidents near me?",
+          selectRange: "Select range (100km):",
+          find: "Find Incidents within 100km",
+          refill: "Refill Map Bubbles",
+        },
+        source: {
+          sourceTitle: sourceAndDescEn,
+          dataSourceTitle: dataSourceEn,
+          descriptionTitle: descriptionEn,
+          sourceLink: `<a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>`,
+          description:
+            "The above map displays the location of product release incidents that have occured on the pipeline system since 2008. The map defaults to show incidents as bubbles which are colored based on the substance released. Incidents on the map can be re-categorized based on the most recently available status of the CER's incident review, the year in which the incident was reported, and the province/territory where the incident occured. The incident map bubble can be switched to show the estimated volume of product released, with larger map bubbles showing larger release volumes relative to other product releases on the system. The incident data can also be toggled to display a stacked bar chart of incidents over time by clicking on the incident trends button above the map. The stacked bars dispaly the number of product release incidents by year, with bar color segments corresponding to the various products released. Similiar to the map, incidents can be re-categorized by clicking on the side buttons to view a breakdown of incidents by status, what happened, why it happened, and province/territory.",
+          openGov: openGovLink(
+            "https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
+            "en"
+          ),
+        },
+      },
       viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
-      nearby: {
-        type: "incidents",
-        header: "Are there any incidents near me?",
-        selectRange: "Select range (100km):",
-        find: "Find Incidents within 100km",
-        refill: "Refill Map Bubbles",
-      },
-      source: {
-        sourceTitle: sourceAndDescEn,
-        dataSourceTitle: dataSourceEn,
-        descriptionTitle: descriptionEn,
-        sourceLink: `<a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>`,
-        description:
-          "The above map displays the location of product release incidents that have occured on the pipeline system since 2008. The map defaults to show incidents as bubbles which are colored based on the substance released. Incidents on the map can be re-categorized based on the most recently available status of the CER's incident review, the year in which the incident was reported, and the province/territory where the incident occured. The incident map bubble can be switched to show the estimated volume of product released, with larger map bubbles showing larger release volumes relative to other product releases on the system. The incident data can also be toggled to display a stacked bar chart of incidents over time by clicking on the incident trends button above the map. The stacked bars dispaly the number of product release incidents by year, with bar color segments corresponding to the various products released. Similiar to the map, incidents can be re-categorized by clicking on the side buttons to view a breakdown of incidents by status, what happened, why it happened, and province/territory.",
-        openGov: openGovLink(
-          "https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
-          "en"
-        ),
-      },
     },
     remediation: {
-      nearby: {
-        type: "remediation",
-        header: "Are there any contaminated sites near me?",
-        selectRange: "Select range (100km):",
-        find: "Find sites within 100km",
-        refill: "Refill Map Bubbles",
-      },
-      source: {
-        sourceTitle: sourceAndDescEn,
-        dataSourceTitle: dataSourceEn,
-        descriptionTitle: descriptionEn,
-        sourceLink: "Coming soon!",
-        description: "Coming soon!",
-        openGov: false,
+      dashboard: {
+        id: "remediation",
+        mapPillIds: ["rem-water-bar", "rem-status-bar", "rem-year-bar", "rem-province-bar"],
+        chartPillIds: [
+          "rem-water-trend",
+          "rem-status-trend",
+          "rem-use-trend",
+          "rem-activity-trend",
+          "rem-province-trend",
+        ],
+        hasRadio: false,
+        mapBtn: "Contaminated Sites Map",
+        trendBtn: "Contaminated Sites Trends",
+        nearby: {
+          type: "remediation",
+          header: "Are there any contaminated sites near me?",
+          selectRange: "Select range (100km):",
+          find: "Find sites within 100km",
+          refill: "Refill Map Bubbles",
+        },
+        source: {
+          sourceTitle: sourceAndDescEn,
+          dataSourceTitle: dataSourceEn,
+          descriptionTitle: descriptionEn,
+          sourceLink: "Coming soon!",
+          description: "Coming soon!",
+          openGov: false,
+        },
       },
     },
     oandm: {
@@ -481,46 +507,72 @@ const fr = {
         fourteen:
           "<strong>Blessure grave (Régie ou Bureau de la sécurité des transports)</strong>- Toute blessure grave causée à un employé, un entrepreneur ou un membre du public en rapport avec la construction, l’exploitation ou l’entretien d’un pipeline.",
       },
-      countRadio: "Nombre d'incidents",
-      volRadio: "Volume des incidents",
-      mapBtn: "Carte des incidents",
-      trendBtn: "Tendance des incidents",
+      dashboard: {
+        id: "incidents",
+        mapPillIds: ["substance-bar", "status-bar", "year-bar", "province-bar"],
+        chartPillIds: [
+          "substance-trend",
+          "status-trend",
+          "what-trend",
+          "why-trend",
+          "province-trend",
+        ],
+        hasRadio: true,
+        countRadio: "Nombre d'incidents",
+        volRadio: "Volume des incidents",
+        mapBtn: "Carte des incidents",
+        trendBtn: "Tendance des incidents",
+        nearby: {
+          type: "incidents",
+          header: "Y a-t-il des incidents près de chez moi?",
+          selectRange: "Sélectionner une plage (100km) :",
+          find: "Rechercher les incidents dans un rayon de 100km",
+          refill: "Remplir les bulles de carte",
+        },
+        source: {
+          sourceTitle: sourceAndDescFr,
+          dataSourceTitle: dataSourceFr,
+          descriptionTitle: descriptionFr,
+          sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Gouvernement ouvert</a>`,
+          description:
+            "La carte ci-dessus montre l’emplacement des déversements de produit survenus sur le réseau pipelinier depuis 2008. Par défaut, les incidents sont affichés sous forme de bulles qui sont colorées en fonction de la substance rejetée. Les incidents sur la carte peuvent aussi être classés en fonction de l’état d’avancement de l’examen de la Régie, de l’année à laquelle l’incident a été signalé et de la province ou du territoire où l’incident s’est produit. Les bulles de la carte des incidents peuvent également indiquer le volume estimatif des déversements, les bulles plus grandes correspondant à des volumes plus élevés. Il est également possible de présenter les données sur les incidents au fil du temps sous forme de graphique à barres empilées. Pour ce faire, il suffit de cliquer sur le bouton Tendance des incidents situé au-dessus de la carte. Les barres empilées représentent le nombre d’incidents de déversement de produit par année, et les segments de couleur des barres correspondent aux divers produits déversés. Comme sur la carte, les incidents peuvent être reclassés en cliquant sur les boutons latéraux pour afficher la répartition des incidents selon le statut, ce qui s’est produit et pourquoi, et la province ou le territoire touché.",
+          openGov: openGovLink(
+            "https://ouvert.canada.ca/data/fr/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
+            "fr"
+          ),
+        },
+      },
       viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" target="_blank" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
-      nearby: {
-        type: "incidents",
-        header: "Y a-t-il des incidents près de chez moi?",
-        selectRange: "Sélectionner une plage (100km) :",
-        find: "Rechercher les incidents dans un rayon de 100km",
-        refill: "Remplir les bulles de carte",
-      },
-      source: {
-        sourceTitle: sourceAndDescFr,
-        dataSourceTitle: dataSourceFr,
-        descriptionTitle: descriptionFr,
-        sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Gouvernement ouvert</a>`,
-        description:
-          "La carte ci-dessus montre l’emplacement des déversements de produit survenus sur le réseau pipelinier depuis 2008. Par défaut, les incidents sont affichés sous forme de bulles qui sont colorées en fonction de la substance rejetée. Les incidents sur la carte peuvent aussi être classés en fonction de l’état d’avancement de l’examen de la Régie, de l’année à laquelle l’incident a été signalé et de la province ou du territoire où l’incident s’est produit. Les bulles de la carte des incidents peuvent également indiquer le volume estimatif des déversements, les bulles plus grandes correspondant à des volumes plus élevés. Il est également possible de présenter les données sur les incidents au fil du temps sous forme de graphique à barres empilées. Pour ce faire, il suffit de cliquer sur le bouton Tendance des incidents situé au-dessus de la carte. Les barres empilées représentent le nombre d’incidents de déversement de produit par année, et les segments de couleur des barres correspondent aux divers produits déversés. Comme sur la carte, les incidents peuvent être reclassés en cliquant sur les boutons latéraux pour afficher la répartition des incidents selon le statut, ce qui s’est produit et pourquoi, et la province ou le territoire touché.",
-        openGov: openGovLink(
-          "https://ouvert.canada.ca/data/fr/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
-          "fr"
-        ),
-      },
     },
     remediation: {
-      nearby: {
-        type: "remediation",
-        header: "Are there any contaminated sites near me?",
-        selectRange: "Sélectionner une plage (100km) :",
-        find: "Find sites within 100km",
-        refill: "Remplir les bulles de carte",
-      },
-      source: {
-        sourceTitle: sourceAndDescFr,
-        dataSourceTitle: dataSourceFr,
-        descriptionTitle: descriptionFr,
-        sourceLink: "Coming soon!",
-        description: "Coming soon!",
-        openGov: false,
+      dashboard: {
+        id: "remediation",
+        mapPillIds: ["rem-water-bar", "rem-status-bar", "rem-year-bar", "rem-province-bar"],
+        chartPillIds: [
+          "rem-water-trend",
+          "rem-status-trend",
+          "rem-use-trend",
+          "rem-activity-trend",
+          "rem-province-trend",
+        ],
+        hasRadio: false,
+        mapBtn: "Contaminated Sites Map",
+        trendBtn: "Contaminated Sites Trends",
+        nearby: {
+          type: "remediation",
+          header: "Are there any contaminated sites near me?",
+          selectRange: "Sélectionner une plage (100km) :",
+          find: "Find sites within 100km",
+          refill: "Remplir les bulles de carte",
+        },
+        source: {
+          sourceTitle: sourceAndDescFr,
+          dataSourceTitle: dataSourceFr,
+          descriptionTitle: descriptionFr,
+          sourceLink: "Coming soon!",
+          description: "Coming soon!",
+          openGov: false,
+        },
       },
     },
     oandm: {

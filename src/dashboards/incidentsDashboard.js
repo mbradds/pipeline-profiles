@@ -141,7 +141,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       );
       const trends = incidentTimeSeries(field, filters);
       // user selection to show volume or incident frequency
-      const volumeBtn = document.getElementById("incident-volume-btn");
+      const volumeBtn = document.getElementById("incidents-volume-btn");
       document
         .getElementById("inline-radio")
         .addEventListener("click", (event) => {
@@ -164,7 +164,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       }
 
       // user selection to show map or trends
-      const countBtn = document.getElementById("incident-count-btn");
+      const countBtn = document.getElementById("incidents-count-btn");
       thisMap.switchDashboards(bars, countBtn, volumeBtn);
 
       // user selection for finding nearby incidents

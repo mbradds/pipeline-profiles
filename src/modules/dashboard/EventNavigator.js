@@ -427,7 +427,12 @@ export class EventNavigator {
     const height = this.fixedPillHeight
       ? this.fixedPillHeight
       : this.pillHeight;
-    document.getElementById(div).style.height = `${height}px`;
+
+    const pillSelect = document.getElementById(div);
+    pillSelect.style.height = `${height}px`;
+    if (this.barList.length !== 0) {
+      pillSelect.classList.add("mrgn-tp-sm");
+    }
     if (this.data) {
       this.prepareData(barName);
     }

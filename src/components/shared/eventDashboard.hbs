@@ -1,29 +1,31 @@
   <div class="row">
-    <div class="col-md-12" id="incidents-dashboard">
+    <div class="col-md-12" id="{{text.id}}-dashboard">
       <div class="plains_disclaimer"></div>
-      <h3 class="dashboard-title" id="incidents-dashboard-title"></h3>
-      <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
-        <form>
-          <label for="incident-count-btn" class="radio-inline">
-            <input
-              id="incident-count-btn"
-              type="radio"
-              name="type"
-              value="frequency"
-              checked="checked"
-            />
-            {{text.countRadio}}</label>
-          <label for="incident-volume-btn" class="radio-inline">
-            <input
-              id="incident-volume-btn"
-              type="radio"
-              name="type"
-              value="volume"
-            />
-            {{text.volRadio}}</label>
-        </form>
-      </div>
-      <div class="btn-group btn-group-justified" id="incidents-view-type">
+      <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
+      {{#if text.hasRadio}}
+        <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
+            <form>
+            <label for="{{text.id}}-count-btn" class="radio-inline">
+                <input
+                id="{{text.id}}-count-btn"
+                type="radio"
+                name="type"
+                value="frequency"
+                checked="checked"
+                />
+                {{text.countRadio}}</label>
+            <label for="{{text.id}}-volume-btn" class="radio-inline">
+                <input
+                id="{{text.id}}-volume-btn"
+                type="radio"
+                name="type"
+                value="volume"
+                />
+                {{text.volRadio}}</label>
+            </form>
+        </div>
+      {{/if}}
+      <div class="btn-group btn-group-justified" id="{{text.id}}-view-type">
         <div class="btn-group">
           <button type="button" class="btn btn-default active" value="map">
             {{text.mapBtn}}
@@ -37,33 +39,30 @@
       </div>
       <div class="row mrgn-tp-md">
         <div class="col-md-8 col-sm-8 col-xs-12">
-          <div id="incidents-map"></div>
+          <div id="{{text.id}}-map"></div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
-          <div class="event-filter-nav" id="substance-bar"></div>
-          <div class="event-filter-nav mrgn-tp-sm" id="status-bar"></div>
-          <div class="event-filter-nav mrgn-tp-sm" id="year-bar"></div>
-          <div class="event-filter-nav mrgn-tp-sm" id="province-bar"></div>
+            {{#each text.mapPillIds}}
+                <div class="event-filter-nav" id="{{this}}"></div>
+            {{/each}}
         </div>
       </div>
-      <div id="incidents-time-series-section" class="profile-hide">
+      <div id="{{text.id}}-time-series-section" class="profile-hide">
         <div class="row">
           <div class="col-md-9 col-sm-9">
-            <div class="time-series" id="incidents-time-series"></div>
+            <div class="time-series" id="{{text.id}}-time-series"></div>
           </div>
           <div class="col-md-3 col-sm-3 event-navigator">
-            <div class="event-filter-nav" id="substance-trend"></div>
-            <div class="event-filter-nav mrgn-tp-sm" id="status-trend"></div>
-            <div class="event-filter-nav mrgn-tp-sm" id="what-trend"></div>
-            <div class="event-filter-nav mrgn-tp-sm" id="why-trend"></div>
-            <div class="event-filter-nav mrgn-tp-sm" id="province-trend"></div>
+            {{#each text.chartPillIds}}
+                <div class="event-filter-nav" id="{{this}}"></div>
+            {{/each}}
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div
               class="alert alert-info disclaimer-style"
-              id="trend-definitions-incidents"
+              id="trend-definitions-{{text.id}}"
             ></div>
           </div>
         </div>
