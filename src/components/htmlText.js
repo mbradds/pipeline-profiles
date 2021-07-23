@@ -113,6 +113,12 @@ const en = {
       oandm: "Operations &#38; Maintenance Activities",
       remediation: "Contaminated Sites &#38; Remediation",
     },
+    updated: {
+      conditions: "Section updated July 2021",
+      incidents: "Section updated July 2021",
+      oandm: "Section updated July 2021",
+      remediation: "Section updated July 2021",
+    },
     conditions: {
       p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
       p2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
@@ -248,21 +254,25 @@ const en = {
         ),
       },
     },
-    nearbyRemediation: {
-      type: "remediation",
-      header: "Are there any contaminated sites near me?",
-      selectRange: "Select range (100km):",
-      find: "Find sites within 100km",
-      refill: "Refill Map Bubbles",
+    remediation: {
+      nearby: {
+        type: "remediation",
+        header: "Are there any contaminated sites near me?",
+        selectRange: "Select range (100km):",
+        find: "Find sites within 100km",
+        refill: "Refill Map Bubbles",
+      },
+      source: {
+        sourceTitle: sourceAndDescEn,
+        dataSourceTitle: dataSourceEn,
+        descriptionTitle: descriptionEn,
+        sourceLink: "Coming soon!",
+        description: "Coming soon!",
+        openGov: false,
+      },
     },
-    updated: {
-      conditions: "Section updated July 2021",
-      incidents: "Section updated July 2021",
-      oandm: "Section updated July 2021",
-      remediation: "Section updated July 2021",
-    },
-    sources: {
-      oandm: {
+    oandm: {
+      source: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
         descriptionTitle: descriptionEn,
@@ -272,14 +282,6 @@ const en = {
           "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "en"
         ),
-      },
-      remediation: {
-        sourceTitle: sourceAndDescEn,
-        dataSourceTitle: dataSourceEn,
-        descriptionTitle: descriptionEn,
-        sourceLink: "Coming soon!",
-        description: "Coming soon!",
-        openGov: false,
       },
     },
   },
@@ -348,6 +350,12 @@ const fr = {
       incidents: "Incidents signalés",
       oandm: "Operations &#38; Maintenance Activities",
       remediation: "Contaminated Sites &#38; Remediation",
+    },
+    updated: {
+      conditions: "Mise à jour juillet 2021",
+      incidents: "Mise à jour juillet 2021",
+      oandm: "Mise à jour juillet 2021",
+      remediation: "Mise à jour juillet 2021",
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
@@ -498,21 +506,25 @@ const fr = {
         ),
       },
     },
-    nearbyRemediation: {
-      type: "remediation",
-      header: "Are there any contaminated sites near me?",
-      selectRange: "Sélectionner une plage (100km) :",
-      find: "Find sites within 100km",
-      refill: "Remplir les bulles de carte",
+    remediation: {
+      nearby: {
+        type: "remediation",
+        header: "Are there any contaminated sites near me?",
+        selectRange: "Sélectionner une plage (100km) :",
+        find: "Find sites within 100km",
+        refill: "Remplir les bulles de carte",
+      },
+      source: {
+        sourceTitle: sourceAndDescFr,
+        dataSourceTitle: dataSourceFr,
+        descriptionTitle: descriptionFr,
+        sourceLink: "Coming soon!",
+        description: "Coming soon!",
+        openGov: false,
+      },
     },
-    updated: {
-      conditions: "Mise à jour juillet 2021",
-      incidents: "Mise à jour juillet 2021",
-      oandm: "Mise à jour juillet 2021",
-      remediation: "Mise à jour juillet 2021",
-    },
-    sources: {
-      oandm: {
+    oandm: {
+      source: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
         descriptionTitle: descriptionFr,
@@ -522,14 +534,6 @@ const fr = {
           "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "fr"
         ),
-      },
-      remediation: {
-        sourceTitle: sourceAndDescFr,
-        dataSourceTitle: dataSourceFr,
-        descriptionTitle: descriptionFr,
-        sourceLink: "Coming soon!",
-        description: "Coming soon!",
-        openGov: false,
       },
     },
   },
