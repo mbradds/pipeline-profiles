@@ -3,27 +3,27 @@
     <div class="col-md-12">
       <h3>{{text.safety.buttons.conditions}}</h3>
       <p class="small">{{text.safety.updated.conditions}}</p>
-      <p>{{text.safety.conditionsp1}}</p>
-      <p>{{text.safety.conditionsp2}}</p>
-      <p>{{text.safety.conditionsp3}}</p>
-      <p>{{text.safety.conditionsp4}}</p>
+      <p>{{text.safety.conditions.p1}}</p>
+      <p>{{text.safety.conditions.p2}}</p>
+      <p>{{text.safety.conditions.p3}}</p>
+      <p>{{text.safety.conditions.p4}}</p>
       <details>
-        <summary>{{text.safety.inProgress}}</summary>
-        <p>{{text.safety.inProgressLst.one}}</p>
+        <summary>{{text.safety.conditions.inProgress}}</summary>
+        <p>{{text.safety.conditions.inProgressLst.one}}</p>
         <ul class="lst-spcd">
-          <li>{{text.safety.inProgressLst.two}}</li>
-          <li>{{text.safety.inProgressLst.three}}</li>
-          <li>{{text.safety.inProgressLst.four}}</li>
-          <li>{{text.safety.inProgressLst.five}}</li>
-          <li>{{text.safety.inProgressLst.six}}</li>
+          <li>{{text.safety.conditions.inProgressLst.two}}</li>
+          <li>{{text.safety.conditions.inProgressLst.three}}</li>
+          <li>{{text.safety.conditions.inProgressLst.four}}</li>
+          <li>{{text.safety.conditions.inProgressLst.five}}</li>
+          <li>{{text.safety.conditions.inProgressLst.six}}</li>
         </ul>
       </details>
       <details class="mrgn-bttm-md">
-        <summary>{{text.safety.closed}}</summary>
-        <p>{{text.safety.closedLst.one}}</p>
+        <summary>{{text.safety.conditions.closed}}</summary>
+        <p>{{text.safety.conditions.closedLst.one}}</p>
         <ul class="lst-spcd">
-          <li>{{text.safety.closedLst.two}}</li>
-          <li>{{text.safety.closedLst.three}}</li>
+          <li>{{text.safety.conditions.closedLst.two}}</li>
+          <li>{{text.safety.conditions.closedLst.three}}</li>
         </ul>
       </details>
       <div id="conditions-dashboard">
@@ -43,7 +43,7 @@
                   id="in-progress-btn"
                 >
                   <div class="conditions-summary-title">
-                    {{text.safety.inProgressBtn}}
+                    {{text.safety.conditions.inProgressBtn}}
                   </div>
                   <div
                     class="conditions-summary-value"
@@ -59,7 +59,7 @@
                   id="closed-btn"
                 >
                   <div class="conditions-summary-title">
-                    {{text.safety.closedBtn}}
+                    {{text.safety.conditions.closedBtn}}
                   </div>
                   <div
                     class="conditions-summary-value"
@@ -75,7 +75,7 @@
                   id="no-location-btn"
                 >
                   <div class="conditions-summary-title">
-                    {{text.safety.noLocationBtn}}
+                    {{text.safety.conditions.noLocationBtn}}
                   </div>
                   <div
                     class="conditions-summary-value"
@@ -97,13 +97,13 @@
               class="alert alert-info profile-hide"
               id="no-location-info"
             ></div>
-            {{> shared/source text=text.safety.sources.conditions}}
+            {{> shared/source text=text.safety.conditions.source}}
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <p>{{text.safety.conditionsViz}}</p>
+          <p>{{text.safety.conditions.viz}}</p>
         </div>
       </div>
     </div>

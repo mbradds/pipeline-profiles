@@ -131,6 +131,7 @@ export async function mainRemediation(data, lang) {
   try {
     return buildDashboard();
   } catch (err) {
+    console.log(err)
     return loadChartError("remediation-dashboard", lang.dashboardError);
   }
 }

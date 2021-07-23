@@ -31,13 +31,8 @@
         <a
           href="mailto:remediation@cer-rec.gc.ca"
         >remediation@cer-rec.gc.ca</a>.</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12" id="remediation-dashboard">
-      <div class="plains_disclaimer"></div>
-      <div id="remediation-dynamic-text"></div>
-      <p>Contaminated sites must be remediated, which can be accomplished in
+        <div id="remediation-dynamic-text"></div>
+        <p>Contaminated sites must be remediated, which can be accomplished in
         several ways. Contaminated soil may be dug up and removed from the site
         to be disposed of, and contaminated groundwater could be extracted and
         treated to remove contaminants.
@@ -47,64 +42,8 @@
           make it more "real" for our audience. People will want to know what
           the CER/company is doing about all the contaminated soil.</i>
       </p>
-      <h3 class="dashboard-title" id="remediation-dashboard-title"></h3>
-      <div class="btn-group btn-group-justified" id="remediation-view-type">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default active" value="map">
-            Contaminated Site Map
-          </button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" value="trends">
-            Contaminated Site Trends
-          </button>
-        </div>
-      </div>
-      <div class="row mrgn-tp-md">
-        <div class="col-md-8 col-sm-8 col-xs-12">
-          <div id="remediation-map" class="leaflet-map"></div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
-          <div class="event-filter-nav" id="rem-water-bar"></div>
-          <div class="event-filter-nav mrgn-tp-sm" id="rem-status-bar"></div>
-          <div class="event-filter-nav mrgn-tp-sm" id="rem-year-bar"></div>
-          <div class="event-filter-nav mrgn-tp-sm" id="rem-province-bar"></div>
-        </div>
-      </div>
-      <div id="remediation-time-series-section" class="profile-hide">
-        <div class="row">
-          <div class="col-md-9 col-sm-9 col-xs-12">
-            <div class="time-series" id="remediation-time-series"></div>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12 event-navigator">
-            <div class="event-filter-nav" id="rem-water-trend"></div>
-            <div
-              class="event-filter-nav mrgn-tp-sm"
-              id="rem-status-trend"
-            ></div>
-            <div class="event-filter-nav mrgn-tp-sm" id="rem-use-trend"></div>
-            <div
-              class="event-filter-nav mrgn-tp-sm"
-              id="rem-activity-trend"
-            ></div>
-            <div
-              class="event-filter-nav mrgn-tp-sm"
-              id="rem-province-trend"
-            ></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div
-              class="alert alert-info"
-              id="trend-definitions-remediation"
-            ></div>
-          </div>
-        </div>
-      </div>
-      {{> shared/nearbyEvents text=text.safety.nearbyRemediation}}
-      {{> shared/source text=text.safety.sources.remediation}}
     </div>
   </div>
+  {{> shared/eventDashboard text=text.safety.remediation.dashboard}}
   <div style="height: 100px"></div>
 </div>
