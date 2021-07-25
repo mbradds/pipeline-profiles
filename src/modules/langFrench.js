@@ -693,7 +693,10 @@ export const frenchDashboard = {
         },
         p: regionInfo, // Province
         use: {
-          dli: { c: cerPalette["Cool Grey"], n: "Terrain aménagé - Industriel" },
+          dli: {
+            c: cerPalette["Cool Grey"],
+            n: "Terrain aménagé - Industriel",
+          },
           dls: {
             c: cerPalette["Night Sky"],
             n: "Terrain aménagé - Petit commerce",

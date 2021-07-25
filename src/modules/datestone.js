@@ -8,7 +8,8 @@ function changeValue(u) {
     return row;
   };
   const convertNoRound = (row) => row * u.conversion;
-  const convertWithRound = (row) => parseFloat((row * u.conversion).toFixed(u.round));
+  const convertWithRound = (row) =>
+    parseFloat((row * u.conversion).toFixed(u.round));
   let rowFunction = convertNoRound;
   if (u.round >= 0) {
     rowFunction = convertWithRound;

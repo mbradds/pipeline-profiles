@@ -1,0 +1,7 @@
+dist
+src/GCWeb
+src/wet-boew
+node_modules
+src/components
+src/data_management
+src/data_output

@@ -1,21 +1,16 @@
 <!-- delete this script! Its already defined on line 47 of the production html -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"
+></script>
 <script>
-  function openTab(evt, sectionName) {
-    var i, tabcontent, tablinks;
-    var sections = document.querySelectorAll(".profile-section");
-    for (var s = 0; s < sections.length; s++) {
-      sections[s].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(sectionName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
+  function openTab(evt, sectionName) { var i, tabcontent, tablinks; var sections
+  = document.querySelectorAll(".profile-section"); for (var s = 0; s <
+  sections.length; s++) { sections[s].style.display = "none"; } tablinks =
+  document.getElementsByClassName("tablinks"); for (i = 0; i < tablinks.length;
+  i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+  document.getElementById(sectionName).style.display = "block";
+  evt.currentTarget.className += " active"; }
   document.addEventListener("DOMContentLoaded", function (event) {
-    document.getElementById("defaultClick").click();
-  });
+  document.getElementById("defaultClick").click(); });
 </script>
 <script src="../../GCWeb/wet-boew/js/wet-boew.min.js"></script>

@@ -23,7 +23,9 @@
     "test-frontend": "ava",
     "save-conda-env": "sh ./src/data_management/npm_scripts/save-environment.sh",
     "set-remote-work": "git remote set-url origin https://CER-REC@dev.azure.com/CER-REC/Pipeline%20Information/_git/pipeline-profiles",
-    "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git"
+    "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git",
+    "prettier-save": "npx prettier --write .",
+    "prettier-check": "npx prettier --check ."
   },
   "author": "Grant Moss",
   "license": "MIT",
@@ -58,6 +60,7 @@
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.1.0",
+    "prettier": "2.3.2",
     "style-loader": "^3.2.1",
     "webpack": "^5.46.0",
     "webpack-bundle-analyzer": "^4.4.2",

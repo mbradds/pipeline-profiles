@@ -1,73 +1,75 @@
-  <div class="row">
-    <div class="col-md-12" id="{{text.id}}-dashboard">
-      <div class="plains_disclaimer"></div>
-      <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
-      {{#if text.hasRadio}}
-        <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
-            <form>
-            <label for="{{text.id}}-count-btn" class="radio-inline">
-                <input
-                id="{{text.id}}-count-btn"
-                type="radio"
-                name="type"
-                value="frequency"
-                checked="checked"
-                />
-                {{text.countRadio}}</label>
-            <label for="{{text.id}}-volume-btn" class="radio-inline">
-                <input
-                id="{{text.id}}-volume-btn"
-                type="radio"
-                name="type"
-                value="volume"
-                />
-                {{text.volRadio}}</label>
-            </form>
-        </div>
-      {{/if}}
-      <div class="btn-group btn-group-justified" id="{{text.id}}-view-type">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default active" value="map">
-            {{text.mapBtn}}
-          </button>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" value="trends">
-            {{text.trendBtn}}
-          </button>
-        </div>
-      </div>
-      <div class="row mrgn-tp-md">
-        <div class="col-md-8 col-sm-8 col-xs-12">
-          <div id="{{text.id}}-map"></div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
-            {{#each text.mapPillIds}}
-                <div class="event-filter-nav" id="{{this}}"></div>
-            {{/each}}
-        </div>
-      </div>
-      <div id="{{text.id}}-time-series-section" class="profile-hide">
-        <div class="row">
-          <div class="col-md-9 col-sm-9">
-            <div class="time-series" id="{{text.id}}-time-series"></div>
-          </div>
-          <div class="col-md-3 col-sm-3 event-navigator">
-            {{#each text.chartPillIds}}
-                <div class="event-filter-nav" id="{{this}}"></div>
-            {{/each}}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div
-              class="alert alert-info disclaimer-style"
-              id="trend-definitions-{{text.id}}"
-            ></div>
-          </div>
-        </div>
-      </div>
-      {{> nearbyEvents text=text.nearby}}
-      {{> source text=text.source}}
+<div class="row">
+  <div class="col-md-12" id="{{text.id}}-dashboard">
+    <div class="plains_disclaimer"></div>
+    <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
+    {{#if text.hasRadio}}
+    <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
+      <form>
+        <label for="{{text.id}}-count-btn" class="radio-inline">
+          <input
+            id="{{text.id}}-count-btn"
+            type="radio"
+            name="type"
+            value="frequency"
+            checked="checked"
+          />
+          {{text.countRadio}}</label
+        >
+        <label for="{{text.id}}-volume-btn" class="radio-inline">
+          <input
+            id="{{text.id}}-volume-btn"
+            type="radio"
+            name="type"
+            value="volume"
+          />
+          {{text.volRadio}}</label
+        >
+      </form>
     </div>
+    {{/if}}
+    <div class="btn-group btn-group-justified" id="{{text.id}}-view-type">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default active" value="map">
+          {{text.mapBtn}}
+        </button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default" value="trends">
+          {{text.trendBtn}}
+        </button>
+      </div>
+    </div>
+    <div class="row mrgn-tp-md">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <div id="{{text.id}}-map"></div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 event-navigator">
+        {{#each text.mapPillIds}}
+        <div class="event-filter-nav" id="{{this}}"></div>
+        {{/each}}
+      </div>
+    </div>
+    <div id="{{text.id}}-time-series-section" class="profile-hide">
+      <div class="row">
+        <div class="col-md-9 col-sm-9">
+          <div class="time-series" id="{{text.id}}-time-series"></div>
+        </div>
+        <div class="col-md-3 col-sm-3 event-navigator">
+          {{#each text.chartPillIds}}
+          <div class="event-filter-nav" id="{{this}}"></div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="alert alert-info disclaimer-style"
+            id="trend-definitions-{{text.id}}"
+          ></div>
+        </div>
+      </div>
+    </div>
+    {{> nearbyEvents text=text.nearby}} 
+    {{> source text=text.source}}
   </div>
+</div>
