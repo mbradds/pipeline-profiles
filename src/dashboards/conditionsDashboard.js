@@ -304,7 +304,7 @@ export async function mainConditions(
     const label = chart.renderer
       .label(text, null, null, null, null, null, true)
       .css({
-        width: Math.floor(chart.chartWidth / 4) + 60,
+        width: Math.floor(chart.chartWidth / 4) + 40,
       })
       .attr({
         "stroke-width": 3,
@@ -498,9 +498,6 @@ export async function mainConditions(
         chartParams,
         zooms
       );
-
-      // allow zoom and pan when in development mode
-      // chart = chartMode(chart, mapInits);
 
       document
         .getElementById("conditions-nav-group")

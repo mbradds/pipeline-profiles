@@ -16,7 +16,6 @@ import { cerPalette, sortJsonAlpha, conversions } from "../modules/util";
  */
 
 export const mapInits = {
-  mode: "production", // setting mode to "development" will allow pan,zoom, and x,y location console logging.
   zooms: {
     "TransCanada PipeLines Limited": {
       "In Progress": 1.5,
