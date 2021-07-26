@@ -18,89 +18,73 @@ import { cerPalette, sortJsonAlpha, conversions } from "../modules/util";
 export const mapInits = {
   mode: "production", // setting mode to "development" will allow pan,zoom, and x,y location console logging.
   zooms: {
-    "NOVA Gas Transmission Ltd.": {
-      "In Progress": [0.22, -12800000, -7504281],
-      Closed: [0.3, -12001114, -7500840],
-    },
     "TransCanada PipeLines Limited": {
-      "In Progress": [0.22, -10100000, -6500000],
-      Closed: [0.3, -10100000, -6500000],
-    },
-    "Enbridge Pipelines Inc.": {
-      "In Progress": [0.22, -10100000, -6500000],
-      Closed: [0.22, -10100000, -6500000],
+      "In Progress": 1.5,
+      Closed: 1.25,
     },
     "TransCanada Keystone Pipeline GP Ltd.": {
-      "In Progress": [0.22, -12000000, -7504281],
-      Closed: [0.22, -12000000, -7504281],
+      "In Progress": 3,
+      Closed: 3,
     },
     "Trans Mountain Pipeline ULC": {
-      "In Progress": [0.22, -13200000, -7504281],
-      Closed: [0.22, -13200000, -7504281],
-    },
-    "Alliance Pipeline Ltd.": {
-      "In Progress": [0.22, -12100000, -7504281],
-      Closed: [0.22, -12100000, -7504281],
+      "In Progress": 2,
+      Closed: 2,
     },
     "PKM Cochin ULC": {
-      "In Progress": [0.22, -12100000, -7504281],
-      Closed: [0.22, -12100000, -7504281],
+      "In Progress": 1.5,
+      Closed: 1.5,
     },
     "Westcoast Energy Inc.": {
-      "In Progress": [0.22, -13200000, -7504281],
-      Closed: [0.3, -13200000, -7504281],
+      "In Progress": 1.5,
+      Closed: 1.1,
     },
     "Southern Lights Pipeline": {
-      "In Progress": [0.22, -12100000, -7504281],
-      Closed: [0.22, -12100000, -7504281],
+      "In Progress": 3,
+      Closed: 3,
     },
     "Foothills Pipe Lines Ltd.": {
-      "In Progress": [0.22, -12800000, -7504281],
-      Closed: [0.3, -12001114, -7500840],
+      "In Progress": 5,
+      Closed: 5,
     },
     "Many Islands Pipe Lines (Canada) Limited": {
-      "In Progress": [0.22, -12000000, -7504281],
-      Closed: [0.22, -12000000, -7504281],
+      "In Progress": 3,
+      Closed: 1.5,
     },
     "Maritimes & Northeast Pipeline Management Ltd.": {
-      "In Progress": [0.18, -7500000, -2000000],
-      Closed: [0.18, -7500000, -2000000],
+      "In Progress": 4,
+      Closed: 4,
     },
     "Trans Quebec and Maritimes Pipeline Inc.": {
-      "In Progress": [0.25, -8000000, -3000000],
-      Closed: [0.25, -8000000, -3000000],
+      "In Progress": 4,
+      Closed: 4,
     },
     "Enbridge Bakken Pipeline Company Inc.": {
-      "In Progress": [0.22, -11500000, -7104281],
-      Closed: [0.22, -11500000, -7104281],
+      "In Progress": 7,
+      Closed: 7,
     },
     "Enbridge Pipelines (NW) Inc.": {
-      "In Progress": [0.3, -12900000, -7820000],
-      Closed: [0.3, -12900000, -7820000],
+      "In Progress": 1.5,
+      Closed: 1.5,
     },
     "Express Pipeline Ltd.": {
-      "In Progress": [0.22, -12800000, -7504281],
-      Closed: [0.22, -12800000, -7504281],
+      "In Progress": 4,
+      Closed: 4,
     },
     "Trans-Northern Pipelines Inc.": {
-      "In Progress": [0.2, -8500000, -6000000],
-      Closed: [0.2, -8500000, -6000000],
+      "In Progress": 3,
+      Closed: 3,
     },
     "Genesis Pipeline Canada Ltd.": {
-      "In Progress": [0.16, -9200000, -5000000],
-      Closed: [0.16, -9200000, -5000000],
+      "In Progress": 9,
+      Closed: 9,
     },
     "Montreal Pipe Line Limited": {
-      "In Progress": [0.25, -8000000, -3000000],
-      Closed: [0.25, -8000000, -3000000],
+      "In Progress": 10,
+      Closed: 10,
     },
     "Kingston Midstream Westspur Limited": {
-      "In Progress": [0.22, -11500000, -7504281],
-      Closed: [0.22, -11500000, -7504281],
-    },
-    "Plains Midstream Canada ULC": {
-      "In Progress": [0.3, -11000000, -7000840],
-      Closed: [0.3, -11000000, -7000840],
+      "In Progress": 8,
+      Closed: 8,
     },
   },
 };

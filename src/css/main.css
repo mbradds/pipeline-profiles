@@ -63,6 +63,9 @@ Styles for conditions compliance dashboard
   color: #42464b;
   text-align: center;
 }
+#conditions-insert {
+  overflow-y: scroll;
+}
 .conditions-table {
   font-family: Arial;
   border-collapse: collapse;
@@ -222,10 +225,6 @@ responsive style options
   #conditions-instructions {
     display: none;
   }
-  #conditions-insert {
-    overflow-y: scroll;
-    max-height: 500px;
-  }
   #incidents-map {
     height: 400px;
     margin-right: 0px;
@@ -267,10 +266,6 @@ responsive style options
     position: relative;
     z-index: 10;
   }
-  #conditions-insert {
-    overflow-y: scroll;
-    max-height: 500px;
-  }
   #incidents-map {
     height: 445px;
   }
@@ -301,10 +296,6 @@ responsive style options
     position: relative;
     z-index: 10;
   }
-  #conditions-insert {
-    overflow-y: scroll;
-    max-height: 500px;
-  }
   #incidents-map {
     height: 480px;
   }
@@ -333,10 +324,6 @@ responsive style options
     min-height: 600px;
     position: relative;
     z-index: 10;
-  }
-  #conditions-insert {
-    overflow-y: scroll;
-    max-height: 550px;
   }
   #incidents-map {
     height: 515px;
