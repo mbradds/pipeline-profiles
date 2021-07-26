@@ -7,18 +7,20 @@ on:
     branches: [main]
 
 jobs:
-  backend-tests:
-    name: conda-tests
+  example-3:
+    name: Ex3 Linux
     runs-on: "ubuntu-latest"
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v1
+      - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: pipeline-profiles
           environment-file: environment.yml
           python-version: 3.8
           auto-activate-base: false
-      - shell: bash -l {0}
-        run: |
+      - run: |
           conda info
           conda list

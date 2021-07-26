@@ -179,6 +179,7 @@ export async function mainConditions(
   function generateRegionSeries(mapMeta, mapRegions, filter) {
     return {
       name: "Conditions",
+      id: "econ-regions",
       data: processMapMetadata(mapMeta, filter),
       mapData: Highcharts.geojson(mapRegions),
       joinBy: ["id", "id"],
@@ -353,7 +354,7 @@ export async function mainConditions(
   };
 
   const createConditionsMap = (regions, baseMap, container, params, zooms) =>
-    new Highcharts.mapChart(container, {
+    Highcharts.mapChart(container, {
       chart: {
         panning: false,
         animation: false,
@@ -365,6 +366,12 @@ export async function mainConditions(
               zooms["In Progress"][1],
               zooms["In Progress"][2]
             );
+            // try {
+            //   this.get("econ-regions").zoomTo();
+            //   this.mapZoom(5);
+            // } catch (err) {
+            //   console.log(err);
+            // }
             let text = `<div class="alert alert-warning" id="conditions-instructions" style="padding:3px">`;
             text += `<h4>${lang.instructions.header}</h4>`;
             text += `<ol><li>${lang.instructions.line1}</li>`;
@@ -489,14 +496,12 @@ export async function mainConditions(
         enableMouseTracking: false,
       };
 
-      const regionSeries = generateRegionSeries(
-        mapMetaData,
-        econRegions,
-        chartParams.conditionsFilter
-      );
-
       const chart = createConditionsMap(
-        regionSeries,
+        generateRegionSeries(
+          mapMetaData,
+          econRegions,
+          chartParams.conditionsFilter
+        ),
         baseMap,
         "container-map",
         chartParams,

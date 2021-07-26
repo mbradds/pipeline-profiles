@@ -72,7 +72,12 @@ export async function mainApportion(apportionData, lang) {
       },
     };
   }
-
+  
+  /**
+   * Only for enbridge mainline key points
+   * @param {*} seriesList 
+   * @param {*} chart 
+   */
   function buildApportionPointCharts(seriesList, chart) {
     const xAxisInfo = chart.xAxis[0];
     const topChart = document.getElementById("apportion-point-panel");
@@ -131,11 +136,12 @@ export async function mainApportion(apportionData, lang) {
           layout: "vertical",
           align: "right",
           verticalAlign: "middle",
-          width: "20%",
+          // width: "20%",
           y: yOffset,
         },
         tooltip: {
           shared: true,
+          padding: 4,
           borderColor: cerPalette["Dim Grey"],
           useHTML: true,
           formatter() {

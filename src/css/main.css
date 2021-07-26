@@ -195,7 +195,7 @@ responsive style options
   /* h2 {
     color: orange;
   } */
-  #conditions-nav-group .btn-group .btn-default {
+  .section-nav .btn-group .btn-default {
     height: 120px !important;
     font-size: 13px;
     padding: 4px !important;
