@@ -225,8 +225,8 @@ export async function mainConditions(
     const zooms = inits.zooms[metaData.summary.companyName];
     if (zooms === undefined) {
       return {
-        "In Progress": [undefined, undefined, undefined],
-        Closed: [undefined, undefined, undefined],
+        "In Progress": 1.5,
+        Closed: 1.5,
       };
     }
     return zooms;
@@ -271,7 +271,11 @@ export async function mainConditions(
       metaSelect.summary.updated[2]
     );
 
-    let text = `<div id="conditions-insert"><p style="font-size:15px; text-align:center;"><strong>${
+    const { chart } = e.series;
+
+    let text = `<div id="conditions-insert" style="max-height: ${
+      chart.chartHeight - 35
+    }px"><p style="font-size:15px; text-align:center;"><strong>${
       conditionsRegions[e.id][lang.lang]
     } ${lang.popUp.econRegion}</strong></p>`;
     text += `<table><caption style="text-align:left">${lang.popUp.summary}</caption>`;
@@ -293,14 +297,14 @@ export async function mainConditions(
       "themes"
     )}</table></div>`;
 
-    const { chart } = e.series;
     if (chart.customTooltip) {
       destroyInsert(chart);
     }
+
     const label = chart.renderer
       .label(text, null, null, null, null, null, true)
       .css({
-        width: "300px",
+        width: Math.floor(chart.chartWidth / 4) + 40,
       })
       .attr({
         "stroke-width": 3,
@@ -353,6 +357,30 @@ export async function mainConditions(
     });
   };
 
+  const zoomToGeoJson = (chart, redraw, zoom) => {
+    let minX = Number.MAX_SAFE_INTEGER;
+    let maxX = Number.MIN_SAFE_INTEGER;
+    let minY = Number.MAX_SAFE_INTEGER;
+    let maxY = Number.MIN_SAFE_INTEGER;
+
+    chart.series[0].getValidPoints().forEach((item) => {
+      if (item._minX && item._maxX && item._minY && item._maxY) {
+        minX = Math.min(minX, item._minX);
+        maxX = Math.max(maxX, item._maxX);
+        minY = Math.min(minY, item._minY);
+        maxY = Math.max(maxY, item._maxY);
+      }
+    });
+    chart.series[0].xAxis.setExtremes(minX, maxX, true);
+    chart.series[0].yAxis.setExtremes(minY, maxY, true);
+    if (redraw) {
+      chart.redraw();
+    }
+    if (zoom) {
+      chart.mapZoom(zoom);
+    }
+  };
+
   const createConditionsMap = (regions, baseMap, container, params, zooms) =>
     Highcharts.mapChart(container, {
       chart: {
@@ -361,22 +389,11 @@ export async function mainConditions(
         events: {
           load() {
             removeNoConditions(this);
-            this.mapZoom(
-              zooms["In Progress"][0],
-              zooms["In Progress"][1],
-              zooms["In Progress"][2]
-            );
-            // try {
-            //   this.get("econ-regions").zoomTo();
-            //   this.mapZoom(5);
-            // } catch (err) {
-            //   console.log(err);
-            // }
+            zoomToGeoJson(this, false, zooms["In Progress"]);
             let text = `<div class="alert alert-warning" id="conditions-instructions" style="padding:3px">`;
-            text += `<h4>${lang.instructions.header}</h4>`;
-            text += `<ol><li>${lang.instructions.line1}</li>`;
-            text += `<li>${lang.instructions.line2}</li></ol>`;
-            text += `${lang.instructions.disclaimer}</div>`;
+            text += `<h4>${lang.instructions.header}</h4><ol>`;
+            text += `<li>${lang.instructions.line1}</li><li>${lang.instructions.line2}</li></ol>${lang.instructions.disclaimer}</div>`;
+
             const label = this.renderer
               .label(text, null, null, null, null, null, true)
               .css({
@@ -413,7 +430,6 @@ export async function mainConditions(
           },
         },
       },
-
       plotOptions: {
         series: {
           point: {
@@ -425,7 +441,6 @@ export async function mainConditions(
           },
         },
       },
-
       tooltip: {
         useHTML: false,
         formatter() {
@@ -439,30 +454,6 @@ export async function mainConditions(
       colorAxis: colorRange(params.conditionsFilter),
       series: [regions, baseMap],
     });
-
-  // uncomment this when adding new conditions maps to get the zoom init
-  // const chartMode = (chart, mapInits) => {
-  //   if (mapInits.mode == "development") {
-  //     chart.update({
-  //       chart: {
-  //         panning: true,
-  //         events: {
-  //           redraw: function () {
-  //             // this is useful for determining the on load map zoom scale
-  //             var yScale = this.yAxis[0].getExtremes();
-  //             var xScale = this.xAxis[0].getExtremes();
-  //             console.log("Map Zoom X = ", (xScale.min + xScale.max) / 2);
-  //             console.log("Map Zoom Y = ", (yScale.min + yScale.max) / 2);
-  //           },
-  //         },
-  //       },
-  //       mapNavigation: {
-  //         enabled: true,
-  //       },
-  //     });
-  //   }
-  //   return chart;
-  // };
 
   // main conditions map
   function buildDashboard() {
@@ -508,9 +499,6 @@ export async function mainConditions(
         zooms
       );
 
-      // allow zoom and pan when in development mode
-      // chart = chartMode(chart, mapInits);
-
       document
         .getElementById("conditions-nav-group")
         .addEventListener("click", (event) => {
@@ -555,13 +543,9 @@ export async function mainConditions(
           chart.mapZoom(undefined, undefined, undefined);
           removeNoConditions(chart);
           if (chartParams.conditionsFilter.column === "Closed") {
-            chart.mapZoom(zooms.Closed[0], zooms.Closed[1], zooms.Closed[2]);
+            zoomToGeoJson(chart, false, zooms.Closed);
           } else {
-            chart.mapZoom(
-              zooms["In Progress"][0],
-              zooms["In Progress"][1],
-              zooms["In Progress"][2]
-            );
+            zoomToGeoJson(chart, false, zooms["In Progress"]);
           }
         });
     } else {

@@ -18,14 +18,15 @@
     "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
     "update-apportionment-data": "sh ./src/data_management/npm_scripts/update-apportionment-data.sh",
     "update-oandm-data": "sh ./src/data_management/npm_scripts/update-oandm-data.sh",
-    "maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
+    "simplify-maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
     "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
     "test-frontend": "ava",
     "save-conda-env": "sh ./src/data_management/npm_scripts/save-environment.sh",
     "set-remote-work": "git remote set-url origin https://CER-REC@dev.azure.com/CER-REC/Pipeline%20Information/_git/pipeline-profiles",
     "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git",
     "prettier-save": "npx prettier --write .",
-    "prettier-check": "npx prettier --check ."
+    "prettier-check": "npx prettier --check .",
+    "get-maps": "sh ./src/data_management/npm_scripts/get-maps.sh"
   },
   "author": "Grant Moss",
   "license": "MIT",
