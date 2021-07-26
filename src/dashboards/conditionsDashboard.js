@@ -353,6 +353,30 @@ export async function mainConditions(
     });
   };
 
+  const zoomToGeoJson = (chart, redraw, zoom) => {
+    let minX = Number.MAX_SAFE_INTEGER;
+    let maxX = Number.MIN_SAFE_INTEGER;
+    let minY = Number.MAX_SAFE_INTEGER;
+    let maxY = Number.MIN_SAFE_INTEGER;
+
+    chart.series[0].getValidPoints().forEach((item) => {
+      if (item._minX && item._maxX && item._minY && item._maxY) {
+        minX = Math.min(minX, item._minX);
+        maxX = Math.max(maxX, item._maxX);
+        minY = Math.min(minY, item._minY);
+        maxY = Math.max(maxY, item._maxY);
+      }
+    });
+    chart.series[0].xAxis.setExtremes(minX, maxX, true);
+    chart.series[0].yAxis.setExtremes(minY, maxY, true);
+    if (redraw) {
+      chart.redraw();
+    }
+    if (zoom) {
+      chart.mapZoom(1.5);
+    }
+  };
+
   const createConditionsMap = (regions, baseMap, container, params, zooms) =>
     Highcharts.mapChart(container, {
       chart: {
@@ -360,18 +384,13 @@ export async function mainConditions(
         animation: false,
         events: {
           load() {
-            removeNoConditions(this);
-            this.mapZoom(
-              zooms["In Progress"][0],
-              zooms["In Progress"][1],
-              zooms["In Progress"][2]
-            );
-            // try {
-            //   this.get("econ-regions").zoomTo();
-            //   this.mapZoom(5);
-            // } catch (err) {
-            //   console.log(err);
-            // }
+            removeNoConditions(this, false, 1.5);
+            // this.mapZoom(
+            //   zooms["In Progress"][0],
+            //   zooms["In Progress"][1],
+            //   zooms["In Progress"][2]
+            // );
+            zoomToGeoJson(this, false, 1.5);
             let text = `<div class="alert alert-warning" id="conditions-instructions" style="padding:3px">`;
             text += `<h4>${lang.instructions.header}</h4>`;
             text += `<ol><li>${lang.instructions.line1}</li>`;
@@ -555,13 +574,15 @@ export async function mainConditions(
           chart.mapZoom(undefined, undefined, undefined);
           removeNoConditions(chart);
           if (chartParams.conditionsFilter.column === "Closed") {
-            chart.mapZoom(zooms.Closed[0], zooms.Closed[1], zooms.Closed[2]);
+            zoomToGeoJson(chart, false, 1.5);
+            // chart.mapZoom(zooms.Closed[0], zooms.Closed[1], zooms.Closed[2]);
           } else {
-            chart.mapZoom(
-              zooms["In Progress"][0],
-              zooms["In Progress"][1],
-              zooms["In Progress"][2]
-            );
+            zoomToGeoJson(chart, false, 1.5);
+            // chart.mapZoom(
+            //   zooms["In Progress"][0],
+            //   zooms["In Progress"][1],
+            //   zooms["In Progress"][2]
+            // );
           }
         });
     } else {
