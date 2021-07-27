@@ -221,7 +221,7 @@ The npm scripts used for data and map automation expect a unix shell, and wont w
 
 ### Are you connecting to CER databases?
 
-Several datasets are pulled directly from CER internal databases. A single python file `src/data_management/connection.py` handles the sqlalchemy connection parameters and strings. This file is left untracked because it has the db strings hard coded. A template file `src/data_management/connection.example.py` file is included with the connection strings left blank. Before running or contributing to the python code, you will need to open this file, add the connection strings, and save the file here: `src/data_management/connection.py` to ensure that connection info remains untracked.
+Several datasets are pulled directly from CER internal databases. A single python file `src/data_management/connection.py` handles the sqlalchemy connection parameters and strings. An untracked json file `src/data_management/connection_strings.json` contains the hard coded database connection strings. A template file `src/data_management/connection_strings.example.py` file is included with the connection strings left blank. Before running or contributing to the python code, you will need to open this file, add the connection strings, and save the file here: `src/data_management/connection_strings.json` to ensure that connection info remains untracked.
 
 ### Have you set up the pipeline-profiles conda environment?
 
@@ -339,7 +339,7 @@ Traffic data is updated every quarter (early March, mid-May, mid-August and mid-
 
 Note that the data output is language (en/fr) agnostic.
 
-1. Make sure that you have entered all the connection strings in `src/data_management/connection.py` and confirm that you have read permission on CERSEI.
+1. Make sure that you have entered all the connection strings in `src/data_management/connection_strings.json` and confirm that you have read permission on CERSEI.
 
 2. Make sure that `src/data_management/traffic.py` is configured to pull from SQL.
 
@@ -393,7 +393,7 @@ raw data (sql or web) -> python -> json -> es6 import -> JavaScript/css -> handl
 
 ### Python data prep
 
-1. Create a new python file in `src/data_management`. Prepate a reliable connection to the dataset, either a remote datafile or internal sql. The profiles are segmented by pipeline, so the data prep will involve splitting the dataset by the pipeline/company column, and creating one dataset for each company. Output files in json format to `../data_output/new_section/company_name.json`.
+1. Create a new python file in `src/data_management`. Prepare a reliable connection to the dataset, either a remote datafile or internal sql. The profiles are segmented by pipeline, so the data prep will involve splitting the dataset by the pipeline/company column, and creating one dataset for each company. Output files in json format to `../data_output/new_section/company_name.json`.
 
 2. Start to pay attention to file size of the outputs. Try to keep the average dataset around 15-20kb.
 
