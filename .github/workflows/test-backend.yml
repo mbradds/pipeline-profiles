@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: setup-conda
+    name: setup-conda-run-tests
     runs-on: "ubuntu-latest"
     defaults:
       run:
