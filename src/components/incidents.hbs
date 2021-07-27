@@ -5,30 +5,8 @@
       <p class="small">{{text.safety.updated.incidents}}</p>
       <p>{{text.safety.incidents.p1}}</p>
       <p>{{text.safety.incidents.p2}}</p>
-      <details>
-        <summary>{{text.safety.incidents.details1.one}}</summary>
-        <p>{{text.safety.incidents.details1.two}}</p>
-        <ol class="lst-lwr-alph">
-          <li>{{text.safety.incidents.details1.three}}</li>
-          <li>{{text.safety.incidents.details1.four}}</li>
-          <li>{{text.safety.incidents.details1.five}}</li>
-          <li>{{text.safety.incidents.details1.six}}</li>
-          <li>{{text.safety.incidents.details1.seven}}</li>
-          <li>{{text.safety.incidents.details1.eight}}</li>
-        </ol>
-      </details>
-      <details>
-        <summary>{{text.safety.incidents.details2.one}}</summary>
-        <p>{{text.safety.incidents.details2.two}}</p>
-        <ol class="lst-lwr-alph">
-          <li>{{text.safety.incidents.details2.three}}</li>
-          <li>{{text.safety.incidents.details2.four}}</li>
-          <li>{{text.safety.incidents.details2.five}}</li>
-          <li>{{text.safety.incidents.details2.six}}</li>
-          <li>{{text.safety.incidents.details2.seven}}</li>
-          <li>{{text.safety.incidents.details2.eight}}</li>
-        </ol>
-      </details>
+      {{> shared/details text=text.safety.incidents.details1}}
+      {{> shared/details text=text.safety.incidents.details2}}
       <details>
         <summary>{{text.safety.incidents.details3.one}}</summary>
         <p>{{text.safety.incidents.details3.two}}</p>
@@ -48,10 +26,7 @@
           </div>
         </section>
       </details>
-      <div
-        class="mrgn-tp-md mrgn-bttm-md"
-        id="system-incidents-paragraph"
-      ></div>
+      <div class="mrgn-tp-md mrgn-bttm-md" id="system-incidents-paragraph"></div>
       <details class="mrgn-bttm-md">
         <summary>{{text.safety.incidents.details4.one}}</summary>
         <ul class="lst-spcd">

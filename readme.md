@@ -21,9 +21,13 @@
   <a>
     <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/" alt="heroku" />
   </a>
-  <!-- tests -->
+  <!-- AVA unit tests -->
   <a>
-    <img src="https://github.com/mbradds/pipeline-profiles/actions/workflows/tests.yml/badge.svg" alt="tests" />
+    <img src="https://github.com/mbradds/pipeline-profiles/actions/workflows/test-frontend.yml/badge.svg" alt="test-frontend" />
+  </a>
+    <!-- Python unit tests -->
+  <a>
+    <img src="https://github.com/mbradds/pipeline-profiles/actions/workflows/test-backend.yml/badge.svg" alt="test-backend" />
   </a>
 </div>
 

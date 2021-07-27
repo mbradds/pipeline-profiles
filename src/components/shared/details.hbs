@@ -1,0 +1,16 @@
+<details>
+    <summary>{{text.summary}}</summary>
+    <p>{{text.introParagraph}}</p>
+    <{{text.listType}} class="lst-spcd">
+        {{#each text.listItems}}
+            <li>{{this.text}}</li>
+            {{#if this.subList}}
+                <ol type="a">
+                    {{#each this.subList}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+        {{/each}}
+    </{{text.listType}}>
+</details>

@@ -2,6 +2,6 @@ dist
 src/GCWeb
 src/wet-boew
 node_modules
-src/components
+*.hbs
 src/data_management
 src/data_output
