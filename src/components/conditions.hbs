@@ -7,26 +7,9 @@
       <p>{{text.safety.conditions.p2}}</p>
       <p>{{text.safety.conditions.p3}}</p>
       <p>{{text.safety.conditions.p4}}</p>
-      <details>
-        <summary>{{text.safety.conditions.inProgress}}</summary>
-        <p>{{text.safety.conditions.inProgressLst.one}}</p>
-        <ul class="lst-spcd">
-          <li>{{text.safety.conditions.inProgressLst.two}}</li>
-          <li>{{text.safety.conditions.inProgressLst.three}}</li>
-          <li>{{text.safety.conditions.inProgressLst.four}}</li>
-          <li>{{text.safety.conditions.inProgressLst.five}}</li>
-          <li>{{text.safety.conditions.inProgressLst.six}}</li>
-        </ul>
-      </details>
-      <details class="mrgn-bttm-md">
-        <summary>{{text.safety.conditions.closed}}</summary>
-        <p>{{text.safety.conditions.closedLst.one}}</p>
-        <ul class="lst-spcd">
-          <li>{{text.safety.conditions.closedLst.two}}</li>
-          <li>{{text.safety.conditions.closedLst.three}}</li>
-        </ul>
-      </details>
-      <div id="conditions-dashboard">
+      {{> shared/details text=text.safety.conditions.details1}}
+      {{> shared/details text=text.safety.conditions.details2}}
+      <div id="conditions-dashboard" class="mrgn-tp-md">
         <div class="row mrgn-tp-sm">
           <div class="col-md-12">
             <div class="plains_disclaimer"></div>

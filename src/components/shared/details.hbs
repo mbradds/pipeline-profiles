@@ -1,7 +1,7 @@
 <details>
     <summary>{{text.summary}}</summary>
     <p>{{text.introParagraph}}</p>
-    <ol type="{{text.listType}}">
+    <{{text.listType}} class="lst-spcd">
         {{#each text.listItems}}
             <li>{{this.text}}</li>
             {{#if this.subList}}
@@ -12,5 +12,5 @@
                 </ol>
             {{/if}}
         {{/each}}
-    </ol>
+    </{{text.listType}}>
 </details>

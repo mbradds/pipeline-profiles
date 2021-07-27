@@ -124,22 +124,41 @@ const en = {
       p2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
       p3: `Conditions can be related to a specific region, or apply to the pipeline project as a whole. The map below displays the number of in progress and closed conditions mapped to economic regions as defined by <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm">Statistics Canada.</a>`,
       p4: "Conditions can typically be either in-progress or closed. The CER follows up on in-progress conditions.",
-      inProgress: "In-Progress",
-      inProgressLst: {
-        one: "This status refers to conditions that continue to be monitored by the CER. This happens when:",
-        two: "condition filings have not yet been received by the CER; or,",
-        three:
-          "filings have been received but are under review or do not yet meet requirements; or,",
-        four: "a project is not completed and it has conditions, which have not been met; or,",
-        five: "a project has a post-construction condition, but a requirement has not yet been completed; or,",
-        six: "some conditions may be active indefinitely or refer to the continued operation of a pipeline.",
+      details1: {
+        listType: "ul",
+        summary: "In-Progress",
+        introParagraph:
+          "This status refers to conditions that continue to be monitored by the CER. This happens when:",
+        listItems: [
+          {
+            text: "condition filings have not yet been received by the CER; or,",
+          },
+          {
+            text: "filings have been received but are under review or do not yet meet requirements; or,",
+          },
+          {
+            text: "a project is not completed and it has conditions, which have not been met; or,",
+          },
+          {
+            text: "a project has a post-construction condition, but a requirement has not yet been completed; or,",
+          },
+          {
+            text: "some conditions may be active indefinitely or refer to the continued operation of a pipeline.",
+          },
+        ],
       },
-      closed: "Closed",
-      closedLst: {
-        one: "This status refers to:",
-        two: "condition requirements that have been satisfied, and no further submissions from the company are required; or",
-        three:
-          "conditions whose filings or actions apply to a specific phase that have been fulfilled as the phase is completed (i.e. a specific filing during construction phase). Note: comments on the required actions can still be received.",
+      details2: {
+        listType: "ul",
+        summary: "Closed",
+        introParagraph: "This status refers to:",
+        listItems: [
+          {
+            text: "condition requirements that have been satisfied, and no further submissions from the company are required; or",
+          },
+          {
+            text: "conditions whose filings or actions apply to a specific phase that have been fulfilled as the phase is completed (i.e. a specific filing during construction phase). Note: comments on the required actions can still be received.",
+          },
+        ],
       },
       inProgressBtn: "In-Progress Conditions with location:",
       closedBtn: "Closed Conditions with location:",
@@ -173,28 +192,57 @@ const en = {
       Reporting Guidelines</a>. Knowing what happened, and why, helps us find ways to prevent them
     from happening again.`,
       details1: {
-        one: "What is an incident? (Onshore Pipeline Regulations (OPR))",
-        two: "As defined in the OPR, “incident” means an occurrence that results in:",
-        three: "the death or serious injury to a person;",
-        four: "a significant adverse effect on the environment;",
-        five: "an unintended fire or explosion;",
-        six: "an unintended or uncontained release of low vapour pressure (LVP) hydrocarbons in excess of 1.5&nbsp;m&sup3;",
-        seven:
-          "an unintended or uncontrolled release of gas or high vapour pressure (HVP) hydrocarbons;",
-        eight:
-          "the operation of a pipeline beyond its design limits as determined under CSA Z662 or CSA Z276 or any operating limits imposed by the CER.",
+        listType: "ol",
+        summary: "What is an incident? (Onshore Pipeline Regulations (OPR))",
+        introParagraph:
+          "As defined in the OPR, “incident” means an occurrence that results in:",
+        listItems: [
+          {
+            text: "the death or serious injury to a person;",
+          },
+          {
+            text: "a significant adverse effect on the environment;",
+          },
+          {
+            text: "an unintended fire or explosion;",
+          },
+          {
+            text: "an unintended or uncontained release of low vapour pressure (LVP) hydrocarbons in excess of 1.5&nbsp;m&sup3;",
+          },
+          {
+            text: "an unintended or uncontrolled release of gas or high vapour pressure (HVP) hydrocarbons;",
+          },
+          {
+            text: "the operation of a pipeline beyond its design limits as determined under CSA Z662 or CSA Z276 or any operating limits imposed by the CER.",
+          },
+        ],
       },
       details2: {
-        one: "What is an incident? (Processing Plant Regulations (PPR))",
-        two: "As defined in the PPR, “incident” is defined as an occurrence that results or could result in a significant adverse effect on property, the environment, or the safety of persons. For the purposes of incident reporting in the PPR, events that fall under this definition include, but are not limited to:",
-        three: "the death or serious injury to a person;",
-        four: "a significant adverse effect on the environment;",
-        five: "an unintended fire or explosion that results in or has the potential to result in damage to company, public/crown or personal property;",
-        six: "an unintended or uncontained release of low vapour pressure (LVP) hydrocarbons in excess of 1.5&nbsp;m&sup3;",
-        seven:
-          "an unintended or uncontrolled release of gas, HVP hydrocarbons, hydrogen sulfide or other poisonous gas; or",
-        eight:
-          "the operation of a plant beyond its design limits or any limits imposed by the CER.",
+        listType: "ol",
+        summary: "What is an incident? (Processing Plant Regulations (PPR))",
+        introParagraph:
+          "As defined in the PPR, “incident” is defined as an occurrence that results or could result in a significant adverse effect on property, the environment, or the safety of persons. For the purposes of incident reporting in the PPR, events that fall under this definition include, but are not limited to:",
+
+        listItems: [
+          {
+            text: "the death or serious injury to a person;",
+          },
+          {
+            text: "a significant adverse effect on the environment;",
+          },
+          {
+            text: "an unintended fire or explosion that results in or has the potential to result in damage to company, public/crown or personal property;",
+          },
+          {
+            text: "an unintended or uncontained release of low vapour pressure (LVP) hydrocarbons in excess of 1.5&nbsp;m&sup3;",
+          },
+          {
+            text: "an unintended or uncontrolled release of gas, HVP hydrocarbons, hydrogen sulfide or other poisonous gas; or",
+          },
+          {
+            text: "the operation of a plant beyond its design limits or any limits imposed by the CER.",
+          },
+        ],
       },
       details3: {
         one: "Incidents and the CER",
@@ -306,27 +354,24 @@ const en = {
       p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance activities (O&#38;M activities) on CER regulated pipelines. These activities include things such as pipeline repairs, investigative &#38; integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
       p2: "Under the <i>Canadian Energy Regulator Onshore Pipeline Regulations Act</i>, companies are required to develop, regularly review and update as required, operation and maintenance manuals that provide information and procedures to promote safety, environmental protection, and efficiency in the operation of the pipeline. As orders typically include authorization to construct and operate a facility, companies are not required to apply for additional approval to undertake most O&#38;M activities. However, companies are required to provide the CER with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (RoW) or adjacent property.",
       details1: {
-        listType: 1,
+        listType: "ol",
         summary:
           "What activities are O&#38;M activities (eligible activities)?",
         introParagraph: "Operations and maintenance activities include:",
         listItems: [
           {
             text: "all activities necessary to safely operate an existing pipeline;",
-            subList: false,
           },
           {
             text: "maintenance activities, upgrades or repairs to an existing pipeline or part of a pipeline that do not increase the approved maximum operating pressure (MOP), the stress level or diameter of the pipeline; or",
-            subList: false,
           },
           {
             text: "physically removing an existing section of pipe up to 5 km in length, and putting a new section of pipe in its place, as long as this replacement does not increase the approved MOP, stress level or diameter of the pipeline.",
-            subList: false,
           },
         ],
       },
       details2: {
-        listType: 1,
+        listType: "ol",
         summary:
           "What O&#38;M Activities require CER approval (restrictions on eligible activities)?",
         introParagraph:
@@ -334,16 +379,14 @@ const en = {
         listItems: [
           {
             text: "the work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
-            subList: false,
           },
           {
             text: "the work involves the construction of an aerial crossing, excluding work on company owned or leased land relating to facilities (e.g., terminal stations, processing plants, compressor/pump stations).",
-            subList: false,
           },
         ],
       },
       details3: {
-        listType: 1,
+        listType: "ol",
         summary:
           "What kinds of activities are not O&#38;M activities (ineligible activities)?",
         introParagraph: "O&#38;M activities do not include:",
@@ -359,11 +402,9 @@ const en = {
           },
           {
             text: `"looping" (i.e., adding pipe parallel or adjacent to, and interconnected with, an existing pipeline for the general purpose of increasing capacity);`,
-            subList: false,
           },
           {
             text: "construction of a new pipeline; or",
-            subList: false,
           },
         ],
       },
@@ -374,6 +415,13 @@ const en = {
         target="_blank">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
+      guidelines: `Take a look at the
+      <a href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+        target="_blank">requirements and guidance notes</a>
+      (O&#38;M Guidelines) for more information on how these events are
+      regulated while promoting safety, security, environmental
+      protection, economic efficiency, and respect for the rights of
+      those that may be affected.`,
       source: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
@@ -464,22 +512,41 @@ const fr = {
       p2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des mesures <a href="/fr/safety-environment/compliance-enforcement/index.html">d’exécution</a> sont prises au besoin.`,
       p3: `Les conditions peuvent viser une région précise ou s’appliquer au projet pipelinier dans son ensemble. La carte ci-dessous montre le nombre de conditions en cours et remplies en fonction des régions économiques définies par <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-fra.cfm">Statistique Canada.</a>`,
       p4: "Les conditions sont habituellement en cours ou remplies. La Régie assure un suivi des conditions en cours.",
-      inProgress: "En cours",
-      inProgressLst: {
-        one: "Cet état désigne les conditions dont la Régie continue de faire le suivi. C’est le cas dans les situations suivantes :",
-        two: "les documents pertinents n’ont pas encore été déposés auprès de la Régie;",
-        three:
-          "les documents ont été déposés, mais sont à l’étude ou ne répondent pas aux exigences;",
-        four: "un projet n’est pas terminé et certaines des conditions qui s’y appliquent ne sont pas remplies;",
-        five: "un projet est soumis à une condition post-construction et celle-ci n’a pas encore été remplie;",
-        six: "les conditions sont en vigueur indéfiniment ou visent l’exploitation continue d’un pipeline.",
+      details1: {
+        listType: "ul",
+        summary: "En cours",
+        introParagraph:
+          "Cet état désigne les conditions dont la Régie continue de faire le suivi. C’est le cas dans les situations suivantes :",
+        listItems: [
+          {
+            text: "les documents pertinents n’ont pas encore été déposés auprès de la Régie;",
+          },
+          {
+            text: "les documents ont été déposés, mais sont à l’étude ou ne répondent pas aux exigences;",
+          },
+          {
+            text: "un projet n’est pas terminé et certaines des conditions qui s’y appliquent ne sont pas remplies;",
+          },
+          {
+            text: "un projet est soumis à une condition post-construction et celle-ci n’a pas encore été remplie;",
+          },
+          {
+            text: "les conditions sont en vigueur indéfiniment ou visent l’exploitation continue d’un pipeline.",
+          },
+        ],
       },
-      closed: "Remplies",
-      closedLst: {
-        one: "Cet état désigne les situations suivantes :",
-        two: "la société a respecté les exigences de la condition et aucun autre dépôt n’est exigé;",
-        three:
-          "les conditions, pour lesquelles les documents à déposer ou les mesures à prendre s’appliquent à une étape précise du projet, ont été remplies puisque l’étape est terminée (p. ex., des pièces précises à déposer pendant l’étape de la construction). Remarque : Il demeure possible de recevoir des commentaires sur les mesures à prendre.",
+      details2: {
+        listType: "ul",
+        summary: "Remplies",
+        introParagraph: "Cet état désigne les situations suivantes :",
+        listItems: [
+          {
+            text: "la société a respecté les exigences de la condition et aucun autre dépôt n’est exigé;",
+          },
+          {
+            text: "les conditions, pour lesquelles les documents à déposer ou les mesures à prendre s’appliquent à une étape précise du projet, ont été remplies puisque l’étape est terminée (p. ex., des pièces précises à déposer pendant l’étape de la construction). Remarque : Il demeure possible de recevoir des commentaires sur les mesures à prendre.",
+          },
+        ],
       },
       inProgressBtn: "Conditions en cours avec emplacement :",
       closedBtn: "Conditions remplies avec emplacement :",
@@ -527,28 +594,58 @@ const fr = {
     >. Le fait de savoir et de comprendre ce qui s’est passé nous aide à
     trouver des moyens de prévenir d’autres incidents similaires.`,
       details1: {
-        one: "Qu’est-ce qu’un incident? (Règlement de la Régie canadienne de l’énergie sur les pipelines terrestres [le « RPT »])",
-        two: "Selon la définition qu’en donne le RPT, un « incident » est un événement qui entraîne :",
-        three: "le décès d’une personne ou une blessure grave;",
-        four: "un effet négatif important sur l’environnement;",
-        five: "un incendie ou une explosion non intentionnels;",
-        six: "un rejet d’hydrocarbures à basse pression de vapeur (« BPV ») non confiné ou non intentionnel de plus de 1,5&nbsp;m&sup3;",
-        seven:
-          "un rejet de gaz ou d’hydrocarbures à haute pression de vapeur (« HPV ») non intentionnel ou non contrôlé;",
-        eight:
-          "l’exploitation d’un pipeline au-delà de ses tolérances de conception déterminées selon les normes CSA Z662 ou CSA Z276 ou au-delà des limites d’exploitation imposées par la Régie.",
+        listType: "ol",
+        summary:
+          "Qu’est-ce qu’un incident? (Règlement de la Régie canadienne de l’énergie sur les pipelines terrestres [le « RPT »])",
+        introParagraph:
+          "Selon la définition qu’en donne le RPT, un « incident » est un événement qui entraîne :",
+        listItems: [
+          {
+            text: "le décès d’une personne ou une blessure grave;",
+          },
+          {
+            text: "un effet négatif important sur l’environnement;",
+          },
+          {
+            text: "un incendie ou une explosion non intentionnels;",
+          },
+          {
+            text: "un rejet d’hydrocarbures à basse pression de vapeur (« BPV ») non confiné ou non intentionnel de plus de 1,5&nbsp;m&sup3;",
+          },
+          {
+            text: "un rejet de gaz ou d’hydrocarbures à haute pression de vapeur (« HPV ») non intentionnel ou non contrôlé;",
+          },
+          {
+            text: "l’exploitation d’un pipeline au-delà de ses tolérances de conception déterminées selon les normes CSA Z662 ou CSA Z276 ou au-delà des limites d’exploitation imposées par la Régie.",
+          },
+        ],
       },
       details2: {
-        one: "Qu’est-ce qu’un incident? (Règlement de la Régie canadienne de l’énergie sur les usines de traitement [« RUT »])",
-        two: "Pour sa part, le RUT définit un « incident » comme étant un fait qui produit ou pourrait produire un effet négatif important sur les biens, l’environnement ou la sécurité des personnes. Aux fins de signalement d’un incident, les événements compris dans la définition que donne le RUT comprennent notamment ceux qui suivent :",
-        three: "le décès d’une personne ou une blessure grave;",
-        four: "un effet négatif important sur l’environnement;",
-        five: "un incendie ou une explosion non intentionnels pouvant causer des dommages à des biens de la société, publics ou personnels;",
-        six: "un rejet d’hydrocarbures à BPV non confiné ou non intentionnel de plus de 1,5&nbsp;m&sup3;",
-        seven:
-          "un rejet de gaz, d’hydrocarbures à HPV, de sulfure d’hydrogène ou d’autres gaz toxiques non intentionnel ou non contrôlé;",
-        eight:
-          "l’exploitation d’une usine au-delà de ses tolérances de conception ou au-delà des limites d’exploitation imposées par la Régie.",
+        listType: "ol",
+        summary:
+          "Qu’est-ce qu’un incident? (Règlement de la Régie canadienne de l’énergie sur les usines de traitement [« RUT »])",
+        introParagraph:
+          "Pour sa part, le RUT définit un « incident » comme étant un fait qui produit ou pourrait produire un effet négatif important sur les biens, l’environnement ou la sécurité des personnes. Aux fins de signalement d’un incident, les événements compris dans la définition que donne le RUT comprennent notamment ceux qui suivent :",
+        listItems: [
+          {
+            text: "le décès d’une personne ou une blessure grave;",
+          },
+          {
+            text: "un effet négatif important sur l’environnement;",
+          },
+          {
+            text: "un incendie ou une explosion non intentionnels pouvant causer des dommages à des biens de la société, publics ou personnels;",
+          },
+          {
+            text: "un rejet d’hydrocarbures à BPV non confiné ou non intentionnel de plus de 1,5&nbsp;m&sup3;",
+          },
+          {
+            text: "un rejet de gaz, d’hydrocarbures à HPV, de sulfure d’hydrogène ou d’autres gaz toxiques non intentionnel ou non contrôlé;",
+          },
+          {
+            text: "l’exploitation d’une usine au-delà de ses tolérances de conception ou au-delà des limites d’exploitation imposées par la Régie.",
+          },
+        ],
       },
       details3: {
         one: "Les incidents et la Régie",
@@ -660,27 +757,24 @@ const fr = {
       p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance activities (O&#38;M activities) on CER regulated pipelines. These activities include things such as pipeline repairs, investigative &#38; integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
       p2: "Under the <i>Canadian Energy Regulator Onshore Pipeline Regulations Act</i>, companies are required to develop, regularly review and update as required, operation and maintenance manuals that provide information and procedures to promote safety, environmental protection, and efficiency in the operation of the pipeline. As orders typically include authorization to construct and operate a facility, companies are not required to apply for additional approval to undertake most O&#38;M activities. However, companies are required to provide the CER with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (RoW) or adjacent property.",
       details1: {
-        listType: 1,
+        listType: "ol",
         summary:
           "What activities are O&#38;M activities (eligible activities)?",
         introParagraph: "Operations and maintenance activities include:",
         listItems: [
           {
             text: "all activities necessary to safely operate an existing pipeline;",
-            subList: false,
           },
           {
             text: "maintenance activities, upgrades or repairs to an existing pipeline or part of a pipeline that do not increase the approved maximum operating pressure (MOP), the stress level or diameter of the pipeline; or",
-            subList: false,
           },
           {
             text: "physically removing an existing section of pipe up to 5 km in length, and putting a new section of pipe in its place, as long as this replacement does not increase the approved MOP, stress level or diameter of the pipeline.",
-            subList: false,
           },
         ],
       },
       details2: {
-        listType: 1,
+        listType: "ol",
         summary:
           "What O&#38;M Activities require CER approval (restrictions on eligible activities)?",
         introParagraph:
@@ -688,16 +782,14 @@ const fr = {
         listItems: [
           {
             text: "the work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
-            subList: false,
           },
           {
             text: "the work involves the construction of an aerial crossing, excluding work on company owned or leased land relating to facilities (e.g., terminal stations, processing plants, compressor/pump stations).",
-            subList: false,
           },
         ],
       },
       details3: {
-        listType: 1,
+        listType: "ol",
         summary:
           "What kinds of activities are not O&#38;M activities (ineligible activities)?",
         introParagraph: "O&#38;M activities do not include:",
@@ -713,11 +805,9 @@ const fr = {
           },
           {
             text: `"looping" (i.e., adding pipe parallel or adjacent to, and interconnected with, an existing pipeline for the general purpose of increasing capacity);`,
-            subList: false,
           },
           {
             text: "construction of a new pipeline; or",
-            subList: false,
           },
         ],
       },
@@ -728,6 +818,13 @@ const fr = {
         target="_blank">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
+      guidelines: `Take a look at the
+      <a href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+        target="_blank">requirements and guidance notes</a>
+      (O&#38;M Guidelines) for more information on how these events are
+      regulated while promoting safety, security, environmental
+      protection, economic efficiency, and respect for the rights of
+      those that may be affected.`,
       source: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
