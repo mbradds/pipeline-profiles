@@ -16,75 +16,73 @@ import { cerPalette, sortJsonAlpha, conversions } from "../modules/util";
  */
 
 export const mapInits = {
-  zooms: {
-    "TransCanada PipeLines Limited": {
-      "In Progress": 1.5,
-      Closed: 1.25,
-    },
-    "TransCanada Keystone Pipeline GP Ltd.": {
-      "In Progress": 3,
-      Closed: 3,
-    },
-    "Trans Mountain Pipeline ULC": {
-      "In Progress": 2,
-      Closed: 2,
-    },
-    "PKM Cochin ULC": {
-      "In Progress": 1.5,
-      Closed: 1.5,
-    },
-    "Westcoast Energy Inc.": {
-      "In Progress": 1.5,
-      Closed: 1.1,
-    },
-    "Southern Lights Pipeline": {
-      "In Progress": 3,
-      Closed: 3,
-    },
-    "Foothills Pipe Lines Ltd.": {
-      "In Progress": 5,
-      Closed: 5,
-    },
-    "Many Islands Pipe Lines (Canada) Limited": {
-      "In Progress": 3,
-      Closed: 1.5,
-    },
-    "Maritimes & Northeast Pipeline Management Ltd.": {
-      "In Progress": 4,
-      Closed: 4,
-    },
-    "Trans Quebec and Maritimes Pipeline Inc.": {
-      "In Progress": 4,
-      Closed: 4,
-    },
-    "Enbridge Bakken Pipeline Company Inc.": {
-      "In Progress": 7,
-      Closed: 7,
-    },
-    "Enbridge Pipelines (NW) Inc.": {
-      "In Progress": 1.5,
-      Closed: 1.5,
-    },
-    "Express Pipeline Ltd.": {
-      "In Progress": 4,
-      Closed: 4,
-    },
-    "Trans-Northern Pipelines Inc.": {
-      "In Progress": 3,
-      Closed: 3,
-    },
-    "Genesis Pipeline Canada Ltd.": {
-      "In Progress": 9,
-      Closed: 9,
-    },
-    "Montreal Pipe Line Limited": {
-      "In Progress": 10,
-      Closed: 10,
-    },
-    "Kingston Midstream Westspur Limited": {
-      "In Progress": 8,
-      Closed: 8,
-    },
+  "TransCanada PipeLines Limited": {
+    "In Progress": 1.5,
+    Closed: 1.25,
+  },
+  "TransCanada Keystone Pipeline GP Ltd.": {
+    "In Progress": 3,
+    Closed: 3,
+  },
+  "Trans Mountain Pipeline ULC": {
+    "In Progress": 2,
+    Closed: 2,
+  },
+  "PKM Cochin ULC": {
+    "In Progress": 1.5,
+    Closed: 1.5,
+  },
+  "Westcoast Energy Inc.": {
+    "In Progress": 1.5,
+    Closed: 1.1,
+  },
+  "Southern Lights Pipeline": {
+    "In Progress": 3,
+    Closed: 3,
+  },
+  "Foothills Pipe Lines Ltd.": {
+    "In Progress": 5,
+    Closed: 5,
+  },
+  "Many Islands Pipe Lines (Canada) Limited": {
+    "In Progress": 3,
+    Closed: 1.5,
+  },
+  "Maritimes & Northeast Pipeline Management Ltd.": {
+    "In Progress": 4,
+    Closed: 4,
+  },
+  "Trans Quebec and Maritimes Pipeline Inc.": {
+    "In Progress": 4,
+    Closed: 4,
+  },
+  "Enbridge Bakken Pipeline Company Inc.": {
+    "In Progress": 7,
+    Closed: 7,
+  },
+  "Enbridge Pipelines (NW) Inc.": {
+    "In Progress": 1.5,
+    Closed: 1.5,
+  },
+  "Express Pipeline Ltd.": {
+    "In Progress": 4,
+    Closed: 4,
+  },
+  "Trans-Northern Pipelines Inc.": {
+    "In Progress": 3,
+    Closed: 3,
+  },
+  "Genesis Pipeline Canada Ltd.": {
+    "In Progress": 9,
+    Closed: 9,
+  },
+  "Montreal Pipe Line Limited": {
+    "In Progress": 10,
+    Closed: 10,
+  },
+  "Kingston Midstream Westspur Limited": {
+    "In Progress": 8,
+    Closed: 8,
   },
 };
 

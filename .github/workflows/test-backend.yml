@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  example-3:
-    name: Ex3 Linux
+  test:
+    name: setup-conda
     runs-on: "ubuntu-latest"
     defaults:
       run:
@@ -24,3 +24,5 @@ jobs:
       - run: |
           conda info
           conda list
+          cd src/data_management
+          python tests.py

@@ -128,10 +128,8 @@ export async function mainConditions(
   };
 
   const processMapMetadata = (data, filter, type = "map") => {
-    let colSelector = 0;
-    if (filter.column === "Closed") {
-      colSelector = 1;
-    }
+    const colSelector = filter.column === "Closed" ? 1 : 0;
+
     const getValid = (dataSet) => {
       let validMetaData;
       if (dataSet === "map") {
@@ -179,7 +177,6 @@ export async function mainConditions(
   function generateRegionSeries(mapMeta, mapRegions, filter) {
     return {
       name: "Conditions",
-      id: "econ-regions",
       data: processMapMetadata(mapMeta, filter),
       mapData: Highcharts.geojson(mapRegions),
       joinBy: ["id", "id"],
@@ -222,7 +219,7 @@ export async function mainConditions(
   };
 
   const getMapZoom = (inits, metaData) => {
-    const zooms = inits.zooms[metaData.summary.companyName];
+    const zooms = inits[metaData.summary.companyName];
     if (zooms === undefined) {
       return {
         "In Progress": 1.5,
@@ -326,19 +323,18 @@ export async function mainConditions(
       null,
       "spacingBox"
     );
-    const themeRows = document.getElementById("themes-table").rows;
-    themeRows.forEach((tableRow) => {
+    const definitionDiv = document.getElementById("conditions-definitions");
+    document.getElementById("themes-table").rows.forEach((tableRow) => {
       const tr = tableRow;
       const rowText = tr.querySelectorAll("td")[0].textContent;
       tr.onclick = function themeClick() {
-        const definitionDiv = document.getElementById("conditions-definitions");
         visibility(["conditions-definitions"], "show");
         const themes = rowText.split(",");
         let definitionsHTML = `<h4>${lang.themeDefinitionsTitle}</h4>`;
-        for (let i = 0; i < themes.length; i += 1) {
-          const t = themes[i].trim();
+        themes.forEach((themeName) => {
+          const t = themeName.trim();
           definitionsHTML += `<strong>${t}: </strong>${lang.themeDefinitions[t]}<br>`;
-        }
+        });
         definitionDiv.innerHTML = definitionsHTML;
         definitionDiv.scrollIntoView(false);
       };
@@ -389,7 +385,7 @@ export async function mainConditions(
         events: {
           load() {
             removeNoConditions(this);
-            zoomToGeoJson(this, false, zooms["In Progress"]);
+            zoomToGeoJson(this, false, zooms[params.conditionsFilter.column]);
             let text = `<div class="alert alert-warning" id="conditions-instructions" style="padding:3px">`;
             text += `<h4>${lang.instructions.header}</h4><ol>`;
             text += `<li>${lang.instructions.line1}</li><li>${lang.instructions.line2}</li></ol>${lang.instructions.disclaimer}</div>`;
