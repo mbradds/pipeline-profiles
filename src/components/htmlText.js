@@ -422,6 +422,16 @@ const en = {
       regulated while promoting safety, security, environmental
       protection, economic efficiency, and respect for the rights of
       those that may be affected.`,
+      dashboard: {
+        id: "oandm",
+        chartPillIds: [
+          "oandm-region-trend",
+          "oandm-dig-trend",
+          "oandm-instream-trend",
+          "oandm-fish-trend",
+          "oandm-species-trend",
+        ],
+      },
       source: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
@@ -825,6 +835,16 @@ const fr = {
       regulated while promoting safety, security, environmental
       protection, economic efficiency, and respect for the rights of
       those that may be affected.`,
+      dashboard: {
+        id: "oandm",
+        chartPillIds: [
+          "oandm-region-trend",
+          "oandm-dig-trend",
+          "oandm-instream-trend",
+          "oandm-fish-trend",
+          "oandm-species-trend",
+        ],
+      },
       source: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,

@@ -41,7 +41,7 @@ export async function mainOandM(eventData, lang) {
       seriesInfo: lang.seriesInfo,
       definitions: lang.definitions,
       definitionsOn: "pill",
-      divId: "time-series-oandm",
+      divId: "oandm-time-series",
       legendClickText: { enabled: true, text: lang.legendClick },
       lang,
     });
@@ -79,6 +79,7 @@ export async function mainOandM(eventData, lang) {
   try {
     return buildDecision();
   } catch (err) {
+    console.log(err);
     return loadChartError("oandm-dashboard", lang.dashboardError);
   }
 }
