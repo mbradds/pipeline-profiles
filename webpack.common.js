@@ -37,8 +37,9 @@ const profileWebpackConfig = (function () {
     ["wascana", "oil-and-liquids"],
   ];
 
-  function htmlWebpack() {
+  function htmlWebpack(returnPaths = false) {
     const html = [];
+    const htmlPathsForTest = [];
     language.forEach((lang) => {
       htmlFileNames.forEach((name) => {
         const pageData = { ...pm[name[0]] };
@@ -50,10 +51,12 @@ const profileWebpackConfig = (function () {
         pageData.text = profileText[lang];
         pageData.text.pipelineName = { id: name[0] };
         pageData.text.commodity = name[1];
+        const htmlFileName = `${lang}/${name[1]}/${name[0]}_${lang}.html`;
+        htmlPathsForTest.push(`dist/${htmlFileName}`);
         html.push(
           new HtmlWebpackPlugin({
             page: JSON.parse(JSON.stringify(pageData)),
-            filename: `${lang}/${name[1]}/${name[0]}_${lang}.html`,
+            filename: htmlFileName,
             chunks: [
               `${lang}/${name[1]}/js/entry_${name[0]}`,
               `${lang}/profile_code_${lang}`,
@@ -74,6 +77,9 @@ const profileWebpackConfig = (function () {
         );
       });
     });
+    if (returnPaths) {
+      return htmlPathsForTest;
+    }
     return html;
   }
 

@@ -193,6 +193,11 @@ styles for remediation dashboard
 responsive style options 
 */
 
+.section-nav .span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /* extra small screen phones (col-xs) */
 @media only screen and (max-width: 767px) {
   /* h2 {

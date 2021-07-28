@@ -3,13 +3,16 @@
     <p>{{text.introParagraph}}</p>
     <{{text.listType}} class="lst-spcd">
         {{#each text.listItems}}
-            <li>{{this.text}}</li>
             {{#if this.subList}}
-                <ol type="a">
-                    {{#each this.subList}}
-                        <li>{{this}}</li>
-                    {{/each}}
-                </ol>
+                <li>{{this.text}}
+                    <ul>
+                        {{#each this.subList}}
+                            <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                </li>
+            {{else}}
+                <li>{{this.text}}</li>
             {{/if}}
         {{/each}}
     </{{text.listType}}>
