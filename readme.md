@@ -5,10 +5,6 @@
   <a>
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributors" />
   </a>
-  <!-- Project Dependencies -->
-  <a>
-    <img src="https://img.shields.io/david/mbradds/pipeline-profiles" alt="Dependencies" />
-  </a>
   <!-- Known Vulnerabilities -->
   <a>
     <img src="https://snyk.io/test/github/mbradds/pipeline-profiles/badge.svg?targetFile=package.json" alt="Vulnerabilities" />
@@ -21,9 +17,13 @@
   <a>
     <img src="https://github.com/mbradds/pipeline-profiles/actions/workflows/test-frontend.yml/badge.svg" alt="test-frontend" />
   </a>
-    <!-- Python unit tests -->
+  <!-- Python unit tests -->
   <a>
     <img src="https://github.com/mbradds/pipeline-profiles/actions/workflows/test-backend.yml/badge.svg" alt="test-backend" />
+  </a>
+  <!-- HTML5 validation tests -->
+  <a>
+    <img src="https://github.com/mbradds/pipeline-profiles/actions/workflows/test-HTML5.yml/badge.svg" alt="test-HTML5" />
   </a>
 </div>
 
@@ -127,6 +127,7 @@ pipeline_profiles
 |   └───css (main.css, transferred over to dist/css/main[contenthash].css via MiniCssExtract)
 |   |
 |   └───entry (entry points for all profile webpages)
+|   |   |   webpackEntry.js (specifies all the js and html entry points for /dist)
 |   |
 |   └───data_output (output data folders for each section. Contains prepared data ready for charts)
 |   |
