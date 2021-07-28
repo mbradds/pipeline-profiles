@@ -1,10 +1,6 @@
 <h1 align="center">Pipeline Profiles</h1>
 
 <div align="center">
-  <!-- prettier -->
-  <a>
-    <img src="https://img.shields.io/badge/code_style-prettier-brightgreen.svg" alt="Prettier" />
-  </a>
   <!-- contributors welcome -->
   <a>
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributors" />
@@ -19,7 +15,7 @@
   </a>
   <!-- Heroku -->
   <a>
-    <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=orange&up_message=up&url=https://pipeline-profiles.herokuapp.com/" alt="heroku" />
+    <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https://pipeline-profiles.herokuapp.com/" alt="heroku" />
   </a>
   <!-- AVA unit tests -->
   <a>

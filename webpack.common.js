@@ -165,7 +165,6 @@ module.exports = {
         include: /node_modules/,
         use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
-
       {
         test: /\.png$/,
         use: {
@@ -176,6 +175,7 @@ module.exports = {
             name: "[name].png",
           },
         },
+        type: "javascript/auto",
       },
       {
         test: /\.hbs$/,

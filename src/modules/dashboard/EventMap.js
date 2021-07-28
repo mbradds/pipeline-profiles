@@ -13,6 +13,7 @@
 import * as L from "leaflet";
 import Highcharts from "highcharts";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import shadowIconPng from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import {
   cerPalette,
@@ -428,13 +429,13 @@ export class EventMap {
       const currentDashboard = this;
       this.map
         .locate({
-          // setView: true,
           watch: false,
-        }) /* This will return map so you can do chaining */
+        })
         .on("locationfound", (e) => {
           const marker = L.marker([e.latitude, e.longitude], {
             icon: new L.Icon({
               iconUrl: markerIconPng,
+              shadowUrl: shadowIconPng,
               iconSize: [25, 41],
               iconAnchor: [12, 41],
             }),
@@ -470,10 +471,9 @@ export class EventMap {
     const currentDashboard = this;
     this.circles.eachLayer((layer) => {
       allCircles.push(layer);
-      const incLoc = layer._latlng;
       const distance = haversine(currentDashboard.user, {
-        latitude: incLoc.lat,
-        longitude: incLoc.lng,
+        latitude: layer._latlng.lat,
+        longitude: layer._latlng.lng,
       });
       if (distance > range) {
         layer.setStyle({ fillOpacity: 0 });
