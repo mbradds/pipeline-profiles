@@ -72,22 +72,19 @@ export async function mainApportion(apportionData, lang) {
       },
     };
   }
-  
+
   /**
    * Only for enbridge mainline key points
-   * @param {*} seriesList 
-   * @param {*} chart 
+   * @param {*} seriesList
+   * @param {*} chart
    */
   function buildApportionPointCharts(seriesList, chart) {
     const xAxisInfo = chart.xAxis[0];
     const topChart = document.getElementById("apportion-point-panel");
     topChart.innerHTML = `<section class="panel panel-default">
-    <header class="panel-heading">
-     <h5 class="panel-title">Apportionment at key points</h5>
-    </header>
+    <header class="panel-heading"><h5 class="panel-title">${lang.keyPtTitle}</h5></header>
     <div class="panel-body" id="apportion-points">
-    </div>
-  </section>`;
+    </div></section>`;
 
     const colorList = Object.values(cerPalette);
     seriesList.forEach((pointSeries, i) => {

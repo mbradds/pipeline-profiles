@@ -62,7 +62,7 @@ const en = {
       other:
         "The interactive graph below shows data for nominations and apportionment on the pipeline system.",
       enbridge:
-        "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. Because there is no system-wide apportionment figure, the graph below illustrates how much total pipeline capacity is requested above what is available.",
+        "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. The interactive graph below shows data for nominations and apportionment on the Enbridge Mainline.",
     },
     selectUnits: unitsEn,
     description: {
@@ -460,7 +460,7 @@ const fr = {
       other:
         "Le graphique interactif ci-dessous présente les données relatives aux commandes d’expédition et à la répartition sur le réseau pipelinier.",
       enbridge:
-        "Le réseau principal au Canada d’Enbridge comprend de multiples canalisations, et la répartition peut varier selon la canalisation et le point principal. Au cours d’un mois donné, certaines canalisations peuvent faire l’objet d’une répartition et d’autres, non. Comme il n’y a pas de données pour la répartition à l’échelle du réseau, le graphique ci-dessous illustre la capacité totale demandée par rapport à la capacité disponible.",
+        "Le réseau principal au Canada d’Enbridge comprend de multiples canalisations, et la répartition peut varier selon la canalisation et le point principal. Au cours d’un mois donné, certaines canalisations peuvent faire l’objet d’une répartition et d’autres, non. Le graphique interactif ci-dessous présente les données relatives aux commandes et à la répartition sur le réseau principal d’Enbridge.",
     },
     selectUnits: unitsFr,
     description: {

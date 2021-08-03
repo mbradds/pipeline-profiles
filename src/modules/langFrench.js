@@ -577,9 +577,11 @@ export const frenchDashboard = {
     points,
     numberFormat,
     title: {
-      enbridge: "Commandes d’expédition pour tout le réseau",
+      enbridge:
+        "Nombre total de commandes originales et nombre total de commandes acceptées sur le réseau",
       other: "Répartition à :",
     },
+    keyPtTitle: "Répartition aux points principaux",
     series: {
       an: "Commandes acceptées",
       on: "Commandes d’expédition initiales",
