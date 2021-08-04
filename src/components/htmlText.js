@@ -31,6 +31,8 @@ const dataSourceEn = "Data Source:";
 const dataSourceFr = "Source de données :";
 const descriptionEn = "Description: ";
 const descriptionFr = "Description : ";
+const sourceTextEn = "Open Government";
+const sourceTextFr = "Gouvernement ouvert";
 
 const openGovLink = (link, lang) => {
   let [p1, p2] = ["", ""];
@@ -99,7 +101,9 @@ const en = {
       sourceTitle: sourceAndDescEn,
       dataSourceTitle: dataSourceEn,
       descriptionTitle: descriptionEn,
-      sourceLink: `<a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>`,
+      sourceText: sourceTextEn,
+      sourceLink:
+        "https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34",
       description:
         "The above dashboard displays pipeline throughput and capacity at key point(s) along the system. Where possible, the five-year average and five-year range for throughput is shown with the current year throughput to better highlight the trends. For pipeline key points with a defined location, a map is displayed next to the graph showing the approximate key point location where pipeline throughput and capacity are recorded.",
       subTextId: "conversion-disclaimer-traffic",
@@ -168,9 +172,11 @@ const en = {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
         descriptionTitle: descriptionEn,
-        sourceLink: `<a href="https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Open Government</a>`,
+        sourceText: sourceTextEn,
+        sourceLink:
+          "https://open.canada.ca/data/en/dataset/e8402029-2543-4300-bf6a-81a788a08f70",
         description:
-          "The above map displays the number of CER conditions associated with projects approved by the Commission. The map is split into two tabs which show in-progress and closed conditions separately, mapped to an economic region. If a company has no in-progress conditions specific to an economic region, the dashboard will default to show the closed conditions by region. An additional view is available which contains the number of in-progress and closed conditions that don't have a corresponding economic region in the dataset. The map regions are shaded based on the number of conditions, with lighter colored regions containing fewer conditions compared to darker colors. Conditions that apply to more than one region are double counted in the map, and these conditions will appear in the map region total and map region breakdown for each applicable region. The condition counts contained in the map navigation buttons represent total conditions without region double counting.",
+          "The above map displays the number of CER conditions associated with projects approved by the Commission. The map is split into two tabs which show in-progress and closed conditions separately, mapped to an economic region. If a company has no in-progress conditions specific to an economic region, the dashboard will default to show the closed conditions by region. An additional view is available which contains the number of in-progress and closed conditions that don't have a corresponding economic region in the dataset. The map regions are shaded based on the number of conditions, with lighter coloured regions containing fewer conditions compared to darker colors. Conditions that apply to more than one region are double counted in the map, and these conditions will appear in the map region total and map region breakdown for each applicable region. The condition counts contained in the map navigation buttons represent total conditions without region double counting.",
         openGov: openGovLink("/open/conditions/conditions.csv", "en"),
       },
     },
@@ -303,9 +309,11 @@ const en = {
           sourceTitle: sourceAndDescEn,
           dataSourceTitle: dataSourceEn,
           descriptionTitle: descriptionEn,
-          sourceLink: `<a href="https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Open Government</a>`,
+          sourceText: sourceTextEn,
+          sourceLink:
+            "https://open.canada.ca/data/en/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1",
           description:
-            "The above map displays the location of product release incidents that have occured on the pipeline system since 2008. The map defaults to show incidents as bubbles which are colored based on the substance released. Incidents on the map can be re-categorized based on the most recently available status of the CER's incident review, the year in which the incident was reported, and the province/territory where the incident occured. The incident map bubble can be switched to show the estimated volume of product released, with larger map bubbles showing larger release volumes relative to other product releases on the system. The incident data can also be toggled to display a stacked bar chart of incidents over time by clicking on the incident trends button above the map. The stacked bars dispaly the number of product release incidents by year, with bar color segments corresponding to the various products released. Similiar to the map, incidents can be re-categorized by clicking on the side buttons to view a breakdown of incidents by status, what happened, why it happened, and province/territory.",
+            "The above map displays the location of product release incidents that have occurred on the pipeline system since 2008. The map defaults to show incidents as bubbles which are coloured based on the substance released. Incidents on the map can be re-categorized based on the most recently available status of the CER's incident review, the year in which the incident was reported, and the province/territory where the incident occurred. The incident map bubble can be switched to show the estimated volume of product released, with larger map bubbles showing larger release volumes relative to other product releases on the system. The incident data can also be toggled to display a stacked bar chart of incidents over time by clicking on the incident trends button above the map. The stacked bars display the number of product release incidents by year, with bar colour segments corresponding to the various products released. Similar to the map, incidents can be re-categorized by clicking on the side buttons to view a breakdown of incidents by status, what happened, why it happened, and province/territory.",
           openGov: openGovLink(
             "https://open.canada.ca/data/en/dataset/fd17f08f-f14d-433f-91df-c90a34e1e9a6",
             "en"
@@ -318,13 +326,12 @@ const en = {
       dashboard: {
         id: "remediation",
         mapPillIds: [
-          "rem-water-bar",
-          "rem-status-bar",
           "rem-year-bar",
           "rem-province-bar",
+          "rem-water-bar",
+          "rem-use-bar",
         ],
         chartPillIds: [
-          "rem-water-trend",
           "rem-status-trend",
           "rem-use-trend",
           "rem-activity-trend",
@@ -344,8 +351,10 @@ const en = {
           sourceTitle: sourceAndDescEn,
           dataSourceTitle: dataSourceEn,
           descriptionTitle: descriptionEn,
+          sourceText: sourceTextEn,
           sourceLink: "Coming soon!",
-          description: "Coming soon!",
+          description:
+            "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Similar to the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
           openGov: false,
         },
       },
@@ -436,8 +445,11 @@ const en = {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
         descriptionTitle: descriptionEn,
-        sourceLink: "Coming soon!",
-        description: "Coming soon!",
+        sourceText: sourceTextEn,
+        sourceLink:
+          "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
+        description:
+          "The above bar chart displays the number of O&M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
         openGov: openGovLink(
           "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "en"
@@ -497,7 +509,9 @@ const fr = {
       sourceTitle: sourceAndDescFr,
       dataSourceTitle: dataSourceFr,
       descriptionTitle: descriptionFr,
-      sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>`,
+      sourceText: sourceTextFr,
+      sourceLink:
+        "https://ouvert.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34",
       description:
         "Le tableau de bord ci-dessus indique le débit et la capacité du pipeline aux principaux points sur le réseau. Lorsque cela est possible, la moyenne sur cinq ans et la fourchette de débit sur cinq ans sont illustrées avec le débit de l’année en cours pour mieux faire ressortir les tendances. Pour les principaux points du pipeline dont l’emplacement est défini, une carte est affichée à côté du graphique, montrant l’emplacement approximatif où le débit et la capacité du pipeline sont enregistrés.",
       subTextId: "conversion-disclaimer-traffic",
@@ -566,7 +580,9 @@ const fr = {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
         descriptionTitle: descriptionFr,
-        sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/e8402029-2543-4300-bf6a-81a788a08f70" target="_blank" rel="external">Gouvernement ouvert</a>`,
+        sourceText: sourceTextFr,
+        sourceLink:
+          "https://ouvert.canada.ca/data/fr/dataset/e8402029-2543-4300-bf6a-81a788a08f70",
         description:
           "La carte ci-dessus indique le nombre de conditions imposées par la Régie aux projets approuvés par la Commission. La carte est divisée en deux onglets. Les conditions en cours et les conditions remplies sont ainsi montrées séparément en fonction des régions économiques. Si aucune condition en cours n’est associée à une société pour une région économique précise, le tableau de bord affichera par défaut les conditions remplies par régions. Un autre affichage présente le nombre de conditions en cours et de conditions conformes qui ne sont pas associées à une région économique dans l’ensemble de données. Les régions de la carte sont colorées en fonction du nombre de conditions, celles de couleur plus pâle affichant un nombre réduit de conditions par rapport aux régions plus foncées. Les conditions qui visent plus d’une région sont comptabilisées en double sur la carte et figurent dans le total et la ventilation pour chaque région applicable. Les nombres de conditions qui figurent sur les boutons de navigation de la carte représentent le total des conditions, sans double comptabilisation.",
         openGov: openGovLink("/ouvert/conditions/conditions.csv", "fr"),
@@ -716,7 +732,9 @@ const fr = {
           sourceTitle: sourceAndDescFr,
           dataSourceTitle: dataSourceFr,
           descriptionTitle: descriptionFr,
-          sourceLink: `<a href="https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1" target="_blank" rel="external">Gouvernement ouvert</a>`,
+          sourceText: sourceTextFr,
+          sourceLink:
+            "https://ouvert.canada.ca/data/fr/dataset/7dffedc4-23fa-440c-a36d-adf5a6cc09f1",
           description:
             "La carte ci-dessus montre l’emplacement des déversements de produit survenus sur le réseau pipelinier depuis 2008. Par défaut, les incidents sont affichés sous forme de bulles qui sont colorées en fonction de la substance rejetée. Les incidents sur la carte peuvent aussi être classés en fonction de l’état d’avancement de l’examen de la Régie, de l’année à laquelle l’incident a été signalé et de la province ou du territoire où l’incident s’est produit. Les bulles de la carte des incidents peuvent également indiquer le volume estimatif des déversements, les bulles plus grandes correspondant à des volumes plus élevés. Il est également possible de présenter les données sur les incidents au fil du temps sous forme de graphique à barres empilées. Pour ce faire, il suffit de cliquer sur le bouton Tendance des incidents situé au-dessus de la carte. Les barres empilées représentent le nombre d’incidents de déversement de produit par année, et les segments de couleur des barres correspondent aux divers produits déversés. Comme sur la carte, les incidents peuvent être reclassés en cliquant sur les boutons latéraux pour afficher la répartition des incidents selon le statut, ce qui s’est produit et pourquoi, et la province ou le territoire touché.",
           openGov: openGovLink(
@@ -731,13 +749,12 @@ const fr = {
       dashboard: {
         id: "remediation",
         mapPillIds: [
-          "rem-water-bar",
-          "rem-status-bar",
           "rem-year-bar",
           "rem-province-bar",
+          "rem-water-bar",
+          "rem-use-bar",
         ],
         chartPillIds: [
-          "rem-water-trend",
           "rem-status-trend",
           "rem-use-trend",
           "rem-activity-trend",
@@ -757,8 +774,10 @@ const fr = {
           sourceTitle: sourceAndDescFr,
           dataSourceTitle: dataSourceFr,
           descriptionTitle: descriptionFr,
+          sourceText: sourceTextFr,
           sourceLink: "Coming soon!",
-          description: "Coming soon!",
+          description:
+            "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Similar to the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
           openGov: false,
         },
       },
@@ -849,8 +868,11 @@ const fr = {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
         descriptionTitle: descriptionFr,
-        sourceLink: "Coming soon!",
-        description: "Coming soon!",
+        sourceText: sourceTextFr,
+        sourceLink:
+          "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
+        description:
+          "The above bar chart displays the number of O&M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
         openGov: openGovLink(
           "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "fr"

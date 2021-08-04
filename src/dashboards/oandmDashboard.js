@@ -49,7 +49,6 @@ export async function mainOandM(eventData, lang) {
       plot: timeSeries,
       numberOfPills: 5,
       langPillTitles: lang.pillTitles,
-      fixedPillHeight: 72,
     });
 
     trendNav.makeBar("p", "oandm-region-trend", "activated");

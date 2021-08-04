@@ -339,7 +339,7 @@ export class EventTrend {
       series: this.generateSeries(this.data, this.field),
     });
     this.chart = chart;
-    this.plotHeight = chart.chartHeight;
+    this.plotHeight = chart.chartHeight - 15; // subtract 15 px for better looking spacing
   }
 
   fieldChange(newField) {

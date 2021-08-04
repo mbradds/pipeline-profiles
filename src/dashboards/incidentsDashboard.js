@@ -70,7 +70,6 @@ export async function mainIncidents(incidentData, metaData, lang) {
       plot: timeSeries,
       numberOfPills: 5,
       langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
-      fixedPillHeight: 72,
     });
 
     trendNav.makeBar("sub", "substance-trend", "activated");

@@ -22,9 +22,9 @@ export async function mainRemediation(data, lang) {
       langPillTitles,
       data: events,
     });
-    barNav.makeBar("w", "rem-water-bar", "activated");
-    barNav.makeBar("s", "rem-status-bar", "deactivated");
-    barNav.makeBar("y", "rem-year-bar", "deactivated");
+    barNav.makeBar("y", "rem-year-bar", "activated");
+    barNav.makeBar("w", "rem-water-bar", "deactivated");
+    barNav.makeBar("use", "rem-use-bar", "deactivated");
     barNav.makeBar("p", "rem-province-bar", "deactivated");
     barNav.divEvents();
     return barNav;
@@ -68,13 +68,10 @@ export async function mainRemediation(data, lang) {
 
     const trendNav = new EventNavigator({
       plot: timeSeries,
-      numberOfPills: 5,
+      numberOfPills: 4,
       langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
-      fixedPillHeight: 72,
     });
-
-    trendNav.makeBar("w", "rem-water-trend", "activated");
-    trendNav.makeBar("s", "rem-status-trend", "deactivated");
+    trendNav.makeBar("s", "rem-status-trend", "activated");
     trendNav.makeBar("use", "rem-use-trend", "deactivated");
     trendNav.makeBar("a", "rem-activity-trend", "deactivated");
     trendNav.makeBar("p", "rem-province-trend", "deactivated");
