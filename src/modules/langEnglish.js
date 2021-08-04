@@ -76,8 +76,8 @@ const userPopUp =
 const locationError =
   "<h4>Can't access your location.</h4>Try enabling your browser's location services and refresh the page.";
 
-const exploreOther =
-  "Want to explore other regions? You can click and drag the location marker and re-click the find incidents button.";
+const exploreOther = (eventType) =>
+  `Want to explore other regions? You can click and drag the location marker and re-click the find ${eventType} button.`;
 
 const click = "click to view";
 
@@ -92,6 +92,9 @@ const unitsDisclaimerText = (commodity) => {
   }
   return conversionText;
 };
+
+const countDisclaimer = (eventType, field) =>
+  `${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.`;
 
 const points = {
   0: [
@@ -417,7 +420,7 @@ export const englishDashboard = {
       userPopUp,
       locationError,
       legendClick,
-      exploreOther,
+      exploreOther: exploreOther("incidents"),
       cf: "cubic feet",
       bbl: "bbl",
       pillTitles: {
@@ -435,8 +438,8 @@ export const englishDashboard = {
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
       locationDisclaimer: "Waiting for your location...",
-      countDisclaimer: (eventType, field) =>
-        `${eventType} can have multiple ${field} values. Chart totals may appear larger due to double counting.`,
+      countDisclaimer,
+      countDisclaimerEvent: "Incidents",
       nearbyHeader: (numCircles, range) =>
         `There are ${numCircles} incidents within ${range} km`,
       gasRelease: "Estimated gas volume released:",
@@ -648,8 +651,10 @@ export const englishDashboard = {
       userPopUp,
       locationError,
       numberFormat,
-      exploreOther,
+      exploreOther: exploreOther("events"),
       legendClick,
+      countDisclaimer,
+      countDisclaimerEvent: "Contaminated sites",
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",
@@ -669,6 +674,7 @@ export const englishDashboard = {
           p: "Province",
           a: "Activity At Time",
           c: "Contaminants at the Site",
+          ps: "Pipeline or Facility",
           s: "Site Status",
           y: "Year",
         },

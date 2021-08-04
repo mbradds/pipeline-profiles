@@ -46,14 +46,6 @@ export async function mainIncidents(incidentData, metaData, lang) {
   };
 
   const incidentTimeSeries = (timeField, timeFilters) => {
-    const ONETOMANY = {
-      sub: false,
-      s: false,
-      p: false,
-      what: true,
-      why: true,
-      category: true,
-    };
     const timeSeries = new EventTrend({
       eventType,
       field: timeField,
@@ -61,7 +53,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
       data: incidentData,
       divId: "incidents-time-series",
       legendClickText: { enabled: true, text: lang.dashboard.legendClick },
-      oneToMany: ONETOMANY,
+      oneToMany: {
+        what: true,
+        why: true,
+        category: true,
+      },
       lang: lang.dashboard,
       definitions: lang.definitions,
     });

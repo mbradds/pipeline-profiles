@@ -333,9 +333,9 @@ const en = {
         ],
         chartPillIds: [
           "rem-status-trend",
-          "rem-use-trend",
           "rem-activity-trend",
-          "rem-province-trend",
+          "rem-pipeline-trend",
+          "rem-contaminant-trend",
         ],
         hasRadio: false,
         mapBtn: "Contaminated Sites Map",
@@ -756,9 +756,9 @@ const fr = {
         ],
         chartPillIds: [
           "rem-status-trend",
-          "rem-use-trend",
           "rem-activity-trend",
-          "rem-province-trend",
+          "rem-pipeline-trend",
+          "rem-contaminant-trend",
         ],
         hasRadio: false,
         mapBtn: "Contaminated Sites Map",

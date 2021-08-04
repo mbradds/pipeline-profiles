@@ -37,7 +37,7 @@ export async function mainRemediation(data, lang) {
       filters: mapFilters,
       minRadius: 14000,
       divId: "remediation-map",
-      toolTipFields: ["vol", "use", "c"],
+      toolTipFields: ["vol", "use", "c", "ps"],
       lang: mapLang,
       regdocsClick: true,
     });
@@ -48,12 +48,6 @@ export async function mainRemediation(data, lang) {
   };
 
   const remediationTimeSeries = (timeField, timeFilters) => {
-    const ONETOMANY = {
-      w: false,
-      s: false,
-      p: false,
-      use: false,
-    };
     const timeSeries = new EventTrend({
       eventType,
       field: timeField,
@@ -61,7 +55,7 @@ export async function mainRemediation(data, lang) {
       data: data.data,
       divId: "remediation-time-series",
       legendClickText: { enabled: true, text: lang.dashboard.legendClick },
-      oneToMany: ONETOMANY,
+      oneToMany: { c: true },
       lang: lang.dashboard,
       // definitions: lang.definitions,
     });
@@ -72,9 +66,9 @@ export async function mainRemediation(data, lang) {
       langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
     });
     trendNav.makeBar("s", "rem-status-trend", "activated");
-    trendNav.makeBar("use", "rem-use-trend", "deactivated");
     trendNav.makeBar("a", "rem-activity-trend", "deactivated");
-    trendNav.makeBar("p", "rem-province-trend", "deactivated");
+    trendNav.makeBar("ps", "rem-pipeline-trend", "deactivated");
+    trendNav.makeBar("c", "rem-contaminant-trend", "deactivated");
     trendNav.divEvents();
 
     return timeSeries;

@@ -77,8 +77,8 @@ const userPopUp =
 const locationError =
   "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.";
 
-const exploreOther =
-  "Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un incident.";
+const exploreOther = (eventType) =>
+  `Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher ${eventType}.`;
 
 const click = "clique pour voir";
 
@@ -93,6 +93,9 @@ const unitsDisclaimerText = (commodity) => {
   }
   return conversionText;
 };
+
+const countDisclaimer = (eventType, field) =>
+  `${eventType} peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`;
 
 const points = {
   0: [
@@ -413,7 +416,7 @@ export const frenchDashboard = {
       legendClick,
       userPopUp,
       locationError,
-      exploreOther,
+      exploreOther: exploreOther("un incident"),
       cf: "pieds cubes",
       bbl: "b",
       pillTitles: {
@@ -431,8 +434,8 @@ export const frenchDashboard = {
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
       locationDisclaimer: "En attente de votre position...",
-      countDisclaimer: (eventType, field) =>
-        `Les incidents peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`,
+      countDisclaimer,
+      countDisclaimerEvent: "Les incidents",
       nearbyHeader: (numCircles, range) =>
         `Il y a ${numCircles} incidents dans un rayon de ${range} km`,
       gasRelease: "Estimation du volume de gaz rejeté:",
@@ -648,9 +651,11 @@ export const frenchDashboard = {
     dashboard: {
       userPopUp,
       numberFormat,
-      exploreOther,
+      exploreOther: exploreOther("events"),
       locationError,
       legendClick,
+      countDisclaimer,
+      countDisclaimerEvent: "Contaminated sites (FR)",
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",
@@ -670,6 +675,7 @@ export const frenchDashboard = {
           p: "FR: Province",
           a: "FR: Activity At Time",
           c: "FR: Contaminants at the Site",
+          ps: "FR: Pipeline or Facility",
           s: "FR: Site Status",
           y: "FR: Year",
         },

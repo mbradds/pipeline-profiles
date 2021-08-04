@@ -16,6 +16,7 @@ export const generalTheme = () => {
     chart: {
       animation: true,
     },
+    colors: Object.values(cerPalette),
     plotOptions: {
       column: {
         stacking: "normal",

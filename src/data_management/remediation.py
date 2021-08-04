@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_data, idify, company_rename, get_company_list
+from util import get_data, idify, company_rename, get_company_list, normalize_text
 import os
 import json
 import datetime
@@ -77,19 +77,37 @@ def process_remediation(sql=False, companies=False, test=False):
                             db="dsql22cap")
 
     df = applyContaminantIds(df, contaminants)
+    df["Contaminants at the Site"] = [["1"] if x == None else x for x in df["Contaminants at the Site"]]
 
-    for delete in ['Pipeline Name',
-                   'Facility Name',
-                   'Facility Type',
+    for delete in ['Facility Type',
                    'Product Carried',
                    'NearestPopulatedCentre']:
 
         del df[delete]
 
-    for stringCol in ['Applicable Land Use',
-                      'Site Status',
-                      'Activity At Time']:
-        df[stringCol] = [str(x).strip() for x in df[stringCol]]
+    df = normalize_text(df, ['Applicable Land Use',
+                             'Site Status',
+                             'Activity At Time',
+                             'Pipeline Name',
+                             'Facility Name'])
+
+    pipe_section = []
+    na = "Not Specified"
+    for pipe, section in zip(df['Pipeline Name'], df['Facility Name']):
+        if pipe == na and section == na:
+            pipe_section.append(na)
+        elif pipe == na and section != na:
+            pipe_section.append(section)
+        elif pipe != na and section == na:
+            pipe_section.append(pipe)
+        elif pipe != na and section != na:
+            pipe_section.append(pipe+"/"+section)
+        else:
+            print("error here!")
+
+    df["ps"] = pipe_section
+    del df['Pipeline Name']
+    del df['Facility Name']
 
     # add id's
     landUseId = {
@@ -199,5 +217,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(sql=True)  # , companies=["NOVA Gas Transmission Ltd."])
+    df = process_remediation(sql=False)  # , companies=["NOVA Gas Transmission Ltd."])
 

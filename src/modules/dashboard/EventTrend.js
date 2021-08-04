@@ -166,9 +166,10 @@ export class EventTrend {
         events.forEach((row) => {
           let itemList;
           uniqueYears.add(row.y);
-          if (row[field].length > 1) {
-            itemList = row[field];
-            itemList = itemList.map((value) => value.trim());
+          if (!row[field]) {
+            itemList = ["Not Provided"];
+          } else if (row[field].length > 1) {
+            itemList = row[field].map((value) => value.trim());
           } else {
             itemList = [row[field]];
           }
@@ -200,8 +201,11 @@ export class EventTrend {
         const yVal = seriesData[xVal];
         hcData.push({ name: xVal, y: yVal });
       });
+
       seriesList.push({
-        name: this.colors[field][seriesId].n,
+        name: Object.prototype.hasOwnProperty.call(this.colors, field)
+          ? this.colors[field][seriesId].n
+          : seriesId,
         id: seriesId,
         data: hcData,
         color: this.applyColor(seriesId, field),
@@ -231,10 +235,11 @@ export class EventTrend {
       this.chart.update({
         title: {
           text: `<div class="alert alert-warning count-disclaimer"><p>${this.lang.countDisclaimer(
-            this.eventType,
+            this.lang.countDisclaimerEvent,
             this.pillNameSubstitution()
           )}</p></div>`,
           useHTML: true,
+          widthAdjust: 0,
           align: "left",
           margin: 0,
           style: {
@@ -247,6 +252,7 @@ export class EventTrend {
       this.chart.update({
         title: {
           text: "",
+          widthAdjust: 0,
         },
       });
     }

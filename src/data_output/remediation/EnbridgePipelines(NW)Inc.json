@@ -1,1 +1,1 @@
-{"meta": {"company": "Enbridge Pipelines (NW) Inc.", "old": 5, "new": 1, "soil": {"total": 44, "pools": 0.0}}, "build": true, "data": [{"id": "REM2019-003", "p": "nt", "use": "ndl", "s": "prm", "a": "c", "c": null, "vol": 44, "w": false, "y": 2019, "loc": [61.83, -121.18]}]}
+{"meta": {"company": "Enbridge Pipelines (NW) Inc.", "old": 5, "new": 1, "soil": {"total": 44, "pools": 0.0}}, "build": true, "data": [{"id": "REM2019-003", "p": "nt", "use": "ndl", "s": "prm", "a": "c", "c": ["1"], "vol": 44, "w": false, "ps": "Line 21", "y": 2019, "loc": [61.83, -121.18]}]}
