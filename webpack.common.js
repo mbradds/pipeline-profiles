@@ -90,19 +90,12 @@ module.exports = {
     },
     splitChunks: {
       cacheGroups: {
-        leafletVendor: {
-          test: /[\\/]node_modules[\\/](leaflet)[\\/]/,
+        vendor: {
+          test: /[\\/]node_modules[\\/](leaflet|highcharts)[\\/]/,
           chunks: "initial",
           reuseExistingChunk: true,
           enforce: true,
-          filename: "shared/leaflet.[contenthash].js",
-        },
-        highchartsVendor: {
-          test: /[\\/]node_modules[\\/](highcharts)[\\/]/,
-          chunks: "initial",
-          reuseExistingChunk: true,
-          enforce: true,
-          filename: "shared/highcharts.[contenthash].js",
+          filename: "shared/vendor.[contenthash].js",
         },
       },
     },

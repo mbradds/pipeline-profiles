@@ -1,6 +1,5 @@
 import { EventNavigator } from "../modules/dashboard/EventNavigator";
 import { EventTrend } from "../modules/dashboard/EventTrend";
-import { oandmText } from "../modules/dynamicText";
 import { loadChartError } from "../modules/util";
 import { noEventsFlag } from "./dashboardUtil";
 
@@ -28,7 +27,8 @@ export async function mainOandM(eventData, lang) {
   }
 
   function loadDynamicText() {
-    oandmText(eventData.meta, lang);
+    lang.dynamicText(eventData.meta, lang);
+    // oandmText(eventData.meta, lang);
   }
 
   const incidentTimeSeries = (timeField, timeFilters) => {

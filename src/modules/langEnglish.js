@@ -7,7 +7,11 @@
 
 import Highcharts from "highcharts";
 import { cerPalette } from "./util";
-import { incidentsTextEng, trafficTrendTextEng } from "./dynamicText";
+import {
+  incidentsTextEng,
+  trafficTrendTextEng,
+  oandmTextEng,
+} from "./dynamicText";
 
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "NGTL System",
@@ -610,6 +614,7 @@ export const englishDashboard = {
     numberFormat,
     legendClick,
     companyToSystem,
+    dynamicText: oandmTextEng,
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle: "Number of Events",
     pillTitles: {
