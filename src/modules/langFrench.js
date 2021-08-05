@@ -560,6 +560,10 @@ export const frenchDashboard = {
       co: "Condensat",
       ecap: "Capacité Exportation",
       icap: "Capacité Importation",
+      msm: "FR: Westspur midale (MSM) crude",
+      ses: "FR: Southeast sask (SES) crude",
+      pet: "FR: Petroleum",
+      ngl: "Liquides de gaz naturel",
     },
     util: "Utilisation",
     months: {

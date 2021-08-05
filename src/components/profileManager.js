@@ -52,7 +52,7 @@ const profileSections = {
   },
   Brunswick: {
     sections: {
-      traffic: { map: false, noMap: false },
+      traffic: { map: false, noMap: true },
       apportion: false,
       safety: true,
     },
@@ -164,14 +164,14 @@ const profileSections = {
   },
   Montreal: {
     sections: {
-      traffic: { map: false, noMap: false },
+      traffic: { map: false, noMap: true },
       apportion: false,
       safety: true,
     },
   },
   Westspur: {
     sections: {
-      traffic: { map: false, noMap: false },
+      traffic: { map: false, noMap: true },
       apportion: false,
       safety: true,
     },

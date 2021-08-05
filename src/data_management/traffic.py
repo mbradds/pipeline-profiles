@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list
+from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list, company_rename
 import os
 import json
 import dateutil.relativedelta
@@ -99,7 +99,9 @@ def applyColors(trade_type):
               "di": "#871455",
               "ses": "#054169",
               "msm": "#559B37",
-              "pet": "#054169"}
+              "pet": "#054169",
+              "dic": "#054169",
+              "diu": "#FF821E"}
     return colors[trade_type]
 
 
@@ -110,6 +112,8 @@ def fixCorporateEntity(df):
                                                              "Trans Québec & Maritimes Pipeline Inc": "Trans Quebec and Maritimes Pipeline Inc.",
                                                              "Foothills Pipe Lines Ltd. (Foothills)": "Foothills Pipe Lines Ltd.",
                                                              "Maritimes & Northeast Pipeline": "Maritimes & Northeast Pipeline Management Ltd."})
+
+    df['Corporate Entity'] = df['Corporate Entity'].replace(company_rename())
     return df
 
 
@@ -183,6 +187,8 @@ def meta_throughput(df_c, meta, data):
                    'west': 'w',
                    'northeast': 'ne',
                    'northwest': 'nw',
+                   'north-west': 'nw',
+                   'north-east': 'ne',
                    'southeast': 'se',
                    'southwest': 'sw'
                    }
@@ -280,11 +286,13 @@ def getDefaultPoint(company):
                 'Trans-Northern Pipelines Inc.': '0',
                 'Enbridge Pipelines (NW) Inc.': '34',
                 'Enbridge Southern Lights GP Inc.': '0',
-                'TEML Westpur Pipelines Limited (TEML)': '0'}
+                'Southern Lights Pipeline': '0',
+                'TEML Westpur Pipelines Limited (TEML)': '0',
+                'Kingston Midstream Westspur Limited': '0'}
     try:
         return defaults[company]
     except:
-        return None
+        return '0'
 
 
 def process_throughput(save=False,
@@ -338,9 +346,10 @@ def process_throughput(save=False,
     else:
         company_files = get_company_list("oil")
 
-    group2 = ['TEML Westpur Pipelines Limited (TEML)',
-              'Enbridge Southern Lights GP Inc.',
-              'Emera Brunswick Pipeline Company Ltd.']
+    # group2 = ['TEML Westpur Pipelines Limited (TEML)',
+    #           'Enbridge Southern Lights GP Inc.',
+    #           'Emera Brunswick Pipeline Company Ltd.']
+    group2 = ['Southern Lights Pipeline']
 
     if companies:
         company_files = companies
@@ -353,6 +362,8 @@ def process_throughput(save=False,
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
+        if company == "Kingston Midstream Westspur Limited":
+            df_c["Capacity"] = [0 for x in df_c["Capacity"]]
         if not df_c.empty and company not in group2:
             meta["build"] = True
             trend = meta_trend(df_c, commodity)
@@ -476,6 +487,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=True, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(save=True, sql=True, commodity='oil')
+    traffic, df = process_throughput(save=True, sql=False, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(save=True, sql=False, commodity='oil')
     print('completed throughput!')
