@@ -6,31 +6,31 @@ const profileWebpackConfig = (function config() {
   const language = ["en", "fr"];
 
   const htmlFileNames = [
-    ["ngtl", "natural-gas"],
-    ["alliance", "natural-gas"],
-    ["tcpl", "natural-gas"],
-    ["westcoast", "natural-gas"],
-    ["emera_brunswick", "natural-gas"],
-    ["maritimes_northeast", "natural-gas"],
-    ["many_islands", "natural-gas"],
-    ["tqm", "natural-gas"],
-    ["vector", "natural-gas"],
-    ["foothills", "natural-gas"],
-    ["enbridge_mainline", "oil-and-liquids"],
-    ["keystone", "oil-and-liquids"],
-    ["trans_mountain", "oil-and-liquids"],
-    ["cochin", "oil-and-liquids"],
-    ["southern_lights", "oil-and-liquids"],
-    ["bakken", "oil-and-liquids"],
-    ["norman_wells", "oil-and-liquids"],
-    ["express_pipeline", "oil-and-liquids"],
-    ["trans_northern", "oil-and-liquids"],
-    ["genesis", "oil-and-liquids"],
-    ["montreal", "oil-and-liquids"],
-    ["westspur", "oil-and-liquids"],
-    ["aurora", "oil-and-liquids"],
-    ["milk_river", "oil-and-liquids"],
-    ["wascana", "oil-and-liquids"],
+    ["NGTL", "natural-gas"],
+    ["Alliance", "natural-gas"],
+    ["TCPL", "natural-gas"],
+    ["Westcoast", "natural-gas"],
+    ["Brunswick", "natural-gas"],
+    ["MNP", "natural-gas"],
+    ["ManyIslands", "natural-gas"],
+    ["TQM", "natural-gas"],
+    ["Vector", "natural-gas"],
+    ["Foothills", "natural-gas"],
+    ["EnbridgeMainline", "oil-and-liquids"],
+    ["Keystone", "oil-and-liquids"],
+    ["TransMountain", "oil-and-liquids"],
+    ["Cochin", "oil-and-liquids"],
+    ["SouthernLights", "oil-and-liquids"],
+    ["EnbridgeBakken", "oil-and-liquids"],
+    ["NormanWells", "oil-and-liquids"],
+    ["Express", "oil-and-liquids"],
+    ["TransNorthern", "oil-and-liquids"],
+    ["Genesis", "oil-and-liquids"],
+    ["Montreal", "oil-and-liquids"],
+    ["Westspur", "oil-and-liquids"],
+    ["Aurora", "oil-and-liquids"],
+    ["MilkRiver", "oil-and-liquids"],
+    ["Wascana", "oil-and-liquids"],
   ];
 
   function htmlWebpack(returnPaths = false) {
@@ -86,7 +86,7 @@ const profileWebpackConfig = (function config() {
       sections.forEach((section) => {
         htmlFileNames.forEach((name) => {
           let folderName = name[0];
-          if (["milk_river", "wascana"].includes(name[0])) {
+          if (["MilkRiver", "Wascana"].includes(name[0])) {
             folderName = "plains";
           }
           // data entry point

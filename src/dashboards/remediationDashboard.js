@@ -80,12 +80,12 @@ export async function mainRemediation(data, lang) {
       if (
         Object.prototype.hasOwnProperty.call(
           lang.companyToSystem,
-          data.meta.company
+          data.meta.companyName
         )
       ) {
-        chartParams.systemName = lang.companyToSystem[data.meta.company];
+        chartParams.systemName = lang.companyToSystem[data.meta.companyName];
       } else {
-        chartParams.systemName = data.meta.company;
+        chartParams.systemName = data.meta.companyName;
       }
 
       // add the cutoff date to the chartParams
