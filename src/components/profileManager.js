@@ -22,175 +22,175 @@
  */
 
 const profileSections = {
-  ngtl: {
+  NGTL: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  alliance: {
+  Alliance: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  tcpl: {
+  TCPL: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  westcoast: {
+  Westcoast: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  emera_brunswick: {
+  Brunswick: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  maritimes_northeast: {
+  MNP: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  many_islands: {
+  ManyIslands: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  tqm: {
+  TQM: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  vector: {
+  Vector: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  foothills: {
+  Foothills: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  enbridge_mainline: {
+  EnbridgeMainline: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
       safety: true,
     },
   },
-  keystone: {
+  Keystone: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
       safety: true,
     },
   },
-  trans_mountain: {
+  TransMountain: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
       safety: true,
     },
   },
-  cochin: {
+  Cochin: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
       safety: true,
     },
   },
-  southern_lights: {
+  SouthernLights: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  bakken: {
+  EnbridgeBakken: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  norman_wells: {
+  NormanWells: {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
       safety: true,
     },
   },
-  express_pipeline: {
+  Express: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  trans_northern: {
+  TransNorthern: {
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
       safety: true,
     },
   },
-  genesis: {
+  Genesis: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  montreal: {
+  Montreal: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  westspur: {
+  Westspur: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  aurora: {
+  Aurora: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  milk_river: {
+  MilkRiver: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
       safety: true,
     },
   },
-  wascana: {
+  Wascana: {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,

@@ -32,7 +32,7 @@ def optimizeJson(df):
 
 def meta(df, company):
     metaData = {}
-    metaData["company"] = company
+    metaData["companyName"] = company
 
     df_old = df[df['Final Submission Date'] < minDate].copy().reset_index(drop=True)
     df = df[df['Final Submission Date'] >= minDate].copy().reset_index(drop=True)
