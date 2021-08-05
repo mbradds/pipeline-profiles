@@ -10,6 +10,7 @@ def addIds(df):
     df = df[df['Key Point'] != "FortisBC Lower Mainland"]
     df = df[df['Key Point'] != "St Clair"]
     points = {'system': '0',
+              'KP0000': '0',
               'Border': '1',
               'Zone 2': '2',
               'Huntingdon/FortisBC Lower Mainland': '3',
@@ -73,8 +74,11 @@ def applyTradeId(df):
              "foreign light": "fl",
              "condensate": "co",
              "diluent": "di",
-             "south east sask (ses) crude": "ses",
-             "westspur midale (msm) crude": "msm"}
+             "diluent (committed)": "dic",
+             "diluent (uncommitted)": "diu",
+             "southeast sask (SES) crude": "ses",
+             "petroleum": "pet",
+             "westspur midale (MSM) crude": "msm"}
     df = idify(df, "Trade Type", trade, False)
     return df
 
@@ -94,7 +98,8 @@ def applyColors(trade_type):
               "co": "#871455",
               "di": "#871455",
               "ses": "#054169",
-              "msm": "#559B37"}
+              "msm": "#559B37",
+              "pet": "#054169"}
     return colors[trade_type]
 
 
@@ -115,12 +120,20 @@ def fixKeyPoint(df):
     return df
 
 
-def get_data(sql=False, query='throughput_gas_monthly.sql'):
+def get_data(sql=False, query='throughput_gas_monthly.sql', db="EnergyData"):
 
     csvName = query.split(".")[0]+'.csv'
-    if sql:
+    if sql and query != 'key_points.sql':
         print('reading sql '+query.split(".")[0])
-        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db='EnergyData')
+        if query == "throughput_gas_monthly.sql":
+            dfG1 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_gas_monthly.sql', db=db)
+            dfG2 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_gas_group2.sql', db="PipelineInformation")
+            df = pd.concat([dfG1, dfG2], ignore_index=True)
+        elif query == "throughput_oil_monthly.sql":
+            dfG1 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_oil_monthly.sql', db=db)
+            dfG2 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_oil_group2.sql', db="PipelineInformation")
+            df = pd.concat([dfG1, dfG2], ignore_index=True)
+
         df.to_csv('raw_data/'+csvName, index=False)
 
     else:
@@ -463,6 +476,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(save=True, sql=False, commodity='oil')
+    traffic, df = process_throughput(save=True, sql=True, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(save=True, sql=True, commodity='oil')
     print('completed throughput!')

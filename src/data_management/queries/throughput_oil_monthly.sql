@@ -45,4 +45,5 @@ and throughput.[Pipeline Name] = capacity.[Pipeline Name]
 where throughput.[Corporate Entity] = 'Trans Mountain Pipeline ULC'
 group by throughput.Year, throughput.Month, throughput.[Corporate Entity], throughput.[Pipeline Name], throughput.[Key Point], throughput.[Direction of Flow], throughput.Product
 ) as hc
+where hc.[Corporate Entity] not in ('Enbridge Southern Lights GP Inc.', 'TEML Westpur Pipelines Limited (TEML)')
 order by [Corporate Entity], [Pipeline Name], [Key Point], cast(str([Month])+'-'+'1'+'-'+str([Year]) as date)

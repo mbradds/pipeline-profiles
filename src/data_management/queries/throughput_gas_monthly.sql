@@ -12,6 +12,6 @@ end as [Key Point],
 round(avg([Capacity (1000 m3/d)]),3) as [Capacity (1000 m3/d)],
 round(avg([Throughput (1000 m3/d)]),3) as [Throughput (1000 m3/d)]
 FROM [EnergyData].[dbo].[Pipelines_Gas]
---where [Year] >= '2010'
+where [Corporate Entity] not in ('Emera Brunswick Pipeline Company Ltd.')
 group by [Year], [Month], [Corporate Entity], [Key Point], [Direction of Flow], [Trade Type]
 order by [Corporate Entity],[Key Point], [Year], [Month]
