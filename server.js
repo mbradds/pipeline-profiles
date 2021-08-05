@@ -11,19 +11,23 @@ const limiter = rateLimit({
   max: 500, // limit each IP to 500 requests per windowMs
 });
 
-const setCache = function cachePolicy(req, res, next) {
-  const period = 60 * 60 * 2; // 2 hours
+function cachePolicy(req, res, next) {
+  const periodShort = 60 * 60 * 2; // 2 hours
+  const periodLong = 31536000; // 1 year
 
-  // you only want to cache for GET requests
+  const noContentHash = /GCWeb|wet-boew/;
   if (req.method === "GET") {
-    // && req.url.match(/.html$/)) {
-    res.set("Cache-control", `public, max-age=${period}`);
+    if (!req.url.match(noContentHash)) {
+      res.set("Cache-control", `public, max-age=${periodLong}`);
+    } else {
+      res.set("Cache-control", `public, max-age=${periodShort}`);
+    }
   } else {
     // for the other requests set strict no caching parameters
     res.set("Cache-control", `no-store`);
   }
   next();
-};
+}
 
 function shouldCompress(req, res) {
   if (req.headers["x-no-compression"]) {
@@ -36,7 +40,7 @@ function shouldCompress(req, res) {
 
 app.disable("x-powered-by");
 app.use(compression({ filter: shouldCompress }));
-app.use(setCache);
+app.use(cachePolicy);
 app.use(limiter);
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
