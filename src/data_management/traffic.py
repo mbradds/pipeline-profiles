@@ -362,8 +362,6 @@ def process_throughput(save=False,
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
-        if company == "Kingston Midstream Westspur Limited":
-            df_c["Capacity"] = [0 for x in df_c["Capacity"]]
         if not df_c.empty and company not in group2:
             meta["build"] = True
             trend = meta_trend(df_c, commodity)
@@ -487,6 +485,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(save=True, sql=False, commodity='oil')
+    traffic, df = process_throughput(save=True, sql=True, commodity='gas', frequency='monthly')
+    traffic, df = process_throughput(save=True, sql=True, commodity='oil')
     print('completed throughput!')
