@@ -603,6 +603,8 @@ export const englishDashboard = {
       "clea2/3": "Clearbrook - Line 2/3",
       "kerr2/93": "Kerrobert - Line 2/93",
       "kerr4/67": "Kerrobert - Line 4/67",
+      "kerr4/68": "Kerrobert - Line 4/68",
+      "kerr4/70": "Kerrobert - Line 4/70",
       west10: "Westover - Line 10",
       kerr1: "Kerrobert - Line 1",
       "regi4/67": "Regina - Line 4/67",

@@ -217,5 +217,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(sql=False)  # , companies=["NOVA Gas Transmission Ltd."])
+    df = process_remediation(sql=True)  # , companies=["NOVA Gas Transmission Ltd."])
 

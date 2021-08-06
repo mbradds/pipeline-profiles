@@ -1,10 +1,12 @@
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify, get_company_list, company_rename
+from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify, get_company_list, company_rename, get_data
 from errors import ApportionSeriesCombinationError, IdLengthError, IdError
 import dateutil.relativedelta
-from traffic import get_data, addIds
+from traffic import addIds
 import time
 import json
+import os
+script_dir = os.path.dirname(__file__)
 
 enbridgePoints = {
     "Cromer - Line 2/93": "crom2/93",
@@ -12,6 +14,8 @@ enbridgePoints = {
     "Clearbrook - Line 2/3": "clea2/3",
     "Kerrobert - Line 2/93": "kerr2/93",
     "Kerrobert - Line 4/67": "kerr4/67",
+    "Kerrobert - Line 4/68": "kerr4/68",
+    "Kerrobert - Line 4/70": "kerr4/70",
     "Westover - Line 10": "west10",
     "Kerrobert - Line 1": "kerr1",
     "Regina - Line 4/67": "regi4/67",
@@ -47,19 +51,21 @@ def apportionmentIds(df):
         pass
 
     sortPoints = {
-        "crom2/93": 9,
-        "kerr2/3": 3,
-        "clea2/3": 11,
-        "kerr2/93": 4,
-        "kerr4/67": 5,
-        "west10": 12,
-        "kerr1": 6,
-        "regi4/67": 7,
-        "hard4/67": 2,
-        "crom2/3": 8,
-        "crom2/3/65": 10,
-        "west11": 13,
         "edmo2/3": 1,
+        "hard4/67": 2,
+        "kerr1": 3,
+        "kerr2/3": 4,
+        "kerr2/93": 5,
+        "kerr4/67": 6,
+        "kerr4/68": 7,
+        "kerr4/70": 8,
+        "regi4/67": 9,
+        "crom2/3": 10,
+        "crom2/93": 11,
+        "crom2/3/65": 12,
+        "clea2/3": 13,
+        "west10": 14,
+        "west11": 15,
     }
     df['sort'] = [sortPoints[x] if x in sortPoints.keys() else 999 for x in df['Key Point']]
     df = df.sort_values(by=['sort', 'Date'])
@@ -133,7 +139,8 @@ def apportionPoint(df_p, company, pctData, series, kp, yAxis):
 def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
-        df = get_data(False, True, "apportionment.sql")
+        print('reading sql apportionment...')
+        df = get_data(script_dir, "apportionment.sql", "EnergyData", sql)
     else:
         print('reading local apportionment csv...')
         df = pd.read_csv("./raw_data/apportionment.csv")
@@ -207,5 +214,5 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 if __name__ == "__main__":
     print('starting apportionment...')
-    df = process_apportionment(sql=False, save=True)  #, companies=["Enbridge Pipelines Inc."])
+    df = process_apportionment(sql=True, save=True)  #, companies=["Enbridge Pipelines Inc."])
     print('completed apportionment!')

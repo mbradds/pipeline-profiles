@@ -118,10 +118,10 @@ const en = {
       remediation: "Contaminated Sites &#38; Remediation",
     },
     updated: {
-      conditions: "Section updated July 2021",
-      incidents: "Section updated July 2021",
-      oandm: "Section updated July 2021",
-      remediation: "Section updated July 2021",
+      conditions: "Section updated August 2021",
+      incidents: "Section updated August 2021",
+      oandm: "Section updated August 2021",
+      remediation: "Section updated August 2021",
     },
     conditions: {
       p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
@@ -449,7 +449,7 @@ const en = {
         sourceLink:
           "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
         description:
-          "The above bar chart displays the number of O&M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
+          "The above bar chart displays the number of O&#38;M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&#38;M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&#38;M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
         openGov: openGovLink(
           "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "en"
@@ -526,10 +526,10 @@ const fr = {
       remediation: "Contaminated Sites &#38; Remediation",
     },
     updated: {
-      conditions: "Mise à jour juillet 2021",
-      incidents: "Mise à jour juillet 2021",
-      oandm: "Mise à jour juillet 2021",
-      remediation: "Mise à jour juillet 2021",
+      conditions: "Mise à jour août 2021",
+      incidents: "Mise à jour août 2021",
+      oandm: "Mise à jour août 2021",
+      remediation: "Mise à jour août 2021",
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
@@ -872,7 +872,7 @@ const fr = {
         sourceLink:
           "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
         description:
-          "The above bar chart displays the number of O&M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
+          "The above bar chart displays the number of O&#38;M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&#38;M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&#38;M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
         openGov: openGovLink(
           "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "fr"
