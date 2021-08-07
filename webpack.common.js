@@ -2,6 +2,8 @@ const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 const profileWebpackConfig = require("./src/entry/webpackEntry");
 
 module.exports = {
@@ -13,6 +15,7 @@ module.exports = {
   },
 
   plugins: [
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/entry/]),
     new CopyWebpackPlugin({
       patterns: [
         {
