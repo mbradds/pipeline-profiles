@@ -16,8 +16,11 @@ function cachePolicy(req, res, next) {
   const periodLong = 31536000; // 1 year
 
   const noContentHash = /GCWeb|wet-boew/;
+  const isHtml = /.html$/;
   if (req.method === "GET") {
-    if (!req.url.match(noContentHash)) {
+    if (req.url.match(isHtml)) {
+      res.set("Cache-control", `no-store`);
+    } else if (!req.url.match(noContentHash)) {
       res.set("Cache-control", `public, max-age=${periodLong}`);
     } else {
       res.set("Cache-control", `public, max-age=${periodShort}`);
