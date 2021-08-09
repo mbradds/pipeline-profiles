@@ -477,7 +477,7 @@ const fr = {
     selectUnits: unitsFr,
     description: {
       enbridge:
-        "Le graphique ci-dessus présente les données sur les commandes d’expédition des pipelines pour l’ensemble du réseau principal au Canada d’Enbridge. Les commandes d’expédition originales sont indiquées en bleu sur le graphique et les commandes acceptées, par une ligne jaune. Les données détaillées sur la répartition aux points principaux du réseau principal au Canada d’Enbridge peuvent être téléchargées à partir du lien vers le gouvernement ouvert ci-dessus.",
+        "Le premier graphique présente les données sur les commandes d’expédition pour l’ensemble du réseau principal au Canada d’Enbridge. Les commandes d’expédition originales sont indiquées en bleu et les commandes acceptées, par une ligne jaune. La deuxième série de graphiques présente les données détaillées sur la répartition aux points principaux du réseau principal au Canada d’Enbridge.",
       other:
         "Le graphique ci-dessus présente les données sur les commandes d’expédition des pipelines pour l’ensemble du réseau. Les commandes d’expédition originales sont indiquées en bleu sur le graphique et la capacité pipelinière, par une ligne jaune. Si le pourcentage de répartition est disponible, il est possible de faire basculer vers le graphique sous forme d’une ligne verte en cliquant sur « Pourcentage de répartition » directement sous le graphique.",
     },

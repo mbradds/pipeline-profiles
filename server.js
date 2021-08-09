@@ -12,18 +12,18 @@ const limiter = rateLimit({
 });
 
 function cachePolicy(req, res, next) {
-  const periodShort = 60 * 60 * 2; // 2 hours
+  const periodShort = 60 * 60 * 8; // 2 hours
   const periodLong = 31536000; // 1 year
 
   const noContentHash = /GCWeb|wet-boew/;
-  const isHtml = /.html$/;
+  const contentHash = new RegExp("\\.[0-9a-f]{20}\\.");
   if (req.method === "GET") {
-    if (req.url.match(isHtml)) {
-      res.set("Cache-control", `no-store`);
-    } else if (!req.url.match(noContentHash)) {
+    if (req.url.match(contentHash)) {
       res.set("Cache-control", `public, max-age=${periodLong}`);
-    } else {
+    } else if (req.url.match(noContentHash)) {
       res.set("Cache-control", `public, max-age=${periodShort}`);
+    } else {
+      res.set("Cache-control", `no-store`);
     }
   } else {
     // for the other requests set strict no caching parameters
@@ -34,10 +34,8 @@ function cachePolicy(req, res, next) {
 
 function shouldCompress(req, res) {
   if (req.headers["x-no-compression"]) {
-    // don't compress responses with this request header
     return false;
   }
-  // fallback to standard filter function
   return compression.filter(req, res);
 }
 
