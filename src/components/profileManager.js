@@ -122,7 +122,7 @@ const profileSections = {
   },
   SouthernLights: {
     sections: {
-      traffic: { map: false, noMap: false },
+      traffic: { map: false, noMap: true },
       apportion: false,
       safety: true,
     },

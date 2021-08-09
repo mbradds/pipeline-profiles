@@ -98,7 +98,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     if (fiveYr) {
       return lang.fiveYrTitle(pointText);
     }
-    return lang.trafficTitle(pointText, dirLangList);
+    return lang.trafficTitle(pointText, dirLangList, params.frequency);
   };
 
   const createSeries = (data, params) => {
@@ -668,9 +668,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
       metaData.units,
       defaultPoint,
       lang.units,
-      "traffic"
+      "traffic",
+      metaData.frequency
     );
 
+    chartParams.frequency = metaData.frequency;
     chartParams.defaultPoint = defaultPoint;
     chartParams.points = getPointList(metaData);
     chartParams.companyName = metaData.companyName;
@@ -706,7 +708,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
       createSeries(trafficData, chartParams),
       chartParams.unitsHolder,
       chartParams.buildFive,
-      lang.series
+      lang.series,
+      chartParams.frequency
     );
 
     if (fiveSeries) {
@@ -744,7 +747,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             trafficData[chartParams.defaultPoint.id],
             chartParams.unitsHolder,
             chartParams.buildFive,
-            lang.series
+            lang.series,
+            chartParams.frequency
           );
 
           [trafficChart, chartParams.hasImports] = updateSeries(
@@ -816,7 +820,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
                 createSeries(trafficData, chartParams),
                 chartParams.unitsHolder,
                 chartParams.buildFive,
-                lang.series
+                lang.series,
+                chartParams.frequency
               );
 
               timeSeries.forEach((newS) => {
@@ -850,7 +855,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
             createSeries(trafficData, chartParams),
             chartParams.unitsHolder,
             chartParams.buildFive,
-            lang.series
+            lang.series,
+            chartParams.frequency
           );
 
           trafficChart.update(

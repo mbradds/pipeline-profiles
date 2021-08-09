@@ -42,12 +42,15 @@ function changeValue(u) {
 function getDateFunction(frequency) {
   const dFunc = (d, i) => d.setDate(d.getDate() + i);
   const mFunc = (d, i) => d.setMonth(d.getMonth() + i);
+  const qFunc = (d, i) => d.setMonth(d.getMonth() + (i + 2));
   const yFunc = (d, i) => d.setFullYear(d.getFullYear() + i);
   let datePlusPlus = mFunc;
   if (frequency === "daily" || frequency === "d") {
     datePlusPlus = dFunc;
   } else if (frequency === "monthly" || frequency === "m") {
     datePlusPlus = mFunc;
+  } else if (frequency === "quarterly" || frequency === "q") {
+    datePlusPlus = qFunc;
   } else if (frequency === "yearly" || frequency === "y") {
     datePlusPlus = yFunc;
   }
