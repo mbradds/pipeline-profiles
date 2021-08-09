@@ -222,7 +222,13 @@ export function addSeriesParams(
  * @param {string} section - Section name is added to radio id to avoid duplication between traffic and apportionment.
  * @returns {SetupReturn}
  */
-export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
+export function addUnitsAndSetup(
+  defaultUnit,
+  defaultPoint,
+  units,
+  section,
+  frequency = "m"
+) {
   const commodity = defaultUnit === "Mb/d" ? "oil" : "gas";
   const unitsHolder = {
     base: units[defaultUnit],
@@ -244,8 +250,11 @@ export function addUnitsAndSetup(defaultUnit, defaultPoint, units, section) {
   if (defaultPoint.id === "7") {
     // 7 = St. Stephen
     hasImports = true;
-  } else {
+  }
+  if (frequency === "monthly" || frequency === "m") {
     buildFive = true;
+  } else {
+    document.getElementById("traffic-hc-range").style.height = 0;
   }
 
   if (defaultUnit === "Bcf/d") {

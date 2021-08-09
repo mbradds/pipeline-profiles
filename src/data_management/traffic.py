@@ -299,7 +299,7 @@ def process_throughput(save=False,
                        sql=False,
                        commodity='gas',
                        companies=False,
-                       frequency='monthly'):
+                       frequency='m'):
 
     def pushTraffic(t, arr, date, rounding):
         if t == 0:
@@ -309,7 +309,7 @@ def process_throughput(save=False,
         return arr
 
     if commodity == 'gas':
-        if frequency == "monthly":
+        if frequency == "m":
             query = 'throughput_gas_monthly.sql'
         else:
             query = 'throughput_gas.sql'
@@ -349,7 +349,8 @@ def process_throughput(save=False,
     # group2 = ['TEML Westpur Pipelines Limited (TEML)',
     #           'Enbridge Southern Lights GP Inc.',
     #           'Emera Brunswick Pipeline Company Ltd.']
-    group2 = ['Southern Lights Pipeline']
+    # group2 = ['Southern Lights Pipeline']
+    group2 = []
 
     if companies:
         company_files = companies
@@ -357,6 +358,10 @@ def process_throughput(save=False,
     for company in company_files:
         meta = {"companyName": company}
         meta["units"] = units
+        if company == "Southern Lights Pipeline":
+            frequency = "q"
+        else:
+            frequency = "m"
         meta["frequency"] = frequency
         meta['defaultPoint'] = getDefaultPoint(company)
         thisCompanyData = {}
@@ -418,10 +423,12 @@ def process_throughput(save=False,
                     counter = counter + 1
 
                 throughput_series = []
-                if frequency == "monthly":
+                if frequency == "m":
                     minDate = min(pointDates) - dateutil.relativedelta.relativedelta(months=1)
-                else:
+                elif frequency == "d":
                     minDate = min(pointDates) - dateutil.relativedelta.relativedelta(days=1)
+                elif frequency == "q":
+                    minDate = min(pointDates) - dateutil.relativedelta.relativedelta(months=5)
 
                 throughput_series.append({"id": "date", "min": [minDate.year, minDate.month-1, minDate.day]})
 
@@ -485,6 +492,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=True, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(save=True, sql=True, commodity='oil')
+    traffic, df = process_throughput(save=True, sql=False, commodity='gas', frequency='m')
+    traffic, df = process_throughput(save=True, sql=False, commodity='oil', frequency='m') # , companies=['Montreal Pipe Line Limited'])
     print('completed throughput!')
