@@ -98,7 +98,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     if (fiveYr) {
       return lang.fiveYrTitle(pointText);
     }
-    return lang.trafficTitle(pointText, dirLangList);
+    return lang.trafficTitle(pointText, dirLangList, params.frequency);
   };
 
   const createSeries = (data, params) => {

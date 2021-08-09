@@ -539,13 +539,14 @@ export const frenchDashboard = {
     importAxis: (unit) => `Importations (${unit})`,
     fiveYrTitle: (pointText) =>
       `${pointText} - période de cinq ans et fourchette`,
-    trafficTitle: (pointText, dirText) => {
+    trafficTitle: (pointText, dirText, frequency = "m") => {
+      const freqLookup = { m: "mensuel", q: "trimestriel" };
       if (dirText[0] === false || dirText[0] !== "") {
-        return `${pointText} - transport mensuel`;
+        return `${pointText} - transport ${freqLookup[frequency]}`;
       }
-      return `${pointText} - transport mensuel (sens d’écoulement : ${dirText.join(
-        " et "
-      )})`;
+      return `${pointText} - transport ${
+        freqLookup[frequency]
+      } (sens d’écoulement : ${dirText.join(" et ")})`;
     },
     series: {
       im: "Importation",
@@ -564,6 +565,8 @@ export const frenchDashboard = {
       ses: "FR: Southeast sask (SES) crude",
       pet: "FR: Petroleum",
       ngl: "Liquides de gaz naturel",
+      dic: "FR: Diluent (committed)",
+      diu: "FR: Diluent (uncommitted)",
     },
     util: "Utilisation",
     months: {
