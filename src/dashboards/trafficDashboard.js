@@ -638,18 +638,20 @@ export async function mainTraffic(trafficData, metaData, lang) {
         } else {
           pointText = titleParams.defaultPoint.name;
         }
-        const titleText = `Annual Average Throughput: ${pointText} (${titleParams.unitsHolder.current})`;
+        const titleText = `${lang.annualTitle} ${pointText} (${titleParams.unitsHolder.current})`;
         document.getElementById("annual-traffic-table-title").innerText =
           titleText;
         document.getElementById("annual-traffic-table").innerHTML = tableHtml;
       } else {
-        const titleText = `Annual Average Throughput:`;
+        const titleText = `${lang.annualTitle}`;
         document.getElementById("annual-traffic-table-title").innerText =
           titleText;
         document.getElementById("annual-traffic-table").innerHTML = "";
       }
     } catch (err) {
-      console.log("traffic table error", err);
+      document.getElementById(
+        "annual-traffic-table"
+      ).parentElement.style.display = "none";
     }
   }
 

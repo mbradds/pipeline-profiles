@@ -581,6 +581,7 @@ export const englishDashboard = {
       11: "Nov",
       12: "Dec",
     },
+    annualTitle: "Annual Average Throughput:",
   },
   apportion: {
     dashboardError,

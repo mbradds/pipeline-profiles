@@ -563,7 +563,7 @@ export const frenchDashboard = {
       icap: "Capacité Importation",
       msm: "FR: Westspur midale (MSM) crude",
       ses: "FR: Southeast sask (SES) crude",
-      pet: "FR: Petroleum",
+      pet: "Pétrole",
       ngl: "Liquides de gaz naturel",
       dic: "FR: Diluent (committed)",
       diu: "FR: Diluent (uncommitted)",
@@ -583,6 +583,7 @@ export const frenchDashboard = {
       11: "nov",
       12: "déc",
     },
+    annualTitle: "FR: Annual Average Throughput :",
   },
   apportion: {
     dashboardError,

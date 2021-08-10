@@ -117,7 +117,7 @@ class TestConditions(unittest.TestCase):
 
 
 class TrafficTest(unittest.TestCase):
-    traffic, df = process_throughput(save=False, sql=False, commodity='gas', frequency='monthly', companies=['NOVA Gas Transmission Ltd.'])
+    traffic, df = process_throughput(save=False, sql=False, commodity='gas', frequency='m', companies=['NOVA Gas Transmission Ltd.'])
 
     def testMeta(self):
         self.assertEqual(self.traffic["meta"]["units"], "Bcf/d")
