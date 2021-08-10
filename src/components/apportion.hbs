@@ -5,10 +5,10 @@
     <div class="col-md-12">
       <p>{{text.apportion.p1}}</p>
       <p>{{text.apportion.p2}}</p>
-      {{#ifeq text.pipelineName.id "enbridge_mainline"}}
+      {{#ifeq text.pipelineName.id "EnbridgeMainline"}}
         <p>{{text.apportion.p3.enbridge}}</p>
       {{/ifeq}}
-      {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
+      {{#ifnoteq text.pipelineName.id "EnbridgeMainline"}}
         <p>{{text.apportion.p3.other}}</p>
       {{/ifnoteq}}
       <div id="apportionment-dashboard" class="mrgn-tp-lg">
