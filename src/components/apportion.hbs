@@ -20,23 +20,12 @@
         </div>
         <div class="mrgn-tp-sm" id="apportion-hc"></div>
         <div id="apportion-point-panel"></div>
-        <details>
-          <summary>{{text.sourceTitle}}</summary>
-          <p>
-            <strong>{{text.dataSourceTitle}} </strong>
-            {{text.traffic.source.sourceLink}}
-          </p>
-          <p>
-            <strong>{{text.descriptionTitle}} </strong>
-            {{#ifeq text.pipelineName.id "enbridge_mainline"}}
-              {{text.apportion.description.enbridge}}
-            {{/ifeq}}
-            {{#ifnoteq text.pipelineName.id "enbridge_mainline"}}
-              {{text.apportion.description.other}}
-            {{/ifnoteq}}
-          </p>
-          <small id="conversion-disclaimer-apportion"></small>
-        </details>
+        {{#ifeq text.pipelineName.id "EnbridgeMainline"}}
+        {{> shared/source text=text.apportion.source description=text.apportion.description.enbridge}}
+        {{/ifeq}}
+        {{#ifnoteq text.pipelineName.id "EnbridgeMainline"}}
+        {{> shared/source text=text.apportion.source description=text.apportion.description.other}}
+        {{/ifnoteq}}
       </div>
     </div>
   </div>

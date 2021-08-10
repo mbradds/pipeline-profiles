@@ -73,6 +73,15 @@ const en = {
       other:
         "The above chart displays pipeline nomination data for the pipeline system. Original nominations are shown as a blue area on the chart, with available pipeline capacity shown as a yellow line. If available, the apportionment percent can be toggled onto the chart as a green line by clicking on “Apportionment Percent” directly below the chart.",
     },
+    source: {
+      sourceTitle: sourceAndDescEn,
+      dataSourceTitle: dataSourceEn,
+      descriptionTitle: descriptionEn,
+      sourceText: sourceTextEn,
+      sourceLink:
+        "https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34",
+      subTextId: "conversion-disclaimer-apportion",
+    },
   },
   traffic: {
     header: "Throughput and capacity",
@@ -352,7 +361,7 @@ const en = {
           dataSourceTitle: dataSourceEn,
           descriptionTitle: descriptionEn,
           sourceText: sourceTextEn,
-          sourceLink: "Coming soon!",
+          sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
           description:
             "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Similar to the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
           openGov: false,
@@ -480,6 +489,15 @@ const fr = {
         "Le premier graphique présente les données sur les commandes d’expédition pour l’ensemble du réseau principal au Canada d’Enbridge. Les commandes d’expédition originales sont indiquées en bleu et les commandes acceptées, par une ligne jaune. La deuxième série de graphiques présente les données détaillées sur la répartition aux points principaux du réseau principal au Canada d’Enbridge.",
       other:
         "Le graphique ci-dessus présente les données sur les commandes d’expédition des pipelines pour l’ensemble du réseau. Les commandes d’expédition originales sont indiquées en bleu sur le graphique et la capacité pipelinière, par une ligne jaune. Si le pourcentage de répartition est disponible, il est possible de faire basculer vers le graphique sous forme d’une ligne verte en cliquant sur « Pourcentage de répartition » directement sous le graphique.",
+    },
+    source: {
+      sourceTitle: sourceAndDescFr,
+      dataSourceTitle: dataSourceFr,
+      descriptionTitle: descriptionFr,
+      sourceText: sourceTextFr,
+      sourceLink:
+        "https://ouvert.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34",
+      subTextId: "conversion-disclaimer-apportion",
     },
   },
   traffic: {
@@ -775,7 +793,7 @@ const fr = {
           dataSourceTitle: dataSourceFr,
           descriptionTitle: descriptionFr,
           sourceText: sourceTextFr,
-          sourceLink: "Coming soon!",
+          sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
           description:
             "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Similar to the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
           openGov: false,
