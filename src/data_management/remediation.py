@@ -77,7 +77,7 @@ def process_remediation(sql=False, companies=False, test=False):
                             db="dsql22cap")
 
     df = applyContaminantIds(df, contaminants)
-    df["Contaminants at the Site"] = [["1"] if x == None else x for x in df["Contaminants at the Site"]]
+    df["Contaminants at the Site"] = [["18"] if x == None else x for x in df["Contaminants at the Site"]]
 
     for delete in ['Facility Type',
                    'Product Carried',
@@ -97,11 +97,11 @@ def process_remediation(sql=False, companies=False, test=False):
         if pipe == na and section == na:
             pipe_section.append(na)
         elif pipe == na and section != na:
-            pipe_section.append(section)
+            pipe_section.append("Facility")
         elif pipe != na and section == na:
-            pipe_section.append(pipe)
+            pipe_section.append("Pipeline")
         elif pipe != na and section != na:
-            pipe_section.append(pipe+"/"+section)
+            pipe_section.append("Pipeline and Facility")
         else:
             print("error here!")
 
@@ -217,5 +217,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(sql=True)  # , companies=["NOVA Gas Transmission Ltd."])
+    df = process_remediation(sql=False)  # , companies=["NOVA Gas Transmission Ltd."])
 
