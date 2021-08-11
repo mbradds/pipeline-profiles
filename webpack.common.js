@@ -170,7 +170,10 @@ module.exports = {
       {
         test: /\.css$/,
         include: /node_modules/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader", options: { url: false } },
+        ],
       },
       {
         test: /\.png$/,
