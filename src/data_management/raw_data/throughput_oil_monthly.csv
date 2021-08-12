@@ -1355,6 +1355,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2021-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,15.52,15.1
 2021-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,13.19,15.1
 2021-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,16.41,15.1
+2021-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,16.77,15.1
+2021-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,16.79,15.1
+2021-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,west,condensate,13.3,15.1
 2014-07-01,PKM Cochin ULC,Cochin,Regina,east,refined petroleum products,0.01,
 2014-07-01,PKM Cochin ULC,Cochin,Windsor,east,refined petroleum products,0.0,12.08
 2014-08-01,PKM Cochin ULC,Cochin,Windsor,east,refined petroleum products,0.0,12.08
@@ -2862,6 +2865,9 @@ Date,Corporate Entity,Pipeline Name,Key Point,Direction of Flow,Product,Throughp
 2021-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,18.0,
 2021-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,16.3,
 2021-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,18.8,
+2021-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,17.5,
+2021-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,20.6,
+2021-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,not available,refined petroleum products,20.6,
 2010-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,15.07,18.11
 2010-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic light,3.04,18.11
 2010-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",south,domestic heavy,15.13,15.13

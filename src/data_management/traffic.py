@@ -492,6 +492,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=False, commodity='gas', frequency='m')
-    traffic, df = process_throughput(save=True, sql=False, commodity='oil', frequency='m') # , companies=['Montreal Pipe Line Limited'])
+    traffic, df = process_throughput(save=True, sql=True, commodity='gas', frequency='m')
+    traffic, df = process_throughput(save=True, sql=True, commodity='oil', frequency='m') # , companies=['Montreal Pipe Line Limited'])
     print('completed throughput!')
