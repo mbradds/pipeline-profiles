@@ -139,7 +139,6 @@ def apportionPoint(df_p, company, pctData, series, kp, yAxis):
 def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
-        print('reading sql apportionment...')
         df = get_data(script_dir, "apportionment.sql", "EnergyData", sql)
     else:
         print('reading local apportionment csv...')
