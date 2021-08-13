@@ -91,7 +91,7 @@ export async function mainRemediation(data, lang) {
       // add the cutoff date to the chartParams
       // const cutoffDate = new Date(2018, 9,15)
       chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
-      remediationText(data.meta, lang);
+      remediationText(chartParams, lang);
 
       setTitle(lang, chartParams);
       const thisMap = remediationMap(data.data, field, filters, lang.dashboard);

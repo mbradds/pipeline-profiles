@@ -196,7 +196,7 @@ const en = {
     and the
     <a href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html" target="_blank">Processing Plant
       Regulations</a>. New data is added quarterly.
-    <a href="https://www.cer-rec.gc.ca/en/safety-environment/industry-performance/infographic/index.html"
+    <a href="/en/safety-environment/industry-performance/infographic/index.html"
       target="_blank">Learn more</a>
     on how incident data collection has evolved since the NEB (now the CER)
     was established in 1959.`,
@@ -332,6 +332,22 @@ const en = {
       viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
     },
     remediation: {
+      p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
+      p2: `After the NOC is submitted, companies must demonstrate they are
+      actively managing the contamination according to the
+      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html"
+        target="_blank">Remediation Process Guide</a>. The progress of remediation at the
+      contaminated site, and its current status, are captured in the annual
+      update submitted by a company each year for a contaminated site.`,
+      p3: "Third-party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
+      p4: `The dashboard below contains information that is contained in the NOC's
+      and annual updates found in REGDOCS. The CER publishes NOCs that have
+      been submitted to the CER since August 2018, when the CER started
+      collecting this information electronically and annual updates that have
+      been submitted since 2021. For information on contaminated sites for
+      which NOCs were submitted prior to August 2018, email
+      <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
+      p5: "Contaminated sites must be remediated, which can be accomplished in several ways. Contaminated soil may be dug up and removed from the site to be disposed of, and contaminated groundwater could be extracted and treated to remove contaminants. <i>Note: I want to conclude this section with a more tangible description of what is actually done to achieve remediation. This isnt really included in the process guide, but a description of this would make it more real for our audience. People will want to know what the CER/company is doing about all the contaminated soil.</i>",
       dashboard: {
         id: "remediation",
         mapPillIds: [
@@ -429,12 +445,12 @@ const en = {
       alert: `The dashboard and figures presented below only include O&#38;M
       activities from 2015 onwards that require notification to the CER.
       Consult the
-      <a href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
         target="_blank">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
       guidelines: `Take a look at the
-      <a href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
         target="_blank">requirements and guidance notes</a>
       (O&#38;M Guidelines) for more information on how these events are
       regulated while promoting safety, security, environmental
@@ -623,7 +639,7 @@ const fr = {
       >Règlement sur les usines de traitement</a
     >. De nouvelles données sont ajoutées tous les trimestres.
     <a
-      href="https://www.cer-rec.gc.ca/fr/securite-environnement/rendement-lindustrie/infographie/index.html"
+      href="/fr/securite-environnement/rendement-lindustrie/infographie/index.html"
       target="_blank"
       >Obtenez plus d’information</a
     >
@@ -764,6 +780,22 @@ const fr = {
       viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" target="_blank" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
     },
     remediation: {
+      p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
+      p2: `After the NOC is submitted, companies must demonstrate they are
+      actively managing the contamination according to the
+      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html"
+        target="_blank">Remediation Process Guide</a>. The progress of remediation at the
+      contaminated site, and its current status, are captured in the annual
+      update submitted by a company each year for a contaminated site.`,
+      p3: "Third-party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
+      p4: `The dashboard below contains information that is contained in the NOC's
+      and annual updates found in REGDOCS. The CER publishes NOCs that have
+      been submitted to the CER since August 2018, when the CER started
+      collecting this information electronically and annual updates that have
+      been submitted since 2021. For information on contaminated sites for
+      which NOCs were submitted prior to August 2018, email
+      <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
+      p5: "Contaminated sites must be remediated, which can be accomplished in several ways. Contaminated soil may be dug up and removed from the site to be disposed of, and contaminated groundwater could be extracted and treated to remove contaminants. <i>Note: I want to conclude this section with a more tangible description of what is actually done to achieve remediation. This isnt really included in the process guide, but a description of this would make it more real for our audience. People will want to know what the CER/company is doing about all the contaminated soil.</i>",
       dashboard: {
         id: "remediation",
         mapPillIds: [
@@ -861,12 +893,12 @@ const fr = {
       alert: `The dashboard and figures presented below only include O&#38;M
       activities from 2015 onwards that require notification to the CER.
       Consult the
-      <a href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
         target="_blank">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
       guidelines: `Take a look at the
-      <a href="https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
         target="_blank">requirements and guidance notes</a>
       (O&#38;M Guidelines) for more information on how these events are
       regulated while promoting safety, security, environmental

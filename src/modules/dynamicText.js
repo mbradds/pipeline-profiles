@@ -391,9 +391,9 @@ export function oandmTextFra(meta, lang) {
 }
 
 export function remediationText(meta, lang) {
-  const firstParagraph = `<p>${
-    meta.company
-  } has reported a total of ${dynamicValue(
+  const firstParagraph = `<p>${formatCompanyName(
+    meta.companyName
+  )} has reported a total of ${dynamicValue(
     lang.numberFormat(meta.new + meta.old, 0)
   )} contaminated sites since 2011 when the first Remediation Process Guide was first published. There have been ${dynamicValue(
     meta.new

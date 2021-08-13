@@ -29,6 +29,10 @@
     "prettier-check": "npx prettier --check .",
     "get-maps": "sh ./src/data_management/npm_scripts/get-maps.sh"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbradds/pipeline-profiles"
+  },
   "author": "Grant Moss",
   "license": "MIT",
   "dependencies": {
