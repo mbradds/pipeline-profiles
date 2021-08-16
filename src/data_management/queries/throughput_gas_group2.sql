@@ -5,7 +5,8 @@ throughput.[PipelineID] as [Pipeline Name],
 [KeyPointID] as [Key Point],
 [Direction of Flow],
 [Trade Type],
-round(avg([Capacity (1000 m3/d)]),3) as [Capacity (1000 m3/d)],
+--round(avg([Capacity (1000 m3/d)]),3) as [Capacity (1000 m3/d)],
+null as [Capacity (1000 m3/d)],
 round(avg([Throughput (1000 m3/d)]),3) as [Throughput (1000 m3/d)]
 FROM [PipelineInformation].[dbo].[Throughput_Gas] as throughput
 

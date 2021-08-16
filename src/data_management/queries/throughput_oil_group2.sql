@@ -6,7 +6,8 @@ company.Company as [Corporate Entity],
 [Direction of Flow],
 Product,
 round([Throughput (1000 m3/d)], 2) as [Throughput (1000 m3/d)],
-round([Available Capacity (1000 m3/d)], 2) as [Available Capacity (1000 m3/d)]
+null as [Available Capacity (1000 m3/d)]
+--round([Available Capacity (1000 m3/d)], 2) as [Available Capacity (1000 m3/d)]
 from (
 
 SELECT 
