@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/PKMCochinULC.json";
 import incidentData from "../../data_output/incidents/PKMCochinULC.json";
 import trafficData from "../../data_output/traffic/PKMCochinULC.json";
 import apportionData from "../../data_output/apportionment/PKMCochinULC.json";
-import oandmData from "../../data_output/oandm/PKMCochinULC.json";
-import remediationData from "../../data_output/remediation/PKMCochinULC.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

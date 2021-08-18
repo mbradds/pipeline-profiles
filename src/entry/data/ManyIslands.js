@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/ManyIslandsPipeLines(Ca
 import incidentData from "../../data_output/incidents/ManyIslandsPipeLines(Canada)Limited.json";
 import trafficData from "../../data_output/traffic/ManyIslandsPipeLines(Canada)Limited.json";
 import apportionData from "../../data_output/apportionment/ManyIslandsPipeLines(Canada)Limited.json";
-import oandmData from "../../data_output/oandm/ManyIslandsPipeLines(Canada)Limited.json";
-import remediationData from "../../data_output/remediation/ManyIslandsPipeLines(Canada)Limited.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/MontrealPipeLineLimited
 import incidentData from "../../data_output/incidents/MontrealPipeLineLimited.json";
 import trafficData from "../../data_output/traffic/MontrealPipeLineLimited.json";
 import apportionData from "../../data_output/apportionment/MontrealPipeLineLimited.json";
-import oandmData from "../../data_output/oandm/MontrealPipeLineLimited.json";
-import remediationData from "../../data_output/remediation/MontrealPipeLineLimited.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

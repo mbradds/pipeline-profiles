@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/SouthernLightsPipeline.
 import incidentData from "../../data_output/incidents/SouthernLightsPipeline.json";
 import trafficData from "../../data_output/traffic/SouthernLightsPipeline.json";
 import apportionData from "../../data_output/apportionment/SouthernLightsPipeline.json";
-import oandmData from "../../data_output/oandm/SouthernLightsPipeline.json";
-import remediationData from "../../data_output/remediation/SouthernLightsPipeline.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

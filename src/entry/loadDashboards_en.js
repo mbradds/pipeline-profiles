@@ -22,10 +22,6 @@ import { englishDashboard } from "../modules/langEnglish";
 import { mainTraffic } from "../dashboards/trafficDashboard";
 // apportionment
 import { mainApportion } from "../dashboards/apportionmentDashboard";
-// operations and maintenance activities
-import { mainOandM } from "../dashboards/oandmDashboard";
-// contaminated sites and remediation
-import { mainRemediation } from "../dashboards/remediationDashboard";
 // plains disclaimers
 import { plainsMidstreamProfile } from "../modules/util";
 
@@ -55,8 +51,6 @@ export async function loadAllCharts(data, plains = false) {
       data.incidentData.meta,
       englishDashboard.incidents
     ),
-    mainOandM(data.oandmData, englishDashboard.oandm),
-    mainRemediation(data.remediationData, englishDashboard.remediation),
   ];
 
   return Promise.allSettled(arrayOfCharts).then(() => {

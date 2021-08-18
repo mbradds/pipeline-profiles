@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/AuroraPipelineCompanyLt
 import incidentData from "../../data_output/incidents/AuroraPipelineCompanyLtd.json";
 import trafficData from "../../data_output/traffic/AuroraPipelineCompanyLtd.json";
 import apportionData from "../../data_output/apportionment/AuroraPipelineCompanyLtd.json";
-import oandmData from "../../data_output/oandm/AuroraPipelineCompanyLtd.json";
-import remediationData from "../../data_output/remediation/AuroraPipelineCompanyLtd.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

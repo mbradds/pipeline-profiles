@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/PlainsMidstreamCanadaUL
 import incidentData from "../../data_output/incidents/PlainsMidstreamCanadaULC.json";
 import trafficData from "../../data_output/traffic/PlainsMidstreamCanadaULC.json";
 import apportionData from "../../data_output/apportionment/PlainsMidstreamCanadaULC.json";
-import oandmData from "../../data_output/oandm/PlainsMidstreamCanadaULC.json";
-import remediationData from "../../data_output/remediation/PlainsMidstreamCanadaULC.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/FoothillsPipeLinesLtd.j
 import incidentData from "../../data_output/incidents/FoothillsPipeLinesLtd.json";
 import trafficData from "../../data_output/traffic/FoothillsPipeLinesLtd.json";
 import apportionData from "../../data_output/apportionment/FoothillsPipeLinesLtd.json";
-import oandmData from "../../data_output/oandm/FoothillsPipeLinesLtd.json";
-import remediationData from "../../data_output/remediation/FoothillsPipeLinesLtd.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

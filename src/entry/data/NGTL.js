@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/NOVAGasTransmissionLtd.
 import incidentData from "../../data_output/incidents/NOVAGasTransmissionLtd.json";
 import trafficData from "../../data_output/traffic/NOVAGasTransmissionLtd.json";
 import apportionData from "../../data_output/apportionment/NOVAGasTransmissionLtd.json";
-import oandmData from "../../data_output/oandm/NOVAGasTransmissionLtd.json";
-import remediationData from "../../data_output/remediation/NOVAGasTransmissionLtd.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/TransCanadaPipeLinesLim
 import incidentData from "../../data_output/incidents/TransCanadaPipeLinesLimited.json";
 import trafficData from "../../data_output/traffic/TransCanadaPipeLinesLimited.json";
 import apportionData from "../../data_output/apportionment/TransCanadaPipeLinesLimited.json";
-import oandmData from "../../data_output/oandm/TransCanadaPipeLinesLimited.json";
-import remediationData from "../../data_output/remediation/TransCanadaPipeLinesLimited.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };

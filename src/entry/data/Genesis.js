@@ -3,8 +3,6 @@ import conditionsData from "../../data_output/conditions/GenesisPipelineCanadaLt
 import incidentData from "../../data_output/incidents/GenesisPipelineCanadaLtd.json";
 import trafficData from "../../data_output/traffic/GenesisPipelineCanadaLtd.json";
 import apportionData from "../../data_output/apportionment/GenesisPipelineCanadaLtd.json";
-import oandmData from "../../data_output/oandm/GenesisPipelineCanadaLtd.json";
-import remediationData from "../../data_output/remediation/GenesisPipelineCanadaLtd.json";
 
 export const data = {
   canadaMap,
@@ -12,6 +10,4 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  oandmData,
-  remediationData,
 };
