@@ -6,10 +6,7 @@ module.exports = merge(common, {
   mode: "development",
   devServer: {
     compress: true,
-    inline: true,
     hot: true,
-    publicPath: "/",
-    // contentBase: "./dist",
   },
 
   devtool: false,
