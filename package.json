@@ -10,6 +10,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "analyze-build": "webpack --config webpack.analyze.js",
     "start": "node server.js",
     "heroku-postbuild": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",

@@ -8,6 +8,8 @@ module.exports = merge(common, {
     compress: true,
     inline: true,
     hot: true,
+    publicPath: "/",
+    // contentBase: "./dist",
   },
 
   devtool: false,

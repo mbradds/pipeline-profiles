@@ -125,7 +125,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
-    publicPath: "/dist/",
+    // publicPath: "/dist/",
   },
 
   plugins: [
@@ -139,6 +139,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, "src", "wet-boew"),
           to: path.resolve(__dirname, "dist", "wet-boew"),
+        },
+        {
+          from: path.resolve(__dirname, "src", "index.html"),
+          to: path.resolve(__dirname, "dist", "index.html"),
         },
       ],
     }),
