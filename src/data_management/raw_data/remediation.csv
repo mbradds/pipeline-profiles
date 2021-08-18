@@ -406,7 +406,7 @@ REM-0258,Enbridge Pipelines Inc.,Line 4,Crude Oil,Not Specified,Not Specified,Al
 REM-0259,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Manitoba,"717.5 St. Leon
 Lat 49.3497 Long -98.647",,49.35,-98.65,Post-remediation monitoring,,2013-12-13 00:00:00.000,,,
 REM-0260,Enbridge Pipelines Inc.,MP 2184,,Not Specified,Not Specified,Ontario,"Lancaster
-Lat 45.2362 Long -74.5684",,45.24,-74.57,Ongoing remediation,,2013-12-13 00:00:00.000,,,
+Lat 45.2362 Long -74.5684",,45.24,-74.57,Risk managed,,2013-12-13 00:00:00.000,,,
 REM-0261,Enbridge Pipelines (NW) Inc.,Line 21,Crude Oil,IJ CRUDE OIL INJECTION FACILITY,Other Facility,Alberta,KP 839 Alberta Lat 59.2926 Long -119.1093,Developed Land - Industrial,59.29,-119.11,Facility monitoring,,2013-12-13 00:00:00.000,,,
 REM-0262,TEML Westspur Pipelines Limited,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"01-18-04-31 W1m Saskatchewan
 Lat 49.2970 Long -101.6414",,49.3,-101.64,Risk managed,,2013-12-13 00:00:00.000,,,
@@ -659,7 +659,7 @@ REM2020-033,NOVA Gas Transmission Ltd.,CENTRAL ALBERTA SYSTEM M/L - NPS 30,Natur
 REM2020-034,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,Edson ,Developed Land - Industrial,53.25,-116.24,Site assessment,Operation,2020-12-22 20:01:26.617,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Phenols,1.0,False
 REM2020-035,NOVA Gas Transmission Ltd.,ALBERSUN LATERAL (NPS 10 1967) FORT MCMURRAY SECTION,,Not Specified,Not Specified,Alberta,Fort McMurray ,Non-developed Land,56.71,-111.4,Ongoing remediation,Operation,2020-12-30 08:55:16.227,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",500.0,True
 REM2020-037,Express Pipeline Ltd.,Line 40,Crude Oil Sweet Heavy,YOUNGSTOWN,Prime Mover,Alberta,Youngstown Village,Developed Land - Industrial,51.49,-111.17,Post-remediation monitoring,Operation,2021-01-27 14:00:27.317,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",2000.0,False
-REM2021-002,Enbridge Pipelines Inc.,Not Specified,Not Specified,CACTUS LAKE,Prime Mover,Saskatchewan,Cactus Lake,Developed Land - Industrial,52.14,-109.81,Site assessment,Operation,2021-01-25 16:45:20.413,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",542.0,False
+REM2021-002,Enbridge Pipelines Inc.,Not Specified,Not Specified,CACTUS LAKE,Prime Mover,Saskatchewan,Cactus Lake,Developed Land - Industrial,52.14,-109.81,Facility monitoring,Operation,2021-01-25 16:45:20.413,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",542.0,False
 REM2021-003,Spartan Delta Corp.,CYPRESS PIPELINE,,Not Specified,Not Specified,Saskatchewan,Manyberries,Agricultural Land,49.52,-110.0,Post-remediation monitoring,Abandonment,2021-02-01 16:52:13.200,Petroleum Hydrocarbons (PHC),0.0,False
 REM2021-004,Westcoast Energy Inc.,Not Specified,Not Specified,SIKANNI CHIEF (N3),Prime Mover,British Columbia,Pink Mountain,Developed Land - Industrial,57.39,-122.66,Monitored,Operation,2021-03-01 12:47:23.677,Petroleum Hydrocarbons (PHC),300.0,False
 REM2021-005,Westcoast Energy Inc.,Not Specified,Not Specified,HIXON (4B),Prime Mover,British Columbia,Hixon,Developed Land - Industrial,53.51,-122.61,Site assessment,Operation,2021-03-01 13:17:33.693,Petroleum Hydrocarbons (PHC);Metals,300.0,False

@@ -97,7 +97,7 @@ export class EventMap {
       {
         div: this.divId,
         zoomSnap: 0.5,
-        zoomDelta: 0.5,
+        zoomDelta: 1,
         zoomControl: true,
         initZoomTo: this.initZoomTo,
         initZoomLevel: 5,
