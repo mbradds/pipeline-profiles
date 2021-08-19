@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Detailed pipeline profiles with information on: key statistics, developments, utilization, reported daily throughputs, tolls and financial data."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./GCWeb/css/theme.min.css" />
+    <noscript
+      ><link rel="stylesheet" href="./GCWeb/wet-boew/css/noscript.min.css"
+    /></noscript>
+    <title>Pipeline Profiles</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 id="wb-cont" property="name">Pipeline Profiles</h1>
+          <p>
+            Click on the links below to access detailed pipeline profiles with
+            information on: key statistics, developments, utilization, reported
+            daily throughputs, tolls and financial data.
+          </p>
+          <h3>English</h3>
+        </div>
+      </div>
+      <div class="row wb-eqht wb-init">
+        <div class="col-md-6">
+          <section class="panel panel-default hght-inhrt">
+            <header class="panel-heading">
+              <h5 class="panel-title">Natural Gas</h5>
+            </header>
+            <div class="panel-body">
+              <ul>
+                {{#each htmlWebpackPlugin.options.page.en.natural-gas}}
+                <li>
+                  <a href="{{this.link}}"
+                    >{{this.name}}</a
+                  >
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-6">
+          <section class="panel panel-default hght-inhrt">
+            <header class="panel-heading">
+              <h5 class="panel-title">Crude Oil</h5>
+            </header>
+            <div class="panel-body">
+              <ul>
+                {{#each htmlWebpackPlugin.options.page.en.oil-and-liquids}}
+                <li>
+                  <a href="{{this.link}}"
+                    >{{this.name}}</a
+                  >
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>French</h3>
+        </div>
+      </div>
+      <div class="row wb-eqht">
+        <div class="col-md-6">
+          <section class="panel panel-default hght-inhrt">
+            <header class="panel-heading">
+              <h5 class="panel-title">Natural Gas</h5>
+            </header>
+            <div class="panel-body">
+              <ul>
+                {{#each htmlWebpackPlugin.options.page.fr.natural-gas}}
+                <li>
+                  <a href="{{this.link}}"
+                    >{{this.name}}</a
+                  >
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-6">
+          <section class="panel panel-default hght-inhrt">
+            <header class="panel-heading">
+              <h5 class="panel-title">Crude Oil</h5>
+            </header>
+            <div class="panel-body">
+              <ul>
+                {{#each htmlWebpackPlugin.options.page.fr.oil-and-liquids}}
+                <li>
+                  <a href="{{this.link}}"
+                    >{{this.name}}</a
+                  >
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./GCWeb/wet-boew/js/wet-boew.min.js"></script>
+  </body>
+</html>

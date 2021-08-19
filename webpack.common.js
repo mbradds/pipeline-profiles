@@ -11,36 +11,39 @@ const profileWebpackConfig = (function config() {
   const language = ["en", "fr"];
 
   const htmlFileNames = [
-    ["NGTL", "natural-gas"],
-    ["Alliance", "natural-gas"],
-    ["TCPL", "natural-gas"],
-    ["Westcoast", "natural-gas"],
-    ["Brunswick", "natural-gas"],
-    ["MNP", "natural-gas"],
-    ["ManyIslands", "natural-gas"],
-    ["TQM", "natural-gas"],
-    ["Vector", "natural-gas"],
-    ["Foothills", "natural-gas"],
-    ["EnbridgeMainline", "oil-and-liquids"],
-    ["Keystone", "oil-and-liquids"],
-    ["TransMountain", "oil-and-liquids"],
-    ["Cochin", "oil-and-liquids"],
-    ["SouthernLights", "oil-and-liquids"],
-    ["EnbridgeBakken", "oil-and-liquids"],
-    ["NormanWells", "oil-and-liquids"],
-    ["Express", "oil-and-liquids"],
-    ["TransNorthern", "oil-and-liquids"],
-    ["Genesis", "oil-and-liquids"],
-    ["Montreal", "oil-and-liquids"],
-    ["Westspur", "oil-and-liquids"],
-    ["Aurora", "oil-and-liquids"],
-    ["MilkRiver", "oil-and-liquids"],
-    ["Wascana", "oil-and-liquids"],
+    ["NGTL", "natural-gas", "NOVA Gas Transmission Ltd. (NGTL)"],
+    ["Alliance", "natural-gas", "Alliance Pipeline"],
+    ["TCPL", "natural-gas", "TransCanada’s Canadian Mainline"],
+    ["Westcoast", "natural-gas", "Westcoast Pipeline"],
+    ["Brunswick", "natural-gas", "Emera Brunswick"],
+    ["MNP", "natural-gas", "Maritimes & Northeast"],
+    ["ManyIslands", "natural-gas", "Many Islands"],
+    ["TQM", "natural-gas", "Trans Québec & Maritimes"],
+    ["Vector", "natural-gas", "Vector"],
+    ["Foothills", "natural-gas", "Foothills"],
+    ["EnbridgeMainline", "oil-and-liquids", "Enbridge Canadian Mainline"],
+    ["Keystone", "oil-and-liquids", "Keystone Pipeline"],
+    ["TransMountain", "oil-and-liquids", "Trans Mountain"],
+    ["Cochin", "oil-and-liquids", "Cochin Pipeline"],
+    ["SouthernLights", "oil-and-liquids", "Southern Lights"],
+    ["EnbridgeBakken", "oil-and-liquids", "Enbridge Bakken"],
+    ["NormanWells", "oil-and-liquids", "Enbridge Norman Wells"],
+    ["Express", "oil-and-liquids", "Express"],
+    ["TransNorthern", "oil-and-liquids", "Trans-Northern"],
+    ["Genesis", "oil-and-liquids", "Genesis"],
+    ["Montreal", "oil-and-liquids", "Montreal"],
+    ["Westspur", "oil-and-liquids", "Westspur"],
+    ["Aurora", "oil-and-liquids", "Aurora"],
+    ["MilkRiver", "oil-and-liquids", "Milk River"],
+    ["Wascana", "oil-and-liquids", "Wascana"],
   ];
 
-  function htmlWebpack(returnPaths = false) {
+  function htmlWebpack() {
     const html = [];
-    const htmlPathsForTest = [];
+    const indexLinks = {
+      en: { "oil-and-liquids": [], "natural-gas": [] },
+      fr: { "oil-and-liquids": [], "natural-gas": [] },
+    };
     language.forEach((lang) => {
       htmlFileNames.forEach((name) => {
         const pageData = { ...pm[name[0]] };
@@ -53,7 +56,7 @@ const profileWebpackConfig = (function config() {
         pageData.text.pipelineName = { id: name[0] };
         pageData.text.commodity = name[1];
         const htmlFileName = `${lang}/${name[1]}/${name[0]}_${lang}.html`;
-        htmlPathsForTest.push(`dist/${htmlFileName}`);
+        indexLinks[lang][name[1]].push({ link: htmlFileName, name: name[2] });
         html.push(
           new HtmlWebpackPlugin({
             page: JSON.parse(JSON.stringify(pageData)),
@@ -78,9 +81,14 @@ const profileWebpackConfig = (function config() {
         );
       });
     });
-    if (returnPaths) {
-      return htmlPathsForTest;
-    }
+    html.push(
+      new HtmlWebpackPlugin({
+        page: JSON.parse(JSON.stringify(indexLinks)),
+        filename: "index.html",
+        template: "src/components/index.hbs",
+        inject: false,
+      })
+    );
     return html;
   }
 
@@ -140,10 +148,10 @@ module.exports = {
           from: path.resolve(__dirname, "src", "wet-boew"),
           to: path.resolve(__dirname, "dist", "wet-boew"),
         },
-        {
-          from: path.resolve(__dirname, "src", "index.html"),
-          to: path.resolve(__dirname, "dist", "index.html"),
-        },
+        // {
+        //   from: path.resolve(__dirname, "src", "index.html"),
+        //   to: path.resolve(__dirname, "dist", "index.html"),
+        // },
       ],
     }),
     new CleanWebpackPlugin(),
