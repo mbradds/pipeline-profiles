@@ -47,7 +47,7 @@ const openGovLink = (link, lang) => {
   } else {
     return false;
   }
-  return `${p1}<a href="${link}" target="_blank" rel="external">${p2}</a>.`;
+  return `${p1}<a href="${link}" rel="external">${p2}</a>.`;
 };
 
 const en = {
@@ -97,7 +97,7 @@ const en = {
     note: noteEn,
     capacityNote:
       "The physical capacity of a pipeline is based on many factors such as the products being carried, direction of flow, pipeline pumping capacity, and maintenance work or other pressure restrictions. The actual physical capacity of the pipeline may, at times, be higher than the assumed operational capacity stated here.",
-    dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Open Government</a>.`,
+    dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" rel="external">Open Government</a>.`,
     instructions: {
       one: "Click on a key point button above the chart &amp; map to view traffic at a different location. The map shows approximate locations on the pipeline where throughputs &amp; capacity are recorded by the pipeline operator.",
       two: "Click and drag your mouse on the area chart to zoom into the desired date range. Click on the Reset Zoom button to reset the full date range.",
@@ -176,7 +176,7 @@ const en = {
       inProgressBtn: "In-Progress Conditions with location:",
       closedBtn: "Closed Conditions with location:",
       noLocationBtn: "No Geographic Location (not on map):",
-      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/" target="_blank" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
+      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
       source: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
@@ -191,13 +191,12 @@ const en = {
     },
     incidents: {
       p1: `The information presented here is based on CER data (2008 to current) for incidents reported under the
-    <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html" target="_blank">Onshore Pipeline
+    <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html">Onshore Pipeline
       Regulations</a>
     and the
-    <a href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html" target="_blank">Processing Plant
+    <a href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html">Processing Plant
       Regulations</a>. New data is added quarterly.
-    <a href="/en/safety-environment/industry-performance/infographic/index.html"
-      target="_blank">Learn more</a>
+    <a href="/en/safety-environment/industry-performance/infographic/index.html">Learn more</a>
     on how incident data collection has evolved since the NEB (now the CER)
     was established in 1959.`,
       p2: `Companies must report events, such as incidents, to the CER in
@@ -329,14 +328,13 @@ const en = {
           ),
         },
       },
-      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" target="_blank" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
+      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
     },
     remediation: {
       p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
       p2: `After the NOC is submitted, companies must demonstrate they are
       actively managing the contamination according to the
-      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html"
-        target="_blank">Remediation Process Guide</a>. The progress of remediation at the
+      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress of remediation at the
       contaminated site, and its current status, are captured in the annual
       update submitted by a company each year for a contaminated site.`,
       p3: "Third-party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
@@ -445,13 +443,11 @@ const en = {
       alert: `The dashboard and figures presented below only include O&#38;M
       activities from 2015 onwards that require notification to the CER.
       Consult the
-      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
-        target="_blank">O&#38;M Requirements and Guidance Notes</a>
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
       guidelines: `Take a look at the
-      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
-        target="_blank">requirements and guidance notes</a>
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">requirements and guidance notes</a>
       (O&#38;M Guidelines) for more information on how these events are
       regulated while promoting safety, security, environmental
       protection, economic efficiency, and respect for the rights of
@@ -530,7 +526,7 @@ const fr = {
     note: noteFr,
     capacityNote:
       "La capacité physique d’un pipeline dépend de nombreux facteurs, tels que les produits transportés, le sens d’écoulement, la capacité de pompage du pipeline, les travaux d’entretien et les restrictions de pression. La capacité physique réelle du pipeline peut parfois être supérieure à la capacité opérationnelle hypothétique indiquée ici.",
-    dailyData: `Vous recherchez des  <strong>données quotidiennes</strong>? Des ensembles de données quotidiennes sur le trafic de gaz naturel sont disponibles sur <a href="https://open.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" target="_blank" rel="external">Gouvernement ouvert</a>.`,
+    dailyData: `Vous recherchez des  <strong>données quotidiennes</strong>? Des ensembles de données quotidiennes sur le trafic de gaz naturel sont disponibles sur <a href="https://open.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" rel="external">Gouvernement ouvert</a>.`,
     instructions: {
       one: "Cliquez sur un point principal au-dessus du graphique et de la carte pour voir le transport à un autre endroit. La carte montre les emplacements approximatifs sur le pipeline où l’exploitant du pipeline enregistre les débits et la capacité.",
       two: "Cliquez et faites glisser votre souris sur le graphique pour faire un zoom jusqu’à la plage de dates souhaitée. Cliquez sur le bouton Réinitialiser le zoom pour réinitialiser toute la plage de dates.",
@@ -609,7 +605,7 @@ const fr = {
       inProgressBtn: "Conditions en cours avec emplacement :",
       closedBtn: "Conditions remplies avec emplacement :",
       noLocationBtn: "Aucun lieu (non indiqué sur la carte) :",
-      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" target="_blank" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
+      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
       source: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
@@ -628,19 +624,16 @@ const fr = {
     application du
     <a
       href="https://laws-lois.justice.gc.ca/fra/reglements/DORS-99-294/index.html"
-      target="_blank"
       >Règlement de la Régie canadienne de l’énergie sur les pipelines
       terrestres</a
     >
     et du
     <a
       href="https://laws.justice.gc.ca/fra/reglements/DORS-2003-39/index.html"
-      target="_blank"
       >Règlement sur les usines de traitement</a
     >. De nouvelles données sont ajoutées tous les trimestres.
     <a
       href="/fr/securite-environnement/rendement-lindustrie/infographie/index.html"
-      target="_blank"
       >Obtenez plus d’information</a
     >
     sur l’évolution des méthodes de collecte de données sur les incidents
@@ -777,14 +770,13 @@ const fr = {
           ),
         },
       },
-      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" target="_blank" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
+      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
     },
     remediation: {
       p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
       p2: `After the NOC is submitted, companies must demonstrate they are
       actively managing the contamination according to the
-      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html"
-        target="_blank">Remediation Process Guide</a>. The progress of remediation at the
+      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress of remediation at the
       contaminated site, and its current status, are captured in the annual
       update submitted by a company each year for a contaminated site.`,
       p3: "Third-party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
@@ -893,13 +885,11 @@ const fr = {
       alert: `The dashboard and figures presented below only include O&#38;M
       activities from 2015 onwards that require notification to the CER.
       Consult the
-      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
-        target="_blank">O&#38;M Requirements and Guidance Notes</a>
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
       guidelines: `Take a look at the
-      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html"
-        target="_blank">requirements and guidance notes</a>
+      <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">requirements and guidance notes</a>
       (O&#38;M Guidelines) for more information on how these events are
       regulated while promoting safety, security, environmental
       protection, economic efficiency, and respect for the rights of
