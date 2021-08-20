@@ -101,13 +101,14 @@ pipeline_profiles
 │   webpack.common.js (functionality for creating clean ../dist folder in english and french)
 |   webpack.dev.js (webpack dev server functionality)
 |   webpack.prod.js (npm run build for minimized production files)
-|   index.html (main navigation page for profiles. Has entry links for all sub profiles in /dist)
+|   webpack.analyze.js (npm run analyze-build to evaluate bundle size)
 |   .babelrc (babel config with corejs 3 polyfills)
 |   .vscode/settings.json (please use vscode for this project!)
 |   ...
 |
 └───test
 |   |   test.js (AVA units tests for front end code, npm run test-frontend)
+|   |   html5.js (runs html-validate on all .html files in /dist)
 |
 └───src
 │   │
@@ -117,10 +118,11 @@ pipeline_profiles
 |   |   |   traffic.py (created throughput & capacity for front end)
 |   |   |   tests.py (python unit tests npm run test-backend)
 |   |   |   util.py (shared python code module)
+|   |   |   updateAll.py (npm run update-all-data pull live data for all datasets)
 |   |   |   queries/ (contains queries used to get data from CER sql servers)
 |   |   |   npm_scripts/ (all the "data" automation scripts available in package.json)
 |   |   |   raw_data/ (pre-prepared data used by python when not pulling from remote locations)
-│   |   │   ...
+│   |   │   ... other python files for pipeline datasets
 |   |
 |   └───components (handlebars partials + JavaScript logic for building a new profile section)
 |   |
@@ -142,7 +144,7 @@ pipeline_profiles
 
 ## Software prerequisites
 
-1. npm (I'm using v7.11.1)
+1. npm (I'm using v7.19.1)
 2. node (I'm using v14.16.1)
 3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
 4. Git (for contributing)
@@ -228,7 +230,7 @@ Several datasets are pulled directly from CER internal databases. A single pytho
 
 It is highly recommended that you first create the conda python environment described in [environment.yml](environment.yml). The npm scripts for data updates expect a conda python environment called pipeline-profiles.
 
-Update datasets:
+Update individual datasets:
 
 ```bash
 npm run update-incidents-data
@@ -238,7 +240,15 @@ npm run update-apportionment-data
 npm run update-oandm-data
 ```
 
-Note: depending on several factors, including the current state of the python scripts called with the above command, this may not actually update the data you want. Take a look at the sub sections below for update instructions specific to the dataset.
+### Update all datasets at once (recommended)
+
+```bash
+npm run update-all-data
+```
+
+This command calls a python file (`src/data_management/updateAll.py`) hard coded to pull the latest remote/sql files instead of the users local files. <strong>This is probably the best way to update the data because the dataset specific python files dont need to be modified</strong>. The specific instructions below can be ignored when updating all data at once.
+
+Note: depending on several factors, including the current state of the python scripts called with the above command, this may not actually update the data you want. Take a look at the sub sections below for update instructions specific to the dataset. Follow these instructions below when not running `npm run update-all-data`
 
 ### Dataset 1: Incidents
 
