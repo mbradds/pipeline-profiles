@@ -687,7 +687,7 @@ export const englishDashboard = {
           w: "Within 30M of water-body",
           use: "Applicable Land Use",
           p: "Province",
-          a: "Activity At Time",
+          a: "Activity at time of discovery",
           c: "Contaminants at the Site",
           ps: "Pipeline or Facility?",
           s: "Site Status",

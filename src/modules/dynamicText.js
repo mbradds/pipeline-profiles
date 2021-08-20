@@ -399,18 +399,7 @@ export function remediationText(meta, lang) {
     meta.new
   )} contaminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
 
-  let secondParagraph = `<p>Where applicable, an estimate of the contaminated soil volume is reported to the CER. Since August 2018, ${dynamicValue(
-    lang.numberFormat(meta.soil.total, 0)
-  )} cubic metres of soil have been contaminated`;
-
-  if (meta.soil.total > 0 && meta.soil.pools > 0) {
-    secondParagraph += `, a volume equivalent to approximately ${dynamicValue(
-      `${meta.soil.pools} Olympic-sized swimming pools`
-    )}.</p>`;
-  } else {
-    secondParagraph += `.</p>`;
-  }
-
-  const totalText = firstParagraph + secondParagraph;
-  document.getElementById("remediation-dynamic-text").innerHTML = totalText;
+  // const totalText = firstParagraph;
+  document.getElementById("remediation-dynamic-text").innerHTML =
+    firstParagraph;
 }

@@ -41,9 +41,11 @@ def meta(df, company):
     metaData['new'] = int(len(df.index))
     # this is better added in the front end
     # metaData["cutoff"] = [minDate.year, minDate.month, minDate.day]
-    soilVolume = df["vol"].sum()
-    metaData["soil"] = {'total': int(soilVolume),
-                        'pools': round((soilVolume/2500), 1)}
+
+    # remediation folks dont want this info
+    # soilVolume = df["vol"].sum()
+    # metaData["soil"] = {'total': int(soilVolume),
+    #                     'pools': round((soilVolume/2500), 1)}
 
     return metaData
 
@@ -217,5 +219,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(sql=True)  # , companies=["NOVA Gas Transmission Ltd."])
+    df = process_remediation(sql=True)
 

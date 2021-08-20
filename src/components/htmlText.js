@@ -347,7 +347,7 @@ const en = {
       been submitted since 2021. For information on contaminated sites for
       which NOCs were submitted prior to August 2018, email
       <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
-      p5: "Contaminated sites must be remediated, which can be accomplished in several ways. Contaminated soil may be dug up and removed from the site to be disposed of, and contaminated groundwater could be extracted and treated to remove contaminants. <i>Note: I want to conclude this section with a more tangible description of what is actually done to achieve remediation. This isnt really included in the process guide, but a description of this would make it more real for our audience. People will want to know what the CER/company is doing about all the contaminated soil.</i>",
+      p5: "There are many different methods and approaches to remediate contamination. Thus, when a company submits a plan for remediation (i.e., remedial action plan) for CER review, they are required to include an options analysis to support the remedial method chosen, select appropriate remediation criteria and demonstrate engagement with potentially affected persons, among other requirements. CER analysts also review closure reports submitted by the company once the remediation is completed to ensure remediation has been completed appropriately.",
       dashboard: {
         id: "remediation",
         mapPillIds: [
@@ -795,7 +795,7 @@ const fr = {
       been submitted since 2021. For information on contaminated sites for
       which NOCs were submitted prior to August 2018, email
       <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
-      p5: "Contaminated sites must be remediated, which can be accomplished in several ways. Contaminated soil may be dug up and removed from the site to be disposed of, and contaminated groundwater could be extracted and treated to remove contaminants. <i>Note: I want to conclude this section with a more tangible description of what is actually done to achieve remediation. This isnt really included in the process guide, but a description of this would make it more real for our audience. People will want to know what the CER/company is doing about all the contaminated soil.</i>",
+      p5: "There are many different methods and approaches to remediate contamination. Thus, when a company submits a plan for remediation (i.e., remedial action plan) for CER review, they are required to include an options analysis to support the remedial method chosen, select appropriate remediation criteria and demonstrate engagement with potentially affected persons, among other requirements. CER analysts also review closure reports submitted by the company once the remediation is completed to ensure remediation has been completed appropriately.",
       dashboard: {
         id: "remediation",
         mapPillIds: [

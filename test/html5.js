@@ -9,14 +9,13 @@ function findFiles(Directory) {
       return findFiles(absolutePath);
     }
     if (/.html$/.test(absolutePath)) {
-      console.log(`starting HTML5 validation: ${absolutePath}`);
       try {
         execSync(`npm exec html-validate ${absolutePath}`);
       } catch (err) {
         console.log(`Error validating: ${absolutePath}`);
         console.log(err);
       }
-      console.log(`completed HTML5 validation: ${absolutePath}`);
+      console.log(`validated HTML5: ${absolutePath}`);
     }
     return undefined;
   });

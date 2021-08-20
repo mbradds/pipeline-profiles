@@ -688,7 +688,7 @@ export const frenchDashboard = {
           w: "FR: Within 30M of water-body",
           use: "FR: Applicable Land Use",
           p: "FR: Province",
-          a: "FR: Activity At Time",
+          a: "FR: Activity at time of discovery",
           c: "FR: Contaminants at the Site",
           ps: "FR: Pipeline or Facility?",
           s: "FR: Site Status",
