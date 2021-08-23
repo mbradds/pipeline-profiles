@@ -1,4 +1,4 @@
-import { data } from "../../data/Genesis";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/Genesis.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

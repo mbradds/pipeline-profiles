@@ -1,4 +1,4 @@
-import { data } from "../../data/NGTL";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/NGTL.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

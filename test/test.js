@@ -1,15 +1,18 @@
 import test from "ava";
-import { mapDates } from "../src/modules/datestone";
+import { mapDates } from "../src/modules/datestone.js";
 import {
   arrAvg,
   sortJson,
   sortJsonAlpha,
   rangeInclusive,
-} from "../src/modules/util";
-import { addSeriesParams } from "../src/dashboards/dashboardUtil";
-import { englishDashboard } from "../src/modules/langEnglish";
-import { createFiveYearSeries, fiveYearTrend } from "../src/modules/fiveYear";
-import { EventTrend } from "../src/modules/dashboard/EventTrend";
+} from "../src/modules/util.js";
+import { addSeriesParams } from "../src/dashboards/dashboardUtil.js";
+import { englishDashboard } from "../src/modules/langEnglish.js";
+import {
+  createFiveYearSeries,
+  fiveYearTrend,
+} from "../src/modules/fiveYear.js";
+import { EventTrend } from "../src/modules/dashboard/EventTrend.js";
 
 function macroIs(t, input, expected) {
   t.is(input, expected);

@@ -1,4 +1,4 @@
-import { data } from "../../data/SouthernLights";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/SouthernLights.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data);

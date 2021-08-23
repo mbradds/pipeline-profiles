@@ -21,9 +21,8 @@ import {
   leafletBaseMap,
   visibility,
   btnGroupClick,
-} from "../util";
-
-const haversine = require("haversine");
+} from "../util.js";
+import haversine from "haversine";
 
 /**
  * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.

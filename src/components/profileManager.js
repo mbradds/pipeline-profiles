@@ -21,7 +21,7 @@
  *
  */
 
-const profileSections = {
+export const pm = {
   NGTL: {
     sections: {
       traffic: { map: true, noMap: false },
@@ -198,5 +198,3 @@ const profileSections = {
     },
   },
 };
-
-module.exports = profileSections;

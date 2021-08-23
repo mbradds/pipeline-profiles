@@ -1,4 +1,4 @@
-import { data } from "../../data/Keystone";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/Keystone.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data);

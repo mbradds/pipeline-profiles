@@ -3,8 +3,8 @@
  * should be added to src/modules/util.js
  */
 
-import { mapDates } from "../modules/datestone";
-import { cerPalette, sortJsonAlpha, conversions } from "../modules/util";
+import { mapDates } from "../modules/datestone.js";
+import { cerPalette, sortJsonAlpha, conversions } from "../modules/util.js";
 
 /**
  * @typedef {Object} SetupReturn

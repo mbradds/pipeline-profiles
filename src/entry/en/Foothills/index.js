@@ -1,4 +1,4 @@
-import { data } from "../../data/Foothills";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/Foothills.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

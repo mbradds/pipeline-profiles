@@ -2,6 +2,7 @@
   "name": "pipeline-profiles",
   "version": "1.2.1",
   "sideEffects": false,
+  "type": "module",
   "engines": {
     "node": "14.x",
     "npm": "7.x"

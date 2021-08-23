@@ -1,8 +1,8 @@
-import { EventMap } from "../modules/dashboard/EventMap";
-import { EventNavigator } from "../modules/dashboard/EventNavigator";
-import { EventTrend } from "../modules/dashboard/EventTrend";
-import { loadChartError } from "../modules/util";
-import { noEventsFlag } from "./dashboardUtil";
+import { EventMap } from "../modules/dashboard/EventMap.js";
+import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
+import { EventTrend } from "../modules/dashboard/EventTrend.js";
+import { loadChartError } from "../modules/util.js";
+import { noEventsFlag } from "./dashboardUtil.js";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";

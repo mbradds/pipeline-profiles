@@ -6,12 +6,12 @@
  */
 
 import Highcharts from "highcharts";
-import { cerPalette } from "./util";
+import { cerPalette } from "./util.js";
 import {
   incidentsTextEng,
   trafficTrendTextEng,
   oandmTextEng,
-} from "./dynamicText";
+} from "./dynamicText.js";
 
 const companyToSystem = {
   "NOVA Gas Transmission Ltd.": "NGTL System",
