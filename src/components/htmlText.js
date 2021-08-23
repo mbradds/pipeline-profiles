@@ -932,4 +932,4 @@ const fr = {
   },
 };
 
-module.exports = { en, fr };
+export const profileText = { en, fr };

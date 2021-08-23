@@ -1,4 +1,4 @@
-import { data } from "../../data/plains";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/plains.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data, true);

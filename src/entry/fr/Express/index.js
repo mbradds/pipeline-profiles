@@ -1,4 +1,4 @@
-import { data } from "../../data/Express";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/Express.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data);

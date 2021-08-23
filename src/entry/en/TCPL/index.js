@@ -1,4 +1,4 @@
-import { data } from "../../data/TCPL";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/TCPL.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

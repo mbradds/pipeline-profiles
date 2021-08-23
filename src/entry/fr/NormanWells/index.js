@@ -1,4 +1,4 @@
-import { data } from "../../data/NormanWells";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/NormanWells.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data);

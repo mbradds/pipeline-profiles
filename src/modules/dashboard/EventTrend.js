@@ -15,7 +15,7 @@
  */
 
 import Highcharts from "highcharts";
-import { visibility, rangeInclusive } from "../util";
+import { visibility, rangeInclusive } from "../util.js";
 
 /**
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).

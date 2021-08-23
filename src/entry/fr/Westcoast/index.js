@@ -1,4 +1,4 @@
-import { data } from "../../data/Westcoast";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/Westcoast.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data);

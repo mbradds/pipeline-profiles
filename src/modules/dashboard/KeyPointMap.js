@@ -4,7 +4,7 @@
 
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { cerPalette, leafletBaseMap } from "../util";
+import { cerPalette, leafletBaseMap } from "../util.js";
 
 /**
  * Class for generating a very simple leaflet bubble map showing one or more selected bubbles, with large zoom in/out functionality

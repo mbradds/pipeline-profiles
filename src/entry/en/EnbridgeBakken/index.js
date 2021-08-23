@@ -1,4 +1,4 @@
-import { data } from "../../data/EnbridgeBakken";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/EnbridgeBakken.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

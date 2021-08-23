@@ -7,7 +7,7 @@
  */
 
 import Highcharts from "highcharts";
-import { cerPalette } from "../util";
+import { cerPalette } from "../util.js";
 
 /**
  * Class responsible for creating a navigation sidebar next to either a leaflet map, or highcharts bar chart.

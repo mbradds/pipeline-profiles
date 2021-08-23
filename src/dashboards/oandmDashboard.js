@@ -1,7 +1,7 @@
-import { EventNavigator } from "../modules/dashboard/EventNavigator";
-import { EventTrend } from "../modules/dashboard/EventTrend";
-import { loadChartError } from "../modules/util";
-import { noEventsFlag } from "./dashboardUtil";
+import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
+import { EventTrend } from "../modules/dashboard/EventTrend.js";
+import { loadChartError } from "../modules/util.js";
+import { noEventsFlag } from "./dashboardUtil.js";
 
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide

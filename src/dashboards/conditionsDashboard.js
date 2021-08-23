@@ -1,13 +1,13 @@
 import Highcharts from "highcharts";
-import MapModule from "highcharts/modules/map";
+import MapModule from "highcharts/modules/map.js";
 import {
   sortJson,
   cerPalette,
   visibility,
   loadChartError,
   btnGroupClick,
-} from "../modules/util";
-import { mapInits, noEventsFlag } from "./dashboardUtil";
+} from "../modules/util.js";
+import { mapInits, noEventsFlag } from "./dashboardUtil.js";
 import conditionsRegions from "../data_output/conditions/metadata/regions.json";
 import conditionsThemes from "../data_output/conditions/metadata/themes.json";
 

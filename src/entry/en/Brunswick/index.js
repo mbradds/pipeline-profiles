@@ -1,4 +1,4 @@
-import { data } from "../../data/Brunswick";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/Brunswick.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

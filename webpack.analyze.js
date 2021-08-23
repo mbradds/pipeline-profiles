@@ -1,9 +1,9 @@
-const { merge } = require("webpack-merge");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const common = require("./webpack.common.js");
+import { merge } from "webpack-merge";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import common from "./webpack.common.js";
 
-module.exports = merge(common, {
+export default merge(common, {
   mode: "production",
   devtool: false,
   plugins: [new BundleAnalyzerPlugin()],

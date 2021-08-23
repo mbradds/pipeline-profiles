@@ -1,4 +1,4 @@
-import { data } from "../../data/ManyIslands";
-import { loadAllCharts } from "../../loadDashboards_en";
+import { data } from "../../data/ManyIslands.js";
+import { loadAllCharts } from "../../loadDashboards_en.js";
 
 loadAllCharts(data);

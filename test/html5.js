@@ -1,6 +1,6 @@
-const path = require("path");
-const fs = require("fs");
-const { execSync } = require("child_process");
+import path from "path";
+import fs from "fs";
+import { execSync } from "child_process";
 
 function findFiles(Directory) {
   fs.readdirSync(Directory).forEach((File) => {

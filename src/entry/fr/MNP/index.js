@@ -1,4 +1,4 @@
-import { data } from "../../data/MNP";
-import { loadAllCharts } from "../../loadDashboards_fr";
+import { data } from "../../data/MNP.js";
+import { loadAllCharts } from "../../loadDashboards_fr.js";
 
 loadAllCharts(data);

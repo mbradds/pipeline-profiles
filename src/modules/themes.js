@@ -6,8 +6,8 @@
  */
 
 import Highcharts from "highcharts";
-import NoDataToDisplay from "highcharts/modules/no-data-to-display";
-import { cerPalette } from "./util";
+import NoDataToDisplay from "highcharts/modules/no-data-to-display.js";
+import { cerPalette } from "./util.js";
 
 NoDataToDisplay(Highcharts);
 

@@ -12,7 +12,7 @@
  */
 
 import Highcharts from "highcharts";
-import HighchartsMore from "highcharts/highcharts-more";
+import HighchartsMore from "highcharts/highcharts-more.js";
 import {
   cerPalette,
   arrAvg,
@@ -22,15 +22,15 @@ import {
   equalizeHeight,
   loadChartError,
   btnGroupClick,
-} from "../modules/util";
+} from "../modules/util.js";
 import {
   addSeriesParams,
   addUnitsAndSetup,
   addUnitsDisclaimer,
   isCapacity,
-} from "./dashboardUtil";
-import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear";
-import { KeyPointMap } from "../modules/dashboard/KeyPointMap";
+} from "./dashboardUtil.js";
+import { createFiveYearSeries, fiveYearTrend } from "../modules/fiveYear.js";
+import { KeyPointMap } from "../modules/dashboard/KeyPointMap.js";
 
 HighchartsMore(Highcharts);
 

@@ -10,7 +10,7 @@
  * and would add alot of unneccecary weight to the code bundles.
  */
 
-import { listOrParagraph } from "./util";
+import { listOrParagraph } from "./util.js";
 
 const dynamicValue = (val) =>
   `<i class="bg-primary" style="font-style: normal"><strong>&nbsp;${val}&nbsp;</strong></i>`;

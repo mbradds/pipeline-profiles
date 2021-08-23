@@ -7,6 +7,7 @@
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",
     "no-underscore-dangle": "warn",
-    "new-cap": "warn"
+    "new-cap": "warn",
+    "import/extensions": "always"
   }
 }

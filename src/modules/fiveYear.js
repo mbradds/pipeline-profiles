@@ -3,7 +3,7 @@
  * Creates a highcharts specific series array with a five-year average line, range, and current year values.
  */
 
-import { arrAvg, cerPalette } from "./util";
+import { arrAvg, cerPalette } from "./util.js";
 
 /**
  * @typedef {Object} FiveYearReturn

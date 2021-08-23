@@ -1,11 +1,15 @@
-const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
-const profileText = require("./src/components/htmlText");
-const pm = require("./src/components/profileManager");
+import path from "path";
+import { fileURLToPath } from "url";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import InlineChunkHtmlPlugin from "react-dev-utils/InlineChunkHtmlPlugin.js";
+import { profileText } from "./src/components/htmlText.js";
+import { pm } from "./src/components/profileManager.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const profileWebpackConfig = (function config() {
   const language = ["en", "fr"];
@@ -128,7 +132,7 @@ const profileWebpackConfig = (function config() {
   return { htmlWebpack, entry };
 })();
 
-module.exports = {
+export default {
   entry: profileWebpackConfig.entry(),
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -178,6 +182,7 @@ module.exports = {
         test: /\.css$/i,
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
+        sideEffects: true,
       },
       {
         test: /\.css$/,
@@ -186,6 +191,7 @@ module.exports = {
           { loader: "style-loader" },
           { loader: "css-loader", options: { url: false } },
         ],
+        sideEffects: true,
       },
       {
         test: /\.png$/,
@@ -208,7 +214,7 @@ module.exports = {
             strict: true,
             knownHelpersOnly: false,
           },
-          runtime: path.resolve(__dirname, "src/components/helpers.js"),
+          runtime: path.resolve(__dirname, "src/components/helpers.cjs"),
           // knownHelpersOnly: false,
         },
       },

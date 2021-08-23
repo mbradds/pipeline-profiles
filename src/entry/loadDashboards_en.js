@@ -11,25 +11,25 @@
  * of dead french text, with if statements selecting english strings. Its unlikely that external users are going to regularly switch
  * between languages past the profiles landing page, so this is probably the most cache efficent pattern.
  */
-import { generalTheme } from "../modules/themes";
+import { generalTheme } from "../modules/themes.js";
 // conditions
-import { mainConditions } from "../dashboards/conditionsDashboard";
+import { mainConditions } from "../dashboards/conditionsDashboard.js";
 // incidents
-import { mainIncidents } from "../dashboards/incidentsDashboard";
+import { mainIncidents } from "../dashboards/incidentsDashboard.js";
 // language;
-import { englishDashboard } from "../modules/langEnglish";
+import { englishDashboard } from "../modules/langEnglish.js";
 // traffic
-import { mainTraffic } from "../dashboards/trafficDashboard";
+import { mainTraffic } from "../dashboards/trafficDashboard.js";
 // apportionment
-import { mainApportion } from "../dashboards/apportionmentDashboard";
+import { mainApportion } from "../dashboards/apportionmentDashboard.js";
 // operations and maintenance activities
-import { mainOandM } from "../dashboards/oandmDashboard";
+import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
-import { mainRemediation } from "../dashboards/remediationDashboard";
+import { mainRemediation } from "../dashboards/remediationDashboard.js";
 // plains disclaimers
-import { plainsMidstreamProfile } from "../modules/util";
+import { plainsMidstreamProfile } from "../modules/util.js";
 
-require("../css/main.css");
+import "../css/main.css";
 
 // console.time(`first content loading`);
 
