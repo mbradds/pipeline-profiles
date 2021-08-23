@@ -45,7 +45,7 @@
     "haversine": "^1.1.1",
     "highcharts": "^9.2.1",
     "leaflet": "^1.7.1",
-    "mapshaper": "^0.5.66"
+    "mapshaper": "^0.5.67"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
