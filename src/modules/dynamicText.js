@@ -13,7 +13,7 @@
 import { listOrParagraph } from "./util.js";
 
 const dynamicValue = (val) =>
-  `<i class="bg-primary" style="font-style: normal"><strong>&nbsp;${val}&nbsp;</strong></i>`;
+  `<span class="bg-primary"><strong>&nbsp;${val}&nbsp;</strong></span>`;
 
 /**
  * Usefull when the company name has a period and appears at the end of the sentence.
