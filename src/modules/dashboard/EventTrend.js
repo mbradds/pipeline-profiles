@@ -90,18 +90,21 @@ export class EventTrend {
     };
 
     const adder = addMethod();
-    dummySeries.data = uniqueYears.map((y, index) => {
+    let dummyData = [];
+    uniqueYears.forEach((y, index) => {
       if (
         y + 1 !== uniqueYears[index + 1] &&
         index !== uniqueYears.length - 1
       ) {
         const lastYear = uniqueYears[index + 1] - 1;
-        for (let i = y; i <= lastYear; i += 1) {
-          return adder(i);
-        }
+        rangeInclusive(y, lastYear).forEach((missingYear) => {
+          dummyData.push(adder(missingYear));
+        });
+      } else {
+        dummyData.push(adder(y));
       }
-      return adder(y);
     });
+    dummySeries.data = dummyData;
     return dummySeries;
   }
 
