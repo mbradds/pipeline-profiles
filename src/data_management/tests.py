@@ -35,7 +35,7 @@ class TestUtil(unittest.TestCase):
 
 
 class TestIncidents(unittest.TestCase):
-    df, volume, meta = process_incidents(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
+    df, volume, meta = process_incidents(remote=False, companies=['NGTL'], test=True)
 
     def testBuild(self):
         self.assertEqual(self.meta["build"], True)
@@ -88,7 +88,7 @@ class TestIncidents(unittest.TestCase):
 
 
 class TestConditions(unittest.TestCase):
-    company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NOVA Gas Transmission Ltd.'], test=True)
+    company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NGTL'], test=True)
 
     def testBuild(self):
         self.assertEqual(self.meta["build"], True)
@@ -117,7 +117,7 @@ class TestConditions(unittest.TestCase):
 
 
 class TrafficTest(unittest.TestCase):
-    traffic, df = process_throughput(save=False, sql=False, commodity='gas', frequency='m', companies=['NOVA Gas Transmission Ltd.'])
+    traffic, df = process_throughput(save=False, sql=False, commodity='Gas', frequency='m', companies=['NGTL'])
 
     def testMeta(self):
         self.assertEqual(self.traffic["meta"]["units"], "Bcf/d")
@@ -140,7 +140,7 @@ class TrafficTest(unittest.TestCase):
 
 
 class OandmTest(unittest.TestCase):
-    oandm = process_oandm(remote=False, test=True, companies=['NOVA Gas Transmission Ltd.'])
+    oandm = process_oandm(remote=False, test=True, companies=['NGTL'])
 
     def testBuild(self):
         self.assertEqual(self.oandm["build"], True)
@@ -148,7 +148,7 @@ class OandmTest(unittest.TestCase):
     def testMeta(self):
         self.assertEqual(self.oandm["meta"]["totalEvents"], 680)
         self.assertEqual(self.oandm["meta"]["totalDigs"], 1324)
-        self.assertEqual(self.oandm["meta"]["company"], "NOVA Gas Transmission Ltd.")
+        self.assertEqual(self.oandm["meta"]["company"], "NGTL")
         self.assertEqual(self.oandm["meta"]["atRisk"], 2)
         self.assertEqual(self.oandm["meta"]["iceRinks"], 95)
         self.assertEqual(self.oandm["meta"]["landRequired"], 14)

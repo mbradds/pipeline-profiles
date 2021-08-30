@@ -7,8 +7,8 @@ from remediation import process_remediation
 
 
 if __name__ == "__main__":
-    process_throughput(save=True, sql=True, commodity='gas', frequency='m')
-    process_throughput(save=True, sql=True, commodity='oil', frequency='m')
+    process_throughput(save=True, sql=True, commodity='Gas', frequency='m')
+    process_throughput(save=True, sql=True, commodity='Liquid', frequency='m')
     process_apportionment(sql=True, save=True)
     process_conditions(remote=True, save=True, sql=True)
     process_incidents(remote=True, test=False)

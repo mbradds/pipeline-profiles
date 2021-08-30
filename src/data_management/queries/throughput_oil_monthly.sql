@@ -1,49 +1,53 @@
 select 
 cast(str([Month])+'-'+'1'+'-'+str([Year]) as date) as [Date],
-[Corporate Entity],
-[Pipeline Name],
-[Key Point],
+hc.PipelineID as [Pipeline Name],
+kp.[Key Point],
 [Direction of Flow],
-Product,
+[Product],
 round([Throughput (1000 m3/d)], 2) as [Throughput (1000 m3/d)],
-round([Available Capacity (1000 m3/d)], 2) as [Available Capacity (1000 m3/d)]
-from (
+case when hc.PipelineID in ('Montreal', 'SouthernLights', 'Westspur')
+then null 
+else round([Available Capacity (1000 m3/d)], 2)
+end as [Available Capacity (1000 m3/d)]
+
+from
+(
+
 SELECT 
 throughput.[Month],
 throughput.[Year],
-throughput.[Corporate Entity],
-throughput.[Pipeline Name],
-throughput.[Key Point],
+throughput.[PipelineID],
+throughput.[KeyPointID],
 throughput.[Direction of Flow],
 throughput.[Product],
 sum([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
 avg(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
-FROM [EnergyData].[dbo].[Pipelines_Throughput_Oil] as throughput
-left join [EnergyData].[dbo].[Pipelines_Capacity_Oil] as capacity on 
+FROM [PipelineInformation].[dbo].[Throughput_Oil] as throughput
+left join [PipelineInformation].[dbo].[Capacity_Oil] as capacity on 
 throughput.Year = capacity.Year and throughput.Month = capacity.Month
-and throughput.[Corporate Entity] = capacity.[Corporate Entity]
-and throughput.[Pipeline Name] = capacity.[Pipeline Name]
-and throughput.[Key Point] = capacity.[Key Point]
-where throughput.[Corporate Entity] <> 'Trans Mountain Pipeline ULC'
-group by throughput.Year, throughput.Month, throughput.[Corporate Entity], throughput.[Pipeline Name], throughput.[Key Point], throughput.[Direction of Flow], throughput.Product
+and throughput.[PipelineID] = capacity.[PipelineID]
+and throughput.[KeyPointID] = capacity.[KeyPointID]
+where throughput.PipelineId <> 'TransMountain'
+group by throughput.Year, throughput.Month, throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
+
 union all
+
 SELECT 
 throughput.[Month],
 throughput.[Year],
-throughput.[Corporate Entity],
-throughput.[Pipeline Name],
-throughput.[Key Point],
-[Direction of Flow],
-[Product],
+throughput.[PipelineID],
+throughput.[KeyPointID],
+throughput.[Direction of Flow],
+throughput.[Product],
 sum([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
 avg(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
-FROM [EnergyData].[dbo].[Pipelines_Throughput_Oil] as throughput
-left join [EnergyData].[dbo].[Pipelines_Capacity_Oil] as capacity on 
+FROM [PipelineInformation].[dbo].[Throughput_Oil] as throughput
+left join [PipelineInformation].[dbo].[Capacity_Oil] as capacity on 
 throughput.Year = capacity.Year and throughput.Month = capacity.Month
-and throughput.[Corporate Entity] = capacity.[Corporate Entity]
-and throughput.[Pipeline Name] = capacity.[Pipeline Name]
-where throughput.[Corporate Entity] = 'Trans Mountain Pipeline ULC'
-group by throughput.Year, throughput.Month, throughput.[Corporate Entity], throughput.[Pipeline Name], throughput.[Key Point], throughput.[Direction of Flow], throughput.Product
+and throughput.[PipelineID] = capacity.[PipelineID]
+where throughput.PipelineId = 'TransMountain'
+group by throughput.Year, throughput.Month, throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
 ) as hc
-where hc.[Corporate Entity] not in ('Enbridge Southern Lights GP Inc.', 'TEML Westpur Pipelines Limited (TEML)')
-order by [Corporate Entity], [Pipeline Name], [Key Point], cast(str([Month])+'-'+'1'+'-'+str([Year]) as date)
+
+left join [PipelineInformation].[dbo].[KeyPoint] as kp on hc.KeyPointId = kp.KeyPointId
+order by hc.PipelineID, kp.[Key Point], cast(str([Month])+'-'+'1'+'-'+str([Year]) as date)

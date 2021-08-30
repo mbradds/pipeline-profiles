@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, most_common, strip_cols, idify, get_company_list
+from util import company_rename, most_common, strip_cols, idify, get_company_list, applySystemId
 import ssl
 import json
 from datetime import datetime
@@ -205,6 +205,7 @@ def process_oandm(remote=False, companies=False, test=False):
             df[dateCol] = pd.to_datetime(df[dateCol])
 
     df['Company Name'] = df['Company Name'].replace(company_rename())
+    df = applySystemId(df, "Company Name")
     df = column_insights(df)
     df = df.rename(columns={"Species At Risk Present At Activity Site": "Species At Risk Present"})
     df = df[df['Commencement Date'].dt.year >= 2015].reset_index(drop=True)

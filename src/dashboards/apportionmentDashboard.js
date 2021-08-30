@@ -59,7 +59,7 @@ export async function mainApportion(apportionData, lang) {
 
   function buildTitle(data) {
     let titleText = "";
-    if (data.company === "Enbridge Pipelines Inc.") {
+    if (data.company === "EnbridgeMainline") {
       titleText = `${lang.title.enbridge}`;
     } else {
       titleText = `${lang.title.other} ${lang.points[data.keyPoint][0]}`;
@@ -133,7 +133,6 @@ export async function mainApportion(apportionData, lang) {
           layout: "vertical",
           align: "right",
           verticalAlign: "middle",
-          // width: "20%",
           y: yOffset,
         },
         tooltip: {
@@ -296,6 +295,7 @@ export async function mainApportion(apportionData, lang) {
   try {
     return buildDecision();
   } catch (err) {
+    console.log(err);
     return loadChartError("apportionment-dashboard", lang.dashboardError);
   }
 }

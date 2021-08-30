@@ -1,1514 +1,878 @@
-Date,Corporate Entity,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Original Nominations (1000 m3/d),Accepted Nominations (1000 m3/d),Apportionment Percentage
-2007-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.7,,0.0
-2007-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.5,,0.0
-2007-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.7,,0.0
-2007-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.5,,0.0
-2007-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.4,,0.0
-2007-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.3,,0.0
-2007-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.5,,0.0
-2007-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2007-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2007-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.3,,0.0
-2007-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.4,,0.0
-2007-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.5,,0.0
-2008-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.3,,0.0
-2008-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2008-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.0,,0.0
-2008-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2008-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2008-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.0,,0.0
-2008-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2008-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.3,,0.0
-2008-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2008-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2008-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2008-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2009-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2009-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2009-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2009-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2009-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2009-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2009-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.0,,0.0
-2009-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2009-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2009-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.8,,0.0
-2009-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.0,,0.0
-2009-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.3,,0.0
-2010-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2010-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2010-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.3,,0.0
-2010-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2010-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.5,,0.0
-2010-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2010-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,1.3,,0.0
-2010-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2010-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.0,,0.0
-2010-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.5,,0.0
-2010-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.2,,0.0
-2010-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2011-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,3.1,,0.0
-2011-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.7,,0.0
-2011-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2011-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,5.47,2.9,,0.0
-2011-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,0.2,,0.0
-2011-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,0.6,,0.0
-2011-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,0.8,,0.0
-2011-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,0.8,,0.0
-2011-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,3.2,3.2,,0.0
-2011-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,3.2,3.2,,0.0
-2011-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,2.6,,0.0
-2011-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,2.6,,0.0
-2012-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,2.5,,0.0
-2012-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,2.7,,0.0
-2012-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.95,2.5,,0.0
-2012-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,3.1,3.1,,0.0
-2012-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.74,2.6,,0.0
-2012-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.74,2.6,,0.0
-2012-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.74,2.3,,0.0
-2012-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2012-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.7,2.7,,0.0
-2012-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.5,,0.0
-2012-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.7,2.7,,0.0
-2012-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2013-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.6,,0.0
-2013-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.3,,0.0
-2013-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.1,,0.0
-2013-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.6,,0.0
-2013-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.5,,0.0
-2013-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2013-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2013-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.5,,0.0
-2013-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,1.9,,0.0
-2013-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.1,,0.0
-2013-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.3,,0.0
-2013-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.3,,0.0
-2014-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2014-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.3,,0.0
-2014-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.6,,0.0
-2014-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.5,,0.0
-2014-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2014-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.5,,0.0
-2014-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.3,,0.0
-2014-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.3,,0.0
-2014-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2014-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.7,2.7,,0.0
-2014-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.2,,0.0
-2014-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.4,,0.0
-2015-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.1,,0.0
-2015-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,1.9,,0.0
-2015-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.2,,0.0
-2015-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2015-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.1,,0.0
-2015-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.1,,0.0
-2015-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,1.1,,0.0
-2015-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2015-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2015-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.2,,0.0
-2015-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2015-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.1,,0.0
-2016-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,1.8,,0.0
-2016-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2016-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2016-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,1.9,,0.0
-2016-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,2.0,,0.0
-2016-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.63,1.9,,0.0
-2016-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,1.9,,0.0
-2016-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,1.7,,0.0
-2016-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,1.6,,0.0
-2016-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,1.9,,0.0
-2016-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,1.4,,0.0
-2016-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.5,,0.0
-2017-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.2,,0.0
-2017-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.2,,0.0
-2017-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.3,,0.0
-2017-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.3,,0.0
-2017-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.3,,0.0
-2017-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.3,,0.0
-2017-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.32,,0.0
-2017-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.36,,0.0
-2017-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5300000000000002,0.11,,0.0
-2017-10-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5,0.13,,0.0
-2017-11-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5,0.08,,0.0
-2017-12-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.5,0.08,,0.0
-2018-01-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.1,,0.0
-2018-02-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.1,,0.0
-2018-03-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.1,,0.0
-2018-04-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.05,,0.0
-2018-05-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.06,,0.0
-2018-06-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.05,,0.0
-2018-07-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.5,,0.0
-2018-08-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.6,,0.0
-2018-09-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.5,,0.0
-2018-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.31,,0.0
-2018-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.35,,0.0
-2018-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.55,,0.0
-2019-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.3,,0.0
-2019-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.55,,0.0
-2019-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.3,,0.0
-2019-04-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.48,,0.0
-2019-05-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.42,,0.0
-2019-06-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.5899999999999999,,0.0
-2019-07-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.5,,0.0
-2019-08-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.4,,0.0
-2019-09-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.4,,0.0
-2019-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.2,,0.0
-2019-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.43,,0.0
-2019-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.4,,0.0
-2020-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.75,,0.0
-2020-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.5,,0.0
-2020-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.37,,0.0
-2020-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.2,,0.0
-2020-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,0.69,,0.0
-2020-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.37,,0.0
-2020-07-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.21,,0.0
-2020-08-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,0.06,,0.0
-2020-09-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,0.07,,0.0
-2020-10-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,0.98,,0.0
-2020-11-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.37,,0.0
-2020-12-01,Enbridge Pipelines (NW) Inc.,Norman Wells Pipeline,Zama,2.6,1.32,,0.0
-2021-01-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.1,,0.0
-2021-02-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.41,,0.0
-2021-03-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.1400000000000001,,0.0
-2021-04-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.24,,0.0
-2021-05-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.35,,0.0
-2021-06-01,Enbridge Pipelines (NW) Inc. ,Norman Wells Pipeline,Zama,2.6,1.55,,0.0
-2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,288.1,,,
-2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,118.5,,,
-2007-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,348.92,,0.0
-2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,291.3,,,
-2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,124.1,,,
-2007-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,356.2,,0.0
-2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,298.1,,,
-2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.9,,,
-2007-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,358.93,,0.0
-2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,293.0,,,
-2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,124.7,,,
-2007-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,341.29,,0.0
-2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,287.3,,,
-2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,117.8,,,
-2007-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,324.48,,0.0
-2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,278.0,,,
-2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,124.0,,,
-2007-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,326.4,,0.0
-2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,276.1,,,
-2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.2,,,
-2007-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,324.34,,0.0
-2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,281.2,,,
-2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.2,,,
-2007-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,329.48,,0.0
-2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,281.7,,,
-2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,117.8,,,
-2007-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,340.06,,0.0
-2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,279.8,,,
-2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.9,,,
-2007-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,345.47,,0.0
-2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,287.7,,,
-2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,124.4,,,
-2007-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,366.26,,0.07
-2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,288.0,,,
-2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.6,,,
-2007-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,380.53,,0.0
-2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,288.1,,,
-2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,125.8,,,
-2008-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,372.28,,0.0
-2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,285.0,,,
-2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.6,,,
-2008-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,394.72,,0.03
-2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,285.9,,,
-2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,117.6,,,
-2008-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,360.65,,0.0
-2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,282.8,,,
-2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,115.5,,,
-2008-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,328.68,,0.0
-2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,275.3,,,
-2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,118.9,,,
-2008-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,350.88,,0.0
-2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,279.7,,,
-2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.5,,,
-2008-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,359.78,,0.0
-2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,286.6,,,
-2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.7,,,
-2008-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,341.67,,0.0
-2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,291.9,,,
-2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.2,,,
-2008-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,342.37,,0.0
-2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,285.0,,,
-2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,117.5,,,
-2008-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,329.92,,0.0
-2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,284.0,,,
-2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,117.2,,,
-2008-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,361.24,,0.0
-2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,297.2,,,
-2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.4,,,
-2008-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,367.17,,0.0
-2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,298.6,,,
-2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.0,,,
-2008-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,390.8,,0.24
-2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,298.1,,,
-2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.0,,,
-2009-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,372.61,,0.06
-2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,290.3,,,
-2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.1,,,
-2009-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,343.78,,0.06
-2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,322.9,,,
-2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,116.6,,,
-2009-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,340.49,,0.0
-2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,313.5,,,
-2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,113.7,,,
-2009-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,337.0,,0.0
-2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,323.7,,,
-2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.1,,,
-2009-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,355.59,,0.0
-2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,326.3,,,
-2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.0,,,
-2009-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,377.14,,0.0
-2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,320.7,,,
-2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,119.5,,,
-2009-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,370.36,,0.0
-2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,325.9,,,
-2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.3,,,
-2009-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,364.44,,0.0
-2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,320.4,,,
-2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,119.4,,,
-2009-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,369.04,,0.0
-2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,304.9,,,
-2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.8,,,
-2009-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,360.79,,0.0
-2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,319.7,,,
-2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.6,,,
-2009-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,378.54,,0.0
-2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,316.1,,,
-2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.9,,,
-2009-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,377.13,,0.0
-2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,326.6,,,
-2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.2,,,
-2010-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,373.85,,0.0
-2010-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,324.0,,,
-2010-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.7,,,
-2010-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,357.03,,0.0
-2010-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,322.5,,,
-2010-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.6,,,
-2010-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,365.07,,0.0
-2010-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,324.6,,,
-2010-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.6,,,
-2010-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,373.8,,0.0
-2010-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,320.4,,,
-2010-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,124.6,,,
-2010-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,386.26,,0.0
-2010-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,322.9,,,
-2010-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,121.3,,,
-2010-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,393.54,,0.0
-2010-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,314.7,,,
-2010-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,117.0,,,
-2010-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,392.93,,0.04
-2010-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,309.6,,,
-2010-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,80.0,,,
-2010-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,365.87,,0.0
-2010-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,303.7,,,
-2010-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,78.0,,,
-2010-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,363.99,,0.23
-2010-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,366.9,,,
-2010-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.5,,,
-2010-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,371.25,,0.31
-2010-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,393.9,,,
-2010-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,115.0,,,
-2010-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,406.64,,0.09
-2010-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,369.9,,,
-2010-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,106.2,,,
-2010-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,444.8,,0.27
-2011-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,357.9,,,
-2011-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,103.95,,,
-2011-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,445.79,,0.43
-2011-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,354.0,,,
-2011-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,101.03,,,
-2011-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,414.78,,0.16
-2011-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,348.1,,,
-2011-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,101.5,,,
-2011-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,376.93,,0.14
-2011-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,355.0,,,
-2011-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,109.8,,,
-2011-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,359.61,,0.17
-2011-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,361.1,,,
-2011-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,105.3,,,
-2011-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,363.95,,0.1
-2011-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,349.7,,,
-2011-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.7,,,
-2011-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,378.3,,0.23
-2011-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,332.1,,,
-2011-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,110.2,,,
-2011-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,,,0.25
-2011-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,331.2,,,
-2011-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.9,,,
-2011-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,387.65,,0.21
-2011-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,321.9,,,
-2011-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.2,,,
-2011-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,398.18,,0.21
-2011-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,345.0,,,
-2011-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,114.5,,,
-2011-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,405.02,,0.04
-2011-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,344.9,,,
-2011-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,111.0,,,
-2011-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,416.98,,0.08
-2011-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,339.1,,,
-2011-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,111.5,,,
-2011-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,427.13,,0.23
-2012-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,360.9,,,
-2012-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,113.6,,,
-2012-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,443.42,,0.22
-2012-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,355.1,,,
-2012-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,109.7,,,
-2012-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,456.31,,0.18
-2012-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,342.2,,,
-2012-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,105.7,,,
-2012-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,453.73,,0.27
-2012-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,360.1,,,
-2012-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,114.0,,,
-2012-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,457.81,,0.19
-2012-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,357.1,,,
-2012-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,114.1,,,
-2012-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,409.84,,0.16
-2012-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,346.1,,,
-2012-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,112.0,,,
-2012-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,434.17,,0.17
-2012-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,345.3,,,
-2012-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,102.9,,,
-2012-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,446.19,,0.26
-2012-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,332.3,,,
-2012-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,111.2,,,
-2012-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,415.57,,0.0
-2012-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,329.9,,,
-2012-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.3,,,
-2012-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,408.34,,0.2
-2012-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,315.8,,,
-2012-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,109.3,,,
-2012-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,414.8,,0.08
-2012-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,316.2,,,
-2012-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.3,,,
-2012-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,428.85,,0.15
-2012-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,337.5,,,
-2012-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,111.5,,,
-2012-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,470.59,,0.13
-2013-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,340.0,,,
-2013-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,107.1,,,
-2013-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,455.4,,0.1
-2013-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,352.8,,,
-2013-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,113.8,,,
-2013-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,452.61,,0.07
-2013-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,349.8,,,
-2013-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,98.6,,,
-2013-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,412.61,,0.37
-2013-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,356.3,,,
-2013-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,108.3,,,
-2013-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,392.27,,0.11
-2013-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,351.6,,,
-2013-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,118.5,,,
-2013-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,413.08,,0.17
-2013-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,353.9,,,
-2013-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,113.5,,,
-2013-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,436.14,,0.32
-2013-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,348.8,,,
-2013-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,114.5,,,
-2013-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,433.47,,0.27
-2013-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,347.52,,,
-2013-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.8,,,
-2013-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,454.73,,0.25
-2013-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,354.0,,,
-2013-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,123.7,,,
-2013-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,458.45,,0.28
-2013-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,350.8,,,
-2013-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,125.6,,,
-2013-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,470.52,,0.12
-2013-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,355.9,,,
-2013-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,124.3,,,
-2013-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,510.84,,0.15
-2013-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,350.2,,,
-2013-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.4,,,
-2013-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,490.58,,0.1
-2014-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,357.0,,,
-2014-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,119.69,,,
-2014-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,489.31,,0.17
-2014-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,366.74,,,
-2014-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,115.89,,,
-2014-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,486.39,,0.13
-2014-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,374.58,,,
-2014-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,120.58,,,
-2014-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,478.79,,0.1
-2014-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,374.97,,,
-2014-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,119.77,,,
-2014-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,472.0,,0.03
-2014-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,375.2,,,
-2014-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,122.6,,,
-2014-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,479.67,,0.11
-2014-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,382.48,,,
-2014-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,147.19,,,
-2014-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,521.96,,0.16
-2014-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,365.22,,,
-2014-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,127.19,,,
-2014-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,541.71,,0.34
-2014-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,365.32,,,
-2014-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,130.7,,,
-2014-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,539.94,,0.17
-2014-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,371.56,,,
-2014-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,137.87,,,
-2014-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,526.11,,0.25
-2014-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,378.89,,,
-2014-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,161.87,,,
-2014-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,569.43,,0.33
-2014-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,383.31,,,
-2014-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,163.24,,,
-2014-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,656.18,,0.43
-2014-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,374.09,,,
-2014-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,168.18,,,
-2014-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,671.59,,0.41
-2015-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,378.21,,,
-2015-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,165.23,,,
-2015-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,666.1,,0.41
-2015-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,371.02,,,
-2015-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.63,,,
-2015-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,693.72,,0.46
-2015-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,385.77,,,
-2015-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,156.55,,,
-2015-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,696.01,,0.46
-2015-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,376.57,,,
-2015-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.52,,,
-2015-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,679.47,,0.42
-2015-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,384.33,,,
-2015-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.83,,,
-2015-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,636.84,,0.42
-2015-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,378.93,,,
-2015-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,164.74,,,
-2015-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,610.91,,0.42
-2015-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,414.89,,,
-2015-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,162.31,,,
-2015-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,612.42,,0.31
-2015-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,427.72,,,
-2015-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.12,,,
-2015-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,622.23,,0.29
-2015-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,404.5,,,
-2015-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,162.5,,,
-2015-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,569.18,,0.16
-2015-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,416.67,,,
-2015-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,157.68,,,
-2015-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,557.18,,0.03
-2015-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,427.42,,,
-2015-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.96,,,
-2015-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,609.59,,0.16
-2015-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,441.37,,,
-2015-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,154.97,,,
-2015-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,619.69,,0.19
-2016-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Clearbrook - Line 2/3,,136.88,,0.03
-2016-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,447.07,,,
-2016-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.66,,,
-2016-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,304.2,,0.16
-2016-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,642.03,589.26,
-2016-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,449.8,,,
-2016-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.0,,,
-2016-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,297.35,,0.14
-2016-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,615.85,573.6,
-2016-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.1
-2016-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,435.84,,,
-2016-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.38,,,
-2016-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,254.44,,0.02
-2016-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,557.97,551.68,
-2016-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.11
-2016-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,450.73,,,
-2016-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.51,,,
-2016-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,508.85,508.14,
-2016-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.81,,0.06
-2016-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,442.03,,,
-2016-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,157.07,,,
-2016-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,270.19,,0.06
-2016-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,565.92,548.44,
-2016-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.11
-2016-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,439.25,,,
-2016-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,167.52,,,
-2016-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,273.07,,0.07
-2016-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,573.75,554.25,
-2016-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.07
-2016-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,450.75,,,
-2016-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.62,,,
-2016-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,277.36,,0.04
-2016-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,539.73,526.87,
-2016-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.17
-2016-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,424.25,,,
-2016-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.83,,,
-2016-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,286.21,,0.15
-2016-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,578.72,535.15,
-2016-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.14
-2016-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,414.17,,,
-2016-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.84,,,
-2016-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,301.73,,0.22
-2016-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,609.39,542.54,
-2016-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.1
-2016-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,430.81,,,
-2016-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,171.91,,,
-2016-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,293.38,,0.14
-2016-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,593.89,552.03,
-2016-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.14
-2016-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,436.49,,,
-2016-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.34,,,
-2016-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,307.33,,0.17
-2016-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,610.06,557.25,
-2016-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.1
-2016-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,444.74,,,
-2016-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.9,,,
-2016-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,335.17,,0.23
-2016-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,647.17,570.08,
-2017-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,446.35,,,
-2017-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.44,,,
-2017-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,384.38,,0.33
-2017-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,710.03,582.41,
-2017-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,448.78,,,
-2017-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.77,,,
-2017-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,435.89,,0.41
-2017-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,742.48,563.76,
-2017-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,452.4,,,
-2017-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.41,,,
-2017-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,417.84,,0.38
-2017-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,720.67,561.89,
-2017-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,457.05,,,
-2017-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,164.45,,,
-2017-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,427.47,,0.38
-2017-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Regina - Line 4/67,,425.73,,0.29
-2017-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,737.43,571.17,
-2017-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,444.14,,,
-2017-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,159.4,,,
-2017-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,350.11,,0.27
-2017-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,642.73,548.09,
-2017-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,450.61,,,
-2017-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.49,,,
-2017-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,326.8,,0.19
-2017-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,634.57,571.97,
-2017-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,454.0,,,
-2017-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.0,,,
-2017-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,115.65,,0.02
-2017-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,292.0,,0.1
-2017-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,614.32,579.72,
-2017-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.23
-2017-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,444.0,,,
-2017-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,163.0,,,
-2017-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,543.5,541.26,
-2017-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.19
-2017-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,424.0,,,
-2017-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.0,,,
-2017-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,537.56,536.38,
-2017-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.1
-2017-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,448.0,,,
-2017-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,157.0,,,
-2017-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,557.53,555.21,
-2017-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.15
-2017-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 11,,18.0,,0.03
-2017-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,455.0,,,
-2017-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,168.0,,,
-2017-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,287.71,,0.05
-2017-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,612.39,596.62,
-2017-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.14
-2017-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Clearbrook - Line 2/3,,178.53,,0.05
-2017-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,446.0,,,
-2017-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,171.0,,,
-2017-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,336.45,,0.21
-2017-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,667.18,587.54,
-2017-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Westover - Line 10,,11.8,,0.06
-2018-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,458.0,,,
-2018-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.3,,,
-2018-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,122.77,,0.17
-2018-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,424.36,,0.36
-2018-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,778.53,604.89,
-2018-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,440.0,,,
-2018-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.9,,,
-2018-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,144.13,,0.23
-2018-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,480.3,,0.46
-2018-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,843.81,588.38,
-2018-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,440.0,,,
-2018-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,161.0,,,
-2018-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,123.07,,0.09
-2018-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,524.21,,0.51
-2018-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,846.07,567.64,
-2018-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,439.0,,,
-2018-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,168.0,,,
-2018-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,523.04,,0.5
-2018-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Regina - Line 4/67,,521.67,,0.45
-2018-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,829.83,562.05,
-2018-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,439.0,,,
-2018-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,167.0,,,
-2018-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,150.01,,0.31
-2018-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,461.21,,0.43
-2018-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,835.07,590.18,
-2018-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,432.0,,,
-2018-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,163.0,,,
-2018-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,179.18,,0.43
-2018-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,464.75,,0.45
-2018-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,868.59,579.51,
-2018-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,437.0,,,
-2018-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,167.39,,,
-2018-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,172.99,,0.38
-2018-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,495.68,,0.48
-2018-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,884.1,577.52,
-2018-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,432.39,,,
-2018-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.0,,,
-2018-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,156.08,,0.35
-2018-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,481.71,,0.47
-2018-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,858.89,577.35,
-2018-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,430.77,,,
-2018-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.97,,,
-2018-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,160.22,,0.35
-2018-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,422.61,,0.41
-2018-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,819.52,588.69,
-2018-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,448.58,,,
-2018-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,165.15,,,
-2018-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - line 1,,28.54,,0.09
-2018-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - line 2/3,,199.68,,0.44
-2018-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,457.17,,0.43
-2018-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,876.92,589.98,
-2018-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,448.2,,,
-2018-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,167.76,,,
-2018-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - line 1,,33.66,,0.19
-2018-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - line 2/3,,197.69,,0.46
-2018-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,501.6,,0.47
-2018-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,946.96,614.25,
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/3/65,,229.5,,0.07
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Edmonton - Line 2/3,,172.07,,0.25
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,453.42,,,
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Hardisty - Line 4/67,,487.14,,0.14
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.8,,,
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 1,,40.01,,0.29
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,182.92,,0.43
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,495.31,,0.46
-2018-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,960.61,627.86,
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/3/65,,233.3,,0.05
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,446.0,,,
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.0,,,
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 1,,32.27,,0.19
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,184.52,,0.43
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,453.97,,0.42
-2019-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,860.67,581.76,
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Edmonton - Line 2/3,,198.91,,0.06
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,453.0,,,
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.0,,,
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 1,,35.09,,0.14
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,198.91,,0.46
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,441.18,,0.39
-2019-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,857.06,587.19,
-2019-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,446.0,,,
-2019-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.0,,,
-2019-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,184.23,,0.42
-2019-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,447.7,,0.41
-2019-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,832.18,571.25,
-2019-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,445.0,,,
-2019-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.0,,,
-2019-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,175.04,,0.39
-2019-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,431.31,,0.39
-2019-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Regina - Line 4/67,,427.55,,0.22
-2019-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,823.3,582.59,
-2019-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,443.0,,,
-2019-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.0,,,
-2019-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,192.58,,0.43
-2019-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,422.69,,0.38
-2019-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,843.24,598.33,
-2019-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,458.0,,,
-2019-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,169.0,,,
-2019-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,180.96,,0.4
-2019-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,498.28,,0.46
-2019-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,893.12,590.73,
-2019-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Edmonton - Line 2/3,,176.76,,0.11
-2019-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,460.9,,,
-2019-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,170.37,,,
-2019-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,185.7,,0.37
-2019-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,492.85,,0.44
-2019-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,886.58,596.17,
-2019-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,446.71,,,
-2019-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.9,,,
-2019-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,172.0,,0.33
-2019-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,466.19,,0.44
-2019-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,839.5,576.77,
-2019-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,453.1,,,
-2019-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,165.91,,,
-2019-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,132.25,,0.14
-2019-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,465.12,,0.43
-2019-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,800.79,581.62,
-2019-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/3,,197.53,,0.1
-2019-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,443.0,,,
-2019-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,166.0,,,
-2019-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,141.57,,0.28
-2019-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,451.89,,0.41
-2019-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,809.56,577.74,
-2019-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/3/65,,236.68,,0.11
-2019-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,441.0,,,
-2019-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.0,,,
-2019-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,189.82,,0.49
-2019-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,469.12,,0.44
-2019-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,881.22,577.58,
-2019-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/3/65,,218.77,,0.13
-2019-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,454.0,,,
-2019-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.0,,,
-2019-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,185.77,,0.29
-2019-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,523.96,,0.5
-2019-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,924.91,601.41,
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/3,,195.64,,0.04
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Cromer - Line 2/93,,195.64,,0.04
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,473.0,,,
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.0,,,
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/3,,152.96,,0.19
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/93,,152.96,,0.19
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,544.59,,0.49
-2020-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,907.02,607.13,
-2020-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,462.0,,,
-2020-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.0,,,
-2020-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/93,,140.49,,0.06
-2020-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,572.72,,0.53
-2020-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,924.29,612.07,
-2020-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,475.0,,,
-2020-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.0,,,
-2020-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/93,,124.23,,0.0
-2020-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,542.61,,0.49
-2020-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,873.57,607.69,
-2020-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,460.47,,,
-2020-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,171.68,,,
-2020-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,459.23,,0.4
-2020-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,773.76,594.2,
-2020-05-01,Enbridge Pipelines Inc.,Canadian Mainline,- - -,,,,0.0
-2020-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,473.33,,,
-2020-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.01,,,
-2020-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,510.28,510.28,
-2020-06-01,Enbridge Pipelines Inc.,Canadian Mainline,- - -,,,,0.0
-2020-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,469.79,,,
-2020-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,161.34,,,
-2020-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,530.61,530.61,
-2020-07-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,468.07,,,
-2020-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.9,,,
-2020-07-01,Enbridge Pipelines Inc.,Canadian Mainline,Regina - Line 4/67,,284.63,,0.03
-2020-07-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,560.24,551.7,
-2020-08-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,452.89,,,
-2020-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,163.09,,,
-2020-08-01,Enbridge Pipelines Inc.,Canadian Mainline,Regina - Line 4/67,,278.98,,0.07
-2020-08-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,569.24,549.71,
-2020-09-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,446.85,,,
-2020-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,155.25,,,
-2020-09-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,318.38,,0.18
-2020-09-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,620.9,563.59,
-2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,458.05,,,
-2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.38,,,
-2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,311.17,,0.12
-2020-10-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,586.97,548.36,
-2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,457.32,,,
-2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,168.89,,,
-2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,350.54,,0.22
-2020-11-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,644.74,567.62,
-2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,458.35,,,
-2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.45,,,
-2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,401.23,,0.32
-2020-12-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,696.77,568.25,
-2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,468.57,,,
-2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.5,,,
-2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,490.26,,0.44
-2021-01-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,811.08,594.44,
-2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,459.49,,,
-2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.45,,,
-2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 2/93,,134.51,,0.02
-2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,569.57,,0.53
-2021-02-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,902.86,598.3,
-2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,452.11,,,
-2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.3,,,
-2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,509.11,,0.47
-2021-03-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,794.69,555.41,
-2021-04-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,453.07,,,
-2021-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,172.88,,,
-2021-04-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/67,,470.3,,0.43
-2021-04-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,726.02,523.79,
-2021-05-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,454.47,,,
-2021-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,171.93,,,
-2021-05-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/68,,474.37,,0.43
-2021-05-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,747.45,543.47,
-2021-06-01,Enbridge Pipelines Inc.,Canadian Mainline,ex-Gretna,459.69,,,
-2021-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Into-Sarnia,173.01,,,
-2021-06-01,Enbridge Pipelines Inc.,Canadian Mainline,Kerrobert - Line 4/70,,557.52,,0.52
-2021-06-01,Enbridge Pipelines Inc.,Canadian Mainline,system,,855.32,565.4,
-2011-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2011-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2011-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2011-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2012-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2012-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2012-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2012-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2013-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2013-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2013-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2013-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2014-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2014-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2014-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2014-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2015-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2015-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2015-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2015-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2016-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2016-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2016-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2016-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2017-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2017-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2017-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2017-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,28.6,,,
-2018-03-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,30.1,,,
-2018-06-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,32.1,,,
-2018-09-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,34.1,,,
-2018-12-01,Enbridge Southern Lights GP Inc.,Southern Lights Pipeline,system,36.1,,,
-2014-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,10.62,,0.0
-2014-07-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2014-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,10.22,,0.0
-2014-08-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2014-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.69,,0.0
-2014-09-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2014-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,8.96,,0.0
-2014-10-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2014-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,9.52,,0.0
-2014-11-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2014-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.04,,0.0
-2014-12-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.16,,0.0
-2015-01-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.6,,0.0
-2015-02-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.01,,0.0
-2015-03-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.15,,0.0
-2015-04-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.22,,0.0
-2015-05-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,10.21,,0.0
-2015-06-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.96,,0.0
-2015-07-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.16,,0.0
-2015-08-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.19,,0.03162
-2015-09-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.59,,0.0
-2015-10-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,11.07,,0.0
-2015-11-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2015-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.69,,0.0
-2015-12-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.72,,0.0
-2016-01-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.02,,0.0
-2016-02-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.98,,0.0
-2016-03-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.66,,0.0
-2016-04-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.75,,0.0
-2016-05-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.92,,0.0
-2016-06-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.1,,0.0586
-2016-07-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.51,,0.0
-2016-08-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,14.34,14.34,,0.05
-2016-09-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.54,,0.1014308
-2016-10-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.1,,0.049683228
-2016-11-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2016-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.93,,0.0
-2016-12-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.51,,0.0
-2017-01-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.36,,0.027726432532347505
-2017-02-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.19,,0.0
-2017-03-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.76,,0.0
-2017-04-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.51,,0.0
-2017-05-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.59,,0.0
-2017-06-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.29,,0.0
-2017-07-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.51,,0.0
-2017-08-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.59,,0.0
-2017-09-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.62,,0.0
-2017-10-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2017-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.73,,0.0
-2017-11-01,PKM Cochin ULC,Cochin,Windsor,0.0,,,
-2017-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.23,,0.0
-2017-12-01,PKM Cochin ULC,Cochin,Windsor,12.08,,,
-2018-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.04,,0.0
-2018-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.09,,0.0
-2018-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.15,,0.0
-2018-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.4,,0.0
-2018-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,11.94,,0.0
-2018-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.57,,0.0
-2018-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.61,,0.0
-2018-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.66,,0.0
-2018-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,9.65,,0.0
-2018-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.27,,0.0
-2018-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,7.31,,0.0
-2018-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.21,,0.0
-2019-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.71,,0.0
-2019-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.15,,0.0
-2019-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.96,,0.0
-2019-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.4,,0.0
-2019-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,11.94,,0.0
-2019-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.57,,0.0
-2019-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.71,,0.0
-2019-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.34,,0.0
-2019-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,12.65,,0.0
-2019-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.67,,0.0
-2019-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,16.77,,0.0
-2019-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.7,,0.0
-2020-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.78,,0.0
-2020-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,16.71,,0.0
-2020-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,17.62,,0.0
-2020-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.66,,0.0
-2020-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.89,,0.0
-2020-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,16.51,,0.0
-2020-07-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,11.85,,0.0
-2020-08-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,11.82,,0.0
-2020-09-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,11.36,,0.0
-2020-10-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.23,,0.0
-2020-11-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.96,,0.0
-2020-12-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,16.81,,0.0
-2021-01-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,14.53,,0.0
-2021-02-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.13,,0.0
-2021-03-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,17.21,,0.0
-2021-04-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,16.52,,0.0
-2021-05-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,15.73,,0.0
-2021-06-01,PKM Cochin ULC,Cochin,Ft. Saskatchewan,15.1,13.29,,0.0
-2017-01-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-03-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-04-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-05-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-06-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-07-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-08-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-09-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-10-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-11-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2017-12-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-01-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-03-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-04-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-05-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-06-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-07-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-08-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-09-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-10-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-11-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2018-12-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2019-01-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2019-02-01,TEML Westpur Pipelines Limited (TEML),Westpur Pipeline,system,39.33,,,
-2006-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,35.0,43.0,,0.19
-2006-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,36.0,74.0,,0.52
-2006-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,37.0,106.0,,0.65
-2006-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,35.0,39.0,,0.1
-2006-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,29.0,29.0,,0.0
-2006-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,36.0,37.0,,0.02
-2006-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,37.0,37.0,,0.0
-2006-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,37.0,37.0,,0.0
-2006-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,39.0,49.0,,0.2
-2006-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,35.0,36.0,,0.02
-2006-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,37.0,43.0,,0.14
-2006-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,30.0,46.0,,0.34
-2007-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,36.0,42.0,,0.13
-2007-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,35.0,37.0,,0.05
-2007-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,35.0,35.0,,0.0
-2007-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,46.0,,0.13
-2007-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,49.0,,0.16
-2007-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,67.0,,0.37
-2007-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,61.0,,0.31
-2007-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,50.0,,0.15
-2007-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,60.0,,0.3
-2007-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,39.0,67.0,,0.42
-2007-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,61.0,,0.29
-2007-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,76.0,,0.47
-2008-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,47.0,,0.15
-2008-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,42.0,,0.0
-2008-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,33.0,33.0,,0.0
-2008-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,42.0,,0.05
-2008-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,42.0,,0.0
-2008-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,41.0,41.0,,0.0
-2008-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,38.0,38.0,,0.0
-2008-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,36.0,36.0,,0.0
-2008-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,58.0,,0.28
-2008-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,58.0,,0.31
-2008-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,55.0,,0.1
-2008-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,40.0,,0.0
-2009-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,28.0,28.0,,0.0
-2009-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,39.0,40.0,,0.05
-2009-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,52.0,,0.08
-2009-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,36.0,38.0,,0.05
-2009-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,32.0,32.0,,0.0
-2009-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,50.0,,0.08
-2009-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,55.0,,0.09
-2009-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,64.0,,0.17
-2009-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,58.0,,0.15
-2009-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,68.0,,0.3
-2009-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,63.0,,0.21
-2009-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,48.0,,0.0
-2010-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,50.0,,0.07
-2010-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,47.0,,0.0
-2010-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,50.0,,0.09
-2010-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,44.0,,0.0
-2010-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,73.0,,0.38
-2010-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,68.0,,0.26
-2010-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,80.0,,0.37
-2010-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,78.0,,0.33
-2010-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,92.0,,0.51
-2010-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,113.0,,0.57
-2010-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,93.0,,0.46
-2010-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,84.0,,0.43
-2011-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,116.0,,0.6
-2011-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,125.0,,0.65
-2011-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,126.0,,0.62
-2011-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,116.0,,0.58
-2011-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,105.0,,0.58
-2011-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,38.0,124.0,,0.69
-2011-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,41.0,144.0,,0.72
-2011-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,157.0,,0.73
-2011-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,163.0,,0.74
-2011-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,134.0,,0.67
-2011-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,142.0,,0.68
-2011-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,36.0,145.0,,0.75
-2012-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,41.0,146.0,,0.72
-2012-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,164.0,,0.73
-2012-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,140.0,,0.69
-2012-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,120.0,,0.61
-2012-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,136.0,,0.66
-2012-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,141.0,,0.68
-2012-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,166.0,,0.73
-2012-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,157.0,,0.69
-2012-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,138.0,,0.67
-2012-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,144.0,,0.71
-2012-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,161.0,,0.73
-2012-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,147.0,,0.7
-2013-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,161.0,,0.72
-2013-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,156.0,,0.71
-2013-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,139.0,,0.66
-2013-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,140.0,,0.67
-2013-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,125.0,,0.62
-2013-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,131.0,,0.63
-2013-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,33.0,128.0,,0.74
-2013-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,138.0,,0.69
-2013-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,37.0,143.0,,0.74
-2013-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,38.0,145.0,,0.74
-2013-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,141.0,,0.67
-2013-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,39.0,138.0,,0.72
-2014-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,126.0,,0.68
-2014-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,142.0,,0.7
-2014-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,142.0,,0.69
-2014-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,126.0,,0.64
-2014-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,140.0,,0.68
-2014-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,145.0,,0.69
-2014-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,153.0,,0.71
-2014-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,157.0,,0.71
-2014-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,138.0,,0.68
-2014-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,149.0,,0.69
-2014-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,143.0,,0.68
-2014-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,150.0,,0.67
-2015-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,150.0,,0.72
-2015-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,145.0,,0.66
-2015-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,124.0,,0.62
-2015-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,124.0,,0.59
-2015-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,54.0,118.0,,0.54
-2015-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,64.0,,0.22
-2015-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,65.0,,0.24
-2015-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,74.0,,0.31
-2015-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,72.0,,0.36
-2015-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,74.0,,0.3
-2015-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,63.0,,0.19
-2015-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,54.0,,0.18
-2016-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,63.0,,0.23
-2016-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,56.0,,0.11
-2016-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,54.0,,0.09
-2016-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,60.0,,0.15
-2016-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,59.0,,0.13
-2016-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,62.0,,0.18
-2016-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,53.0,,0.01
-2016-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,57.0,,0.12
-2016-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,54.0,66.0,,0.19
-2016-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,59.0,,0.24
-2016-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,59.0,,0.18
-2016-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,58.0,,0.21
-2017-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,61.0,,0.22
-2017-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,71.0,,0.27
-2017-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,63.0,,0.25
-2017-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,75.0,,0.35
-2017-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,58.0,,0.11
-2017-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,57.0,,0.23
-2017-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,66.0,,0.22
-2017-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,56.0,,0.15
-2017-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,55.0,66.0,,0.16
-2017-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,44.0,53.0,,0.17
-2017-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,67.0,,0.24
-2017-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,64.0,,0.23
-2018-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,42.0,65.0,,0.35
-2018-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,72.0,,0.32
-2018-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,68.0,,0.32
-2018-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,83.0,,0.44
-2018-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,79.0,,0.38
-2018-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,81.0,,0.43
-2018-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,85.0,,0.46
-2018-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,48.0,82.0,,0.42
-2018-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,43.0,75.0,,0.43
-2018-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,45.0,80.0,,0.44
-2018-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,40.0,74.0,,0.45
-2018-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,84.0,,0.41
-2019-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,68.0,,0.24
-2019-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,77.0,,0.32
-2019-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,69.0,,0.33
-2019-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,70.0,,0.29
-2019-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,73.0,,0.28
-2019-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,77.0,,0.39
-2019-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,54.0,74.0,,0.27
-2019-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,69.0,,0.34
-2019-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,72.0,,0.29
-2019-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,63.0,,0.22
-2019-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,66.0,,0.22
-2019-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,62.0,,0.21
-2020-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,46.0,62.0,,0.26
-2020-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,49.0,76.0,,0.36
-2020-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,52.0,63.0,,0.17
-2020-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,50.0,,0.07
-2020-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,47.0,,0.0
-2020-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,49.0,,0.04
-2020-07-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,67.0,,0.3
-2020-08-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,58.0,64.0,,0.09
-2020-09-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,54.0,,0.05
-2020-10-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,56.0,60.0,,0.07
-2020-11-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,47.0,54.0,,0.13
-2020-12-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,68.0,,0.23
-2021-01-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,69.0,,0.27
-2021-02-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,50.0,64.0,,0.21
-2021-03-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,54.0,62.0,,0.14
-2021-04-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,53.0,62.0,,0.15
-2021-05-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,55.0,66.0,,0.18
-2021-06-01,Trans Mountain Pipeline ULC,Trans Mountain Pipeline,All,51.0,60.0,,0.16
-2006-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2006-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2007-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2008-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2009-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2011-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2012-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2013-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2014-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2015-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2016-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2017-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2018-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2019-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-07-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-08-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-09-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-10-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-11-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2020-12-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2021-01-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2021-02-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2021-03-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2021-04-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2021-05-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2021-06-01,Trans-Northern Pipelines Inc.,Trans-Northern,system,,,,
-2010-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",18.11,16.32,,0.0
-2010-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",15.13,16.9,,0.10456406423319764
-2010-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",41.5,18.99,,0.0
-2010-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",39.43,28.77,,0.0
-2010-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",43.88,18.11,,0.0
-2010-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",35.61,35.24,,0.0
-2011-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",45.01,44.56,,0.0
-2011-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",67.79,69.38,,0.0229064885073772
-2011-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",74.41,68.82,,0.0
-2011-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",72.18,66.56,,0.0
-2011-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",73.93,65.24,,0.0
-2011-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",68.05,63.04,,0.0
-2011-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",66.14,66.16,,0.0003616962728252293
-2011-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",62.96,62.92,,0.0
-2011-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",77.27,82.52,,0.06361741663538922
-2011-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",79.97,82.81,,0.03426695419796133
-2011-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",82.28,84.45,,0.025769282018026973
-2011-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",80.6,85.53,,0.0577161304678232
-2012-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.07,98.47,,0.1360705481718324
-2012-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",86.54,99.38,,0.12915233630072542
-2012-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.56,370.06,,0.7688059526399692
-2012-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",79.06,846.01,,0.906553585387595
-2012-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.31,728.28,,0.8842307550227081
-2012-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.32,638.17,,0.866305733235958
-2012-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.44,728.79,,0.8827649975190959
-2012-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.13,729.74,,0.8833448870005375
-2012-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.55,641.25,,0.8681443506843778
-2012-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",83.74,530.45,,0.8421427202719716
-2012-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",79.38,739.28,,0.8926302724369632
-2012-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",83.55,799.81,,0.8955423006237742
-2013-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",86.52,1271.53,,0.93
-2013-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.36,1323.29,,0.93
-2013-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.3,1204.01,,0.93
-2013-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.72,1316.53,,0.94
-2013-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,387.98,,0.78
-2013-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,222.59,,0.62
-2013-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",81.72,186.65,,0.56
-2013-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",83.5,203.39,,0.59
-2013-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,301.33,,0.72
-2013-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.33,297.18,,0.72
-2013-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",77.88,279.84,,0.72
-2013-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",82.8,284.14,,0.71
-2014-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,204.2,,0.59
-2014-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",86.16,103.53,,0.17
-2014-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",85.27,196.56,,0.57
-2014-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,1050.56,,0.92
-2014-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.76,198.44,,0.57
-2014-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,205.15,,0.59
-2014-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,101.64,,0.17
-2014-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",84.26,197.41,,0.57
-2014-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",80.05,199.61,,0.6
-2014-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.87,100.23,,0.12
-2014-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.51,90.48,,0.03
-2014-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.16,89.1,,0.02
-2015-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",88.35,97.22,,0.09
-2015-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.64,89.67,,0.02
-2015-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.22,85.23,,0.0
-2015-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.57,87.78,,0.0
-2015-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.86,84.26,,0.0
-2015-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",88.8,84.26,,0.0
-2015-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.51,86.5,,0.0
-2015-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",91.24,89.84,,0.0
-2015-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.28,95.02,,0.03
-2015-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",90.34,84.29,,0.0
-2015-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.14,85.99,,0.0
-2015-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.07,103.46,,0.1
-2016-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.13,103.46,,0.09
-2016-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.67,106.26,,0.12
-2016-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.28,104.77,,0.12
-2016-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.95,102.66,,0.09
-2016-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",86.86,94.94,,0.09
-2016-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",88.18,84.82,,0.0
-2016-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",86.3,84.25,,0.0
-2016-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",88.33,91.56,,0.04
-2016-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",89.74,101.81,,0.12
-2016-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.77,106.82,,0.18
-2016-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.23,115.99,,0.19
-2016-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.12,115.25,,0.17
-2017-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.61,116.8,,0.18
-2017-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.33,112.55,,0.18
-2017-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.48,122.69,,0.22
-2017-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.93,127.54,,0.26
-2017-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",96.65,96.6,,0.0
-2017-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.68,98.76,,0.04
-2017-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.8,108.21,,0.13
-2017-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.14,101.72,,0.08
-2017-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.43,116.48,,0.19
-2017-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",90.01,116.08,,0.22
-2017-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",90.62,98.03,,0.08
-2017-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.61,126.63,,0.27
-2018-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.25,137.53,,0.31
-2018-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.01,139.34,,0.32
-2018-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.72,136.98,,0.32
-2018-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",96.09,142.63,,0.33
-2018-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.8,124.81,,0.25
-2018-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.82,122.51,,0.23
-2018-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.05,150.27,,0.37
-2018-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",89.73,143.5,,0.37
-2018-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.85,152.9,,0.39
-2018-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.03,165.05,,0.44
-2018-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.1,705.91,,0.87
-2018-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.72,976.88,,0.9
-2019-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.6,154.49,,0.39
-2019-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.33,143.13,,0.35
-2019-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",89.25,727.76,,0.88
-2019-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",89.97,781.64,,0.88
-2019-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.68,857.89,,0.89
-2019-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.8,1109.36,,0.92
-2019-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.44,599.94,,0.84
-2019-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.96,297.43,,0.68
-2019-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",91.0,286.63,,0.68
-2019-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.6,275.44,,0.66
-2019-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.77,474.61,,0.8
-2019-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",91.15,897.85,,0.9
-2020-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",90.04,1146.93,,0.92
-2020-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.01,1092.5,,0.91
-2020-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.85,747.04,,0.88
-2020-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",91.42,99.34,,0.08
-2020-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.33,94.33,,0.0
-2020-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",88.87,88.87,,0.0
-2020-07-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.7,89.47,,0.02
-2020-08-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",87.98,176.91,,0.5
-2020-09-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",90.94,187.38,,0.51
-2020-10-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.56,137.0,,0.31
-2020-11-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",93.43,244.11,,0.62
-2020-12-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.03,335.18,,0.72
-2021-01-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",98.22,1166.59,,0.92
-2021-02-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.39,343.37,,0.72
-2021-03-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",95.87,434.73,,0.78
-2021-04-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",96.39,270.39,,0.64
-2021-05-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",94.09,262.31,,0.64
-2021-06-01,TransCanada Keystone Pipeline GP Ltd.,Keystone Pipeline System,"International boundary at or near Haskett, Manitoba",92.21,280.6,,0.67
+Date,Pipeline Name,Key Point,Available Capacity (1000 m3/d),Original Nominations (1000 m3/d),Accepted Nominations (1000 m3/d),Apportionment Percentage
+2014-07-01,Cochin,Ft. Saskatchewan,15.1,10.62,,0.0
+2014-08-01,Cochin,Ft. Saskatchewan,15.1,10.22,,0.0
+2014-09-01,Cochin,Ft. Saskatchewan,15.1,12.69,,0.0
+2014-10-01,Cochin,Ft. Saskatchewan,15.1,8.96,,0.0
+2014-11-01,Cochin,Ft. Saskatchewan,15.1,9.52,,0.0
+2014-12-01,Cochin,Ft. Saskatchewan,15.1,15.04,,0.0
+2015-01-01,Cochin,Ft. Saskatchewan,15.1,12.16,,0.0
+2015-02-01,Cochin,Ft. Saskatchewan,15.1,14.6,,0.0
+2015-03-01,Cochin,Ft. Saskatchewan,15.1,15.01,,0.0
+2015-04-01,Cochin,Ft. Saskatchewan,15.1,13.15,,0.0
+2015-05-01,Cochin,Ft. Saskatchewan,15.1,13.22,,0.0
+2015-06-01,Cochin,Ft. Saskatchewan,15.1,10.21,,0.0
+2015-07-01,Cochin,Ft. Saskatchewan,15.1,13.96,,0.0
+2015-08-01,Cochin,Ft. Saskatchewan,15.1,14.16,,0.0
+2015-09-01,Cochin,Ft. Saskatchewan,15.1,13.19,,0.03162
+2015-10-01,Cochin,Ft. Saskatchewan,15.1,12.59,,0.0
+2015-11-01,Cochin,Ft. Saskatchewan,15.1,11.07,,0.0
+2015-12-01,Cochin,Ft. Saskatchewan,15.1,13.69,,0.0
+2016-01-01,Cochin,Ft. Saskatchewan,15.1,13.72,,0.0
+2016-02-01,Cochin,Ft. Saskatchewan,15.1,12.02,,0.0
+2016-03-01,Cochin,Ft. Saskatchewan,15.1,12.98,,0.0
+2016-04-01,Cochin,Ft. Saskatchewan,15.1,12.66,,0.0
+2016-05-01,Cochin,Ft. Saskatchewan,15.1,12.75,,0.0
+2016-06-01,Cochin,Ft. Saskatchewan,15.1,14.92,,0.0
+2016-07-01,Cochin,Ft. Saskatchewan,15.1,15.1,,0.0586
+2016-08-01,Cochin,Ft. Saskatchewan,15.1,14.51,,0.0
+2016-09-01,Cochin,Ft. Saskatchewan,14.34,14.34,,0.05
+2016-10-01,Cochin,Ft. Saskatchewan,15.1,14.54,,0.1014308
+2016-11-01,Cochin,Ft. Saskatchewan,15.1,15.1,,0.049683228
+2016-12-01,Cochin,Ft. Saskatchewan,15.1,13.93,,0.0
+2017-01-01,Cochin,Ft. Saskatchewan,15.1,13.51,,0.0
+2017-02-01,Cochin,Ft. Saskatchewan,15.1,15.36,,0.027726432532347505
+2017-03-01,Cochin,Ft. Saskatchewan,15.1,14.19,,0.0
+2017-04-01,Cochin,Ft. Saskatchewan,15.1,14.76,,0.0
+2017-05-01,Cochin,Ft. Saskatchewan,15.1,15.51,,0.0
+2017-06-01,Cochin,Ft. Saskatchewan,15.1,13.59,,0.0
+2017-07-01,Cochin,Ft. Saskatchewan,15.1,14.29,,0.0
+2017-08-01,Cochin,Ft. Saskatchewan,15.1,15.51,,0.0
+2017-09-01,Cochin,Ft. Saskatchewan,15.1,13.59,,0.0
+2017-10-01,Cochin,Ft. Saskatchewan,15.1,14.62,,0.0
+2017-11-01,Cochin,Ft. Saskatchewan,15.1,13.73,,0.0
+2017-12-01,Cochin,Ft. Saskatchewan,15.1,12.23,,0.0
+2018-01-01,Cochin,Ft. Saskatchewan,15.1,13.04,,0.0
+2018-02-01,Cochin,Ft. Saskatchewan,15.1,14.09,,0.0
+2018-03-01,Cochin,Ft. Saskatchewan,15.1,15.15,,0.0
+2018-04-01,Cochin,Ft. Saskatchewan,15.1,15.4,,0.0
+2018-05-01,Cochin,Ft. Saskatchewan,15.1,11.94,,0.0
+2018-06-01,Cochin,Ft. Saskatchewan,15.1,14.57,,0.0
+2018-07-01,Cochin,Ft. Saskatchewan,15.1,14.61,,0.0
+2018-08-01,Cochin,Ft. Saskatchewan,15.1,12.66,,0.0
+2018-09-01,Cochin,Ft. Saskatchewan,15.1,9.65,,0.0
+2018-10-01,Cochin,Ft. Saskatchewan,15.1,14.27,,0.0
+2018-11-01,Cochin,Ft. Saskatchewan,15.1,7.31,,0.0
+2018-12-01,Cochin,Ft. Saskatchewan,15.1,12.21,,0.0
+2019-01-01,Cochin,Ft. Saskatchewan,15.1,14.71,,0.0
+2019-02-01,Cochin,Ft. Saskatchewan,15.1,12.15,,0.0
+2019-03-01,Cochin,Ft. Saskatchewan,15.1,13.96,,0.0
+2019-04-01,Cochin,Ft. Saskatchewan,15.1,15.4,,0.0
+2019-05-01,Cochin,Ft. Saskatchewan,15.1,11.94,,0.0
+2019-06-01,Cochin,Ft. Saskatchewan,15.1,14.57,,0.0
+2019-07-01,Cochin,Ft. Saskatchewan,15.1,15.71,,0.0
+2019-08-01,Cochin,Ft. Saskatchewan,15.1,15.34,,0.0
+2019-09-01,Cochin,Ft. Saskatchewan,15.1,12.65,,0.0
+2019-10-01,Cochin,Ft. Saskatchewan,15.1,13.67,,0.0
+2019-11-01,Cochin,Ft. Saskatchewan,15.1,16.77,,0.0
+2019-12-01,Cochin,Ft. Saskatchewan,15.1,14.7,,0.0
+2020-01-01,Cochin,Ft. Saskatchewan,15.1,14.78,,0.0
+2020-02-01,Cochin,Ft. Saskatchewan,15.1,16.71,,0.0
+2020-03-01,Cochin,Ft. Saskatchewan,15.1,17.62,,0.0
+2020-04-01,Cochin,Ft. Saskatchewan,15.1,14.66,,0.0
+2020-05-01,Cochin,Ft. Saskatchewan,15.1,13.89,,0.0
+2020-06-01,Cochin,Ft. Saskatchewan,15.1,16.51,,0.0
+2020-07-01,Cochin,Ft. Saskatchewan,15.1,11.85,,0.0
+2020-08-01,Cochin,Ft. Saskatchewan,15.1,11.82,,0.0
+2020-09-01,Cochin,Ft. Saskatchewan,15.1,11.36,,0.0
+2020-10-01,Cochin,Ft. Saskatchewan,15.1,14.23,,0.0
+2020-11-01,Cochin,Ft. Saskatchewan,15.1,14.96,,0.0
+2020-12-01,Cochin,Ft. Saskatchewan,15.1,16.81,,0.0
+2021-01-01,Cochin,Ft. Saskatchewan,15.1,14.53,,0.0
+2021-02-01,Cochin,Ft. Saskatchewan,15.1,15.13,,0.0
+2021-03-01,Cochin,Ft. Saskatchewan,15.1,17.21,,0.0
+2021-04-01,Cochin,Ft. Saskatchewan,15.1,16.52,,0.0
+2021-05-01,Cochin,Ft. Saskatchewan,15.1,15.73,,0.0
+2021-06-01,Cochin,Ft. Saskatchewan,15.1,13.29,,0.0
+2016-01-01,EnbridgeMainline,Clearbrook - Line 2/3,,136.88,,0.03
+2017-12-01,EnbridgeMainline,Clearbrook - Line 2/3,,178.53,,0.05
+2019-10-01,EnbridgeMainline,Cromer - Line 2/3,,197.53,,0.1
+2018-12-01,EnbridgeMainline,Cromer - Line 2/3/65,,229.5,,0.07
+2019-01-01,EnbridgeMainline,Cromer - Line 2/3/65,,233.3,,0.05
+2019-11-01,EnbridgeMainline,Cromer - Line 2/3/65,,236.68,,0.11
+2019-12-01,EnbridgeMainline,Cromer - Line 2/3/65,,218.77,,0.13
+2020-01-01,EnbridgeMainline,Cromer - Line 2/93,,195.64,,0.04
+2018-12-01,EnbridgeMainline,Edmonton - Line 2/3,,172.07,,0.25
+2019-02-01,EnbridgeMainline,Edmonton - Line 2/3,,198.91,,0.06
+2019-07-01,EnbridgeMainline,Edmonton - Line 2/3,,176.76,,0.11
+2018-12-01,EnbridgeMainline,Hardisty - Line 4/67,,487.14,,0.14
+2018-10-01,EnbridgeMainline,Kerrobert - Line 1,,28.54,,0.09
+2018-11-01,EnbridgeMainline,Kerrobert - Line 1,,33.66,,0.19
+2018-12-01,EnbridgeMainline,Kerrobert - Line 1,,40.01,,0.29
+2019-01-01,EnbridgeMainline,Kerrobert - Line 1,,32.27,,0.19
+2019-02-01,EnbridgeMainline,Kerrobert - Line 1,,35.09,,0.14
+2017-07-01,EnbridgeMainline,Kerrobert - Line 2/3,,115.65,,0.02
+2018-01-01,EnbridgeMainline,Kerrobert - Line 2/3,,122.77,,0.17
+2018-02-01,EnbridgeMainline,Kerrobert - Line 2/3,,144.13,,0.23
+2018-03-01,EnbridgeMainline,Kerrobert - Line 2/3,,123.07,,0.09
+2018-05-01,EnbridgeMainline,Kerrobert - Line 2/3,,150.01,,0.31
+2018-06-01,EnbridgeMainline,Kerrobert - Line 2/3,,179.18,,0.43
+2018-07-01,EnbridgeMainline,Kerrobert - Line 2/3,,172.99,,0.38
+2018-08-01,EnbridgeMainline,Kerrobert - Line 2/3,,156.08,,0.35
+2018-09-01,EnbridgeMainline,Kerrobert - Line 2/3,,160.22,,0.35
+2018-10-01,EnbridgeMainline,Kerrobert - Line 2/3,,199.68,,0.44
+2018-11-01,EnbridgeMainline,Kerrobert - Line 2/3,,197.69,,0.46
+2018-12-01,EnbridgeMainline,Kerrobert - Line 2/3,,182.92,,0.43
+2019-01-01,EnbridgeMainline,Kerrobert - Line 2/3,,184.52,,0.43
+2019-02-01,EnbridgeMainline,Kerrobert - Line 2/3,,198.91,,0.46
+2019-03-01,EnbridgeMainline,Kerrobert - Line 2/3,,184.23,,0.42
+2019-04-01,EnbridgeMainline,Kerrobert - Line 2/3,,175.04,,0.39
+2019-05-01,EnbridgeMainline,Kerrobert - Line 2/3,,192.58,,0.43
+2019-06-01,EnbridgeMainline,Kerrobert - Line 2/3,,180.96,,0.4
+2019-07-01,EnbridgeMainline,Kerrobert - Line 2/3,,185.7,,0.37
+2019-08-01,EnbridgeMainline,Kerrobert - Line 2/3,,172.0,,0.33
+2019-09-01,EnbridgeMainline,Kerrobert - Line 2/3,,132.25,,0.14
+2019-10-01,EnbridgeMainline,Kerrobert - Line 2/3,,141.57,,0.28
+2019-11-01,EnbridgeMainline,Kerrobert - Line 2/3,,189.82,,0.49
+2019-12-01,EnbridgeMainline,Kerrobert - Line 2/3,,185.77,,0.29
+2020-01-01,EnbridgeMainline,Kerrobert - Line 2/93,,152.96,,0.19
+2020-02-01,EnbridgeMainline,Kerrobert - Line 2/93,,140.49,,0.06
+2020-03-01,EnbridgeMainline,Kerrobert - Line 2/93,,124.23,,0.0
+2021-02-01,EnbridgeMainline,Kerrobert - Line 2/93,,134.51,,0.02
+2016-01-01,EnbridgeMainline,Kerrobert - Line 4/67,,304.2,,0.16
+2016-02-01,EnbridgeMainline,Kerrobert - Line 4/67,,297.35,,0.14
+2016-03-01,EnbridgeMainline,Kerrobert - Line 4/67,,254.44,,0.02
+2016-05-01,EnbridgeMainline,Kerrobert - Line 4/67,,270.19,,0.06
+2016-06-01,EnbridgeMainline,Kerrobert - Line 4/67,,273.07,,0.07
+2016-07-01,EnbridgeMainline,Kerrobert - Line 4/67,,277.36,,0.04
+2016-08-01,EnbridgeMainline,Kerrobert - Line 4/67,,286.21,,0.15
+2016-09-01,EnbridgeMainline,Kerrobert - Line 4/67,,301.73,,0.22
+2016-10-01,EnbridgeMainline,Kerrobert - Line 4/67,,293.38,,0.14
+2016-11-01,EnbridgeMainline,Kerrobert - Line 4/67,,307.33,,0.17
+2016-12-01,EnbridgeMainline,Kerrobert - Line 4/67,,335.17,,0.23
+2017-01-01,EnbridgeMainline,Kerrobert - Line 4/67,,384.38,,0.33
+2017-02-01,EnbridgeMainline,Kerrobert - Line 4/67,,435.89,,0.41
+2017-03-01,EnbridgeMainline,Kerrobert - Line 4/67,,417.84,,0.38
+2017-04-01,EnbridgeMainline,Kerrobert - Line 4/67,,427.47,,0.38
+2017-05-01,EnbridgeMainline,Kerrobert - Line 4/67,,350.11,,0.27
+2017-06-01,EnbridgeMainline,Kerrobert - Line 4/67,,326.8,,0.19
+2017-07-01,EnbridgeMainline,Kerrobert - Line 4/67,,292.0,,0.1
+2017-11-01,EnbridgeMainline,Kerrobert - Line 4/67,,287.71,,0.05
+2017-12-01,EnbridgeMainline,Kerrobert - Line 4/67,,336.45,,0.21
+2018-01-01,EnbridgeMainline,Kerrobert - Line 4/67,,424.36,,0.36
+2018-02-01,EnbridgeMainline,Kerrobert - Line 4/67,,480.3,,0.46
+2018-03-01,EnbridgeMainline,Kerrobert - Line 4/67,,524.21,,0.51
+2018-04-01,EnbridgeMainline,Kerrobert - Line 4/67,,523.04,,0.5
+2018-05-01,EnbridgeMainline,Kerrobert - Line 4/67,,461.21,,0.43
+2018-06-01,EnbridgeMainline,Kerrobert - Line 4/67,,464.75,,0.45
+2018-07-01,EnbridgeMainline,Kerrobert - Line 4/67,,495.68,,0.48
+2018-08-01,EnbridgeMainline,Kerrobert - Line 4/67,,481.71,,0.47
+2018-09-01,EnbridgeMainline,Kerrobert - Line 4/67,,422.61,,0.41
+2018-10-01,EnbridgeMainline,Kerrobert - Line 4/67,,457.17,,0.43
+2018-11-01,EnbridgeMainline,Kerrobert - Line 4/67,,501.6,,0.47
+2018-12-01,EnbridgeMainline,Kerrobert - Line 4/67,,495.31,,0.46
+2019-01-01,EnbridgeMainline,Kerrobert - Line 4/67,,453.97,,0.42
+2019-02-01,EnbridgeMainline,Kerrobert - Line 4/67,,441.18,,0.39
+2019-03-01,EnbridgeMainline,Kerrobert - Line 4/67,,447.7,,0.41
+2019-04-01,EnbridgeMainline,Kerrobert - Line 4/67,,431.31,,0.39
+2019-05-01,EnbridgeMainline,Kerrobert - Line 4/67,,422.69,,0.38
+2019-06-01,EnbridgeMainline,Kerrobert - Line 4/67,,498.28,,0.46
+2019-07-01,EnbridgeMainline,Kerrobert - Line 4/67,,492.85,,0.44
+2019-08-01,EnbridgeMainline,Kerrobert - Line 4/67,,466.19,,0.44
+2019-09-01,EnbridgeMainline,Kerrobert - Line 4/67,,465.12,,0.43
+2019-10-01,EnbridgeMainline,Kerrobert - Line 4/67,,451.89,,0.41
+2019-11-01,EnbridgeMainline,Kerrobert - Line 4/67,,469.12,,0.44
+2019-12-01,EnbridgeMainline,Kerrobert - Line 4/67,,523.96,,0.5
+2020-01-01,EnbridgeMainline,Kerrobert - Line 4/67,,544.59,,0.49
+2020-02-01,EnbridgeMainline,Kerrobert - Line 4/67,,572.72,,0.53
+2020-03-01,EnbridgeMainline,Kerrobert - Line 4/67,,542.61,,0.49
+2020-04-01,EnbridgeMainline,Kerrobert - Line 4/67,,459.23,,0.4
+2020-05-01,EnbridgeMainline,Kerrobert - Line 4/67,,459.23,,0.0
+2020-06-01,EnbridgeMainline,Kerrobert - Line 4/67,,459.23,,0.0
+2020-09-01,EnbridgeMainline,Kerrobert - Line 4/67,,318.38,,0.18
+2020-10-01,EnbridgeMainline,Kerrobert - Line 4/67,,311.17,,0.12
+2020-11-01,EnbridgeMainline,Kerrobert - Line 4/67,,350.54,,0.22
+2020-12-01,EnbridgeMainline,Kerrobert - Line 4/67,,401.23,,0.32
+2021-01-01,EnbridgeMainline,Kerrobert - Line 4/67,,490.26,,0.44
+2021-02-01,EnbridgeMainline,Kerrobert - Line 4/67,,569.57,,0.53
+2021-03-01,EnbridgeMainline,Kerrobert - Line 4/67,,509.11,,0.47
+2021-04-01,EnbridgeMainline,Kerrobert - Line 4/67,,470.3,,0.43
+2021-05-01,EnbridgeMainline,Kerrobert - Line 4/68,,474.37,,0.43
+2021-06-01,EnbridgeMainline,Kerrobert - Line 4/70,,557.52,,0.52
+2017-04-01,EnbridgeMainline,Regina - Line 4/67,,425.73,,0.29
+2018-04-01,EnbridgeMainline,Regina - Line 4/67,,521.67,,0.45
+2019-04-01,EnbridgeMainline,Regina - Line 4/67,,427.55,,0.22
+2020-07-01,EnbridgeMainline,Regina - Line 4/67,,284.63,,0.03
+2020-08-01,EnbridgeMainline,Regina - Line 4/67,,278.98,,0.07
+2007-01-01,EnbridgeMainline,system,,348.92,,0.0
+2007-02-01,EnbridgeMainline,system,,356.2,,0.0
+2007-03-01,EnbridgeMainline,system,,358.93,,0.0
+2007-04-01,EnbridgeMainline,system,,341.29,,0.0
+2007-05-01,EnbridgeMainline,system,,324.48,,0.0
+2007-06-01,EnbridgeMainline,system,,326.4,,0.0
+2007-07-01,EnbridgeMainline,system,,324.34,,0.0
+2007-08-01,EnbridgeMainline,system,,329.48,,0.0
+2007-09-01,EnbridgeMainline,system,,340.06,,0.0
+2007-10-01,EnbridgeMainline,system,,345.47,,0.0
+2007-11-01,EnbridgeMainline,system,,366.26,,0.07
+2007-12-01,EnbridgeMainline,system,,380.53,,0.0
+2008-01-01,EnbridgeMainline,system,,372.28,,0.0
+2008-02-01,EnbridgeMainline,system,,394.72,,0.03
+2008-03-01,EnbridgeMainline,system,,360.65,,0.0
+2008-04-01,EnbridgeMainline,system,,328.68,,0.0
+2008-05-01,EnbridgeMainline,system,,350.88,,0.0
+2008-06-01,EnbridgeMainline,system,,359.78,,0.0
+2008-07-01,EnbridgeMainline,system,,341.67,,0.0
+2008-08-01,EnbridgeMainline,system,,342.37,,0.0
+2008-09-01,EnbridgeMainline,system,,329.92,,0.0
+2008-10-01,EnbridgeMainline,system,,361.24,,0.0
+2008-11-01,EnbridgeMainline,system,,367.17,,0.0
+2008-12-01,EnbridgeMainline,system,,390.8,,0.24
+2009-01-01,EnbridgeMainline,system,,372.61,,0.06
+2009-02-01,EnbridgeMainline,system,,343.78,,0.06
+2009-03-01,EnbridgeMainline,system,,340.49,,0.0
+2009-04-01,EnbridgeMainline,system,,337.0,,0.0
+2009-05-01,EnbridgeMainline,system,,355.59,,0.0
+2009-06-01,EnbridgeMainline,system,,377.14,,0.0
+2009-07-01,EnbridgeMainline,system,,370.36,,0.0
+2009-08-01,EnbridgeMainline,system,,364.44,,0.0
+2009-09-01,EnbridgeMainline,system,,369.04,,0.0
+2009-10-01,EnbridgeMainline,system,,360.79,,0.0
+2009-11-01,EnbridgeMainline,system,,378.54,,0.0
+2009-12-01,EnbridgeMainline,system,,377.13,,0.0
+2010-01-01,EnbridgeMainline,system,,373.85,,0.0
+2010-02-01,EnbridgeMainline,system,,357.03,,0.0
+2010-03-01,EnbridgeMainline,system,,365.07,,0.0
+2010-04-01,EnbridgeMainline,system,,373.8,,0.0
+2010-05-01,EnbridgeMainline,system,,386.26,,0.0
+2010-06-01,EnbridgeMainline,system,,393.54,,0.0
+2010-07-01,EnbridgeMainline,system,,392.93,,0.04
+2010-08-01,EnbridgeMainline,system,,365.87,,0.0
+2010-09-01,EnbridgeMainline,system,,363.99,,0.23
+2010-10-01,EnbridgeMainline,system,,371.25,,0.31
+2010-11-01,EnbridgeMainline,system,,406.64,,0.09
+2010-12-01,EnbridgeMainline,system,,444.8,,0.27
+2011-01-01,EnbridgeMainline,system,,445.79,,0.43
+2011-02-01,EnbridgeMainline,system,,414.78,,0.16
+2011-03-01,EnbridgeMainline,system,,376.93,,0.14
+2011-04-01,EnbridgeMainline,system,,359.61,,0.17
+2011-05-01,EnbridgeMainline,system,,363.95,,0.1
+2011-06-01,EnbridgeMainline,system,,378.3,,0.23
+2011-07-01,EnbridgeMainline,system,,,,0.25
+2011-08-01,EnbridgeMainline,system,,387.65,,0.21
+2011-09-01,EnbridgeMainline,system,,398.18,,0.21
+2011-10-01,EnbridgeMainline,system,,405.02,,0.04
+2011-11-01,EnbridgeMainline,system,,416.98,,0.08
+2011-12-01,EnbridgeMainline,system,,427.13,,0.23
+2012-01-01,EnbridgeMainline,system,,443.42,,0.22
+2012-02-01,EnbridgeMainline,system,,456.31,,0.18
+2012-03-01,EnbridgeMainline,system,,453.73,,0.27
+2012-04-01,EnbridgeMainline,system,,457.81,,0.19
+2012-05-01,EnbridgeMainline,system,,409.84,,0.16
+2012-06-01,EnbridgeMainline,system,,434.17,,0.17
+2012-07-01,EnbridgeMainline,system,,446.19,,0.26
+2012-08-01,EnbridgeMainline,system,,415.57,,0.0
+2012-09-01,EnbridgeMainline,system,,408.34,,0.2
+2012-10-01,EnbridgeMainline,system,,414.8,,0.08
+2012-11-01,EnbridgeMainline,system,,428.85,,0.15
+2012-12-01,EnbridgeMainline,system,,470.59,,0.13
+2013-01-01,EnbridgeMainline,system,,455.4,,0.1
+2013-02-01,EnbridgeMainline,system,,452.61,,0.07
+2013-03-01,EnbridgeMainline,system,,412.61,,0.37
+2013-04-01,EnbridgeMainline,system,,392.27,,0.11
+2013-05-01,EnbridgeMainline,system,,413.08,,0.17
+2013-06-01,EnbridgeMainline,system,,436.14,,0.32
+2013-07-01,EnbridgeMainline,system,,433.47,,0.27
+2013-08-01,EnbridgeMainline,system,,454.73,,0.25
+2013-09-01,EnbridgeMainline,system,,458.45,,0.28
+2013-10-01,EnbridgeMainline,system,,470.52,,0.12
+2013-11-01,EnbridgeMainline,system,,510.84,,0.15
+2013-12-01,EnbridgeMainline,system,,490.58,,0.1
+2014-01-01,EnbridgeMainline,system,,489.31,,0.17
+2014-02-01,EnbridgeMainline,system,,486.39,,0.13
+2014-03-01,EnbridgeMainline,system,,478.79,,0.1
+2014-04-01,EnbridgeMainline,system,,472.0,,0.03
+2014-05-01,EnbridgeMainline,system,,479.67,,0.11
+2014-06-01,EnbridgeMainline,system,,521.96,,0.16
+2014-07-01,EnbridgeMainline,system,,541.71,,0.34
+2014-08-01,EnbridgeMainline,system,,539.94,,0.17
+2014-09-01,EnbridgeMainline,system,,526.11,,0.25
+2014-10-01,EnbridgeMainline,system,,569.43,,0.33
+2014-11-01,EnbridgeMainline,system,,656.18,,0.43
+2014-12-01,EnbridgeMainline,system,,671.59,,0.41
+2015-01-01,EnbridgeMainline,system,,666.1,,0.41
+2015-02-01,EnbridgeMainline,system,,693.72,,0.46
+2015-03-01,EnbridgeMainline,system,,696.01,,0.46
+2015-04-01,EnbridgeMainline,system,,679.47,,0.42
+2015-05-01,EnbridgeMainline,system,,636.84,,0.42
+2015-06-01,EnbridgeMainline,system,,610.91,,0.42
+2015-07-01,EnbridgeMainline,system,,612.42,,0.31
+2015-08-01,EnbridgeMainline,system,,622.23,,0.29
+2015-09-01,EnbridgeMainline,system,,569.18,,0.16
+2015-10-01,EnbridgeMainline,system,,557.18,,0.03
+2015-11-01,EnbridgeMainline,system,,609.59,,0.16
+2015-12-01,EnbridgeMainline,system,,619.69,,0.19
+2016-01-01,EnbridgeMainline,system,,642.03,589.26,
+2016-02-01,EnbridgeMainline,system,,615.85,573.6,
+2016-03-01,EnbridgeMainline,system,,557.97,551.68,
+2016-04-01,EnbridgeMainline,system,,508.85,508.14,
+2016-05-01,EnbridgeMainline,system,,565.92,548.44,
+2016-06-01,EnbridgeMainline,system,,573.75,554.25,
+2016-07-01,EnbridgeMainline,system,,539.73,526.87,
+2016-08-01,EnbridgeMainline,system,,578.72,535.15,
+2016-09-01,EnbridgeMainline,system,,609.39,542.54,
+2016-10-01,EnbridgeMainline,system,,593.89,552.03,
+2016-11-01,EnbridgeMainline,system,,610.06,557.25,
+2016-12-01,EnbridgeMainline,system,,647.17,570.08,
+2017-01-01,EnbridgeMainline,system,,710.03,582.41,0.33
+2017-02-01,EnbridgeMainline,system,,742.48,563.76,0.41
+2017-03-01,EnbridgeMainline,system,,720.67,561.89,0.38
+2017-04-01,EnbridgeMainline,system,,737.43,571.17,0.38
+2017-05-01,EnbridgeMainline,system,,642.73,548.09,0.27
+2017-06-01,EnbridgeMainline,system,,634.57,571.97,0.19
+2017-07-01,EnbridgeMainline,system,,614.32,579.72,0.1
+2017-08-01,EnbridgeMainline,system,,543.5,541.26,0.19
+2017-09-01,EnbridgeMainline,system,,537.56,536.38,0.1
+2017-10-01,EnbridgeMainline,system,,557.53,555.21,
+2017-11-01,EnbridgeMainline,system,,612.39,596.62,
+2017-12-01,EnbridgeMainline,system,,667.18,587.54,
+2018-01-01,EnbridgeMainline,system,,778.53,604.89,
+2018-02-01,EnbridgeMainline,system,,843.81,588.38,
+2018-03-01,EnbridgeMainline,system,,846.07,567.64,
+2018-04-01,EnbridgeMainline,system,,829.83,562.05,
+2018-05-01,EnbridgeMainline,system,,835.07,590.18,
+2018-06-01,EnbridgeMainline,system,,868.59,579.51,
+2018-07-01,EnbridgeMainline,system,,884.1,577.52,
+2018-08-01,EnbridgeMainline,system,,858.89,577.35,
+2018-09-01,EnbridgeMainline,system,,819.52,588.69,
+2018-10-01,EnbridgeMainline,system,,876.92,589.98,
+2018-11-01,EnbridgeMainline,system,,946.96,614.25,
+2018-12-01,EnbridgeMainline,system,,960.61,627.86,
+2019-01-01,EnbridgeMainline,system,,860.67,581.76,
+2019-02-01,EnbridgeMainline,system,,857.06,587.19,
+2019-03-01,EnbridgeMainline,system,,832.18,571.25,
+2019-04-01,EnbridgeMainline,system,,823.3,582.59,
+2019-05-01,EnbridgeMainline,system,,843.24,598.33,
+2019-06-01,EnbridgeMainline,system,,893.12,590.73,
+2019-07-01,EnbridgeMainline,system,,886.58,596.17,
+2019-08-01,EnbridgeMainline,system,,839.5,576.77,
+2019-09-01,EnbridgeMainline,system,,800.79,581.62,
+2019-10-01,EnbridgeMainline,system,,809.56,577.74,
+2019-11-01,EnbridgeMainline,system,,881.22,577.58,
+2019-12-01,EnbridgeMainline,system,,924.91,601.41,
+2020-01-01,EnbridgeMainline,system,,907.02,607.13,
+2020-02-01,EnbridgeMainline,system,,924.29,612.07,
+2020-03-01,EnbridgeMainline,system,,873.57,607.69,
+2020-04-01,EnbridgeMainline,system,,773.76,594.2,
+2020-05-01,EnbridgeMainline,system,,510.28,510.28,
+2020-06-01,EnbridgeMainline,system,,530.61,530.61,
+2020-07-01,EnbridgeMainline,system,,560.24,551.7,
+2020-08-01,EnbridgeMainline,system,,569.24,549.71,
+2020-09-01,EnbridgeMainline,system,,620.9,563.59,
+2020-10-01,EnbridgeMainline,system,,586.97,548.36,
+2020-11-01,EnbridgeMainline,system,,644.74,567.62,
+2020-12-01,EnbridgeMainline,system,,696.77,568.25,
+2021-01-01,EnbridgeMainline,system,,811.08,594.44,
+2021-02-01,EnbridgeMainline,system,,902.86,598.3,
+2021-03-01,EnbridgeMainline,system,,794.69,555.41,
+2021-04-01,EnbridgeMainline,system,,726.02,523.79,
+2021-05-01,EnbridgeMainline,system,,747.45,543.47,
+2021-06-01,EnbridgeMainline,system,,855.32,565.4,
+2016-02-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.1
+2016-03-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.11
+2016-04-01,EnbridgeMainline,Westover - Line 10,,11.81,,0.06
+2016-05-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.11
+2016-06-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.07
+2016-07-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.17
+2016-08-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.14
+2016-09-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.1
+2016-10-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.14
+2016-11-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.1
+2017-07-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.23
+2017-08-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.19
+2017-09-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.1
+2017-10-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.15
+2017-11-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.14
+2017-12-01,EnbridgeMainline,Westover - Line 10,,11.8,,0.06
+2017-10-01,EnbridgeMainline,Westover - Line 11,,18.0,,0.03
+2010-07-01,Keystone,"International boundary at or near Haskett, Manitoba",18.11,16.32,,0.0
+2010-08-01,Keystone,"International boundary at or near Haskett, Manitoba",15.13,16.9,,0.10456406423319764
+2010-09-01,Keystone,"International boundary at or near Haskett, Manitoba",41.5,18.99,,0.0
+2010-10-01,Keystone,"International boundary at or near Haskett, Manitoba",39.43,28.77,,0.0
+2010-11-01,Keystone,"International boundary at or near Haskett, Manitoba",43.88,18.11,,0.0
+2010-12-01,Keystone,"International boundary at or near Haskett, Manitoba",35.61,35.24,,0.0
+2011-01-01,Keystone,"International boundary at or near Haskett, Manitoba",45.01,44.56,,0.0
+2011-02-01,Keystone,"International boundary at or near Haskett, Manitoba",67.79,69.38,,0.0229064885073772
+2011-03-01,Keystone,"International boundary at or near Haskett, Manitoba",74.41,68.82,,0.0
+2011-04-01,Keystone,"International boundary at or near Haskett, Manitoba",72.18,66.56,,0.0
+2011-05-01,Keystone,"International boundary at or near Haskett, Manitoba",73.93,65.24,,0.0
+2011-06-01,Keystone,"International boundary at or near Haskett, Manitoba",68.05,63.04,,0.0
+2011-07-01,Keystone,"International boundary at or near Haskett, Manitoba",66.14,66.16,,0.0003616962728252293
+2011-08-01,Keystone,"International boundary at or near Haskett, Manitoba",62.96,62.92,,0.0
+2011-09-01,Keystone,"International boundary at or near Haskett, Manitoba",77.27,82.52,,0.06361741663538922
+2011-10-01,Keystone,"International boundary at or near Haskett, Manitoba",79.97,82.81,,0.03426695419796133
+2011-11-01,Keystone,"International boundary at or near Haskett, Manitoba",82.28,84.45,,0.025769282018026973
+2011-12-01,Keystone,"International boundary at or near Haskett, Manitoba",80.6,85.53,,0.0577161304678232
+2012-01-01,Keystone,"International boundary at or near Haskett, Manitoba",85.07,98.47,,0.1360705481718324
+2012-02-01,Keystone,"International boundary at or near Haskett, Manitoba",86.54,99.38,,0.12915233630072542
+2012-03-01,Keystone,"International boundary at or near Haskett, Manitoba",85.56,370.06,,0.7688059526399692
+2012-04-01,Keystone,"International boundary at or near Haskett, Manitoba",79.06,846.01,,0.906553585387595
+2012-05-01,Keystone,"International boundary at or near Haskett, Manitoba",84.31,728.28,,0.8842307550227081
+2012-06-01,Keystone,"International boundary at or near Haskett, Manitoba",85.32,638.17,,0.866305733235958
+2012-07-01,Keystone,"International boundary at or near Haskett, Manitoba",85.44,728.79,,0.8827649975190959
+2012-08-01,Keystone,"International boundary at or near Haskett, Manitoba",85.13,729.74,,0.8833448870005375
+2012-09-01,Keystone,"International boundary at or near Haskett, Manitoba",84.55,641.25,,0.8681443506843778
+2012-10-01,Keystone,"International boundary at or near Haskett, Manitoba",83.74,530.45,,0.8421427202719716
+2012-11-01,Keystone,"International boundary at or near Haskett, Manitoba",79.38,739.28,,0.8926302724369632
+2012-12-01,Keystone,"International boundary at or near Haskett, Manitoba",83.55,799.81,,0.8955423006237742
+2013-01-01,Keystone,"International boundary at or near Haskett, Manitoba",86.52,1271.53,,0.93
+2013-02-01,Keystone,"International boundary at or near Haskett, Manitoba",87.36,1323.29,,0.93
+2013-03-01,Keystone,"International boundary at or near Haskett, Manitoba",85.3,1204.01,,0.93
+2013-04-01,Keystone,"International boundary at or near Haskett, Manitoba",84.72,1316.53,,0.94
+2013-05-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,387.98,,0.78
+2013-06-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,222.59,,0.62
+2013-07-01,Keystone,"International boundary at or near Haskett, Manitoba",81.72,186.65,,0.56
+2013-08-01,Keystone,"International boundary at or near Haskett, Manitoba",83.5,203.39,,0.59
+2013-09-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,301.33,,0.72
+2013-10-01,Keystone,"International boundary at or near Haskett, Manitoba",84.33,297.18,,0.72
+2013-11-01,Keystone,"International boundary at or near Haskett, Manitoba",77.88,279.84,,0.72
+2013-12-01,Keystone,"International boundary at or near Haskett, Manitoba",82.8,284.14,,0.71
+2014-01-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,204.2,,0.59
+2014-02-01,Keystone,"International boundary at or near Haskett, Manitoba",86.16,103.53,,0.17
+2014-03-01,Keystone,"International boundary at or near Haskett, Manitoba",85.27,196.56,,0.57
+2014-04-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,1050.56,,0.92
+2014-05-01,Keystone,"International boundary at or near Haskett, Manitoba",84.76,198.44,,0.57
+2014-06-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,205.15,,0.59
+2014-07-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,101.64,,0.17
+2014-08-01,Keystone,"International boundary at or near Haskett, Manitoba",84.26,197.41,,0.57
+2014-09-01,Keystone,"International boundary at or near Haskett, Manitoba",80.05,199.61,,0.6
+2014-10-01,Keystone,"International boundary at or near Haskett, Manitoba",87.87,100.23,,0.12
+2014-11-01,Keystone,"International boundary at or near Haskett, Manitoba",87.51,90.48,,0.03
+2014-12-01,Keystone,"International boundary at or near Haskett, Manitoba",87.16,89.1,,0.02
+2015-01-01,Keystone,"International boundary at or near Haskett, Manitoba",88.35,97.22,,0.09
+2015-02-01,Keystone,"International boundary at or near Haskett, Manitoba",87.64,89.67,,0.02
+2015-03-01,Keystone,"International boundary at or near Haskett, Manitoba",92.22,85.23,,0.0
+2015-04-01,Keystone,"International boundary at or near Haskett, Manitoba",94.57,87.78,,0.0
+2015-05-01,Keystone,"International boundary at or near Haskett, Manitoba",92.86,84.26,,0.0
+2015-06-01,Keystone,"International boundary at or near Haskett, Manitoba",88.8,84.26,,0.0
+2015-07-01,Keystone,"International boundary at or near Haskett, Manitoba",94.51,86.5,,0.0
+2015-08-01,Keystone,"International boundary at or near Haskett, Manitoba",91.24,89.84,,0.0
+2015-09-01,Keystone,"International boundary at or near Haskett, Manitoba",92.28,95.02,,0.03
+2015-10-01,Keystone,"International boundary at or near Haskett, Manitoba",90.34,84.29,,0.0
+2015-11-01,Keystone,"International boundary at or near Haskett, Manitoba",92.14,85.99,,0.0
+2015-12-01,Keystone,"International boundary at or near Haskett, Manitoba",93.07,103.46,,0.1
+2016-01-01,Keystone,"International boundary at or near Haskett, Manitoba",94.13,103.46,,0.09
+2016-02-01,Keystone,"International boundary at or near Haskett, Manitoba",93.67,106.26,,0.12
+2016-03-01,Keystone,"International boundary at or near Haskett, Manitoba",92.28,104.77,,0.12
+2016-04-01,Keystone,"International boundary at or near Haskett, Manitoba",92.95,102.66,,0.09
+2016-05-01,Keystone,"International boundary at or near Haskett, Manitoba",86.86,94.94,,0.09
+2016-06-01,Keystone,"International boundary at or near Haskett, Manitoba",88.18,84.82,,0.0
+2016-07-01,Keystone,"International boundary at or near Haskett, Manitoba",86.3,84.25,,0.0
+2016-08-01,Keystone,"International boundary at or near Haskett, Manitoba",88.33,91.56,,0.04
+2016-09-01,Keystone,"International boundary at or near Haskett, Manitoba",89.74,101.81,,0.12
+2016-10-01,Keystone,"International boundary at or near Haskett, Manitoba",87.77,106.82,,0.18
+2016-11-01,Keystone,"International boundary at or near Haskett, Manitoba",94.23,115.99,,0.19
+2016-12-01,Keystone,"International boundary at or near Haskett, Manitoba",95.12,115.25,,0.17
+2017-01-01,Keystone,"International boundary at or near Haskett, Manitoba",95.61,116.8,,0.18
+2017-02-01,Keystone,"International boundary at or near Haskett, Manitoba",92.33,112.55,,0.18
+2017-03-01,Keystone,"International boundary at or near Haskett, Manitoba",95.48,122.69,,0.22
+2017-04-01,Keystone,"International boundary at or near Haskett, Manitoba",94.93,127.54,,0.26
+2017-05-01,Keystone,"International boundary at or near Haskett, Manitoba",96.65,96.6,,0.0
+2017-06-01,Keystone,"International boundary at or near Haskett, Manitoba",94.68,98.76,,0.04
+2017-07-01,Keystone,"International boundary at or near Haskett, Manitoba",93.8,108.21,,0.13
+2017-08-01,Keystone,"International boundary at or near Haskett, Manitoba",93.14,101.72,,0.08
+2017-09-01,Keystone,"International boundary at or near Haskett, Manitoba",94.43,116.48,,0.19
+2017-10-01,Keystone,"International boundary at or near Haskett, Manitoba",90.01,116.08,,0.22
+2017-11-01,Keystone,"International boundary at or near Haskett, Manitoba",90.62,98.03,,0.08
+2017-12-01,Keystone,"International boundary at or near Haskett, Manitoba",92.61,126.63,,0.27
+2018-01-01,Keystone,"International boundary at or near Haskett, Manitoba",94.25,137.53,,0.31
+2018-02-01,Keystone,"International boundary at or near Haskett, Manitoba",95.01,139.34,,0.32
+2018-03-01,Keystone,"International boundary at or near Haskett, Manitoba",93.72,136.98,,0.32
+2018-04-01,Keystone,"International boundary at or near Haskett, Manitoba",96.09,142.63,,0.33
+2018-05-01,Keystone,"International boundary at or near Haskett, Manitoba",93.8,124.81,,0.25
+2018-06-01,Keystone,"International boundary at or near Haskett, Manitoba",94.82,122.51,,0.23
+2018-07-01,Keystone,"International boundary at or near Haskett, Manitoba",95.05,150.27,,0.37
+2018-08-01,Keystone,"International boundary at or near Haskett, Manitoba",89.73,143.5,,0.37
+2018-09-01,Keystone,"International boundary at or near Haskett, Manitoba",92.85,152.9,,0.39
+2018-10-01,Keystone,"International boundary at or near Haskett, Manitoba",92.03,165.05,,0.44
+2018-11-01,Keystone,"International boundary at or near Haskett, Manitoba",93.1,705.91,,0.87
+2018-12-01,Keystone,"International boundary at or near Haskett, Manitoba",93.72,976.88,,0.9
+2019-01-01,Keystone,"International boundary at or near Haskett, Manitoba",94.6,154.49,,0.39
+2019-02-01,Keystone,"International boundary at or near Haskett, Manitoba",93.33,143.13,,0.35
+2019-03-01,Keystone,"International boundary at or near Haskett, Manitoba",89.25,727.76,,0.88
+2019-04-01,Keystone,"International boundary at or near Haskett, Manitoba",89.97,781.64,,0.88
+2019-05-01,Keystone,"International boundary at or near Haskett, Manitoba",95.68,857.89,,0.89
+2019-06-01,Keystone,"International boundary at or near Haskett, Manitoba",93.8,1109.36,,0.92
+2019-07-01,Keystone,"International boundary at or near Haskett, Manitoba",94.44,599.94,,0.84
+2019-08-01,Keystone,"International boundary at or near Haskett, Manitoba",93.96,297.43,,0.68
+2019-09-01,Keystone,"International boundary at or near Haskett, Manitoba",91.0,286.63,,0.68
+2019-10-01,Keystone,"International boundary at or near Haskett, Manitoba",94.6,275.44,,0.66
+2019-11-01,Keystone,"International boundary at or near Haskett, Manitoba",92.77,474.61,,0.8
+2019-12-01,Keystone,"International boundary at or near Haskett, Manitoba",91.15,897.85,,0.9
+2020-01-01,Keystone,"International boundary at or near Haskett, Manitoba",90.04,1146.93,,0.92
+2020-02-01,Keystone,"International boundary at or near Haskett, Manitoba",93.01,1092.5,,0.91
+2020-03-01,Keystone,"International boundary at or near Haskett, Manitoba",92.85,747.04,,0.88
+2020-04-01,Keystone,"International boundary at or near Haskett, Manitoba",91.42,99.34,,0.08
+2020-05-01,Keystone,"International boundary at or near Haskett, Manitoba",94.33,94.33,,0.0
+2020-06-01,Keystone,"International boundary at or near Haskett, Manitoba",88.87,88.87,,0.0
+2020-07-01,Keystone,"International boundary at or near Haskett, Manitoba",87.7,89.47,,0.02
+2020-08-01,Keystone,"International boundary at or near Haskett, Manitoba",87.98,176.91,,0.5
+2020-09-01,Keystone,"International boundary at or near Haskett, Manitoba",90.94,187.38,,0.51
+2020-10-01,Keystone,"International boundary at or near Haskett, Manitoba",94.56,137.0,,0.31
+2020-11-01,Keystone,"International boundary at or near Haskett, Manitoba",93.43,244.11,,0.62
+2020-12-01,Keystone,"International boundary at or near Haskett, Manitoba",95.03,335.18,,0.72
+2021-01-01,Keystone,"International boundary at or near Haskett, Manitoba",98.22,1166.59,,0.92
+2021-02-01,Keystone,"International boundary at or near Haskett, Manitoba",95.39,343.37,,0.72
+2021-03-01,Keystone,"International boundary at or near Haskett, Manitoba",95.87,434.73,,0.78
+2021-04-01,Keystone,"International boundary at or near Haskett, Manitoba",96.39,270.39,,0.64
+2021-05-01,Keystone,"International boundary at or near Haskett, Manitoba",94.09,262.31,,0.64
+2021-06-01,Keystone,"International boundary at or near Haskett, Manitoba",92.21,280.6,,0.67
+2007-01-01,NormanWells,Zama,5.47,3.7,,0.0
+2007-02-01,NormanWells,Zama,5.47,3.5,,0.0
+2007-03-01,NormanWells,Zama,5.47,3.7,,0.0
+2007-04-01,NormanWells,Zama,5.47,3.5,,0.0
+2007-05-01,NormanWells,Zama,5.47,3.4,,0.0
+2007-06-01,NormanWells,Zama,5.47,3.3,,0.0
+2007-07-01,NormanWells,Zama,5.47,3.5,,0.0
+2007-08-01,NormanWells,Zama,5.47,3.2,,0.0
+2007-09-01,NormanWells,Zama,5.47,3.1,,0.0
+2007-10-01,NormanWells,Zama,5.47,3.3,,0.0
+2007-11-01,NormanWells,Zama,5.47,3.4,,0.0
+2007-12-01,NormanWells,Zama,5.47,3.5,,0.0
+2008-01-01,NormanWells,Zama,5.47,3.3,,0.0
+2008-02-01,NormanWells,Zama,5.47,3.2,,0.0
+2008-03-01,NormanWells,Zama,5.47,3.0,,0.0
+2008-04-01,NormanWells,Zama,5.47,3.2,,0.0
+2008-05-01,NormanWells,Zama,5.47,3.1,,0.0
+2008-06-01,NormanWells,Zama,5.47,3.0,,0.0
+2008-07-01,NormanWells,Zama,5.47,2.9,,0.0
+2008-08-01,NormanWells,Zama,5.47,3.3,,0.0
+2008-09-01,NormanWells,Zama,5.47,3.2,,0.0
+2008-10-01,NormanWells,Zama,5.47,3.2,,0.0
+2008-11-01,NormanWells,Zama,5.47,3.1,,0.0
+2008-12-01,NormanWells,Zama,5.47,3.2,,0.0
+2009-01-01,NormanWells,Zama,5.47,2.9,,0.0
+2009-02-01,NormanWells,Zama,5.47,2.9,,0.0
+2009-03-01,NormanWells,Zama,5.47,3.1,,0.0
+2009-04-01,NormanWells,Zama,5.47,3.1,,0.0
+2009-05-01,NormanWells,Zama,5.47,3.2,,0.0
+2009-06-01,NormanWells,Zama,5.47,3.1,,0.0
+2009-07-01,NormanWells,Zama,5.47,3.0,,0.0
+2009-08-01,NormanWells,Zama,5.47,2.9,,0.0
+2009-09-01,NormanWells,Zama,5.47,2.9,,0.0
+2009-10-01,NormanWells,Zama,5.47,2.8,,0.0
+2009-11-01,NormanWells,Zama,5.47,3.0,,0.0
+2009-12-01,NormanWells,Zama,5.47,3.3,,0.0
+2010-01-01,NormanWells,Zama,5.47,3.2,,0.0
+2010-02-01,NormanWells,Zama,5.47,2.9,,0.0
+2010-03-01,NormanWells,Zama,5.47,3.3,,0.0
+2010-04-01,NormanWells,Zama,5.47,3.1,,0.0
+2010-05-01,NormanWells,Zama,5.47,3.5,,0.0
+2010-06-01,NormanWells,Zama,5.47,3.1,,0.0
+2010-07-01,NormanWells,Zama,5.47,1.3,,0.0
+2010-08-01,NormanWells,Zama,5.47,3.2,,0.0
+2010-09-01,NormanWells,Zama,5.47,3.0,,0.0
+2010-10-01,NormanWells,Zama,5.47,3.5,,0.0
+2010-11-01,NormanWells,Zama,5.47,3.2,,0.0
+2010-12-01,NormanWells,Zama,5.47,3.1,,0.0
+2011-01-01,NormanWells,Zama,5.47,3.1,,0.0
+2011-02-01,NormanWells,Zama,5.47,2.7,,0.0
+2011-03-01,NormanWells,Zama,5.47,2.9,,0.0
+2011-04-01,NormanWells,Zama,5.47,2.9,,0.0
+2011-05-01,NormanWells,Zama,2.95,0.2,,0.0
+2011-06-01,NormanWells,Zama,2.95,0.6,,0.0
+2011-07-01,NormanWells,Zama,2.95,0.8,,0.0
+2011-08-01,NormanWells,Zama,2.95,0.8,,0.0
+2011-09-01,NormanWells,Zama,3.2,3.2,,0.0
+2011-10-01,NormanWells,Zama,3.2,3.2,,0.0
+2011-11-01,NormanWells,Zama,2.95,2.6,,0.0
+2011-12-01,NormanWells,Zama,2.95,2.6,,0.0
+2012-01-01,NormanWells,Zama,2.95,2.5,,0.0
+2012-02-01,NormanWells,Zama,2.95,2.7,,0.0
+2012-03-01,NormanWells,Zama,2.95,2.5,,0.0
+2012-04-01,NormanWells,Zama,3.1,3.1,,0.0
+2012-05-01,NormanWells,Zama,2.74,2.6,,0.0
+2012-06-01,NormanWells,Zama,2.74,2.6,,0.0
+2012-07-01,NormanWells,Zama,2.74,2.3,,0.0
+2012-08-01,NormanWells,Zama,2.63,2.4,,0.0
+2012-09-01,NormanWells,Zama,2.7,2.7,,0.0
+2012-10-01,NormanWells,Zama,2.63,2.5,,0.0
+2012-11-01,NormanWells,Zama,2.7,2.7,,0.0
+2012-12-01,NormanWells,Zama,2.63,2.4,,0.0
+2013-01-01,NormanWells,Zama,2.63,2.6,,0.0
+2013-02-01,NormanWells,Zama,2.63,2.3,,0.0
+2013-03-01,NormanWells,Zama,2.63,2.1,,0.0
+2013-04-01,NormanWells,Zama,2.63,2.6,,0.0
+2013-05-01,NormanWells,Zama,2.63,2.5,,0.0
+2013-06-01,NormanWells,Zama,2.63,2.4,,0.0
+2013-07-01,NormanWells,Zama,2.63,2.4,,0.0
+2013-08-01,NormanWells,Zama,2.63,2.5,,0.0
+2013-09-01,NormanWells,Zama,2.63,1.9,,0.0
+2013-10-01,NormanWells,Zama,2.63,2.1,,0.0
+2013-11-01,NormanWells,Zama,2.63,2.3,,0.0
+2013-12-01,NormanWells,Zama,2.63,2.3,,0.0
+2014-01-01,NormanWells,Zama,2.63,2.4,,0.0
+2014-02-01,NormanWells,Zama,2.63,2.3,,0.0
+2014-03-01,NormanWells,Zama,2.63,2.6,,0.0
+2014-04-01,NormanWells,Zama,2.63,2.5,,0.0
+2014-05-01,NormanWells,Zama,2.63,2.4,,0.0
+2014-06-01,NormanWells,Zama,2.63,2.5,,0.0
+2014-07-01,NormanWells,Zama,2.63,2.3,,0.0
+2014-08-01,NormanWells,Zama,2.63,2.3,,0.0
+2014-09-01,NormanWells,Zama,2.63,2.4,,0.0
+2014-10-01,NormanWells,Zama,2.7,2.7,,0.0
+2014-11-01,NormanWells,Zama,2.63,2.2,,0.0
+2014-12-01,NormanWells,Zama,2.63,2.4,,0.0
+2015-01-01,NormanWells,Zama,2.63,2.1,,0.0
+2015-02-01,NormanWells,Zama,2.63,1.9,,0.0
+2015-03-01,NormanWells,Zama,2.63,2.2,,0.0
+2015-04-01,NormanWells,Zama,2.63,2.0,,0.0
+2015-05-01,NormanWells,Zama,2.63,2.1,,0.0
+2015-06-01,NormanWells,Zama,2.63,2.1,,0.0
+2015-07-01,NormanWells,Zama,2.63,1.1,,0.0
+2015-08-01,NormanWells,Zama,2.63,2.0,,0.0
+2015-09-01,NormanWells,Zama,2.63,2.0,,0.0
+2015-10-01,NormanWells,Zama,2.63,2.2,,0.0
+2015-11-01,NormanWells,Zama,2.63,2.0,,0.0
+2015-12-01,NormanWells,Zama,2.63,2.1,,0.0
+2016-01-01,NormanWells,Zama,2.63,1.8,,0.0
+2016-02-01,NormanWells,Zama,2.63,2.0,,0.0
+2016-03-01,NormanWells,Zama,2.63,2.0,,0.0
+2016-04-01,NormanWells,Zama,2.63,1.9,,0.0
+2016-05-01,NormanWells,Zama,2.63,2.0,,0.0
+2016-06-01,NormanWells,Zama,2.63,1.9,,0.0
+2016-07-01,NormanWells,Zama,2.53,1.9,,0.0
+2016-08-01,NormanWells,Zama,2.53,1.7,,0.0
+2016-09-01,NormanWells,Zama,2.53,1.6,,0.0
+2016-10-01,NormanWells,Zama,2.53,1.9,,0.0
+2016-11-01,NormanWells,Zama,2.53,1.4,,0.0
+2016-12-01,NormanWells,Zama,2.53,0.5,,0.0
+2017-01-01,NormanWells,Zama,2.53,0.2,,0.0
+2017-02-01,NormanWells,Zama,2.53,0.2,,0.0
+2017-03-01,NormanWells,Zama,2.53,0.3,,0.0
+2017-04-01,NormanWells,Zama,2.53,0.3,,0.0
+2017-05-01,NormanWells,Zama,2.53,0.3,,0.0
+2017-06-01,NormanWells,Zama,2.53,0.3,,0.0
+2017-07-01,NormanWells,Zama,2.53,0.32,,0.0
+2017-08-01,NormanWells,Zama,2.53,0.36,,0.0
+2017-09-01,NormanWells,Zama,2.53,0.11,,0.0
+2017-10-01,NormanWells,Zama,2.5,0.13,,0.0
+2017-11-01,NormanWells,Zama,2.5,0.08,,0.0
+2017-12-01,NormanWells,Zama,2.5,0.08,,0.0
+2018-01-01,NormanWells,Zama,2.6,0.1,,0.0
+2018-02-01,NormanWells,Zama,2.6,0.1,,0.0
+2018-03-01,NormanWells,Zama,2.6,0.1,,0.0
+2018-04-01,NormanWells,Zama,2.6,0.05,,0.0
+2018-05-01,NormanWells,Zama,2.6,0.06,,0.0
+2018-06-01,NormanWells,Zama,2.6,0.05,,0.0
+2018-07-01,NormanWells,Zama,2.6,0.5,,0.0
+2018-08-01,NormanWells,Zama,2.6,0.6,,0.0
+2018-09-01,NormanWells,Zama,2.6,0.5,,0.0
+2018-10-01,NormanWells,Zama,2.6,1.31,,0.0
+2018-11-01,NormanWells,Zama,2.6,1.35,,0.0
+2018-12-01,NormanWells,Zama,2.6,1.55,,0.0
+2019-01-01,NormanWells,Zama,2.6,1.3,,0.0
+2019-02-01,NormanWells,Zama,2.6,1.55,,0.0
+2019-03-01,NormanWells,Zama,2.6,1.3,,0.0
+2019-04-01,NormanWells,Zama,2.6,1.48,,0.0
+2019-05-01,NormanWells,Zama,2.6,1.42,,0.0
+2019-06-01,NormanWells,Zama,2.6,1.59,,0.0
+2019-07-01,NormanWells,Zama,2.6,1.5,,0.0
+2019-08-01,NormanWells,Zama,2.6,1.4,,0.0
+2019-09-01,NormanWells,Zama,2.6,1.4,,0.0
+2019-10-01,NormanWells,Zama,2.6,1.2,,0.0
+2019-11-01,NormanWells,Zama,2.6,1.43,,0.0
+2019-12-01,NormanWells,Zama,2.6,1.4,,0.0
+2020-01-01,NormanWells,Zama,2.6,1.75,,0.0
+2020-02-01,NormanWells,Zama,2.6,1.5,,0.0
+2020-03-01,NormanWells,Zama,2.6,1.37,,0.0
+2020-04-01,NormanWells,Zama,2.6,1.2,,0.0
+2020-05-01,NormanWells,Zama,2.6,0.69,,0.0
+2020-06-01,NormanWells,Zama,2.6,1.37,,0.0
+2020-07-01,NormanWells,Zama,2.6,1.21,,0.0
+2020-08-01,NormanWells,Zama,2.6,0.06,,0.0
+2020-09-01,NormanWells,Zama,2.6,0.07,,0.0
+2020-10-01,NormanWells,Zama,2.6,0.98,,0.0
+2020-11-01,NormanWells,Zama,2.6,1.37,,0.0
+2020-12-01,NormanWells,Zama,2.6,1.32,,0.0
+2021-01-01,NormanWells,Zama,2.6,1.1,,0.0
+2021-02-01,NormanWells,Zama,2.6,1.41,,0.0
+2021-03-01,NormanWells,Zama,2.6,1.14,,0.0
+2021-04-01,NormanWells,Zama,2.6,1.24,,0.0
+2021-05-01,NormanWells,Zama,2.6,1.35,,0.0
+2021-06-01,NormanWells,Zama,2.6,1.55,,0.0
+2006-01-01,TransMountain,system,35.0,43.0,,0.19
+2006-02-01,TransMountain,system,36.0,74.0,,0.52
+2006-03-01,TransMountain,system,37.0,106.0,,0.65
+2006-04-01,TransMountain,system,35.0,39.0,,0.1
+2006-05-01,TransMountain,system,29.0,29.0,,0.0
+2006-06-01,TransMountain,system,36.0,37.0,,0.02
+2006-07-01,TransMountain,system,37.0,37.0,,0.0
+2006-08-01,TransMountain,system,37.0,37.0,,0.0
+2006-09-01,TransMountain,system,39.0,49.0,,0.2
+2006-10-01,TransMountain,system,35.0,36.0,,0.02
+2006-11-01,TransMountain,system,37.0,43.0,,0.14
+2006-12-01,TransMountain,system,30.0,46.0,,0.34
+2007-01-01,TransMountain,system,36.0,42.0,,0.13
+2007-02-01,TransMountain,system,35.0,37.0,,0.05
+2007-03-01,TransMountain,system,35.0,35.0,,0.0
+2007-04-01,TransMountain,system,40.0,46.0,,0.13
+2007-05-01,TransMountain,system,42.0,49.0,,0.16
+2007-06-01,TransMountain,system,42.0,67.0,,0.37
+2007-07-01,TransMountain,system,42.0,61.0,,0.31
+2007-08-01,TransMountain,system,43.0,50.0,,0.15
+2007-09-01,TransMountain,system,42.0,60.0,,0.3
+2007-10-01,TransMountain,system,39.0,67.0,,0.42
+2007-11-01,TransMountain,system,43.0,61.0,,0.29
+2007-12-01,TransMountain,system,40.0,76.0,,0.47
+2008-01-01,TransMountain,system,40.0,47.0,,0.15
+2008-02-01,TransMountain,system,42.0,42.0,,0.0
+2008-03-01,TransMountain,system,33.0,33.0,,0.0
+2008-04-01,TransMountain,system,40.0,42.0,,0.05
+2008-05-01,TransMountain,system,42.0,42.0,,0.0
+2008-06-01,TransMountain,system,41.0,41.0,,0.0
+2008-07-01,TransMountain,system,38.0,38.0,,0.0
+2008-08-01,TransMountain,system,36.0,36.0,,0.0
+2008-09-01,TransMountain,system,42.0,58.0,,0.28
+2008-10-01,TransMountain,system,40.0,58.0,,0.31
+2008-11-01,TransMountain,system,49.0,55.0,,0.1
+2008-12-01,TransMountain,system,40.0,40.0,,0.0
+2009-01-01,TransMountain,system,28.0,28.0,,0.0
+2009-02-01,TransMountain,system,39.0,40.0,,0.05
+2009-03-01,TransMountain,system,48.0,52.0,,0.08
+2009-04-01,TransMountain,system,36.0,38.0,,0.05
+2009-05-01,TransMountain,system,32.0,32.0,,0.0
+2009-06-01,TransMountain,system,46.0,50.0,,0.08
+2009-07-01,TransMountain,system,50.0,55.0,,0.09
+2009-08-01,TransMountain,system,53.0,64.0,,0.17
+2009-09-01,TransMountain,system,50.0,58.0,,0.15
+2009-10-01,TransMountain,system,47.0,68.0,,0.3
+2009-11-01,TransMountain,system,50.0,63.0,,0.21
+2009-12-01,TransMountain,system,48.0,48.0,,0.0
+2010-01-01,TransMountain,system,46.0,50.0,,0.07
+2010-02-01,TransMountain,system,47.0,47.0,,0.0
+2010-03-01,TransMountain,system,45.0,50.0,,0.09
+2010-04-01,TransMountain,system,44.0,44.0,,0.0
+2010-05-01,TransMountain,system,45.0,73.0,,0.38
+2010-06-01,TransMountain,system,50.0,68.0,,0.26
+2010-07-01,TransMountain,system,50.0,80.0,,0.37
+2010-08-01,TransMountain,system,52.0,78.0,,0.33
+2010-09-01,TransMountain,system,45.0,92.0,,0.51
+2010-10-01,TransMountain,system,49.0,113.0,,0.57
+2010-11-01,TransMountain,system,50.0,93.0,,0.46
+2010-12-01,TransMountain,system,47.0,84.0,,0.43
+2011-01-01,TransMountain,system,46.0,116.0,,0.6
+2011-02-01,TransMountain,system,44.0,125.0,,0.65
+2011-03-01,TransMountain,system,48.0,126.0,,0.62
+2011-04-01,TransMountain,system,49.0,116.0,,0.58
+2011-05-01,TransMountain,system,45.0,105.0,,0.58
+2011-06-01,TransMountain,system,38.0,124.0,,0.69
+2011-07-01,TransMountain,system,41.0,144.0,,0.72
+2011-08-01,TransMountain,system,42.0,157.0,,0.73
+2011-09-01,TransMountain,system,43.0,163.0,,0.74
+2011-10-01,TransMountain,system,45.0,134.0,,0.67
+2011-11-01,TransMountain,system,45.0,142.0,,0.68
+2011-12-01,TransMountain,system,36.0,145.0,,0.75
+2012-01-01,TransMountain,system,41.0,146.0,,0.72
+2012-02-01,TransMountain,system,44.0,164.0,,0.73
+2012-03-01,TransMountain,system,43.0,140.0,,0.69
+2012-04-01,TransMountain,system,47.0,120.0,,0.61
+2012-05-01,TransMountain,system,46.0,136.0,,0.66
+2012-06-01,TransMountain,system,46.0,141.0,,0.68
+2012-07-01,TransMountain,system,45.0,166.0,,0.73
+2012-08-01,TransMountain,system,49.0,157.0,,0.69
+2012-09-01,TransMountain,system,46.0,138.0,,0.67
+2012-10-01,TransMountain,system,42.0,144.0,,0.71
+2012-11-01,TransMountain,system,43.0,161.0,,0.73
+2012-12-01,TransMountain,system,44.0,147.0,,0.7
+2013-01-01,TransMountain,system,45.0,161.0,,0.72
+2013-02-01,TransMountain,system,45.0,156.0,,0.71
+2013-03-01,TransMountain,system,47.0,139.0,,0.66
+2013-04-01,TransMountain,system,47.0,140.0,,0.67
+2013-05-01,TransMountain,system,47.0,125.0,,0.62
+2013-06-01,TransMountain,system,49.0,131.0,,0.63
+2013-07-01,TransMountain,system,33.0,128.0,,0.74
+2013-08-01,TransMountain,system,43.0,138.0,,0.69
+2013-09-01,TransMountain,system,37.0,143.0,,0.74
+2013-10-01,TransMountain,system,38.0,145.0,,0.74
+2013-11-01,TransMountain,system,46.0,141.0,,0.67
+2013-12-01,TransMountain,system,39.0,138.0,,0.72
+2014-01-01,TransMountain,system,40.0,126.0,,0.68
+2014-02-01,TransMountain,system,43.0,142.0,,0.7
+2014-03-01,TransMountain,system,44.0,142.0,,0.69
+2014-04-01,TransMountain,system,46.0,126.0,,0.64
+2014-05-01,TransMountain,system,45.0,140.0,,0.68
+2014-06-01,TransMountain,system,45.0,145.0,,0.69
+2014-07-01,TransMountain,system,45.0,153.0,,0.71
+2014-08-01,TransMountain,system,46.0,157.0,,0.71
+2014-09-01,TransMountain,system,44.0,138.0,,0.68
+2014-10-01,TransMountain,system,46.0,149.0,,0.69
+2014-11-01,TransMountain,system,46.0,143.0,,0.68
+2014-12-01,TransMountain,system,50.0,150.0,,0.67
+2015-01-01,TransMountain,system,43.0,150.0,,0.72
+2015-02-01,TransMountain,system,50.0,145.0,,0.66
+2015-03-01,TransMountain,system,47.0,124.0,,0.62
+2015-04-01,TransMountain,system,51.0,124.0,,0.59
+2015-05-01,TransMountain,system,54.0,118.0,,0.54
+2015-06-01,TransMountain,system,50.0,64.0,,0.22
+2015-07-01,TransMountain,system,50.0,65.0,,0.24
+2015-08-01,TransMountain,system,51.0,74.0,,0.31
+2015-09-01,TransMountain,system,46.0,72.0,,0.36
+2015-10-01,TransMountain,system,51.0,74.0,,0.3
+2015-11-01,TransMountain,system,51.0,63.0,,0.19
+2015-12-01,TransMountain,system,45.0,54.0,,0.18
+2016-01-01,TransMountain,system,49.0,63.0,,0.23
+2016-02-01,TransMountain,system,50.0,56.0,,0.11
+2016-03-01,TransMountain,system,49.0,54.0,,0.09
+2016-04-01,TransMountain,system,51.0,60.0,,0.15
+2016-05-01,TransMountain,system,51.0,59.0,,0.13
+2016-06-01,TransMountain,system,51.0,62.0,,0.18
+2016-07-01,TransMountain,system,53.0,53.0,,0.01
+2016-08-01,TransMountain,system,50.0,57.0,,0.12
+2016-09-01,TransMountain,system,54.0,66.0,,0.19
+2016-10-01,TransMountain,system,45.0,59.0,,0.24
+2016-11-01,TransMountain,system,48.0,59.0,,0.18
+2016-12-01,TransMountain,system,46.0,58.0,,0.21
+2017-01-01,TransMountain,system,48.0,61.0,,0.22
+2017-02-01,TransMountain,system,52.0,71.0,,0.27
+2017-03-01,TransMountain,system,47.0,63.0,,0.25
+2017-04-01,TransMountain,system,49.0,75.0,,0.35
+2017-05-01,TransMountain,system,52.0,58.0,,0.11
+2017-06-01,TransMountain,system,44.0,57.0,,0.23
+2017-07-01,TransMountain,system,52.0,66.0,,0.22
+2017-08-01,TransMountain,system,48.0,56.0,,0.15
+2017-09-01,TransMountain,system,55.0,66.0,,0.16
+2017-10-01,TransMountain,system,44.0,53.0,,0.17
+2017-11-01,TransMountain,system,51.0,67.0,,0.24
+2017-12-01,TransMountain,system,49.0,64.0,,0.23
+2018-01-01,TransMountain,system,42.0,65.0,,0.35
+2018-02-01,TransMountain,system,49.0,72.0,,0.32
+2018-03-01,TransMountain,system,46.0,68.0,,0.32
+2018-04-01,TransMountain,system,47.0,83.0,,0.44
+2018-05-01,TransMountain,system,49.0,79.0,,0.38
+2018-06-01,TransMountain,system,46.0,81.0,,0.43
+2018-07-01,TransMountain,system,46.0,85.0,,0.46
+2018-08-01,TransMountain,system,48.0,82.0,,0.42
+2018-09-01,TransMountain,system,43.0,75.0,,0.43
+2018-10-01,TransMountain,system,45.0,80.0,,0.44
+2018-11-01,TransMountain,system,40.0,74.0,,0.45
+2018-12-01,TransMountain,system,50.0,84.0,,0.41
+2019-01-01,TransMountain,system,52.0,68.0,,0.24
+2019-02-01,TransMountain,system,53.0,77.0,,0.32
+2019-03-01,TransMountain,system,46.0,69.0,,0.33
+2019-04-01,TransMountain,system,49.0,70.0,,0.29
+2019-05-01,TransMountain,system,53.0,73.0,,0.28
+2019-06-01,TransMountain,system,47.0,77.0,,0.39
+2019-07-01,TransMountain,system,54.0,74.0,,0.27
+2019-08-01,TransMountain,system,46.0,69.0,,0.34
+2019-09-01,TransMountain,system,52.0,72.0,,0.29
+2019-10-01,TransMountain,system,50.0,63.0,,0.22
+2019-11-01,TransMountain,system,51.0,66.0,,0.22
+2019-12-01,TransMountain,system,49.0,62.0,,0.21
+2020-01-01,TransMountain,system,46.0,62.0,,0.26
+2020-02-01,TransMountain,system,49.0,76.0,,0.36
+2020-03-01,TransMountain,system,52.0,63.0,,0.17
+2020-04-01,TransMountain,system,47.0,50.0,,0.07
+2020-05-01,TransMountain,system,47.0,47.0,,0.0
+2020-06-01,TransMountain,system,47.0,49.0,,0.04
+2020-07-01,TransMountain,system,47.0,67.0,,0.3
+2020-08-01,TransMountain,system,58.0,64.0,,0.09
+2020-09-01,TransMountain,system,51.0,54.0,,0.05
+2020-10-01,TransMountain,system,56.0,60.0,,0.07
+2020-11-01,TransMountain,system,47.0,54.0,,0.13
+2020-12-01,TransMountain,system,53.0,68.0,,0.23
+2021-01-01,TransMountain,system,50.0,69.0,,0.27
+2021-02-01,TransMountain,system,50.0,64.0,,0.21
+2021-03-01,TransMountain,system,54.0,62.0,,0.14
+2021-04-01,TransMountain,system,53.0,62.0,,0.15
+2021-05-01,TransMountain,system,55.0,66.0,,0.18
+2021-06-01,TransMountain,system,51.0,60.0,,0.16

@@ -1,17 +1,22 @@
-SELECT
-cast(cast([Month] as varchar)+'-'+'1'+'-'+cast([Year] as varchar) as date) as [Date],
-[Corporate Entity],
-case when [Key Point] = 'FortisBC Lower Mainland'
+SELECT 
+cast(str([Month])+'-'+'1'+'-'+str([Year]) as date) as [Date],
+throughput.[PipelineID] as [Pipeline Name],
+case when kp.[Key Point] = 'FortisBC Lower Mainland'
 then 'Huntingdon/FortisBC Lower Mainland'
-when [Key Point] = 'Huntingdon Export'
+when kp.[Key Point] = 'Huntingdon Export'
 then 'Huntingdon/FortisBC Lower Mainland'
-else [Key Point]
+else kp.[Key Point]
 end as [Key Point],
 [Direction of Flow],
 [Trade Type],
-round(avg([Capacity (1000 m3/d)]),3) as [Capacity (1000 m3/d)],
+case when throughput.[PipelineID] in ('Brunswick')
+then null
+else round(avg([Capacity (1000 m3/d)]),3) 
+end as [Capacity (1000 m3/d)],
 round(avg([Throughput (1000 m3/d)]),3) as [Throughput (1000 m3/d)]
-FROM [EnergyData].[dbo].[Pipelines_Gas]
-where [Corporate Entity] not in ('Emera Brunswick Pipeline Company Ltd.')
-group by [Year], [Month], [Corporate Entity], [Key Point], [Direction of Flow], [Trade Type]
-order by [Corporate Entity],[Key Point], [Year], [Month]
+FROM [PipelineInformation].[dbo].[Throughput_Gas] as throughput
+
+left join [PipelineInformation].[dbo].[KeyPoint] as kp on throughput.KeyPointId = kp.KeyPointId
+
+group by [Year], [Month], throughput.[PipelineID], kp.[Key Point], [Direction of Flow], [Trade Type]
+order by throughput.[PipelineID], kp.[Key Point], [Year], [Month]

@@ -317,8 +317,8 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
 export function oandmTextEng(meta, lang) {
   const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
-  )} O&M activities reported by ${formatCompanyName(
-    meta.company
+  )} O&M activities reported by the ${formatCompanyName(
+    meta.system
   )}. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} individual integrity digs as part of the reported O&M activities.<p>`;
@@ -356,7 +356,7 @@ export function oandmTextFra(meta, lang) {
   const firstParagraph = `<p>FR: Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
   )} O&M activities reported by ${formatCompanyName(
-    meta.company
+    meta.system
   )}. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
   )} individual integrity digs as part of the reported O&M activities.<p>`;
@@ -391,8 +391,8 @@ export function oandmTextFra(meta, lang) {
 }
 
 export function remediationText(meta, lang) {
-  const firstParagraph = `<p>${formatCompanyName(
-    meta.companyName
+  const firstParagraph = `<p>The ${formatCompanyName(
+    meta.systemName
   )} has reported a total of ${dynamicValue(
     lang.numberFormat(meta.new + meta.old, 0)
   )} contaminated sites since 2011 when the first Remediation Process Guide was first published. There have been ${dynamicValue(

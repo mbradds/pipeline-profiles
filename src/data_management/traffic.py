@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list, company_rename
+from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list
 import os
 import json
 import dateutil.relativedelta
@@ -105,18 +105,6 @@ def applyColors(trade_type):
     return colors[trade_type]
 
 
-def fixCorporateEntity(df):
-    df['Corporate Entity'] = df['Corporate Entity'].replace({'NOVA Gas Transmission Ltd. (NGTL)': 'NOVA Gas Transmission Ltd.',
-                                                             "Alliance Pipeline Limited Partnership": "Alliance Pipeline Ltd.",
-                                                             "Trans QuÃ©bec & Maritimes Pipeline Inc": "Trans Quebec and Maritimes Pipeline Inc.",
-                                                             "Trans Québec & Maritimes Pipeline Inc": "Trans Quebec and Maritimes Pipeline Inc.",
-                                                             "Foothills Pipe Lines Ltd. (Foothills)": "Foothills Pipe Lines Ltd.",
-                                                             "Maritimes & Northeast Pipeline": "Maritimes & Northeast Pipeline Management Ltd."})
-
-    df['Corporate Entity'] = df['Corporate Entity'].replace(company_rename())
-    return df
-
-
 def fixKeyPoint(df):
     df['Key Point'] = df['Key Point'].replace({"Huntingdon Export": "Huntingdon/FortisBC Lower Mainland",
                                                "Baileyville, Ma. / St. Stephen N.B.": "St. Stephen"})
@@ -124,20 +112,12 @@ def fixKeyPoint(df):
     return df
 
 
-def get_data(sql=False, query='throughput_gas_monthly.sql', db="EnergyData"):
+def get_data(sql=False, query='throughput_gas_monthly.sql', db="PipelineInformation"):
 
     csvName = query.split(".")[0]+'.csv'
-    if sql and query != 'key_points.sql':
+    if sql:
         print('reading sql '+query.split(".")[0])
-        if query == "throughput_gas_monthly.sql":
-            dfG1 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_gas_monthly.sql', db=db)
-            dfG2 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_gas_group2.sql', db="PipelineInformation")
-            df = pd.concat([dfG1, dfG2], ignore_index=True)
-        elif query == "throughput_oil_monthly.sql":
-            dfG1 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_oil_monthly.sql', db=db)
-            dfG2 = execute_sql(path=os.path.join(script_dir, "queries"), query_name='throughput_oil_group2.sql', db="PipelineInformation")
-            df = pd.concat([dfG1, dfG2], ignore_index=True)
-
+        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db=db)
         df.to_csv('raw_data/'+csvName, index=False)
 
     else:
@@ -147,16 +127,9 @@ def get_data(sql=False, query='throughput_gas_monthly.sql', db="EnergyData"):
     # inital processing for key points
     if query == 'key_points.sql':
         # add extra key points that dont appear in database
-        new = range(5)
-        others = pd.DataFrame.from_dict({"Key Point": ["Calgary", "Edmonton", "Saturn", "OSDA Kirby", "OSDA Liege"],
-                                         "Corporate Entity": ["NOVA Gas Transmission Ltd." for x in new],
-                                         "Latitude": [51.22022, 51.80478, 55.99558, 53.31907, 56.9473],
-                                         "Longitude": [-114.4925, -113.59329, -121.1104, -111.35386, -111.80979]})
         df = fixKeyPoint(df)
-        df = df.append(others, ignore_index=True)
-        df = normalize_text(df, ['Key Point', 'Corporate Entity'])
+        df = normalize_text(df, ['Key Point', 'Pipeline Name'])
         df = normalize_numeric(df, ['Latitude', 'Longitude'], 3)
-        df = fixCorporateEntity(df)
         df = addIds(df)
 
     return df
@@ -215,14 +188,14 @@ def getRounding(point):
 def meta_trend(df_c, commodity):
 
     def group_trends(df):
-        df = df.groupby(['Date', 'Corporate Entity', 'Key Point']).agg({'Capacity': 'mean', 'Throughput': 'sum'})
+        df = df.groupby(['Date', 'Pipeline Name', 'Key Point']).agg({'Capacity': 'mean', 'Throughput': 'sum'})
         df = df.reset_index()
         return df
 
     def calculate_trend(dfp, metaTrends, point, trendName, commodity):
         dfp = dfp.sort_values(by='Date', ascending=True)
         dfp = dfp.set_index('Date')
-        dfp = dfp.groupby(['Corporate Entity', 'Key Point', 'Direction of Flow', 'Trade Type']).resample('Q', convention='end').agg('mean').reset_index()
+        dfp = dfp.groupby(['Pipeline Name', 'Key Point', 'Direction of Flow', 'Trade Type']).resample('Q', convention='end').agg('mean').reset_index()
         if commodity == "gas":
             dfp = dfp[dfp['Date'] >= max(dfp['Date']) - dateutil.relativedelta.relativedelta(months=12)].copy().reset_index(drop=True)
         else:
@@ -271,24 +244,22 @@ def meta_trend(df_c, commodity):
 
 
 def getDefaultPoint(company):
-    defaults = {'NOVA Gas Transmission Ltd.': '32',
-                'Westcoast Energy Inc.': '3',
-                'TransCanada PipeLines Limited': '22',
-                'Alliance Pipeline Ltd.': '1',
-                'Emera Brunswick Pipeline Company Ltd.': '0',
-                'Trans Quebec and Maritimes Pipeline Inc.': '39',
-                'Foothills Pipe Lines Ltd.': '27',
-                'Maritimes & Northeast Pipeline Management Ltd.': '7',
-                'Enbridge Pipelines Inc.': '16',
-                'TransCanada Keystone Pipeline GP Ltd.': '29',
-                'Trans Mountain Pipeline ULC': '35',
-                'PKM Cochin ULC': '24',
-                'Trans-Northern Pipelines Inc.': '0',
-                'Enbridge Pipelines (NW) Inc.': '34',
-                'Enbridge Southern Lights GP Inc.': '0',
-                'Southern Lights Pipeline': '0',
-                'TEML Westpur Pipelines Limited (TEML)': '0',
-                'Kingston Midstream Westspur Limited': '0'}
+    defaults = {'NGTL': '32',
+                'Westcoast': '3',
+                'TCPL': '22',
+                'Alliance': '1',
+                'Brunswick': '0',
+                'TQM': '39',
+                'Foothills': '27',
+                'MNP': '7',
+                'EnbridgeMainline': '16',
+                'Keystone': '29',
+                'TransMountain': '35',
+                'Cochin': '24',
+                'TransNorthern': '0',
+                'NormanWells': '34',
+                'SouthernLights': '0',
+                'Westspur': '0'}
     try:
         return defaults[company]
     except:
@@ -297,7 +268,7 @@ def getDefaultPoint(company):
 
 def process_throughput(save=False,
                        sql=False,
-                       commodity='gas',
+                       commodity='Gas',
                        companies=False,
                        frequency='m'):
 
@@ -308,11 +279,9 @@ def process_throughput(save=False,
             arr.append(round(float(t), rounding))
         return arr
 
-    if commodity == 'gas':
+    if commodity == 'Gas':
         if frequency == "m":
             query = 'throughput_gas_monthly.sql'
-        else:
-            query = 'throughput_gas.sql'
 
         df = get_data(sql, query)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
@@ -339,17 +308,7 @@ def process_throughput(save=False,
 
     df['Date'] = pd.to_datetime(df['Date'])
 
-    df = fixCorporateEntity(df)
-
-    if commodity == 'gas':
-        company_files = get_company_list("gas")
-    else:
-        company_files = get_company_list("oil")
-
-    # group2 = ['TEML Westpur Pipelines Limited (TEML)',
-    #           'Enbridge Southern Lights GP Inc.',
-    #           'Emera Brunswick Pipeline Company Ltd.']
-    # group2 = ['Southern Lights Pipeline']
+    company_files = get_company_list(commodity)
     group2 = []
 
     if companies:
@@ -358,7 +317,7 @@ def process_throughput(save=False,
     for company in company_files:
         meta = {"companyName": company}
         meta["units"] = units
-        if company == "Southern Lights Pipeline":
+        if company == "SouthernLights":
             frequency = "q"
         else:
             frequency = "m"
@@ -366,18 +325,18 @@ def process_throughput(save=False,
         meta['defaultPoint'] = getDefaultPoint(company)
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
+        df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
         if not df_c.empty and company not in group2:
             meta["build"] = True
             trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
             meta = meta_throughput(df_c, meta, commodity)
-            thisKeyPoints = points[points['Corporate Entity'] == company].copy().reset_index(drop=True)
+            thisKeyPoints = points[points['Pipeline Name'] == company].copy().reset_index(drop=True)
             thisKeyPoints['loc'] = [[lat, long] for lat, long in zip(thisKeyPoints['Latitude'], thisKeyPoints['Longitude'])]
-            for delete in ['Corporate Entity', 'Latitude', 'Longitude']:
+            for delete in ['Pipeline Name', 'Latitude', 'Longitude']:
                 del thisKeyPoints[delete]
             meta['keyPoints'] = thisKeyPoints.to_dict(orient='records')
-            for delete in ['Direction of Flow', 'Corporate Entity']:
+            for delete in ['Direction of Flow']:
                 del df_c[delete]
 
             point_data = {}
@@ -471,7 +430,7 @@ def process_throughput(save=False,
             thisCompanyData["traffic"] = point_data
             thisCompanyData['meta'] = meta
             if save:
-                print('saving!')
+                print('saving '+company)
                 with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp, default=str)
         else:
@@ -479,6 +438,7 @@ def process_throughput(save=False,
             thisCompanyData['traffic'] = {}
             thisCompanyData['meta'] = {"companyName": company, "build": False}
             if save:
+                print('saving '+company)
                 with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
                     json.dump(thisCompanyData, fp)
 
@@ -492,6 +452,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=True, commodity='gas', frequency='m')
-    traffic, df = process_throughput(save=True, sql=True, commodity='oil', frequency='m') # , companies=['Montreal Pipe Line Limited'])
+    traffic, df = process_throughput(save=True, sql=True, commodity='Gas', frequency='m')
+    traffic, df = process_throughput(save=True, sql=True, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
     print('completed throughput!')

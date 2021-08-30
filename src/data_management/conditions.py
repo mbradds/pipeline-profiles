@@ -2,7 +2,7 @@ from util import execute_sql
 import pandas as pd
 import json
 import os
-from util import normalize_text, get_company_names, company_rename, get_company_list, prepareIds
+from util import normalize_text, get_company_names, company_rename, get_company_list, prepareIds, applySystemId
 import geopandas as gpd
 from datetime import date
 import numpy as np
@@ -332,6 +332,7 @@ def process_conditions(remote=False,
     df['Condition Status'] = [str(x).strip() for x in df['Condition Status']]
     # preliminary processing
     df['Company'] = df['Company'].replace(company_rename())
+    df = applySystemId(df, "Company")
 
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
 
