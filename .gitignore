@@ -23,4 +23,5 @@ src/data_management/raw_data/*
 *.geojson
 **.LICENSE.txt
 dist/
+*.vs/
 *.csv#

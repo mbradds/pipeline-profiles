@@ -279,11 +279,9 @@ def process_throughput(save=False,
             arr.append(round(float(t), rounding))
         return arr
 
-    if commodity == 'gas':
+    if commodity == 'Gas':
         if frequency == "m":
-            query = 'throughput_gas_group2.sql'
-        else:
-            query = 'throughput_gas.sql'
+            query = 'throughput_gas_monthly.sql'
 
         df = get_data(sql, query)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
@@ -293,7 +291,7 @@ def process_throughput(save=False,
         units = "Bcf/d"
 
     else:
-        query = 'throughput_oil_group2.sql'
+        query = 'throughput_oil_monthly.sql'
         df = get_data(sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
@@ -454,6 +452,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    # traffic, df = process_throughput(save=True, sql=False, commodity='Gas', frequency='m')
-    traffic, df = process_throughput(save=True, sql=False, commodity='Liquid', frequency='m', companies=['EnbridgeMainline'])
+    traffic, df = process_throughput(save=True, sql=True, commodity='Gas', frequency='m', companies=['NGTL'])
+    # traffic, df = process_throughput(save=True, sql=True, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
     print('completed throughput!')

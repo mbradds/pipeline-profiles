@@ -1,10 +1,7 @@
 SELECT
 [Key Point],
-case when PipelineID = 'TCPL' then 'EnbridgeMainline'
-when PipelineID = 'EnbridgeMainline' then 'TCPL'
-else PipelineID end as [Pipeline Name],
+PipelineID as [Pipeline Name],
 [Latitude],
 [Longitude]
 FROM [PipelineInformation].[dbo].[KeyPoint]
-
-where [KeyPointID] <> 'KP0000'
+where [KeyPointID] <> 'KP0000' and (Latitude is not null and Longitude is not null)
