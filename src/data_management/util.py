@@ -5,37 +5,35 @@ import os
 from errors import IdError, IdLengthError
 from datetime import date
 import io
+script_dir = os.path.dirname(__file__)
+
+
+def getPipelineIds(sql=True):
+    if sql:
+        df = execute_sql(path=os.path.join(script_dir, "queries"),
+                         query_name="systemId.sql",
+                         db="PipelineInformation")
+        df.to_csv("./raw_data/systemId.csv", index=False)
+    else:
+        df = pd.read_csv("./raw_data/systemId.csv")
+    for col in df:
+        df[col] = [str(x).strip() for x in df[col]]
+    return df
+
+
+def applySystemId(df, col):
+    ids = getPipelineIds(False)
+    idLook = {k: v for k, v in zip(ids["companyEng"], ids["PipelineID"])}
+    df[col] = df[col].replace(idLook)
+    return df
 
 
 def get_company_list(commodity="all"):
-    company_list = [['NOVA Gas Transmission Ltd.', 'gas'],
-                    ['TransCanada PipeLines Limited', 'gas'],
-                    ['Enbridge Pipelines Inc.', 'oil'],
-                    ['Enbridge Pipelines (NW) Inc.', 'oil'],
-                    ['Enbridge Bakken Pipeline Company Inc.', 'oil'],
-                    ['Express Pipeline Ltd.', 'oil'],
-                    ['Trans Mountain Pipeline ULC', 'oil'],
-                    ['Trans Quebec and Maritimes Pipeline Inc.', 'gas'],
-                    ['Trans-Northern Pipelines Inc.', 'oil'],
-                    ['TransCanada Keystone Pipeline GP Ltd.', 'oil'],
-                    ['Westcoast Energy Inc.', 'gas'],
-                    ['Alliance Pipeline Ltd.', 'gas'],
-                    ['PKM Cochin ULC', 'oil'],
-                    ['Foothills Pipe Lines Ltd.', 'gas'],
-                    ['Southern Lights Pipeline', 'oil'],
-                    ['Emera Brunswick Pipeline Company Ltd.', 'gas'],
-                    ['Plains Midstream Canada ULC', 'oil'],
-                    ['Genesis Pipeline Canada Ltd.', 'gas'],
-                    ['Montreal Pipe Line Limited', 'oil'],
-                    ['Kingston Midstream Westspur Limited', 'oil'],
-                    ['Many Islands Pipe Lines (Canada) Limited', 'gas'],
-                    ['Vector Pipeline Limited Partnership', 'gas'],
-                    ['Maritimes & Northeast Pipeline Management Ltd.', 'gas'],
-                    ['Aurora Pipeline Company Ltd', 'oil']]
-
+    ids = getPipelineIds(False)
+    company_list = [[c1, c2] for c1, c2 in zip(ids["PipelineID"], ids["Commodity"])]
     if commodity == "all":
         return [x[0] for x in company_list]
-    elif commodity == "gas" or commodity == "oil":
+    elif commodity == "Gas" or commodity == "Liquid":
         return [x[0] for x in company_list if x[1] == commodity]
     else:
         return []
@@ -44,6 +42,7 @@ def get_company_list(commodity="all"):
 def company_rename():
     names = {'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
              'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
+             'Enbridge Pipelines (Westspur) Inc.': 'Kingston Midstream Westspur Limited',
              'Trans Québec and Maritimes Pipeline Inc.': 'Trans Quebec and Maritimes Pipeline Inc.',
              'Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP': 'Southern Lights Pipeline',
              'Enbridge Southern Lights GP Inc.': 'Southern Lights Pipeline',
@@ -52,7 +51,9 @@ def company_rename():
              'Kinder Morgan Cochin ULC': 'PKM Cochin ULC',
              'Enbridge Bakken Pipeline Company Inc., on behalf of Enbridge Bakken Pipeline Limited Partnership': 'Enbridge Bakken Pipeline Company Inc.',
              'TEML Westspur Pipelines Limited': 'Kingston Midstream Westspur Limited',
-             'Plains Marketing Canada, L.P.': 'Plains Midstream Canada ULC'}
+             'Tundra Energy Marketing Limited': 'Kingston Midstream Westspur Limited',
+             'Plains Marketing Canada, L.P.': 'Plains Midstream Canada ULC',
+             'Express Pipeline Ltd., as the general partner of Express Holdings (Canada) Limited Partnership': 'Express Pipeline Ltd.'}
     return names
 
 
@@ -188,15 +189,15 @@ def get_company_names(col):
 
 
 def conversion(df, commodity, dataCols, rounding=False, fillna=False):
-    if commodity == 'gas':
+    if commodity == 'gas' or commodity == 'Gas':
         conv = 28316.85
-    elif commodity == "oil":
+    elif commodity == "oil" or commodity == 'Oil' or commodity == "Liquid":
         conv = 6.2898
 
     for col in dataCols:
         if fillna:
             df[col] = df[col].fillna(fillna)
-        if commodity == "oil":
+        if commodity == "oil" or commodity == "Oil" or commodity == "Liquid":
             df[col] = [x*conv if not pd.isnull(x) else x for x in df[col]]
         else:
             df[col] = [x/conv if not pd.isnull(x) else x for x in df[col]]

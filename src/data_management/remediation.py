@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_data, idify, company_rename, get_company_list, normalize_text
+from util import get_data, idify, company_rename, get_company_list, normalize_text, applySystemId
 import os
 import json
 import datetime
@@ -189,6 +189,7 @@ def process_remediation(sql=False, companies=False, test=False):
                             "Is site within 30 m of waterbody": "w"})
 
     df['Company Name'] = df['Company Name'].replace(company_rename())
+    df = applySystemId(df, "Company Name")
 
     if companies:
         company_files = companies
@@ -219,5 +220,5 @@ def process_remediation(sql=False, companies=False, test=False):
 
 
 if __name__ == "__main__":
-    df = process_remediation(sql=True)
+    df = process_remediation(sql=False)
 

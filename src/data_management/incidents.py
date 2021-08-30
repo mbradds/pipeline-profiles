@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common, idify, get_company_list
+from util import get_company_names, company_rename, most_common, idify, get_company_list, applySystemId
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -128,6 +128,8 @@ def process_english(df):
     df['Status'] = df['Status'].replace({"Closed": "c",
                                          "Initially Submitted": "is",
                                          "Submitted": "s"})
+    df['Company'] = df['Company'].replace(company_rename())
+    df = applySystemId(df, "Company")
     return df
 
 
@@ -157,8 +159,9 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
                          encoding="latin-1",
                          engine="python",
                          error_bad_lines=False)
-        df = process_func(df)
         df.to_csv("./raw_data/incidents_"+"en"+".csv", index=False)
+        df = process_func(df)
+
     elif test:
         print('reading test incidents file')
         path = "./raw_data/test_data/incidents_en.csv"
@@ -179,11 +182,11 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         df = pd.read_csv(path,
                          skiprows=0,
                          encoding=encoding,
+                         engine="python",
                          error_bad_lines=False)
         df = process_func(df)
 
     # initial data processing
-    df['Company'] = df['Company'].replace(company_rename())
     df['Approximate Volume Released'] = pd.to_numeric(df['Approximate Volume Released'],
                                                       errors='coerce')
 

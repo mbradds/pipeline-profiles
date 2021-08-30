@@ -1,5 +1,5 @@
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify, get_company_list, company_rename, get_data
+from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify, get_company_list, get_data
 from errors import ApportionSeriesCombinationError, IdLengthError, IdError
 import dateutil.relativedelta
 from traffic import addIds
@@ -139,33 +139,33 @@ def apportionPoint(df_p, company, pctData, series, kp, yAxis):
 def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
-        df = get_data(script_dir, "apportionment.sql", "EnergyData", sql)
+        df = get_data(script_dir, "apportionment.sql", "PipelineInformation", sql)
     else:
         print('reading local apportionment csv...')
         df = pd.read_csv("./raw_data/apportionment.csv")
 
     df = normalize_dates(df, ['Date'])
-    df = normalize_text(df, ['Corporate Entity'])
+    df = normalize_text(df, ['Pipeline Name'])
     # enbridge processing
-    df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Key Point'].isin(['ex-Gretna', 'Into-Sarnia']))].index)
-    df = df.drop(df[(df['Corporate Entity'] == 'Enbridge Pipelines Inc.') & (df['Date'].dt.year < 2016)].index)
+    df = df.drop(df[(df['Pipeline Name'] == 'EnbridgeMainline') & (df['Key Point'].isin(['ex-Gretna', 'Into-Sarnia']))].index)
+    df = df.drop(df[(df['Pipeline Name'] == 'EnbridgeMainline') & (df['Date'].dt.year < 2016)].index)
     # cochin processing
-    df = df.drop(df[(df['Corporate Entity'] == 'PKM Cochin ULC') & (df['Key Point'] != 'Ft. Saskatchewan')].index)
-    df = df[~df['Pipeline Name'].isin(["Southern Lights Pipeline",
-                                       "Westpur Pipeline",
-                                       "Trans-Northern"])].reset_index(drop=True)
+    df = df.drop(df[(df['Pipeline Name'] == 'Cochin') & (df['Key Point'] != 'Ft. Saskatchewan')].index)
+    df = df[~df['Pipeline Name'].isin(["SouthernLights",
+                                       "Westpur",
+                                       "TransNorthern"])].reset_index(drop=True)
 
     df['Key Point'] = df['Key Point'].replace("All", "system")
     df = addIds(df)
-    del df['Pipeline Name']
-    df = df[df['Key Point'] != "- - -"]
     df = df.rename(columns={x: x.split("(")[0].strip() for x in df.columns})
     df = apportionmentIds(df)
-    numCols = ['Available Capacity', 'Original Nominations', 'Accepted Nominations', 'Apportionment Percentage']
+    numCols = ['Available Capacity',
+               'Original Nominations',
+               'Accepted Nominations',
+               'Apportionment Percentage']
     df = normalize_numeric(df, numCols, 2)
     df = conversion(df, "oil", numCols[:-1], 2, False)
     df['Apportionment Percentage'] = df['Apportionment Percentage'].round(2)
-    df['Corporate Entity'] = df['Corporate Entity'].replace(company_rename())
     company_files = get_company_list("all")
 
     if companies:
@@ -174,7 +174,7 @@ def process_apportionment(save=False, sql=False, companies=False):
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Corporate Entity'] == company].copy().reset_index(drop=True)
+        df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
             thisCompanyData['build'] = True
             df_c = df_c.drop_duplicates(subset=['Date', 'Key Point'])
