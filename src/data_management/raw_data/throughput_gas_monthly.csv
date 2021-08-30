@@ -3178,7 +3178,7 @@ Date,Pipeline Name,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d),T
 2021-05-01,TCPL,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,2947.099
 2021-06-01,TCPL,Eastern Triangle - Parkway Deliveries,south,intracanada,49594.0,4974.339
 2006-01-01,TCPL,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,4858.516
-2006-02-01,TCPL,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,13407.957
+2006-02-01,TCPL,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,13407.958
 2006-03-01,TCPL,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,7347.967
 2006-04-01,TCPL,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,0.0
 2006-05-01,TCPL,Eastern Triangle - Parkway Receipts,north,intracanada,53490.196,0.0
@@ -4970,7 +4970,7 @@ Date,Pipeline Name,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d),T
 2008-11-01,TCPL,St Clair,east,import,61000.0,30294.463
 2008-12-01,TCPL,St Clair,east,import,61000.0,29604.343
 2009-01-01,TCPL,St Clair,east,import,61000.0,39456.974
-2009-02-01,TCPL,St Clair,east,import,61000.0,48506.303
+2009-02-01,TCPL,St Clair,east,import,61000.0,48506.302
 2009-03-01,TCPL,St Clair,east,import,61000.0,40694.257
 2009-04-01,TCPL,St Clair,east,import,61000.0,42467.192
 2009-05-01,TCPL,St Clair,east,import,61000.0,42285.523
