@@ -1,5 +1,5 @@
 import pandas as pd
-from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list, company_rename
+from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list
 import os
 import json
 import dateutil.relativedelta
@@ -454,6 +454,6 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=True, commodity='Gas', frequency='m')
-    traffic, df = process_throughput(save=True, sql=True, commodity='Liquid', frequency='m') # , companies=['Montreal Pipe Line Limited'])
+    # traffic, df = process_throughput(save=True, sql=False, commodity='Gas', frequency='m')
+    traffic, df = process_throughput(save=True, sql=False, commodity='Liquid', frequency='m', companies=['EnbridgeMainline'])
     print('completed throughput!')
