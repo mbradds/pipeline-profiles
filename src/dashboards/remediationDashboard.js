@@ -88,8 +88,6 @@ export async function mainRemediation(data, lang) {
         chartParams.systemName = data.meta.companyName;
       }
 
-      // add the cutoff date to the chartParams
-      // const cutoffDate = new Date(2018, 9,15)
       chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
       remediationText(chartParams, lang);
 
@@ -122,6 +120,7 @@ export async function mainRemediation(data, lang) {
   try {
     return buildDashboard();
   } catch (err) {
+    console.log(err);
     return loadChartError("remediation-dashboard", lang.dashboardError);
   }
 }

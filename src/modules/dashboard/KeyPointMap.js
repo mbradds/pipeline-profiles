@@ -50,14 +50,10 @@ export class KeyPointMap {
     let minRadius = 30000;
     let padding = [30, 30];
     let maxZoom;
-    if (
-      ["TransCanada PipeLines Limited", "Enbridge Pipelines Inc."].includes(
-        companyName
-      )
-    ) {
+    if (["TCPL", "EnbridgeMainline"].includes(companyName)) {
       minRadius = 50000;
       padding = [0, 0];
-    } else if (companyName === "Trans Mountain Pipeline ULC") {
+    } else if (companyName === "TransMountain") {
       minRadius = 2000;
       padding = [60, 60];
     } else if (points.length === 1) {

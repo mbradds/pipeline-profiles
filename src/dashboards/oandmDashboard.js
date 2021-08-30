@@ -18,17 +18,18 @@ export async function mainOandM(eventData, lang) {
         eventData.meta.company
       )
     ) {
+      eventData.meta.system = lang.companyToSystem[eventData.meta.company];
       titleElement.innerText = lang.title(
         lang.companyToSystem[eventData.meta.company]
       );
     } else {
+      eventData.meta.system = eventData.meta.company;
       titleElement.innerHTML = lang.title(eventData.meta.company);
     }
   }
 
   function loadDynamicText() {
     lang.dynamicText(eventData.meta, lang);
-    // oandmText(eventData.meta, lang);
   }
 
   const incidentTimeSeries = (timeField, timeFilters) => {
