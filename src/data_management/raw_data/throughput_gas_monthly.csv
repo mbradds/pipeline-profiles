@@ -5689,7 +5689,7 @@ Date,Pipeline Name,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d),T
 2018-11-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,11742.105
 2018-12-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,14133.247
 2019-01-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,14118.295
-2019-02-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,17085.705
+2019-02-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,17085.704
 2019-03-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,48214.0,12977.358
 2019-04-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,43682.0,10706.719
 2019-05-01,Westcoast,Huntingdon/FortisBC Lower Mainland,west,intracanada,43682.0,6556.788
@@ -6127,7 +6127,7 @@ Date,Pipeline Name,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d),T
 2015-03-01,Westcoast,Kingsvale,east,intracanada,2974.0,1217.948
 2015-03-01,Westcoast,Kingsvale,west,intracanada,2974.0,217.567
 2015-04-01,Westcoast,Kingsvale,west,intracanada,2974.0,0.215
-2015-04-01,Westcoast,Kingsvale,east,intracanada,2974.0,949.986
+2015-04-01,Westcoast,Kingsvale,east,intracanada,2974.0,949.985
 2015-05-01,Westcoast,Kingsvale,east,intracanada,2974.0,1530.021
 2015-05-01,Westcoast,Kingsvale,west,intracanada,2974.0,0.0
 2015-06-01,Westcoast,Kingsvale,east,intracanada,2974.0,1574.577
@@ -6398,7 +6398,7 @@ Date,Pipeline Name,Key Point,Direction of Flow,Trade Type,Capacity (1000 m3/d),T
 2010-12-01,Westcoast,NOVA/Gordondale,west,intracanada,7538.0,0.0
 2011-01-01,Westcoast,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-01-01,Westcoast,NOVA/Gordondale,east,intracanada,10807.0,5055.108
-2011-02-01,Westcoast,NOVA/Gordondale,east,intracanada,10807.0,5531.614
+2011-02-01,Westcoast,NOVA/Gordondale,east,intracanada,10807.0,5531.615
 2011-02-01,Westcoast,NOVA/Gordondale,west,intracanada,7854.0,0.0
 2011-03-01,Westcoast,NOVA/Gordondale,east,intracanada,10807.0,5842.319
 2011-03-01,Westcoast,NOVA/Gordondale,west,intracanada,7854.0,0.0
