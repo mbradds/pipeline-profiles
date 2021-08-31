@@ -219,7 +219,7 @@ def process_throughput(points,
         df = get_data(sql, query)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
-        
+
         # Saturn corner case
         df = df.drop(df[(df['KeyPointID'] == "KP0036") & (df['Throughput'] == 0)].index)
         units = "Bcf/d"
@@ -265,29 +265,29 @@ def process_throughput(points,
             meta = meta_throughput(df_c, meta, commodity)
             thisKeyPoints = points[points['Pipeline Name'] == company].copy().reset_index(drop=True)
             thisKeyPoints['loc'] = [[lat, long] for lat, long in zip(thisKeyPoints['Latitude'], thisKeyPoints['Longitude'])]
-            for delete in ['Pipeline Name', 'Latitude', 'Longitude']:
+            for delete in ['Pipeline Name', 'Latitude', 'Longitude', 'Description', 'Description FRA', 'Key Point']:
                 del thisKeyPoints[delete]
             meta['keyPoints'] = thisKeyPoints.to_dict(orient='records')
             for delete in ['Direction of Flow']:
                 del df_c[delete]
 
             point_data = {}
-            pointsList = sorted(list(set(df_c['Key Point'])))
+            pointsList = sorted(list(set(df_c['KeyPointID'])))
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
-                df_p = df_c[df_c['Key Point'] == p].copy().reset_index(drop=True)
-                df_p = df_p.groupby(['Date', 'Key Point', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
+                df_p = df_c[df_c['KeyPointID'] == p].copy().reset_index(drop=True)
+                df_p = df_p.groupby(['Date', 'KeyPointID', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
                 traffic_types = {}
                 counter = 0
                 pointDates = sorted(list(set(df_p['Date'])))
-                df_p = df_p.drop_duplicates(subset=['Date', 'Key Point', 'Trade Type'], ignore_index=True)
+                df_p = df_p.drop_duplicates(subset=['Date', 'KeyPointID', 'Trade Type'], ignore_index=True)
                 tradeData, dateAdded = [], []
                 for tr in list(set(df_p['Trade Type'])):
                     df_p_t = df_p[df_p['Trade Type'] == tr].copy()
                     df_p_t = df_p_t.merge(pd.DataFrame(pointDates), how='right', left_on='Date', right_on=0)
                     del[df_p_t[0]]
-                    for totalFill in ['Key Point', 'Trade Type']:
+                    for totalFill in ['KeyPointID', 'Trade Type']:
                         df_p_t[totalFill] = df_p_t[totalFill].fillna(method="bfill").fillna(method='ffill')
 
                     for numFill in ['Throughput', 'Capacity']:
@@ -377,8 +377,21 @@ def process_throughput(points,
     return thisCompanyData, df_c
 
 
-def combined_traffic(save=True, sql=True):
+def getPoints(sql):
+    def pointLookup(p, desc="Description"):
+        return {kpId: [n, d] for kpId, n, d in zip(p['KeyPointID'], p['Key Point'], p[desc])} 
     points = get_data(sql, 'key_points.sql')
+    eng = pointLookup(points, "Description")
+    fra = pointLookup(points, "Description FRA")
+    with open('../data_output/traffic/points/en.json', 'w') as fp:
+        json.dump(eng, fp)
+    with open('../data_output/traffic/points/fr.json', 'w') as fp:
+        json.dump(fra, fp)
+    return points
+
+
+def combined_traffic(save=True, sql=True):
+    points = getPoints(sql)
     gas, df_gas = process_throughput(points, save=True, sql=True, commodity='Gas', frequency='m')
     oil, df_oil = process_throughput(points, save=True, sql=True, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
     return [gas, oil]
