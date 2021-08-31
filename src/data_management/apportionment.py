@@ -93,6 +93,36 @@ def apportionPoint(df_p, company, pctData, series, kp, yAxis):
     return series
 
 
+def sortByPoints(df):
+    order = {"KP0051": 0,
+             "KP0052": 1,
+             "KP0053": 2,
+             "KP0054": 3,
+             "KP0055": 4,
+             "KP0056": 5,
+             "KP0057": 6,
+             "KP0058": 7,
+             "KP0059": 8,
+             "KP0048": 9,
+             "KP0049": 10,
+             "KP0050": 11,
+             "KP0047": 12,
+             "KP0060": 13,
+             "KP0061": 14}
+    
+    orderCol = []
+    for kp in df["KeyPointID"]:
+        if kp in order:
+            orderCol.append(order[kp])
+        else:
+            orderCol.append(999)
+    
+    df["orderCol"] = orderCol
+    df = df.sort_values(by=["Pipeline Name", "orderCol", "Date"], ascending=[True, True, True])
+    del df["orderCol"]
+    return df
+
+
 def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
@@ -126,6 +156,7 @@ def process_apportionment(save=False, sql=False, companies=False):
         company_files = companies
 
     enbridgePoints = getEnbridgePoints(sql)
+    df = sortByPoints(df)
 
     for company in company_files:
         thisCompanyData = {}
@@ -170,5 +201,5 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 if __name__ == "__main__":
     print('starting apportionment...')
-    df = process_apportionment(sql=True, save=True)
+    df = process_apportionment(sql=False, save=True)
     print('completed apportionment!')

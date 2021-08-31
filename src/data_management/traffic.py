@@ -388,6 +388,9 @@ def getPoints(sql):
         json.dump(eng, fp)
     with open('../data_output/traffic/points/fr.json', 'w') as fp:
         json.dump(fra, fp)
+        
+    # filter out enbridge apportionment points
+    points = points[points["Latitude"] != ""].copy().reset_index(drop=True)
     return points
 
 
@@ -405,5 +408,5 @@ if __name__ == "__main__":
     # points = get_traffic_data(False, True, "key_points.sql")
     # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(save=True, sql=True)
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')

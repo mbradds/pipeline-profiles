@@ -1,7 +1,7 @@
 import unittest
 from incidents import process_incidents
 from conditions import process_conditions
-from traffic import process_throughput
+from traffic import process_throughput, getPoints
 from oandm import process_oandm
 from util import most_common
 import pandas as pd
@@ -117,18 +117,19 @@ class TestConditions(unittest.TestCase):
 
 
 class TrafficTest(unittest.TestCase):
-    traffic, df = process_throughput(save=False, sql=False, commodity='Gas', frequency='m', companies=['NGTL'])
+    points = getPoints(sql=False)
+    traffic, df = process_throughput(points, save=False, sql=False, commodity='Gas', frequency='m', companies=['NGTL'])
 
     def testMeta(self):
         self.assertEqual(self.traffic["meta"]["units"], "Bcf/d")
         self.assertEqual(self.traffic["meta"]["build"], True)
-        self.assertEqual(self.traffic["meta"]["defaultPoint"], '32')
+        self.assertEqual(self.traffic["meta"]["defaultPoint"], 'KP0040')
         # check that there is a trend text for every traffic dataset
         trendLength = len(self.traffic["meta"]["trendText"])
         dataSets = len(self.traffic["traffic"])
         self.assertEqual(trendLength, dataSets)
         # check that min date has not changed
-        point = self.traffic["traffic"]["32"]
+        point = self.traffic["traffic"]["KP0040"]
         self.assertEqual(point[0]["min"], [2005, 11, 1])
         # check one data point for traffic and capacity
         # traffic

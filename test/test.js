@@ -7,12 +7,20 @@ import {
   rangeInclusive,
 } from "../src/modules/util.js";
 import { addSeriesParams } from "../src/dashboards/dashboardUtil.js";
-import { englishDashboard } from "../src/modules/langEnglish.js";
 import {
   createFiveYearSeries,
   fiveYearTrend,
 } from "../src/modules/fiveYear.js";
 import { EventTrend } from "../src/modules/dashboard/EventTrend.js";
+
+const fiveYrLang = {
+  fiveYr: {
+    lastYrName: (lastYear) => `${lastYear} Throughput (last year of data)`,
+    avgName: "Five-Year Average",
+    rangeName: (min, max) => `Five-Year Range (${min + 1}-${max - 1})`,
+    notEnough: "Not enough data to calculate five-year average",
+  },
+};
 
 function macroIs(t, input, expected) {
   t.is(input, expected);
@@ -102,7 +110,7 @@ function generateTestData(months = 60) {
     timeObj[row[0]] = new Date(parseInt(row[0])).getMonth() + 1;
   });
   timeObj.lastDate = timeSeries[timeSeries.length - 1][0];
-  const fiveYr = createFiveYearSeries(timeObj, englishDashboard.traffic);
+  const fiveYr = createFiveYearSeries(timeObj, fiveYrLang);
   return fiveYr;
 }
 
