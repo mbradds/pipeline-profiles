@@ -13,6 +13,8 @@ import {
   oandmTextFra,
 } from "./dynamicText.js";
 
+import points from "../data_output/traffic/points/fr.json";
+
 const companyToSystem = {
   NGTL: "Réseau de NGTL",
   TCPL: "Réseau de TC au Canada",
@@ -100,176 +102,176 @@ const unitsDisclaimerText = (commodity) => {
 const countDisclaimer = (eventType, field) =>
   `${eventType} peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`;
 
-const points = {
-  0: [
-    "Réseau",
-    "Le débit du pipeline est mesuré au niveau du système (tout le pipeline) au lieu de points clés individuels.",
-  ],
-  1: [
-    "Frontière",
-    "Franchissement de la frontière et raccordement du pipeline d’Alliance Canada à celui d’Alliance USA près d’Elmore, en Saskatchewan (à Sherwood, dans le Dakota du Nord, aux États-Unis). C’est à ce point frontalier que prend fin la réglementation du pipeline d’Alliance par la Régie.",
-  ],
-  2: [
-    "Zone 2",
-    "Située près de la station de compression Blueberry, recueille principalement du gaz riche en liquides provenant de la formation Montney, dans le Nord-Est de la Colombie-Britannique et le Nord-Ouest de l’Alberta. La majorité des points de réception d’Alliance se trouvent en amont de la zone 2, et les volumes reçus par le réseau au sud de la zone 2 sont de moindre importance.",
-  ],
-  3: [
-    "Huntingdon/FortisBC Lower Mainland",
-    "Raccordement d’exportation au réseau pipelinier américain à Huntingdon, en Colombie-Britannique. Les exportations vers les États-Unis sont habituellement destinées aux raffineries de pétrole brut de la côte Ouest de l’État de Washington. Le réseau au Canada se raccorde au réseau de distribution local de FortisBC qui achemine le produit à Vancouver et dans la vallée du bas Fraser, en Colombie-Britannique.",
-  ],
-  4: [
-    "Kingsvale",
-    "Raccordement au gazoduc Southern Crossing de FortisBC, qui achemine de petits volumes de gaz naturel dans le Sud de la Colombie-Britannique à partir du poste d’entrée Ouest du réseau de NGTL.",
-  ],
-  5: [
-    "NOVA/Gordondale",
-    "Raccordement au réseau de NGTL. C’est le seul point principal de Westcoast en Alberta. La plus grande partie du gaz acheminé par Westcoast traverse la Colombie-Britannique vers le sud, mais des volumes plus faibles à NOVA/Gordondale et Sunset Creek sont acheminés vers l’est, en Alberta, jusqu’au réseau de NGTL.",
-  ],
-  6: [
-    "Sunset Creek",
-    "Raccordement au réseau de NGTL. Situé près du point de commerce de la station 2, où le gaz peut être acheminé vers le sud sur le réseau de Westcoast ou vers l’est, en Alberta.",
-  ],
-  7: [
-    "St. Stephen",
-    "L’interconnexion d’importation-exportation avec la partie du réseau de M&NP en sol américain, à la frontière canado-américaine près de St. Stephen, au Nouveau-Brunswick, constitue un des principaux points.",
-  ],
-  8: [
-    "Chippawa",
-    "Raccordement au réseau Empire State Pipeline, à la frontière canado-américaine, près de Niagara Falls, en Ontario. Chippawa était un point d’exportation jusqu’en 2015 lorsque l’augmentation de la production gazière dans le Nord-Est des États-Unis a commencé à déplacer les importations du Canada. Le point Chippawa est bidirectionnel.",
-  ],
-  9: [
-    "Cromer/Regina",
-    "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de la raffinerie coopérative.",
-  ],
-  10: [
-    "Triangle de l’Est – Points de réception de la CNO",
-    "Comprend les points de réception de la CNO, mesurés à la station de compression 116 près de North Bay, en Ontario. Le triangle de l’Est comprend trois tronçons : Barrie, Montréal et le raccourci North Bay.",
-  ],
-  11: [
-    "Triangle de l’Est – Points de livraison Parkway",
-    "Raccordement au gazoduc d’Enbridge, près de Milton, en Ontario. Les volumes comprennent les commandes d’expédition destinées à l’aire de stockage à Dawn, par le réseau gazier d’Enbridge, et sont généralement saisonniers (principalement en été), selon les conditions du marché.",
-  ],
-  12: [
-    "Triangle de l’Est — Points de réception Parkway",
-    "Raccordement au gazoduc d’Enbridge, près de Milton, en Ontario. Comprend l’approvisionnement en provenance de l’aire de stockage à Dawn.",
-  ],
-  13: [
-    "Emerson I",
-    "Raccordement au réseau de Viking Gas Transmission Pipeline, à la frontière canado-américaine près d’Emerson, au Manitoba.",
-  ],
-  14: [
-    "Emerson II",
-    "Raccordement au réseau de Great Lakes Gas Transmission Pipeline, à la frontière canado-américaine, près d’Emerson, au Manitoba. Le point Emerson II est bidirectionnel.",
-  ],
-  15: [
-    "ex-Cromer",
-    "La canalisation principale au Canada reçoit du pétrole brut des États-Unis et de la Saskatchewan par le pipeline Bakken d’Enbridge, et du pétrole produit en Saskatchewan par le pipeline Westspur, au terminal Cromer, juste au nord de Cromer, au Manitoba. La canalisation passe près de la région productrice de Bakken (dans le Sud de la Saskatchewan, le Sud-Ouest du Manitoba et le Dakota du Nord), où elle reçoit du pétrole brut léger produit à proximité.",
-  ],
-  16: [
-    "ex-Gretna",
-    "La canalisation principale au Canada traverse la frontière canado-américaine et rejoint le réseau Lakehead d’Enbridge. C’est à ce point frontalier que prend fin la réglementation de la canalisation par la Régie.",
-  ],
-  17: [
-    "Vers Sarnia",
-    "Le réseau Lakehead d’Enbridge achemine la production canadienne et une partie de la production américaine jusqu’à Sarnia, en Ontario, par les canalisations 5 et 78. La canalisation 5 transporte du pétrole léger et des liquides de gaz naturel (« LGN »), tandis que la canalisation 78 transporte surtout des bruts plus lourds. À partir de Sarnia, la canalisation 9 achemine du pétrole brut à Montréal, au Québec, et la canalisation 7/11, à la raffinerie de Nanticoke, en Ontario.",
-  ],
-  18: [
-    "Iroquois",
-    "Raccordement au réseau d’Iroquois Gas Transmission System, à la frontière canado-américaine, près d’Iroquois, en Ontario. Le pipeline Iroquois transporte du gaz canadien vers le Nord-Est des États-Unis. Le point Iroquois est bidirectionnel.",
-  ],
-  19: [
-    "Niagara",
-    "Raccordement au réseau de Tennessee Gas Pipeline et de National Fuel Gas Pipeline, à la frontière canado-américaine, près de Niagara Falls, en Ontario. Niagara était un point d’exportation jusqu’en 2012 lorsque l’augmentation de la production gazière dans le Nord-Est des États-Unis a commencé à déplacer les importations du Canada. Le point Niagara est bidirectionnel.",
-  ],
-  20: [
-    "Canalisation du Nord de l’Ontario",
-    "Tronçon du réseau principal qui s’étend de la station de compression 41, près de Winnipeg, au Manitoba, à la station de compression 116, près de North Bay, en Ontario.",
-  ],
-  21: [
-    "Nord-Est des États-Unis (autre)",
-    "Raccordement à trois réseaux américains en Ontario, à la frontière canado-américaine, près de Cornwall, et au Québec, près de Napierville et de Philipsburg. Ces trois points d’exportation font partie de la catégorie « Autres points dans le Nord-Est des États-Unis », qui comprend aussi les raccordements aux réseaux de St. Lawrence Gas Company, de North Country Pipeline et de Vermont Gas Systems, respectivement.",
-  ],
-  22: [
-    "Prairies",
-    "Raccordement au réseau de NGTL près d’Empress, en Alberta, à la limite entre l’Alberta et la Saskatchewan, et points de réception de la Saskatchewan. Empress est l’un des principaux points de réception du réseau. Le gaz est acheminé vers l’est à destination du Manitoba, de l’Ontario et du Québec, ainsi qu’en vue de son exportation vers le Midwest américain et le Nord-Est des États-Unis.",
-  ],
-  24: [
-    "Ft. Saskatchewan",
-    "Extrémité du pipeline Cochin au terminal qui appartenait autrefois à Kinder Morgan (aujourd’hui à Pembina), près de Fort Saskatchewan, en Alberta. Les condensats sont ensuite transférés aux terminaux de stockage de diluants à proximité (terminal de diluants de l’Alberta de Keyera, terminal d’Enbridge et carrefour canadien de diluants de Pembina). À partir d’Edmonton et de Fort Saskatchewan, les diluants sont acheminés vers le nord sur des pipelines sous réglementation provinciale de l’Alberta vers des installations d’exploitation des sables bitumineux près de Fort McMurray, en Alberta.",
-  ],
-  27: [
-    "Kingsgate",
-    "Raccordement au réseau de Gas Transmission Northwest Pipeline (« GTN »), à la frontière canado-américaine, près de Kingsgate, en Colombie-Britannique. GTN alimente des marchés du Nord-Ouest du Pacifique, de la Californie et du Nevada.",
-  ],
-  28: [
-    "Monchy",
-    "Raccordement au pipeline Northern Border, à la frontière canado-américaine, près de Monchy, en Saskatchewan. Le pipeline Northern Border approvisionne des marchés du centre du continent américain et de Chicago.",
-  ],
-  29: [
-    "Frontière internationale, près de Haskett, au Manitoba",
-    "Point de franchissement de la frontière entre le Manitoba et le Dakota du Nord, aux États-Unis. C’est à ce point frontalier que prend fin la réglementation du pipeline Keystone par la Régie.",
-  ],
-  30: [
-    "Poste d’entrée Est",
-    "Raccordement du réseau de NGTL au réseau principal au Canada de TransCanada PipeLines (près d’Empress, en Alberta) et au réseau de Foothills (près de McNeill, en Alberta).",
-  ],
-  31: [
-    "Nord et Est",
-    "Points de réception pour l’acheminement de gaz naturel vers les régions de livraison du Nord de l’Alberta, notamment aux fins des activités d’exploitation des sables bitumineux.",
-  ],
-  32: [
-    "Point en amont de la rivière James",
-    "Partie nord-ouest du réseau de NGTL, comprenant les points de réception des pipelines Horn River, North Montney et Groundbirch. Point habituellement le plus achalandé du réseau de NGTL, où circule une quantité importante du gaz produit dans le BSOC.",
-  ],
-  33: [
-    "Poste d’entrée Ouest",
-    "Raccordement du réseau de NGTL au réseau de Foothills, dans le Sud-Ouest de l’Alberta, à la frontière avec la Colombie-Britannique. Le gaz est acheminé par le réseau de Foothills en vue de son exportation vers les marchés du Nord‑Ouest du Pacifique, de la Californie et du Nevada.",
-  ],
-  34: [
-    "Zama",
-    "Fin du pipeline Norman Wells dans le Nord-Ouest de l’Alberta. Le pipeline se raccorde à des réseaux sous réglementation provinciale et accède au marché albertain du pétrole brut léger.",
-  ],
-  35: [
-    "Burnaby",
-    "Achemine du pétrole brut léger à la raffinerie Parkland à Burnaby, en Colombie-Britannique, à hauteur de 55 000 b/j, ainsi que des produits pétroliers raffinés destinés à Burnaby et aux villes avoisinantes.",
-  ],
-  36: [
-    "Sumas",
-    "Raccordement entre le pipeline Trans Mountain et le pipeline Puget Sound de Trans Mountain à Abbotsford, en Colombie-Britannique Du pétrole brut léger, et brut lourd en moindre quantité, est acheminé vers les raffineries voisines d’Anacortes, de Cherry Point et de Ferndale, sur la côte Ouest de l’État de Washington.",
-  ],
-  37: [
-    "Westridge",
-    "Plus petit point de livraison du réseau, le terminal maritime Westridge, situé à Port Metro Vancouver, peut charger des navires-citernes de pétrole brut (lourd, principalement) à destination de divers marchés, dont l’Asie et la Californie.",
-  ],
-  38: [
-    "East Hereford",
-    "Point d’exportation où le réseau se raccorde au réseau de Portland Natural Gas Transmission System, à la frontière canado-américaine près d’East Hereford, au Québec, afin d’acheminer du gaz naturel vers des marchés du Vermont, du New Hampshire, du Maine et du Massachusetts.",
-  ],
-  39: [
-    "Saint Lazare",
-    "Point d’interconnexion avec le réseau principal de TC près de Saint-Lazare, au Québec. Ce réseau transporte du gaz naturel produit dans le bassin sédimentaire de l’Ouest canadien et le bassin des Appalaches et destiné à Montréal et aux villes avoisinantes.",
-  ],
-  40: [
-    "Calgary",
-    "Point de raccordement du réseau de NGTL et des pipelines de distribution locaux qui desservent le marché de Calgary. Les volumes sont très saisonniers, car la consommation de gaz augmente en hiver pour répondre aux besoins en chauffage.",
-  ],
-  41: [
-    "Edmonton",
-    "Réception du gaz provenant du point en amont de la rivière James, à acheminer vers le nord pour desservir le marché d’Edmonton. Les volumes sont très saisonniers, car la consommation de gaz augmente en hiver pour répondre aux besoins en chauffage.",
-  ],
-  42: [
-    "Zone de livraison des sables bitumineux Kirby",
-    "Le gaz qui passe par cet endroit est destiné aux activités de drainage par gravité au moyen de vapeur et de stimulation cyclique par la vapeur des sables bitumineux à Cold Lake qui se trouve à proximité. Ces méthodes de production de pétrole non classiques utilisent le gaz pour produire la vapeur qui sert à chauffer les réservoirs souterrains, permettant ainsi au bitume d’atteindre la surface.",
-  ],
-  43: [
-    "Zone de livraison des sables bitumineux Liege",
-    "Le gaz qui passe par cette zone située au nord-ouest de Fort McMurray est habituellement destiné à l’extraction à ciel ouvert et à la récupération in situ des sables bitumineux de l’Athabasca. Les activités d’extraction à ciel ouvert utilisent le gaz naturel pour convertir le bitume extrait en pétrole brut synthétique.",
-  ],
-  44: [
-    "Saturn",
-    "Tronçon du réseau de NGTL près de la station de compression du même nom située au sud-ouest de Fort St. John, en Colombie-Britannique. Relie le réseau de NGTL à la production en provenance de la canalisation principale North Montney et à l’installation de stockage Aitken. Composante des livraisons totales au point principal en amont de la rivière James.",
-  ],
-};
+// const points = {
+//   0: [
+//     "Réseau",
+//     "Le débit du pipeline est mesuré au niveau du système (tout le pipeline) au lieu de points clés individuels.",
+//   ],
+//   1: [
+//     "Frontière",
+//     "Franchissement de la frontière et raccordement du pipeline d’Alliance Canada à celui d’Alliance USA près d’Elmore, en Saskatchewan (à Sherwood, dans le Dakota du Nord, aux États-Unis). C’est à ce point frontalier que prend fin la réglementation du pipeline d’Alliance par la Régie.",
+//   ],
+//   2: [
+//     "Zone 2",
+//     "Située près de la station de compression Blueberry, recueille principalement du gaz riche en liquides provenant de la formation Montney, dans le Nord-Est de la Colombie-Britannique et le Nord-Ouest de l’Alberta. La majorité des points de réception d’Alliance se trouvent en amont de la zone 2, et les volumes reçus par le réseau au sud de la zone 2 sont de moindre importance.",
+//   ],
+//   3: [
+//     "Huntingdon/FortisBC Lower Mainland",
+//     "Raccordement d’exportation au réseau pipelinier américain à Huntingdon, en Colombie-Britannique. Les exportations vers les États-Unis sont habituellement destinées aux raffineries de pétrole brut de la côte Ouest de l’État de Washington. Le réseau au Canada se raccorde au réseau de distribution local de FortisBC qui achemine le produit à Vancouver et dans la vallée du bas Fraser, en Colombie-Britannique.",
+//   ],
+//   4: [
+//     "Kingsvale",
+//     "Raccordement au gazoduc Southern Crossing de FortisBC, qui achemine de petits volumes de gaz naturel dans le Sud de la Colombie-Britannique à partir du poste d’entrée Ouest du réseau de NGTL.",
+//   ],
+//   5: [
+//     "NOVA/Gordondale",
+//     "Raccordement au réseau de NGTL. C’est le seul point principal de Westcoast en Alberta. La plus grande partie du gaz acheminé par Westcoast traverse la Colombie-Britannique vers le sud, mais des volumes plus faibles à NOVA/Gordondale et Sunset Creek sont acheminés vers l’est, en Alberta, jusqu’au réseau de NGTL.",
+//   ],
+//   6: [
+//     "Sunset Creek",
+//     "Raccordement au réseau de NGTL. Situé près du point de commerce de la station 2, où le gaz peut être acheminé vers le sud sur le réseau de Westcoast ou vers l’est, en Alberta.",
+//   ],
+//   7: [
+//     "St. Stephen",
+//     "L’interconnexion d’importation-exportation avec la partie du réseau de M&NP en sol américain, à la frontière canado-américaine près de St. Stephen, au Nouveau-Brunswick, constitue un des principaux points.",
+//   ],
+//   8: [
+//     "Chippawa",
+//     "Raccordement au réseau Empire State Pipeline, à la frontière canado-américaine, près de Niagara Falls, en Ontario. Chippawa était un point d’exportation jusqu’en 2015 lorsque l’augmentation de la production gazière dans le Nord-Est des États-Unis a commencé à déplacer les importations du Canada. Le point Chippawa est bidirectionnel.",
+//   ],
+//   9: [
+//     "Cromer/Regina",
+//     "La canalisation principale au Canada reçoit du pétrole brut américain du pipeline Wascana et se connecte au complexe de la raffinerie coopérative.",
+//   ],
+//   10: [
+//     "Triangle de l’Est – Points de réception de la CNO",
+//     "Comprend les points de réception de la CNO, mesurés à la station de compression 116 près de North Bay, en Ontario. Le triangle de l’Est comprend trois tronçons : Barrie, Montréal et le raccourci North Bay.",
+//   ],
+//   11: [
+//     "Triangle de l’Est – Points de livraison Parkway",
+//     "Raccordement au gazoduc d’Enbridge, près de Milton, en Ontario. Les volumes comprennent les commandes d’expédition destinées à l’aire de stockage à Dawn, par le réseau gazier d’Enbridge, et sont généralement saisonniers (principalement en été), selon les conditions du marché.",
+//   ],
+//   12: [
+//     "Triangle de l’Est — Points de réception Parkway",
+//     "Raccordement au gazoduc d’Enbridge, près de Milton, en Ontario. Comprend l’approvisionnement en provenance de l’aire de stockage à Dawn.",
+//   ],
+//   13: [
+//     "Emerson I",
+//     "Raccordement au réseau de Viking Gas Transmission Pipeline, à la frontière canado-américaine près d’Emerson, au Manitoba.",
+//   ],
+//   14: [
+//     "Emerson II",
+//     "Raccordement au réseau de Great Lakes Gas Transmission Pipeline, à la frontière canado-américaine, près d’Emerson, au Manitoba. Le point Emerson II est bidirectionnel.",
+//   ],
+//   15: [
+//     "ex-Cromer",
+//     "La canalisation principale au Canada reçoit du pétrole brut des États-Unis et de la Saskatchewan par le pipeline Bakken d’Enbridge, et du pétrole produit en Saskatchewan par le pipeline Westspur, au terminal Cromer, juste au nord de Cromer, au Manitoba. La canalisation passe près de la région productrice de Bakken (dans le Sud de la Saskatchewan, le Sud-Ouest du Manitoba et le Dakota du Nord), où elle reçoit du pétrole brut léger produit à proximité.",
+//   ],
+//   16: [
+//     "ex-Gretna",
+//     "La canalisation principale au Canada traverse la frontière canado-américaine et rejoint le réseau Lakehead d’Enbridge. C’est à ce point frontalier que prend fin la réglementation de la canalisation par la Régie.",
+//   ],
+//   17: [
+//     "Vers Sarnia",
+//     "Le réseau Lakehead d’Enbridge achemine la production canadienne et une partie de la production américaine jusqu’à Sarnia, en Ontario, par les canalisations 5 et 78. La canalisation 5 transporte du pétrole léger et des liquides de gaz naturel (« LGN »), tandis que la canalisation 78 transporte surtout des bruts plus lourds. À partir de Sarnia, la canalisation 9 achemine du pétrole brut à Montréal, au Québec, et la canalisation 7/11, à la raffinerie de Nanticoke, en Ontario.",
+//   ],
+//   18: [
+//     "Iroquois",
+//     "Raccordement au réseau d’Iroquois Gas Transmission System, à la frontière canado-américaine, près d’Iroquois, en Ontario. Le pipeline Iroquois transporte du gaz canadien vers le Nord-Est des États-Unis. Le point Iroquois est bidirectionnel.",
+//   ],
+//   19: [
+//     "Niagara",
+//     "Raccordement au réseau de Tennessee Gas Pipeline et de National Fuel Gas Pipeline, à la frontière canado-américaine, près de Niagara Falls, en Ontario. Niagara était un point d’exportation jusqu’en 2012 lorsque l’augmentation de la production gazière dans le Nord-Est des États-Unis a commencé à déplacer les importations du Canada. Le point Niagara est bidirectionnel.",
+//   ],
+//   20: [
+//     "Canalisation du Nord de l’Ontario",
+//     "Tronçon du réseau principal qui s’étend de la station de compression 41, près de Winnipeg, au Manitoba, à la station de compression 116, près de North Bay, en Ontario.",
+//   ],
+//   21: [
+//     "Nord-Est des États-Unis (autre)",
+//     "Raccordement à trois réseaux américains en Ontario, à la frontière canado-américaine, près de Cornwall, et au Québec, près de Napierville et de Philipsburg. Ces trois points d’exportation font partie de la catégorie « Autres points dans le Nord-Est des États-Unis », qui comprend aussi les raccordements aux réseaux de St. Lawrence Gas Company, de North Country Pipeline et de Vermont Gas Systems, respectivement.",
+//   ],
+//   22: [
+//     "Prairies",
+//     "Raccordement au réseau de NGTL près d’Empress, en Alberta, à la limite entre l’Alberta et la Saskatchewan, et points de réception de la Saskatchewan. Empress est l’un des principaux points de réception du réseau. Le gaz est acheminé vers l’est à destination du Manitoba, de l’Ontario et du Québec, ainsi qu’en vue de son exportation vers le Midwest américain et le Nord-Est des États-Unis.",
+//   ],
+//   24: [
+//     "Ft. Saskatchewan",
+//     "Extrémité du pipeline Cochin au terminal qui appartenait autrefois à Kinder Morgan (aujourd’hui à Pembina), près de Fort Saskatchewan, en Alberta. Les condensats sont ensuite transférés aux terminaux de stockage de diluants à proximité (terminal de diluants de l’Alberta de Keyera, terminal d’Enbridge et carrefour canadien de diluants de Pembina). À partir d’Edmonton et de Fort Saskatchewan, les diluants sont acheminés vers le nord sur des pipelines sous réglementation provinciale de l’Alberta vers des installations d’exploitation des sables bitumineux près de Fort McMurray, en Alberta.",
+//   ],
+//   27: [
+//     "Kingsgate",
+//     "Raccordement au réseau de Gas Transmission Northwest Pipeline (« GTN »), à la frontière canado-américaine, près de Kingsgate, en Colombie-Britannique. GTN alimente des marchés du Nord-Ouest du Pacifique, de la Californie et du Nevada.",
+//   ],
+//   28: [
+//     "Monchy",
+//     "Raccordement au pipeline Northern Border, à la frontière canado-américaine, près de Monchy, en Saskatchewan. Le pipeline Northern Border approvisionne des marchés du centre du continent américain et de Chicago.",
+//   ],
+//   29: [
+//     "Frontière internationale, près de Haskett, au Manitoba",
+//     "Point de franchissement de la frontière entre le Manitoba et le Dakota du Nord, aux États-Unis. C’est à ce point frontalier que prend fin la réglementation du pipeline Keystone par la Régie.",
+//   ],
+//   30: [
+//     "Poste d’entrée Est",
+//     "Raccordement du réseau de NGTL au réseau principal au Canada de TransCanada PipeLines (près d’Empress, en Alberta) et au réseau de Foothills (près de McNeill, en Alberta).",
+//   ],
+//   31: [
+//     "Nord et Est",
+//     "Points de réception pour l’acheminement de gaz naturel vers les régions de livraison du Nord de l’Alberta, notamment aux fins des activités d’exploitation des sables bitumineux.",
+//   ],
+//   32: [
+//     "Point en amont de la rivière James",
+//     "Partie nord-ouest du réseau de NGTL, comprenant les points de réception des pipelines Horn River, North Montney et Groundbirch. Point habituellement le plus achalandé du réseau de NGTL, où circule une quantité importante du gaz produit dans le BSOC.",
+//   ],
+//   33: [
+//     "Poste d’entrée Ouest",
+//     "Raccordement du réseau de NGTL au réseau de Foothills, dans le Sud-Ouest de l’Alberta, à la frontière avec la Colombie-Britannique. Le gaz est acheminé par le réseau de Foothills en vue de son exportation vers les marchés du Nord‑Ouest du Pacifique, de la Californie et du Nevada.",
+//   ],
+//   34: [
+//     "Zama",
+//     "Fin du pipeline Norman Wells dans le Nord-Ouest de l’Alberta. Le pipeline se raccorde à des réseaux sous réglementation provinciale et accède au marché albertain du pétrole brut léger.",
+//   ],
+//   35: [
+//     "Burnaby",
+//     "Achemine du pétrole brut léger à la raffinerie Parkland à Burnaby, en Colombie-Britannique, à hauteur de 55 000 b/j, ainsi que des produits pétroliers raffinés destinés à Burnaby et aux villes avoisinantes.",
+//   ],
+//   36: [
+//     "Sumas",
+//     "Raccordement entre le pipeline Trans Mountain et le pipeline Puget Sound de Trans Mountain à Abbotsford, en Colombie-Britannique Du pétrole brut léger, et brut lourd en moindre quantité, est acheminé vers les raffineries voisines d’Anacortes, de Cherry Point et de Ferndale, sur la côte Ouest de l’État de Washington.",
+//   ],
+//   37: [
+//     "Westridge",
+//     "Plus petit point de livraison du réseau, le terminal maritime Westridge, situé à Port Metro Vancouver, peut charger des navires-citernes de pétrole brut (lourd, principalement) à destination de divers marchés, dont l’Asie et la Californie.",
+//   ],
+//   38: [
+//     "East Hereford",
+//     "Point d’exportation où le réseau se raccorde au réseau de Portland Natural Gas Transmission System, à la frontière canado-américaine près d’East Hereford, au Québec, afin d’acheminer du gaz naturel vers des marchés du Vermont, du New Hampshire, du Maine et du Massachusetts.",
+//   ],
+//   39: [
+//     "Saint Lazare",
+//     "Point d’interconnexion avec le réseau principal de TC près de Saint-Lazare, au Québec. Ce réseau transporte du gaz naturel produit dans le bassin sédimentaire de l’Ouest canadien et le bassin des Appalaches et destiné à Montréal et aux villes avoisinantes.",
+//   ],
+//   40: [
+//     "Calgary",
+//     "Point de raccordement du réseau de NGTL et des pipelines de distribution locaux qui desservent le marché de Calgary. Les volumes sont très saisonniers, car la consommation de gaz augmente en hiver pour répondre aux besoins en chauffage.",
+//   ],
+//   41: [
+//     "Edmonton",
+//     "Réception du gaz provenant du point en amont de la rivière James, à acheminer vers le nord pour desservir le marché d’Edmonton. Les volumes sont très saisonniers, car la consommation de gaz augmente en hiver pour répondre aux besoins en chauffage.",
+//   ],
+//   42: [
+//     "Zone de livraison des sables bitumineux Kirby",
+//     "Le gaz qui passe par cet endroit est destiné aux activités de drainage par gravité au moyen de vapeur et de stimulation cyclique par la vapeur des sables bitumineux à Cold Lake qui se trouve à proximité. Ces méthodes de production de pétrole non classiques utilisent le gaz pour produire la vapeur qui sert à chauffer les réservoirs souterrains, permettant ainsi au bitume d’atteindre la surface.",
+//   ],
+//   43: [
+//     "Zone de livraison des sables bitumineux Liege",
+//     "Le gaz qui passe par cette zone située au nord-ouest de Fort McMurray est habituellement destiné à l’extraction à ciel ouvert et à la récupération in situ des sables bitumineux de l’Athabasca. Les activités d’extraction à ciel ouvert utilisent le gaz naturel pour convertir le bitume extrait en pétrole brut synthétique.",
+//   ],
+//   44: [
+//     "Saturn",
+//     "Tronçon du réseau de NGTL près de la station de compression du même nom située au sud-ouest de Fort St. John, en Colombie-Britannique. Relie le réseau de NGTL à la production en provenance de la canalisation principale North Montney et à l’installation de stockage Aitken. Composante des livraisons totales au point principal en amont de la rivière James.",
+//   ],
+// };
 
 /**
  * French number format.

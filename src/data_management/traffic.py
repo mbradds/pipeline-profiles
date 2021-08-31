@@ -235,12 +235,8 @@ def process_throughput(points,
 
     df = conversion(df, commodity, ['Capacity', 'Throughput'], False, 0)
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
-    # df = fixKeyPoint(df)
-    # df = addIds(df)
     df = applyTradeId(df)
-
     df['Date'] = pd.to_datetime(df['Date'])
-
     company_files = get_company_list(commodity)
 
     if companies:
@@ -259,6 +255,8 @@ def process_throughput(points,
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
+            if company == "MNP":
+                df_c["KeyPointID"] = "KP0046"
             meta["build"] = True
             trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
@@ -381,8 +379,11 @@ def getPoints(sql):
     def pointLookup(p, desc="Description"):
         return {kpId: [n, d] for kpId, n, d in zip(p['KeyPointID'], p['Key Point'], p[desc])} 
     points = get_data(sql, 'key_points.sql')
+    points = points.fillna("")
     eng = pointLookup(points, "Description")
     fra = pointLookup(points, "Description FRA")
+    eng["KP0000"] = ["system", "Pipeline throughput is measured at the system level (entire pipeline) instead of individual key points."]
+    fra["KP0000"] = ["Réseau", "Le débit du pipeline est mesuré au niveau du système (tout le pipeline) au lieu de points clés individuels."]
     with open('../data_output/traffic/points/en.json', 'w') as fp:
         json.dump(eng, fp)
     with open('../data_output/traffic/points/fr.json', 'w') as fp:
@@ -392,8 +393,8 @@ def getPoints(sql):
 
 def combined_traffic(save=True, sql=True):
     points = getPoints(sql)
-    gas, df_gas = process_throughput(points, save=True, sql=True, commodity='Gas', frequency='m')
-    oil, df_oil = process_throughput(points, save=True, sql=True, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
+    gas, df_gas = process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m')
+    oil, df_oil = process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
     return [gas, oil]
 
 
@@ -404,5 +405,5 @@ if __name__ == "__main__":
     # points = get_data(False, True, "key_points.sql")
     # oil = get_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(True, True)
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')
