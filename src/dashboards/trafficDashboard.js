@@ -39,7 +39,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
 
   function addPointButtons(params) {
     const btnGroup = document.getElementById("traffic-points-btn");
-    if (params.defaultPoint.id !== "35") {
+    if (params.defaultPoint.id !== "KP0003") {
       params.points.forEach((point) => {
         const checkTxt = point.id === params.defaultPoint.id ? " active" : "";
         btnGroup.insertAdjacentHTML(
@@ -62,9 +62,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function getPointList(meta) {
     return sortJsonAlpha(
       meta.keyPoints.map((point) => {
-        const pointName = lang.points[point["Key Point"]][0];
+        const pointName = lang.points[point["KeyPointID"]][0];
         return {
-          id: point["Key Point"],
+          id: point["KeyPointID"],
           name: pointName,
           loc: point.loc,
         };
@@ -506,24 +506,34 @@ export async function mainTraffic(trafficData, metaData, lang) {
   };
 
   function getKeyPoint(defaultId) {
-    return { id: defaultId, name: lang.points[defaultId][0] };
+    try {
+      return { id: defaultId, name: lang.points[defaultId][0] };
+    } catch (err) {
+      return { id: defaultId, name: "" };
+    }
   }
 
   function displayPointDescription(params) {
-    const points = !params.tm ? [params.defaultPoint] : params.points;
+    try {
+      const points = !params.tm ? [params.defaultPoint] : params.points;
 
-    const pointList =
-      points.length > 1 ? sortJsonAlpha(points, "name") : points;
+      const pointList =
+        points.length > 1 ? sortJsonAlpha(points, "name") : points;
 
-    const pointsText = pointList.map((p) => {
-      const textCol =
-        points.length > 1
-          ? `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`
-          : `${lang.points[p.id][1]}`;
-      return { ...p, textCol };
-    });
-    document.getElementById("traffic-point-description").innerHTML =
-      listOrParagraph(pointsText, "textCol");
+      const pointsText = pointList.map((p) => {
+        const textCol =
+          points.length > 1
+            ? `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`
+            : `${lang.points[p.id][1]}`;
+        return { ...p, textCol };
+      });
+      document.getElementById("traffic-point-description").innerHTML =
+        listOrParagraph(pointsText, "textCol");
+    } catch (err) {
+      document.getElementById(
+        "traffic-point-description"
+      ).innerHTML = `<p>No key point description provided.</p>`;
+    }
   }
 
   function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
@@ -688,7 +698,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     );
 
     let pointMap;
-    if (chartParams.defaultPoint.id !== "0") {
+    if (chartParams.defaultPoint.id !== "KP0000") {
       pointMap = new KeyPointMap({
         points: chartParams.points,
         selected: !chartParams.tm
@@ -696,7 +706,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           : chartParams.points,
         companyName: chartParams.companyName,
       });
-      // 0 = system. These pipelines should be using trafficNoMap.hbs
+      // KP0000 = system. These pipelines should be using trafficNoMap.hbs
       if (chartParams.points.length === 1) {
         visibility(["traffic-points-btn", "key-point-title"], "hide");
       } else {
@@ -737,7 +747,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
     updateDynamicComponents(chartParams, timeSeries);
 
     // user selects key point
-    if (!chartParams.tm && chartParams.defaultPoint.id !== "0") {
+    if (!chartParams.tm && chartParams.defaultPoint.id !== "KP0000") {
       document
         .getElementById("traffic-points-btn")
         .addEventListener("click", (event) => {
@@ -795,7 +805,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
           );
           updateDynamicComponents(chartParams, timeSeries);
         });
-    } else if (chartParams.defaultPoint.id !== "0") {
+    } else if (chartParams.defaultPoint.id !== "KP0000") {
       // user is on trans mountain profile
       document
         .getElementById("traffic-points-btn")
@@ -909,7 +919,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       });
 
     // update map zoom
-    if (chartParams.defaultPoint.id !== "0") {
+    if (chartParams.defaultPoint.id !== "KP0000") {
       document
         .getElementById("key-point-zoom-btn")
         .addEventListener("click", (event) => {

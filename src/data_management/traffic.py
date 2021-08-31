@@ -6,61 +6,6 @@ import dateutil.relativedelta
 script_dir = os.path.dirname(__file__)
 
 
-def addIds(df):
-    df = df[df['Key Point'] != "FortisBC Lower Mainland"]
-    df = df[df['Key Point'] != "St Clair"]
-    points = {'system': '0',
-              'KP0000': '0',
-              'Border': '1',
-              'Zone 2': '2',
-              'Huntingdon/FortisBC Lower Mainland': '3',
-              'Kingsvale': '4',
-              'NOVA/Gordondale': '5',
-              'Sunset Creek': '6',
-              'St. Stephen': '7',
-              'Chippawa': '8',
-              'Cromer/Regina': '9',
-              'Eastern Triangle - NOL Receipts': '10',
-              'Eastern Triangle - Parkway Deliveries': '11',
-              'Eastern Triangle - Parkway Receipts': '12',
-              'Emerson I': '13',
-              'Emerson II': '14',
-              'ex-Cromer': '15',
-              'ex-Gretna': '16',
-              'Into-Sarnia': '17',
-              'Iroquois': '18',
-              'Niagara': '19',
-              'Northern Ontario Line': '20',
-              'Other US Northeast': '21',
-              'Prairies': '22',
-              'St Clair': '23',
-              'Ft. Saskatchewan': '24',
-              'Regina': '25',
-              'Windsor': '26',
-              'Kingsgate': '27',
-              'Monchy': '28',
-              'International boundary at or near Haskett, Manitoba': '29',
-              'East Gate': '30',
-              'North and East': '31',
-              'Upstream of James River': '32',
-              'West Gate': '33',
-              'Zama': '34',
-              'Burnaby': '35',
-              'Sumas': '36',
-              'Westridge': '37',
-              'East Hereford': '38',
-              'Saint Lazare': '39',
-              'Calgary': '40',
-              'Edmonton': '41',
-              'OSDA Kirby': '42',
-              'OSDA Liege': '43',
-              'Saturn': '44'
-              }
-
-    df['Key Point'] = df['Key Point'].replace(points)
-    return df
-
-
 def applyTradeId(df):
     trade = {"intracanada": "in",
              "export": "ex",
@@ -105,14 +50,7 @@ def applyColors(trade_type):
     return colors[trade_type]
 
 
-def fixKeyPoint(df):
-    df['Key Point'] = df['Key Point'].replace({"Huntingdon Export": "Huntingdon/FortisBC Lower Mainland",
-                                               "Baileyville, Ma. / St. Stephen N.B.": "St. Stephen"})
-    df = df[~df['Key Point'].isin(['Regina', 'Windsor'])].reset_index(drop=True)
-    return df
-
-
-def get_data(sql=False, query='throughput_gas_monthly.sql', db="PipelineInformation"):
+def get_traffic_data(sql=False, query='throughput_gas_monthly.sql', db="PipelineInformation"):
 
     csvName = query.split(".")[0]+'.csv'
     if sql:
@@ -126,11 +64,8 @@ def get_data(sql=False, query='throughput_gas_monthly.sql', db="PipelineInformat
 
     # inital processing for key points
     if query == 'key_points.sql':
-        # add extra key points that dont appear in database
-        df = fixKeyPoint(df)
         df = normalize_text(df, ['Key Point', 'Pipeline Name'])
         df = normalize_numeric(df, ['Latitude', 'Longitude'], 3)
-        df = addIds(df)
 
     return df
 
@@ -141,13 +76,13 @@ def meta_throughput(df_c, meta, data):
         dr = [x.strip() for x in dr]
         return dr
 
-    df_meta = df_c[['Key Point', 'Direction of Flow', 'Trade Type']].copy()
+    df_meta = df_c[['KeyPointID', 'Direction of Flow', 'Trade Type']].copy()
     if data == "oil":
         df_meta['Trade Type'] = [x.split("-")[-1].strip() for x in df_meta['Trade Type']]
     df_meta = df_meta.drop_duplicates().reset_index(drop=True)
-    df_meta = df_meta.sort_values(by=['Key Point', 'Trade Type'])
-    df_meta = df_meta.groupby(['Key Point']).agg(direction=("Direction of Flow", set),
-                                                 trade=("Trade Type", set))
+    df_meta = df_meta.sort_values(by=['KeyPointID', 'Trade Type'])
+    df_meta = df_meta.groupby(['KeyPointID']).agg(direction=("Direction of Flow", set),
+                                                  trade=("Trade Type", set))
 
     df_meta = df_meta.reset_index()
     for col in ['direction', 'trade']:
@@ -166,7 +101,7 @@ def meta_throughput(df_c, meta, data):
                    'southwest': 'sw'
                    }
     df_meta['direction'] = [direction_list(x) for x in df_meta['direction']]
-    for key, flow, trade in zip(df_meta['Key Point'], df_meta['direction'], df_meta['trade']):
+    for key, flow, trade in zip(df_meta['KeyPointID'], df_meta['direction'], df_meta['trade']):
         try:
             directions[key] = [directionId[x.lower()] for x in flow]
         except:
@@ -175,10 +110,11 @@ def meta_throughput(df_c, meta, data):
     return meta
 
 
+# TODO: create a general purpose round finder by looking at the average throughput
 def getRounding(point):
-    if point in ['Kingsvale', 'NOVA/Gordondale', 'St. Stephen']:
+    if point in ['KP0023', 'KP0029', 'KP0046']:
         rounding = 4
-    elif point in ['Emerson II', 'Eastern Triangle - Parkway Deliveries']:
+    elif point in ['KP0014', 'KP0010']:
         rounding = 3
     else:
         rounding = 2
@@ -188,15 +124,15 @@ def getRounding(point):
 def meta_trend(df_c, commodity):
 
     def group_trends(df):
-        df = df.groupby(['Date', 'Pipeline Name', 'Key Point']).agg({'Capacity': 'mean', 'Throughput': 'sum'})
+        df = df.groupby(['Date', 'Pipeline Name', 'KeyPointID']).agg({'Capacity': 'mean', 'Throughput': 'sum'})
         df = df.reset_index()
         return df
 
     def calculate_trend(dfp, metaTrends, point, trendName, commodity):
         dfp = dfp.sort_values(by='Date', ascending=True)
         dfp = dfp.set_index('Date')
-        dfp = dfp.groupby(['Pipeline Name', 'Key Point', 'Direction of Flow', 'Trade Type']).resample('Q', convention='end').agg('mean').reset_index()
-        if commodity == "gas":
+        dfp = dfp.groupby(['Pipeline Name', 'KeyPointID', 'Direction of Flow', 'Trade Type']).resample('Q', convention='end').agg('mean').reset_index()
+        if commodity == "Gas":
             dfp = dfp[dfp['Date'] >= max(dfp['Date']) - dateutil.relativedelta.relativedelta(months=12)].copy().reset_index(drop=True)
         else:
             dfp = dfp[dfp['Date'] >= max(dfp['Date']) - dateutil.relativedelta.relativedelta(months=3)].copy().reset_index(drop=True)
@@ -228,10 +164,10 @@ def meta_trend(df_c, commodity):
         return metaTrends
 
     metaTrends = {}
-    for point in list(set(df_c['Key Point'])):
+    for point in list(set(df_c['KeyPointID'])):
         rounding = getRounding(point)
         df_t = df_c.copy()
-        dfp = df_t[df_t['Key Point'] == point].copy().reset_index(drop=True)
+        dfp = df_t[df_t['KeyPointID'] == point].copy().reset_index(drop=True)
         metaTrends[point] = []
         if "im" in list(dfp['Trade Type']):
             dfImport = dfp[dfp['Trade Type'] == "im"].copy()
@@ -244,29 +180,26 @@ def meta_trend(df_c, commodity):
 
 
 def getDefaultPoint(company):
-    defaults = {'NGTL': '32',
-                'Westcoast': '3',
-                'TCPL': '22',
-                'Alliance': '1',
-                'Brunswick': '0',
-                'TQM': '39',
-                'Foothills': '27',
-                'MNP': '7',
-                'EnbridgeMainline': '16',
-                'Keystone': '29',
-                'TransMountain': '35',
-                'Cochin': '24',
-                'TransNorthern': '0',
-                'NormanWells': '34',
-                'SouthernLights': '0',
-                'Westspur': '0'}
+    defaults = {'NGTL': 'KP0040',
+                'Westcoast': 'KPWESC',
+                'TCPL': 'KP0033',
+                'Alliance': 'KP0002',
+                'TQM': 'KP0035',
+                'Foothills': 'KP0023',
+                'MNP': 'KP0046',
+                'EnbridgeMainline': 'KP0016',
+                'Keystone': 'KP0020',
+                'TransMountain': 'KP0003',
+                'Cochin': 'KP0018',
+                'NormanWells': 'KP0044'}
     try:
         return defaults[company]
     except:
-        return '0'
+        return 'KP0000'
 
 
-def process_throughput(save=False,
+def process_throughput(points,
+                       save=False,
                        sql=False,
                        commodity='Gas',
                        companies=False,
@@ -283,16 +216,17 @@ def process_throughput(save=False,
         if frequency == "m":
             query = 'throughput_gas_monthly.sql'
 
-        df = get_data(sql, query)
+        df = get_traffic_data(sql, query)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
 
-        df = df.drop(df[(df['Key Point'] == "Saturn") & (df['Throughput'] == 0)].index)
+        # Saturn corner case
+        df = df.drop(df[(df['KeyPointID'] == "KP0036") & (df['Throughput'] == 0)].index)
         units = "Bcf/d"
 
     else:
         query = 'throughput_oil_monthly.sql'
-        df = get_data(sql, query)
+        df = get_traffic_data(sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df['Trade Type'] = [str(p).strip() for p in df['Product']]
@@ -301,15 +235,9 @@ def process_throughput(save=False,
 
     df = conversion(df, commodity, ['Capacity', 'Throughput'], False, 0)
     df = df[df['Trade Type'] != "`"].copy().reset_index(drop=True)
-    df = fixKeyPoint(df)
-    df = addIds(df)
     df = applyTradeId(df)
-    points = get_data(sql, 'key_points.sql')
-
     df['Date'] = pd.to_datetime(df['Date'])
-
     company_files = get_company_list(commodity)
-    group2 = []
 
     if companies:
         company_files = companies
@@ -326,36 +254,38 @@ def process_throughput(save=False,
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
-        if not df_c.empty and company not in group2:
+        if not df_c.empty:
+            if company == "MNP":
+                df_c["KeyPointID"] = "KP0046"
             meta["build"] = True
             trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
             meta = meta_throughput(df_c, meta, commodity)
             thisKeyPoints = points[points['Pipeline Name'] == company].copy().reset_index(drop=True)
             thisKeyPoints['loc'] = [[lat, long] for lat, long in zip(thisKeyPoints['Latitude'], thisKeyPoints['Longitude'])]
-            for delete in ['Pipeline Name', 'Latitude', 'Longitude']:
+            for delete in ['Pipeline Name', 'Latitude', 'Longitude', 'Description', 'Description FRA', 'Key Point']:
                 del thisKeyPoints[delete]
             meta['keyPoints'] = thisKeyPoints.to_dict(orient='records')
             for delete in ['Direction of Flow']:
                 del df_c[delete]
 
             point_data = {}
-            pointsList = sorted(list(set(df_c['Key Point'])))
+            pointsList = sorted(list(set(df_c['KeyPointID'])))
             for p in pointsList:
                 rounding = getRounding(p)
                 pointCapacity, pointImportCapacity = [], []
-                df_p = df_c[df_c['Key Point'] == p].copy().reset_index(drop=True)
-                df_p = df_p.groupby(['Date', 'Key Point', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
+                df_p = df_c[df_c['KeyPointID'] == p].copy().reset_index(drop=True)
+                df_p = df_p.groupby(['Date', 'KeyPointID', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
                 traffic_types = {}
                 counter = 0
                 pointDates = sorted(list(set(df_p['Date'])))
-                df_p = df_p.drop_duplicates(subset=['Date', 'Key Point', 'Trade Type'], ignore_index=True)
+                df_p = df_p.drop_duplicates(subset=['Date', 'KeyPointID', 'Trade Type'], ignore_index=True)
                 tradeData, dateAdded = [], []
                 for tr in list(set(df_p['Trade Type'])):
                     df_p_t = df_p[df_p['Trade Type'] == tr].copy()
                     df_p_t = df_p_t.merge(pd.DataFrame(pointDates), how='right', left_on='Date', right_on=0)
                     del[df_p_t[0]]
-                    for totalFill in ['Key Point', 'Trade Type']:
+                    for totalFill in ['KeyPointID', 'Trade Type']:
                         df_p_t[totalFill] = df_p_t[totalFill].fillna(method="bfill").fillna(method='ffill')
 
                     for numFill in ['Throughput', 'Capacity']:
@@ -445,13 +375,38 @@ def process_throughput(save=False,
     return thisCompanyData, df_c
 
 
+def getPoints(sql):
+    def pointLookup(p, desc="Description"):
+        return {kpId: [n, d] for kpId, n, d in zip(p['KeyPointID'], p['Key Point'], p[desc])} 
+    points = get_traffic_data(sql, 'key_points.sql')
+    points = points.fillna("")
+    eng = pointLookup(points, "Description")
+    fra = pointLookup(points, "Description FRA")
+    eng["KP0000"] = ["system", "Pipeline throughput is measured at the system level (entire pipeline) instead of individual key points."]
+    fra["KP0000"] = ["Réseau", "Le débit du pipeline est mesuré au niveau du système (tout le pipeline) au lieu de points clés individuels."]
+    with open('../data_output/traffic/points/en.json', 'w') as fp:
+        json.dump(eng, fp)
+    with open('../data_output/traffic/points/fr.json', 'w') as fp:
+        json.dump(fra, fp)
+        
+    # filter out enbridge apportionment points
+    points = points[points["Latitude"] != ""].copy().reset_index(drop=True)
+    return points
+
+
+def combined_traffic(save=True, sql=True):
+    points = getPoints(sql)
+    gas, df_gas = process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m')
+    oil, df_oil = process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
+    return [gas, oil]
+
+
 # TODO: enforce case on text columns
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    # points = get_data(False, True, "key_points.sql")
-    # oil = get_data(True, True, query="throughput_oil_monthly.sql")
-    # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    traffic, df = process_throughput(save=True, sql=True, commodity='Gas', frequency='m')
-    traffic, df = process_throughput(save=True, sql=True, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
+    # points = get_traffic_data(False, True, "key_points.sql")
+    # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
+    # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')

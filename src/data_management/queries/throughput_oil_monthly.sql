@@ -1,7 +1,7 @@
 select 
 cast(str([Month])+'-'+'1'+'-'+str([Year]) as date) as [Date],
 hc.PipelineID as [Pipeline Name],
-kp.[Key Point],
+kp.KeyPointID,
 [Direction of Flow],
 [Product],
 round([Throughput (1000 m3/d)], 2) as [Throughput (1000 m3/d)],

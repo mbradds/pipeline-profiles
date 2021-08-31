@@ -89,7 +89,7 @@ export async function mainApportion(apportionData, lang) {
     const colorList = Object.values(cerPalette);
     seriesList.forEach((pointSeries, i) => {
       const series = pointSeries;
-      series.name = lang.enbridgePoints[pointSeries.id];
+      series.name = lang.points[pointSeries.id][0];
       series.color = colorList[i];
       const pointDiv = document.createElement("div");
       const divId = `${series.id}-apportion`;
@@ -245,8 +245,10 @@ export async function mainApportion(apportionData, lang) {
         "apportion"
       );
 
-      let series = buildApportionSeries(apportionData.series, unitsHolder);
-      const chart = buildApportionChart(series, unitsHolder.current);
+      const chart = buildApportionChart(
+        buildApportionSeries(apportionData.series, unitsHolder),
+        unitsHolder.current
+      );
 
       addUnitsDisclaimer(
         "conversion-disclaimer-apportion",
@@ -268,9 +270,8 @@ export async function mainApportion(apportionData, lang) {
         .addEventListener("click", (event) => {
           if (event.target && event.target.value) {
             unitsHolder.current = event.target.value;
-            series = buildApportionSeries(apportionData.series, unitsHolder);
             chart.update({
-              series,
+              series: buildApportionSeries(apportionData.series, unitsHolder),
               yAxis: [
                 {
                   title: {
@@ -295,7 +296,6 @@ export async function mainApportion(apportionData, lang) {
   try {
     return buildDecision();
   } catch (err) {
-    console.log(err);
     return loadChartError("apportionment-dashboard", lang.dashboardError);
   }
 }

@@ -16,71 +16,71 @@ import { cerPalette, sortJsonAlpha, conversions } from "../modules/util.js";
  */
 
 export const mapInits = {
-  "TransCanada PipeLines Limited": {
+  TCPL: {
     "In Progress": 1.5,
     Closed: 1.25,
   },
-  "TransCanada Keystone Pipeline GP Ltd.": {
+  Keystone: {
     "In Progress": 3,
     Closed: 3,
   },
-  "Trans Mountain Pipeline ULC": {
+  TransMountain: {
     "In Progress": 2,
     Closed: 2,
   },
-  "PKM Cochin ULC": {
+  Cochin: {
     "In Progress": 1.5,
     Closed: 1.5,
   },
-  "Westcoast Energy Inc.": {
+  Westcoast: {
     "In Progress": 1.5,
     Closed: 1.1,
   },
-  "Southern Lights Pipeline": {
+  SouthernLights: {
     "In Progress": 3,
     Closed: 3,
   },
-  "Foothills Pipe Lines Ltd.": {
+  Foothills: {
     "In Progress": 5,
     Closed: 5,
   },
-  "Many Islands Pipe Lines (Canada) Limited": {
+  ManyIslands: {
     "In Progress": 3,
     Closed: 1.5,
   },
-  "Maritimes & Northeast Pipeline Management Ltd.": {
+  MNP: {
     "In Progress": 4,
     Closed: 4,
   },
-  "Trans Quebec and Maritimes Pipeline Inc.": {
+  TQM: {
     "In Progress": 4,
     Closed: 4,
   },
-  "Enbridge Bakken Pipeline Company Inc.": {
+  EnbridgeBakken: {
     "In Progress": 7,
     Closed: 7,
   },
-  "Enbridge Pipelines (NW) Inc.": {
+  NormanWells: {
     "In Progress": 1.5,
     Closed: 1.5,
   },
-  "Express Pipeline Ltd.": {
+  Express: {
     "In Progress": 4,
     Closed: 4,
   },
-  "Trans-Northern Pipelines Inc.": {
+  TransNorthern: {
     "In Progress": 3,
     Closed: 3,
   },
-  "Genesis Pipeline Canada Ltd.": {
+  Genesis: {
     "In Progress": 9,
     Closed: 9,
   },
-  "Montreal Pipe Line Limited": {
+  Montreal: {
     "In Progress": 10,
     Closed: 10,
   },
-  "Kingston Midstream Westspur Limited": {
+  Westspur: {
     "In Progress": 8,
     Closed: 8,
   },
@@ -247,8 +247,8 @@ export function addUnitsAndSetup(
   let [buildFive, hasImports] = [false, false];
   let secondUnit = "";
 
-  if (defaultPoint.id === "7") {
-    // 7 = St. Stephen
+  if (defaultPoint.id === "KP0046") {
+    // KP0046 = St. Stephen
     hasImports = true;
   }
   if (frequency === "monthly" || frequency === "m") {
@@ -274,7 +274,7 @@ export function addUnitsAndSetup(
   });
   document.getElementById(`select-units-radio-${section}`).innerHTML =
     buttonHTML;
-  const tm = defaultPoint.id === "35";
+  const tm = defaultPoint.id === "KP0003";
   return { unitsHolder, buildFive, hasImports, tm, commodity };
 }
 
