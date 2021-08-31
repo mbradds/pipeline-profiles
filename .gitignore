@@ -18,6 +18,7 @@ src/data_management/raw_data/*
 !src/data_management/raw_data/conditionThemes.csv
 !src/data_management/raw_data/remediationContaminants.csv
 !src/data_management/raw_data/systemId.csv
+!src/data_management/raw_data/tolls.csv
 !src/data_management/raw_data/test_data
 **/__pycache__
 *.geojson
