@@ -50,7 +50,7 @@ def applyColors(trade_type):
     return colors[trade_type]
 
 
-def get_data(sql=False, query='throughput_gas_monthly.sql', db="PipelineInformation"):
+def get_traffic_data(sql=False, query='throughput_gas_monthly.sql', db="PipelineInformation"):
 
     csvName = query.split(".")[0]+'.csv'
     if sql:
@@ -216,7 +216,7 @@ def process_throughput(points,
         if frequency == "m":
             query = 'throughput_gas_monthly.sql'
 
-        df = get_data(sql, query)
+        df = get_traffic_data(sql, query)
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
 
@@ -226,7 +226,7 @@ def process_throughput(points,
 
     else:
         query = 'throughput_oil_monthly.sql'
-        df = get_data(sql, query)
+        df = get_traffic_data(sql, query)
         df = df.rename(columns={'Available Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
         df['Trade Type'] = [str(p).strip() for p in df['Product']]
@@ -378,7 +378,7 @@ def process_throughput(points,
 def getPoints(sql):
     def pointLookup(p, desc="Description"):
         return {kpId: [n, d] for kpId, n, d in zip(p['KeyPointID'], p['Key Point'], p[desc])} 
-    points = get_data(sql, 'key_points.sql')
+    points = get_traffic_data(sql, 'key_points.sql')
     points = points.fillna("")
     eng = pointLookup(points, "Description")
     fra = pointLookup(points, "Description FRA")
@@ -402,8 +402,8 @@ def combined_traffic(save=True, sql=True):
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    # points = get_data(False, True, "key_points.sql")
-    # oil = get_data(True, True, query="throughput_oil_monthly.sql")
-    # gas = get_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(save=True, sql=False)
+    # points = get_traffic_data(False, True, "key_points.sql")
+    # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
+    # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
+    combined_traffic(save=True, sql=True)
     print('completed throughput!')

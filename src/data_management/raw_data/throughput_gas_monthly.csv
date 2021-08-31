@@ -6126,7 +6126,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2015-02-01,Westcoast,KP0024,east,intracanada,2974.0,296.129
 2015-03-01,Westcoast,KP0024,east,intracanada,2974.0,1217.948
 2015-03-01,Westcoast,KP0024,west,intracanada,2974.0,217.567
-2015-04-01,Westcoast,KP0024,east,intracanada,2974.0,949.985
+2015-04-01,Westcoast,KP0024,east,intracanada,2974.0,949.986
 2015-04-01,Westcoast,KP0024,west,intracanada,2974.0,0.215
 2015-05-01,Westcoast,KP0024,west,intracanada,2974.0,0.0
 2015-05-01,Westcoast,KP0024,east,intracanada,2974.0,1530.021
@@ -6175,7 +6175,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2017-03-01,Westcoast,KP0024,west,intracanada,2974.0,1502.215
 2017-03-01,Westcoast,KP0024,east,intracanada,2974.0,0.009
 2017-04-01,Westcoast,KP0024,east,intracanada,2974.0,95.362
-2017-04-01,Westcoast,KP0024,west,intracanada,2974.0,1325.924
+2017-04-01,Westcoast,KP0024,west,intracanada,2974.0,1325.923
 2017-05-01,Westcoast,KP0024,west,intracanada,2974.0,621.975
 2017-05-01,Westcoast,KP0024,east,intracanada,2974.0,182.494
 2017-06-01,Westcoast,KP0024,west,intracanada,2974.0,721.43

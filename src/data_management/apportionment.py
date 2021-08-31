@@ -1,30 +1,19 @@
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric, normalize_text, idify, get_company_list, get_data
-from errors import ApportionSeriesCombinationError, IdLengthError, IdError
+from util import normalize_dates, conversion, normalize_numeric, normalize_text, get_company_list, get_data
+from traffic import get_traffic_data
+from errors import ApportionSeriesCombinationError
 import dateutil.relativedelta
-from traffic import addIds
 import time
 import json
 import os
 script_dir = os.path.dirname(__file__)
 
-enbridgePoints = {
-    "Cromer - Line 2/93": "crom2/93",
-    "Kerrobert - Line 2/3": "kerr2/3",
-    "Clearbrook - Line 2/3": "clea2/3",
-    "Kerrobert - Line 2/93": "kerr2/93",
-    "Kerrobert - Line 4/67": "kerr4/67",
-    "Kerrobert - Line 4/68": "kerr4/68",
-    "Kerrobert - Line 4/70": "kerr4/70",
-    "Westover - Line 10": "west10",
-    "Kerrobert - Line 1": "kerr1",
-    "Regina - Line 4/67": "regi4/67",
-    "Hardisty - Line 4/67": "hard4/67",
-    "Cromer - Line 2/3": "crom2/3",
-    "Cromer - Line 2/3/65": "crom2/3/65",
-    "Westover - Line 11": "west11",
-    "Edmonton - Line 2/3": "edmo2/3",
-    }
+
+def getEnbridgePoints(sql=True):
+    points = get_traffic_data(sql, 'key_points.sql')
+    points = points.fillna("")
+    points = points[points["Pipeline Name"] == "EnbridgeMainline"]
+    return [pId for pId, desc in zip(points["KeyPointID"], points["Description"]) if desc == ""]
 
 
 def hasData(df, col):
@@ -39,38 +28,6 @@ def hasNotNull(df, col):
         if not pd.isnull(x):
             return True
     return False
-
-
-def apportionmentIds(df):
-    df['Key Point'] = [x.replace("line", "Line") for x in df["Key Point"]]
-    try:
-        df = idify(df, "Key Point", enbridgePoints, False)
-    except IdLengthError:
-        raise
-    except IdError:
-        pass
-
-    sortPoints = {
-        "edmo2/3": 1,
-        "hard4/67": 2,
-        "kerr1": 3,
-        "kerr2/3": 4,
-        "kerr2/93": 5,
-        "kerr4/67": 6,
-        "kerr4/68": 7,
-        "kerr4/70": 8,
-        "regi4/67": 9,
-        "crom2/3": 10,
-        "crom2/93": 11,
-        "crom2/3/65": 12,
-        "clea2/3": 13,
-        "west10": 14,
-        "west11": 15,
-    }
-    df['sort'] = [sortPoints[x] if x in sortPoints.keys() else 999 for x in df['Key Point']]
-    df = df.sort_values(by=['sort', 'Date'])
-    del df['sort']
-    return df
 
 
 def apportionLine(df_p,
@@ -147,18 +104,15 @@ def process_apportionment(save=False, sql=False, companies=False):
     df = normalize_dates(df, ['Date'])
     df = normalize_text(df, ['Pipeline Name'])
     # enbridge processing
-    df = df.drop(df[(df['Pipeline Name'] == 'EnbridgeMainline') & (df['Key Point'].isin(['ex-Gretna', 'Into-Sarnia']))].index)
+    df = df.drop(df[(df['Pipeline Name'] == 'EnbridgeMainline') & (df['KeyPointID'].isin(['KP0016', 'KP0021']))].index)
     df = df.drop(df[(df['Pipeline Name'] == 'EnbridgeMainline') & (df['Date'].dt.year < 2016)].index)
     # cochin processing
-    df = df.drop(df[(df['Pipeline Name'] == 'Cochin') & (df['Key Point'] != 'Ft. Saskatchewan')].index)
+    df = df.drop(df[(df['Pipeline Name'] == 'Cochin') & (df['KeyPointID'] != 'KP0018')].index)
     df = df[~df['Pipeline Name'].isin(["SouthernLights",
                                        "Westpur",
                                        "TransNorthern"])].reset_index(drop=True)
 
-    df['Key Point'] = df['Key Point'].replace("All", "system")
-    df = addIds(df)
     df = df.rename(columns={x: x.split("(")[0].strip() for x in df.columns})
-    df = apportionmentIds(df)
     numCols = ['Available Capacity',
                'Original Nominations',
                'Accepted Nominations',
@@ -171,6 +125,8 @@ def process_apportionment(save=False, sql=False, companies=False):
     if companies:
         company_files = companies
 
+    enbridgePoints = getEnbridgePoints(sql)
+
     for company in company_files:
         thisCompanyData = {}
         folder_name = company.replace(' ', '').replace('.', '')
@@ -178,7 +134,7 @@ def process_apportionment(save=False, sql=False, companies=False):
         df_c = df_c.where(pd.notnull(df_c), None)
         if not df_c.empty:
             thisCompanyData['build'] = True
-            df_c = df_c.drop_duplicates(subset=['Date', 'Key Point'])
+            df_c = df_c.drop_duplicates(subset=['Date', 'KeyPointID'])
             minDate = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
             thisCompanyData["company"] = company
             pointSeries = []
@@ -187,11 +143,11 @@ def process_apportionment(save=False, sql=False, companies=False):
                            "min": [minDate.year, minDate.month-1, minDate.day]})
 
             yAxis = 1
-            for kp in df_c["Key Point"].unique():
+            for kp in df_c["KeyPointID"].unique():
                 lineData, areaData, pctData = [], [], []
-                df_p = df_c[df_c["Key Point"] == kp].copy().reset_index(drop=True)
+                df_p = df_c[df_c["KeyPointID"] == kp].copy().reset_index(drop=True)
                 df_p = df_p.sort_values(by='Date')
-                if kp not in enbridgePoints.values():
+                if kp not in enbridgePoints:
                     series = apportionLine(df_p, company, pctData, lineData, areaData, series)
                     thisCompanyData["keyPoint"] = kp
                 else:
@@ -214,5 +170,5 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 if __name__ == "__main__":
     print('starting apportionment...')
-    df = process_apportionment(sql=True, save=True)  #, companies=["Enbridge Pipelines Inc."])
+    df = process_apportionment(sql=True, save=True)
     print('completed apportionment!')
