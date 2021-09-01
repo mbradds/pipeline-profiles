@@ -16,13 +16,15 @@ def companyFilter(df, company):
                                     "Firm Full Path Service, except Seasonal, 1Yr Demand Charge",
                                     "Firm Full Path Service, except Seasonal, 3Yr Demand Charge",
                                     "Firm Full Path Service, except Seasonal, 5Yr Demand Charge"])]
+        selectedPaths = ['System-CA/US border', 'Zone 2-CA/US border']
     elif company == "Cochin":
         df = df[df["Path"].isin(["Cochin Terminal in Kankakee County, Illinois-Facilities in Fort Saskatchewan, Alberta",
                                  "International Boundary near Alameda, Saskatchewan-Facilities in Fort Saskatchewan, Alberta"])]
+        selectedPaths = []
         
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
-    return df
+    return df, selectedPaths
 
 
 def processPath(df, seriesCol):
@@ -53,7 +55,7 @@ def processTollsData(sql=True, companies=False, save=True):
     for company in company_files:
         thisCompanyData = {}
         df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
-        df_c = companyFilter(df_c, company)
+        df_c, selectedPaths = companyFilter(df_c, company)
         meta = {"companyName": company}
         # build a series for product/service in each Paths
         if not df_c.empty:
@@ -69,7 +71,7 @@ def processTollsData(sql=True, companies=False, save=True):
                 seriesCol = "Path"
             else:
                 print("error! Need to filter on two columns")
-            meta["paths"] = paths
+            meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
             pathSeries = []
             for path in paths:
                 df_p = df_c[df_c["Path"] == path].copy().reset_index(drop=True)
