@@ -1,5 +1,5 @@
-// import Highcharts from "highcharts";
-// import { cerPalette } from "../modules/util.js";
+import Highcharts from "highcharts";
+import { cerPalette } from "../modules/util.js";
 import { fillBetween } from "../modules/datestone.js";
 
 export async function mainTolls(tollsData, metaData, lang) {
@@ -9,7 +9,7 @@ export async function mainTolls(tollsData, metaData, lang) {
     const seriesLookup = {};
     tollsData.forEach((path) => {
       let fullPath = [];
-      path.data.forEach((partialPath) => {
+      path.series.forEach((partialPath) => {
         let fullTolls = [];
         partialPath.data.forEach((toll) => {
           fullTolls.push.apply(
@@ -18,24 +18,51 @@ export async function mainTolls(tollsData, metaData, lang) {
           );
         });
         fullPath.push({
-          id: `${partialPath.id}-${path.path}`,
+          id: `${partialPath.id}-${path.pathName}`,
           name: partialPath.id,
           data: fullTolls,
         });
       });
-      seriesLookup[path.path] = fullPath;
+      seriesLookup[path.pathName] = fullPath;
     });
     return seriesLookup;
+  }
+
+  function buildTollsChart(series, div = "tolls-chart") {
+    return new Highcharts.chart(div, {
+      chart: {
+        zoomType: "x",
+        animation: false,
+      },
+      title: "",
+      xAxis: {
+        type: "datetime",
+        crosshair: true,
+      },
+      tooltip: {
+        shared: true,
+        shadow: false,
+        useHTML: true,
+        animation: true,
+        borderColor: cerPalette["Dim Grey"],
+      },
+      series,
+    });
   }
 
   function buildDecision() {
     if (metaData.build) {
       const series = buildSeries();
-      console.log(series);
+      const chart = buildTollsChart(series[metaData.paths[1]]);
+      console.log(chart);
     } else {
       console.log("no tolls data");
     }
   }
 
-  buildDecision();
+  try {
+    buildDecision();
+  } catch (err) {
+    console.log(err);
+  }
 }

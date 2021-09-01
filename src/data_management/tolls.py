@@ -35,7 +35,7 @@ def processPath(df, seriesCol):
         thisSeries["units"] = list(dfs["Units"])[0]
         data = []
         for s, e, value in zip(dfs["Effective Start"], dfs["Effective End"], dfs["Value"]):
-            data.append([[s.year, s.month, s.day], [e.year, e.month, e.day], value])
+            data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
         thisSeries["data"] = data
         series.append(thisSeries)
     return series
@@ -73,7 +73,7 @@ def processTollsData(sql=True, companies=False, save=True):
             pathSeries = []
             for path in paths:
                 df_p = df_c[df_c["Path"] == path].copy().reset_index(drop=True)
-                pathSeries.append({"path": path, "data": processPath(df_p, seriesCol)})
+                pathSeries.append({"pathName": path, "series": processPath(df_p, seriesCol)})
                 # pathSeries[path] = processPath(df_p, seriesCol)
             
             thisCompanyData["meta"] = meta

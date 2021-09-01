@@ -102,6 +102,7 @@ export function fillBetween(
   let startDate = new Date(start[0], start[1], start[2]);
   const endDate = new Date(end[0], end[1], end[2]);
   const datePlusPlus = getDateFunction(frequency);
+  startDate = new Date(datePlusPlus(startDate, -1));
   const addFunction = addRow(transform, increment, datePlusPlus);
   while (startDate < endDate) {
     const { dateNew, valueNew } = addFunction(startValue, startDate);

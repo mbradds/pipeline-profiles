@@ -32,6 +32,7 @@ export const pm = {
   Alliance: {
     sections: {
       traffic: { map: true, noMap: false },
+      tolls: true,
       apportion: false,
       safety: true,
     },
