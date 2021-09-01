@@ -1,5 +1,5 @@
 import test from "ava";
-import { mapDates } from "../src/modules/datestone.js";
+import { mapDates, fillBetween } from "../src/modules/datestone.js";
 import {
   arrAvg,
   sortJson,
@@ -152,4 +152,13 @@ test("EventTrend dummy series", (t) => {
   t.is(dummySeries.showInLegend, false);
   t.is(dummySeries.data[0][0], 2015);
   t.is(dummySeries.data[dummySeries.data.length - 1][0], 2021);
+});
+
+test("fill between dates", (t) => {
+  const start = [2015, 0, 0];
+  const end = [2015, 11, 31];
+  // console.log(new Date(start[0], start[1], start[2]));
+  // console.log(new Date(end[0], end[1], end[2]));
+  const series = fillBetween(start, end, 5);
+  t.is(series.length, 365);
 });

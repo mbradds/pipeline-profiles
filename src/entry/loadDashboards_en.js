@@ -22,6 +22,8 @@ import { englishDashboard } from "../modules/langEnglish.js";
 import { mainTraffic } from "../dashboards/trafficDashboard.js";
 // apportionment
 import { mainApportion } from "../dashboards/apportionmentDashboard.js";
+// tolls
+import { mainTolls } from "../dashboards/tollsDashboard.js";
 // operations and maintenance activities
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
@@ -35,6 +37,7 @@ import "../css/main.css";
 
 generalTheme();
 
+// TODO: try to share this function between eng and fra
 export async function loadAllCharts(data, plains = false) {
   const arrayOfCharts = [
     mainTraffic(
@@ -43,6 +46,7 @@ export async function loadAllCharts(data, plains = false) {
       englishDashboard.traffic
     ),
     mainApportion(data.apportionData, englishDashboard.apportion),
+    mainTolls(data.tollsData.tolls, data.tollsData.meta, {}),
     mainConditions(
       JSON.parse(data.conditionsData.regions),
       data.canadaMap,

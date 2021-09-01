@@ -70,10 +70,11 @@ def processTollsData(sql=True, companies=False, save=True):
             else:
                 print("error! Need to filter on two columns")
             meta["paths"] = paths
-            pathSeries = {}
+            pathSeries = []
             for path in paths:
                 df_p = df_c[df_c["Path"] == path].copy().reset_index(drop=True)
-                pathSeries[path] = processPath(df_p, seriesCol)
+                pathSeries.append({"path": path, "data": processPath(df_p, seriesCol)})
+                # pathSeries[path] = processPath(df_p, seriesCol)
             
             thisCompanyData["meta"] = meta
             thisCompanyData["tolls"] = pathSeries
