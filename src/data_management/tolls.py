@@ -16,6 +16,9 @@ def companyFilter(df, company):
                                     "Firm Full Path Service, except Seasonal, 1Yr Demand Charge",
                                     "Firm Full Path Service, except Seasonal, 3Yr Demand Charge",
                                     "Firm Full Path Service, except Seasonal, 5Yr Demand Charge"])]
+    elif company == "Cochin":
+        df = df[df["Path"].isin(["Cochin Terminal in Kankakee County, Illinois-Facilities in Fort Saskatchewan, Alberta",
+                                 "International Boundary near Alameda, Saskatchewan-Facilities in Fort Saskatchewan, Alberta"])]
         
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
@@ -28,6 +31,7 @@ def processPath(df, seriesCol):
     for ps in pathSeries:
         dfs = df[df[seriesCol] == ps].copy().reset_index()
         thisSeries = {"id": ps}
+        thisSeries["product"] = list(dfs["Product"])[0]
         thisSeries["units"] = list(dfs["Units"])[0]
         data = []
         for s, e, value in zip(dfs["Effective Start"], dfs["Effective End"], dfs["Value"]):
@@ -86,5 +90,6 @@ def processTollsData(sql=True, companies=False, save=True):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    df, thisCompanyData = processTollsData(sql=False, companies=["Alliance"])
+    completed = ["Alliance", "Cochin"]
+    df, thisCompanyData = processTollsData(sql=False, companies=completed)
     print("done tolls")

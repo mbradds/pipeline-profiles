@@ -60,7 +60,7 @@ def get_traffic_data(sql=False, query='throughput_gas_monthly.sql', db="Pipeline
 
     else:
         print('reading local '+query.split(".")[0])
-        df = pd.read_csv('raw_data/'+csvName, encoding='latin-1')
+        df = pd.read_csv('raw_data/'+csvName, encoding='utf-8')
 
     # inital processing for key points
     if query == 'key_points.sql':
