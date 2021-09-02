@@ -189,6 +189,22 @@ styles for remediation dashboard
   margin-right: -15px;
 }
 
+/* styles for tolls dashboard */
+
+#tolls-path-btn .checkbox:first-child {
+  margin-top: 0px;
+}
+#tolls-filters {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: space-between;
+}
+#tolls-info {
+  margin-left: 25px;
+  flex-grow: 1;
+  height: inherit;
+}
 /* 
 responsive style options 
 */
@@ -302,6 +318,10 @@ responsive style options
   #remediation-map {
     height: 480px;
   }
+  /* tolls */
+  #tolls-chart {
+    height: 450px;
+  }
 }
 /* large screens */
 @media only screen and (min-width: 1600px) {
@@ -330,5 +350,9 @@ responsive style options
   }
   #remediation-map {
     height: 515px;
+  }
+  /* tolls */
+  #tolls-chart {
+    height: 500px;
   }
 }

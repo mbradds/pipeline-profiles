@@ -7,9 +7,11 @@ export async function mainTolls(tollsData, metaData, lang) {
 
   function buildSeries() {
     const seriesLookup = {};
-    tollsData.forEach((path) => {
+    const colorList = Object.values(cerPalette);
+    let usedColors = {};
+    tollsData.forEach((path, pathNum) => {
       let fullPath = [];
-      path.series.forEach((partialPath) => {
+      path.series.forEach((partialPath, partialNum) => {
         let fullTolls = [];
         partialPath.data.forEach((toll) => {
           fullTolls.push.apply(
@@ -17,15 +19,39 @@ export async function mainTolls(tollsData, metaData, lang) {
             fillBetween(toll[0], toll[1], toll[2])
           );
         });
+        let currentColor = colorList[pathNum + partialNum];
+        if (usedColors[partialPath.id]) {
+          currentColor = usedColors[partialPath.id];
+        } else {
+          usedColors[partialPath.id] = currentColor;
+        }
         fullPath.push({
           id: `${partialPath.id}-${path.pathName}`,
           name: partialPath.id,
           data: fullTolls,
+          color: currentColor,
+          pathName: path.pathName,
+          units: partialPath.units,
+          product: partialPath.product,
         });
       });
       seriesLookup[path.pathName] = fullPath;
     });
     return seriesLookup;
+  }
+
+  function toolTipTolls(event) {
+    console.log(event);
+    let toolText = `<strong>${Highcharts.dateFormat(
+      "%b %d, %Y",
+      event.x
+    )}</strong>`;
+    toolText += `<table>`;
+    event.points.forEach((point) => {
+      toolText += `<tr><td>Toll:</td><td>${point.y}</td></tr>`;
+    });
+    toolText += `</table>`;
+    return toolText;
   }
 
   function buildTollsChart(series, div = "tolls-chart") {
@@ -39,12 +65,20 @@ export async function mainTolls(tollsData, metaData, lang) {
         type: "datetime",
         crosshair: true,
       },
+      yAxis: {
+        title: {
+          text: "Toll",
+        },
+      },
       tooltip: {
         shared: true,
         shadow: false,
         useHTML: true,
         animation: true,
         borderColor: cerPalette["Dim Grey"],
+        formatter: function () {
+          return toolTipTolls(this);
+        },
       },
       series,
     });
@@ -61,7 +95,7 @@ export async function mainTolls(tollsData, metaData, lang) {
       }
       btnGroup.insertAdjacentHTML(
         "beforeend",
-        `<div class="checkbox-inline"><label for="inlineCheck${i}" label><input id="inlineCheck${i}" ${checked} type="checkbox" value="${point[0]}">${point[0]}</label></div>`
+        `<div class="checkbox"><label for="inlineCheck${i}" label><input id="inlineCheck${i}" ${checked} type="checkbox" value="${point[0]}">${point[0]}</label></div>`
       );
     });
     return [btnGroup, selectedPaths];
@@ -105,7 +139,9 @@ export async function mainTolls(tollsData, metaData, lang) {
         } else {
           selectedPaths = selectedPaths.filter((path) => path[0] !== pathId);
           series[pathId].forEach((s) => {
-            chart.get(s.id).remove();
+            let seriesToRemove = chart.get(s.id);
+            seriesToRemove.showInLegend = true;
+            seriesToRemove.remove();
           });
           chart.redraw(true);
         }
