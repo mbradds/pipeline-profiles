@@ -191,7 +191,7 @@ styles for remediation dashboard
 
 /* styles for tolls dashboard */
 
-#tolls-path-btn .checkbox:first-child {
+#tolls-path-btn .checkbox {
   margin-top: 0px;
 }
 #tolls-filters {

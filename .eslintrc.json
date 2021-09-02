@@ -8,6 +8,12 @@
     "no-nested-ternary": "off",
     "no-underscore-dangle": "warn",
     "new-cap": "warn",
-    "import/extensions": "always"
+    "import/extensions": [
+      "error",
+      {
+        "js": "always",
+        "json": "always"
+      }
+    ]
   }
 }
