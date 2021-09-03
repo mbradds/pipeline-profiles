@@ -133,6 +133,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: true,
       safety: true,
     },
   },
@@ -182,6 +183,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: true,
       safety: true,
     },
   },

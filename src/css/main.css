@@ -194,6 +194,9 @@ styles for remediation dashboard
 #tolls-path-btn .checkbox {
   margin-top: 0px;
 }
+#tolls-path-btn {
+  margin-right: 25px;
+}
 #tolls-filters {
   display: flex;
   flex-direction: row;
@@ -201,7 +204,6 @@ styles for remediation dashboard
   align-content: space-between;
 }
 #tolls-info {
-  margin-left: 25px;
   flex-grow: 1;
   height: inherit;
 }

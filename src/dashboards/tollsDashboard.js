@@ -1,5 +1,10 @@
 import Highcharts from "highcharts";
-import { cerPalette, btnGroupClick } from "../modules/util.js";
+import {
+  cerPalette,
+  btnGroupClick,
+  visibility,
+  equalizeHeight,
+} from "../modules/util.js";
 import { fillBetween } from "../modules/datestone.js";
 
 export async function mainTolls(tollsData, metaData) {
@@ -17,10 +22,10 @@ export async function mainTolls(tollsData, metaData) {
           fullTolls.push(...fillBetween(toll[0], toll[1], toll[2]));
         });
         let currentColor = colorList[pathNum + partialNum];
-        let showInLegend = true;
+        // let showInLegend = true;
         if (usedColors[partialPath.id]) {
           currentColor = usedColors[partialPath.id];
-          showInLegend = false;
+          // showInLegend = false;
         } else {
           usedColors[partialPath.id] = currentColor;
         }
@@ -33,7 +38,7 @@ export async function mainTolls(tollsData, metaData) {
           pathName: path.pathName,
           units: partialPath.units,
           product: partialPath.product,
-          showInLegend,
+          // showInLegend,
         });
       });
       seriesLookup[path.pathName] = fullPath;
@@ -71,6 +76,23 @@ export async function mainTolls(tollsData, metaData) {
           text: "Toll",
         },
       },
+      plotOptions: {
+        series: {
+          marker: {
+            symbol: "circle",
+          },
+          events: {
+            legendItemClick() {
+              return false;
+            },
+          },
+          states: {
+            inactive: {
+              opacity: 1,
+            },
+          },
+        },
+      },
       tooltip: {
         shadow: false,
         useHTML: true,
@@ -100,6 +122,7 @@ export async function mainTolls(tollsData, metaData) {
         `<div class="checkbox"><label for="inlineCheck${i}" label><input id="inlineCheck${i}" ${checked} type="checkbox" value="${point[0]}">${point[0]}</label></div>`
       );
     });
+    equalizeHeight("tolls-filter-container", "tolls-info");
     return btnGroup;
   }
 
@@ -152,26 +175,30 @@ export async function mainTolls(tollsData, metaData) {
             });
             series[pathId].forEach((s) => {
               if (!currentIDs.includes(s.id)) {
+                const newSeries = s;
                 if (currentNames[s.name]) {
-                  const newSeries = s;
                   newSeries.color = currentNames[s.name].color;
                   newSeries.showInLegend = false;
+                } else {
+                  newSeries.showInLegend = true;
                 }
-                chart.addSeries(s, false, false);
+                chart.addSeries(newSeries, false, false);
               }
             });
             chart.redraw(true);
           } else {
             series[pathId].forEach((s) => {
-              const seriesToRemove = chart.get(s.id);
-              seriesToRemove.showInLegend = true;
-              seriesToRemove.remove();
+              chart.get(s.id).remove();
             });
             chart.redraw(true);
           }
         }
       });
-    } else if (metaData.split.default) {
+    } else {
+      visibility(["tolls-path-btn"], "hide");
+    }
+
+    if (metaData.split.default) {
       const splitBtns = addSplitButtons(metaData.split);
       splitBtns.addEventListener("click", (event) => {
         if (event.target) {
@@ -188,6 +215,8 @@ export async function mainTolls(tollsData, metaData) {
           chart.redraw(true);
         }
       });
+    } else {
+      visibility(["tolls-split-btn"], "hide");
     }
 
     return chart;

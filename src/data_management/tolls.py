@@ -13,6 +13,11 @@ def getTollsData(sql=True):
 def companyFilter(df, company):
     pathFilter = True
     splitDefault = False
+    selectedPaths = []
+    if len(list(set(df["Path"]))) == 1:
+        pathFilter = False
+        selectedPaths = list(set(df["Path"]))
+
     if company == "Alliance":
         df = df[df["Service"].isin(["FT, Demand",
                                     "Firm Full Path Service, except Seasonal, 1Yr Demand Charge",
@@ -28,7 +33,6 @@ def companyFilter(df, company):
         df = df[df["Path"].isin(cochinPaths)]
         df["split"] = ["Cochin local" if s == "Local tariff" else "Cochin IJT" for s in df["Service"]]
         splitDefault = "Cochin IJT"
-        selectedPaths = cochinPaths
         
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
@@ -92,16 +96,19 @@ def processTollsData(sql=True, companies=False, save=True):
             else:
                 print("error! Need to filter on two columns")
             meta["seriesCol"] = seriesCol
-            meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
             meta["pathFilter"] = pathFilter
             meta["split"] = {"default": splitDefault}
             if splitDefault:
                 meta["split"]["buttons"] = list(set(df_c["split"]))
                 pathSeries = []
+                meta["paths"] = {}
                 for split in list(set(df_c["split"])):
+                    if len(selectedPaths) > 0:
+                        meta["paths"][split] = [[p, True] if p in selectedPaths[split] else [p, False] for p in paths]
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     pathSeries.extend(generatePathSeries(df_split, paths, seriesCol, split))
             else:
+                meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
                 pathSeries = generatePathSeries(df_c, paths, seriesCol, splitDefault)
             
             thisCompanyData["meta"] = meta
@@ -119,6 +126,6 @@ def processTollsData(sql=True, companies=False, save=True):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    completed = ["Alliance", "Cochin"]
-    df, thisCompanyData = processTollsData(sql=False, companies=completed)
+    completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken"]
+    df, thisCompanyData = processTollsData(sql=False, companies=["EnbridgeMainline"])
     print("done tolls")
