@@ -33,6 +33,35 @@ def companyFilter(df, company):
         df = df[df["Path"].isin(cochinPaths)]
         df["split"] = ["Cochin local" if s == "Local tariff" else "Cochin IJT" for s in df["Service"]]
         splitDefault = "Cochin IJT"
+    elif company == "EnbridgeMainline":
+        # df = df[df["Value"] >= 0].copy().reset_index(drop=True)
+        df = df.where(pd.notnull(df), None)
+        enbridgePaths = {"EnbridgeLocal": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba",
+                                           "Edmonton Terminal, Alberta-Hardisty Terminal, Alberta"],
+                         "EnbridgeMainline": ["Edmonton Terminal, Alberta-Clearbrook, Minnesota",
+                                              "Edmonton Terminal, Alberta-Flanagan, Illinois",
+                                              "Edmonton Terminal, Alberta-Nanticoke, Ontario",
+                                              "Edmonton Terminal, Alberta-Superior, Wisconsin"],
+                         "EnbridgeFSP": ["Cromer, Manitoba-ALL",
+                                         "Edmonton, Alberta-ALL",
+                                         "Hardisty, Alberta-ALL",
+                                         "Kerrobert, Saskatchewan-ALL",
+                                         "Regina, Saskatchewan-ALL"]}
+        
+        filtered_list = []
+        for section, paths in enbridgePaths.items():
+            filtered_list.append(df[(df["PipelineID"]==section) & (df["Path"].isin(paths))].copy())
+        df = pd.concat(filtered_list, ignore_index=True)
+        
+        selectedPaths = {"Enbridge Local": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba"],
+                         "Enbridge Mainline": ["Edmonton Terminal, Alberta-Clearbrook, Minnesota"],
+                         "Enbridge FSP": ["Cromer, Manitoba-ALL"]}
+        df["split"] = df["PipelineID"]
+        df["split"] = df["split"].replace({"EnbridgeMainline": "Enbridge Mainline",
+                                           "EnbridgeLocal": "Enbridge Local",
+                                           "EnbridgeFSP": "Enbridge FSP"})
+        splitDefault = "Enbridge Local"
+        
         
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
@@ -57,15 +86,28 @@ def processPath(df, seriesCol):
 
 def processTollsData(sql=True, companies=False, save=True):
     
-    def generatePathSeries(df, paths, seriesCol, split):
+    def generatePathSeries(df, paths, seriesCol):
         pathSeries = []
         for path in paths:
                 df_p = df[df["Path"] == path].copy().reset_index(drop=True)
                 if not df_p.empty:
                     pathSeries.append({"pathName": path,
-                                       "series": processPath(df_p, seriesCol),
-                                       "split": split})
+                                       "series": processPath(df_p, seriesCol)})
         return pathSeries
+    
+    def findSeriesCol(df, paths):
+        products = sorted(list(set(df["Product"])))
+        services = sorted(list(set(df["Service"])))
+        if len(products) >= 1 and len(services) <= 1 :
+            seriesCol = "Product"
+        elif len(services) >= 1 and len(products) <= 1:
+            seriesCol = "Service"
+        elif len(services) <= 1 and len(products) <= 1:
+            seriesCol = "Path"
+        else:
+            seriesCol = "Service"
+            print("error! Need to filter on two columns")
+        return seriesCol
     
     df = getTollsData(sql)
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
@@ -78,38 +120,38 @@ def processTollsData(sql=True, companies=False, save=True):
     
     for company in company_files:
         thisCompanyData = {}
-        df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
+        if company == "EnbridgeMainline":
+            df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
+        else:
+            df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
         df_c, selectedPaths, pathFilter, splitDefault = companyFilter(df_c, company)
         meta = {"companyName": company}
         # build a series for product/service in each Paths
         if not df_c.empty:
             meta["build"] = True
             paths = sorted(list(set(df_c["Path"])))
-            products = sorted(list(set(df_c["Product"])))
-            services = sorted(list(set(df_c["Service"])))
-            if len(products) >= 1 and len(services) <= 1 :
-                seriesCol = "Product"
-            elif len(services) >= 1 and len(products) <= 1:
-                seriesCol = "Service"
-            elif len(services) <= 1 and len(products) <= 1:
-                seriesCol = "Path"
-            else:
-                print("error! Need to filter on two columns")
-            meta["seriesCol"] = seriesCol
             meta["pathFilter"] = pathFilter
             meta["split"] = {"default": splitDefault}
             if splitDefault:
                 meta["split"]["buttons"] = list(set(df_c["split"]))
-                pathSeries = []
+                pathSeries = {}
                 meta["paths"] = {}
+                meta["seriesCol"] = {}
                 for split in list(set(df_c["split"])):
+                    df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
+                    paths = sorted(list(set(df_split["Path"])))
                     if len(selectedPaths) > 0:
                         meta["paths"][split] = [[p, True] if p in selectedPaths[split] else [p, False] for p in paths]
-                    df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
-                    pathSeries.extend(generatePathSeries(df_split, paths, seriesCol, split))
+                    else:
+                        meta["paths"][split] = [[p, True] for p in paths]
+                    seriesCol = findSeriesCol(df_split, meta["paths"][split])
+                    meta["seriesCol"][split] = seriesCol 
+                    pathSeries[split] = generatePathSeries(df_split, paths, seriesCol)
             else:
+                seriesCol = findSeriesCol(df_c, paths)
+                meta["seriesCol"] = seriesCol
                 meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
-                pathSeries = generatePathSeries(df_c, paths, seriesCol, splitDefault)
+                pathSeries = generatePathSeries(df_c, paths, seriesCol)
             
             thisCompanyData["meta"] = meta
             thisCompanyData["tolls"] = pathSeries
@@ -126,6 +168,6 @@ def processTollsData(sql=True, companies=False, save=True):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken"]
+    completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken", "EnbridgeMainline"]
     df, thisCompanyData = processTollsData(sql=False, companies=["EnbridgeMainline"])
     print("done tolls")

@@ -11,38 +11,47 @@ export async function mainTolls(tollsData, metaData) {
   // console.log(tollsData, metaData, lang);
 
   function buildSeries() {
-    const seriesLookup = {};
-    const colorList = Object.values(cerPalette);
-    const usedColors = {};
-    tollsData.forEach((path, pathNum) => {
-      const fullPath = [];
-      path.series.forEach((partialPath, partialNum) => {
-        const fullTolls = [];
-        partialPath.data.forEach((toll) => {
-          fullTolls.push(...fillBetween(toll[0], toll[1], toll[2]));
+    const processTollsSection = (section) => {
+      const seriesLookup = {};
+      const colorList = Object.values(cerPalette);
+      const usedColors = {};
+      section.forEach((path, pathNum) => {
+        const fullPath = [];
+        path.series.forEach((partialPath, partialNum) => {
+          const fullTolls = [];
+          partialPath.data.forEach((toll) => {
+            fullTolls.push(...fillBetween(toll[0], toll[1], toll[2]));
+          });
+          let currentColor = colorList[pathNum + partialNum];
+          if (usedColors[partialPath.id]) {
+            currentColor = usedColors[partialPath.id];
+          } else {
+            usedColors[partialPath.id] = currentColor;
+          }
+          fullPath.push({
+            id: `${partialPath.id}-${path.pathName}`,
+            split: path.split,
+            name: partialPath.id,
+            data: fullTolls,
+            color: currentColor,
+            pathName: path.pathName,
+            units: partialPath.units,
+            product: partialPath.product,
+          });
         });
-        let currentColor = colorList[pathNum + partialNum];
-        // let showInLegend = true;
-        if (usedColors[partialPath.id]) {
-          currentColor = usedColors[partialPath.id];
-          // showInLegend = false;
-        } else {
-          usedColors[partialPath.id] = currentColor;
-        }
-        fullPath.push({
-          id: `${partialPath.id}-${path.pathName}`,
-          split: path.split,
-          name: partialPath.id,
-          data: fullTolls,
-          color: currentColor,
-          pathName: path.pathName,
-          units: partialPath.units,
-          product: partialPath.product,
-          // showInLegend,
-        });
+        seriesLookup[path.pathName] = fullPath;
       });
-      seriesLookup[path.pathName] = fullPath;
-    });
+      return seriesLookup;
+    };
+
+    const seriesLookup = {};
+    if (metaData.split.default) {
+      Object.keys(tollsData).forEach((section) => {
+        seriesLookup[section] = processTollsSection(tollsData[section]);
+      });
+    } else {
+      return processTollsSection(tollsData);
+    }
     return seriesLookup;
   }
 
@@ -106,7 +115,15 @@ export async function mainTolls(tollsData, metaData) {
     });
   }
 
-  function addPathButtons(points) {
+  function addPathButtons(selected = false) {
+    let points = [];
+    if (metaData.split.default) {
+      points = selected
+        ? metaData.paths[selected]
+        : metaData.paths[metaData.split.default];
+    } else {
+      points = metaData.paths;
+    }
     const btnGroup = document.getElementById("tolls-path-btn");
     btnGroup.insertAdjacentHTML(
       "beforeend",
@@ -148,12 +165,11 @@ export async function mainTolls(tollsData, metaData) {
       });
       return selected;
     }
-    Object.values(series).forEach((seriesList) => {
-      seriesList.forEach((s) => {
-        if (s.split === meta.split.default) {
-          selected.push(s);
-        }
-      });
+    const currentSeries = series[meta.split.default];
+    meta.paths[meta.split.default].forEach((path) => {
+      if (path[1]) {
+        selected.push(...currentSeries[path[0]]);
+      }
     });
     return selected;
   }
@@ -162,7 +178,7 @@ export async function mainTolls(tollsData, metaData) {
     const series = buildSeries();
     const chart = buildTollsChart(selectedSeries(series, metaData));
     if (metaData.pathFilter) {
-      const pathBtns = addPathButtons(metaData.paths);
+      const pathBtns = addPathButtons();
       pathBtns.addEventListener("click", (event) => {
         if (event.target && event.target.tagName === "INPUT") {
           const pathId = event.target.value;
@@ -203,9 +219,9 @@ export async function mainTolls(tollsData, metaData) {
       splitBtns.addEventListener("click", (event) => {
         if (event.target) {
           btnGroupClick("tolls-split-btn", event);
-          const newSplit = metaData.split;
-          newSplit.default = event.target.value;
-          const newSeries = selectedSeries(series, { split: newSplit });
+          const newSplit = metaData;
+          newSplit.split.default = event.target.value;
+          const newSeries = selectedSeries(series, newSplit);
           while (chart.series.length) {
             chart.series[0].remove(false, false, false);
           }
