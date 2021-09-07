@@ -30,7 +30,6 @@ export async function mainTolls(tollsData, metaData) {
           }
           fullPath.push({
             id: `${partialPath.id}-${path.pathName}`,
-            split: path.split,
             name: partialPath.id,
             data: fullTolls,
             color: currentColor,
@@ -55,21 +54,26 @@ export async function mainTolls(tollsData, metaData) {
     return seriesLookup;
   }
 
-  function toolTipTolls(event) {
+  function toolTipTolls(event, seriesCol) {
     let toolText = `<strong>${Highcharts.dateFormat(
       "%b %d, %Y",
       event.x
     )}</strong>`;
-    toolText += `<table>`;
-    toolText += `<tr><td>Toll:&nbsp;</td><td><strong>${event.y} (${event.series.userOptions.units})</strong></td></tr>`;
-    toolText += `<tr><td>Path:&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`;
-    toolText += `<tr><td>${metaData.seriesCol}:&nbsp;</td><td><strong>${event.series.userOptions.name}</strong></td></tr>`;
-    toolText += `<tr><td>Product:&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`;
-    toolText += `</table>`;
+    toolText += `<table><tr><td>Toll:&nbsp;</td><td><strong>${event.y} (${event.series.userOptions.units})</strong></td></tr>`;
+    const optionalSections = {
+      Path: `<tr><td>Path:&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`,
+      Product: `<tr><td>Product:&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`,
+    };
+    Object.keys(optionalSections).forEach((row) => {
+      if (row !== seriesCol) {
+        toolText += optionalSections[row];
+      }
+    });
+    toolText += `<tr><td>${seriesCol}:&nbsp;</td><td><strong>${event.series.userOptions.name}</strong></td></tr></table>`;
     return toolText;
   }
 
-  function buildTollsChart(series, div = "tolls-chart") {
+  function buildTollsChart(series, selections, div = "tolls-chart") {
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
@@ -108,15 +112,20 @@ export async function mainTolls(tollsData, metaData) {
         animation: true,
         borderColor: cerPalette["Dim Grey"],
         formatter() {
-          return toolTipTolls(this);
+          return toolTipTolls(
+            this,
+            selections.split.default
+              ? selections.seriesCol[selections.split.default]
+              : selections.seriesCol
+          );
         },
       },
       series,
     });
   }
 
-  function addPathButtons(meta, selected = false) {
-    const addCheckbox = (point, btnGroup, i, type) => {
+  function addPathButtons(meta) {
+    const addCheckbox = (point, btnGroup, i, type, section) => {
       let checked = "";
       if (point[1]) {
         checked = `checked="checked"`;
@@ -124,29 +133,54 @@ export async function mainTolls(tollsData, metaData) {
       btnGroup.insertAdjacentHTML(
         "beforeend",
         `<div class="${type}">
-        <label for="inlineCheck${i}" label>
-        <input id="inlineCheck${i}" ${checked} type="${type}" name="optradio" value="${point[0]}">${point[0]}
+        <label for="inlineCheck${i}${section}" label>
+        <input id="inlineCheck${i}${section}" ${checked} type="${type}" name="optradio${section}" value="${point[0]}">${point[0]}
         </label></div>`
       );
+      return btnGroup;
     };
 
-    let points = [];
+    const setUpButtons = (selectText, divId) => {
+      const btnGroup = document.getElementById(divId);
+      btnGroup.innerHTML = "";
+      btnGroup.insertAdjacentHTML(
+        "beforeend",
+        `<p class="cerlabel">${selectText}</p>`
+      );
+      return btnGroup;
+    };
+
+    const addEachButton = (pointList, group, type, section) => {
+      pointList.forEach((point, i) => {
+        addCheckbox(point, group, i, type, section);
+      });
+      return group;
+    };
+
+    let [points, products] = [[], []];
     if (meta.split.default) {
-      points = selected ? meta.paths[selected] : meta.paths[meta.split.default];
+      points = meta.paths[meta.split.default];
+      products = meta.products[meta.split.default];
     } else {
       points = meta.paths;
+      products = meta.products;
     }
-    const btnGroup = document.getElementById("tolls-path-btn");
-    btnGroup.innerHTML = "";
-    btnGroup.insertAdjacentHTML(
-      "beforeend",
-      `<p class="cerlabel">Select path:</p>`
-    );
-    points.forEach((point, i) => {
-      addCheckbox(point, btnGroup, i, meta.pathFilter[1]);
-    });
+
+    let btnGroup = setUpButtons("Select path:", "tolls-path-btn");
+    btnGroup = addEachButton(points, btnGroup, meta.pathFilter[1], "point");
+
+    let btnGroupProducts = false;
+    if (products) {
+      btnGroupProducts = setUpButtons("Select product:", "tolls-product-btn");
+      btnGroupProducts = addEachButton(
+        products,
+        btnGroupProducts,
+        "radio",
+        "product"
+      );
+    }
     equalizeHeight("tolls-filter-container", "tolls-info");
-    return btnGroup;
+    return [btnGroup, btnGroupProducts];
   }
 
   function addSplitButtons(split) {
@@ -163,38 +197,70 @@ export async function mainTolls(tollsData, metaData) {
 
   function selectedSeries(series, meta) {
     const selected = [];
+    let product = false;
+    const getProduct = (prodList) => {
+      let found = false;
+      if (!prodList) {
+        return found;
+      }
+      prodList.forEach((p) => {
+        if (p[1]) {
+          [found] = p;
+        }
+      });
+      return found;
+    };
     if (!meta.split.default) {
+      product = getProduct(meta.products);
       meta.paths.forEach((path) => {
         if (path[1]) {
           selected.push(...series[path[0]]);
         }
       });
-      return selected;
+    } else {
+      const currentSeries = series[meta.split.default];
+      product = getProduct(meta.products[meta.split.default]);
+      meta.paths[meta.split.default].forEach((path) => {
+        if (path[1]) {
+          selected.push(...currentSeries[path[0]]);
+        }
+      });
     }
-    const currentSeries = series[meta.split.default];
-    meta.paths[meta.split.default].forEach((path) => {
-      if (path[1]) {
-        selected.push(...currentSeries[path[0]]);
-      }
-    });
+    // filter products here
+    if (product) {
+      selected.filter((s) => s.product === product);
+    }
+
     return selected;
   }
 
+  function updateTollsDescription(selections) {
+    const split = selections.split.default
+      ? `<strong> ${selections.split.default} </strong>`
+      : " ";
+    document.getElementById(
+      "toll-description"
+    ).innerHTML = `<p>2-3 sentence description of the${split}toll methodology.</p>`;
+  }
+
   function buildDashboard() {
+    const getChartLegend = (chart) => chart.legend.allItems.map((l) => l.name);
     const selections = metaData;
     const series = buildSeries();
-    const chart = buildTollsChart(selectedSeries(series, selections));
-    if (selections.pathFilter[0]) {
-      const pathBtns = addPathButtons(selections);
+    const chart = buildTollsChart(
+      selectedSeries(series, selections),
+      selections
+    );
+    updateTollsDescription(selections);
+    let [pathBtns, productBtns] = addPathButtons(selections);
+    if (selections.pathFilter[0] && pathBtns) {
       pathBtns.addEventListener("click", (event) => {
         if (event.target && event.target.tagName === "INPUT") {
           const pathId = event.target.value;
           if (event.target.checked) {
-            // add series by id if not in the chart
             const currentNames = {};
             const currentIDs = chart.series.map((s) => {
               currentNames[s.name] = { color: s.color };
-
               return s.userOptions.id;
             });
 
@@ -204,6 +270,7 @@ export async function mainTolls(tollsData, metaData) {
               }
             }
 
+            const currentLegend = getChartLegend(chart);
             const newSelected = selections.split.default
               ? series[metaData.split.default][pathId]
               : series[pathId];
@@ -213,6 +280,8 @@ export async function mainTolls(tollsData, metaData) {
                 const newSeries = s;
                 if (currentNames[s.name]) {
                   newSeries.color = currentNames[s.name].color;
+                }
+                if (currentLegend.includes(s.name)) {
                   newSeries.showInLegend = false;
                 } else {
                   newSeries.showInLegend = true;
@@ -224,6 +293,17 @@ export async function mainTolls(tollsData, metaData) {
           } else {
             series[pathId].forEach((s) => {
               chart.get(s.id).remove();
+            });
+            const currentLegend = getChartLegend(chart);
+            chart.series.forEach((s) => {
+              if (!currentLegend.includes(s.name)) {
+                s.update(
+                  {
+                    showInLegend: true,
+                  },
+                  false
+                );
+              }
             });
             chart.redraw(true);
           }
@@ -239,13 +319,31 @@ export async function mainTolls(tollsData, metaData) {
         if (event.target) {
           btnGroupClick("tolls-split-btn", event);
           selections.split.default = event.target.value;
-          addPathButtons(selections);
+          [pathBtns, productBtns] = addPathButtons(selections);
+          if (!productBtns) {
+            visibility(["tolls-product-btn"], "hide");
+          } else {
+            visibility(["tolls-product-btn"], "show");
+          }
+          updateTollsDescription(selections);
           const newSeries = selectedSeries(series, selections);
           while (chart.series.length) {
             chart.series[0].remove(false, false, false);
           }
           newSeries.forEach((newS) => {
             chart.addSeries(newS, false, false);
+          });
+          chart.update({
+            tooltip: {
+              formatter() {
+                return toolTipTolls(
+                  this,
+                  selections.split.default
+                    ? selections.seriesCol[selections.split.default]
+                    : selections.seriesCol
+                );
+              },
+            },
           });
           chart.redraw(true);
         }

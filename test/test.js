@@ -155,7 +155,7 @@ test("EventTrend dummy series", (t) => {
 });
 
 test("fill between dates", (t) => {
-  const start = [2015, 0, 0];
+  const start = [2015, 0, 1];
   const end = [2015, 11, 31];
   // console.log(new Date(start[0], start[1], start[2]));
   // console.log(new Date(end[0], end[1], end[2]));

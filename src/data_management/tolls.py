@@ -67,46 +67,53 @@ def companyFilter(df, company):
     return df, selectedPaths, pathFilter, splitDefault
 
 
-def processPath(df, seriesCol):
+def processPath(df, seriesCol, productFilter):
     pathSeries = sorted(list(set(df[seriesCol])))
     series = []
     for ps in pathSeries:
         dfs = df[df[seriesCol] == ps].copy().reset_index()
-        thisSeries = {"id": ps}
-        thisSeries["product"] = list(dfs["Product"])[0]
-        thisSeries["units"] = list(dfs["Units"])[0]
-        data = []
-        for s, e, value in zip(dfs["Effective Start"], dfs["Effective End"], dfs["Value"]):
-            data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
-        thisSeries["data"] = data
-        series.append(thisSeries)
+        for product in list(set(dfs["Product"])):
+            dfp = dfs[dfs["Product"] == product].copy().reset_index(drop=True)
+            thisSeries = {"id": ps}
+            thisSeries["product"] = product
+            thisSeries["units"] = list(dfp["Units"])[0]
+            data = []
+            for s, e, value in zip(dfp["Effective Start"], dfp["Effective End"], dfp["Value"]):
+                data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
+            thisSeries["data"] = data
+            series.append(thisSeries)
     return series
 
 
 def processTollsData(sql=True, companies=False, save=True, completed = []):
     
-    def generatePathSeries(df, paths, seriesCol):
+    def generatePathSeries(df, paths, seriesCol, productFilter):
         pathSeries = []
         for path in paths:
                 df_p = df[df["Path"] == path].copy().reset_index(drop=True)
                 if not df_p.empty:
                     pathSeries.append({"pathName": path,
-                                       "series": processPath(df_p, seriesCol)})
+                                       "series": processPath(df_p, seriesCol, productFilter)})
         return pathSeries
     
     def findSeriesCol(df, paths):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
+        productFilter = False
         if len(products) >= 1 and len(services) <= 1 :
             seriesCol = "Product"
         elif len(services) >= 1 and len(products) <= 1:
             seriesCol = "Service"
         elif len(services) <= 1 and len(products) <= 1:
             seriesCol = "Path"
+        elif len(products) > 1 and len(services) > 1:
+            seriesCol = "Service"
+            productFilter = list(set(df["Product"]))
+            productFilter = [[x, True] if x == "heavy crude" else [x, False] for x in productFilter]
         else:
             seriesCol = "Service"
             print("error! Need to filter on two columns")
-        return seriesCol
+        return seriesCol, productFilter
     
     df = getTollsData(sql)
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
@@ -136,6 +143,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                 pathSeries = {}
                 meta["paths"] = {}
                 meta["seriesCol"] = {}
+                meta["products"] = {}
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     paths = sorted(list(set(df_split["Path"])))
@@ -143,14 +151,16 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                         meta["paths"][split] = [[p, True] if p in selectedPaths[split] else [p, False] for p in paths]
                     else:
                         meta["paths"][split] = [[p, True] for p in paths]
-                    seriesCol = findSeriesCol(df_split, meta["paths"][split])
+                    seriesCol, productFilter = findSeriesCol(df_split, meta["paths"][split])
+                    meta["products"][split] = productFilter
                     meta["seriesCol"][split] = seriesCol 
-                    pathSeries[split] = generatePathSeries(df_split, paths, seriesCol)
+                    pathSeries[split] = generatePathSeries(df_split, paths, seriesCol, productFilter)
             else:
-                seriesCol = findSeriesCol(df_c, paths)
+                seriesCol, productFilter = findSeriesCol(df_c, paths)
+                meta["products"] = productFilter
                 meta["seriesCol"] = seriesCol
                 meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
-                pathSeries = generatePathSeries(df_c, paths, seriesCol)
+                pathSeries = generatePathSeries(df_c, paths, seriesCol, productFilter)
             
             thisCompanyData["meta"] = meta
             thisCompanyData["tolls"] = pathSeries
@@ -168,5 +178,5 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
 if __name__ == "__main__":
     print("starting tolls...")
     completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken", "EnbridgeMainline"]
-    df, thisCompanyData = processTollsData(sql=False, completed=completed)
+    df, thisCompanyData = processTollsData(sql=False, companies=completed, completed=completed)
     print("done tolls")
