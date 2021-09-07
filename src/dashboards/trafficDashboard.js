@@ -62,9 +62,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
   function getPointList(meta) {
     return sortJsonAlpha(
       meta.keyPoints.map((point) => {
-        const pointName = lang.points[point["KeyPointID"]][0];
+        const pointName = lang.points[point.KeyPointID][0];
         return {
-          id: point["KeyPointID"],
+          id: point.KeyPointID,
           name: pointName,
           loc: point.loc,
         };

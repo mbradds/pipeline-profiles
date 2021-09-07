@@ -84,3 +84,30 @@ export function mapDates(
   });
   return seriesWithDate;
 }
+
+export function fillBetween(
+  start,
+  end,
+  value,
+  frequency = "daily",
+  method = "forward",
+  transform = { convert: false, operation: "none", conversion: 0, round: -1 }
+) {
+  let increment = 1;
+  if (method === "backward" || method === "b") {
+    increment = -1;
+  }
+  let series = [];
+  let startValue = value;
+  let startDate = new Date(start[0], start[1], start[2]);
+  const endDate = new Date(end[0], end[1], end[2]);
+  const datePlusPlus = getDateFunction(frequency);
+  startDate = new Date(datePlusPlus(startDate, -1));
+  const addFunction = addRow(transform, increment, datePlusPlus);
+  while (startDate < endDate) {
+    const { dateNew, valueNew } = addFunction(startValue, startDate);
+    series.push([dateNew, valueNew]);
+    startDate = new Date(dateNew);
+  }
+  return series;
+}
