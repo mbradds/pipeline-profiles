@@ -115,29 +115,35 @@ export async function mainTolls(tollsData, metaData) {
     });
   }
 
-  function addPathButtons(selected = false) {
-    let points = [];
-    if (metaData.split.default) {
-      points = selected
-        ? metaData.paths[selected]
-        : metaData.paths[metaData.split.default];
-    } else {
-      points = metaData.paths;
-    }
-    const btnGroup = document.getElementById("tolls-path-btn");
-    btnGroup.insertAdjacentHTML(
-      "beforeend",
-      `<p class="cerlabel">Select path:</p>`
-    );
-    points.forEach((point, i) => {
+  function addPathButtons(meta, selected = false) {
+    const addCheckbox = (point, btnGroup, i, type) => {
       let checked = "";
       if (point[1]) {
         checked = `checked="checked"`;
       }
       btnGroup.insertAdjacentHTML(
         "beforeend",
-        `<div class="checkbox"><label for="inlineCheck${i}" label><input id="inlineCheck${i}" ${checked} type="checkbox" value="${point[0]}">${point[0]}</label></div>`
+        `<div class="${type}">
+        <label for="inlineCheck${i}" label>
+        <input id="inlineCheck${i}" ${checked} type="${type}" name="optradio" value="${point[0]}">${point[0]}
+        </label></div>`
       );
+    };
+
+    let points = [];
+    if (meta.split.default) {
+      points = selected ? meta.paths[selected] : meta.paths[meta.split.default];
+    } else {
+      points = meta.paths;
+    }
+    const btnGroup = document.getElementById("tolls-path-btn");
+    btnGroup.innerHTML = "";
+    btnGroup.insertAdjacentHTML(
+      "beforeend",
+      `<p class="cerlabel">Select path:</p>`
+    );
+    points.forEach((point, i) => {
+      addCheckbox(point, btnGroup, i, meta.pathFilter[1]);
     });
     equalizeHeight("tolls-filter-container", "tolls-info");
     return btnGroup;
@@ -175,10 +181,11 @@ export async function mainTolls(tollsData, metaData) {
   }
 
   function buildDashboard() {
+    const selections = metaData;
     const series = buildSeries();
-    const chart = buildTollsChart(selectedSeries(series, metaData));
-    if (metaData.pathFilter) {
-      const pathBtns = addPathButtons();
+    const chart = buildTollsChart(selectedSeries(series, selections));
+    if (selections.pathFilter[0]) {
+      const pathBtns = addPathButtons(selections);
       pathBtns.addEventListener("click", (event) => {
         if (event.target && event.target.tagName === "INPUT") {
           const pathId = event.target.value;
@@ -187,9 +194,21 @@ export async function mainTolls(tollsData, metaData) {
             const currentNames = {};
             const currentIDs = chart.series.map((s) => {
               currentNames[s.name] = { color: s.color };
+
               return s.userOptions.id;
             });
-            series[pathId].forEach((s) => {
+
+            if (selections.pathFilter[1] === "radio") {
+              while (chart.series.length) {
+                chart.series[0].remove(false, false, false);
+              }
+            }
+
+            const newSelected = selections.split.default
+              ? series[metaData.split.default][pathId]
+              : series[pathId];
+
+            newSelected.forEach((s) => {
               if (!currentIDs.includes(s.id)) {
                 const newSeries = s;
                 if (currentNames[s.name]) {
@@ -219,9 +238,9 @@ export async function mainTolls(tollsData, metaData) {
       splitBtns.addEventListener("click", (event) => {
         if (event.target) {
           btnGroupClick("tolls-split-btn", event);
-          const newSplit = metaData;
-          newSplit.split.default = event.target.value;
-          const newSeries = selectedSeries(series, newSplit);
+          selections.split.default = event.target.value;
+          addPathButtons(selections);
+          const newSeries = selectedSeries(series, selections);
           while (chart.series.length) {
             chart.series[0].remove(false, false, false);
           }
@@ -242,13 +261,14 @@ export async function mainTolls(tollsData, metaData) {
     if (metaData.build) {
       buildDashboard();
     } else {
-      console.log("no tolls data");
+      // console.log("no tolls data");
     }
   }
 
   try {
     buildDecision();
   } catch (err) {
+    // import and raise dashboard error here
     console.log(err);
   }
 }

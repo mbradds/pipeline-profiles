@@ -26,6 +26,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -41,6 +42,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -48,6 +50,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -55,6 +58,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -62,6 +66,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -69,6 +74,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -76,6 +82,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -83,6 +90,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -90,6 +98,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -105,6 +114,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
+      tolls: false,
       safety: true,
     },
   },
@@ -112,6 +122,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
+      tolls: false,
       safety: true,
     },
   },
@@ -127,6 +138,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -142,6 +154,7 @@ export const pm = {
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
+      tolls: false,
       safety: true,
     },
   },
@@ -149,6 +162,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -156,6 +170,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -163,6 +178,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -170,6 +186,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -177,6 +194,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -192,6 +210,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },
@@ -199,6 +218,7 @@ export const pm = {
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
+      tolls: false,
       safety: true,
     },
   },

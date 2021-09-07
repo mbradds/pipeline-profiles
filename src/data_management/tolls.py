@@ -11,21 +11,21 @@ def getTollsData(sql=True):
 
 
 def companyFilter(df, company):
-    pathFilter = True
+    pathFilter = [True]
     splitDefault = False
     selectedPaths = []
     if len(list(set(df["Path"]))) == 1:
         pathFilter = False
         selectedPaths = list(set(df["Path"]))
-
     if company == "Alliance":
+        pathFilter = [True, "checkbox"]
         df = df[df["Service"].isin(["FT, Demand",
                                     "Firm Full Path Service, except Seasonal, 1Yr Demand Charge",
                                     "Firm Full Path Service, except Seasonal, 3Yr Demand Charge",
                                     "Firm Full Path Service, except Seasonal, 5Yr Demand Charge"])]
         selectedPaths = ['System-CA/US border', 'Zone 2-CA/US border']
     elif company == "Cochin":
-        pathFilter = False
+        pathFilter = [False]
         cochinPaths = ["Cochin Terminal in Kankakee County, Illinois-Facilities in Fort Saskatchewan, Alberta",
                        "International Boundary near Alameda, Saskatchewan-Facilities in Fort Saskatchewan, Alberta",
                        "Clinton, Iowa-Facilities in Fort Saskatchewan, Alberta",
@@ -35,6 +35,7 @@ def companyFilter(df, company):
         splitDefault = "Cochin IJT"
     elif company == "EnbridgeMainline":
         # df = df[df["Value"] >= 0].copy().reset_index(drop=True)
+        pathFilter = [True, "radio"]
         df = df.where(pd.notnull(df), None)
         enbridgePaths = {"EnbridgeLocal": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba",
                                            "Edmonton Terminal, Alberta-Hardisty Terminal, Alberta"],
@@ -61,8 +62,6 @@ def companyFilter(df, company):
                                            "EnbridgeLocal": "Enbridge Local",
                                            "EnbridgeFSP": "Enbridge FSP"})
         splitDefault = "Enbridge Local"
-        
-        
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
     return df, selectedPaths, pathFilter, splitDefault
@@ -84,7 +83,7 @@ def processPath(df, seriesCol):
     return series
 
 
-def processTollsData(sql=True, companies=False, save=True):
+def processTollsData(sql=True, companies=False, save=True, completed = []):
     
     def generatePathSeries(df, paths, seriesCol):
         pathSeries = []
@@ -127,7 +126,7 @@ def processTollsData(sql=True, companies=False, save=True):
         df_c, selectedPaths, pathFilter, splitDefault = companyFilter(df_c, company)
         meta = {"companyName": company}
         # build a series for product/service in each Paths
-        if not df_c.empty:
+        if not df_c.empty and company in completed:
             meta["build"] = True
             paths = sorted(list(set(df_c["Path"])))
             meta["pathFilter"] = pathFilter
@@ -169,5 +168,5 @@ def processTollsData(sql=True, companies=False, save=True):
 if __name__ == "__main__":
     print("starting tolls...")
     completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken", "EnbridgeMainline"]
-    df, thisCompanyData = processTollsData(sql=False, companies=["EnbridgeMainline"])
+    df, thisCompanyData = processTollsData(sql=False, completed=completed)
     print("done tolls")
