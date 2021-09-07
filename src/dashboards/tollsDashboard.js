@@ -178,8 +178,12 @@ export async function mainTolls(tollsData, metaData) {
         "radio",
         "product"
       );
+      btnGroupProducts.addEventListener("click", (event) => {
+        if (event.target && event.target.tagName === "INPUT") {
+          console.log(event);
+        }
+      });
     }
-    equalizeHeight("tolls-filter-container", "tolls-info");
     return [btnGroup, btnGroupProducts];
   }
 
@@ -195,7 +199,12 @@ export async function mainTolls(tollsData, metaData) {
     return btnGroup;
   }
 
-  function selectedSeries(series, meta) {
+  function selectedSeries(
+    series,
+    meta,
+    chosenPath = false,
+    chosenProduct = false
+  ) {
     const selected = [];
     let product = false;
     const getProduct = (prodList) => {
@@ -211,15 +220,30 @@ export async function mainTolls(tollsData, metaData) {
       return found;
     };
     if (!meta.split.default) {
-      product = getProduct(meta.products);
-      meta.paths.forEach((path) => {
-        if (path[1]) {
-          selected.push(...series[path[0]]);
-        }
-      });
+      if (chosenProduct) {
+        product = chosenProduct;
+      } else {
+        product = getProduct(meta.products);
+      }
+      if (chosenPath) {
+        selected.push(...series[chosenPath]);
+      } else {
+        meta.paths.forEach((path) => {
+          if (path[1]) {
+            selected.push(...series[path[0]]);
+          }
+        });
+      }
     } else {
       const currentSeries = series[meta.split.default];
-      product = getProduct(meta.products[meta.split.default]);
+      if (chosenProduct) {
+        product = chosenProduct;
+      } else {
+        product = getProduct(meta.products[meta.split.default]);
+      }
+      if (chosenPath) {
+        selected.push(...currentSeries[chosenPath]);
+      }
       meta.paths[meta.split.default].forEach((path) => {
         if (path[1]) {
           selected.push(...currentSeries[path[0]]);
@@ -228,9 +252,8 @@ export async function mainTolls(tollsData, metaData) {
     }
     // filter products here
     if (product) {
-      selected.filter((s) => s.product === product);
+      return selected.filter((s) => s.product === product);
     }
-
     return selected;
   }
 
@@ -241,10 +264,72 @@ export async function mainTolls(tollsData, metaData) {
     document.getElementById(
       "toll-description"
     ).innerHTML = `<p>2-3 sentence description of the${split}toll methodology.</p>`;
+    equalizeHeight("tolls-filter-container", "tolls-info");
+  }
+
+  function listener(btnGroup, chart, selections, series, section) {
+    const getChartLegend = (c) => c.legend.allItems.map((l) => l.name);
+    btnGroup.addEventListener("click", (event) => {
+      if (event.target && event.target.tagName === "INPUT") {
+        const pathId = event.target.value;
+        if (event.target.checked) {
+          const currentNames = {};
+          const currentIDs = chart.series.map((s) => {
+            currentNames[s.name] = { color: s.color };
+            return s.userOptions.id;
+          });
+
+          if (selections.pathFilter[1] === "radio") {
+            while (chart.series.length) {
+              chart.series[0].remove(false, false, false);
+            }
+          }
+
+          const currentLegend = getChartLegend(chart);
+          let newSelected = [];
+          if (section === "path") {
+            newSelected = selectedSeries(series, selections, pathId, false);
+          } else {
+            newSelected = selectedSeries(series, selections, false, pathId);
+          }
+
+          newSelected.forEach((s) => {
+            if (!currentIDs.includes(s.id)) {
+              const newSeries = s;
+              if (currentNames[s.name]) {
+                newSeries.color = currentNames[s.name].color;
+              }
+              if (currentLegend.includes(s.name)) {
+                newSeries.showInLegend = false;
+              } else {
+                newSeries.showInLegend = true;
+              }
+              chart.addSeries(newSeries, false, false);
+            }
+          });
+          chart.redraw(true);
+        } else {
+          series[pathId].forEach((s) => {
+            chart.get(s.id).remove();
+          });
+          const currentLegend = getChartLegend(chart);
+          chart.series.forEach((s) => {
+            if (!currentLegend.includes(s.name)) {
+              s.update(
+                {
+                  showInLegend: true,
+                },
+                false
+              );
+            }
+          });
+          chart.redraw(true);
+        }
+      }
+    });
   }
 
   function buildDashboard() {
-    const getChartLegend = (chart) => chart.legend.allItems.map((l) => l.name);
     const selections = metaData;
     const series = buildSeries();
     const chart = buildTollsChart(
@@ -254,61 +339,7 @@ export async function mainTolls(tollsData, metaData) {
     updateTollsDescription(selections);
     let [pathBtns, productBtns] = addPathButtons(selections);
     if (selections.pathFilter[0] && pathBtns) {
-      pathBtns.addEventListener("click", (event) => {
-        if (event.target && event.target.tagName === "INPUT") {
-          const pathId = event.target.value;
-          if (event.target.checked) {
-            const currentNames = {};
-            const currentIDs = chart.series.map((s) => {
-              currentNames[s.name] = { color: s.color };
-              return s.userOptions.id;
-            });
-
-            if (selections.pathFilter[1] === "radio") {
-              while (chart.series.length) {
-                chart.series[0].remove(false, false, false);
-              }
-            }
-
-            const currentLegend = getChartLegend(chart);
-            const newSelected = selections.split.default
-              ? series[metaData.split.default][pathId]
-              : series[pathId];
-
-            newSelected.forEach((s) => {
-              if (!currentIDs.includes(s.id)) {
-                const newSeries = s;
-                if (currentNames[s.name]) {
-                  newSeries.color = currentNames[s.name].color;
-                }
-                if (currentLegend.includes(s.name)) {
-                  newSeries.showInLegend = false;
-                } else {
-                  newSeries.showInLegend = true;
-                }
-                chart.addSeries(newSeries, false, false);
-              }
-            });
-            chart.redraw(true);
-          } else {
-            series[pathId].forEach((s) => {
-              chart.get(s.id).remove();
-            });
-            const currentLegend = getChartLegend(chart);
-            chart.series.forEach((s) => {
-              if (!currentLegend.includes(s.name)) {
-                s.update(
-                  {
-                    showInLegend: true,
-                  },
-                  false
-                );
-              }
-            });
-            chart.redraw(true);
-          }
-        }
-      });
+      listener(pathBtns, chart, selections, series, "path");
     } else {
       visibility(["tolls-path-btn"], "hide");
     }

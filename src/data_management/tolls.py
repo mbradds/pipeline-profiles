@@ -35,6 +35,7 @@ def companyFilter(df, company):
         splitDefault = "Cochin IJT"
     elif company == "EnbridgeMainline":
         # df = df[df["Value"] >= 0].copy().reset_index(drop=True)
+        df["Service"] = [x.replace("2ND", "2nd") for x in df["Service"]]
         pathFilter = [True, "radio"]
         df = df.where(pd.notnull(df), None)
         enbridgePaths = {"EnbridgeLocal": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba",
