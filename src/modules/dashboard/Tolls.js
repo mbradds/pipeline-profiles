@@ -152,12 +152,9 @@ export class Tolls {
     });
   }
 
-  addPathButtons() {
+  addPathButtons(series) {
     const addCheckbox = (point, btnGroup, i, type, section) => {
-      let checked = "";
-      if (point[1]) {
-        checked = `checked="checked"`;
-      }
+      const checked = point[1] ? `checked="checked"` : "";
       btnGroup.insertAdjacentHTML(
         "beforeend",
         `<div class="${type}">
@@ -211,11 +208,7 @@ export class Tolls {
         "radio",
         "product"
       );
-      //   btnGroupProducts.addEventListener("click", (event) => {
-      //     if (event.target && event.target.tagName === "INPUT") {
-      //       console.log(event);
-      //     }
-      //   });
+      this.listener(btnGroupProducts, series, "product");
     }
     return [btnGroup, btnGroupProducts];
   }
@@ -257,11 +250,17 @@ export class Tolls {
     equalizeHeight("tolls-filter-container", "tolls-info");
   }
 
-  listener(btnGroup, selections, series, section) {
+  removeAllSeries() {
+    while (this.chart.series.length) {
+      this.chart.series[0].remove(false, false, false);
+    }
+  }
+
+  listener(btnGroup, series, section) {
     const getChartLegend = (c) => c.legend.allItems.map((l) => l.name);
     btnGroup.addEventListener("click", (event) => {
       if (event.target && event.target.tagName === "INPUT") {
-        const pathId = event.target.value;
+        const currentValue = event.target.value;
         if (event.target.checked) {
           const currentNames = {};
           const currentIDs = this.chart.series.map((s) => {
@@ -269,23 +268,17 @@ export class Tolls {
             return s.userOptions.id;
           });
 
-          if (selections.pathFilter[1] === "radio") {
-            // TODO: make this into a remove series method
-            while (this.chart.series.length) {
-              this.chart.series[0].remove(false, false, false);
-            }
+          if (this.metaData.pathFilter[1] === "radio") {
+            this.removeAllSeries();
           }
 
           const currentLegend = getChartLegend(this.chart);
-          let newSelected = [];
           if (section === "path") {
-            this.currentPath = pathId;
+            this.currentPath = currentValue;
           } else {
-            this.currentProduct = pathId;
+            this.currentProduct = currentValue;
           }
-
-          newSelected = this.selectedSeries(series);
-
+          const newSelected = this.selectedSeries(series);
           newSelected.forEach((s) => {
             if (!currentIDs.includes(s.id)) {
               const newSeries = s;
@@ -302,7 +295,7 @@ export class Tolls {
           });
           this.chart.redraw(true);
         } else {
-          series[pathId].forEach((s) => {
+          series[currentValue].forEach((s) => {
             this.chart.get(s.id).remove();
           });
           const currentLegend = getChartLegend(this.chart);
@@ -323,13 +316,12 @@ export class Tolls {
   }
 
   buildDashboard() {
-    const selections = this.metaData;
     const series = this.buildSeries();
     this.buildTollsChart(this.selectedSeries(series));
     this.updateTollsDescription();
-    let [pathBtns, productBtns] = this.addPathButtons();
-    if (selections.pathFilter[0] && pathBtns) {
-      this.listener(pathBtns, selections, series, "path");
+    let [pathBtns, productBtns] = this.addPathButtons(series);
+    if (this.metaData.pathFilter[0] && pathBtns) {
+      this.listener(pathBtns, series, "path");
     } else {
       visibility(["tolls-path-btn"], "hide");
     }
@@ -341,17 +333,15 @@ export class Tolls {
           btnGroupClick("tolls-split-btn", event);
           this.currentSplit = event.target.value;
           this.getDefaults();
-          [pathBtns, productBtns] = this.addPathButtons();
+          [pathBtns, productBtns] = this.addPathButtons(series);
           if (!productBtns) {
             visibility(["tolls-product-btn"], "hide");
           } else {
             visibility(["tolls-product-btn"], "show");
           }
           this.updateTollsDescription();
+          this.removeAllSeries();
           const newSeries = this.selectedSeries(series);
-          while (this.chart.series.length) {
-            this.chart.series[0].remove(false, false, false);
-          }
           newSeries.forEach((newS) => {
             this.chart.addSeries(newS, false, false);
           });
