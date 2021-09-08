@@ -33,11 +33,13 @@ export class Tolls {
       this.currentProduct = getProduct(
         this.metaData.products[this.currentSplit]
       );
-      // this.currentPath = getProduct(this.metaData.paths[this.currentSplit]);
+      this.currentService = getProduct(
+        this.metaData.services[this.currentSplit]
+      );
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
     } else {
       this.currentProduct = getProduct(this.metaData.products);
-      // this.currentPath = getProduct(this.metaData.paths);
+      this.currentService = getProduct(this.metaData.services);
       this.seriesCol = this.metaData.seriesCol;
     }
   }
@@ -63,6 +65,7 @@ export class Tolls {
           fullPath.push({
             id: `${partialPath.id}-${path.pathName}`,
             name: partialPath.id,
+            service: partialPath.service,
             data: fullTolls,
             color: currentColor,
             pathName: path.pathName,
@@ -95,6 +98,7 @@ export class Tolls {
     const optionalSections = {
       Path: `<tr><td>Path:&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`,
       Product: `<tr><td>Product:&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`,
+      Service: `<tr><td>Service:&nbsp;</td><td><strong>${event.series.userOptions.service}</strong></td></tr>`,
     };
     Object.keys(optionalSections).forEach((row) => {
       if (row !== seriesCol) {
@@ -182,25 +186,40 @@ export class Tolls {
       return group;
     };
 
-    let [points, products] = [[], []];
+    let [points, products, services] = [[], [], []];
     if (this.currentSplit) {
       points = this.metaData.paths[this.currentSplit];
       products = this.metaData.products[this.currentSplit];
+      services = this.metaData.services[this.currentSplit];
     } else {
       points = this.metaData.paths;
       products = this.metaData.products;
+      services = this.metaData.services;
     }
 
-    let btnGroup = setUpButtons("Select path:", "tolls-path-btn");
-    btnGroup = addEachButton(
-      points,
-      btnGroup,
-      this.metaData.pathFilter[1],
-      "point"
-    );
+    let btnGroupPaths;
+    let btnGroupServices;
+    if (this.metaData.pathFilter[0] && points) {
+      btnGroupPaths = setUpButtons("Select path:", "tolls-path-btn");
+      btnGroupPaths = addEachButton(
+        points,
+        btnGroupPaths,
+        this.metaData.pathFilter[1],
+        "point"
+      );
+    } else if (this.currentService && services) {
+      // filter for services and paths should not exist together
+      btnGroupServices = setUpButtons("Select service:", "tolls-path-btn");
+      btnGroupServices = addEachButton(
+        services,
+        btnGroupServices,
+        "radio",
+        "service"
+      );
+    }
 
-    let btnGroupProducts = false;
-    if (products) {
+    let btnGroupProducts;
+    if (this.currentProduct && products) {
       btnGroupProducts = setUpButtons("Select product:", "tolls-product-btn");
       btnGroupProducts = addEachButton(
         products,
@@ -210,7 +229,7 @@ export class Tolls {
       );
       this.listener(btnGroupProducts, series, "product");
     }
-    return [btnGroup, btnGroupProducts];
+    return [btnGroupPaths, btnGroupProducts, btnGroupServices];
   }
 
   static addSplitButtons(split) {
@@ -254,9 +273,12 @@ export class Tolls {
       }
       selected = addAll(paths, selected, series[this.currentSplit]);
     }
-    // filter products here
+    // filter products and services here
     if (this.currentProduct) {
-      return selected.filter((s) => s.product === this.currentProduct);
+      selected = selected.filter((s) => s.product === this.currentProduct);
+    }
+    if (this.currentService) {
+      selected = selected.filter((s) => s.service === this.currentService);
     }
     return selected;
   }
@@ -289,20 +311,26 @@ export class Tolls {
             return s.userOptions.id;
           });
 
-          if (this.metaData.pathFilter[1] === "radio") {
+          if (
+            this.metaData.pathFilter[1] === "radio" ||
+            this.currentProduct ||
+            this.currentService
+          ) {
             this.removeAllSeries();
           }
 
           const currentLegend = getChartLegend(this.chart);
           if (section === "path") {
             this.currentPath = currentValue;
-          } else {
+          } else if (section === "product") {
             this.currentProduct = currentValue;
+          } else if (section === "service") {
+            this.currentService = currentValue;
           }
           const newSelected = this.selectedSeries(series);
           newSelected.forEach((s) => {
+            const newSeries = s;
             if (!currentIDs.includes(s.id)) {
-              const newSeries = s;
               if (currentNames[s.name]) {
                 newSeries.color = currentNames[s.name].color;
               }
@@ -311,8 +339,8 @@ export class Tolls {
               } else {
                 newSeries.showInLegend = true;
               }
-              this.chart.addSeries(newSeries, false, false);
             }
+            this.chart.addSeries(newSeries, false, false);
           });
           this.chart.redraw(true);
         } else {
@@ -340,9 +368,11 @@ export class Tolls {
     const series = this.buildSeries();
     this.buildTollsChart(this.selectedSeries(series));
     this.updateTollsDescription();
-    let [pathBtns, productBtns] = this.addPathButtons(series);
+    let [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
     if (this.metaData.pathFilter[0] && pathBtns) {
       this.listener(pathBtns, series, "path");
+    } else if (serviceBtns) {
+      this.listener(serviceBtns, series, "service");
     } else {
       visibility(["tolls-path-btn"], "hide");
     }
@@ -355,7 +385,7 @@ export class Tolls {
           btnGroupClick("tolls-split-btn", event);
           this.currentSplit = event.target.value;
           this.getDefaults();
-          [pathBtns, productBtns] = this.addPathButtons(series);
+          [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
           if (!productBtns) {
             visibility(["tolls-product-btn"], "hide");
           } else {

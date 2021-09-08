@@ -207,6 +207,9 @@ styles for remediation dashboard
   flex-grow: 1;
   height: inherit;
 }
+#tolls-filter-container {
+  overflow-y: auto;
+}
 /* 
 responsive style options 
 */

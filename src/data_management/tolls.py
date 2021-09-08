@@ -14,6 +14,7 @@ def companyFilter(df, company):
     pathFilter = [True]
     splitDefault = False
     selectedPaths = []
+    selectedServices = False
     if len(list(set(df["Path"]))) == 1:
         pathFilter = False
         selectedPaths = list(set(df["Path"]))
@@ -65,12 +66,13 @@ def companyFilter(df, company):
         splitDefault = "Enbridge Local"
     elif company == "Keystone":
         df = df[df["Path"] != "All-All"]
-        selectedPaths = ["Uncommitted"]
-        pathFilter = [True, "radio"]
+        selectedPaths = list(set(df["Path"]))
+        selectedServices = "Uncommitted"
+        pathFilter = [False]
         
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
-    return df, selectedPaths, pathFilter, splitDefault
+    return df, selectedPaths, selectedServices, pathFilter, splitDefault
 
 
 def processPath(df, seriesCol, productFilter):
@@ -80,14 +82,17 @@ def processPath(df, seriesCol, productFilter):
         dfs = df[df[seriesCol] == ps].copy().reset_index()
         for product in list(set(dfs["Product"])):
             dfp = dfs[dfs["Product"] == product].copy().reset_index(drop=True)
-            thisSeries = {"id": ps}
-            thisSeries["product"] = product
-            thisSeries["units"] = list(dfp["Units"])[0]
-            data = []
-            for s, e, value in zip(dfp["Effective Start"], dfp["Effective End"], dfp["Value"]):
-                data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
-            thisSeries["data"] = data
-            series.append(thisSeries)
+            for service in list(set(list(dfp["Service"]))):
+                dfs2 = dfp[dfp["Service"] == service].copy().reset_index(drop=True)
+                thisSeries = {"id": ps}
+                thisSeries["product"] = product
+                thisSeries["service"] = service
+                thisSeries["units"] = list(dfs2["Units"])[0]
+                data = []
+                for s, e, value in zip(dfs2["Effective Start"], dfs2["Effective End"], dfs2["Value"]):
+                    data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
+                thisSeries["data"] = data
+                series.append(thisSeries)
     return series
 
 
@@ -102,7 +107,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                                        "series": processPath(df_p, seriesCol, productFilter)})
         return pathSeries
     
-    def findSeriesCol(df):
+    def findSeriesCol(df, company):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
         productFilter = False
@@ -119,6 +124,10 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
         else:
             seriesCol = "Service"
             print("error! Need to filter on two columns")
+        # override series col if needed
+        if company == "Keystone":
+            seriesCol = "Path"
+        
         return seriesCol, productFilter
     
     df = getTollsData(sql)
@@ -136,7 +145,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
             df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
         else:
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
-        df_c, selectedPaths, pathFilter, splitDefault = companyFilter(df_c, company)
+        df_c, selectedPaths, selectedService, pathFilter, splitDefault = companyFilter(df_c, company)
         meta = {"companyName": company}
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
@@ -151,23 +160,26 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                 meta["paths"] = {}
                 meta["seriesCol"] = {}
                 meta["products"] = {}
+                meta["services"] = {}
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     paths = sorted(list(set(df_split["Path"])))
                     services = sorted(list(set(df_c["Service"])))
-                    seriesCol, productFilter = findSeriesCol(df_split)
+                    seriesCol, productFilter = findSeriesCol(df_split, company)
                     if len(selectedPaths) > 0:
                         meta["paths"][split] = [[p, True] if p in selectedPaths[split] else [p, False] for p in paths]
                     else:
                         meta["paths"][split] = [[p, True] for p in paths]
                     meta["products"][split] = productFilter
-                    meta["seriesCol"][split] = seriesCol 
+                    meta["seriesCol"][split] = seriesCol
+                    meta["services"][split] = selectedService
                     pathSeries[split] = generatePathSeries(df_split, paths, seriesCol, productFilter)
             else:
-                seriesCol, productFilter = findSeriesCol(df_c)
+                seriesCol, productFilter = findSeriesCol(df_c, company)
                 meta["products"] = productFilter
                 meta["seriesCol"] = seriesCol
                 meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
+                meta["services"] = [[s, True] if s == selectedService else [s, False] for s in services]
                 pathSeries = generatePathSeries(df_c, paths, seriesCol, productFilter)
             
             thisCompanyData["meta"] = meta
