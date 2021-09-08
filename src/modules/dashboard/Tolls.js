@@ -33,11 +33,11 @@ export class Tolls {
       this.currentProduct = getProduct(
         this.metaData.products[this.currentSplit]
       );
-      this.currentPath = getProduct(this.metaData.paths[this.currentSplit]);
+      // this.currentPath = getProduct(this.metaData.paths[this.currentSplit]);
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
     } else {
       this.currentProduct = getProduct(this.metaData.products);
-      this.currentPath = getProduct(this.metaData.paths);
+      // this.currentPath = getProduct(this.metaData.paths);
       this.seriesCol = this.metaData.seriesCol;
     }
   }
@@ -226,12 +226,33 @@ export class Tolls {
   }
 
   selectedSeries(series) {
-    const selected = [];
+    const addAll = (path, seriesList, fullSeries) => {
+      path.forEach((p) => {
+        if (p[1]) {
+          seriesList.push(...fullSeries[p[0]]);
+        }
+      });
+
+      return seriesList;
+    };
+
+    // this is a little rough
+    let paths = [];
+    let selected = [];
     if (!this.currentSplit) {
-      selected.push(...series[this.currentPath]);
+      if (this.currentPath) {
+        paths = [[this.currentPath, true]];
+      } else {
+        paths = this.metaData.paths;
+      }
+      selected = addAll(paths, selected, series);
     } else {
-      const currentSeries = series[this.currentSplit];
-      selected.push(...currentSeries[this.currentPath]);
+      if (this.currentPath) {
+        paths = [[this.currentPath, true]];
+      } else {
+        paths = this.metaData.paths[this.currentSplit];
+      }
+      selected = addAll(paths, selected, series[this.currentSplit]);
     }
     // filter products here
     if (this.currentProduct) {
@@ -330,6 +351,7 @@ export class Tolls {
       const splitBtns = Tolls.addSplitButtons(this.metaData.split);
       splitBtns.addEventListener("click", (event) => {
         if (event.target) {
+          this.currentPath = undefined;
           btnGroupClick("tolls-split-btn", event);
           this.currentSplit = event.target.value;
           this.getDefaults();

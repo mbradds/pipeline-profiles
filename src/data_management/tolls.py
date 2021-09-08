@@ -63,6 +63,11 @@ def companyFilter(df, company):
                                            "EnbridgeLocal": "Enbridge Local",
                                            "EnbridgeFSP": "Enbridge FSP"})
         splitDefault = "Enbridge Local"
+    elif company == "Keystone":
+        df = df[df["Path"] != "All-All"]
+        selectedPaths = ["Uncommitted"]
+        pathFilter = [True, "radio"]
+        
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
     return df, selectedPaths, pathFilter, splitDefault
@@ -97,7 +102,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                                        "series": processPath(df_p, seriesCol, productFilter)})
         return pathSeries
     
-    def findSeriesCol(df, paths):
+    def findSeriesCol(df):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
         productFilter = False
@@ -137,6 +142,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
         if not df_c.empty and company in completed:
             meta["build"] = True
             paths = sorted(list(set(df_c["Path"])))
+            services = sorted(list(set(df_c["Service"])))
             meta["pathFilter"] = pathFilter
             meta["split"] = {"default": splitDefault}
             if splitDefault:
@@ -148,16 +154,17 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     paths = sorted(list(set(df_split["Path"])))
+                    services = sorted(list(set(df_c["Service"])))
+                    seriesCol, productFilter = findSeriesCol(df_split)
                     if len(selectedPaths) > 0:
                         meta["paths"][split] = [[p, True] if p in selectedPaths[split] else [p, False] for p in paths]
                     else:
                         meta["paths"][split] = [[p, True] for p in paths]
-                    seriesCol, productFilter = findSeriesCol(df_split, meta["paths"][split])
                     meta["products"][split] = productFilter
                     meta["seriesCol"][split] = seriesCol 
                     pathSeries[split] = generatePathSeries(df_split, paths, seriesCol, productFilter)
             else:
-                seriesCol, productFilter = findSeriesCol(df_c, paths)
+                seriesCol, productFilter = findSeriesCol(df_c)
                 meta["products"] = productFilter
                 meta["seriesCol"] = seriesCol
                 meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
@@ -178,6 +185,6 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken", "EnbridgeMainline"]
+    completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken", "EnbridgeMainline", "Keystone"]
     df, thisCompanyData = processTollsData(sql=False, companies=completed, completed=completed)
     print("done tolls")
