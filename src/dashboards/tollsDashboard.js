@@ -1,9 +1,12 @@
 import { Tolls } from "../modules/dashboard/Tolls.js";
 
 export async function mainTolls(tollsData, metaData) {
-  const dashboard = new Tolls({ tollsData, metaData, chartDiv: "tolls-chart" });
-
   function buildDecision() {
+    const dashboard = new Tolls({
+      tollsData,
+      metaData,
+      chartDiv: "tolls-chart",
+    });
     if (metaData.build) {
       dashboard.buildDashboard();
     } else {

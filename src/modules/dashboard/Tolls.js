@@ -126,6 +126,11 @@ export class Tolls {
           text: "Toll",
         },
       },
+      legend: {
+        title: {
+          text: dashboard.seriesCol,
+        },
+      },
       plotOptions: {
         series: {
           marker: {

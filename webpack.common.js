@@ -103,9 +103,6 @@ const profileWebpackConfig = (function config() {
       sections.forEach((section) => {
         htmlFileNames.forEach((name) => {
           let folderName = name[0];
-          if (["MilkRiver", "Wascana"].includes(name[0])) {
-            folderName = "plains";
-          }
           // data entry point
           entryPoints[
             `${section}/${section}_${name[0]}`
@@ -152,10 +149,6 @@ export default {
           from: path.resolve(__dirname, "src", "wet-boew"),
           to: path.resolve(__dirname, "dist", "wet-boew"),
         },
-        // {
-        //   from: path.resolve(__dirname, "src", "index.html"),
-        //   to: path.resolve(__dirname, "dist", "index.html"),
-        // },
       ],
     }),
     new CleanWebpackPlugin(),

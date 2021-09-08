@@ -11,12 +11,12 @@ def getTollsData(sql=True):
 
 
 def companyFilter(df, company):
-    pathFilter = [True]
+    pathFilter = [False]
     splitDefault = False
     selectedPaths = []
     selectedServices = False
     if len(list(set(df["Path"]))) == 1:
-        pathFilter = False
+        pathFilter = [False]
         selectedPaths = list(set(df["Path"]))
     if company == "Alliance":
         pathFilter = [True, "checkbox"]
@@ -26,7 +26,6 @@ def companyFilter(df, company):
                                     "Firm Full Path Service, except Seasonal, 5Yr Demand Charge"])]
         selectedPaths = ['System-CA/US border', 'Zone 2-CA/US border']
     elif company == "Cochin":
-        pathFilter = [False]
         cochinPaths = ["Cochin Terminal in Kankakee County, Illinois-Facilities in Fort Saskatchewan, Alberta",
                        "International Boundary near Alameda, Saskatchewan-Facilities in Fort Saskatchewan, Alberta",
                        "Clinton, Iowa-Facilities in Fort Saskatchewan, Alberta",
@@ -55,7 +54,6 @@ def companyFilter(df, company):
         for section, paths in enbridgePaths.items():
             filtered_list.append(df[(df["PipelineID"]==section) & (df["Path"].isin(paths))].copy())
         df = pd.concat(filtered_list, ignore_index=True)
-        
         selectedPaths = {"Enbridge Local": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba"],
                          "Enbridge Mainline": ["Edmonton Terminal, Alberta-Clearbrook, Minnesota"],
                          "Enbridge FSP": ["Cromer, Manitoba-ALL"]}
@@ -68,8 +66,65 @@ def companyFilter(df, company):
         df = df[df["Path"] != "All-All"]
         selectedPaths = list(set(df["Path"]))
         selectedServices = "Uncommitted"
-        pathFilter = [False]
-        
+    elif company == "NGTL":
+        df["split"] = ["FT-D (Delivery Services)" if "FT-D" in x else "FT-R (Receipt Services)" for x in df["Service"]]
+        selectedPaths = {"FT-D (Delivery Services)": ["System-Group 1",
+                                                      "System-Group 2",
+                                                      "System-Group 3"],
+                         "FT-R (Receipt Services)": ["Receipt-System"]}
+        splitDefault = "FT-D (Delivery Services)"
+    elif company == "TCPL":
+        selectedPaths = ["Empress-Emerson 2",
+                         "Empress-Enbridge CDA",
+                         "Empress-Energir EDA",
+                         "Empress-GMIT EDA",
+                         "Empress-Iroquois",
+                         "Empress-Union SWDA",
+                         "Union Parkway Belt-Emerson 2",
+                         "Union Parkway Belt-Enbridge CDA",
+                         "Union Parkway Belt-Energir EDA",
+                         "Union Parkway Belt-GMIT EDA",
+                         "Union Parkway Belt-Iroquois",
+                         "Union Parkway Belt-Union SWDA"]
+        df = df[df["Path"].isin(selectedPaths)].copy()
+        df = df[df["Service"] == "Daily FT Toll"].copy()
+    elif company == "Express":
+        selectedPaths = ["Hardisty, Alberta-International Boundary near Wild Horse, Alberta"]
+        df = df[df["Path"].isin(selectedPaths)].copy()
+    elif company == "Foothills":
+        df = df[df["Service"] == "FT, Demand Rate"].copy()
+        df = df[df["Path"] != "All Zones-All Zones"].copy()
+        selectedPaths = list(set(df["Path"]))
+    elif company == "MNP":
+        df = df[df["Service"] == "Usage Charge Outside Tolerances"].copy()
+        selectedPaths = list(set(df["Path"]))
+    elif company in ["Genesis", "ManyIslands", "MilkRiver", "NormanWells"]:
+        selectedPaths = list(set(df["Path"]))
+    elif company == "TransMountain":
+        df = df[df["Service"] == "Tank Metered, Net Toll"].copy()
+        pathFilter = [True, "radio"]
+        selectedPaths = ["Edmonton-Westridge"]
+    elif company == "TQM":
+        tqmPaths = ["System-System"]
+        df = df[df["Path"].isin(tqmPaths)].copy()
+        df = df[df["Service"] == "T-1"].copy()
+        selectedPaths = tqmPaths
+    elif company == "TransNorthern":
+        selectedPaths = ["Montreal, East Quebec-Kingston, Ontario",
+                         "Montreal, East Quebec-North Toronto, Ontario",
+                         "Montreal, East Quebec-Ottawa, Ontario",
+                         "Nanticoke, Ontario-North Toronto, Ontario"]
+        df = df[df["Path"].isin(selectedPaths)].copy()
+    elif company == "SouthernLights":
+        selectedPaths = ["International Boundary near Gretna, Manitoba-Edmonton, Alberta; Hardisty, Alberta; Kerrobert, Saskatchewan"]
+        df = df[df["Path"].isin(selectedPaths)].copy()
+    elif company == "Westcoast":
+        selectedPaths = list(set(df["Path"]))
+        selectedServices = "1 year"
+    elif company == "Westspur":
+        df = df[df["Service"] == "Toll"].copy()
+        selectedPaths = list(set(df["Path"]))
+
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
     return df, selectedPaths, selectedServices, pathFilter, splitDefault
@@ -111,9 +166,9 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
         productFilter = False
-        if len(products) >= 1 and len(services) <= 1 :
+        if len(products) > 1 and len(services) <= 1 :
             seriesCol = "Product"
-        elif len(services) >= 1 and len(products) <= 1:
+        elif len(services) > 1 and len(products) <= 1:
             seriesCol = "Service"
         elif len(services) <= 1 and len(products) <= 1:
             seriesCol = "Path"
@@ -125,7 +180,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
             seriesCol = "Service"
             print("error! Need to filter on two columns")
         # override series col if needed
-        if company == "Keystone":
+        if company == "Keystone" or company == "Westcoast":
             seriesCol = "Path"
         
         return seriesCol, productFilter
@@ -197,6 +252,30 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    completed = ["Alliance", "Cochin", "Aurora", "EnbridgeBakken", "EnbridgeMainline", "Keystone"]
+    completed = ["Alliance",
+                 "Cochin",
+                 "Aurora",
+                 "EnbridgeBakken",
+                 "EnbridgeMainline",
+                 "Keystone",
+                 "NGTL",
+                 "Brunswick",
+                 "TCPL",
+                 "Express",
+                 "Foothills",
+                 "Genesis",
+                 "ManyIslands",
+                 "MNP",
+                 "Montreal",
+                 "MilkRiver",
+                 "NormanWells",
+                 "TransMountain",
+                 "TQM",
+                 "TransNorthern",
+                 "SouthernLights",
+                 "Vector",
+                 "Westcoast",
+                 "Westspur",
+                 "Wascana"]
     df, thisCompanyData = processTollsData(sql=False, companies=completed, completed=completed)
     print("done tolls")
