@@ -15,6 +15,7 @@ def companyFilter(df, company):
     splitDefault = False
     selectedPaths = []
     selectedServices = False
+    totalPaths = len(list(set(df["Path"])))
     if len(list(set(df["Path"]))) == 1:
         pathFilter = [False]
         selectedPaths = list(set(df["Path"]))
@@ -34,7 +35,6 @@ def companyFilter(df, company):
         df["split"] = ["Cochin local" if s == "Local tariff" else "Cochin IJT" for s in df["Service"]]
         splitDefault = "Cochin IJT"
     elif company == "EnbridgeMainline":
-        # df = df[df["Value"] >= 0].copy().reset_index(drop=True)
         df["Service"] = [x.replace("2ND", "2nd") for x in df["Service"]]
         pathFilter = [True, "radio"]
         df = df.where(pd.notnull(df), None)
@@ -127,7 +127,8 @@ def companyFilter(df, company):
 
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
-    return df, selectedPaths, selectedServices, pathFilter, splitDefault
+    shownPaths = len(list(set(df["Path"])))
+    return df, selectedPaths, selectedServices, pathFilter, splitDefault, [shownPaths, totalPaths]
 
 
 def processPath(df, seriesCol, productFilter):
@@ -200,11 +201,12 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
             df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
         else:
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
-        df_c, selectedPaths, selectedService, pathFilter, splitDefault = companyFilter(df_c, company)
+        df_c, selectedPaths, selectedService, pathFilter, splitDefault, pathTotals = companyFilter(df_c, company)
         meta = {"companyName": company}
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
+            meta["pathTotals"] = pathTotals
             paths = sorted(list(set(df_c["Path"])))
             services = sorted(list(set(df_c["Service"])))
             units = list(set(df_c["Units"]))

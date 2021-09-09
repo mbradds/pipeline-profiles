@@ -375,9 +375,20 @@ export class Tolls {
     });
   }
 
+  pathTotalsDisclaimer() {
+    if (this.metaData.pathTotals[0] !== this.metaData.pathTotals[1]) {
+      document.getElementById(
+        "path-discliamer"
+      ).innerHTML = `<div class="alert alert-warning mrgn-tp-sm">
+      <p>There are <strong>${this.metaData.pathTotals[0]}</strong> tolls paths shown for this system. Take a look at the Open Government dataset for information on all <strong>${this.metaData.pathTotals[1]}</strong> available system paths.</p>
+      </div>`;
+    }
+  }
+
   buildDashboard() {
     const series = this.buildSeries();
     this.buildTollsChart(this.selectedSeries(series));
+    this.pathTotalsDisclaimer();
     let [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
     this.updateTollsDescription();
     if (this.metaData.pathFilter[0] && pathBtns) {
