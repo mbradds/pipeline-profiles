@@ -810,7 +810,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       document
         .getElementById("traffic-points-btn")
         .addEventListener("click", (event) => {
-          if (event.target) {
+          if (event.target && event.target.tagName === "INPUT") {
             const pointId = event.target.value;
             if (event.target.checked) {
               chartParams.points.push({

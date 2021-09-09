@@ -207,6 +207,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
             meta["build"] = True
             paths = sorted(list(set(df_c["Path"])))
             services = sorted(list(set(df_c["Service"])))
+            units = list(set(df_c["Units"]))
             meta["pathFilter"] = pathFilter
             meta["split"] = {"default": splitDefault}
             if splitDefault:
@@ -216,10 +217,12 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                 meta["seriesCol"] = {}
                 meta["products"] = {}
                 meta["services"] = {}
+                meta["units"] = {}
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     paths = sorted(list(set(df_split["Path"])))
-                    services = sorted(list(set(df_c["Service"])))
+                    # services = sorted(list(set(df_c["Service"])))
+                    units = list(set(df_split["Units"]))
                     seriesCol, productFilter = findSeriesCol(df_split, company)
                     if len(selectedPaths) > 0:
                         meta["paths"][split] = [[p, True] if p in selectedPaths[split] else [p, False] for p in paths]
@@ -228,6 +231,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                     meta["products"][split] = productFilter
                     meta["seriesCol"][split] = seriesCol
                     meta["services"][split] = selectedService
+                    meta["units"][split] = units
                     pathSeries[split] = generatePathSeries(df_split, paths, seriesCol, productFilter)
             else:
                 seriesCol, productFilter = findSeriesCol(df_c, company)
@@ -235,6 +239,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                 meta["seriesCol"] = seriesCol
                 meta["paths"] = [[p, True] if p in selectedPaths else [p, False] for p in paths]
                 meta["services"] = [[s, True] if s == selectedService else [s, False] for s in services]
+                meta["units"] = units
                 pathSeries = generatePathSeries(df_c, paths, seriesCol, productFilter)
             
             thisCompanyData["meta"] = meta

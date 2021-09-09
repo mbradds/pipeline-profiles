@@ -36,10 +36,12 @@ export class Tolls {
       this.currentService = getProduct(
         this.metaData.services[this.currentSplit]
       );
+      [this.currentUnits] = this.metaData.units[this.currentSplit];
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
     } else {
       this.currentProduct = getProduct(this.metaData.products);
       this.currentService = getProduct(this.metaData.services);
+      [this.currentUnits] = this.metaData.units;
       this.seriesCol = this.metaData.seriesCol;
     }
   }
@@ -109,6 +111,10 @@ export class Tolls {
     return toolText;
   }
 
+  chartYaxisTitle() {
+    return `Toll (${this.currentUnits})`;
+  }
+
   buildTollsChart(series) {
     const dashboard = this;
     this.chart = new Highcharts.chart(this.chartDiv, {
@@ -123,7 +129,7 @@ export class Tolls {
       },
       yAxis: {
         title: {
-          text: "Toll",
+          text: dashboard.chartYaxisTitle(),
         },
       },
       legend: {
@@ -372,14 +378,18 @@ export class Tolls {
   buildDashboard() {
     const series = this.buildSeries();
     this.buildTollsChart(this.selectedSeries(series));
-    this.updateTollsDescription();
     let [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
+    this.updateTollsDescription();
     if (this.metaData.pathFilter[0] && pathBtns) {
       this.listener(pathBtns, series, "path");
     } else if (serviceBtns) {
       this.listener(serviceBtns, series, "service");
     } else {
       visibility(["tolls-path-btn"], "hide");
+    }
+
+    if (!productBtns) {
+      visibility(["tolls-product-btn"], "hide");
     }
 
     if (this.currentSplit) {
@@ -407,6 +417,11 @@ export class Tolls {
             tooltip: {
               formatter() {
                 return Tolls.toolTipTolls(this, dashboard.seriesCol);
+              },
+            },
+            yAxis: {
+              title: {
+                text: this.chartYaxisTitle(),
               },
             },
           });

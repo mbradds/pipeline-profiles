@@ -207,8 +207,15 @@ styles for remediation dashboard
   flex-grow: 1;
   height: inherit;
 }
-#tolls-filter-container {
+#tolls-path-btn {
   overflow-y: auto;
+  height: inherit;
+  max-height: 200px;
+}
+#tolls-product-btn {
+  overflow-y: auto;
+  height: inherit;
+  margin-top: 0px;
 }
 /* 
 responsive style options 
