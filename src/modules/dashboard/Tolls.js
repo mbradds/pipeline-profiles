@@ -117,6 +117,7 @@ export class Tolls {
 
   buildTollsChart(series) {
     const dashboard = this;
+    const rounding = this.metaData.decimals ? 2 : 0;
     this.chart = new Highcharts.chart(this.chartDiv, {
       chart: {
         zoomType: "x",
@@ -130,6 +131,11 @@ export class Tolls {
       yAxis: {
         title: {
           text: dashboard.chartYaxisTitle(),
+        },
+        labels: {
+          formatter() {
+            return Highcharts.numberFormat(this.value, rounding);
+          },
         },
       },
       legend: {

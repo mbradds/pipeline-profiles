@@ -16,6 +16,7 @@ def companyFilter(df, company):
     selectedPaths = []
     selectedServices = False
     totalPaths = len(list(set(df["Path"])))
+    df = df.where(pd.notnull(df), None)
     if len(list(set(df["Path"]))) == 1:
         pathFilter = [False]
         selectedPaths = list(set(df["Path"]))
@@ -37,7 +38,7 @@ def companyFilter(df, company):
     elif company == "EnbridgeMainline":
         df["Service"] = [x.replace("2ND", "2nd") for x in df["Service"]]
         pathFilter = [True, "radio"]
-        df = df.where(pd.notnull(df), None)
+        # df = df.where(pd.notnull(df), None)
         enbridgePaths = {"EnbridgeLocal": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba",
                                            "Edmonton Terminal, Alberta-Hardisty Terminal, Alberta"],
                          "EnbridgeMainline": ["Edmonton Terminal, Alberta-Clearbrook, Minnesota",
@@ -152,6 +153,17 @@ def processPath(df, seriesCol, productFilter):
     return series
 
 
+def roundValues(df):
+    avgToll = df["Value"].mean()
+    if avgToll >= 1:
+        df["Value"] = df["Value"].round(2)
+        decimals = False
+    else:
+        df["Value"] = df["Value"].round(2)
+        decimals = True
+    return df, decimals
+
+
 def processTollsData(sql=True, companies=False, save=True, completed=[]):
 
     def generatePathSeries(df, paths, seriesCol, productFilter):
@@ -194,19 +206,21 @@ def processTollsData(sql=True, companies=False, save=True, completed=[]):
 
     if companies:
         company_files = companies
-
     for company in company_files:
         thisCompanyData = {}
         if company == "EnbridgeMainline":
             df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
         else:
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
+        
+        df_c, decimals = roundValues(df_c)
         df_c, selectedPaths, selectedService, pathFilter, splitDefault, pathTotals = companyFilter(df_c, company)
         meta = {"companyName": company}
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
             meta["pathTotals"] = pathTotals
+            meta["decimals"] = decimals
             paths = sorted(list(set(df_c["Path"])))
             services = sorted(list(set(df_c["Service"])))
             units = list(set(df_c["Units"]))
@@ -284,5 +298,5 @@ if __name__ == "__main__":
                  "Westcoast",
                  "Westspur",
                  "Wascana"]
-    df, thisCompanyData = processTollsData(sql=True, companies=completed, completed=completed)
+    df, thisCompanyData = processTollsData(sql=False, companies=completed, completed=completed)
     print("done tolls")
