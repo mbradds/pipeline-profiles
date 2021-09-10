@@ -49,7 +49,7 @@ def companyFilter(df, company):
                                          "Hardisty, Alberta-ALL",
                                          "Kerrobert, Saskatchewan-ALL",
                                          "Regina, Saskatchewan-ALL"]}
-        
+
         filtered_list = []
         for section, paths in enbridgePaths.items():
             filtered_list.append(df[(df["PipelineID"]==section) & (df["Path"].isin(paths))].copy())
@@ -152,17 +152,17 @@ def processPath(df, seriesCol, productFilter):
     return series
 
 
-def processTollsData(sql=True, companies=False, save=True, completed = []):
-    
+def processTollsData(sql=True, companies=False, save=True, completed=[]):
+
     def generatePathSeries(df, paths, seriesCol, productFilter):
         pathSeries = []
         for path in paths:
-                df_p = df[df["Path"] == path].copy().reset_index(drop=True)
-                if not df_p.empty:
-                    pathSeries.append({"pathName": path,
-                                       "series": processPath(df_p, seriesCol, productFilter)})
+            df_p = df[df["Path"] == path].copy().reset_index(drop=True)
+            if not df_p.empty:
+                pathSeries.append({"pathName": path,
+                                   "series": processPath(df_p, seriesCol, productFilter)})
         return pathSeries
-    
+
     def findSeriesCol(df, company):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
@@ -183,9 +183,9 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
         # override series col if needed
         if company == "Keystone" or company == "Westcoast":
             seriesCol = "Path"
-        
+
         return seriesCol, productFilter
-    
+
     df = getTollsData(sql)
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
@@ -194,7 +194,7 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
 
     if companies:
         company_files = companies
-    
+
     for company in company_files:
         thisCompanyData = {}
         if company == "EnbridgeMainline":
@@ -243,17 +243,17 @@ def processTollsData(sql=True, companies=False, save=True, completed = []):
                 meta["services"] = [[s, True] if s == selectedService else [s, False] for s in services]
                 meta["units"] = units
                 pathSeries = generatePathSeries(df_c, paths, seriesCol, productFilter)
-            
+
             thisCompanyData["meta"] = meta
             thisCompanyData["tolls"] = pathSeries
         else:
             meta["build"] = False
             thisCompanyData["meta"] = meta
-        
+
         if save:
             with open('../data_output/tolls/'+company+'.json', 'w') as fp:
                 json.dump(thisCompanyData, fp, default=str)
-    
+
     return df_c, thisCompanyData
 
 
@@ -284,5 +284,5 @@ if __name__ == "__main__":
                  "Westcoast",
                  "Westspur",
                  "Wascana"]
-    df, thisCompanyData = processTollsData(sql=False, companies=completed, completed=completed)
+    df, thisCompanyData = processTollsData(sql=True, companies=completed, completed=completed)
     print("done tolls")

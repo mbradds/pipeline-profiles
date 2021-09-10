@@ -388,7 +388,7 @@ def getPoints(sql):
         json.dump(eng, fp)
     with open('../data_output/traffic/points/fr.json', 'w') as fp:
         json.dump(fra, fp)
-        
+
     # filter out enbridge apportionment points
     points = points[points["Latitude"] != ""].copy().reset_index(drop=True)
     return points

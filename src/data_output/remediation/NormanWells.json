@@ -1,1 +1,1 @@
-{"meta": {"companyName": "NormanWells", "old": 5, "new": 1}, "build": true, "data": [{"id": "REM2019-003", "p": "nt", "use": "ndl", "s": "prm", "a": "c", "c": ["18"], "vol": 44, "w": false, "ps": "Pipeline", "y": 2019, "loc": [61.83, -121.18]}]}
+{"meta": {"companyName": "NormanWells", "old": 0, "new": 1}, "build": true, "data": [{"id": "REM2019-003", "p": "nt", "use": "ndl", "s": "prm", "a": "c", "c": ["18"], "vol": 44, "w": false, "ps": "Pipeline", "y": 2019, "loc": [61.83, -121.18]}]}

@@ -1,702 +1,129 @@
 EventNumber,Company Name,Pipeline Name,Product Carried,Facility Name,Facility Type,Province,NearestPopulatedCentre,Applicable Land Use,Latitude,Longitude,Site Status,Activity At Time,Final Submission Date,Contaminants at the Site,Initial Estimate of Contaminated soil m3,Is site within 30 m of waterbody
-REM-0001,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Sumas Pump Station,Prime Mover,British Columbia,Lat 49.0656 Long -122.1594,Developed Land - Industrial,49.07,-122.16,Facility monitoring,Operation,1994-01-01 00:00:00.000,Methyl Tertiary Butyl Ether (MTBE),3500.0,False
-REM-0002,Yukon Pipelines Limited,Not Specified,Not Specified,Not Specified,Not Specified,Yukon,,,60.17,-134.71,Facility monitoring,,1995-01-01 00:00:00.000,,,
-REM-0003,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Jasper Pump Station,Not Specified,Alberta,"Jasper
-Lat 52.9383 Long -118.0436",,52.94,-118.04,Ongoing remediation,,1995-04-01 00:00:00.000,,,
-REM-0004,Enbridge Pipelines Inc.,Not Specified,Not Specified,Glenavon Terminal,Not Specified,Saskatchewan,Glenavon,,,,,,1997-04-24 00:00:00.000,,,
-REM-0005,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Edmonton,,,,,,1997-04-24 00:00:00.000,,,
-REM-0006,Enbridge Pipelines Inc.,Not Specified,Not Specified,Cromer Terminal,Not Specified,Manitoba,Cromer,,,,Facility monitoring,,1997-04-24 00:00:00.000,,,
-REM-0007,Enbridge Pipelines Inc.,Not Specified,Not Specified,Kerrobert Terminal,Not Specified,Saskatchewan,"Kerrobert (Former RBF)
-Lat 51.8705 Long -109.0402",,51.87,-109.04,Facility monitoring,,1997-04-24 00:00:00.000,,,
-REM-0008,TransCanada PipeLines Limited,Not Specified,Not Specified,Crowsnest CS,Not Specified,British Columbia,"Crowsnest
-Lat: 49.647828, Long: 114.716922",,49.65,-114.72,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0009,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 2,Not Specified,Saskatchewan,"Burstall
-Lat: 50.676696, Long: 109.978335",,50.68,-109.98,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0010,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 5,Not Specified,Saskatchewan,"Cabri
-Lat: 50.606835, Long: 108.707986",,50.61,-108.71,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0011,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 9,Not Specified,Saskatchewan,"Herbert
-Lat: 50.538482, Long: 107.308223",,50.54,-107.31,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0012,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 13,Not Specified,Saskatchewan,"Caron
-Lat: 50.480778, Long: 105.874664",,50.48,-105.87,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0013,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 17,Not Specified,Saskatchewan,"Regina
-Lat: 50.393908, Long: 104.408919",,50.39,-104.41,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0014,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 21,Not Specified,Saskatchewan,"Grenfell
-Lat: 50.284771, Long: 102.954886",,50.28,-102.95,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0015,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 25,Not Specified,Saskatchewan,"Moosomin
-Lat: 50.206136, Long: 101.488214",,50.21,-101.49,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0016,TransCanada PipeLines Limited,Not Specified,Not Specified,Station 30,Not Specified,Manitoba,"Rapid City
-Lat: 50.072441, Long: 100.002306",,50.07,-100.0,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0016B,TransCanada PipeLines Limited,Not Specified,Not Specified,Rapid City Compressor Station,Not Specified,Manitoba,Rapid City,,,,Facility monitoring,,2017-10-18 00:00:00.000,,,
-REM-0017,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 34,Not Specified,Manitoba,"Portage La Prairie
-Lat: 49.91.0116, Long: 98.518984",,,-98.52,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0018,TransCanada PipeLines Limited,Not Specified,Not Specified,Station 41,Not Specified,Manitoba,"Ile Des Chenes
-Lat: 49.718043, Long: 96.985883",,49.72,-96.99,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0019,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 43,Not Specified,Manitoba,"Spruce
-Lat: 49.658528, Long: 96.162698",,49.66,-96.16,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0020,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 45,Not Specified,Manitoba,"Falcon
-Lat: 49.681402, Long: 95.37458",,49.68,-95.37,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0021,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 49,Not Specified,Ontario,"Kenora
-Lat: 49.791081, Long: 94.491611",,49.79,-94.49,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0022,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 52,Not Specified,Ontario,"Vermillion Bay
-Lat: 49.828248, Long: 93.634885",,49.83,-93.63,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0023,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 55,Not Specified,Ontario,"Dryden
-Lat: 49.788154, Long: 92.764021",,49.79,-92.76,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0024,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 58,Not Specified,Ontario,"Ignace
-Lat: 49.482739, Long: 91.962364",,49.48,-91.96,Ongoing remediation,,2000-01-01 00:00:00.000,,,
-REM-0025,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 60,Not Specified,Ontario,"Martin
-Lat: 49.267614, Long: 91.234478",,49.27,-91.23,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0026,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 62,Not Specified,Ontario,"Upsala
-Lat: 49.034661, Long: 90.511622",,49.03,-90.51,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0027,TransCanada PipeLines Limited,Not Specified,Not Specified,Station 64,Not Specified,Ontario,Raith,,,,,,2000-01-01 00:00:00.000,,,
-REM-0028,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 68,Not Specified,Ontario,"Thunder Bay
-Lat: 48.552054, Long: 89.17155",,48.55,-89.17,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0029,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 69,Not Specified,Ontario,"Eaglehead
-Lat: 49.060604, Long: 89.285943",,49.06,-89.29,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0030,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 70,Not Specified,Ontario,Hurket,,48.82,-88.52,,,2000-01-01 00:00:00.000,,,
-REM-0031,TransCanada PipeLines Limited,Not Specified,Not Specified,Station 75,Not Specified,Ontario,Nipigon,,,,,,2000-01-01 00:00:00.000,,,
-REM-0032,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 77,Not Specified,Ontario,"Jellioce
-Lat: 49.680484, Long: 87.596303",,49.68,-87.6,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0033,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 80,Not Specified,Ontario,"Geraldton
-Lat: 49.800975, Long: 86.759869",,49.8,-86.76,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0034,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 84,Not Specified,Ontario,"Kotz Lake
-Lat: 49.794949, Long: 85.855485",,49.79,-85.86,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0035,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 86,Not Specified,Ontario,"Hearst
-Lat: 49.764527, Long: 84.918044",,49.76,-84.92,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0036,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 88,Not Specified,Ontario,"Calstock
-Lat: 49.745093, Long: 84.067722",,49.75,-84.07,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0037,TransCanada PipeLines Limited,Not Specified,Not Specified,STN 92 - MATTICE,Prime Mover,Ontario,"Mattice
-Lat: 49.585383, Long: 83.160176",,49.59,-83.16,Ongoing remediation,,2000-01-01 00:00:00.000,,,
-REM-0038,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 95,Not Specified,Ontario,"Kapuskasing
-Lat: 49.388684, Long: 82.439133",,49.39,-82.44,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0039,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 99,Not Specified,Ontario,"Smooth Rock Falls
-Lat: 49.258349, Long: 81.63504",,49.26,-81.64,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0040,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 102,Not Specified,Ontario,"Potter
-Lat: 48.871916, Long: 80.892704",,48.87,-80.89,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0041,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 105,Not Specified,Ontario,"Ramore
-Lat: 48.416579, Long: 80.335715",,48.42,-80.34,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0042,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 107,Not Specified,Ontario,"Swastika
-Lat: 47.962118, Long: 80.016599",,47.96,-80.02,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0043,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 110,Not Specified,Ontario,"Haileybury
-Lat: 47.447886, Long: 79.763394",,47.45,-79.76,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0044,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 112,Not Specified,Ontario,"Marten River
-Lat: 46.848632, Long: 79.809896",,46.85,-79.81,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0045,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 116,Not Specified,Ontario,"North Bay
-Lat: 46.377615, Long: 79.469986",,46.38,-79.47,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0046,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 119,Not Specified,Ontario,"Sundridge
-Lat: 47.718256, Long: 79.436832",,47.72,-79.44,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0047,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 123,Not Specified,Ontario,"Bracebridge
-Lat: 45.022235, Long: 79.324862",,45.02,-79.32,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0048,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 127,Not Specified,Ontario,"Barrie
-Lat: 44.470579, Long: 79.611039",,44.47,-79.61,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0049,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 130,Not Specified,Ontario,"Maple
-Lat: 43.874633, Long: 79.572023",,43.87,-79.57,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0050,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 134,Not Specified,Ontario,"Bowmanville
-Lat: 43.959714, Long: 78.819115",,43.96,-78.82,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0051,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 136,Not Specified,Ontario,"Coburg
-Lat: 44.046543, Long: 78.009491",,44.05,-78.01,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0052,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 139,Not Specified,Ontario,"Belleville
-Lat: 44.232033, Long: 77.231559",,44.23,-77.23,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0053,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 142,Not Specified,Ontario,"Kingston
-Lat: 44.345519, Long: 76.364067",,44.35,-76.36,Facility monitoring,,2000-01-01 00:00:00.000,,,
-REM-0054,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 144,Not Specified,Ontario,"Brockville
-Lat: 44.684043, Long: 75.621061",,44.68,-75.62,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0055,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 147,Not Specified,Ontario,"Cornwall
-Lat: 45.119887, Long: 74.715057",,45.12,-74.72,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0056,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 148,Not Specified,Quebec,"Les Cedres
-Lat: 45.370214, Long: 74.125747",,45.37,-74.13,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0057,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 209,Not Specified,Ontario,"Ancaster
-Lat: 43.188332, Long: 79.848451",,43.19,-79.85,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0058,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 211,Not Specified,Ontario,"Lincoln
-Lat: 45.745853, Long: 77.102691",,45.75,-77.1,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0059,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 802,Not Specified,Quebec,"Candiac
-Lat: 45.313663, Long: 73.482908",,45.31,-73.48,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0060,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 1206,Not Specified,Ontario,"Deux Rivieres
-Lat: 46.240129, Long: 78.132762",,46.24,-78.13,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0061,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 1211,Not Specified,Ontario,"Pembroke
-Lat: 45.74652, Long: 77.106447",,45.75,-77.11,Site assessment,,2000-01-01 00:00:00.000,,,
-REM-0062,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 1217,Not Specified,Ontario,"Stittsville
-Lat: 45.216479, Long: 75.922129",,45.22,-75.92,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0063,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 1301,Not Specified,Ontario,"Kirkwall
-Lat: 43.351654, Long: 80.121156",,43.35,-80.12,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0064,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 1401,Not Specified,Ontario,"Iroquois
-Lat: 44.88787, Long: 75.297145",,44.89,-75.3,Risk managed,,2000-01-01 00:00:00.000,,,
-REM-0066,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Blackpool Pump Station,Not Specified,British Columbia,Lat 51.5655 Long -120.1618,,51.57,-120.16,Facility monitoring,,2006-01-10 00:00:00.000,,,
-REM-0067,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Main Yard (KL 369) and Staging Area (KL 363.3),Not Specified,Alberta,"Jasper
-Main Yard Lat 52.9429 Long -118.0446
-Stagging Area Lat 52.9875 Long -118.0823",,52.94,-118.04,Risk managed,,2006-02-17 00:00:00.000,,,
-REM-0068,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0069,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0070,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0071,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0072,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0073,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0074,Trans Mountain Pipeline ULC,TMX Anchor Loop,,Not Specified,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2006-02-17 00:00:00.000,,,
-REM-0075,Enbridge Pipelines Inc.,Not Specified,Not Specified,Westover Station,Not Specified,Ontario,"Flamborough
-Lat 43.3367 Long -80.0968",,43.34,-80.1,Facility monitoring,,2007-01-01 00:00:00.000,,,
-REM-0076,"Express Pipeline Ltd., as the general partner of Express Holdings (Canada) Limited Partnership",Not Specified,Not Specified,Express Husky Lateral,Not Specified,Alberta,Hardisty,,,,Facility monitoring,,2007-02-15 00:00:00.000,,,
-REM-0077,Trans Mountain Pipeline ULC,Westridge Delivery Line,,Not Specified,Not Specified,British Columbia,Burnaby,,,,Post-remediation monitoring,,2007-07-24 00:00:00.000,,,
-REM-0078,"Express Pipeline Ltd., as the general partner of Express Holdings (Canada) Limited Partnership",Not Specified,Not Specified,Express Husky Lateral,Not Specified,Alberta,Hardisty,,,,Facility monitoring,,2007-08-21 00:00:00.000,,,
-REM-0079,Maritimes & Northeast Pipeline Management Ltd.,Not Specified,Not Specified,Heritage Custoday Transfer Station,Not Specified,Nova Scotia,Dartmouth,,,,Risk managed,,2007-10-01 00:00:00.000,,,
-REM-0080,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Poco Gas Station KL 332.6,Not Specified,Alberta,Jasper,,,,Post-remediation monitoring,,2007-11-13 00:00:00.000,,,
-REM-0081,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,British Columbia,ColdwaterLat 50.0219 Long -120.8683,Agricultural Land,50.02,-120.87,Risk managed,Maintenance,2008-05-09 00:00:00.000,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1520.0,False
-REM-0082,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,WabamunLat 50.0219 Long -114.5003,Non-developed Land,50.02,-114.5,Ongoing remediation,,2009-02-20 00:00:00.000,,,
-REM-0083,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Burnaby terminal,Not Specified,British Columbia,"Burnaby
-Lat 49.2715 Long -122.9316",,49.27,-122.93,Facility monitoring,,2009-05-07 00:00:00.000,,,
-REM-0083b,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Burnaby terminal,Not Specified,British Columbia,Burnaby,,,,Post-remediation monitoring,,2016-12-12 00:00:00.000,,,
-REM-0084,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Saskatchewan,Odessa,,,,,,2009-09-29 00:00:00.000,,,
-REM-0085,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,"Sherwood Park
-Lat 53.416 Long -113.3645 (confirm GIS coordinates, as these coordinates are in a rural area SE of Edmonton)",,53.42,-113.36,Facility monitoring,,2009-09-29 00:00:00.000,,,
-REM-0085b,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Sherwood Park,,,,Facility monitoring,,2016-01-28 00:00:00.000,,,
-REM-0085c,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Sherwood Park,,,,Facility monitoring,,2016-04-25 00:00:00.000,,,
-REM-0085d,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Sherwood,,,,Facility monitoring,,2016-12-16 00:00:00.000,,,
-REM-0085e,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Sherwood Park,,,,Facility monitoring,,2017-02-09 00:00:00.000,,,
-REM-0085f,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,"Edmonton, AB",,,,Facility monitoring,,2017-05-31 00:00:00.000,,,
-REM-0085g,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Edmonton,,,,Facility monitoring,,2015-07-08 00:00:00.000,,,
-REM-0086,Trans-Northern Pipelines Inc.,Ottawa Lateral Pipeline,,Not Specified,Not Specified,Ontario,South Stormont,,,,,,2009-10-05 00:00:00.000,,,
-REM-0087,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission",Not Specified,Not Specified,Compressor Station 4A,Not Specified,British Columbia,Summit Lake,,54.29,-122.62,Facility monitoring,,2009-10-27 00:00:00.000,,,
-REM-0088,Trans Mountain Pipeline ULC,KP 78.4,,Not Specified,Not Specified,Alberta,"Wabamun
-Lat 50.6624 Long -120.4137",,50.66,-120.41,Risk managed,,2009-12-07 00:00:00.000,,,
-REM-0089,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,"Riviere des Prairies Check Valve
-–St. Vincent de Paul, Quebec
-",Not Specified,Quebec,"Laval
-Lat/Lon 45.6240/73.6393",,45.62,-73.64,Post-remediation monitoring,,2010-02-27 00:00:00.000,,,
-REM-0090,Enbridge Pipelines Inc.,MP 1864.6,,Not Specified,Not Specified,Ontario,"Hamilton
-Lat 43.3451 Long -80.0597",,43.35,-80.06,Post-remediation monitoring,,2010-03-03 00:00:00.000,,,
-REM-0091,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Bronte Creek,Not Specified,Ontario,"Oakville
-Lat/Lon 43.4032/79.7370",,43.4,-79.74,Risk managed,,2010-03-17 00:00:00.000,,,
-REM-0092,Enbridge Pipelines Inc.,MP 75.0,,Not Specified,Not Specified,Alberta,"Strome
-Lat 52.8951 Long -111.9746",,52.9,-111.97,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0093,Enbridge Pipelines Inc.,MP 244.1,,Not Specified,Not Specified,Saskatchewan,Stranraer,,51.72,-108.5,,,2010-05-28 00:00:00.000,,,
-REM-0094,Enbridge Pipelines Inc.,MP 268.0,,Not Specified,Not Specified,Saskatchewan,"Rosetown
-Lat 51.5914 Long -107.9772",,51.59,-107.98,Ongoing remediation,,2010-05-28 00:00:00.000,,,
-REM-0095,Enbridge Pipelines Inc.,MP 270.5,,Not Specified,Not Specified,Saskatchewan,"Rosetown
-Lat 51.5782 Long -107.9232",,51.58,-107.92,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0096,Enbridge Pipelines Inc.,MP 284.5,,Not Specified,Not Specified,Saskatchewan,"Sovereign
-Lat 51.5045 Long -107.6209",,51.5,-107.62,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0097,Enbridge Pipelines Inc.,MP 331.9,,Not Specified,Not Specified,Saskatchewan,"Loreburn
-Lat 51.22 Long -106.6311",,51.22,-106.63,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0098,Enbridge Pipelines Inc.,MP 367.5,,Not Specified,Not Specified,Saskatchewan,"Craik
-Lat 50.9327 Long -105.9553",,50.93,-105.96,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0099,Enbridge Pipelines Inc.,MP 513.9,,Not Specified,Not Specified,Saskatchewan,"Glenavon
-Lat 50.1554 Long -102.9622",,50.16,-102.96,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0100,Enbridge Pipelines Inc.,MP 519.5,,Not Specified,Not Specified,Saskatchewan,"Peebles
-Lat 50.1386 Long -102.8394",,50.14,-102.84,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0101,Enbridge Pipelines Inc.,MP 659.3,,Not Specified,Not Specified,Manitoba,"Nesbit
-Lat 49.6061 Long -99.862",,49.61,-99.86,Site assessment,,2010-05-28 00:00:00.000,,,
-REM-0102,Enbridge Pipelines Inc.,MP 707.9 (Valve Site),,Not Specified,Not Specified,Manitoba,"St. Leon
-Lat 49.41 Long -98.8384",,49.41,-98.84,Post-remediation monitoring,,2010-05-28 00:00:00.000,,,
-REM-0103,Enbridge Pipelines Inc.,Not Specified,Not Specified,Black Creek,Not Specified,Manitoba,"Black Creek
-Lat 49.5986 Long -99.8034",,49.6,-99.8,Risk managed,,2010-05-28 00:00:00.000,,,
-REM-0104,"Express Pipeline Ltd., as the general partner of Express Holdings (Canada) Limited Partnership",Not Specified,Not Specified,Express Husky Lateral,Not Specified,Alberta,Hardisty,,,,Facility monitoring,,2010-06-01 00:00:00.000,,,
-REM-0105,Trans-Northern Pipelines Inc.,Montreal Feeder System,,Not Specified,Not Specified,Quebec,"Montreal 
-Lat/Long 45.6263/73.5227",,45.63,-73.52,Ongoing remediation,,2010-07-14 00:00:00.000,,,
-REM-0106,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Raisin River East Valve,Not Specified,Ontario,Williamstown,,,,,,2010-08-23 00:00:00.000,,,
-REM-0107,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Retlaw South Lateral Loop,Not Specified,Alberta,Enchant,,50.05,-112.5,Post-remediation monitoring,,2010-09-23 00:00:00.000,,,
-REM-0108,NOVA Gas Transmission Ltd.,Grande Prairie Mainline Loop,,Not Specified,Not Specified,Alberta,,,,,,,2010-09-29 00:00:00.000,,,
-REM-0109,Enbridge Pipelines Inc.,Not Specified,Not Specified,IOL Nanticoke Refinery,Not Specified,Ontario,Nanticoke,,42.84,-80.06,,,2010-10-15 00:00:00.000,,,
-REM-0110,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,"Edmonton
-Lat 53.5414 Long -113.3551",,53.54,-113.36,Site assessment,,2010-11-04 00:00:00.000,,,
-REM-0111,Enbridge Pipelines Inc.,Not Specified,Not Specified,Manitou Station,Not Specified,Manitoba,"Manitou
-Lat 49.3052 Long -98.5221",,49.31,-98.52,Facility monitoring,,2010-11-04 00:00:00.000,,,
-REM-0116,Enbridge Pipelines Inc.,Not Specified,Not Specified,Cromer Terminal,Not Specified,Manitoba,"Cromer
-Lat 49.7574bLong -101.2472",,49.76,-101.25,Ongoing remediation,,2010-12-16 00:00:00.000,,,
-REM-0116b,Enbridge Pipelines Inc.,Not Specified,Not Specified,Cromer Terminal,Not Specified,Manitoba,"Cromer, MB",,49.76,-101.25,Post-remediation monitoring,,2016-06-29 00:00:00.000,,,
-REM-0116c,Enbridge Pipelines Inc.,Not Specified,Not Specified,Cromer Terminal,Not Specified,Manitoba,Cromer,,49.76,-101.25,Facility monitoring,,2016-08-12 00:00:00.000,,,
-REM-0116d,Enbridge Pipelines Inc.,Not Specified,Not Specified,Cromer Terminal,Not Specified,Manitoba,Cromer,,49.76,-101.25,Ongoing remediation,,2016-10-06 00:00:00.000,,,
-REM-0117,Enbridge Pipelines Inc.,Not Specified,Not Specified,Gretna Station,Not Specified,Manitoba,"Gretna
-Lat 49.0176 Long -97.5603",,49.02,-97.56,Facility monitoring,,2010-12-16 00:00:00.000,,,
-REM-0118,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,"Edmonton
-Lat 53.5414 Long -113.3551",,53.54,-113.36,Site assessment,,2010-12-17 00:00:00.000,,,
-REM-0119,Ethane Shippers Joint Venture,Not Specified,Not Specified,Windsor Storage Terminal,Not Specified,Ontario,Windsor,,,,Facility monitoring,,2011-02-16 00:00:00.000,,,
-REM-0120a,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Kamloops Station,Not Specified,British Columbia,"Kamloops
-Lat 50.6624 Long -120.4137",,50.66,-120.41,Risk managed,,2011-03-03 00:00:00.000,,,
-REM-0120b,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Kamloops Station,Not Specified,British Columbia,Kamploops,,,,Facility monitoring,,2013-04-09 00:00:00.000,,,
-REM-0121,Enbridge Pipelines Inc.,MP 506.1,,Not Specified,Not Specified,Saskatchewan,"Glenavon
-Lat 50.1799 Long -103.1339",,50.18,-103.13,,,2007-04-15 00:00:00.000,,,
-REM-0122,Imperial Oil Resources Limited,Not Specified,Not Specified,Bear Island,Not Specified,Northwest Territories,Norman Wells,,,,,,2011-04-03 00:00:00.000,,,
-REM-0123,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,"Edmonton
-Lat 53.5420 Long -113.3669",,53.54,-113.37,,,2011-04-14 00:00:00.000,,,
-REM-0124,Trans Mountain Pipeline ULC,KP 150,,Not Specified,Not Specified,Alberta,Lat 53.6035 Long -115.4958,,53.6,-115.5,,,2011-04-22 00:00:00.000,,,
-REM-0125,Enbridge Pipelines Inc.,Not Specified,Not Specified,Bronte Junction Facility,Not Specified,Ontario,"Oakville
-Lat 43.4081 Long -79.7743",,43.41,-79.77,Ongoing remediation,,2011-03-15 00:00:00.000,,,
-REM-0126,Enbridge Pipelines (NW) Inc.,KP 380.4,,Not Specified,Not Specified,Northwest Territories,Wrigley,,62.71,-123.08,Post-remediation monitoring,,2011-05-09 00:00:00.000,,,
-REM-0127,Enbridge Pipelines Inc.,MP 118.8,,Not Specified,Not Specified,Alberta,"Hardisty
-Lat 52.5666 Long -111.0854",,52.57,-111.09,,,1984-11-26 00:00:00.000,,,
-REM-0128,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Cremona Compressor Station,Not Specified,Alberta,"Cremona
-Lat: 51.514652, Long: 114.535525",,51.51,-114.54,Risk managed,,2011-07-28 00:00:00.000,,,
-REM-0129,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Clearwater Compressor Station,Not Specified,Alberta,"Clearwater
-Lat: 52.05799,  Long: 114.908161",,52.06,-114.91,Site assessment,,2011-07-28 00:00:00.000,,,
-REM-0130,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Prevo Dome Meter Station,Not Specified,Alberta,"Blackfalds
-Lat: 52.376878, Long: 114.073016",,52.38,-114.07,Risk managed,,2011-07-28 00:00:00.000,,,
-REM-0132,TransCanada Keystone Pipeline GP Ltd.,Line 100-1,,Not Specified,Not Specified,Manitoba,SE-34-12-17 WPM,,,,,,2011-07-28 00:00:00.000,,,
-REM-0133,Enbridge Pipelines Inc.,MP 737.1191,,Not Specified,Not Specified,Manitoba,"Morden
-Lat 49.2226 Long -98.2594",,49.22,-98.26,Site assessment,,2011-08-03 00:00:00.000,,,
-REM-0135,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Beaver Creek
-Lat: 54.067725, Long: 115.557601",,54.07,-115.56,Site assessment,,2011-09-30 00:00:00.000,,,
-REM-0136,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Beiseker
-Lat: 51.321908, Long: 113.381692",,51.32,-113.38,Ongoing remediation,,2011-09-30 00:00:00.000,,,
-REM-0137,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Burton Creek
-Lat: 49.976141, Long: 114.131709",,49.98,-114.13,Site assessment,,2011-09-30 00:00:00.000,,,
-REM-0138,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Cavendish
-Lat: 50.817021, Long: 110.449817",,50.82,-110.45,Facility monitoring,,2011-09-30 00:00:00.000,,,
-REM-0138a,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Cavendish Meter Station,Not Specified,Alberta,"Cavendish
-Lat: 50.817021, Long: 110.449817",,50.82,-110.45,Facility monitoring,,2017-01-17 00:00:00.000,,,
-REM-0139,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,DIDSBURY C/S,Prime Mover,Alberta,"DidsburyLat: 51.599093, Long: 114.239525",Developed Land - Industrial,51.6,-114.24,Facility monitoring,,2011-09-30 00:00:00.000,,,
-REM-0140,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Hussar
-Lat: 51.098224, Long: 112.639238",,51.1,-112.64,Risk managed,,2011-09-30 00:00:00.000,,,
-REM-0141,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Princess
-Lat: 50.699552, Long: 111.529338",,50.7,-111.53,Facility monitoring,,2011-09-30 00:00:00.000,,,
-REM-0141b,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Princess Compressor Station,Not Specified,Alberta,AB,,,,Site assessment,,2017-04-10 00:00:00.000,,,
-REM-0142,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Torrington
-Lat: 51.803646, Long: 113.592278",,51.8,-113.59,Risk managed,,2011-09-30 00:00:00.000,,,
-REM-0143,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Turner Valley
-Lat: 50.694487, Long: 114.330158",,50.69,-114.33,Post-remediation monitoring,,2011-09-30 00:00:00.000,,,
-REM-0144,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Valleyview
-Lat: 54.960143, Long: 117.287439",,54.96,-117.29,Post-remediation monitoring,,2011-09-30 00:00:00.000,,,
-REM-0145,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"Phoenix
-Lat: 52.367262, Long: 115.375947",,52.37,-115.38,Risk managed,,2011-09-30 00:00:00.000,,,
-REM-0146,Enbridge Pipelines Inc.,MP 434.89,,Not Specified,Not Specified,Saskatchewan,"Regina
-Lat 50.4936 Long -104.6406",,50.49,-104.64,Site assessment,,2011-12-05 00:00:00.000,,,
-REM-0147,NOVA Gas Transmission Ltd.,"NPS 6 Choice Lateral Pipeline release 2 km south of Amisk, AB (MP118.8)",,Not Specified,Not Specified,Alberta,Amisk,,52.55,-111.03,Risk managed,,2011-12-06 00:00:00.000,,,
-REM-0148,Enbridge Pipelines Inc.,Not Specified,Not Specified,Glenboro Station,Not Specified,Manitoba,Glenboro,,49.54,-99.29,Facility monitoring,,2011-12-07 00:00:00.000,,,
-REM-0149,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,"Blanchet Lake Meter Station
-",Not Specified,Alberta,"Blanchet Lake
-Lat: 56.736314, Long: 113.29154",,56.74,-113.29,Facility monitoring,,2012-03-19 00:00:00.000,,,
-REM-0150,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Manitoba,"Souris
-Lat 49.6953 Long -100.5349",,49.7,-100.53,Site assessment,,2012-05-02 00:00:00.000,,,
-REM-0151,Imperial Oil Resources Limited,E-33-1X Flowline Release,,Not Specified,Not Specified,Northwest Territories,Norman Wells,,,,,,2011-08-11 00:00:00.000,,,
-REM-0152,Montreal Pipe Line Limited,Not Specified,Not Specified,St. Césaire Station,Not Specified,Quebec,St. Césaire,,,,Site assessment,,2012-06-20 00:00:00.000,,,
-REM-0153,Enbridge Pipelines Inc.,MP 140,,Not Specified,Not Specified,Alberta,"Metiskow
-Lat 52.4277 Long -110.6421",,52.43,-110.64,Site assessment,,2012-07-20 00:00:00.000,,,
-REM-0154,Trans Mountain Pipeline ULC,MP 39.7,,Not Specified,Not Specified,Alberta,Spruce Grove,,53.53,-113.88,Post-remediation monitoring,,2012-07-20 00:00:00.000,,,
-REM-0155,Enbridge Pipelines Inc.,Not Specified,Not Specified,Midale,Not Specified,Saskatchewan,"Midale
-Lat 49.4579 Long -103.3273",,49.46,-103.33,Facility monitoring,,2012-07-20 00:00:00.000,,,
-REM-0156,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Albright Meter Station,Not Specified,Alberta,"Albright
-Lat:55.344694, Long: 119.4651",,55.34,-119.47,Site assessment,,2012-07-30 00:00:00.000,,,
-REM-0157,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Bingley Meter Station,Not Specified,Alberta,"Bingley
-Lat:52.483061, Long: 114.871247",,52.48,-114.87,Post-remediation monitoring,,2012-07-30 00:00:00.000,,,
-REM-0158,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Caroline North Meter Station,Not Specified,Alberta,"Caroline
-Lat: 51.982936, Long: 114.740074",,51.98,-114.74,Post-remediation monitoring,,2012-07-30 00:00:00.000,,,
-REM-0159,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Josephine East Meter Station,Not Specified,Alberta,"Josephine
-Lat:56.111433, Long: 119.038013",,56.11,-119.04,Post-remediation monitoring,,2012-07-30 00:00:00.000,,,
-REM-0160,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Pioneer East Meter Station,Not Specified,Alberta,"Pioneer
-Lat:52.483061, Long: 114.871247",,52.48,-114.87,Facility monitoring,,2012-07-30 00:00:00.000,,,
-REM-0161,TransCanada Keystone Pipeline GP Ltd.,Not Specified,Not Specified,Pump Station 13,Not Specified,Saskatchewan,"Herbert
-Lat: 50.538794, Long: 107.306126",,50.54,-107.31,Risk managed,,2012-07-30 00:00:00.000,,,
-REM-0162,Enbridge Pipelines Inc.,MP 28.1,,Not Specified,Not Specified,Alberta,Hay Lakes,,53.22,-112.95,Post-remediation monitoring,,2012-08-27 00:00:00.000,,,
-REM-0163,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Kamloops Station,Not Specified,British Columbia,"Kamloops
-Lat 50.6624 Long -120.4137",,50.66,-120.41,Facility monitoring,,2012-09-05 00:00:00.000,,,
-REM-0164,Enbridge Pipelines (NW) Inc.,Not Specified,Not Specified,Remote Base Camp,Not Specified,Northwest Territories,KP160,,64.42,-124.72,Facility monitoring,,2012-06-22 00:00:00.000,,,
-REM-0165,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Sumas Ward Road,Not Specified,British Columbia,"Sumas
-Lat 49.0717 Long -122.1942",,49.07,-122.19,Post-remediation monitoring,,2005-07-15 00:00:00.000,,,
-REM-0166,Trans-Northern Pipelines Inc.,Line 9,,Not Specified,Not Specified,Ontario,Castleton,,,,Risk managed,,2012-10-24 00:00:00.000,,,
-REM-0167,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Sumas Pump Station,Not Specified,British Columbia,Abbotsford,,,,,,2012-11-05 00:00:00.000,,,
-REM-0168,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Farran Point,Not Specified,Ontario,"Farrans Point
-Lat/Lon 44.9968/75.0125",,45.0,-75.01,Ongoing remediation,,2012-11-01 00:00:00.000,,,
-REM-0169,Enbridge Pipelines Inc.,"
-Line 2",,Not Specified,Not Specified,Alberta,"MP86.4381
-Lat 52.8086 Long -111.7428",,52.81,-111.74,Site assessment,,2012-11-08 00:00:00.000,,,
-REM-0170,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Manitoba,MP602.4002 - SW -17- 09- 27 - W1M near Virden,,49.74,-101.1,,,2012-12-11 00:00:00.000,,,
-REM-0171,Enbridge Pipelines Inc.,MP 288. 88 Milden Take Off,,Not Specified,Not Specified,Saskatchewan,"Milden
-Lat 51.4814 Long -107.5265",,51.48,-107.53,Facility monitoring,,2012-12-10 00:00:00.000,,,
-REM-0172,Trans Mountain Pipeline ULC,MP8.226,,Not Specified,Not Specified,British Columbia,"Sumas Border Trap
-Lat 49.0027 Long -122.2260",,49.0,-122.23,Risk managed,,2012-12-20 00:00:00.000,,,
-REM-0173,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Alberta,"MP 8.86
-Lat 53.432 long -113.2465",,53.43,-113.25,Ongoing remediation,,2012-11-19 00:00:00.000,,,
-REM-0174,TransCanada PipeLines Limited,Not Specified,Not Specified,Barrie Sales Meter Station,Not Specified,Ontario,"Barrie
-Lat: 44.407922, Long: 79.726741",,44.41,-79.73,Risk managed,,2012-12-21 00:00:00.000,,,
-REM-0175,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Ontario,Port Hope,,43.99,-78.29,Ongoing remediation,,2012-12-19 00:00:00.000,,,
-REM-0176,ConocoPhillips Canada Limited,Not Specified,Not Specified,Elmworth,Not Specified,Alberta,12-25-070-13W6,,,,,,2012-08-27 00:00:00.000,,,
-REM-0178,Enbridge Pipelines Inc.,Line 10,,Not Specified,Not Specified,Ontario,"Thorold
-Lat 43.0496 Long -79.2096",,43.05,-79.21,,,2013-02-20 00:00:00.000,,,
-REM-0179,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Alberta,"Sedgewick
-Lat 52.8057 Long -111.7323",,52.81,-111.73,Site assessment,,2013-03-13 00:00:00.000,,,
-REM-0181,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Saskatchewan,"Kipling
-Lat 50.1167 Long -102.7167",,50.12,-102.72,Ongoing remediation,,2013-03-25 00:00:00.000,,,
-REM-0182,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Saskatchewan,"Davin
-Lat 50.3865 Long -104.116",,50.39,-104.12,Site assessment,,2013-04-04 00:00:00.000,,,
-REM-0183,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Brighton Pump Station,Not Specified,Ontario,"Brighton
-Lat/Lon  44.1164/77.7087",,44.12,-77.71,Ongoing remediation,,2013-04-12 00:00:00.000,,,
-REM-0184,Enbridge Pipelines Inc.,Line 13,,Not Specified,Not Specified,Manitoba,"Gretna 
-Lat 49.0451 Long -97.6655",,49.05,-97.67,Post-remediation monitoring,,2013-04-15 00:00:00.000,,,
-REM-0185,Enbridge Pipelines Inc.,Line 9,,Not Specified,Not Specified,Ontario,Castleton,,44.06,-77.95,,,2013-04-22 00:00:00.000,,,
-REM-0193,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission",Fort Nelson Gathering Pipeline System,,Not Specified,Not Specified,British Columbia,"Pointed Mountain pig sending barrels 
-Lat: 60.23.48 Long: 123.49.35",,60.23,-123.49,Ongoing remediation,,2013-03-28 00:00:00.000,,,
-REM-0222,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission",FSJ Gathering,,Not Specified,Not Specified,British Columbia,Pink Mountain Communications,,,,Facility monitoring,,2013-03-28 00:00:00.000,,,
-REM-0225a,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","CS 7
-Transmission",,Not Specified,Not Specified,British Columbia,"Unit 7 (Orenda)
-Lat/Long: 50.7494/120.8588",,50.75,-120.86,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0225b,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","CS 7
-Transmission",,Not Specified,Not Specified,British Columbia,"Storage Tank at Lagoon
-Lat/Long: 50.7494/120.8588",,50.75,-120.86,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0226,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","BS 13 Boundary
-Transmission",,Not Specified,Not Specified,British Columbia,"Compressor building basement
-Lat/Long: 56.3563/120.1353",,56.36,-120.14,Facility monitoring,,2013-03-28 00:00:00.000,,,
-REM-0227,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","CS 2
-Transmission",,Not Specified,Not Specified,British Columbia,"Compressor building basement
-Lat/Long: 55.6497/122.2076",,55.65,-122.21,Site assessment,,2013-03-28 00:00:00.000,,,
-REM-0228,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","6AL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 72.204 Casing
-Lat/Long: 51.6416/121.2978",,51.64,-121.3,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0229,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","6AL2
-Transmission",,Not Specified,Not Specified,British Columbia,"km 72.318 Casing
-Lat/Long: 51.6417/121.2977",,51.64,-121.3,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0230,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","4BL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 9.81
-Lat/Long: 53.4228/122.5975",,53.42,-122.6,Facility monitoring,,2013-03-28 00:00:00.000,,,
-REM-0231,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","4BL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 6.290
-Lat/Long: 53.4514/122.6046",,53.45,-122.6,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0232,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","9L1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 18.9
-Lat/Long: 49.1183/121.9989",,49.12,-122.0,Risk managed,,2013-03-28 00:00:00.000,,,
-REM-0233,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","9L1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 29.1
-Lat/Long: 49.073/122.1094",,49.07,-122.11,Facility monitoring,,2013-03-28 00:00:00.000,,,
-REM-0234,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","9L1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 35.5
-Lat/Long: 49.0316/122.1656",,49.03,-122.17,Facility monitoring,,2013-03-28 00:00:00.000,,,
-REM-0235,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","8BL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 18.615
-Lat/Long: 49.3603/121.597",,49.36,-121.6,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0236,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","8BL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 19.018
-Lat/Long: 49.358/121.6004",,49.36,-121.6,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0237,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","6BL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 14.6
-Lat/Long: 51.4223/121.2867",,51.42,-121.29,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0238,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","CS 3
-Transmission",,Not Specified,Not Specified,British Columbia,"Station (general)
-Lat/Long: 55.0307/123.0318",,55.03,-123.03,Site assessment,,2013-03-28 00:00:00.000,,,
-REM-0239,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","2BL1
-Transmission",,Not Specified,Not Specified,British Columbia,"km 1.5
-Lat/Long: 55.414/122.6569",,55.41,-122.66,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0240,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","CS N4
-Transmission",,Not Specified,Not Specified,British Columbia,"Station (general)
-Lat/Long: 56.833/122.3651",,56.83,-122.37,Post-remediation monitoring,,2013-03-28 00:00:00.000,,,
-REM-0242,Enbridge Pipelines Inc.,Line 1,,Not Specified,Not Specified,Manitoba,"MP 703.6, NW 32-05-11 W1M
-Lat 49.4382 Long -98.9207",,49.44,-98.92,Ongoing remediation,,2013-08-30 00:00:00.000,,,
-REM-0243,Enbridge Pipelines Inc.,Line 2,,Not Specified,Not Specified,Manitoba,"MP 620.14 valve site, NE 06-09-24 W1M",,49.72,-100.71,Site assessment,,2013-09-27 00:00:00.000,,,
-REM-0244,Enbridge Pipelines Inc.,Line 13,,Not Specified,Not Specified,Alberta,"Sherwood Park SE-33-52-23-W4M
-Lat 53.5271 Long -113.3447",,53.53,-113.34,Site assessment,,2013-11-04 00:00:00.000,,,
-REM-0245,Enbridge Pipelines Inc.,Line 13,,Not Specified,Not Specified,Alberta,"MP 17.8 - NE-22-50-22-W4M
-Lat 53.3321 Long -113.1349",,53.33,-113.13,Risk managed,,2013-12-10 00:00:00.000,,,
-REM-0247,Enbridge Pipelines Inc.,Not Specified,Not Specified,Kingsman Station,Not Specified,Alberta,"31.77 Kingsman Station
-Lat 53.194 Long -112.8836",,53.19,-112.88,Facility monitoring,,2013-12-13 00:00:00.000,,,
-REM-0248,Enbridge Pipelines Inc.,Not Specified,Not Specified,Strome Station,Not Specified,Alberta,"MP 69.71 
-Lat 52.9336 Long -112.0839",,52.93,-112.08,Facility monitoring,,2013-12-13 00:00:00.000,,,
-REM-0249,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"101.70 Lougheed
-Lat 52.6979 Long -111.4302",,52.7,-111.43,Risk managed,,2013-12-13 00:00:00.000,,,
-REM-0250,Enbridge Pipelines Inc.,Not Specified,Not Specified,Hardisty Terminal,Not Specified,Alberta,"109.02 Hardisty Terminal
-Lat 52.6416 Long -111.283",,52.64,-111.28,Risk managed,,2013-12-13 00:00:00.000,,,
-REM-0251,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,Amisk,Agricultural Land,52.56,-111.08,Risk managed,,2013-12-13 00:00:00.000,,,
-REM-0252,Enbridge Pipelines Inc.,Not Specified,Not Specified,Metiskow Station,Not Specified,Alberta,"142.69 Metiskow
-Lat 52.4081 Long -110.5844",,52.41,-110.58,Ongoing remediation,,2013-12-13 00:00:00.000,,,
-REM-0253,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"253.2 Herschel
-Lat 51.6691 Long -108.2975",,51.67,-108.3,Site assessment,,2013-12-13 00:00:00.000,,,
-REM-0254,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"325.6 Loreburn
-Lat 51.271 Long -106.7514",,51.27,-106.75,Ongoing remediation,,2013-12-13 00:00:00.000,,,
-REM-0255,Enbridge Pipelines Inc.,Not Specified,Not Specified,West Souris Station,Not Specified,Manitoba,"640.99 West Souris Station
-Lat 49.6581 Long -100.6581",,49.66,-100.66,Facility monitoring,,2013-12-13 00:00:00.000,,,
-REM-0256,Enbridge Pipelines Inc.,Not Specified,Not Specified,Souris Station,Not Specified,Manitoba,"646.24 Souris Station
-Lat 49.6425 Long -100.1471",,49.64,-100.15,Site assessment,,2013-12-13 00:00:00.000,,,
-REM-0257,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Manitoba,"712.48 Swan Lake
-Lat 49.3826 Long -98.7461",,49.38,-98.75,Ongoing remediation,,2013-12-13 00:00:00.000,,,
-REM-0258,Enbridge Pipelines Inc.,Line 4,Crude Oil,Not Specified,Not Specified,Alberta,109.6 Hardisty WetlandLat 52.6367 Long -111.2712,Developed Land - Industrial,52.64,-111.27,Site assessment,,2013-12-13 00:00:00.000,,,
-REM-0259,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Manitoba,"717.5 St. Leon
-Lat 49.3497 Long -98.647",,49.35,-98.65,Post-remediation monitoring,,2013-12-13 00:00:00.000,,,
-REM-0260,Enbridge Pipelines Inc.,MP 2184,,Not Specified,Not Specified,Ontario,"Lancaster
-Lat 45.2362 Long -74.5684",,45.24,-74.57,Risk managed,,2013-12-13 00:00:00.000,,,
-REM-0261,Enbridge Pipelines (NW) Inc.,Line 21,Crude Oil,IJ CRUDE OIL INJECTION FACILITY,Other Facility,Alberta,KP 839 Alberta Lat 59.2926 Long -119.1093,Developed Land - Industrial,59.29,-119.11,Facility monitoring,,2013-12-13 00:00:00.000,,,
-REM-0262,TEML Westspur Pipelines Limited,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"01-18-04-31 W1m Saskatchewan
-Lat 49.2970 Long -101.6414",,49.3,-101.64,Risk managed,,2013-12-13 00:00:00.000,,,
-REM-0263,Enbridge Pipelines Inc.,Line 9,,Not Specified,Not Specified,Ontario,"Iroquois
-Lat 44.8508 Long -75.3804",,44.85,-75.38,,,2013-12-13 00:00:00.000,,,
-REM-0264,TEML Westspur Pipelines Limited,Line 23A,,Not Specified,Not Specified,Saskatchewan,"Frobisher
-Lat 49.2542 Long -102.5011",,49.25,-102.5,Risk managed,,2014-01-31 00:00:00.000,,,
-REM-0265,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,Keho Lake,,49.89,-112.91,Post-remediation monitoring,,2014-03-05 00:00:00.000,,,
-REM-0266,Enbridge Pipelines Inc.,Line 8,,Not Specified,Not Specified,Ontario,"Hamilton
-Lat 43.3542 Long -80.0138",,43.35,-80.01,Ongoing remediation,,2013-05-14 00:00:00.000,,,
-REM-0267,Foothills Pipe Lines Ltd.,Not Specified,Not Specified,Richmound Compressor Station 361,Not Specified,Saskatchewan,"Richmound
-Lat: 50.515036, Long: 109806094",,50.52,-109.81,Risk managed,,2013-03-28 00:00:00.000,,,
-REM-0268,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Nevis North Meter Station,Not Specified,Alberta,"Nevis North 
-Lat: 52.366081, Long: 113.087208",,52.37,-113.09,Facility monitoring,,2013-03-28 00:00:00.000,,,
-REM-0269,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Virginia Hills East,Not Specified,Alberta,Virginia Hills East,,54.46,-115.59,Post-remediation monitoring,,2014-03-05 00:00:00.000,,,
-REM-0270,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Crossfield West,Not Specified,Alberta,Crossfield West,,51.53,-114.33,Site assessment,,2014-03-05 00:00:00.000,,,
-REM-0271,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Flat Lake North,Not Specified,Alberta,Flat Lake North,,54.79,-112.74,Post-remediation monitoring,,2014-03-05 00:00:00.000,,,
-REM-0272,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Meyer 'A' Meter Station,Not Specified,Alberta,Meyer 'A' Meter Station,,55.03,-113.72,Post-remediation monitoring,,2014-03-05 00:00:00.000,,,
-REM-0273,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Meyer 'B' Meter Station,Not Specified,Alberta,Meyer 'B' Meter Station,,55.03,-113.72,Post-remediation monitoring,,2014-03-05 00:00:00.000,,,
-REM-0274,Enbridge Pipelines Inc.,MP 290.31,,Not Specified,Not Specified,Saskatchewan,NW-09-29-11 W3M,,51.47,-107.5,Site assessment,,2014-03-11 00:00:00.000,,,
-REM-0276,Trans-Northern Pipelines Inc.,"2894-4th Line, Minicipality of Port Hope,
- MP 279.3",,Not Specified,Not Specified,Ontario,43.976412/-78.390803,,43.98,-78.39,Site assessment,,2014-06-18 00:00:00.000,,,
-REM-0277,Enbridge Pipelines Inc.,MP 445.73,,Not Specified,Not Specified,Saskatchewan,"White City: SouthEast Quarter 21-017-18 W2M
-MP 445.73",,50.45,-104.42,Post-remediation monitoring,,2014-06-25 00:00:00.000,,,
-REM-0278,Enbridge Pipelines Inc.,Line 1,,Not Specified,Not Specified,Manitoba,Darlingford MP 734.1432,,49.24,-98.32,,,2014-06-26 00:00:00.000,,,
-REM-0279,Enbridge Pipelines Inc.,MP 716.86,,Not Specified,Not Specified,Manitoba,Somerset,,49.35,-98.66,Site assessment,,2014-07-24 00:00:00.000,,,
-REM-0280,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Kamloops Takeoff,Not Specified,British Columbia,Kamloops,,50.71,-120.43,Post-remediation monitoring,,2014-08-12 00:00:00.000,,,
-REM-0281,Enbridge Pipelines Inc.,MP 20.81,,Not Specified,Not Specified,Alberta,New Sarepta; MP 20.81,,53.28,-113.1,Site assessment,,2014-09-16 00:00:00.000,,,
-REM-0282,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"Kipling
-MP 531.74",,50.09,-102.58,Site assessment,,2014-09-16 00:00:00.000,,,
-REM-0283,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Valleyview Compressor Station,Not Specified,Alberta,Valleyview,,54.96,-117.29,Post-remediation monitoring,,2014-10-21 00:00:00.000,,,
-REM-0284,Enbridge Pipelines Inc.,MP 0.0,,Not Specified,Not Specified,Alberta,"Edmonton Terminal, Line 2",,53.54,-113.36,Facility monitoring,,2014-10-28 00:00:00.000,,,
-REM-0285,TEML Westspur Pipelines Limited,"NA, RoW spill",,Not Specified,Not Specified,Saskatchewan,"Alida
-NW-03-05-32 W1M",,49.37,-101.73,Post-remediation monitoring,,2014-10-28 00:00:00.000,,,
-REM-0286,Enbridge Pipelines Inc.,MP 734.78,,Not Specified,Not Specified,Manitoba,Darlingford,,49.24,-98.31,Ongoing remediation,,2014-11-13 00:00:00.000,,,
-REM-0287,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"Kendal
-MP 480.75",,50.26,-103.69,Post-remediation monitoring,,2014-11-13 00:00:00.000,,,
-REM-0288,Trans Mountain Pipeline ULC,Not Specified,Not Specified,McMurphy Station,Not Specified,British Columbia,"McMurphy Station
-KP 645",,,,,,2014-11-19 00:00:00.000,,,
-REM-0289,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Sneddon Creek Meter Station,Not Specified,Alberta,,,55.92,-119.83,Post-remediation monitoring,,2014-10-29 00:00:00.000,,,
-REM-0290,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Leming Lake Meter Station,Not Specified,Alberta,,,54.67,-110.57,Facility monitoring,,2014-10-29 00:00:00.000,,,
-REM-0291,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Assumption Meter Station,Not Specified,Alberta,,,58.6,-118.61,Post-remediation monitoring,,2014-10-29 00:00:00.000,,,
-REM-0292,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,September Lake Meter Station,Not Specified,Alberta,,,54.82,-113.6,Post-remediation monitoring,,2014-10-29 00:00:00.000,,,
-REM-0293,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Rock Island South No. 2 Meter Station,Meter,Alberta,"Sandy Lake, Alberta",Non-developed Land,55.5,-113.48,Post-remediation monitoring,,2014-10-29 00:00:00.000,,,
-REM-0294,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Clarkson Valley Compressor Station,Not Specified,Alberta,,,55.13,-117.84,Risk managed,,2014-10-29 00:00:00.000,,,
-REM-0295,Trans Mountain Pipeline ULC,KP 1036,,Not Specified,Not Specified,British Columbia,"KP 1036, UTM 10 U 596233.69 m E, 5457695.22 m N, near Agassiz, BC",,,,,,2014-12-01 00:00:00.000,,,
-REM-0296,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Manitoba,"MP 724.60 
-SE-17-04-08-W4M",,49.3,-98.51,Site assessment,,2014-12-04 00:00:00.000,,,
-REM-0297,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Sumas Tank Farm,Not Specified,British Columbia,Abbotsford,,,,,,2014-11-10 00:00:00.000,,,
-REM-0297b,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Sumas Tank Farm,Not Specified,British Columbia,Abbotsford,,49.08,-122.2,,,2016-12-16 00:00:00.000,,,
-REM-0298,Enbridge Pipelines Inc.,Line 4,,Not Specified,Not Specified,Alberta,MP 66.75 Daysland,,52.96,-112.14,Site assessment,,2015-01-21 00:00:00.000,,,
-REM-0299,Enbridge Pipelines Inc.,Line 4,,Not Specified,Not Specified,Saskatchewan,MP 324.89 Loreburn,,,,Site assessment,,2015-01-21 00:00:00.000,,,
-REM-0300,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Alberta,MP 13.69 South Cooking Lake,,,,Site assessment,,2015-01-28 00:00:00.000,,,
-REM-0301,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Alberta,MP 9.45 South Cooking Lake,,53.42,-113.24,Site assessment,,2015-01-29 00:00:00.000,,,
-REM-0302,Enbridge Pipelines Inc.,Girth Weld W7950,,Not Specified,Not Specified,Ontario,MP 1992.0616,,,,Post-remediation monitoring,,2013-04-28 00:00:00.000,,,
-REM-0303,Trans Mountain Pipeline ULC,Not Specified,Not Specified,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Facility monitoring,,2014-12-19 00:00:00.000,,,
-REM-0304,Enbridge Pipelines Inc.,Not Specified,Not Specified,E2H construction NW 23-46-16 W4M,Not Specified,Alberta,MP 62.87 Daysland,,52.98,-112.22,Site assessment,,2014-12-16 00:00:00.000,,,
-REM-0305,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Saskatchewan,MP 505.59 Glenavon,,50.18,-103.14,Ongoing remediation,,2015-02-11 00:00:00.000,,,
-REM-0306,Enbridge Pipelines Inc.,Line 4,,Not Specified,Not Specified,Alberta,"MP 104.64, Hardisty",,52.68,-111.37,Site assessment,,2015-03-25 00:00:00.000,,,
-REM-0307,Enbridge Pipelines Inc.,Line 10,,Not Specified,Not Specified,Ontario,"MP 1867.89, Flamborough",,43.26,-80.07,,,2015-03-17 00:00:00.000,,,
-REM-0308,Enbridge Pipelines Inc.,Line 4,,Not Specified,Not Specified,Manitoba,"MP 762.40, Gnadenthal",,49.07,-97.75,Site assessment,,2015-05-14 00:00:00.000,,,
-REM-0309,Plains Midstream Canada ULC,Not Specified,Not Specified,Windsor Brine Ponds,Not Specified,Ontario,Windsor,,,,Facility monitoring,,2015-05-26 00:00:00.000,,,
-REM-0310,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Ontario,"MP 270.9, Cobourg",,44.01,-78.23,Site assessment,,2015-06-09 00:00:00.000,,,
-REM-0311,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Ontario,"MP 89.7, Farran's Point",,45.0,-75.01,Ongoing remediation,,2015-06-09 00:00:00.000,,,
-REM-0312,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Quebec,"MP 46.5, St. Polycarpe",Agricultural Land,45.3,-74.3,Ongoing remediation,,2015-06-09 00:00:00.000,,,
-REM-0313,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Ontario,"MP 83.6, Long Sault",Developed Land - Residential,45.03,-74.9,Ongoing remediation,Construction,2015-06-09 00:00:00.000,,,
-REM-0314,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Ontario,"MP 70.7, Glendale",,45.07,-74.67,Ongoing remediation,,2015-06-09 00:00:00.000,,,
-REM-0315,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"MP 129.92, Czar",,52.49,-110.85,Site assessment,,2015-06-22 00:00:00.000,,,
-REM-0316,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Quebec,"MP 45.2, St. Justine de Newton",Agricultural Land,45.32,-74.27,Ongoing remediation,,2015-06-23 00:00:00.000,,,
-REM-0318,Enbridge Pipelines Inc.,MP 635.90,,Not Specified,Not Specified,Manitoba,Souris,,49.67,-100.37,Site assessment,,2015-08-18 00:00:00.000,,,
-REM-0319,TransCanada PipeLines Limited,Not Specified,Not Specified,B Plant Compressor Building at Station 75,Not Specified,Ontario,Nipigon,,49.29,-88.1,Post-remediation monitoring,,2015-08-19 00:00:00.000,,,
-REM-0320,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Caribou Lakes Sales Meter Station,Not Specified,Alberta,,,54.96,-110.62,Post-remediation monitoring,,2015-09-10 00:00:00.000,,,
-REM-0321,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"MP 46.97, Round Hill",,53.1,-112.56,Ongoing remediation,,2015-09-24 00:00:00.000,,,
-REM-0322,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"MP 313.43, Macrorie",,51.36,-107.0,Site assessment,,2015-09-28 00:00:00.000,,,
-REM-0323,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Not Specified,Not Specified,British Columbia,"KP 991.292, Hope",,49.47,-121.26,Risk managed,,2015-10-02 00:00:00.000,,,
-REM-0324,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,MP 288.79 near Milden,,51.48,-107.53,Site assessment,,2015-10-23 00:00:00.000,,,
-REM-0325,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Blackpool Pump Station,Not Specified,British Columbia,MP 710 near Blackpool,,,,Facility monitoring,,2015-11-23 00:00:00.000,,,
-REM-0326,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,MP 3.62 near Sherwood Park,,53.5,-113.32,Site assessment,,2015-11-30 00:00:00.000,,,
-REM-0327,Enbridge Pipelines Inc.,Not Specified,Not Specified,Tank 6 (TK-6),Not Specified,Alberta,MP 0.0 near Edmonton,,53.54,-113.36,Facility monitoring,,2015-12-03 00:00:00.000,,,
-REM-0328,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Ansell Receipt Meter Station,Not Specified,Alberta,,,53.6,-116.47,Post-remediation monitoring,,2015-12-04 00:00:00.000,,,
-REM-0329,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Cynthia Sales Meter Station,Not Specified,Alberta,,,53.24,-115.56,Post-remediation monitoring,,2015-12-09 00:00:00.000,,,
-REM-0330,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Richmond Receipt Meter Station,Not Specified,Alberta,,,55.02,-112.91,Post-remediation monitoring,,2015-12-11 00:00:00.000,,,
-REM-0331,TransCanada PipeLines Limited,Not Specified,Not Specified,Kings North Connection,Not Specified,Ontario,"near Major Mackenzie Drive and Huntington Road, Vaughn, ON",,,,,,2016-03-10 00:00:00.000,,,
-REM-0333,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edson Station,Not Specified,Alberta,KP 228.3 near Edson,,,,Ongoing remediation,,2016-01-28 00:00:00.000,,,
-REM-0333b,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edson Pump Station,Not Specified,Alberta,"Edson, AB",,,,Site assessment,,2017-03-10 00:00:00.000,,,
-REM-0333c,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Edson Station,Not Specified,Alberta,"Edson, AB",,53.58,-116.65,Risk managed,,2016-02-19 00:00:00.000,,,
-REM-0334,Enbridge Pipelines Inc.,Line 13,,Not Specified,Not Specified,Saskatchewan,MP 574.46 near Fairlight,,49.88,-101.68,Site assessment,,2016-03-02 00:00:00.000,,,
-REM-0335,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Fairview Mainenance Office,Not Specified,Alberta,Fairview,,56.06,-118.39,Risk managed,,2016-06-02 00:00:00.000,,,
-REM-0336,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,,2016-01-19 00:00:00.000,,,
-REM-0337,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Buffalo Creek (South),Not Specified,Alberta,NW-19-066-16 W4M,,56.46,-112.84,Post-remediation monitoring,,2016-03-24 00:00:00.000,,,
-REM-0338,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,"New Sarepta, AB; MP 22.96",,,,Site assessment,,2016-06-29 00:00:00.000,,,
-REM-0339,Enbridge Pipelines Inc.,Not Specified,Not Specified,Herschel Station,Not Specified,Saskatchewan,"Herschel, SK, MP 257.02",,,,Site assessment,,2016-06-29 00:00:00.000,,,
-REM-0340,Enbridge Pipelines Inc.,Not Specified,Not Specified,Craik Station,Not Specified,Saskatchewan,"Craik, SK, MP 367.03",,,,Facility monitoring,,2016-06-29 00:00:00.000,,,
-REM-0341,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,SMOKY LAKE,Prime Mover,Alberta,SE-15-069-16 W4M,Non-developed Land,54.1,-112.31,Risk managed,,2016-03-24 00:00:00.000,,,
-REM-0342,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Saskatchewan,"MP 237.1043, Plenty",,,,Site assessment,,2016-08-26 00:00:00.000,,,
-REM-0343,Enbridge Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Quebec,"MP 2258.01, near Montreal East",,,,Site assessment,,2016-09-19 00:00:00.000,,,
-REM-0344,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Not Specified,Not Specified,Ontario, Newcastle,Non-developed Land,43.96,-78.56,Ongoing remediation,,2016-06-09 00:00:00.000,,,
-REM-0345,TEML Westspur Pipelines Limited,Not Specified,Not Specified,Alida Terminal,Not Specified,Saskatchewan,NE-28-05-33 W1M,,,,Facility monitoring,,2016-11-29 00:00:00.000,,,
-REM-0346,TransCanada PipeLines Limited,Not Specified,Not Specified,Hardisty Terminal,Storage,Alberta,Hardisty,Developed Land - Industrial,52.65,-111.27,Risk managed,Maintenance,2016-12-09 00:00:00.000,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",300.0,False
-REM-0347,Enbridge Pipelines Inc.,MP 283.44,,Not Specified,Not Specified,Saskatchewan,"SW-28-29-12 W3/M, Sovereign
-",,,,Site assessment,,2016-12-14 00:00:00.000,,,
-REM-0348,Enbridge Pipelines Inc.,Not Specified,Not Specified,Lornburn Station,Not Specified,Saskatchewan,ndal,,,,Facility monitoring,,2016-12-14 00:00:00.000,,,
-REM-0349,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Thunder Creek Compressor Station,Not Specified,Alberta,Thunder Creek,,59.1,-119.91,Post-remediation monitoring,,2016-12-14 00:00:00.000,,,
-REM-0350,TransCanada Keystone Pipeline GP Ltd.,Not Specified,Not Specified,"TransCanada Keystone Gibson West Interconnect, Electrical Building and Booster Pumps",Not Specified,Alberta,"5-29-42-09 W4M,8-30-42-09 W4M",,,,Risk managed,,2016-12-16 00:00:00.000,,,
-REM-0351,NOVA Gas Transmission Ltd.,TEEPEE CREEK LATERAL - NPS 8,,Woking Lateral Side Valve,Valve,Alberta,Grande Prairie,Non-developed Land,55.53,-118.48,Facility monitoring,,2017-01-06 00:00:00.000,,,
-REM-0352,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Clyde North Receipt Meter Station,Not Specified,Alberta,SW of Conklin,,55.34,-111.27,Post-remediation monitoring,,2017-02-01 00:00:00.000,,,
-REM-0353,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Rainier Receipt Meter Station,Not Specified,Alberta,AB,,,,Post-remediation monitoring,,2017-04-12 00:00:00.000,,,
-REM-0354,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Bens Lake Compressor Station,Not Specified,Alberta,AB,,,,Facility monitoring,,2017-03-24 00:00:00.000,,,
-REM-0355,Tundra Energy Marketing Limited,Not Specified,Not Specified,"near Lampman, SK",Not Specified,Saskatchewan,SK,,49.3,-102.68,Post-remediation monitoring,,2017-03-22 00:00:00.000,,,
-REM-0356,NOVA Gas Transmission Ltd.,Area of sales tap 4332,,Not Specified,Not Specified,Alberta,"South of Buffalo, AB",,,,Ongoing remediation,,2017-04-13 00:00:00.000,,,
-REM-0357,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Halkirk North Receipt Meter Station,Not Specified,Alberta,"near Halkirk, AB",,,,Facility monitoring,,2017-05-01 00:00:00.000,,,
-REM-0358,Tundra Energy Marketing Limited,Not Specified,Not Specified,Midale Terminal,Not Specified,Saskatchewan,Midale (02-07-06-10 W2M),,49.45,-103.34,Facility monitoring,,2017-07-10 00:00:00.000,,,
-REM-0359,Enbridge Pipelines Inc.,Not Specified,Not Specified,St. Leon Station,Not Specified,Manitoba,St. Leon (33-04-09 W4M),,49.35,-98.63,Facility monitoring,,2017-07-10 00:00:00.000,,,
-REM-0360,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Edmonton (SE-05-53-23 W4M),,53.54,-113.36,Facility monitoring,,2017-07-14 00:00:00.000,,,
-REM-0361,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Oyen East Meter Station,Not Specified,Alberta,Oyen,,51.53,-110.54,Facility monitoring,,2017-03-30 00:00:00.000,,,
-REM-0362,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Sawn Lake Meter Station,Not Specified,Alberta,Peace River,,56.9,-115.95,Post-remediation monitoring,,2017-03-30 00:00:00.000,,,
-REM-0363,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Silverwood Nother Receipt Meter Station,Not Specified,Alberta,Spirit River,,55.79,-118.83,Post-remediation monitoring,,2017-03-30 00:00:00.000,,,
-REM-0364,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Slawa South Receipt Meter Station,Not Specified,Alberta,Two Hills,,53.74,-111.68,Post-remediation monitoring,,2017-03-30 00:00:00.000,,,
-REM-0365,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Smoky River Receipt Meter Station,Not Specified,Alberta,Smoky Lake,,54.08,-112.48,Post-remediation monitoring,,2017-03-30 00:00:00.000,,,
-REM-0366,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Whitelaw West Receipt Meter Station,Not Specified,Alberta,Blue Sky,,56.03,-118.13,Facility monitoring,,2017-03-30 00:00:00.000,,,
-REM-0367,Trans Mountain Pipeline ULC,KP 1122 - Surrey Vavle,,Not Specified,Not Specified,British Columbia,Surrey,,,,Site assessment,,2017-08-15 00:00:00.000,,,
-REM-0368,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Whitemud West Receipt Meter Station,Not Specified,Alberta,NW of Peace River,,56.59,-118.25,Post-remediation monitoring,,2017-08-16 00:00:00.000,,,
-REM-0369,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Saskatchewan,Kerrobert,,,,Facility monitoring,,2017-08-22 00:00:00.000,,,
-REM-0370,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission",Not Specified,Not Specified,Not Specified,Not Specified,British Columbia,Bear Lake,,54.56,-122.69,Post-remediation monitoring,,2017-06-21 00:00:00.000,,,
-REM-0371,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Edmonton,,53.54,-113.35,Post-remediation monitoring,,2017-06-21 00:00:00.000,,,
-REM-0372,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,"Bigstone East and Bigstone East B Receipt Meter
-Stations",Not Specified,Alberta,Fox Creek,,54.28,-116.88,Site assessment,,2017-08-16 00:00:00.000,,,
-REM-0373,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Daysland Receipt Meter Station,Not Specified,Alberta,Lac la biche,,54.81,-112.2,Post-remediation monitoring,,2017-09-21 00:00:00.000,,,
-REM-0374,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Sherwood Park,Developed Land - Industrial,53.53,-113.37,Post-remediation monitoring,Operation,2017-09-11 00:00:00.000,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",150.0,False
-REM-0375,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Saskatchewan,Glenavon,,,,Site assessment,,2017-10-17 00:00:00.000,,,
-REM-0376,TransCanada PipeLines Limited,Mainline Valve 58-1 Drip Tank,,Not Specified,Not Specified,Ontario,"Ignace
-",,49.47,-91.91,Post-remediation monitoring,,2017-11-08 00:00:00.000,,,
-REM-0377,NOVA Gas Transmission Ltd.,NPS 10 Flat Lake Lateral Extension,,Not Specified,Not Specified,Alberta,Grasslands,,,,Post-remediation monitoring,,2017-11-08 00:00:00.000,,,
-REM-0378,TransCanada PipeLines Limited,Not Specified,Not Specified,Valhalla Meter Station,Not Specified,Alberta,Valhalla,,55.52,-119.35,Site assessment,,2017-11-22 00:00:00.000,,,
-REM-0379,Trans Mountain Pipeline ULC,KP 82.499,,Not Specified,Not Specified,Alberta,Wabamun,,,,Post-remediation monitoring,,2017-10-12 00:00:00.000,,,
-REM-0382,TransCanada PipeLines Limited,Not Specified,Not Specified,Valve 402-1,Not Specified,Manitoba,Otterburn,,49.5,-97.01,,,2014-01-25 00:00:00.000,,,
-REM-0383,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Saskatchewan,Montmartre,,50.2,-103.32,Site assessment,,2018-01-17 00:00:00.000,,,
-REM-0384,Enbridge Pipelines Inc.,Line 3,,Not Specified,Not Specified,Saskatchewan,Glenavon,,50.18,-103.14,Site assessment,,2018-01-17 00:00:00.000,,,
-REM-0385,Enbridge Pipelines Inc.,Line 2A,,Not Specified,Not Specified,Alberta,Edmonton,,53.54,-113.36,Ongoing remediation,,2017-05-01 00:00:00.000,,,
-REM-0386,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Killam North Receipt Meter Station,Not Specified,Alberta,Killam,,52.93,-111.89,Post-remediation monitoring,,2018-01-25 00:00:00.000,,,
-REM-0387,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Niobe Creek Meter Station,Not Specified,Alberta,La Glace,,55.48,-119.26,Post-remediation monitoring,,2017-05-23 00:00:00.000,,,
-REM-0388,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,Valhalla East Receipt Meter Station,Not Specified,Alberta,La Glce,,55.48,-119.24,Post-remediation monitoring,,2017-05-23 00:00:00.000,,,
-REM-0389,Trans Mountain Pipeline ULC,Not Specified,Not Specified,Westridge Marine Terminal,Not Specified,British Columbia,Burnaby,,,,Post-remediation monitoring,,2018-02-16 00:00:00.000,,,
-REM-0390,Enbridge Pipelines Inc.,MP 590.46 - Line 1,,Not Specified,Not Specified,Manitoba,Butler,,,,Site assessment,,2018-03-09 00:00:00.000,,,
-REM-0391,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,BOWMANVILLE STATION,Prime Mover,Ontario,Bowmanville,Developed Land - Industrial,43.95,-78.66,Ongoing remediation,Maintenance,2018-03-16 00:00:00.000,Petroleum Hydrocarbons (PHC),50.0,False
-REM-0392,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Toronto Meter Station 9,Not Specified,Ontario,Toronto,,,,Facility monitoring,,2018-03-16 00:00:00.000,,,
-REM-0394,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,339 West Hunt Club Road,Not Specified,Ontario,Ottawa,,,,Facility monitoring,,2018-03-16 00:00:00.000,,,
-REM-0395,Trans-Northern Pipelines Inc.,Not Specified,Not Specified,Mirabel Terminal,Not Specified,Quebec,Quebec,,,,Site assessment,,2018-03-16 00:00:00.000,,,
-REM-0398,Enbridge Pipelines Inc.,Not Specified,Not Specified,MP 595.80,Not Specified,Northwest Territories,,,,,Facility monitoring,,,,,
-REM-0399,Enbridge Pipelines Inc.,Not Specified,Not Specified,MP 708.18,Not Specified,Manitoba,,,,,Site assessment,,,,,
-REM-0400,Enbridge Pipelines Inc.,Not Specified,Not Specified,MP 2258.84,Not Specified,Quebec,,,,,Site assessment,,,,,
-REM-0401,Enbridge Pipelines Inc.,Not Specified,Not Specified,MP1775.75,Not Specified,Ontario,,,,,Facility monitoring,,,,,
-REM-0402,TransCanada PipeLines Limited,Not Specified,Not Specified,Not Specified,Not Specified,Alberta,Saddle Hills County,Non-developed Land,55.89,-119.59,Post-remediation monitoring,,,,,
-REM-0404,Enbridge Pipelines Inc.,Not Specified,Not Specified,"Line 13, MP441.78",Not Specified,Saskatchewan,,,,,Post-remediation monitoring,,,,,
-REM-0405,Enbridge Pipelines Inc.,Not Specified,Not Specified,"Line 2, MP 257.02",Not Specified,Saskatchewan,,,,,Facility monitoring,,,,,
-REM2012-103,Enbridge Pipelines (NW) Inc.,Not Specified,Not Specified,Norman Wells Station,Not Specified,Northwest Territories,Norman Wells,,65.29,-126.89,,,2012-08-14 00:00:00.000,,,
-REM2012-147,Enbridge Pipelines (NW) Inc.,Not Specified,Not Specified,Mackenzie Pump Station,Not Specified,Northwest Territories,,,61.38,-120.88,,,2012-10-25 00:00:00.000,,,
-REM2012-149,Enbridge Pipelines Inc.,Not Specified,Not Specified,Sarnia Terminal,Not Specified,Ontario,Sarnia,,42.95,-82.38,Facility monitoring,,2012-10-29 00:00:00.000,,,
-REM2013-049,Enbridge Pipelines (NW) Inc.,Not Specified,Not Specified,Line 21,Not Specified,Ontario,,,62.65,-123.05,Risk managed,,,,,
-REM2013-99,Trans Mountain Pipeline ULC,KP 966,,Not Specified,Not Specified,British Columbia,"Hope
-Lat: 49.5998
-Long: -121.0570",,49.6,-121.06,Risk managed,,2015-05-11 00:00:00.000,,,
-REM2014-031,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal,Not Specified,Alberta,Sherwood Park,,53.54,-113.36,Post-remediation monitoring,,2014-02-18 00:00:00.000,,,
-REM2018-015,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Pickering,Developed Land - Residential,43.88,-79.11,Post-remediation monitoring,Construction,2018-06-25 20:27:52.000,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2018-016,Enbridge Pipelines Inc.,Edmonton Terminal Manifold 206 Piping,Refined Products-Diesel,Edmonton,Not Specified,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.35,Facility monitoring,Operation,2018-06-26 22:29:10.710,Petroleum Hydrocarbons (PHC),5.0,False
-REM2018-019,Trans Mountain Pipeline ULC,MAINLINE LOOP: KAMLOOPS SECTION,Crude Oil,DARFIELD,Prime Mover,British Columbia,Darfield,Developed Land - Industrial,51.31,-120.18,Ongoing remediation,Operation,2018-09-13 11:16:03.237,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",111.0,False
-REM2018-023,Enbridge Pipelines Inc.,Not Specified,Not Specified,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.55,-113.36,Facility monitoring,Maintenance,2018-09-25 16:40:29.577,Petroleum Hydrocarbons (PHC),0.0,False
-REM2018-024,Enbridge Pipelines Inc.,Not Specified,Not Specified,Hardisty Terminal,Storage,Alberta,Hardisty,Developed Land - Industrial,52.64,-111.28,Facility monitoring,Construction,2018-09-25 16:54:39.583,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),0.0,False
-REM2018-025,TEML Westspur Pipelines Limited,NH-SPUR,Crude Oil,Not Specified,Not Specified,Saskatchewan,Alida,Agricultural Land,49.36,-101.74,Post-remediation monitoring,Maintenance,2018-09-26 11:04:55.797,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Volatile Organic Compounds (VOC) other than BTEX;Salts",400.0,False
-REM2018-026,Enbridge Pipelines Inc.,Not Specified,Not Specified,Bethune Station,Storage,Saskatchewan,Bethune,Developed Land - Industrial,50.62,-105.24,Facility monitoring,Maintenance,2018-09-27 13:46:53.990,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",250.0,False
-REM2018-028,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal South,Not Specified,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Maintenance,2018-10-09 11:17:46.923,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2018-029,Enbridge Pipelines Inc.,Not Specified,Not Specified,Sarina Terminal,Storage,Ontario,Sarina,Developed Land - Industrial,42.95,-82.37,Facility monitoring,Maintenance,2018-10-17 13:02:09.690,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",18.0,False
-REM2018-030,TransCanada PipeLines Limited,HOLDEN LATERAL - NPS 6,Natural Gas Sweet,Not Specified,Not Specified,Alberta,Holden,Agricultural Land,53.16,-112.3,Ongoing remediation,Maintenance,2018-12-03 08:56:28.777,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",11.0,True
-REM2018-031,Tundra Energy Marketing Limited,Not Specified,Not Specified,Alida Terminal,Other Facility,Saskatchewan,Alida,Developed Land - Industrial,49.42,-101.87,Facility monitoring,Maintenance,2018-10-22 14:05:32.800,Petroleum Hydrocarbons (PHC),150.0,False
-REM2018-032,Enbridge Pipelines Inc.,Line 2,Crude Oil,Not Specified,Not Specified,Manitoba,Swan Lake,Agricultural Land,49.41,-98.83,Site assessment,Operation,2018-10-30 09:00:44.517,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",4600.0,True
-REM2018-033,Enbridge Pipelines Inc.,Line 1,Crude Oil,Not Specified,Not Specified,Manitoba,Carroll,Agricultural Land,49.62,-99.96,Site assessment,Construction,2018-11-08 11:34:58.120,Polycyclic Aromatic Hydrocarbons (PAH),0.0,False
-REM2018-034,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","20"" Pointed Mountain Pipeline",Multiphase Sour,Not Specified,Not Specified,Northwest Territories,Hay River ,Developed Land - Industrial,60.24,-123.49,Site assessment,Maintenance,2018-11-30 09:53:27.777,Petroleum Hydrocarbons (PHC),1.0,False
-REM2018-036,Enbridge Pipelines Inc.,Line 2,Crude Oil,Not Specified,Not Specified,Alberta,Kingman,Agricultural Land,53.16,-112.78,Site assessment,Maintenance,2018-11-28 10:04:15.863,Polycyclic Aromatic Hydrocarbons (PAH),0.0,True
-REM2018-038,Enbridge Pipelines Inc.,Line 9,Crude Oil,Not Specified,Not Specified,Ontario,Mississauga,Developed Land - Residential,43.59,-79.66,Site assessment,Maintenance,2018-12-17 15:14:09.000,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),348.0,False
-REM2018-039,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Saskatchewan,Peebles,Agricultural Land,50.15,-102.93,Site assessment,Construction,2018-12-18 09:35:21.830,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),325.0,True
-REM2018-040,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Saskatchewan,Kipling,Agricultural Land,50.09,-102.53,Site assessment,Construction,2018-12-18 10:04:56.777,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",250.0,True
-REM2018-041,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Manitoba,Oak Lake,Agricultural Land,49.7,-100.57,Site assessment,Construction,2018-12-18 10:13:48.180,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",250.0,False
-REM2018-042,TEML Westspur Pipelines Limited,Not Specified,Not Specified,MIDALE,Storage,Saskatchewan,Midale,Developed Land - Industrial,49.45,-103.34,Facility monitoring,Maintenance,2019-04-16 16:19:41.017,Petroleum Hydrocarbons (PHC),50.0,False
-REM2019-001,Enbridge Pipelines Inc.,Line 13,Crude Oil,Not Specified,Not Specified,Saskatchewan,Kipling,Agricultural Land,50.09,-102.55,Site assessment,Maintenance,2019-01-08 13:06:21.210,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",90.0,False
-REM2019-002,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.92,Post-remediation monitoring,Construction,2019-01-24 16:31:03.427,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2019-003,Enbridge Pipelines (NW) Inc.,Line 21,Crude Oil,Not Specified,Not Specified,Northwest Territories,Fort Simpson,Non-developed Land,61.83,-121.18,Post-remediation monitoring,Construction,2019-02-19 13:35:29.097,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",44.0,False
-REM2019-004,TransCanada PipeLines Limited,Line 100-4,Natural Gas,Not Specified,Not Specified,Saskatchewan,"Pennant, Saskatchewan",Agricultural Land,50.56,-108.22,Site assessment,Maintenance,2019-02-27 11:17:37.493,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",120.0,False
-REM2019-005,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Post-remediation monitoring,Construction,2019-03-01 12:57:58.067,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,True
-REM2019-006,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Manitoba,Cromer,Agricultural Land,49.77,-101.31,Post-remediation monitoring,Construction,2019-03-14 13:44:15.000,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2019-007,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,NORDEGG,Prime Mover,Alberta,"Rocky Mountain House, Alberta",Developed Land - Industrial,52.72,-115.71,Ongoing remediation,Maintenance,2019-04-02 15:28:25.037,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),500.0,False
-REM2019-008,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,"Edson, Alberta",Developed Land - Industrial,53.25,-116.24,Ongoing remediation,Maintenance,2019-04-03 09:03:06.363,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),300.0,False
-REM2019-009,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,"Edson, Alberta",Developed Land - Industrial,53.25,-116.24,Ongoing remediation,Maintenance,2019-04-03 11:03:08.510,Petroleum Hydrocarbons (PHC);Polychlorinated Biphenyls (PCB),100.0,False
-REM2019-010,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Operation,2019-04-05 10:38:24.857,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",320.0,False
-REM2019-011,Trans Mountain Pipeline ULC,Not Specified,Not Specified,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Post-remediation monitoring,Construction,2019-05-03 15:01:30.680,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,True
-REM2019-012,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Construction,2019-05-03 17:12:28.000,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2019-014,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Hinton,Non-developed Land,53.39,-117.6,Site assessment,Maintenance,2019-06-14 13:28:20.987,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",5.0,True
-REM2019-015,Enbridge Pipelines Inc.,Line 4,Crude Oil,Not Specified,Not Specified,Saskatchewan,Milden,Agricultural Land,51.47,-107.47,Facility monitoring,Operation,2019-06-18 12:58:03.653,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",30.0,False
-REM2019-017,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Belleville,Non-developed Land,44.21,-77.31,Site assessment,Maintenance,2019-07-08 16:02:47.547,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100.0,True
-REM2019-018,Enbridge Pipelines Inc.,Not Specified,Not Specified,GRETNA,Prime Mover,Manitoba,Gretna,Developed Land - Industrial,49.02,-97.56,Facility monitoring,Maintenance,2019-07-29 09:04:40.547,Petroleum Hydrocarbons (PHC),40.0,False
-REM2019-019,Enbridge Pipelines Inc.,Not Specified,Not Specified,GRETNA,Prime Mover,Manitoba,Gretna,Developed Land - Industrial,49.02,-97.56,Facility monitoring,Maintenance,2019-07-29 09:16:55.763,Petroleum Hydrocarbons (PHC),10.0,False
-REM2019-020,Enbridge Pipelines Inc.,Not Specified,Not Specified,Rowatt Pump Station,Not Specified,Saskatchewan,Regina,Developed Land - Industrial,50.38,-104.57,Facility monitoring,Maintenance,2019-07-29 09:25:04.640,Petroleum Hydrocarbons (PHC),10.0,False
-REM2019-021,Enbridge Pipelines Inc.,Not Specified,Not Specified,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park ,Developed Land - Industrial,53.54,-113.35,Facility monitoring,Maintenance,2019-07-29 09:42:35.727,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",10.0,False
-REM2019-022,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Operation,2019-07-29 09:50:55.633,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",650.0,False
-REM2019-023,Trans Mountain Pipeline ULC,Not Specified,Not Specified,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Facility monitoring,Construction,2019-07-30 08:50:23.187,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",20.0,True
-REM2019-024,Westcoast Energy Inc.,Line 8,,Not Specified,Not Specified,British Columbia,Merritt,Developed Land - Industrial,49.92,-120.92,Post-remediation monitoring,Maintenance,2019-08-01 15:43:21.803,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",15.0,False
-REM2019-025,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,COLEMAN,Meter,Alberta,Coleman AB.,Agricultural Land,49.63,-114.56,Post-remediation monitoring,Operation,2019-08-19 14:50:58.700,Metals,3.0,False
-REM2019-026,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,HOTCHKISS EAST,Meter,Alberta,"Manning, AB",Non-developed Land,57.12,-118.15,Ongoing remediation,Operation,2019-08-19 15:30:45.093,Petroleum Hydrocarbons (PHC),100.0,False
-REM2019-027,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,STEELE LAKE,Meter,Alberta,"Athabasca, AB",Agricultural Land,54.67,-113.55,Ongoing remediation,Operation,2019-08-19 15:55:44.077,Petroleum Hydrocarbons (PHC),50.0,False
-REM2019-028,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Operation,2019-08-20 16:02:25.003,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",0.0,False
-REM2019-031,Express Pipeline Ltd.,Express Pipeline Project,Crude Oil,SUFFIELD,Prime Mover,Alberta,Suffield,Developed Land - Industrial,50.17,-111.17,Facility monitoring,Operation,2019-09-24 12:31:59.287,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",25.0,False
-REM2019-032,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Right of Way close to Clarington,Other Facility,Ontario,Bowmanville,Agricultural Land,43.95,-78.73,Site assessment,Maintenance,2019-10-09 16:15:25.707,Petroleum Hydrocarbons (PHC),8.0,False
-REM2019-033,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Facility monitoring,Construction,2019-10-29 14:10:30.597,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2019-034,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Site assessment,Operation,2019-11-18 08:57:31.560,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",9.0,False
-REM2019-035,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Post-remediation monitoring,Maintenance,2019-12-12 12:47:16.190,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",3.0,False
-REM2019-036,Enbridge Pipelines Inc.,"3.2KM SECTION, NPS 20, LINE 1",,ODESSA,Prime Mover,Saskatchewan,Odessa,Developed Land - Industrial,50.3,-103.84,Site assessment,Operation,2019-12-13 11:05:50.220,Petroleum Hydrocarbons (PHC),30.0,False
-REM2019-038,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,DARFIELD,Prime Mover,British Columbia,Darfield,Developed Land - Industrial,51.31,-120.18,Facility monitoring,Maintenance,2019-12-19 14:45:08.157,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",2600.0,False
-REM2019-039,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,British Columbia,Avola,Non-developed Land,51.77,-119.32,Risk managed,Maintenance,2019-12-20 13:27:00.280,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",450.0,True
-REM2019-040,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,Edson,Developed Land - Industrial,53.25,-116.24,Facility monitoring,Construction,2019-12-20 15:35:46.027,Volatile Organic Compounds (VOC) other than BTEX,25.0,False
-REM2019-043,TransCanada Keystone Pipeline GP Ltd.,KEYSTONE,Crude Oil,HARDISTY EAST INTERCONNECTING FACILITIES BOOSTER PUMP STATION,Not Specified,Alberta,Hardisty,Developed Land - Industrial,52.64,-111.26,Risk managed,Operation,2020-03-27 08:41:20.530,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",13.0,False
-REM2020-001,Enbridge Pipelines Inc.,Line 2,Crude Oil,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.55,-113.36,Ongoing remediation,Operation,2020-02-19 14:26:55.410,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2020-002,Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP,Line 13,NGL-LVP (Condensate),Not Specified,Not Specified,Saskatchewan,Peebles,Agricultural Land,50.14,-102.85,Site assessment,Maintenance,2020-03-09 15:09:18.017,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,True
-REM2020-003,Enbridge Pipelines Inc.,Not Specified,Not Specified,KERROBERT,Prime Mover,Saskatchewan,Kerrobert,Developed Land - Industrial,51.87,-109.04,Facility monitoring,Maintenance,2020-03-31 09:26:56.240,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",55.0,False
-REM2020-004,Enbridge Pipelines Inc.,Not Specified,Not Specified,KERROBERT,Prime Mover,Saskatchewan,Kerrobert,Developed Land - Industrial,51.87,-109.04,Facility monitoring,Maintenance,2020-03-31 09:45:31.837,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",20.0,False
-REM2020-005,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WILDDUNN CREEK - BURFIELD,Meter,Alberta,"Dorothy, AB",Developed Land - Industrial,51.28,-111.93,Site assessment,Operation,2020-04-08 15:18:27.837,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Phenols",1000.0,False
-REM2020-006,TransCanada PipeLines Limited,Not Specified,Not Specified,STN 92 - MATTICE,Prime Mover,Ontario,Mattice,Agricultural Land,49.59,-83.17,Site assessment,Operation,2020-04-29 09:13:55.550,Polychlorinated Biphenyls (PCB),180.0,False
-REM2020-007,Enbridge Pipelines Inc.,Not Specified,Not Specified,CROMER,Storage,Manitoba,Cromer,Developed Land - Industrial,49.75,-101.24,Facility monitoring,Maintenance,2020-05-01 14:11:21.117,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",20.0,False
-REM2020-008,Enbridge Pipelines Inc.,Not Specified,Not Specified,CROMER,Storage,Manitoba,Cromer,Developed Land - Industrial,49.75,-101.24,Facility monitoring,Maintenance,2020-05-01 14:24:44.490,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",8.0,False
-REM2020-009,Enbridge Pipelines Inc.,Not Specified,Not Specified,CROMER,Storage,Manitoba,Cromer,Developed Land - Industrial,49.75,-101.24,Facility monitoring,Maintenance,2020-05-01 14:32:24.880,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",60.0,False
-REM2020-010,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Post-remediation monitoring,Maintenance,2020-05-05 13:16:05.023,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),10.0,False
-REM2020-011,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Post-remediation monitoring,Maintenance,2020-05-05 13:41:52.863,Polycyclic Aromatic Hydrocarbons (PAH),10.0,False
-REM2020-012,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.37,Post-remediation monitoring,Operation,2020-05-06 10:43:32.923,Polycyclic Aromatic Hydrocarbons (PAH),1.0,False
-REM2020-013,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Post-remediation monitoring,Operation,2020-05-06 10:55:53.773,Polycyclic Aromatic Hydrocarbons (PAH),6.0,False
-REM2020-014,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,EDSON,Prime Mover,Alberta,Edson,Developed Land - Industrial,53.58,-116.65,Post-remediation monitoring,Maintenance,2020-05-06 11:02:16.023,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",8.0,False
-REM2020-015,TransCanada PipeLines Limited,Not Specified,Not Specified,BRANDON,Meter,Manitoba,Rapid City,Agricultural Land,50.07,-99.93,Site assessment,Construction,2020-05-13 11:00:01.273,Polycyclic Aromatic Hydrocarbons (PAH),90.0,False
-REM2020-016,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,City of Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Maintenance,2020-05-14 14:07:11.033,Petroleum Hydrocarbons (PHC),20.0,False
-REM2020-017,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,City of Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Maintenance,2020-05-14 14:52:32.050,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),120.0,False
-REM2020-019,Enbridge Pipelines Inc.,Line 2,Crude Oil,Not Specified,Not Specified,Saskatchewan,Langbank,Agricultural Land,50.04,-102.24,Site assessment,Maintenance,2020-06-04 13:52:48.667,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",25.0,False
-REM2020-020,Enbridge Pipelines Inc.,Not Specified,Not Specified,SARNIA TANK TERMINAL,Storage,Ontario,Sarnia,Developed Land - Industrial,42.95,-82.37,Facility monitoring,Maintenance,2020-06-04 14:07:40.843,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",40.0,False
-REM2020-021,Kingston Midstream Limited,Line 24,Natural Gas Liquids,Alida Terminal,Storage,Saskatchewan,"Alida, SK",Developed Land - Industrial,49.42,-101.87,Facility monitoring,Operation,2020-07-22 15:20:30.007,Petroleum Hydrocarbons (PHC),10.0,False
-REM2020-022,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 49 - Kenora,Prime Mover,Ontario,Kenora,Agricultural Land,49.79,-94.49,Risk managed,Operation,2020-07-30 14:58:31.497,Petroleum Hydrocarbons (PHC);Polychlorinated Biphenyls (PCB),100.0,True
-REM2020-023,TransCanada PipeLines Limited,LINE 100-1,Natural Gas,Not Specified,Not Specified,Ontario,Johnson,Non-developed Land,44.77,-75.5,Ongoing remediation,Maintenance,2020-08-20 16:31:04.993,Petroleum Hydrocarbons (PHC),1.0,False
-REM2020-024,AltaGas Holdings Inc. for and on behalf of AltaGas Pipeline Partnership,Kahntah,Natural Gas Sweet,Riser site at 13-06-104-12-W6,Other Facility,Alberta,Rainbow lake,Non-developed Land,58.0,-119.99,Post-remediation monitoring,Maintenance,2020-09-08 12:40:18.553,Petroleum Hydrocarbons (PHC);Volatile Organic Compounds (VOC) other than BTEX,5.0,True
-REM2020-025,Kingston Midstream Westspur Limited,Line 23A,Crude Oil,Not Specified,Not Specified,Saskatchewan,Frobisher,Agricultural Land,49.26,-102.53,Post-remediation monitoring,Maintenance,2020-10-05 10:59:18.237,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Volatile Organic Compounds (VOC) other than BTEX",10.0,False
-REM2020-026,Imperial Oil Resources N.W.T. Limited,Not Specified,Not Specified,NORMAN WELLS FACILITY AND GATHERING,Not Specified,Northwest Territories,Norman Wells,Developed Land - Industrial,65.26,-126.88,Site assessment,Operation,2020-10-29 14:27:32.667,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Salts",1.0,False
-REM2020-028,TransCanada PipeLines Limited,Not Specified,Not Specified,STN 70 - HURKETT,Prime Mover,Ontario,Hurkett,Agricultural Land,48.82,-88.52,Site assessment,Operation,2020-11-16 12:10:53.827,Petroleum Hydrocarbons (PHC);Polychlorinated Biphenyls (PCB),2300.0,False
-REM2020-030,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,SUMAS,Prime Mover,British Columbia,Abbotsford,Developed Land - Industrial,49.07,-122.16,Ongoing remediation,Operation,2020-12-17 14:30:01.280,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",11300.0,False
-REM2020-031,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","26"" BC Trunk Pipeline - Downstream",Natural Gas Sweet,WILLOW FLATS (STN 2) (2),Prime Mover,British Columbia,Chetwynd,Developed Land - Industrial,55.65,-122.21,Facility monitoring,Construction,2020-11-23 11:35:52.770,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Metals,200.0,False
-REM2020-032,Enbridge Pipelines Inc.,Not Specified,Not Specified,HERSCHEL,Prime Mover,Saskatchewan,Herschel,Developed Land - Industrial,51.65,-108.21,Facility monitoring,Operation,2020-11-27 11:01:11.490,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",8.0,False
-REM2020-033,NOVA Gas Transmission Ltd.,CENTRAL ALBERTA SYSTEM M/L - NPS 30,Natural Gas,DIDSBURY C/S,Prime Mover,Alberta,Didsbury,Agricultural Land,51.6,-114.24,Risk managed,Construction,2020-12-19 08:51:41.577,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Polychlorinated Biphenyls (PCB)",1000.0,True
-REM2020-034,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,Edson ,Developed Land - Industrial,53.25,-116.24,Site assessment,Operation,2020-12-22 20:01:26.617,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Phenols,1.0,False
-REM2020-035,NOVA Gas Transmission Ltd.,ALBERSUN LATERAL (NPS 10 1967) FORT MCMURRAY SECTION,,Not Specified,Not Specified,Alberta,Fort McMurray ,Non-developed Land,56.71,-111.4,Ongoing remediation,Operation,2020-12-30 08:55:16.227,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",500.0,True
-REM2020-037,Express Pipeline Ltd.,Line 40,Crude Oil Sweet Heavy,YOUNGSTOWN,Prime Mover,Alberta,Youngstown Village,Developed Land - Industrial,51.49,-111.17,Post-remediation monitoring,Operation,2021-01-27 14:00:27.317,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",2000.0,False
-REM2021-002,Enbridge Pipelines Inc.,Not Specified,Not Specified,CACTUS LAKE,Prime Mover,Saskatchewan,Cactus Lake,Developed Land - Industrial,52.14,-109.81,Facility monitoring,Operation,2021-01-25 16:45:20.413,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",542.0,False
-REM2021-003,Spartan Delta Corp.,CYPRESS PIPELINE,,Not Specified,Not Specified,Saskatchewan,Manyberries,Agricultural Land,49.52,-110.0,Post-remediation monitoring,Abandonment,2021-02-01 16:52:13.200,Petroleum Hydrocarbons (PHC),0.0,False
-REM2021-004,Westcoast Energy Inc.,Not Specified,Not Specified,SIKANNI CHIEF (N3),Prime Mover,British Columbia,Pink Mountain,Developed Land - Industrial,57.39,-122.66,Monitored,Operation,2021-03-01 12:47:23.677,Petroleum Hydrocarbons (PHC),300.0,False
-REM2021-005,Westcoast Energy Inc.,Not Specified,Not Specified,HIXON (4B),Prime Mover,British Columbia,Hixon,Developed Land - Industrial,53.51,-122.61,Site assessment,Operation,2021-03-01 13:17:33.693,Petroleum Hydrocarbons (PHC);Metals,300.0,False
-REM2021-006,Westcoast Energy Inc.,Not Specified,Not Specified,150 MILE HOUSE (6A),Prime Mover,British Columbia,150 Mile House,Developed Land - Industrial,52.13,-121.94,Site assessment,Operation,2021-03-01 13:31:08.317,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),300.0,True
-REM2021-007,Westcoast Energy Inc.,Not Specified,Not Specified,Australian (BC Gas Facility) (#130),Meter,British Columbia,Kersley,Developed Land - Industrial,52.73,-122.44,Site assessment,Operation,2021-03-01 13:38:37.707,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Salts;Metals,300.0,False
-REM2021-008,Westcoast Energy Inc.,Not Specified,Not Specified,ROSEDALE (9),Prime Mover,British Columbia,Rosedale,Developed Land - Industrial,49.2,-121.79,Site assessment,Operation,2021-03-01 13:48:46.127,Petroleum Hydrocarbons (PHC);Metals,300.0,False
-REM2021-009,Westcoast Energy Inc.,Not Specified,Not Specified,BONANZA BOOSTER STATION (16) (BONANZA),Prime Mover,Alberta,Bonanza,Developed Land - Industrial,55.9,-119.9,Site assessment,Operation,2021-03-01 13:57:57.887,Petroleum Hydrocarbons (PHC);Metals,300.0,False
-REM2021-010,Westcoast Energy Inc.,"30"" Fort St. John Mainline",Natural Gas,Not Specified,Not Specified,British Columbia,Quesnel,Agricultural Land,53.04,-122.48,Site assessment,Maintenance,2021-03-02 11:00:36.347,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1.0,False
-REM2021-011,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Sherwood Park,Agricultural Land,53.49,-113.34,Site assessment,Construction,2021-03-02 15:55:24.000,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0.0,False
-REM2021-012,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Sherwood Park,Agricultural Land,53.44,-113.59,Site assessment,Construction,2021-03-02 15:56:46.000,Petroleum Hydrocarbons (PHC);Metals,100.0,False
-REM2021-014,TransCanada PipeLines Limited,LINE 100-1,Natural Gas,STN 17 - REGINA,Prime Mover,Saskatchewan,Regina,Developed Land - Industrial,50.39,-104.41,Site assessment,Operation,2021-03-17 14:28:56.810,Polycyclic Aromatic Hydrocarbons (PAH);Glycol,100.0,False
-REM2021-015,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,North York,Developed Land - Residential,43.79,-79.37,Site assessment,Operation,2021-04-01 18:35:26.147,"Other;Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1.0,False
-REM2021-016,Westcoast Energy Inc.,"10"" North Shekilie Pipeline",Natural Gas Sour,Pigging Facilities,Not Specified,Alberta,MacKenzie,Developed Land - Industrial,59.5,-119.87,Site assessment,Operation,2021-04-05 14:16:38.630,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",800.0,False
-REM2021-017,Westcoast Energy Inc.,"4"" SOUTH SHEKILIE PIPELINE",Natural Gas,Pigging Facilities,Not Specified,British Columbia,Zama City,Developed Land - Industrial,59.32,-120.07,Site assessment,Operation,2021-04-05 14:39:10.737,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100.0,False
-REM2021-018,Westcoast Energy Inc.,"10"" South Shekilie Pipeline",Natural Gas,Pigging Facilities,Not Specified,Alberta,Zama City,Developed Land - Industrial,59.16,-119.8,Site assessment,Operation,2021-04-05 14:52:50.397,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100.0,False
-REM2021-019,Westcoast Energy Inc.,"10"" South Shekilie Pipeline",Natural Gas,Pigging Facilities,Not Specified,Alberta,Zama City,Developed Land - Industrial,59.23,-119.89,Site assessment,Operation,2021-04-05 15:05:06.207,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",200.0,False
-REM2021-020,ExxonMobil Canada Properties,Onshore Gathering Pipeline,Natural Gas Liquids,Sable Offshore Energy Project,Not Specified,Nova Scotia,"Goldboro, Nova Scotia",Developed Land - Industrial,45.17,-61.62,Facility monitoring,Abandonment,2021-04-14 12:38:31.850,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Metals",250.0,True
-REM2021-021,Trans Mountain Pipeline ULC,"Inactive TMPL 24"" Mainline (no commodity currently carried)",Crude Oil,Not Specified,Not Specified,Alberta,Jasper,Protected Area,52.86,-118.21,Site assessment,Maintenance,2021-04-28 08:54:56.377,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100.0,True
-REM2021-022,TransCanada Keystone Pipeline GP Ltd.,KEYSTONE,Crude Oil,PS15 - Caron,Not Specified,Saskatchewan,"Caron, Saskatchewan",Developed Land - Industrial,50.48,-105.86,Site assessment,Operation,2021-04-29 15:39:45.267,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",280.0,False
-REM2021-023,Enbridge Pipelines Inc.,Line 8,,Not Specified,Not Specified,Ontario,Bright,Protected Area,43.26,-80.61,Site assessment,Maintenance,2021-05-12 14:39:53.440,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",35.0,True
-REM2021-024,Westcoast Energy Inc.,"SPECTRA - 30"" MAINLINE",Natural Gas,Not Specified,Not Specified,British Columbia,Chilliwack,Agricultural Land,49.16,-121.92,Site assessment,Maintenance,2021-05-12 15:12:38.053,Petroleum Hydrocarbons (PHC),1.0,True
-REM2021-025,Westcoast Energy Inc.,"36"" Fort Nelson Mainline Loops",Natural Gas,PROPHET RIVER (N2),Prime Mover,British Columbia,Prophet River,Developed Land - Industrial,58.01,-122.7,Site assessment,Maintenance,2021-05-13 16:16:14.643,Petroleum Hydrocarbons (PHC),53.0,False
-REM2021-027,NOVA Gas Transmission Ltd.,CENTRAL ALBERTA SYSTEM M/L - NPS 30,Natural Gas,DIDSBURY C/S,Prime Mover,Alberta,Didsbury,Developed Land - Industrial,51.6,-114.24,Site assessment,Maintenance,2021-06-07 15:34:55.077,Glycol,1.0,False
-REM2021-028,NOVA Gas Transmission Ltd.,EASTERN ALBERTA M/L LOOP #3,Natural Gas,PRINCESS,Prime Mover,Alberta,Patricia,Developed Land - Industrial,50.7,-111.53,Site assessment,Maintenance,2021-06-07 15:50:20.303,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1.0,False
-REM2021-029,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Belleville,Agricultural Land,44.21,-77.32,Site assessment,Operation,2021-06-14 06:15:40.617,Petroleum Hydrocarbons (PHC),1.0,False
-REM2021-030,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,"Oakville, Ontario",Developed Land - Small Commercial,43.45,-79.69,Site assessment,Operation,2021-06-14 06:53:53.067,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Volatile Organic Compounds (VOC) other than BTEX;Metals,1.0,False
-REM2021-031,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Mississauga,Developed Land - Residential,43.5,-79.64,Site assessment,Maintenance,2021-06-14 07:58:32.450,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),1.0,False
-REM2021-032,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,BELLEVILLE STATION,Meter,Ontario,Belleville,Developed Land - Industrial,44.21,-77.38,Facility monitoring,Operation,2021-06-14 08:06:59.033,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1.0,False
-REM2021-033,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,OAKVILLE STATION,Meter,Ontario,"Oakville, Ont",Developed Land - Industrial,43.39,-79.74,Site assessment,Operation,2021-06-14 10:11:59.453,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",19.0,True
-REM2021-034,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Oshawa,Developed Land - Small Commercial,43.93,-78.86,Site assessment,Operation,2021-06-14 15:11:57.863,Polycyclic Aromatic Hydrocarbons (PAH),1.0,False
-REM2021-035,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,"Prescott, Ontario",Non-developed Land,44.73,-75.53,Site assessment,Operation,2021-06-14 15:17:58.957,Polycyclic Aromatic Hydrocarbons (PAH),1.0,False
-REM2021-036,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,MONTREAL STATION,Meter,Quebec,Montreal,Developed Land - Industrial,45.63,-73.55,Facility monitoring,Operation,2021-06-14 15:24:12.877,Other;Polycyclic Aromatic Hydrocarbons (PAH),1.0,True
-REM2021-037,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Clarkson MP 360.6,Developed Land - Residential,43.52,-79.64,Site assessment,Operation,2021-06-14 15:26:45.680,Polycyclic Aromatic Hydrocarbons (PAH),1.0,False
-REM2021-038,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Clarkson MP 360.33,Developed Land - Residential,43.51,-79.64,Site assessment,Operation,2021-06-14 15:30:04.503,Polycyclic Aromatic Hydrocarbons (PAH),1.0,True
-REM2021-039,NOVA Gas Transmission Ltd.,BIG BEND EAST LATERAL - NPS 4,,BIG BEND EAST,Meter,Alberta,Flastbush ,Agricultural Land,54.78,-113.96,Site assessment,Abandonment,2021-06-24 10:47:37.427,Metals,10.0,False
-REM2021-040,Westcoast Energy Inc.,"SPECTRA - 30"" MAINLINE",Natural Gas,Not Specified,Not Specified,British Columbia,City of Quesnel,Developed Land - Industrial,52.98,-122.45,Site assessment,Maintenance,2021-06-24 15:28:00.047,Petroleum Hydrocarbons (PHC),2.0,False
-REM2021-041,Trans Mountain Pipeline ULC,"Inactive TMPL 24"" Mainline (no commodity currently carried)",Crude Oil,Not Specified,Not Specified,Alberta,Hinton,Non-developed Land,53.25,-117.8,Site assessment,Maintenance,2021-07-08 14:22:19.033,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100.0,False
-REM2021-042,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,KAMLOOPS,Prime Mover,British Columbia,Kamloops,Developed Land - Industrial,50.66,-120.41,Facility monitoring,Construction,2021-07-08 14:50:38.320,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Metals",10.0,False
-REM2021-043,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,KAMLOOPS,Prime Mover,British Columbia,Kamloops,Developed Land - Industrial,50.66,-120.41,Facility monitoring,Construction,2021-07-08 15:25:47.673,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",5.0,False
-REM2021-044,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,EDMONTON,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Construction,2021-07-08 15:47:04.900,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",5.0,False
+REM2018-019,Trans Mountain Pipeline ULC,MAINLINE LOOP: KAMLOOPS SECTION,Crude Oil,DARFIELD,Prime Mover,British Columbia,Darfield,Developed Land - Industrial,51.31,-120.18,Ongoing remediation,Operation,2018-09-13 11:16:03.237,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",111,False
+REM2018-023,Enbridge Pipelines Inc.,Not Specified,Not Specified,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.55,-113.36,Facility monitoring,Maintenance,2018-09-25 16:40:29.577,Petroleum Hydrocarbons (PHC),0,False
+REM2018-024,Enbridge Pipelines Inc.,Not Specified,Not Specified,Hardisty Terminal,Storage,Alberta,Hardisty,Developed Land - Industrial,52.64,-111.28,Facility monitoring,Construction,2018-09-25 16:54:39.583,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),0,False
+REM2018-025,TEML Westspur Pipelines Limited,NH-SPUR,Crude Oil,Not Specified,Not Specified,Saskatchewan,Alida,Agricultural Land,49.36,-101.74,Post-remediation monitoring,Maintenance,2018-09-26 11:04:55.797,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Volatile Organic Compounds (VOC) other than BTEX;Salts",400,False
+REM2018-026,Enbridge Pipelines Inc.,Not Specified,Not Specified,Bethune Station,Storage,Saskatchewan,Bethune,Developed Land - Industrial,50.62,-105.24,Facility monitoring,Maintenance,2018-09-27 13:46:53.990,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",250,False
+REM2018-028,Enbridge Pipelines Inc.,Not Specified,Not Specified,Edmonton Terminal South,Not Specified,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Maintenance,2018-10-09 11:17:46.923,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2018-029,Enbridge Pipelines Inc.,Not Specified,Not Specified,Sarina Terminal,Storage,Ontario,Sarina,Developed Land - Industrial,42.95,-82.37,Facility monitoring,Maintenance,2018-10-17 13:02:09.690,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",18,False
+REM2018-030,TransCanada PipeLines Limited,HOLDEN LATERAL - NPS 6,Natural Gas Sweet,Not Specified,Not Specified,Alberta,Holden,Agricultural Land,53.16,-112.3,Ongoing remediation,Maintenance,2018-12-03 08:56:28.777,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",11,True
+REM2018-031,Tundra Energy Marketing Limited,Not Specified,Not Specified,Alida Terminal,Other Facility,Saskatchewan,Alida,Developed Land - Industrial,49.42,-101.87,Facility monitoring,Maintenance,2018-10-22 14:05:32.800,Petroleum Hydrocarbons (PHC),150,False
+REM2018-032,Enbridge Pipelines Inc.,Line 2,Crude Oil,Not Specified,Not Specified,Manitoba,Swan Lake,Agricultural Land,49.41,-98.83,Site assessment,Operation,2018-10-30 09:00:44.517,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",4600,True
+REM2018-033,Enbridge Pipelines Inc.,Line 1,Crude Oil,Not Specified,Not Specified,Manitoba,Carroll,Agricultural Land,49.62,-99.96,Site assessment,Construction,2018-11-08 11:34:58.120,Polycyclic Aromatic Hydrocarbons (PAH),0,False
+REM2018-034,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","20"" Pointed Mountain Pipeline",Multiphase Sour,Not Specified,Not Specified,Northwest Territories,Hay River ,Developed Land - Industrial,60.24,-123.49,Site assessment,Maintenance,2018-11-30 09:53:27.777,Petroleum Hydrocarbons (PHC),1,False
+REM2018-036,Enbridge Pipelines Inc.,Line 2,Crude Oil,Not Specified,Not Specified,Alberta,Kingman,Agricultural Land,53.16,-112.78,Site assessment,Maintenance,2018-11-28 10:04:15.863,Polycyclic Aromatic Hydrocarbons (PAH),0,True
+REM2018-038,Enbridge Pipelines Inc.,Line 9,Crude Oil,Not Specified,Not Specified,Ontario,Mississauga,Developed Land - Residential,43.59,-79.66,Site assessment,Maintenance,2018-12-17 15:14:09.000,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),348,False
+REM2018-039,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Saskatchewan,Peebles,Agricultural Land,50.15,-102.93,Site assessment,Construction,2018-12-18 09:35:21.830,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),325,True
+REM2018-040,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Saskatchewan,Kipling,Agricultural Land,50.09,-102.53,Site assessment,Construction,2018-12-18 10:04:56.777,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",250,True
+REM2018-041,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Manitoba,Oak Lake,Agricultural Land,49.7,-100.57,Site assessment,Construction,2018-12-18 10:13:48.180,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",250,False
+REM2018-042,TEML Westspur Pipelines Limited,Not Specified,Not Specified,MIDALE,Storage,Saskatchewan,Midale,Developed Land - Industrial,49.45,-103.34,Facility monitoring,Maintenance,2019-04-16 16:19:41.017,Petroleum Hydrocarbons (PHC),50,False
+REM2019-001,Enbridge Pipelines Inc.,Line 13,Crude Oil,Not Specified,Not Specified,Saskatchewan,Kipling,Agricultural Land,50.09,-102.55,Site assessment,Maintenance,2019-01-08 13:06:21.210,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",90,False
+REM2019-002,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.92,Post-remediation monitoring,Construction,2019-01-24 16:31:03.427,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2019-003,Enbridge Pipelines (NW) Inc.,Line 21,Crude Oil,Not Specified,Not Specified,Northwest Territories,Fort Simpson,Non-developed Land,61.83,-121.18,Post-remediation monitoring,Construction,2019-02-19 13:35:29.097,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",44,False
+REM2019-004,TransCanada PipeLines Limited,Line 100-4,Natural Gas,Not Specified,Not Specified,Saskatchewan,"Pennant, Saskatchewan",Agricultural Land,50.56,-108.22,Site assessment,Maintenance,2019-02-27 11:17:37.493,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",120,False
+REM2019-005,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Post-remediation monitoring,Construction,2019-03-01 12:57:58.067,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,True
+REM2019-006,Enbridge Pipelines Inc.,Line 3,Crude Oil,Not Specified,Not Specified,Manitoba,Cromer,Agricultural Land,49.77,-101.31,Post-remediation monitoring,Construction,2019-03-14 13:44:15.000,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2019-007,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,NORDEGG,Prime Mover,Alberta,"Rocky Mountain House, Alberta",Developed Land - Industrial,52.72,-115.71,Ongoing remediation,Maintenance,2019-04-02 15:28:25.037,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),500,False
+REM2019-008,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,"Edson, Alberta",Developed Land - Industrial,53.25,-116.24,Ongoing remediation,Maintenance,2019-04-03 09:03:06.363,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),300,False
+REM2019-009,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,"Edson, Alberta",Developed Land - Industrial,53.25,-116.24,Ongoing remediation,Maintenance,2019-04-03 11:03:08.510,Petroleum Hydrocarbons (PHC);Polychlorinated Biphenyls (PCB),100,False
+REM2019-010,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Operation,2019-04-05 10:38:24.857,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",320,False
+REM2019-011,Trans Mountain Pipeline ULC,Not Specified,Not Specified,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Post-remediation monitoring,Construction,2019-05-03 15:01:30.680,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,True
+REM2019-012,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Construction,2019-05-03 17:12:28.000,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2019-014,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Hinton,Non-developed Land,53.39,-117.6,Site assessment,Maintenance,2019-06-14 13:28:20.987,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",5,True
+REM2019-015,Enbridge Pipelines Inc.,Line 4,Crude Oil,Not Specified,Not Specified,Saskatchewan,Milden,Agricultural Land,51.47,-107.47,Facility monitoring,Operation,2019-06-18 12:58:03.653,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",30,False
+REM2019-017,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Belleville,Non-developed Land,44.21,-77.31,Site assessment,Maintenance,2019-07-08 16:02:47.547,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100,True
+REM2019-018,Enbridge Pipelines Inc.,Not Specified,Not Specified,GRETNA,Prime Mover,Manitoba,Gretna,Developed Land - Industrial,49.02,-97.56,Facility monitoring,Maintenance,2019-07-29 09:04:40.547,Petroleum Hydrocarbons (PHC),40,False
+REM2019-019,Enbridge Pipelines Inc.,Not Specified,Not Specified,GRETNA,Prime Mover,Manitoba,Gretna,Developed Land - Industrial,49.02,-97.56,Facility monitoring,Maintenance,2019-07-29 09:16:55.763,Petroleum Hydrocarbons (PHC),10,False
+REM2019-020,Enbridge Pipelines Inc.,Not Specified,Not Specified,Rowatt Pump Station,Not Specified,Saskatchewan,Regina,Developed Land - Industrial,50.38,-104.57,Facility monitoring,Maintenance,2019-07-29 09:25:04.640,Petroleum Hydrocarbons (PHC),10,False
+REM2019-021,Enbridge Pipelines Inc.,Not Specified,Not Specified,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park ,Developed Land - Industrial,53.54,-113.35,Facility monitoring,Maintenance,2019-07-29 09:42:35.727,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",10,False
+REM2019-022,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Operation,2019-07-29 09:50:55.633,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",650,False
+REM2019-023,Trans Mountain Pipeline ULC,Not Specified,Not Specified,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Facility monitoring,Construction,2019-07-30 08:50:23.187,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",20,True
+REM2019-024,Westcoast Energy Inc.,Line 8,,Not Specified,Not Specified,British Columbia,Merritt,Developed Land - Industrial,49.92,-120.92,Post-remediation monitoring,Maintenance,2019-08-01 15:43:21.803,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",15,False
+REM2019-025,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,COLEMAN,Meter,Alberta,Coleman AB.,Agricultural Land,49.63,-114.56,Post-remediation monitoring,Operation,2019-08-19 14:50:58.700,Metals,3,False
+REM2019-026,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,HOTCHKISS EAST,Meter,Alberta,"Manning, AB",Non-developed Land,57.12,-118.15,Ongoing remediation,Operation,2019-08-19 15:30:45.093,Petroleum Hydrocarbons (PHC),100,False
+REM2019-027,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,STEELE LAKE,Meter,Alberta,"Athabasca, AB",Agricultural Land,54.67,-113.55,Ongoing remediation,Operation,2019-08-19 15:55:44.077,Petroleum Hydrocarbons (PHC),50,False
+REM2019-028,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Operation,2019-08-20 16:02:25.003,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",0,False
+REM2019-031,Express Pipeline Ltd.,Express Pipeline Project,Crude Oil,SUFFIELD,Prime Mover,Alberta,Suffield,Developed Land - Industrial,50.17,-111.17,Facility monitoring,Operation,2019-09-24 12:31:59.287,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",25,False
+REM2019-032,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Right of Way close to Clarington,Other Facility,Ontario,Bowmanville,Agricultural Land,43.95,-78.73,Site assessment,Maintenance,2019-10-09 16:15:25.707,Petroleum Hydrocarbons (PHC),8,False
+REM2019-033,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Facility monitoring,Construction,2019-10-29 14:10:30.597,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2019-034,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Site assessment,Operation,2019-11-18 08:57:31.560,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",9,False
+REM2019-035,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Post-remediation monitoring,Maintenance,2019-12-12 12:47:16.190,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",3,False
+REM2019-036,Enbridge Pipelines Inc.,"3.2KM SECTION, NPS 20, LINE 1",,ODESSA,Prime Mover,Saskatchewan,Odessa,Developed Land - Industrial,50.3,-103.84,Site assessment,Operation,2019-12-13 11:05:50.220,Petroleum Hydrocarbons (PHC),30,False
+REM2019-038,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,DARFIELD,Prime Mover,British Columbia,Darfield,Developed Land - Industrial,51.31,-120.18,Facility monitoring,Maintenance,2019-12-19 14:45:08.157,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",2600,False
+REM2019-039,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,British Columbia,Avola,Non-developed Land,51.77,-119.32,Risk managed,Maintenance,2019-12-20 13:27:00.280,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",450,True
+REM2019-040,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,Edson,Developed Land - Industrial,53.25,-116.24,Facility monitoring,Construction,2019-12-20 15:35:46.027,Volatile Organic Compounds (VOC) other than BTEX,25,False
+REM2019-043,TransCanada Keystone Pipeline GP Ltd.,KEYSTONE,Crude Oil,HARDISTY EAST INTERCONNECTING FACILITIES BOOSTER PUMP STATION,Not Specified,Alberta,Hardisty,Developed Land - Industrial,52.64,-111.26,Risk managed,Operation,2020-03-27 08:41:20.530,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",13,False
+REM2020-001,Enbridge Pipelines Inc.,Line 2,Crude Oil,EDMONTON TERMINAL,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.55,-113.36,Ongoing remediation,Operation,2020-02-19 14:26:55.410,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2020-002,Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP,Line 13,NGL-LVP (Condensate),Not Specified,Not Specified,Saskatchewan,Peebles,Agricultural Land,50.14,-102.85,Site assessment,Maintenance,2020-03-09 15:09:18.017,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,True
+REM2020-003,Enbridge Pipelines Inc.,Not Specified,Not Specified,KERROBERT,Prime Mover,Saskatchewan,Kerrobert,Developed Land - Industrial,51.87,-109.04,Facility monitoring,Maintenance,2020-03-31 09:26:56.240,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",55,False
+REM2020-004,Enbridge Pipelines Inc.,Not Specified,Not Specified,KERROBERT,Prime Mover,Saskatchewan,Kerrobert,Developed Land - Industrial,51.87,-109.04,Facility monitoring,Maintenance,2020-03-31 09:45:31.837,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",20,False
+REM2020-005,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WILDDUNN CREEK - BURFIELD,Meter,Alberta,"Dorothy, AB",Developed Land - Industrial,51.28,-111.93,Site assessment,Operation,2020-04-08 15:18:27.837,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Phenols",1000,False
+REM2020-006,TransCanada PipeLines Limited,Not Specified,Not Specified,STN 92 - MATTICE,Prime Mover,Ontario,Mattice,Agricultural Land,49.59,-83.17,Site assessment,Operation,2020-04-29 09:13:55.550,Polychlorinated Biphenyls (PCB),180,False
+REM2020-007,Enbridge Pipelines Inc.,Not Specified,Not Specified,CROMER,Storage,Manitoba,Cromer,Developed Land - Industrial,49.75,-101.24,Facility monitoring,Maintenance,2020-05-01 14:11:21.117,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",20,False
+REM2020-008,Enbridge Pipelines Inc.,Not Specified,Not Specified,CROMER,Storage,Manitoba,Cromer,Developed Land - Industrial,49.75,-101.24,Facility monitoring,Maintenance,2020-05-01 14:24:44.490,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",8,False
+REM2020-009,Enbridge Pipelines Inc.,Not Specified,Not Specified,CROMER,Storage,Manitoba,Cromer,Developed Land - Industrial,49.75,-101.24,Facility monitoring,Maintenance,2020-05-01 14:32:24.880,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",60,False
+REM2020-010,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,BURNABY,Prime Mover,British Columbia,Burnaby,Developed Land - Industrial,49.27,-122.93,Post-remediation monitoring,Maintenance,2020-05-05 13:16:05.023,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),10,False
+REM2020-011,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Post-remediation monitoring,Maintenance,2020-05-05 13:41:52.863,Polycyclic Aromatic Hydrocarbons (PAH),10,False
+REM2020-012,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.37,Post-remediation monitoring,Operation,2020-05-06 10:43:32.923,Polycyclic Aromatic Hydrocarbons (PAH),1,False
+REM2020-013,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Edmonton Terminal,Storage,Alberta,Edmonton,Developed Land - Industrial,53.54,-113.36,Post-remediation monitoring,Operation,2020-05-06 10:55:53.773,Polycyclic Aromatic Hydrocarbons (PAH),6,False
+REM2020-014,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,EDSON,Prime Mover,Alberta,Edson,Developed Land - Industrial,53.58,-116.65,Post-remediation monitoring,Maintenance,2020-05-06 11:02:16.023,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",8,False
+REM2020-015,TransCanada PipeLines Limited,Not Specified,Not Specified,BRANDON,Meter,Manitoba,Rapid City,Agricultural Land,50.07,-99.93,Site assessment,Construction,2020-05-13 11:00:01.273,Polycyclic Aromatic Hydrocarbons (PAH),90,False
+REM2020-016,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,City of Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Maintenance,2020-05-14 14:07:11.033,Petroleum Hydrocarbons (PHC),20,False
+REM2020-017,Enbridge Pipelines Inc.,Not Specified,Not Specified,REGINA TERMINAL,Storage,Saskatchewan,City of Regina,Developed Land - Industrial,50.48,-104.59,Facility monitoring,Maintenance,2020-05-14 14:52:32.050,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),120,False
+REM2020-019,Enbridge Pipelines Inc.,Line 2,Crude Oil,Not Specified,Not Specified,Saskatchewan,Langbank,Agricultural Land,50.04,-102.24,Site assessment,Maintenance,2020-06-04 13:52:48.667,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",25,False
+REM2020-020,Enbridge Pipelines Inc.,Not Specified,Not Specified,SARNIA TANK TERMINAL,Storage,Ontario,Sarnia,Developed Land - Industrial,42.95,-82.37,Facility monitoring,Maintenance,2020-06-04 14:07:40.843,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",40,False
+REM2020-021,Kingston Midstream Limited,Line 24,Natural Gas Liquids,Alida Terminal,Storage,Saskatchewan,"Alida, SK",Developed Land - Industrial,49.42,-101.87,Facility monitoring,Operation,2020-07-22 15:20:30.007,Petroleum Hydrocarbons (PHC),10,False
+REM2020-022,TransCanada PipeLines Limited,Not Specified,Not Specified,Compressor Station 49 - Kenora,Prime Mover,Ontario,Kenora,Agricultural Land,49.79,-94.49,Risk managed,Operation,2020-07-30 14:58:31.497,Petroleum Hydrocarbons (PHC);Polychlorinated Biphenyls (PCB),100,True
+REM2020-023,TransCanada PipeLines Limited,LINE 100-1,Natural Gas,Not Specified,Not Specified,Ontario,Johnson,Non-developed Land,44.77,-75.5,Ongoing remediation,Maintenance,2020-08-20 16:31:04.993,Petroleum Hydrocarbons (PHC),1,False
+REM2020-024,AltaGas Holdings Inc. for and on behalf of AltaGas Pipeline Partnership,Kahntah,Natural Gas Sweet,Riser site at 13-06-104-12-W6,Other Facility,Alberta,Rainbow lake,Non-developed Land,58.0,-119.99,Post-remediation monitoring,Maintenance,2020-09-08 12:40:18.553,Petroleum Hydrocarbons (PHC);Volatile Organic Compounds (VOC) other than BTEX,5,True
+REM2020-025,Kingston Midstream Westspur Limited,Line 23A,Crude Oil,Not Specified,Not Specified,Saskatchewan,Frobisher,Agricultural Land,49.26,-102.53,Post-remediation monitoring,Maintenance,2020-10-05 10:59:18.237,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Volatile Organic Compounds (VOC) other than BTEX",10,False
+REM2020-026,Imperial Oil Resources N.W.T. Limited,Not Specified,Not Specified,NORMAN WELLS FACILITY AND GATHERING,Not Specified,Northwest Territories,Norman Wells,Developed Land - Industrial,65.26,-126.88,Site assessment,Operation,2020-10-29 14:27:32.667,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Salts",1,False
+REM2020-028,TransCanada PipeLines Limited,Not Specified,Not Specified,STN 70 - HURKETT,Prime Mover,Ontario,Hurkett,Agricultural Land,48.82,-88.52,Site assessment,Operation,2020-11-16 12:10:53.827,Petroleum Hydrocarbons (PHC);Polychlorinated Biphenyls (PCB),2300,False
+REM2020-030,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,SUMAS,Prime Mover,British Columbia,Abbotsford,Developed Land - Industrial,49.07,-122.16,Ongoing remediation,Operation,2020-12-17 14:30:01.280,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",11300,False
+REM2020-031,"Westcoast Energy Inc., carrying on business as Spectra Energy Transmission","26"" BC Trunk Pipeline - Downstream",Natural Gas Sweet,WILLOW FLATS (STN 2) (2),Prime Mover,British Columbia,Chetwynd,Developed Land - Industrial,55.65,-122.21,Facility monitoring,Construction,2020-11-23 11:35:52.770,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Metals,200,False
+REM2020-032,Enbridge Pipelines Inc.,Not Specified,Not Specified,HERSCHEL,Prime Mover,Saskatchewan,Herschel,Developed Land - Industrial,51.65,-108.21,Facility monitoring,Operation,2020-11-27 11:01:11.490,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",8,False
+REM2020-033,NOVA Gas Transmission Ltd.,CENTRAL ALBERTA SYSTEM M/L - NPS 30,Natural Gas,DIDSBURY C/S,Prime Mover,Alberta,Didsbury,Agricultural Land,51.6,-114.24,Risk managed,Construction,2020-12-19 08:51:41.577,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Polychlorinated Biphenyls (PCB)",1000,True
+REM2020-034,NOVA Gas Transmission Ltd.,Not Specified,Not Specified,WOLF LAKE,Prime Mover,Alberta,Edson ,Developed Land - Industrial,53.25,-116.24,Site assessment,Operation,2020-12-22 20:01:26.617,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Phenols,1,False
+REM2020-035,NOVA Gas Transmission Ltd.,ALBERSUN LATERAL (NPS 10 1967) FORT MCMURRAY SECTION,,Not Specified,Not Specified,Alberta,Fort McMurray ,Non-developed Land,56.71,-111.4,Ongoing remediation,Operation,2020-12-30 08:55:16.227,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",500,True
+REM2020-037,Express Pipeline Ltd.,Line 40,Crude Oil Sweet Heavy,YOUNGSTOWN,Prime Mover,Alberta,Youngstown Village,Developed Land - Industrial,51.49,-111.17,Post-remediation monitoring,Operation,2021-01-27 14:00:27.317,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",2000,False
+REM2021-002,Enbridge Pipelines Inc.,Not Specified,Not Specified,CACTUS LAKE,Prime Mover,Saskatchewan,Cactus Lake,Developed Land - Industrial,52.14,-109.81,Facility monitoring,Operation,2021-01-25 16:45:20.413,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",542,False
+REM2021-003,Spartan Delta Corp.,CYPRESS PIPELINE,,Not Specified,Not Specified,Saskatchewan,Manyberries,Agricultural Land,49.52,-110.0,Post-remediation monitoring,Abandonment,2021-02-01 16:52:13.200,Petroleum Hydrocarbons (PHC),0,False
+REM2021-004,Westcoast Energy Inc.,Not Specified,Not Specified,SIKANNI CHIEF (N3),Prime Mover,British Columbia,Pink Mountain,Developed Land - Industrial,57.39,-122.66,Monitored,Operation,2021-03-01 12:47:23.677,Petroleum Hydrocarbons (PHC),300,False
+REM2021-005,Westcoast Energy Inc.,Not Specified,Not Specified,HIXON (4B),Prime Mover,British Columbia,Hixon,Developed Land - Industrial,53.51,-122.61,Site assessment,Operation,2021-03-01 13:17:33.693,Petroleum Hydrocarbons (PHC);Metals,300,False
+REM2021-006,Westcoast Energy Inc.,Not Specified,Not Specified,150 MILE HOUSE (6A),Prime Mover,British Columbia,150 Mile House,Developed Land - Industrial,52.13,-121.94,Site assessment,Operation,2021-03-01 13:31:08.317,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),300,True
+REM2021-007,Westcoast Energy Inc.,Not Specified,Not Specified,Australian (BC Gas Facility) (#130),Meter,British Columbia,Kersley,Developed Land - Industrial,52.73,-122.44,Site assessment,Operation,2021-03-01 13:38:37.707,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Salts;Metals,300,False
+REM2021-008,Westcoast Energy Inc.,Not Specified,Not Specified,ROSEDALE (9),Prime Mover,British Columbia,Rosedale,Developed Land - Industrial,49.2,-121.79,Site assessment,Operation,2021-03-01 13:48:46.127,Petroleum Hydrocarbons (PHC);Metals,300,False
+REM2021-009,Westcoast Energy Inc.,Not Specified,Not Specified,BONANZA BOOSTER STATION (16) (BONANZA),Prime Mover,Alberta,Bonanza,Developed Land - Industrial,55.9,-119.9,Site assessment,Operation,2021-03-01 13:57:57.887,Petroleum Hydrocarbons (PHC);Metals,300,False
+REM2021-010,Westcoast Energy Inc.,"30"" Fort St. John Mainline",Natural Gas,Not Specified,Not Specified,British Columbia,Quesnel,Agricultural Land,53.04,-122.48,Site assessment,Maintenance,2021-03-02 11:00:36.347,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1,False
+REM2021-011,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Sherwood Park,Agricultural Land,53.49,-113.34,Site assessment,Construction,2021-03-02 15:55:24.000,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",0,False
+REM2021-012,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,Not Specified,Not Specified,Alberta,Sherwood Park,Agricultural Land,53.44,-113.59,Site assessment,Construction,2021-03-02 15:56:46.000,Petroleum Hydrocarbons (PHC);Metals,100,False
+REM2021-014,TransCanada PipeLines Limited,LINE 100-1,Natural Gas,STN 17 - REGINA,Prime Mover,Saskatchewan,Regina,Developed Land - Industrial,50.39,-104.41,Site assessment,Operation,2021-03-17 14:28:56.810,Polycyclic Aromatic Hydrocarbons (PAH);Glycol,100,False
+REM2021-015,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,North York,Developed Land - Residential,43.79,-79.37,Site assessment,Operation,2021-04-01 18:35:26.147,"Other;Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1,False
+REM2021-016,Westcoast Energy Inc.,"10"" North Shekilie Pipeline",Natural Gas Sour,Pigging Facilities,Not Specified,Alberta,MacKenzie,Developed Land - Industrial,59.5,-119.87,Site assessment,Operation,2021-04-05 14:16:38.630,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",800,False
+REM2021-017,Westcoast Energy Inc.,"4"" SOUTH SHEKILIE PIPELINE",Natural Gas,Pigging Facilities,Not Specified,British Columbia,Zama City,Developed Land - Industrial,59.32,-120.07,Site assessment,Operation,2021-04-05 14:39:10.737,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100,False
+REM2021-018,Westcoast Energy Inc.,"10"" South Shekilie Pipeline",Natural Gas,Pigging Facilities,Not Specified,Alberta,Zama City,Developed Land - Industrial,59.16,-119.8,Site assessment,Operation,2021-04-05 14:52:50.397,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100,False
+REM2021-019,Westcoast Energy Inc.,"10"" South Shekilie Pipeline",Natural Gas,Pigging Facilities,Not Specified,Alberta,Zama City,Developed Land - Industrial,59.23,-119.89,Site assessment,Operation,2021-04-05 15:05:06.207,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",200,False
+REM2021-020,ExxonMobil Canada Properties,Onshore Gathering Pipeline,Natural Gas Liquids,Sable Offshore Energy Project,Not Specified,Nova Scotia,"Goldboro, Nova Scotia",Developed Land - Industrial,45.17,-61.62,Facility monitoring,Abandonment,2021-04-14 12:38:31.850,"Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Metals",250,True
+REM2021-021,Trans Mountain Pipeline ULC,"Inactive TMPL 24"" Mainline (no commodity currently carried)",Crude Oil,Not Specified,Not Specified,Alberta,Jasper,Protected Area,52.86,-118.21,Site assessment,Maintenance,2021-04-28 08:54:56.377,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100,True
+REM2021-022,TransCanada Keystone Pipeline GP Ltd.,KEYSTONE,Crude Oil,PS15 - Caron,Not Specified,Saskatchewan,"Caron, Saskatchewan",Developed Land - Industrial,50.48,-105.86,Site assessment,Operation,2021-04-29 15:39:45.267,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",280,False
+REM2021-023,Enbridge Pipelines Inc.,Line 8,,Not Specified,Not Specified,Ontario,Bright,Protected Area,43.26,-80.61,Site assessment,Maintenance,2021-05-12 14:39:53.440,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",35,True
+REM2021-024,Westcoast Energy Inc.,"SPECTRA - 30"" MAINLINE",Natural Gas,Not Specified,Not Specified,British Columbia,Chilliwack,Agricultural Land,49.16,-121.92,Site assessment,Maintenance,2021-05-12 15:12:38.053,Petroleum Hydrocarbons (PHC),1,True
+REM2021-025,Westcoast Energy Inc.,"36"" Fort Nelson Mainline Loops",Natural Gas,PROPHET RIVER (N2),Prime Mover,British Columbia,Prophet River,Developed Land - Industrial,58.01,-122.7,Site assessment,Maintenance,2021-05-13 16:16:14.643,Petroleum Hydrocarbons (PHC),53,False
+REM2021-027,NOVA Gas Transmission Ltd.,CENTRAL ALBERTA SYSTEM M/L - NPS 30,Natural Gas,DIDSBURY C/S,Prime Mover,Alberta,Didsbury,Developed Land - Industrial,51.6,-114.24,Site assessment,Maintenance,2021-06-07 15:34:55.077,Glycol,1,False
+REM2021-028,NOVA Gas Transmission Ltd.,EASTERN ALBERTA M/L LOOP #3,Natural Gas,PRINCESS,Prime Mover,Alberta,Patricia,Developed Land - Industrial,50.7,-111.53,Site assessment,Maintenance,2021-06-07 15:50:20.303,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1,False
+REM2021-029,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Belleville,Agricultural Land,44.21,-77.32,Site assessment,Operation,2021-06-14 06:15:40.617,Petroleum Hydrocarbons (PHC),1,False
+REM2021-030,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,"Oakville, Ontario",Developed Land - Small Commercial,43.45,-79.69,Site assessment,Operation,2021-06-14 06:53:53.067,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Volatile Organic Compounds (VOC) other than BTEX;Metals,1,False
+REM2021-031,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Mississauga,Developed Land - Residential,43.5,-79.64,Site assessment,Maintenance,2021-06-14 07:58:32.450,Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH),1,False
+REM2021-032,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,BELLEVILLE STATION,Meter,Ontario,Belleville,Developed Land - Industrial,44.21,-77.38,Site assessment,Operation,2021-06-14 08:06:59.033,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",1,False
+REM2021-033,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,OAKVILLE STATION,Meter,Ontario,"Oakville, Ont",Developed Land - Industrial,43.39,-79.74,Site assessment,Operation,2021-06-14 10:11:59.453,"Petroleum Hydrocarbons (PHC);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Light Non-aqueous Phase Liquid (LNAPL)",19,True
+REM2021-034,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Oshawa,Developed Land - Small Commercial,43.93,-78.86,Site assessment,Operation,2021-06-14 15:11:57.863,Polycyclic Aromatic Hydrocarbons (PAH),1,False
+REM2021-035,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,"Prescott, Ontario",Non-developed Land,44.73,-75.53,Site assessment,Operation,2021-06-14 15:17:58.957,Polycyclic Aromatic Hydrocarbons (PAH),1,False
+REM2021-036,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,MONTREAL STATION,Meter,Quebec,Montreal,Developed Land - Industrial,45.63,-73.55,Facility monitoring,Operation,2021-06-14 15:24:12.877,Other;Polycyclic Aromatic Hydrocarbons (PAH),1,True
+REM2021-037,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Clarkson MP 360.6,Developed Land - Residential,43.52,-79.64,Site assessment,Operation,2021-06-14 15:26:45.680,Polycyclic Aromatic Hydrocarbons (PAH),1,False
+REM2021-038,Trans-Northern Pipelines Inc.,Mainline,Refined Products-Aviation,Not Specified,Not Specified,Ontario,Clarkson MP 360.33,Developed Land - Residential,43.51,-79.64,Site assessment,Operation,2021-06-14 15:30:04.503,Polycyclic Aromatic Hydrocarbons (PAH),1,True
+REM2021-039,NOVA Gas Transmission Ltd.,BIG BEND EAST LATERAL - NPS 4,,BIG BEND EAST,Meter,Alberta,Flastbush ,Agricultural Land,54.78,-113.96,Site assessment,Abandonment,2021-06-24 10:47:37.427,Metals,10,False
+REM2021-040,Westcoast Energy Inc.,"SPECTRA - 30"" MAINLINE",Natural Gas,Not Specified,Not Specified,British Columbia,City of Quesnel,Developed Land - Industrial,52.98,-122.45,Site assessment,Maintenance,2021-06-24 15:28:00.047,Petroleum Hydrocarbons (PHC),2,False
+REM2021-041,Trans Mountain Pipeline ULC,"Inactive TMPL 24"" Mainline (no commodity currently carried)",Crude Oil,Not Specified,Not Specified,Alberta,Hinton,Non-developed Land,53.25,-117.8,Site assessment,Maintenance,2021-07-08 14:22:19.033,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",100,False
+REM2021-042,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,KAMLOOPS,Prime Mover,British Columbia,Kamloops,Developed Land - Industrial,50.66,-120.41,Facility monitoring,Construction,2021-07-08 14:50:38.320,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX);Metals",10,False
+REM2021-043,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,KAMLOOPS,Prime Mover,British Columbia,Kamloops,Developed Land - Industrial,50.66,-120.41,Facility monitoring,Construction,2021-07-08 15:25:47.673,"Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",5,False
+REM2021-044,Trans Mountain Pipeline ULC,Mainline,Crude Oil Sour Light,EDMONTON,Storage,Alberta,Sherwood Park,Developed Land - Industrial,53.54,-113.36,Facility monitoring,Construction,2021-07-08 15:47:04.900,"Petroleum Hydrocarbons (PHC);Polycyclic Aromatic Hydrocarbons (PAH);Benzene, Toluene, Ethylbenzene, Xylenes (BTEX)",5,False
