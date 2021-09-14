@@ -584,4 +584,14 @@ export const englishDashboard = {
         `There are no reported contaminated sites for ${company}`,
     },
   },
+  tolls: {
+    dashboardError,
+    numberFormat,
+    companyToSystem,
+    noTolls: {
+      header: "Tolls data not available",
+      note: (companyName) =>
+        `Tolls information for ${companyName} may be available in REGDOCS.`,
+    },
+  },
 };

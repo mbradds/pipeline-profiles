@@ -134,7 +134,6 @@ export default {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
-    // publicPath: "/dist/",
   },
 
   plugins: [
@@ -144,10 +143,6 @@ export default {
         {
           from: path.resolve(__dirname, "src", "GCWeb"),
           to: path.resolve(__dirname, "dist", "GCWeb"),
-        },
-        {
-          from: path.resolve(__dirname, "src", "wet-boew"),
-          to: path.resolve(__dirname, "dist", "wet-boew"),
         },
       ],
     }),

@@ -46,7 +46,11 @@ export async function loadAllCharts(data, plains = false) {
       englishDashboard.traffic
     ),
     mainApportion(data.apportionData, englishDashboard.apportion),
-    mainTolls(data.tollsData.tolls, data.tollsData.meta, {}),
+    mainTolls(
+      data.tollsData.tolls,
+      data.tollsData.meta,
+      englishDashboard.tolls
+    ),
     mainConditions(
       JSON.parse(data.conditionsData.regions),
       data.canadaMap,
