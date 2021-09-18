@@ -120,6 +120,11 @@ const numberFormat = (value, rounding = 2, thousands = " ") =>
 const dateFormat = (value, format = "%b %d, %Y") =>
   Highcharts.dateFormat(format, value);
 
+const barClick = (field, definition = undefined) =>
+  `<small>${
+    `${definition} ` || ""
+  }Click on a bar to view ${field} sub definition</small>`;
+
 export const englishDashboard = {
   plains:
     "Plains Midstream Canada ULC includes the Milk River and Wascana pipelines",
@@ -254,6 +259,7 @@ export const englishDashboard = {
       userPopUp,
       locationError,
       legendClick,
+      barClick,
       exploreOther: exploreOther("incidents"),
       cf: "cubic feet",
       bbl: "bbl",
@@ -281,8 +287,6 @@ export const englishDashboard = {
       otherRelease: "Estimated miscellaneous release:",
       noNearby: (eventType) =>
         `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
-      barClick: (field) =>
-        `<small>Click on a bar to view ${field} sub definition</small>`,
       rangeTitle: "Select range",
       findBtnTitle: "Find Incidents within",
       trendYTitle: "Number of Incidents",
@@ -482,6 +486,7 @@ export const englishDashboard = {
       exploreOther: exploreOther("events"),
       legendClick,
       countDisclaimer,
+      barClick,
       countDisclaimerEvent: "Contaminated sites",
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
@@ -501,7 +506,7 @@ export const englishDashboard = {
           use: "Applicable Land Use",
           p: "Province",
           a: "Activity at time of discovery",
-          c: "Contaminants at the Site",
+          c: "Category of Contaminants",
           ps: "Pipeline or Facility?",
           s: "Site Status",
           y: "Year",
@@ -576,6 +581,20 @@ export const englishDashboard = {
           17: { n: "Dense Non-aqueous Phase Liquid (DNAPL)" },
           18: { n: "Not Provided" },
         },
+      },
+      definitions: {
+        s: {
+          definition: "The status of remedial activities.",
+          prm: "Active remedial work complete and groundwater or reclamation monitoring is in effect.",
+          null: "Not provided",
+          rm: "Risk Management Plan has been submitted and/or risk management is taking place.",
+          sa: "Environmental Site Assessment in progress to determine next steps, prior to active remedial or risk management work.",
+          fm: "Use this status at facilities where there is a groundwater monitoring program in place as described in section 7.2 of the 2019 Draft Remediation Process Guide.",
+          or: "RAP has been submitted and/or or active remedial work is ongoing.",
+        },
+        a: "Indicates the activity being undertaken at the time the contamination was discovered.",
+        ps: "Indicates whether the contamination was discovered along the length of the pipeline on the RoW or whether the contamination was discovered at a facility (ex. station or terminal).",
+        c: "The type of contaminants that were identified at the time of NOC submission.",
       },
     },
     noEvents: {

@@ -57,7 +57,7 @@ export async function mainRemediation(data, lang) {
       legendClickText: { enabled: true, text: lang.dashboard.legendClick },
       oneToMany: { c: true },
       lang: lang.dashboard,
-      // definitions: lang.definitions,
+      definitions: lang.dashboard.definitions,
     });
 
     const trendNav = new EventNavigator({
@@ -120,7 +120,7 @@ export async function mainRemediation(data, lang) {
   try {
     return buildDashboard();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return loadChartError("remediation-dashboard", lang.dashboardError);
   }
 }

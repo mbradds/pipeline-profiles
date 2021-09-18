@@ -12,18 +12,20 @@ export async function mainOandM(eventData, lang) {
 
   function addDashboardTitle() {
     const titleElement = document.getElementById("oandm-dashboard-title");
+    const dataWithCompany = eventData;
     if (
       Object.prototype.hasOwnProperty.call(
         lang.companyToSystem,
         eventData.meta.company
       )
     ) {
-      eventData.meta.system = lang.companyToSystem[eventData.meta.company];
+      dataWithCompany.meta.system =
+        lang.companyToSystem[eventData.meta.company];
       titleElement.innerText = lang.title(
         lang.companyToSystem[eventData.meta.company]
       );
     } else {
-      eventData.meta.system = eventData.meta.company;
+      dataWithCompany.meta.system = eventData.meta.company;
       titleElement.innerHTML = lang.title(eventData.meta.company);
     }
   }
@@ -41,7 +43,6 @@ export async function mainOandM(eventData, lang) {
       seriesed: true,
       seriesInfo: lang.seriesInfo,
       definitions: lang.definitions,
-      definitionsOn: "pill",
       divId: "oandm-time-series",
       legendClickText: { enabled: true, text: lang.legendClick },
       lang,

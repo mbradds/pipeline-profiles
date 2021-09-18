@@ -35,7 +35,6 @@ export class EventTrend {
    * @param {Object} [const.legendClickText={enabled: false, text: undefined}] - Configuration for a disclaimer above the chart legend explaining the legend click functionality.
    * @param {Object} [const.oneToMany={}] - Enabled pill id's ({pillId: true}) contain double counting, and a disclaimer above the bars will explain the higher bar totals.
    * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
-   * @param {string} [constr.definitionsOn="bar"] - Defines what click action will display text below the chart. When "bar", the user must click on a bar series to view the definition. When "pill" the user must click different pills to change the text.
    * @param {Object} [constr.seriesInfo={}] - When "seriesed" this must contain info about the series names, colors, etc. {pillName: {id: {c: color, n: name}}}
    * @param {Object} [constr.definitions={}] - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
    */
@@ -49,7 +48,6 @@ export class EventTrend {
     legendClickText = { enabled: false, text: undefined },
     oneToMany = {},
     seriesed = false,
-    definitionsOn = "bar", // show text on bar click, or pill click
     seriesInfo = {},
     definitions = {},
   }) {
@@ -65,7 +63,6 @@ export class EventTrend {
     this.seriesInfo = seriesInfo;
     this.colors = lang.seriesInfo;
     this.definitions = definitions;
-    this.definitionsOn = definitionsOn;
     this.definitionDiv = `trend-definitions-${eventType}`;
     this.hasDefinition = this.displayDefinitions();
     this.createChart();
@@ -90,7 +87,7 @@ export class EventTrend {
     };
 
     const adder = addMethod();
-    let dummyData = [];
+    const dummyData = [];
     uniqueYears.forEach((y, index) => {
       if (
         y + 1 !== uniqueYears[index + 1] &&
@@ -264,16 +261,23 @@ export class EventTrend {
   displayDefinitions() {
     try {
       const definitionsPopUp = document.getElementById(this.definitionDiv);
-      if (Object.prototype.hasOwnProperty.call(this.definitions, this.field)) {
+      const currentDefinition = this.definitions[this.field];
+      if (currentDefinition) {
         visibility([this.definitionDiv], "show");
-        // when on incidents, show text on bar click. When on oandm, show text on pill click
-        if (this.definitionsOn === "bar") {
-          // user click on highcharts bar for definition to appear
+        if (
+          typeof currentDefinition === "object" &&
+          currentDefinition !== null &&
+          !Array.isArray(currentDefinition)
+        ) {
+          // there are sub definitions that need to be shown on bar click
+          this.definitionsOn = "bar";
           definitionsPopUp.innerHTML = this.lang.barClick(
-            this.pillNameSubstitution()
+            this.pillNameSubstitution(),
+            currentDefinition.definition
           );
-        } else if (this.definitionsOn === "pill") {
-          // user clicks on pill to view info about that pill in definitions box
+        } else {
+          // there is only one definition used to describe the "column" of data
+          this.definitionsOn = "pill";
           definitionsPopUp.innerHTML = `<small>${
             this.definitions[this.field]
           }</small>`;
@@ -283,6 +287,7 @@ export class EventTrend {
       visibility([this.definitionDiv], "hide");
       return false;
     } catch (err) {
+      visibility([this.definitionDiv], "hide");
       console.warn(
         `div ${this.definitionDiv} does not exist to display definition text`
       );
@@ -335,11 +340,13 @@ export class EventTrend {
                   currentTrend.colors[currentTrend.field][this.options.id].c;
 
                 const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp;`;
-                document.getElementById(
-                  currentTrend.definitionDiv
-                ).innerHTML = `<small>${key} ${
-                  currentTrend.definitions[currentTrend.field][this.options.id]
-                }</small>`;
+                const clickDefinition =
+                  currentTrend.definitions[currentTrend.field][this.options.id];
+                if (clickDefinition) {
+                  document.getElementById(
+                    currentTrend.definitionDiv
+                  ).innerHTML = `<small>${key} ${clickDefinition}</small>`;
+                }
               }
             },
           },
