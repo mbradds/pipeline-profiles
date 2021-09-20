@@ -169,7 +169,6 @@ export function addSeriesParams(
     }
 
     nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
-
     if (section === "traffic") {
       if (isCapacity(s.id)) {
         nextSeries.type = "line";

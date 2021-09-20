@@ -338,14 +338,12 @@ export class EventTrend {
               ) {
                 const keyColor =
                   currentTrend.colors[currentTrend.field][this.options.id].c;
-
-                const key = `<strong style="color:${keyColor}">${this.name}:</strong>&nbsp;`;
                 const clickDefinition =
                   currentTrend.definitions[currentTrend.field][this.options.id];
                 if (clickDefinition) {
                   document.getElementById(
                     currentTrend.definitionDiv
-                  ).innerHTML = `<small>${key} ${clickDefinition}</small>`;
+                  ).innerHTML = `<small>${`<strong style="color:${keyColor}">${this.name}:</strong>&nbsp;`}${clickDefinition}</small>`;
                 }
               }
             },

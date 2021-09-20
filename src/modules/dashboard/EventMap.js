@@ -15,6 +15,7 @@ import Highcharts from "highcharts";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import shadowIconPng from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
+import haversine from "haversine";
 import {
   cerPalette,
   conversions,
@@ -22,7 +23,6 @@ import {
   visibility,
   btnGroupClick,
 } from "../util.js";
-import haversine from "haversine";
 
 /**
  * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.
@@ -76,7 +76,7 @@ export class EventMap {
     try {
       const ch = document.getElementById(this.divId).clientHeight;
       if (ch > 0) {
-        this.plotHeight = document.getElementById(this.divId).clientHeight;
+        this.plotHeight = ch;
       } else {
         const style = document.getElementById(this.divId);
         const { height } = getComputedStyle(style);
@@ -233,8 +233,7 @@ export class EventMap {
     };
     const formatCommaList = (text, names) => {
       if (typeof text !== "string" && text.length > 1) {
-        const itemList = text;
-        return itemList.reduce((preVal, currVal, i) => {
+        return text.reduce((preVal, currVal, i) => {
           const currName = `&nbsp;-&nbsp;${getNameText(currVal, names, "n")}`;
           const preName =
             i === 1
@@ -272,7 +271,6 @@ export class EventMap {
     });
 
     toolTipText += `</table>`;
-
     if (this.regdocsClick) {
       toolTipText += `<i class="center-footer">Click circle to open REGDOCS search for ${eventParams.id}</i>`;
     }
@@ -298,7 +296,6 @@ export class EventMap {
         );
       });
     }
-
     return circle;
   }
 
@@ -453,7 +450,7 @@ export class EventMap {
           resolve(currentDashboard);
         })
         .on("locationerror", (err) => {
-          console.log("locationerror in findUser method");
+          // console.log("locationerror in findUser method");
           reject(err);
         });
     });
@@ -634,8 +631,6 @@ export class EventMap {
    * @param {boolean} [vBtn=false] - Volume button
    */
   switchDashboards(mapBars, cBtn = false, vBtn = false) {
-    const countBtn = cBtn;
-    const volumeBtn = vBtn;
     document
       .getElementById(`${this.eventType}-view-type`)
       .addEventListener("click", (event) => {
@@ -647,18 +642,18 @@ export class EventMap {
         if (event.target.value !== "trends") {
           visibility(dashboardDivs, "show");
           visibility([`${this.eventType}-time-series-section`], "hide");
-          if (volumeBtn) {
-            volumeBtn.disabled = false;
+          if (vBtn) {
+            vBtn.disabled = false;
           }
           this.map.invalidateSize(true); // fixes problem when switching from trends to map after changing tabs
-          if (countBtn) {
-            countBtn.click();
+          if (cBtn) {
+            cBtn.click();
           }
         } else {
           // if the user selects trends, the option to view volume should be disabled
-          if (volumeBtn && countBtn) {
-            volumeBtn.disabled = true;
-            countBtn.checked = true;
+          if (vBtn && cBtn) {
+            vBtn.disabled = true;
+            cBtn.checked = true;
           }
           visibility(dashboardDivs, "hide");
           visibility([`${this.eventType}-time-series-section`], "show");

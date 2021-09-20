@@ -116,8 +116,7 @@ export class EventNavigator {
 
     return Object.keys(series[name]).map((key) => {
       const seriesParams = seriesProps(this.barColors[name]);
-      const value = series[name][key];
-      return seriesParams(key, value, name, this.barColors[name]);
+      return seriesParams(key, series[name][key], name, this.barColors[name]);
     });
   }
 
@@ -252,17 +251,17 @@ export class EventNavigator {
     // TODO: this would run faster if all series were made in one pass
     let newBar = {};
     const addToSeries = (series, row, name) => {
-      const newSeries = series;
-      if (Object.prototype.hasOwnProperty.call(newSeries, row[name])) {
-        newSeries[row[name]].frequency += 1;
-        newSeries[row[name]].volume += row.vol;
+      // const newSeries = series;
+      if (Object.prototype.hasOwnProperty.call(series, row[name])) {
+        series[row[name]].frequency += 1;
+        series[row[name]].volume += row.vol;
       } else {
-        newSeries[row[name]] = {
+        series[row[name]] = {
           frequency: 1,
           volume: row.vol,
         };
       }
-      return newSeries;
+      return series;
     };
 
     this.data.forEach((row) => {
@@ -280,14 +279,15 @@ export class EventNavigator {
     }
 
     if (chart) {
-      const grey = EventNavigator.greyTheme;
-      const greyIndex = Math.floor(grey.length / chart.series.length);
+      const greyIndex = Math.floor(
+        EventNavigator.greyTheme.length / chart.series.length
+      );
       const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
 
       const greyColors =
         chart.series.length > 1
-          ? everyNth(grey, greyIndex).reverse()
-          : [grey[0]];
+          ? everyNth(EventNavigator.greyTheme, greyIndex).reverse()
+          : [EventNavigator.greyTheme[0]];
 
       chart.series.forEach((s, i) => {
         chart.series[i].options.color = greyColors[i];
@@ -369,8 +369,7 @@ export class EventNavigator {
     this.plot.fieldChange(bar.name);
   }
 
-  barEvents(bar) {
-    const currentBar = bar;
+  barEvents(currentBar) {
     const barDiv = document.getElementById(currentBar.div);
     const barNav = this;
     function mouseOver() {

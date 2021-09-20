@@ -80,19 +80,19 @@ export async function mainApportion(apportionData, lang) {
    */
   function buildApportionPointCharts(seriesList, chart) {
     const xAxisInfo = chart.xAxis[0];
-    const topChart = document.getElementById("apportion-point-panel");
-    topChart.innerHTML = `<section class="panel panel-default">
+    document.getElementById(
+      "apportion-point-panel"
+    ).innerHTML = `<section class="panel panel-default">
     <header class="panel-heading"><h5 class="panel-title">${lang.keyPtTitle}</h5></header>
     <div class="panel-body" id="apportion-points">
     </div></section>`;
 
     const colorList = Object.values(cerPalette);
     seriesList.forEach((pointSeries, i) => {
-      const series = pointSeries;
-      series.name = lang.points[pointSeries.id][0];
-      series.color = colorList[i];
+      [pointSeries.name] = lang.points[pointSeries.id];
+      pointSeries.color = colorList[i];
       const pointDiv = document.createElement("div");
-      const divId = `${series.id}-apportion`;
+      const divId = `${pointSeries.id}-apportion`;
       pointDiv.setAttribute("id", divId);
       document.getElementById("apportion-points").appendChild(pointDiv);
 
@@ -159,7 +159,7 @@ export async function mainApportion(apportionData, lang) {
             },
           },
         },
-        series: [series],
+        series: [pointSeries],
       });
     });
   }

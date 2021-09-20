@@ -97,8 +97,8 @@ export function fillBetween(
   if (method === "backward" || method === "b") {
     increment = -1;
   }
-  let series = [];
-  let startValue = value;
+  const series = [];
+  const startValue = value;
   let startDate = new Date(start[0], start[1], start[2]);
   const endDate = new Date(end[0], end[1], end[2]);
   const datePlusPlus = getDateFunction(frequency);

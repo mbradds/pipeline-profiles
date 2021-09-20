@@ -30,10 +30,6 @@ export async function mainOandM(eventData, lang) {
     }
   }
 
-  function loadDynamicText() {
-    lang.dynamicText(eventData.meta, lang);
-  }
-
   const incidentTimeSeries = (timeField, timeFilters) => {
     const timeSeries = new EventTrend({
       eventType,
@@ -65,7 +61,7 @@ export async function mainOandM(eventData, lang) {
   function buildDecision() {
     if (eventData.build) {
       addDashboardTitle();
-      loadDynamicText();
+      lang.dynamicText(eventData.meta, lang);
       incidentTimeSeries(field, filters);
     } else {
       noEventsFlag(
@@ -80,7 +76,6 @@ export async function mainOandM(eventData, lang) {
   try {
     return buildDecision();
   } catch (err) {
-    console.log(err);
     return loadChartError("oandm-dashboard", lang.dashboardError);
   }
 }

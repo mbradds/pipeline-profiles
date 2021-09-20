@@ -245,7 +245,6 @@ export async function mainTraffic(trafficData, metaData, lang) {
     }
 
     toolText += addTable(textHolder.other);
-
     if (hasImports) {
       toolText += addTable(textHolder.imports);
     }
@@ -256,9 +255,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     const currMonth = lang.months[event.x + 1];
     let toolText = `<strong>${currMonth}</strong><table>`;
     event.points.forEach((p) => {
-      const cleanPoint = p;
-      cleanPoint.series.name = p.series.name.split("(")[0].trim();
-      toolText += addToolRow(cleanPoint, units, rounding);
+      p.series.name = p.series.name.split("(")[0].trim();
+      toolText += addToolRow(p, units, rounding);
     });
     toolText += "</table>";
     return toolText;
@@ -738,12 +736,10 @@ export async function mainTraffic(trafficData, metaData, lang) {
     );
 
     let fiveChart = createFiveYearChart(fiveSeries, chartParams);
-
     // only m&np should meet this criteria on load
     if (chartParams.hasImports) {
       hasImportsRedraw(trafficChart, chartParams);
     }
-
     updateDynamicComponents(chartParams, timeSeries);
 
     // user selects key point

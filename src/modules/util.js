@@ -107,8 +107,7 @@ export function listOrParagraph(itter, textCol) {
 
   itter.forEach((i) => {
     if (i && textCol in i) {
-      const pointText = i[textCol];
-      pointHtml += `<${seperator}>${pointText}</${seperator}>`;
+      pointHtml += `<${seperator}>${i[textCol]}</${seperator}>`;
     }
   });
   pointHtml += closing;
@@ -199,11 +198,8 @@ export function plainsMidstreamProfile(lang, div) {
  * @param {Object} event - Event listener callback object.
  */
 export function btnGroupClick(btnDiv, event) {
-  const evt = event;
-  const allButtons = document.querySelectorAll(`#${btnDiv} .btn`);
-  allButtons.forEach((elem) => {
-    const e = elem;
-    e.className = elem.className.replace(" active", "");
+  document.querySelectorAll(`#${btnDiv} .btn`).forEach((elem) => {
+    elem.className = elem.className.replace(" active", "");
   });
-  evt.target.className += " active";
+  event.target.className += " active";
 }

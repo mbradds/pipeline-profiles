@@ -120,7 +120,7 @@ const numberFormat = (value, rounding = 2, thousands = " ") =>
 const dateFormat = (value, format = "%b %d, %Y") =>
   Highcharts.dateFormat(format, value);
 
-const barClick = (field, definition = undefined) =>
+const barClick = (field, definition = "") =>
   `<small>${
     `${definition} ` || ""
   }Click on a bar to view ${field} sub definition</small>`;

@@ -164,7 +164,6 @@ export async function mainConditions(
     };
 
     const m = getValid(type);
-
     const conditions = data.map((row) => {
       if (row[filter.column] !== null) {
         return m(row);
@@ -186,16 +185,15 @@ export async function mainConditions(
   }
 
   const destroyInsert = (mapChart) => {
-    const chart = mapChart;
     visibility(["conditions-definitions"], "hide");
-    if (chart.customTooltip) {
+    if (mapChart.customTooltip) {
       const currentPopUp = document.getElementById("conditions-insert");
       if (currentPopUp) {
         currentPopUp.innerHTML = "";
       }
-      chart.customTooltip.destroy();
+      mapChart.customTooltip.destroy();
     }
-    chart.customTooltip = undefined;
+    mapChart.customTooltip = undefined;
   };
 
   const selectedMeta = (params) => {
@@ -324,8 +322,7 @@ export async function mainConditions(
       "spacingBox"
     );
     const definitionDiv = document.getElementById("conditions-definitions");
-    document.getElementById("themes-table").rows.forEach((tableRow) => {
-      const tr = tableRow;
+    document.getElementById("themes-table").rows.forEach((tr) => {
       const rowText = tr.querySelectorAll("td")[0].textContent;
       tr.onclick = function themeClick() {
         visibility(["conditions-definitions"], "show");
