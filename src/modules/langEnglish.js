@@ -76,6 +76,8 @@ const units = {
 
 const legendClick = "Click on a legend item to remove it from the chart";
 
+const locationDisclaimer = "Waiting for your location...";
+
 const userPopUp =
   "Approximate location. You can drag this marker around to explore events in other locations.";
 const locationError =
@@ -260,6 +262,8 @@ export const englishDashboard = {
       locationError,
       legendClick,
       barClick,
+      locationDisclaimer,
+      countDisclaimer,
       exploreOther: exploreOther("incidents"),
       cf: "cubic feet",
       bbl: "bbl",
@@ -277,8 +281,6 @@ export const englishDashboard = {
       },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
-      locationDisclaimer: "Waiting for your location...",
-      countDisclaimer,
       countDisclaimerEvent: "Incidents",
       nearbyHeader: (numCircles, range) =>
         `There are ${numCircles} incidents within ${range} km`,
@@ -483,16 +485,15 @@ export const englishDashboard = {
       userPopUp,
       locationError,
       numberFormat,
-      exploreOther: exploreOther("events"),
+      exploreOther: exploreOther("sites"),
       legendClick,
       countDisclaimer,
       barClick,
+      locationDisclaimer,
       countDisclaimerEvent: "Contaminated sites",
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",
-      volumeDisclaimer: undefined,
-      locationDisclaimer: undefined,
       rangeTitle: "Select range",
       findBtnTitle: "Find sites within",
       nearbyHeader: (numCircles, range) =>

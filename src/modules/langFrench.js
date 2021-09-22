@@ -77,6 +77,8 @@ const units = {
 const legendClick =
   "Cliquez sur un élément de légende pour le supprimer du graphique";
 
+const locationDisclaimer = "En attente de votre position...";
+
 const userPopUp =
   "Emplacement approximatif. Vous pouvez faire glisser ce marqueur pour explorer survenus ailleurs.";
 const locationError =
@@ -256,6 +258,8 @@ export const frenchDashboard = {
       userPopUp,
       locationError,
       barClick,
+      locationDisclaimer,
+      countDisclaimer,
       exploreOther: exploreOther("un incident"),
       cf: "pieds cubes",
       bbl: "b",
@@ -273,8 +277,6 @@ export const frenchDashboard = {
       },
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
-      locationDisclaimer: "En attente de votre position...",
-      countDisclaimer,
       countDisclaimerEvent: "Les incidents",
       nearbyHeader: (numCircles, range) =>
         `Il y a ${numCircles} incidents dans un rayon de ${range} km`,
@@ -482,17 +484,16 @@ export const frenchDashboard = {
     dashboard: {
       userPopUp,
       numberFormat,
-      exploreOther: exploreOther("events"),
+      exploreOther: exploreOther("sites"),
       locationError,
       legendClick,
       countDisclaimer,
       barClick,
+      locationDisclaimer,
       countDisclaimerEvent: "Contaminated sites (FR)",
       trendYTitle: "Number of Contaminated Sites",
       cf: "cubic feet",
       bbl: "bbl",
-      volumeDisclaimer: undefined,
-      locationDisclaimer: undefined,
       rangeTitle: "Sélectionner une plage",
       findBtnTitle: "Rechercher les sites dans un rayon de",
       nearbyHeader: (numCircles, range) =>
