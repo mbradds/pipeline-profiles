@@ -123,8 +123,8 @@ const en = {
     buttons: {
       conditions: "Conditions Compliance",
       incidents: "Reported Incidents",
-      oandm: "Operations &#38; Maintenance Activities",
-      remediation: "Contaminated Sites &#38; Remediation",
+      oandm: "Operations and Maintenance Activities",
+      remediation: "Contaminated Sites and Remediation",
     },
     updated: {
       conditions: "Section updated September 2021",
@@ -334,10 +334,10 @@ const en = {
       p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
       p2: `After the NOC is submitted, companies must demonstrate they are
       actively managing the contamination according to the
-      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress of remediation at the
-      contaminated site, and its current status, are captured in the annual
+      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress and current status of remediation at the
+      contaminated site are captured in the annual
       update submitted by a company each year for a contaminated site.`,
-      p3: "Third-party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
+      p3: "Third party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
       p4: `The dashboard below contains information that is contained in the NOC's
       and annual updates found in REGDOCS. The CER publishes NOCs that have
       been submitted to the CER since August 2018, when the CER started
@@ -377,14 +377,14 @@ const en = {
           sourceText: sourceTextEn,
           sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
           description:
-            "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Similar to the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
+            "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Like the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
           openGov: false,
         },
       },
     },
     oandm: {
-      p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance activities (O&#38;M activities) on CER regulated pipelines. These activities include things such as pipeline repairs, investigative &#38; integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
-      p2: "Companies are required to adhere to <i>Canadian Energy Regulator Act’s Onshore Pipeline Regulations</i> and operate their facilities in a manner that is safe and protects the environment. Authorizations for pipelines typically allow companies to construct and operate a facility, and companies are not required to apply for additional approval to undertake most O&#38;M activities. In certain circumstances, companies are required to notify the CER in advance with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (RoW) or adjacent property.",
+      p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance (O&#38;M) activities on CER regulated pipelines. These activities include things such as pipeline repairs, investigative and integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
+      p2: 'Companies are required to adhere to <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"><i>Canadian Energy Regulator Act’s Onshore Pipeline Regulations</i></a> and operate their facilities in a manner that is safe and protects the environment. Authorizations for pipelines typically allow companies to construct and operate a facility, and companies are not required to apply for additional approval to undertake most O&#38;M activities. In certain circumstances, companies are required to notify the CER in advance with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (ROW) or adjacent property.',
       details1: {
         listType: "ol",
         summary:
@@ -392,13 +392,13 @@ const en = {
         introParagraph: "Operations and maintenance activities include:",
         listItems: [
           {
-            text: "all activities necessary to safely operate an existing pipeline;",
+            text: "All activities necessary to safely operate an existing pipeline;",
           },
           {
-            text: "maintenance activities, upgrades or repairs to an existing pipeline or part of a pipeline that do not increase the approved maximum operating pressure (MOP), the stress level or diameter of the pipeline; or",
+            text: "Maintenance activities, upgrades or repairs to an existing pipeline or part of a pipeline that do not increase the approved maximum operating pressure (MOP), the stress level or diameter of the pipeline; or",
           },
           {
-            text: "physically removing an existing section of pipe up to 5 km in length, and putting a new section of pipe in its place, as long as this replacement does not increase the approved MOP, stress level or diameter of the pipeline.",
+            text: "Physically removing an existing section of pipe up to 5 km in length, and putting a new section of pipe in its place, as long as this replacement does not increase the approved MOP, stress level or diameter of the pipeline.",
           },
         ],
       },
@@ -407,13 +407,13 @@ const en = {
         summary:
           "What O&#38;M Activities require CER approval (restrictions on eligible activities)?",
         introParagraph:
-          "Where any of the following restrictions exist, the company must apply to the Commission in accordance with the CER Act and the related Regulations and may not carry out the proposed activity until approval from the Commission has been obtained. The restrictions apply where:",
+          "Where any of the following restrictions exist, the company must apply to the Commission in accordance with the CER Act and the related regulations and may not carry out the proposed activity until approval from the Commission has been obtained. The restrictions apply where:",
         listItems: [
           {
-            text: "the work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
+            text: "The work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
           },
           {
-            text: "the work involves the construction of an aerial crossing, excluding work on company owned or leased land relating to facilities (e.g., terminal stations, processing plants, compressor/pump stations).",
+            text: "The work involves the construction of an aerial crossing, excluding work on company owned or leased land relating to facilities (e.g., terminal stations, processing plants, compressor/pump stations).",
           },
         ],
       },
@@ -424,7 +424,7 @@ const en = {
         introParagraph: "O&#38;M activities do not include:",
         listItems: [
           {
-            text: "upgrades that result in increases above previously approved and specified levels to:",
+            text: "Upgrades that result in increases above previously approved and specified levels to:",
             subList: [
               "the MOP,",
               "stress levels,",
@@ -433,10 +433,13 @@ const en = {
             ],
           },
           {
-            text: `"looping" (i.e., adding pipe parallel or adjacent to, and interconnected with, an existing pipeline for the general purpose of increasing capacity);`,
+            text: `"Looping" (i.e., adding pipe parallel or adjacent to, and interconnected with, an existing pipeline for the general purpose of increasing capacity);`,
           },
           {
-            text: "construction of a new pipeline; or",
+            text: "Construction of a new pipeline; or",
+          },
+          {
+            text: "Deactivation (for longer than 12 months), reactivation (where a pipeline has been deactivated for more than 12 months), decommissioning, or abandonment. ",
           },
         ],
       },
@@ -446,7 +449,7 @@ const en = {
       <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
-      guidelines: `Take a look at the
+      guidelines: `View the
       <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">requirements and guidance notes</a>
       (O&#38;M Guidelines) for more information on how these events are
       regulated while promoting safety, security, environmental
@@ -470,7 +473,7 @@ const en = {
         sourceLink:
           "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
         description:
-          "The above bar chart displays the number of O&#38;M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&#38;M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&#38;M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
+          "The above bar chart displays the number of O&#38;M activities from 2015 to current, arranged based on the starting year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&#38;M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&#38;M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
         openGov: openGovLink(
           "https://open.canada.ca/data/en/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "en"
@@ -552,8 +555,8 @@ const fr = {
     buttons: {
       conditions: "Conformité aux conditions",
       incidents: "Incidents signalés",
-      oandm: "Operations &#38; Maintenance Activities",
-      remediation: "Contaminated Sites &#38; Remediation",
+      oandm: "Operations and Maintenance Activities",
+      remediation: "Contaminated Sites and Remediation",
     },
     updated: {
       conditions: "Mise à jour septembre 2021",
@@ -776,10 +779,10 @@ const fr = {
       p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
       p2: `After the NOC is submitted, companies must demonstrate they are
       actively managing the contamination according to the
-      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress of remediation at the
-      contaminated site, and its current status, are captured in the annual
+      <a href="https://www.cer-rec.gc.ca/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress and current status of remediation at the
+      contaminated site are captured in the annual
       update submitted by a company each year for a contaminated site.`,
-      p3: "Third-party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
+      p3: "Third party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
       p4: `The dashboard below contains information that is contained in the NOC's
       and annual updates found in REGDOCS. The CER publishes NOCs that have
       been submitted to the CER since August 2018, when the CER started
@@ -808,9 +811,9 @@ const fr = {
         nearby: {
           type: "remediation",
           header: "Are there any contaminated sites near me?",
-          selectRange: "Sélectionner une plage (100km) :",
+          selectRange: "Select range (100km):",
           find: "Find sites within 100km",
-          refill: "Remplir les bulles de carte",
+          refill: "Refill Map Bubbles",
         },
         source: {
           sourceTitle: sourceAndDescFr,
@@ -819,14 +822,17 @@ const fr = {
           sourceText: sourceTextFr,
           sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
           description:
-            "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Similar to the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
-          openGov: false,
+            "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Like the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
+          openGov: openGovLink(
+            "https://open.canada.ca/data/en/organization/cer-rec",
+            "fr"
+          ),
         },
       },
     },
     oandm: {
-      p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance activities (O&#38;M activities) on CER regulated pipelines. These activities include things such as pipeline repairs, investigative &#38; integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
-      p2: "Companies are required to adhere to <i>Canadian Energy Regulator Act’s Onshore Pipeline Regulations</i>, and operate their facilities in a manner that is safe and protects the environment. Authorizations for pipelines typically allow companies to construct and operate a facility, and companies are not required to apply for additional approval to undertake most O&#38;M activities. In certain circumstances, companies are required to notify the CER in advance with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (RoW) or adjacent property.",
+      p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance (O&#38;M) activities on CER regulated pipelines. These activities include things such as pipeline repairs, investigative and integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
+      p2: 'Companies are required to adhere to <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"><i>Canadian Energy Regulator Act’s Onshore Pipeline Regulations</i></a> and operate their facilities in a manner that is safe and protects the environment. Authorizations for pipelines typically allow companies to construct and operate a facility, and companies are not required to apply for additional approval to undertake most O&#38;M activities. In certain circumstances, companies are required to notify the CER in advance with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (ROW) or adjacent property.',
       details1: {
         listType: "ol",
         summary:
@@ -834,13 +840,13 @@ const fr = {
         introParagraph: "Operations and maintenance activities include:",
         listItems: [
           {
-            text: "all activities necessary to safely operate an existing pipeline;",
+            text: "All activities necessary to safely operate an existing pipeline;",
           },
           {
-            text: "maintenance activities, upgrades or repairs to an existing pipeline or part of a pipeline that do not increase the approved maximum operating pressure (MOP), the stress level or diameter of the pipeline; or",
+            text: "Maintenance activities, upgrades or repairs to an existing pipeline or part of a pipeline that do not increase the approved maximum operating pressure (MOP), the stress level or diameter of the pipeline; or",
           },
           {
-            text: "physically removing an existing section of pipe up to 5 km in length, and putting a new section of pipe in its place, as long as this replacement does not increase the approved MOP, stress level or diameter of the pipeline.",
+            text: "Physically removing an existing section of pipe up to 5 km in length, and putting a new section of pipe in its place, as long as this replacement does not increase the approved MOP, stress level or diameter of the pipeline.",
           },
         ],
       },
@@ -849,13 +855,13 @@ const fr = {
         summary:
           "What O&#38;M Activities require CER approval (restrictions on eligible activities)?",
         introParagraph:
-          "Where any of the following restrictions exist, the company must apply to the Commission in accordance with the CER Act and the related Regulations and may not carry out the proposed activity until approval from the Commission has been obtained. The restrictions apply where:",
+          "Where any of the following restrictions exist, the company must apply to the Commission in accordance with the CER Act and the related regulations and may not carry out the proposed activity until approval from the Commission has been obtained. The restrictions apply where:",
         listItems: [
           {
-            text: "the work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
+            text: "The work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
           },
           {
-            text: "the work involves the construction of an aerial crossing, excluding work on company owned or leased land relating to facilities (e.g., terminal stations, processing plants, compressor/pump stations).",
+            text: "The work involves the construction of an aerial crossing, excluding work on company owned or leased land relating to facilities (e.g., terminal stations, processing plants, compressor/pump stations).",
           },
         ],
       },
@@ -866,7 +872,7 @@ const fr = {
         introParagraph: "O&#38;M activities do not include:",
         listItems: [
           {
-            text: "upgrades that result in increases above previously approved and specified levels to:",
+            text: "Upgrades that result in increases above previously approved and specified levels to:",
             subList: [
               "the MOP,",
               "stress levels,",
@@ -875,10 +881,13 @@ const fr = {
             ],
           },
           {
-            text: `"looping" (i.e., adding pipe parallel or adjacent to, and interconnected with, an existing pipeline for the general purpose of increasing capacity);`,
+            text: `"Looping" (i.e., adding pipe parallel or adjacent to, and interconnected with, an existing pipeline for the general purpose of increasing capacity);`,
           },
           {
-            text: "construction of a new pipeline; or",
+            text: "Construction of a new pipeline; or",
+          },
+          {
+            text: "Deactivation (for longer than 12 months), reactivation (where a pipeline has been deactivated for more than 12 months), decommissioning, or abandonment. ",
           },
         ],
       },
@@ -888,7 +897,7 @@ const fr = {
       <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">O&#38;M Requirements and Guidance Notes</a>
       for a list of O&#38;M event activities that call for notification to be
       filed with the CER.`,
-      guidelines: `Take a look at the
+      guidelines: `View the
       <a href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/onshore-pipeline/operations-maintenance-activities-pipelines-under-national-energy-board-act-requirements-guidance-notes-2.html">requirements and guidance notes</a>
       (O&#38;M Guidelines) for more information on how these events are
       regulated while promoting safety, security, environmental
@@ -910,11 +919,11 @@ const fr = {
         descriptionTitle: descriptionFr,
         sourceText: sourceTextFr,
         sourceLink:
-          "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
+          "https://open.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
         description:
-          "The above bar chart displays the number of O&#38;M activities from 2015 to current, arranged based on the commencement year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&#38;M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&#38;M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
+          "The above bar chart displays the number of O&#38;M activities from 2015 to current, arranged based on the starting year of the activity. Each bar is stacked based on several parameters, with the default view showing the province/territory where the O&#38;M activity occurred. Navigation buttons to the right of the bar chart provide the option to view the number of O&#38;M activities by province/territory, if the activity includes an integrity dig, if in-stream work is required, if there are fish present, and if there are species at risk present.",
         openGov: openGovLink(
-          "https://ouvert.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
+          "https://open.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "fr"
         ),
       },

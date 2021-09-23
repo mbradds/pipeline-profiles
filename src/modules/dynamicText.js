@@ -325,7 +325,7 @@ export function oandmTextEng(meta, lang) {
 
   let secondParagraph = "";
   if (meta.nearby) {
-    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year (${
+    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right-of-way, including near populated areas. In the past year (${
       meta.nearbyYear
     }), O&M activities have occurred most often near ${dynamicValue(
       meta.nearby.join(", ")
@@ -346,7 +346,7 @@ export function oandmTextEng(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <i>Species at Risk Act</i>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <i>Migratory Birds Convention Act</i> and the <i>Species at Risk Act</i>.</p>`;
+  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/eng/acts/S-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws.justice.gc.ca/eng/acts/M-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
@@ -355,7 +355,7 @@ export function oandmTextEng(meta, lang) {
 export function oandmTextFra(meta, lang) {
   const firstParagraph = `<p>FR: Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
-  )} O&M activities reported by ${formatCompanyName(
+  )} O&M activities reported by the ${formatCompanyName(
     meta.system
   )}. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
@@ -363,7 +363,7 @@ export function oandmTextFra(meta, lang) {
 
   let secondParagraph = "";
   if (meta.nearby) {
-    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right of way, including near populated areas. In the past year (${
+    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right-of-way, including near populated areas. In the past year (${
       meta.nearbyYear
     }), O&M activities have occurred most often near ${dynamicValue(
       meta.nearby.join(", ")
@@ -384,7 +384,7 @@ export function oandmTextFra(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <i>Species at Risk Act</i>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <i>Migratory Birds Convention Act</i> and the <i>Species at Risk Act</i>.</p>`;
+  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
