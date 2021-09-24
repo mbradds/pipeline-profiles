@@ -72,6 +72,8 @@ const units = {
   "million m3/d": "million m3/d",
   "Mb/d": "Mb/d",
   "thousand m3/d": "thousand m3/d",
+  cf: "cubic feet",
+  bbl: "bbl",
 };
 
 const legendClick = "Click on a legend item to remove it from the chart";
@@ -126,6 +128,17 @@ const barClick = (field, definition = "") =>
   `<small>${
     `${definition} ` || ""
   }Click on a bar to view ${field} sub definition</small>`;
+
+const nearbyMe = {
+  rangeTitle: "Select range",
+  findBtnTitle: (eventName) => `Find ${eventName} within`,
+  noNearby: (eventName) =>
+    `<h4>No nearby ${eventName}</h4>Try increasing the search range, or drag your location marker to see nearby ${eventName} at a different location.`,
+  nearbyHeader: (numCircles, range, eventName) =>
+    `There are ${numCircles} ${eventName} within ${range} km`,
+};
+
+const trendYTitle = (eventName) => `Number of ${eventName}`;
 
 export const englishDashboard = {
   plains:
@@ -264,9 +277,11 @@ export const englishDashboard = {
       barClick,
       locationDisclaimer,
       countDisclaimer,
-      exploreOther: exploreOther("incidents"),
-      cf: "cubic feet",
-      bbl: "bbl",
+      eventName: "incidents",
+      exploreOther,
+      trendYTitle,
+      cf: units.cf,
+      bbl: units.bbl,
       pillTitles: {
         titles: {
           vol: "Est. Release Volume",
@@ -281,17 +296,13 @@ export const englishDashboard = {
       },
       volumeDisclaimer:
         "Bubble size illustrates the relative est. release volume in m3, and does not indicate area covered by the release",
-      countDisclaimerEvent: "Incidents",
-      nearbyHeader: (numCircles, range) =>
-        `There are ${numCircles} incidents within ${range} km`,
       gasRelease: "Estimated gas volume released:",
       liquidRelease: "Estimated liquid volume released:",
       otherRelease: "Estimated miscellaneous release:",
-      noNearby: (eventType) =>
-        `<h4>No nearby ${eventType}</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
-      rangeTitle: "Select range",
-      findBtnTitle: "Find Incidents within",
-      trendYTitle: "Number of Incidents",
+      noNearby: nearbyMe.noNearby,
+      rangeTitle: nearbyMe.rangeTitle,
+      findBtnTitle: nearbyMe.findBtnTitle("Incidents"),
+      nearbyHeader: nearbyMe.nearbyHeader,
       seriesInfo: {
         // Substance
         sub: {
@@ -444,8 +455,9 @@ export const englishDashboard = {
     legendClick,
     companyToSystem,
     dynamicText: oandmTextEng,
+    eventName: "O&M Activities",
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
-    trendYTitle: "Number of Events",
+    trendYTitle,
     pillTitles: {
       titles: {
         id: "Integrity Dig?",
@@ -480,26 +492,23 @@ export const englishDashboard = {
     companyToSystem,
     title: (company, cutoffDate) =>
       `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
-    // TODO: reduce language duplication between remediation and incidents
     dashboard: {
       userPopUp,
       locationError,
       numberFormat,
-      exploreOther: exploreOther("sites"),
+      exploreOther,
       legendClick,
       countDisclaimer,
       barClick,
       locationDisclaimer,
-      countDisclaimerEvent: "Contaminated sites",
-      trendYTitle: "Number of Contaminated Sites",
-      cf: "cubic feet",
-      bbl: "bbl",
-      rangeTitle: "Select range",
-      findBtnTitle: "Find sites within",
-      nearbyHeader: (numCircles, range) =>
-        `There are ${numCircles} contaminated sites within ${range} km`,
-      noNearby: () =>
-        `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
+      eventName: "contaminated sites",
+      trendYTitle,
+      cf: units.cf,
+      bbl: units.bbl,
+      noNearby: nearbyMe.noNearby,
+      rangeTitle: nearbyMe.rangeTitle,
+      findBtnTitle: nearbyMe.findBtnTitle("sites"),
+      nearbyHeader: nearbyMe.nearbyHeader,
       pillTitles: {
         titles: {
           vol: "Initial estimate of contaminated soil",

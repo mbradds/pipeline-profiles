@@ -72,6 +72,8 @@ const units = {
   "million m3/d": "millions m3/j",
   "Mb/d": "kb/j",
   "thousand m3/d": "km3/j",
+  cf: "pieds cubes",
+  bbl: "b",
 };
 
 const legendClick =
@@ -85,7 +87,7 @@ const locationError =
   "<h4>Impossible d’accéder à votre emplacement.</h4>Activez les services de localisation de votre navigateur et actualisez la page.";
 
 const exploreOther = (eventType) =>
-  `Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher ${eventType}.`;
+  `Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un ${eventType}.`;
 
 const click = "clique pour voir";
 
@@ -102,7 +104,7 @@ const unitsDisclaimerText = (commodity) => {
 };
 
 const countDisclaimer = (eventType, field) =>
-  `${eventType} peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`;
+  `Les ${eventType} peuvent avoir plusieurs valeurs ${field}.<br>Les totaux des graphiques peuvent sembler plus élevés en raison d’une double comptabilisation.`;
 
 /**
  * French number format.
@@ -127,6 +129,17 @@ const barClick = (field, definition = "") =>
   `<small>${
     `${definition} ` || ""
   }Cliquer sur une bande pour consulter la définition de ${field}</small>`;
+
+const nearbyMe = {
+  rangeTitle: "Sélectionner une plage",
+  findBtnTitle: (eventName) => `Rechercher les ${eventName} dans un rayon de`,
+  noNearby: (eventName) =>
+    `<h4>Aucun ${eventName} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
+  nearbyHeader: (numCircles, range, eventName) =>
+    `Il y a ${numCircles} ${eventName} dans un rayon de ${range} km`,
+};
+
+const trendYTitle = (eventName) => `Nombre d’${eventName}`;
 
 export const frenchDashboard = {
   plains:
@@ -260,9 +273,10 @@ export const frenchDashboard = {
       barClick,
       locationDisclaimer,
       countDisclaimer,
-      exploreOther: exploreOther("un incident"),
-      cf: "pieds cubes",
-      bbl: "b",
+      eventName: "incidents",
+      exploreOther,
+      cf: units.cf,
+      bbl: units.bbl,
       pillTitles: {
         titles: {
           vol: "Estimation du volume",
@@ -277,17 +291,14 @@ export const frenchDashboard = {
       },
       volumeDisclaimer:
         "La taille de la bulle illustre l’estimation relative du volume du rejet en mètres cubes et n’indique pas la zone visée par le celui-ci.",
-      countDisclaimerEvent: "Les incidents",
-      nearbyHeader: (numCircles, range) =>
-        `Il y a ${numCircles} incidents dans un rayon de ${range} km`,
       gasRelease: "Estimation du volume de gaz rejeté:",
       liquidRelease: "Estimation du volume de liquide déversé:",
       otherRelease: "Estimation du rejet (divers):",
-      noNearby: (eventType) =>
-        `<h4>Aucun ${eventType} à proximité</h4>Essayez d’augmenter la portée de la recherche ou faites glisser le marqueur de l’emplacement pour voir les événements à proximité à un autre endroit.`,
-      rangeTitle: "Sélectionner une plage",
-      findBtnTitle: "Rechercher les incidents dans un rayon de",
-      trendYTitle: "Nombre d’incidents",
+      nearbyHeader: nearbyMe.nearbyHeader,
+      noNearby: nearbyMe.noNearby,
+      rangeTitle: nearbyMe.rangeTitle,
+      findBtnTitle: nearbyMe.findBtnTitle("incidents"),
+      trendYTitle,
       seriesInfo: {
         sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
@@ -445,8 +456,9 @@ export const frenchDashboard = {
     legendClick,
     companyToSystem,
     dynamicText: oandmTextFra,
+    eventName: "O&M Activities",
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
-    trendYTitle: "Number of Events",
+    trendYTitle,
     pillTitles: {
       titles: {
         id: "FR: Integrity Dig?",
@@ -484,22 +496,20 @@ export const frenchDashboard = {
     dashboard: {
       userPopUp,
       numberFormat,
-      exploreOther: exploreOther("sites"),
+      exploreOther,
       locationError,
       legendClick,
       countDisclaimer,
       barClick,
       locationDisclaimer,
-      countDisclaimerEvent: "Contaminated sites (FR)",
-      trendYTitle: "Number of Contaminated Sites",
-      cf: "cubic feet",
-      bbl: "bbl",
-      rangeTitle: "Sélectionner une plage",
-      findBtnTitle: "Rechercher les sites dans un rayon de",
-      nearbyHeader: (numCircles, range) =>
-        `There are ${numCircles} contaminated sites within ${range} km`,
-      noNearby: () =>
-        `<h4>No nearby contaminated sites</h4>Try increasing the search range, or drag your location marker to see nearby events at a different location.`,
+      eventName: "Contaminated sites (FR)",
+      trendYTitle,
+      cf: units.cf,
+      bbl: units.bbl,
+      noNearby: nearbyMe.noNearby,
+      rangeTitle: nearbyMe.rangeTitle,
+      findBtnTitle: nearbyMe.findBtnTitle("sites"),
+      nearbyHeader: nearbyMe.nearbyHeader,
       pillTitles: {
         titles: {
           vol: "FR: Initial estimate of contaminated soil",

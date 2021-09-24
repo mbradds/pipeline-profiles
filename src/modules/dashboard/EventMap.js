@@ -512,7 +512,8 @@ export class EventMap {
       });
       let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
         nearbyCircles.length,
-        range
+        range,
+        this.lang.eventName
       )}</h4><table class="mrgn-bttm-sm">`;
 
       if (this.eventType === "incidents") {
@@ -554,7 +555,9 @@ export class EventMap {
         )} m3</td>`;
       }
 
-      nearbyText += `</table><small>${this.lang.exploreOther}</small>
+      nearbyText += `</table><small>${this.lang.exploreOther(
+        this.lang.eventName
+      )}</small>
           </section>`;
       incidentFlag.innerHTML = nearbyText;
     } else {

@@ -203,3 +203,12 @@ export function btnGroupClick(btnDiv, event) {
   });
   event.target.className += " active";
 }
+
+/**
+ *
+ * @param {string} s
+ * @returns {string} first letter capitalized input string.
+ */
+export function capitalize(s) {
+  return s[0].toUpperCase() + s.slice(1);
+}

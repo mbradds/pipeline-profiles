@@ -378,7 +378,10 @@ const en = {
           sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
           description:
             "The above map displays the approximate location of contaminated sites that have been reported since August 2018. The map defaults to show contaminated sites as bubbles which are coloured based on the year the Notice of Contamination was submitted. Contaminated sites on the map can be re-categorized based on the province/territory, if the site is within 30 metres of a water body, and the applicable land use at the site. The contaminated sites can also be toggled to display a stacked bar chart of events over time by clicking on the contaminated sites trends button above the map. The stacked bars display the number of contaminated sites reported by year. Like the map, contaminated sites can be re-categorized by clicking on the side buttons to view a breakdown of contaminated sites by site status, activity at time of discovery, pipeline or facility, and contaminant type.",
-          openGov: false,
+          openGov: openGovLink(
+            "https://open.canada.ca/data/en/organization/cer-rec",
+            "en"
+          ),
         },
       },
     },

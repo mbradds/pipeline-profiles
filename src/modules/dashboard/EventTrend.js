@@ -15,7 +15,7 @@
  */
 
 import Highcharts from "highcharts";
-import { visibility, rangeInclusive } from "../util.js";
+import { visibility, rangeInclusive, capitalize } from "../util.js";
 
 /**
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
@@ -215,7 +215,9 @@ export class EventTrend {
   }
 
   yAxisTitle() {
-    return this.filters.type === "frequency" ? this.lang.trendYTitle : "";
+    return this.filters.type === "frequency"
+      ? this.lang.trendYTitle(this.lang.eventName)
+      : "";
   }
 
   pillNameSubstitution() {
@@ -235,7 +237,7 @@ export class EventTrend {
       this.chart.update({
         title: {
           text: `<div class="alert alert-warning count-disclaimer"><p>${this.lang.countDisclaimer(
-            this.lang.countDisclaimerEvent,
+            capitalize(this.lang.eventName),
             this.pillNameSubstitution()
           )}</p></div>`,
           useHTML: true,
