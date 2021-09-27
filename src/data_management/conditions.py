@@ -1,25 +1,24 @@
-from util import execute_sql
-import pandas as pd
 import json
 import os
-from util import normalize_text, get_company_names, company_rename, get_company_list, prepareIds, applySystemId
-import geopandas as gpd
-from datetime import date
-import numpy as np
 import ssl
+from datetime import date
+import pandas as pd
+import geopandas as gpd
+from util import execute_sql, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id
+import numpy as np
 ssl._create_default_https_context = ssl._create_unverified_context
 script_dir = os.path.dirname(__file__)
 
 
-def getSql(sql=False, query='projects_regdocs.sql'):
-    csvName = query.replace(".sql", ".csv")
+def get_sql(sql=False, query='projects_regdocs.sql'):
+    csv_name = query.replace(".sql", ".csv")
     if sql:
         print('reading sql '+query)
         df = execute_sql(os.path.join(script_dir, "queries"), query)
-        df.to_csv('raw_data/'+csvName, index=False)
+        df.to_csv('raw_data/'+csv_name, index=False)
     else:
-        print('reading local csv '+csvName)
-        df = pd.read_csv('raw_data/'+csvName)
+        print('reading local csv '+csv_name)
+        df = pd.read_csv('raw_data/'+csv_name)
     return df
 
 
@@ -52,7 +51,7 @@ def export_files(df, folder, name):
     print(folder+' done ', 'CRS: '+str(df.crs))
 
 
-def conditions_on_map(df, shp, folder_name):
+def conditions_on_map(df, shp):
     shp = pd.merge(shp,
                    df,
                    how='inner',
@@ -62,20 +61,19 @@ def conditions_on_map(df, shp, folder_name):
     del shp['region_id']
     shp = shp[~shp.geometry.is_empty]
     shp = shp[shp.geometry.notna()]
-    for numericCol in ['In Progress', 'Closed']:
-        if numericCol in shp.columns:
-            shp[numericCol] = shp[numericCol].fillna(0)
+    for numeric_col in ['In Progress', 'Closed']:
+        if numeric_col in shp.columns:
+            shp[numeric_col] = shp[numeric_col].fillna(0)
 
     # df becomes map metadata
     df = df.fillna(0)
     for cols in [["Closed", "c"], ["In Progress", "i"]]:
         if cols[0] in df:
-            # df = df.rename(columns={cols[0]: cols[1]})
             df[cols[0]] = [int(x) for x in df[cols[0]]]
     return shp, df
 
 
-def conditionMetaData(df, folder_name, projectNames):
+def condition_meta_data(df, project_names):
 
     def convert_to_int(df):
         df = df.replace({np.nan: 0})
@@ -86,7 +84,7 @@ def conditionMetaData(df, folder_name, projectNames):
                 None
         return df
 
-    def addMissing(df):
+    def add_missing(df):
         if 'In Progress' not in df.columns:
             df['In Progress'] = 0
         if 'Closed' not in df.columns:
@@ -95,7 +93,6 @@ def conditionMetaData(df, folder_name, projectNames):
 
     # df contains the condition data for the spcecific company
     meta = {}
-
     # get the summary stats for the boxes above the map
     status = df[['condition id', 'Condition Status', 'Location']].copy().reset_index(drop=True)
     status['loc'] = ['no' if '-1' in x else 'yes' for x in status['Location']]
@@ -105,7 +102,7 @@ def conditionMetaData(df, folder_name, projectNames):
     status = status.drop_duplicates(subset=['condition id'])
     status = status.groupby(['Condition Status']).size().reset_index()
     status = pd.pivot_table(status, values=0, columns="Condition Status")
-    status = addMissing(status)
+    status = add_missing(status)
     status = status.to_dict(orient='records')[0]
     df['Location'] = df['Location'].astype("object")
     notInMap = 0
@@ -136,9 +133,9 @@ def conditionMetaData(df, folder_name, projectNames):
     # get the unique project names sorted by number of open conditions
     project = df[['condition id', 'Short Project Name', 'id', 'Condition Status', 'Regdocs']].copy().reset_index(drop=True)
     # add the project name lookup to metadata
-    thisCompanyProjects = list(set(project["Short Project Name"]))
-    thisLookup = projectNames[projectNames['id'].isin(thisCompanyProjects)]
-    meta['projectLookup'] = prepareIds(thisLookup)
+    this_company_projects = list(set(project["Short Project Name"]))
+    this_lookup = project_names[project_names['id'].isin(this_company_projects)]
+    meta['projectLookup'] = prepare_ids(this_lookup)
     project['Regdocs'] = project['Regdocs'].astype('object')
     project['Regdocs'] = project['Regdocs'].fillna('noRegdocs')
     project = project.groupby(['Short Project Name', 'id', 'Condition Status', 'Regdocs']).size().reset_index()
@@ -148,7 +145,7 @@ def conditionMetaData(df, folder_name, projectNames):
                              columns='Condition Status').reset_index()
 
     project['Regdocs'] = project['Regdocs'].replace('noRegdocs', np.nan)
-    project = addMissing(project)
+    project = add_missing(project)
 
     project = project.sort_values(by=['In Progress', 'id'], ascending=False)
     project['In Progress'] = pd.to_numeric(project['In Progress'])
@@ -174,12 +171,11 @@ def conditionMetaData(df, folder_name, projectNames):
                            values=0,
                            index=['Theme(s)', 'id'],
                            columns='Condition Status').reset_index()
-    theme = addMissing(theme)
+    theme = add_missing(theme)
     theme = theme.sort_values(by=['In Progress', 'id'], ascending=False)
     # optimize json size
     theme = convert_to_int(theme)
     theme = theme.rename(columns={"Theme(s)": "t"})
-    # TODO: do the id's need to be strings?
     theme['t'] = [[str(i.strip()) for i in x.split(',')] for x in theme['t']]
     theme["v"] = [[inProgress, closed] for inProgress, closed in zip(theme['In Progress'],
                                                                      theme['Closed'])]
@@ -209,7 +205,7 @@ def conditionMetaData(df, folder_name, projectNames):
 
 
 def add_links(df, sql):
-    df_links = getSql(sql)
+    df_links = get_sql(sql)
     l = {}
     for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
         l[name] = folder
@@ -232,25 +228,25 @@ def add_links(df, sql):
 
 def idify_conditions(df, sql):
 
-    def listId(df, column, toReplace):
-        newThemes = []
+    def list_id(df, column, toReplace):
+        new_themes = []
         for t in df[column]:
             if "," in t:
                 t = [x.strip() for x in t.split(",")]
                 t = [toReplace[x] for x in t]
-                newThemes.append(t)
+                new_themes.append(t)
             else:
                 try:
-                    newThemes.append([toReplace[t.strip()]])
+                    new_themes.append([toReplace[t.strip()]])
                 except:
-                    newThemes.append(["-1"])
+                    new_themes.append(["-1"])
 
-        df[column] = newThemes
+        df[column] = new_themes
         return df
 
-    projects = getSql(sql, "conditionProjects.sql")
-    themes = getSql(sql, "conditionThemes.sql")
-    regions = getSql(sql, "conditionRegions.sql")
+    projects = get_sql(sql, "conditionProjects.sql")
+    themes = get_sql(sql, "conditionThemes.sql")
+    regions = get_sql(sql, "conditionRegions.sql")
 
     # fix the Northeast db error
     regions = regions.reset_index()
@@ -260,32 +256,32 @@ def idify_conditions(df, sql):
     for ids in [projects, themes, regions]:
         ids['id'] = [str(x) for x in ids['id']]
 
-    projectReplace = {value: key for key, value in zip(projects['id'],
+    project_replace = {value: key for key, value in zip(projects['id'],
                                                        projects['e'])}
-    themeReplace = {value: key for key, value in zip(themes['id'],
+    theme_replace = {value: key for key, value in zip(themes['id'],
                                                      themes['e'])}
-    regionReplace = {value: key for key, value in zip(regions['id'],
+    region_replace = {value: key for key, value in zip(regions['id'],
                                                       regions['e'])}
 
-    df['Short Project Name'] = df['Short Project Name'].replace(projectReplace)
+    df['Short Project Name'] = df['Short Project Name'].replace(project_replace)
 
-    df = listId(df, "Theme(s)", themeReplace)
+    df = list_id(df, "Theme(s)", theme_replace)
     df["Location"] = [x.replace(" /", "/").replace("/ ", "/") for x in df["Location"]]
-    df = listId(df, "Location", regionReplace)
+    df = list_id(df, "Location", region_replace)
 
     # save themes and regions for import into front end
     files = [[themes, "themes"], [regions, "regions"]]
     for file in files:
-        idSave = prepareIds(file[0])
+        id_save = prepare_ids(file[0])
         with open('../data_output/conditions/metadata/'+file[1]+'.json', 'w') as fp:
-            json.dump(idSave, fp)
+            json.dump(id_save, fp)
 
-    return df, regionReplace, projects
+    return df, region_replace, projects
 
 
 def process_conditions(remote=False,
                        sql=False,
-                       nonStandard=True,
+                       non_standard=True,
                        company_names=False,
                        companies=False,
                        test=False,
@@ -312,7 +308,7 @@ def process_conditions(remote=False,
     for date_col in ['Effective Date', 'Issuance Date', 'Sunset Date']:
         df[date_col] = pd.to_datetime(df[date_col])
 
-    if not nonStandard:
+    if not non_standard:
         # only include non-standard conditions
         df = df[df['Condition Type'] != 'Standard']
 
@@ -332,7 +328,7 @@ def process_conditions(remote=False,
     df['Condition Status'] = [str(x).strip() for x in df['Condition Status']]
     # preliminary processing
     df['Company'] = df['Company'].replace(company_rename())
-    df = applySystemId(df, "Company")
+    df = apply_system_id(df, "Company")
 
     df = df[df['Short Project Name'] != "SAM/COM"].copy().reset_index(drop=True)
 
@@ -340,8 +336,8 @@ def process_conditions(remote=False,
     if company_names:
         print(get_company_names(df['Company']))
 
-    df, regionReplace, projectNames = idify_conditions(df, sql)
-    regions_map = import_simplified(regionReplace)
+    df, region_replace, project_names = idify_conditions(df, sql)
+    regions_map = import_simplified(region_replace)
 
     if companies:
         company_files = companies
@@ -349,7 +345,7 @@ def process_conditions(remote=False,
         company_files = get_company_list("all")
 
     for company in company_files:
-        thisCompanyData = {}
+        this_company_data = {}
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Company'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
@@ -363,27 +359,27 @@ def process_conditions(remote=False,
 
             df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
             # calculate metadata here
-            dfmeta, meta = conditionMetaData(df_all, folder_name, projectNames)
+            dfmeta, meta = condition_meta_data(df_all, project_names)
             meta["build"] = True
-            thisCompanyData['meta'] = meta
-            shp, mapMeta = conditions_on_map(dfmeta, regions_map, folder_name)
+            this_company_data['meta'] = meta
+            shp, map_meta = conditions_on_map(dfmeta, regions_map)
 
-            thisCompanyData['regions'] = shp.to_json()
-            thisCompanyData['mapMeta'] = mapMeta.to_dict(orient='records')
+            this_company_data['regions'] = shp.to_json()
+            this_company_data['map_meta'] = map_meta.to_dict(orient='records')
             if not test and save:
                 with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
-                    json.dump(thisCompanyData, fp)
+                    json.dump(this_company_data, fp)
                 print('completed+saved: '+company)
         else:
             meta = {"companyName": company}
-            thisCompanyData = {'meta': {"companyName": company,
+            this_company_data = {'meta': {"companyName": company,
                                         "build": False},
                                'regions': "{}",
-                               'mapMeta': []}
+                               'map_meta': []}
 
             if not test and save:
                 with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
-                    json.dump(thisCompanyData, fp)
+                    json.dump(this_company_data, fp)
                 print('completed+saved: '+company)
 
     return df_c, shp, dfmeta, meta
@@ -391,5 +387,5 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df, regions, mapMeta, meta = process_conditions(remote=True, save=True, sql=True)
+    df_, regions_, map_meta_, meta_ = process_conditions(remote=True, save=True, sql=True)
     print('completed conditions!')

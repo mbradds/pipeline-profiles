@@ -1,14 +1,13 @@
-from connection import cer_connection
+import io
+import os
 import pandas as pd
 import numpy as np
-import os
+from connection import cer_connection
 from errors import IdError, IdLengthError
-from datetime import date
-import io
 script_dir = os.path.dirname(__file__)
 
 
-def getPipelineIds(sql=True):
+def get_pipeline_ids(sql=True):
     if sql:
         df = execute_sql(path=os.path.join(script_dir, "queries"),
                          query_name="systemId.sql",
@@ -21,19 +20,19 @@ def getPipelineIds(sql=True):
     return df
 
 
-def applySystemId(df, col):
-    ids = getPipelineIds(False)
-    idLook = {k: v for k, v in zip(ids["companyEng"], ids["PipelineID"])}
-    df[col] = df[col].replace(idLook)
+def apply_system_id(df, col):
+    ids = get_pipeline_ids(False)
+    id_look = {k: v for k, v in zip(ids["companyEng"], ids["PipelineID"])}
+    df[col] = df[col].replace(id_look)
     return df
 
 
 def get_company_list(commodity="all"):
-    ids = getPipelineIds(False)
+    ids = get_pipeline_ids(False)
     company_list = [[c1, c2] for c1, c2 in zip(ids["PipelineID"], ids["Commodity"])]
     if commodity == "all":
         return [x[0] for x in company_list]
-    elif commodity == "Gas" or commodity == "Liquid":
+    elif commodity in ["Gas", "Liquid"]:
         return [x[0] for x in company_list if x[1] == commodity]
     else:
         return []
@@ -61,7 +60,7 @@ def execute_sql(path, query_name, db='tsql23cap'):
     query_path = os.path.join(path, query_name)
     conn, engine = cer_connection(db=db)
 
-    def utf16open(query_path):
+    def utf_16_open(query_path):
         file = io.open(query_path, mode='r', encoding="utf-16", errors='ignore')
         query = file.read()
         file.close()
@@ -74,7 +73,7 @@ def execute_sql(path, query_name, db='tsql23cap'):
         return query
 
     try:
-        query = utf16open(query_path)
+        query = utf_16_open(query_path)
     except:
         query = no_encoding_open(query_path)
 
@@ -90,7 +89,7 @@ def most_common(df,
                 top=1,
                 dtype="dict",
                 lower=True,
-                joinTies=True):
+                join_ties=True):
 
     what_list = []
     for what in df[col_name]:
@@ -102,17 +101,17 @@ def most_common(df,
     what_list = [x.strip() for x in what_list]
     what_list = [x for x in what_list if x not in ['To be determined', '', "Other", "Not Specified", "Sans objet", "Autre"]]
 
-    dft = pd.DataFrame(what_list, columns=["entries"])
-    dft['records'] = 1
-    dft = dft.groupby(by="entries").sum().reset_index()
-    dft = dft.sort_values(by=['records', 'entries'], ascending=[False, True])
-    if joinTies:
-        dft = dft.groupby(by="records").agg({"entries": " & ".join}).reset_index()
-        dft = dft.sort_values(by=['records'], ascending=False)
-    dft = dft.head(top)
+    df_t = pd.DataFrame(what_list, columns=["entries"])
+    df_t['records'] = 1
+    df_t = df_t.groupby(by="entries").sum().reset_index()
+    df_t = df_t.sort_values(by=['records', 'entries'], ascending=[False, True])
+    if join_ties:
+        df_t = df_t.groupby(by="records").agg({"entries": " & ".join}).reset_index()
+        df_t = df_t.sort_values(by=['records'], ascending=False)
+    df_t = df_t.head(top)
 
     counter = {}
-    for name, count in zip(dft['entries'], dft['records']):
+    for name, count in zip(df_t['entries'], df_t['records']):
         counter[name] = count
 
     if lower:
@@ -126,17 +125,16 @@ def most_common(df,
     return meta
 
 
-def normalizeBool(df, cols, normType="Y/N"):
-    for col in cols:
-        df[col] = [str(x).strip() for x in df[col]]
-        if normType == "T/F":
-            df[col] = df[col].replace({"True": "T",
-                                       "False": "F"})
-        elif normType == "Y/N":
-            df[col] = df[col].replace({"True": "Yes",
-                                       "False": "No"})
-
-    return df
+# def normalize_bool(df, cols, normType="Y/N"):
+#     for col in cols:
+#         df[col] = [str(x).strip() for x in df[col]]
+#         if normType == "T/F":
+#             df[col] = df[col].replace({"True": "T",
+#                                        "False": "F"})
+#         elif normType == "Y/N":
+#             df[col] = df[col].replace({"True": "Yes",
+#                                        "False": "No"})
+#     return df
 
 
 def normalize_dates(df, date_list, short_date=False):
@@ -171,33 +169,32 @@ def pipeline_names():
                                                              df['new name'])}
 
 
-def daysInYear(year):
-    d1 = date(year, 1, 1)
-    d2 = date(year + 1, 1, 1)
-    return (d2 - d1).days
+# def days_in_year(year):
+#     d1 = date(year, 1, 1)
+#     d2 = date(year + 1, 1, 1)
+#     return (d2 - d1).days
 
 
-def saveJson(df, write_path, precision=2):
-    df.to_json(write_path,
-               orient='records',
-               double_precision=precision,
-               compression='infer')
+# def save_json(df, write_path, precision=2):
+#     df.to_json(write_path,
+#                orient='records',
+#                double_precision=precision,
+#                compression='infer')
 
 
 def get_company_names(col):
     return sorted(list(set(col)))
 
 
-def conversion(df, commodity, dataCols, rounding=False, fillna=False):
-    if commodity == 'gas' or commodity == 'Gas':
+def conversion(df, commodity, data_cols, rounding=False, fillna=False):
+    if commodity in ["gas", "Gas"]:
         conv = 28316.85
-    elif commodity == "oil" or commodity == 'Oil' or commodity == "Liquid":
+    elif commodity in ["oil", "Oil", "Liquid"]:
         conv = 6.2898
-
-    for col in dataCols:
+    for col in data_cols:
         if fillna:
             df[col] = df[col].fillna(fillna)
-        if commodity == "oil" or commodity == "Oil" or commodity == "Liquid":
+        if commodity in ["oil", "Oil", "Liquid"]:
             df[col] = [x*conv if not pd.isnull(x) else x for x in df[col]]
         else:
             df[col] = [x/conv if not pd.isnull(x) else x for x in df[col]]
@@ -207,8 +204,8 @@ def conversion(df, commodity, dataCols, rounding=False, fillna=False):
 
 
 def strip_cols(df):
-    newCols = {x: x.strip() for x in df.columns}
-    df = df.rename(columns=newCols)
+    new_cols = {x: x.strip() for x in df.columns}
+    df = df.rename(columns=new_cols)
     return df
 
 
@@ -239,35 +236,31 @@ def idify(df, col, key, lcase=True):
 
     # check if column has non id's
     # maxColLength = max([len(str(x)) for x in df[col]])
-    maxIdLength = max([len(str(x)) for x in r.values()])
-    doesntCount = [np.nan, "nan", None, "none"]
+    max_id_length = max([len(str(x)) for x in r.values()])
+    doesnt_count = [np.nan, "nan", None, "none"]
     for value in df[col]:
-        if value not in r.values() and value not in doesntCount:
+        if value not in r.values() and value not in doesnt_count:
             raise IdError(value)
-        if len(str(value)) > maxIdLength and value not in doesntCount:
+        if len(str(value)) > max_id_length and value not in doesnt_count:
             raise IdLengthError(value)
 
     return df
 
 
-def get_data(script_dir, query, db="", sql=False, csv_encoding="utf-8"):
-    csvName = query.split(".")[0]+".csv"
+def get_data(script_loc, query, db="", sql=False, csv_encoding="utf-8"):
+    csv_name = query.split(".")[0]+".csv"
     if sql:
         print('reading SQL '+query.split(".")[0])
-        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db=db)
-        df.to_csv('raw_data/'+csvName, index=False)
+        df = execute_sql(path=os.path.join(script_loc, "queries"), query_name=query, db=db)
+        df.to_csv('raw_data/'+csv_name, index=False)
     else:
         print('reading local '+query.split(".")[0])
-        df = pd.read_csv('raw_data/'+csvName, encoding=csv_encoding)
+        df = pd.read_csv('raw_data/'+csv_name, encoding=csv_encoding)
     return df
 
 
-def prepareIds(df):
-    idSave = {}
+def prepare_ids(df):
+    id_save = {}
     for key, e, f in zip(df.id, df.e, df.f):
-        idSave[key] = {"e": e, "f": f}
-    return idSave
-
-
-if __name__ == "__main__":
-    None
+        id_save[key] = {"e": e, "f": f}
+    return id_save

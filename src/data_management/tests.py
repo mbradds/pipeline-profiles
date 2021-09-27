@@ -1,10 +1,10 @@
 import unittest
+import pandas as pd
 from incidents import process_incidents
 from conditions import process_conditions
-from traffic import process_throughput, getPoints
+from traffic import process_throughput, get_points
 from oandm import process_oandm
 from util import most_common
-import pandas as pd
 
 
 class TestUtil(unittest.TestCase):
@@ -117,7 +117,7 @@ class TestConditions(unittest.TestCase):
 
 
 class TrafficTest(unittest.TestCase):
-    points = getPoints(sql=False)
+    points = get_points(sql=False)
     traffic, df = process_throughput(points, save=False, sql=False, commodity='Gas', frequency='m', companies=['NGTL'])
 
     def testMeta(self):

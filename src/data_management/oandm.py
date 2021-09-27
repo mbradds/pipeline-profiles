@@ -1,8 +1,8 @@
-import pandas as pd
-from util import company_rename, most_common, strip_cols, idify, get_company_list, applySystemId
 import ssl
 import json
 from datetime import datetime
+import pandas as pd
+from util import company_rename, most_common, strip_cols, idify, get_company_list, apply_system_id
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
@@ -13,7 +13,7 @@ def listify(series):
     return series
 
 
-def optimizeJson(df):
+def optimize_json(df):
     delete_after_meta = ['Event Number',
                          'Company Name',
                          'Dig Count',
@@ -41,90 +41,90 @@ def optimizeJson(df):
     series = {}
     for col in df.columns:
         if col != "year":
-            dfSeries = df[['year', col]].copy()
-            dfSeries[col] = dfSeries[col].fillna(value=0)
-            dfSeries['value'] = 1
-            dfSeries = dfSeries.groupby(by=['year', col]).count()
-            dfSeries = dfSeries.reset_index()
-            dfSeries = pd.pivot_table(dfSeries,
+            df_series = df[['year', col]].copy()
+            df_series[col] = df_series[col].fillna(value=0)
+            df_series['value'] = 1
+            df_series = df_series.groupby(by=['year', col]).count()
+            df_series = df_series.reset_index()
+            df_series = pd.pivot_table(df_series,
                                       values="value",
                                       index=['year'],
                                       columns=[col])
-            dfSeries = dfSeries.reset_index()
-            dfSeries = dfSeries.sort_values(by="year")
-            thisSeries = {}
-            thisData = []
-            for sName in dfSeries.columns:
-                if sName != 'year':
-                    thisData.append({"id": sName,
-                                     "data": listify(dfSeries[sName])})
+            df_series = df_series.reset_index()
+            df_series = df_series.sort_values(by="year")
+            this_series = {}
+            this_data = []
+            for s_name in df_series.columns:
+                if s_name != 'year':
+                    this_data.append({"id": s_name,
+                                     "data": listify(df_series[s_name])})
                 else:
-                    thisSeries[sName] = listify(dfSeries[sName])
-            thisSeries["data"] = thisData
-            series[col] = thisSeries
+                    this_series[s_name] = listify(df_series[s_name])
+            this_series["data"] = this_data
+            series[col] = this_series
     return series
 
 
 def metadata(df, company):
-    def filterNear(city):
+    def filter_near(city):
         if len(city) <= 2:
             return False
         else:
             return True
 
-    thisCompanyMeta = {}
-    thisCompanyMeta["totalEvents"] = int(len(list(set(df['Event Number']))))
-    thisCompanyMeta["totalDigs"] = int(df['Dig Count'].sum())
+    this_company_meta = {}
+    this_company_meta["totalEvents"] = int(len(list(set(df['Event Number']))))
+    this_company_meta["totalDigs"] = int(df['Dig Count'].sum())
 
     # nearby in the last year
     df['Nearest Populated Centre'] = [str(x) for x in df['Nearest Populated Centre']]
     df['Nearest Populated Centre'] = [x.split(",")[0].strip() for x in df['Nearest Populated Centre']]
 
-    dfNear = df.copy()
-    filterList = ['various',
-                  'various locations as per the attached documents.',
-                  'as per the attached documents',
-                  'as per the attached document',
-                  'business']
+    df_near = df.copy()
+    filter_list = ['various',
+                   'various locations as per the attached documents.',
+                   'as per the attached documents',
+                   'as per the attached document',
+                   'business']
 
-    dfNear = dfNear[~dfNear['Nearest Populated Centre'].str.lower().isin(filterList)]
+    df_near = df_near[~df_near['Nearest Populated Centre'].str.lower().isin(filter_list)]
     # oneYearAgo = datetime.today() - relativedelta(years=1)
-    lastFullYear = datetime.today().year - 1
-    dfNear = dfNear[dfNear['Commencement Date'].dt.year == lastFullYear]
-    if not dfNear.empty:
+    last_full_year = datetime.today().year - 1
+    df_near = df_near[df_near['Commencement Date'].dt.year == last_full_year]
+    if not df_near.empty:
         # deal with mnp
         city = []
-        for cityString in dfNear["Nearest Populated Centre"]:
-            if "The project is located" in cityString:
-                city.append(cityString.split("of")[-1].strip())
+        for city_string in df_near["Nearest Populated Centre"]:
+            if "The project is located" in city_string:
+                city.append(city_string.split("of")[-1].strip())
             else:
-                city.append(cityString)
-        dfNear["Nearest Populated Centre"] = city
-        for splitChar in [",", "("]:
-            dfNear['Nearest Populated Centre'] = [x.split(splitChar)[0].strip() for x in dfNear['Nearest Populated Centre']]
-        nearList = list(dfNear['Nearest Populated Centre']+" "+dfNear['Province/Territory'].str.upper())
-        nearList = [x.replace("Jasper BC", "Jasper AB") for x in nearList]
-        nearList = filter(filterNear, nearList)
+                city.append(city_string)
+        df_near["Nearest Populated Centre"] = city
+        for split_char in [",", "("]:
+            df_near['Nearest Populated Centre'] = [x.split(split_char)[0].strip() for x in df_near['Nearest Populated Centre']]
+        near_list = list(df_near['Nearest Populated Centre']+" "+df_near['Province/Territory'].str.upper())
+        near_list = [x.replace("Jasper BC", "Jasper AB") for x in near_list]
+        near_list = filter(filter_near, near_list)
 
-        dfNear = pd.DataFrame(nearList)
-        most_common(dfNear,
-                    thisCompanyMeta,
+        df_near = pd.DataFrame(near_list)
+        most_common(df_near,
+                    this_company_meta,
                     0,
                     "nearby",
                     3,
                     "list",
                     False,
                     False)
-        thisCompanyMeta["nearbyYear"] = lastFullYear
+        this_company_meta["nearbyYear"] = last_full_year
     else:
-        thisCompanyMeta["nearby"] = None
+        this_company_meta["nearby"] = None
 
-    thisCompanyMeta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
-    newLand = df['New Land Area Needed'].sum()
-    thisCompanyMeta["landRequired"] = int(newLand)
-    thisCompanyMeta["iceRinks"] = int(round((newLand*2.471)/0.375, 0))
-    thisCompanyMeta["company"] = company
-    return thisCompanyMeta
+    this_company_meta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
+    new_land = df['New Land Area Needed'].sum()
+    this_company_meta["landRequired"] = int(new_land)
+    this_company_meta["iceRinks"] = int(round((new_land*2.471)/0.375, 0))
+    this_company_meta["company"] = company
+    return this_company_meta
 
 
 def column_insights(df):
@@ -200,12 +200,12 @@ def process_oandm(remote=False, companies=False, test=False):
                    'Navigable Water Activity Meeting Transport Canada Minor Works And Waters Order']:
         del df[delete]
 
-    for dateCol in df.columns:
-        if "date" in dateCol.lower():
-            df[dateCol] = pd.to_datetime(df[dateCol])
+    for date_col in df.columns:
+        if "date" in date_col.lower():
+            df[date_col] = pd.to_datetime(df[date_col])
 
     df['Company Name'] = df['Company Name'].replace(company_rename())
-    df = applySystemId(df, "Company Name")
+    df = apply_system_id(df, "Company Name")
     df = column_insights(df)
     df = df.rename(columns={"Species At Risk Present At Activity Site": "Species At Risk Present"})
     df = df[df['Commencement Date'].dt.year >= 2015].reset_index(drop=True)
@@ -218,26 +218,26 @@ def process_oandm(remote=False, companies=False, test=False):
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
         df_c = df_c.drop_duplicates(subset=['Event Number'])
-        thisCompanyData = {}
+        this_company_data = {}
         if not df_c.empty:
-            thisCompanyData["meta"] = metadata(df_c, company)
-            thisCompanyData["build"] = True
-            thisCompanyData["data"] = optimizeJson(df_c)
+            this_company_data["meta"] = metadata(df_c, company)
+            this_company_data["build"] = True
+            this_company_data["data"] = optimize_json(df_c)
             if not test:
                 with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
-                    json.dump(thisCompanyData, fp)
+                    json.dump(this_company_data, fp)
         else:
             # there are no o and m events
-            thisCompanyData['data'] = df_c.to_dict(orient='records')
-            thisCompanyData['meta'] = {"companyName": company}
-            thisCompanyData["build"] = False
+            this_company_data['data'] = df_c.to_dict(orient='records')
+            this_company_data['meta'] = {"companyName": company}
+            this_company_data["build"] = False
             if not test:
                 with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
-                    json.dump(thisCompanyData, fp)
-    return thisCompanyData
+                    json.dump(this_company_data, fp)
+    return this_company_data
 
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df = process_oandm(remote=True, test=False)
+    df_ = process_oandm(remote=True, test=False)
     print('completed oandm!')

@@ -1,11 +1,11 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common, idify, get_company_list, applySystemId
+from util import get_company_names, company_rename, most_common, idify, get_company_list, apply_system_id
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-def incidentMetaData(df, dfPerKm, company):
+def incident_meta_data(df, company):
 
     def most_common_substance(df, meta):
         df_substance = df[df['Substance'] != "Not Applicable"].copy()
@@ -24,15 +24,15 @@ def incidentMetaData(df, dfPerKm, company):
                     serious[t] = serious[t] + 1
         return serious
 
-    def thisCompanyPct(df, df_c):
-        pct = {}
-        countPct = (len(df_c.index)/len(df.index))*100
-        if countPct >= 1:
-            countPct = round(countPct, 0)
-        else:
-            countPct = round(countPct, 1)
-        pct['count'] = countPct
-        return pct
+    # def thisCompanyPct(df, df_c):
+    #     pct = {}
+    #     countPct = (len(df_c.index)/len(df.index))*100
+    #     if countPct >= 1:
+    #         countPct = round(countPct, 0)
+    #     else:
+    #         countPct = round(countPct, 1)
+    #     pct['count'] = countPct
+    #     return pct
 
     # filter to specific company
     df_c = df[df['Company'] == company].copy()
@@ -51,7 +51,7 @@ def incidentMetaData(df, dfPerKm, company):
     return meta
 
 
-def fixColumns(df):
+def fix_columns(df):
     new_cols = {x: x.split("(")[0].strip() for x in df.columns}
     df = df.rename(columns=new_cols)
     return df
@@ -59,33 +59,32 @@ def fixColumns(df):
 
 def process_english(df):
 
-    def replaceWhatWhy(df, colName, values):
-        newCol = []
-        for what in df[colName]:
+    def replace_what_why(df, col_name, values):
+        new_col = []
+        for what in df[col_name]:
             what = what.split(",")
             what = [x.strip() for x in what]
             what = [values[x] for x in what]
-            newCol.append(what)
+            new_col.append(what)
 
-        df[colName] = newCol
+        df[col_name] = new_col
         return df
 
-    df = fixColumns(df)
+    df = fix_columns(df)
     df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})
-    chosenSubstances = ["Propane",
-                        "Natural Gas - Sweet",
-                        "Natural Gas - Sour",
-                        "Fuel Gas",
-                        "Lube Oil",
-                        "Crude Oil - Sweet",
-                        "Crude Oil - Synthetic",
-                        "Crude Oil - Sour",
-                        "Natural Gas Liquids",
-                        "Condensate",
-                        # "Sulphur Dioxide",
-                        "Diesel Fuel",
-                        "Gasoline"]
-    df['Substance'] = [x if x in chosenSubstances else "Other" for x in df['Substance']]
+    chosen_substances = ["Propane","Natural Gas - Sweet",
+                         "Natural Gas - Sour",
+                         "Fuel Gas",
+                         "Lube Oil",
+                         "Crude Oil - Sweet",
+                         "Crude Oil - Synthetic",
+                         "Crude Oil - Sour",
+                         "Natural Gas Liquids",
+                         "Condensate",
+                         # "Sulphur Dioxide",
+                         "Diesel Fuel",
+                         "Gasoline"]
+    df['Substance'] = [x if x in chosen_substances else "Other" for x in df['Substance']]
     # custom codes for product
     df['Substance'] = df['Substance'].replace({'Propane': 'pro',
                                                'Natural Gas - Sweet': 'ngsweet',
@@ -121,19 +120,19 @@ def process_english(df):
            "Natural or Environmental Forces": "ef",
            "To be determined": "tbd"}
 
-    df = replaceWhatWhy(df, "What Happened", what)
-    df = replaceWhatWhy(df, "Why It Happened", why)
+    df = replace_what_why(df, "What Happened", what)
+    df = replace_what_why(df, "Why It Happened", why)
     df["what common"] = [", ".join(x) for x in df["What Happened"]]
     df["why common"] = [", ".join(x) for x in df["Why It Happened"]]
     df['Status'] = df['Status'].replace({"Closed": "c",
                                          "Initially Submitted": "is",
                                          "Submitted": "s"})
     df['Company'] = df['Company'].replace(company_rename())
-    df = applySystemId(df, "Company")
+    df = apply_system_id(df, "Company")
     return df
 
 
-def optimizeJson(df):
+def optimize_json(df):
     df = df.rename(columns={"Incident Number": "id",
                             "Approximate Volume Released": "vol",
                             "What Happened": "what",
@@ -149,7 +148,7 @@ def optimizeJson(df):
     return df
 
 
-def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
+def process_incidents(remote=False, company_names=False, companies=False, test=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/open/incident/pipeline-incidents-data.csv"
         process_func = process_english
@@ -201,8 +200,6 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
     if company_names:
         print(get_company_names(df['Company']))
 
-    perKm = None
-
     if companies:
         company_files = companies
     else:
@@ -212,31 +209,31 @@ def process_incidents(remote=False, land=False, company_names=False, companies=F
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Company'] == company].copy().reset_index(drop=True)
         df_vol = df_c[~df_c['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
-        thisCompanyData = {}
+        this_company_data = {}
         if not df_vol.empty:
             # calculate metadata here, before non releases are filtered out
-            meta = incidentMetaData(df, perKm, company)
-            thisCompanyData['meta'] = meta
+            meta = incident_meta_data(df, company)
+            this_company_data['meta'] = meta
             for delete in ['Incident Types', 'Company', 'why common', 'what common']:
                 del df_vol[delete]
-            df_vol = optimizeJson(df_vol)
-            thisCompanyData['events'] = df_vol.to_dict(orient='records')
-            thisCompanyData['meta']['build'] = True
+            df_vol = optimize_json(df_vol)
+            this_company_data['events'] = df_vol.to_dict(orient='records')
+            this_company_data['meta']['build'] = True
             if not test:
                 with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
-                    json.dump(thisCompanyData, fp)
+                    json.dump(this_company_data, fp)
         else:
             # there are no product release incidents
-            thisCompanyData['events'] = df_vol.to_dict(orient='records')
-            thisCompanyData['meta'] = {"companyName": company, "build": False}
+            this_company_data['events'] = df_vol.to_dict(orient='records')
+            this_company_data['meta'] = {"companyName": company, "build": False}
             if not test:
                 with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
-                    json.dump(thisCompanyData, fp)
+                    json.dump(this_company_data, fp)
 
     return df_c, df_vol, meta
 
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df, volume, meta = process_incidents(remote=True, test=False)
+    df_, volume_, meta_ = process_incidents(remote=True, test=False)
     print('completed incidents!')
