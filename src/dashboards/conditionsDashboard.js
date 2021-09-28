@@ -544,9 +544,12 @@ export async function mainConditions(
         });
     } else {
       noEventsFlag(
-        lang.noConditions.header,
-        lang.noConditions.note,
-        lang.companyToSystem[meta.companyName],
+        lang.noEvents.header(lang.conditions),
+        lang.noEvents.note(
+          lang.conditions,
+          lang.companyToSystem[meta.companyName],
+          true
+        ),
         "conditions-dashboard"
       );
     }

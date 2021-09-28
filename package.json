@@ -85,7 +85,7 @@
     "prettier": "2.4.1",
     "react-dev-utils": "^11.0.4",
     "style-loader": "^3.3.0",
-    "webpack": "^5.54.0",
+    "webpack": "^5.55.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.3.0",

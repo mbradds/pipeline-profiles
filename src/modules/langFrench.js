@@ -141,6 +141,16 @@ const nearbyMe = {
 
 const trendYTitle = (eventName) => `Nombre d’${eventName}`;
 
+const noEvents = {
+  header: (eventName) => `Aucune donnée sur les ${eventName} disponible`,
+  note(eventName, company, conditions = false) {
+    if (conditions) {
+      return `Aucune donnée sur les conditions n’est disponible pour ${company}. Si des données deviennent disponibles ou si des conditions sont imposées par la Commission, elles apparaîtront ici.`;
+    }
+    return `Il n’y a pas d’enregistrements dans les données sur les ${eventName} de la Régie pour ${company}. Si de nouveaux ${eventName} sont signalés à la Régie pour ce pipeline, ils apparaîtront ici après la mise à jour trimestrielle des données.`;
+  },
+};
+
 export const frenchDashboard = {
   plains:
     "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana",
@@ -224,11 +234,7 @@ export const frenchDashboard = {
       "Système de gestion":
         "Conditions particulières imposées à une société afin de s’assurer qu’une démarche efficace est utilisée pour gérer et réduire le risque. Remarque : un système de gestion n’est pas propre à un projet.",
     },
-    noConditions: {
-      header: "Aucune donnée disponible sur les conditions",
-      note: (companyName) =>
-        `Aucune donnée sur les conditions n’est disponible pour ${companyName}. Si des données deviennent disponibles ou si des conditions sont imposées par la Commission, elles apparaîtront ici.`,
-    },
+    noEvents,
   },
   incidents: {
     dashboardError,
@@ -351,11 +357,7 @@ export const frenchDashboard = {
         },
       },
     },
-    noIncidents: {
-      header: "Aucune donnée sur les incidents disponible",
-      note: (companyName) =>
-        `Il n’y a pas d’enregistrements dans les données sur les incidents de la Régie pour ${companyName}. Si de nouveaux incidents sont signalés à la Régie pour ce pipeline, ils apparaîtront ici après la mise à jour trimestrielle des données.`,
-    },
+    noEvents,
   },
   traffic: {
     dashboardError,
@@ -468,10 +470,6 @@ export const frenchDashboard = {
         p: "FR: Province/Territory",
       },
     },
-    noEvents: {
-      header: `No O&M data available`,
-      note: (company) => `There are no O&M activities reported for ${company}`,
-    },
     seriesInfo: {
       id: yesNoInfo,
       fp: yesNoInfo,
@@ -485,6 +483,7 @@ export const frenchDashboard = {
       is: "FR: Indicates if there will be any in-stream work at activity site.",
       sr: "FR: Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
     },
+    noEvents,
   },
   remediation: {
     dashboardError,
@@ -616,11 +615,7 @@ export const frenchDashboard = {
         c: "FR: The type of contaminants that were identified at the time of NOC submission.",
       },
     },
-    noEvents: {
-      header: `FR: No Contaminated Sites Data`,
-      note: (company) =>
-        `FR: There are no reported contaminated sites for ${company}`,
-    },
+    noEvents,
   },
   tolls: {
     dashboardError,

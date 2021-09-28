@@ -110,9 +110,11 @@ export async function mainRemediation(data, lang) {
       thisMap.resetCirclesListener();
     } else {
       noEventsFlag(
-        lang.noEvents.header,
-        lang.noEvents.note,
-        lang.companyToSystem[data.meta.companyName],
+        lang.noEvents.header(lang.dashboard.eventName),
+        lang.noEvents.note(
+          lang.dashboard.eventName,
+          lang.companyToSystem[data.meta.companyName]
+        ),
         "remediation-dashboard"
       );
     }
@@ -120,7 +122,7 @@ export async function mainRemediation(data, lang) {
   try {
     return buildDashboard();
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     return loadChartError("remediation-dashboard", lang.dashboardError);
   }
 }

@@ -289,8 +289,8 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
  * @param {string} companyName - Company or system name inserted into warning flag body.
  * @param {string} dashboardId - HTML div id for the dashboard section.
  */
-export function noEventsFlag(header, note, companyName, dashboardId) {
+export function noEventsFlag(header, note, dashboardId) {
   let noEventsHTML = `<section class="alert alert-warning"><h3>${header}</h3>`;
-  noEventsHTML += `<p>${note(companyName)}</p></section>`;
+  noEventsHTML += `<p>${note}</p></section>`;
   document.getElementById(dashboardId).innerHTML = noEventsHTML;
 }

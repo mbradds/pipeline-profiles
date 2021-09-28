@@ -65,9 +65,11 @@ export async function mainOandM(eventData, lang) {
       incidentTimeSeries(field, filters);
     } else {
       noEventsFlag(
-        lang.noEvents.header,
-        lang.noEvents.note,
-        lang.companyToSystem[eventData.meta.companyName],
+        lang.noEvents.header(lang.eventName),
+        lang.noEvents.note(
+          lang.eventName,
+          lang.companyToSystem[eventData.meta.companyName]
+        ),
         "oandm-dashboard"
       );
     }

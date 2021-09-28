@@ -140,6 +140,16 @@ const nearbyMe = {
 
 const trendYTitle = (eventName) => `Number of ${eventName}`;
 
+const noEvents = {
+  header: (eventName) => `No ${eventName} data`,
+  note(eventName, company, conditions = false) {
+    if (conditions) {
+      return `There are no reported ${eventName} for ${company}. If data becomes available, or conditions are issued by the commission, they will show up here.`;
+    }
+    return `There are no reported ${eventName} for ${company}. If new ${eventName} are reported to the CER for this pipeline, they will appear here following the quarterly data update.`;
+  },
+};
+
 export const englishDashboard = {
   plains:
     "Plains Midstream Canada ULC includes the Milk River and Wascana pipelines",
@@ -228,11 +238,7 @@ export const englishDashboard = {
       "Sunset Clause":
         "Conditions that ensure projects begin within a specific period of time.",
     },
-    noConditions: {
-      header: "No conditions data available",
-      note: (companyName) =>
-        `There is no conditions data available for ${companyName}. If data becomes available, or conditions are issued by the commission, they will show up here.`,
-    },
+    noEvents,
   },
   incidents: {
     dashboardError,
@@ -351,11 +357,7 @@ export const englishDashboard = {
         },
       },
     },
-    noIncidents: {
-      header: "No incidents data available",
-      note: (companyName) =>
-        `There are no records in the CER's incident data for ${companyName}. If new incidents are reported to the CER for this pipeline, they will appear here following the quarterly data update.`,
-    },
+    noEvents,
   },
   traffic: {
     dashboardError,
@@ -467,10 +469,6 @@ export const englishDashboard = {
         p: "Province/Territory",
       },
     },
-    noEvents: {
-      header: `No O&M data available`,
-      note: (company) => `There are no O&M activities reported for ${company}`,
-    },
     seriesInfo: {
       id: yesNoInfo,
       fp: yesNoInfo,
@@ -484,6 +482,7 @@ export const englishDashboard = {
       is: "Indicates if there will be any in-stream work at activity site.",
       sr: "Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
     },
+    noEvents,
   },
   remediation: {
     dashboardError,
@@ -607,11 +606,7 @@ export const englishDashboard = {
         c: "The type of contaminants that were identified at the time of NOC submission.",
       },
     },
-    noEvents: {
-      header: `No Contaminated Sites Data`,
-      note: (company) =>
-        `There are no reported contaminated sites for ${company}`,
-    },
+    noEvents,
   },
   tolls: {
     dashboardError,

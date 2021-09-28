@@ -175,9 +175,11 @@ export async function mainIncidents(incidentData, metaData, lang) {
       thisMap.resetCirclesListener();
     } else {
       noEventsFlag(
-        lang.noIncidents.header,
-        lang.noIncidents.note,
-        lang.companyToSystem[metaData.companyName],
+        lang.noEvents.header(lang.dashboard.eventName),
+        lang.noEvents.note(
+          lang.dashboard.eventName,
+          lang.companyToSystem[metaData.companyName]
+        ),
         "incidents-dashboard"
       );
     }
