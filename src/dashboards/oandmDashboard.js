@@ -67,7 +67,7 @@ export async function mainOandM(eventData, lang) {
       noEventsFlag(
         lang.noEvents.header,
         lang.noEvents.note,
-        eventData.meta.companyName,
+        lang.companyToSystem[eventData.meta.companyName],
         "oandm-dashboard"
       );
     }

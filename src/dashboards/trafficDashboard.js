@@ -936,6 +936,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       }
       return undefined;
     } catch (err) {
+      console.log(err);
       return loadChartError("traffic-section", lang.dashboardError);
     }
   }

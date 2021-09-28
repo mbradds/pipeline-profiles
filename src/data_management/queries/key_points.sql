@@ -23,5 +23,5 @@ PipelineID as [Pipeline Name],
 FROM [PipelineInformation].[dbo].[KeyPoint]
 where [KeyPointID] = 'KP0019'
 ) as kp
-where kp.[Key Point] not in ('Windsor', 'Regina', 'St Clair', 'Baileyville, Ma. / St. Stephen N.B.', 'FortisBC Lower Mainland', 'Huntingdon Export')
+where kp.[Key Point] not in ('Windsor', 'Regina', 'St Clair', 'FortisBC Lower Mainland', 'Huntingdon Export')
 order by [Pipeline Name], [Key Point]

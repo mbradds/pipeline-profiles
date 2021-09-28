@@ -63,16 +63,16 @@ def apportion_line(df_p,
 
     series.append({"id": line_name,
                    "data": line_data,
-                   "y_axis": 0,
+                   "yAxis": 0,
                    "type": "line"})
     series.append({"id": area_name,
                    "data": area_data,
-                   "y_axis": 0,
+                   "yAxis": 0,
                    "type": "area"})
     if has_pct:
         series.append({"id": "ap",  # Apportionment Percent
                        "data": pct_data,
-                       "y_axis": 1,
+                       "yAxis": 1,
                        "type": "line",
                        "visible": False,
                       })

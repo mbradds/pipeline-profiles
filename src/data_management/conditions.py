@@ -365,7 +365,7 @@ def process_conditions(remote=False,
             shp, map_meta = conditions_on_map(dfmeta, regions_map)
 
             this_company_data['regions'] = shp.to_json()
-            this_company_data['map_meta'] = map_meta.to_dict(orient='records')
+            this_company_data['mapMeta'] = map_meta.to_dict(orient='records')
             if not test and save:
                 with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
                     json.dump(this_company_data, fp)
@@ -375,7 +375,7 @@ def process_conditions(remote=False,
             this_company_data = {'meta': {"companyName": company,
                                         "build": False},
                                'regions': "{}",
-                               'map_meta': []}
+                               'mapMeta': []}
 
             if not test and save:
                 with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
@@ -387,5 +387,5 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df_, regions_, map_meta_, meta_ = process_conditions(remote=True, save=True, sql=True)
+    df_, regions_, map_meta_, meta_ = process_conditions(remote=True, save=True, sql=False)
     print('completed conditions!')

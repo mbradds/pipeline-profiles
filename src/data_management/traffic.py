@@ -191,7 +191,7 @@ def get_default_point(company):
                 'Alliance': 'KP0002',
                 'TQM': 'KP0035',
                 'Foothills': 'KP0023',
-                'MNP': 'KP0046',
+                'MNP': 'KP0001',
                 'EnbridgeMainline': 'KP0016',
                 'Keystone': 'KP0020',
                 'TransMountain': 'KP0003',
@@ -297,7 +297,7 @@ def process_throughput(points,
                         df_p_t[num_fill] = df_p_t[num_fill].fillna(0)
                     trade_data.append(df_p_t)
                 df_p = pd.concat(trade_data, ignore_index=True).copy()
-                if p == "16":
+                if p == "KP0016":
                     df_p = df_p.sort_values(by=['Trade Type', 'Date'], ascending=[True, True])
                 for date, t, c, trade in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity'], df_p['Trade Type']):
                     t, c = float(t), float(c)

@@ -177,7 +177,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       noEventsFlag(
         lang.noIncidents.header,
         lang.noIncidents.note,
-        metaData.companyName,
+        lang.companyToSystem[metaData.companyName],
         "incidents-dashboard"
       );
     }

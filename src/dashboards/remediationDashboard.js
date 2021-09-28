@@ -112,7 +112,7 @@ export async function mainRemediation(data, lang) {
       noEventsFlag(
         lang.noEvents.header,
         lang.noEvents.note,
-        data.meta.companyName,
+        lang.companyToSystem[data.meta.companyName],
         "remediation-dashboard"
       );
     }

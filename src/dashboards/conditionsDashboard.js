@@ -322,7 +322,8 @@ export async function mainConditions(
       "spacingBox"
     );
     const definitionDiv = document.getElementById("conditions-definitions");
-    document.getElementById("themes-table").rows.forEach((tr) => {
+    const themeRows = Array.from(document.getElementById("themes-table").rows);
+    themeRows.forEach((tr) => {
       const rowText = tr.querySelectorAll("td")[0].textContent;
       tr.onclick = function themeClick() {
         visibility(["conditions-definitions"], "show");
@@ -545,7 +546,7 @@ export async function mainConditions(
       noEventsFlag(
         lang.noConditions.header,
         lang.noConditions.note,
-        meta.companyName,
+        lang.companyToSystem[meta.companyName],
         "conditions-dashboard"
       );
     }
