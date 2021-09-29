@@ -1,16 +1,12 @@
 import Highcharts from "highcharts";
-import {
-  cerPalette,
-  btnGroupClick,
-  visibility,
-  equalizeHeight,
-} from "../util.js";
+import { cerPalette, btnGroupClick, visibility } from "../util.js";
 import { fillBetween } from "../datestone.js";
 
 export class Tolls {
-  constructor({ tollsData, metaData, chartDiv }) {
+  constructor({ tollsData, metaData, lang, chartDiv }) {
     this.tollsData = tollsData;
     this.metaData = metaData;
+    this.lang = lang;
     this.chartDiv = chartDiv;
     this.currentSplit = metaData.split.default ? metaData.split.default : false;
     this.getDefaults();
@@ -300,15 +296,16 @@ export class Tolls {
     return selected;
   }
 
-  updateTollsDescription() {
-    const split = this.currentSplit
-      ? `<strong> ${this.currentSplit} </strong>`
-      : " ";
-    document.getElementById(
-      "toll-description"
-    ).innerHTML = `<p>2-3 sentence description of the${split}toll methodology.</p>`;
-    equalizeHeight("tolls-filter-container", "tolls-info");
-  }
+  // updateTollsDescription() {
+  //   const split = this.currentSplit
+  //     ? `<strong> ${this.currentSplit} </strong>`
+  //     : " ";
+
+  //   document.getElementById(
+  //     "toll-description"
+  //   ).innerHTML = `<p>2-3 sentence description of the${split}toll methodology.</p>`;
+  //   equalizeHeight("tolls-filter-container", "tolls-info");
+  // }
 
   removeAllSeries() {
     while (this.chart.series.length) {
@@ -396,7 +393,6 @@ export class Tolls {
     this.buildTollsChart(this.selectedSeries(series));
     this.pathTotalsDisclaimer();
     let [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
-    this.updateTollsDescription();
     if (this.metaData.pathFilter[0] && pathBtns) {
       this.listener(pathBtns, series, "path");
     } else if (serviceBtns) {
@@ -423,7 +419,6 @@ export class Tolls {
           } else {
             visibility(["tolls-product-btn"], "show");
           }
-          this.updateTollsDescription();
           this.removeAllSeries();
           const newSeries = this.selectedSeries(series);
           newSeries.forEach((newS) => {

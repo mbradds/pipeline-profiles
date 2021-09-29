@@ -7,15 +7,18 @@ export async function mainTolls(tollsData, metaData, lang) {
     const dashboard = new Tolls({
       tollsData,
       metaData,
+      lang,
       chartDiv: "tolls-chart",
     });
     if (metaData.build) {
       dashboard.buildDashboard();
     } else {
       noEventsFlag(
-        lang.noTolls.header,
-        lang.noTolls.note,
-        metaData.companyName,
+        lang.noEvents.header(lang.eventName),
+        lang.noEvents.note(
+          lang.eventName,
+          lang.companyToSystem[metaData.companyName]
+        ),
         "tolls-section"
       );
     }

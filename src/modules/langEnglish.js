@@ -612,10 +612,8 @@ export const englishDashboard = {
     dashboardError,
     numberFormat,
     companyToSystem,
-    noTolls: {
-      header: "Tolls data not available",
-      note: (companyName) =>
-        `Tolls information for ${companyName} may be available in REGDOCS.`,
-    },
+    noEvents,
+    eventName: "tolls",
+    lang: "e",
   },
 };
