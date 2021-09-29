@@ -7,7 +7,11 @@ script_dir = os.path.dirname(__file__)
 
 def getTollsData(sql=True):
     df = get_data(script_dir, "tolls.sql", db="PipelineInformation", sql=sql)
-    return df
+    descriptions = get_data(script_dir,
+                            "tolls_description.sql",
+                            db="PipelineInformation",
+                            sql=sql)
+    return df, descriptions
 
 
 def companyFilter(df, company):
@@ -198,7 +202,7 @@ def processTollsData(sql=True, companies=False, save=True, completed=[]):
 
         return seriesCol, productFilter
 
-    df = getTollsData(sql)
+    df, descriptions = getTollsData(sql)
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
@@ -212,7 +216,7 @@ def processTollsData(sql=True, companies=False, save=True, completed=[]):
             df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
         else:
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
-        
+
         df_c, decimals = roundValues(df_c)
         df_c, selectedPaths, selectedService, pathFilter, splitDefault, pathTotals = companyFilter(df_c, company)
         meta = {"companyName": company}
