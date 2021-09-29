@@ -2,7 +2,7 @@
 This module pulls the latest production pipeline profile pages from the cer website, deletes the
 old content, and replaces it with new content from ../dist
 
-TODO: 
+TODO:
     -add errors for when this is run without anything in dist
     -add errors for when there are new sections in dist and not in CER files
     -add the rest of the CER files in eng and fra
@@ -12,11 +12,22 @@ TODO:
 import os
 import ssl
 import re
+import json
 import requests
 from bs4 import BeautifulSoup
 ssl._create_default_https_context = ssl._create_unverified_context
 script_dir = os.path.dirname(__file__)
 WEBPACK_REGEX = "[0-9a-f]{20}"
+
+
+class NoDistFolder(Exception):
+
+    def __init__(self, message='Project has not been build. Run "npm run build" first.'):
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f'{self.message}'
 
 
 def pretty(soup):
@@ -127,56 +138,13 @@ def replace_safety_env(profile, new_html):
 
 
 def update_cer_files():
-    links = ["https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-aurora-pipeline.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-enbridge-bakken.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-enbridge-mainline.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-enbridge-norman-wells.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-express-pipeline.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-genesis-pipeline-canada-ltd.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-keystone-pipeline.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-kinder-morgan-cochin.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-milk-river.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-montreal.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-southern-lights.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-trans-mountain.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-trans-northern.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-wascana.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/oil-and-liquids/pipeline-profiles-westspur.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-alliance.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-emera-brunswick.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-foothills.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-many-islands.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-maritimes-northeast.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-ngtl.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/transcanadas-canadian-mainline.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-trans-quebec-maritimes.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-vector.html",
-             "https://www.cer-rec.gc.ca/en/data-analysis/facilities-we-regulate/pipeline-profiles/natural-gas/pipeline-profiles-westcoast-bc-pipeline.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-pipeline-aurora.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-cochin-kinder-morgan.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-enbridge-bakken.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-express.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-genesis-pipeline-canada-ltd.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-pipeline-keystone.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-milk-river.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-montreal.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-norman-wells-denbridge.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-reseau-principal-denbridge.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-southern-lights.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-trans-mountain.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-trans-nord.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-wascana.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/petrole-et-produits-petroliers/profils-pipeliniers-westspur.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-alliance.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-foothills.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-gazoduc-brunswick-demera.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-gazoduc-trans-quebec-maritimes.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-many-islands.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-maritimes-northeast.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-ngtl.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-reseau-principal-transcanada-pays.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-vector.html",
-             "https://www.cer-rec.gc.ca/fr/donnees-analyse/installations-reglementees-par-la-regie/profils-pipeliniers/gaz-naturel/profils-pipeliniers-westcoast-bc-pipeline.html"]
+
+    dist = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'dist'))
+    if not os.path.isdir(dist) or len(os.listdir(dist)) == 0:
+        raise NoDistFolder
+
+    with open('production_links.json') as f:
+        links = json.load(f)
 
     for link in links:
         folder = link.split("/")

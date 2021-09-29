@@ -67,11 +67,26 @@ def apply_contaminant_ids(df, cont, col_name="Contaminants at the Site"):
     return df
 
 
-def process_remediation(sql=False, companies=False, test=False):
-    df = get_data(sql=sql,
-                  script_loc=script_dir,
-                  query="remediation.sql",
-                  db="dsql22cap")
+def process_remediation(sql=False, companies=False, test=False, save=True):
+    
+    if test:
+        print("reading test remediation test data")
+        df = pd.read_csv(os.path.join(script_dir,
+                                      "raw_data",
+                                      "test_data",
+                                      "remediation.csv"))
+        
+        # match the test data with the database columns
+        df = df.rename(columns={"Commodity Carried": "Product Carried",
+                                "Nearest Populated Center": "NearestPopulatedCentre",
+                                "Activity At Time Of Discovery": "Activity At Time",
+                                "Initial Estimate of Contaminated Soil (m3)": "Initial Estimate of Contaminated soil m3",
+                                "Site Within 30 Meters Of Waterbody": "Is site within 30 m of waterbody"})
+    else:
+        df = get_data(sql=sql,
+                      script_loc=script_dir,
+                      query="remediation.sql",
+                      db="dsql22cap")
 
     contaminants = get_data(sql=sql,
                             script_loc=script_dir,
@@ -205,18 +220,18 @@ def process_remediation(sql=False, companies=False, test=False):
             this_company_data["meta"] = meta(df_c, company)
             this_company_data["build"] = True
             this_company_data["data"] = optimize_json(df_c)
-            if not test:
+            if save and not test:
                 with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
                     json.dump(this_company_data, fp)
         else:
             this_company_data['data'] = df_c.to_dict(orient='records')
             this_company_data['meta'] = {"companyName": company}
             this_company_data["build"] = False
-            if not test:
+            if save and not test:
                 with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
                     json.dump(this_company_data, fp)
 
-    return df
+    return df, this_company_data
 
 
 if __name__ == "__main__":

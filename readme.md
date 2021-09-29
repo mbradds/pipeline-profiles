@@ -60,6 +60,7 @@
   - [Dataset 4: Apportionment](#dataset-4-apportionment)
   - [Dataset 5: Operations and Maintenance Activities](#dataset-5-operations-and-maintenance-activities)
   - [Dataset 6: Contaminated sites and Remediation](#dataset-6-contaminated-sites-and-remediation)
+- [Deploying to CER production server](#deploying-to-cer-production-server)
 - [Adding a new profile section](#adding-a-new-profile-section)
 - [Tests](#tests)
   - [Python unit tests (back end)](<#python-unit-tests-(back-end)>)
@@ -83,13 +84,12 @@ Sections being added:
 - **Safety & Environment**
   1. Conditions Compliance (Released, March 31, 2021)
   2. Reported Incidents (Released, March 31, 2021)
-  3. Operations & Maintenance Activities (Summer 2021, under development)
-  4. Contaminated Sites/Remediation (Summer 2021, under development)
+  3. Operations & Maintenance Activities (Oct 25, 2021, completed)
+  4. Contaminated Sites/Remediation (Oct 25, 2021, completed)
   5. Unauthorized Activities (TBD, under development)
 - **Traffic (Pipeline Throughput & Capacity)** (Released, May 25, 2021)
 - **Oil Pipeline Apportionment** (Released, May 25, 2021)
-- **Pipeline Tolls** (TBD)
-- **Pipeline/Corporate Financial info** (TBD)
+- **Pipeline Tolls** (December 2021/January 2022, under development)
 
 ## Repository structure
 
@@ -136,6 +136,8 @@ pipeline_profiles
 |   └───dashboards (Higher level files/functions for creating each dashboard)
 |   |
 |   └───modules (shared dashboard code & utility functions)
+|
+└───deploy (Prepares CER production files with new HTML sections in /dist)
 │
 └───dist (tries to match dweb7 folder structure)
     │   en/ english js bundles & html for each profile (to be placed on web server)
@@ -144,7 +146,7 @@ pipeline_profiles
 
 ## Software prerequisites
 
-1. npm (I'm using v7.19.1)
+1. npm (I'm using v7.24.1)
 2. node (I'm using v14.16.1)
 3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
 4. Git (for contributing)
@@ -396,6 +398,31 @@ npm run update-oandm-data
 
 Instructions coming soon!
 
+## Deploying to CER production server
+
+This is a mess. The CER web infrastructure is managed in an entirely manual way. There is no automation, content management system, CI/CD, version control, or any other modern tools and technology. There is also no way I can easily mimic the CER server environment for local development, and no one is fully aware of the enourmous amount of scripts, css, server side includes, templates that make up these pages. This means that the CER html pages are too ridiculous for me to realistically use or mimic myself, and the lack of version control means that I cant really deal with these files until right before I'm ready to release.
+
+Up until recently (summer 2021) my approach to these constraints and problems was:
+
+1. Request that the web team dump the latest production files into `dewb7/data-analyis-dev`.
+2. Delete the old js and css bundles and replace them with new ones.
+3. Delete the old html sections/script tags from the lastest CER production files and copy and paste the new html sections from my `dist/` folder into the correct location in the CER files.
+4. Repeat this process for all profiles in english and french (50 total).
+5. Send in a final web request to publish.
+6. Review links in tweb (I have no access to tweb and cant do this step).
+7. Tell the web team to publish.
+
+As of September 2021, I've added some automation in `deploy/make_production_files.py` that largely cuts out the need to delete & copy/paste html sections. Here are the new steps:
+
+1. Request that the web team dump the latest production files into dewb7/data-analyis-dev.
+2. Delete the old js and css bundles and replace them with new ones.
+3. `npm run build`
+4. `npm run deploy`
+5. Copy and paste full html files from `deploy/web-ready` into `dweb7/data-analysis-dev` (50 html files replaced).
+6. Send in a final web request to publish.
+7. Review links in tweb (I have no access to tweb and cant do this step).
+8. Tell the web team to publish.
+
 ## Adding a new profile section
 
 Adding a new section typically involves two major parts: The back end data (python), and the front end (JavaScript). Starting with the raw data, here is the typical pattern:
@@ -599,19 +626,13 @@ Making sure that all dependencies are updated and both package.json and package-
 
 Here is a list of things I'm stuck on and potentially need help with!
 
-1. **GitHub action for backend tests**
-
-I've got an action started for setting up the pipeline-profiles conda environment and running the python units tests but its not working. I've disabled the action on GitHub. The yml file is here: `.github/test-backend.yml`
-
-2. **Webpack runtime chunk**
+1. **Webpack runtime chunk**
 
 It looks like a runtime chunk is required based on the webpack pattern I've set up. Each profile has a runtime chunk that serves as the main entrypoint for the other chunks. I would like to avoid this if possible!
 
-3. **vendor chunk structure**
+- update: I used react-dev-utils to inline the "entry" chunk, but its no longer working!
 
-Right now, I've got two vendor chunks. One for highcharts and one for leaflet. Should these be combined into one large vendor chunk?
-
-4. **CER databases or Open Gov?**
+2. **CER databases or Open Gov?**
 
 The core datasets are all pulled directly from Open Gov. I need to do this to maintain consistency with Open Gov, but connecting to CER databases would allow for really cool daily updates once the ci/cd pipeline is ready. This is going to take some time to migrate!
 

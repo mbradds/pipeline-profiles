@@ -4,6 +4,7 @@ from incidents import process_incidents
 from conditions import process_conditions
 from traffic import process_throughput, get_points
 from oandm import process_oandm
+from remediation import process_remediation
 from util import most_common
 
 
@@ -116,7 +117,7 @@ class TestConditions(unittest.TestCase):
         self.assertEqual(red_deer.loc[0, "Closed"], 35)
 
 
-class TrafficTest(unittest.TestCase):
+class TestTraffic(unittest.TestCase):
     points = get_points(sql=False)
     traffic, df = process_throughput(points, save=False, sql=False, commodity='Gas', frequency='m', companies=['NGTL'])
 
@@ -140,7 +141,7 @@ class TrafficTest(unittest.TestCase):
         self.assertEqual(point[2]["data"][0], 6.62)
 
 
-class OandmTest(unittest.TestCase):
+class TestOandm(unittest.TestCase):
     oandm = process_oandm(remote=False, test=True, companies=['NGTL'])
 
     def testBuild(self):
@@ -161,6 +162,22 @@ class OandmTest(unittest.TestCase):
         self.assertEqual(self.oandm["data"]["id"]["data"][1]["id"], "y")
         self.assertEqual(self.oandm["data"]["id"]["data"][0]["data"][0], 41)
         self.assertEqual(self.oandm["data"]["id"]["data"][1]["data"][0], 45)
+
+
+class TestRemediation(unittest.TestCase):
+    df, this_company_data = process_remediation(sql=False, test=True, companies=["NGTL"])
+
+    def testBuild(self):
+        self.assertEqual(self.this_company_data["build"], True)
+
+    def testMeta(self):
+        self.assertEqual(self.this_company_data["meta"]["companyName"], "NGTL")
+        self.assertEqual(self.this_company_data["meta"]["old"], 0)
+        self.assertEqual(self.this_company_data["meta"]["new"], 14)
+        self.assertEqual(self.this_company_data["meta"]["new"], len(self.this_company_data["data"]))
+
+    def testData(self):
+        self.assertEqual(len(self.this_company_data["data"]), 14)
 
 
 if __name__ == "__main__":

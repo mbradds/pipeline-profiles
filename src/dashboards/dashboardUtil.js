@@ -290,7 +290,7 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
  * @param {string} dashboardId - HTML div id for the dashboard section.
  */
 export function noEventsFlag(header, note, dashboardId) {
-  let noEventsHTML = `<section class="alert alert-warning"><h3>${header}</h3>`;
-  noEventsHTML += `<p>${note}</p></section>`;
-  document.getElementById(dashboardId).innerHTML = noEventsHTML;
+  document.getElementById(
+    dashboardId
+  ).innerHTML = `<section class="alert alert-warning"><h3>${header}</h3><p>${note}</p></section>`;
 }

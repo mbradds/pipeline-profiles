@@ -25,6 +25,7 @@ src/data_management/raw_data/*
 deploy/*
 !deploy/*.py
 !deploy/*.sh
+!deploy/*.json
 *.geojson
 **.LICENSE.txt
 *.vs/
