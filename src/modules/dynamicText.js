@@ -230,24 +230,9 @@ export function trafficTrendTextEng(params, numberFormat, seriesId) {
       trendText += buildFiveText(params.fiveTrend, thisTrend[0], "en");
     }
   } else {
-    const pointNames = {};
-    params.points.forEach((p) => {
-      pointNames[p.id] = p.name;
-    });
-
-    const pointText = [];
-    Object.keys(params.trendText).forEach((point) => {
-      const thisTrend = params.trendText[point];
-      if (point in pointNames) {
-        pointText.push({
-          textCol: buildText(
-            thisTrend[0],
-            pointNames[point],
-            params.unitsHolder
-          ),
-        });
-      }
-    });
+    const pointText = params.points.map((p) => ({
+      textCol: buildText(params.trendText[p.id][0], p.name, params.unitsHolder),
+    }));
     trendText = listOrParagraph(pointText, "textCol");
   }
   document.getElementById("traffic-trends").innerHTML = trendText;
@@ -291,24 +276,9 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
       trendText += buildFiveText(params.fiveTrend, thisTrend[0], "fr");
     }
   } else {
-    const pointNames = {};
-    params.points.forEach((p) => {
-      pointNames[p.id] = p.name;
-    });
-
-    const pointText = [];
-    Object.keys(params.trendText).forEach((point) => {
-      const thisTrend = params.trendText[point];
-      if (point in pointNames) {
-        pointText.push({
-          textCol: buildText(
-            thisTrend[0],
-            pointNames[point],
-            params.unitsHolder
-          ),
-        });
-      }
-    });
+    const pointText = params.points.map((p) => ({
+      textCol: buildText(params.trendText[p.id][0], p.name, params.unitsHolder),
+    }));
     trendText = listOrParagraph(pointText, "textCol");
   }
   document.getElementById("traffic-trends").innerHTML = trendText;
