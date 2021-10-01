@@ -34,35 +34,63 @@ import { KeyPointMap } from "../modules/dashboard/KeyPointMap.js";
 
 HighchartsMore(Highcharts);
 
-export async function mainTraffic(trafficData, metaData, lang) {
-  const rounding = 2;
+const sharedHcParams = {
+  legend: {
+    alignColumns: false,
+    margin: 3,
+    padding: 0,
+    itemDistance: 15,
+    symbolPadding: 2,
+    labelFormatter() {
+      return this.name;
+    },
+  },
+  plotOptions: {
+    series: {
+      animation: false,
+      connectNulls: true,
+      states: {
+        inactive: {
+          opacity: 1,
+        },
+      },
+    },
+  },
+  labelFormatter: (val, params, lang) =>
+    lang.numberFormat(val, params.commodity === "oil" ? 0 : 1),
+  title: (text) => ({
+    align: "left",
+    x: 7,
+    margin: 5,
+    text,
+    style: {
+      fontWeight: "normal",
+    },
+  }),
+};
 
-  function addPointButtons(params) {
-    const btnGroup = document.getElementById("traffic-points-btn");
-    if (params.defaultPoint.id !== "KP0003") {
-      params.points.forEach((point) => {
-        const checkTxt = point.id === params.defaultPoint.id ? " active" : "";
-        btnGroup.insertAdjacentHTML(
-          "beforeend",
-          `<div class="btn-group"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`
-        );
-      });
-    } else {
-      params.points.forEach((point, i) => {
-        btnGroup.insertAdjacentHTML(
-          "beforeend",
-          `<div class="checkbox-inline">
-        <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point.id}">${point.name}</label>
-     </div>`
-        );
-      });
+export class Traffic {
+  constructor({ trafficData, metaData, lang, rounding = 2 }) {
+    this.trafficData = trafficData;
+    this.metaData = metaData;
+    this.lang = lang;
+    this.rounding = rounding;
+    this.params = this.getDashboardParameters();
+    this.sharedHcParams = sharedHcParams;
+  }
+
+  getKeyPoint(defaultId) {
+    try {
+      return { id: defaultId, name: this.lang.points[defaultId][0] };
+    } catch (err) {
+      return { id: defaultId, name: "" };
     }
   }
 
-  function getPointList(meta) {
+  getPointList(meta) {
     return sortJsonAlpha(
       meta.keyPoints.map((point) => {
-        const pointName = lang.points[point.KeyPointID][0];
+        const pointName = this.lang.points[point.KeyPointID][0];
         return {
           id: point.KeyPointID,
           name: pointName,
@@ -73,41 +101,73 @@ export async function mainTraffic(trafficData, metaData, lang) {
     );
   }
 
-  const tmTitle = (params) => {
-    let text = "";
-    params.points.forEach((point) => {
-      text += `${point.name} `;
-    });
-    return text;
-  };
-
-  const setTitle = (params, fiveYr) => {
-    let pointText = "";
-    let dirLangList = [false];
-    if (params.tm) {
-      pointText = tmTitle(params);
+  resize(chart = false) {
+    const mainTrafficDiv = document.getElementById("traffic-hc");
+    if (this.params.hasImports) {
+      // user is on a gas profile, but there are imports that hide five year avg
+      mainTrafficDiv.classList.remove("traffic-hc-shared");
+      mainTrafficDiv.classList.add("traffic-hc-single-gas");
+      visibility(["traffic-hc-range"], "hide");
     } else {
-      dirLangList = params.directions[params.defaultPoint.id].map((dir) => {
-        if (Object.prototype.hasOwnProperty.call(lang.directions, dir)) {
-          return lang.directions[dir];
-        }
-        return "";
-      });
-      pointText = params.defaultPoint.name;
+      if (!mainTrafficDiv.classList.contains("traffic-hc-shared")) {
+        mainTrafficDiv.classList.add("traffic-hc-shared");
+      }
+      visibility(["traffic-hc-range"], "show");
     }
-    if (fiveYr) {
-      return lang.fiveYrTitle(pointText);
+    if (chart) {
+      chart.reflow();
+      chart.redraw(true);
     }
-    return lang.trafficTitle(pointText, dirLangList, params.frequency);
-  };
+  }
 
-  const createSeries = (data, params) => {
+  getDashboardParameters() {
+    const defaultPoint = this.getKeyPoint(this.metaData.defaultPoint);
+    const chartParams = addUnitsAndSetup(
+      this.metaData.units,
+      defaultPoint,
+      this.lang.units,
+      "traffic",
+      this.metaData.frequency
+    );
+    chartParams.frequency = this.metaData.frequency;
+    chartParams.defaultPoint = defaultPoint;
+    chartParams.points = this.getPointList(this.metaData);
+    chartParams.companyName = this.metaData.companyName;
+    chartParams.directions = this.metaData.directions;
+    chartParams.trendText = this.metaData.trendText;
+    return chartParams;
+  }
+
+  addPointButtons() {
+    const btnGroup = document.getElementById("traffic-points-btn");
+    if (this.params.defaultPoint.id !== "KP0003") {
+      this.params.points.forEach((point) => {
+        const checkTxt =
+          point.id === this.params.defaultPoint.id ? " active" : "";
+        btnGroup.insertAdjacentHTML(
+          "beforeend",
+          `<div class="btn-group"><button type="button" value="${point.id}" class="btn btn-default${checkTxt}">${point.name}</button></div>`
+        );
+      });
+    } else {
+      this.params.points.forEach((point, i) => {
+        btnGroup.insertAdjacentHTML(
+          "beforeend",
+          `<div class="checkbox-inline">
+        <label for="inlineCheck${i}" label><input id="inlineCheck${i}" checked="checked" type="checkbox" value="${point.id}">${point.name}</label>
+     </div>`
+        );
+      });
+    }
+  }
+
+  createSeries() {
     let firstSeries = [];
-    if (params.tm) {
+    if (this.params.tm) {
       let [capAdded, dateAdded] = [false, false];
       const seriesAdded = {};
-      const includeKeys = params.points.map((p) => p.id);
-      const newData = JSON.parse(JSON.stringify(data));
+      const includeKeys = this.params.points.map((p) => p.id);
+      const newData = JSON.parse(JSON.stringify(this.trafficData));
       Object.keys(newData).forEach((key) => {
         if (includeKeys.includes(key)) {
           const keyData = newData[key];
@@ -142,23 +202,79 @@ export async function mainTraffic(trafficData, metaData, lang) {
         firstSeries.push(value);
       });
     } else {
-      firstSeries = data[params.defaultPoint.id];
+      firstSeries = this.trafficData[this.params.defaultPoint.id];
     }
     return firstSeries;
-  };
+  }
 
-  const addToolRow = (p, unit, round, extraStyle = "") => {
+  buildPointMap() {
+    let pointMap;
+    if (this.params.defaultPoint.id !== "KP0000") {
+      pointMap = new KeyPointMap({
+        points: this.params.points,
+        selected: !this.params.tm
+          ? [this.params.defaultPoint]
+          : this.params.points,
+        companyName: this.params.companyName,
+      });
+      // KP0000 = system. These pipelines should be using trafficNoMap.hbs
+      if (this.params.points.length === 1) {
+        visibility(["traffic-points-btn", "key-point-title"], "hide");
+      } else {
+        this.addPointButtons();
+      }
+      pointMap.addBaseMap();
+      pointMap.addPoints();
+    }
+    return pointMap;
+  }
+
+  tmTitle() {
+    let text = "";
+    this.params.points.forEach((point) => {
+      text += `${point.name} `;
+    });
+    return text;
+  }
+
+  setTitle(fiveYr) {
+    let pointText = "";
+    let dirLangList = [false];
+    if (this.params.tm) {
+      pointText = this.tmTitle();
+    } else {
+      dirLangList = this.params.directions[this.params.defaultPoint.id].map(
+        (dir) => {
+          if (Object.prototype.hasOwnProperty.call(this.lang.directions, dir)) {
+            return this.lang.directions[dir];
+          }
+          return "";
+        }
+      );
+      pointText = this.params.defaultPoint.name;
+    }
+    if (fiveYr) {
+      return this.lang.fiveYrTitle(pointText);
+    }
+    return this.lang.trafficTitle(
+      pointText,
+      dirLangList,
+      this.params.frequency
+    );
+  }
+
+  addToolRow(p, unit, round, extraStyle = "") {
     const yVal = (pnt) => {
       if (
         Object.prototype.hasOwnProperty.call(pnt.point, "low") &&
         Object.prototype.hasOwnProperty.call(pnt.point, "high")
       ) {
         return (p2) =>
-          `${lang.numberFormat(p2.point.low)} - ${lang.numberFormat(
+          `${this.lang.numberFormat(p2.point.low)} - ${this.lang.numberFormat(
             p2.point.high
           )}`;
       }
-      return (p2) => `${lang.numberFormat(p2.y, round)}`;
+      return (p2) => `${this.lang.numberFormat(p2.y, round)}`;
     };
 
     const yFunction = yVal(p);
@@ -169,9 +285,9 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return `<tr style="${extraStyle}"><th>${colorCircle}${
       p.series.name
     }:</th><th>&nbsp;${yFunction(p)} ${unit}</th></tr>`;
-  };
+  }
 
-  function tooltipText(event, units) {
+  tooltipText(event, units) {
     const addTable = (section) => {
       let toolText = '<table class="mrgn-tp-sm">';
       let total = 0;
@@ -180,7 +296,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         total += row[1];
       });
       if (section.traffic.length >= 2) {
-        toolText += addToolRow(
+        toolText += this.addToolRow(
           {
             color: cerPalette["Cool Grey"],
             series: { name: "Total" },
@@ -188,16 +304,16 @@ export async function mainTraffic(trafficData, metaData, lang) {
             point: {},
           },
           units,
-          rounding,
+          this.rounding,
           "border-top: 1px dashed grey"
         );
       }
       if (Object.prototype.hasOwnProperty.call(section, "capacity")) {
         toolText += section.capacity[0];
-        toolText += addToolRow(
+        toolText += this.addToolRow(
           {
             color: cerPalette["Cool Grey"],
-            series: { name: lang.util },
+            series: { name: this.lang.util },
             y: (total / section.capacity[1]) * 100,
             point: {},
           },
@@ -219,22 +335,35 @@ export async function mainTraffic(trafficData, metaData, lang) {
     event.points.forEach((p) => {
       if (p.series.options.id === "im") {
         hasImports = true;
-        textHolder.imports.traffic.push([addToolRow(p, units, rounding), p.y]);
+        textHolder.imports.traffic.push([
+          this.addToolRow(p, units, this.rounding),
+          p.y,
+        ]);
       } else if (p.series.options.id === "icap") {
-        textHolder.imports.capacity = [addToolRow(p, units, rounding), p.y];
+        textHolder.imports.capacity = [
+          this.addToolRow(p, units, this.rounding),
+          p.y,
+        ];
       } else if (
         p.series.options.id === "cap" ||
         p.series.options.id === "ecap"
       ) {
-        textHolder.other.capacity = [addToolRow(p, units, rounding), p.y];
+        textHolder.other.capacity = [
+          this.addToolRow(p, units, this.rounding),
+          p.y,
+        ];
       } else {
-        textHolder.other.traffic.push([addToolRow(p, units, rounding), p.y]);
+        textHolder.other.traffic.push([
+          this.addToolRow(p, units, this.rounding),
+          p.y,
+        ]);
       }
     });
 
     // tooltip header
     let toolText = "";
-    if (metaData.frequency === "monthly") {
+    // TODD: add frequency to this.params
+    if (this.metaData.frequency === "monthly") {
       toolText = `<strong>${Highcharts.dateFormat("%b, %Y", event.x)}</strong>`;
     } else {
       // remove this when frequency is decided!
@@ -251,103 +380,8 @@ export async function mainTraffic(trafficData, metaData, lang) {
     return toolText;
   }
 
-  function fiveYearTooltipText(event, units) {
-    const currMonth = lang.months[event.x + 1];
-    let toolText = `<strong>${currMonth}</strong><table>`;
-    event.points.forEach((p) => {
-      p.series.name = p.series.name.split("(")[0].trim();
-      toolText += addToolRow(p, units, rounding);
-    });
-    toolText += "</table>";
-    return toolText;
-  }
-
-  const sharedHcParams = {
-    legend: {
-      alignColumns: false,
-      margin: 3,
-      padding: 0,
-      itemDistance: 15,
-      symbolPadding: 2,
-      labelFormatter() {
-        return this.name;
-      },
-    },
-    plotOptions: {
-      series: {
-        animation: false,
-        connectNulls: true,
-        states: {
-          inactive: {
-            opacity: 1,
-          },
-        },
-      },
-    },
-    labelFormatter: (val, params) =>
-      lang.numberFormat(val, params.commodity === "oil" ? 0 : 1),
-    title: (text) => ({
-      align: "left",
-      x: 7,
-      margin: 5,
-      text,
-      style: {
-        fontWeight: "normal",
-      },
-    }),
-  };
-
-  function createFiveYearChart(series, params) {
-    if (!series) {
-      return false;
-    }
-    return new Highcharts.chart("traffic-hc-range", {
-      chart: {
-        type: "line",
-        marginRight: 0,
-        spacingTop: 5,
-        spacingBottom: 5,
-      },
-      title: sharedHcParams.title(setTitle(params, true)),
-      xAxis: {
-        crosshair: true,
-        tickInterval: 1,
-        labels: {
-          step: 1,
-          formatter() {
-            return lang.months[this.value + 1];
-          },
-        },
-      },
-      legend: sharedHcParams.legend,
-      yAxis: {
-        startOnTick: true,
-        endOnTick: false,
-        title: { text: params.unitsHolder.current },
-        tickPixelInterval: 40,
-        labels: {
-          formatter() {
-            return sharedHcParams.labelFormatter(this.value, params);
-          },
-        },
-      },
-      lang: {
-        noData: lang.fiveYr.notEnough,
-      },
-      tooltip: {
-        shared: true,
-        borderColor: cerPalette["Dim Grey"],
-        useHTML: true,
-        formatter() {
-          return fiveYearTooltipText(this, params.unitsHolder.current);
-        },
-      },
-      plotOptions: sharedHcParams.plotOptions,
-      series,
-    });
-  }
-
-  function createTrafficChart(series, title, params, div = "traffic-hc") {
+  createTrafficChart(series, title, div = "traffic-hc") {
+    const currentDashboard = this;
     return new Highcharts.chart(div, {
       chart: {
         zoomType: "x",
@@ -355,7 +389,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
         spacingTop: 5,
         spacingBottom: 5,
       },
-      title: sharedHcParams.title(title),
+      title: this.sharedHcParams.title(title),
       xAxis: {
         type: "datetime",
         crosshair: true,
@@ -363,7 +397,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       yAxis: [
         {
           title: {
-            text: params.unitsHolder.current,
+            text: this.params.unitsHolder.current,
           },
           min: 0,
           startOnTick: true,
@@ -371,7 +405,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
           tickPixelInterval: 40,
           labels: {
             formatter() {
-              return sharedHcParams.labelFormatter(this.value, params);
+              return currentDashboard.sharedHcParams.labelFormatter(
+                this.value,
+                currentDashboard.params,
+                currentDashboard.lang
+              );
             },
           },
         },
@@ -382,25 +420,98 @@ export async function mainTraffic(trafficData, metaData, lang) {
         borderColor: cerPalette["Dim Grey"],
         useHTML: true,
         formatter() {
-          return tooltipText(this, params.unitsHolder.current);
+          return currentDashboard.tooltipText(
+            this,
+            currentDashboard.params.unitsHolder.current
+          );
         },
       },
-      legend: sharedHcParams.legend,
-      plotOptions: sharedHcParams.plotOptions,
+      legend: this.sharedHcParams.legend,
+      plotOptions: this.sharedHcParams.plotOptions,
       series,
     });
   }
 
-  const hasImportsRedraw = (chart, params) => {
+  fiveYearTooltipText(event, units) {
+    const currMonth = this.lang.months[event.x + 1];
+    let toolText = `<strong>${currMonth}</strong><table>`;
+    event.points.forEach((p) => {
+      p.series.name = p.series.name.split("(")[0].trim();
+      toolText += this.addToolRow(p, units, this.rounding);
+    });
+    toolText += "</table>";
+    return toolText;
+  }
+
+  createFiveYearChart(series) {
+    const currentDashboard = this;
+    if (!series) {
+      return false;
+    }
+    return new Highcharts.chart("traffic-hc-range", {
+      chart: {
+        type: "line",
+        marginRight: 0,
+        spacingTop: 5,
+        spacingBottom: 5,
+      },
+      title: this.sharedHcParams.title(this.setTitle(true)),
+      xAxis: {
+        crosshair: true,
+        tickInterval: 1,
+        labels: {
+          step: 1,
+          formatter() {
+            return currentDashboard.lang.months[this.value + 1];
+          },
+        },
+      },
+      legend: this.sharedHcParams.legend,
+      yAxis: {
+        startOnTick: true,
+        endOnTick: false,
+        title: { text: this.params.unitsHolder.current },
+        tickPixelInterval: 40,
+        labels: {
+          formatter() {
+            return currentDashboard.sharedHcParams.labelFormatter(
+              this.value,
+              currentDashboard.params,
+              currentDashboard.lang
+            );
+          },
+        },
+      },
+      lang: {
+        noData: this.lang.fiveYr.notEnough,
+      },
+      tooltip: {
+        shared: true,
+        borderColor: cerPalette["Dim Grey"],
+        useHTML: true,
+        formatter() {
+          return currentDashboard.fiveYearTooltipText(
+            this,
+            currentDashboard.params.unitsHolder.current
+          );
+        },
+      },
+      plotOptions: this.sharedHcParams.plotOptions,
+      series,
+    });
+  }
+
+  hasImportsRedraw(chart) {
+    const currentDashboard = this;
     chart.update(
       {
         title: {
-          text: setTitle(params, false),
+          text: this.setTitle(false),
         },
         yAxis: [
           {
             title: {
-              text: lang.exportAxis(params.unitsHolder.current),
+              text: this.lang.exportAxis(this.params.unitsHolder.current),
             },
             height: "45%",
             max: undefined,
@@ -410,11 +521,11 @@ export async function mainTraffic(trafficData, metaData, lang) {
             tickPixelInterval: 40,
             labels: {
               formatter() {
-                return lang.numberFormat(this.value, 1);
+                return currentDashboard.lang.numberFormat(this.value, 1);
               },
             },
             title: {
-              text: lang.importAxis(params.unitsHolder.current),
+              text: this.lang.importAxis(this.params.unitsHolder.current),
             },
             top: "50%",
             height: "45%",
@@ -449,28 +560,190 @@ export async function mainTraffic(trafficData, metaData, lang) {
     );
     chart.redraw(false);
     return chart;
-  };
+  }
 
-  function resize(params, chart = undefined) {
-    const mainTrafficDiv = document.getElementById("traffic-hc");
-    if (params.hasImports) {
-      // user is on a gas profile, but there are imports that hide five year avg
-      mainTrafficDiv.classList.remove("traffic-hc-shared");
-      mainTrafficDiv.classList.add("traffic-hc-single-gas");
-      visibility(["traffic-hc-range"], "hide");
-    } else {
-      if (!mainTrafficDiv.classList.contains("traffic-hc-shared")) {
-        mainTrafficDiv.classList.add("traffic-hc-shared");
-      }
-      visibility(["traffic-hc-range"], "show");
-    }
-    if (chart) {
-      chart.reflow();
-      chart.redraw(true);
+  displayPointDescription() {
+    try {
+      const points = !this.params.tm
+        ? [this.params.defaultPoint]
+        : this.params.points;
+
+      const pointList =
+        points.length > 1 ? sortJsonAlpha(points, "name") : points;
+
+      const pointsText = pointList.map((p) => {
+        const textCol =
+          points.length > 1
+            ? `<strong>${p.name}</strong> - ${this.lang.points[p.id][1]}`
+            : `${this.lang.points[p.id][1]}`;
+        return { ...p, textCol };
+      });
+      document.getElementById("traffic-point-description").innerHTML =
+        listOrParagraph(pointsText, "textCol");
+    } catch (err) {
+      document.getElementById(
+        "traffic-point-description"
+      ).innerHTML = `<p>No key point description provided.</p>`;
     }
   }
 
-  const updateSeries = (chart, newSeries, hasImports, returnImports) => {
+  tableRound(v) {
+    const val = v;
+    let round = 0;
+    if (val > 100 || val <= 0) {
+      round = 0;
+    } else if (val > 1) {
+      round = 1;
+    } else {
+      round = 2;
+    }
+    return this.lang.numberFormat(val, round, "");
+  }
+
+  calculateAnnualAvg(series) {
+    const annualSeries = [];
+    const total = {};
+    let seriesCounter = 0;
+    series.forEach((s) => {
+      if (!isCapacity(s.id)) {
+        seriesCounter += 1;
+        const annual = {};
+        s.data.forEach((row) => {
+          const date = new Date(row[0]);
+          const year = date.getFullYear();
+          if (Object.prototype.hasOwnProperty.call(annual, year)) {
+            annual[year].push(row[1]);
+          } else {
+            annual[year] = [row[1]];
+          }
+        });
+
+        const annualAvg = {};
+        Object.keys(annual).forEach((yr) => {
+          let yearlyAvg = arrAvg(annual[yr]);
+          if (Object.prototype.hasOwnProperty.call(total, yr)) {
+            total[yr] += yearlyAvg;
+          } else {
+            total[yr] = yearlyAvg;
+          }
+          yearlyAvg = this.tableRound(yearlyAvg);
+          annualAvg[yr] = yearlyAvg;
+        });
+        annualSeries.push({ name: s.name, data: annualAvg });
+      }
+    });
+
+    const yearList = Object.keys(total);
+    yearList.unshift("");
+    Object.keys(total).forEach((yr) => {
+      total[yr] = this.tableRound(total[yr]);
+    });
+    if (seriesCounter > 1) {
+      annualSeries.push({ name: this.lang.total, data: total });
+    }
+    return { annualSeries, yearList };
+  }
+
+  buildAnnualTable(series) {
+    try {
+      if (series[0]) {
+        const { annualSeries, yearList } = this.calculateAnnualAvg(series);
+        let tableHtml = `<table class="table table-condensed"><thead><tr>`;
+        yearList.forEach((yr) => {
+          tableHtml += `<th scope="col">${yr}</th>`;
+        });
+        tableHtml += `</tr></thead><tbody>`;
+        annualSeries.forEach((product) => {
+          const rowValues = Object.values(product.data);
+          rowValues.unshift(product.name);
+          let tr = `<tr>`;
+          rowValues.forEach((annualValue, i) => {
+            if (i === 0) {
+              tr += `<td><strong>${annualValue}</strong></td>`;
+            } else {
+              tr += `<td>${annualValue}</td>`;
+            }
+          });
+          tableHtml += `${tr}</tr>`;
+        });
+        tableHtml += `</tbody></table>`;
+
+        let pointText = "";
+        if (this.params.tm) {
+          pointText = this.tmTitle();
+        } else {
+          pointText = this.params.defaultPoint.name;
+        }
+        const titleText = `${this.lang.annualTitle} ${pointText} (${this.titleParams.unitsHolder.current})`;
+        document.getElementById("annual-traffic-table-title").innerText =
+          titleText;
+        document.getElementById("annual-traffic-table").innerHTML = tableHtml;
+      } else {
+        const titleText = `${this.lang.annualTitle}`;
+        document.getElementById("annual-traffic-table-title").innerText =
+          titleText;
+        document.getElementById("annual-traffic-table").innerHTML = "";
+      }
+    } catch (err) {
+      document.getElementById(
+        "annual-traffic-table"
+      ).parentElement.style.display = "none";
+    }
+  }
+
+  updateDynamicComponents(timeSeries, runDescription = true) {
+    this.lang.dynamicText(
+      this.params,
+      this.lang.numberFormat,
+      this.lang.series
+    );
+    if (runDescription) {
+      this.displayPointDescription();
+    }
+    equalizeHeight("eq-ht-1", "eq-ht-2");
+    this.buildAnnualTable(timeSeries);
+  }
+
+  buildDashboard() {
+    this.resize();
+    addUnitsDisclaimer(
+      "conversion-disclaimer-traffic",
+      this.params.commodity,
+      this.lang.unitsDisclaimerText
+    );
+
+    this.pointMap = this.buildPointMap();
+    let [timeSeries, fiveSeries] = addSeriesParams(
+      this.createSeries(),
+      this.params.unitsHolder,
+      this.params.buildFive,
+      this.lang.series,
+      this.params.frequency
+    );
+
+    if (fiveSeries) {
+      fiveSeries = createFiveYearSeries(fiveSeries, this.lang);
+      this.params.fiveTrend = fiveYearTrend(fiveSeries, this.params.hasImports);
+    } else {
+      this.params.fiveTrend = false;
+    }
+
+    const trafficChart = this.createTrafficChart(
+      timeSeries,
+      this.setTitle(false)
+    );
+    this.trafficChart = trafficChart;
+
+    const fiveChart = this.createFiveYearChart(fiveSeries);
+    this.fiveChart = fiveChart;
+    // only m&np should meet this criteria on load
+    if (this.params.hasImports) {
+      this.hasImportsRedraw(trafficChart);
+    }
+    this.updateDynamicComponents(timeSeries);
+  }
+
+  static updateSeries(chart, newSeries, hasImports, returnImports) {
     const currentIds = chart.series.map((s) => s.userOptions.id);
     const newIds = newSeries.map((s) => s.id);
     let updateImports = hasImports;
@@ -501,50 +774,19 @@ export async function mainTraffic(trafficData, metaData, lang) {
       return [chart, updateImports];
     }
     return chart;
-  };
-
-  function getKeyPoint(defaultId) {
-    try {
-      return { id: defaultId, name: lang.points[defaultId][0] };
-    } catch (err) {
-      return { id: defaultId, name: "" };
-    }
   }
 
-  function displayPointDescription(params) {
-    try {
-      const points = !params.tm ? [params.defaultPoint] : params.points;
-
-      const pointList =
-        points.length > 1 ? sortJsonAlpha(points, "name") : points;
-
-      const pointsText = pointList.map((p) => {
-        const textCol =
-          points.length > 1
-            ? `<strong>${p.name}</strong> - ${lang.points[p.id][1]}`
-            : `${lang.points[p.id][1]}`;
-        return { ...p, textCol };
-      });
-      document.getElementById("traffic-point-description").innerHTML =
-        listOrParagraph(pointsText, "textCol");
-    } catch (err) {
-      document.getElementById(
-        "traffic-point-description"
-      ).innerHTML = `<p>No key point description provided.</p>`;
-    }
-  }
-
-  function updateFiveYearChart(fiveSeries, fiveChart, chartParams) {
+  updateFiveYearChart(fiveSeries) {
     const series = fiveSeries
-      ? createFiveYearSeries(fiveSeries, lang)
+      ? createFiveYearSeries(fiveSeries, this.lang)
       : undefined;
     let newChart;
-    if (fiveChart) {
-      newChart = updateSeries(fiveChart, series, undefined, false);
+    if (this.fiveChart) {
+      newChart = Traffic.updateSeries(this.fiveChart, series, undefined, false);
       newChart.update(
         {
           title: {
-            text: setTitle(chartParams, true),
+            text: this.setTitle(this.params, true),
           },
           yAxis: {
             visible: true,
@@ -556,230 +798,50 @@ export async function mainTraffic(trafficData, metaData, lang) {
       );
       newChart.redraw(true);
     }
-    return [series, newChart];
+    this.fiveChart = newChart;
+    return series;
   }
 
-  const tableRound = (v) => {
-    const val = v;
-    let round = 0;
-    if (val > 100 || val <= 0) {
-      round = 0;
-    } else if (val > 1) {
-      round = 1;
-    } else {
-      round = 2;
-    }
-    return lang.numberFormat(val, round, "");
-  };
-
-  function calculateAnnualAvg(series) {
-    const annualSeries = [];
-    const total = {};
-    let seriesCounter = 0;
-    series.forEach((s) => {
-      if (!isCapacity(s.id)) {
-        seriesCounter += 1;
-        const annual = {};
-        s.data.forEach((row) => {
-          const date = new Date(row[0]);
-          const year = date.getFullYear();
-          if (Object.prototype.hasOwnProperty.call(annual, year)) {
-            annual[year].push(row[1]);
-          } else {
-            annual[year] = [row[1]];
-          }
-        });
-
-        const annualAvg = {};
-        Object.keys(annual).forEach((yr) => {
-          let yearlyAvg = arrAvg(annual[yr]);
-          if (Object.prototype.hasOwnProperty.call(total, yr)) {
-            total[yr] += yearlyAvg;
-          } else {
-            total[yr] = yearlyAvg;
-          }
-          yearlyAvg = tableRound(yearlyAvg);
-          annualAvg[yr] = yearlyAvg;
-        });
-        annualSeries.push({ name: s.name, data: annualAvg });
-      }
-    });
-
-    const yearList = Object.keys(total);
-    yearList.unshift("");
-    Object.keys(total).forEach((yr) => {
-      total[yr] = tableRound(total[yr]);
-    });
-    if (seriesCounter > 1) {
-      annualSeries.push({ name: lang.total, data: total });
-    }
-    return { annualSeries, yearList };
-  }
-
-  function buildAnnualTable(series, titleParams) {
-    try {
-      if (series[0]) {
-        const { annualSeries, yearList } = calculateAnnualAvg(series);
-        let tableHtml = `<table class="table table-condensed"><thead><tr>`;
-        yearList.forEach((yr) => {
-          tableHtml += `<th scope="col">${yr}</th>`;
-        });
-        tableHtml += `</tr></thead><tbody>`;
-        annualSeries.forEach((product) => {
-          const rowValues = Object.values(product.data);
-          rowValues.unshift(product.name);
-          let tr = `<tr>`;
-          rowValues.forEach((annualValue, i) => {
-            if (i === 0) {
-              tr += `<td><strong>${annualValue}</strong></td>`;
-            } else {
-              tr += `<td>${annualValue}</td>`;
-            }
-          });
-          tableHtml += `${tr}</tr>`;
-        });
-        tableHtml += `</tbody></table>`;
-
-        let pointText = "";
-        if (titleParams.tm) {
-          pointText = tmTitle(titleParams);
-        } else {
-          pointText = titleParams.defaultPoint.name;
-        }
-        const titleText = `${lang.annualTitle} ${pointText} (${titleParams.unitsHolder.current})`;
-        document.getElementById("annual-traffic-table-title").innerText =
-          titleText;
-        document.getElementById("annual-traffic-table").innerHTML = tableHtml;
-      } else {
-        const titleText = `${lang.annualTitle}`;
-        document.getElementById("annual-traffic-table-title").innerText =
-          titleText;
-        document.getElementById("annual-traffic-table").innerHTML = "";
-      }
-    } catch (err) {
-      document.getElementById(
-        "annual-traffic-table"
-      ).parentElement.style.display = "none";
-    }
-  }
-
-  function updateDynamicComponents(params, timeSeries, runDescription = true) {
-    lang.dynamicText(params, lang.numberFormat, lang.series);
-    if (runDescription) {
-      displayPointDescription(params);
-    }
-    equalizeHeight("eq-ht-1", "eq-ht-2");
-    buildAnnualTable(timeSeries, params);
-  }
-
-  function buildDashboard() {
-    const defaultPoint = getKeyPoint(metaData.defaultPoint);
-    const chartParams = addUnitsAndSetup(
-      metaData.units,
-      defaultPoint,
-      lang.units,
-      "traffic",
-      metaData.frequency
-    );
-
-    chartParams.frequency = metaData.frequency;
-    chartParams.defaultPoint = defaultPoint;
-    chartParams.points = getPointList(metaData);
-    chartParams.companyName = metaData.companyName;
-    chartParams.directions = metaData.directions;
-    chartParams.trendText = metaData.trendText;
-    resize(chartParams);
-    addUnitsDisclaimer(
-      "conversion-disclaimer-traffic",
-      chartParams.commodity,
-      lang.unitsDisclaimerText
-    );
-
-    let pointMap;
-    if (chartParams.defaultPoint.id !== "KP0000") {
-      pointMap = new KeyPointMap({
-        points: chartParams.points,
-        selected: !chartParams.tm
-          ? [chartParams.defaultPoint]
-          : chartParams.points,
-        companyName: chartParams.companyName,
-      });
-      // KP0000 = system. These pipelines should be using trafficNoMap.hbs
-      if (chartParams.points.length === 1) {
-        visibility(["traffic-points-btn", "key-point-title"], "hide");
-      } else {
-        addPointButtons(chartParams);
-      }
-      pointMap.addBaseMap();
-      pointMap.addPoints();
-    }
-
-    let [timeSeries, fiveSeries] = addSeriesParams(
-      createSeries(trafficData, chartParams),
-      chartParams.unitsHolder,
-      chartParams.buildFive,
-      lang.series,
-      chartParams.frequency
-    );
-
-    if (fiveSeries) {
-      fiveSeries = createFiveYearSeries(fiveSeries, lang);
-      chartParams.fiveTrend = fiveYearTrend(fiveSeries, chartParams.hasImports);
-    } else {
-      chartParams.fiveTrend = false;
-    }
-
-    let trafficChart = createTrafficChart(
-      timeSeries,
-      setTitle(chartParams, false),
-      chartParams
-    );
-
-    let fiveChart = createFiveYearChart(fiveSeries, chartParams);
-    // only m&np should meet this criteria on load
-    if (chartParams.hasImports) {
-      hasImportsRedraw(trafficChart, chartParams);
-    }
-    updateDynamicComponents(chartParams, timeSeries);
-
+  keyPointListener() {
     // user selects key point
-    if (!chartParams.tm && chartParams.defaultPoint.id !== "KP0000") {
+    if (!this.params.tm && this.params.defaultPoint.id !== "KP0000") {
       document
         .getElementById("traffic-points-btn")
         .addEventListener("click", (event) => {
           btnGroupClick("traffic-points-btn", event);
-          chartParams.hasImports = false;
-          chartParams.defaultPoint = getKeyPoint(event.target.value);
+          this.params.hasImports = false;
+          this.params.defaultPoint = this.getKeyPoint(event.target.value);
 
-          [timeSeries, fiveSeries] = addSeriesParams(
-            trafficData[chartParams.defaultPoint.id],
-            chartParams.unitsHolder,
-            chartParams.buildFive,
-            lang.series,
-            chartParams.frequency
+          let [timeSeries, fiveSeries] = addSeriesParams(
+            this.trafficData[this.params.defaultPoint.id],
+            this.params.unitsHolder,
+            this.params.buildFive,
+            this.lang.series,
+            this.params.frequency
           );
 
-          [trafficChart, chartParams.hasImports] = updateSeries(
-            trafficChart,
+          const [trafficChart, hasImports] = Traffic.updateSeries(
+            this.trafficChart,
             timeSeries,
-            chartParams.hasImports,
+            this.params.hasImports,
             true
           );
+          this.params.hasImports = hasImports;
 
-          if (chartParams.hasImports) {
-            trafficChart = hasImportsRedraw(trafficChart, chartParams);
+          if (this.params.hasImports) {
+            this.trafficChart = this.hasImportsRedraw(trafficChart);
           } else {
-            trafficChart.update(
+            this.trafficChart.update(
               {
                 title: {
-                  text: setTitle(chartParams, false),
+                  text: this.setTitle(false),
                 },
                 yAxis: [
                   {
                     height: "100%",
                     max: undefined,
                     title: {
-                      text: chartParams.unitsHolder.current,
+                      text: this.params.unitsHolder.current,
                     },
                   },
                   { visible: false },
@@ -787,21 +849,17 @@ export async function mainTraffic(trafficData, metaData, lang) {
               },
               false
             );
-            [fiveSeries, fiveChart] = updateFiveYearChart(
-              fiveSeries,
-              fiveChart,
-              chartParams
-            );
+            fiveSeries = this.updateFiveYearChart(fiveSeries);
           }
-          resize(chartParams, trafficChart);
-          pointMap.pointChange([chartParams.defaultPoint]);
-          chartParams.fiveTrend = fiveYearTrend(
+          this.resize(this.trafficChart);
+          this.pointMap.pointChange([this.params.defaultPoint]);
+          this.params.fiveTrend = fiveYearTrend(
             fiveSeries,
-            chartParams.hasImports
+            this.params.hasImports
           );
-          updateDynamicComponents(chartParams, timeSeries);
+          this.updateDynamicComponents(timeSeries);
         });
-    } else if (chartParams.defaultPoint.id !== "KP0000") {
+    } else if (this.params.defaultPoint.id !== "KP0000") {
       // user is on trans mountain profile
       document
         .getElementById("traffic-points-btn")
@@ -809,75 +867,79 @@ export async function mainTraffic(trafficData, metaData, lang) {
           if (event.target && event.target.tagName === "INPUT") {
             const pointId = event.target.value;
             if (event.target.checked) {
-              chartParams.points.push({
+              this.params.points.push({
                 id: pointId,
-                name: lang.points[pointId][0],
+                name: this.lang.points[pointId][0],
               });
             } else {
-              chartParams.points = chartParams.points.filter(
+              this.params.points = this.params.points.filter(
                 (point) => point.id !== pointId
               );
             }
 
-            while (trafficChart.series.length) {
-              trafficChart.series[0].remove(false, false, false);
+            while (this.trafficChart.series.length) {
+              this.trafficChart.series[0].remove(false, false, false);
             }
 
-            if (chartParams.points.length >= 0) {
+            let timeSeries;
+            let fiveSeries;
+            if (this.params.points.length >= 0) {
               [timeSeries, fiveSeries] = addSeriesParams(
-                createSeries(trafficData, chartParams),
-                chartParams.unitsHolder,
-                chartParams.buildFive,
-                lang.series,
-                chartParams.frequency
+                this.createSeries(this.trafficData),
+                this.params.unitsHolder,
+                this.params.buildFive,
+                this.lang.series,
+                this.params.frequency
               );
 
               timeSeries.forEach((newS) => {
-                trafficChart.addSeries(newS, false, false);
+                this.trafficChart.addSeries(newS, false, false);
               });
 
-              trafficChart.update({
+              this.trafficChart.update({
                 title: {
-                  text: setTitle(chartParams, false),
+                  text: this.setTitle(false),
                 },
               });
-              [fiveSeries, fiveChart] = updateFiveYearChart(
-                fiveSeries,
-                fiveChart,
-                chartParams
-              );
-              pointMap.pointChange(chartParams.points);
+              this.updateFiveYearChart(fiveSeries);
+              this.pointMap.pointChange(this.params.points);
             }
-            updateDynamicComponents(chartParams, timeSeries);
+            this.updateDynamicComponents(timeSeries);
           }
         });
     }
+  }
 
+  unitsListener() {
     // user selects units
     document
       .getElementById("select-units-radio-traffic")
       .addEventListener("click", (event) => {
         if (event.target && event.target.value) {
-          chartParams.unitsHolder.current = event.target.value;
-          [timeSeries, fiveSeries] = addSeriesParams(
-            createSeries(trafficData, chartParams),
-            chartParams.unitsHolder,
-            chartParams.buildFive,
-            lang.series,
-            chartParams.frequency
+          this.params.unitsHolder.current = event.target.value;
+          const [timeSeries, fiveSeries] = addSeriesParams(
+            this.createSeries(this.trafficData),
+            this.params.unitsHolder,
+            this.params.buildFive,
+            this.lang.series,
+            this.params.frequency
           );
 
-          trafficChart.update(
+          const currentDashboard = this;
+          this.trafficChart.update(
             {
               series: timeSeries,
               yAxis: [
                 {
-                  title: { text: chartParams.unitsHolder.current },
+                  title: { text: this.params.unitsHolder.current },
                 },
               ],
               tooltip: {
                 formatter() {
-                  return tooltipText(this, chartParams.unitsHolder.current);
+                  return currentDashboard.tooltipText(
+                    this,
+                    currentDashboard.params.unitsHolder.current
+                  );
                 },
               },
             },
@@ -885,24 +947,24 @@ export async function mainTraffic(trafficData, metaData, lang) {
             false,
             false
           );
-          if (chartParams.hasImports) {
-            hasImportsRedraw(trafficChart, chartParams);
-            trafficChart.redraw(false);
+          if (this.params.hasImports) {
+            this.hasImportsRedraw(this.trafficChart);
+            this.trafficChart.redraw(false);
           }
-          if (fiveChart) {
-            fiveChart.update(
+          if (this.fiveChart) {
+            this.fiveChart.update(
               {
-                series: createFiveYearSeries(fiveSeries, lang),
+                series: createFiveYearSeries(fiveSeries, this.lang),
                 tooltip: {
                   formatter() {
-                    return fiveYearTooltipText(
+                    return currentDashboard.fiveYearTooltipText(
                       this,
-                      chartParams.unitsHolder.current
+                      currentDashboard.params.unitsHolder.current
                     );
                   },
                 },
                 yAxis: {
-                  title: { text: chartParams.unitsHolder.current },
+                  title: { text: this.params.unitsHolder.current },
                 },
               },
               true,
@@ -910,35 +972,38 @@ export async function mainTraffic(trafficData, metaData, lang) {
               false
             );
           }
-          updateDynamicComponents(chartParams, timeSeries, false);
+          this.updateDynamicComponents(timeSeries, false);
         }
       });
+  }
 
-    // update map zoom
-    if (chartParams.defaultPoint.id !== "KP0000") {
+  mapZoomListener() {
+    if (this.params.defaultPoint.id !== "KP0000") {
       document
         .getElementById("key-point-zoom-btn")
         .addEventListener("click", (event) => {
           btnGroupClick("key-point-zoom-btn", event);
           if (event.target.value === "zoom-in") {
-            pointMap.reZoom(true);
+            this.pointMap.reZoom(true);
           } else {
-            pointMap.reZoom(false);
+            this.pointMap.reZoom(false);
           }
         });
     }
   }
+}
 
-  function buildDecision() {
-    try {
-      if (metaData.build) {
-        return buildDashboard();
-      }
-      return undefined;
-    } catch (err) {
-      console.log(err);
-      return loadChartError("traffic-section", lang.dashboardError);
+export async function mainTraffic(trafficData, metaData, lang) {
+  try {
+    if (metaData.build) {
+      const traffic = new Traffic({ trafficData, metaData, lang });
+      traffic.buildDashboard();
+      traffic.keyPointListener();
+      traffic.unitsListener();
+      traffic.mapZoomListener();
+      return traffic;
     }
+  } catch (err) {
+    return loadChartError("traffic-section", lang.dashboardError);
   }
-  return buildDecision();
 }
