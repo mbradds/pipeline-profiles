@@ -15,6 +15,11 @@
  *
  */
 
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const tollsDescription = require("../data_output/tolls/descriptions.json");
+
 const unitsEn = "Select units:";
 const unitsFr = "Choisir une unité :";
 const trafficUpdatedEn =
@@ -934,4 +939,4 @@ const fr = {
   },
 };
 
-export const profileText = { en, fr };
+export const profileText = { en, fr, tollsDescription };

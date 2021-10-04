@@ -203,10 +203,10 @@ styles for remediation dashboard
   align-items: stretch;
   align-content: space-between;
 }
-#tolls-info {
+/* #tolls-info {
   flex-grow: 1;
   height: inherit;
-}
+} */
 #tolls-path-btn {
   overflow-y: auto;
   height: inherit;

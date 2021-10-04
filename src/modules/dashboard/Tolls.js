@@ -296,17 +296,6 @@ export class Tolls {
     return selected;
   }
 
-  // updateTollsDescription() {
-  //   const split = this.currentSplit
-  //     ? `<strong> ${this.currentSplit} </strong>`
-  //     : " ";
-
-  //   document.getElementById(
-  //     "toll-description"
-  //   ).innerHTML = `<p>2-3 sentence description of the${split}toll methodology.</p>`;
-  //   equalizeHeight("tolls-filter-container", "tolls-info");
-  // }
-
   removeAllSeries() {
     while (this.chart.series.length) {
       this.chart.series[0].remove(false, false, false);

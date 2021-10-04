@@ -169,14 +169,26 @@ def round_values(df):
     return df, decimals
 
 
-# def add_description(company_data, company, desc):
-
-#     if company in list(desc["PipelineID"]):
-#         d = list(desc[desc["PipelineID"] == company]["Toll Description"])[0]
-#         company_data["description"] = {"e": d, "f": d}
-#     else:
-#         company_data["description"] = {"e": None, "f": None}
-#     return company_data
+def process_description(desc, save):
+    
+    description_lookup = {}
+    for company in list(desc["PipelineID"]):
+        d_text = str(list(desc[desc["PipelineID"] == company]["Toll Description"])[0])
+        if d_text != "nan":
+            d_text = d_text.splitlines()
+            paragraphs = ""
+            for p in d_text:
+                if len(p) > 0:
+                    p = p.replace("&", "&amp;")
+                    p = "<p>"+p+"</p>"
+                    paragraphs = paragraphs + p
+            description_lookup[company] = {"en": paragraphs, "fr": paragraphs}
+        else:
+            description_lookup[company] = {"en": None, "fr": None}
+    if save:
+        with open('../data_output/tolls/descriptions.json', 'w') as fp:
+            json.dump(description_lookup, fp, default=str)
+    return None
 
 
 def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
@@ -218,6 +230,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
     company_files = get_company_list()
+    process_description(descriptions, save)
 
     if companies:
         company_files = companies
@@ -234,7 +247,6 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
-            # meta = add_description(meta, company, descriptions)
             meta["pathTotals"] = path_totals
             meta["decimals"] = decimals
             paths = sorted(list(set(df_c["Path"])))

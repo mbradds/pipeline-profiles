@@ -1,20 +1,22 @@
 <h2 id="tolls">Tolls (in progress)</h2>
 <p class="small">Section updated September 2021</p>
 <div id="tolls-section">
+  {{#if text.tollDescription}}
   <div class="row">
     <div class="col-md-12">
-      <section class="panel panel-info" id="tolls-info">
+      <section class="panel panel-info">
         <header class="panel-heading">
           <h5 class="panel-title">System Tolls Description</h5>
         </header>
         <div class="panel-body">
           <div id="toll-description">
-            <p>2-3 sentence description of the toll methodology.</p>
+            {{text.tollDescription}}
           </div>
         </div>
       </section>
     </div>
   </div>
+  {{/if}}
   <div class="row">
     <div class="col-md-12">
       <div class="btn-group btn-group-justified mrgn-bttm-md" id="tolls-split-btn">

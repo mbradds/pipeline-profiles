@@ -59,6 +59,8 @@ const profileWebpackConfig = (function config() {
         pageData.text = profileText[lang];
         pageData.text.pipelineName = { id: name[0] };
         pageData.text.commodity = name[1];
+        pageData.text.tollDescription =
+          profileText.tollsDescription[name[0]][lang];
         const htmlFileName = `${lang}/${name[1]}/${name[0]}_${lang}.html`;
         indexLinks[lang][name[1]].push({ link: htmlFileName, name: name[2] });
         html.push(

@@ -3,6 +3,9 @@
   "env": {
     "browser": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "rules": {
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",
