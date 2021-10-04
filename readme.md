@@ -147,7 +147,7 @@ pipeline_profiles
 ## Software prerequisites
 
 1. npm (I'm using v7.24.1)
-2. node (I'm using v14.16.1)
+2. node (I'm using v14.18.0)
 3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
 4. Git (for contributing)
 5. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)

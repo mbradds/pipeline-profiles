@@ -1,5 +1,6 @@
 import os
 import json
+import re
 import pandas as pd
 from util import normalize_text, normalize_dates, get_company_list, get_data
 script_dir = os.path.dirname(__file__)
@@ -180,6 +181,13 @@ def process_description(desc, save):
             for p in d_text:
                 if len(p) > 0:
                     p = p.replace("&", "&amp;")
+                    regdocs = re.findall("\[(.*?)\]", p)
+                    if len(regdocs) > 0:
+                        for link_text in regdocs:
+                            p = p.replace(link_text,
+                                          '<a href="'+
+                                          'https://apps.cer-rec.gc.ca/REGDOCS/Item/View/'+link_text.split(' ')[-1]+'">'+link_text+'</a>')
+                    # print(result)
                     p = "<p>"+p+"</p>"
                     paragraphs = paragraphs + p
             description_lookup[company] = {"en": paragraphs, "fr": paragraphs}

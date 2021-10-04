@@ -190,18 +190,13 @@ styles for remediation dashboard
 }
 
 /* styles for tolls dashboard */
-
-#tolls-path-btn .checkbox {
-  margin-top: 0px;
-}
 #tolls-path-btn {
   margin-right: 25px;
 }
-#tolls-filters {
+#tolls-filter-container {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  align-content: space-between;
+  align-items: flex-start;
 }
 /* #tolls-info {
   flex-grow: 1;
