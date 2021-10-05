@@ -323,44 +323,44 @@ export function oandmTextEng(meta, lang) {
 }
 
 export function oandmTextFra(meta, lang) {
-  const firstParagraph = `<p>FR: Since 2015, there have been a total of ${dynamicValue(
+  const firstParagraph = `<p>Depuis 2015, un total de ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
-  )} O&M activities reported by the ${formatCompanyName(
+  )} activités d’exploitation et d’entretien ont été signalées sur le ${formatCompanyName(
     meta.system
-  )}. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
+  )}. Lorsqu’il s’agit d’une fouille d’intégrité, il peut s’agir d’une mise à nu d’une zone du pipeline dans le cadre d’une ou de plusieurs évaluations de l’intégrité. Il y a eu ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
-  )} individual integrity digs as part of the reported O&M activities.<p>`;
+  )} fouilles d’intégrité individuelles dans le cadre des activités d’exploitation et d’entretien déclarées.<p>`;
 
   let secondParagraph = "";
   if (meta.nearby) {
-    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right-of-way, including near populated areas. In the past year (${
+    secondParagraph = `<p>Ces activités d’exploitation et d’entretien peuvent avoir lieu n’importe où le long de l’emprise pipelinière ou à proximité de celle-ci, y compris à proximité de zones peuplées. Au cours de la dernière année (${
       meta.nearbyYear
-    }), O&M activities have occurred most often near ${dynamicValue(
+    }), les activités d’exploitation et d’entretien ont le plus souvent eu lieu notamment près ${dynamicValue(
       meta.nearby.join(", ")
-    )} among others.</p>`;
+    )}.</p>`;
   }
 
-  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require the acquisition of additional new permanent or temporary land outside company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
+  let thirdParagraph = `<p>Pour le chantier et l’équipement, les activités d’exploitation et d’entretien peuvent nécessiter l’acquisition de nouveaux terrains permanents ou temporaires à l’extérieur de la propriété de la société. À ce jour, les activités signalées à la Régie pour ce réseau ont nécessité un total de ${dynamicValue(
     `${meta.landRequired} hectares`
   )}`;
-  const iceRinks = ` of new land, an area equal to ${dynamicValue(
+  const iceRinks = ` de nouveaux terrains, soit l’équivalent de ${dynamicValue(
     meta.iceRinks
-  )} ice hockey rinks.<p>`;
+  )} patinoires de hockey.<p>`;
   if (meta.landRequired > 0) {
     thirdParagraph += iceRinks;
   } else {
     thirdParagraph += `.`;
   }
 
-  const fourthParagraph = `<p>There have been ${dynamicValue(
+  const fourthParagraph = `<p>Il y a eu ${dynamicValue(
     meta.atRisk
-  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
+  )} activités d’exploitation et d’entretien pour lesquelles de nouveaux terrains temporaires ou permanents ont été requis et qui se trouvent dans l’habitat essentiel d’une espèce en voie de disparition ou menacée inscrite à l’annexe 1 de la <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Loi sur les espèces en péril</i></a> fédérale. Lorsque cela se produit, la société peut être tenue de respecter d’autres obligations réglementaires en plus de celles de la LRCE, comme celles de la<a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Loi sur la convention concernant les oiseaux migrateurs</i></a> et de la <i>Loi sur les espèces en péril</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
 }
 
-export function remediationText(meta, lang) {
+export function remediationTextEng(meta, lang) {
   const firstParagraph = `<p>The ${formatCompanyName(
     meta.systemName
   )} has reported a total of ${dynamicValue(
@@ -368,6 +368,20 @@ export function remediationText(meta, lang) {
   )} contaminated sites since 2011 when the first Remediation Process Guide was first published. There have been ${dynamicValue(
     meta.new
   )} contaminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
+
+  // const totalText = firstParagraph;
+  document.getElementById("remediation-dynamic-text").innerHTML =
+    firstParagraph;
+}
+
+export function remediationTextFra(meta, lang) {
+  const firstParagraph = `<p>${dynamicValue(
+    lang.numberFormat(meta.new + meta.old, 0)
+  )} sites contaminés ont été signalés sur le ${formatCompanyName(
+    meta.systemName
+  )} depuis 2011, année où le premier Guide sur le processus d’assainissement a été publié. De plus, ${dynamicValue(
+    meta.new
+  )} sites contaminés ont été signalés depuis août 2018, et l’information à leur sujet est présentée dans le tableau de bord ci-dessous.</p>`;
 
   // const totalText = firstParagraph;
   document.getElementById("remediation-dynamic-text").innerHTML =

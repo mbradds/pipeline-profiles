@@ -1,7 +1,6 @@
 import { EventMap } from "../modules/dashboard/EventMap.js";
 import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
 import { EventTrend } from "../modules/dashboard/EventTrend.js";
-import { remediationText } from "../modules/dynamicText.js";
 import { loadChartError } from "../modules/util.js";
 import { noEventsFlag } from "./dashboardUtil.js";
 
@@ -89,7 +88,7 @@ export async function mainRemediation(data, lang) {
       }
 
       chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
-      remediationText(chartParams, lang);
+      lang.dynamicText(chartParams, lang);
 
       setTitle(lang, chartParams);
       const thisMap = remediationMap(data.data, field, filters, lang.dashboard);

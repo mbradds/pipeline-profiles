@@ -11,6 +11,7 @@ import {
   incidentsTextEng,
   trafficTrendTextEng,
   oandmTextEng,
+  remediationTextEng,
 } from "./dynamicText.js";
 
 import points from "../data_output/traffic/points/en.json";
@@ -491,6 +492,7 @@ export const englishDashboard = {
     companyToSystem,
     title: (company, cutoffDate) =>
       `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
+    dynamicText: remediationTextEng,
     dashboard: {
       userPopUp,
       locationError,

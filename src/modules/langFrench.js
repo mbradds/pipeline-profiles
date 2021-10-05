@@ -11,6 +11,7 @@ import {
   incidentsTextFra,
   trafficTrendTextFra,
   oandmTextFra,
+  remediationTextFra,
 } from "./dynamicText.js";
 
 import points from "../data_output/traffic/points/fr.json";
@@ -458,16 +459,17 @@ export const frenchDashboard = {
     legendClick,
     companyToSystem,
     dynamicText: oandmTextFra,
-    eventName: "O&M Activities",
-    title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
+    eventName: "Activités d’exploitation et d’entretien",
+    title: (pipeline) =>
+      `Tableau de bord : ${pipeline} - Activités d’exploitation et d’entretien par année`,
     trendYTitle,
     pillTitles: {
       titles: {
-        id: "FR: Integrity Dig?",
-        fp: "FR: Fish Present?",
-        is: "FR: In Stream Work Required?",
-        sr: "FR: Species At Risk Present?",
-        p: "FR: Province/Territory",
+        id: "Fouille d’intégrité?",
+        fp: "Poisson présent?",
+        is: "Travaux dans un cours d’eau requis?",
+        sr: "Espèces en péril?",
+        p: "Province ou territoire",
       },
     },
     seriesInfo: {
@@ -478,10 +480,10 @@ export const frenchDashboard = {
       p: regionInfo,
     },
     definitions: {
-      id: "FR: Indicates if the activity includes excavation to expose, assess, or repair an existing pipeline.",
-      fp: "FR: Indicates if there will be ground disturbance using power-operated equipment within 30M of a wetland or a water body or within 30M of the substrate of a wetland or water body at the activity site, and the water body is fish-bearing.",
-      is: "FR: Indicates if there will be any in-stream work at activity site.",
-      sr: "FR: Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
+      id: "Indique l’activité si elle consiste en des travaux d’excavation pour mettre à découvert, examiner ou réparer un pipeline.",
+      fp: "Indique si l’activité prévoit-elle la perturbation du sol à l’aide d’un équipement motorisé à moins de 30 mètres d’une zone humide ou d’un plan d’eau ou à moins de 30 mètres du substratum d’un plan d’eau ou d’une zone humide au site d’activité et si le cours d’eau est poissonneux?",
+      is: "Indique s’il y aura des travaux dans un cours d’eau sur le site de l’activité.",
+      sr: "Indique s’il y a des espèces en péril répertoriées à l’annexe 1 de la Loi sur les espèces en péril.",
     },
     noEvents,
   },
@@ -491,7 +493,8 @@ export const frenchDashboard = {
     dateFormat,
     companyToSystem,
     title: (company, cutoffDate) =>
-      `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
+      `Tableau de bord : ${company} - Sites contaminés (post ${cutoffDate})`,
+    dynamicText: remediationTextFra,
     dashboard: {
       userPopUp,
       numberFormat,
@@ -501,7 +504,7 @@ export const frenchDashboard = {
       countDisclaimer,
       barClick,
       locationDisclaimer,
-      eventName: "Contaminated sites (FR)",
+      eventName: "Sites contaminés",
       trendYTitle,
       cf: units.cf,
       bbl: units.bbl,
@@ -514,12 +517,12 @@ export const frenchDashboard = {
           vol: "FR: Initial estimate of contaminated soil",
           w: "FR: Within 30M of water-body",
           use: "FR: Applicable Land Use",
-          p: "FR: Province",
+          p: "Province",
           a: "FR: Activity at time of discovery",
           c: "FR: Category of Contaminants",
           ps: "FR: Pipeline or Facility?",
           s: "FR: Site Status",
-          y: "FR: Year",
+          y: "Année",
         },
         click,
       },
