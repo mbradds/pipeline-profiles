@@ -22,6 +22,7 @@ src/data_management/raw_data/*
 !src/data_management/raw_data/systemId.csv
 !src/data_management/raw_data/tolls.csv
 !src/data_management/raw_data/tolls_description.csv
+!src/data_management/raw_data/remediation_pre_2018.csv
 !src/data_management/raw_data/test_data
 deploy/*
 !deploy/*.py
