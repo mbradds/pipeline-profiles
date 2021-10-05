@@ -260,8 +260,8 @@ def process_throughput(points,
         folder_name = company.replace(' ', '').replace('.', '')
         df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
         if not df_c.empty:
-            if company == "MNP":
-                df_c["KeyPointID"] = "KP0046"
+            # if company == "MNP":
+            #     df_c["KeyPointID"] = "KP0046"
             meta["build"] = True
             trend = meta_trend(df_c, commodity)
             meta["trendText"] = trend
@@ -412,5 +412,5 @@ if __name__ == "__main__":
     # points = get_traffic_data(False, True, "key_points.sql")
     # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(save=True, sql=False)
+    combined_traffic(save=True, sql=True)
     print('completed throughput!')

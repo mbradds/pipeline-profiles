@@ -30,17 +30,17 @@ def optimize_json(df):
     return df
 
 
-def meta(df, company):
+def meta(df, company, old):
     meta_data = {}
     meta_data["companyName"] = company
-
-    df_old = df[df['Final Submission Date'] < MIN_DATE].copy().reset_index(drop=True)
     df = df[df['Final Submission Date'] >= MIN_DATE].copy().reset_index(drop=True)
-
-    meta_data['old'] = int(len(df_old.index))
     meta_data['new'] = int(len(df.index))
-    # this is better added in the front end
-    # meta_data["cutoff"] = [MIN_DATE.year, MIN_DATE.month, MIN_DATE.day]
+
+    if company in list(old["Company"]):
+        pre_2018 = old[old["Company"] == company].copy()
+        meta_data["old"] = list(pre_2018["Old Events"])[0]
+    else:
+        meta_data["old"] = 0
 
     # remediation folks dont want this info
     # soilVolume = df["vol"].sum()
@@ -68,14 +68,14 @@ def apply_contaminant_ids(df, cont, col_name="Contaminants at the Site"):
 
 
 def process_remediation(sql=False, companies=False, test=False, save=True):
-    
+
     if test:
         print("reading test remediation test data")
         df = pd.read_csv(os.path.join(script_dir,
                                       "raw_data",
                                       "test_data",
                                       "remediation.csv"))
-        
+
         # match the test data with the database columns
         df = df.rename(columns={"Commodity Carried": "Product Carried",
                                 "Nearest Populated Center": "NearestPopulatedCentre",
@@ -92,6 +92,10 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
                             script_loc=script_dir,
                             query="remediationContaminants.sql",
                             db="dsql22cap")
+    old = get_data(sql=sql,
+                   script_loc=script_dir,
+                   query="remediation_pre_2018.sql",
+                   db="dsql22cap")
 
     df = apply_contaminant_ids(df, contaminants)
     df["Contaminants at the Site"] = [["18"] if x == None else x for x in df["Contaminants at the Site"]]
@@ -206,6 +210,9 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
     df['Company Name'] = df['Company Name'].replace(company_rename())
     df = apply_system_id(df, "Company Name")
 
+    old["Company"] = old["Company"].replace(company_rename())
+    old = apply_system_id(old, "Company")
+
     if companies:
         company_files = companies
     else:
@@ -217,7 +224,7 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
         this_company_data = {}
 
         if not df_c.empty:
-            this_company_data["meta"] = meta(df_c, company)
+            this_company_data["meta"] = meta(df_c, company, old)
             this_company_data["build"] = True
             this_company_data["data"] = optimize_json(df_c)
             if save and not test:
@@ -235,4 +242,4 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
 
 
 if __name__ == "__main__":
-    df_ = process_remediation(sql=False)
+    df_ = process_remediation(sql=True)
