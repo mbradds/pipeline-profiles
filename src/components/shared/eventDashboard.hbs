@@ -1,8 +1,19 @@
 <div class="row">
   <div class="col-md-12" id="{{text.id}}-dashboard">
     <div class="plains_disclaimer"></div>
-    <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
+    <div class="row">
+      {{#if text.hasRadio}}
+      <div class="col-md-8 col-sm-8">
+        <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
+      </div>
+      {{else}}
+      <div class="col-md-12">
+        <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
+      </div>
+      {{/if}}
+    <div class="col-md-4 col-sm-4" id="radio-col">
     {{#if text.hasRadio}}
+    <div class="col-md-4 col-sm-4" id="radio-col"></div>
       <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
         <form>
           <label class="radio-inline">
@@ -13,7 +24,9 @@
             {{text.volRadio}}</label>
         </form>
       </div>
+      </div>
     {{/if}}
+    </div>
     <div class="btn-group btn-group-justified" id="{{text.id}}-view-type">
       <div class="btn-group">
         <button type="button" class="btn btn-default active" value="map">
