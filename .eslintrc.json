@@ -11,6 +11,7 @@
     "no-nested-ternary": "off",
     "no-underscore-dangle": "warn",
     "new-cap": "warn",
+    "prefer-destructuring": ["warn", { "object": true, "array": true }],
     "no-param-reassign": ["error", { "props": false }],
     "import/extensions": [
       "error",

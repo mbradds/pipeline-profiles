@@ -88,19 +88,16 @@ export class Traffic {
 
   getPointList(meta) {
     return sortJsonAlpha(
-      meta.keyPoints.map((point) => {
-        const pointName = this.lang.points[point.KeyPointID][0];
-        return {
-          id: point.KeyPointID,
-          name: pointName,
-          loc: point.loc,
-        };
-      }),
+      meta.keyPoints.map((point) => ({
+        id: point.KeyPointID,
+        name: this.lang.points[point.KeyPointID][0],
+        loc: point.loc,
+      })),
       "name"
     );
   }
 
-  resize(chart = false) {
+  resize(chart = undefined) {
     const mainTrafficDiv = document.getElementById("traffic-hc");
     if (this.params.hasImports) {
       // user is on a gas profile, but there are imports that hide five year avg
@@ -277,10 +274,10 @@ export class Traffic {
     };
 
     const yFunction = yVal(p);
-    let colorCircle = "";
-    if (unit !== "%" && p.series.name !== "Total") {
-      colorCircle = `<span style="color: ${p.color}">&#11044</span>&nbsp;`;
-    }
+    const colorCircle =
+      unit !== "%" && p.series.name !== "Total"
+        ? `<span style="color: ${p.color}">&#11044</span>&nbsp;`
+        : " ";
     return `<tr style="${extraStyle}"><th>${colorCircle}${
       p.series.name
     }:</th><th>&nbsp;${yFunction(p)} ${unit}</th></tr>`;
@@ -321,7 +318,6 @@ export class Traffic {
           "border-top: 1px solid grey"
         );
       }
-
       toolText += "</table>";
       return toolText;
     };
@@ -432,8 +428,7 @@ export class Traffic {
   }
 
   fiveYearTooltipText(event, units) {
-    const currMonth = this.lang.months[event.x + 1];
-    let toolText = `<strong>${currMonth}</strong><table>`;
+    let toolText = `<strong>${this.lang.months[event.x + 1]}</strong><table>`;
     event.points.forEach((p) => {
       p.series.name = p.series.name.split("(")[0].trim();
       toolText += this.addToolRow(p, units, this.rounding);
@@ -668,13 +663,10 @@ export class Traffic {
         });
         tableHtml += `</tbody></table>`;
 
-        let pointText = "";
-        if (this.params.tm) {
-          pointText = this.tmTitle();
-        } else {
-          pointText = this.params.defaultPoint.name;
-        }
-        const titleText = `${this.lang.annualTitle} ${pointText} (${this.titleParams.unitsHolder.current})`;
+        const pointText = this.params.tm
+          ? this.tmTitle()
+          : this.params.defaultPoint.name;
+        const titleText = `${this.lang.annualTitle} ${pointText} (${this.params.unitsHolder.current})`;
         document.getElementById("annual-traffic-table-title").innerText =
           titleText;
         document.getElementById("annual-traffic-table").innerHTML = tableHtml;

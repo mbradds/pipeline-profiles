@@ -91,12 +91,8 @@ export const mapInits = {
  * @param {string} seriesId
  * @returns {boolean}
  */
-export const isCapacity = (seriesId) => {
-  if (seriesId === "cap" || seriesId === "icap" || seriesId === "ecap") {
-    return true;
-  }
-  return false;
-};
+export const isCapacity = (seriesId) =>
+  !!(seriesId === "cap" || seriesId === "icap" || seriesId === "ecap");
 
 /**
  *
@@ -126,10 +122,9 @@ export function addSeriesParams(
   }
 
   const minDate = seriesWithDate[0].min;
-  let series = seriesWithDate.slice(1);
-  if (sorted) {
-    series = sortJsonAlpha(series, "id");
-  }
+  const series = sorted
+    ? sortJsonAlpha(seriesWithDate.slice(1), "id")
+    : seriesWithDate.slice(1);
 
   const fiveYearData = {};
   const newSeries = series.map((s) => {
@@ -146,27 +141,25 @@ export function addSeriesParams(
     }
 
     Object.keys(s).forEach((key) => {
-      const value = s[key];
       if (key !== "data" && key !== "name") {
-        nextSeries[key] = value;
+        nextSeries[key] = s[key];
       }
     });
 
-    let transform = {
-      convert: false,
-      operation: "none",
-      conversion: 0,
-      round: -1,
-    };
-
-    if (unitsHolder.current !== unitsHolder.base && s.id !== "ap") {
-      transform = {
-        convert: true,
-        operation: "*",
-        conversion: unitsHolder.conversion,
-        round: -1,
-      };
-    }
+    const transform =
+      unitsHolder.current !== unitsHolder.base && s.id !== "ap"
+        ? {
+            convert: true,
+            operation: "*",
+            conversion: unitsHolder.conversion,
+            round: -1,
+          }
+        : {
+            convert: false,
+            operation: "none",
+            conversion: 0,
+            round: -1,
+          };
 
     nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
     if (section === "traffic") {
@@ -182,12 +175,10 @@ export function addSeriesParams(
           if (Object.prototype.hasOwnProperty.call(fiveYearData, row[0])) {
             fiveYearData[row[0]] += row[1];
           } else {
-            const toAdd = row[1];
-            fiveYearData[row[0]] = toAdd;
+            fiveYearData[row[0]] = row[1];
           }
         });
-        const lastDate = nextSeries.data.slice(-1)[0][0];
-        fiveYearData.lastDate = lastDate;
+        fiveYearData.lastDate = nextSeries.data.slice(-1)[0][0];
       }
     } else if (section === "apportionment") {
       if (nextSeries.type === "line" && nextSeries.yAxis === 0) {
@@ -235,16 +226,11 @@ export function addUnitsAndSetup(
   };
 
   const radioBtn = (unit, checked, i, s) => {
-    let checkhtml = " ";
-    if (checked) {
-      checkhtml = 'checked="checked"';
-    }
+    const checkhtml = checked ? 'checked="checked"' : " ";
     return `<label for="units${i}_${s}" class="radio-inline">
-  <input id="units${i}_${s}" value="${unit}" type="radio"${checkhtml}name="${section}Units" />
-  ${unit}</label>`;
+    <input id="units${i}_${s}" value="${unit}" type="radio"${checkhtml}name="${section}Units" />${unit}</label>`;
   };
   let [buildFive, hasImports] = [false, false];
-  let secondUnit = "";
 
   if (defaultPoint.id === "KP0001") {
     // KP0001 = St. Stephen
@@ -256,6 +242,7 @@ export function addUnitsAndSetup(
     document.getElementById("traffic-hc-range").style.height = 0;
   }
 
+  let secondUnit = "";
   if (defaultUnit === "Bcf/d") {
     secondUnit = "million m3/d";
     unitsHolder.conversion = conversions["bcf/d to million m3/d"];
@@ -278,8 +265,7 @@ export function addUnitsAndSetup(
 }
 
 export function addUnitsDisclaimer(div, commodity, textFunction) {
-  const unitsDisclaimer = document.getElementById(div);
-  unitsDisclaimer.innerHTML = textFunction(commodity);
+  document.getElementById(div).innerHTML = textFunction(commodity);
 }
 
 /**
