@@ -125,12 +125,15 @@ export class EventNavigator {
    * @param {string} name
    * @returns {string}
    */
-  pillName(name) {
+  pillName(name, clickText = false) {
     if (
       this.langPillTitles &&
       Object.prototype.hasOwnProperty.call(this.langPillTitles.titles, name)
     ) {
-      return this.langPillTitles.titles[name];
+      if (clickText) {
+        return `<span class="h4 mrgn-tp-0">${this.langPillTitles.titles[name]}${clickText}</span>`;
+      }
+      return `<span class="h4 mrgn-tp-0">${this.langPillTitles.titles[name]}</span>`;
     }
     return name;
   }
@@ -150,6 +153,7 @@ export class EventNavigator {
 
       title: {
         text: currentDashboard.pillName(name),
+        useHTML: true,
         style: {
           fontWeight: "normal",
         },
@@ -295,7 +299,9 @@ export class EventNavigator {
       });
 
       chart.update({
-        title: { text: `${chart.title.textStr}${clickText}` },
+        title: {
+          text: this.pillName(bar.name, clickText),
+        },
         plotOptions: {
           series: {
             borderWidth: 1,
@@ -312,7 +318,7 @@ export class EventNavigator {
         },
       });
     } else {
-      activeDiv.innerHTML = `<p>${this.pillName(bar.name)}${clickText}</p>`;
+      activeDiv.innerHTML = this.pillName(bar.name, clickText);
       activeDiv.style.padding = "5px";
     }
     activeDiv.style.borderStyle = "solid";
@@ -330,16 +336,13 @@ export class EventNavigator {
         chart.series[i].options.color = colors[s.options.id].c;
         chart.series[i].update(chart.series[i].options);
       });
-      const activeTitle = chart.title.textStr;
 
       chart.update({
         chart: {
           backgroundColor: "white",
         },
         title: {
-          text: activeTitle.includes("(")
-            ? activeTitle.split("(")[0]
-            : activeTitle,
+          text: this.pillName(bar.name),
         },
         plotOptions: {
           series: {
@@ -357,7 +360,7 @@ export class EventNavigator {
         },
       });
     } else {
-      activeDiv.innerHTML = `<p>${this.pillName(bar.name)}</p>`;
+      activeDiv.innerHTML = this.pillName(bar.name);
       activeDiv.style.backgroundColor = "white";
       activeDiv.style.padding = "5px";
     }
