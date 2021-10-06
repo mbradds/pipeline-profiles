@@ -109,9 +109,6 @@ Styles for incidents dashboard
   padding-right: 0px;
   padding-left: 0px;
 }
-#radio-col {
-  padding-left: 0px !important;
-}
 .event-filter-nav {
   width: 100%;
   transition: box-shadow 0.2s ease;
@@ -125,9 +122,12 @@ Styles for incidents dashboard
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 .event-filter-nav p {
+  text-align: center !important;
+  width: inherit !important;
   margin-bottom: 0px !important;
   font-size: 16px !important;
   line-height: 1.4375 !important;
+  overflow-wrap: break-word !important;
 }
 .center-stuff {
   height: 50px;
@@ -141,6 +141,9 @@ Styles for incidents dashboard
 .dashboard-title {
   float: left;
   overflow-wrap: break-word;
+}
+.dashboard-title-radio {
+  width: 66%;
 }
 .notice-me-btn {
   box-shadow: 0 0 11px #ffbe4b;

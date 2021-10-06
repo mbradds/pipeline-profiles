@@ -246,8 +246,8 @@ export function addUnitsAndSetup(
   let [buildFive, hasImports] = [false, false];
   let secondUnit = "";
 
-  if (defaultPoint.id === "KP0046") {
-    // KP0046 = St. Stephen
+  if (defaultPoint.id === "KP0001") {
+    // KP0001 = St. Stephen
     hasImports = true;
   }
   if (frequency === "monthly" || frequency === "m") {
