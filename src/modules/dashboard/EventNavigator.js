@@ -253,7 +253,6 @@ export class EventNavigator {
 
   prepareData(barName) {
     // TODO: this would run faster if all series were made in one pass
-    let newBar = {};
     const addToSeries = (series, row, name) => {
       // const newSeries = series;
       if (Object.prototype.hasOwnProperty.call(series, row[name])) {
@@ -268,6 +267,7 @@ export class EventNavigator {
       return series;
     };
 
+    let newBar = {};
     this.data.forEach((row) => {
       newBar = addToSeries(newBar, row, barName);
     });
@@ -277,10 +277,10 @@ export class EventNavigator {
   deactivateChart(bar) {
     const { chart } = bar;
     const activeDiv = document.getElementById(bar.div);
-    let clickText = "";
-    if (this.langPillTitles.click && this.langPillTitles.click !== "") {
-      clickText = ` (${this.langPillTitles.click})`;
-    }
+    const clickText =
+      this.langPillTitles.click && this.langPillTitles.click !== ""
+        ? ` (${this.langPillTitles.click})`
+        : "";
 
     if (chart) {
       const greyIndex = Math.floor(
@@ -374,7 +374,6 @@ export class EventNavigator {
 
   barEvents(currentBar) {
     const barDiv = document.getElementById(currentBar.div);
-    const barNav = this;
     function mouseOver() {
       if (currentBar.status !== "activated") {
         barDiv.style.opacity = 1;
@@ -405,6 +404,7 @@ export class EventNavigator {
       }
     }
 
+    const barNav = this;
     function click() {
       // deactivate current active bar
       barNav.deactivateChart(barNav.currentActive);

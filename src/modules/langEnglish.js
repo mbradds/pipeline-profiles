@@ -525,6 +525,12 @@ export const englishDashboard = {
         click,
       },
       seriesInfo: {
+        ps: {
+          p: { n: "Pipeline", c: cerPalette["Night Sky"] },
+          f: { n: "Facility", c: cerPalette.Ocean },
+          pf: { n: "Pipeline and Facility", c: cerPalette.Flame },
+          ns: { n: "Not specified", c: cerPalette["Dim Grey"] },
+        },
         w: {
           true: { c: cerPalette.Sun, n: "True" },
           false: { c: cerPalette["Night Sky"], n: "False" },

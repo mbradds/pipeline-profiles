@@ -527,6 +527,12 @@ export const frenchDashboard = {
         click,
       },
       seriesInfo: {
+        ps: {
+          p: { n: "FR: Pipeline", c: cerPalette["Night Sky"] },
+          f: { n: "FR: Facility", c: cerPalette.Ocean },
+          pf: { n: "FR: Pipeline and Facility", c: cerPalette.Flame },
+          ns: { n: "FR: Not specified", c: cerPalette["Dim Grey"] },
+        },
         w: {
           true: { c: cerPalette.Sun, n: "True" },
           false: { c: cerPalette["Night Sky"], n: "False" },

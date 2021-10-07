@@ -26,21 +26,13 @@ const quartersEn = { 12: "Q4", 9: "Q3", 6: "Q2", 3: "Q1" };
 const quartersFr = { 12: "T4", 9: "T3", 6: "T2", 3: "T1" };
 
 const postWord = (val, type) => {
-  let wrd = "";
   if (type === "have") {
-    if (val === 1) {
-      wrd = "has";
-    } else {
-      wrd = "have";
-    }
-  } else if (type === "fatality") {
-    if (val === 1) {
-      wrd = "fatality";
-    } else {
-      wrd = "fatalities";
-    }
+    return val === 1 ? "has" : "have";
   }
-  return wrd;
+  if (type === "fatality") {
+    return val === 1 ? "fatality" : "fatalities";
+  }
+  return "";
 };
 
 const changeText = (num, lang, frontText = true) => {
@@ -78,14 +70,13 @@ const changeText = (num, lang, frontText = true) => {
 };
 
 const trendSub = (commodity, lang) => {
-  let subText = "";
   if (commodity === "gas") {
-    subText = lang === "en" ? "year over year" : "d’une année à l’autre,";
-  } else if (commodity === "oil") {
-    subText =
-      lang === "en" ? "quarter over quarter" : "d’un trimestre à l’autre";
+    return lang === "en" ? "year over year" : "d’une année à l’autre,";
   }
-  return subText;
+  if (commodity === "oil") {
+    return lang === "en" ? "quarter over quarter" : "d’un trimestre à l’autre";
+  }
+  return "";
 };
 
 const formatValue = (value, units, numberFormat) => {
@@ -111,7 +102,6 @@ const buildFiveText = (ft, tt, lang) => {
       false
     )} de la moyenne sur cinq ans.</p>`;
   }
-
   return "";
 };
 

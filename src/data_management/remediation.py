@@ -116,13 +116,13 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
     na = "Not Specified"
     for pipe, section in zip(df['Pipeline Name'], df['Facility Name']):
         if pipe == na and section == na:
-            pipe_section.append(na)
+            pipe_section.append("ns") # Not Specified
         elif pipe == na and section != na:
-            pipe_section.append("Facility")
+            pipe_section.append("f") # Facility
         elif pipe != na and section == na:
-            pipe_section.append("Pipeline")
+            pipe_section.append("p") # Pipeline
         elif pipe != na and section != na:
-            pipe_section.append("Pipeline and Facility")
+            pipe_section.append("pf") # Pipeline and Facility 
         else:
             print("error here!")
 
@@ -242,4 +242,4 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
 
 
 if __name__ == "__main__":
-    df_ = process_remediation(sql=True)
+    df_ = process_remediation(sql=False)
