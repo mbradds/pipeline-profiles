@@ -61,7 +61,7 @@ Styles for conditions compliance dashboard
   text-align: center;
 }
 #conditions-insert {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .conditions-table {
   font-family: Arial;
@@ -118,7 +118,7 @@ Styles for incidents dashboard
 .event-filter-nav:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
-.event-filter-nav span {
+.event-title-nav {
   text-align: center !important;
   width: inherit !important;
   margin-bottom: 0px !important;

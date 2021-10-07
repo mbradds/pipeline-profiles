@@ -130,10 +130,9 @@ export class EventNavigator {
       this.langPillTitles &&
       Object.prototype.hasOwnProperty.call(this.langPillTitles.titles, name)
     ) {
-      if (clickText) {
-        return `<span class="h4 mrgn-tp-0">${this.langPillTitles.titles[name]}${clickText}</span>`;
-      }
-      return `<span class="h4 mrgn-tp-0">${this.langPillTitles.titles[name]}</span>`;
+      return `<span class="h4 mrgn-tp-0 event-title-nav">${
+        this.langPillTitles.titles[name]
+      }${clickText || ""}</span>`;
     }
     return name;
   }
@@ -147,7 +146,7 @@ export class EventNavigator {
         spacingRight: 8,
         spacingLeft: 2,
         spacingTop: 8,
-        spacingBottom: 5,
+        spacingBottom: 8,
         animation: false,
       },
 
@@ -208,7 +207,9 @@ export class EventNavigator {
 
       legend: {
         alignColumns: false,
+        reversed: true,
         margin: 0,
+        padding: 4,
         symbolPadding: 2,
         itemStyle: {
           color: "#000000",

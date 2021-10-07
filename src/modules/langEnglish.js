@@ -503,6 +503,7 @@ export const englishDashboard = {
       rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
       nearbyHeader: nearbyMe.nearbyHeader,
+      mapClick: "Click circle to open REGDOCS search for",
       pillTitles: {
         titles: {
           vol: "Initial estimate of contaminated soil",

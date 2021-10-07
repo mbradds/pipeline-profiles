@@ -20,16 +20,6 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const tollsDescription = require("../data_output/tolls/descriptions.json");
 
-const unitsEn = "Select units:";
-const unitsFr = "Choisir une unité :";
-const trafficUpdatedEn =
-  "Section updated quarterly (early March, mid-May, mid-August and mid-November)";
-const trafficUpdatedFr =
-  "Section mise à jour tous les trimestres (début mars, mi-mai, mi-août et mi-novembre)";
-const instructionsEn = "Dashboard instructions";
-const instructionsFr = "Instructions pour le tableau de bord";
-const noteEn = "Note:";
-const noteFr = "Remarque :";
 const sourceAndDescEn = "Source and description";
 const sourceAndDescFr = "Source et description de la figure";
 const dataSourceEn = "Data Source:";
@@ -56,12 +46,13 @@ const openGovLink = (link, lang) => {
 };
 
 const en = {
-  sourceTitle: sourceAndDescEn,
-  dataSourceTitle: dataSourceEn,
-  descriptionTitle: descriptionEn,
+  units: "Select units:",
+  trafficUpdated:
+    "Section updated quarterly (early March, mid-May, mid-August and mid-November)",
+  instructions: "Dashboard instructions",
+  note: "Note:",
   apportion: {
     header: "Apportionment",
-    updated: trafficUpdatedEn,
     p1: "A shipper must submit nominations each month it wishes to move its oil on a pipeline. Shippers must submit nominations for both committed (or contracted) transportation service, if available, as well as uncommitted transportation service. If the total volume of nominations for uncommitted capacity is more than what is available, the pipeline company must “apportion” the nominations.",
 
     p2: "Apportionment is the percentage by which each shipper’s nominated volume is reduced in order to match the pipeline’s uncommitted capacity. Generally, apportionment is applied equally across all shippers seeking to use that capacity: for example, if shipper&nbsp;A nominates 100&nbsp;barrels and shipper&nbsp;B nominates 1&nbsp;000&nbsp;barrels, then, under 10% apportionment, shipper&nbsp;A will be able to ship 90&nbsp;barrels, and shipper&nbsp;B will ship 900&nbsp;barrels.",
@@ -71,7 +62,6 @@ const en = {
       enbridge:
         "The Enbridge Canadian Mainline consists of multiple different lines, and apportionment can vary depending on the line and key point. In a given month, some lines may be apportioned while others may not be. The interactive graph below shows data for nominations and apportionment on the Enbridge Mainline.",
     },
-    selectUnits: unitsEn,
     description: {
       enbridge:
         "The first chart displays pipeline nomination data for the Enbridge Canadian Mainline at the system level. Original nominations are shown as a blue area on the chart, and accepted nominations are shown as a yellow line. The second series of charts shows detailed apportionment data at the key point level for the Enbridge Canadian Mainline.",
@@ -90,16 +80,12 @@ const en = {
   },
   traffic: {
     header: "Throughput and capacity",
-    updated: trafficUpdatedEn,
     selectKeyPt: "Select key point:",
-    selectUnits: unitsEn,
     keyPtMap: "Key Point Map",
     zoomIn: "Zoom In",
     zoomOut: "Zoom Out",
     keyPtTrends: "Key Point Trends",
     keyPtDescription: "Key Point Description",
-    instructionsTitle: instructionsEn,
-    note: noteEn,
     capacityNote:
       "The physical capacity of a pipeline is based on many factors such as the products being carried, direction of flow, pipeline pumping capacity, and maintenance work or other pressure restrictions. The actual physical capacity of the pipeline may, at times, be higher than the assumed operational capacity stated here.",
     dailyData: `Looking for <strong>daily data</strong>? Daily <strong>natural gas</strong> traffic datasets are available on <a href="https://open.canada.ca/data/en/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" rel="external">Open Government</a>.`,
@@ -181,8 +167,6 @@ const en = {
       inProgressBtn: "In-Progress Conditions with location:",
       closedBtn: "Closed Conditions with location:",
       noLocationBtn: "No Geographic Location (not on map):",
-      instructionsTitle: instructionsEn,
-      note: noteEn,
       instructions: {
         one: "Click on a region to view conditions info",
         two: "Click map area outside of regions to hide info",
@@ -500,12 +484,13 @@ const en = {
 };
 
 const fr = {
-  sourceTitle: sourceAndDescFr,
-  dataSourceTitle: dataSourceFr,
-  descriptionTitle: descriptionFr,
+  units: "Choisir une unité :",
+  trafficUpdated:
+    "Section mise à jour tous les trimestres (début mars, mi-mai, mi-août et mi-novembre)",
+  instructions: "Instructions pour le tableau de bord",
+  note: "Remarque :",
   apportion: {
     header: "Répartition",
-    updated: trafficUpdatedFr,
     p1: "Les expéditeurs doivent soumettre tous les mois une commande à chaque pipeline que doit traverser leur pétrole. Il leur faut présenter une commande pour le service de transport souscrit (sous contrat), s’il est offert, et pour le service de transport non souscrit. Si le total des commandes dépasse la capacité non souscrite disponible, les transporteurs doivent «&nbsp;répartir&nbsp;» les commandes.",
     p2: "La répartition est le pourcentage de réduction appliqué à la commande de chacun des expéditeurs afin de ne pas dépasser la capacité non souscrite disponible. En général, ce pourcentage est appliqué également à tous les expéditeurs ayant passé une commande. Par exemple, si la commande de l’expéditeur&nbsp;A vise 100&nbsp;barils et celle de l’expéditeur&nbsp;B, 1&nbsp;000&nbsp;barils, selon un taux de répartition de 10&nbsp;%, les deux expéditeurs pourront faire transporter 90&nbsp;barils et 900&nbsp;barils.",
     p3: {
@@ -514,7 +499,6 @@ const fr = {
       enbridge:
         "Le réseau principal au Canada d’Enbridge comprend de multiples canalisations, et la répartition peut varier selon la canalisation et le point principal. Au cours d’un mois donné, certaines canalisations peuvent faire l’objet d’une répartition et d’autres, non. Le graphique interactif ci-dessous présente les données relatives aux commandes et à la répartition sur le réseau principal d’Enbridge.",
     },
-    selectUnits: unitsFr,
     description: {
       enbridge:
         "Le premier graphique présente les données sur les commandes d’expédition pour l’ensemble du réseau principal au Canada d’Enbridge. Les commandes d’expédition originales sont indiquées en bleu et les commandes acceptées, par une ligne jaune. La deuxième série de graphiques présente les données détaillées sur la répartition aux points principaux du réseau principal au Canada d’Enbridge.",
@@ -533,16 +517,12 @@ const fr = {
   },
   traffic: {
     header: "Débit et capacité",
-    updated: trafficUpdatedFr,
-    selectUnits: unitsFr,
     selectKeyPt: "Sélectionnez un point principal :",
     keyPtMap: "Carte des principaux points",
     zoomIn: "Zoom avant",
     zoomOut: "Zoom arrière",
     keyPtTrends: "Tendances des principaux points",
     keyPtDescription: "Description des principaux points",
-    instructionsTitle: instructionsFr,
-    note: noteFr,
     capacityNote:
       "La capacité physique d’un pipeline dépend de nombreux facteurs, tels que les produits transportés, le sens d’écoulement, la capacité de pompage du pipeline, les travaux d’entretien et les restrictions de pression. La capacité physique réelle du pipeline peut parfois être supérieure à la capacité opérationnelle hypothétique indiquée ici.",
     dailyData: `Vous recherchez des  <strong>données quotidiennes</strong>? Des ensembles de données quotidiennes sur le trafic de gaz naturel sont disponibles sur <a href="https://open.canada.ca/data/fr/dataset/dc343c43-a592-4a27-8ee7-c77df56afb34" rel="external">Gouvernement ouvert</a>.`,
@@ -625,8 +605,6 @@ const fr = {
       closedBtn: "Conditions remplies avec emplacement :",
       noLocationBtn: "Aucun lieu (non indiqué sur la carte) :",
       viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
-      instructionsTitle: instructionsFr,
-      note: noteFr,
       instructions: {
         one: "Cliquer sur une région pour consulter les renseignements sur les conditions.",
         two: "Cliquer sur la carte à l’extérieur des régions pour masquer l’information.",

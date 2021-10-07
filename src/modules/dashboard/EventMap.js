@@ -272,7 +272,7 @@ export class EventMap {
 
     toolTipText += `</table>`;
     if (this.regdocsClick) {
-      toolTipText += `<i class="center-footer">Click circle to open REGDOCS search for ${eventParams.id}</i>`;
+      toolTipText += `<i class="center-footer">${this.lang.mapClick} ${eventParams.id}</i>`;
     }
 
     return toolTipText;

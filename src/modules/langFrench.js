@@ -503,6 +503,8 @@ export const frenchDashboard = {
       rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
       nearbyHeader: nearbyMe.nearbyHeader,
+      mapClick:
+        "Cliquez sur le cercle pour ouvrir la recherche<br>REGDOCS pour",
       pillTitles: {
         titles: {
           vol: "Estimation initiale du volume de sol contaminé",
