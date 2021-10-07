@@ -344,7 +344,7 @@ export function oandmTextFra(meta, lang) {
 
   const fourthParagraph = `<p>Il y a eu ${dynamicValue(
     meta.atRisk
-  )} activités d’exploitation et d’entretien pour lesquelles de nouveaux terrains temporaires ou permanents ont été requis et qui se trouvent dans l’habitat essentiel d’une espèce en voie de disparition ou menacée inscrite à l’annexe 1 de la <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Loi sur les espèces en péril</i></a> fédérale. Lorsque cela se produit, la société peut être tenue de respecter d’autres obligations réglementaires en plus de celles de la LRCE, comme celles de la<a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Loi sur la convention concernant les oiseaux migrateurs</i></a> et de la <i>Loi sur les espèces en péril</i>.</p>`;
+  )} activités d’exploitation et d’entretien pour lesquelles de nouveaux terrains temporaires ou permanents ont été requis et qui se trouvent dans l’habitat essentiel d’une espèce en voie de disparition ou menacée inscrite à l’annexe 1 de la <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Loi sur les espèces en péril</i></a> fédérale. Lorsque cela se produit, la société peut être tenue de respecter d’autres obligations réglementaires en plus de celles de la LRCE, comme celles de la <a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Loi sur la convention concernant les oiseaux migrateurs</i></a> et de la <i>Loi sur les espèces en péril</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
     firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;

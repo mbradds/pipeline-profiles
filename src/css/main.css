@@ -4,9 +4,6 @@
 General styles for all dashboards/sections 
 */
 
-body {
-  overflow-x: hidden;
-}
 .dashboard-style {
   font-size: 16px !important;
   line-height: 1.4375 !important;
@@ -251,9 +248,6 @@ responsive style options
     height: 300px;
     position: relative;
     z-index: 10;
-  }
-  #conditions-instructions {
-    display: none;
   }
   #incidents-map {
     height: 400px;

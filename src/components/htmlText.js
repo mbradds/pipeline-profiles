@@ -181,6 +181,14 @@ const en = {
       inProgressBtn: "In-Progress Conditions with location:",
       closedBtn: "Closed Conditions with location:",
       noLocationBtn: "No Geographic Location (not on map):",
+      instructionsTitle: instructionsEn,
+      note: noteEn,
+      instructions: {
+        one: "Click on a region to view conditions info",
+        two: "Click map area outside of regions to hide info",
+        three:
+          "Some conditions apply to multiple regions. Conditions may be double counted across regions, resulting in a higher number of conditions than the totals seen in the buttons above.",
+      },
       viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
       source: {
         sourceTitle: sourceAndDescEn,
@@ -617,6 +625,14 @@ const fr = {
       closedBtn: "Conditions remplies avec emplacement :",
       noLocationBtn: "Aucun lieu (non indiqué sur la carte) :",
       viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
+      instructionsTitle: instructionsFr,
+      note: noteFr,
+      instructions: {
+        one: "Cliquer sur une région pour consulter les renseignements sur les conditions.",
+        two: "Cliquer sur la carte à l’extérieur des régions pour masquer l’information.",
+        three:
+          "Certaines conditions s’appliquent à plusieurs régions. Certaines conditions peuvent être comptées en double d’une région à l’autre, ce qui donne un nombre plus élevé de conditions que les totaux indiqués dans les boutons ci-dessus.",
+      },
       source: {
         sourceTitle: sourceAndDescFr,
         dataSourceTitle: dataSourceFr,
@@ -807,13 +823,13 @@ const fr = {
           "rem-contaminant-trend",
         ],
         hasRadio: false,
-        mapBtn: "Contaminated Sites Map",
-        trendBtn: "Contaminated Sites Trends",
+        mapBtn: "Carte des sites contaminés",
+        trendBtn: "Tendances des sites contaminés",
         nearby: {
           type: "remediation",
-          header: "Are there any contaminated sites near me?",
+          header: "Y a-t-il des sites contaminés près de chez moi?",
           selectRange: "Sélectionner une plage (100km) :",
-          find: "Find sites within 100km",
+          find: "Trouver des sites dans un rayon de 100km",
           refill: "Remplir les bulles de carte",
         },
         source: {

@@ -384,32 +384,6 @@ export async function mainConditions(
           load() {
             removeNoConditions(this);
             zoomToGeoJson(this, false, zooms[params.conditionsFilter.column]);
-            let text = `<div class="alert alert-warning" id="conditions-instructions" style="padding:3px">`;
-            text += `<h4>${lang.instructions.header}</h4><ol>`;
-            text += `<li>${lang.instructions.line1}</li><li>${lang.instructions.line2}</li></ol>${lang.instructions.disclaimer}</div>`;
-
-            const label = this.renderer
-              .label(text, null, null, null, null, null, true)
-              .css({
-                width: "290px",
-                margin: 0,
-              })
-              .attr({
-                zIndex: 8,
-                padding: 0,
-                r: 3,
-              })
-              .add(this.rGroup);
-            label.align(
-              Highcharts.extend(label.getBBox(), {
-                align: "left",
-                x: -5,
-                verticalAlign: "bottom",
-                y: 0,
-              }),
-              null,
-              "spacingBox"
-            );
           },
           click() {
             if (this.customTooltip) {
