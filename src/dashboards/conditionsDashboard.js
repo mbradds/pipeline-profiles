@@ -517,6 +517,7 @@ export async function mainConditions(
           }
         });
     } else {
+      console.log(lang.companyToSystem, meta.companyName);
       noEventsFlag(
         lang.noEvents.header(lang.conditions),
         lang.noEvents.note(

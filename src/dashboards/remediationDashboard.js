@@ -43,6 +43,7 @@ export async function mainRemediation(data, lang) {
     map.addBaseMap();
     map.processEventsData(events);
     map.lookForSize();
+    map.addMapDisclaimer("volume");
     return map;
   };
 

@@ -214,10 +214,6 @@ styles for remediation dashboard
   flex-direction: row;
   align-items: flex-start;
 }
-/* #tolls-info {
-  flex-grow: 1;
-  height: inherit;
-} */
 #tolls-path-btn {
   overflow-y: auto;
   height: inherit;
@@ -228,6 +224,12 @@ styles for remediation dashboard
   height: inherit;
   margin-top: 0px;
 }
+
+/* styles for oandm dashboard */
+#oandm-dashboard-title {
+  padding-top: 15px;
+}
+
 /* 
 responsive style options 
 */

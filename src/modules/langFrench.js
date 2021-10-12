@@ -17,6 +17,7 @@ import {
 import points from "../data_output/traffic/points/fr.json";
 
 const companyToSystem = {
+  Aurora: "Pipeline Aurora",
   NGTL: "Réseau de NGTL",
   TCPL: "Réseau de TC au Canada",
   EnbridgeMainline: "Réseau d’Enbridge au Canada",
@@ -495,6 +496,8 @@ export const frenchDashboard = {
       countDisclaimer,
       barClick,
       locationDisclaimer,
+      volumeDisclaimer:
+        "Bubble size illustrates the approximate site location, and does not indicate the full contaminated area.",
       eventName: "Sites contaminés",
       trendYTitle,
       cf: units.cf,
