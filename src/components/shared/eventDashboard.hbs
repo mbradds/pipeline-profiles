@@ -1,24 +1,26 @@
 
-<div class="row">
+<div class="row mrgn-tp-md">
   <div class="col-md-12" id="{{text.id}}-dashboard">
     <div class="plains_disclaimer"></div>
-    {{#if text.hasRadio}}
-    <h3 class="dashboard-title dashboard-title-radio" id="{{text.id}}-dashboard-title"></h3>
-    {{else}}
-    <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
-    {{/if}}
-    {{#if text.hasRadio}}
-    <div id="inline-radio" class="radio-inline pull-right mrgn-tp-lg">
-      <form>
-        <label class="radio-inline">
-          <input id="{{text.id}}-count-btn" type="radio" name="type" value="frequency" checked="checked" />
-          {{text.countRadio}}</label>
-        <label class="radio-inline">
-          <input id="{{text.id}}-volume-btn" type="radio" name="type" value="volume" />
-          {{text.volRadio}}</label>
-      </form>
+    <div class="title-container">
+      {{#if text.hasRadio}}
+      <h3 class="dashboard-title dashboard-title-radio" id="{{text.id}}-dashboard-title"></h3>
+      {{else}}
+      <h3 class="dashboard-title" id="{{text.id}}-dashboard-title"></h3>
+      {{/if}}
+      {{#if text.hasRadio}}
+      <div id="inline-radio" class="radio-inline pull-right">
+        <form>
+          <label class="radio-inline">
+            <input id="{{text.id}}-count-btn" type="radio" name="type" value="frequency" checked="checked" />
+            {{text.countRadio}}</label>
+          <label class="radio-inline">
+            <input id="{{text.id}}-volume-btn" type="radio" name="type" value="volume" />
+            {{text.volRadio}}</label>
+        </form>
+      </div>
+      {{/if}}
     </div>
-    {{/if}}
     <div class="btn-group btn-group-justified" id="{{text.id}}-view-type">
       <div class="btn-group">
         <button type="button" class="btn btn-default active" value="map">
