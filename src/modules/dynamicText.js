@@ -277,39 +277,27 @@ export function trafficTrendTextFra(params, numberFormat, seriesId) {
 export function oandmTextEng(meta, lang) {
   const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
     lang.numberFormat(meta.totalEvents, 0)
-  )} O&M activities reported by the ${formatCompanyName(
+  )} O&#38;M activities reported by the ${formatCompanyName(
     meta.system
   )}. When the activity involves an integrity dig, the activity may entail exposing an area of the pipeline by performing one or more integrity assessments. There have been ${dynamicValue(
     lang.numberFormat(meta.totalDigs, 0)
-  )} individual integrity digs as part of the reported O&M activities.<p>`;
+  )} individual integrity digs as part of the reported O&#38;M activities.<p>`;
 
   let secondParagraph = "";
   if (meta.nearby) {
-    secondParagraph = `<p>These O&M activities can occur anywhere along or near the pipeline right-of-way, including near populated areas. In the past year (${
+    secondParagraph = `<p>These O&#38;M activities can occur anywhere along or near the pipeline right-of-way, including near populated areas. In the past year (${
       meta.nearbyYear
-    }), O&M activities have occurred most often near ${dynamicValue(
+    }), O&#38;M activities have occurred most often near ${dynamicValue(
       meta.nearby.join(", ")
     )} among others.</p>`;
   }
 
-  let thirdParagraph = `<p>To accommodate the worksite and equipment, O&M activities may require the acquisition of additional new permanent or temporary land outside company property. To date, activities reported to the CER for this system have required a total of ${dynamicValue(
-    `${meta.landRequired} hectares`
-  )}`;
-  const iceRinks = ` of new land, an area equal to ${dynamicValue(
-    meta.iceRinks
-  )} ice hockey rinks.<p>`;
-  if (meta.landRequired > 0) {
-    thirdParagraph += iceRinks;
-  } else {
-    thirdParagraph += `.`;
-  }
-
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/eng/acts/S-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws.justice.gc.ca/eng/acts/M-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
+  )} O&#38;M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/eng/acts/S-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws.justice.gc.ca/eng/acts/M-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
-    firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
+    firstParagraph + secondParagraph + fourthParagraph;
 }
 
 export function oandmTextFra(meta, lang) {
@@ -330,24 +318,12 @@ export function oandmTextFra(meta, lang) {
     )}.</p>`;
   }
 
-  let thirdParagraph = `<p>Pour le chantier et l’équipement, les activités d’exploitation et d’entretien peuvent nécessiter l’acquisition de nouveaux terrains permanents ou temporaires à l’extérieur de la propriété de la société. À ce jour, les activités signalées à la Régie pour ce réseau ont nécessité un total de ${dynamicValue(
-    `${meta.landRequired} hectares`
-  )}`;
-  const iceRinks = ` de nouveaux terrains, soit l’équivalent de ${dynamicValue(
-    meta.iceRinks
-  )} patinoires de hockey.<p>`;
-  if (meta.landRequired > 0) {
-    thirdParagraph += iceRinks;
-  } else {
-    thirdParagraph += `.`;
-  }
-
   const fourthParagraph = `<p>Il y a eu ${dynamicValue(
     meta.atRisk
   )} activités d’exploitation et d’entretien pour lesquelles de nouveaux terrains temporaires ou permanents ont été requis et qui se trouvent dans l’habitat essentiel d’une espèce en voie de disparition ou menacée inscrite à l’annexe 1 de la <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Loi sur les espèces en péril</i></a> fédérale. Lorsque cela se produit, la société peut être tenue de respecter d’autres obligations réglementaires en plus de celles de la LRCE, comme celles de la <a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Loi sur la convention concernant les oiseaux migrateurs</i></a> et de la <i>Loi sur les espèces en péril</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
-    firstParagraph + secondParagraph + thirdParagraph + fourthParagraph;
+    firstParagraph + secondParagraph + fourthParagraph;
 }
 
 export function remediationTextEng(meta, lang) {

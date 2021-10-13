@@ -120,9 +120,10 @@ def metadata(df, company):
         this_company_meta["nearby"] = None
 
     this_company_meta["atRisk"] = sum([1 if x == "y" else 0 for x in df['Species At Risk Present']])
-    new_land = df['New Land Area Needed'].sum()
-    this_company_meta["landRequired"] = int(new_land)
-    this_company_meta["iceRinks"] = int(round((new_land*2.471)/0.375, 0))
+    # RLG didnt want the land statistic
+    # new_land = df['New Land Area Needed'].sum()
+    # this_company_meta["landRequired"] = int(new_land)
+    # this_company_meta["iceRinks"] = int(round((new_land*2.471)/0.375, 0))
     this_company_meta["company"] = company
     return this_company_meta
 

@@ -152,8 +152,8 @@ class TestOandm(unittest.TestCase):
         self.assertEqual(self.oandm["meta"]["totalDigs"], 1324)
         self.assertEqual(self.oandm["meta"]["company"], "NGTL")
         self.assertEqual(self.oandm["meta"]["atRisk"], 2)
-        self.assertEqual(self.oandm["meta"]["iceRinks"], 95)
-        self.assertEqual(self.oandm["meta"]["landRequired"], 14)
+        # self.assertEqual(self.oandm["meta"]["iceRinks"], 95)
+        # self.assertEqual(self.oandm["meta"]["landRequired"], 14)
         self.assertEqual(self.oandm["meta"]["nearby"], ['Fort McMurray AB', 'Manning AB', 'Keg River AB'])
 
     def testData(self):
