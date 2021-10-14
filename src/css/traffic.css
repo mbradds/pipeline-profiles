@@ -1,0 +1,33 @@
+/* 
+Styles for traffic and apportionment dashboards 
+*/
+
+.traffic-hc-column-map {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.traffic-hc-column-nomap {
+  padding-right: 25px !important;
+}
+#map-panel-body {
+  padding: 0px;
+}
+.radio-align {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+#traffic-container {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+#annual-traffic-table .table {
+  margin-bottom: 0px;
+}
+.apportion-point-hc {
+  height: 46px;
+}
+.apportion-point-hc-last {
+  height: 62px;
+}

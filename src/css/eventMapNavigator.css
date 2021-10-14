@@ -1,0 +1,87 @@
+/* styles for leaflet map with sidebar and highcharts time series dashboard */
+.nearby-title {
+  padding-left: 0px;
+}
+.event-map {
+  position: relative;
+  height: 515px;
+  margin-right: -15px;
+}
+.time-series {
+  height: 400px;
+  margin-right: -15px;
+}
+.center-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+.count-disclaimer {
+  padding: 4px;
+}
+.count-disclaimer p:first-letter {
+  text-transform: capitalize;
+}
+.event-filter-nav {
+  width: 100%;
+  transition: box-shadow 0.2s ease;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0px rgb(255, 255, 255);
+}
+.event-filter-nav:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+.event-title-nav {
+  text-align: center !important;
+  width: inherit !important;
+  margin-bottom: 0px !important;
+  font-size: 17px !important;
+  line-height: 1.4375 !important;
+  overflow-wrap: break-word !important;
+}
+.center-stuff {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-tooltip tr {
+  border-bottom: 1pt solid #dcdcdc;
+}
+.dashboard-title {
+  float: left;
+  overflow-wrap: break-word;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#inline-radio {
+  padding-right: 0px;
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.notice-me-btn {
+  box-shadow: 0 0 11px #ffbe4b;
+}
+.map-disclaimer p {
+  font-size: 13px;
+}
+.title-container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.title-container {
+  margin-top: 32px;
+  margin-bottom: 11.5px;
+}
+/* styles for oandm dashboard */
+#oandm-dashboard-title {
+  padding-top: 15px;
+}

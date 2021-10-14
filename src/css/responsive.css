@@ -1,0 +1,147 @@
+/* 
+responsive style options 
+*/
+
+/* extra small screen phones (col-xs) */
+@media only screen and (max-width: 767px) {
+  /* h2 {
+      color: orange;
+    } */
+  .section-nav .btn-group .btn-default {
+    height: 120px !important;
+    font-size: 13px;
+    padding: 4px !important;
+  }
+  .dashboard-title-radio {
+    width: 100%;
+  }
+  /* traffic */
+  #traffic-container {
+    display: none;
+  }
+  .traffic-hc-column-map {
+    padding-right: 25px !important;
+  }
+  .traffic-hc-single-gas {
+    height: 420px;
+  }
+  .traffic-hc-shared {
+    height: 210px;
+  }
+  /* conditions */
+  .container-chart-map {
+    height: 300px;
+    position: relative;
+    z-index: 10;
+  }
+  .time-series {
+    margin-right: 0px;
+  }
+  .event-navigator {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    max-height: 120px;
+    overflow-y: scroll;
+  }
+  .event-map {
+    height: 400px;
+    margin-right: 0px;
+  }
+}
+
+/* small screen tablet (col-sm) */
+@media only screen and (min-width: 768px) {
+  /* h2 {
+      color: blue;
+    } */
+  /* traffic */
+  .dashboard-title-radio {
+    width: 100%;
+  }
+  .traffic-hc-single-gas {
+    height: 450px;
+  }
+  .traffic-map-shared {
+    height: 260px;
+    margin-bottom: 5px;
+  }
+  .traffic-hc-shared {
+    height: 200px;
+  }
+  /* conditions */
+  .container-chart-map {
+    min-height: 530px;
+    position: relative;
+    z-index: 10;
+  }
+  .event-map {
+    height: 445px;
+  }
+}
+
+/* medium screen */
+@media only screen and (min-width: 1000px) {
+  /* h2 {
+      color: red;
+    } */
+  .dashboard-title-radio {
+    width: 66%;
+  }
+  /* traffic */
+  .traffic-hc-single-gas {
+    height: 470px;
+  }
+  .traffic-hc-shared {
+    height: 235px;
+  }
+  .traffic-map-shared {
+    height: 325px;
+    margin-bottom: 5px;
+  }
+  /* conditions */
+  .container-chart-map {
+    min-height: 530px;
+    position: relative;
+    z-index: 10;
+  }
+  .event-map {
+    height: 480px;
+  }
+  /* tolls */
+  #tolls-chart {
+    height: 450px;
+  }
+}
+/* large screens */
+@media only screen and (min-width: 1600px) {
+  /* h2 {
+      color: green;
+    } */
+  /* traffic */
+  .dashboard-title-radio {
+    width: 66%;
+  }
+  .traffic-hc-single-gas {
+    height: 500px;
+  }
+  .traffic-hc-shared {
+    height: 250px;
+  }
+  .traffic-map-shared {
+    height: 355px;
+    margin-bottom: 5px;
+  }
+  /* conditions */
+  .container-chart-map {
+    min-height: 600px;
+    position: relative;
+    z-index: 10;
+  }
+  .event-map {
+    height: 515px;
+  }
+  /* tolls */
+  #tolls-chart {
+    height: 500px;
+  }
+}

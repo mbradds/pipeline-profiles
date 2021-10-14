@@ -1,0 +1,39 @@
+.conditions-summary-title {
+  pointer-events: none;
+}
+.conditions-summary-value {
+  pointer-events: none;
+  font-family: Arial;
+  font-size: 17px;
+  font-weight: bold;
+  color: #42464b;
+  text-align: center;
+}
+#conditions-insert {
+  overflow-y: auto;
+}
+.conditions-table {
+  font-family: Arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+.conditions-table td,
+.conditions-table th {
+  border: 1px solid #ddd;
+  padding: 3px;
+}
+.conditions-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.conditions-table tr:hover {
+  background-color: #ddd;
+}
+.conditions-table td:nth-child(1) {
+  font-family: Arial;
+}
+.conditions-table td:nth-child(2) {
+  font-family: Arial;
+  font-weight: bold;
+  color: #42464b;
+  text-align: center;
+}
