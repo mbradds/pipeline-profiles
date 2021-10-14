@@ -515,6 +515,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-05-01,Brunswick,KP0000,west,export,,260.151
 2021-06-01,Brunswick,KP0000,west,export,,249.762
 2021-07-01,Brunswick,KP0000,west,export,,217.466
+2021-08-01,Brunswick,KP0000,west,export,,383.176
 2006-01-01,Foothills,KP0023,south,export,85000.0,44015.0
 2006-02-01,Foothills,KP0023,south,export,85000.0,48229.786
 2006-03-01,Foothills,KP0023,south,export,85000.0,53214.484
@@ -4221,7 +4222,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2014-12-01,TCPL,KP0026,east,export,35851.0,0.0
 2015-01-01,TCPL,KP0026,east,export,35851.0,0.0
 2015-01-01,TCPL,KP0026,west,import,13914.0,11734.78
-2015-02-01,TCPL,KP0026,west,import,13914.0,9894.107
+2015-02-01,TCPL,KP0026,west,import,13914.0,9894.108
 2015-02-01,TCPL,KP0026,east,export,35851.0,0.0
 2015-03-01,TCPL,KP0026,west,import,13914.0,12117.325
 2015-03-01,TCPL,KP0026,east,export,35851.0,0.0
@@ -5552,7 +5553,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2007-06-01,Westcoast,KPWESC,west,intracanada,43682.0,8266.134
 2007-07-01,Westcoast,KPWESC,west,intracanada,43682.0,6181.679
 2007-08-01,Westcoast,KPWESC,west,intracanada,43682.0,6210.121
-2007-09-01,Westcoast,KPWESC,west,intracanada,43682.0,7687.437
+2007-09-01,Westcoast,KPWESC,west,intracanada,43682.0,7687.438
 2007-10-01,Westcoast,KPWESC,west,intracanada,43682.0,11495.123
 2007-11-01,Westcoast,KPWESC,west,intracanada,48214.0,14851.868
 2007-12-01,Westcoast,KPWESC,west,intracanada,48214.0,17437.807
@@ -6126,7 +6127,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2015-02-01,Westcoast,KP0024,east,intracanada,2974.0,296.129
 2015-03-01,Westcoast,KP0024,east,intracanada,2974.0,1217.948
 2015-03-01,Westcoast,KP0024,west,intracanada,2974.0,217.567
-2015-04-01,Westcoast,KP0024,east,intracanada,2974.0,949.986
+2015-04-01,Westcoast,KP0024,east,intracanada,2974.0,949.985
 2015-04-01,Westcoast,KP0024,west,intracanada,2974.0,0.215
 2015-05-01,Westcoast,KP0024,west,intracanada,2974.0,0.0
 2015-05-01,Westcoast,KP0024,east,intracanada,2974.0,1530.021

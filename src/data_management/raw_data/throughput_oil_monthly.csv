@@ -1567,6 +1567,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-06-01,Montreal,KP0000,north-west,petroleum,0.02,
 2021-07-01,Montreal,KP0000,north-west,petroleum,3.63,
 2021-08-01,Montreal,KP0000,north-west,petroleum,0.0,
+2021-09-01,Montreal,KP0000,north-west,petroleum,1.98,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.57,5.47
 2007-02-01,NormanWells,KP0044,south,domestic light,3.27,5.47
 2007-03-01,NormanWells,KP0044,south,domestic light,3.69,5.47
@@ -3480,3 +3481,6 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-08-01,Westspur,KP0000,north-east,MSM – Crude Volume,219.88,
 2021-08-01,Westspur,KP0000,north-east,NGL Volume,10.62,
 2021-08-01,Westspur,KP0000,north-east,SES – Crude Volume,454.7,
+2021-09-01,Westspur,KP0000,north-east,MSM – Crude Volume,212.34,
+2021-09-01,Westspur,KP0000,north-east,NGL Volume,8.73,
+2021-09-01,Westspur,KP0000,north-east,SES – Crude Volume,473.11,
