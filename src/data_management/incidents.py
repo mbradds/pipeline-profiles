@@ -1,5 +1,5 @@
 import pandas as pd
-from util import get_company_names, company_rename, most_common, idify, get_company_list, apply_system_id
+from util import company_rename, most_common, idify, get_company_list, apply_system_id
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -148,7 +148,7 @@ def optimize_json(df):
     return df
 
 
-def process_incidents(remote=False, company_names=False, companies=False, test=False):
+def process_incidents(remote=False, companies=False, test=False):
     if remote:
         link = "https://www.cer-rec.gc.ca/open/incident/pipeline-incidents-data.csv"
         process_func = process_english
@@ -197,9 +197,6 @@ def process_incidents(remote=False, company_names=False, companies=False, test=F
                    'Reported Date']:
         del df[delete]
 
-    if company_names:
-        print(get_company_names(df['Company']))
-
     if companies:
         company_files = companies
     else:
@@ -235,5 +232,5 @@ def process_incidents(remote=False, company_names=False, companies=False, test=F
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df_, volume_, meta_ = process_incidents(remote=True, test=False)
+    df_, volume_, meta_ = process_incidents(remote=False, test=False)
     print('completed incidents!')
