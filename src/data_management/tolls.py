@@ -171,7 +171,7 @@ def round_values(df):
 
 
 def process_description(desc, save):
-    
+
     description_lookup = {}
     for company in list(desc["PipelineID"]):
         d_text = str(list(desc[desc["PipelineID"] == company]["Toll Description"])[0])
@@ -234,6 +234,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         return series_col, product_filter
 
     df, descriptions = get_tolls_data(sql)
+    del df["FilingID"]
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
@@ -310,32 +311,32 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 if __name__ == "__main__":
     print("starting tolls...")
     completed_ = ["Alliance",
-                 "Cochin",
-                 "Aurora",
-                 "EnbridgeBakken",
-                 "EnbridgeMainline",
-                 "Keystone",
-                 "NGTL",
-                 "Brunswick",
-                 "TCPL",
-                 "Express",
-                 "Foothills",
-                 "Genesis",
-                 "ManyIslands",
-                 "MNP",
-                 "Montreal",
-                 "MilkRiver",
-                 "NormanWells",
-                 "TransMountain",
-                 "TQM",
-                 "TransNorthern",
-                 "SouthernLights",
-                 "Vector",
-                 "Westcoast",
-                 "Westspur",
-                 "Wascana"]
+                  "Cochin",
+                  "Aurora",
+                  "EnbridgeBakken",
+                  "EnbridgeMainline",
+                  "Keystone",
+                  "NGTL",
+                  "Brunswick",
+                  "TCPL",
+                  "Express",
+                  "Foothills",
+                  "Genesis",
+                  "ManyIslands",
+                  "MNP",
+                  "Montreal",
+                  "MilkRiver",
+                  "NormanWells",
+                  "TransMountain",
+                  "TQM",
+                  "TransNorthern",
+                  "SouthernLights",
+                  "Vector",
+                  "Westcoast",
+                  "Westspur",
+                  "Wascana"]
     # completed_ = ["NGTL"]
-    df_, this_company_data_ = process_tolls_data(sql=False,
+    df_, this_company_data_ = process_tolls_data(sql=True,
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")

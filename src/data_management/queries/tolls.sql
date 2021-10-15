@@ -1,5 +1,6 @@
 SELECT 
 tValue.[PipelineID],
+tValue.FilingID,
 [Product],
 [Receipt Point]+'-'+[Delivery Point] as [Path],
 [Service],
