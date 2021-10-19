@@ -1,9 +1,11 @@
 import os
 import json
 import datetime
+import ssl
 import numpy as np
 import pandas as pd
 from util import get_data, idify, company_rename, get_company_list, normalize_text, apply_system_id
+ssl._create_default_https_context = ssl._create_unverified_context
 script_dir = os.path.dirname(__file__)
 
 '''
@@ -67,7 +69,7 @@ def apply_contaminant_ids(df, cont, col_name="Contaminants at the Site"):
     return df
 
 
-def process_remediation(sql=False, companies=False, test=False, save=True):
+def process_remediation(sql=False, remote=True, companies=False, test=False, save=True):
 
     if test:
         print("reading test remediation test data")
@@ -75,18 +77,15 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
                                       "raw_data",
                                       "test_data",
                                       "remediation.csv"))
-
-        # match the test data with the database columns
-        df = df.rename(columns={"Commodity Carried": "Product Carried",
-                                "Nearest Populated Center": "NearestPopulatedCentre",
-                                "Activity At Time Of Discovery": "Activity At Time",
-                                "Initial Estimate of Contaminated Soil (m3)": "Initial Estimate of Contaminated soil m3",
-                                "Site Within 30 Meters Of Waterbody": "Is site within 30 m of waterbody"})
+    elif remote:
+        print("reading remote remediation file")
+        df = pd.read_csv("https://www.cer-rec.gc.ca/open/compliance/contamination.csv",
+                         encoding="latin-1",
+                         engine="python",)
+        df.to_csv("./raw_data/remediation.csv")
     else:
-        df = get_data(sql=sql,
-                      script_loc=script_dir,
-                      query="remediation.sql",
-                      db="dsql22cap")
+        print("reading local remediation file")
+        df = pd.read_csv("./raw_data/remediation.csv")
 
     contaminants = get_data(sql=sql,
                             script_loc=script_dir,
@@ -99,16 +98,10 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
 
     df = apply_contaminant_ids(df, contaminants)
     df["Contaminants at the Site"] = [["18"] if x == None else x for x in df["Contaminants at the Site"]]
-
-    for delete in ['Facility Type',
-                   'Product Carried',
-                   'NearestPopulatedCentre']:
-
-        del df[delete]
-
+    df["Site Within 30 Meters Of Waterbody"] = [True if x == "Yes" else False for x in df["Site Within 30 Meters Of Waterbody"]]
     df = normalize_text(df, ['Applicable Land Use',
                              'Site Status',
-                             'Activity At Time',
+                             'Activity At Time Of Discovery',
                              'Pipeline Name',
                              'Facility Name'])
 
@@ -122,7 +115,7 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
         elif pipe != na and section == na:
             pipe_section.append("p") # Pipeline
         elif pipe != na and section != na:
-            pipe_section.append("pf") # Pipeline and Facility 
+            pipe_section.append("pf") # Pipeline and Facility
         else:
             print("error here!")
 
@@ -166,46 +159,50 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
     df = idify(df, "Applicable Land Use", land_use_ids)
     df = idify(df, "Province", "region")
     df = idify(df, "Site Status", status_ids)
-    df = idify(df, "Activity At Time", activity_ids)
+    df = idify(df, "Activity At Time Of Discovery", activity_ids)
 
     df['Final Submission Date'] = pd.to_datetime(df['Final Submission Date'])
     df['y'] = df['Final Submission Date'].dt.year
 
     df = df.fillna(value=np.nan)
     for ns in ['Applicable Land Use',
-               'Activity At Time',
+               'Activity At Time Of Discovery',
                'Contaminants at the Site',
-               'Initial Estimate of Contaminated soil m3',
-               'Is site within 30 m of waterbody',
+               'Initial Estimate of Contaminated Soil (m3)',
+               'Site Within 30 Meters Of Waterbody',
                'Site Status',
                'Latitude',
                'Longitude']:
 
         df[ns] = [None if x in ["Not Specified", np.nan, "nan"] else x for x in df[ns]]
 
-    for numeric in ['Initial Estimate of Contaminated soil m3',
+    for numeric in ['Initial Estimate of Contaminated Soil (m3)',
                     'Latitude',
                     'Longitude',
                     'y']:
 
         df[numeric] = df[numeric].replace(np.nan, int(-1))
 
-    for int_numeric in ['y', 'Initial Estimate of Contaminated soil m3']:
+    for int_numeric in ['y', 'Initial Estimate of Contaminated Soil (m3)']:
         df[int_numeric] = df[int_numeric].astype(int)
 
     df['loc'] = [[lat, long] for lat, long in zip(df['Latitude'],
                                                   df['Longitude'])]
     del df['Latitude']
     del df['Longitude']
-
-    df = df.rename(columns={"EventNumber": "id",
-                            "Site Status": "s",
-                            "Activity At Time": "a",
-                            "Province": "p",
-                            "Applicable Land Use": "use",
-                            "Contaminants at the Site": "c",
-                            "Initial Estimate of Contaminated soil m3": "vol",
-                            "Is site within 30 m of waterbody": "w"})
+    columns={"Event ID": "id",
+             "Site Status": "s",
+             "Activity At Time Of Discovery": "a",
+             "Province": "p",
+             "Applicable Land Use": "use",
+             "Contaminants at the Site": "c",
+             "Initial Estimate of Contaminated Soil (m3)": "vol",
+             "Site Within 30 Meters Of Waterbody": "w"}
+    
+    df = df.rename(columns=columns)
+    for col in df:
+        if col not in columns.values() and col not in ["Company Name", "Final Submission Date", "y", "ps", "loc"]:
+            del df[col]
 
     df['Company Name'] = df['Company Name'].replace(company_rename())
     df = apply_system_id(df, "Company Name")
@@ -242,4 +239,6 @@ def process_remediation(sql=False, companies=False, test=False, save=True):
 
 
 if __name__ == "__main__":
-    df_ = process_remediation(sql=False)
+    print('starting remediation...')
+    df_ = process_remediation(sql=False, remote=False)
+    print('completed remediation!')

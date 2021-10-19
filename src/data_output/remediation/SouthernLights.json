@@ -1,1 +1,1 @@
-{"meta": {"companyName": "SouthernLights", "new": 1, "old": 0}, "build": true, "data": [{"id": "REM2020-002", "p": "sk", "use": "al", "s": "sa", "a": "m", "c": ["2", "4"], "vol": 0, "w": true, "ps": "p", "y": 2020, "loc": [50.14, -102.85]}]}
+{"meta": {"companyName": "SouthernLights", "new": 1, "old": 0}, "build": true, "data": [{"id": "REM2020-002", "p": "sk", "use": "al", "a": "m", "s": "sa", "c": ["2", "4"], "vol": 0, "w": true, "ps": "p", "y": 2020, "loc": [50.14, -102.85]}]}
