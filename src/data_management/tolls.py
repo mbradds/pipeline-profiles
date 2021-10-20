@@ -143,14 +143,17 @@ def process_path(df, series_col):
     series = []
     for ps in path_series:
         df_s = df[df[series_col] == ps].copy().reset_index()
+        if len(list(set(df_s["Units"]))) > 1:
+            print(list(df_s["PipelineID"])[0], "units error")
+            # print(list(set(df_s["Units"])))
         for product in list(set(df_s["Product"])):
             df_p = df_s[df_s["Product"] == product].copy().reset_index(drop=True)
             for service in list(set(list(df_p["Service"]))):
                 df_s2 = df_p[df_p["Service"] == service].copy().reset_index(drop=True)
                 thisSeries = {"id": ps}
-                thisSeries["product"] = product
-                thisSeries["service"] = service
-                thisSeries["units"] = list(df_s2["Units"])[0]
+                thisSeries["p"] = product
+                thisSeries["s"] = service
+                thisSeries["u"] = list(df_s2["Units"])[0]
                 data = []
                 for s, e, value in zip(df_s2["Effective Start"], df_s2["Effective End"], df_s2["Value"]):
                     data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
@@ -238,6 +241,9 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
+    df["Units"] = df["Units"].replace({"10³m³/mo": "103m3/mo",
+                                       "U.S.  DOLLARS  PER  BARREL": "U.S. DOLLARS PER BARREL"})
+    
     company_files = get_company_list()
     process_description(descriptions, save)
 
@@ -336,7 +342,7 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
     # completed_ = ["NGTL"]
-    df_, this_company_data_ = process_tolls_data(sql=True,
+    df_, this_company_data_ = process_tolls_data(sql=False,
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")

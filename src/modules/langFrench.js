@@ -497,7 +497,7 @@ export const frenchDashboard = {
       barClick,
       locationDisclaimer,
       volumeDisclaimer:
-        "Bubble size illustrates the approximate site location, and does not indicate the full contaminated area.",
+        "La taille des bulles illustre l'emplacement approximatif du site et n'indique pas la totalité de la zone contaminée.",
       eventName: "Sites contaminés",
       trendYTitle,
       cf: units.cf,

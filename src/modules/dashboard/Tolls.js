@@ -63,12 +63,12 @@ export class Tolls {
           fullPath.push({
             id: `${partialPath.id}-${path.pathName}`,
             name: partialPath.id,
-            service: partialPath.service,
+            service: partialPath.s,
             data: fullTolls,
             color: currentColor,
             pathName: path.pathName,
-            units: partialPath.units,
-            product: partialPath.product,
+            units: partialPath.u,
+            product: partialPath.p,
           });
         });
         seriesLookup[path.pathName] = fullPath;

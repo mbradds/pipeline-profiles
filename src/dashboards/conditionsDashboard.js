@@ -517,7 +517,6 @@ export async function mainConditions(
           }
         });
     } else {
-      console.log(lang.companyToSystem, meta.companyName);
       noEventsFlag(
         lang.noEvents.header(lang.conditions),
         lang.noEvents.note(
@@ -532,6 +531,6 @@ export async function mainConditions(
   try {
     return buildDashboard();
   } catch (err) {
-    return loadChartError("conditions-dashboard", lang.dashboardError);
+    return loadChartError("conditions-dashboard", lang.dashboardError, err);
   }
 }

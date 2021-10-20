@@ -11,8 +11,7 @@ export async function mainTraffic(trafficData, metaData, lang) {
       traffic.mapZoomListener();
       return traffic;
     } catch (err) {
-      console.log(err);
-      return loadChartError("traffic-section", lang.dashboardError);
+      return loadChartError("traffic-section", lang.dashboardError, err);
     }
   } else {
     visibility(["traffic-section"], "hide");

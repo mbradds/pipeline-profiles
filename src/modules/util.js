@@ -170,9 +170,9 @@ export function equalizeHeight(divId1, divId2) {
  * @param {Array} [hideDivs=[]] - Optional array of HTML div id's to be hidden on error.
  * @returns false
  */
-export function loadChartError(errorDiv, lang, hideDivs = []) {
-  if (hideDivs.length > 0) {
-    visibility(hideDivs, "hide");
+export function loadChartError(errorDiv, lang, err = false) {
+  if (err) {
+    console.warn(err);
   }
   document.getElementById(
     errorDiv

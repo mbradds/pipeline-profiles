@@ -296,6 +296,6 @@ export async function mainApportion(apportionData, lang) {
   try {
     return buildDecision();
   } catch (err) {
-    return loadChartError("apportionment-dashboard", lang.dashboardError);
+    return loadChartError("apportionment-dashboard", lang.dashboardError, err);
   }
 }

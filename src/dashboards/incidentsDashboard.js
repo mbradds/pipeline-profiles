@@ -188,6 +188,6 @@ export async function mainIncidents(incidentData, metaData, lang) {
   try {
     return buildDashboard();
   } catch (err) {
-    return loadChartError("incidents-dashboard", lang.dashboardError);
+    return loadChartError("incidents-dashboard", lang.dashboardError, err);
   }
 }

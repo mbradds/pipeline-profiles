@@ -28,6 +28,6 @@ export async function mainTolls(tollsData, metaData, lang) {
     buildDecision();
   } catch (err) {
     // console.log(err);
-    loadChartError("tolls-section", lang.dashboardError);
+    loadChartError("tolls-section", lang.dashboardError, err);
   }
 }

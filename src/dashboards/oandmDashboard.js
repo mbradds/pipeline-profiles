@@ -78,6 +78,6 @@ export async function mainOandM(eventData, lang) {
   try {
     return buildDecision();
   } catch (err) {
-    return loadChartError("oandm-dashboard", lang.dashboardError);
+    return loadChartError("oandm-dashboard", lang.dashboardError, err);
   }
 }

@@ -4,7 +4,6 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-// import InlineChunkHtmlPlugin from "react-dev-utils/InlineChunkHtmlPlugin.js";
 import { profileText } from "./src/components/htmlText.js";
 import { pm } from "./src/components/profileManager.js";
 
@@ -152,7 +151,6 @@ export default {
     new MiniCssExtractPlugin({
       filename: "css/main.[contenthash].css",
     }),
-    // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/entry/]),
   ],
 
   resolve: {
