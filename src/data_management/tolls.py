@@ -159,7 +159,10 @@ def process_path(df, series_col):
                 thisSeries["s"] = service
                 thisSeries["u"] = list(df_s2["Units"])[0]
                 data = []
-                for s, e, value in zip(df_s2["Effective Start"], df_s2["Effective End"], df_s2["Value"]):
+                for s, e, value, to in zip(df_s2["Effective Start"],
+                                           df_s2["Effective End"],
+                                           df_s2["Value"],
+                                           df_s2["FilingID"]):
                     # if len(data) > 0:
                     #     last_toll = data[-1][-1]
                     #     rollover_days = (s - last_end).days
@@ -363,7 +366,7 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
     # completed_ = ["NGTL"]
-    df_, this_company_data_ = process_tolls_data(sql=False,
+    df_, this_company_data_ = process_tolls_data(sql=True,
                                                  # companies = ["NGTL"],
                                                  companies=completed_,
                                                  completed=completed_)
