@@ -291,12 +291,23 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 meta["split"]["buttons"] = list(set(df_c["split"]))
                 path_series = {}
                 meta["paths"], meta["seriesCol"], meta["products"], meta["services"], meta["units"], meta["tollNum"] = {}, {}, {}, {}, {}, {}
+                if company == "EnbridgeMainline":
+                    meta["splitDescription"] = {}
+                else:
+                    meta["splitDescription"] = False
+
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     # add toll numbers
                     this_nums = toll_nums[toll_nums["PipelineID"] == list(df_split["PipelineID"])[0]].copy()
                     del this_nums["PipelineID"]
                     meta["tollNum"][split] = this_nums.to_dict(orient="records")
+
+                    # add enbridge descriptions
+                    if meta["splitDescription"] != False:
+                        current_definition = descriptions[descriptions["PipelineID"] ==list(df_split["PipelineID"])[0]]
+                        meta["splitDescription"][split] = list(current_definition["Toll Description"])[0]
+
 
                     paths = sorted(list(set(df_split["Path"])))
                     # services = sorted(list(set(df_c["Service"])))
@@ -367,7 +378,7 @@ if __name__ == "__main__":
                   "Wascana"]
     # completed_ = ["NGTL"]
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["NGTL"],
-                                                 companies=completed_,
+                                                 companies = ["EnbridgeMainline"],
+                                                 # companies=completed_,
                                                  completed=completed_)
     print("done tolls")

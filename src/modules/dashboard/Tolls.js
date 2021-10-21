@@ -160,6 +160,7 @@ export class Tolls {
       },
       plotOptions: {
         series: {
+          connectNulls: false,
           marker: {
             symbol: "circle",
           },
@@ -396,10 +397,21 @@ export class Tolls {
     }
   }
 
+  applySplitDescription() {
+    if (this.metaData.splitDescription && this.currentSplit) {
+      document.getElementById("split-description").innerHTML = `<h3>${
+        this.currentSplit
+      } Toll Description</h3><p>${
+        this.metaData.splitDescription[this.currentSplit]
+      }</p>`;
+    }
+  }
+
   buildDashboard() {
     const series = this.buildSeries();
     this.buildTollsChart(this.selectedSeries(series));
     this.pathTotalsDisclaimer();
+    this.applySplitDescription();
     let [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
     if (this.metaData.pathFilter[0] && pathBtns) {
       this.listener(pathBtns, series, "path");
@@ -421,6 +433,7 @@ export class Tolls {
           btnGroupClick("tolls-split-btn", event);
           this.currentSplit = event.target.value;
           this.getDefaults();
+          this.applySplitDescription();
           [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
           if (!productBtns) {
             visibility(["tolls-product-btn"], "hide");

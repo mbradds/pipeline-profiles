@@ -122,7 +122,7 @@ def get_rounding(point):
     elif point in ['KP0014', 'KP0010']:
         rounding = 3
     else:
-        rounding = 2
+        rounding = 3
     return rounding
 
 
@@ -412,5 +412,5 @@ if __name__ == "__main__":
     # points = get_traffic_data(False, True, "key_points.sql")
     # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(save=True, sql=True)
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')
