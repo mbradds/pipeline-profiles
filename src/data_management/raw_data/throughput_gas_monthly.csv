@@ -3686,7 +3686,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2013-12-01,TCPL,KP0014,north,import,20180.0,6025.187
 2014-01-01,TCPL,KP0014,north,import,20180.0,1577.146
 2014-01-01,TCPL,KP0014,south,export,83380.0,1818.408
-2014-02-01,TCPL,KP0014,south,export,83380.0,10584.773
+2014-02-01,TCPL,KP0014,south,export,83380.0,10584.772
 2014-02-01,TCPL,KP0014,north,import,20180.0,0.0
 2014-03-01,TCPL,KP0014,south,export,83380.0,22528.752
 2014-03-01,TCPL,KP0014,north,import,20180.0,0.0
@@ -4971,7 +4971,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2008-11-01,TCPL,KP0037,east,import,61000.0,30294.463
 2008-12-01,TCPL,KP0037,east,import,61000.0,29604.343
 2009-01-01,TCPL,KP0037,east,import,61000.0,39456.974
-2009-02-01,TCPL,KP0037,east,import,61000.0,48506.303
+2009-02-01,TCPL,KP0037,east,import,61000.0,48506.302
 2009-03-01,TCPL,KP0037,east,import,61000.0,40694.257
 2009-04-01,TCPL,KP0037,east,import,61000.0,42467.192
 2009-05-01,TCPL,KP0037,east,import,61000.0,42285.523
@@ -5553,7 +5553,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2007-06-01,Westcoast,KPWESC,west,intracanada,43682.0,8266.134
 2007-07-01,Westcoast,KPWESC,west,intracanada,43682.0,6181.679
 2007-08-01,Westcoast,KPWESC,west,intracanada,43682.0,6210.121
-2007-09-01,Westcoast,KPWESC,west,intracanada,43682.0,7687.438
+2007-09-01,Westcoast,KPWESC,west,intracanada,43682.0,7687.437
 2007-10-01,Westcoast,KPWESC,west,intracanada,43682.0,11495.123
 2007-11-01,Westcoast,KPWESC,west,intracanada,48214.0,14851.868
 2007-12-01,Westcoast,KPWESC,west,intracanada,48214.0,17437.807
@@ -6079,7 +6079,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2013-02-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
 2013-03-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
 2013-03-01,Westcoast,KP0024,west,intracanada,2974.0,1230.213
-2013-04-01,Westcoast,KP0024,west,intracanada,2974.0,377.53
+2013-04-01,Westcoast,KP0024,west,intracanada,2974.0,377.529
 2013-04-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
 2013-05-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
 2013-05-01,Westcoast,KP0024,west,intracanada,2974.0,1101.359
@@ -6465,7 +6465,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2013-09-01,Westcoast,KP0029,west,intracanada,7854.0,2198.396
 2013-10-01,Westcoast,KP0029,west,intracanada,7854.0,23.426
 2013-10-01,Westcoast,KP0029,east,intracanada,10901.0,3110.287
-2013-11-01,Westcoast,KP0029,east,intracanada,10901.0,5088.653
+2013-11-01,Westcoast,KP0029,east,intracanada,10901.0,5088.652
 2013-11-01,Westcoast,KP0029,west,intracanada,7854.0,0.0
 2013-12-01,Westcoast,KP0029,west,intracanada,7854.0,0.0
 2013-12-01,Westcoast,KP0029,east,intracanada,10901.0,3190.659

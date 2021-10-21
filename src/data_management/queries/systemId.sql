@@ -7,7 +7,7 @@ company.[Company FRA] as [companyFra],
 [Commodity]
 FROM [PipelineInformation].[dbo].[Pipeline_System] as pipe
 left join [PipelineInformation].[dbo].[Company] as company on pipe.CompanyID = company.CompanyID
-where pipe.PipelineID not in ('EnbridgeFSP', 'EnbridgeLine9', 'EnbridgeLocal', 'AltaGas', 'PouceCoupe', 'Taylor', 'Vantage')
+where pipe.PipelineID not in ('EnbridgeFSP', 'EnbridgeLocal', 'AltaGas', 'PouceCoupe', 'Taylor', 'Vantage')
 union all
 select
 'Plains' as PipelineID,

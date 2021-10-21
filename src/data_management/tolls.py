@@ -377,8 +377,8 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
     # completed_ = ["NGTL"]
-    df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 companies = ["EnbridgeMainline"],
-                                                 # companies=completed_,
+    df_, this_company_data_ = process_tolls_data(sql=True,
+                                                 # companies = ["EnbridgeMainline"],
+                                                 companies=completed_,
                                                  completed=completed_)
     print("done tolls")

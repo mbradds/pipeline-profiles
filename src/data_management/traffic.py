@@ -28,7 +28,8 @@ def apply_trade_id(df):
              "SES – Crude Volume": "ses",
              "petroleum": "pet",
              "westspur midale (MSM) crude": "msm",
-             "MSM – Crude Volume": "msm"}
+             "MSM – Crude Volume": "msm",
+             "aggregate of heavy, medium, light crude petroleum": "agg"}
     df = idify(df, "Trade Type", trade, False)
     return df
 
@@ -51,7 +52,8 @@ def apply_colors(trade_type):
               "msm": "#559B37",
               "pet": "#054169",
               "dic": "#054169",
-              "diu": "#FF821E"}
+              "diu": "#FF821E",
+              "agg": "#054169"}
     return colors[trade_type]
 
 
@@ -412,5 +414,5 @@ if __name__ == "__main__":
     # points = get_traffic_data(False, True, "key_points.sql")
     # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
     # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(save=True, sql=False)
+    combined_traffic(save=True, sql=True)
     print('completed throughput!')

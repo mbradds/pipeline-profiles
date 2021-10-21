@@ -12,4 +12,4 @@ if __name__ == "__main__":
     process_conditions(remote=True, save=True, sql=True)
     process_incidents(remote=True, test=False)
     process_oandm(remote=True, test=False)
-    process_remediation(sql=True)
+    process_remediation(sql=False, remote=True, save=True, test=False)

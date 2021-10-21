@@ -49,5 +49,5 @@ where throughput.PipelineId = 'TransMountain'
 group by throughput.Year, throughput.Month, throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
 ) as hc
 left join [PipelineInformation].[dbo].[KeyPoint] as kp on hc.KeyPointId = kp.KeyPointId
-where hc.PipelineID not in ('EnbridgeLine9')
+-- where hc.PipelineID not in ('EnbridgeLine9')
 order by hc.PipelineID, kp.[Key Point], cast(str([Month])+'-'+'1'+'-'+str([Year]) as date)
