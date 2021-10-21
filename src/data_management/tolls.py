@@ -12,7 +12,11 @@ def get_tolls_data(sql=True):
                             "tolls_description.sql",
                             db="PipelineInformation",
                             sql=sql)
-    return df, descriptions
+    toll_nums = get_data(script_dir,
+                        "tolls_numbers.sql",
+                        db="PipelineInformation",
+                        sql=sql)
+    return df, descriptions, toll_nums
 
 
 def company_filter(df, company):
@@ -236,8 +240,8 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
         return series_col, product_filter
 
-    df, descriptions = get_tolls_data(sql)
-    del df["FilingID"]
+    df, descriptions, toll_nums = get_tolls_data(sql)
+    toll_nums = normalize_dates(toll_nums, ["s", "e"])
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
@@ -262,6 +266,9 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
+            # this_nums = toll_nums[toll_nums["PipelineID"] == company].copy()
+            # del this_nums["PipelineID"]
+            # meta["tollNum"]
             meta["pathTotals"] = path_totals
             meta["decimals"] = decimals
             paths = sorted(list(set(df_c["Path"])))
@@ -277,8 +284,14 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 meta["products"] = {}
                 meta["services"] = {}
                 meta["units"] = {}
+                meta["tollNum"] = {}
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
+                    # add toll numbers
+                    this_nums = toll_nums[toll_nums["PipelineID"] == list(df_split["PipelineID"])[0]].copy()
+                    del this_nums["PipelineID"]
+                    meta["tollNum"][split] = this_nums
+                    
                     paths = sorted(list(set(df_split["Path"])))
                     # services = sorted(list(set(df_c["Service"])))
                     units = list(set(df_split["Units"]))
@@ -293,6 +306,11 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                     meta["units"][split] = units
                     path_series[split] = generate_path_series(df_split, paths, series_col)
             else:
+                # add toll numbers
+                this_nums = toll_nums[toll_nums["PipelineID"] == company].copy()
+                del this_nums["PipelineID"]
+                meta["tollNums"] = this_nums.to_dict(orient="records")
+                
                 series_col, product_filter = find_series_col(df_c, company)
                 meta["products"] = product_filter
                 meta["seriesCol"] = series_col
