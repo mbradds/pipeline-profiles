@@ -182,6 +182,7 @@ export const englishDashboard = {
         `${column} Condition Themes (click to view theme definition):`,
       regdocsDefinition:
         "*REGDOCS is a regulatory database for activities and transactions conducted at the CER.",
+      regdocsLink: "https://apps.cer-rec.gc.ca/REGDOCS/Item/View/",
     },
     popUp: {
       econRegion: "Economic Region",
@@ -508,6 +509,7 @@ export const englishDashboard = {
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
       nearbyHeader: nearbyMe.nearbyHeader,
       mapClick: "Click circle to open REGDOCS search for",
+      regdocsLink: "https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=",
       pillTitles: {
         titles: {
           vol: "Initial estimate of contaminated soil",

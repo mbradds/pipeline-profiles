@@ -184,6 +184,8 @@ export const frenchDashboard = {
         `${column} Thèmes de condition (cliquer pour voir la définition du thème) :`,
       regdocsDefinition:
         "*REGDOCS est une base de données sur les activités de réglementation et opérations réglementaires menées par la Régie.",
+      regdocsLink:
+        "https://apps.cer-rec.gc.ca/REGDOCS/%C3%89l%C3%A9ment/Afficher/",
     },
     popUp: {
       econRegion: "Région économique",
@@ -509,6 +511,7 @@ export const frenchDashboard = {
       nearbyHeader: nearbyMe.nearbyHeader,
       mapClick:
         "Cliquez sur le cercle pour ouvrir la recherche<br>REGDOCS pour",
+      regdocsLink: "https://apps.cer-rec.gc.ca/REGDOCS/Recherche/Index/?txthl=",
       pillTitles: {
         titles: {
           vol: "Estimation initiale du volume de sol contaminé",
@@ -581,7 +584,7 @@ export const frenchDashboard = {
           o: { c: cerPalette.Flame, n: "Exploitation" },
           c: { c: cerPalette.Ocean, n: "Construction" },
           a: { c: cerPalette.Aubergine, n: "Cessation d'exploitation" },
-          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+          null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
         },
         c: {
           1: { n: "Autre" },
@@ -603,7 +606,7 @@ export const frenchDashboard = {
           15: { n: "Pesticides et herbicides" },
           16: { n: "Liquide immiscible léger" },
           17: { n: "Liquide immiscible dense" },
-          18: { n: "Not Provided" },
+          18: { n: "Non fourni" },
         },
       },
       definitions: {

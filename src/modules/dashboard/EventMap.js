@@ -289,10 +289,10 @@ export class EventMap {
       eventParams,
     });
 
-    if (this.regdocsClick) {
+    if (this.regdocsClick && this.lang.regdocsLink) {
       circle.on("click", (e) => {
         window.open(
-          `https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=${e.target.options.eventParams.id}`
+          `${this.lang.regdocsLink}${e.target.options.eventParams.id}`
         );
       });
     }

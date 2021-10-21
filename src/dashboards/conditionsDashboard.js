@@ -97,7 +97,7 @@ export async function mainConditions(
             displayName = params.projectLookup[proj.name][lang.lang];
           }
           if (proj.Regdocs !== undefined) {
-            const regdocsLink = `https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${proj.Regdocs}`;
+            const regdocsLink = `${lang.table.regdocsLink}${proj.Regdocs}`;
             projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${displayName}</a></td><td>${proj.value}</td></tr>`;
           } else {
             projectsHTML += `<tr><td>${displayName}</td><td>${proj.value}</td></tr>`;
