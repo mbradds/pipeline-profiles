@@ -408,6 +408,7 @@ export const frenchDashboard = {
       ngl: "Liquides de gaz naturel",
       dic: "Diluant (souscrit)",
       diu: "Diluant (non souscrit)",
+      agg: "FR: aggregate of heavy, medium, light crude petroleum",
     },
     util: "Utilisation",
     months: {

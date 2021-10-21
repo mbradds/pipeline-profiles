@@ -72,6 +72,9 @@ def company_filter(df, company):
                                            "EnbridgeLocal": "Enbridge Local",
                                            "EnbridgeFSP": "Enbridge FSP"})
         split_default = "Enbridge Local"
+    elif company == "EnbridgeLine9":
+        selected_paths = ["Hardisty Terminal, Alberta-MONTREAL, QUEBEC"]
+        path_filter = [True, "radio"]
     elif company == "Keystone":
         df = df[df["Path"] != "All-All"]
         selected_paths = list(set(df["Path"]))
@@ -356,6 +359,7 @@ if __name__ == "__main__":
                   "Aurora",
                   "EnbridgeBakken",
                   "EnbridgeMainline",
+                  "EnbridgeLine9",
                   "Keystone",
                   "NGTL",
                   "Brunswick",
@@ -377,8 +381,8 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
     # completed_ = ["NGTL"]
-    df_, this_company_data_ = process_tolls_data(sql=True,
-                                                 # companies = ["EnbridgeMainline"],
-                                                 companies=completed_,
+    df_, this_company_data_ = process_tolls_data(sql=False,
+                                                 companies = ["EnbridgeLine9"],
+                                                 # companies=completed_,
                                                  completed=completed_)
     print("done tolls")

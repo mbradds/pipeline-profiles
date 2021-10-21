@@ -409,6 +409,7 @@ export const englishDashboard = {
       ngl: "Natural Gas Liquids",
       dic: "Diluent (committed)",
       diu: "Diluent (uncommitted)",
+      agg: "aggregate of heavy, medium, light crude petroleum",
     },
     util: "Utilization",
     months: {

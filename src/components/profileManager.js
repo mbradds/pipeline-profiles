@@ -110,6 +110,14 @@ export const pm = {
       safety: true,
     },
   },
+  EnbridgeLine9: {
+    sections: {
+      traffic: { map: false, noMap: true },
+      apportion: false,
+      tolls: true,
+      safety: false,
+    },
+  },
   Keystone: {
     sections: {
       traffic: { map: true, noMap: false },

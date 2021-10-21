@@ -276,7 +276,13 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
  * @param {string} dashboardId - HTML div id for the dashboard section.
  */
 export function noEventsFlag(header, note, dashboardId) {
-  document.getElementById(
-    dashboardId
-  ).innerHTML = `<section class="alert alert-warning"><h3>${header}</h3><p>${note}</p></section>`;
+  try {
+    document.getElementById(
+      dashboardId
+    ).innerHTML = `<section class="alert alert-warning"><h3>${header}</h3><p>${note}</p></section>`;
+  } catch (err) {
+    console.warn(
+      `Missing HTML and dashboard ID (${dashboardId}) for noEventsFlag method. `
+    );
+  }
 }
