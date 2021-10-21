@@ -160,6 +160,17 @@ def process_path(df, series_col):
                 thisSeries["u"] = list(df_s2["Units"])[0]
                 data = []
                 for s, e, value in zip(df_s2["Effective Start"], df_s2["Effective End"], df_s2["Value"]):
+                    # if len(data) > 0:
+                    #     last_toll = data[-1][-1]
+                    #     rollover_days = (s - last_end).days
+                    #     if last_toll == value and rollover_days <= 1:
+                    #         None
+                    #     else:
+                    #         data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
+                    # else:
+                    #     data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
+                    # last_end = e
+                    
                     data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
                 thisSeries["data"] = data
                 series.append(thisSeries)
@@ -247,7 +258,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
     df["Units"] = df["Units"].replace({"10³m³/mo": "103m3/mo",
                                        "U.S.  DOLLARS  PER  BARREL": "U.S. DOLLARS PER BARREL"})
-    
+
     company_files = get_company_list()
     process_description(descriptions, save)
 
@@ -266,9 +277,6 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
-            # this_nums = toll_nums[toll_nums["PipelineID"] == company].copy()
-            # del this_nums["PipelineID"]
-            # meta["tollNum"]
             meta["pathTotals"] = path_totals
             meta["decimals"] = decimals
             paths = sorted(list(set(df_c["Path"])))
@@ -279,19 +287,14 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             if split_default:
                 meta["split"]["buttons"] = list(set(df_c["split"]))
                 path_series = {}
-                meta["paths"] = {}
-                meta["seriesCol"] = {}
-                meta["products"] = {}
-                meta["services"] = {}
-                meta["units"] = {}
-                meta["tollNum"] = {}
+                meta["paths"], meta["seriesCol"], meta["products"], meta["services"], meta["units"], meta["tollNum"] = {}, {}, {}, {}, {}, {}
                 for split in list(set(df_c["split"])):
                     df_split = df_c[df_c["split"] == split].copy().reset_index(drop=True)
                     # add toll numbers
                     this_nums = toll_nums[toll_nums["PipelineID"] == list(df_split["PipelineID"])[0]].copy()
                     del this_nums["PipelineID"]
-                    meta["tollNum"][split] = this_nums
-                    
+                    meta["tollNum"][split] = this_nums.to_dict(orient="records")
+
                     paths = sorted(list(set(df_split["Path"])))
                     # services = sorted(list(set(df_c["Service"])))
                     units = list(set(df_split["Units"]))
@@ -310,7 +313,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 this_nums = toll_nums[toll_nums["PipelineID"] == company].copy()
                 del this_nums["PipelineID"]
                 meta["tollNums"] = this_nums.to_dict(orient="records")
-                
+
                 series_col, product_filter = find_series_col(df_c, company)
                 meta["products"] = product_filter
                 meta["seriesCol"] = series_col
@@ -361,6 +364,7 @@ if __name__ == "__main__":
                   "Wascana"]
     # completed_ = ["NGTL"]
     df_, this_company_data_ = process_tolls_data(sql=False,
+                                                 # companies = ["NGTL"],
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")

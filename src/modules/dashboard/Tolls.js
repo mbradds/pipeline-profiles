@@ -25,6 +25,14 @@ export class Tolls {
       });
       return found;
     };
+
+    const tollNumDates = (df) =>
+      df.map((row) => {
+        row.s = new Date(row.s).getTime();
+        row.e = new Date(row.e).getTime();
+        return row;
+      });
+
     if (this.currentSplit) {
       this.currentProduct = getProduct(
         this.metaData.products[this.currentSplit]
@@ -34,11 +42,13 @@ export class Tolls {
       );
       [this.currentUnits] = this.metaData.units[this.currentSplit];
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
+      this.tollNum = tollNumDates(this.metaData.tollNum[this.currentSplit]);
     } else {
       this.currentProduct = getProduct(this.metaData.products);
       this.currentService = getProduct(this.metaData.services);
       [this.currentUnits] = this.metaData.units;
       this.seriesCol = this.metaData.seriesCol;
+      this.tollNum = tollNumDates(this.metaData.tollNum);
     }
   }
 
@@ -87,12 +97,21 @@ export class Tolls {
     return seriesLookup;
   }
 
-  static toolTipTolls(event, seriesCol) {
+  toolTipTolls(event, seriesCol) {
+    // get the toll number from lookup
+    let currentTollOrder = "";
+    this.tollNum.forEach((tollOrder) => {
+      if (event.x >= tollOrder.s && event.x <= tollOrder.e) {
+        currentTollOrder = tollOrder.id;
+      }
+    });
+
     let toolText = `<strong>${Highcharts.dateFormat(
       "%b %d, %Y",
       event.x
-    )}</strong>`;
+    )} - ${currentTollOrder}</strong>`;
     toolText += `<table><tr><td>Toll:&nbsp;</td><td><strong>${event.y} (${event.series.userOptions.units})</strong></td></tr>`;
+
     const optionalSections = {
       Path: `<tr><td>Path:&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`,
       Product: `<tr><td>Product:&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`,
@@ -162,7 +181,7 @@ export class Tolls {
         animation: true,
         borderColor: cerPalette["Dim Grey"],
         formatter() {
-          return Tolls.toolTipTolls(this, dashboard.seriesCol);
+          return dashboard.toolTipTolls(this, dashboard.seriesCol);
         },
       },
       series,
@@ -417,7 +436,7 @@ export class Tolls {
           this.chart.update({
             tooltip: {
               formatter() {
-                return Tolls.toolTipTolls(this, dashboard.seriesCol);
+                return dashboard.toolTipTolls(this, dashboard.seriesCol);
               },
             },
             yAxis: {

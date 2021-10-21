@@ -4,4 +4,3 @@ src/wet-boew
 node_modules
 *.hbs
 src/data_management
-src/data_output
