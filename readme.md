@@ -348,7 +348,7 @@ if __name__ == "__main__":
 
 ### Dataset 3: Traffic
 
-Traffic data is updated every quarter (early March, mid-May, mid-August and mid-November) on open gov and CERSEI database. When new data becomes available, it can be pulled directly from CERSEI and build into seperate json datasets for each profile with npm run data, after the steps described below.
+Traffic data is updated every quarter (early March, mid-May, mid-August and mid-November) on open gov and PipelineInformation database. When new data becomes available, it can be pulled directly from psql22cap/PipelineInformation and build into seperate json datasets for each profile with npm run data, after the steps described below.
 
 Note that the data output is language (en/fr) agnostic.
 
@@ -400,7 +400,7 @@ Instructions coming soon!
 
 ## Deploying to CER production server
 
-This is a mess. The CER web infrastructure is managed in an entirely manual way. There is no automation, content management system, CI/CD, version control, or any other modern tools and technology. There is also no way I can easily mimic the CER server environment for local development, and no one is fully aware of the enourmous amount of scripts, css, server side includes, templates that make up these pages. This means that the CER html pages are too ridiculous for me to realistically use or mimic myself, and the lack of version control means that I cant really deal with these files until right before I'm ready to release.
+This continues to be a challenge because I control/update only a portion of the pipeline profiles, and there is no way for me to access the main production files or keep up with other changes through a version control system. Therefore my content and code needs to be merged with CER files and updated on the website very quickly to avoid a situation where others are working on the files. Also, there is also no way I can easily mimic the CER server environment for local development. In the abscence of an organizational version control system, its not realistic to use or mimic much, if any, CER infrastructure/files during the development process.
 
 Up until recently (summer 2021) my approach to these constraints and problems was:
 
@@ -642,9 +642,7 @@ Take a look at the issues tab for a more up to date list. I dont update this sec
 
 - Include documentation and instructions for getting regdocs links from the internal cer database.
 - Add an option in incidents and conditions py for direct connection to cer infrastructure. Wait until pipeline info database is complete though.
-- Company names as file names inside each "company_data" folder is probably going to lead to problems if company names change, or company names are different between datasets. Try to implement the same id structure in `webpack.common.js` for each corporate entity across the entire project.
 - Add datestone as an npm depenency. This didnt work last time becuse of the default parameter problem in IE11.
-- Rename default branch to main
 - Add better consistency to shared columns across datasets. Eg, lat/long should follow this pattern: [{loc: [lat, -long]}] across all datasets.
 - Look into a monorepo structure for seperating the back end code (python+sql) and front end code (JS, Handlebars, CSS).
 
