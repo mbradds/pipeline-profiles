@@ -220,8 +220,8 @@ export async function mainConditions(
     const zooms = inits[metaData.summary.companyName];
     if (zooms === undefined) {
       return {
-        "In Progress": 1.5,
-        Closed: 1.5,
+        "In Progress": 4.5,
+        Closed: 4.5,
       };
     }
     return zooms;
@@ -351,28 +351,26 @@ export async function mainConditions(
     });
   };
 
-  const zoomToGeoJson = (chart, redraw, zoom) => {
-    let minX = Number.MAX_SAFE_INTEGER;
-    let maxX = Number.MIN_SAFE_INTEGER;
-    let minY = Number.MAX_SAFE_INTEGER;
-    let maxY = Number.MIN_SAFE_INTEGER;
+  const zoomToGeoJson = (chart, zoom) => {
+    const validPoints = chart.series[0]
+      .getValidPoints()
+      .filter((point) => point.options.id !== "-1");
 
-    chart.series[0].getValidPoints().forEach((item) => {
-      if (item._minX && item._maxX && item._minY && item._maxY) {
-        minX = Math.min(minX, item._minX);
-        maxX = Math.max(maxX, item._maxX);
-        minY = Math.min(minY, item._minY);
-        maxY = Math.max(maxY, item._maxY);
-      }
+    const [xList, yList] = [[], []];
+    validPoints.forEach((p) => {
+      xList.push(p.bounds.midX);
+      yList.push(p.bounds.midY);
     });
-    chart.series[0].xAxis.setExtremes(minX, maxX, true);
-    chart.series[0].yAxis.setExtremes(minY, maxY, true);
-    if (redraw) {
-      chart.redraw();
-    }
-    if (zoom) {
-      chart.mapZoom(zoom);
-    }
+
+    const zoomValue = (arr) => (Math.max(...arr) + Math.min(...arr)) / 2;
+
+    const moveUp = 300000;
+    chart.mapView.setView(
+      [zoomValue(xList), zoomValue(yList) + moveUp],
+      zoom,
+      true,
+      false
+    );
   };
 
   const createConditionsMap = (regions, baseMap, container, params, zooms) =>
@@ -383,7 +381,7 @@ export async function mainConditions(
         events: {
           load() {
             removeNoConditions(this);
-            zoomToGeoJson(this, false, zooms[params.conditionsFilter.column]);
+            zoomToGeoJson(this, zooms[params.conditionsFilter.column]);
           },
           click() {
             if (this.customTooltip) {
@@ -511,9 +509,9 @@ export async function mainConditions(
           chart.mapZoom(undefined, undefined, undefined);
           removeNoConditions(chart);
           if (chartParams.conditionsFilter.column === "Closed") {
-            zoomToGeoJson(chart, false, zooms.Closed);
+            zoomToGeoJson(chart, zooms.Closed);
           } else {
-            zoomToGeoJson(chart, false, zooms["In Progress"]);
+            zoomToGeoJson(chart, zooms["In Progress"]);
           }
         });
     } else {

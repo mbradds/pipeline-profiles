@@ -16,73 +16,49 @@ import { cerPalette, sortJsonAlpha, conversions } from "../modules/util.js";
  */
 
 export const mapInits = {
-  TCPL: {
-    "In Progress": 1.5,
-    Closed: 1.25,
+  NGTL: {
+    "In Progress": 4.7,
+    Closed: 4.5,
   },
-  Keystone: {
-    "In Progress": 3,
-    Closed: 3,
+  TCPL: {
+    "In Progress": 4.5,
+    Closed: 4,
   },
   TransMountain: {
-    "In Progress": 2,
-    Closed: 2,
-  },
-  Cochin: {
-    "In Progress": 1.5,
-    Closed: 1.5,
-  },
-  Westcoast: {
-    "In Progress": 1.5,
-    Closed: 1.1,
-  },
-  SouthernLights: {
-    "In Progress": 3,
-    Closed: 3,
-  },
-  Foothills: {
     "In Progress": 5,
     Closed: 5,
   },
-  ManyIslands: {
-    "In Progress": 3,
-    Closed: 1.5,
+  Westcoast: {
+    "In Progress": 4.5,
+    Closed: 4,
   },
   MNP: {
-    "In Progress": 4,
-    Closed: 4,
+    "In Progress": 5,
+    Closed: 5,
   },
   TQM: {
-    "In Progress": 4,
-    Closed: 4,
+    "In Progress": 5,
+    Closed: 5,
   },
   EnbridgeBakken: {
-    "In Progress": 7,
-    Closed: 7,
+    "In Progress": 5,
+    Closed: 5,
   },
   NormanWells: {
-    "In Progress": 1.5,
-    Closed: 1.5,
-  },
-  Express: {
-    "In Progress": 4,
-    Closed: 4,
+    "In Progress": 2.5,
+    Closed: 2.5,
   },
   TransNorthern: {
-    "In Progress": 3,
-    Closed: 3,
+    "In Progress": 5,
+    Closed: 5,
   },
   Genesis: {
-    "In Progress": 9,
-    Closed: 9,
+    "In Progress": 5,
+    Closed: 5,
   },
   Montreal: {
-    "In Progress": 10,
-    Closed: 10,
-  },
-  Westspur: {
-    "In Progress": 8,
-    Closed: 8,
+    "In Progress": 5,
+    Closed: 5,
   },
 };
 
