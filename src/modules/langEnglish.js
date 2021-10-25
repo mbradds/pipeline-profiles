@@ -486,8 +486,8 @@ export const englishDashboard = {
     numberFormat,
     dateFormat,
     companyToSystem,
-    title: (company, cutoffDate) =>
-      `Dashboard: ${company} - Contaminated Sites (post ${cutoffDate})`,
+    title: (company) =>
+      `Dashboard: ${company} - Contaminated Sites (post Aug 15, 2018)`,
     dynamicText: remediationTextEng,
     dashboard: {
       userPopUp,

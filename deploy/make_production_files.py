@@ -15,6 +15,8 @@ import re
 import json
 import requests
 from bs4 import BeautifulSoup
+import urllib3
+urllib3.disable_warnings()
 ssl._create_default_https_context = ssl._create_unverified_context
 script_dir = os.path.dirname(__file__)
 WEBPACK_REGEX = "[0-9a-f]{20}"
@@ -145,6 +147,8 @@ def update_cer_files():
 
     with open('production_links.json') as f:
         links = json.load(f)
+        
+    get_remote_files = input("Pull latest profiles from CER.ca ? (y/n): ")
 
     for link in links:
         folder = link.split("/")
@@ -156,12 +160,12 @@ def update_cer_files():
             if not os.path.isdir(f):
                 os.makedirs(f)
         path_with_file = os.path.join(full_path, file_name)
-        if os.path.isfile(path_with_file):
+        if os.path.isfile(path_with_file) and get_remote_files == "n":
             print("file already saved: "+file_name)
             page = open(path_with_file)
             profile = BeautifulSoup(page.read(), "html.parser")
         else:
-            print("getting file")
+            print("getting file: ", file_name)
             page = requests.get(link, verify=False)
             profile = BeautifulSoup(page.content, "html.parser")
             # profile = profile.prettify()

@@ -487,8 +487,8 @@ export const frenchDashboard = {
     numberFormat,
     dateFormat,
     companyToSystem,
-    title: (company, cutoffDate) =>
-      `Tableau de bord : ${company} - Sites contaminés (post ${cutoffDate})`,
+    title: (company) =>
+      `Tableau de bord : ${company} - Sites contaminés (post août 15, 2018)`,
     dynamicText: remediationTextFra,
     dashboard: {
       userPopUp,

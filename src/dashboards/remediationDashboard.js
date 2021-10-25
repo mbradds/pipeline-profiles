@@ -11,7 +11,7 @@ export async function mainRemediation(data, lang) {
 
   const setTitle = (language, meta) => {
     document.getElementById("remediation-dashboard-title").innerHTML =
-      language.title(meta.systemName, meta.cutoffDate);
+      language.title(meta.systemName);
   };
 
   const remediationBar = (events, map, langPillTitles) => {
@@ -88,7 +88,7 @@ export async function mainRemediation(data, lang) {
         chartParams.systemName = data.meta.companyName;
       }
 
-      chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
+      // chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
       lang.dynamicText(chartParams, lang);
 
       setTitle(lang, chartParams);
