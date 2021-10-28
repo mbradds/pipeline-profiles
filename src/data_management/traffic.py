@@ -385,6 +385,7 @@ def process_throughput(points,
         except:
             print("traffic error: "+company)
             raise
+    return this_company_data, df_c
 
 
 def get_points(sql):

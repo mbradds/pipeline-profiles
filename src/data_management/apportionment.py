@@ -120,6 +120,47 @@ def sort_by_points(df):
     return df
 
 
+def process_company(df, company, enbridge_points, save):
+    this_company_data = {}
+    folder_name = company.replace(' ', '').replace('.', '')
+    df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
+    df_c = df_c.where(pd.notnull(df_c), None)
+    if not df_c.empty:
+        this_company_data['build'] = True
+        df_c = df_c.drop_duplicates(subset=['Date', 'KeyPointID'])
+        min_date = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
+        this_company_data["company"] = company
+        point_series = []
+        series = []
+        series.append({"name": "date",
+                       "min": [min_date.year, min_date.month-1, min_date.day]})
+
+        y_axis = 1
+        for kp in df_c["KeyPointID"].unique():
+            line_data, area_data, pct_data = [], [], []
+            df_p = df_c[df_c["KeyPointID"] == kp].copy().reset_index(drop=True)
+            df_p = df_p.sort_values(by='Date')
+            if kp not in enbridge_points:
+                series = apportion_line(df_p, company, pct_data, line_data, area_data, series)
+                this_company_data["keyPoint"] = kp
+            else:
+                # enbridge apportionment by line
+                point_series = apportion_point(df_p, point_series, kp)
+                y_axis = y_axis + 1
+                this_company_data["keyPoint"] = False
+
+        this_company_data["series"] = series
+        this_company_data["pointSeries"] = point_series
+    else:
+        this_company_data["build"] = False
+
+    if save:
+        with open('../data_output/apportionment/'+folder_name+'.json', 'w') as fp:
+            json.dump(this_company_data, fp, default=str)
+
+    return this_company_data
+
+
 def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
@@ -156,47 +197,17 @@ def process_apportionment(save=False, sql=False, companies=False):
     df = sort_by_points(df)
 
     for company in company_files:
-        this_company_data = {}
-        folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
-        df_c = df_c.where(pd.notnull(df_c), None)
-        if not df_c.empty:
-            this_company_data['build'] = True
-            df_c = df_c.drop_duplicates(subset=['Date', 'KeyPointID'])
-            min_date = min(df_c['Date']) - dateutil.relativedelta.relativedelta(months=1)
-            this_company_data["company"] = company
-            point_series = []
-            series = []
-            series.append({"name": "date",
-                           "min": [min_date.year, min_date.month-1, min_date.day]})
+        try:
+            this_company_data = process_company(df, company, enbridge_points, save)
+            print("completed: "+company)
+        except:
+            print("apportionment error: "+company)
+            raise
 
-            y_axis = 1
-            for kp in df_c["KeyPointID"].unique():
-                line_data, area_data, pct_data = [], [], []
-                df_p = df_c[df_c["KeyPointID"] == kp].copy().reset_index(drop=True)
-                df_p = df_p.sort_values(by='Date')
-                if kp not in enbridge_points:
-                    series = apportion_line(df_p, company, pct_data, line_data, area_data, series)
-                    this_company_data["keyPoint"] = kp
-                else:
-                    # enbridge apportionment by line
-                    point_series = apportion_point(df_p, point_series, kp)
-                    y_axis = y_axis + 1
-                    this_company_data["keyPoint"] = False
-
-            this_company_data["series"] = series
-            this_company_data["pointSeries"] = point_series
-        else:
-            this_company_data["build"] = False
-
-        if save:
-            with open('../data_output/apportionment/'+folder_name+'.json', 'w') as fp:
-                json.dump(this_company_data, fp, default=str)
-
-    return df
+    return this_company_data
 
 
 if __name__ == "__main__":
     print('starting apportionment...')
-    df_ = process_apportionment(sql=True, save=True)
+    df_ = process_apportionment(sql=False, save=True)
     print('completed apportionment!')
