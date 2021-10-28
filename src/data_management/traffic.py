@@ -205,19 +205,148 @@ def get_default_point(company):
         return 'KP0000'
 
 
+def push_traffic(t, arr, rounding):
+    if t == 0:
+        arr.append(None)
+    else:
+        arr.append(round(float(t), rounding))
+    return arr
+
+
+def process_company(df, company, commodity, points, units, save):
+    meta = {"companyName": company}
+    meta["units"] = units
+    if company == "SouthernLights":
+        frequency = "q"
+    else:
+        frequency = "m"
+    meta["frequency"] = frequency
+    meta['defaultPoint'] = get_default_point(company)
+    this_company_data = {}
+    folder_name = company.replace(' ', '').replace('.', '')
+    df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
+    if not df_c.empty:
+        meta["build"] = True
+        trend = meta_trend(df_c, commodity)
+        meta["trendText"] = trend
+        meta = meta_throughput(df_c, meta, commodity)
+        this_key_points = points[points['Pipeline Name'] == company].copy().reset_index(drop=True)
+        this_key_points['loc'] = [[lat, long] for lat, long in zip(this_key_points['Latitude'], this_key_points['Longitude'])]
+        for delete in ['Pipeline Name', 'Latitude', 'Longitude', 'Description', 'Description FRA', 'Key Point']:
+            del this_key_points[delete]
+        meta['keyPoints'] = this_key_points.to_dict(orient='records')
+        for delete in ['Direction of Flow']:
+            del df_c[delete]
+
+        point_data = {}
+        points_list = sorted(list(set(df_c['KeyPointID'])))
+        for p in points_list:
+            rounding = get_rounding(p)
+            point_capacity, point_import_capacity = [], []
+            df_p = df_c[df_c['KeyPointID'] == p].copy().reset_index(drop=True)
+            df_p = df_p.groupby(['Date', 'KeyPointID', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
+            traffic_types = {}
+            counter = 0
+            point_dates = sorted(list(set(df_p['Date'])))
+            df_p = df_p.drop_duplicates(subset=['Date', 'KeyPointID', 'Trade Type'], ignore_index=True)
+            trade_data, date_added = [], []
+            for tr in list(set(df_p['Trade Type'])):
+                df_p_t = df_p[df_p['Trade Type'] == tr].copy()
+                df_p_t = df_p_t.merge(pd.DataFrame(point_dates), how='right', left_on='Date', right_on=0)
+                del[df_p_t[0]]
+                for total_fill in ['KeyPointID', 'Trade Type']:
+                    df_p_t[total_fill] = df_p_t[total_fill].fillna(method="bfill").fillna(method='ffill')
+
+                for num_fill in ['Throughput', 'Capacity']:
+                    df_p_t[num_fill] = df_p_t[num_fill].fillna(0)
+                trade_data.append(df_p_t)
+            df_p = pd.concat(trade_data, ignore_index=True).copy()
+            if p == "KP0016":
+                df_p = df_p.sort_values(by=['Trade Type', 'Date'], ascending=[True, True])
+            for date, t, c, trade in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity'], df_p['Trade Type']):
+                t, c = float(t), float(c)
+
+                if trade in traffic_types:
+                    traffic_types[trade] = push_traffic(t, traffic_types[trade], rounding)
+                else:
+                    traffic_types[trade] = push_traffic(t, [], rounding)
+
+                if date not in date_added and trade != "im":
+                    point_capacity = push_traffic(c, point_capacity, rounding)
+                    date_added.append(date)
+
+                if trade == "im":
+                    point_import_capacity = push_traffic(c, point_import_capacity, rounding)
+
+                counter = counter + 1
+
+            throughput_series = []
+            if frequency == "m":
+                min_date = min(point_dates) - dateutil.relativedelta.relativedelta(months=1)
+            elif frequency == "d":
+                min_date = min(point_dates) - dateutil.relativedelta.relativedelta(days=1)
+            elif frequency == "q":
+                min_date = min(point_dates) - dateutil.relativedelta.relativedelta(months=5)
+
+            throughput_series.append({"id": "date", "min": [min_date.year, min_date.month-1, min_date.day]})
+
+            for tt, data in traffic_types.items():
+                if tt == "im":
+                    yAxis = 1
+                else:
+                    yAxis = 0
+
+                throughput_series.append({"id": tt,
+                                          "yAxis": yAxis,
+                                          "color": apply_colors(tt),
+                                          "data": data})
+
+            if len(point_import_capacity) > 0:
+                throughput_series.append({"id": "icap",
+                                          "yAxis": 1,
+                                          "color": "#FFBE4B",
+                                          "data": point_import_capacity})
+                throughput_series.append({"id": "ecap",
+                                          "yAxis": 0,
+                                          "color": "#FFBE4B",
+                                          "data": point_capacity})
+            else:
+                # check if there is at least one non null in the data
+                has_data = False
+                for val in point_capacity:
+                    if val:
+                        has_data = True
+                        break
+
+                if has_data:
+                    throughput_series.append({"id": "cap",
+                                              "yAxis": 0,
+                                              "color": "#FFBE4B",
+                                              "data": point_capacity})
+
+            point_data[p] = throughput_series
+
+        this_company_data["traffic"] = point_data
+        this_company_data['meta'] = meta
+        if save:
+            with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
+                json.dump(this_company_data, fp, default=str)
+    else:
+        # there is no traffic data
+        this_company_data['traffic'] = {}
+        this_company_data['meta'] = {"companyName": company, "build": False}
+        if save:
+            with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
+                json.dump(this_company_data, fp)
+    return this_company_data, df_c
+
+
 def process_throughput(points,
                        save=False,
                        sql=False,
                        commodity='Gas',
                        companies=False,
                        frequency='m'):
-
-    def push_traffic(t, arr, rounding):
-        if t == 0:
-            arr.append(None)
-        else:
-            arr.append(round(float(t), rounding))
-        return arr
 
     if commodity == 'Gas':
         if frequency == "m":
@@ -250,136 +379,12 @@ def process_throughput(points,
         company_files = companies
 
     for company in company_files:
-        meta = {"companyName": company}
-        meta["units"] = units
-        if company == "SouthernLights":
-            frequency = "q"
-        else:
-            frequency = "m"
-        meta["frequency"] = frequency
-        meta['defaultPoint'] = get_default_point(company)
-        this_company_data = {}
-        folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
-        if not df_c.empty:
-            # if company == "MNP":
-            #     df_c["KeyPointID"] = "KP0046"
-            meta["build"] = True
-            trend = meta_trend(df_c, commodity)
-            meta["trendText"] = trend
-            meta = meta_throughput(df_c, meta, commodity)
-            this_key_points = points[points['Pipeline Name'] == company].copy().reset_index(drop=True)
-            this_key_points['loc'] = [[lat, long] for lat, long in zip(this_key_points['Latitude'], this_key_points['Longitude'])]
-            for delete in ['Pipeline Name', 'Latitude', 'Longitude', 'Description', 'Description FRA', 'Key Point']:
-                del this_key_points[delete]
-            meta['keyPoints'] = this_key_points.to_dict(orient='records')
-            for delete in ['Direction of Flow']:
-                del df_c[delete]
-
-            point_data = {}
-            points_list = sorted(list(set(df_c['KeyPointID'])))
-            for p in points_list:
-                rounding = get_rounding(p)
-                point_capacity, point_import_capacity = [], []
-                df_p = df_c[df_c['KeyPointID'] == p].copy().reset_index(drop=True)
-                df_p = df_p.groupby(['Date', 'KeyPointID', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
-                traffic_types = {}
-                counter = 0
-                point_dates = sorted(list(set(df_p['Date'])))
-                df_p = df_p.drop_duplicates(subset=['Date', 'KeyPointID', 'Trade Type'], ignore_index=True)
-                trade_data, date_added = [], []
-                for tr in list(set(df_p['Trade Type'])):
-                    df_p_t = df_p[df_p['Trade Type'] == tr].copy()
-                    df_p_t = df_p_t.merge(pd.DataFrame(point_dates), how='right', left_on='Date', right_on=0)
-                    del[df_p_t[0]]
-                    for total_fill in ['KeyPointID', 'Trade Type']:
-                        df_p_t[total_fill] = df_p_t[total_fill].fillna(method="bfill").fillna(method='ffill')
-
-                    for num_fill in ['Throughput', 'Capacity']:
-                        df_p_t[num_fill] = df_p_t[num_fill].fillna(0)
-                    trade_data.append(df_p_t)
-                df_p = pd.concat(trade_data, ignore_index=True).copy()
-                if p == "KP0016":
-                    df_p = df_p.sort_values(by=['Trade Type', 'Date'], ascending=[True, True])
-                for date, t, c, trade in zip(df_p['Date'], df_p['Throughput'], df_p['Capacity'], df_p['Trade Type']):
-                    t, c = float(t), float(c)
-
-                    if trade in traffic_types:
-                        traffic_types[trade] = push_traffic(t, traffic_types[trade], rounding)
-                    else:
-                        traffic_types[trade] = push_traffic(t, [], rounding)
-
-                    if date not in date_added and trade != "im":
-                        point_capacity = push_traffic(c, point_capacity, rounding)
-                        date_added.append(date)
-
-                    if trade == "im":
-                        point_import_capacity = push_traffic(c, point_import_capacity, rounding)
-
-                    counter = counter + 1
-
-                throughput_series = []
-                if frequency == "m":
-                    min_date = min(point_dates) - dateutil.relativedelta.relativedelta(months=1)
-                elif frequency == "d":
-                    min_date = min(point_dates) - dateutil.relativedelta.relativedelta(days=1)
-                elif frequency == "q":
-                    min_date = min(point_dates) - dateutil.relativedelta.relativedelta(months=5)
-
-                throughput_series.append({"id": "date", "min": [min_date.year, min_date.month-1, min_date.day]})
-
-                for tt, data in traffic_types.items():
-                    if tt == "im":
-                        yAxis = 1
-                    else:
-                        yAxis = 0
-
-                    throughput_series.append({"id": tt,
-                                              "yAxis": yAxis,
-                                              "color": apply_colors(tt),
-                                              "data": data})
-
-                if len(point_import_capacity) > 0:
-                    throughput_series.append({"id": "icap",
-                                              "yAxis": 1,
-                                              "color": "#FFBE4B",
-                                              "data": point_import_capacity})
-                    throughput_series.append({"id": "ecap",
-                                              "yAxis": 0,
-                                              "color": "#FFBE4B",
-                                              "data": point_capacity})
-                else:
-                    # check if there is at least one non null in the data
-                    has_data = False
-                    for val in point_capacity:
-                        if val:
-                            has_data = True
-                            break
-
-                    if has_data:
-                        throughput_series.append({"id": "cap",
-                                                  "yAxis": 0,
-                                                  "color": "#FFBE4B",
-                                                  "data": point_capacity})
-
-                point_data[p] = throughput_series
-
-            this_company_data["traffic"] = point_data
-            this_company_data['meta'] = meta
-            if save:
-                print('saving '+company)
-                with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp, default=str)
-        else:
-            # there is no traffic data
-            this_company_data['traffic'] = {}
-            this_company_data['meta'] = {"companyName": company, "build": False}
-            if save:
-                print('saving '+company)
-                with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
-
-    return this_company_data, df_c
+        try:
+            this_company_data, df_c = process_company(df, company, commodity, points, units, save)
+            print("completed: "+company)
+        except:
+            print("traffic error: "+company)
+            raise
 
 
 def get_points(sql):
@@ -403,16 +408,13 @@ def get_points(sql):
 
 def combined_traffic(save=True, sql=True):
     points = get_points(sql)
-    process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m')
-    process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') #, companies=['EnbridgeMainline'])
+    # process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m')
+    process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['Montreal'])
 
 
 # TODO: enforce case on text columns
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    # points = get_traffic_data(False, True, "key_points.sql")
-    # oil = get_traffic_data(True, True, query="throughput_oil_monthly.sql")
-    # gas = get_traffic_data(True, True, query="throughput_gas_monthly.sql")
-    combined_traffic(save=True, sql=True)
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')

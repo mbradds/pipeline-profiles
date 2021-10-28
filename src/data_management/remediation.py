@@ -8,15 +8,6 @@ from util import get_data, idify, company_rename, get_company_list, normalize_te
 ssl._create_default_https_context = ssl._create_unverified_context
 script_dir = os.path.dirname(__file__)
 
-'''
-TODO:
-    - add get_data from util to other py scripts
-    - raise error after id's are applied if a record is longer
-      than the max length of id's' (done)
-    - create a general purpose function for this_company_data creation
-      with data, meta, build parameters
-'''
-
 # all data before August 15, 2018 is unreliable and should be cut out
 MIN_DATE = datetime.datetime(2018, 9, 15)
 
@@ -198,7 +189,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
              "Contaminants at the Site": "c",
              "Initial Estimate of Contaminated Soil (m3)": "vol",
              "Site Within 30 Meters Of Waterbody": "w"}
-    
+
     df = df.rename(columns=columns)
     for col in df:
         if col not in columns.values() and col not in ["Company Name", "Final Submission Date", "y", "ps", "loc"]:
@@ -216,24 +207,30 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
         company_files = get_company_list("all")
 
     for company in company_files:
-        folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
-        this_company_data = {}
+        try:
+            folder_name = company.replace(' ', '').replace('.', '')
+            df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
+            this_company_data = {}
 
-        if not df_c.empty:
-            this_company_data["meta"] = meta(df_c, company, old)
-            this_company_data["build"] = True
-            this_company_data["data"] = optimize_json(df_c)
-            if save and not test:
-                with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
-        else:
-            this_company_data['data'] = df_c.to_dict(orient='records')
-            this_company_data['meta'] = {"companyName": company}
-            this_company_data["build"] = False
-            if save and not test:
-                with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
+            if not df_c.empty:
+                this_company_data["meta"] = meta(df_c, company, old)
+                this_company_data["build"] = True
+                this_company_data["data"] = optimize_json(df_c)
+                if save and not test:
+                    with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
+                        json.dump(this_company_data, fp)
+            else:
+                this_company_data['data'] = df_c.to_dict(orient='records')
+                this_company_data['meta'] = {"companyName": company}
+                this_company_data["build"] = False
+                if save and not test:
+                    with open('../data_output/remediation/'+folder_name+'.json', 'w') as fp:
+                        json.dump(this_company_data, fp)
+            print("completed: "+company)
+        except:
+            print("remediation error: "+company)
+            raise
+
 
     return df, this_company_data
 

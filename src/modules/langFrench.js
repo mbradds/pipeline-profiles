@@ -65,8 +65,8 @@ const regionInfo = {
 };
 
 const yesNoInfo = {
-  y: { c: cerPalette.Sun, n: "Yes" },
-  n: { c: cerPalette["Night Sky"], n: "No" },
+  y: { c: cerPalette.Sun, n: "Oui" },
+  n: { c: cerPalette["Night Sky"], n: "Non" },
 };
 
 const units = {
@@ -91,7 +91,7 @@ const locationError =
 const exploreOther = (eventType) =>
   `Vous voulez explorer d’autres régions? Vous pouvez cliquer et faire glisser le marqueur de l’emplacement, puis cliquer de nouveau sur le bouton pour rechercher un ${eventType}.`;
 
-const click = "clique pour voir";
+const click = "cliquer pour voir";
 
 const unitsDisclaimerText = (commodity) => {
   let conversionText = "";
@@ -462,7 +462,7 @@ export const frenchDashboard = {
       titles: {
         id: "Fouille d’intégrité?",
         fp: "Poisson présent?",
-        is: "Travaux dans un cours d’eau requis?",
+        is: "Travaux dans un cours d’eau requis?",
         sr: "Espèces en péril?",
         p: "Province ou territoire",
       },
@@ -500,7 +500,7 @@ export const frenchDashboard = {
       barClick,
       locationDisclaimer,
       volumeDisclaimer:
-        "La taille des bulles illustre l'emplacement approximatif du site et n'indique pas la totalité de la zone contaminée.",
+        "La taille des bulles illustre l’emplacement approximative du site, mais n’indique pas la totalité de la zone contaminée.",
       eventName: "Sites contaminés",
       trendYTitle,
       cf: units.cf,
@@ -534,8 +534,8 @@ export const frenchDashboard = {
           ns: { n: "Non fourni", c: cerPalette["Dim Grey"] },
         },
         w: {
-          true: { c: cerPalette.Sun, n: "True" },
-          false: { c: cerPalette["Night Sky"], n: "False" },
+          true: { c: cerPalette.Sun, n: "Vrai" },
+          false: { c: cerPalette["Night Sky"], n: "Faux" },
           null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
         },
         s: {

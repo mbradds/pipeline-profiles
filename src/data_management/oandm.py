@@ -216,29 +216,34 @@ def process_oandm(remote=False, companies=False, test=False):
         company_files = get_company_list("all")
 
     for company in company_files:
-        folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
-        df_c = df_c.drop_duplicates(subset=['Event Number'])
-        this_company_data = {}
-        if not df_c.empty:
-            this_company_data["meta"] = metadata(df_c, company)
-            this_company_data["build"] = True
-            this_company_data["data"] = optimize_json(df_c)
-            if not test:
-                with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
-        else:
-            # there are no o and m events
-            this_company_data['data'] = df_c.to_dict(orient='records')
-            this_company_data['meta'] = {"companyName": company}
-            this_company_data["build"] = False
-            if not test:
-                with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
+        try:
+            folder_name = company.replace(' ', '').replace('.', '')
+            df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
+            df_c = df_c.drop_duplicates(subset=['Event Number'])
+            this_company_data = {}
+            if not df_c.empty:
+                this_company_data["meta"] = metadata(df_c, company)
+                this_company_data["build"] = True
+                this_company_data["data"] = optimize_json(df_c)
+                if not test:
+                    with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
+                        json.dump(this_company_data, fp)
+            else:
+                # there are no o and m events
+                this_company_data['data'] = df_c.to_dict(orient='records')
+                this_company_data['meta'] = {"companyName": company}
+                this_company_data["build"] = False
+                if not test:
+                    with open('../data_output/oandm/'+folder_name+'.json', 'w') as fp:
+                        json.dump(this_company_data, fp)
+            print("completed: "+company)
+        except:
+            print("o&m error: "+company)
+            raise
     return this_company_data
 
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df_ = process_oandm(remote=True, test=False)
+    df_ = process_oandm(remote=False, test=False)
     print('completed oandm!')

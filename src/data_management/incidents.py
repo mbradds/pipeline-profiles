@@ -24,16 +24,6 @@ def incident_meta_data(df, company):
                     serious[t] = serious[t] + 1
         return serious
 
-    # def thisCompanyPct(df, df_c):
-    #     pct = {}
-    #     countPct = (len(df_c.index)/len(df.index))*100
-    #     if countPct >= 1:
-    #         countPct = round(countPct, 0)
-    #     else:
-    #         countPct = round(countPct, 1)
-    #     pct['count'] = countPct
-    #     return pct
-
     # filter to specific company
     df_c = df[df['Company'] == company].copy()
     meta = {}
@@ -203,29 +193,33 @@ def process_incidents(remote=False, companies=False, test=False):
         company_files = get_company_list("all")
 
     for company in company_files:
-        folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Company'] == company].copy().reset_index(drop=True)
-        df_vol = df_c[~df_c['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
-        this_company_data = {}
-        if not df_vol.empty:
-            # calculate metadata here, before non releases are filtered out
-            meta = incident_meta_data(df, company)
-            this_company_data['meta'] = meta
-            for delete in ['Incident Types', 'Company', 'why common', 'what common']:
-                del df_vol[delete]
-            df_vol = optimize_json(df_vol)
-            this_company_data['events'] = df_vol.to_dict(orient='records')
-            this_company_data['meta']['build'] = True
-            if not test:
-                with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
-        else:
-            # there are no product release incidents
-            this_company_data['events'] = df_vol.to_dict(orient='records')
-            this_company_data['meta'] = {"companyName": company, "build": False}
-            if not test:
-                with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
+        try:
+            folder_name = company.replace(' ', '').replace('.', '')
+            df_c = df[df['Company'] == company].copy().reset_index(drop=True)
+            df_vol = df_c[~df_c['Approximate Volume Released'].isnull()].copy().reset_index(drop=True)
+            this_company_data = {}
+            if not df_vol.empty:
+                # calculate metadata here, before non releases are filtered out
+                meta = incident_meta_data(df, company)
+                this_company_data['meta'] = meta
+                for delete in ['Incident Types', 'Company', 'why common', 'what common']:
+                    del df_vol[delete]
+                df_vol = optimize_json(df_vol)
+                this_company_data['events'] = df_vol.to_dict(orient='records')
+                this_company_data['meta']['build'] = True
+                if not test:
+                    with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
+                        json.dump(this_company_data, fp)
+            else:
+                # there are no product release incidents
+                this_company_data['events'] = df_vol.to_dict(orient='records')
+                this_company_data['meta'] = {"companyName": company, "build": False}
+                if not test:
+                    with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
+                        json.dump(this_company_data, fp)
+            print("completed: "+company)
+        except:
+            print("incidents error: "+company)
 
     return df_c, df_vol, meta
 

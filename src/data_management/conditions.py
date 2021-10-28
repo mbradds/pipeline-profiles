@@ -279,6 +279,46 @@ def idify_conditions(df, sql):
     return df, region_replace, projects
 
 
+def process_company(df, company, project_names, regions_map, test, save):
+    this_company_data = {}
+    folder_name = company.replace(' ', '').replace('.', '')
+    df_c = df[df['Company'] == company].copy().reset_index(drop=True)
+    if not df_c.empty:
+        df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
+        expanded_locations = []
+        for unique in df_c['condition id']:
+            row = df_c[df_c['condition id'] == unique].copy().reset_index(drop=True)
+            for region in list(row['Location'])[0]:
+                row['id'] = region
+                expanded_locations.append(row.copy())
+
+        df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
+        # calculate metadata here
+        dfmeta, meta = condition_meta_data(df_all, project_names)
+        meta["build"] = True
+        this_company_data['meta'] = meta
+        shp, map_meta = conditions_on_map(dfmeta, regions_map)
+
+        this_company_data['regions'] = shp.to_json()
+        this_company_data['mapMeta'] = map_meta.to_dict(orient='records')
+        if not test and save:
+            with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
+                json.dump(this_company_data, fp)
+    else:
+        meta = {"companyName": company}
+        shp = None
+        dfmeta = None
+        this_company_data = {'meta': {"companyName": company,
+                                      "build": False},
+                             'regions': "{}",
+                             'mapMeta': []}
+
+        if not test and save:
+            with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
+                json.dump(this_company_data, fp)
+    return df_c, shp, dfmeta, meta
+
+
 def process_conditions(remote=False,
                        sql=False,
                        non_standard=True,
@@ -345,47 +385,17 @@ def process_conditions(remote=False,
         company_files = get_company_list("all")
 
     for company in company_files:
-        this_company_data = {}
-        folder_name = company.replace(' ', '').replace('.', '')
-        df_c = df[df['Company'] == company].copy().reset_index(drop=True)
-        if not df_c.empty:
-            df_c['condition id'] = [str(ins)+'_'+str(cond) for ins, cond in zip(df_c['Instrument Number'], df_c['Condition Number'])]
-            expanded_locations = []
-            for unique in df_c['condition id']:
-                row = df_c[df_c['condition id'] == unique].copy().reset_index(drop=True)
-                for region in list(row['Location'])[0]:
-                    row['id'] = region
-                    expanded_locations.append(row.copy())
-
-            df_all = pd.concat(expanded_locations, axis=0, sort=False, ignore_index=True)
-            # calculate metadata here
-            dfmeta, meta = condition_meta_data(df_all, project_names)
-            meta["build"] = True
-            this_company_data['meta'] = meta
-            shp, map_meta = conditions_on_map(dfmeta, regions_map)
-
-            this_company_data['regions'] = shp.to_json()
-            this_company_data['mapMeta'] = map_meta.to_dict(orient='records')
-            if not test and save:
-                with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
-                print('completed+saved: '+company)
-        else:
-            meta = {"companyName": company}
-            this_company_data = {'meta': {"companyName": company,
-                                        "build": False},
-                               'regions': "{}",
-                               'mapMeta': []}
-
-            if not test and save:
-                with open('../data_output/conditions/'+folder_name+'.json', 'w') as fp:
-                    json.dump(this_company_data, fp)
-                print('completed+saved: '+company)
+        try:
+            df_c, shp, dfmeta, meta = process_company(df, company, project_names, regions_map, test, save)
+            print("completed: "+company)
+        except:
+            print("conditions error: "+company)
+            raise
 
     return df_c, shp, dfmeta, meta
 
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df_, regions_, map_meta_, meta_ = process_conditions(remote=True, save=True, sql=False)
+    df_, regions_, map_meta_, meta_ = process_conditions(remote=False, save=True, sql=False)
     print('completed conditions!')
