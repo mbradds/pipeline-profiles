@@ -147,7 +147,7 @@ def update_cer_files():
 
     with open('production_links.json') as f:
         links = json.load(f)
-        
+
     get_remote_files = input("Pull latest profiles from CER.ca ? (y/n): ")
 
     for link in links:
@@ -169,7 +169,7 @@ def update_cer_files():
             page = requests.get(link, verify=False)
             profile = BeautifulSoup(page.content, "html.parser")
             # profile = profile.prettify()
-            with open(os.path.join(full_path, file_name), "w") as file:
+            with open(os.path.join(full_path, file_name), "w", encoding = 'utf-8') as file:
                 file.write(str(profile))
 
         # get all the new content from ./dist

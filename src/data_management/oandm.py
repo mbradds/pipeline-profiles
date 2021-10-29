@@ -245,5 +245,5 @@ def process_oandm(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting oandm...')
-    df_ = process_oandm(remote=False, test=False)
+    df_ = process_oandm(remote=True, test=False)
     print('completed oandm!')

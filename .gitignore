@@ -29,7 +29,4 @@ deploy/*
 !deploy/*.py
 !deploy/*.sh
 !deploy/*.json
-*.geojson
-**.LICENSE.txt
-*.vs/
 *.csv#

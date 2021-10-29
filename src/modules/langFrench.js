@@ -576,7 +576,7 @@ export const frenchDashboard = {
           },
           al: { c: cerPalette.Ocean, n: "Terres agricoles" },
           pa: { c: cerPalette.Forest, n: "Aire protégée" },
-          ndl: { c: cerPalette.Flame, n: "Non-developed Land" },
+          ndl: { c: cerPalette.Flame, n: "Terrain non mis en valeur" },
           null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
         },
         a: {
