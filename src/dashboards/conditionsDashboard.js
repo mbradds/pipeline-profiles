@@ -220,8 +220,10 @@ export async function mainConditions(
     const zooms = inits[metaData.summary.companyName];
     if (zooms === undefined) {
       return {
-        "In Progress": 4.5,
-        Closed: 4.5,
+        [metaData.summary.companyName]: {
+          "In Progress": undefined,
+          Closed: undefined,
+        },
       };
     }
     return zooms;
@@ -356,21 +358,52 @@ export async function mainConditions(
       .getValidPoints()
       .filter((point) => point.options.id !== "-1");
 
-    const [xList, yList] = [[], []];
+    const lessThan = (current, next, symbol) => {
+      if (symbol !== "x2" && symbol !== "y1") {
+        if (Math.abs(current[symbol]) < Math.abs(next[symbol])) {
+          current[symbol] = next[symbol];
+        }
+      } else if (Math.abs(next[symbol]) < Math.abs(current[symbol])) {
+        current[symbol] = next[symbol];
+      }
+      return current;
+    };
+
+    let currentBounds = {
+      x1: 0,
+      y1: Number.MAX_SAFE_INTEGER,
+      x2: Number.MAX_SAFE_INTEGER,
+      y2: 0,
+    };
+
+    const [midX, midY] = [[], []];
+
     validPoints.forEach((p) => {
-      xList.push(p.bounds.midX);
-      yList.push(p.bounds.midY);
+      midX.push(Math.abs(p.bounds.x1));
+      midY.push(Math.abs(p.bounds.y1));
+      currentBounds = lessThan(currentBounds, p.bounds, "x1");
+      currentBounds = lessThan(currentBounds, p.bounds, "y2");
+      currentBounds = lessThan(currentBounds, p.bounds, "x2");
+      currentBounds = lessThan(currentBounds, p.bounds, "y1");
     });
 
-    const zoomValue = (arr) => (Math.max(...arr) + Math.min(...arr)) / 2;
+    const xRange = Math.max(...midX) - Math.min(...midX);
+    const yRange = Math.max(...midY) - Math.min(...midY);
+    let paddingScale = 1000;
+    if (validPoints.length === 1) {
+      paddingScale = 1050;
+    } else {
+      paddingScale = xRange > yRange ? xRange : yRange;
+      paddingScale = ((1 / paddingScale) * 100000 + 1) ** 9;
+      paddingScale = paddingScale > 1000 ? 1000 : paddingScale;
+      paddingScale = paddingScale < 150 ? paddingScale + 150 : paddingScale;
+    }
 
-    const moveUp = 300000;
-    chart.mapView.setView(
-      [zoomValue(xList), zoomValue(yList) + moveUp],
-      zoom,
-      true,
-      false
-    );
+    chart.mapView.fitToBounds(currentBounds, paddingScale, true);
+    if (zoom !== undefined) {
+      chart.mapView.zoomBy(zoom);
+      chart.redraw();
+    }
   };
 
   const createConditionsMap = (regions, baseMap, container, params, zooms) =>

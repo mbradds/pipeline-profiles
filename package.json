@@ -50,20 +50,20 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime": "^7.15.4",
+    "@babel/runtime": "^7.16.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-rate-limit": "^5.5.0",
     "haversine": "^1.1.1",
     "highcharts": "^9.3.0",
     "leaflet": "^1.7.1",
-    "mapshaper": "^0.5.68"
+    "mapshaper": "^0.5.69"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-transform-runtime": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
     "ava": "^3.15.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
@@ -91,7 +91,7 @@
     "webpack-merge": "^5.8.0"
   },
   "engines": {
-    "node": "14.x",
+    "node": "16.x",
     "npm": "8.x"
   },
   "os": [

@@ -16,49 +16,21 @@ import { cerPalette, sortJsonAlpha, conversions } from "../modules/util.js";
  */
 
 export const mapInits = {
-  NGTL: {
-    "In Progress": 4.7,
-    Closed: 4.5,
-  },
-  TCPL: {
-    "In Progress": 4.5,
-    Closed: 4,
-  },
-  TransMountain: {
-    "In Progress": 5,
-    Closed: 5,
-  },
-  Westcoast: {
-    "In Progress": 4.5,
-    Closed: 4,
-  },
   MNP: {
-    "In Progress": 5,
-    Closed: 5,
-  },
-  TQM: {
-    "In Progress": 5,
-    Closed: 5,
-  },
-  EnbridgeBakken: {
-    "In Progress": 5,
-    Closed: 5,
+    "In Progress": -1,
+    Closed: -1,
   },
   NormanWells: {
-    "In Progress": 2.5,
-    Closed: 2.5,
+    "In Progress": 0,
+    Closed: 0,
   },
-  TransNorthern: {
-    "In Progress": 5,
-    Closed: 5,
+  Foothills: {
+    "In Progress": -2,
+    Closed: -2,
   },
-  Genesis: {
-    "In Progress": 5,
-    Closed: 5,
-  },
-  Montreal: {
-    "In Progress": 5,
-    Closed: 5,
+  TQM: {
+    "In Progress": -1,
+    Closed: -1,
   },
 };
 
