@@ -32,6 +32,22 @@ export const mapInits = {
     "In Progress": -1,
     Closed: -1,
   },
+  Keystone: {
+    "In Progress": -1,
+    Closed: -1,
+  },
+  Genesis: {
+    "In Progress": -1,
+    Closed: -1,
+  },
+  Montreal: {
+    "In Progress": -2,
+    Closed: -2,
+  },
+  Westspur: {
+    "In Progress": -2,
+    Closed: -2,
+  },
 };
 
 /**
