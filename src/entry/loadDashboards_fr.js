@@ -9,8 +9,6 @@ import { frenchDashboard } from "../modules/langFrench.js";
 import { mainTraffic } from "../dashboards/trafficDashboard.js";
 // apportionment
 import { mainApportion } from "../dashboards/apportionmentDashboard.js";
-// tolls
-import { mainTolls } from "../dashboards/tollsDashboard.js";
 // operations and maintenance activities
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
@@ -32,7 +30,6 @@ export async function loadAllCharts(data, plains = false) {
       frenchDashboard.traffic
     ),
     mainApportion(data.apportionData, frenchDashboard.apportion),
-    mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls),
     mainConditions(
       JSON.parse(data.conditionsData.regions),
       data.canadaMap,

@@ -627,12 +627,4 @@ export const frenchDashboard = {
     },
     noEvents,
   },
-  tolls: {
-    dashboardError,
-    numberFormat,
-    companyToSystem,
-    noEvents,
-    eventName: "FR: tolls",
-    lang: "f",
-  },
 };

@@ -25,7 +25,6 @@ const profileWebpackConfig = (function config() {
     ["Vector", "natural-gas", "Vector"],
     ["Foothills", "natural-gas", "Foothills"],
     ["EnbridgeMainline", "oil-and-liquids", "Enbridge Canadian Mainline"],
-    ["EnbridgeLine9", "oil-and-liquids", "Enbridge Line 9"],
     ["Keystone", "oil-and-liquids", "Keystone Pipeline"],
     ["TransMountain", "oil-and-liquids", "Trans Mountain"],
     ["Cochin", "oil-and-liquids", "Cochin Pipeline"],

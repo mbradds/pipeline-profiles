@@ -617,12 +617,4 @@ export const englishDashboard = {
     },
     noEvents,
   },
-  tolls: {
-    dashboardError,
-    numberFormat,
-    companyToSystem,
-    noEvents,
-    eventName: "tolls",
-    lang: "e",
-  },
 };
