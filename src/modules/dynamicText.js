@@ -105,6 +105,20 @@ const buildFiveText = (ft, tt, lang) => {
   return "";
 };
 
+function joinTextList(list, lang) {
+  if (lang === "e") {
+    return list.join(", ");
+  }
+  if (lang === "f" && list.length === 1) {
+    return `de ${list[0]}`;
+  }
+  if (lang === "f" && list.length > 1) {
+    const lastOne = list.pop();
+    return `de ${list.join(", de ")} et de ${lastOne}`;
+  }
+  return "";
+}
+
 export const incidentsTextEng = (id, meta) => {
   // total incidents.
   let paragraphText = `<p>The ${
@@ -288,7 +302,7 @@ export function oandmTextEng(meta, lang) {
     secondParagraph = `<p>These O&#38;M activities can occur anywhere along or near the pipeline right-of-way, including near populated areas. In the past year (${
       meta.nearbyYear
     }), O&#38;M activities have occurred most often near ${dynamicValue(
-      meta.nearby.join(", ")
+      joinTextList(meta.nearby, lang.lang)
     )} among others.</p>`;
   }
 
@@ -314,7 +328,7 @@ export function oandmTextFra(meta, lang) {
     secondParagraph = `<p>Ces activités d’exploitation et d’entretien peuvent avoir lieu n’importe où le long de l’emprise pipelinière ou à proximité de celle-ci, y compris à proximité de zones peuplées. Au cours de la dernière année (${
       meta.nearbyYear
     }), les activités d’exploitation et d’entretien ont le plus souvent eu lieu notamment près ${dynamicValue(
-      meta.nearby.join(", ")
+      joinTextList(meta.nearby, lang.lang)
     )}.</p>`;
   }
 
@@ -335,21 +349,19 @@ export function remediationTextEng(meta, lang) {
     meta.new
   )} contaminated sites reported since August 2018, and information about these contaminated sites is featured in the dashboard below.</p>`;
 
-  // const totalText = firstParagraph;
   document.getElementById("remediation-dynamic-text").innerHTML =
     firstParagraph;
 }
 
 export function remediationTextFra(meta, lang) {
-  const firstParagraph = `<p>${dynamicValue(
+  const firstParagraph = `<p>Depuis 2011, année où le premier <i>Guide sur le processus d’assainissement a été publié</i>, ${dynamicValue(
     lang.numberFormat(meta.new + meta.old, 0)
   )} sites contaminés ont été signalés sur le ${formatCompanyName(
     meta.systemName
-  )} depuis 2011, année où le premier Guide sur le processus d’assainissement a été publié. De plus, ${dynamicValue(
+  )}. De plus, ${dynamicValue(
     meta.new
   )} sites contaminés ont été signalés depuis août 2018, et l’information à leur sujet est présentée dans le tableau de bord ci-dessous.</p>`;
 
-  // const totalText = firstParagraph;
   document.getElementById("remediation-dynamic-text").innerHTML =
     firstParagraph;
 }

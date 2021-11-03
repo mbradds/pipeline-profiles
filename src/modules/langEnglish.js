@@ -457,6 +457,7 @@ export const englishDashboard = {
     eventName: "O&M Activities",
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle,
+    lang: "e",
     pillTitles: {
       titles: {
         id: "Integrity Dig?",
@@ -477,7 +478,7 @@ export const englishDashboard = {
       id: "Indicates if the activity includes excavation to expose, assess, or repair an existing pipeline.",
       fp: "Indicates if there will be ground disturbance using power-operated equipment within 30M of a wetland or a water body or within 30M of the substrate of a wetland or water body at the activity site, and the water body is fish-bearing.",
       is: "Indicates if there will be any in-stream work at activity site.",
-      sr: "Indicates if there are species present which are listed on schedule 1 of the Species At Risk Act at the activity site.",
+      sr: "Indicates if there are species present which are listed on schedule 1 of the <i>Species At Risk Act</i> at the activity site.",
     },
     noEvents,
   },

@@ -118,10 +118,10 @@ const en = {
       remediation: "Contaminated Sites and Remediation",
     },
     updated: {
-      conditions: "Section updated October 2021",
-      incidents: "Section updated October 2021",
-      oandm: "Section updated October 2021",
-      remediation: "Section updated October 2021",
+      conditions: "Section updated November 2021",
+      incidents: "Section updated November 2021",
+      oandm: "Section updated November 2021",
+      remediation: "Section updated November 2021",
     },
     conditions: {
       p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
@@ -407,7 +407,7 @@ const en = {
         summary:
           "What O&#38;M Activities require CER approval (restrictions on eligible activities)?",
         introParagraph:
-          "Where any of the following restrictions exist, the company must apply to the Commission in accordance with the CER Act and the related regulations and may not carry out the proposed activity until approval from the Commission has been obtained. The restrictions apply where:",
+          "Where any of the following restrictions exist, the company must apply to the Commission in accordance with the <i>CER Act</i> and the related regulations and may not carry out the proposed activity until approval from the Commission has been obtained. The restrictions apply where:",
         listItems: [
           {
             text: "The work includes welding on an in-service pipeline by a pipeline company that has not previously performed in-service welding in accordance with the requirements of CSA Z662-15, Clause 7.17, ‘Welding on In-Service Piping’, or the equivalent clause in the most recent edition of CSA Z662; or",
@@ -555,10 +555,10 @@ const fr = {
       remediation: "Sites contaminés et assainissement",
     },
     updated: {
-      conditions: "Mise à jour octobre 2021",
-      incidents: "Mise à jour octobre 2021",
-      oandm: "Mise à jour octobre 2021",
-      remediation: "Mise à jour octobre 2021",
+      conditions: "Mise à jour : novembre 2021",
+      incidents: "Mise à jour: novembre 2021",
+      oandm: "Mise à jour : novembre 2021",
+      remediation: "Mise à jour: novembre 2021",
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
@@ -780,7 +780,7 @@ const fr = {
     remediation: {
       p1: "Dans le cadre de ses activités de protection de l’environnement, la Régie exige des sociétés qu’elles gèrent les contaminations et y remédient tout au long du cycle de vie des installations. Comme première étape, les sociétés réglementées sont tenues de signaler toute contamination à la Régie au moyen d’un avis de contamination en ligne.",
       p2: `Une fois l’avis déposé, les sociétés doivent démontrer qu’elles gèrent activement la contamination conformément au
-      <a href="/fr/securite-environnement/environnement/assainissement/guide-processus-assainissement-2020/index.html">Guide sur le processus d’assainissement</a>. Les progrès réalisés sur le site contaminé et l’état du processus d’assainissement sont présentés dans les mises à jour annuelles de la société.`,
+      <a href="/fr/securite-environnement/environnement/assainissement/guide-processus-assainissement-2020/index.html"><i>Guide sur le processus d’assainissement</i></a>. Les progrès réalisés sur le site contaminé et l’état du processus d’assainissement sont présentés dans les mises à jour annuelles de la société.`,
       p3: "La contamination par des tiers est une contamination sur un site qui ne provient pas des installations de la société ou qui ne s’étend pas à l’extérieur des installations de celle-ci ou des terrains qu’elle possède ou loue ou de l’emprise. Bien que la contamination par des tiers ne résulte pas des activités de la société, la Régie exige tout de même qu’elle soit signalée au moyen d’un avis de contamination.",
       p4: `Le tableau de bord ci-dessous renferme l’information contenue dans les avis de contamination et les mises à jour annuelles qui se trouvent dans REGDOCS. La Régie publie dans REGDOCS les avis de contamination qui lui ont été transmis depuis août 2018, moment à partir duquel elle a commencé à recueillir cette information de façon électronique, ainsi que les mises à jour annuelles jusqu’en 2021.
       Pour obtenir des renseignements sur les sites contaminés pour lesquels des avis de contamination ont été soumis avant août 2018, envoyez un courriel à
@@ -851,7 +851,7 @@ const fr = {
         summary:
           "Quelles activités d’exploitation et d’entretien doivent être approuvées par la Régie (restrictions relatives aux activités admissibles)?",
         introParagraph:
-          "Quand une ou l’autre des conditions ci-après est présente, la compagnie doit, conformément à Loi sur la Régie canadienne de l’énergie (la « LRCE ») et à ses règlements d’application, présenter une demande d’autorisation à la Commission et ne peut pas mener l’activité proposée avant d’avoir obtenu l’autorisation de la Commission à cet effet. Les restrictions s’appliquent quand :",
+          "Quand une ou l’autre des conditions ci-après est présente, la compagnie doit, conformément à <i>Loi sur la Régie canadienne de l’énergie</i> (la « LRCE ») et à ses règlements d’application, présenter une demande d’autorisation à la Commission et ne peut pas mener l’activité proposée avant d’avoir obtenu l’autorisation de la Commission à cet effet. Les restrictions s’appliquent quand :",
         listItems: [
           {
             text: "les travaux comprennent le soudage d’un pipeline en service par une compagnie pipelinière n’ayant pas déjà exécuté de tels travaux de soudage conformément aux exigences de l’article 7.17 « Soudage d’un pipeline en service » de la norme CSA Z662-15, ou l’article équivalent de la version la plus récente de la norme CSA Z662;",
@@ -890,7 +890,7 @@ const fr = {
       },
       alert: `Le tableau de bord et les chiffres présentés ci-dessous ne comprennent que les activités d’exploitation et d’entretien réalisés à partir de 2015 qui doivent être signalées à la Régie.
       Consultez les
-      <a href="/fr/regie/lois-reglements/loi-regie-canadienne-lenergie-reglements-notes-dorientation-documents-connexes/pipelines-terrestres/activites-dexploitation-dentretien-pipelines-sous-regime-loi-loffice-national-lenergie-exigences-2.html">Exigences et notes d’orientation relatives aux activités d’exploitation et d’entretien</a>
+      <a href="/fr/regie/lois-reglements/loi-regie-canadienne-lenergie-reglements-notes-dorientation-documents-connexes/pipelines-terrestres/activites-dexploitation-dentretien-pipelines-sous-regime-loi-loffice-national-lenergie-exigences-2.html"><i>Exigences et notes d’orientation relatives aux activités d’exploitation et d’entretien</i></a>
       pour obtenir une liste des activités d’exploitation et d’entretien pour lesquelles une demande doit être présentée auprès de la Régie.`,
       guidelines: `Consultez les
       <a href="/fr/regie/lois-reglements/loi-regie-canadienne-lenergie-reglements-notes-dorientation-documents-connexes/pipelines-terrestres/activites-dexploitation-dentretien-pipelines-sous-regime-loi-loffice-national-lenergie-exigences-2.html">exigences et les notes d’orientation</a>

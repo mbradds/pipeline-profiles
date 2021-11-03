@@ -141,7 +141,7 @@ const nearbyMe = {
     `Il y a ${numCircles} ${eventName} dans un rayon de ${range} km`,
 };
 
-const trendYTitle = (eventName) => `Nombre d’${eventName}`;
+const trendYTitle = (eventName) => `Nombre de ${eventName}`;
 
 const noEvents = {
   header: (eventName) => `Aucune donnée sur les ${eventName} disponible`,
@@ -454,16 +454,17 @@ export const frenchDashboard = {
     legendClick,
     companyToSystem,
     dynamicText: oandmTextFra,
-    eventName: "Activités d’exploitation et d’entretien",
+    eventName: "activités d’exploitation et d’entretien",
     title: (pipeline) =>
       `Tableau de bord : ${pipeline} - Activités d’exploitation et d’entretien par année`,
     trendYTitle,
+    lang: "f",
     pillTitles: {
       titles: {
-        id: "Fouille d’intégrité?",
-        fp: "Poisson présent?",
-        is: "Travaux dans un cours d’eau requis?",
-        sr: "Espèces en péril?",
+        id: "Fouille d’intégrité",
+        fp: "Présence de poissons",
+        is: "Travaux dans un cours d’eau requis",
+        sr: "Présence d’espèces en péril",
         p: "Province ou territoire",
       },
     },
@@ -478,7 +479,7 @@ export const frenchDashboard = {
       id: "Indique l’activité si elle consiste en des travaux d’excavation pour mettre à découvert, examiner ou réparer un pipeline.",
       fp: "Indique si l’activité prévoit-elle la perturbation du sol à l’aide d’un équipement motorisé à moins de 30 mètres d’une zone humide ou d’un plan d’eau ou à moins de 30 mètres du substratum d’un plan d’eau ou d’une zone humide au site d’activité et si le cours d’eau est poissonneux?",
       is: "Indique s’il y aura des travaux dans un cours d’eau sur le site de l’activité.",
-      sr: "Indique s’il y a des espèces en péril répertoriées à l’annexe 1 de la Loi sur les espèces en péril.",
+      sr: "Indique s’il y a des espèces en péril répertoriées à l’annexe 1 de la <i>Loi sur les espèces en péril</i>.",
     },
     noEvents,
   },
@@ -488,7 +489,7 @@ export const frenchDashboard = {
     dateFormat,
     companyToSystem,
     title: (company) =>
-      `Tableau de bord : ${company} - Sites contaminés (post août 15, 2018)`,
+      `Tableau de bord : ${company} - Sites contaminés (après le 15 août 2018)`,
     dynamicText: remediationTextFra,
     dashboard: {
       userPopUp,
@@ -520,7 +521,7 @@ export const frenchDashboard = {
           p: "Province",
           a: "Activité au moment de la découverte",
           c: "Catégorie de contaminants",
-          ps: "Pipeline ou installation?",
+          ps: "Pipeline ou installation",
           s: "État du site",
           y: "Année",
         },
@@ -531,21 +532,21 @@ export const frenchDashboard = {
           p: { n: "Pipeline", c: cerPalette["Night Sky"] },
           f: { n: "Installation", c: cerPalette.Ocean },
           pf: { n: "Pipeline et installation", c: cerPalette.Flame },
-          ns: { n: "Non fourni", c: cerPalette["Dim Grey"] },
+          ns: { n: "Non fournie", c: cerPalette["Dim Grey"] },
         },
         w: {
           true: { c: cerPalette.Sun, n: "Vrai" },
           false: { c: cerPalette["Night Sky"], n: "Faux" },
-          null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
+          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
         },
         s: {
           prm: {
             c: cerPalette.Forest,
-            n: "après la surveillance de l'assainissement",
+            n: "Après la surveillance de l'assainissement",
           },
-          null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
+          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
           rm: { c: cerPalette.Ocean, n: "Gestion du risque" },
-          sa: { c: cerPalette.Aubergine, n: "évaluation du site" },
+          sa: { c: cerPalette.Aubergine, n: "Évaluation du site" },
           fm: { c: cerPalette.hcBlue, n: "Surveillance des installations" },
           or: { c: cerPalette["Cool Grey"], n: "Mesures correctives" },
           m: { c: cerPalette.Sun, n: "Surveillance" },
@@ -577,14 +578,14 @@ export const frenchDashboard = {
           al: { c: cerPalette.Ocean, n: "Terres agricoles" },
           pa: { c: cerPalette.Forest, n: "Aire protégée" },
           ndl: { c: cerPalette.Flame, n: "Terrain non mis en valeur" },
-          null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
+          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
         },
         a: {
           m: { c: cerPalette["Night Sky"], n: "Entretien" },
           o: { c: cerPalette.Flame, n: "Exploitation" },
           c: { c: cerPalette.Ocean, n: "Construction" },
           a: { c: cerPalette.Aubergine, n: "Cessation d'exploitation" },
-          null: { c: cerPalette["Dim Grey"], n: "Non fourni" },
+          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
         },
         c: {
           1: { n: "Autre" },
@@ -606,14 +607,14 @@ export const frenchDashboard = {
           15: { n: "Pesticides et herbicides" },
           16: { n: "Liquide immiscible léger" },
           17: { n: "Liquide immiscible dense" },
-          18: { n: "Non fourni" },
+          18: { n: "Non fournie" },
         },
       },
       definitions: {
         s: {
           definition: "Degré d’avancement des activités d’assainissement.",
           prm: "Travaux d’assainissement actifs terminés et surveillance des eaux souterraines ou de la remise en état en vigueur.",
-          null: "Non fourni",
+          null: "Non fournie",
           rm: "Plan de gestion des risques soumis ou mis en œuvre",
           sa: "Évaluation environnementale du site en cours pour déterminer les prochaines étapes avant les travaux d’assainissement ou de gestion des risques.",
           fm: "Utiliser ce statut pour les installations où un programme de surveillance des eaux souterraines est en place, tel qu’il est décrit à la section 7.2 de l’ébauche de 2019 du Guide sur le processus d’assainissement.",
