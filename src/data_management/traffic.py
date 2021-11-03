@@ -205,9 +205,11 @@ def get_default_point(company):
         return 'KP0000'
 
 
-def push_traffic(t, arr, rounding):
-    if t == 0:
+def push_traffic(t, arr, rounding, applyNone=False):
+    if t == 0 and applyNone:
         arr.append(None)
+    elif t == 0 and not applyNone:
+        arr.append(0)
     else:
         arr.append(round(float(t), rounding))
     return arr
@@ -220,6 +222,11 @@ def process_company(df, company, commodity, points, units, save):
         frequency = "q"
     else:
         frequency = "m"
+
+    if company in ["Montreal"]:
+        applyNone = False
+    else:
+        applyNone = True
     meta["frequency"] = frequency
     meta['defaultPoint'] = get_default_point(company)
     this_company_data = {}
@@ -267,16 +274,16 @@ def process_company(df, company, commodity, points, units, save):
                 t, c = float(t), float(c)
 
                 if trade in traffic_types:
-                    traffic_types[trade] = push_traffic(t, traffic_types[trade], rounding)
+                    traffic_types[trade] = push_traffic(t, traffic_types[trade], rounding, applyNone)
                 else:
-                    traffic_types[trade] = push_traffic(t, [], rounding)
+                    traffic_types[trade] = push_traffic(t, [], rounding, applyNone)
 
                 if date not in date_added and trade != "im":
-                    point_capacity = push_traffic(c, point_capacity, rounding)
+                    point_capacity = push_traffic(c, point_capacity, rounding, True)
                     date_added.append(date)
 
                 if trade == "im":
-                    point_import_capacity = push_traffic(c, point_import_capacity, rounding)
+                    point_import_capacity = push_traffic(c, point_import_capacity, rounding, True)
 
                 counter = counter + 1
 
@@ -409,7 +416,7 @@ def get_points(sql):
 
 def combined_traffic(save=True, sql=True):
     points = get_points(sql)
-    # process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m')
+    process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m') # , companies=["TCPL"])
     process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['Montreal'])
 
 
