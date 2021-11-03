@@ -500,7 +500,7 @@ export const frenchDashboard = {
       barClick,
       locationDisclaimer,
       volumeDisclaimer:
-        "La taille des bulles illustre l’emplacement approximative du site, mais n’indique pas la totalité de la zone contaminée.",
+        "La taille des bulles illustre l’emplacement approximative du site, mais n’indique pas la totalité de la zone contaminée",
       eventName: "Sites contaminés",
       trendYTitle,
       cf: units.cf,
