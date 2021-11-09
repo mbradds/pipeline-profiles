@@ -562,7 +562,7 @@ const fr = {
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
-      p2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des <a href="/fr/safety-environment/compliance-enforcement/index.html">mesures d’exécution</a> sont prises au besoin.`,
+      p2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des <a href="/fr/securite-environnement/conformite-execution/index.html">mesures d’exécution</a> sont prises au besoin.`,
       p3: `Les conditions peuvent viser une région précise ou s’appliquer au projet pipelinier dans son ensemble. La carte ci-dessous montre le nombre de conditions en cours et remplies en fonction des régions économiques définies par <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-fra.cfm">Statistique Canada.</a>`,
       p4: "Les conditions sont habituellement en cours ou remplies. La Régie assure un suivi des conditions en cours.",
       details1: {

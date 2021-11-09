@@ -143,14 +143,15 @@ def replace_safety_env(profile, new_html):
 
 def update_cer_files():
 
-    dist = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'dist'))
+    dist = os.path.join(os.getcwd(), "..", "dist")
     if not os.path.isdir(dist) or len(os.listdir(dist)) == 0:
         raise NoDistFolder
 
+    # get_remote_files = input("Pull latest profiles from CER.ca ? (y/n): ")
+    get_remote_files = "n"
+
     with open('production_links.json') as f:
         links = json.load(f)
-
-    get_remote_files = input("Pull latest profiles from CER.ca ? (y/n): ")
 
     for link in links:
         folder = link.split("/")
