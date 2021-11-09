@@ -3,13 +3,14 @@ from io import BytesIO
 from urllib.request import urlopen
 from zipfile import ZipFile
 import geopandas as gpd
-script_dir = os.path.dirname(__file__)
+from util import set_cwd_to_script
+set_cwd_to_script()
 
 
 def getMap(zipLink, folder):
     print("getting "+zipLink.split("/")[0] + " ...")
 
-    savePath = os.path.join(script_dir, "raw_data", folder)
+    savePath = os.path.join(os.getcwd(), "raw_data", folder)
     if not os.path.exists(savePath):
         os.makedirs(savePath)
     with urlopen(zipLink) as zipresp:
@@ -20,12 +21,12 @@ def getMap(zipLink, folder):
 
 
 def checkCRS():
-    baseMap = gpd.read_file(os.path.join(script_dir, "raw_data", "base_map", "lpr_000b16a_e.shp"))
+    baseMap = gpd.read_file(os.path.join(os.getcwd(), "raw_data", "base_map", "lpr_000b16a_e.shp"))
     baseMap = baseMap.set_geometry('geometry')
     print("base map CRS: ")
     print(baseMap.crs)
 
-    regions = gpd.read_file(os.path.join(script_dir, "raw_data", "economic_regions", "ler_000b16a_e.shp"))
+    regions = gpd.read_file(os.path.join(os.getcwd(), "raw_data", "economic_regions", "ler_000b16a_e.shp"))
     regions = regions.set_geometry('geometry')
     print("base map CRS: ")
     print(regions.crs)

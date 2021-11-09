@@ -4,10 +4,9 @@ import datetime
 import ssl
 import numpy as np
 import pandas as pd
-from util import get_data, idify, company_rename, get_company_list, normalize_text, apply_system_id
+from util import get_data, idify, company_rename, get_company_list, normalize_text, apply_system_id, set_cwd_to_script
 ssl._create_default_https_context = ssl._create_unverified_context
-script_dir = os.path.dirname(__file__)
-
+set_cwd_to_script()
 # all data before August 15, 2018 is unreliable and should be cut out
 MIN_DATE = datetime.datetime(2018, 9, 15)
 
@@ -64,7 +63,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
 
     if test:
         print("reading test remediation test data")
-        df = pd.read_csv(os.path.join(script_dir,
+        df = pd.read_csv(os.path.join(os.getcwd(),
                                       "raw_data",
                                       "test_data",
                                       "remediation.csv"))
@@ -79,11 +78,11 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
         df = pd.read_csv("./raw_data/remediation.csv")
 
     contaminants = get_data(sql=sql,
-                            script_loc=script_dir,
+                            script_loc=os.getcwd(),
                             query="remediationContaminants.sql",
                             db="dsql22cap")
     old = get_data(sql=sql,
-                   script_loc=script_dir,
+                   script_loc=os.getcwd(),
                    query="remediation_pre_2018.sql",
                    db="dsql22cap")
 

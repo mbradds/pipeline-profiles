@@ -2,8 +2,8 @@ import os
 import json
 import dateutil.relativedelta
 import pandas as pd
-from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list
-script_dir = os.path.dirname(__file__)
+from util import execute_sql, normalize_text, normalize_numeric, conversion, idify, get_company_list, set_cwd_to_script
+set_cwd_to_script()
 
 
 def apply_trade_id(df):
@@ -62,7 +62,7 @@ def get_traffic_data(sql=False, query='throughput_gas_monthly.sql', db="Pipeline
     csv_name = query.split(".")[0]+'.csv'
     if sql:
         print('reading sql '+query.split(".")[0])
-        df = execute_sql(path=os.path.join(script_dir, "queries"), query_name=query, db=db)
+        df = execute_sql(path=os.path.join(os.getcwd(), "queries"), query_name=query, db=db)
         df.to_csv('raw_data/'+csv_name, index=False)
 
     else:

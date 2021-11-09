@@ -5,7 +5,8 @@ from conditions import process_conditions
 from traffic import process_throughput, get_points
 from oandm import process_oandm
 from remediation import process_remediation
-from util import most_common
+from util import most_common, set_cwd_to_script
+set_cwd_to_script()
 
 
 class TestUtil(unittest.TestCase):

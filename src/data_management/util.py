@@ -4,12 +4,19 @@ import pandas as pd
 import numpy as np
 from connection import cer_connection
 from errors import IdError, IdLengthError
-script_dir = os.path.dirname(__file__)
+
+
+def set_cwd_to_script():
+    dname = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(dname)
+    
+
+set_cwd_to_script()
 
 
 def get_pipeline_ids(sql=True):
     if sql:
-        df = execute_sql(path=os.path.join(script_dir, "queries"),
+        df = execute_sql(path=os.path.join(os.getcwd(), "queries"),
                          query_name="systemId.sql",
                          db="PipelineInformation")
         df.to_csv("./raw_data/systemId.csv", index=False)

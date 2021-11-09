@@ -2,17 +2,17 @@ import os
 import json
 import re
 import pandas as pd
-from util import normalize_text, normalize_dates, get_company_list, get_data
-script_dir = os.path.dirname(__file__)
+from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script
+set_cwd_to_script()
 
 
 def get_tolls_data(sql=True):
-    df = get_data(script_dir, "tolls.sql", db="PipelineInformation", sql=sql)
-    descriptions = get_data(script_dir,
+    df = get_data(os.getcwd(), "tolls.sql", db="PipelineInformation", sql=sql)
+    descriptions = get_data(os.getcwd(),
                             "tolls_description.sql",
                             db="PipelineInformation",
                             sql=sql)
-    toll_nums = get_data(script_dir,
+    toll_nums = get_data(os.getcwd(),
                         "tolls_numbers.sql",
                         db="PipelineInformation",
                         sql=sql)
