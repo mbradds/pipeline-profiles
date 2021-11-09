@@ -18,7 +18,9 @@ from bs4 import BeautifulSoup
 import urllib3
 urllib3.disable_warnings()
 ssl._create_default_https_context = ssl._create_unverified_context
-script_dir = os.path.dirname(__file__)
+dname = os.path.dirname(os.path.abspath(__file__))
+os.chdir(dname)
+script_dir = os.getcwd()
 WEBPACK_REGEX = "[0-9a-f]{20}"
 
 

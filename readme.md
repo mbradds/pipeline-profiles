@@ -120,7 +120,6 @@ pipeline_profiles
 |   |   |   util.py (shared python code module)
 |   |   |   updateAll.py (npm run update-all-data pull live data for all datasets)
 |   |   |   queries/ (contains queries used to get data from CER sql servers)
-|   |   |   npm_scripts/ (all the "data" automation scripts available in package.json)
 |   |   |   raw_data/ (pre-prepared data used by python when not pulling from remote locations)
 │   |   │   ... other python files for pipeline datasets
 |   |
@@ -146,11 +145,11 @@ pipeline_profiles
 
 ## Software prerequisites
 
-1. npm (I'm using v8.0.0)
-2. node (I'm using v14.18.1)
+1. npm (check package.json for version)
+2. node (check package.json for version)
 3. [Anaconda](https://www.anaconda.com/products/individual) (for contributing and running the "back end" code in `src/data_management`)
 4. Git (for contributing)
-5. Git windows client (for contributors using windows. The git client terminal can be used to run unix shell scripts)
+5. Git windows client (for contributors using windows. The git client terminal can be used to run (optional) unix shell scripts)
 
 ## Quick start for contributing
 
@@ -222,7 +221,7 @@ npm run switch-remote-work
 
 ### Are you using windows?
 
-The npm scripts used for data and map automation expect a unix shell, and wont work on windows. If using windows, run all the scripts mentioned in this section inside the git bash client for windows.
+Some scripts in `scripts/` have a `.sh` extension and will need to be run in the git windows client shell. These scripts are mainly optional. When running update data commands, eg: `npm run update-conditions-data`, you will need to run all of these with the Anaconda Prompt shell so that conda is recognized!
 
 ### Are you connecting to CER databases?
 

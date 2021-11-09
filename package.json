@@ -13,27 +13,27 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "deploy": "sh ./deploy/deploy.sh",
+    "deploy": "conda run -n pipeline-profiles python deploy/make_production_files.py",
     "analyze-build": "webpack --config webpack.analyze.js",
     "start": "node server.js",
     "heroku-postbuild": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
-    "update-traffic-data": "sh ./src/data_management/npm_scripts/update-traffic-data.sh",
-    "update-incidents-data": "sh ./src/data_management/npm_scripts/update-incidents-data.sh",
-    "update-conditions-data": "sh ./src/data_management/npm_scripts/update-conditions-data.sh",
-    "update-apportionment-data": "sh ./src/data_management/npm_scripts/update-apportionment-data.sh",
-    "update-oandm-data": "sh ./src/data_management/npm_scripts/update-oandm-data.sh",
-    "update-all-data": "sh ./src/data_management/npm_scripts/update-all.sh",
+    "update-traffic-data": "conda run -n pipeline-profiles python src/data_management/traffic.py",
+    "update-incidents-data": "conda run -n pipeline-profiles python src/data_management/incidents.py",
+    "update-conditions-data": "conda run -n pipeline-profiles python src/data_management/conditions.py",
+    "update-apportionment-data": "conda run -n pipeline-profiles python src/data_management/apportionment.py",
+    "update-oandm-data": "conda run -n pipeline-profiles python src/data_management/oandm.py",
+    "update-all-data": "conda run -n pipeline-profiles python src/data_management/update_all.py",
+    "get-maps": "conda run -n pipeline-profiles python src/data_management/get_map_files.py",
     "simplify-maps": "sh ./src/data_management/npm_scripts/simplify-maps.sh",
-    "test-backend": "sh ./src/data_management/npm_scripts/test-data.sh",
+    "test-backend": "conda run -n pipeline-profiles python src/data_management/tests.py",
     "test-frontend": "ava",
     "test-html5": "node test/html5.js",
     "save-conda-env": "sh ./src/data_management/npm_scripts/save-environment.sh",
     "set-remote-work": "git remote set-url origin https://CER-REC@dev.azure.com/CER-REC/Pipeline%20Information/_git/pipeline-profiles",
     "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git",
     "prettier-save": "npx prettier --write .",
-    "prettier-check": "npx prettier --check .",
-    "get-maps": "sh ./src/data_management/npm_scripts/get-maps.sh"
+    "prettier-check": "npx prettier --check ."
   },
   "ava": {
     "extensions": {
@@ -95,6 +95,7 @@
     "npm": "8.x"
   },
   "os": [
-    "linux"
+    "linux",
+    "win32"
   ]
 }

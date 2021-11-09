@@ -4,17 +4,17 @@ import ssl
 from datetime import date
 import pandas as pd
 import geopandas as gpd
-from util import execute_sql, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id
+from util import execute_sql, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id, set_cwd_to_script
 import numpy as np
 ssl._create_default_https_context = ssl._create_unverified_context
-script_dir = os.path.dirname(__file__)
+set_cwd_to_script()
 
 
 def get_sql(sql=False, query='projects_regdocs.sql'):
     csv_name = query.replace(".sql", ".csv")
     if sql:
         print('reading sql '+query)
-        df = execute_sql(os.path.join(script_dir, "queries"), query)
+        df = execute_sql(os.path.join(os.getcwd(), "queries"), query)
         df.to_csv('raw_data/'+csv_name, index=False)
     else:
         print('reading local csv '+csv_name)
@@ -23,7 +23,7 @@ def get_sql(sql=False, query='projects_regdocs.sql'):
 
 
 def import_simplified(replace, name='economic_regions.json'):
-    read_path = os.path.join(script_dir, "../data_output/conditions/base_maps/", name)
+    read_path = os.path.join(os.getcwd(), "../data_output/conditions/base_maps/", name)
     df = gpd.read_file(read_path)
     df = df.set_geometry('geometry')
     fr_cols = ['PRNAME', 'ERNAME']
@@ -46,7 +46,7 @@ def import_simplified(replace, name='economic_regions.json'):
 
 
 def export_files(df, folder, name):
-    write_path = os.path.join(script_dir, folder, name)
+    write_path = os.path.join(os.getcwd(), folder, name)
     df.to_file(write_path, driver='GeoJSON')
     print(folder+' done ', 'CRS: '+str(df.crs))
 

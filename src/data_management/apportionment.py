@@ -3,10 +3,10 @@ import json
 import os
 import dateutil.relativedelta
 import pandas as pd
-from util import normalize_dates, conversion, normalize_numeric, normalize_text, get_company_list, get_data
+from util import normalize_dates, conversion, normalize_numeric, normalize_text, get_company_list, get_data, set_cwd_to_script
 from traffic import get_traffic_data
 from errors import ApportionSeriesCombinationError
-script_dir = os.path.dirname(__file__)
+set_cwd_to_script()
 
 
 def get_enbridge_points(sql=True):
@@ -164,7 +164,7 @@ def process_company(df, company, enbridge_points, save):
 def process_apportionment(save=False, sql=False, companies=False):
 
     if sql:
-        df = get_data(script_dir, "apportionment.sql", "PipelineInformation", sql)
+        df = get_data(os.getcwd(), "apportionment.sql", "PipelineInformation", sql)
     else:
         print('reading local apportionment csv...')
         df = pd.read_csv("./raw_data/apportionment.csv")
