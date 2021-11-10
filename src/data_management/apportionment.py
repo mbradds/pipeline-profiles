@@ -209,5 +209,5 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 if __name__ == "__main__":
     print('starting apportionment...')
-    df_ = process_apportionment(sql=False, save=True)
+    df_ = process_apportionment(sql=True, save=True)
     print('completed apportionment!')
