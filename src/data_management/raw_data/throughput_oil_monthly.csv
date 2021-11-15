@@ -83,6 +83,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-04-01,Cochin,KP0018,west,condensate,16.77,15.1
 2021-05-01,Cochin,KP0018,west,condensate,16.79,15.1
 2021-06-01,Cochin,KP0018,west,condensate,13.3,15.1
+2021-07-01,Cochin,KP0018,west,condensate,15.51,15.1
+2021-08-01,Cochin,KP0018,west,condensate,13.99,15.1
+2021-09-01,Cochin,KP0018,west,condensate,12.61,15.1
 2014-07-01,Cochin,KP0034,east,refined petroleum products,0.01,
 2014-07-01,Cochin,KP0043,east,refined petroleum products,0.0,12.08
 2014-08-01,Cochin,KP0043,east,refined petroleum products,0.0,12.08
@@ -3418,6 +3421,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-04-01,TransNorthern,KP0000,not available,refined petroleum products,17.5,
 2021-05-01,TransNorthern,KP0000,not available,refined petroleum products,20.6,
 2021-06-01,TransNorthern,KP0000,not available,refined petroleum products,20.6,
+2021-07-01,TransNorthern,KP0000,not available,refined petroleum products,21.1,
+2021-08-01,TransNorthern,KP0000,not available,refined petroleum products,24.7,
+2021-09-01,TransNorthern,KP0000,not available,refined petroleum products,22.9,
 2016-12-01,Westspur,KP0000,north-east,MSM – Crude Volume,6153.85,
 2016-12-01,Westspur,KP0000,north-east,NGL Volume,257.1,
 2016-12-01,Westspur,KP0000,north-east,SES – Crude Volume,20684.35,

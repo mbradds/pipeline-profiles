@@ -83,6 +83,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2021-04-01,Cochin,KP0018,15.1,16.52,,0.0
 2021-05-01,Cochin,KP0018,15.1,15.73,,0.0
 2021-06-01,Cochin,KP0018,15.1,13.29,,0.0
+2021-07-01,Cochin,KP0018,15.1,15.51,,0.0
+2021-08-01,Cochin,KP0018,15.1,14.63,,0.0
+2021-09-01,Cochin,KP0018,15.1,12.83,,0.0
 2007-01-01,EnbridgeMainline,KP0000,,348.92,,0.0
 2007-02-01,EnbridgeMainline,KP0000,,356.2,,0.0
 2007-03-01,EnbridgeMainline,KP0000,,358.93,,0.0
@@ -364,6 +367,8 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2021-02-01,EnbridgeMainline,KP0056,,569.57,,0.53
 2021-03-01,EnbridgeMainline,KP0056,,509.11,,0.47
 2021-04-01,EnbridgeMainline,KP0056,,470.3,,0.43
+2021-05-01,EnbridgeMainline,KP0056,,474.37,,0.43
+2021-06-01,EnbridgeMainline,KP0056,,557.52,,0.52
 2021-07-01,EnbridgeMainline,KP0056,,557.4,,0.51
 2021-08-01,EnbridgeMainline,KP0056,,536.99,,0.54
 2021-09-01,EnbridgeMainline,KP0056,,575.19,,0.55
