@@ -11,9 +11,9 @@ end as [KeyPointID],
 [Trade Type],
 case when throughput.[PipelineID] in ('Brunswick')
 then null
-else round(avg([Capacity (1000 m3/d)]),3) 
+else round(avg([Capacity (1000 m3/d)]), 4) 
 end as [Capacity (1000 m3/d)],
-round(avg([Throughput (1000 m3/d)]),3) as [Throughput (1000 m3/d)]
+round(avg([Throughput (1000 m3/d)]), 4) as [Throughput (1000 m3/d)]
 FROM [PipelineInformation].[dbo].[Throughput_Gas] as throughput
 
 left join [PipelineInformation].[dbo].[KeyPoint] as kp on throughput.KeyPointId = kp.KeyPointId

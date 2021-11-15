@@ -4,10 +4,10 @@ hc.PipelineID as [Pipeline Name],
 kp.KeyPointID,
 [Direction of Flow],
 [Product],
-round([Throughput (1000 m3/d)], 2) as [Throughput (1000 m3/d)],
+round([Throughput (1000 m3/d)], 4) as [Throughput (1000 m3/d)],
 case when hc.PipelineID in ('Montreal', 'SouthernLights', 'Westspur')
 then null 
-else round([Available Capacity (1000 m3/d)], 2)
+else round([Available Capacity (1000 m3/d)], 4)
 end as [Available Capacity (1000 m3/d)]
 
 from
