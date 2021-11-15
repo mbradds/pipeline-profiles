@@ -119,12 +119,13 @@ def meta_throughput(df_c, meta, data):
 
 # TODO: create a general purpose round finder by looking at the average throughput
 def get_rounding(point):
-    if point in ['KP0023', 'KP0029', 'KP0046']:
-        rounding = 4
-    elif point in ['KP0014', 'KP0010']:
-        rounding = 3
-    else:
-        rounding = 3
+    # if point in ['KP0023', 'KP0029', 'KP0046']:
+    #     rounding = 4
+    # elif point in ['KP0014', 'KP0010']:
+    #     rounding = 3
+    # else:
+    #     rounding = 3
+    rounding = 4
     return rounding
 
 
@@ -424,5 +425,5 @@ def combined_traffic(save=True, sql=True):
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    combined_traffic(save=True, sql=True)
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')

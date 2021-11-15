@@ -40,7 +40,7 @@ export async function mainApportion(apportionData, lang) {
       if (pnt.series.options.yAxis === 1 || isPoint) {
         return [(pnt.y * 100).toFixed(0), "%"];
       }
-      return [lang.numberFormat(pnt.y, 1), suffix];
+      return [lang.numberFormat(pnt.y, 2), suffix];
     };
 
     let toolText = `<strong>${Highcharts.dateFormat(
