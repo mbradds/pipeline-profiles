@@ -29,9 +29,5 @@ steps:
 
 - bash: |
     source activate anacondaEnvironment
-    conda npm run update-incidents-data
-    conda npm run update-conditions-data
-    conda npm run update-traffic-data
-    conda npm run update-apportionment-data
-    conda npm run update-oandm-data
+    conda npm run update-all-data
   displayName: conda update data
