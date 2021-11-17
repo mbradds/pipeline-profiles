@@ -2,6 +2,20 @@
 # run update data commands using acaconda prompt shell.
 # https://docs.anaconda.com/anaconda/user-guide/getting-started/
 
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
 
@@ -15,10 +29,9 @@
 
 - bash: |
     source activate anacondaEnvironment
-    python -m pytest --junitxml=junit/unit-test.xml
-  displayName: pytest
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: 'junit/*.xml'
-  condition: succeededOrFailed()
+    conda npm run update-incidents-data
+    conda npm run update-conditions-data
+    conda npm run update-traffic-data
+    conda npm run update-apportionment-data
+    conda npm run update-oandm-data
+  displayName: conda update data
