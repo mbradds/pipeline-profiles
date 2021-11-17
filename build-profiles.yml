@@ -23,9 +23,9 @@ steps:
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)/dist'
-    contents: '*' 
+    contents: '**' 
     targetFolder: $(Build.ArtifactStagingDirectory)/dist
-  displayName: 'Copy package.json'
+  displayName: 'Copy /dist directory'
 
 - task: PublishBuildArtifacts@1
   inputs:
