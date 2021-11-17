@@ -20,5 +20,15 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- script: |
-    npm start
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)/dist'
+    contents: '*' 
+    targetFolder: $(Build.ArtifactStagingDirectory)/dist
+  displayName: 'Copy package.json'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    artifactName: dist
+  displayName: 'Publish dist artifact'
