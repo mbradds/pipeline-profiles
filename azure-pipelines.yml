@@ -1,0 +1,24 @@
+# Anaconda for Updating data
+# run update data commands using acaconda prompt shell.
+# https://docs.anaconda.com/anaconda/user-guide/getting-started/
+
+- bash: echo "##vso[task.prependpath]$CONDA/bin"
+  displayName: Add conda to PATH
+
+- script: conda env create --quiet --file environment.yml --name anacondaEnvironment
+  displayName: Create Anaconda environment
+
+- bash: |
+    source activate anacondaEnvironment
+    conda install --yes --quiet --name anacondaEnvironment scipy
+  displayName: Install Anaconda packages
+
+- bash: |
+    source activate anacondaEnvironment
+    python -m pytest --junitxml=junit/unit-test.xml
+  displayName: pytest
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: 'junit/*.xml'
+  condition: succeededOrFailed()
