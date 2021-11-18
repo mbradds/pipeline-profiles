@@ -96,9 +96,10 @@ export async function mainConditions(
           ) {
             displayName = params.projectLookup[proj.name][lang.lang];
           }
-          if (proj.Regdocs !== undefined) {
-            const regdocsLink = `${lang.table.regdocsLink}${proj.Regdocs}`;
-            projectsHTML += `<tr><td><a href=${regdocsLink} target="_blank">${displayName}</a></td><td>${proj.value}</td></tr>`;
+          if (proj.Regdocs !== undefined && proj.Regdocs !== 0) {
+            projectsHTML += `<tr><td><a href=${`${lang.table.regdocsLink}${proj.Regdocs}`} target="_blank">${displayName}</a></td><td>${
+              proj.value
+            }</td></tr>`;
           } else {
             projectsHTML += `<tr><td>${displayName}</td><td>${proj.value}</td></tr>`;
           }
