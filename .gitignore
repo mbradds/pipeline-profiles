@@ -1,5 +1,6 @@
 node_modules
 dist/
+dist_azure/
 **/__pycache__
 src/data_management/connection_strings.json
 src/data_management/raw_data/*
