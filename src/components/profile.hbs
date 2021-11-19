@@ -11,14 +11,14 @@
   <div class="container">
   {{#if htmlWebpackPlugin.options.page.sections.traffic.map}}
   <!-- Start Throughput and capacity -->
-    {{> traffic text=htmlWebpackPlugin.options.page.text}}
+    {{> traffic/map text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Throughput and capacity -->
   {{/if}}
   {{!-- pipeline has traffic data, but no leaflet map. Trans-Northern/group2 --}}
   {{#if htmlWebpackPlugin.options.page.sections.traffic.noMap}}
   <!-- Start Throughput and capacity -->
-    {{> trafficNoMap text=htmlWebpackPlugin.options.page.text}}
+    {{> traffic/noMap text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Throughput and capacity -->
   {{/if}}
@@ -36,7 +36,7 @@
   {{/if}}
   {{#if htmlWebpackPlugin.options.page.sections.safety}}
   <!-- Start Safety and Environment -->
-    {{> safety_environment text=htmlWebpackPlugin.options.page.text}}
+    {{> safety text=htmlWebpackPlugin.options.page.text}}
 
   <!-- End Safety and Environment -->
   {{/if}}

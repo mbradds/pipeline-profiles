@@ -3,19 +3,54 @@
 <div id="traffic-section">
   <div class="row dashboard-style">
     <div class="col-md-12">
-      <span class="cerlabel mrgn-tp-md" id="select-units-title">
-        {{text.units}}
-      </span>
-      <div id="select-units-radio-traffic"></div>
+      <p class="cerlabel" id="key-point-title">
+        {{text.traffic.selectKeyPt}}
+      </p>
+      <div class="btn-group mrgn-bttm-md" id="traffic-points-btn"></div>
     </div>
   </div>
-  <div class="row mrgn-tp-md">
-    <div class="col-md-12 traffic-hc-column-nomap" id="traffic-hc-column">
+  <div class="row dashboard-style">
+    <div
+      class="col-md-8 col-sm-8 col-xs-12 traffic-hc-column-map"
+      id="traffic-hc-column"
+    >
       <div class="traffic-hc-shared" id="traffic-hc"></div>
       <div class="traffic-hc-shared" id="traffic-hc-range"></div>
     </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="radio-align">
+        <p class="cerlabel">
+          {{text.units}}
+        </p>
+        <div id="select-units-radio-traffic"></div>
+      </div>
+      <section class="panel panel-info mrgn-tp-sm" id="traffic-container">
+        <header class="panel-heading">
+          <h5 class="panel-title">{{text.traffic.keyPtMap}}</h5>
+        </header>
+        <div class="panel-body" id="map-panel-body">
+          <div class="traffic-map-shared" id="traffic-map"></div>
+          <div class="btn-group btn-group-justified" id="key-point-zoom-btn">
+            <div class="btn-group btn-map">
+              <button
+                type="button"
+                value="zoom-in"
+                class="btn btn-default active"
+              >
+                {{text.traffic.zoomIn}}
+              </button>
+            </div>
+            <div class="btn-group btn-map">
+              <button type="button" value="zoom-out" class="btn btn-default">
+                {{text.traffic.zoomOut}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
-  <div class="row mrgn-tp-md dashboard-style" id="key-point-info">
+  <div class="row dashboard-style mrgn-tp-md" id="key-point-info">
     <div class="col-md-6 col-sm-6">
       <section class="panel panel-info traffic-panel" id="eq-ht-1">
         <header class="panel-heading">
@@ -59,9 +94,11 @@
           <strong>{{text.note}}</strong>
           {{text.traffic.instructions.five}}
         </p>
-        <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
+        {{#ifeq text.commodity "natural-gas"}}
+          <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
+        {{/ifeq}}
       </details>
-      {{> shared/source text=text.traffic.source}}
+      {{> ../shared/source text=text.traffic.source}}
     </div>
   </div>
 </div>

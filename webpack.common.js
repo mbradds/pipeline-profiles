@@ -10,7 +10,7 @@ import { pm } from "./src/components/profileManager.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const profileWebpackConfig = (function config() {
+export const profileWebpackConfig = (function config() {
   const language = ["en", "fr"];
 
   const htmlFileNames = [
@@ -41,6 +41,70 @@ const profileWebpackConfig = (function config() {
     ["MilkRiver", "oil-and-liquids", "Milk River"],
     ["Wascana", "oil-and-liquids", "Wascana"],
   ];
+
+  function htmlAzureWebpack() {
+    const html = [];
+    htmlFileNames.forEach((name) => {
+      language.forEach((lang) => {
+        const pageData = { ...pm[name[0]] };
+        // console.log(pageData.sections);
+        if (lang === "en") {
+          pageData.lang = { en: true, fr: false };
+        } else if (lang === "fr") {
+          pageData.lang = { en: false, fr: true };
+        }
+        pageData.text = profileText[lang];
+        pageData.text.pipelineName = { id: name[0] };
+        pageData.text.commodity = name[1];
+        pageData.text.tollDescription =
+          profileText.tollsDescription[name[0]][lang];
+
+        for (const [sectionName, hasSection] of Object.entries(
+          pageData.sections
+        )) {
+          let sectionTemplate = false;
+          if (
+            typeof hasSection === "object" &&
+            !Array.isArray(hasSection) &&
+            hasSection !== null
+          ) {
+            // recursive here
+            sectionTemplate = false;
+          } else {
+            if (hasSection) {
+              sectionTemplate = `src/components/azure_partials/${sectionName}.hbs`;
+            }
+          }
+
+          if (sectionTemplate) {
+            html.push(
+              new HtmlWebpackPlugin({
+                page: JSON.parse(JSON.stringify(pageData)),
+                filename: `html/${name[1]}/${name[0]}/${lang}/${sectionName}.html`,
+                // chunks: [
+                //   `${lang}/${name[1]}/js/entry_${name[0]}`,
+                //   `${lang}/profile_code_${lang}`,
+                //   `data/data_${name[0]}`,
+                // ],
+                // chunksSortMode: "auto",
+                template: `src/components/azure_partials/${sectionName}.hbs`,
+                minify: {
+                  collapseWhitespace: false,
+                  keepClosingSlash: false,
+                  removeComments: false,
+                  removeRedundantAttributes: false,
+                  removeScriptTypeAttributes: false,
+                  removeStyleLinkTypeAttributes: false,
+                  useShortDoctype: false,
+                },
+              })
+            );
+          }
+        }
+      });
+    });
+    return html;
+  }
 
   function htmlWebpack() {
     const html = [];
@@ -128,8 +192,10 @@ const profileWebpackConfig = (function config() {
     return entryPoints;
   }
 
-  return { htmlWebpack, entry };
+  return { htmlWebpack, htmlAzureWebpack, entry };
 })();
+
+// profileWebpackConfig.htmlAzureWebpack();
 
 export default {
   entry: profileWebpackConfig.entry(),

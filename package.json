@@ -13,6 +13,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "build-azure": "webpack --config webpack.azure.js",
     "deploy": "conda run -n pipeline-profiles python deploy/make_production_files.py",
     "analyze-build": "webpack --config webpack.analyze.js",
     "start": "node server.js",
