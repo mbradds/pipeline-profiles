@@ -42,12 +42,40 @@ export const profileWebpackConfig = (function config() {
     ["Wascana", "oil-and-liquids", "Wascana"],
   ];
 
+  function getAzurePartialPaths(sections, currentPaths, prefixPath = false) {
+    for (const [sectionName, hasSection] of Object.entries(sections)) {
+      if (
+        typeof hasSection === "object" &&
+        !Array.isArray(hasSection) &&
+        hasSection !== null
+      ) {
+        // recursive here
+        getAzurePartialPaths(hasSection, currentPaths, sectionName);
+      } else {
+        if (hasSection) {
+          if (prefixPath) {
+            currentPaths.push([
+              prefixPath,
+              `src/components/azure_partials/${prefixPath}/${sectionName}.hbs`,
+            ]);
+          } else {
+            currentPaths.push([
+              sectionName,
+              `src/components/azure_partials/${sectionName}.hbs`,
+            ]);
+          }
+        }
+      }
+    }
+    return currentPaths;
+  }
+
   function htmlAzureWebpack() {
     const html = [];
     htmlFileNames.forEach((name) => {
       language.forEach((lang) => {
+        let partialPaths = [];
         const pageData = { ...pm[name[0]] };
-        // console.log(pageData.sections);
         if (lang === "en") {
           pageData.lang = { en: true, fr: false };
         } else if (lang === "fr") {
@@ -59,48 +87,21 @@ export const profileWebpackConfig = (function config() {
         pageData.text.tollDescription =
           profileText.tollsDescription[name[0]][lang];
 
-        for (const [sectionName, hasSection] of Object.entries(
-          pageData.sections
-        )) {
-          let sectionTemplate = false;
-          if (
-            typeof hasSection === "object" &&
-            !Array.isArray(hasSection) &&
-            hasSection !== null
-          ) {
-            // recursive here
-            sectionTemplate = false;
-          } else {
-            if (hasSection) {
-              sectionTemplate = `src/components/azure_partials/${sectionName}.hbs`;
-            }
-          }
-
-          if (sectionTemplate) {
-            html.push(
-              new HtmlWebpackPlugin({
-                page: JSON.parse(JSON.stringify(pageData)),
-                filename: `html/${name[1]}/${name[0]}/${lang}/${sectionName}.html`,
-                // chunks: [
-                //   `${lang}/${name[1]}/js/entry_${name[0]}`,
-                //   `${lang}/profile_code_${lang}`,
-                //   `data/data_${name[0]}`,
-                // ],
-                // chunksSortMode: "auto",
-                template: `src/components/azure_partials/${sectionName}.hbs`,
-                minify: {
-                  collapseWhitespace: false,
-                  keepClosingSlash: false,
-                  removeComments: false,
-                  removeRedundantAttributes: false,
-                  removeScriptTypeAttributes: false,
-                  removeStyleLinkTypeAttributes: false,
-                  useShortDoctype: false,
-                },
-              })
-            );
-          }
-        }
+        let thisProfilePaths = getAzurePartialPaths(
+          pageData.sections,
+          partialPaths
+        );
+        thisProfilePaths.forEach((partialPath) => {
+          html.push(
+            new HtmlWebpackPlugin({
+              page: JSON.parse(JSON.stringify(pageData)),
+              filename: `html/${name[1]}/${name[0]}/${lang}/${partialPath[0]}.html`,
+              template: partialPath[1],
+              inject: false,
+              minify: true,
+            })
+          );
+        });
       });
     });
     return html;
@@ -192,10 +193,38 @@ export const profileWebpackConfig = (function config() {
     return entryPoints;
   }
 
-  return { htmlWebpack, htmlAzureWebpack, entry };
-})();
+  function entryAzure(sections = ["data"]) {
+    const entryPoints = {};
+    language.forEach((lang) => {
+      // order of script addition to "entryPoints" matters for chunkSortMode
+      sections.forEach((section) => {
+        htmlFileNames.forEach((name) => {
+          let folderName = name[0];
+          // data entry point
+          entryPoints[
+            `${section}/${section}_${name[0]}`
+          ] = `./src/entry/data/${folderName}.js`;
 
-// profileWebpackConfig.htmlAzureWebpack();
+          // main entry point
+          entryPoints[`js/${lang}/${name[1]}/entry_${name[0]}`] = {
+            import: `./src/entry/${lang}/${folderName}/index.js`,
+            dependOn: [
+              `${section}/${section}_${name[0]}`,
+              `js/${lang}/profile_code_${lang}`,
+            ],
+          };
+        });
+      });
+      entryPoints[
+        `js/${lang}/profile_code_${lang}`
+      ] = `./src/entry/loadDashboards_${lang}.js`;
+    });
+
+    return entryPoints;
+  }
+
+  return { htmlWebpack, htmlAzureWebpack, entry, entryAzure };
+})();
 
 export default {
   entry: profileWebpackConfig.entry(),
