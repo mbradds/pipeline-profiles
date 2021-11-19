@@ -51,19 +51,17 @@ export const profileWebpackConfig = (function config() {
       ) {
         // recursive here
         getAzurePartialPaths(hasSection, currentPaths, sectionName);
-      } else {
-        if (hasSection) {
-          if (prefixPath) {
-            currentPaths.push([
-              prefixPath,
-              `src/components/azure_partials/${prefixPath}/${sectionName}.hbs`,
-            ]);
-          } else {
-            currentPaths.push([
-              sectionName,
-              `src/components/azure_partials/${sectionName}.hbs`,
-            ]);
-          }
+      } else if (hasSection) {
+        if (prefixPath) {
+          currentPaths.push([
+            prefixPath,
+            `src/components/azure_partials/${prefixPath}/${sectionName}.hbs`,
+          ]);
+        } else {
+          currentPaths.push([
+            sectionName,
+            `src/components/azure_partials/${sectionName}.hbs`,
+          ]);
         }
       }
     }
@@ -74,7 +72,7 @@ export const profileWebpackConfig = (function config() {
     const html = [];
     htmlFileNames.forEach((name) => {
       language.forEach((lang) => {
-        let partialPaths = [];
+        const partialPaths = [];
         const pageData = { ...pm[name[0]] };
         if (lang === "en") {
           pageData.lang = { en: true, fr: false };
@@ -87,7 +85,7 @@ export const profileWebpackConfig = (function config() {
         pageData.text.tollDescription =
           profileText.tollsDescription[name[0]][lang];
 
-        let thisProfilePaths = getAzurePartialPaths(
+        const thisProfilePaths = getAzurePartialPaths(
           pageData.sections,
           partialPaths
         );
@@ -102,9 +100,60 @@ export const profileWebpackConfig = (function config() {
             })
           );
         });
+        html.push(
+          new HtmlWebpackPlugin({
+            filename: `html/${name[1]}/${name[0]}/${lang}/head.html`,
+            chunks: [
+              `js/${lang}/${name[1]}/entry_${name[0]}`,
+              `js/${lang}/profile_code_${lang}`,
+              `data/data_${name[0]}`,
+            ],
+            chunksSortMode: "auto",
+            template: `src/components/head.hbs`,
+            minify: true,
+          })
+        );
+        html.push(
+          new HtmlWebpackPlugin({
+            filename: `html/${name[1]}/${name[0]}/${lang}/footer.html`,
+            inject: false,
+            template: `src/components/footer.hbs`,
+            minify: true,
+          })
+        );
       });
     });
     return html;
+  }
+
+  function entryAzure(sections = ["data"]) {
+    const entryPoints = {};
+    language.forEach((lang) => {
+      // order of script addition to "entryPoints" matters for chunkSortMode
+      sections.forEach((section) => {
+        htmlFileNames.forEach((name) => {
+          const folderName = name[0];
+          // data entry point
+          entryPoints[
+            `${section}/${section}_${name[0]}`
+          ] = `./src/entry/data/${folderName}.js`;
+
+          // main entry point
+          entryPoints[`js/${lang}/${name[1]}/entry_${name[0]}`] = {
+            import: `./src/entry/${lang}/${folderName}/index.js`,
+            dependOn: [
+              `${section}/${section}_${name[0]}`,
+              `js/${lang}/profile_code_${lang}`,
+            ],
+          };
+        });
+      });
+      entryPoints[
+        `js/${lang}/profile_code_${lang}`
+      ] = `./src/entry/loadDashboards_${lang}.js`;
+    });
+
+    return entryPoints;
   }
 
   function htmlWebpack() {
@@ -169,7 +218,7 @@ export const profileWebpackConfig = (function config() {
       // order of script addition to "entryPoints" matters for chunkSortMode
       sections.forEach((section) => {
         htmlFileNames.forEach((name) => {
-          let folderName = name[0];
+          const folderName = name[0];
           // data entry point
           entryPoints[
             `${section}/${section}_${name[0]}`
@@ -187,36 +236,6 @@ export const profileWebpackConfig = (function config() {
       });
       entryPoints[
         `${lang}/profile_code_${lang}`
-      ] = `./src/entry/loadDashboards_${lang}.js`;
-    });
-
-    return entryPoints;
-  }
-
-  function entryAzure(sections = ["data"]) {
-    const entryPoints = {};
-    language.forEach((lang) => {
-      // order of script addition to "entryPoints" matters for chunkSortMode
-      sections.forEach((section) => {
-        htmlFileNames.forEach((name) => {
-          let folderName = name[0];
-          // data entry point
-          entryPoints[
-            `${section}/${section}_${name[0]}`
-          ] = `./src/entry/data/${folderName}.js`;
-
-          // main entry point
-          entryPoints[`js/${lang}/${name[1]}/entry_${name[0]}`] = {
-            import: `./src/entry/${lang}/${folderName}/index.js`,
-            dependOn: [
-              `${section}/${section}_${name[0]}`,
-              `js/${lang}/profile_code_${lang}`,
-            ],
-          };
-        });
-      });
-      entryPoints[
-        `js/${lang}/profile_code_${lang}`
       ] = `./src/entry/loadDashboards_${lang}.js`;
     });
 

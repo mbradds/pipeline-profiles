@@ -6,6 +6,7 @@ import {
   customizeArray,
 } from "webpack-merge";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import common, { profileWebpackConfig } from "./webpack.common.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +27,7 @@ export default mergeWithCustomize({
   },
   plugins: [
     ...profileWebpackConfig.htmlAzureWebpack(),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/main.[contenthash].css",
     }),
