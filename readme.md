@@ -61,6 +61,7 @@
   - [Dataset 5: Operations and Maintenance Activities](#dataset-5-operations-and-maintenance-activities)
   - [Dataset 6: Contaminated sites and Remediation](#dataset-6-contaminated-sites-and-remediation)
 - [Deploying to CER production server](#deploying-to-cer-production-server)
+- [Azure CMS Deployment](#azure-cms-deployment)
 - [Adding a new profile section](#adding-a-new-profile-section)
 - [Tests](#tests)
   - [Python unit tests (back end)](<#python-unit-tests-(back-end)>)
@@ -421,6 +422,16 @@ As of September 2021, I've added some automation in `deploy/make_production_file
 6. Send in a final web request to publish.
 7. Review links in tweb (I have no access to tweb and cant do this step).
 8. Tell the web team to publish.
+
+## Azure CMS Deployment
+
+_In progress_
+
+A second dist folder `dist_azure` has been added in preperation for the independently developed web app/CMS system. This folder can be build with `npm run build-azure` and uses the webpack logic in `webpack.azure.js` to split the compiled html into partials for each pipeline profile "section". This folder is organized according to asset class: `dist_azure/html`, `dist_azure/js`, `dist_azure/css`, etc.
+
+The compiled html output is organized by pipeline and language, eg: `dist_azure/html/natural-gas/Alliance/en/...` There is one html file per "section" in these folders. There is also a `head.html` that has all the script tags for the page, and `footer.html` with some addition required scripts.
+
+I still need to break up the data bundle into separate bundles for each section.
 
 ## Adding a new profile section
 
