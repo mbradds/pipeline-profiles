@@ -140,6 +140,8 @@ const nearbyMe = {
     `There are ${numCircles} ${eventName} within ${range} km`,
 };
 
+const resetMap = "Reset Map";
+
 const trendYTitle = (eventName) => `Number of ${eventName}`;
 
 const noEvents = {
@@ -279,6 +281,7 @@ export const englishDashboard = {
       barClick,
       locationDisclaimer,
       countDisclaimer,
+      resetMap,
       eventName: "incidents",
       exploreOther,
       trendYTitle,
@@ -499,6 +502,7 @@ export const englishDashboard = {
       countDisclaimer,
       barClick,
       locationDisclaimer,
+      resetMap,
       volumeDisclaimer:
         "Bubble size illustrates the approximate site location and does not indicate the size of the contaminated area",
       eventName: "contaminated sites",

@@ -104,6 +104,7 @@ export class EventMap {
       },
       L
     );
+    this.addResetBtn();
   }
 
   static getState(substance) {
@@ -222,6 +223,18 @@ export class EventMap {
         this.mapVolumeDisclaimer = undefined;
       }
     }
+  }
+
+  addResetBtn() {
+    const resetId = `reset-${this.eventType}-btn`;
+    const resetText = this.lang.resetMap;
+    const info = L.control({ position: "bottomleft" });
+    info.onAdd = function addReset() {
+      this._div = L.DomUtil.create("div");
+      this._div.innerHTML = `<button type="button" id="${resetId}" class="btn btn-default btn-block btn-lg">${resetText}</button>`;
+      return this._div;
+    };
+    info.addTo(this.map);
   }
 
   toolTip(eventParams, fillColor) {
@@ -715,8 +728,7 @@ export class EventMap {
               this.nearbyIncidents(range); // .then((userAdded))
               clearTimeout(loadDisclaimer);
               this.removeMapDisclaimer("location");
-              resetBtn.disabled = false;
-              resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+              resetBtn.className = "btn btn-primary notice-me-btn";
             })
             .catch(() => {
               const incidentFlag = document.getElementById(
@@ -728,8 +740,7 @@ export class EventMap {
             });
         } else {
           this.nearbyIncidents(range);
-          resetBtn.disabled = false;
-          resetBtn.className = "btn btn-primary col-md-12 notice-me-btn";
+          resetBtn.className = "btn btn-primary notice-me-btn";
         }
       });
   }
@@ -739,11 +750,10 @@ export class EventMap {
    */
   resetCirclesListener() {
     const resetBtnDiv = `reset-${this.eventType}-btn`;
-    document.getElementById(resetBtnDiv).addEventListener("click", () => {
+    const resetBtn = document.getElementById(resetBtnDiv);
+    resetBtn.addEventListener("click", () => {
       this.resetMap();
-      const resetBtn = document.getElementById(resetBtnDiv);
-      resetBtn.disabled = true;
-      resetBtn.className = "btn btn-default col-md-12";
+      resetBtn.className = "btn btn-default";
       document.getElementById(`nearby-${this.eventType}-flag`).innerHTML = ``;
     });
   }

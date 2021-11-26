@@ -141,6 +141,8 @@ const nearbyMe = {
     `Il y a ${numCircles} ${eventName} dans un rayon de ${range} km`,
 };
 
+const resetMap = "Réinitialiser la carte";
+
 const trendYTitle = (eventName) => `Nombre de ${eventName}`;
 
 const noEvents = {
@@ -274,6 +276,7 @@ export const frenchDashboard = {
       barClick,
       locationDisclaimer,
       countDisclaimer,
+      resetMap,
       eventName: "incidents",
       exploreOther,
       cf: units.cf,
@@ -500,6 +503,7 @@ export const frenchDashboard = {
       countDisclaimer,
       barClick,
       locationDisclaimer,
+      resetMap,
       volumeDisclaimer:
         "La taille des bulles illustre l’emplacement approximative du site, mais n’indique pas la totalité de la zone contaminée",
       eventName: "Sites contaminés",
