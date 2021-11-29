@@ -29,11 +29,7 @@ import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
 import { mainRemediation } from "../dashboards/remediationDashboard.js";
 // plains disclaimers and safety & env tab click
-import {
-  plainsMidstreamProfile,
-  openTab,
-  defaultClick,
-} from "../modules/util.js";
+import { plainsMidstreamProfile, openTab } from "../modules/util.js";
 
 import "../css/main.css";
 
@@ -79,6 +75,5 @@ export async function loadAllCharts(data, plains = false) {
     if (plains) {
       plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
     }
-    defaultClick();
   });
 }

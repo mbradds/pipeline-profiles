@@ -53,15 +53,6 @@ export function openTab(evt, sectionName) {
   evt.currentTarget.className += " active";
 }
 
-export function defaultClick() {
-  document.addEventListener("DOMContentLoaded", () => {
-    const firstSafetyTab = document.getElementById("defaultClick");
-    if (firstSafetyTab) {
-      firstSafetyTab.click();
-    }
-  });
-}
-
 /**
  *
  * @param {Object[]} obj - JSON style list of objects with a common numeric column to sort.
