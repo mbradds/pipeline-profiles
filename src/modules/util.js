@@ -40,6 +40,28 @@ export function rangeInclusive(start, end) {
     .map((_, idx) => start + idx);
 }
 
+export function openTab(evt, sectionName) {
+  const sections = document.querySelectorAll(".profile-section");
+  Array.from(sections).forEach((section) => {
+    section.style.display = "none";
+  });
+  const tablinks = document.getElementsByClassName("tablinks");
+  Array.from(tablinks).forEach((tab) => {
+    tab.className = tab.className.replace(" active", "");
+  });
+  document.getElementById(sectionName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+export function defaultClick() {
+  document.addEventListener("DOMContentLoaded", () => {
+    const firstSafetyTab = document.getElementById("defaultClick");
+    if (firstSafetyTab) {
+      firstSafetyTab.click();
+    }
+  });
+}
+
 /**
  *
  * @param {Object[]} obj - JSON style list of objects with a common numeric column to sort.

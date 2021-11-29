@@ -28,10 +28,17 @@ import { mainTolls } from "../dashboards/tollsDashboard.js";
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
 import { mainRemediation } from "../dashboards/remediationDashboard.js";
-// plains disclaimers
-import { plainsMidstreamProfile } from "../modules/util.js";
+// plains disclaimers and safety & env tab click
+import {
+  plainsMidstreamProfile,
+  openTab,
+  defaultClick,
+} from "../modules/util.js";
 
 import "../css/main.css";
+
+// set up default click
+window.openTab = openTab;
 
 // console.time(`first content loading`);
 
@@ -72,5 +79,6 @@ export async function loadAllCharts(data, plains = false) {
     if (plains) {
       plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
     }
+    defaultClick();
   });
 }

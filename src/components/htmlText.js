@@ -49,6 +49,7 @@ const en = {
   units: "Select units:",
   trafficUpdated:
     "Section updated quarterly (early March, mid-May, mid-August and mid-November)",
+  trafficUpdatedLine9: "Section updated annually (mid-April)",
   instructions: "Dashboard instructions",
   note: "Note:",
   apportion: {
@@ -487,6 +488,7 @@ const fr = {
   units: "Choisir une unité :",
   trafficUpdated:
     "Section mise à jour tous les trimestres (début mars, mi-mai, mi-août et mi-novembre)",
+  trafficUpdatedLine9: "Section mise à jour annuellement (mi-avril)",
   instructions: "Instructions pour le tableau de bord",
   note: "Remarque :",
   apportion: {

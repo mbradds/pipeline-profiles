@@ -725,7 +725,7 @@ export class EventMap {
           }, 200);
           this.findUser()
             .then(() => {
-              this.nearbyIncidents(range); // .then((userAdded))
+              this.nearbyIncidents(range);
               clearTimeout(loadDisclaimer);
               this.removeMapDisclaimer("location");
               resetBtn.className = "btn btn-primary notice-me-btn";
