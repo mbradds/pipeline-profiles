@@ -110,12 +110,12 @@ export class Tolls {
       "%b %d, %Y",
       event.x
     )} - ${currentTollOrder}</strong>`;
-    toolText += `<table><tr><td>Toll:&nbsp;</td><td><strong>${event.y} (${event.series.userOptions.units})</strong></td></tr>`;
+    toolText += `<table><tr><td>${this.lang.tooltip.toll}&nbsp;</td><td><strong>${event.y} (${event.series.userOptions.units})</strong></td></tr>`;
 
     const optionalSections = {
-      Path: `<tr><td>Path:&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`,
-      Product: `<tr><td>Product:&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`,
-      Service: `<tr><td>Service:&nbsp;</td><td><strong>${event.series.userOptions.service}</strong></td></tr>`,
+      Path: `<tr><td>${this.lang.tooltip.path}&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`,
+      Product: `<tr><td>${this.lang.tooltip.product}&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`,
+      Service: `<tr><td>${this.lang.tooltip.service}&nbsp;</td><td><strong>${event.series.userOptions.service}</strong></td></tr>`,
     };
     Object.keys(optionalSections).forEach((row) => {
       if (row !== seriesCol) {
@@ -127,7 +127,7 @@ export class Tolls {
   }
 
   chartYaxisTitle() {
-    return `Toll (${this.currentUnits})`;
+    return `${this.lang.yAxis} (${this.currentUnits})`;
   }
 
   buildTollsChart(series) {
@@ -391,9 +391,10 @@ export class Tolls {
     if (this.metaData.pathTotals[0] !== this.metaData.pathTotals[1]) {
       document.getElementById(
         "path-discliamer"
-      ).innerHTML = `<div class="alert alert-warning mrgn-tp-sm">
-      <p>There are <strong>${this.metaData.pathTotals[0]}</strong> tolls paths shown for this system. Take a look at the Open Government dataset for information on all <strong>${this.metaData.pathTotals[1]}</strong> available system paths.</p>
-      </div>`;
+      ).innerHTML = `<div class="alert alert-warning mrgn-tp-sm">${this.lang.pathDisclaimer(
+        this.metaData.pathTotals[0],
+        this.metaData.pathTotals[1]
+      )}</div>`;
     }
   }
 
@@ -401,7 +402,7 @@ export class Tolls {
     if (this.metaData.splitDescription && this.currentSplit) {
       document.getElementById("split-description").innerHTML = `<h3>${
         this.currentSplit
-      } Toll Description</h3><p>${
+      } ${this.lang.splitDescription}</h3><p>${
         this.metaData.splitDescription[this.currentSplit]
       }</p>`;
     }

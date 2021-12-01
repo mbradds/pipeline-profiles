@@ -638,5 +638,17 @@ export const frenchDashboard = {
     noEvents,
     eventName: "FR: tolls",
     lang: "f",
+    dashboard: {
+      tooltip: {
+        toll: "FR: Toll :",
+        path: "FR: Path :",
+        product: "FR: Product :",
+        service: "FR: Service:",
+      },
+      yAxis: "FR: Toll",
+      splitDescription: "FR: Toll Description",
+      pathDisclaimer: (thisPaths, totalPaths) =>
+        `<p>FR: There are <strong>${thisPaths}</strong> tolls paths shown for this system. Take a look at the Open Government dataset for information on all <strong>${totalPaths}</strong> available system paths.</p>`,
+    },
   },
 };

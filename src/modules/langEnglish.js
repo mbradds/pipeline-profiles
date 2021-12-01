@@ -628,5 +628,17 @@ export const englishDashboard = {
     noEvents,
     eventName: "tolls",
     lang: "e",
+    dashboard: {
+      tooltip: {
+        toll: "Toll:",
+        path: "Path:",
+        product: "Product:",
+        service: "Service:",
+      },
+      yAxis: "Toll",
+      splitDescription: "Toll Description",
+      pathDisclaimer: (thisPaths, totalPaths) =>
+        `<p>There are <strong>${thisPaths}</strong> tolls paths shown for this system. Take a look at the Open Government dataset for information on all <strong>${totalPaths}</strong> available system paths.</p>`,
+    },
   },
 };

@@ -7,7 +7,7 @@ export async function mainTolls(tollsData, metaData, lang) {
     const dashboard = new Tolls({
       tollsData,
       metaData,
-      lang,
+      lang: lang.dashboard,
       chartDiv: "tolls-chart",
     });
     if (metaData.build) {

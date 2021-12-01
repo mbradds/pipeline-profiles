@@ -482,6 +482,11 @@ const en = {
       },
     },
   },
+  tolls: {
+    header: "Tolls (in progress)",
+    updated: "Section updated September 2021",
+    descriptionHeader: "System Tolls Description",
+  },
 };
 
 const fr = {
@@ -922,6 +927,11 @@ const fr = {
         ),
       },
     },
+  },
+  tolls: {
+    header: "FR: Tolls (in progress)",
+    updated: "FR: Section updated September 2021",
+    descriptionHeader: "System Tolls Description",
   },
 };
 
