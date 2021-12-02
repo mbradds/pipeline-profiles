@@ -119,10 +119,10 @@ const en = {
       remediation: "Contaminated Sites and Remediation",
     },
     updated: {
-      conditions: "Section updated November 2021",
-      incidents: "Section updated November 2021",
-      oandm: "Section updated November 2021",
-      remediation: "Section updated November 2021",
+      conditions: "Section updated December 2021",
+      incidents: "Section updated December 2021",
+      oandm: "Section updated December 2021",
+      remediation: "Section updated December 2021",
     },
     conditions: {
       p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
@@ -562,10 +562,10 @@ const fr = {
       remediation: "Sites contaminés et assainissement",
     },
     updated: {
-      conditions: "Mise à jour : novembre 2021",
-      incidents: "Mise à jour: novembre 2021",
-      oandm: "Mise à jour : novembre 2021",
-      remediation: "Mise à jour: novembre 2021",
+      conditions: "Mise à jour : décembre 2021",
+      incidents: "Mise à jour : décembre 2021",
+      oandm: "Mise à jour : décembre 2021",
+      remediation: "Mise à jour : décembre 2021",
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
