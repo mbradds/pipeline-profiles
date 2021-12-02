@@ -645,6 +645,11 @@ export const frenchDashboard = {
         product: "FR: Product :",
         service: "FR: Service:",
       },
+      filters: {
+        product: "FR: Select product :",
+        path: "FR: Select path :",
+        service: "FR: Select service :",
+      },
       yAxis: "FR: Toll",
       splitDescription: "FR: Toll Description",
       pathDisclaimer: (thisPaths, totalPaths) =>

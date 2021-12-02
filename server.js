@@ -20,7 +20,7 @@ function cachePolicy(req, res, next) {
   const periodLong = 31536000; // 1 year
 
   const noContentHash = /GCWeb|wet-boew/;
-  const contentHash = new RegExp("\\.[0-9a-f]{20}\\.");
+  const contentHash = /\\.[0-9a-f]{20}\\./;
   if (req.method === "GET") {
     if (req.url.match(contentHash)) {
       res.set("Cache-control", `public, max-age=${periodLong}`);
