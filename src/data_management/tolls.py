@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import numpy as np
 import pandas as pd
 from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script
 set_cwd_to_script()
@@ -26,6 +27,7 @@ def company_filter(df, company):
     selected_services = False
     total_paths = len(list(set(df["Path"])))
     df = df.where(pd.notnull(df), None)
+    df = df.replace({np.nan: None})
     if len(list(set(df["Path"]))) == 1:
         path_filter = [False]
         selected_paths = list(set(df["Path"]))
@@ -152,7 +154,6 @@ def process_path(df, series_col, minimize=True):
         df_s = df[df[series_col] == ps].copy().reset_index()
         if len(list(set(df_s["Units"]))) > 1:
             print(list(df_s["PipelineID"])[0], "units error")
-            # print(list(set(df_s["Units"])))
         for product in list(set(df_s["Product"])):
             df_p = df_s[df_s["Product"] == product].copy().reset_index(drop=True)
             for service in list(set(list(df_p["Service"]))):
@@ -162,22 +163,23 @@ def process_path(df, series_col, minimize=True):
                 thisSeries["s"] = service
                 thisSeries["u"] = list(df_s2["Units"])[0]
                 data = []
-                for s, e, value in zip(df_s2["Effective Start"],
-                                       df_s2["Effective End"],
-                                       df_s2["Value"]):
+                last_end = None
+                for start, end, value in zip(df_s2["Effective Start"],
+                                             df_s2["Effective End"],
+                                             df_s2["Value"]):
                     if minimize:
                         if len(data) > 0:
                             last_toll = data[-1][-1]
-                            rollover_days = (s - last_end).days
+                            rollover_days = (start - last_end).days
                             if last_toll == value and rollover_days <= 1:
-                                data[-1][1] = [e.year, e.month-1, e.day]
+                                data[-1][1] = [end.year, end.month-1, end.day]
                             else:
-                                data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
+                                data.append([[start.year, start.month-1, start.day], [end.year, end.month-1, end.day], value])
                         else:
-                            data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
-                        last_end = e
+                            data.append([[start.year, start.month-1, start.day], [end.year, end.month-1, end.day], value])
+                        last_end = end
                     else:
-                        data.append([[s.year, s.month-1, s.day], [e.year, e.month-1, e.day], value])
+                        data.append([[start.year, start.month-1, start.day], [end.year, end.month-1, end.day], value])
                 thisSeries["data"] = data
                 series.append(thisSeries)
     return series
@@ -380,9 +382,9 @@ if __name__ == "__main__":
                   "Westcoast",
                   "Westspur",
                   "Wascana"]
-    # completed_ = ["NGTL"]
-    df_, this_company_data_ = process_tolls_data(sql=True,
-                                                 # companies = ["EnbridgeLine9"],
+    # completed_ = ["NGTL"] 
+    df_, this_company_data_ = process_tolls_data(sql=False,
+                                                 # companies = ["EnbridgeBakken"],
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")
