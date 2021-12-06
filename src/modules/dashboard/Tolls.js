@@ -106,23 +106,38 @@ export class Tolls {
       }
     });
 
+    const tableRow = (label, value) =>
+      `<tr><td>${label}&nbsp;</td><td><strong>${value}</strong></td></tr>`;
+
     let toolText = `<strong>${Highcharts.dateFormat(
       "%b %d, %Y",
       event.x
     )} - ${currentTollOrder}</strong>`;
-    toolText += `<table><tr><td>${this.lang.tooltip.toll}&nbsp;</td><td><strong>${event.y} (${event.series.userOptions.units})</strong></td></tr>`;
+
+    toolText += `<table>`;
+    toolText += tableRow(
+      this.lang.tooltip.toll,
+      `${event.y} (${event.series.userOptions.units})`
+    );
 
     const optionalSections = {
-      Path: `<tr><td>${this.lang.tooltip.path}&nbsp;</td><td><strong>${event.series.userOptions.pathName}</strong></td></tr>`,
-      Product: `<tr><td>${this.lang.tooltip.product}&nbsp;</td><td><strong>${event.series.userOptions.product}</strong></td></tr>`,
-      Service: `<tr><td>${this.lang.tooltip.service}&nbsp;</td><td><strong>${event.series.userOptions.service}</strong></td></tr>`,
+      Path: tableRow(this.lang.tooltip.path, event.series.userOptions.pathName),
+      Product: tableRow(
+        this.lang.tooltip.product,
+        event.series.userOptions.product
+      ),
+      Service: tableRow(
+        this.lang.tooltip.service,
+        event.series.userOptions.service
+      ),
     };
     Object.keys(optionalSections).forEach((row) => {
       if (row !== seriesCol) {
         toolText += optionalSections[row];
       }
     });
-    toolText += `<tr><td>${seriesCol}:&nbsp;</td><td><strong>${event.series.userOptions.name}</strong></td></tr></table>`;
+    toolText += tableRow(seriesCol, event.series.userOptions.name);
+    toolText += `</table>`;
     return toolText;
   }
 
