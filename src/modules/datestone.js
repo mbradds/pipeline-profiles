@@ -2,112 +2,245 @@
  * @file TODO: replace this file with the relevant npm package: https://www.npmjs.com/package/datestone
  */
 
-function changeValue(u) {
-  let valueTransformer;
-  const dontConvert = function noTransform(row) {
-    return row;
-  };
+// function changeValue(u) {
+//   let valueTransformer;
+//   const dontConvert = function noTransform(row) {
+//     return row;
+//   };
+//   const convertNoRound = (row) => row * u.conversion;
+//   const convertWithRound = (row) =>
+//     parseFloat((row * u.conversion).toFixed(u.round));
+//   let rowFunction = convertNoRound;
+//   if (u.round >= 0) {
+//     rowFunction = convertWithRound;
+//   }
+//   if (u.convert) {
+//     if (u.operation === "*") {
+//       valueTransformer = function convert(row) {
+//         return row ? rowFunction(row) : null;
+//       };
+//     } else if (u.operation === "/") {
+//       valueTransformer = function convert(row) {
+//         return row ? rowFunction(row) : null;
+//       };
+//     } else if (u.operation === "+") {
+//       valueTransformer = function convert(row) {
+//         return row ? rowFunction(row) : null;
+//       };
+//     } else if (u.operation === "-") {
+//       valueTransformer = function convert(row) {
+//         return row ? rowFunction(row) : null;
+//       };
+//     } else {
+//       valueTransformer = dontConvert;
+//     }
+//   } else {
+//     valueTransformer = dontConvert;
+//   }
+//   return valueTransformer;
+// }
+// function getDateFunction(frequency) {
+//   const dFunc = (d, i) => d.setDate(d.getDate() + i);
+//   const mFunc = (d, i) => d.setMonth(d.getMonth() + i);
+//   const qFunc = (d, i) => d.setMonth(d.getMonth() + (i + 2));
+//   const yFunc = (d, i) => d.setFullYear(d.getFullYear() + i);
+//   let datePlusPlus = mFunc;
+//   if (frequency === "daily" || frequency === "d") {
+//     datePlusPlus = dFunc;
+//   } else if (frequency === "monthly" || frequency === "m") {
+//     datePlusPlus = mFunc;
+//   } else if (frequency === "quarterly" || frequency === "q") {
+//     datePlusPlus = qFunc;
+//   } else if (frequency === "yearly" || frequency === "y") {
+//     datePlusPlus = yFunc;
+//   }
+//   return datePlusPlus;
+// }
+// function addRow(units, increment, datePlusPlus) {
+//   const rowFunction = changeValue(units);
+//   const adder = (row, startDate) => {
+//     const nextDate = datePlusPlus(startDate, increment);
+//     return { dateNew: nextDate, valueNew: rowFunction(row) };
+//   };
+//   return adder;
+// }
+// export function mapDates(
+//   series,
+//   date,
+//   frequency = "monthly",
+//   method = "forward",
+//   transform = { convert: false, operation: "none", conversion: 0, round: -1 }
+// ) {
+//   let increment = 1;
+//   if (method === "backward" || method === "b") {
+//     increment = -1;
+//   }
+//   const datePlusPlus = getDateFunction(frequency);
+//   const dateMinusOne = new Date(datePlusPlus(date, -1));
+//   const addFunction = addRow(transform, increment, datePlusPlus);
+//   const seriesWithDate = series.map((row) => {
+//     const { dateNew, valueNew } = addFunction(row, dateMinusOne);
+//     return [dateNew, valueNew];
+//   });
+//   return seriesWithDate;
+// }
+
+// export function fillBetween(
+//   start,
+//   end,
+//   value,
+//   frequency = "daily",
+//   method = "forward",
+//   transform = { convert: false, operation: "none", conversion: 0, round: -1 }
+// ) {
+//   let increment = 1;
+//   if (method === "backward" || method === "b") {
+//     increment = -1;
+//   }
+//   const series = [];
+//   const startValue = value;
+//   let startDate = new Date(start[0], start[1], start[2]);
+//   const endDate = new Date(end[0], end[1], end[2]);
+//   const datePlusPlus = getDateFunction(frequency);
+//   startDate = new Date(datePlusPlus(startDate, -1));
+//   const addFunction = addRow(transform, increment, datePlusPlus);
+//   while (startDate < endDate) {
+//     const { dateNew, valueNew } = addFunction(startValue, startDate);
+//     series.push([dateNew, valueNew]);
+//     startDate = new Date(dateNew);
+//   }
+//   return series;
+// }
+
+const changeValue = (u) => {
+  const dontConvert = (row) => row;
   const convertNoRound = (row) => row * u.conversion;
   const convertWithRound = (row) =>
     parseFloat((row * u.conversion).toFixed(u.round));
-  let rowFunction = convertNoRound;
-  if (u.round >= 0) {
-    rowFunction = convertWithRound;
-  }
+  const rowFunction = u.round >= 0 ? convertWithRound : convertNoRound;
   if (u.convert) {
-    if (u.operation === "*") {
-      valueTransformer = function convert(row) {
-        return row ? rowFunction(row) : null;
-      };
-    } else if (u.operation === "/") {
-      valueTransformer = function convert(row) {
-        return row ? rowFunction(row) : null;
-      };
-    } else if (u.operation === "+") {
-      valueTransformer = function convert(row) {
-        return row ? rowFunction(row) : null;
-      };
-    } else if (u.operation === "-") {
-      valueTransformer = function convert(row) {
-        return row ? rowFunction(row) : null;
-      };
-    } else {
-      valueTransformer = dontConvert;
+    if (["*", "/", "+", "-"].includes(u.operation)) {
+      return (row) => (row ? rowFunction(row) : null);
     }
-  } else {
-    valueTransformer = dontConvert;
+    return dontConvert;
   }
-  return valueTransformer;
-}
-function getDateFunction(frequency) {
-  const dFunc = (d, i) => d.setDate(d.getDate() + i);
-  const mFunc = (d, i) => d.setMonth(d.getMonth() + i);
-  const qFunc = (d, i) => d.setMonth(d.getMonth() + (i + 2));
-  const yFunc = (d, i) => d.setFullYear(d.getFullYear() + i);
-  let datePlusPlus = mFunc;
+  return dontConvert;
+};
+const getDateFunction = (frequency) => {
   if (frequency === "daily" || frequency === "d") {
-    datePlusPlus = dFunc;
-  } else if (frequency === "monthly" || frequency === "m") {
-    datePlusPlus = mFunc;
-  } else if (frequency === "quarterly" || frequency === "q") {
-    datePlusPlus = qFunc;
-  } else if (frequency === "yearly" || frequency === "y") {
-    datePlusPlus = yFunc;
+    return (d, i) => d.setDate(d.getDate() + i);
   }
-  return datePlusPlus;
-}
-function addRow(units, increment, datePlusPlus) {
-  const rowFunction = changeValue(units);
-  const adder = (row, startDate) => {
-    const nextDate = datePlusPlus(startDate, increment);
-    return { dateNew: nextDate, valueNew: rowFunction(row) };
-  };
-  return adder;
-}
-export function mapDates(
+  if (frequency === "yearly" || frequency === "y") {
+    return (d, i) => d.setFullYear(d.getFullYear() + i);
+  }
+  return (d, i) => d.setMonth(d.getMonth() + i);
+};
+const addRow = (units, increment, datePlusPlus) => (row, startDate) => ({
+  dateNew: datePlusPlus(startDate, increment),
+  valueNew: changeValue(units)(row),
+});
+const determineIncrement = (method) =>
+  method === "backward" || method === "b" ? -1 : 1;
+/**
+ * Converts an array of numeric data into a multi-dimensional array of [[date, value]] pairs starting with an input date.
+ * @param {Array} series Input list of numeric data.
+ * @param {Date} date The start date [method=forward] or end date [method=backward] for the new date column.
+ * @param {string} [frequency=monthly] daily/d, monthly/m, or yearly/y time interval applied ascending [method=forward] or descending [method=backward] to each date.
+ * @param {string} [method=forward] Fills the date column with ascending dates starting with input date.
+ * @param {Object} [transform={ convert: false, operation: "none", conversion: 0, round: -1 }] Apply a transformation/unit conversion to each value in the input series.
+ * @returns {Array}
+ */
+const mapDates = (
   series,
   date,
   frequency = "monthly",
   method = "forward",
   transform = { convert: false, operation: "none", conversion: 0, round: -1 }
-) {
-  let increment = 1;
-  if (method === "backward" || method === "b") {
-    increment = -1;
-  }
+) => {
+  // date needs to be de-incremented by one unit to avoid if statement checking for first date addition
   const datePlusPlus = getDateFunction(frequency);
   const dateMinusOne = new Date(datePlusPlus(date, -1));
-  const addFunction = addRow(transform, increment, datePlusPlus);
-  const seriesWithDate = series.map((row) => {
+  const addFunction = addRow(
+    transform,
+    determineIncrement(method),
+    datePlusPlus
+  );
+  return series.map((row) => {
     const { dateNew, valueNew } = addFunction(row, dateMinusOne);
     return [dateNew, valueNew];
   });
-  return seriesWithDate;
-}
-
-export function fillBetween(
+};
+/**
+ * Adds a date column to a JSON dataset based on a given start or end date.
+ * @param {Array} series The input JSON data without a date column.
+ * @param {Date} date The start date [method=forward] or end date [method=backward] for the new date column.
+ * @param {string} valueCol The column name of the numeric data.
+ * @param {string} [dateCol=date] The column name/key to be assigned to the new date column.
+ * @param {string} [frequency=monthly] daily/d, monthly/m, or yearly/y time interval applied ascending [method=forward] or descending [method=backward] to each date.
+ * @param {string} [method=forward] Fills the date column with ascending dates starting with input date.
+ * @param {Object} [transform={ convert: false, operation: "none", conversion: 0, round: -1 }] Apply a transformation/unit conversion to each value in valueCol.
+ * @returns {Array} JSON style array with new date column and optional conversion on numeric data column.
+ */
+const mapDatesToJson = (
+  series,
+  date,
+  valueCol,
+  dateCol = "date",
+  frequency = "monthly",
+  method = "forward",
+  transform = { convert: false, operation: "none", conversion: 0, round: -1 }
+) => {
+  // date needs to be de-incremented by one unit to avoid if statement checking for first date addition
+  const datePlusPlus = getDateFunction(frequency);
+  const dateMinusOne = new Date(datePlusPlus(date, -1));
+  const addFunction = addRow(
+    transform,
+    determineIncrement(method),
+    datePlusPlus
+  );
+  return series.map((row) => {
+    const value = row[valueCol];
+    const newRow = row;
+    const { dateNew, valueNew } = addFunction(value, dateMinusOne);
+    newRow[dateCol] = dateNew;
+    newRow[valueCol] = valueNew;
+    return newRow;
+  });
+};
+/**
+ * Generate a nested array of [[start date], [end date], value] for a given start date, end date, and value.
+ * @param {Array} start Start date [year, month, day]
+ * @param {Array} end End date [year, month, day]
+ * @param {number} value Numeric value applied to each period between start and end.
+ * @param {string} [frequency=daily] daily/d, monthly/m, or yearly/y time intervals required between start and end.
+ * @param {string} [method=forward] fill the array beginning with start (forward) to end, or from end descending to start (backward).
+ * @param {Object} [transform={ convert: false, operation: "none", conversion: 0, round: -1 }] Apply a transformation/unit conversion to value.
+ * @returns {Array}
+ */
+const fillBetween = (
   start,
   end,
   value,
   frequency = "daily",
   method = "forward",
   transform = { convert: false, operation: "none", conversion: 0, round: -1 }
-) {
-  let increment = 1;
-  if (method === "backward" || method === "b") {
-    increment = -1;
-  }
+) => {
   const series = [];
   const startValue = value;
   let startDate = new Date(start[0], start[1], start[2]);
   const endDate = new Date(end[0], end[1], end[2]);
   const datePlusPlus = getDateFunction(frequency);
   startDate = new Date(datePlusPlus(startDate, -1));
-  const addFunction = addRow(transform, increment, datePlusPlus);
+  const addFunction = addRow(
+    transform,
+    determineIncrement(method),
+    datePlusPlus
+  );
   while (startDate < endDate) {
     const { dateNew, valueNew } = addFunction(startValue, startDate);
     series.push([dateNew, valueNew]);
     startDate = new Date(dateNew);
   }
   return series;
-}
+};
+export { mapDates, mapDatesToJson, fillBetween };
