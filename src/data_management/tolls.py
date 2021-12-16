@@ -28,6 +28,7 @@ def company_filter(df, company):
     total_paths = len(list(set(df["Path"])))
     df = df.where(pd.notnull(df), None)
     df = df.replace({np.nan: None})
+    df["Value"] = df["Value"].replace({np.nan: None})
     if len(list(set(df["Path"]))) == 1:
         path_filter = [False]
         selected_paths = list(set(df["Path"]))

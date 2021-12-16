@@ -17,6 +17,7 @@ def apply_trade_id(df):
              "domestic light / ngl": "dln",
              "natural gas liquids (ngl)": "ngl",
              "NGL Volume": "ngl",
+             "NGL": "ngl",
              "foreign light": "fl",
              "condensate": "co",
              "diluent": "di",
@@ -24,11 +25,14 @@ def apply_trade_id(df):
              "diluent (uncommitted)": "diu",
              "Diluent - Committed": "dic",
              "Diluent - Uncommitted": "diu",
+             "Diluent - Uncomitted": "diu",
              "southeast sask (SES) crude": "ses",
              "SES – Crude Volume": "ses",
+             "SES – Crude": "ses",
              "petroleum": "pet",
              "westspur midale (MSM) crude": "msm",
              "MSM – Crude Volume": "msm",
+             "MSM – Crude": "msm",
              "aggregate of heavy, medium, light crude petroleum": "agg"}
     df = idify(df, "Trade Type", trade, False)
     return df
