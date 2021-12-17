@@ -31,3 +31,4 @@ deploy/*
 !deploy/*.sh
 !deploy/*.json
 *.csv#
+AZURE_STORAGE_CONNECTION_STRING.json

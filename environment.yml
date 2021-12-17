@@ -2,14 +2,15 @@ name: pipeline-profiles
 channels:
   - defaults
 dependencies:
+  - pyodbc
+  - xlrd
   - pandas=1.1.3
   - geopandas
+  - openpyxl
+  - urllib3
   - sqlalchemy=1.3.19
   - spyder
-  - xlrd
-  - openpyxl
   - jinja2
-  - urllib3
   - bs4
-  - pyodbc
+  - azure-storage-blob
 prefix: /home/grant/anaconda3/envs/pipeline-profiles
