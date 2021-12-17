@@ -242,7 +242,7 @@ export const profileWebpackConfig = (function config() {
     return entryPoints;
   }
 
-  return { htmlWebpack, htmlAzureWebpack, entry, entryAzure };
+  return { htmlWebpack, htmlAzureWebpack, entry, entryAzure, htmlFileNames };
 })();
 
 export default {
