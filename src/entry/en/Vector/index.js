@@ -1,4 +1,4 @@
-import { data } from "../../data/Vector.js";
 import { loadAllCharts } from "../../loadDashboards_en.js";
+import { getData } from "../../getData.js";
 
-loadAllCharts(data);
+getData("Vector", loadAllCharts);

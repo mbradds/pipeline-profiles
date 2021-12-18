@@ -1,4 +1,4 @@
-import { data } from "../../data/Westspur.js";
 import { loadAllCharts } from "../../loadDashboards_en.js";
+import { getData } from "../../getData.js";
 
-loadAllCharts(data);
+getData("Westspur", loadAllCharts);

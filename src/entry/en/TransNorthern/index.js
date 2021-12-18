@@ -1,4 +1,4 @@
-import { data } from "../../data/TransNorthern.js";
 import { loadAllCharts } from "../../loadDashboards_en.js";
+import { getData } from "../../getData.js";
 
-loadAllCharts(data);
+getData("TransNorthern", loadAllCharts);
