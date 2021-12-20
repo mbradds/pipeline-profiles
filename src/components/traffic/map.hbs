@@ -1,7 +1,6 @@
 <h2 id="throughput">{{text.traffic.header}}</h2>
 <p class="small">{{text.trafficUpdated}}</p>
 <div id="traffic-section">
-  <div class="loader"></div>
   <div class="row dashboard-style">
     <div class="col-md-12">
       <p class="cerlabel" id="key-point-title">
@@ -15,7 +14,7 @@
       class="col-md-8 col-sm-8 col-xs-12 traffic-hc-column-map"
       id="traffic-hc-column"
     >
-      <div class="traffic-hc-shared" id="traffic-hc"></div>
+      <div class="traffic-hc-shared loader" id="traffic-hc"></div>
       <div class="traffic-hc-shared" id="traffic-hc-range"></div>
     </div>
     <div class="col-md-4 col-sm-4 col-xs-12">
@@ -29,8 +28,9 @@
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtMap}}</h5>
         </header>
+        {{!-- <div class="loader"></div> --}}
         <div class="panel-body" id="map-panel-body">
-          <div class="traffic-map-shared" id="traffic-map"></div>
+          <div class="traffic-map-shared loader" id="traffic-map"></div>
           <div class="btn-group btn-group-justified" id="key-point-zoom-btn">
             <div class="btn-group btn-map">
               <button
@@ -57,7 +57,7 @@
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtTrends}}</h5>
         </header>
-        <div class="panel-body" id="traffic-trends"></div>
+        <div class="panel-body loader" id="traffic-trends"></div>
       </section>
     </div>
     <div class="col-md-6 col-sm-6">
@@ -65,7 +65,7 @@
         <header class="panel-heading">
           <h5 class="panel-title">{{text.traffic.keyPtDescription}}</h5>
         </header>
-        <div class="panel-body" id="traffic-point-description"></div>
+        <div class="panel-body loader" id="traffic-point-description"></div>
       </section>
     </div>
   </div>

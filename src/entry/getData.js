@@ -27,7 +27,7 @@ async function getAzureData(pipelineId, account = "certest") {
 
 export function getData(id, loadChartCallback) {
   getAzureData(id).then((data) => {
-    loadChartCallback(data);
     removeLoaders();
+    loadChartCallback(data);
   });
 }
