@@ -56,7 +56,6 @@ export async function loadAllCharts(data, plains = false) {
     ),
     mainConditions(
       JSON.parse(data.conditionsData.regions),
-      data.canadaMap,
       data.conditionsData.mapMeta,
       data.conditionsData.meta,
       englishDashboard.conditions

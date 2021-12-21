@@ -38,7 +38,6 @@ export async function loadAllCharts(data, plains = false) {
     mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls),
     mainConditions(
       JSON.parse(data.conditionsData.regions),
-      data.canadaMap,
       data.conditionsData.mapMeta,
       data.conditionsData.meta,
       frenchDashboard.conditions

@@ -8,6 +8,7 @@ import {
   btnGroupClick,
 } from "../modules/util.js";
 import { mapInits, noEventsFlag } from "./dashboardUtil.js";
+import canadaMap from "../data_output/conditions/base_maps/base_map.json";
 import conditionsRegions from "../data_output/conditions/metadata/regions.json";
 import conditionsThemes from "../data_output/conditions/metadata/themes.json";
 
@@ -16,19 +17,12 @@ MapModule(Highcharts);
 /**
  * Builds the conditions dashboard
  * @param {Object} econRegions - geoJSON features for economic region boundaries.
- * @param {Object} canadaMap - geoJSON features for canada base map.
  * @param {Object[]} mapMetaData - In progress/closed condition totals for each economic region id. Used to shade the map.
  * @param {Object} meta - project/theme/summary info for the current dashboard.
  * @param {Object} lang - en/fr language strings.
  * @returns {Promise}
  */
-export async function mainConditions(
-  econRegions,
-  canadaMap,
-  mapMetaData,
-  meta,
-  lang
-) {
+export async function mainConditions(econRegions, mapMetaData, meta, lang) {
   const noLocationSummary = (params) => {
     let infohtml = `<p><strong>${lang.noLocation.title}</strong></p>`;
     if (params.summary.notOnMap.total > 0) {

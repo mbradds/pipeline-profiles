@@ -1,4 +1,3 @@
-import canadaMap from "../../data_output/conditions/base_maps/base_map.json";
 import conditionsData from "../../data_output/conditions/EnbridgeMainline.json";
 import incidentData from "../../data_output/incidents/EnbridgeMainline.json";
 import trafficData from "../../data_output/traffic/EnbridgeMainline.json";
@@ -8,7 +7,6 @@ import oandmData from "../../data_output/oandm/EnbridgeMainline.json";
 import remediationData from "../../data_output/remediation/EnbridgeMainline.json";
 
 export const data = {
-  canadaMap,
   conditionsData,
   incidentData,
   oandmData,
