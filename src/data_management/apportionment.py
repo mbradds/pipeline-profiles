@@ -2,6 +2,7 @@ import time
 import json
 import os
 import dateutil.relativedelta
+import numpy as np
 import pandas as pd
 from util import normalize_dates, conversion, normalize_numeric, normalize_text, get_company_list, get_data, set_cwd_to_script
 from traffic import get_traffic_data
@@ -125,6 +126,7 @@ def process_company(df, company, enbridge_points, save):
     folder_name = company.replace(' ', '').replace('.', '')
     df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
     df_c = df_c.where(pd.notnull(df_c), None)
+    df_c = df_c.replace({np.nan: None})
     if not df_c.empty:
         this_company_data['build'] = True
         df_c = df_c.drop_duplicates(subset=['Date', 'KeyPointID'])
@@ -209,5 +211,5 @@ def process_apportionment(save=False, sql=False, companies=False):
 
 if __name__ == "__main__":
     print('starting apportionment...')
-    df_ = process_apportionment(sql=True, save=True)
+    df_ = process_apportionment(sql=False, save=True)
     print('completed apportionment!')

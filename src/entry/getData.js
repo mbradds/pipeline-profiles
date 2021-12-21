@@ -6,7 +6,9 @@ function removeLoaders(className = "loader") {
 
 async function fetchErrorBackup(pipelineId) {
   console.log("getting backup data!");
-  const { default: data } = await import(`./data/${pipelineId}.js`);
+  const { default: data } = await import(
+    /* webpackChunkName: "data/[request]" */ `./data/${pipelineId}.js`
+  );
   return data;
 }
 

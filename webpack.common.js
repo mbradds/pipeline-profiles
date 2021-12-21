@@ -184,7 +184,6 @@ export const profileWebpackConfig = (function config() {
             chunks: [
               `${lang}/${name[1]}/js/entry_${name[0]}`,
               `${lang}/profile_code_${lang}`,
-              `data/data_${name[0]}`,
             ],
             chunksSortMode: "auto",
             template: `src/components/profile.hbs`,
@@ -216,24 +215,15 @@ export const profileWebpackConfig = (function config() {
     const entryPoints = {};
     language.forEach((lang) => {
       // order of script addition to "entryPoints" matters for chunkSortMode
-      sections.forEach((section) => {
-        htmlFileNames.forEach((name) => {
-          const folderName = name[0];
-          // data entry point
-          entryPoints[
-            `${section}/${section}_${name[0]}`
-          ] = `./src/entry/data/${folderName}.js`;
-
-          // main entry point
-          entryPoints[`${lang}/${name[1]}/js/entry_${name[0]}`] = {
-            import: `./src/entry/${lang}/${folderName}/index.js`,
-            dependOn: [
-              `${section}/${section}_${name[0]}`,
-              `${lang}/profile_code_${lang}`,
-            ],
-          };
-        });
+      htmlFileNames.forEach((name) => {
+        const folderName = name[0];
+        // main entry point
+        entryPoints[`${lang}/${name[1]}/js/entry_${name[0]}`] = {
+          import: `./src/entry/${lang}/${folderName}/index.js`,
+          dependOn: [`${lang}/profile_code_${lang}`],
+        };
       });
+      // });
       entryPoints[
         `${lang}/profile_code_${lang}`
       ] = `./src/entry/loadDashboards_${lang}.js`;

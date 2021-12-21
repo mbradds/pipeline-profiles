@@ -1,4 +1,4 @@
-import { data } from "../../data/Wascana.js";
 import { loadAllCharts } from "../../loadDashboards_fr.js";
+import { getData } from "../../getData.js";
 
-loadAllCharts(data, true);
+getData("Wascana", loadAllCharts);

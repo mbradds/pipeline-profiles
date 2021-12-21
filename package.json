@@ -25,7 +25,7 @@
     "update-conditions-data": "conda run -n pipeline-profiles python src/data_management/conditions.py",
     "update-apportionment-data": "conda run -n pipeline-profiles python src/data_management/apportionment.py",
     "update-oandm-data": "conda run -n pipeline-profiles python src/data_management/oandm.py",
-    "update-all-data": "conda run -n pipeline-profiles python src/data_management/update_all.py",
+    "update-all-data": "conda run -n pipeline-profiles python src/data_management/update_all.py sql=False",
     "get-maps": "conda run -n pipeline-profiles python src/data_management/get_map_files.py",
     "simplify-maps": "sh ./scripts/simplify-maps.sh",
     "test-backend": "conda run -n pipeline-profiles python src/data_management/tests.py",

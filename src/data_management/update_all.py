@@ -1,3 +1,4 @@
+import platform
 from traffic import combined_traffic
 from conditions import process_conditions
 from incidents import process_incidents
@@ -7,9 +8,13 @@ from remediation import process_remediation
 
 
 if __name__ == "__main__":
-    combined_traffic(save=True, sql=True)
-    process_apportionment(sql=True, save=True)
-    process_conditions(remote=True, save=True, sql=True)
+    if platform.system() == "Linux":
+        sql=False
+    else:
+        sql=True
+    combined_traffic(save=True, sql=sql)
+    process_apportionment(sql=sql, save=True)
+    process_conditions(remote=True, save=True, sql=sql)
     process_incidents(remote=True, test=False)
     process_oandm(remote=True, test=False)
-    process_remediation(sql=True, remote=True, save=True, test=False)
+    process_remediation(sql=sql, remote=True, save=True, test=False)
