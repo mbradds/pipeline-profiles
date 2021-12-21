@@ -43,13 +43,15 @@ export function rangeInclusive(start, end) {
 export function openTab(evt, sectionName) {
   const sections = document.querySelectorAll(".profile-section");
   Array.from(sections).forEach((section) => {
-    section.style.display = "none";
+    section.classList.remove("profile-show");
+    section.classList.add("profile-hide");
   });
   const tablinks = document.getElementsByClassName("tablinks");
   Array.from(tablinks).forEach((tab) => {
     tab.className = tab.className.replace(" active", "");
   });
-  document.getElementById(sectionName).style.display = "block";
+  const currentSection = document.getElementById(sectionName);
+  currentSection.classList.add("profile-show");
   evt.currentTarget.className += " active";
 }
 
