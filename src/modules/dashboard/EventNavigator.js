@@ -138,7 +138,6 @@ export class EventNavigator {
   }
 
   createBar(div, name, series) {
-    const currentDashboard = this;
     return new Highcharts.chart(div, {
       chart: {
         y: -30,
@@ -151,8 +150,6 @@ export class EventNavigator {
       },
 
       title: {
-        text: currentDashboard.pillName(name),
-        useHTML: true,
         style: {
           fontWeight: "normal",
         },
@@ -255,7 +252,6 @@ export class EventNavigator {
   prepareData(barName) {
     // TODO: this would run faster if all series were made in one pass
     const addToSeries = (series, row, name) => {
-      // const newSeries = series;
       if (Object.prototype.hasOwnProperty.call(series, row[name])) {
         series[row[name]].frequency += 1;
         series[row[name]].volume += row.vol;
@@ -302,6 +298,7 @@ export class EventNavigator {
       chart.update({
         title: {
           text: this.pillName(bar.name, clickText),
+          align: "center",
         },
         plotOptions: {
           series: {
