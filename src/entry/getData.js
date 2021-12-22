@@ -12,10 +12,10 @@ async function fetchErrorBackup(pipelineId) {
   return data;
 }
 
-async function getAzureData(pipelineId, account = "certest") {
+async function getAzureData(pipelineId) {
   try {
     const response = await fetch(
-      `https://${account}.blob.core.windows.net/pipeline-profiles/${pipelineId}.json`
+      `https://pipeline-profiles.azureedge.net/pipeline-profiles/${pipelineId}.json`
     );
 
     if (!response.ok) {
