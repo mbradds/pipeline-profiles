@@ -28,7 +28,7 @@ def company_filter(df, company):
     total_paths = len(list(set(df["Path"])))
     df = df.where(pd.notnull(df), None)
     df = df.replace({np.nan: None})
-    df["Value"] = df["Value"].replace({np.nan: None})
+    # df["Value"] = df["Value"].replace({np.nan: None})
     if len(list(set(df["Path"]))) == 1:
         path_filter = [False]
         selected_paths = list(set(df["Path"]))
@@ -168,6 +168,11 @@ def process_path(df, series_col, minimize=True):
                 for start, end, value in zip(df_s2["Effective Start"],
                                              df_s2["Effective End"],
                                              df_s2["Value"]):
+                    # fix gaps in tolls series
+                    if last_end:
+                        diff = start-last_end
+                        if diff.days > 1:
+                            data.append([[last_end.year, last_end.month-1, last_end.day], [start.year, start.month-1, start.day], None])
                     if minimize:
                         if len(data) > 0:
                             last_toll = data[-1][-1]
@@ -181,6 +186,7 @@ def process_path(df, series_col, minimize=True):
                         last_end = end
                     else:
                         data.append([[start.year, start.month-1, start.day], [end.year, end.month-1, end.day], value])
+
                 thisSeries["data"] = data
                 series.append(thisSeries)
     return series
@@ -269,6 +275,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                                        "U.S.  DOLLARS  PER  BARREL": "U.S. DOLLARS PER BARREL"})
 
     company_files = get_company_list()
+    switch_units_companies = get_company_list("Liquid")
     process_description(descriptions, save)
 
     if companies:
@@ -283,6 +290,10 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         df_c, decimals = round_values(df_c)
         df_c, selected_paths, selectedService, path_filter, split_default, path_totals = company_filter(df_c, company)
         meta = {"companyName": company}
+        if company in switch_units_companies:
+            meta["switchUnits"] = True
+        else:
+            meta["switchUnits"] = False
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
@@ -333,7 +344,6 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 this_nums = toll_nums[toll_nums["PipelineID"] == company].copy()
                 del this_nums["PipelineID"]
                 meta["tollNum"] = this_nums.to_dict(orient="records")
-
                 series_col, product_filter = find_series_col(df_c, company)
                 meta["products"] = product_filter
                 meta["seriesCol"] = series_col
@@ -383,7 +393,7 @@ if __name__ == "__main__":
                   "Westcoast",
                   "Westspur",
                   "Wascana"]
-    # completed_ = ["NGTL"] 
+    # completed_ = ["NGTL"]
     df_, this_company_data_ = process_tolls_data(sql=False,
                                                  # companies = ["EnbridgeBakken"],
                                                  companies=completed_,
