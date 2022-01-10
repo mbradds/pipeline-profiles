@@ -246,8 +246,12 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
     def find_series_col(df, company):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
+        units = list(set(df["Units"]))
         product_filter = False
-        if len(products) > 1 and len(services) <= 1 :
+        if len(units) > 1:
+            series_col = "Units"
+            print("Multiple units for: "+company)
+        elif len(products) > 1 and len(services) <= 1 :
             series_col = "Product"
         elif len(services) > 1 and len(products) <= 1:
             series_col = "Service"
@@ -271,7 +275,8 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Units'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
-    df["Units"] = df["Units"].replace({"10³m³/mo": "103m3/mo",
+    df["Units"] = df["Units"].replace({"10³m³/mo": "$/103m3/ month",
+                                       "103m3/mo": "$/103m3/ month",
                                        "U.S.  DOLLARS  PER  BARREL": "U.S. DOLLARS PER BARREL"})
 
     company_files = get_company_list()
@@ -395,7 +400,7 @@ if __name__ == "__main__":
                   "Wascana"]
     # completed_ = ["NGTL"]
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["EnbridgeBakken"],
+                                                 # companies = ["Alliance"],
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")

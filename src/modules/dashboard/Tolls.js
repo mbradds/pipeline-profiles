@@ -473,6 +473,11 @@ export class Tolls {
                   text: this.chartYaxisTitle(),
                 },
               },
+              legend: {
+                title: {
+                  text: dashboard.seriesCol,
+                },
+              },
             });
             this.chart.redraw(true);
           }
