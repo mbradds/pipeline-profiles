@@ -66,7 +66,7 @@ def optimize_json(df):
     return series
 
 
-def metadata(df, company):
+def metadata(df, company, test):
     def filter_near(city):
         if len(city) <= 2:
             return False
@@ -89,8 +89,10 @@ def metadata(df, company):
                    'business']
 
     df_near = df_near[~df_near['Nearest Populated Centre'].str.lower().isin(filter_list)]
-    # oneYearAgo = datetime.today() - relativedelta(years=1)
-    last_full_year = datetime.today().year - 1
+    if not test:
+        last_full_year = datetime.today().year - 1
+    else:
+        last_full_year = 2020
     df_near = df_near[df_near['Commencement Date'].dt.year == last_full_year]
     if not df_near.empty:
         # deal with mnp
@@ -223,7 +225,7 @@ def process_oandm(remote=False, companies=False, test=False):
             df_c = df_c.drop_duplicates(subset=['Event Number'])
             this_company_data = {}
             if not df_c.empty:
-                this_company_data["meta"] = metadata(df_c, company)
+                this_company_data["meta"] = metadata(df_c, company, test)
                 this_company_data["build"] = True
                 this_company_data["data"] = optimize_json(df_c)
                 if not test:

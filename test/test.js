@@ -151,7 +151,10 @@ test("EventTrend dummy series", (t) => {
   t.is(dummySeries.name, "dummy");
   t.is(dummySeries.showInLegend, false);
   t.is(dummySeries.data[0][0], 2015);
-  t.is(dummySeries.data[dummySeries.data.length - 1][0], 2021);
+  t.is(
+    dummySeries.data[dummySeries.data.length - 1][0],
+    new Date().getFullYear()
+  );
 });
 
 test("fill between dates", (t) => {
