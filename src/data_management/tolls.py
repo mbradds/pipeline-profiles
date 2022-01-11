@@ -94,13 +94,11 @@ def company_filter(df, company):
         selected_paths = ["Empress-Emerson 2",
                          "Empress-Enbridge CDA",
                          "Empress-Energir EDA",
-                         "Empress-GMIT EDA",
                          "Empress-Iroquois",
                          "Empress-Union SWDA",
                          "Union Parkway Belt-Emerson 2",
                          "Union Parkway Belt-Enbridge CDA",
                          "Union Parkway Belt-Energir EDA",
-                         "Union Parkway Belt-GMIT EDA",
                          "Union Parkway Belt-Iroquois",
                          "Union Parkway Belt-Union SWDA"]
         df = df[df["Path"].isin(selected_paths)].copy()
