@@ -26,9 +26,6 @@ def company_filter(df, company):
     selected_paths = []
     selected_services = False
     total_paths = len(list(set(df["Path"])))
-    df = df.where(pd.notnull(df), None)
-    df = df.replace({np.nan: None})
-    # df["Value"] = df["Value"].replace({np.nan: None})
     if len(list(set(df["Path"]))) == 1:
         path_filter = [False]
         selected_paths = list(set(df["Path"]))
@@ -50,7 +47,6 @@ def company_filter(df, company):
     elif company == "EnbridgeMainline":
         df["Service"] = [x.replace("2ND", "2nd") for x in df["Service"]]
         path_filter = [True, "radio"]
-        # df = df.where(pd.notnull(df), None)
         enbridge_paths = {"EnbridgeLocal": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba",
                                            "Edmonton Terminal, Alberta-Hardisty Terminal, Alberta"],
                           "EnbridgeMainline": ["Edmonton Terminal, Alberta-Clearbrook, Minnesota",
@@ -83,13 +79,25 @@ def company_filter(df, company):
         selected_paths = list(set(df["Path"]))
         selected_services = "Uncommitted"
     elif company == "NGTL":
-        df = df[df["Service"].isin(["Average FT-D Demand", "Average Firm Service Receipt"])]
-        df["split"] = ["Average FT-D Demand" if "FT-D" in x else "Average Firm Service Receipt" for x in df["Service"]]
-        selected_paths = {"Average FT-D Demand": ["System-Group 1",
-                                                  "System-Group 2",
-                                                  "System-Group 3"],
-                         "Average Firm Service Receipt": ["Receipt-System"]}
-        split_default = "Average FT-D Demand"
+        df = df[df["Service"].isin(["Average FT-D Demand", "Average Firm Service Receipt"])].copy()
+        df["split"] = ["Average Firm Transportation - Delivery (FT-D)" if "FT-D" in x else "Average Firm Transportation - Receipt (FT-R)" for x in df["Service"]]
+        selected_paths = {"Average Firm Transportation - Delivery (FT-D)": ["System-Group 1",
+                                                                            "System-Group 2",
+                                                                            "System-Group 3"],
+                         "Average Firm Transportation - Receipt (FT-R)": ["Receipt-System"]}
+        split_default = "Average Firm Transportation - Delivery (FT-D)"
+        # convert to $/GJ/day
+        new_values = []
+        for service, value in zip(df["Service"], df["Value"]):
+            if service == "Average FT-D Demand":
+                gj_day = (value*12)/365
+            elif service == "Average Firm Service Receipt":
+                gj_day = ((value*12)/365)/37.8
+            else:
+                gj_day = value
+            new_values.append(round(gj_day,2))
+        df["Value"] = new_values
+        df["Units"] = "$/GJ/day"
     elif company == "TCPL":
         selected_paths = ["Empress-Emerson 2",
                          "Empress-Enbridge CDA",
@@ -142,8 +150,12 @@ def company_filter(df, company):
 
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
+    df, decimals = round_values(df)
+    df = df.where(pd.notnull(df), None)
+    df = df.replace({np.nan: None})
+    # df["Value"] = df["Value"].replace({np.nan: None})
     shown_paths = len(list(set(df["Path"])))
-    return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths]
+    return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths], decimals
 
 
 def process_path(df, series_col, minimize=True):
@@ -290,8 +302,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         else:
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
 
-        df_c, decimals = round_values(df_c)
-        df_c, selected_paths, selectedService, path_filter, split_default, path_totals = company_filter(df_c, company)
+        df_c, selected_paths, selectedService, path_filter, split_default, path_totals, decimals = company_filter(df_c, company)
         meta = {"companyName": company}
         if company in switch_units_companies:
             meta["switchUnits"] = True
@@ -396,9 +407,9 @@ if __name__ == "__main__":
                   "Westcoast",
                   "Westspur",
                   "Wascana"]
-    # completed_ = ["NGTL"]
+
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["Alliance"],
+                                                 # companies = ["NGTL"],
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")

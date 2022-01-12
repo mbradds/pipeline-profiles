@@ -147,7 +147,6 @@ export class Tolls {
 
   buildTollsChart(series) {
     const dashboard = this;
-    const rounding = this.metaData.decimals ? 2 : 0;
     this.chart = new Highcharts.chart(this.chartDiv, {
       chart: {
         zoomType: "x",
@@ -164,7 +163,10 @@ export class Tolls {
         },
         labels: {
           formatter() {
-            return Highcharts.numberFormat(this.value, rounding);
+            return Highcharts.numberFormat(
+              this.value,
+              dashboard.metaData.decimals ? 2 : 0
+            );
           },
         },
       },
