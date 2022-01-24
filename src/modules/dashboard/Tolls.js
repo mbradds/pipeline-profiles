@@ -147,7 +147,6 @@ export class Tolls {
 
   buildTollsChart(series) {
     const dashboard = this;
-    const rounding = this.metaData.decimals ? 2 : 0;
     this.chart = new Highcharts.chart(this.chartDiv, {
       chart: {
         zoomType: "x",
@@ -164,7 +163,10 @@ export class Tolls {
         },
         labels: {
           formatter() {
-            return Highcharts.numberFormat(this.value, rounding);
+            return Highcharts.numberFormat(
+              this.value,
+              dashboard.metaData.decimals ? 2 : 0
+            );
           },
         },
       },
@@ -413,12 +415,20 @@ export class Tolls {
   }
 
   applySplitDescription() {
-    if (this.metaData.splitDescription && this.currentSplit) {
-      document.getElementById("split-description").innerHTML = `<h3>${
+    const splitDescDiv = document.getElementById("split-description");
+    if (
+      this.metaData.splitDescription &&
+      this.currentSplit &&
+      Object.prototype.hasOwnProperty.call(
+        this.metaData.splitDescription,
         this.currentSplit
-      } ${this.lang.splitDescription}</h3><p>${
-        this.metaData.splitDescription[this.currentSplit]
-      }</p>`;
+      )
+    ) {
+      splitDescDiv.innerHTML = `<h3>${this.currentSplit} ${
+        this.lang.splitDescription
+      }</h3><p>${this.metaData.splitDescription[this.currentSplit]}</p>`;
+    } else {
+      splitDescDiv.innerHTML = "";
     }
   }
 
