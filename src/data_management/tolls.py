@@ -335,7 +335,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                     meta["tollNum"][split] = this_nums.to_dict(orient="records")
 
                     # add enbridge descriptions
-                    if meta["splitDescription"] != False:
+                    if meta["splitDescription"] != False and split != "Enbridge Mainline":
                         current_definition = descriptions[descriptions["PipelineID"] ==list(df_split["PipelineID"])[0]]
                         meta["splitDescription"][split] = list(current_definition["Toll Description"])[0]
 
@@ -409,7 +409,7 @@ if __name__ == "__main__":
                   "Wascana"]
 
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["NGTL"],
-                                                 companies=completed_,
+                                                 companies = ["EnbridgeMainline"],
+                                                 # companies=completed_,
                                                  completed=completed_)
     print("done tolls")

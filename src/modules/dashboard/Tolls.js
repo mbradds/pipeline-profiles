@@ -415,12 +415,20 @@ export class Tolls {
   }
 
   applySplitDescription() {
-    if (this.metaData.splitDescription && this.currentSplit) {
-      document.getElementById("split-description").innerHTML = `<h3>${
+    const splitDescDiv = document.getElementById("split-description");
+    if (
+      this.metaData.splitDescription &&
+      this.currentSplit &&
+      Object.prototype.hasOwnProperty.call(
+        this.metaData.splitDescription,
         this.currentSplit
-      } ${this.lang.splitDescription}</h3><p>${
-        this.metaData.splitDescription[this.currentSplit]
-      }</p>`;
+      )
+    ) {
+      splitDescDiv.innerHTML = `<h3>${this.currentSplit} ${
+        this.lang.splitDescription
+      }</h3><p>${this.metaData.splitDescription[this.currentSplit]}</p>`;
+    } else {
+      splitDescDiv.innerHTML = "";
     }
   }
 
