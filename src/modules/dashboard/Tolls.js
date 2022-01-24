@@ -258,7 +258,6 @@ export class Tolls {
         "point"
       );
     } else if (this.currentService && services) {
-      // filter for services and paths should not exist together
       btnGroupServices = setUpButtons(
         this.lang.filters.service,
         "tolls-path-btn"

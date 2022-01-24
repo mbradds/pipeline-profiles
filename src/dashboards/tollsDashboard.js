@@ -4,13 +4,13 @@ import { noEventsFlag } from "./dashboardUtil.js";
 
 export async function mainTolls(tollsData, metaData, lang) {
   function buildDecision() {
-    const dashboard = new Tolls({
-      tollsData,
-      metaData,
-      lang: lang.dashboard,
-      chartDiv: "tolls-chart",
-    });
     if (metaData.build) {
+      const dashboard = new Tolls({
+        tollsData,
+        metaData,
+        lang: lang.dashboard,
+        chartDiv: "tolls-chart",
+      });
       dashboard.buildDashboard();
     } else {
       noEventsFlag(

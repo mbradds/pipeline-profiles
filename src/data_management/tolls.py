@@ -37,11 +37,13 @@ def company_filter(df, company):
                                     "Firm Full Path Service, except Seasonal, 5Yr Demand Charge"])]
         selected_paths = ['System-CA/US border', 'Zone 2-CA/US border']
     elif company == "Cochin":
-        cochin_paths = ["Cochin Terminal in Kankakee County, Illinois-Facilities in Fort Saskatchewan, Alberta",
-                        "International Boundary near Alameda, Saskatchewan-Facilities in Fort Saskatchewan, Alberta",
-                        "Clinton, Iowa-Facilities in Fort Saskatchewan, Alberta",
-                        "Maxbass, North Dakota-Facilities in Fort Saskatchewan, Alberta"]
-        df = df[df["Path"].isin(cochin_paths)]
+        cochin_paths = ["Cochin Terminal in Kankakee County, Illinois-Keyera Fort Saskatchewan Facility, Alberta",
+                        "International Boundary near Alameda, Saskatchewan-Keyera Fort Saskatchewan Facility, Alberta",
+                        "Cochin Terminal in Kankakee County, Illinois or Clinton, Iowa-Keyera Fort Saskatchewan Facility, Alberta or Plains Fort Saskatchewan Facility, Alberta or Pembina Fort Saskatchewan Facility",
+                        "Cochin Terminal in Kankakee County, Illinois or Clinton, Iowa-Keyera Fort Saskatchewan Facility, Alberta or Plains Fort Saskatchewan Facility, Alberta",
+                        "Maxbass, North Dakota-Keyera Fort Saskatchewan Facility, Alberta or Plains Fort Saskatchewan Facility, Alberta or Pembina Fort Saskatchewan Facility, Alberta"]
+        # df = df[df["Path"].isin(cochin_paths)]
+        df = df[df["Path"].isin([""])]
         df["split"] = ["Cochin local" if s == "Local tariff" else "Cochin IJT" for s in df["Service"]]
         split_default = "Cochin IJT"
     elif company == "EnbridgeMainline":
@@ -75,9 +77,18 @@ def company_filter(df, company):
         selected_paths = ["Hardisty Terminal, Alberta-MONTREAL, QUEBEC"]
         path_filter = [True, "radio"]
     elif company == "Keystone":
-        df = df[df["Path"] != "All-All"]
-        selected_paths = list(set(df["Path"]))
-        selected_services = "Uncommitted"
+        df = df[df["Path"] != "All-All"].copy()
+        df["split"] = ["Keystone International" if "International" in x else "Keystone Local Tolls" for x in df["Service"]]
+        split_default = "Keystone Local Tolls"
+        selected_paths = {"Keystone International": ["Hardisty, Alberta-Houston, Texas",
+                                                      "Hardisty, Alberta-Port Arthur, Texas"],
+                          "Keystone Local Tolls": ["Hardisty, Alberta-Cushing, Oklahoma",
+                                                   "Hardisty, Alberta-Houston, Texas",
+                                                   "Hardisty, Alberta-Port Arthur, Texas",
+                                                   "Hardisty, Alberta-Wood River or Patoka, Illinois"]}
+
+        selected_services = {"Keystone International": "International Joint Uncommitted Rates",
+                             "Keystone Local Tolls": "Uncommitted"}
     elif company == "NGTL":
         df = df[df["Service"].isin(["Average FT-D Demand", "Average Firm Service Receipt"])].copy()
         df["split"] = ["Average Firm Transportation - Delivery (FT-D)" if "FT-D" in x else "Average Firm Transportation - Receipt (FT-R)" for x in df["Service"]]
@@ -257,7 +268,12 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         products = sorted(list(set(df["Product"])))
         services = sorted(list(set(df["Service"])))
         units = list(set(df["Units"]))
-        product_filter = False
+        if len(products) > 1:
+            product_filter = list(set(df["Product"]))
+            product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
+        else:
+            product_filter = False
+        
         if len(units) > 1:
             series_col = "Units"
             print("Multiple units for: "+company)
@@ -269,13 +285,11 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             series_col = "Path"
         elif len(products) > 1 and len(services) > 1:
             series_col = "Service"
-            product_filter = list(set(df["Product"]))
-            product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
         else:
             series_col = "Service"
             print("error! Need to filter on two columns")
         # override series col if needed
-        if company in ["Keystone", "Westcoast"]:
+        if company in ["Westcoast", "Keystone"]:
             series_col = "Path"
 
         return series_col, product_filter
@@ -290,7 +304,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                                        "U.S.  DOLLARS  PER  BARREL": "U.S. DOLLARS PER BARREL"})
 
     company_files = get_company_list()
-    switch_units_companies = get_company_list("Liquid")
+    # switch_units_companies = get_company_list("Liquid")
     process_description(descriptions, save)
 
     if companies:
@@ -304,10 +318,10 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
         df_c, selected_paths, selectedService, path_filter, split_default, path_totals, decimals = company_filter(df_c, company)
         meta = {"companyName": company}
-        if company in switch_units_companies:
-            meta["switchUnits"] = True
-        else:
-            meta["switchUnits"] = False
+        # if company in switch_units_companies:
+        #     meta["switchUnits"] = True
+        # else:
+        #     meta["switchUnits"] = False
         # build a series for product/service in each Paths
         if not df_c.empty and company in completed:
             meta["build"] = True
@@ -341,7 +355,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
 
                     paths = sorted(list(set(df_split["Path"])))
-                    # services = sorted(list(set(df_c["Service"])))
+                    services = sorted(list(set(df_split["Service"])))
                     units = list(set(df_split["Units"]))
                     series_col, product_filter = find_series_col(df_split, company)
                     if len(selected_paths) > 0:
@@ -350,7 +364,11 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                         meta["paths"][split] = [[p, True] for p in paths]
                     meta["products"][split] = product_filter
                     meta["seriesCol"][split] = series_col
-                    meta["services"][split] = selectedService
+                    # meta["services"][split] = selectedService
+                    if selectedService:
+                        meta["services"][split] = [[s, True] if s == selectedService[split] else [s, False] for s in services]
+                    else:
+                        meta["services"][split] = selectedService
                     meta["units"][split] = units
                     path_series[split] = generate_path_series(df_split, paths, series_col)
             else:
@@ -408,8 +426,8 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
 
-    df_, this_company_data_ = process_tolls_data(sql=True,
-                                                 # companies = ["EnbridgeMainline"],
+    df_, this_company_data_ = process_tolls_data(sql=False,
+                                                 # companies = ["Cochin"],
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")
