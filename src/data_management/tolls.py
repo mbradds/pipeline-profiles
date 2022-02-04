@@ -426,7 +426,7 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
 
-    df_, this_company_data_ = process_tolls_data(sql=False,
+    df_, this_company_data_ = process_tolls_data(sql=True,
                                                  # companies = ["Cochin"],
                                                  companies=completed_,
                                                  completed=completed_)
