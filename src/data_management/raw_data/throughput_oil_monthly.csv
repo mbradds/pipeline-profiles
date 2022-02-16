@@ -270,6 +270,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-07-01,EnbridgeMainline,KP0006,east,foreign light,2.5414,
 2021-08-01,EnbridgeMainline,KP0006,east,foreign light,2.524,
 2021-09-01,EnbridgeMainline,KP0006,east,foreign light,0.3347,
+2021-10-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
+2021-11-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
+2021-12-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2014-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,62.0,
 2014-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,66.9,
 2014-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,68.0,
@@ -363,6 +366,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-07-01,EnbridgeMainline,KP0015,east,domestic light / ngl,71.9712,
 2021-08-01,EnbridgeMainline,KP0015,east,domestic light / ngl,76.1337,
 2021-09-01,EnbridgeMainline,KP0015,east,domestic light / ngl,71.1049,
+2021-10-01,EnbridgeMainline,KP0015,east,domestic light / ngl,80.1,
+2021-11-01,EnbridgeMainline,KP0015,east,domestic light / ngl,85.7,
+2021-12-01,EnbridgeMainline,KP0015,east,domestic light / ngl,83.5,
 2007-01-01,EnbridgeMainline,KP0016,east,domestic heavy,139.2885,288.1
 2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.1858,288.1
 2007-02-01,EnbridgeMainline,KP0016,east,domestic heavy,132.5969,291.3
@@ -790,15 +796,24 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-06-01,EnbridgeMainline,KP0016,east,domestic heavy,299.1955,459.691
 2021-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.9572,459.691
 2021-06-01,EnbridgeMainline,KP0016,east,foreign light,2.6256,459.691
-2021-07-01,EnbridgeMainline,KP0016,east,domestic heavy,300.0449,461.0
-2021-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.5117,461.0
-2021-07-01,EnbridgeMainline,KP0016,east,foreign light,2.5414,461.0
-2021-08-01,EnbridgeMainline,KP0016,east,domestic heavy,279.5963,437.0
-2021-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.7411,437.0
-2021-08-01,EnbridgeMainline,KP0016,east,foreign light,2.524,437.0
-2021-09-01,EnbridgeMainline,KP0016,east,domestic heavy,282.0277,447.0
-2021-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.6197,447.0
-2021-09-01,EnbridgeMainline,KP0016,east,foreign light,0.3347,447.0
+2021-07-01,EnbridgeMainline,KP0016,east,domestic heavy,300.0449,461.419
+2021-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.5117,461.419
+2021-07-01,EnbridgeMainline,KP0016,east,foreign light,2.5414,461.419
+2021-08-01,EnbridgeMainline,KP0016,east,domestic heavy,279.5963,437.283
+2021-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.7411,437.283
+2021-08-01,EnbridgeMainline,KP0016,east,foreign light,2.524,437.283
+2021-09-01,EnbridgeMainline,KP0016,east,domestic heavy,282.0277,447.152
+2021-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.6197,447.152
+2021-09-01,EnbridgeMainline,KP0016,east,foreign light,0.3347,447.152
+2021-10-01,EnbridgeMainline,KP0016,east,domestic heavy,297.5,476.523
+2021-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.7,476.523
+2021-10-01,EnbridgeMainline,KP0016,east,foreign light,0.0,476.523
+2021-11-01,EnbridgeMainline,KP0016,east,domestic heavy,343.7,516.661
+2021-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,152.1,516.661
+2021-11-01,EnbridgeMainline,KP0016,east,foreign light,0.0,516.661
+2021-12-01,EnbridgeMainline,KP0016,east,domestic heavy,359.4,519.931
+2021-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.1,519.931
+2021-12-01,EnbridgeMainline,KP0016,east,foreign light,0.0,519.931
 2007-01-01,EnbridgeMainline,KP0021,east,domestic heavy,13.4401,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,domestic light / ngl,48.7528,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,foreign light,3.8013,118.5
@@ -1317,15 +1332,24 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-06-01,EnbridgeMainline,KP0021,east,domestic heavy,30.619,173.008
 2021-06-01,EnbridgeMainline,KP0021,east,domestic light / ngl,67.0956,173.008
 2021-06-01,EnbridgeMainline,KP0021,east,foreign light,16.7004,173.008
-2021-07-01,EnbridgeMainline,KP0021,east,domestic heavy,32.6729,165.0
-2021-07-01,EnbridgeMainline,KP0021,east,domestic light / ngl,67.8144,165.0
-2021-07-01,EnbridgeMainline,KP0021,east,foreign light,11.746,165.0
-2021-08-01,EnbridgeMainline,KP0021,east,domestic heavy,33.2701,169.0
-2021-08-01,EnbridgeMainline,KP0021,east,domestic light / ngl,70.8467,169.0
-2021-08-01,EnbridgeMainline,KP0021,east,foreign light,12.6226,169.0
-2021-09-01,EnbridgeMainline,KP0021,east,domestic heavy,29.033,170.0
-2021-09-01,EnbridgeMainline,KP0021,east,domestic light / ngl,68.002,170.0
-2021-09-01,EnbridgeMainline,KP0021,east,foreign light,8.316,170.0
+2021-07-01,EnbridgeMainline,KP0021,east,domestic heavy,32.6729,164.572
+2021-07-01,EnbridgeMainline,KP0021,east,domestic light / ngl,67.8144,164.572
+2021-07-01,EnbridgeMainline,KP0021,east,foreign light,11.746,164.572
+2021-08-01,EnbridgeMainline,KP0021,east,domestic heavy,33.2701,169.458
+2021-08-01,EnbridgeMainline,KP0021,east,domestic light / ngl,70.8467,169.458
+2021-08-01,EnbridgeMainline,KP0021,east,foreign light,12.6226,169.458
+2021-09-01,EnbridgeMainline,KP0021,east,domestic heavy,29.033,170.175
+2021-09-01,EnbridgeMainline,KP0021,east,domestic light / ngl,68.002,170.175
+2021-09-01,EnbridgeMainline,KP0021,east,foreign light,8.316,170.175
+2021-10-01,EnbridgeMainline,KP0021,east,domestic heavy,28.2,171.049
+2021-10-01,EnbridgeMainline,KP0021,east,domestic light / ngl,74.8,171.049
+2021-10-01,EnbridgeMainline,KP0021,east,foreign light,6.5,171.049
+2021-11-01,EnbridgeMainline,KP0021,east,domestic heavy,33.6,173.448
+2021-11-01,EnbridgeMainline,KP0021,east,domestic light / ngl,80.1,173.448
+2021-11-01,EnbridgeMainline,KP0021,east,foreign light,5.5,173.448
+2021-12-01,EnbridgeMainline,KP0021,east,domestic heavy,29.0,170.93
+2021-12-01,EnbridgeMainline,KP0021,east,domestic light / ngl,78.9,170.93
+2021-12-01,EnbridgeMainline,KP0021,east,foreign light,5.2,170.93
 2010-07-01,Keystone,KP0020,south,domestic heavy,15.0724,18.1136
 2010-07-01,Keystone,KP0020,south,domestic light,3.0412,18.1136
 2010-08-01,Keystone,KP0020,south,domestic heavy,15.1294,15.1294
@@ -1839,6 +1863,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-07-01,NormanWells,KP0044,south,domestic light,0.6,2.6
 2021-08-01,NormanWells,KP0044,south,domestic light,0.2,2.6
 2021-09-01,NormanWells,KP0044,south,domestic light,1.3,2.6
+2021-10-01,NormanWells,KP0044,south,domestic light,1.4543,2.6
+2021-11-01,NormanWells,KP0044,south,domestic light,1.5748,2.6
+2021-12-01,NormanWells,KP0044,south,domestic light,1.281,2.6
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,7.2357,
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0,
 2011-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,11.5812,
