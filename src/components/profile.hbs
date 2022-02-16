@@ -40,6 +40,9 @@
 
   <!-- End Safety and Environment -->
   {{/if}}
+  {{#ifeq htmlWebpackPlugin.options.page.text.pipelineName.id "TCPL"}}
+        {{> tcplRevenues}}
+  {{/ifeq}}
   </div>
   {{> footer}}
 </body>
