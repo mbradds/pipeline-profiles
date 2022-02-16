@@ -12,14 +12,15 @@ function seriesifyQuantity(data) {
 
   return Object.keys(series).map((seriesName) => ({
     name: seriesName,
+    yAxis: 0,
     data: series[seriesName],
   }));
 }
 
 function seriesifyRevenue(data) {
   const [itSeries, stSeries] = [
-    { name: "IT", data: [] },
-    { name: "STFT", data: [] },
+    { name: "IT", data: [], yAxis: 1, showInLegend: false },
+    { name: "STFT", data: [], yAxis: 1, showInLegend: false },
   ];
   data.forEach((element) => {
     if (element.p === "IT") {
@@ -37,17 +38,21 @@ function quantityChart(id, series) {
       type: "column",
     },
     title: {
-      text: "Total Contracted Quantity",
+      text: "",
     },
     xAxis: { type: "datetime" },
     legend: {
-      align: "left",
+      align: "right",
       verticalAlign: "middle",
       width: 250,
     },
-    yAxis: {
-      title: { text: "Gigajoules per month" },
-    },
+    yAxis: [
+      {
+        title: { text: "Gigajoules per month" },
+        height: "45%",
+      },
+      { title: { text: "CAD" }, top: "50%", height: "45%", offset: 0 },
+    ],
     plotOptions: {
       column: {
         stacking: "normal",
@@ -58,10 +63,10 @@ function quantityChart(id, series) {
 }
 
 export async function mainTcplRevenues(data) {
-  // console.log(data);
   const itSeries = seriesifyQuantity(data.itQuantity);
+  const stSeries = seriesifyQuantity(data.itQuantity);
   const [itRevenueSeries, stRevenueSeries] = seriesifyRevenue(data.discRevenue);
-  console.log(itRevenueSeries);
+  itSeries.push(itRevenueSeries);
+  stSeries.push(stRevenueSeries);
   quantityChart("tcpl-quantity-chart", itSeries);
-  quantityChart("tcpl-revenue-chart", [itRevenueSeries]);
 }
