@@ -28,6 +28,8 @@ import { mainTolls } from "../dashboards/tollsDashboard.js";
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
 import { mainRemediation } from "../dashboards/remediationDashboard.js";
+// tcpl revenues
+import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { plainsMidstreamProfile, openTab } from "../modules/util.js";
 
@@ -69,6 +71,10 @@ export async function loadAllCharts(data, plains = false) {
     mainOandM(data.oandmData, englishDashboard.oandm),
     mainRemediation(data.remediationData, englishDashboard.remediation),
   ];
+
+  if (data.tcplRevenues) {
+    arrayOfCharts.push(mainTcplRevenues(data.tcplRevenues));
+  }
 
   return Promise.allSettled(arrayOfCharts).then(() => {
     // console.timeEnd(`first content loading`);
