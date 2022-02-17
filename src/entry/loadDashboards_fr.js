@@ -55,7 +55,9 @@ export async function loadAllCharts(data, plains = false) {
   ];
 
   if (data.tcplRevenues) {
-    arrayOfCharts.push(mainTcplRevenues(data.tcplRevenues));
+    arrayOfCharts.push(
+      mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues)
+    );
   }
 
   return Promise.allSettled(arrayOfCharts).then(() => {

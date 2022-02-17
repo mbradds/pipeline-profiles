@@ -19,8 +19,8 @@ function seriesifyQuantity(data) {
 
 function seriesifyRevenue(data) {
   const [itSeries, stSeries] = [
-    { name: "IT", data: [], yAxis: 1, showInLegend: false },
-    { name: "STFT", data: [], yAxis: 1, showInLegend: false },
+    { name: "IT", data: [], yAxis: 1, showInLegend: false, color: "black" },
+    { name: "STFT", data: [], yAxis: 1, showInLegend: false, color: "black" },
   ];
   data.forEach((element) => {
     if (element.p === "IT") {
@@ -32,7 +32,24 @@ function seriesifyRevenue(data) {
   return [itSeries, stSeries];
 }
 
-function quantityChart(id, series) {
+function toolTipRevenues(event, lang) {
+  let toolText = `<b>${lang.dateFormat(event.x)}</b>`;
+  toolText += '<table class="mrgn-tp-sm">';
+  toolText += `<tr><td>${
+    event.series.name
+  }:&nbsp;</td><td><b>${lang.numberFormat(event.y, 0)}</b></td></tr>`;
+  if (event.y < event.total) {
+    toolText += `<tr><td>Total:&nbsp;</td><td><b>${lang.numberFormat(
+      event.total,
+      0
+    )}</b></td></tr>`;
+  }
+
+  toolText += "</table>";
+  return toolText;
+}
+
+function quantityChart(id, series, lang) {
   return Highcharts.chart(id, {
     chart: {
       type: "column",
@@ -42,6 +59,7 @@ function quantityChart(id, series) {
     },
     xAxis: { type: "datetime" },
     legend: {
+      // enabled: false, // set for small screens
       align: "right",
       verticalAlign: "middle",
       width: 250,
@@ -51,22 +69,69 @@ function quantityChart(id, series) {
         title: { text: "Gigajoules per month" },
         height: "45%",
       },
-      { title: { text: "CAD" }, top: "50%", height: "45%", offset: 0 },
+      {
+        title: { text: "Revenue ($000s)" },
+        top: "50%",
+        height: "45%",
+        offset: 0,
+      },
     ],
     plotOptions: {
       column: {
         stacking: "normal",
       },
     },
+    tooltip: {
+      shadow: false,
+      useHTML: true,
+      animation: true,
+      formatter() {
+        return toolTipRevenues(this, lang);
+      },
+    },
     series,
   });
 }
 
-export async function mainTcplRevenues(data) {
+function removeAllSeries(chart) {
+  while (chart.series.length) {
+    chart.series[0].remove(false, false, false);
+  }
+}
+
+function switchChartListener(chart, itSeries, stSeries) {
+  document
+    .getElementById("tcpl-revenues-split-btn")
+    .addEventListener("click", (event) => {
+      if (event.target) {
+        removeAllSeries(chart);
+        if (event.target.value === "IT") {
+          itSeries.forEach((newS) => {
+            chart.addSeries(newS, false, false);
+          });
+        } else if (event.target.value === "STFT") {
+          stSeries.forEach((newS) => {
+            chart.addSeries(newS, false, false);
+          });
+        }
+        // chart.update({
+        //   legend: {
+        //     title: {
+        //       text: "Path",
+        //     },
+        //   },
+        // });
+        chart.redraw(true);
+      }
+    });
+}
+
+export async function mainTcplRevenues(data, lang) {
   const itSeries = seriesifyQuantity(data.itQuantity);
-  const stSeries = seriesifyQuantity(data.itQuantity);
+  const stSeries = seriesifyQuantity(data.stQuantity);
   const [itRevenueSeries, stRevenueSeries] = seriesifyRevenue(data.discRevenue);
   itSeries.push(itRevenueSeries);
   stSeries.push(stRevenueSeries);
-  quantityChart("tcpl-quantity-chart", itSeries);
+  const chart = quantityChart("tcpl-revenues-chart", itSeries, lang);
+  switchChartListener(chart, itSeries, stSeries);
 }

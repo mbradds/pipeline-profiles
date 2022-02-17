@@ -73,7 +73,9 @@ export async function loadAllCharts(data, plains = false) {
   ];
 
   if (data.tcplRevenues) {
-    arrayOfCharts.push(mainTcplRevenues(data.tcplRevenues));
+    arrayOfCharts.push(
+      mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues)
+    );
   }
 
   return Promise.allSettled(arrayOfCharts).then(() => {
