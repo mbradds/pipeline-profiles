@@ -4,9 +4,21 @@ function seriesifyQuantity(data) {
   const series = {};
   data.forEach((element) => {
     if (series[element.p]) {
-      series[element.p].push({ x: new Date(element.d), y: element.v });
+      series[element.p].push({
+        x: new Date(element.d),
+        y: element.v,
+        folderLink: element.f,
+        downloadLink: element.l,
+      });
     } else {
-      series[element.p] = [{ x: new Date(element.d), y: element.v }];
+      series[element.p] = [
+        {
+          x: new Date(element.d),
+          y: element.v,
+          folderLink: element.f,
+          downloadLink: element.l,
+        },
+      ];
     }
   });
 
@@ -24,9 +36,17 @@ function seriesifyRevenue(data) {
   ];
   data.forEach((element) => {
     if (element.p === "IT") {
-      itSeries.data.push({ x: new Date(element.d), y: element.v });
+      itSeries.data.push({
+        x: new Date(element.d),
+        y: element.v,
+        downloadLink: element.l,
+      });
     } else if (element.p === "STFT") {
-      stSeries.data.push({ x: new Date(element.d), y: element.v });
+      stSeries.data.push({
+        x: new Date(element.d),
+        y: element.v,
+        downloadLink: element.l,
+      });
     }
   });
   return [itSeries, stSeries];
@@ -46,7 +66,22 @@ function toolTipRevenues(event, lang) {
   }
 
   toolText += "</table>";
+  toolText += "<i>Click to view REGDOCS info</i>";
   return toolText;
+}
+
+function htmlLink(link, displayText) {
+  return `<a href="${link}" target="_blank" rel="noopener noreferrer">${displayText}</a>`;
+}
+
+function destroyInsert(chart) {
+  if (
+    Object.prototype.hasOwnProperty.call(chart, "customTooltip") &&
+    chart.customTooltip &&
+    Object.keys(chart.customTooltip).length !== 0
+  ) {
+    chart.customTooltip.destroy();
+  }
 }
 
 function quantityChart(id, series, lang) {
@@ -60,7 +95,7 @@ function quantityChart(id, series, lang) {
     xAxis: { type: "datetime" },
     legend: {
       // enabled: false, // set for small screens
-      align: "right",
+      align: "left",
       verticalAlign: "middle",
       width: 250,
     },
@@ -79,6 +114,51 @@ function quantityChart(id, series, lang) {
     plotOptions: {
       column: {
         stacking: "normal",
+      },
+      series: {
+        point: {
+          events: {
+            click(e) {
+              let text = `<b>${lang.dateFormat(e.point.options.x)} - ${
+                e.point.series.name
+              }</b><br>`;
+              if (e.point.folderLink) {
+                text += htmlLink(e.point.folderLink, "REGDOCS Folder Link");
+                text += "<br>";
+              }
+              if (e.point.downloadLink) {
+                text += htmlLink(e.point.downloadLink, "REGDOCS Download Link");
+              }
+              const { chart } = this.series;
+              destroyInsert(chart);
+              const label = chart.renderer
+                .label(text, null, null, null, null, null, true)
+                .css({
+                  width: Math.floor(chart.chartWidth / 4) + 40,
+                })
+                .attr({
+                  "stroke-width": 3,
+                  zIndex: 8,
+                  padding: 8,
+                  r: 3,
+                  fill: "white",
+                  stroke: this.color,
+                })
+                .add(chart.rGroup);
+              chart.customTooltip = label;
+              label.align(
+                Highcharts.extend(label.getBBox(), {
+                  align: "right",
+                  x: 0, // offset
+                  verticalAlign: "top",
+                  y: 0, // offset
+                }),
+                null,
+                "spacingBox"
+              );
+            },
+          },
+        },
       },
     },
     tooltip: {
@@ -104,6 +184,7 @@ function switchChartListener(chart, itSeries, stSeries) {
     .getElementById("tcpl-revenues-split-btn")
     .addEventListener("click", (event) => {
       if (event.target) {
+        destroyInsert(chart);
         removeAllSeries(chart);
         if (event.target.value === "IT") {
           itSeries.forEach((newS) => {
@@ -114,13 +195,6 @@ function switchChartListener(chart, itSeries, stSeries) {
             chart.addSeries(newS, false, false);
           });
         }
-        // chart.update({
-        //   legend: {
-        //     title: {
-        //       text: "Path",
-        //     },
-        //   },
-        // });
         chart.redraw(true);
       }
     });
