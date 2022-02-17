@@ -7,7 +7,7 @@ import {
   loadChartError,
   btnGroupClick,
 } from "../modules/util.js";
-import { mapInits, noEventsFlag } from "./dashboardUtil.js";
+import { mapInits, noEventsFlag, addRenderer } from "./dashboardUtil.js";
 import conditionsRegions from "../data_output/conditions/metadata/regions.json";
 import conditionsThemes from "../data_output/conditions/metadata/themes.json";
 
@@ -299,31 +299,7 @@ export async function mainConditions(
       destroyInsert(chart);
     }
 
-    const label = chart.renderer
-      .label(text, null, null, null, null, null, true)
-      .css({
-        width: Math.floor(chart.chartWidth / 4) + 40,
-      })
-      .attr({
-        "stroke-width": 3,
-        zIndex: 8,
-        padding: 8,
-        r: 3,
-        fill: "white",
-        stroke: e.color,
-      })
-      .add(chart.rGroup);
-    chart.customTooltip = label;
-    label.align(
-      Highcharts.extend(label.getBBox(), {
-        align: "right",
-        x: 0, // offset
-        verticalAlign: "top",
-        y: 0, // offset
-      }),
-      null,
-      "spacingBox"
-    );
+    chart.customTooltip = addRenderer(chart, text, e.color);
     const definitionDiv = document.getElementById("conditions-definitions");
     const themeRows = Array.from(document.getElementById("themes-table").rows);
     themeRows.forEach((tr) => {

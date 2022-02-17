@@ -3,6 +3,7 @@
  * should be added to src/modules/util.js
  */
 
+import Highcharts from "highcharts";
 import { mapDates } from "../modules/datestone.js";
 import { cerPalette, sortJsonAlpha, conversions } from "../modules/util.js";
 
@@ -249,4 +250,39 @@ export function noEventsFlag(header, note, dashboardId) {
       `Missing HTML and dashboard ID (${dashboardId}) for noEventsFlag method. `
     );
   }
+}
+
+/**
+ * Adds a custom text box to upper left corner of a Highcharts chart
+ * @param {Object} chart Highcharts chart object
+ * @param {string} text HTML partial to be displayed in the text box
+ * @returns
+ */
+export function addRenderer(chart, text, color) {
+  const label = chart.renderer
+    .label(text, null, null, null, null, null, true)
+    .css({
+      width: Math.floor(chart.chartWidth / 4) + 40,
+    })
+    .attr({
+      "stroke-width": 3,
+      zIndex: 8,
+      padding: 8,
+      r: 3,
+      fill: "white",
+      stroke: color,
+    })
+    .add(chart.rGroup);
+  chart.customTooltip = label;
+  label.align(
+    Highcharts.extend(label.getBBox(), {
+      align: "right",
+      x: 0, // offset
+      verticalAlign: "top",
+      y: 0, // offset
+    }),
+    null,
+    "spacingBox"
+  );
+  return label;
 }

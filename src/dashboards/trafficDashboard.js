@@ -1,5 +1,5 @@
 import { loadChartError, visibility } from "../modules/util.js";
-import { Traffic } from "../modules/dashboard/traffic.js";
+import { Traffic } from "../modules/dashboard/Traffic.js";
 
 export async function mainTraffic(trafficData, metaData, lang) {
   if (metaData.build) {

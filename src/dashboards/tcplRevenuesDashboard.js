@@ -1,4 +1,6 @@
 import Highcharts from "highcharts";
+import { addRenderer } from "./dashboardUtil.js";
+import { btnGroupClick } from "../modules/util.js";
 
 function seriesifyQuantity(data) {
   const series = {};
@@ -95,9 +97,10 @@ function quantityChart(id, series, lang) {
     xAxis: { type: "datetime" },
     legend: {
       // enabled: false, // set for small screens
+      title: { text: "Path" },
       align: "left",
+      margin: 0,
       verticalAlign: "middle",
-      width: 250,
     },
     yAxis: [
       {
@@ -114,6 +117,8 @@ function quantityChart(id, series, lang) {
     plotOptions: {
       column: {
         stacking: "normal",
+        groupPadding: 0,
+        pointPadding: 0,
       },
       series: {
         point: {
@@ -131,31 +136,7 @@ function quantityChart(id, series, lang) {
               }
               const { chart } = this.series;
               destroyInsert(chart);
-              const label = chart.renderer
-                .label(text, null, null, null, null, null, true)
-                .css({
-                  width: Math.floor(chart.chartWidth / 4) + 40,
-                })
-                .attr({
-                  "stroke-width": 3,
-                  zIndex: 8,
-                  padding: 8,
-                  r: 3,
-                  fill: "white",
-                  stroke: this.color,
-                })
-                .add(chart.rGroup);
-              chart.customTooltip = label;
-              label.align(
-                Highcharts.extend(label.getBBox(), {
-                  align: "right",
-                  x: 0, // offset
-                  verticalAlign: "top",
-                  y: 0, // offset
-                }),
-                null,
-                "spacingBox"
-              );
+              chart.customTooltip = addRenderer(chart, text, this.color);
             },
           },
         },
@@ -170,6 +151,20 @@ function quantityChart(id, series, lang) {
       },
     },
     series,
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            legend: {
+              enabled: false,
+            },
+          },
+        },
+      ],
+    },
   });
 }
 
@@ -184,6 +179,7 @@ function switchChartListener(chart, itSeries, stSeries) {
     .getElementById("tcpl-revenues-split-btn")
     .addEventListener("click", (event) => {
       if (event.target) {
+        btnGroupClick("tcpl-revenues-split-btn", event);
         destroyInsert(chart);
         removeAllSeries(chart);
         if (event.target.value === "IT") {
