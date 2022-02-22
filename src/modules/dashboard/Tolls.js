@@ -62,7 +62,7 @@ export class Tolls {
         path.series.forEach((partialPath, partialNum) => {
           const fullTolls = [];
           partialPath.data.forEach((toll) => {
-            fullTolls.push(...fillBetween(toll[0], toll[1], toll[2]));
+            fullTolls.push(...fillBetween(toll[0], toll[1], toll[2][0]));
           });
           let currentColor = colorList[pathNum + partialNum];
           if (usedColors[partialPath.id]) {
