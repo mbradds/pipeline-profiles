@@ -8,6 +8,11 @@ set_cwd_to_script()
 
 
 def get_tolls_data(sql=True):
+    df_converted = get_data(os.getcwd(),
+                            "tolls_converted.sql",
+                            db="PipelineInformation",
+                            sql=sql)
+
     df = get_data(os.getcwd(), "tolls.sql", db="PipelineInformation", sql=sql)
     descriptions = get_data(os.getcwd(),
                             "tolls_description.sql",
