@@ -9,6 +9,7 @@ export class Tolls {
     this.lang = lang;
     this.chartDiv = chartDiv;
     this.currentSplit = metaData.split.default ? metaData.split.default : false;
+    this.unitsSelector = 0;
     this.getDefaults();
   }
 
@@ -244,6 +245,7 @@ export class Tolls {
 
     let btnGroupPaths;
     let btnGroupServices;
+    visibility(["tolls-path-btn"], "show");
     if (this.metaData.pathFilter[0] && points) {
       btnGroupPaths = setUpButtons(this.lang.filters.path, "tolls-path-btn");
       btnGroupPaths = addEachButton(
@@ -263,6 +265,8 @@ export class Tolls {
         "radio",
         "service"
       );
+    } else {
+      visibility(["tolls-path-btn"], "hide");
     }
 
     let btnGroupProducts;
@@ -378,7 +382,7 @@ export class Tolls {
           }
 
           const currentLegend = getChartLegend(this.chart);
-          this.selectedSeries(series).forEach((s) => {
+          this.selectedSeries(this.unitsSelector).forEach((s) => {
             if (!currentIDs.includes(s.id)) {
               if (currentNames[s.name]) {
                 s.color = currentNames[s.name].color;
@@ -393,8 +397,10 @@ export class Tolls {
           });
           this.chart.redraw(true);
         } else {
-          series[currentValue].forEach((s) => {
-            this.chart.get(s.id).remove();
+          series.forEach((s) => {
+            if (s.id.includes(currentValue)) {
+              this.chart.get(s.id).remove();
+            }
           });
           const currentLegend = getChartLegend(this.chart);
           this.chart.series.forEach((s) => {
@@ -442,8 +448,16 @@ export class Tolls {
     }
   }
 
+  updateAllSeries(newSeries) {
+    this.removeAllSeries();
+    newSeries.forEach((newS) => {
+      this.chart.addSeries(newS, false, false);
+    });
+    return this.chart;
+  }
+
   buildDashboard() {
-    const series = this.selectedSeries(0);
+    const series = this.selectedSeries(this.unitsSelector);
     this.buildTollsChart(series);
     this.pathTotalsDisclaimer();
     this.applySplitDescription();
@@ -464,7 +478,21 @@ export class Tolls {
     if (unitsBtn) {
       unitsBtn.addEventListener("click", (event) => {
         if (event.target && event.target.tagName === "INPUT") {
-          console.log(event.target.value);
+          this.currentUnits = event.target.value;
+          if (this.currentUnits !== this.defaultUnits) {
+            this.unitsSelector = 1;
+          } else {
+            this.unitsSelector = 0;
+          }
+          // console.log(this.selectedSeries(this.unitsSelector));
+          this.updateAllSeries(this.selectedSeries(this.unitsSelector));
+          this.chart.update({
+            yAxis: {
+              title: {
+                text: this.chartYaxisTitle(),
+              },
+            },
+          });
         }
       });
     }
@@ -486,11 +514,12 @@ export class Tolls {
             } else {
               visibility(["tolls-product-btn"], "show");
             }
-            this.removeAllSeries();
-            const newSeries = this.selectedSeries(0);
-            newSeries.forEach((newS) => {
-              this.chart.addSeries(newS, false, false);
-            });
+            if (!unitsBtn) {
+              visibility(["tolls-units-btn"], "hide");
+            } else {
+              visibility(["tolls-units-btn"], "show");
+            }
+            this.updateAllSeries(this.selectedSeries(0));
             const dashboard = this;
             this.chart.update({
               tooltip: {
@@ -500,7 +529,7 @@ export class Tolls {
               },
               yAxis: {
                 title: {
-                  text: this.chartYaxisTitle(),
+                  text: dashboard.chartYaxisTitle(),
                 },
               },
               legend: {
@@ -509,7 +538,6 @@ export class Tolls {
                 },
               },
             });
-            this.chart.redraw(true);
           }
         }
       );

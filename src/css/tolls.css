@@ -1,12 +1,12 @@
 /* styles for tolls dashboard */
-#tolls-path-btn {
-  margin-right: 25px;
-}
 #tolls-filter-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
+}
+#tolls-filter-container div {
+  margin-right: 25px;
 }
 #tolls-path-btn {
   overflow-y: auto;
@@ -14,6 +14,11 @@
   max-height: 200px;
 }
 #tolls-product-btn {
+  overflow-y: auto;
+  height: inherit;
+  margin-top: 0px;
+}
+#tolls-units-btn {
   overflow-y: auto;
   height: inherit;
   margin-top: 0px;
