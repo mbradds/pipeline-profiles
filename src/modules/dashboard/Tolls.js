@@ -41,18 +41,22 @@ export class Tolls {
         this.metaData.services[this.currentSplit]
       );
       [this.currentUnits] = this.metaData.units[this.currentSplit];
+      [this.defaultUnits] = this.metaData.units[this.currentSplit];
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
       this.tollNum = tollNumDates(this.metaData.tollNum[this.currentSplit]);
+      this.unitsFilter = this.metaData.unitsFilter[this.currentSplit];
     } else {
       this.currentProduct = getProduct(this.metaData.products);
       this.currentService = getProduct(this.metaData.services);
       [this.currentUnits] = this.metaData.units;
+      [this.defaultUnits] = this.metaData.units;
       this.seriesCol = this.metaData.seriesCol;
       this.tollNum = tollNumDates(this.metaData.tollNum);
+      this.unitsFilter = this.metaData.unitsFilter;
     }
   }
 
-  buildSeries() {
+  static buildSeries(data, units = 0) {
     const processTollsSection = (section) => {
       const seriesLookup = {};
       const colorList = Object.values(cerPalette);
@@ -62,7 +66,7 @@ export class Tolls {
         path.series.forEach((partialPath, partialNum) => {
           const fullTolls = [];
           partialPath.data.forEach((toll) => {
-            fullTolls.push(...fillBetween(toll[0], toll[1], toll[2][0]));
+            fullTolls.push(...fillBetween(toll[0], toll[1], toll[2][units]));
           });
           let currentColor = colorList[pathNum + partialNum];
           if (usedColors[partialPath.id]) {
@@ -85,16 +89,7 @@ export class Tolls {
       });
       return seriesLookup;
     };
-
-    const seriesLookup = {};
-    if (this.metaData.split.default) {
-      Object.keys(this.tollsData).forEach((section) => {
-        seriesLookup[section] = processTollsSection(this.tollsData[section]);
-      });
-    } else {
-      return processTollsSection(this.tollsData);
-    }
-    return seriesLookup;
+    return processTollsSection(data);
   }
 
   toolTipTolls(event, seriesCol) {
@@ -284,7 +279,18 @@ export class Tolls {
       );
       this.listener(btnGroupProducts, series, "product");
     }
-    return [btnGroupPaths, btnGroupProducts, btnGroupServices];
+
+    let btnGroupUnits;
+    if (this.unitsFilter) {
+      btnGroupUnits = setUpButtons("Select Units:", "tolls-units-btn");
+      btnGroupUnits = addEachButton(
+        this.unitsFilter,
+        btnGroupUnits,
+        "radio",
+        "units"
+      );
+    }
+    return [btnGroupPaths, btnGroupProducts, btnGroupServices, btnGroupUnits];
   }
 
   static addSplitButtons(split) {
@@ -300,7 +306,7 @@ export class Tolls {
     return btnGroup;
   }
 
-  selectedSeries(series) {
+  selectedSeries(units) {
     const addAll = (path, seriesList, fullSeries) => {
       path.forEach((p) => {
         if (p[1]) {
@@ -312,15 +318,20 @@ export class Tolls {
 
     let selected = [];
     if (!this.currentSplit) {
+      const series = Tolls.buildSeries(this.tollsData, units);
       const paths = this.currentPath
         ? [[this.currentPath, true]]
         : this.metaData.paths;
       selected = addAll(paths, selected, series);
     } else {
+      const series = Tolls.buildSeries(
+        this.tollsData[this.currentSplit],
+        units
+      );
       const paths = this.currentPath
         ? [[this.currentPath, true]]
         : this.metaData.paths[this.currentSplit];
-      selected = addAll(paths, selected, series[this.currentSplit]);
+      selected = addAll(paths, selected, series);
     }
     // filter products and services here
     if (this.currentProduct) {
@@ -432,11 +443,12 @@ export class Tolls {
   }
 
   buildDashboard() {
-    const series = this.buildSeries();
-    this.buildTollsChart(this.selectedSeries(series));
+    const series = this.selectedSeries(0);
+    this.buildTollsChart(series);
     this.pathTotalsDisclaimer();
     this.applySplitDescription();
-    let [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
+    let [pathBtns, productBtns, serviceBtns, unitsBtn] =
+      this.addPathButtons(series);
     if (this.metaData.pathFilter[0] && pathBtns) {
       this.listener(pathBtns, series, "path");
     } else if (serviceBtns) {
@@ -449,6 +461,14 @@ export class Tolls {
       visibility(["tolls-product-btn"], "hide");
     }
 
+    if (unitsBtn) {
+      unitsBtn.addEventListener("click", (event) => {
+        if (event.target && event.target.tagName === "INPUT") {
+          console.log(event.target.value);
+        }
+      });
+    }
+
     if (this.currentSplit) {
       Tolls.addSplitButtons(this.metaData.split).addEventListener(
         "click",
@@ -459,14 +479,15 @@ export class Tolls {
             this.currentSplit = event.target.value;
             this.getDefaults();
             this.applySplitDescription();
-            [pathBtns, productBtns, serviceBtns] = this.addPathButtons(series);
+            [pathBtns, productBtns, serviceBtns, unitsBtn] =
+              this.addPathButtons(series);
             if (!productBtns) {
               visibility(["tolls-product-btn"], "hide");
             } else {
               visibility(["tolls-product-btn"], "show");
             }
             this.removeAllSeries();
-            const newSeries = this.selectedSeries(series);
+            const newSeries = this.selectedSeries(0);
             newSeries.forEach((newS) => {
               this.chart.addSeries(newS, false, false);
             });

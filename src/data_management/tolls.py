@@ -241,6 +241,15 @@ def process_description(desc, save):
     return None
 
 
+def units_filter(df):
+    non_null = df["Converted Toll Value"].count()
+    if non_null > 0:
+        uf = [[list(df["Original Toll Unit"])[0], True], [list(df["Converted Toll Unit"])[0], False]]
+    else:
+        uf = False
+    return uf
+
+
 def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
     def generate_path_series(df, paths, series_col):
@@ -289,13 +298,12 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
 
     company_files = get_company_list()
-    # switch_units_companies = get_company_list("Liquid")
     process_description(descriptions, save)
 
     if companies:
         company_files = companies
     for company in company_files:
-        print(company)
+        # print(company)
         this_company_data = {}
         if company == "EnbridgeMainline":
             df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
@@ -316,7 +324,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             if split_default:
                 meta["split"]["buttons"] = list(set(df_c["split"]))
                 path_series = {}
-                meta["paths"], meta["seriesCol"], meta["products"], meta["services"], meta["units"], meta["tollNum"] = {}, {}, {}, {}, {}, {}
+                meta["paths"], meta["seriesCol"], meta["products"], meta["services"], meta["units"], meta["tollNum"], meta["unitsFilter"] = {}, {}, {}, {}, {}, {}, {}
                 if company == "EnbridgeMainline":
                     meta["splitDescription"] = {}
                 else:
@@ -344,7 +352,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                         meta["paths"][split] = [[p, True] for p in paths]
                     meta["products"][split] = product_filter
                     meta["seriesCol"][split] = series_col
-                    # meta["services"][split] = selectedService
+                    meta["unitsFilter"][split] = units_filter(df_split)
                     if selectedService:
                         meta["services"][split] = [[s, True] if s == selectedService[split] else [s, False] for s in services]
                     else:
@@ -362,6 +370,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 meta["paths"] = [[p, True] if p in selected_paths else [p, False] for p in paths]
                 meta["services"] = [[s, True] if s == selectedService else [s, False] for s in services]
                 meta["units"] = units
+                meta["unitsFilter"] = units_filter(df_c)
                 path_series = generate_path_series(df_c, paths, series_col)
 
             this_company_data["meta"] = meta
@@ -407,7 +416,7 @@ if __name__ == "__main__":
                   "Wascana"]
 
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["NGTL"],
+                                                 # companies = ["Alliance"],
                                                  companies=completed_,
                                                  completed=completed_)
     print("done tolls")
