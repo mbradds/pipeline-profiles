@@ -40,8 +40,10 @@ const companyToSystem = {
   Westspur: "Pipeline Westspur",
   ManyIslands: "Many Islands Pipe Lines (Canada) Limited",
   Vector: "Gazoduc Vector",
-  MNP: "Gazoduc M&NP",
+  MNP: "Gazoduc M&NP",
 };
+
+const selectUnits = "Choisir une unité :";
 
 const dashboardError = {
   title: "Erreur de tableau de bord",
@@ -649,6 +651,7 @@ export const frenchDashboard = {
         product: "FR: Select product :",
         path: "FR: Select path :",
         service: "FR: Select service :",
+        units: selectUnits,
       },
       yAxis: "FR: Toll",
       splitDescription: "FR: Toll Description",

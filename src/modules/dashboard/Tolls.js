@@ -202,7 +202,7 @@ export class Tolls {
     });
   }
 
-  addPathButtons(series) {
+  addFilterBtns() {
     const addCheckbox = (point, btnGroup, i, type, section) => {
       const checked = point[1] ? `checked="checked"` : "";
       btnGroup.insertAdjacentHTML(
@@ -232,6 +232,17 @@ export class Tolls {
       return group;
     };
 
+    const createBtn = (div, display, options, conditional, type, section) => {
+      let btnGroup = setUpButtons(display, div);
+      if (conditional) {
+        visibility([div], "show");
+        btnGroup = addEachButton(options, btnGroup, type, section);
+      } else {
+        visibility([div], "hide");
+      }
+      return btnGroup;
+    };
+
     let [points, products, services] = [[], [], []];
     if (this.currentSplit) {
       points = this.metaData.paths[this.currentSplit];
@@ -243,63 +254,41 @@ export class Tolls {
       services = this.metaData.services;
     }
 
-    let btnGroupPaths;
-    let btnGroupServices;
-    visibility(["tolls-path-btn"], "show");
-    if (this.metaData.pathFilter[0] && points) {
-      btnGroupPaths = setUpButtons(this.lang.filters.path, "tolls-path-btn");
-      btnGroupPaths = addEachButton(
-        points,
-        btnGroupPaths,
-        this.metaData.pathFilter[1],
-        "point"
-      );
-    } else if (this.currentService && services) {
-      btnGroupServices = setUpButtons(
-        this.lang.filters.service,
-        "tolls-path-btn"
-      );
-      btnGroupServices = addEachButton(
-        services,
-        btnGroupServices,
-        "radio",
-        "service"
-      );
-    } else {
-      visibility(["tolls-path-btn"], "hide");
-    }
+    const btnGroupPaths = createBtn(
+      "tolls-path-btn",
+      this.lang.filters.path,
+      points,
+      this.metaData.pathFilter[0] && points,
+      this.metaData.pathFilter[1],
+      "point"
+    );
 
-    let btnGroupProducts;
-    if (this.currentProduct && products) {
-      visibility(["tolls-product-btn"], "show");
-      btnGroupProducts = setUpButtons(
-        this.lang.filters.product,
-        "tolls-product-btn"
-      );
-      btnGroupProducts = addEachButton(
-        products,
-        btnGroupProducts,
-        "radio",
-        "product"
-      );
-      this.listener(btnGroupProducts, series, "product");
-    } else {
-      visibility(["tolls-product-btn"], "hide");
-    }
+    const btnGroupServices = createBtn(
+      "tolls-service-btn",
+      this.lang.filters.service,
+      services,
+      this.currentService && services,
+      "radio",
+      "service"
+    );
 
-    let btnGroupUnits;
-    if (this.unitsFilter) {
-      visibility(["tolls-units-btn"], "show");
-      btnGroupUnits = setUpButtons("Select Units:", "tolls-units-btn");
-      btnGroupUnits = addEachButton(
-        this.unitsFilter,
-        btnGroupUnits,
-        "radio",
-        "units"
-      );
-    } else {
-      visibility(["tolls-units-btn"], "hide");
-    }
+    const btnGroupProducts = createBtn(
+      "tolls-product-btn",
+      this.lang.filters.product,
+      products,
+      this.currentProduct && products,
+      "radio",
+      "product"
+    );
+
+    const btnGroupUnits = createBtn(
+      "tolls-units-btn",
+      this.lang.filters.units,
+      this.unitsFilter,
+      this.unitsFilter,
+      "radio",
+      "units"
+    );
     return [btnGroupPaths, btnGroupProducts, btnGroupServices, btnGroupUnits];
   }
 
@@ -467,13 +456,11 @@ export class Tolls {
     this.buildTollsChart(series);
     this.pathTotalsDisclaimer();
     this.applySplitDescription();
-    const [pathBtns, productBtns, serviceBtns, unitsBtn] =
-      this.addPathButtons(series);
-    if (this.metaData.pathFilter[0] && pathBtns) {
-      this.listener(pathBtns, series, "path");
-    } else if (serviceBtns) {
-      this.listener(serviceBtns, series, "service");
-    }
+    const [pathBtns, productBtns, serviceBtns, unitsBtn] = this.addFilterBtns();
+
+    this.listener(pathBtns, series, "path");
+    this.listener(serviceBtns, series, "service");
+    this.listener(productBtns, series, "product");
 
     if (unitsBtn) {
       unitsBtn.addEventListener("click", (event) => {
@@ -507,7 +494,7 @@ export class Tolls {
             this.currentSplit = event.target.value;
             this.getDefaults();
             this.applySplitDescription();
-            this.addPathButtons(series);
+            this.addFilterBtns();
             this.updateAllSeries(this.selectedSeries(0));
             const dashboard = this;
             this.chart.update({
