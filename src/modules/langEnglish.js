@@ -43,6 +43,8 @@ const companyToSystem = {
   MNP: "M&NP Pipeline",
 };
 
+const selectUnits = "Select units:";
+
 const dashboardError = {
   title: "Dashboard error",
   message:
@@ -639,6 +641,7 @@ export const englishDashboard = {
         product: "Select product:",
         path: "Select path:",
         service: "Select service:",
+        units: selectUnits,
       },
       yAxis: "Toll",
       splitDescription: "Toll Description",
