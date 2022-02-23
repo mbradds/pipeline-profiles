@@ -48,11 +48,11 @@ def company_filter(df, company):
         df["Service"] = [x.replace("2ND", "2nd") for x in df["Service"]]
         path_filter = [True, "radio"]
         enbridge_paths = {"EnbridgeLocal": ["Edmonton Terminal, Alberta-International Boundary near Gretna, Manitoba",
-                                           "Edmonton Terminal, Alberta-Hardisty Terminal, Alberta"],
+                                            "Edmonton Terminal, Alberta-Hardisty Terminal, Alberta"],
                           "EnbridgeMainline": ["Edmonton Terminal, Alberta-Clearbrook, Minnesota",
-                                               "Edmonton Terminal, Alberta-Flanagan, Illinois",
-                                               "Edmonton Terminal, Alberta-Nanticoke, Ontario",
-                                               "Edmonton Terminal, Alberta-Superior, Wisconsin"],
+                                                "Edmonton Terminal, Alberta-Flanagan, Illinois",
+                                                "Edmonton Terminal, Alberta-Nanticoke, Ontario",
+                                                "Edmonton Terminal, Alberta-Superior, Wisconsin"],
                           "EnbridgeFSP": ["Cromer, Manitoba-ALL",
                                           "Edmonton, Alberta-ALL",
                                           "Hardisty, Alberta-ALL",
@@ -150,7 +150,6 @@ def company_filter(df, company):
     df, decimals = round_values(df)
     df = df.where(pd.notnull(df), None)
     df = df.replace({np.nan: None})
-    # df["Value"] = df["Value"].replace({np.nan: None})
     shown_paths = len(list(set(df["Path"])))
     return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths], decimals
 
@@ -416,7 +415,7 @@ if __name__ == "__main__":
                   "Wascana"]
 
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 companies = ["Keystone"],
-                                                 # companies=completed_,
+                                                 # companies = ["Keystone"],
+                                                 companies=completed_,
                                                  completed=completed_)
     print("done tolls")

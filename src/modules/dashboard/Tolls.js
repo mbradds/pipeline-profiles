@@ -271,6 +271,7 @@ export class Tolls {
 
     let btnGroupProducts;
     if (this.currentProduct && products) {
+      visibility(["tolls-product-btn"], "show");
       btnGroupProducts = setUpButtons(
         this.lang.filters.product,
         "tolls-product-btn"
@@ -282,10 +283,13 @@ export class Tolls {
         "product"
       );
       this.listener(btnGroupProducts, series, "product");
+    } else {
+      visibility(["tolls-product-btn"], "hide");
     }
 
     let btnGroupUnits;
     if (this.unitsFilter) {
+      visibility(["tolls-units-btn"], "show");
       btnGroupUnits = setUpButtons("Select Units:", "tolls-units-btn");
       btnGroupUnits = addEachButton(
         this.unitsFilter,
@@ -293,6 +297,8 @@ export class Tolls {
         "radio",
         "units"
       );
+    } else {
+      visibility(["tolls-units-btn"], "hide");
     }
     return [btnGroupPaths, btnGroupProducts, btnGroupServices, btnGroupUnits];
   }
@@ -461,18 +467,12 @@ export class Tolls {
     this.buildTollsChart(series);
     this.pathTotalsDisclaimer();
     this.applySplitDescription();
-    let [pathBtns, productBtns, serviceBtns, unitsBtn] =
+    const [pathBtns, productBtns, serviceBtns, unitsBtn] =
       this.addPathButtons(series);
     if (this.metaData.pathFilter[0] && pathBtns) {
       this.listener(pathBtns, series, "path");
     } else if (serviceBtns) {
       this.listener(serviceBtns, series, "service");
-    } else {
-      visibility(["tolls-path-btn"], "hide");
-    }
-
-    if (!productBtns) {
-      visibility(["tolls-product-btn"], "hide");
     }
 
     if (unitsBtn) {
@@ -484,7 +484,6 @@ export class Tolls {
           } else {
             this.unitsSelector = 0;
           }
-          // console.log(this.selectedSeries(this.unitsSelector));
           this.updateAllSeries(this.selectedSeries(this.unitsSelector));
           this.chart.update({
             yAxis: {
@@ -502,23 +501,13 @@ export class Tolls {
         "click",
         (event) => {
           if (event.target) {
+            this.unitsSelector = 0;
             this.currentPath = undefined;
             btnGroupClick("tolls-split-btn", event);
             this.currentSplit = event.target.value;
             this.getDefaults();
             this.applySplitDescription();
-            [pathBtns, productBtns, serviceBtns, unitsBtn] =
-              this.addPathButtons(series);
-            if (!productBtns) {
-              visibility(["tolls-product-btn"], "hide");
-            } else {
-              visibility(["tolls-product-btn"], "show");
-            }
-            if (!unitsBtn) {
-              visibility(["tolls-units-btn"], "hide");
-            } else {
-              visibility(["tolls-units-btn"], "show");
-            }
+            this.addPathButtons(series);
             this.updateAllSeries(this.selectedSeries(0));
             const dashboard = this;
             this.chart.update({
