@@ -29,41 +29,35 @@ window.openTab = openTab;
 generalTheme();
 frenchTheme();
 
-export async function loadAllCharts(data, plains = false) {
-  const arrayOfCharts = [
-    mainTraffic(
-      data.trafficData.traffic,
-      data.trafficData.meta,
-      frenchDashboard.traffic
-    ),
-    mainApportion(data.apportionData, frenchDashboard.apportion),
-    mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls),
-    mainConditions(
-      JSON.parse(data.conditionsData.regions),
-      data.canadaMap,
-      data.conditionsData.mapMeta,
-      data.conditionsData.meta,
-      frenchDashboard.conditions
-    ),
-    mainIncidents(
-      data.incidentData.events,
-      data.incidentData.meta,
-      frenchDashboard.incidents
-    ),
-    mainOandM(data.oandmData, frenchDashboard.oandm),
-    mainRemediation(data.remediationData, frenchDashboard.remediation),
-  ];
+export function loadAllCharts(data, plains = false) {
+  mainTraffic(
+    data.trafficData.traffic,
+    data.trafficData.meta,
+    frenchDashboard.traffic
+  );
+  mainApportion(data.apportionData, frenchDashboard.apportion);
+  mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);
+  mainConditions(
+    JSON.parse(data.conditionsData.regions),
+    data.canadaMap,
+    data.conditionsData.mapMeta,
+    data.conditionsData.meta,
+    frenchDashboard.conditions
+  );
+  mainIncidents(
+    data.incidentData.events,
+    data.incidentData.meta,
+    frenchDashboard.incidents
+  );
+  mainOandM(data.oandmData, frenchDashboard.oandm);
+  mainRemediation(data.remediationData, frenchDashboard.remediation);
 
   if (data.tcplRevenues) {
-    arrayOfCharts.push(
-      mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues)
-    );
+    mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
   }
 
-  return Promise.allSettled(arrayOfCharts).then(() => {
-    // console.timeEnd(`first content loading`);
-    if (plains) {
-      plainsMidstreamProfile(frenchDashboard, "plains_disclaimer");
-    }
-  });
+  if (plains) {
+    plainsMidstreamProfile(frenchDashboard, "plains_disclaimer");
+  }
+  // console.timeEnd(`first content loading`);
 }

@@ -1,5 +1,10 @@
 import Highcharts from "highcharts";
-import { cerPalette, btnGroupClick, visibility } from "../util.js";
+import {
+  cerPalette,
+  btnGroupClick,
+  visibility,
+  removeAllSeries,
+} from "../util.js";
 import { fillBetween } from "../datestone.js";
 
 export class Tolls {
@@ -46,6 +51,9 @@ export class Tolls {
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
       this.tollNum = tollNumDates(this.metaData.tollNum[this.currentSplit]);
       this.unitsFilter = this.metaData.unitsFilter[this.currentSplit];
+      this.points = this.metaData.paths[this.currentSplit];
+      this.products = this.metaData.products[this.currentSplit];
+      this.services = this.metaData.services[this.currentSplit];
     } else {
       this.currentProduct = getProduct(this.metaData.products);
       this.currentService = getProduct(this.metaData.services);
@@ -54,6 +62,9 @@ export class Tolls {
       this.seriesCol = this.metaData.seriesCol;
       this.tollNum = tollNumDates(this.metaData.tollNum);
       this.unitsFilter = this.metaData.unitsFilter;
+      this.points = this.metaData.paths;
+      this.products = this.metaData.products;
+      this.services = this.metaData.services;
     }
   }
 
@@ -243,22 +254,11 @@ export class Tolls {
       return btnGroup;
     };
 
-    let [points, products, services] = [[], [], []];
-    if (this.currentSplit) {
-      points = this.metaData.paths[this.currentSplit];
-      products = this.metaData.products[this.currentSplit];
-      services = this.metaData.services[this.currentSplit];
-    } else {
-      points = this.metaData.paths;
-      products = this.metaData.products;
-      services = this.metaData.services;
-    }
-
     const btnGroupPaths = createBtn(
       "tolls-path-btn",
       this.lang.filters.path,
-      points,
-      this.metaData.pathFilter[0] && points,
+      this.points,
+      this.metaData.pathFilter[0] && this.points,
       this.metaData.pathFilter[1],
       "point"
     );
@@ -266,8 +266,8 @@ export class Tolls {
     const btnGroupServices = createBtn(
       "tolls-service-btn",
       this.lang.filters.service,
-      services,
-      this.currentService && services,
+      this.services,
+      this.currentService && this.services,
       "radio",
       "service"
     );
@@ -275,8 +275,8 @@ export class Tolls {
     const btnGroupProducts = createBtn(
       "tolls-product-btn",
       this.lang.filters.product,
-      products,
-      this.currentProduct && products,
+      this.products,
+      this.currentProduct && this.products,
       "radio",
       "product"
     );
@@ -342,12 +342,6 @@ export class Tolls {
     return selected;
   }
 
-  removeAllSeries() {
-    while (this.chart.series.length) {
-      this.chart.series[0].remove(false, false, false);
-    }
-  }
-
   listener(btnGroup, series, section) {
     const getChartLegend = (c) => c.legend.allItems.map((l) => l.name);
     btnGroup.addEventListener("click", (event) => {
@@ -365,7 +359,7 @@ export class Tolls {
             this.currentProduct ||
             this.currentService
           ) {
-            this.removeAllSeries();
+            removeAllSeries(this.chart);
           }
 
           if (section === "path") {
@@ -444,7 +438,7 @@ export class Tolls {
   }
 
   updateAllSeries(newSeries) {
-    this.removeAllSeries();
+    removeAllSeries(this.chart);
     newSeries.forEach((newS) => {
       this.chart.addSeries(newS, false, false);
     });

@@ -1,6 +1,6 @@
 import Highcharts from "highcharts";
 import { addRenderer } from "./dashboardUtil.js";
-import { btnGroupClick } from "../modules/util.js";
+import { btnGroupClick, removeAllSeries } from "../modules/util.js";
 
 function seriesifyQuantity(data) {
   const series = {};
@@ -166,12 +166,6 @@ function quantityChart(id, series, lang) {
       ],
     },
   });
-}
-
-function removeAllSeries(chart) {
-  while (chart.series.length) {
-    chart.series[0].remove(false, false, false);
-  }
 }
 
 function switchChartListener(chart, itSeries, stSeries) {

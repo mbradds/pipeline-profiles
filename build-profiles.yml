@@ -4,31 +4,31 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '12.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "12.x"
+    displayName: "Install Node.js"
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      npm install
+      npm run build
+    displayName: "npm install and build"
 
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '$(Build.SourcesDirectory)/dist'
-    contents: '**' 
-    targetFolder: $(Build.ArtifactStagingDirectory)/dist
-  displayName: 'Copy /dist directory'
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: "$(Build.SourcesDirectory)/dist"
+      contents: "**"
+      targetFolder: $(Build.ArtifactStagingDirectory)/dist
+    displayName: "Copy /dist directory"
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
-    artifactName: dist
-  displayName: 'Publish dist artifact'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
+      artifactName: dist
+    displayName: "Publish dist artifact"

@@ -15,7 +15,12 @@
  */
 
 import Highcharts from "highcharts";
-import { visibility, rangeInclusive, capitalize } from "../util.js";
+import {
+  visibility,
+  rangeInclusive,
+  capitalize,
+  removeAllSeries,
+} from "../util.js";
 
 /**
  * Class responsible for configuring a highcharts stacked bar displaying event trends over time (yearly).
@@ -361,9 +366,7 @@ export class EventTrend {
   fieldChange(newField) {
     if (newField !== this.field) {
       this.field = newField;
-      while (this.chart.series.length) {
-        this.chart.series[0].remove();
-      }
+      removeAllSeries(this.chart);
       this.generateSeries(this.data, this.field).forEach((series) => {
         this.chart.addSeries(series, false);
       });

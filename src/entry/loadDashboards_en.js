@@ -43,45 +43,35 @@ window.openTab = openTab;
 generalTheme();
 
 // TODO: try to share this function between eng and fra
-export async function loadAllCharts(data, plains = false) {
-  const arrayOfCharts = [
-    mainTraffic(
-      data.trafficData.traffic,
-      data.trafficData.meta,
-      englishDashboard.traffic
-    ),
-    mainApportion(data.apportionData, englishDashboard.apportion),
-    mainTolls(
-      data.tollsData.tolls,
-      data.tollsData.meta,
-      englishDashboard.tolls
-    ),
-    mainConditions(
-      JSON.parse(data.conditionsData.regions),
-      data.canadaMap,
-      data.conditionsData.mapMeta,
-      data.conditionsData.meta,
-      englishDashboard.conditions
-    ),
-    mainIncidents(
-      data.incidentData.events,
-      data.incidentData.meta,
-      englishDashboard.incidents
-    ),
-    mainOandM(data.oandmData, englishDashboard.oandm),
-    mainRemediation(data.remediationData, englishDashboard.remediation),
-  ];
+export function loadAllCharts(data, plains = false) {
+  mainTraffic(
+    data.trafficData.traffic,
+    data.trafficData.meta,
+    englishDashboard.traffic
+  );
+  mainApportion(data.apportionData, englishDashboard.apportion);
+  mainTolls(data.tollsData.tolls, data.tollsData.meta, englishDashboard.tolls);
+  mainConditions(
+    JSON.parse(data.conditionsData.regions),
+    data.canadaMap,
+    data.conditionsData.mapMeta,
+    data.conditionsData.meta,
+    englishDashboard.conditions
+  );
+  mainIncidents(
+    data.incidentData.events,
+    data.incidentData.meta,
+    englishDashboard.incidents
+  );
+  mainOandM(data.oandmData, englishDashboard.oandm);
+  mainRemediation(data.remediationData, englishDashboard.remediation);
 
   if (data.tcplRevenues) {
-    arrayOfCharts.push(
-      mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues)
-    );
+    mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);
   }
 
-  return Promise.allSettled(arrayOfCharts).then(() => {
-    // console.timeEnd(`first content loading`);
-    if (plains) {
-      plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
-    }
-  });
+  if (plains) {
+    plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
+  }
+  // console.timeEnd(`first content loading`);
 }

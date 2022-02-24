@@ -34,7 +34,8 @@
     "set-remote-work": "git remote set-url origin https://CER-REC@dev.azure.com/CER-REC/Pipeline%20Information/_git/pipeline-profiles",
     "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git",
     "prettier-save": "npx prettier --write .",
-    "prettier-check": "npx prettier --check ."
+    "prettier-check": "npx prettier --check .",
+    "lint": "npx eslint ./src --ext .js"
   },
   "ava": {
     "extensions": {
@@ -51,7 +52,7 @@
     "@babel/runtime": "^7.17.2",
     "compression": "^1.7.4",
     "express": "^4.17.3",
-    "express-rate-limit": "^6.2.1",
+    "express-rate-limit": "^6.3.0",
     "haversine": "^1.1.1",
     "highcharts": "^9.3.3",
     "leaflet": "^1.7.1",
@@ -71,13 +72,13 @@
     "css-minimizer-webpack-plugin": "^3.4.1",
     "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
     "esm": "^3.2.25",
     "file-loader": "^6.2.0",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
-    "html-validate": "^6.3.2",
+    "html-validate": "^6.4.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.3",
     "prettier": "2.5.1",

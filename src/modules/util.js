@@ -227,3 +227,21 @@ export function btnGroupClick(btnDiv, event) {
 export function capitalize(s) {
   return s[0].toUpperCase() + s.slice(1);
 }
+
+/**
+ * Removes all series from a Highcharts chart
+ * @param {Object} chart Highcharts chart object
+ * @param {boolean} redraw
+ * @param {boolean} animation
+ * @param {boolean} withEvent
+ */
+export function removeAllSeries(
+  chart,
+  redraw = false,
+  animation = false,
+  withEvent = false
+) {
+  while (chart.series.length) {
+    chart.series[0].remove(redraw, animation, withEvent);
+  }
+}

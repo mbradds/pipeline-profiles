@@ -21,6 +21,7 @@ import {
   listOrParagraph,
   equalizeHeight,
   btnGroupClick,
+  removeAllSeries,
 } from "../util.js";
 import {
   addSeriesParams,
@@ -869,9 +870,7 @@ export class Traffic {
               );
             }
 
-            while (this.trafficChart.series.length) {
-              this.trafficChart.series[0].remove(false, false, false);
-            }
+            removeAllSeries(this.trafficChart);
 
             if (this.params.points.length >= 0) {
               [this.timeSeries, this.fiveSeries] = addSeriesParams(

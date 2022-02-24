@@ -3,5 +3,9 @@ webpack.dev.js
 webpack.prod.js
 webpack.azure.js
 dist
+dist_azure
+deploy
+src/GCWeb
+src/wet-boew
 node_modules
 test/test.js
