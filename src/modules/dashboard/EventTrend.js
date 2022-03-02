@@ -33,15 +33,15 @@ export class EventTrend {
    * @param {Object} constr - EventTrend constructor
    * @param {string} constr.eventType - Short name for the dataset, eg: incidents (lowercase).
    * @param {string} constr.field - The initial data column to have selected by default.
-   * @param {string} constr.filters - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
+   * @param {string | Object} constr.filters - Initial data "values" to show eg: {type: "frequency"} or {type: "volume" }
    * @param {(Object[]|Object)} constr.data - Dataset to be shaped into highcharts series.
    * @param {string} constr.divId - HTML div id where highchart will be loaded.
    * @param {Object} constr.lang - Object containing language switching functionality for dashboard components.
-   * @param {Object} [const.legendClickText={enabled: false, text: undefined}] - Configuration for a disclaimer above the chart legend explaining the legend click functionality.
-   * @param {Object} [const.oneToMany={}] - Enabled pill id's ({pillId: true}) contain double counting, and a disclaimer above the bars will explain the higher bar totals.
-   * @param {string} [constr.seriesed=false] - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
-   * @param {Object} [constr.seriesInfo={}] - When "seriesed" this must contain info about the series names, colors, etc. {pillName: {id: {c: color, n: name}}}
-   * @param {Object} [constr.definitions={}] - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
+   * @param {Object} constr.legendClickText - Configuration for a disclaimer above the chart legend explaining the legend click functionality.
+   * @param {Object} constr.oneToMany - Enabled pill id's ({pillId: true}) contain double counting, and a disclaimer above the bars will explain the higher bar totals.
+   * @param {string | boolean} constr.seriesed - Whether the "data" has already been shaped into a series structure of {pill name: {data:[], year:[]} }
+   * @param {Object} constr.seriesInfo - When "seriesed" this must contain info about the series names, colors, etc. {pillName: {id: {c: color, n: name}}}
+   * @param {Object} constr.definitions - Object containing {id: text} pairs for language switching the definitions (definitionsOn="bar") or column descriptions (definitionsOn="pill").
    */
   constructor({
     eventType,
@@ -304,8 +304,9 @@ export class EventTrend {
 
   createChart() {
     const currentTrend = this;
-    const chart = new Highcharts.chart(this.divId, {
+    const chart = Highcharts.chart({
       chart: {
+        renderTo: currentTrend.divId,
         type: "column",
         animation: false,
         spacingTop: 7,

@@ -40,6 +40,11 @@ export function rangeInclusive(start, end) {
     .map((_, idx) => start + idx);
 }
 
+/**
+ *
+ * @param {PointerEvent} evt
+ * @param {string} sectionName
+ */
 export function openTab(evt, sectionName) {
   const sections = document.querySelectorAll(".profile-section");
   Array.from(sections).forEach((section) => {
@@ -52,7 +57,7 @@ export function openTab(evt, sectionName) {
   });
   const currentSection = document.getElementById(sectionName);
   currentSection.classList.add("profile-show");
-  evt.currentTarget.className += " active";
+  evt.currentTarget.classList.add("active");
 }
 
 /**
@@ -135,7 +140,7 @@ export function listOrParagraph(itter, textCol) {
  * @param {string} config.div - HTML div where map will be loaded.
  * @param {number} config.zoomSnap - Defines how precise things like zoomTo will be.
  * @param {number} config.zoomDelta - Defines how much zoom happens on one scroll/click.
- * @param {boolean} config.zoomContol - Whether to show the plus/minus zoom button on map.
+ * @param {boolean} config.zoomControl - Whether to show the plus/minus zoom button on map.
  * @param {number[]} config.initZoomTo - Initial [lat, -long] for map.
  * @param {number} config.initZoomLevel - Initial map zoom on load, before zoomTo/fitBounds.
  * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
@@ -147,8 +152,7 @@ export function leafletBaseMap(config, L) {
     zoomDelta: config.zoomDelta,
     zoomControl: config.zoomControl,
   }).setView(config.initZoomTo, config.initZoomLevel);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}", {
-    foo: "bar",
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
@@ -182,7 +186,6 @@ export function equalizeHeight(divId1, divId2) {
  *
  * @param {string} errorDiv - The div containing all the dashboard elements to be hidden and replaced with an error message.
  * @param {{title: string, message: string}} lang - En/Fr title and error message.
- * @param {Array} [hideDivs=[]] - Optional array of HTML div id's to be hidden on error.
  * @returns false
  */
 export function loadChartError(errorDiv, lang, err = false) {
@@ -201,9 +204,8 @@ export function loadChartError(errorDiv, lang, err = false) {
  * @param {string} div - HTML class for all plains disclaimers.
  */
 export function plainsMidstreamProfile(lang, div) {
-  [...document.querySelectorAll(`.${div}`)].forEach((warn) => {
-    const plainsDiv = warn;
-    plainsDiv.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><small>${lang.plains}</small></section>`;
+  Array.from(document.querySelectorAll(`.${div}`)).forEach((warn) => {
+    warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><small>${lang.plains}</small></section>`;
   });
 }
 

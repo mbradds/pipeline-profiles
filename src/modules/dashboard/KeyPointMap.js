@@ -29,7 +29,7 @@ export class KeyPointMap {
     lang = {},
   }) {
     this.points = points;
-    this.selected = this.constructor.selectedPointNames(selected);
+    this.selected = KeyPointMap.selectedPointNames(selected);
     this.initZoomTo = initZoomTo;
     this.divId = divId;
     this.companyName = companyName;
@@ -92,12 +92,12 @@ export class KeyPointMap {
 
   reZoom(zoomIn = true) {
     if (zoomIn) {
-      this.keyPoints.eachLayer((layer) => {
+      this.keyPoints.eachLayer((/** @type {L.Circle} */ layer) => {
         layer.setRadius(this.minRadius);
       });
       this.map.fitBounds(this.keyPoints.getBounds(), { padding: this.padding });
     } else {
-      this.keyPoints.eachLayer((layer) => {
+      this.keyPoints.eachLayer((/** @type {L.Circle} */ layer) => {
         layer.setRadius(100000);
       });
       this.map.setView(this.initZoomTo, 2.5);
@@ -154,7 +154,7 @@ export class KeyPointMap {
       );
     });
     this.keyPoints = L.featureGroup(allPoints).addTo(this.map);
-    this.keyPoints.eachLayer((layer) => {
+    this.keyPoints.eachLayer((/** @type {L.Circle} */ layer) => {
       if (layer.options.name === this.selected) {
         layer.bringToFront();
       }
@@ -163,8 +163,8 @@ export class KeyPointMap {
   }
 
   pointChange(newPoint) {
-    this.selected = this.constructor.selectedPointNames(newPoint);
-    this.keyPoints.eachLayer((layer) => {
+    this.selected = KeyPointMap.selectedPointNames(newPoint);
+    this.keyPoints.eachLayer((/** @type {L.Circle} */ layer) => {
       if (this.selected.includes(layer.options.name)) {
         layer.setStyle({
           fillColor: this.colors.active,

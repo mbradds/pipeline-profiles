@@ -7,15 +7,6 @@ import Highcharts from "highcharts";
 import { mapDates } from "../modules/datestone.js";
 import { cerPalette, sortJsonAlpha, conversions } from "../modules/util.js";
 
-/**
- * @typedef {Object} SetupReturn
- * @property {Object} unitsHolder - {base, current, conversion} info about units and units switching.
- * @property {boolean} buildFive - Whether a five year average chart should be built given the key point.
- * @property {boolean} hasImports - Whether the inital key point has imports that need a seperate chart.
- * @property {boolean} tm - Whether the user is on the Trans Mountain page. This page is different!
- * @property {string} commodity - Looks at the default unit and is assigned "oil" or "gas".
- */
-
 export const mapInits = {
   MNP: {
     "In Progress": -1,
@@ -71,7 +62,7 @@ export const isCapacity = (seriesId) =>
  * @param {string} frequency - Set to "monthly" can only handle monthly data at this point.
  * @param {string} [section="traffic"] - The profile section. Different sections will have different series properties.
  * @param {boolean} [sorted=true] - Whether seriesWithDate should be sorted by series.id. Helps maintain chart order
- * @returns {Array} Array with first element containing the chart series, and second element containing the five-year series.
+ * @returns {[Object, (Object | undefined)]} Array with first element containing the chart series, and second element containing the five-year series.
  */
 export function addSeriesParams(
   seriesWithDate,
@@ -175,7 +166,8 @@ export function addSeriesParams(
  * @param {Object} defaultPoint - Contains initial key point id and name (en/fr) to be initially selected on load.
  * @param {Object} units - Contains unit id's and names (en/fr) to be used in radio button text and HTML id.
  * @param {string} section - Section name is added to radio id to avoid duplication between traffic and apportionment.
- * @returns {SetupReturn}
+ * @param {string} frequency
+ * @returns
  */
 export function addUnitsAndSetup(
   defaultUnit,
@@ -188,6 +180,7 @@ export function addUnitsAndSetup(
   const unitsHolder = {
     base: units[defaultUnit],
     current: units[defaultUnit],
+    conversion: undefined,
   };
 
   const radioBtn = (unit, checked, i, s) => {
@@ -204,7 +197,7 @@ export function addUnitsAndSetup(
   if (frequency === "monthly" || frequency === "m") {
     buildFive = true;
   } else {
-    document.getElementById("traffic-hc-range").style.height = 0;
+    document.getElementById("traffic-hc-range").style.height = "0";
   }
 
   let secondUnit = "";
@@ -237,7 +230,6 @@ export function addUnitsDisclaimer(div, commodity, textFunction) {
  * Replaces the dashboard div with a warning flag indicating there is no data for the section.
  * @param {string} header - Warning flag title.
  * @param {function} note - String template arrow for inserting company name into warning flag body.
- * @param {string} companyName - Company or system name inserted into warning flag body.
  * @param {string} dashboardId - HTML div id for the dashboard section.
  */
 export function noEventsFlag(header, note, dashboardId) {

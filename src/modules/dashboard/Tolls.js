@@ -154,12 +154,13 @@ export class Tolls {
 
   buildTollsChart(series) {
     const dashboard = this;
-    this.chart = new Highcharts.chart(this.chartDiv, {
+    this.chart = Highcharts.chart({
       chart: {
+        renderTo: dashboard.chartDiv,
         zoomType: "x",
         animation: false,
       },
-      title: "",
+      title: { text: "" },
       xAxis: {
         type: "datetime",
         crosshair: true,

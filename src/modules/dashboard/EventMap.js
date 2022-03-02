@@ -181,7 +181,7 @@ export class EventMap {
    */
   addMapDisclaimer(type = "volume") {
     const disclaimerL = (map, position, alertStyle, text) => {
-      const info = L.control({ position });
+      const info = new L.Control({ position });
       info.onAdd = function onAddDisclaimer() {
         const disclaimerDiv = L.DomUtil.create("div", "map-disclaimer");
         disclaimerDiv.innerHTML = `<div class="alert ${alertStyle}" style="padding:3px; max-width:670px"><p>${text}</p></div>`;
@@ -220,7 +220,7 @@ export class EventMap {
     } else if (type === "location") {
       if (this.mapLocationDisclaimer) {
         this.mapLocationDisclaimer.remove();
-        this.mapVolumeDisclaimer = undefined;
+        this.mapLocationDisclaimer = undefined;
       }
     }
   }
@@ -228,11 +228,11 @@ export class EventMap {
   addResetBtn() {
     const resetId = `reset-${this.eventType}-btn`;
     const resetText = this.lang.resetMap;
-    const info = L.control({ position: "bottomleft" });
+    const info = new L.Control({ position: "bottomleft" });
     info.onAdd = function addReset() {
-      this._div = L.DomUtil.create("div");
-      this._div.innerHTML = `<button type="button" id="${resetId}" class="btn btn-default btn-block btn-lg">${resetText}</button>`;
-      return this._div;
+      const resetDiv = L.DomUtil.create("div");
+      resetDiv.innerHTML = `<button type="button" id="${resetId}" class="btn btn-default btn-block btn-lg">${resetText}</button>`;
+      return resetDiv;
     };
     info.addTo(this.map);
   }
@@ -318,7 +318,7 @@ export class EventMap {
    */
   updateRadius() {
     if (this.filters.type === "volume") {
-      this.circles.eachLayer((layer) => {
+      this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
         try {
           layer.setRadius(layer.options.volRadius);
         } catch (err) {
@@ -330,11 +330,11 @@ export class EventMap {
       const currZoom = this.map.getZoom();
       const { minRadius } = this;
       if (currZoom >= 5 && currZoom <= 6.5) {
-        this.circles.eachLayer((layer) => {
+        this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
           layer.setRadius(minRadius);
         });
       } else if (currZoom <= 4.5) {
-        this.circles.eachLayer((layer) => {
+        this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
           layer.setRadius(minRadius * 2);
         });
       } else if (currZoom > 6.5) {
@@ -345,7 +345,7 @@ export class EventMap {
         if (zoomFactor < 2) {
           zoomFactor = 2;
         }
-        this.circles.eachLayer((layer) => {
+        this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
           layer.setRadius(minRadius / zoomFactor);
         });
       }
@@ -398,23 +398,26 @@ export class EventMap {
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     const maxRad = radiusCalc(maxVol);
     let years = []; // piggyback on data processing pass to get the year colors
-    let allCircles = data.map((row) => {
+    /** @type {L.Circle[]} */
+    const allCircles = [];
+    data.forEach((row) => {
       years.push(row.y);
       let radiusVol = (row.vol - minVol) / (maxVol - minVol);
       radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
       if (row.loc[0] && row.loc[0] > 0) {
-        return this.addCircle(
-          row.loc[0],
-          row.loc[1],
-          cerPalette["Cool Grey"],
-          this.applyColor(row[this.field], this.field), // fillColor
-          radiusVol,
-          row
+        allCircles.push(
+          this.addCircle(
+            row.loc[0],
+            row.loc[1],
+            cerPalette["Cool Grey"],
+            this.applyColor(row[this.field], this.field), // fillColor
+            radiusVol,
+            row
+          )
         );
       }
-      return false;
+      // return false;
     });
-    allCircles = allCircles.filter((circle) => circle !== false);
     years = years.filter((v, i, a) => a.indexOf(v) === i); // get unique years
     years = years.sort((a, b) => b - a);
     const yearColors = {};
@@ -441,7 +444,7 @@ export class EventMap {
           watch: false,
         })
         .on("locationfound", (e) => {
-          const marker = L.marker([e.latitude, e.longitude], {
+          const marker = L.marker(e.latlng, {
             icon: new L.Icon({
               iconUrl: markerIconPng,
               shadowUrl: shadowIconPng,
@@ -455,10 +458,9 @@ export class EventMap {
             currentDashboard.user.latitude = position.lat;
             currentDashboard.user.longitude = position.lng;
           });
-          marker.id = "userLocation";
           currentDashboard.map.addLayer(marker);
-          currentDashboard.user.latitude = e.latitude;
-          currentDashboard.user.longitude = e.longitude;
+          currentDashboard.user.latitude = e.latlng.lat;
+          currentDashboard.user.longitude = e.latlng.lng;
           currentDashboard.user.layer = marker;
           resolve(currentDashboard);
         })
@@ -478,12 +480,16 @@ export class EventMap {
   nearbyIncidents(range) {
     const [nearbyCircles, allCircles] = [[], []];
     const currentDashboard = this;
-    this.circles.eachLayer((layer) => {
+    this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
       allCircles.push(layer);
-      const distance = haversine(currentDashboard.user, {
-        latitude: layer._latlng.lat,
-        longitude: layer._latlng.lng,
-      });
+      const distance = haversine(
+        currentDashboard.user,
+        {
+          latitude: layer._latlng.lat,
+          longitude: layer._latlng.lng,
+        },
+        { unit: "km" }
+      );
       if (distance > range) {
         layer.setStyle({ fillOpacity: 0 });
       } else {
@@ -512,7 +518,7 @@ export class EventMap {
       this.map.fitBounds(bounds, { maxZoom: 15 });
       // loop through the nearbyCircles and get some summary stats:
       let [nearbyGas, nearbyLiquid, nearbyOther, nearbyAll] = [0, 0, 0, 0];
-      this.nearby.eachLayer((layer) => {
+      this.nearby.eachLayer((/** @type {L.Circle} */ layer) => {
         const layerState = EventMap.getState(layer.options.eventParams.sub);
         if (layerState === "gas") {
           nearbyGas += layer.options.eventParams.vol;
@@ -591,7 +597,7 @@ export class EventMap {
    * Reset bubble opacity to 0.7 and call this.reZoom()
    */
   resetMap() {
-    this.circles.eachLayer((layer) => {
+    this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
       layer.setStyle({ fillOpacity: 0.7 });
     });
     this.reZoom();
@@ -600,7 +606,7 @@ export class EventMap {
   fieldChange(newField) {
     this.field = newField;
     const currentDashboard = this;
-    this.circles.eachLayer((layer) => {
+    this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
       const newFill =
         this.colors[newField][layer.options.eventParams[newField]].c;
       layer.setStyle({
@@ -642,11 +648,11 @@ export class EventMap {
    *  - ${this.eventType}-time-series-section (initially hidden trends section)
    *  - nearby-${this.eventType}-popup (optional, will hide if exists)
    * @param {Object} mapBars - EventNavigator instance with bars placed next to the leaflet map. mapBars.allDivs are hidden on click
-   * @param {boolean} [cBtn=false] - Optional count button for switching between event frequency/volume. Must be added to this method
+   * @param {null | HTMLInputElement} [cBtn=false] - Optional count button for switching between event frequency/volume. Must be added to this method
    * to control if event frequency/volume is selected/available when looking at trends or map.
-   * @param {boolean} [vBtn=false] - Volume button
+   * @param {null | HTMLInputElement} [vBtn=false] - Volume button
    */
-  switchDashboards(mapBars, cBtn = false, vBtn = false) {
+  switchDashboards(mapBars, cBtn = null, vBtn = null) {
     document
       .getElementById(`${this.eventType}-view-type`)
       .addEventListener("click", (event) => {

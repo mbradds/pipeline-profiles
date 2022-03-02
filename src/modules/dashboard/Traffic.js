@@ -378,8 +378,9 @@ export class Traffic {
 
   createTrafficChart(series, title, div = "traffic-hc") {
     const currentDashboard = this;
-    return new Highcharts.chart(div, {
+    return Highcharts.chart({
       chart: {
+        renderTo: div,
         zoomType: "x",
         marginRight: 0,
         spacingTop: 5,
@@ -443,8 +444,9 @@ export class Traffic {
     if (!series) {
       return false;
     }
-    return new Highcharts.chart("traffic-hc-range", {
+    return Highcharts.chart({
       chart: {
+        renderTo: "traffic-hc-range",
         type: "line",
         marginRight: 0,
         spacingTop: 5,
@@ -874,7 +876,7 @@ export class Traffic {
 
             if (this.params.points.length >= 0) {
               [this.timeSeries, this.fiveSeries] = addSeriesParams(
-                this.createSeries(this.trafficData),
+                this.createSeries(),
                 this.params.unitsHolder,
                 this.params.buildFive,
                 this.lang.series,
@@ -907,7 +909,7 @@ export class Traffic {
         if (event.target && event.target.value) {
           this.params.unitsHolder.current = event.target.value;
           [this.timeSeries, this.fiveSeries] = addSeriesParams(
-            this.createSeries(this.trafficData),
+            this.createSeries(),
             this.params.unitsHolder,
             this.params.buildFive,
             this.lang.series,

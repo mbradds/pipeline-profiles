@@ -22,14 +22,14 @@ export class EventNavigator {
    * @param {Object} constr.numberOfPills - The total number of navigation pills. Used to calculate pill height dynamically.
    * @param {Object} constr.langPillTitles - {titles: {id: "pill name"}, click: ""} pairs for handling custom pill titles & language switching. When click paramter is defined and not "", then this text will append to the pill name.
    * @param {number} [constr.fixedPillHeight=undefined] - Height in px of each pill navigation button. Overrides calculated height.
-   * @param {(boolean|Object[])} [constr.data=false] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
+   * @param {(undefined | Object[])} [constr.data=undefined] - The same dataset used in the EventMap. When true, this will add a horizontal bar chart inside pills.
    */
   constructor({
     plot,
     numberOfPills,
     langPillTitles,
     fixedPillHeight = undefined,
-    data = false,
+    data = undefined,
   }) {
     this.plot = plot;
     this.numberOfPills = numberOfPills;
@@ -123,9 +123,10 @@ export class EventNavigator {
   /**
    * usefull for names like "Status" that could use additional description
    * @param {string} name
+   * @param {undefined | string} clickText
    * @returns {string}
    */
-  pillName(name, clickText = false) {
+  pillName(name, clickText = undefined) {
     if (
       this.langPillTitles &&
       Object.prototype.hasOwnProperty.call(this.langPillTitles.titles, name)
@@ -138,15 +139,15 @@ export class EventNavigator {
   }
 
   createBar(div, name, series) {
-    return new Highcharts.chart(div, {
+    return Highcharts.chart({
       chart: {
-        y: -30,
         type: "bar",
         spacingRight: 8,
         spacingLeft: 2,
         spacingTop: 8,
         spacingBottom: 8,
         animation: false,
+        renderTo: div,
       },
 
       title: {
@@ -158,7 +159,6 @@ export class EventNavigator {
 
       xAxis: {
         visible: false,
-        categories: true,
         gridLineWidth: 0,
       },
 
@@ -228,7 +228,6 @@ export class EventNavigator {
         },
         series: {
           animation: false,
-          grouping: false,
           shadow: false,
           states: {
             inactive: {
@@ -322,7 +321,7 @@ export class EventNavigator {
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
-    activeDiv.style.opacity = 0.4;
+    activeDiv.style.opacity = "0.4";
   }
 
   activateChart(bar) {
@@ -366,7 +365,7 @@ export class EventNavigator {
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
-    activeDiv.style.opacity = 1;
+    activeDiv.style.opacity = "1";
     this.plot.fieldChange(bar.name);
   }
 
@@ -374,7 +373,7 @@ export class EventNavigator {
     const barDiv = document.getElementById(currentBar.div);
     function mouseOver() {
       if (currentBar.status !== "activated") {
-        barDiv.style.opacity = 1;
+        barDiv.style.opacity = "1";
         if (currentBar.chart) {
           currentBar.chart.update({
             chart: {
@@ -389,7 +388,7 @@ export class EventNavigator {
 
     function mouseOut() {
       if (currentBar.status !== "activated") {
-        barDiv.style.opacity = 0.4;
+        barDiv.style.opacity = "0.4";
         if (currentBar.chart) {
           currentBar.chart.update({
             chart: {
