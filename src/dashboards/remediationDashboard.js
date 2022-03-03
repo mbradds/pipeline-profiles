@@ -58,6 +58,8 @@ export async function mainRemediation(data, lang) {
       oneToMany: { c: true },
       lang: lang.dashboard,
       definitions: lang.dashboard.definitions,
+      seriesed: false,
+      seriesInfo: {},
     });
 
     const trendNav = new EventNavigator({

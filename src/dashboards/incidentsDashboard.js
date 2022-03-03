@@ -38,6 +38,7 @@ export async function mainIncidents(incidentData, metaData, lang) {
       divId: "incidents-map",
       toolTipFields: ["vol", "what", "why"],
       lang: mapLang,
+      regdocsClick: false,
     });
     map.addBaseMap();
     map.processEventsData(incidentData);
@@ -58,6 +59,8 @@ export async function mainIncidents(incidentData, metaData, lang) {
         why: true,
         category: true,
       },
+      seriesed: false,
+      seriesInfo: {},
       lang: lang.dashboard,
       definitions: lang.definitions,
     });

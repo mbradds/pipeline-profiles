@@ -384,9 +384,10 @@ export async function mainConditions(
   };
 
   const createConditionsMap = (regions, baseMap, container, params, zooms) =>
-    Highcharts.mapChart(container, {
+    Highcharts.mapChart({
       chart: {
-        panning: false,
+        renderTo: container,
+        panning: { enabled: false },
         animation: false,
         events: {
           load() {

@@ -418,7 +418,7 @@ export class EventNavigator {
 
   /**
    * Creates a horizontal bar chart inside the pill if EventNavigator.data is set.
-   * @param {number} barName - Bar id that will be used to isolate dataset variable/pill name.
+   * @param {string} barName - Bar id that will be used to isolate dataset variable/pill name.
    * @param {string} div - HTML div id of the pill.
    * @param {string} status - Either "activated" or "deactivated". Activate the default dashboard data parameter.
    */

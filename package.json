@@ -19,11 +19,6 @@
     "start": "node server.js",
     "heroku-postbuild": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js",
-    "update-traffic-data": "conda run -n pipeline-profiles python src/data_management/traffic.py",
-    "update-incidents-data": "conda run -n pipeline-profiles python src/data_management/incidents.py",
-    "update-conditions-data": "conda run -n pipeline-profiles python src/data_management/conditions.py",
-    "update-apportionment-data": "conda run -n pipeline-profiles python src/data_management/apportionment.py",
-    "update-oandm-data": "conda run -n pipeline-profiles python src/data_management/oandm.py",
     "update-all-data": "conda run -n pipeline-profiles python src/data_management/update_all.py",
     "get-maps": "conda run -n pipeline-profiles python src/data_management/get_map_files.py",
     "simplify-maps": "sh ./scripts/simplify-maps.sh",
@@ -33,8 +28,7 @@
     "save-conda-env": "sh ./scripts/save-environment.sh",
     "set-remote-work": "git remote set-url origin https://CER-REC@dev.azure.com/CER-REC/Pipeline%20Information/_git/pipeline-profiles",
     "set-remote-personal": "git remote set-url origin https://github.com/mbradds/pipeline-profiles.git",
-    "prettier-save": "npx prettier --write .",
-    "prettier-check": "npx prettier --check .",
+    "prettier": "npx prettier --write .",
     "lint": "npx eslint ./src --ext .js"
   },
   "ava": {

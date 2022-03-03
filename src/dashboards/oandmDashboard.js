@@ -42,6 +42,7 @@ export async function mainOandM(eventData, lang) {
       divId: "oandm-time-series",
       legendClickText: { enabled: true, text: lang.legendClick },
       lang,
+      oneToMany: {},
     });
     const trendNav = new EventNavigator({
       plot: timeSeries,

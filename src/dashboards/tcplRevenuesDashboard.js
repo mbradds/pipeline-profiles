@@ -96,7 +96,6 @@ function quantityChart(id, series, lang) {
     },
     xAxis: { type: "datetime" },
     legend: {
-      // enabled: false, // set for small screens
       title: { text: "Path" },
       align: "left",
       margin: 0,

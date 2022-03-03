@@ -165,8 +165,9 @@ export async function mainApportion(apportionData, lang) {
   }
 
   function buildApportionChart(series, units, div = "apportion-hc") {
-    return Highcharts.chart(div, {
+    return Highcharts.chart({
       chart: {
+        renderTo: div,
         zoomType: "x",
         spacingLeft: 0,
         animation: false,
