@@ -188,6 +188,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,Alliance,KP0002,southeast,export,44969.5414,41669.7935
 2021-08-01,Alliance,KP0002,southeast,export,43805.355,42970.1065
 2021-09-01,Alliance,KP0002,southeast,export,43822.82,42664.2867
+2021-10-01,Alliance,KP0002,southeast,export,46430.6976,42531.8226
+2021-11-01,Alliance,KP0002,southeast,export,46385.5725,45192.3567
+2021-12-01,Alliance,KP0002,southeast,export,45481.7953,44042.0935
 2006-01-01,Alliance,KP0045,southeast,intracanada,13890.8642,11653.4768
 2006-02-01,Alliance,KP0045,southeast,intracanada,14033.9923,11596.545
 2006-03-01,Alliance,KP0045,southeast,intracanada,13862.1445,11423.7368
@@ -377,6 +380,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,Alliance,KP0045,southeast,intracanada,11960.7133,8943.9032
 2021-08-01,Alliance,KP0045,southeast,intracanada,12003.738,8617.0
 2021-09-01,Alliance,KP0045,southeast,intracanada,11968.2206,9419.0667
+2021-10-01,Alliance,KP0045,southeast,intracanada,12645.214,12382.9032
+2021-11-01,Alliance,KP0045,southeast,intracanada,12667.3263,11545.8667
+2021-12-01,Alliance,KP0045,southeast,intracanada,12610.832,11052.9355
 2009-07-01,Brunswick,KP0000,west,export,,3165.4342
 2009-09-01,Brunswick,KP0000,west,export,,3092.881
 2009-10-01,Brunswick,KP0000,west,export,,4665.2742
@@ -525,6 +531,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-09-01,Brunswick,KP0000,west,export,,240.352
 2021-10-01,Brunswick,KP0000,west,export,,174.007
 2021-11-01,Brunswick,KP0000,west,export,,348.8821
+2021-12-01,Brunswick,KP0000,west,export,,565.7272
 2006-01-01,Foothills,KP0023,south,export,85000.0,44015.0
 2006-02-01,Foothills,KP0023,south,export,85000.0,48229.7857
 2006-03-01,Foothills,KP0023,south,export,85000.0,53214.4839
@@ -705,15 +712,18 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-10-01,Foothills,KP0023,south,export,81200.0,66513.8032
 2020-11-01,Foothills,KP0023,south,export,79400.0,70349.8967
 2020-12-01,Foothills,KP0023,south,export,79400.0,71224.1419
-2021-01-01,Foothills,KP0023,south,export,85000.0,72912.3065
-2021-02-01,Foothills,KP0023,south,export,85000.0,70712.95
-2021-03-01,Foothills,KP0023,south,export,85000.0,69576.9871
+2021-01-01,Foothills,KP0023,south,export,79400.0,72912.3065
+2021-02-01,Foothills,KP0023,south,export,79400.0,70712.95
+2021-03-01,Foothills,KP0023,south,export,79400.0,69576.9871
 2021-04-01,Foothills,KP0023,south,export,79400.0,65853.28
 2021-05-01,Foothills,KP0023,south,export,79400.0,61478.6194
 2021-06-01,Foothills,KP0023,south,export,79400.0,59176.5033
 2021-07-01,Foothills,KP0023,south,export,79400.0,60569.1516
 2021-08-01,Foothills,KP0023,south,export,79400.0,58866.3581
 2021-09-01,Foothills,KP0023,south,export,79400.0,62619.05
+2021-10-01,Foothills,KP0023,south,export,79400.0,65651.029
+2021-11-01,Foothills,KP0023,south,export,79400.0,66873.26
+2021-12-01,Foothills,KP0023,south,export,79400.0,73323.0581
 2006-01-01,Foothills,KP0025,southeast,export,66100.0,57771.1613
 2006-02-01,Foothills,KP0025,southeast,export,66100.0,59686.6429
 2006-03-01,Foothills,KP0025,southeast,export,66100.0,56132.4839
@@ -903,10 +913,13 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,Foothills,KP0025,southeast,export,61500.0,18818.3097
 2021-08-01,Foothills,KP0025,southeast,export,61500.0,17690.3742
 2021-09-01,Foothills,KP0025,southeast,export,61500.0,17443.93
+2021-10-01,Foothills,KP0025,southeast,export,61500.0,18134.4839
+2021-11-01,Foothills,KP0025,southeast,export,66100.0,18032.1533
+2021-12-01,Foothills,KP0025,southeast,export,66100.0,16064.8516
 2006-01-01,MNP,KP0001,north,import,13334.9,0.0
 2006-01-01,MNP,KP0001,south,export,13334.9,7778.4516
-2006-02-01,MNP,KP0001,south,export,13334.9,7627.2857
 2006-02-01,MNP,KP0001,north,import,13334.9,0.0
+2006-02-01,MNP,KP0001,south,export,13334.9,7627.2857
 2006-03-01,MNP,KP0001,north,import,13334.9,0.5484
 2006-03-01,MNP,KP0001,south,export,13334.9,6040.2903
 2006-04-01,MNP,KP0001,north,import,13334.9,0.0
@@ -1281,6 +1294,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,MNP,KP0001,south,export,13334.9,5.5161
 2021-09-01,MNP,KP0001,north,import,13334.9,4101.4667
 2021-09-01,MNP,KP0001,south,export,13334.9,0.0
+2021-10-01,MNP,KP0001,north,import,13334.9,3739.7742
+2021-10-01,MNP,KP0001,south,export,13334.9,0.0
+2021-11-01,MNP,KP0001,south,export,13334.9,0.5333
+2021-11-01,MNP,KP0001,north,import,13334.9,4404.6667
+2021-12-01,MNP,KP0001,north,import,13334.9,5015.7742
+2021-12-01,MNP,KP0001,south,export,13334.9,3.5161
 2011-11-01,NGTL,KP0004,west & south,intracanada,,14845.4655
 2011-12-01,NGTL,KP0004,west & south,intracanada,,14995.0409
 2012-01-01,NGTL,KP0004,west & south,intracanada,,17120.3682
@@ -1390,16 +1409,19 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-09-01,NGTL,KP0004,west & south,intracanada,39560.0,11137.471
 2020-10-01,NGTL,KP0004,west & south,intracanada,39560.0,16427.7918
 2020-11-01,NGTL,KP0004,west & south,intracanada,42825.0,19239.9744
-2020-12-01,NGTL,KP0004,west & south,intracanada,42825.0,20472.1775
+2020-12-01,NGTL,KP0004,west & south,intracanada,42825.0,20471.8646
 2021-01-01,NGTL,KP0004,west & south,intracanada,42825.0,21682.8707
 2021-02-01,NGTL,KP0004,west & south,intracanada,42825.0,26193.6971
-2021-03-01,NGTL,KP0004,west & south,intracanada,42825.0,17684.328
+2021-03-01,NGTL,KP0004,west & south,intracanada,42825.0,17681.1313
 2021-04-01,NGTL,KP0004,west & south,intracanada,42825.0,12165.7694
 2021-05-01,NGTL,KP0004,west & south,intracanada,42825.0,11483.6137
 2021-06-01,NGTL,KP0004,west & south,intracanada,42825.0,9836.5118
 2021-07-01,NGTL,KP0004,west & south,intracanada,42825.0,10181.7296
 2021-08-01,NGTL,KP0004,west & south,intracanada,42825.0,10485.6103
 2021-09-01,NGTL,KP0004,west & south,intracanada,42825.0,11205.371
+2021-10-01,NGTL,KP0004,west & south,intracanada,42825.0,15362.0467
+2021-11-01,NGTL,KP0004,west & south,intracanada,41559.0,18364.0911
+2021-12-01,NGTL,KP0004,west & south,intracanada,41559.0,26670.4711
 2006-01-01,NGTL,KP0007,east & southeast,intracanada,220461.0,227701.8548
 2006-02-01,NGTL,KP0007,east & southeast,intracanada,220461.0,224996.1536
 2006-03-01,NGTL,KP0007,east & southeast,intracanada,220461.0,212816.9194
@@ -1589,6 +1611,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,NGTL,KP0007,east & southeast,intracanada,139900.0,117411.0907
 2021-08-01,NGTL,KP0007,east & southeast,intracanada,139900.0,114851.5874
 2021-09-01,NGTL,KP0007,east & southeast,intracanada,139900.0,119334.2721
+2021-10-01,NGTL,KP0007,east & southeast,intracanada,139900.0,119857.0141
+2021-11-01,NGTL,KP0007,east & southeast,intracanada,125140.0,124075.6828
+2021-12-01,NGTL,KP0007,east & southeast,intracanada,125140.0,121848.8858
 2011-11-01,NGTL,KP0012,east & north,intracanada,,28803.6996
 2011-12-01,NGTL,KP0012,east & north,intracanada,,29703.3889
 2012-01-01,NGTL,KP0012,east & north,intracanada,,31631.7263
@@ -1698,16 +1723,19 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-09-01,NGTL,KP0012,east & north,intracanada,53515.0,20514.5243
 2020-10-01,NGTL,KP0012,east & north,intracanada,53515.0,28043.4381
 2020-11-01,NGTL,KP0012,east & north,intracanada,55052.0,31853.1266
-2020-12-01,NGTL,KP0012,east & north,intracanada,55052.0,33834.6789
+2020-12-01,NGTL,KP0012,east & north,intracanada,55052.0,33837.2176
 2021-01-01,NGTL,KP0012,east & north,intracanada,55052.0,35914.8223
 2021-02-01,NGTL,KP0012,east & north,intracanada,55052.0,39896.1959
-2021-03-01,NGTL,KP0012,east & north,intracanada,55052.0,30904.5844
+2021-03-01,NGTL,KP0012,east & north,intracanada,55052.0,30904.4328
 2021-04-01,NGTL,KP0012,east & north,intracanada,55052.0,27966.3975
 2021-05-01,NGTL,KP0012,east & north,intracanada,55052.0,23417.2198
 2021-06-01,NGTL,KP0012,east & north,intracanada,55052.0,22853.8987
 2021-07-01,NGTL,KP0012,east & north,intracanada,55052.0,24380.148
 2021-08-01,NGTL,KP0012,east & north,intracanada,55052.0,22917.746
 2021-09-01,NGTL,KP0012,east & north,intracanada,55052.0,19501.0577
+2021-10-01,NGTL,KP0012,east & north,intracanada,55052.0,26361.9696
+2021-11-01,NGTL,KP0012,east & north,intracanada,64700.0,33792.6209
+2021-12-01,NGTL,KP0012,east & north,intracanada,64700.0,42569.7618
 2006-01-01,NGTL,KP0027,east & north,intracanada,64843.0,29444.4118
 2006-02-01,NGTL,KP0027,east & north,intracanada,64843.0,30810.9027
 2006-03-01,NGTL,KP0027,east & north,intracanada,64843.0,28852.9927
@@ -1887,16 +1915,19 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-09-01,NGTL,KP0027,east & north,intracanada,123664.0,96909.9639
 2020-10-01,NGTL,KP0027,east & north,intracanada,123664.0,109908.9037
 2020-11-01,NGTL,KP0027,east & north,intracanada,153518.0,120540.3479
-2020-12-01,NGTL,KP0027,east & north,intracanada,153518.0,125695.8033
+2020-12-01,NGTL,KP0027,east & north,intracanada,153518.0,125699.3421
 2021-01-01,NGTL,KP0027,east & north,intracanada,153518.0,128144.6828
 2021-02-01,NGTL,KP0027,east & north,intracanada,153518.0,134743.4632
-2021-03-01,NGTL,KP0027,east & north,intracanada,153518.0,120462.1349
+2021-03-01,NGTL,KP0027,east & north,intracanada,153518.0,120461.5089
 2021-04-01,NGTL,KP0027,east & north,intracanada,133232.0,108825.3087
 2021-05-01,NGTL,KP0027,east & north,intracanada,133232.0,105024.4113
 2021-06-01,NGTL,KP0027,east & north,intracanada,133232.0,103486.7811
 2021-07-01,NGTL,KP0027,east & north,intracanada,133232.0,105210.3722
 2021-08-01,NGTL,KP0027,east & north,intracanada,133232.0,101273.6765
 2021-09-01,NGTL,KP0027,east & north,intracanada,133232.0,101582.6385
+2021-10-01,NGTL,KP0027,east & north,intracanada,133232.0,113370.1747
+2021-11-01,NGTL,KP0027,east & north,intracanada,149679.0,124610.0056
+2021-12-01,NGTL,KP0027,east & north,intracanada,149679.0,134435.5648
 2010-11-01,NGTL,KP0030,east & north,intracanada,19976.0,16159.3473
 2010-12-01,NGTL,KP0030,east & north,intracanada,19976.0,16218.566
 2011-01-01,NGTL,KP0030,east & north,intracanada,19976.0,16407.3581
@@ -2018,16 +2049,19 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-09-01,NGTL,KP0030,east & north,intracanada,39124.0,32737.9823
 2020-10-01,NGTL,KP0030,east & north,intracanada,39124.0,33966.9658
 2020-11-01,NGTL,KP0030,east & north,intracanada,35862.0,35422.6923
-2020-12-01,NGTL,KP0030,east & north,intracanada,35862.0,36118.4835
+2020-12-01,NGTL,KP0030,east & north,intracanada,35862.0,36118.4675
 2021-01-01,NGTL,KP0030,east & north,intracanada,35862.0,36612.7942
 2021-02-01,NGTL,KP0030,east & north,intracanada,35862.0,36851.412
-2021-03-01,NGTL,KP0030,east & north,intracanada,35862.0,36868.7298
+2021-03-01,NGTL,KP0030,east & north,intracanada,35862.0,36868.7232
 2021-04-01,NGTL,KP0030,east & north,intracanada,34684.0,36205.6452
 2021-05-01,NGTL,KP0030,east & north,intracanada,34684.0,35020.779
 2021-06-01,NGTL,KP0030,east & north,intracanada,34684.0,35058.9243
 2021-07-01,NGTL,KP0030,east & north,intracanada,34684.0,35123.6629
 2021-08-01,NGTL,KP0030,east & north,intracanada,34684.0,35538.8705
 2021-09-01,NGTL,KP0030,east & north,intracanada,34684.0,34606.9391
+2021-10-01,NGTL,KP0030,east & north,intracanada,34684.0,36517.973
+2021-11-01,NGTL,KP0030,east & north,intracanada,38018.0,37173.1945
+2021-12-01,NGTL,KP0030,east & north,intracanada,38018.0,37379.9997
 2010-11-01,NGTL,KP0031,east & north,intracanada,35400.0,21645.2974
 2010-12-01,NGTL,KP0031,east & north,intracanada,35400.0,22100.3065
 2011-01-01,NGTL,KP0031,east & north,intracanada,35400.0,22339.284
@@ -2149,16 +2183,19 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-09-01,NGTL,KP0031,east & north,intracanada,44097.0,33408.0011
 2020-10-01,NGTL,KP0031,east & north,intracanada,44097.0,35808.5758
 2020-11-01,NGTL,KP0031,east & north,intracanada,41642.0,40577.6533
-2020-12-01,NGTL,KP0031,east & north,intracanada,41642.0,41485.1574
+2020-12-01,NGTL,KP0031,east & north,intracanada,41642.0,41485.1542
 2021-01-01,NGTL,KP0031,east & north,intracanada,41642.0,41360.0495
 2021-02-01,NGTL,KP0031,east & north,intracanada,41642.0,42518.7225
-2021-03-01,NGTL,KP0031,east & north,intracanada,41642.0,40826.4183
+2021-03-01,NGTL,KP0031,east & north,intracanada,41642.0,40826.3409
 2021-04-01,NGTL,KP0031,east & north,intracanada,37880.0,33766.1154
 2021-05-01,NGTL,KP0031,east & north,intracanada,37880.0,34610.3941
 2021-06-01,NGTL,KP0031,east & north,intracanada,37880.0,34313.604
 2021-07-01,NGTL,KP0031,east & north,intracanada,37880.0,35845.2954
 2021-08-01,NGTL,KP0031,east & north,intracanada,37880.0,33517.0321
 2021-09-01,NGTL,KP0031,east & north,intracanada,37880.0,34673.0929
+2021-10-01,NGTL,KP0031,east & north,intracanada,37880.0,37703.6483
+2021-11-01,NGTL,KP0031,east & north,intracanada,44993.0,38462.7757
+2021-12-01,NGTL,KP0031,east & north,intracanada,44993.0,39723.5282
 2016-01-01,NGTL,KP0036,southeast,intracanada,,0.0
 2016-02-01,NGTL,KP0036,southeast,intracanada,,0.0
 2016-03-01,NGTL,KP0036,southeast,intracanada,,0.0
@@ -2228,6 +2265,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,NGTL,KP0036,southeast,intracanada,53823.0,20260.1616
 2021-08-01,NGTL,KP0036,southeast,intracanada,53823.0,15772.6391
 2021-09-01,NGTL,KP0036,southeast,intracanada,53823.0,23817.6493
+2021-10-01,NGTL,KP0036,southeast,intracanada,53823.0,25244.188
+2021-11-01,NGTL,KP0036,southeast,intracanada,53823.0,26875.7532
+2021-12-01,NGTL,KP0036,southeast,intracanada,53823.0,25568.6755
 2006-01-01,NGTL,KP0040,southeast & east,intracanada,187479.0,161667.5521
 2006-02-01,NGTL,KP0040,southeast & east,intracanada,187479.0,168826.762
 2006-03-01,NGTL,KP0040,southeast & east,intracanada,187479.0,172676.2332
@@ -2407,16 +2447,19 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-09-01,NGTL,KP0040,southeast & east,intracanada,320300.0,255291.0758
 2020-10-01,NGTL,KP0040,southeast & east,intracanada,320300.0,281694.4017
 2020-11-01,NGTL,KP0040,southeast & east,intracanada,325900.0,289103.2264
-2020-12-01,NGTL,KP0040,southeast & east,intracanada,325900.0,288214.7458
+2020-12-01,NGTL,KP0040,southeast & east,intracanada,325900.0,288214.4362
 2021-01-01,NGTL,KP0040,southeast & east,intracanada,325900.0,289308.706
 2021-02-01,NGTL,KP0040,southeast & east,intracanada,325900.0,288899.6768
-2021-03-01,NGTL,KP0040,southeast & east,intracanada,325900.0,294619.5658
+2021-03-01,NGTL,KP0040,southeast & east,intracanada,325900.0,294617.8966
 2021-04-01,NGTL,KP0040,southeast & east,intracanada,328352.0,291006.4576
 2021-05-01,NGTL,KP0040,southeast & east,intracanada,328352.0,278702.7244
 2021-06-01,NGTL,KP0040,southeast & east,intracanada,328352.0,278810.2498
 2021-07-01,NGTL,KP0040,southeast & east,intracanada,328352.0,284713.6443
 2021-08-01,NGTL,KP0040,southeast & east,intracanada,328352.0,270751.9015
 2021-09-01,NGTL,KP0040,southeast & east,intracanada,328352.0,286549.4047
+2021-10-01,NGTL,KP0040,southeast & east,intracanada,328352.0,296872.4319
+2021-11-01,NGTL,KP0040,southeast & east,intracanada,338985.0,308418.022
+2021-12-01,NGTL,KP0040,southeast & east,intracanada,338985.0,307567.7526
 2006-01-01,NGTL,KP0041,west,intracanada,81013.0,46734.1419
 2006-02-01,NGTL,KP0041,west,intracanada,81013.0,51648.0393
 2006-03-01,NGTL,KP0041,west,intracanada,81013.0,56051.7258
@@ -2606,6 +2649,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,NGTL,KP0041,west,intracanada,84490.0,67491.7563
 2021-08-01,NGTL,KP0041,west,intracanada,84490.0,66456.5634
 2021-09-01,NGTL,KP0041,west,intracanada,84490.0,69506.4606
+2021-10-01,NGTL,KP0041,west,intracanada,84490.0,72891.6825
+2021-11-01,NGTL,KP0041,west,intracanada,84073.0,73019.1306
+2021-12-01,NGTL,KP0041,west,intracanada,84073.0,81066.8584
 2018-01-01,Suffield,KP0069,east,intracanada,5380.0,1729.9258
 2018-02-01,Suffield,KP0069,east,intracanada,5380.0,1564.7
 2018-03-01,Suffield,KP0069,east,intracanada,5380.0,1589.971
@@ -2962,6 +3008,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,TCPL,KP0005,west,import,3227.0,6228.8794
 2021-09-01,TCPL,KP0005,west,import,3227.0,6045.9103
 2021-09-01,TCPL,KP0005,east,export,19760.0,0.0
+2021-10-01,TCPL,KP0005,west,import,3227.0,5098.3306
+2021-10-01,TCPL,KP0005,east,export,19760.0,0.0
+2021-11-01,TCPL,KP0005,east,export,19760.0,0.0
+2021-11-01,TCPL,KP0005,west,import,3227.0,5486.5383
+2021-12-01,TCPL,KP0005,west,import,3227.0,5233.0157
+2021-12-01,TCPL,KP0005,east,export,19760.0,0.0
 2006-01-01,TCPL,KP0009,east,intracanada,101896.9842,90452.108
 2006-02-01,TCPL,KP0009,east,intracanada,101896.9842,88641.6021
 2006-03-01,TCPL,KP0009,east,intracanada,101896.9842,87242.4894
@@ -3151,6 +3203,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0009,east,intracanada,93074.8667,31867.7122
 2021-08-01,TCPL,KP0009,east,intracanada,93074.8667,33107.6745
 2021-09-01,TCPL,KP0009,east,intracanada,93074.8667,33382.7301
+2021-10-01,TCPL,KP0009,east,intracanada,93074.8667,36301.0865
+2021-11-01,TCPL,KP0009,east,intracanada,95158.9867,32986.3305
+2021-12-01,TCPL,KP0009,east,intracanada,95158.9867,35544.986
 2006-01-01,TCPL,KP0010,south,intracanada,49594.0,1725.8697
 2006-02-01,TCPL,KP0010,south,intracanada,49594.0,1101.5057
 2006-03-01,TCPL,KP0010,south,intracanada,49594.0,3321.8065
@@ -3340,6 +3395,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0010,south,intracanada,49594.0,1868.0671
 2021-08-01,TCPL,KP0010,south,intracanada,49594.0,912.8368
 2021-09-01,TCPL,KP0010,south,intracanada,49594.0,2628.4703
+2021-10-01,TCPL,KP0010,south,intracanada,49594.0,483.4478
+2021-11-01,TCPL,KP0010,south,intracanada,49594.0,0.3355
+2021-12-01,TCPL,KP0010,south,intracanada,49594.0,14.2356
 2006-01-01,TCPL,KP0011,north,intracanada,53490.1961,4858.5161
 2006-02-01,TCPL,KP0011,north,intracanada,53490.1961,13407.9575
 2006-03-01,TCPL,KP0011,north,intracanada,53490.1961,7347.9669
@@ -3529,6 +3587,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0011,north,intracanada,91843.0,3522.0852
 2021-08-01,TCPL,KP0011,north,intracanada,91843.0,9295.0758
 2021-09-01,TCPL,KP0011,north,intracanada,91843.0,1110.9293
+2021-10-01,TCPL,KP0011,north,intracanada,91843.0,4719.8377
+2021-11-01,TCPL,KP0011,north,intracanada,98460.0,35692.8698
+2021-12-01,TCPL,KP0011,north,intracanada,98460.0,46064.7202
 2006-01-01,TCPL,KP0013,south,export,20100.0,13095.5961
 2006-02-01,TCPL,KP0013,south,export,20100.0,13282.1407
 2006-03-01,TCPL,KP0013,south,export,20100.0,11917.8652
@@ -3718,6 +3779,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0013,south,export,20100.0,7316.8949
 2021-08-01,TCPL,KP0013,south,export,20100.0,3903.0371
 2021-09-01,TCPL,KP0013,south,export,20100.0,11143.9746
+2021-10-01,TCPL,KP0013,south,export,20100.0,8079.4438
+2021-11-01,TCPL,KP0013,south,export,20100.0,11964.3406
+2021-12-01,TCPL,KP0013,south,export,20100.0,11040.6447
 2006-01-01,TCPL,KP0014,south,export,83380.0,62856.5781
 2006-02-01,TCPL,KP0014,south,export,83380.0,60481.0886
 2006-03-01,TCPL,KP0014,south,export,83380.0,58245.9048
@@ -4038,6 +4102,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,TCPL,KP0014,north,import,20180.0,0.0
 2021-09-01,TCPL,KP0014,north,import,20180.0,0.0
 2021-09-01,TCPL,KP0014,south,export,83380.0,44097.2147
+2021-10-01,TCPL,KP0014,north,import,20180.0,0.0048
+2021-10-01,TCPL,KP0014,south,export,83380.0,42640.8381
+2021-11-01,TCPL,KP0014,south,export,83380.0,39466.1237
+2021-11-01,TCPL,KP0014,north,import,20180.0,0.0054
+2021-12-01,TCPL,KP0014,south,export,83380.0,31797.1162
+2021-12-01,TCPL,KP0014,north,import,20180.0,0.0048
 2006-01-01,TCPL,KP0022,east,export,39015.0,27895.4781
 2006-02-01,TCPL,KP0022,east,export,39015.0,29297.8739
 2006-03-01,TCPL,KP0022,east,export,39015.0,30409.819
@@ -4266,6 +4336,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,TCPL,KP0022,east,export,34224.0,10309.5142
 2021-09-01,TCPL,KP0022,west,import,1430.0,171.5068
 2021-09-01,TCPL,KP0022,east,export,34224.0,4575.2702
+2021-10-01,TCPL,KP0022,west,import,1430.0,0.0006
+2021-10-01,TCPL,KP0022,east,export,34224.0,3534.8653
+2021-11-01,TCPL,KP0022,east,export,34224.0,15678.349
+2021-11-01,TCPL,KP0022,west,import,1430.0,24.7318
+2021-12-01,TCPL,KP0022,east,export,34224.0,19031.0758
+2021-12-01,TCPL,KP0022,west,import,1430.0,0.0001
 2006-01-01,TCPL,KP0026,east,export,30329.988,25907.2035
 2006-02-01,TCPL,KP0026,east,export,30329.988,26085.2807
 2006-03-01,TCPL,KP0026,east,export,30329.988,26694.0616
@@ -4562,6 +4638,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,TCPL,KP0026,east,export,25734.0,0.0
 2021-09-01,TCPL,KP0026,west,import,18341.0,15406.0631
 2021-09-01,TCPL,KP0026,east,export,25734.0,0.0
+2021-10-01,TCPL,KP0026,east,export,25734.0,0.0161
+2021-10-01,TCPL,KP0026,west,import,18341.0,16665.0123
+2021-11-01,TCPL,KP0026,east,export,30182.0,0.0
+2021-11-01,TCPL,KP0026,west,import,18341.0,15891.0842
+2021-12-01,TCPL,KP0026,west,import,18341.0,16135.6872
+2021-12-01,TCPL,KP0026,east,export,30182.0,0.0
 2006-01-01,TCPL,KP0028,east,intracanada,111747.8376,99192.8028
 2006-02-01,TCPL,KP0028,east,intracanada,111747.8376,98230.4828
 2006-03-01,TCPL,KP0028,east,intracanada,111747.8376,95189.0486
@@ -4751,6 +4833,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0028,east,intracanada,95680.2,33616.9599
 2021-08-01,TCPL,KP0028,east,intracanada,95680.2,35098.0902
 2021-09-01,TCPL,KP0028,east,intracanada,95680.2,35523.9035
+2021-10-01,TCPL,KP0028,east,intracanada,95680.2,38369.632
+2021-11-01,TCPL,KP0028,east,intracanada,99058.4,37779.8824
+2021-12-01,TCPL,KP0028,east,intracanada,99058.4,42057.8278
 2006-01-01,TCPL,KP0032,south,export,8112.0,3479.0071
 2006-02-01,TCPL,KP0032,south,export,8112.0,3754.8329
 2006-03-01,TCPL,KP0032,south,export,8112.0,3422.5555
@@ -4940,6 +5025,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0032,south,export,8742.0,895.5656
 2021-08-01,TCPL,KP0032,south,export,8742.0,838.251
 2021-09-01,TCPL,KP0032,south,export,8742.0,854.2436
+2021-10-01,TCPL,KP0032,south,export,8742.0,1158.3618
+2021-11-01,TCPL,KP0032,south,export,8742.0,2012.0872
+2021-12-01,TCPL,KP0032,south,export,8742.0,2374.9248
 2006-01-01,TCPL,KP0033,east,intracanada,205253.3333,187852.6703
 2006-02-01,TCPL,KP0033,east,intracanada,205253.3333,186047.9671
 2006-03-01,TCPL,KP0033,east,intracanada,205253.3333,176588.7803
@@ -5129,6 +5217,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TCPL,KP0033,east,intracanada,171711.55,91843.5981
 2021-08-01,TCPL,KP0033,east,intracanada,171711.55,90947.9587
 2021-09-01,TCPL,KP0033,east,intracanada,171711.55,96192.5816
+2021-10-01,TCPL,KP0033,east,intracanada,171711.55,97227.1101
+2021-11-01,TCPL,KP0033,east,intracanada,182228.5279,101657.0085
+2021-12-01,TCPL,KP0033,east,intracanada,182228.5279,100118.2036
 2006-01-01,TCPL,KP0037,east,import,61000.0,40994.5516
 2006-02-01,TCPL,KP0037,east,import,61000.0,42874.9821
 2006-03-01,TCPL,KP0037,east,import,61000.0,42519.1032
@@ -5545,6 +5636,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TQM,KP0008,south,export,8935.0,7757.7288
 2021-08-01,TQM,KP0008,south,export,8935.0,8433.2352
 2021-09-01,TQM,KP0008,south,export,8935.0,7811.5273
+2021-10-01,TQM,KP0008,south,export,8935.0,8309.5321
+2021-11-01,TQM,KP0008,south,export,11077.0,9839.9948
+2021-12-01,TQM,KP0008,south,export,11077.0,10472.5997
 2006-01-01,TQM,KP0035,east,intracanada,19690.0,14108.371
 2006-02-01,TQM,KP0035,east,intracanada,19690.0,15265.6286
 2006-03-01,TQM,KP0035,east,intracanada,19690.0,14130.1
@@ -5734,6 +5828,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,TQM,KP0035,east,intracanada,24384.0,11743.8323
 2021-08-01,TQM,KP0035,east,intracanada,24384.0,13111.229
 2021-09-01,TQM,KP0035,east,intracanada,24384.0,13459.9433
+2021-10-01,TQM,KP0035,east,intracanada,24384.0,13310.1935
+2021-11-01,TQM,KP0035,east,intracanada,27832.0,17627.5367
+2021-12-01,TQM,KP0035,east,intracanada,27832.0,19409.4484
 2006-01-01,Westcoast,KPWESC,west,intracanada,48214.0,15204.3482
 2006-02-01,Westcoast,KPWESC,west,intracanada,48214.0,16496.3011
 2006-03-01,Westcoast,KPWESC,west,intracanada,48214.0,14156.6023
@@ -5923,6 +6020,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,Westcoast,KPWESC,west,intracanada,43682.0,5266.1227
 2021-08-01,Westcoast,KPWESC,west,intracanada,43682.0,5666.1871
 2021-09-01,Westcoast,KPWESC,west,intracanada,43682.0,7042.3956
+2021-10-01,Westcoast,KPWESC,west,intracanada,43682.0,11095.4023
+2021-11-01,Westcoast,KPWESC,west,intracanada,50990.0,13444.7874
+2021-12-01,Westcoast,KPWESC,west,intracanada,50990.0,17191.587
 2006-01-01,Westcoast,KPWESC,south,export,48214.0,18587.593
 2006-02-01,Westcoast,KPWESC,south,export,48214.0,17006.7989
 2006-03-01,Westcoast,KPWESC,south,export,48214.0,17675.0317
@@ -6081,7 +6181,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2018-12-01,Westcoast,KPWESC,south,export,48214.0,20883.9931
 2019-01-01,Westcoast,KPWESC,south,export,48214.0,22646.0656
 2019-02-01,Westcoast,KPWESC,south,export,48214.0,22351.6809
-2019-03-01,Westcoast,KPWESC,south,export,48214.0,23537.6894
+2019-03-01,Westcoast,KPWESC,south,export,48214.0,23538.691
 2019-04-01,Westcoast,KPWESC,south,export,43682.0,21010.3702
 2019-05-01,Westcoast,KPWESC,south,export,43682.0,23723.9883
 2019-06-01,Westcoast,KPWESC,south,export,43682.0,23759.3573
@@ -6112,6 +6212,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,Westcoast,KPWESC,south,export,43682.0,28954.7531
 2021-08-01,Westcoast,KPWESC,south,export,43682.0,29445.4038
 2021-09-01,Westcoast,KPWESC,south,export,43682.0,24589.5433
+2021-10-01,Westcoast,KPWESC,south,export,43682.0,24025.1071
+2021-11-01,Westcoast,KPWESC,south,export,50990.0,31890.222
+2021-12-01,Westcoast,KPWESC,south,export,50990.0,29034.9651
 2006-01-01,Westcoast,KP0024,west,intracanada,2974.0,0.0
 2006-01-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
 2006-02-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
@@ -6490,6 +6593,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,Westcoast,KP0024,west,intracanada,2974.0,2268.4265
 2021-09-01,Westcoast,KP0024,west,intracanada,2974.0,1528.818
 2021-09-01,Westcoast,KP0024,east,intracanada,2974.0,0.0217
+2021-10-01,Westcoast,KP0024,west,intracanada,2974.0,1527.2261
+2021-10-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
+2021-11-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
+2021-11-01,Westcoast,KP0024,west,intracanada,2974.0,691.3348
+2021-12-01,Westcoast,KP0024,west,intracanada,2974.0,1149.6626
+2021-12-01,Westcoast,KP0024,east,intracanada,2974.0,0.0
 2006-01-01,Westcoast,KP0029,west,intracanada,6722.0,0.0
 2006-01-01,Westcoast,KP0029,east,intracanada,5496.0,787.2648
 2006-02-01,Westcoast,KP0029,east,intracanada,5496.0,1287.3368
@@ -6869,6 +6978,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-08-01,Westcoast,KP0029,west,intracanada,7854.0,0.0
 2021-09-01,Westcoast,KP0029,east,intracanada,10901.0,4375.4833
 2021-09-01,Westcoast,KP0029,west,intracanada,7854.0,0.0
+2021-10-01,Westcoast,KP0029,west,intracanada,7854.0,0.0
+2021-10-01,Westcoast,KP0029,east,intracanada,10901.0,3143.4645
+2021-11-01,Westcoast,KP0029,east,intracanada,10255.0,1119.71
+2021-11-01,Westcoast,KP0029,west,intracanada,8583.0,0.0
+2021-12-01,Westcoast,KP0029,west,intracanada,8583.0,0.0
+2021-12-01,Westcoast,KP0029,east,intracanada,10255.0,1809.9839
 2012-11-01,Westcoast,KP0039,east,intracanada,14164.0,113.7333
 2012-12-01,Westcoast,KP0039,east,intracanada,14164.0,5696.2613
 2013-01-01,Westcoast,KP0039,east,intracanada,14164.0,6597.2839
@@ -6976,3 +7091,6 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-07-01,Westcoast,KP0039,east,intracanada,25807.0,5152.1677
 2021-08-01,Westcoast,KP0039,east,intracanada,25807.0,3503.0194
 2021-09-01,Westcoast,KP0039,east,intracanada,25807.0,2720.4067
+2021-10-01,Westcoast,KP0039,east,intracanada,25807.0,5538.0258
+2021-11-01,Westcoast,KP0039,east,intracanada,32804.0,5641.9267
+2021-12-01,Westcoast,KP0039,east,intracanada,32804.0,4980.9129
