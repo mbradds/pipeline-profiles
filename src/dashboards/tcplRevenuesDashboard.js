@@ -68,7 +68,7 @@ function toolTipRevenues(event, lang) {
   }
 
   toolText += "</table>";
-  toolText += "<i>Click to view REGDOCS info</i>";
+  toolText += "<span>Click to view REGDOCS info</span>";
   return toolText;
 }
 

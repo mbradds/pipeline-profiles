@@ -174,7 +174,7 @@ const en = {
         three:
           "Some conditions apply to multiple regions. Conditions may be double counted across regions, resulting in a higher number of conditions than the totals seen in the buttons above.",
       },
-      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/" rel="external">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
+      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/conditions/">interactive conditions data visualization</a>? This tool offers a deep dive into the CER's conditions compliance data and process, exploring conditions across all CER regulated companies by keyword, project, and location.`,
       source: {
         sourceTitle: sourceAndDescEn,
         dataSourceTitle: dataSourceEn,
@@ -326,7 +326,7 @@ const en = {
           ),
         },
       },
-      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/" rel="external">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
+      viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
     },
     remediation: {
       p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
@@ -611,7 +611,7 @@ const fr = {
       inProgressBtn: "Conditions en cours avec emplacement :",
       closedBtn: "Conditions remplies avec emplacement :",
       noLocationBtn: "Aucun lieu (non indiqué sur la carte) :",
-      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/" rel="external">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
+      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/conditions-projet/">visualisation interactive des données sur les conditions</a> de la Régie? Cet outil permet un examen détaillé des données et du processus de conformité aux conditions de la Régie. Il est ainsi possible de consulter les conditions pour toutes les sociétés réglementées par la Régie par mot-clé, projet et emplacement.`,
       instructions: {
         one: "Cliquer sur une région pour consulter les renseignements sur les conditions.",
         two: "Cliquer sur la carte à l’extérieur des régions pour masquer l’information.",
@@ -782,7 +782,7 @@ const fr = {
           ),
         },
       },
-      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/" rel="external"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
+      viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
     },
     remediation: {
       p1: "Dans le cadre de ses activités de protection de l’environnement, la Régie exige des sociétés qu’elles gèrent les contaminations et y remédient tout au long du cycle de vie des installations. Comme première étape, les sociétés réglementées sont tenues de signaler toute contamination à la Régie au moyen d’un avis de contamination en ligne.",
