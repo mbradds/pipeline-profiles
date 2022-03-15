@@ -20,12 +20,17 @@ def get_tolls_data(sql=True):
                             "tolls_description.sql",
                             db="PipelineInformation",
                             sql=sql)
-    
+
     toll_nums = get_data(os.getcwd(),
                     "tolls_numbers.sql",
                     db="PipelineInformation",
                     sql=sql)
-    return df, descriptions, toll_nums
+
+    translations = get_data(os.getcwd(),
+                            "tolls_translation.sql",
+                            db="PipelineInformation",
+                            sql=sql)
+    return df, descriptions, toll_nums, translations
 
 
 def company_filter(df, company):
@@ -269,7 +274,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
         else:
             product_filter = False
-        
+
         if len(units) > 1:
             series_col = "Units"
             print("Multiple units for: "+company)
@@ -290,7 +295,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
         return series_col, product_filter
 
-    df, descriptions, toll_nums = get_tolls_data(sql)
+    df, descriptions, toll_nums, translations = get_tolls_data(sql)
     toll_nums = normalize_dates(toll_nums, ["s", "e"])
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Original Toll Unit', 'Converted Toll Unit'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
@@ -414,7 +419,7 @@ if __name__ == "__main__":
                   "Westspur",
                   "Wascana"]
 
-    df_, this_company_data_ = process_tolls_data(sql=False,
+    df_, this_company_data_ = process_tolls_data(sql=True,
                                                  # companies = ["EnbridgeMainline"],
                                                  companies=completed_,
                                                  completed=completed_)

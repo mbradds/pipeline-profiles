@@ -1,0 +1,550 @@
+Table,Column,English,French
+Tolls,Product,all,tous
+Tolls,Product,boundary lake crude,région de boundary lake
+Tolls,Product,cnd,cnd
+Tolls,Product,condensate,condensats
+Tolls,Product,crude oil,pétrole brut
+Tolls,Product,crude oil and condensate,pétrole brut et condensats
+Tolls,Product,crude petroleum,pétrole brut
+Tolls,Product,crude/condensate,pétrole brut/condensats
+Tolls,Product,diluent,diluants
+Tolls,Product,ethane plus,éthane plus
+Tolls,Product,ethane,éthane
+Tolls,Product,heavy,lourd
+Tolls,Product,heavy crude,pétrole brut lourd
+Tolls,Product,heavy petroleum,pétrole lourd
+Tolls,Product,high sulphur ethane,éthane à haute teneur en soufre
+Tolls,Product,light,léger
+Tolls,Product,light condensate,condensats légers
+Tolls,Product,light crude,pétrole brut léger
+Tolls,Product,light petroleum,pétrole léger
+Tolls,Product,light sweet crude,pétrole non corrosif léger
+Tolls,Product,medium,moyen
+Tolls,Product,medium crude,pétrole brut moyen
+Tolls,Product,medium petroleum,pétrole moyen
+Tolls,Product,natural gas,gaz naturel
+Tolls,Product,natural gas liquids,liquides de gaz naturel
+Tolls,Product,NGL,liquides de gaz naturel
+Tolls,Product,ngl,liquides de gaz naturel
+Tolls,Product,None,Rien
+Tolls,Product,petroleum,hydrocarbures
+Tolls,Product,propane and butane,propane et butane
+Tolls,Product,propane plus,propane plus
+Tolls,Product,refined petroleum products,produits pétroliers raffinés
+Tolls,Product,sour ethane,éthane corrosif
+Tolls,Product,super heavy,extra lourd
+Tolls,Product,super heavy petroleum,pétrole extra lourd
+Tolls,Product,super light,super léger
+Tolls,Product,super light petroleum,pétrole super léger
+Tolls,Receipt Point,05-01-16 W2M (BV9),05-01-16 W2M (BV9)
+Tolls,Receipt Point,"Alida, Secure","Alida, Secure"
+Tolls,Receipt Point,Alida Terminal,Terminal Alida
+Tolls,Receipt Point,All,Tous
+Tolls,Receipt Point,All Zones,Toutes les zones
+Tolls,Receipt Point,Altagas Gordondale,Altagas Gordondale
+Tolls,Receipt Point,Altagas Holdings Fort St. John,Altagas Holdings Fort St. John
+Tolls,Receipt Point,Altagas Holdings Younger,Altagas Holdings Younger
+Tolls,Receipt Point,ARC Dawson Creek 13-07,ARC Dawson Creek 13-07
+Tolls,Receipt Point,ARC Towerlake 03-09,ARC Towerlake 03-09
+Tolls,Receipt Point,Bayhurst 1,Bayhurst 1
+Tolls,Receipt Point,Bayhurst 1-2,Bayhurst 1-2
+Tolls,Receipt Point,Bayhurst 2,Bayhurst 2
+Tolls,Receipt Point,"Berthold, Ward County, North Dakota","Berthold, Ward County, Dakota du Nord"
+Tolls,Receipt Point,Boundary Lake south 06-09,Boundary Lake south 06-09
+Tolls,Receipt Point,Boundary Lake south 08-11,Boundary Lake south 08-11
+Tolls,Receipt Point,Bryant Injection Point,Point d’injection Bryant
+Tolls,Receipt Point,Calstock NDA,ZLN de Calstock
+Tolls,Receipt Point,CA/US border,Frontière canado-américaine
+Tolls,Receipt Point,Centram MDA,ZLM de Centram
+Tolls,Receipt Point,Centram SSDA,ZLSS de Centram
+Tolls,Receipt Point,Centrat MDA,ZLM de Centrat
+Tolls,Receipt Point,Chippawa,Chippawa
+Tolls,Receipt Point,"Clarkson, Ontario","Clarkson, Ontario"
+Tolls,Receipt Point,"Clinton, Iowa","Clinton, Iowa"
+Tolls,Receipt Point,"Cochin Terminal in Kankakee County, Illinois","Terminal Cochin, Kankakee County, Illinois"
+Tolls,Receipt Point,Connection with Rangeland Pipeline,Raccordement au pipeline Rangeland
+Tolls,Receipt Point,Cornwall,Cornwall
+Tolls,Receipt Point,"Corunna or Sarnia Terminal, Ontario","Terminal de Sarnia ou de Corunna, Ontario"
+Tolls,Receipt Point,"Cromer Terminal, Manitoba","Terminal Cromer, Manitoba"
+Tolls,Receipt Point,"Cromer, Manitoba","Cromer, Manitoba"
+Tolls,Receipt Point,Dawn,Dawn
+Tolls,Receipt Point,Dow Storage,Installation de stockage Dow
+Tolls,Receipt Point,East Hereford,East Hereford
+Tolls,Receipt Point,ECA Towerlake 03-07,ECA Towerlake 03-07
+Tolls,Receipt Point,Edmonton,Edmonton
+Tolls,Receipt Point,"Edmonton Terminal, Alberta","Terminal Edmonton, Alberta"
+Tolls,Receipt Point,"Edmonton, Alberta",Edmonton (Alberta)
+Tolls,Receipt Point,"EDS Delivery Point, Corunna, Lambton County, Ontario","Point de livraison du réseau de livraison de l’Est, Corunna, comté de Lambton, Ontario"
+Tolls,Receipt Point,Edson,Edson
+Tolls,Receipt Point,Emerson 1,Emerson 1
+Tolls,Receipt Point,Emerson 2,Emerson 2
+Tolls,Receipt Point,Empress,Empress
+Tolls,Receipt Point,Enbridge CDA,ZLC d’Enbridge
+Tolls,Receipt Point,Enbridge CDA (Amended),ZLC d’Union (modifiée)
+Tolls,Receipt Point,Enbridge EDA,ZLE d’Enbridge
+Tolls,Receipt Point,Enbridge Parkway CDA,ZLC d’Enbridge Parkway
+Tolls,Receipt Point,Energir EDA,ZLE d’Energir
+Tolls,Receipt Point,Energir NDA,ZLN d’Enbridge
+Tolls,Receipt Point,GMIT EDA,ZLE de GMIT
+Tolls,Receipt Point,GMIT NDA,ZLN de GMIT
+Tolls,Receipt Point,Gordondale Gas Plant,Usine de champ gazier de Gordondale
+Tolls,Receipt Point,Gordondale Truck Terminal,Terminal de camions de Gordondale
+Tolls,Receipt Point,Grand Coulee,Grand Coulee
+Tolls,Receipt Point,Grand Coulee West,Grand Coulee West
+Tolls,Receipt Point,"Hardisty Terminal, Alberta","Terminal Hardisty, Alberta"
+Tolls,Receipt Point,"Hardisty, Alberta","Hardisty, Alberta"
+Tolls,Receipt Point,Herbert,Herbert
+Tolls,Receipt Point,"International Border, near Sarnia, Ontario","Frontière internationale, près de Sarnia, Ontario"
+Tolls,Receipt Point,"International Boundary (Highwater, Quebec)","Frontière internationale, Highwater, Québec"
+Tolls,Receipt Point,"International Boundary near Gretna, Manitoba","Frontière internationale, près de Gretna, Manitoba"
+Tolls,Receipt Point,"International Boundary near Sarnia, Ontario","Frontière internationale, près de Sarnia, Ontario"
+Tolls,Receipt Point,"International Boundary near Alameda, Saskatchewan","Frontière internationale, près de Alameda, Saskatchewan"
+Tolls,Receipt Point,Iroquois,Iroquois
+Tolls,Receipt Point,Kamloops,Kamloops
+Tolls,Receipt Point,"Kerrobert Station, Saskatchewan","Terminal Kerrobert, Saskatchewan"
+Tolls,Receipt Point,"Kerrobert, Saskatchewan",Kerrobert (Saskatchewan)
+Tolls,Receipt Point,Kilometre Post 839.2,"Borne kilométrique 839,2"
+Tolls,Receipt Point,Kirkwall,Kirkwall
+Tolls,Receipt Point,KPUC EDA,ZLE de KPUC
+Tolls,Receipt Point,Lachenaie,Lachenaie
+Tolls,Receipt Point,LGS Pipeline,Gazoduc LGS
+Tolls,Receipt Point,Liebenthal,Liebenthal
+Tolls,Receipt Point,"Maxbass, North Dakota","Bismarck, Dakota du Nord"
+Tolls,Receipt Point,Midale Terminal,Terminal Midale
+Tolls,Receipt Point,Milk River Station,Station de Milk River
+Tolls,Receipt Point,Milk River Truck Terminal ,Terminal de camions de Milk River 
+Tolls,Receipt Point,MN365,Droits MN365
+Tolls,Receipt Point,"Montreal, East Quebec","Montréal, Est du Québec"
+Tolls,Receipt Point,Mulligan Marketing Terminal 3-8,Terminal de commercialisation Mulligan 3-8
+Tolls,Receipt Point,"Nanticoke, Ontario","Nanticoke, Ontario"
+Tolls,Receipt Point,Napierville,Napierville
+Tolls,Receipt Point,NEBC Pipeline,Gazoduc NEBC
+Tolls,Receipt Point,Niagara Falls,Niagara Falls
+Tolls,Receipt Point,Nipigon WDA,ZLO de Nipigon
+Tolls,Receipt Point,None,Rien
+Tolls,Receipt Point,"Norman Wells, Northwest Territories","Norman Wells, Territoires du Nord-Ouest"
+Tolls,Receipt Point,North Bay Junction,North Bay Junction
+Tolls,Receipt Point,"North Toronto, Ontario","Nord de Toronto, Ontario"
+Tolls,Receipt Point,"Oakville, Ontario",Oakville (Ontario)
+Tolls,Receipt Point,Philipsburg,Philipsburg
+Tolls,Receipt Point,"Points in the Province of Alberta, Canada","Points dans la province de l’Alberta, Canada"
+Tolls,Receipt Point,Pouce Coupe Pipeline,Pipeline Pouce Coupé
+Tolls,Receipt Point,Receipt,Point de réception
+Tolls,Receipt Point,"Regina Terminal, Saskatchewan","Terminal Regina, à Regina, en Saskatchewan"
+Tolls,Receipt Point,"Regina, Saskatchewan",Regina (Saskatchewan)
+Tolls,Receipt Point,Richmound,Richmound
+Tolls,Receipt Point,Sainte-Genevieve-de-Berthier,Sainte-Geneviève-de-Berthier
+Tolls,Receipt Point,"Sarnia Terminal, Ontario","Terminal de Sarnia, en Ontario"
+Tolls,Receipt Point,"Saskatchewan Ethane Extraction Plant, Saskatchewan",usine d’extraction d’éthane de Saskatchewan (UEES)
+Tolls,Receipt Point,Shackleton,Shackleton
+Tolls,Receipt Point,"Shell Isolation Point, LaSalle Road, Lambton County, Ontario","Point d’isolement Shell, chemin LaSalle Road, comté de Lambton, Ontario"
+Tolls,Receipt Point,Spruce,Spruce
+Tolls,Receipt Point,SS Marie,SS Marie
+Tolls,Receipt Point,St. Clair,St. Clair
+Tolls,Receipt Point,Steelman,Steelman
+Tolls,Receipt Point,Steelman Terminal,Terminal Steelman
+Tolls,Receipt Point,Success,Réussite
+Tolls,Receipt Point,Suffield 2,Suffield 2
+Tolls,Receipt Point,System,Système
+Tolls,Receipt Point,T-North,T-Nord
+Tolls,Receipt Point,T-South,T-Sud
+Tolls,Receipt Point,"The International Boundary near Regway, Saskatchewan","Frontière internationale près de Regway, Saskatchewan"
+Tolls,Receipt Point,"Tioga, North Dakota","Tioga, Dakota du Nord"
+Tolls,Receipt Point,"Toronto Airport Junction, Ontario","Jonction de l’aéroport de Toronto, Ontario"
+Tolls,Receipt Point,Tourmaline DOE,Tourmaline DOE
+Tolls,Receipt Point,Towerlake 04-07,Towerlake 04-07
+Tolls,Receipt Point,TransGas SSDA,ZLSS de TransGas
+Tolls,Receipt Point,Tunis NDA,ZLN de Tunis
+Tolls,Receipt Point,Union CDA,ZLC d’Union
+Tolls,Receipt Point,Union CDA (Amended),ZLC d’Union (modifiée)
+Tolls,Receipt Point,Union Dawn,Union Dawn
+Tolls,Receipt Point,Union ECDA,ZLCE d’Union
+Tolls,Receipt Point,Union EDA,ZLE d’Union
+Tolls,Receipt Point,Union NCDA,ZLCE d’Union
+Tolls,Receipt Point,Union NDA,ZLN d’Union
+Tolls,Receipt Point,Union Parkway Belt,Union Parkway Belt
+Tolls,Receipt Point,Union SSMDA,ZLMSS d’Union
+Tolls,Receipt Point,Union WDA,ZLO d’Union
+Tolls,Receipt Point,Welwyn,Welwyn
+Tolls,Receipt Point,"Westover, Ontario","Westover, Ontario"
+Tolls,Receipt Point,Whitewood,Whitewood
+Tolls,Receipt Point,Younger Plant,Usine de Younger
+Tolls,Receipt Point,Zone 1,Zone 1
+Tolls,Receipt Point,Zone 2,Zone 2
+Tolls,Receipt Point,Zone 6,Zone 6
+Tolls,Receipt Point,Zone 7,Zone 7
+Tolls,Receipt Point,Zone 8,Zone 8
+Tolls,Receipt Point,Zone 9,Zone 9
+Tolls,Delivery Point,12-8 Receiver Valve,Vanne de réception 12-8
+Tolls,Delivery Point,Alberta Ethane Gathering System (AEGS),réseau de collecte d’éthane de l’Alberta
+Tolls,Delivery Point,ALL,tous
+Tolls,Delivery Point,All Zones,Toutes les zones
+Tolls,Delivery Point,"Alida, Secure","Alida, Secure"
+Tolls,Delivery Point,Belleville Ontario,"Belleville, Ontario"
+Tolls,Delivery Point,Belloy Block Valve,"Vanne, Belloy Block"
+Tolls,Delivery Point,Bronson Lake,Bronson Lake
+Tolls,Delivery Point,Bronson North,Bronson North
+Tolls,Delivery Point,Burnaby,Burnaby
+Tolls,Delivery Point,CA/US border,Frontière canado-américaine
+Tolls,Delivery Point,Calstock NDA,ZLN de Calstock
+Tolls,Delivery Point,Centra Gas SDA,ZLS de Centra
+Tolls,Delivery Point,Centram MDA,ZLM de Centram
+Tolls,Delivery Point,Centram SSDA,ZLSS de Centram
+Tolls,Delivery Point,Centrat MDA,ZLM de Centrat
+Tolls,Delivery Point,Chippawa,Chippawa
+Tolls,Delivery Point,"Clarkson, Ontario","Clarkson, Ontario"
+Tolls,Delivery Point,"Clearbrook, Minnesota","Clearbrook, Minnesota"
+Tolls,Delivery Point,Cold Lake-Beacon Hill,Cold Lake-Beacon Hill
+Tolls,Delivery Point,Connection with Glacier Pipe Line Company at a point on the International Boundary near Carway Alberta ,"Raccordement avec Glacier Pipe Line Company, point sur la frontière internationale près de Carway, en Alberta "
+Tolls,Delivery Point,Cornwall,Cornwall
+Tolls,Delivery Point,"Cornwall, Ontario",Cornwall (Ontario)
+Tolls,Delivery Point,"Corunna or Sarnia Terminal, Ontario","Terminal de Sarnia ou de Corunna, Ontario"
+Tolls,Delivery Point,"Cromer, Manitoba","Cromer, Manitoba"
+Tolls,Delivery Point,"Cushing, Oklahoma","Cushing, en Oklahoma"
+Tolls,Delivery Point,Dawn Export,Dawn Export
+Tolls,Delivery Point,"Dorval, Quebec (Jet)","Dorval, Quebec (Jet)"
+Tolls,Delivery Point,Dow Storage,Installation de stockage Dow
+Tolls,Delivery Point,Downstream of Trois-Rivières,En aval de Trois-Rivières
+Tolls,Delivery Point,East Hereford,East Hereford
+Tolls,Delivery Point,Eastern Zone,Région de l’Est
+Tolls,Delivery Point,Edmonton,Edmonton
+Tolls,Delivery Point,"Edmonton Terminal, Alberta","Terminal Edmonton, Alberta"
+Tolls,Delivery Point,"Edmonton, Alberta",Edmonton (Alberta)
+Tolls,Delivery Point,"Edmonton, Alberta; Hardisty, Alberta","Terminal Edmonton, Edmonton, Alberta"
+Tolls,Delivery Point,"Edmonton, Alberta; Hardisty, Alberta; Kerrobert, Saskatchewan","Edmonton, Alberta; Hardisty, Alberta, Kerrobert, Saskatchewan"
+Tolls,Delivery Point,"EDS Delivery Point, Corunna, Lambton County, Ontario","Point de livraison du réseau de livraison de l’Est, Corunna, comté de Lambton, Ontario"
+Tolls,Delivery Point,Edson,Edson
+Tolls,Delivery Point,Emerson 1,Emerson 1
+Tolls,Delivery Point,Emerson 2,Emerson 2
+Tolls,Delivery Point,Empress,Empress
+Tolls,Delivery Point,Enbridge CDA,ZLC d’Enbridge
+Tolls,Delivery Point,Enbridge CDA (Amended),ZLC d’Union (modifiée)
+Tolls,Delivery Point,Enbridge EDA,ZLE d’Enbridge
+Tolls,Delivery Point,Enbridge Parkway CDA,ZLC d’Enbridge Parkway
+Tolls,Delivery Point,Enbridge SWDA,ZLSO d’Enbridge
+Tolls,Delivery Point,Energir EDA,ZLE d’Energir
+Tolls,Delivery Point,Energir NDA,ZLN d’Enbridge
+Tolls,Delivery Point,"Facilities in Fort Saskatchewan, Alberta","Intallations à Fort Saskatchewan, Alberta"
+Tolls,Delivery Point,"Flanagan, Illinois","Flanagan, Illinois"
+Tolls,Delivery Point,Frog Lake,Frog Lake
+Tolls,Delivery Point,GMIT EDA,ZLE de GMIT
+Tolls,Delivery Point,GMIT NDA,ZLN de GMIT
+Tolls,Delivery Point,"Gretna Station, Manitoba","Station de Gretna, Manitoba"
+Tolls,Delivery Point,"Griffith, Indiana","Griffith, Indiana"
+Tolls,Delivery Point,Group 1,Groupe 1
+Tolls,Delivery Point,Group 2,Groupe 2
+Tolls,Delivery Point,Group 3,Groupe 3
+Tolls,Delivery Point,"Hardisty Terminal, Alberta","Terminal Hardisty, Alberta"
+Tolls,Delivery Point,"Hardisty, Alberta ","Hardisty, Alberta "
+Tolls,Delivery Point,"Houston, Texas",Houston (Texas)
+Tolls,Delivery Point,"International Border, near Sarnia, Ontario","Frontière internationale, près de Sarnia, Ontario"
+Tolls,Delivery Point,"International Boundary at or near Haskett, Manitoba","Frontière internationale, près de Haskett, Manitoba"
+Tolls,Delivery Point,"International Boundary near Chippawa, Ontario","Frontière internationale près de Chippawa, Ontario"
+Tolls,Delivery Point,"International Boundary near Gretna, Manitoba","Frontière internationale, près de Gretna, Manitoba"
+Tolls,Delivery Point,"International Boundary near Wild Horse, Alberta","Frontière internationale près de Wild Horse, Alberta"
+Tolls,Delivery Point,"The International Boundary near Wild Horse, Alberta","Frontière internationale près de Wild Horse, Alberta"
+Tolls,Delivery Point,Iroquois,Iroquois
+Tolls,Delivery Point,Kamloops,Kamloops
+Tolls,Delivery Point,"Kerrobert Station, Saskatchewan","Terminal Kerrobert, Saskatchewan"
+Tolls,Delivery Point,"Kingston, Ontario",Kingston (Ontario)
+Tolls,Delivery Point,Kirkwall,Kirkwall
+Tolls,Delivery Point,KPUC EDA,ZLE de KPUC
+Tolls,Delivery Point,Lloydminister,Lloydminister
+Tolls,Delivery Point,"Lockport, Illinois","Lockport, Illinois"
+Tolls,Delivery Point,"Maitland, Ontario","Maitland, Ontario"
+Tolls,Delivery Point,Manitoba Zone,Zone du Manitoba
+Tolls,Delivery Point,Marwayne,Marwayne
+Tolls,Delivery Point,"Marysville, Michigan","Marysville, Michigan"
+Tolls,Delivery Point,Mid-Continent,Centre du continent
+Tolls,Delivery Point,"Milden, Saskatchewan","Milden, Saskatchewan"
+Tolls,Delivery Point,MN365,Droits MN365
+Tolls,Delivery Point,"Mokena, Illinois","Mokena, Illinois"
+Tolls,Delivery Point,"Montreal East, Quebec ","Montréal Est, Québec "
+Tolls,Delivery Point,"Montreal, Quebec","Montréal, Québec"
+Tolls,Delivery Point,"MONTREAL, QUEBEC","MONTRÉAL, QUÉBEC"
+Tolls,Delivery Point,"Nanticoke, Ontario","Nanticoke, Ontario"
+Tolls,Delivery Point,"NANTICOKE, ONTARIO","NANTICOKE, ONTARIO"
+Tolls,Delivery Point,Napierville,Napierville
+Tolls,Delivery Point,Niagara Falls,Niagara Falls
+Tolls,Delivery Point,Nipigon WDA,ZLO de Nipigon
+Tolls,Delivery Point,None,Rien
+Tolls,Delivery Point,Long Haul,Longue distance
+Tolls,Delivery Point,Short Haul,Courte distance
+Tolls,Delivery Point,North Bay Junction,North Bay Junction
+Tolls,Delivery Point,"North Toronto, Ontario","Nord de Toronto, Ontario"
+Tolls,Delivery Point,Northern Zone,Zone du Nord
+Tolls,Delivery Point,"Oakville, Ontario",Oakville (Ontario)
+Tolls,Delivery Point,"Ottawa, Ontario",Ottawa (Ontario)
+Tolls,Delivery Point,Peace Pipeline,Pipeline Peace
+Tolls,Delivery Point,Philipsburg,Philipsburg
+Tolls,Delivery Point,"Port Arthur, Texas","Port Arthur, Texas"
+Tolls,Delivery Point,"Rapid River, Michigan","Rapid River, Michigan"
+Tolls,Delivery Point,"Regina Terminal, Saskatchewan","Terminal Regina, à Regina, en Saskatchewan"
+Tolls,Delivery Point,"Regina, Saskatchewan",Regina (Saskatchewan)
+Tolls,Delivery Point,Saskatchewan Zone,Zone du Saskatchewan
+Tolls,Delivery Point,Schomberg CDA,ZLC de Schomberg
+Tolls,Delivery Point,Shaunavon ,Shaunavon 
+Tolls,Delivery Point,"Shell Isolation Point, LaSalle Road, Lambton County, Ontario","Point d’isolement Shell, chemin LaSalle Road, comté de Lambton, Ontario"
+Tolls,Delivery Point,FortisBC Kingsvale to Huntingdon,De Kingsvale à Huntingdon pour Fortis BC
+Tolls,Delivery Point,Huntingdon Delivery Area,Zone de livraison de Huntingdon
+Tolls,Delivery Point,Inland Delivery Area,Zone de livraison intérieure
+Tolls,Delivery Point,PNG Delivery Point,Point de livraison à PNG
+Tolls,Delivery Point,Southwest Zone,Zone du Sud-Ouest
+Tolls,Delivery Point,Spruce,Spruce
+Tolls,Delivery Point,St. Clair,St. Clair
+Tolls,Delivery Point,Steelman-Portal ,Steelman-Portal 
+Tolls,Delivery Point,"Stockbridge, Michigan","Stockbridge, Michigan"
+Tolls,Delivery Point,"Stony Beach Takeoff, Saskatchewan","Station de déviation de l’écoulement Stony Beach, Saskatchewan"
+Tolls,Delivery Point,Sumas,Sumas
+Tolls,Delivery Point,"Superior, Wisconsin","Superior, Wisconsin"
+Tolls,Delivery Point,Swan Valley,Swan Valley
+Tolls,Delivery Point,System,Système
+Tolls,Delivery Point,The International Boundary (via the Milk River Pipe Line),Frontière internationale (par la canalisation Milk River)
+Tolls,Delivery Point,Thorold CDA,ZLC de Thorold
+Tolls,Delivery Point,"Toronto Airport, Ontario","Aéroport de Toronto, Ontario"
+Tolls,Delivery Point,Transgas SSDA,ZLSS de TransGas
+Tolls,Delivery Point,Trois-Rivières,Trois Rivières
+Tolls,Delivery Point,Tunis NDA,ZLN de Tunis
+Tolls,Delivery Point,Union CDA,ZLC d’Union
+Tolls,Delivery Point,Union CDA (Amended),ZLC d’Union (modifiée)
+Tolls,Delivery Point,Union ECDA,ZLCE d’Union
+Tolls,Delivery Point,Union EDA,ZLE d’Union
+Tolls,Delivery Point,Union NCDA,ZLCE d’Union
+Tolls,Delivery Point,Union NDA,ZLN d’Union
+Tolls,Delivery Point,Union Parkway Belt,Union Parkway Belt
+Tolls,Delivery Point,Union SSMDA,ZLMSS d’Union
+Tolls,Delivery Point,Union SWDA,ZLSO d’Union
+Tolls,Delivery Point,Union WDA,ZLO d’Union
+Tolls,Delivery Point,Upstream of St-Nicolas,En amont de Saint-Nicolas
+Tolls,Delivery Point,Welwyn,Welwyn
+Tolls,Delivery Point,"West Seneca, New York","West Seneca, New York"
+Tolls,Delivery Point,Western Zone,Zone de l’Ouest
+Tolls,Delivery Point,"Westover, Ontario","Westover, Ontario"
+Tolls,Delivery Point,Westridge,Westridge
+Tolls,Delivery Point,"Wood River or Patoka, Illinois","Wood River ou Patoka, Illinois"
+Tolls,Delivery Point,"Zama, Alberta","Zama, Alberta"
+Tolls,Delivery Point,Zone 6,Zone 6
+Tolls,Delivery Point,Zone 7,Zone 7
+Tolls,Delivery Point,Zone 8,Zone 8
+Tolls,Delivery Point,Zone 9,Zone 9
+Tolls,Service,1 year,Un an
+Tolls,Service,"10-year commitment (less than 40,000 barrels)",Engagement de 10 ans (moins de 40 000 barils)
+Tolls,Service,"10-year commitment (more than 40,000 barrels)",Engagement de 10 ans (plus de 40 000 barils)
+Tolls,Service,"1st OPEN SEASON COMMITTED, 10 Years, 99,999 or less","1er APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, 99 999 ou moins"
+Tolls,Service,"1st OPEN SEASON COMMITTED, 15 Years, 49,999 or less","1er APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 49 999 ou moins"
+Tolls,Service,"1st OPEN SEASON COMMITTED, 15 Years, 50,000 +","1er APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 50 000 ou plus"
+Tolls,Service,2 years,2 ans
+Tolls,Service,"2ND OPEN SEASON COMMITTED, 10 Years, 49,999 or less","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, 49 999 ou moins"
+Tolls,Service,"2ND OPEN SEASON COMMITTED, 10 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, de 50 000 à 99 999"
+Tolls,Service,"2ND OPEN SEASON COMMITTED, 15 Years, 49,999 or less","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 49 999 ou moins"
+Tolls,Service,"2ND OPEN SEASON COMMITTED, 15 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, de 50 000 à 99 999"
+Tolls,Service,"2ND OPEN SEASON COMMITTED, 20 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 20 ans, de 50 000 à 99 999"
+Tolls,Service,"2nd OPEN SEASON COMMITTED, 10 Years, 49,999 or less","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, 49 999 ou moins"
+Tolls,Service,"2nd OPEN SEASON COMMITTED, 10 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, de 50 000 à 99 999"
+Tolls,Service,"2nd OPEN SEASON COMMITTED, 15 Years, 49,999 or less","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 49 999 ou moins"
+Tolls,Service,"2nd OPEN SEASON COMMITTED, 15 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, de 50 000 à 99 999"
+Tolls,Service,"2nd OPEN SEASON COMMITTED, 20 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 20 ans, de 50 000 à 99 999"
+Tolls,Service,3 years,3 ans
+Tolls,Service,"3rd Party Injected, Mainline tolls","Injection par un tiers, droits exigibles sur le réseau principal"
+Tolls,Service,"3rd Party Injected, Net Toll","Injection par un tiers, droit net"
+Tolls,Service,"3rd Party Injected, Surcharge","Injection par un tiers, supplément"
+Tolls,Service,"3rd Party Injected, Tankage Delivery","Injection par un tiers, installations de stockage pour la livraison"
+Tolls,Service,"3rd Party Injected, Tankage Receipt","Injection par un tiers, installations de stockage pour la réception"
+Tolls,Service,"3rd Party Injected, Terminalling Delivery","Injection par un tiers, opérations de terminal pour la livraison"
+Tolls,Service,"3rd Party Injected, Terminalling Receipt","Injection par un tiers, opérations de terminal pour la réception"
+Tolls,Service,"3rd Party Injected, Westridge Loading","Injection par un tiers, chargement au quai Westridge"
+Tolls,Service,4 years,4 ans
+Tolls,Service,5 years or more,5 ans ou plus
+Tolls,Service,5-year committment,Engagement de 5 ans
+Tolls,Service,5- to 9-year term,Durée de 5 à 9 ans
+Tolls,Service,10 years or more,10 ans ou plus
+Tolls,Service,Abandonment Surcharge,Supplément perçu au titre de la cessation d’exploitation
+Tolls,Service,Average Firm Service Receipt,Service de réception garanti moyen
+Tolls,Service,BGT Transportation Charge - Commodity,Frais TBG – produit de base
+Tolls,Service,BGT2 Transportation Charge - Commodity,Frais TBG2 – produit de base
+Tolls,Service,Committed,Volumes souscrits
+Tolls,Service,Committed Joint Rate,"Volumes souscrits, tarif commun"
+Tolls,Service,Committed Rates,"Volumes souscrits, tarifs"
+Tolls,Service,"Committed, 10 yr Term, Fixed Contract","Volumes souscrits, durée de 10 ans, contrat à tarif fixe"
+Tolls,Service,"Committed, 10 yr Term, Total Contract","Volumes souscrits, durée de 10 ans, total pour le contrat"
+Tolls,Service,"Committed, 10 yr Term, Variable Contract","Volumes souscrits, durée de 10 ans, contrat à tarif variable"
+Tolls,Service,"Committed, 20 yr A Term, Fixed Contract","Volumes souscrits, durée de 20 ans A, contrat à tarif fixe"
+Tolls,Service,"Committed, 20 yr A Term, Total Contract","Volumes souscrits, durée de 20 ans A, total pour le contrat"
+Tolls,Service,"Committed, 20 yr A Term, Variable Contract","Volumes souscrits, durée de 20 ans A, contrat à tarif variable"
+Tolls,Service,"Committed, 20 yr B Term, Fixed Contract","Volumes souscrits, durée de 20 ans B, contrat à tarif fixe"
+Tolls,Service,"Committed, 20 yr B Term, Total Contract","Volumes souscrits, durée de 20 ans B, total pour le contrat"
+Tolls,Service,"Committed, 20 yr B Term, Variable Contract","Volumes souscrits, durée de 20 ans B, contrat à tarif variable"
+Tolls,Service,"Committed, 20 yr Term, Fixed Contract","Volumes souscrits, durée de 20 ans, contrat à tarif fixe"
+Tolls,Service,"Committed, 20 yr Term, Total Contract","Volumes souscrits, durée de 20 ans, total pour le contrat"
+Tolls,Service,"Committed, 20 yr Term, Variable Contract","Volumes souscrits, durée de 20 ans, contrat à tarif variable"
+Tolls,Service,"Committed, Term, Fixed Contract","Volumes souscrits, temporaire, contrat à tarif fixe"
+Tolls,Service,"Committed, Term, Total Contract","Volumes souscrits, temporaire, total pour le contrat"
+Tolls,Service,"Committed, Term, Variable Contract","Volumes souscrits, temporaire, contrat à tarif variable"
+Tolls,Service,Daily Abandonment,Montant quotidien perçu au titre de la cessation d’exploitation
+Tolls,Service,Daily Abandonment Surcharge,Supplément quotidien perçu au titre de la cessation d’exploitation
+Tolls,Service,"Daily Abandonment Surcharge, Commodity Rate","Supplément quotidien perçu au titre de la cessation d’exploitation, tarif de fourniture"
+Tolls,Service,Daily FT Toll,Droits de transport garanti quotidiens
+Tolls,Service,Deferred 5 Year Commitment,Engagements reportés sur cinq ans
+Tolls,Service,"Direct Injected, Mainline tolls","Injection directe, droits exigibles sur le réseau principal"
+Tolls,Service,"Direct Injected, Net Toll","Injection directe, droit net"
+Tolls,Service,"Direct Injected, Surcharge","Injection directe, supplément"
+Tolls,Service,"Direct Injected, Tankage Delivery","Injection directe, installations de stockage pour la livraison"
+Tolls,Service,"Direct Injected, Tankage Receipt","Injection directe, installations de stockage pour la réception"
+Tolls,Service,"Direct Injected, Terminalling Delivery","Injection directe, opérations de terminal pour la livraison"
+Tolls,Service,"Direct Injected, Terminalling Receipt","Injection directe, opérations de terminal pour la réception"
+Tolls,Service,"Direct Injected, Westridge Loading","Injection directe, chargement au quai Westridge"
+Tolls,Service,"Direct, Mainline tolls","Direct, droits exigibles sur le réseau principal"
+Tolls,Service,"Direct, Net Toll","Direct, droit net"
+Tolls,Service,"Direct, Surcharge","Direct, supplément"
+Tolls,Service,"Direct, Tankage","Direct, installations de stockage"
+Tolls,Service,"Direct, Terminal","Direct, terminal"
+Tolls,Service,"Direct, Westridge Loading","Direct, chargement au quai Westridge"
+Tolls,Service,Discounted Toll,Droits réduits
+Tolls,Service,Discounted Volume Incentive Rate,"Volume réduit, tarif incitatif"
+Tolls,Service,"Firm Full Path Service, except Seasonal, 1Yr Demand Charge","Service d’accès complet garanti, à l’exception du service saisonnier, droit lié à la demande mensuelle pour 1 ans"
+Tolls,Service,"Firm Full Path Service, except Seasonal, 3Yr Demand Charge","Service d’accès complet garanti, à l’exception du service saisonnier, droit lié à la demande mensuelle pour 3 ans"
+Tolls,Service,"Firm Full Path Service, except Seasonal, 5Yr Demand Charge","Service d’accès complet garanti, à l’exception du service saisonnier, droit lié à la demande mensuelle pour 5 ans"
+Tolls,Service,"Firm Full Path Service, except Seasonal, Incremental Diversion Charge","Service d’accès complet garanti, à l’exception du service saisonnier, frais de déviation supplémentaires"
+Tolls,Service,"Firm Full Path Service, except Seasonal, Overrun Quantities Charge","Service d’accès complet garanti, à l’exception du service saisonnier, droit lié aux volumes de dépassement"
+Tolls,Service,"Firm Full Path Service, except Seasonal, PITS Charge 1","Service d’accès complet garanti, à l’exception du service saisonnier, frais de service TIP 1"
+Tolls,Service,"Firm Full Path Service, except Seasonal, PITS Charge 2","Service d’accès complet garanti, à l’exception du service saisonnier, frais de service TIP 2"
+Tolls,Service,"Firm Full Path Service: Seasonal, Demand Charge","Service d’accès complet garanti, service saisonnier, droit lié à la demande"
+Tolls,Service,"Firm Full Path Service: Seasonal, Incremental Diversion Charge","Service d’accès complet garanti, service saisonnier, droit lié aux déviations supplémentaires"
+Tolls,Service,"Firm Full Path Service: Seasonal, Overrun Quantities Charge","Service d’accès complet garanti, service saisonnier, droit lié aux volumes de dépassement"
+Tolls,Service,FT,SG
+Tolls,Service,FT Toll,Droit pour le SG
+Tolls,Service,"FT, Commodity","SG, produit de base"
+Tolls,Service,"FT, Demand","SG, demande"
+Tolls,Service,"FT, Demand Charge Surcharge","SG, droit lié à la demande, supplément"
+Tolls,Service,"FT, Demand Rate","SG, tarif lié à la demande"
+Tolls,Service,"FT, ROS Secondary Receipt Point","SG, SER, points de réception secondaires"
+Tolls,Service,FT-D Demand,"SG-L, demande"
+Tolls,Service,IT Bid Floor,"TI, plancher de soumission"
+Tolls,Service,"IT, Commodity Rate","TI, tarif de fourniture"
+Tolls,Service,Joint Rate,Tarif commun
+Tolls,Service,Local tariff,Tarif local
+Tolls,Service,"Metered In, 3rd Party, Mainline tolls","Comptage à l’entrée, tiers, droits exigibles sur le réseau principal"
+Tolls,Service,"Metered In, 3rd Party, Net Toll","Comptage à l’entrée, tiers, droit net"
+Tolls,Service,"Metered In, 3rd Party, Surcharge","Comptage à l’entrée, tiers, supplément"
+Tolls,Service,"Metered In, 3rd Party, Tankage Delivery","Comptage à l’entrée, tiers, installations de stockage pour la livraison"
+Tolls,Service,"Metered In, 3rd Party, Tankage Receipt","Comptage à l’entrée, tiers, installations de stockage pour la réception"
+Tolls,Service,"Metered In, 3rd Party, Terminalling Delivery","Comptage à l’entrée, tiers, opérations de terminal pour la livraison"
+Tolls,Service,"Metered In, 3rd Party, Terminalling Receipt","Comptage à l’entrée, tiers, opérations de terminal pour la réception"
+Tolls,Service,"Metered In, 3rd Party, Westridge Loading","Comptage à l’entrée, tiers, chargement au quai Westridge"
+Tolls,Service,"Metered In, Direct Mainline, Mainline tolls","Comptage à l’entrée, direct, réseau principal, droits exigibles sur le réseau principal"
+Tolls,Service,"Metered In, Direct Mainline, Net Toll","Comptage à l’entrée, direct, réseau principal, droit net"
+Tolls,Service,"Metered In, Direct Mainline, Surcharge","Comptage à l’entrée, direct, réseau principal, supplément"
+Tolls,Service,"Metered In, Direct Mainline, Tankage Delivery","Comptage à l’entrée, direct, réseau principal, installations de stockage pour la livraison"
+Tolls,Service,"Metered In, Direct Mainline, Tankage Receipt","Comptage à l’entrée, direct, réseau principal, installations de stockage pour la réception"
+Tolls,Service,"Metered In, Direct Mainline, Terminalling Delivery","Comptage à l’entrée, direct, réseau principal, opérations de terminal pour la livraison"
+Tolls,Service,"Metered In, Direct Mainline, Terminalling Receipt","Comptage à l’entrée, direct, réseau principal, opérations de terminal pour la réception"
+Tolls,Service,"Metered In, Direct Mainline, Westridge Loading","Comptage à l’entrée, direct, réseau principal, chargement au quai Westridge"
+Tolls,Service,Monthly Abandonment,Montant mensuel perçu au titre de la cessation d’exploitation
+Tolls,Service,"Monthly Abandonment Surcharge, Commodity Rate","Supplément mensuel perçu au titre de la cessation d’exploitation, tarif de fourniture"
+Tolls,Service,"N40 Injected, Mainline tolls","Injection N40, droits exigibles sur le réseau principal"
+Tolls,Service,"N40 Injected, Net Toll","Injection N40, droit net"
+Tolls,Service,"N40 Injected, Surcharge","Injection N40, supplément"
+Tolls,Service,"N40 Injected, Tankage Delivery","Injection N40, installations de stockage pour la livraison"
+Tolls,Service,"N40 Injected, Tankage Receipt","Injection N40, installations de stockage pour la réception"
+Tolls,Service,"N40 Injected, Terminalling Delivery","Injection N40, opérations de terminal pour la livraison"
+Tolls,Service,"N40 Injected, Terminalling Receipt","Injection N40, opérations de terminal pour la réception"
+Tolls,Service,"N40 Injected, Westridge Loading","Injection N40, chargement au quai Westridge"
+Tolls,Service,None,Rien
+Tolls,Service,"OT, Commodity Rate","Droits OT, tarif de fourniture"
+Tolls,Service,OT-1,Droits OT-1
+Tolls,Service,Pipeline Abandonment Surcharge,Supplément perçu au titre de la cessation d’exploitation
+Tolls,Service,"Recoverable Cost Variances Demand Surcharge and Recoverable Cost Variances Surcharge, FFPS, except for Seasonal, Recoverable Cost Variances Demand Surcharge","Supplément lié à la demande perçu au titre de l’écart de coûts récupérables et supplément perçu au titre de l’écart de coûts récupérables, service garanti sur tout le couloir, à l’exception du service saisonnier, supplément perçu au titre de l’écart de coûts récupérables"
+Tolls,Service,"Recoverable Cost Variances Demand Surcharge and Recoverable Cost Variances Surcharge, FFPS: Overrun Quantities, Recoverable Cost Variances Surcharge","Supplément lié à la demande perçu au titre de l’écart de coûts récupérables et supplément perçu au titre de l’écart de coûts récupérables, service garanti sur tout le couloir : Volumes de dépassement, supplément perçu au titre de l’écart de coûts récupérables"
+Tolls,Service,"Recoverable Cost Variances Demand Surcharge and Recoverable Cost Variances Surcharge, FFPS: PITS, Recoverable Cost Variances Surcharge","Supplément lié à la demande perçu au titre de l’écart de coûts récupérables et supplément perçu au titre de l’écart de coûts récupérables, service garanti sur tout le couloir : Service TIP, supplément perçu au titre de l’écart de coûts récupérables"
+Tolls,Service,"Recoverable Cost Variances Demand Surcharge and Recoverable Cost Variances Surcharge, FFPS: Seasonal, Recoverable Cost Variances Demand Surcharge","Supplément lié à la demande perçu au titre de l’écart de coûts récupérables et supplément perçu au titre de l’écart de coûts récupérables, service garanti sur tout le couloir : Service saisonnier, supplément perçu au titre de l’écart de coûts récupérables"
+Tolls,Service,Reservation Charge,Frais de réservation
+Tolls,Service,SGT Transportation Charge - Commodity,Frais de transport de gaz entreposé – Produit de base
+Tolls,Service,SGT-SCGM Transportation Charge - Commodity,Frais de transport de gaz entreposé – Taux au volume – Produit de base
+Tolls,Service,Simple capacity/commodity tolled pipelines,Pipelines à capacité simple pour les produits de base avec droits de transport
+Tolls,Service,STFT Minimum Tolls,Droits minimums du SG-CT
+Tolls,Service,T-1,Droits T-1
+Tolls,Service,"Tank Metered, Mainline tolls","Réservoirs munis de compteurs, droits exigibles sur le réseau principal"
+Tolls,Service,"Tank Metered, Net Toll","Réservoirs munis de compteurs, droit net"
+Tolls,Service,"Tank Metered, Non Pipe, Mainline tolls","Réservoirs munis de compteurs, installations non utilisées, droits exigibles sur le réseau principal"
+Tolls,Service,"Tank Metered, Non Pipe, Net Toll","Réservoirs munis de compteurs, installations non utilisées, droit net"
+Tolls,Service,"Tank Metered, Non Pipe, Surcharge","Réservoirs munis de compteurs, installations non utilisées, supplément"
+Tolls,Service,"Tank Metered, Non Pipe, Tankage Delivery","Réservoirs munis de compteurs, installations non utilisées, installations de stockage pour la livraison"
+Tolls,Service,"Tank Metered, Non Pipe, Tankage Receipt","Réservoirs munis de compteurs, installations non utilisées, installations de stockage pour la réception"
+Tolls,Service,"Tank Metered, Non Pipe, Terminalling Delivery","Réservoirs munis de compteurs, installations non utilisées, opérations de terminal pour la livraison"
+Tolls,Service,"Tank Metered, Non Pipe, Terminalling Receipt","Réservoirs munis de compteurs, installations non utilisées, opérations de terminal pour la réception"
+Tolls,Service,"Tank Metered, Non Pipe, Westridge Loading","Réservoirs munis de compteurs, installations non utilisées, chargement au quai Westridge"
+Tolls,Service,"Tank Metered, Surcharge","Réservoirs munis de compteurs, supplément"
+Tolls,Service,"Tank Metered, Tankage Delivery","Réservoirs munis de compteurs, installations de stockage pour la livraison"
+Tolls,Service,"Tank Metered, Tankage Receipt","Réservoirs munis de compteurs, installations de stockage pour la réception"
+Tolls,Service,"Tank Metered, Terminalling Delivery","Réservoirs munis de compteurs, opérations de terminal pour la livraison"
+Tolls,Service,"Tank Metered, Terminalling Receipt","Réservoirs munis de compteurs, opérations de terminal pour la réception"
+Tolls,Service,"Tank Metered, Westridge Loading","Réservoirs munis de compteurs, chargement au quai Westridge"
+Tolls,Service,"Tank Non Metered, Mainline tolls","Réservoirs non munis de compteurs, droits exigibles sur le réseau principal"
+Tolls,Service,"Tank Non Metered, Net Toll","Réservoirs non munis de compteurs, droit net"
+Tolls,Service,"Tank Non Metered, Surcharge","Réservoirs non munis de compteurs, supplément"
+Tolls,Service,"Tank Non Metered, Tankage Delivery","Réservoirs non munis de compteurs, installations de stockage pour la livraison"
+Tolls,Service,"Tank Non Metered, Tankage Receipt",installations de stockage pour la réception
+Tolls,Service,"Tank Non Metered, Terminalling Delivery","Réservoirs non munis de compteurs, opérations de terminal pour la livraison"
+Tolls,Service,"Tank Non Metered, Terminalling Receipt","Réservoirs non munis de compteurs, opérations de terminal pour la réception"
+Tolls,Service,"Tank Non Metered, Westridge Loading","Réservoirs non munis de compteurs, chargement au quai Westridge"
+Tolls,Service,"Tank, Mainline tolls","Réservoir, droits exigibles sur le réseau principal"
+Tolls,Service,"Tank, Net Toll",Réservoir. droit net
+Tolls,Service,"Tank, Surcharge","Réservoir, supplément"
+Tolls,Service,"Tank, Tankage","Réservoir, stockage"
+Tolls,Service,"Tank, Terminal","Réservoir, terminal"
+Tolls,Service,"Tank, Westridge Loading","Réservoir, chargement au quai Westridge"
+Tolls,Service,Toll,Droit
+Tolls,Service,TRANSMISSION AND TERMINALLING,TRANSPORT ET OPÉRATIONS DE TERMINAL
+Tolls,Service,Transportation,Transport
+Tolls,Service,TS Injection Fees - Commodity,TS Frais d’injection – Produit de base
+Tolls,Service,TS Storage Fees - Monthly,TS Frais de stockage – Mensuels
+Tolls,Service,TS-SCGM Injection Fees - Commodity,TS Frais d’injection  – Taux au volume – Produit de base
+Tolls,Service,TS-SCGM Storage Fees - Monthly,TS Frais de stockage – Taux au volume – Mensuels
+Tolls,Service,UNCOMMITTED,CAPACITÉ NON SOUSCRITE
+Tolls,Service,Uncommitted,Capacité non souscrite
+Tolls,Service,Uncommitted Joint Rate  ,Taux conjoint non souscrit  
+Tolls,Service,Uncommitted Rates,Taux non souscrits
+Tolls,Service,"Uncommitted, Uncommitted","Capacité non souscrite, taux non souscrit"
+Tolls,Service,Usage Charge Outside Tolerances,Frais d’utilisation hors tolérance
+Tolls,Service,Usage Charge Within Tolerances,Frais d’utilisation dans la tolérance
+Tolls,Service,Volume Incentive Rate,Taux incitatif relatif au volume
+Tolls,Units,$ per barrel,$ par baril
+Tolls,Units,$ per cubic metre,$ par mètre cube
+Tolls,Units,$/103m3 / month,$/1000 m3/mois
+Tolls,Units,$/1000 m3/month,$/1000 m3/mois
+Tolls,Units,$/103m3,$/1000 m3/mois
+Tolls,Units,$/103m3/ month,$/1000 m3/mois
+Tolls,Units,$/103m3/day,$/1000 m3/jour
+Tolls,Units,$/10³m³/month,$/1000 m3/mois
+Tolls,Units,$/barrel,$ par baril
+Tolls,Units,$/GJ,$/GJ
+Tolls,Units,$/GJ / month,$/GJ/mois
+Tolls,Units,$/GJ/month,$/GJ/mois
+Tolls,Units,$/GJ/Day,$/GJ/jour
+Tolls,Units,$/GJ/Km,$/GJ/kilomètre
+Tolls,Units,$/GJ/Km/Month,$/GJ/kilomètre/mois
+Tolls,Units,$/GJ/Month,$/GJ/mois
+Tolls,Units,$/m3,$ par mètre cube
+Tolls,Units,$/month,$/mois
+Tolls,Units,10³m³,1000 mètre cube
+Tolls,Units,103m3/mo,1000 m3/mois
+Tolls,Units,10³m³/mo,1000 m3/mois
+Tolls,Units,CAD DOLLARS PER CUBIC METRE,CAD$ par mètre cube
+Tolls,Units,CAN $/GJ,CAN $/GJ
+Tolls,Units,Canadian Dollars per Cubic Metre,CAD$ par mètre cube
+Tolls,Units,Canadian Dollars per cubic metre,CAD$ par mètre cube
+Tolls,Units,CN$/m3,CAD$ par mètre cube
+Tolls,Units,cubic metre,mètre cube
+Tolls,Units,DOLLARS PER CUBIC METRE,$ par mètre cube
+Tolls,Units,None,Rien
+Tolls,Units,NULL,NULL
+Tolls,Units,U.S. DOLLARS PER BARREL,US$ par baril
+Tolls,Units,US cents per barrel,cents US le baril
+Tolls,Units,US DOLLARS PER CUBIC METER,US$ par mètre cube
+Tolls,Units,US$ per cubic metre,US$ par mètre cube
+Tolls,Units,USD$ per cubic metre,US$ par mètre cube
+Tolls,Units,US dollars per cubic metre,US$ par mètre cube
+Tolls,Units,US$/m3,US$ par mètre cube
+Tolls,Units,US$/gallon,US$/gallon
+Tolls,Units,US/MMBtu,US/MMBtu
+Tolls,Units,USD$ per barrel,US$ par baril

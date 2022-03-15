@@ -125,7 +125,8 @@ EnbridgeFSP,Tariff 463,2020-05-01,2020-06-30
 EnbridgeFSP,Tariff 474,2020-07-01,2020-11-30
 EnbridgeFSP,Tariff 476,2020-12-01,2021-06-30
 EnbridgeFSP,Tariff 484,2021-07-01,2021-09-30
-EnbridgeFSP,Tariff 494,2021-10-01,2021-12-31
+EnbridgeFSP,Tariff 494,2021-10-01,2022-02-28
+EnbridgeFSP,Tariff 495,2022-03-01,2022-03-31
 EnbridgeLine9,Tariff 348,2014-08-19,2014-12-31
 EnbridgeLine9,Tariff 349,2014-08-19,2014-12-31
 EnbridgeLine9,Tariff 356,2015-01-01,2015-11-13
@@ -152,7 +153,7 @@ EnbridgeLine9,Tariff 472,2020-07-01,2021-06-30
 EnbridgeLine9,Tariff 473,2020-07-01,2021-06-30
 EnbridgeLine9,Tariff 482,2021-07-01,2022-06-30
 EnbridgeLine9,Tariff 483,2021-07-01,2021-09-30
-EnbridgeLine9,Tariff 493,2021-10-01,2021-12-31
+EnbridgeLine9,Tariff 493,2021-10-01,2022-03-31
 EnbridgeLocal,Tariff 345,2014-07-01,2015-03-31
 EnbridgeLocal,Tariff 367,2015-04-01,2015-06-30
 EnbridgeLocal,Tariff 372,2015-07-01,2015-08-14
@@ -169,7 +170,7 @@ EnbridgeLocal,Tariff 458,2019-12-01,2020-05-31
 EnbridgeLocal,Tariff 466,2020-06-01,2020-06-30
 EnbridgeLocal,Tariff 470,2020-07-01,2021-06-30
 EnbridgeLocal,Tariff 480,2021-07-01,2021-09-30
-EnbridgeLocal,Tariff 491,2021-10-01,2021-12-31
+EnbridgeLocal,Tariff 491,2021-10-01,2022-03-31
 EnbridgeMainline,Tariff 317,2011-07-01,2012-06-30
 EnbridgeMainline,Tariff 326,2012-07-01,2013-06-30
 EnbridgeMainline,Tariff 334,2013-07-01,2014-06-30
@@ -193,7 +194,7 @@ EnbridgeMainline,Tariff 460,2020-01-01,2020-05-31
 EnbridgeMainline,Tariff 467,2020-06-01,2020-06-30
 EnbridgeMainline,Tariff 471,2020-07-01,2021-06-30
 EnbridgeMainline,Tariff 481,2021-07-01,2021-09-30
-EnbridgeMainline,Tariff 492,2021-10-01,2021-12-31
+EnbridgeMainline,Tariff 492,2021-10-01,2022-03-31
 Express,Tariff 115,2011-04-01,2012-03-31
 Express,Tariff 117,2012-04-01,2013-03-31
 Express,Tariff 119,2013-04-01,2013-05-14
