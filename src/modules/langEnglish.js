@@ -629,8 +629,9 @@ export const englishDashboard = {
     companyToSystem,
     noEvents,
     eventName: "tolls",
-    lang: "e",
+    // lang: "e",
     dashboard: {
+      lang: "e",
       tooltip: {
         toll: "Toll:",
         path: "Path:",

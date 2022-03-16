@@ -13,8 +13,8 @@ def get_tolls_data(sql=True):
                   db="PipelineInformation",
                   sql=sql)
     df["Path"] = [str(r)+"-"+str(d) for r, d in zip(df["Receipt Point"], df["Delivery Point"])]
-    del df["Receipt Point"]
-    del df["Delivery Point"]
+    # del df["Receipt Point"]
+    # del df["Delivery Point"]
 
     descriptions = get_data(os.getcwd(),
                             "tolls_description.sql",
@@ -160,7 +160,7 @@ def company_filter(df, company):
 
 
 def process_path(df, series_col, minimize=True):
-    path_series = sorted(list(set(df[series_col])))
+    path_series = list(set(df[series_col]))
     series = []
     for ps in path_series:
         df_s = df[df[series_col] == ps].copy().reset_index()
@@ -254,6 +254,55 @@ def units_filter(df):
     return uf
 
 
+def prepare_translation_lookup(df_t):
+    del df_t["Table"]
+    df_t = df_t.reset_index()
+    cols = list(set(df_t["Column"]))
+    lookup = {}
+    for col in cols:
+        dfc = df_t[df_t["Column"] == col].copy()
+        # dfc = dfc.reset_index(drop=True)
+        # dfc = dfc.reset_index()
+        col_lookup = {}
+        for index, e, f in zip(dfc["index"], dfc["English"], dfc["French"]):
+            e = str(e).strip()
+            f = str(f).strip()
+            if e == f:
+                f = None
+            col_lookup[index] = {"e": str(e).strip(), "f": str(f).strip()}
+        lookup[col] = col_lookup
+    
+    return lookup
+
+
+def translate(df, lookup):
+    this_company = {}
+    def apply_to_col(df_e, look, df_col, look_col):
+        ids = []
+        # if not df_col in this_company:
+        #     this_company[df_col] = {}
+        for eng_value in df_e[df_col]:
+            found = False
+            for key, value in look[look_col].items():
+                if eng_value == value["e"]:
+                    ids.append(key)
+                    this_company[key] = value
+                    found = True
+            if not found:
+                ids.append(eng_value)
+        
+        df_e[df_col] = ids
+        return df_e
+    
+    df = apply_to_col(df, lookup, "Delivery Point", "Delivery Point")
+    df = apply_to_col(df, lookup, "Receipt Point", "Receipt Point")
+    df = apply_to_col(df, lookup, "Service", "Service")
+    df = apply_to_col(df, lookup, "Product", "Product")
+    df = apply_to_col(df, lookup, "Original Toll Unit", "Units")
+    df = apply_to_col(df, lookup, "Converted Toll Unit", "Units")
+    return df, this_company
+
+
 def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
     def generate_path_series(df, paths, series_col):
@@ -266,8 +315,8 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         return path_series
 
     def find_series_col(df, company):
-        products = sorted(list(set(df["Product"])))
-        services = sorted(list(set(df["Service"])))
+        products = list(set(df["Product"]))
+        services = list(set(df["Service"]))
         units = list(set(df["Original Toll Unit"]))
         if len(products) > 1:
             product_filter = list(set(df["Product"]))
@@ -296,6 +345,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         return series_col, product_filter
 
     df, descriptions, toll_nums, translations = get_tolls_data(sql)
+    translation_lookup = prepare_translation_lookup(translations)
     toll_nums = normalize_dates(toll_nums, ["s", "e"])
     df = normalize_text(df, ['Product', 'Path', 'Service', 'Original Toll Unit', 'Converted Toll Unit'])
     df = normalize_dates(df, ["Effective Start", "Effective End"])
@@ -315,13 +365,16 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
 
         df_c, selected_paths, selectedService, path_filter, split_default, path_totals, decimals = company_filter(df_c, company)
+        df_c, company_translations = translate(df_c, translation_lookup)
+        # this_company_data["translations"] = company_translations
         meta = {"companyName": company}
+        meta["translations"] = company_translations
         if not df_c.empty and company in completed:
             meta["build"] = True
             meta["pathTotals"] = path_totals
             meta["decimals"] = decimals
             paths = sorted(list(set(df_c["Path"])))
-            services = sorted(list(set(df_c["Service"])))
+            services = list(set(df_c["Service"]))
             units = list(set(df_c["Original Toll Unit"]))
             meta["pathFilter"] = path_filter
             meta["split"] = {"default": split_default}
@@ -347,7 +400,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
 
                     paths = sorted(list(set(df_split["Path"])))
-                    services = sorted(list(set(df_split["Service"])))
+                    services = list(set(df_split["Service"]))
                     units = list(set(df_split["Original Toll Unit"]))
                     series_col, product_filter = find_series_col(df_split, company)
                     if len(selected_paths) > 0:

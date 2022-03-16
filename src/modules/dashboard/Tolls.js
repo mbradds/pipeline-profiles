@@ -152,6 +152,19 @@ export class Tolls {
     return `${this.lang.yAxis} (${this.currentUnits})`;
   }
 
+  substituteTranslation(id) {
+    try {
+      if (
+        Object.prototype.hasOwnProperty.call(this.metaData.translations, id)
+      ) {
+        return this.metaData.translations[id][this.lang.lang];
+      }
+      return id;
+    } catch (err) {
+      return id;
+    }
+  }
+
   buildTollsChart(series) {
     const dashboard = this;
     this.chart = Highcharts.chart({
@@ -181,6 +194,9 @@ export class Tolls {
       legend: {
         title: {
           text: dashboard.seriesCol,
+        },
+        labelFormatter() {
+          return dashboard.substituteTranslation(this.name);
         },
       },
       plotOptions: {
