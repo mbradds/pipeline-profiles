@@ -13,8 +13,6 @@ def get_tolls_data(sql=True):
                   db="PipelineInformation",
                   sql=sql)
     df["Path"] = [str(r)+"-"+str(d) for r, d in zip(df["Receipt Point"], df["Delivery Point"])]
-    # del df["Receipt Point"]
-    # del df["Delivery Point"]
 
     descriptions = get_data(os.getcwd(),
                             "tolls_description.sql",
@@ -30,6 +28,7 @@ def get_tolls_data(sql=True):
                             "tolls_translation.sql",
                             db="PipelineInformation",
                             sql=sql)
+    translations = normalize_text(translations, translations.columns)
     return df, descriptions, toll_nums, translations
 
 
@@ -271,7 +270,7 @@ def prepare_translation_lookup(df_t):
                 f = None
             col_lookup[index] = {"e": str(e).strip(), "f": str(f).strip()}
         lookup[col] = col_lookup
-    
+
     return lookup
 
 
@@ -279,8 +278,6 @@ def translate(df, lookup):
     this_company = {}
     def apply_to_col(df_e, look, df_col, look_col):
         ids = []
-        # if not df_col in this_company:
-        #     this_company[df_col] = {}
         for eng_value in df_e[df_col]:
             found = False
             for key, value in look[look_col].items():
@@ -291,9 +288,9 @@ def translate(df, lookup):
             if not found:
                 ids.append(eng_value)
         
-        df_e[df_col] = ids
+        df_e[df_col] = [str(id_) for id_ in ids]
         return df_e
-    
+
     df = apply_to_col(df, lookup, "Delivery Point", "Delivery Point")
     df = apply_to_col(df, lookup, "Receipt Point", "Receipt Point")
     df = apply_to_col(df, lookup, "Service", "Service")
@@ -310,8 +307,11 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         for path in paths:
             df_p = df[df["Path"] == path].copy().reset_index(drop=True)
             if not df_p.empty:
-                path_series.append({"pathName": path,
-                                   "series": process_path(df_p, series_col)})
+                receipt_point = list(df_p["Receipt Point"])[0]
+                delivery_point = list(df_p["Delivery Point"])[0]
+                path_series.append({"receiptPoint": receipt_point,
+                                    "deliveryPoint": delivery_point,
+                                    "series": process_path(df_p, series_col)})
         return path_series
 
     def find_series_col(df, company):
@@ -320,7 +320,8 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         units = list(set(df["Original Toll Unit"]))
         if len(products) > 1:
             product_filter = list(set(df["Product"]))
-            product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
+            product_filter = [[value, True] if x == 0 else [x, False] for x, value in enumerate(product_filter)]
+            # product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
         else:
             product_filter = False
 
@@ -365,8 +366,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
 
         df_c, selected_paths, selectedService, path_filter, split_default, path_totals, decimals = company_filter(df_c, company)
-        df_c, company_translations = translate(df_c, translation_lookup)
-        # this_company_data["translations"] = company_translations
+        df_c, company_translations = translate(df_c.copy(), translation_lookup)
         meta = {"companyName": company}
         meta["translations"] = company_translations
         if not df_c.empty and company in completed:
@@ -473,7 +473,7 @@ if __name__ == "__main__":
                   "Wascana"]
 
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["EnbridgeMainline"],
-                                                 companies=completed_,
+                                                 companies = ["EnbridgeLine9"],
+                                                 # companies=completed_,
                                                  completed=completed_)
     print("done tolls")

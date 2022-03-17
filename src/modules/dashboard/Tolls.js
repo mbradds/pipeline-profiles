@@ -68,13 +68,16 @@ export class Tolls {
     }
   }
 
-  static buildSeries(data, units = 0) {
+  buildSeries(data, units = 0) {
     const processTollsSection = (section) => {
       const seriesLookup = {};
       const colorList = Object.values(cerPalette);
       const usedColors = {};
       section.forEach((path, pathNum) => {
         const fullPath = [];
+        const fullPathName = `${this.substituteTranslation(
+          path.receiptPoint
+        )}-${this.substituteTranslation(path.deliveryPoint)}`;
         path.series.forEach((partialPath, partialNum) => {
           const fullTolls = [];
           partialPath.data.forEach((toll) => {
@@ -87,17 +90,17 @@ export class Tolls {
             usedColors[partialPath.id] = currentColor;
           }
           fullPath.push({
-            id: `${partialPath.id}-${path.pathName}`,
+            id: `${partialPath.id}-${fullPathName}`,
             name: partialPath.id,
             service: partialPath.s,
             data: fullTolls,
             color: currentColor,
-            pathName: path.pathName,
+            pathName: fullPathName,
             units: partialPath.u,
             product: partialPath.p,
           });
         });
-        seriesLookup[path.pathName] = fullPath;
+        seriesLookup[fullPathName] = fullPath;
       });
       return seriesLookup;
     };
@@ -131,11 +134,11 @@ export class Tolls {
       Path: tableRow(this.lang.tooltip.path, event.series.userOptions.pathName),
       Product: tableRow(
         this.lang.tooltip.product,
-        event.series.userOptions.product
+        this.substituteTranslation(event.series.userOptions.product)
       ),
       Service: tableRow(
         this.lang.tooltip.service,
-        event.series.userOptions.service
+        this.substituteTranslation(event.series.userOptions.service)
       ),
     };
     Object.keys(optionalSections).forEach((row) => {
@@ -143,7 +146,10 @@ export class Tolls {
         toolText += optionalSections[row];
       }
     });
-    toolText += tableRow(seriesCol, event.series.userOptions.name);
+    toolText += tableRow(
+      seriesCol,
+      this.substituteTranslation(event.series.userOptions.name)
+    );
     toolText += `</table>`;
     return toolText;
   }
@@ -334,16 +340,13 @@ export class Tolls {
 
     let selected = [];
     if (!this.currentSplit) {
-      const series = Tolls.buildSeries(this.tollsData, units);
+      const series = this.buildSeries(this.tollsData, units);
       const paths = this.currentPath
         ? [[this.currentPath, true]]
         : this.metaData.paths;
       selected = addAll(paths, selected, series);
     } else {
-      const series = Tolls.buildSeries(
-        this.tollsData[this.currentSplit],
-        units
-      );
+      const series = this.buildSeries(this.tollsData[this.currentSplit], units);
       const paths = this.currentPath
         ? [[this.currentPath, true]]
         : this.metaData.paths[this.currentSplit];
