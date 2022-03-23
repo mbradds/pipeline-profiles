@@ -78,6 +78,7 @@ export class Tolls {
         const fullPathName = `${this.substituteTranslation(
           path.receiptPoint
         )}-${this.substituteTranslation(path.deliveryPoint)}`;
+        // const fullPathName = `${path.receiptPoint}-${path.deliveryPoint}`;
         path.series.forEach((partialPath, partialNum) => {
           const fullTolls = [];
           partialPath.data.forEach((toll) => {
@@ -239,11 +240,12 @@ export class Tolls {
   addFilterBtns() {
     const addCheckbox = (point, btnGroup, i, type, section) => {
       const checked = point[1] ? `checked="checked"` : "";
+      const displayValue = this.substituteTranslation(point[0]);
       btnGroup.insertAdjacentHTML(
         "beforeend",
         `<div class="${type}">
         <label for="inlineCheck${i}${section}" label>
-        <input id="inlineCheck${i}${section}" ${checked} type="${type}" name="optradio${section}" value="${point[0]}">${point[0]}
+        <input id="inlineCheck${i}${section}" ${checked} type="${type}" name="optradio${section}" value="${displayValue}">${displayValue}
         </label></div>`
       );
       return btnGroup;

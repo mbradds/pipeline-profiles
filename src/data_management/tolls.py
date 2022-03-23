@@ -256,6 +256,7 @@ def units_filter(df):
 def prepare_translation_lookup(df_t):
     del df_t["Table"]
     df_t = df_t.reset_index()
+    df_t["index"] = [str(x) for x in df_t["index"]]
     cols = list(set(df_t["Column"]))
     lookup = {}
     for col in cols:
@@ -320,7 +321,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         units = list(set(df["Original Toll Unit"]))
         if len(products) > 1:
             product_filter = list(set(df["Product"]))
-            product_filter = [[value, True] if x == 0 else [x, False] for x, value in enumerate(product_filter)]
+            product_filter = [[value, True] if x == 0 else [value, False] for x, value in enumerate(product_filter)]
             # product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
         else:
             product_filter = False
@@ -342,6 +343,9 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         # override series col if needed
         if company in ["Westcoast", "Keystone"]:
             series_col = "Path"
+            
+        if series_col == "Product":
+            product_filter = False
 
         return series_col, product_filter
 
@@ -473,7 +477,7 @@ if __name__ == "__main__":
                   "Wascana"]
 
     df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 companies = ["EnbridgeLine9"],
+                                                 companies = ["EnbridgeMainline"],
                                                  # companies=completed_,
                                                  completed=completed_)
     print("done tolls")
