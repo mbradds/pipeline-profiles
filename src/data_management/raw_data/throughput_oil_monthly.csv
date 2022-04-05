@@ -192,6 +192,18 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2020-10-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",30.9407,47.6963
 2020-11-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",30.7025,47.6963
 2020-12-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",28.6722,47.6963
+2021-01-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",479.844,47.6963
+2021-02-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",44.0832,
+2021-03-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",33.209,
+2021-04-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",20.0175,
+2021-05-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",24.3469,
+2021-06-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",30.8046,
+2021-07-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",29.3412,
+2021-08-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",35.2556,
+2021-09-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",25.4744,
+2021-10-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",24.5109,
+2021-11-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",32.1404,
+2021-12-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",29.3563,
 2015-01-01,EnbridgeMainline,KP0006,east,foreign light,4.2,
 2015-02-01,EnbridgeMainline,KP0006,east,foreign light,8.9,
 2015-03-01,EnbridgeMainline,KP0006,east,foreign light,13.0,
