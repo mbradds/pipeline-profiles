@@ -267,9 +267,8 @@ def prepare_translation_lookup(df_t):
         for index, e, f in zip(dfc["index"], dfc["English"], dfc["French"]):
             e = str(e).strip()
             f = str(f).strip()
-            if e == f:
-                f = None
-            col_lookup[index] = {"e": str(e).strip(), "f": str(f).strip()}
+            if e != f:
+                col_lookup[e] = f
         lookup[col] = col_lookup
 
     return lookup
@@ -278,27 +277,23 @@ def prepare_translation_lookup(df_t):
 def translate(df, lookup):
     this_company = {}
     def apply_to_col(df_e, look, df_col, look_col):
-        ids = []
         for eng_value in df_e[df_col]:
-            found = False
-            for key, value in look[look_col].items():
-                if eng_value == value["e"]:
-                    ids.append(key)
-                    this_company[key] = value
-                    found = True
-            if not found:
-                ids.append(eng_value)
-        
-        df_e[df_col] = [str(id_) for id_ in ids]
-        return df_e
+            if eng_value:
+                found = False
+                for key, value in look[look_col].items():
+                    if eng_value == key:
+                        this_company[key] = value
+                        found = True
+                    if found:
+                        break
 
-    df = apply_to_col(df, lookup, "Delivery Point", "Delivery Point")
-    df = apply_to_col(df, lookup, "Receipt Point", "Receipt Point")
-    df = apply_to_col(df, lookup, "Service", "Service")
-    df = apply_to_col(df, lookup, "Product", "Product")
-    df = apply_to_col(df, lookup, "Original Toll Unit", "Units")
-    df = apply_to_col(df, lookup, "Converted Toll Unit", "Units")
-    return df, this_company
+    apply_to_col(df, lookup, "Delivery Point", "Delivery Point")
+    apply_to_col(df, lookup, "Receipt Point", "Receipt Point")
+    apply_to_col(df, lookup, "Service", "Service")
+    apply_to_col(df, lookup, "Product", "Product")
+    apply_to_col(df, lookup, "Original Toll Unit", "Units")
+    apply_to_col(df, lookup, "Converted Toll Unit", "Units")
+    return this_company
 
 
 def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
@@ -314,7 +309,8 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                                     "deliveryPoint": delivery_point,
                                     "series": process_path(df_p, series_col)})
         return path_series
-
+    
+    # TODO: hard code the series columns. This is too risky
     def find_series_col(df, company):
         products = list(set(df["Product"]))
         services = list(set(df["Service"]))
@@ -370,7 +366,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
 
         df_c, selected_paths, selectedService, path_filter, split_default, path_totals, decimals = company_filter(df_c, company)
-        df_c, company_translations = translate(df_c.copy(), translation_lookup)
+        company_translations = translate(df_c.copy(), translation_lookup)
         meta = {"companyName": company}
         meta["translations"] = company_translations
         if not df_c.empty and company in completed:

@@ -75,10 +75,12 @@ export class Tolls {
       const usedColors = {};
       section.forEach((path, pathNum) => {
         const fullPath = [];
-        const fullPathName = `${this.substituteTranslation(
-          path.receiptPoint
-        )}-${this.substituteTranslation(path.deliveryPoint)}`;
-        // const fullPathName = `${path.receiptPoint}-${path.deliveryPoint}`;
+        // const fullPathName = `${this.substituteTranslation(
+        //   path.receiptPoint
+        // )}-${this.substituteTranslation(path.deliveryPoint)}`;
+
+        const fullPathName = `${path.receiptPoint}-${path.deliveryPoint}`;
+
         path.series.forEach((partialPath, partialNum) => {
           const fullTolls = [];
           partialPath.data.forEach((toll) => {
@@ -160,11 +162,14 @@ export class Tolls {
   }
 
   substituteTranslation(id) {
+    if (this.lang.lang === "e") {
+      return id;
+    }
     try {
       if (
         Object.prototype.hasOwnProperty.call(this.metaData.translations, id)
       ) {
-        return this.metaData.translations[id][this.lang.lang];
+        return this.metaData.translations[id];
       }
       return id;
     } catch (err) {
