@@ -929,9 +929,9 @@ const fr = {
     },
   },
   tolls: {
-    header: "FR: Tolls (in progress)",
+    header: "Droits",
     updated: "FR: Section updated September 2021",
-    descriptionHeader: "System Tolls Description",
+    descriptionHeader: "Description des droits du réseau",
   },
 };
 
