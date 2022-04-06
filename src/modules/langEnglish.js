@@ -629,7 +629,6 @@ export const englishDashboard = {
     companyToSystem,
     noEvents,
     eventName: "tolls",
-    // lang: "e",
     dashboard: {
       lang: "e",
       tooltip: {
