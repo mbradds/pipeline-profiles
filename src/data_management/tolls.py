@@ -298,18 +298,30 @@ def translate(df, lookup):
 
 def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
-    def generate_path_series(df, paths, series_col):
+    def generate_path_series(df, paths, series_col, selected_paths, split):
         path_series = []
+
+        if split and len(selected_paths) > 0:
+            check_paths = selected_paths[split]
+        else:
+            check_paths = selected_paths
+
         for path in paths:
             df_p = df[df["Path"] == path].copy().reset_index(drop=True)
+            selected = False
+            if path in check_paths:
+                selected = True
+            else:
+                selected = False
             if not df_p.empty:
                 receipt_point = list(df_p["Receipt Point"])[0]
                 delivery_point = list(df_p["Delivery Point"])[0]
                 path_series.append({"receiptPoint": receipt_point,
                                     "deliveryPoint": delivery_point,
+                                    "selected": selected,
                                     "series": process_path(df_p, series_col)})
         return path_series
-    
+
     # TODO: hard code the series columns. This is too risky
     def find_series_col(df, company):
         products = list(set(df["Product"]))
@@ -318,7 +330,6 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         if len(products) > 1:
             product_filter = list(set(df["Product"]))
             product_filter = [[value, True] if x == 0 else [value, False] for x, value in enumerate(product_filter)]
-            # product_filter = [[x, True] if x == "heavy crude" else [x, False] for x in product_filter]
         else:
             product_filter = False
 
@@ -339,7 +350,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
         # override series col if needed
         if company in ["Westcoast", "Keystone"]:
             series_col = "Path"
-            
+
         if series_col == "Product":
             product_filter = False
 
@@ -403,10 +414,6 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                     services = list(set(df_split["Service"]))
                     units = list(set(df_split["Original Toll Unit"]))
                     series_col, product_filter = find_series_col(df_split, company)
-                    if len(selected_paths) > 0:
-                        meta["paths"][split] = [[p, True] if p in selected_paths[split] else [p, False] for p in paths]
-                    else:
-                        meta["paths"][split] = [[p, True] for p in paths]
                     meta["products"][split] = product_filter
                     meta["seriesCol"][split] = series_col
                     meta["unitsFilter"][split] = units_filter(df_split)
@@ -415,7 +422,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                     else:
                         meta["services"][split] = selectedService
                     meta["units"][split] = units
-                    path_series[split] = generate_path_series(df_split, paths, series_col)
+                    path_series[split] = generate_path_series(df_split, paths, series_col, selected_paths, split)
             else:
                 # add toll numbers
                 this_nums = toll_nums[toll_nums["PipelineID"] == company].copy()
@@ -424,11 +431,10 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 series_col, product_filter = find_series_col(df_c, company)
                 meta["products"] = product_filter
                 meta["seriesCol"] = series_col
-                meta["paths"] = [[p, True] if p in selected_paths else [p, False] for p in paths]
                 meta["services"] = [[s, True] if s == selectedService else [s, False] for s in services]
                 meta["units"] = units
                 meta["unitsFilter"] = units_filter(df_c)
-                path_series = generate_path_series(df_c, paths, series_col)
+                path_series = generate_path_series(df_c, paths, series_col, selected_paths, False)
 
             this_company_data["meta"] = meta
             this_company_data["tolls"] = path_series

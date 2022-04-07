@@ -39,6 +39,16 @@ export class Tolls {
         return row;
       });
 
+    const getPointsList = (data) => [
+      data.map((d) => [`${d.receiptPoint}-${d.deliveryPoint}`, d.selected]),
+      data.map((d) => [
+        `${this.substituteTranslation(
+          d.receiptPoint
+        )}-${this.substituteTranslation(d.deliveryPoint)}`,
+        d.selected,
+      ]),
+    ];
+
     if (this.currentSplit) {
       this.currentProduct = getProduct(
         this.metaData.products[this.currentSplit]
@@ -51,7 +61,9 @@ export class Tolls {
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
       this.tollNum = tollNumDates(this.metaData.tollNum[this.currentSplit]);
       this.unitsFilter = this.metaData.unitsFilter[this.currentSplit];
-      this.points = this.metaData.paths[this.currentSplit];
+      [this.points, this.displayPoints] = getPointsList(
+        this.tollsData[this.currentSplit]
+      );
       this.products = this.metaData.products[this.currentSplit];
       this.services = this.metaData.services[this.currentSplit];
     } else {
@@ -62,13 +74,13 @@ export class Tolls {
       this.seriesCol = this.metaData.seriesCol;
       this.tollNum = tollNumDates(this.metaData.tollNum);
       this.unitsFilter = this.metaData.unitsFilter;
-      this.points = this.metaData.paths;
+      [this.points, this.displayPoints] = getPointsList(this.tollsData);
       this.products = this.metaData.products;
       this.services = this.metaData.services;
     }
   }
 
-  buildSeries(data, units = 0) {
+  static buildSeries(data, units = 0) {
     const processTollsSection = (section) => {
       const seriesLookup = {};
       const colorList = Object.values(cerPalette);
@@ -288,8 +300,8 @@ export class Tolls {
     const btnGroupPaths = createBtn(
       "tolls-path-btn",
       this.lang.filters.path,
-      this.points,
-      this.metaData.pathFilter[0] && this.points,
+      this.displayPoints,
+      this.metaData.pathFilter[0] && this.displayPoints,
       this.metaData.pathFilter[1],
       "point"
     );
@@ -347,17 +359,15 @@ export class Tolls {
     };
 
     let selected = [];
+    const paths = this.currentPath ? [[this.currentPath, true]] : this.points;
     if (!this.currentSplit) {
-      const series = this.buildSeries(this.tollsData, units);
-      const paths = this.currentPath
-        ? [[this.currentPath, true]]
-        : this.metaData.paths;
+      const series = Tolls.buildSeries(this.tollsData, units);
       selected = addAll(paths, selected, series);
     } else {
-      const series = this.buildSeries(this.tollsData[this.currentSplit], units);
-      const paths = this.currentPath
-        ? [[this.currentPath, true]]
-        : this.metaData.paths[this.currentSplit];
+      const series = Tolls.buildSeries(
+        this.tollsData[this.currentSplit],
+        units
+      );
       selected = addAll(paths, selected, series);
     }
     // filter products and services here
