@@ -56,8 +56,8 @@ export class Tolls {
       this.currentService = getProduct(
         this.metaData.services[this.currentSplit]
       );
-      [this.currentUnits] = this.metaData.units[this.currentSplit];
-      [this.defaultUnits] = this.metaData.units[this.currentSplit];
+      this.currentUnits = this.metaData.units[this.currentSplit];
+      this.defaultUnits = this.metaData.units[this.currentSplit];
       this.seriesCol = this.metaData.seriesCol[this.currentSplit];
       this.tollNum = tollNumDates(this.metaData.tollNum[this.currentSplit]);
       this.unitsFilter = this.metaData.unitsFilter[this.currentSplit];
@@ -66,17 +66,19 @@ export class Tolls {
       );
       this.products = this.metaData.products[this.currentSplit];
       this.services = this.metaData.services[this.currentSplit];
+      this.currentData = this.tollsData[this.currentSplit];
     } else {
       this.currentProduct = getProduct(this.metaData.products);
       this.currentService = getProduct(this.metaData.services);
-      [this.currentUnits] = this.metaData.units;
-      [this.defaultUnits] = this.metaData.units;
+      this.currentUnits = this.metaData.units;
+      this.defaultUnits = this.metaData.units;
       this.seriesCol = this.metaData.seriesCol;
       this.tollNum = tollNumDates(this.metaData.tollNum);
       this.unitsFilter = this.metaData.unitsFilter;
       [this.points, this.displayPoints] = getPointsList(this.tollsData);
       this.products = this.metaData.products;
       this.services = this.metaData.services;
+      this.currentData = this.tollsData;
     }
   }
 
@@ -263,7 +265,9 @@ export class Tolls {
         "beforeend",
         `<div class="${type}">
         <label for="inlineCheck${i}${section}" label>
-        <input id="inlineCheck${i}${section}" ${checked} type="${type}" name="optradio${section}" value="${displayValue}">${displayValue}
+        <input id="inlineCheck${i}${section}" ${checked} type="${type}" name="optradio${section}" value="${displayValue}">${this.substituteTranslation(
+          displayValue
+        )}
         </label></div>`
       );
       return btnGroup;
@@ -335,21 +339,55 @@ export class Tolls {
     return [btnGroupPaths, btnGroupProducts, btnGroupServices, btnGroupUnits];
   }
 
-  static addSplitButtons(split) {
-    const btnGroup = document.getElementById("tolls-split-btn");
-    split.buttons.forEach((point) => {
-      btnGroup.insertAdjacentHTML(
-        "beforeend",
-        `<div class="btn-group"><button type="button" value="${point}" class="btn btn-default${
-          point === split.default ? " active" : ""
-        }">${point}</button></div>`
-      );
-    });
-    return btnGroup;
+  addSplitButtons() {
+    if (this.currentSplit) {
+      const btnGroup = document.getElementById("tolls-split-btn");
+      this.metaData.split.buttons.forEach((point) => {
+        btnGroup.insertAdjacentHTML(
+          "beforeend",
+          `<div class="btn-group"><button type="button" value="${point}" class="btn btn-default${
+            point === this.metaData.split.default ? " active" : ""
+          }">${point}</button></div>`
+        );
+      });
+      btnGroup.addEventListener("click", (event) => {
+        if (event.target) {
+          this.unitsSelector = 0;
+          this.currentPath = undefined;
+          btnGroupClick("tolls-split-btn", event);
+          this.currentSplit = event.target.value;
+          this.getDefaults();
+          this.applySplitDescription();
+          this.addFilterBtns();
+          this.updateAllSeries(this.selectedSeries(0));
+          const dashboard = this;
+          this.chart.update({
+            tooltip: {
+              formatter() {
+                return dashboard.toolTipTolls(this, dashboard.seriesCol);
+              },
+            },
+            yAxis: {
+              title: {
+                text: dashboard.chartYaxisTitle(),
+              },
+            },
+            legend: {
+              title: {
+                text: dashboard.seriesCol,
+              },
+            },
+          });
+        }
+      });
+    } else {
+      visibility(["tolls-split-btn"], "hide");
+    }
   }
 
   selectedSeries(units) {
-    const addAll = (path, seriesList, fullSeries) => {
+    const addAll = (path, fullSeries) => {
+      const seriesList = [];
       path.forEach((p) => {
         if (p[1]) {
           seriesList.push(...fullSeries[p[0]]);
@@ -358,19 +396,10 @@ export class Tolls {
       return seriesList;
     };
 
-    let selected = [];
     const paths = this.currentPath ? [[this.currentPath, true]] : this.points;
-    if (!this.currentSplit) {
-      const series = Tolls.buildSeries(this.tollsData, units);
-      selected = addAll(paths, selected, series);
-    } else {
-      const series = Tolls.buildSeries(
-        this.tollsData[this.currentSplit],
-        units
-      );
-      selected = addAll(paths, selected, series);
-    }
-    // filter products and services here
+    const series = Tolls.buildSeries(this.currentData, units);
+    let selected = addAll(paths, series);
+
     if (this.currentProduct) {
       selected = selected.filter((s) => s.product === this.currentProduct);
     }
@@ -446,6 +475,29 @@ export class Tolls {
     });
   }
 
+  unitsListener(btnGroup) {
+    if (btnGroup) {
+      btnGroup.addEventListener("click", (event) => {
+        if (event.target && event.target.tagName === "INPUT") {
+          this.currentUnits = event.target.value;
+          if (this.currentUnits !== this.defaultUnits) {
+            this.unitsSelector = 1;
+          } else {
+            this.unitsSelector = 0;
+          }
+          this.updateAllSeries(this.selectedSeries(this.unitsSelector));
+          this.chart.update({
+            yAxis: {
+              title: {
+                text: this.chartYaxisTitle(),
+              },
+            },
+          });
+        }
+      });
+    }
+  }
+
   pathTotalsDisclaimer() {
     if (this.metaData.pathTotals[0] !== this.metaData.pathTotals[1]) {
       document.getElementById(
@@ -484,74 +536,16 @@ export class Tolls {
   }
 
   buildDashboard() {
+    this.addSplitButtons();
     const series = this.selectedSeries(this.unitsSelector);
     this.buildTollsChart(series);
     this.pathTotalsDisclaimer();
     this.applySplitDescription();
     const [pathBtns, productBtns, serviceBtns, unitsBtn] = this.addFilterBtns();
-
     this.listener(pathBtns, series, "path");
     this.listener(serviceBtns, series, "service");
     this.listener(productBtns, series, "product");
-
-    if (unitsBtn) {
-      unitsBtn.addEventListener("click", (event) => {
-        if (event.target && event.target.tagName === "INPUT") {
-          this.currentUnits = event.target.value;
-          if (this.currentUnits !== this.defaultUnits) {
-            this.unitsSelector = 1;
-          } else {
-            this.unitsSelector = 0;
-          }
-          this.updateAllSeries(this.selectedSeries(this.unitsSelector));
-          this.chart.update({
-            yAxis: {
-              title: {
-                text: this.chartYaxisTitle(),
-              },
-            },
-          });
-        }
-      });
-    }
-
-    if (this.currentSplit) {
-      Tolls.addSplitButtons(this.metaData.split).addEventListener(
-        "click",
-        (event) => {
-          if (event.target) {
-            this.unitsSelector = 0;
-            this.currentPath = undefined;
-            btnGroupClick("tolls-split-btn", event);
-            this.currentSplit = event.target.value;
-            this.getDefaults();
-            this.applySplitDescription();
-            this.addFilterBtns();
-            this.updateAllSeries(this.selectedSeries(0));
-            const dashboard = this;
-            this.chart.update({
-              tooltip: {
-                formatter() {
-                  return dashboard.toolTipTolls(this, dashboard.seriesCol);
-                },
-              },
-              yAxis: {
-                title: {
-                  text: dashboard.chartYaxisTitle(),
-                },
-              },
-              legend: {
-                title: {
-                  text: dashboard.seriesCol,
-                },
-              },
-            });
-          }
-        }
-      );
-    } else {
-      visibility(["tolls-split-btn"], "hide");
-    }
+    this.unitsListener(unitsBtn);
     return this.chart;
   }
 }

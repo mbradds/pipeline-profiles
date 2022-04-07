@@ -409,7 +409,6 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                         current_definition = descriptions[descriptions["PipelineID"] ==list(df_split["PipelineID"])[0]]
                         meta["splitDescription"][split] = list(current_definition["Toll Description"])[0]
 
-
                     paths = sorted(list(set(df_split["Path"])))
                     services = list(set(df_split["Service"]))
                     units = list(set(df_split["Original Toll Unit"]))
@@ -421,7 +420,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                         meta["services"][split] = [[s, True] if s == selectedService[split] else [s, False] for s in services]
                     else:
                         meta["services"][split] = selectedService
-                    meta["units"][split] = units
+                    meta["units"][split] = units[0]
                     path_series[split] = generate_path_series(df_split, paths, series_col, selected_paths, split)
             else:
                 # add toll numbers
@@ -432,7 +431,7 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
                 meta["products"] = product_filter
                 meta["seriesCol"] = series_col
                 meta["services"] = [[s, True] if s == selectedService else [s, False] for s in services]
-                meta["units"] = units
+                meta["units"] = units[0]
                 meta["unitsFilter"] = units_filter(df_c)
                 path_series = generate_path_series(df_c, paths, series_col, selected_paths, False)
 
