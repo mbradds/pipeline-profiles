@@ -366,10 +366,8 @@ export async function mainConditions(
 
     const xRange = Math.max(...midX) - Math.min(...midX);
     const yRange = Math.max(...midY) - Math.min(...midY);
-    let paddingScale = 1000;
-    if (validPoints.length === 1) {
-      paddingScale = 350;
-    } else {
+    let paddingScale = 350;
+    if (validPoints.length !== 1) {
       paddingScale = xRange > yRange ? xRange : yRange;
       paddingScale = ((1 / paddingScale) * 100000 + 1) ** 9;
       paddingScale = paddingScale > 1000 ? 1000 : paddingScale;
