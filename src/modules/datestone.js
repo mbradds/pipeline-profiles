@@ -23,6 +23,9 @@ const getDateFunction = (frequency) => {
   if (frequency === "yearly" || frequency === "y") {
     return (d, i) => d.setFullYear(d.getFullYear() + i);
   }
+  if (frequency === "quarterly" || frequency === "q") {
+    return (d, i) => d.setMonth(d.getMonth() + (i + 2));
+  }
   return (d, i) => d.setMonth(d.getMonth() + i);
 };
 const addRow = (units, increment, datePlusPlus) => (row, startDate) => ({
