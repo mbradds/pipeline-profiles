@@ -308,7 +308,7 @@ export function oandmTextEng(meta, lang) {
 
   const fourthParagraph = `<p>There have been ${dynamicValue(
     meta.atRisk
-  )} O&#38;M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/eng/acts/S-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws.justice.gc.ca/eng/acts/M-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
+  )} O&#38;M activities for which new temporary or permanent land is required and is located within critical habitat for any Endangered or Threatened species listed on Schedule 1 of the federal <a href="https://laws-lois.justice.gc.ca/eng/acts/S-15.3/"><i>Species at Risk Act</i></a>. When this happens, the company may be required to meet additional regulatory obligations outside of the <i>CER Act</i>, such as the <a href="https://laws-lois.justice.gc.ca/eng/acts/M-7.01/"><i>Migratory Birds Convention Act</i></a> and the <i>Species at Risk Act</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
     firstParagraph + secondParagraph + fourthParagraph;
@@ -334,7 +334,7 @@ export function oandmTextFra(meta, lang) {
 
   const fourthParagraph = `<p>Il y a eu ${dynamicValue(
     meta.atRisk
-  )} activités d’exploitation et d’entretien pour lesquelles de nouveaux terrains temporaires ou permanents ont été requis et qui se trouvent dans l’habitat essentiel d’une espèce en voie de disparition ou menacée inscrite à l’annexe 1 de la <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Loi sur les espèces en péril</i></a> fédérale. Lorsque cela se produit, la société peut être tenue de respecter d’autres obligations réglementaires en plus de celles de la LRCE, comme celles de la <a href="https://laws.justice.gc.ca/fra/lois/m-7.01/"><i>Loi sur la convention concernant les oiseaux migrateurs</i></a> et de la <i>Loi sur les espèces en péril</i>.</p>`;
+  )} activités d’exploitation et d’entretien pour lesquelles de nouveaux terrains temporaires ou permanents ont été requis et qui se trouvent dans l’habitat essentiel d’une espèce en voie de disparition ou menacée inscrite à l’annexe 1 de la <a href="https://laws-lois.justice.gc.ca/fra/lois/s-15.3/"><i>Loi sur les espèces en péril</i></a> fédérale. Lorsque cela se produit, la société peut être tenue de respecter d’autres obligations réglementaires en plus de celles de la LRCE, comme celles de la <a href="https://laws-lois.justice.gc.ca/fra/lois/m-7.01/"><i>Loi sur la convention concernant les oiseaux migrateurs</i></a> et de la <i>Loi sur les espèces en péril</i>.</p>`;
 
   document.getElementById("oandm-dynamic-text").innerHTML =
     firstParagraph + secondParagraph + fourthParagraph;

@@ -192,7 +192,7 @@ const en = {
     <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html">Onshore Pipeline
       Regulations</a>
     and the
-    <a href="https://laws.justice.gc.ca/eng/regulations/SOR-2003-39/index.html">Processing Plant
+    <a href="https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-39/index.html">Processing Plant
       Regulations</a>. New data is added quarterly.
     <a href="/en/safety-environment/industry-performance/infographic/index.html">Learn more</a>
     on how incident data collection has evolved since the NEB (now the CER)
@@ -641,7 +641,7 @@ const fr = {
     >
     et du
     <a
-      href="https://laws.justice.gc.ca/fra/reglements/DORS-2003-39/index.html"
+      href="https://laws-lois.justice.gc.ca/fra/reglements/DORS-2003-39/index.html"
       >Règlement sur les usines de traitement</a
     >. De nouvelles données sont ajoutées tous les trimestres.
     <a
