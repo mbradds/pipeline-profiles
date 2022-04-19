@@ -1,10 +1,36 @@
 import os
 import json
 import re
-import numpy as np
 import pandas as pd
 from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script
 set_cwd_to_script()
+
+completed_ = ["Alliance",
+              "Cochin",
+              "Aurora",
+              "EnbridgeBakken",
+              "EnbridgeMainline",
+              "EnbridgeLine9",
+              "Keystone",
+              "NGTL",
+              "Brunswick",
+              "TCPL",
+              "Express",
+              "Foothills",
+              "Genesis",
+              "ManyIslands",
+              "MNP",
+              "Montreal",
+              "MilkRiver",
+              "NormanWells",
+              "TransMountain",
+              "TQM",
+              "TransNorthern",
+              "SouthernLights",
+              "Vector",
+              "Westcoast",
+              "Westspur",
+              "Wascana"]
 
 
 def get_tolls_data(sql=True):
@@ -153,7 +179,7 @@ def company_filter(df, company):
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
     df, decimals = round_values(df)
     df = df.where(pd.notnull(df), None)
-    df = df.replace({np.nan: None})
+    # df = df.replace({np.nan: None})
     shown_paths = len(list(set(df["Path"])))
     return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths], decimals
 
@@ -296,7 +322,7 @@ def translate(df, lookup):
     return this_company
 
 
-def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
+def process_tolls(sql=True, companies=completed_, save=True, completed=completed_):
 
     def generate_path_series(df, paths, series_col, selected_paths, split):
         path_series = []
@@ -450,35 +476,8 @@ def process_tolls_data(sql=True, companies=False, save=True, completed=[]):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    completed_ = ["Alliance",
-                  "Cochin",
-                  "Aurora",
-                  "EnbridgeBakken",
-                  "EnbridgeMainline",
-                  "EnbridgeLine9",
-                  "Keystone",
-                  "NGTL",
-                  "Brunswick",
-                  "TCPL",
-                  "Express",
-                  "Foothills",
-                  "Genesis",
-                  "ManyIslands",
-                  "MNP",
-                  "Montreal",
-                  "MilkRiver",
-                  "NormanWells",
-                  "TransMountain",
-                  "TQM",
-                  "TransNorthern",
-                  "SouthernLights",
-                  "Vector",
-                  "Westcoast",
-                  "Westspur",
-                  "Wascana"]
-
-    df_, this_company_data_ = process_tolls_data(sql=False,
-                                                 # companies = ["EnbridgeMainline"],
-                                                 companies=completed_,
-                                                 completed=completed_)
+    df_, this_company_data_ = process_tolls(sql=False,
+                                            # companies = ["EnbridgeMainline"],
+                                            companies=completed_,
+                                            completed=completed_)
     print("done tolls")

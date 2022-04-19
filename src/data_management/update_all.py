@@ -5,6 +5,7 @@ from incidents import process_incidents
 from oandm import process_oandm
 from apportionment import process_apportionment
 from remediation import process_remediation
+from tolls import process_tolls
 
 
 if __name__ == "__main__":
@@ -15,3 +16,4 @@ if __name__ == "__main__":
     process_incidents(remote=True, test=False)
     process_oandm(remote=True, test=False)
     process_remediation(sql=True, remote=True, save=True, test=False)
+    process_tolls(sql=True)
