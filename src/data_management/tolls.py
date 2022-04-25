@@ -1,6 +1,8 @@
 import os
 import json
 import re
+import platform
+import numpy as np
 import pandas as pd
 from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script
 set_cwd_to_script()
@@ -177,11 +179,12 @@ def company_filter(df, company):
 
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
-    df, decimals = round_values(df)
+    df = round_values(df)
     df = df.where(pd.notnull(df), None)
-    # df = df.replace({np.nan: None})
+    if platform.system() == "Linux":
+        df = df.replace({np.nan: None})
     shown_paths = len(list(set(df["Path"])))
-    return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths], decimals
+    return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths]
 
 
 def process_path(df, series_col, minimize=True):
@@ -231,18 +234,11 @@ def process_path(df, series_col, minimize=True):
 
 def round_values(df):
     for value_col in ["Original Toll Value", "Converted Toll Value"]:
-        avg_toll = df[value_col].mean()
-        if avg_toll >= 1:
-            df[value_col] = df[value_col].round(2)
-            decimals = False
-        else:
-            df[value_col] = df[value_col].round(2)
-            decimals = True
-    return df, decimals
+        df[value_col] = df[value_col].round(2)
+    return df
 
 
 def process_description(desc, save):
-
     description_lookup = {}
     for company in list(desc["PipelineID"]):
         d_text = str(list(desc[desc["PipelineID"] == company]["Toll Description"])[0])
@@ -287,8 +283,6 @@ def prepare_translation_lookup(df_t):
     lookup = {}
     for col in cols:
         dfc = df_t[df_t["Column"] == col].copy()
-        # dfc = dfc.reset_index(drop=True)
-        # dfc = dfc.reset_index()
         col_lookup = {}
         for index, e, f in zip(dfc["index"], dfc["English"], dfc["French"]):
             e = str(e).strip()
@@ -348,7 +342,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
                                     "series": process_path(df_p, series_col)})
         return path_series
 
-    # TODO: hard code the series columns. This is too risky
+
     def find_series_col(df, company):
         products = list(set(df["Product"]))
         services = list(set(df["Service"]))
@@ -358,7 +352,8 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
             product_filter = [[value, True] if x == 0 else [value, False] for x, value in enumerate(product_filter)]
         else:
             product_filter = False
-
+        
+        # dynamically find the series column
         if len(units) > 1:
             series_col = "Units"
             print("Multiple units for: "+company)
@@ -373,13 +368,41 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
         else:
             series_col = "Service"
             print("error! Need to filter on two columns")
-        # override series col if needed
-        if company in ["Westcoast", "Keystone"]:
+            
+        # hard code the series column
+        if company in ["Westcoast",
+                       "Keystone",
+                       "Aurora",
+                       "NGTL",
+                       "Brunswick",
+                       "TCPL",
+                       "Foothills",
+                       "Genesis",
+                       "ManyIslands",
+                       "MNP",
+                       "Montreal",
+                       "NormanWells",
+                       "TQM",
+                       "TransNorthern",
+                       "Vector",
+                       "Westcoast",
+                       "Wascana"]:
             series_col = "Path"
+        elif company in ["Alliance", 
+                         "Cochin",
+                         "EnbridgeBakken",
+                         "EnbridgeLine9",
+                         "Express",
+                         "SouthernLights"]:
+            series_col = "Service"
+        elif company in ["TransMountain", "MilkRiver"]:
+            series_col = "Product"
+        else:
+            print("Error! Series column not hard coded for: "+ company)
 
         if series_col == "Product":
             product_filter = False
-
+        
         return series_col, product_filter
 
     df, descriptions, toll_nums, translations = get_tolls_data(sql)
@@ -395,21 +418,19 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
     if companies:
         company_files = companies
     for company in company_files:
-        # print(company)
         this_company_data = {}
         if company == "EnbridgeMainline":
             df_c = df[df["PipelineID"].isin(["EnbridgeMainline", "EnbridgeFSP", "EnbridgeLocal"])].copy().reset_index(drop=True)
         else:
             df_c = df[df["PipelineID"] == company].copy().reset_index(drop=True)
 
-        df_c, selected_paths, selectedService, path_filter, split_default, path_totals, decimals = company_filter(df_c, company)
+        df_c, selected_paths, selectedService, path_filter, split_default, path_totals = company_filter(df_c, company)
         company_translations = translate(df_c.copy(), translation_lookup)
         meta = {"companyName": company}
         meta["translations"] = company_translations
         if not df_c.empty and company in completed:
             meta["build"] = True
             meta["pathTotals"] = path_totals
-            meta["decimals"] = decimals
             paths = sorted(list(set(df_c["Path"])))
             services = list(set(df_c["Service"]))
             units = list(set(df_c["Original Toll Unit"]))

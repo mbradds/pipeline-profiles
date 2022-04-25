@@ -211,10 +211,7 @@ export class Tolls {
         },
         labels: {
           formatter() {
-            return Highcharts.numberFormat(
-              this.value,
-              dashboard.metaData.decimals ? 2 : 0
-            );
+            return Highcharts.numberFormat(this.value, 2);
           },
         },
       },
