@@ -439,7 +439,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
             if split_default:
                 meta["split"]["buttons"] = list(set(df_c["split"]))
                 path_series = {}
-                meta["paths"], meta["seriesCol"], meta["products"], meta["services"], meta["units"], meta["tollNum"], meta["unitsFilter"] = {}, {}, {}, {}, {}, {}, {}
+                meta["seriesCol"], meta["products"], meta["services"], meta["units"], meta["tollNum"], meta["unitsFilter"] = {}, {}, {}, {}, {}, {}
                 if company == "EnbridgeMainline":
                     meta["splitDescription"] = {}
                 else:
@@ -498,7 +498,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
 if __name__ == "__main__":
     print("starting tolls...")
     df_, this_company_data_ = process_tolls(sql=False,
-                                            # companies = ["EnbridgeMainline"],
-                                            companies=completed_,
+                                            companies = ["EnbridgeMainline"],
+                                            # companies=completed_,
                                             completed=completed_)
     print("done tolls")
