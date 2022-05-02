@@ -7,33 +7,6 @@ import pandas as pd
 from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script
 set_cwd_to_script()
 
-completed_ = ["Alliance",
-              "Cochin",
-              "Aurora",
-              "EnbridgeBakken",
-              "EnbridgeMainline",
-              "EnbridgeLine9",
-              "Keystone",
-              "NGTL",
-              "Brunswick",
-              "TCPL",
-              "Express",
-              "Foothills",
-              "Genesis",
-              "ManyIslands",
-              "MNP",
-              "Montreal",
-              "MilkRiver",
-              "NormanWells",
-              "TransMountain",
-              "TQM",
-              "TransNorthern",
-              "SouthernLights",
-              "Vector",
-              "Westcoast",
-              "Westspur",
-              "Wascana"]
-
 
 def get_tolls_data(sql=True):
     df = get_data(os.getcwd(),
@@ -290,7 +263,6 @@ def prepare_translation_lookup(df_t):
             if e != f:
                 col_lookup[e] = f
         lookup[col] = col_lookup
-
     return lookup
 
 
@@ -316,7 +288,7 @@ def translate(df, lookup):
     return this_company
 
 
-def process_tolls(sql=True, companies=completed_, save=True, completed=completed_):
+def process_tolls(sql=True, companies=False, save=True):
 
     def generate_path_series(df, paths, series_col, selected_paths, split):
         path_series = []
@@ -352,7 +324,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
             product_filter = [[value, True] if x == 0 else [value, False] for x, value in enumerate(product_filter)]
         else:
             product_filter = False
-        
+
         # dynamically find the series column
         if len(units) > 1:
             series_col = "Units"
@@ -368,7 +340,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
         else:
             series_col = "Service"
             print("error! Need to filter on two columns")
-            
+
         # hard code the series column
         if company in ["Westcoast",
                        "Keystone",
@@ -388,7 +360,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
                        "Westcoast",
                        "Wascana"]:
             series_col = "Path"
-        elif company in ["Alliance", 
+        elif company in ["Alliance",
                          "Cochin",
                          "EnbridgeBakken",
                          "EnbridgeLine9",
@@ -402,7 +374,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
 
         if series_col == "Product":
             product_filter = False
-        
+
         return series_col, product_filter
 
     df, descriptions, toll_nums, translations = get_tolls_data(sql)
@@ -428,7 +400,7 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
         company_translations = translate(df_c.copy(), translation_lookup)
         meta = {"companyName": company}
         meta["translations"] = company_translations
-        if not df_c.empty and company in completed:
+        if not df_c.empty:
             meta["build"] = True
             meta["pathTotals"] = path_totals
             paths = sorted(list(set(df_c["Path"])))
@@ -498,7 +470,6 @@ def process_tolls(sql=True, companies=completed_, save=True, completed=completed
 if __name__ == "__main__":
     print("starting tolls...")
     df_, this_company_data_ = process_tolls(sql=False,
-                                            companies = ["EnbridgeMainline"],
-                                            # companies=completed_,
-                                            completed=completed_)
+                                            # companies = ["EnbridgeMainline"],
+                                            )
     print("done tolls")
