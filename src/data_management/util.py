@@ -145,9 +145,9 @@ def most_common(df,
 #     return df
 
 
-def normalize_dates(df, date_list, short_date=False):
+def normalize_dates(df, date_list, short_date=False, errors="raise"):
     for date_col in date_list:
-        df[date_col] = pd.to_datetime(df[date_col], errors='raise')
+        df[date_col] = pd.to_datetime(df[date_col], errors=errors)
         if short_date:
             df[date_col] = df[date_col].dt.date
     return df
@@ -160,9 +160,9 @@ def normalize_text(df, text_list):
     return df
 
 
-def normalize_numeric(df, num_list, decimals):
+def normalize_numeric(df, num_list, decimals, errors="coerce"):
     for num_col in num_list:
-        df[num_col] = pd.to_numeric(df[num_col], errors='coerce')
+        df[num_col] = pd.to_numeric(df[num_col], errors=errors)
         df[num_col] = df[num_col].round(decimals)
     return df
 
