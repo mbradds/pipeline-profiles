@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/Brunswick.json";
 import tollsData from "../../data_output/tolls/Brunswick.json";
 import oandmData from "../../data_output/oandm/Brunswick.json";
 import remediationData from "../../data_output/remediation/Brunswick.json";
+import uaData from "../../data_output/unauthorized_activities/Brunswick.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

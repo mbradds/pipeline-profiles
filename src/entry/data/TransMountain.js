@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/TransMountain.json";
 import tollsData from "../../data_output/tolls/TransMountain.json";
 import oandmData from "../../data_output/oandm/TransMountain.json";
 import remediationData from "../../data_output/remediation/TransMountain.json";
+import uaData from "../../data_output/unauthorized_activities/TransMountain.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

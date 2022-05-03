@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/NGTL.json";
 import tollsData from "../../data_output/tolls/NGTL.json";
 import oandmData from "../../data_output/oandm/NGTL.json";
 import remediationData from "../../data_output/remediation/NGTL.json";
+import uaData from "../../data_output/unauthorized_activities/NGTL.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

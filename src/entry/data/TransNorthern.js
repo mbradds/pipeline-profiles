@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/TransNorthern.json";
 import tollsData from "../../data_output/tolls/TransNorthern.json";
 import oandmData from "../../data_output/oandm/TransNorthern.json";
 import remediationData from "../../data_output/remediation/TransNorthern.json";
+import uaData from "../../data_output/unauthorized_activities/TransNorthern.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

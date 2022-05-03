@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/Westcoast.json";
 import tollsData from "../../data_output/tolls/Westcoast.json";
 import oandmData from "../../data_output/oandm/Westcoast.json";
 import remediationData from "../../data_output/remediation/Westcoast.json";
+import uaData from "../../data_output/unauthorized_activities/Westcoast.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

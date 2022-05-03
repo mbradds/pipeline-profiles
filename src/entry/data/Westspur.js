@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/Westspur.json";
 import tollsData from "../../data_output/tolls/Westspur.json";
 import oandmData from "../../data_output/oandm/Westspur.json";
 import remediationData from "../../data_output/remediation/Westspur.json";
+import uaData from "../../data_output/unauthorized_activities/Westspur.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

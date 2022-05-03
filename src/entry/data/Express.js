@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/Express.json";
 import tollsData from "../../data_output/tolls/Express.json";
 import oandmData from "../../data_output/oandm/Express.json";
 import remediationData from "../../data_output/remediation/Express.json";
+import uaData from "../../data_output/unauthorized_activities/Express.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };
