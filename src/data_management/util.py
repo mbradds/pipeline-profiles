@@ -1,5 +1,6 @@
 import io
 import os
+import platform
 import pandas as pd
 import numpy as np
 from connection import cer_connection
@@ -9,7 +10,7 @@ from errors import IdError, IdLengthError
 def set_cwd_to_script():
     dname = os.path.dirname(os.path.abspath(__file__))
     os.chdir(dname)
-    
+
 
 set_cwd_to_script()
 
@@ -272,3 +273,10 @@ def prepare_ids(df):
     for key, e, f in zip(df.id, df.e, df.f):
         id_save[key] = {"e": e, "f": f}
     return id_save
+
+
+def replace_nulls_with_none(df):
+    df = df.where(pd.notnull(df), None)
+    if platform.system() == "Linux":
+        df = df.replace({np.nan: None})
+    return df
