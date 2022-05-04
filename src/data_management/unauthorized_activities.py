@@ -4,7 +4,7 @@ import json
 set_cwd_to_script()
 
 
-def ua_meta_data(df):
+def ua_meta_data(df, company):
     return {}
 
 
@@ -51,15 +51,16 @@ def process_ua(companies=False):
             folder_name = company.replace(' ', '').replace('.', '')
             df_c = df[df['Company Name'] == company].copy().reset_index(drop=True)
             this_company_data = {}
+            this_company_data["meta"] = {}
+            this_company_data["meta"]["companyName"] = company
             if not df_c.empty:
-                this_company_data["meta"] = ua_meta_data(df_c)
+                # this_company_data["meta"] = ua_meta_data(df_c)
                 this_company_data["meta"]["build"] = True
                 for delete in ["Date Event Occurred", "Company Name"]:
                     del df_c[delete]
                 df_c = optimize_json(df_c)
                 this_company_data['events'] = df_c.to_dict(orient='records')
             else:
-                this_company_data["meta"] = {}
                 this_company_data["meta"]["build"] = False
                 this_company_data["events"] = None
 

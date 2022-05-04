@@ -653,4 +653,14 @@ export const englishDashboard = {
     dateFormat,
     numberFormat,
   },
+  ua: {
+    dashboardError,
+    numberFormat,
+    dateFormat,
+    companyToSystem,
+    noEvents,
+    dashboard: {
+      eventName: "unauthorized activities",
+    },
+  },
 };

@@ -663,4 +663,14 @@ export const frenchDashboard = {
     dateFormat,
     numberFormat,
   },
+  ua: {
+    dashboardError,
+    numberFormat,
+    dateFormat,
+    companyToSystem,
+    noEvents,
+    dashboard: {
+      eventName: "unauthorized activities",
+    },
+  },
 };

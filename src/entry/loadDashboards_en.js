@@ -67,7 +67,7 @@ export function loadAllCharts(data, plains = false) {
   );
   mainOandM(data.oandmData, englishDashboard.oandm);
   mainRemediation(data.remediationData, englishDashboard.remediation);
-  mainUa(data.uaData.events, data.uaData.meta, {});
+  mainUa(data.uaData.events, data.uaData.meta, englishDashboard.ua);
 
   if (data.tcplRevenues) {
     mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);

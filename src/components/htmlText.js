@@ -117,12 +117,14 @@ const en = {
       incidents: "Reported Incidents",
       oandm: "Operations and Maintenance Activities",
       remediation: "Contaminated Sites and Remediation",
+      ua: "Unauthorized Activities",
     },
     updated: {
       conditions: "Section updated March 2022",
       incidents: "Section updated March 2022",
       oandm: "Section updated March 2022",
       remediation: "Section updated March 2022",
+      ua: "Section updated March 2022",
     },
     conditions: {
       p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
@@ -481,6 +483,45 @@ const en = {
         ),
       },
     },
+    ua: {
+      dashboard: {
+        id: "unauthorized-activities",
+        mapPillIds: [
+          "ua-year-bar",
+          "ua-province-bar",
+          "ua-water-bar",
+          "ua-use-bar",
+        ],
+        chartPillIds: [
+          "ua-status-trend",
+          "ua-activity-trend",
+          "ua-pipeline-trend",
+          "ua-contaminant-trend",
+        ],
+        hasRadio: false,
+        mapBtn: "Unauthorized Activities Map",
+        trendBtn: "Unauthorized Activities Trends",
+        nearby: {
+          type: "unauthorized activities",
+          header: "Are there any unauthorized activities near me?",
+          selectRange: "Select range (100km):",
+          find: "Find activities within 100km",
+          refill: "Refill Map Bubbles",
+        },
+        source: {
+          sourceTitle: sourceAndDescEn,
+          dataSourceTitle: dataSourceEn,
+          descriptionTitle: descriptionEn,
+          sourceText: sourceTextEn,
+          sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
+          description: "Coming soon!",
+          openGov: openGovLink(
+            "https://open.canada.ca/data/en/organization/cer-rec",
+            "en"
+          ),
+        },
+      },
+    },
   },
   tolls: {
     header: "Tolls (in progress)",
@@ -560,12 +601,14 @@ const fr = {
       incidents: "Incidents signalés",
       oandm: "Activités d’exploitation et d’entretien",
       remediation: "Sites contaminés et assainissement",
+      ua: "Unauthorized Activities FR",
     },
     updated: {
       conditions: "Mise à jour : mars 2022",
       incidents: "Mise à jour : mars 2022",
       oandm: "Mise à jour : mars 2022",
       remediation: "Mise à jour : mars 2022",
+      ua: "Mise à jour : mars 2022",
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
@@ -925,6 +968,45 @@ const fr = {
           "https://open.canada.ca/data/fr/dataset/1c47ebcc-17fd-4954-811f-3cdd0c30bf86",
           "fr"
         ),
+      },
+    },
+    ua: {
+      dashboard: {
+        id: "unauthorized-activities",
+        mapPillIds: [
+          "ua-year-bar",
+          "ua-province-bar",
+          "ua-water-bar",
+          "ua-use-bar",
+        ],
+        chartPillIds: [
+          "ua-status-trend",
+          "ua-activity-trend",
+          "ua-pipeline-trend",
+          "ua-contaminant-trend",
+        ],
+        hasRadio: false,
+        mapBtn: "Unauthorized Activities Map",
+        trendBtn: "Unauthorized Activities Trends",
+        nearby: {
+          type: "unauthorized activities",
+          header: "Are there any unauthorized activities near me?",
+          selectRange: "Select range (100km):",
+          find: "Find activities within 100km",
+          refill: "Refill Map Bubbles",
+        },
+        source: {
+          sourceTitle: sourceAndDescEn,
+          dataSourceTitle: dataSourceEn,
+          descriptionTitle: descriptionEn,
+          sourceText: sourceTextEn,
+          sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
+          description: "Coming soon!",
+          openGov: openGovLink(
+            "https://open.canada.ca/data/en/organization/cer-rec",
+            "en"
+          ),
+        },
       },
     },
   },

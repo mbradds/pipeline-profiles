@@ -53,7 +53,7 @@ export function loadAllCharts(data, plains = false) {
   );
   mainOandM(data.oandmData, frenchDashboard.oandm);
   mainRemediation(data.remediationData, frenchDashboard.remediation);
-  mainUa(data.uaData.events, data.uaData.meta, {});
+  mainUa(data.uaData.events, data.uaData.meta, frenchDashboard.ua);
 
   if (data.tcplRevenues) {
     mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
