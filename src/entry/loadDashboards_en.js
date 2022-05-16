@@ -22,14 +22,10 @@ import { englishDashboard } from "../modules/langEnglish.js";
 import { mainTraffic } from "../dashboards/trafficDashboard.js";
 // apportionment
 import { mainApportion } from "../dashboards/apportionmentDashboard.js";
-// tolls
-import { mainTolls } from "../dashboards/tollsDashboard.js";
 // operations and maintenance activities
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
 import { mainRemediation } from "../dashboards/remediationDashboard.js";
-// tcpl revenues
-import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { plainsMidstreamProfile, openTab } from "../modules/util.js";
 
@@ -50,7 +46,6 @@ export function loadAllCharts(data, plains = false) {
     englishDashboard.traffic
   );
   mainApportion(data.apportionData, englishDashboard.apportion);
-  mainTolls(data.tollsData.tolls, data.tollsData.meta, englishDashboard.tolls);
   mainConditions(
     JSON.parse(data.conditionsData.regions),
     data.canadaMap,
@@ -65,10 +60,6 @@ export function loadAllCharts(data, plains = false) {
   );
   mainOandM(data.oandmData, englishDashboard.oandm);
   mainRemediation(data.remediationData, englishDashboard.remediation);
-
-  if (data.tcplRevenues) {
-    mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);
-  }
 
   if (plains) {
     plainsMidstreamProfile(englishDashboard, "plains_disclaimer");

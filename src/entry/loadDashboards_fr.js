@@ -9,14 +9,10 @@ import { frenchDashboard } from "../modules/langFrench.js";
 import { mainTraffic } from "../dashboards/trafficDashboard.js";
 // apportionment
 import { mainApportion } from "../dashboards/apportionmentDashboard.js";
-// tolls
-import { mainTolls } from "../dashboards/tollsDashboard.js";
 // operations and maintenance activities
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
 import { mainRemediation } from "../dashboards/remediationDashboard.js";
-// tcpl revenues
-import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { plainsMidstreamProfile, openTab } from "../modules/util.js";
 
@@ -51,10 +47,6 @@ export function loadAllCharts(data, plains = false) {
   );
   mainOandM(data.oandmData, frenchDashboard.oandm);
   mainRemediation(data.remediationData, frenchDashboard.remediation);
-
-  if (data.tcplRevenues) {
-    mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
-  }
 
   if (plains) {
     plainsMidstreamProfile(frenchDashboard, "plains_disclaimer");
