@@ -394,6 +394,7 @@ export class EventMap {
       "#ffffff",
       "#ffffff",
     ];
+
     const volumes = data.map((row) => row.vol);
     const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
     const maxRad = radiusCalc(maxVol);
