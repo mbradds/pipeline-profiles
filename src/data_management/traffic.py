@@ -161,7 +161,6 @@ def meta_trend(df_c, commodity):
         try:
             if old_through > 0:
                 pct = round((new_through-old_through)/abs(old_through)*100, 1)
-                print(pct)
             else:
                 pct = None
             this_trend["throughChange"] = {"pct": pct,
