@@ -5,7 +5,7 @@ import { loadChartError } from "../modules/util.js";
 import { noEventsFlag } from "./dashboardUtil.js";
 
 export async function mainUa(uaData, metaData, lang) {
-  const eventType = "remediation";
+  const eventType = "unauthorized activities";
   const field = "w"; // within 30m of a water body
   const filters = { type: "frequency" };
 
@@ -73,8 +73,7 @@ export async function mainUa(uaData, metaData, lang) {
 
   function buildDashboard() {
     if (metaData.build) {
-      console.log(uaData, metaData, lang);
-      const thisMap = uaMap(uaData.events, field, filters, lang.dashboard);
+      const thisMap = uaMap(uaData, field, filters, lang.dashboard);
       const bars = uaBar(uaData.events, thisMap, lang.dashboard.pillTitles);
 
       uaTimeSeries(field, filters);
