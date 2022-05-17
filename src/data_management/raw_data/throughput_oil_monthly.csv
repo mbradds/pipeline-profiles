@@ -1662,6 +1662,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-11-01,Keystone,KP0020,south,domestic light,0.0,99.21
 2021-12-01,Keystone,KP0020,south,domestic heavy,99.73,99.73
 2021-12-01,Keystone,KP0020,south,domestic light,0.0,99.73
+2022-01-01,Keystone,KP0020,south,domestic heavy,95.44,96.19
+2022-01-01,Keystone,KP0020,south,domestic light,0.0,96.19
+2022-02-01,Keystone,KP0020,south,domestic heavy,92.73,92.73
+2022-02-01,Keystone,KP0020,south,domestic light,0.0,92.73
+2022-03-01,Keystone,KP0020,south,domestic heavy,97.21,97.21
+2022-03-01,Keystone,KP0020,south,domestic light,0.0,97.21
 2016-05-01,Montreal,KP0000,north-west,petroleum,1.9894,
 2016-06-01,Montreal,KP0000,north-west,petroleum,4.0521,
 2016-07-01,Montreal,KP0000,north-west,petroleum,6.8462,
