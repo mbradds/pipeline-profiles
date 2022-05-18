@@ -32,7 +32,6 @@ export function loadAllCharts(data, plains = false) {
     frenchDashboard.traffic
   );
   mainApportion(data.apportionData, frenchDashboard.apportion);
-  mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);
   mainConditions(
     JSON.parse(data.conditionsData.regions),
     data.canadaMap,

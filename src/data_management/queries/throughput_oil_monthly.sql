@@ -14,7 +14,7 @@ from
 (
 
 SELECT 
-throughput.[Date],
+cast(str(month(throughput.[Date]))+'-'+'1'+'-'+str(year(throughput.[Date])) as date) as [Date],
 throughput.[PipelineID],
 throughput.[KeyPointID],
 throughput.[Direction of Flow],
@@ -27,12 +27,12 @@ throughput.[Date] = capacity.[Date]
 and throughput.[PipelineID] = capacity.[PipelineID]
 and throughput.[KeyPointID] = capacity.[KeyPointID]
 where throughput.PipelineId <> 'TransMountain'
-group by throughput.[Date], throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
+group by year(throughput.[Date]), month(throughput.[Date]), throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
 
 union all
 
 SELECT
-throughput.[Date],
+cast(str(month(throughput.[Date]))+'-'+'1'+'-'+str(year(throughput.[Date])) as date) as [Date],
 throughput.[PipelineID],
 throughput.[KeyPointID],
 throughput.[Direction of Flow],
@@ -44,8 +44,7 @@ left join [PipelineInformation].[dbo].[Capacity_Oil] as capacity on
 throughput.[Date] = capacity.[Date]
 and throughput.[PipelineID] = capacity.[PipelineID]
 where throughput.PipelineId = 'TransMountain'
-group by throughput.[Date], throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
+group by year(throughput.[Date]), month(throughput.[Date]), throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
 ) as hc
 left join [PipelineInformation].[dbo].[KeyPoint] as kp on hc.KeyPointId = kp.KeyPointId
--- where hc.PipelineID not in ('EnbridgeLine9')
 order by hc.PipelineID, kp.[Key Point], [Date]
