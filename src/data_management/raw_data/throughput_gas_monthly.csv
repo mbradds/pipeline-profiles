@@ -1291,12 +1291,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2020-11-01,MNP,KP0001,south,export,13334.9,55.5667
 2020-12-01,MNP,KP0001,south,export,13334.9,6.7742
 2020-12-01,MNP,KP0001,north,import,13334.9,4286.2258
-2021-01-01,MNP,KP0001,north,import,13334.9,4724.7097
+2021-01-01,MNP,KP0001,north,import,13334.9,5131.6774
 2021-01-01,MNP,KP0001,south,export,13334.9,3.9355
-2021-02-01,MNP,KP0001,north,import,13334.9,4277.6071
+2021-02-01,MNP,KP0001,north,import,13334.9,5170.7857
 2021-02-01,MNP,KP0001,south,export,13334.9,76.4286
 2021-03-01,MNP,KP0001,south,export,13334.9,83.9677
-2021-03-01,MNP,KP0001,north,import,13334.9,5262.3226
+2021-03-01,MNP,KP0001,north,import,13334.9,5226.3226
 2021-04-01,MNP,KP0001,north,import,13334.9,4267.5
 2021-04-01,MNP,KP0001,south,export,13334.9,1.4333
 2021-05-01,MNP,KP0001,north,import,13334.9,4178.3226
@@ -1315,8 +1315,11 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2021-11-01,MNP,KP0001,north,import,13334.9,4404.6667
 2021-12-01,MNP,KP0001,north,import,13334.9,5015.7742
 2021-12-01,MNP,KP0001,south,export,13334.9,3.5161
+2022-01-01,MNP,KP0001,north,import,13334.9,4724.7097
 2022-01-01,MNP,KP0001,south,export,13334.9,11.4194
+2022-02-01,MNP,KP0001,north,import,13334.9,4277.6071
 2022-02-01,MNP,KP0001,south,export,13334.9,7.6071
+2022-03-01,MNP,KP0001,north,import,13334.9,5262.3226
 2022-03-01,MNP,KP0001,south,export,13334.9,0.3871
 2011-11-01,NGTL,KP0004,west & south,intracanada,,14845.4655
 2011-12-01,NGTL,KP0004,west & south,intracanada,,14995.0409
@@ -6806,7 +6809,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2010-01-01,Westcoast,KP0029,east,intracanada,9451.0,361.5729
 2010-01-01,Westcoast,KP0029,west,intracanada,7538.0,0.0007
 2010-02-01,Westcoast,KP0029,west,intracanada,7538.0,169.0485
-2010-02-01,Westcoast,KP0029,east,intracanada,9451.0,353.0603
+2010-02-01,Westcoast,KP0029,east,intracanada,9451.0,353.0602
 2010-03-01,Westcoast,KP0029,east,intracanada,9451.0,281.0109
 2010-03-01,Westcoast,KP0029,west,intracanada,7538.0,0.0006
 2010-04-01,Westcoast,KP0029,east,intracanada,9451.0,537.4063
