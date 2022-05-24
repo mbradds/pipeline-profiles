@@ -488,9 +488,9 @@ const en = {
         id: "unauthorized-activities",
         mapPillIds: [
           "ua-year-bar",
-          "ua-province-bar",
-          "ua-water-bar",
-          "ua-use-bar",
+          "ua-contact-bar",
+          "ua-type-bar",
+          "ua-equipment-bar",
         ],
         chartPillIds: [
           "ua-status-trend",
@@ -975,9 +975,9 @@ const fr = {
         id: "unauthorized-activities",
         mapPillIds: [
           "ua-year-bar",
-          "ua-province-bar",
-          "ua-water-bar",
-          "ua-use-bar",
+          "ua-contact-bar",
+          "ua-type-bar",
+          "ua-equipment-bar",
         ],
         chartPillIds: [
           "ua-status-trend",

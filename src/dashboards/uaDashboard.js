@@ -17,9 +17,9 @@ export async function mainUa(uaData, metaData, lang) {
       data: events,
     });
     barNav.makeBar("y", "ua-year-bar", "activated");
-    barNav.makeBar("et", "ua-water-bar", "deactivated");
-    barNav.makeBar("eqt", "ua-use-bar", "deactivated");
-    barNav.makeBar("wpc", "ua-province-bar", "deactivated");
+    barNav.makeBar("et", "ua-type-bar", "deactivated");
+    barNav.makeBar("eqt", "ua-equipment-bar", "deactivated");
+    barNav.makeBar("wpc", "ua-contact-bar", "deactivated");
     barNav.divEvents();
     return barNav;
   };

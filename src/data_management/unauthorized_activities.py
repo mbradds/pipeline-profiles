@@ -45,6 +45,8 @@ def process_ua(companies=False):
         company_files = companies
     else:
         company_files = get_company_list("all")
+        
+    print(sorted(list(set(df["Was Pipe Contacted"].astype(str)))))
 
     for company in company_files:
         try:

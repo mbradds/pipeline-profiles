@@ -661,6 +661,79 @@ export const englishDashboard = {
     noEvents,
     dashboard: {
       eventName: "unauthorized activities",
+      pillTitles: {
+        titles: {
+          et: "Event Type",
+          eqt: "Equipment Type",
+          wpc: "Was Pipe Contacted",
+          mod: "Method Of Discovery",
+          y: "Year",
+        },
+        click,
+      },
+      seriesInfo: {
+        et: {
+          "Construction of a Facility": {
+            c: cerPalette.Aubergine,
+            n: "Construction of a Facility",
+          },
+          "Construction of a Facility; Ground Disturbance": {
+            c: cerPalette["Cool Grey"],
+            n: "Construction of a Facility; Ground Disturbance",
+          },
+          "Construction of a Facility; Ground Disturbance; Vehicle Crossing": {
+            c: cerPalette.Flame,
+            n: "Construction of a Facility; Ground Disturbance; Vehicle Crossing",
+          },
+          "Construction of a Facility; Vehicle Crossing": {
+            c: cerPalette.Forest,
+            n: "Construction of a Facility; Vehicle Crossing",
+          },
+          "Ground Disturbance": {
+            c: cerPalette["Night Sky"],
+            n: "Ground Disturbance",
+          },
+          "Ground Disturbance; Vehicle Crossing": {
+            c: cerPalette.Ocean,
+            n: "Ground Disturbance; Vehicle Crossing",
+          },
+          "Vehicle Crossing": {
+            c: cerPalette.Sun,
+            n: "Vehicle Crossing",
+          },
+        },
+        eqt: {
+          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+          "Auger Digger": { c: cerPalette["Dim Grey"], n: "Auger Digger" },
+          Backhoe: { c: cerPalette["Dim Grey"], n: "Backhoe" },
+          Combine: { c: cerPalette["Dim Grey"], n: "Combine" },
+          Crane: { c: cerPalette["Dim Grey"], n: "Crane" },
+          "Directional Drill": {
+            c: cerPalette["Dim Grey"],
+            n: "Directional Drill",
+          },
+          "Front End Loader": {
+            c: cerPalette["Dim Grey"],
+            n: "Front End Loader",
+          },
+          "Hydro Vactor": { c: cerPalette["Dim Grey"], n: "Hydro Vactor" },
+          "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
+          "Vehicle <= 1 ton": {
+            c: cerPalette["Dim Grey"],
+            n: "Vehicle <= 1 ton",
+          },
+          "Vehicle > 1 ton": {
+            c: cerPalette["Dim Grey"],
+            n: "Vehicle > 1 ton",
+          },
+        },
+        wpc: {
+          Yes: { c: cerPalette["Dim Grey"], n: "Yes" },
+          No: { c: cerPalette["Dim Grey"], n: "No" },
+          "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
+          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+        },
+      },
     },
   },
 };
