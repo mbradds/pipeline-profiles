@@ -1386,6 +1386,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-03-01,EnbridgeMainline,KP0021,east,domestic heavy,21.8516,173.013
 2022-03-01,EnbridgeMainline,KP0021,east,domestic light / ngl,71.3796,173.013
 2022-03-01,EnbridgeMainline,KP0021,east,foreign light,9.9494,173.013
+2022-01-01,EnbridgeMainline,KP0044,south,domestic light,1.1537,
+2022-02-01,EnbridgeMainline,KP0044,south,domestic light,1.3272,
+2022-03-01,EnbridgeMainline,KP0044,south,domestic light,1.2453,
 2010-07-01,Keystone,KP0020,south,domestic heavy,15.0724,18.1136
 2010-07-01,Keystone,KP0020,south,domestic light,3.0412,18.1136
 2010-08-01,Keystone,KP0020,south,domestic heavy,15.1294,15.1294
