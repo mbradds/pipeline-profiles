@@ -378,7 +378,7 @@ export const frenchDashboard = {
       sw: "sud-ouest",
     },
     fiveYr: {
-      lastYrName: (lastYear) => `Débit ${lastYear} (dernière année de données)`,
+      lastYrName: (lastYear) => `Débit ${lastYear}`,
       avgName: "Moyenne sur cinq ans",
       rangeName: (min, max) => `Plage de cinq ans (${min + 1}-${max - 1})`,
       notEnough: "Données insuffisantes pour calculer la moyenne sur cinq ans",
