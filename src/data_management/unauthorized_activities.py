@@ -39,6 +39,7 @@ def process_ua(companies=False):
               "Date Event Occurred",
               "Latitude",
               "Longitude",
+              "Year",
               "Method Of Discovery"]].copy()
 
     if companies:

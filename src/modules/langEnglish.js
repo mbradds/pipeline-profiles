@@ -661,6 +661,7 @@ export const englishDashboard = {
     noEvents,
     dashboard: {
       eventName: "unauthorized activities",
+      trendYTitle,
       pillTitles: {
         titles: {
           et: "Event Type",
