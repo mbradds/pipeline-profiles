@@ -17,6 +17,7 @@ def optimize_json(df):
                             "Method Of Discovery": "mod",
                             "Year": "y"})
     df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])]
+    df = df.sort_values(by=['y'])
     for delete in ['Latitude', 'Longitude']:
         del df[delete]
     return df

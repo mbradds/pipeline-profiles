@@ -74,7 +74,7 @@ export class EventTrend {
   }
 
   static dummyYears(yearList, dataFormat = "object") {
-    let uniqueYears = yearList;
+    let uniqueYears = yearList.filter((x) => x);
     const currentYear = new Date().getFullYear();
     const maxYear = uniqueYears.slice(-1)[0];
 
@@ -207,6 +207,7 @@ export class EventTrend {
         hcData.push({ name: xVal, y: yVal });
       });
 
+      console.log(this.colors[field], seriesId);
       seriesList.push({
         name: Object.prototype.hasOwnProperty.call(this.colors, field)
           ? this.colors[field][seriesId].n
