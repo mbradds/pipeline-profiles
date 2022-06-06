@@ -502,7 +502,7 @@ const en = {
         mapBtn: "Unauthorized Activities Map",
         trendBtn: "Unauthorized Activities Trends",
         nearby: {
-          type: "unauthorized activities",
+          type: "unauthorized-activities",
           header: "Are there any unauthorized activities near me?",
           selectRange: "Select range (100km):",
           find: "Find activities within 100km",

@@ -207,7 +207,6 @@ export class EventTrend {
         hcData.push({ name: xVal, y: yVal });
       });
 
-      console.log(this.colors[field], seriesId);
       seriesList.push({
         name: Object.prototype.hasOwnProperty.call(this.colors, field)
           ? this.colors[field][seriesId].n

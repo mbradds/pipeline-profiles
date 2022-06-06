@@ -660,7 +660,7 @@ export const englishDashboard = {
     companyToSystem,
     noEvents,
     dashboard: {
-      eventName: "unauthorized activities",
+      eventName: "unauthorized-activities",
       trendYTitle,
       pillTitles: {
         titles: {
@@ -701,6 +701,14 @@ export const englishDashboard = {
           "Vehicle Crossing": {
             c: cerPalette.Sun,
             n: "Vehicle Crossing",
+          },
+          "Damage to Pipe": {
+            c: cerPalette.hcAqua,
+            n: "Damage to Pipe",
+          },
+          "Damage to Pipe; Ground Disturbance": {
+            c: cerPalette.hcAqua,
+            n: "Damage to Pipe; Ground Disturbance",
           },
         },
         eqt: {

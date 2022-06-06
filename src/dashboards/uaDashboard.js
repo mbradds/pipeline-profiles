@@ -5,7 +5,7 @@ import { loadChartError } from "../modules/util.js";
 import { noEventsFlag } from "./dashboardUtil.js";
 
 export async function mainUa(uaData, metaData, lang) {
-  const eventType = "unauthorized activities";
+  const eventType = "unauthorized-activities";
   const field = "w"; // within 30m of a water body
   const filters = { type: "frequency" };
 
