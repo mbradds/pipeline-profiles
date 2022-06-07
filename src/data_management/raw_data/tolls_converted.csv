@@ -171,62 +171,62 @@ MNP,2019 Final,2019-01-01,2019-11-30,MN365,MN365,Usage Charge Outside Tolerances
 MNP,2020 Final,2019-12-01,2020-12-31,MN365,MN365,Usage Charge Outside Tolerances,natural gas,0.9004,CA$ per GJ,,
 MNP,2021 Final,2021-01-01,2021-12-31,MN365,MN365,Usage Charge Outside Tolerances,natural gas,0.8084,CA$ per GJ,,
 MNP,2022 Interim,2022-01-01,2022-12-31,MN365,MN365,Usage Charge Outside Tolerances,natural gas,0.7063,CA$ per GJ,,
-NGTL,2014 Final,2014-01-01,2014-12-31,Receipt,System,Average Firm Service Receipt,natural gas,216.98,CA$ per thousand cubic metres per month,0.19124903595431308,CA$ per GJ (illustrative tolls)
-NGTL,2014 Final,2014-01-01,2014-12-31,System,Group 1,Average FT-D Demand,natural gas,5.23,CA$ per GJ per month,0.1719452054,CA$ per GJ (illustrative tolls)
-NGTL,2014 Final,2014-01-01,2014-12-31,System,Group 2,Average FT-D Demand,natural gas,4.19,CA$ per GJ per month,0.1377534246,CA$ per GJ (illustrative tolls)
-NGTL,2014 Final,2014-01-01,2014-12-31,System,Group 3,Average FT-D Demand,natural gas,5.02,CA$ per GJ per month,0.1650410958,CA$ per GJ (illustrative tolls)
-NGTL,2015 Final,2015-01-01,2015-12-31,Receipt,System,Average Firm Service Receipt,natural gas,225.73,CA$ per thousand cubic metres per month,0.1989614014469865,CA$ per GJ (illustrative tolls)
-NGTL,2015 Final,2015-01-01,2015-12-31,System,Group 1,Average FT-D Demand,natural gas,5.32,CA$ per GJ per month,0.1749041095,CA$ per GJ (illustrative tolls)
-NGTL,2015 Final,2015-01-01,2015-12-31,System,Group 2,Average FT-D Demand,natural gas,4.55,CA$ per GJ per month,0.149589041,CA$ per GJ (illustrative tolls)
-NGTL,2015 Final,2015-01-01,2015-12-31,System,Group 3,Average FT-D Demand,natural gas,5.46,CA$ per GJ per month,0.1795068493,CA$ per GJ (illustrative tolls)
-NGTL,2016 Final,2016-01-01,2016-12-31,Receipt,System,Average Firm Service Receipt,natural gas,229.87,CA$ per thousand cubic metres per month,0.20261045209152,CA$ per GJ (illustrative tolls)
-NGTL,2016 Final,2016-01-01,2016-12-31,System,Group 1,Average FT-D Demand,natural gas,5.45,CA$ per GJ per month,0.1791780821,CA$ per GJ (illustrative tolls)
-NGTL,2016 Final,2016-01-01,2016-12-31,System,Group 2,Average FT-D Demand,natural gas,5.08,CA$ per GJ per month,0.1670136986,CA$ per GJ (illustrative tolls)
-NGTL,2016 Final,2016-01-01,2016-12-31,System,Group 3,Average FT-D Demand,natural gas,6.09,CA$ per GJ per month,0.200219178,CA$ per GJ (illustrative tolls)
-NGTL,2017 Final,2017-06-01,2017-12-31,Receipt,System,Average Firm Service Receipt,natural gas,233.92,CA$ per thousand cubic metres per month,0.20618017554812876,CA$ per GJ (illustrative tolls)
-NGTL,2017 Final,2017-06-01,2017-12-31,System,Group 1,Average FT-D Demand,natural gas,5.61,CA$ per GJ per month,0.1844383561,CA$ per GJ (illustrative tolls)
-NGTL,2017 Final,2017-06-01,2017-12-31,System,Group 2,Average FT-D Demand,natural gas,5.37,CA$ per GJ per month,0.1765479452,CA$ per GJ (illustrative tolls)
-NGTL,2017 Final,2017-06-01,2017-12-31,System,Group 3,Average FT-D Demand,natural gas,6.44,CA$ per GJ per month,0.2117260273,CA$ per GJ (illustrative tolls)
-NGTL,2017 Interim,2017-01-01,2017-05-31,Receipt,System,Average Firm Service Receipt,natural gas,247.1,CA$ per thousand cubic metres per month,0.21779720151309237,CA$ per GJ (illustrative tolls)
-NGTL,2017 Interim,2017-01-01,2017-05-31,System,Group 1,Average FT-D Demand,natural gas,5.95,CA$ per GJ per month,0.1956164383,CA$ per GJ (illustrative tolls)
-NGTL,2017 Interim,2017-01-01,2017-05-31,System,Group 2,Average FT-D Demand,natural gas,5.69,CA$ per GJ per month,0.1870684931,CA$ per GJ (illustrative tolls)
-NGTL,2017 Interim,2017-01-01,2017-05-31,System,Group 3,Average FT-D Demand,natural gas,6.83,CA$ per GJ per month,0.2245479452,CA$ per GJ (illustrative tolls)
-NGTL,2018 Final,2018-05-01,2018-12-31,Receipt,System,Average Firm Service Receipt,natural gas,207.2,CA$ per thousand cubic metres per month,0.18262881486650234,CA$ per GJ (illustrative tolls)
-NGTL,2018 Final,2018-05-01,2018-12-31,System,Group 1,Average FT-D Demand,natural gas,5.24,CA$ per GJ per month,0.1722739726,CA$ per GJ (illustrative tolls)
-NGTL,2018 Final,2018-05-01,2018-12-31,System,Group 2,Average FT-D Demand,natural gas,4.99,CA$ per GJ per month,0.1640547945,CA$ per GJ (illustrative tolls)
-NGTL,2018 Final,2018-05-01,2018-12-31,System,Group 3,Average FT-D Demand,natural gas,5.99,CA$ per GJ per month,0.1969315068,CA$ per GJ (illustrative tolls)
-NGTL,2018 Interim,2018-01-01,2018-04-30,Receipt,System,Average Firm Service Receipt,natural gas,203.4,CA$ per thousand cubic metres per month,0.1792794447096845,CA$ per GJ (illustrative tolls)
-NGTL,2018 Interim,2018-01-01,2018-04-30,System,Group 1,Average FT-D Demand,natural gas,5.14,CA$ per GJ per month,0.1689863013,CA$ per GJ (illustrative tolls)
-NGTL,2018 Interim,2018-01-01,2018-04-30,System,Group 2,Average FT-D Demand,natural gas,4.9,CA$ per GJ per month,0.1610958904,CA$ per GJ (illustrative tolls)
-NGTL,2018 Interim,2018-01-01,2018-04-30,System,Group 3,Average FT-D Demand,natural gas,5.87,CA$ per GJ per month,0.1929863013,CA$ per GJ (illustrative tolls)
-NGTL,2019 Final,2019-05-01,2019-12-31,Receipt,System,Average Firm Service Receipt,natural gas,210.74,CA$ per thousand cubic metres per month,0.1857490175915382,CA$ per GJ (illustrative tolls)
-NGTL,2019 Final,2019-05-01,2019-12-31,System,Group 1,Average FT-D Demand,natural gas,5.67,CA$ per GJ per month,0.1864109589,CA$ per GJ (illustrative tolls)
-NGTL,2019 Final,2019-05-01,2019-12-31,System,Group 2,Average FT-D Demand,natural gas,5.48,CA$ per GJ per month,0.1801643835,CA$ per GJ (illustrative tolls)
-NGTL,2019 Final,2019-05-01,2019-12-31,System,Group 3,Average FT-D Demand,natural gas,6.58,CA$ per GJ per month,0.2163287671,CA$ per GJ (illustrative tolls)
-NGTL,2019 Interim,2019-01-01,2019-04-30,Receipt,System,Average Firm Service Receipt,natural gas,217.29,CA$ per thousand cubic metres per month,0.1915222740460537,CA$ per GJ (illustrative tolls)
-NGTL,2019 Interim,2019-01-01,2019-04-30,System,Group 1,Average FT-D Demand,natural gas,5.86,CA$ per GJ per month,0.1926575342,CA$ per GJ (illustrative tolls)
-NGTL,2019 Interim,2019-01-01,2019-04-30,System,Group 2,Average FT-D Demand,natural gas,5.66,CA$ per GJ per month,0.1860821917,CA$ per GJ (illustrative tolls)
-NGTL,2019 Interim,2019-01-01,2019-04-30,System,Group 3,Average FT-D Demand,natural gas,6.8,CA$ per GJ per month,0.2235616438,CA$ per GJ (illustrative tolls)
-NGTL,2020 Final,2020-06-01,2020-12-31,Receipt,System,Average Firm Service Receipt,natural gas,203.97,CA$ per thousand cubic metres per month,0.1797818502332071,CA$ per GJ (illustrative tolls)
-NGTL,2020 Final,2020-06-01,2020-12-31,System,Group 1,Average FT-D Demand,natural gas,4.91,CA$ per GJ per month,0.1614246575,CA$ per GJ (illustrative tolls)
-NGTL,2020 Final,2020-06-01,2020-12-31,System,Group 2,Average FT-D Demand,natural gas,6.66,CA$ per GJ per month,0.2189589041,CA$ per GJ (illustrative tolls)
-NGTL,2020 Final,2020-06-01,2020-12-31,System,Group 3,Average FT-D Demand,natural gas,8.0,CA$ per GJ per month,0.2630136986,CA$ per GJ (illustrative tolls)
-NGTL,2020 Interim,2020-01-01,2020-05-31,Receipt,System,Average Firm Service Receipt,natural gas,207.86,CA$ per thousand cubic metres per month,0.1832105475779497,CA$ per GJ (illustrative tolls)
-NGTL,2020 Interim,2020-01-01,2020-05-31,System,Group 1,Average FT-D Demand,natural gas,6.1,CA$ per GJ per month,0.2005479452,CA$ per GJ (illustrative tolls)
-NGTL,2020 Interim,2020-01-01,2020-05-31,System,Group 2,Average FT-D Demand,natural gas,5.95,CA$ per GJ per month,0.1956164383,CA$ per GJ (illustrative tolls)
-NGTL,2020 Interim,2020-01-01,2020-05-31,System,Group 3,Average FT-D Demand,natural gas,7.14,CA$ per GJ per month,0.234739726,CA$ per GJ (illustrative tolls)
-NGTL,2021 Final,2021-06-01,2021-12-31,Receipt,System,Average Firm Service Receipt,natural gas,239.56,CA$ per thousand cubic metres per month,0.21115134599140603,CA$ per GJ (illustrative tolls)
-NGTL,2021 Final,2021-06-01,2021-12-31,System,Group 1,Average FT-D Demand,natural gas,5.59,CA$ per GJ per month,0.1837808219,CA$ per GJ (illustrative tolls)
-NGTL,2021 Final,2021-06-01,2021-12-31,System,Group 2,Average FT-D Demand,natural gas,8.18,CA$ per GJ per month,0.2689315068,CA$ per GJ (illustrative tolls)
-NGTL,2021 Final,2021-06-01,2021-12-31,System,Group 3,Average FT-D Demand,natural gas,9.82,CA$ per GJ per month,0.322849315,CA$ per GJ (illustrative tolls)
-NGTL,2021 Interim,2021-01-01,2021-05-31,Receipt,System,Average Firm Service Receipt,natural gas,231.95,CA$ per thousand cubic metres per month,0.2044437915457782,CA$ per GJ (illustrative tolls)
-NGTL,2021 Interim,2021-01-01,2021-05-31,System,Group 1,Average FT-D Demand,natural gas,5.28,CA$ per GJ per month,0.173589041,CA$ per GJ (illustrative tolls)
-NGTL,2021 Interim,2021-01-01,2021-05-31,System,Group 2,Average FT-D Demand,natural gas,7.73,CA$ per GJ per month,0.2541369863,CA$ per GJ (illustrative tolls)
-NGTL,2021 Interim,2021-01-01,2021-05-31,System,Group 3,Average FT-D Demand,natural gas,9.27,CA$ per GJ per month,0.3047671232,CA$ per GJ (illustrative tolls)
-NGTL,2022 Interim,2022-01-01,2022-05-31,Receipt,System,Average Firm Service Receipt,natural gas,254.54,CA$ per thousand cubic metres per month,0.22435491571486257,CA$ per GJ (illustrative tolls)
-NGTL,2022 Interim,2022-01-01,2022-05-31,System,Group 1,Average FT-D Demand,natural gas,5.77,CA$ per GJ per month,0.1896986301,CA$ per GJ (illustrative tolls)
-NGTL,2022 Interim,2022-01-01,2022-05-31,System,Group 2,Average FT-D Demand,natural gas,7.97,CA$ per GJ per month,0.2620273972,CA$ per GJ (illustrative tolls)
-NGTL,2022 Interim,2022-01-01,2022-05-31,System,Group 3,Average FT-D Demand,natural gas,9.56,CA$ per GJ per month,0.3143013698,CA$ per GJ (illustrative tolls)
+NGTL,2014 Final,2014-01-01,2014-12-31,Receipt,System,Average Firm Service Receipt,natural gas,216.98,CA$ per thousand cubic metres per month,0.19124903595431308,CA$ per GJ - illustrative tolls
+NGTL,2014 Final,2014-01-01,2014-12-31,System,Group 1,Average FT-D Demand,natural gas,5.23,CA$ per GJ per month,0.1719452054,CA$ per GJ - illustrative tolls
+NGTL,2014 Final,2014-01-01,2014-12-31,System,Group 2,Average FT-D Demand,natural gas,4.19,CA$ per GJ per month,0.1377534246,CA$ per GJ - illustrative tolls
+NGTL,2014 Final,2014-01-01,2014-12-31,System,Group 3,Average FT-D Demand,natural gas,5.02,CA$ per GJ per month,0.1650410958,CA$ per GJ - illustrative tolls
+NGTL,2015 Final,2015-01-01,2015-12-31,Receipt,System,Average Firm Service Receipt,natural gas,225.73,CA$ per thousand cubic metres per month,0.1989614014469865,CA$ per GJ - illustrative tolls
+NGTL,2015 Final,2015-01-01,2015-12-31,System,Group 1,Average FT-D Demand,natural gas,5.32,CA$ per GJ per month,0.1749041095,CA$ per GJ - illustrative tolls
+NGTL,2015 Final,2015-01-01,2015-12-31,System,Group 2,Average FT-D Demand,natural gas,4.55,CA$ per GJ per month,0.149589041,CA$ per GJ - illustrative tolls
+NGTL,2015 Final,2015-01-01,2015-12-31,System,Group 3,Average FT-D Demand,natural gas,5.46,CA$ per GJ per month,0.1795068493,CA$ per GJ - illustrative tolls
+NGTL,2016 Final,2016-01-01,2016-12-31,Receipt,System,Average Firm Service Receipt,natural gas,229.87,CA$ per thousand cubic metres per month,0.20261045209152,CA$ per GJ - illustrative tolls
+NGTL,2016 Final,2016-01-01,2016-12-31,System,Group 1,Average FT-D Demand,natural gas,5.45,CA$ per GJ per month,0.1791780821,CA$ per GJ - illustrative tolls
+NGTL,2016 Final,2016-01-01,2016-12-31,System,Group 2,Average FT-D Demand,natural gas,5.08,CA$ per GJ per month,0.1670136986,CA$ per GJ - illustrative tolls
+NGTL,2016 Final,2016-01-01,2016-12-31,System,Group 3,Average FT-D Demand,natural gas,6.09,CA$ per GJ per month,0.200219178,CA$ per GJ - illustrative tolls
+NGTL,2017 Final,2017-06-01,2017-12-31,Receipt,System,Average Firm Service Receipt,natural gas,233.92,CA$ per thousand cubic metres per month,0.20618017554812876,CA$ per GJ - illustrative tolls
+NGTL,2017 Final,2017-06-01,2017-12-31,System,Group 1,Average FT-D Demand,natural gas,5.61,CA$ per GJ per month,0.1844383561,CA$ per GJ - illustrative tolls
+NGTL,2017 Final,2017-06-01,2017-12-31,System,Group 2,Average FT-D Demand,natural gas,5.37,CA$ per GJ per month,0.1765479452,CA$ per GJ - illustrative tolls
+NGTL,2017 Final,2017-06-01,2017-12-31,System,Group 3,Average FT-D Demand,natural gas,6.44,CA$ per GJ per month,0.2117260273,CA$ per GJ - illustrative tolls
+NGTL,2017 Interim,2017-01-01,2017-05-31,Receipt,System,Average Firm Service Receipt,natural gas,247.1,CA$ per thousand cubic metres per month,0.21779720151309237,CA$ per GJ - illustrative tolls
+NGTL,2017 Interim,2017-01-01,2017-05-31,System,Group 1,Average FT-D Demand,natural gas,5.95,CA$ per GJ per month,0.1956164383,CA$ per GJ - illustrative tolls
+NGTL,2017 Interim,2017-01-01,2017-05-31,System,Group 2,Average FT-D Demand,natural gas,5.69,CA$ per GJ per month,0.1870684931,CA$ per GJ - illustrative tolls
+NGTL,2017 Interim,2017-01-01,2017-05-31,System,Group 3,Average FT-D Demand,natural gas,6.83,CA$ per GJ per month,0.2245479452,CA$ per GJ - illustrative tolls
+NGTL,2018 Final,2018-05-01,2018-12-31,Receipt,System,Average Firm Service Receipt,natural gas,207.2,CA$ per thousand cubic metres per month,0.18262881486650234,CA$ per GJ - illustrative tolls
+NGTL,2018 Final,2018-05-01,2018-12-31,System,Group 1,Average FT-D Demand,natural gas,5.24,CA$ per GJ per month,0.1722739726,CA$ per GJ - illustrative tolls
+NGTL,2018 Final,2018-05-01,2018-12-31,System,Group 2,Average FT-D Demand,natural gas,4.99,CA$ per GJ per month,0.1640547945,CA$ per GJ - illustrative tolls
+NGTL,2018 Final,2018-05-01,2018-12-31,System,Group 3,Average FT-D Demand,natural gas,5.99,CA$ per GJ per month,0.1969315068,CA$ per GJ - illustrative tolls
+NGTL,2018 Interim,2018-01-01,2018-04-30,Receipt,System,Average Firm Service Receipt,natural gas,203.4,CA$ per thousand cubic metres per month,0.1792794447096845,CA$ per GJ - illustrative tolls
+NGTL,2018 Interim,2018-01-01,2018-04-30,System,Group 1,Average FT-D Demand,natural gas,5.14,CA$ per GJ per month,0.1689863013,CA$ per GJ - illustrative tolls
+NGTL,2018 Interim,2018-01-01,2018-04-30,System,Group 2,Average FT-D Demand,natural gas,4.9,CA$ per GJ per month,0.1610958904,CA$ per GJ - illustrative tolls
+NGTL,2018 Interim,2018-01-01,2018-04-30,System,Group 3,Average FT-D Demand,natural gas,5.87,CA$ per GJ per month,0.1929863013,CA$ per GJ - illustrative tolls
+NGTL,2019 Final,2019-05-01,2019-12-31,Receipt,System,Average Firm Service Receipt,natural gas,210.74,CA$ per thousand cubic metres per month,0.1857490175915382,CA$ per GJ - illustrative tolls
+NGTL,2019 Final,2019-05-01,2019-12-31,System,Group 1,Average FT-D Demand,natural gas,5.67,CA$ per GJ per month,0.1864109589,CA$ per GJ - illustrative tolls
+NGTL,2019 Final,2019-05-01,2019-12-31,System,Group 2,Average FT-D Demand,natural gas,5.48,CA$ per GJ per month,0.1801643835,CA$ per GJ - illustrative tolls
+NGTL,2019 Final,2019-05-01,2019-12-31,System,Group 3,Average FT-D Demand,natural gas,6.58,CA$ per GJ per month,0.2163287671,CA$ per GJ - illustrative tolls
+NGTL,2019 Interim,2019-01-01,2019-04-30,Receipt,System,Average Firm Service Receipt,natural gas,217.29,CA$ per thousand cubic metres per month,0.1915222740460537,CA$ per GJ - illustrative tolls
+NGTL,2019 Interim,2019-01-01,2019-04-30,System,Group 1,Average FT-D Demand,natural gas,5.86,CA$ per GJ per month,0.1926575342,CA$ per GJ - illustrative tolls
+NGTL,2019 Interim,2019-01-01,2019-04-30,System,Group 2,Average FT-D Demand,natural gas,5.66,CA$ per GJ per month,0.1860821917,CA$ per GJ - illustrative tolls
+NGTL,2019 Interim,2019-01-01,2019-04-30,System,Group 3,Average FT-D Demand,natural gas,6.8,CA$ per GJ per month,0.2235616438,CA$ per GJ - illustrative tolls
+NGTL,2020 Final,2020-06-01,2020-12-31,Receipt,System,Average Firm Service Receipt,natural gas,203.97,CA$ per thousand cubic metres per month,0.1797818502332071,CA$ per GJ - illustrative tolls
+NGTL,2020 Final,2020-06-01,2020-12-31,System,Group 1,Average FT-D Demand,natural gas,4.91,CA$ per GJ per month,0.1614246575,CA$ per GJ - illustrative tolls
+NGTL,2020 Final,2020-06-01,2020-12-31,System,Group 2,Average FT-D Demand,natural gas,6.66,CA$ per GJ per month,0.2189589041,CA$ per GJ - illustrative tolls
+NGTL,2020 Final,2020-06-01,2020-12-31,System,Group 3,Average FT-D Demand,natural gas,8.0,CA$ per GJ per month,0.2630136986,CA$ per GJ - illustrative tolls
+NGTL,2020 Interim,2020-01-01,2020-05-31,Receipt,System,Average Firm Service Receipt,natural gas,207.86,CA$ per thousand cubic metres per month,0.1832105475779497,CA$ per GJ - illustrative tolls
+NGTL,2020 Interim,2020-01-01,2020-05-31,System,Group 1,Average FT-D Demand,natural gas,6.1,CA$ per GJ per month,0.2005479452,CA$ per GJ - illustrative tolls
+NGTL,2020 Interim,2020-01-01,2020-05-31,System,Group 2,Average FT-D Demand,natural gas,5.95,CA$ per GJ per month,0.1956164383,CA$ per GJ - illustrative tolls
+NGTL,2020 Interim,2020-01-01,2020-05-31,System,Group 3,Average FT-D Demand,natural gas,7.14,CA$ per GJ per month,0.234739726,CA$ per GJ - illustrative tolls
+NGTL,2021 Final,2021-06-01,2021-12-31,Receipt,System,Average Firm Service Receipt,natural gas,239.56,CA$ per thousand cubic metres per month,0.21115134599140603,CA$ per GJ - illustrative tolls
+NGTL,2021 Final,2021-06-01,2021-12-31,System,Group 1,Average FT-D Demand,natural gas,5.59,CA$ per GJ per month,0.1837808219,CA$ per GJ - illustrative tolls
+NGTL,2021 Final,2021-06-01,2021-12-31,System,Group 2,Average FT-D Demand,natural gas,8.18,CA$ per GJ per month,0.2689315068,CA$ per GJ - illustrative tolls
+NGTL,2021 Final,2021-06-01,2021-12-31,System,Group 3,Average FT-D Demand,natural gas,9.82,CA$ per GJ per month,0.322849315,CA$ per GJ - illustrative tolls
+NGTL,2021 Interim,2021-01-01,2021-05-31,Receipt,System,Average Firm Service Receipt,natural gas,231.95,CA$ per thousand cubic metres per month,0.2044437915457782,CA$ per GJ - illustrative tolls
+NGTL,2021 Interim,2021-01-01,2021-05-31,System,Group 1,Average FT-D Demand,natural gas,5.28,CA$ per GJ per month,0.173589041,CA$ per GJ - illustrative tolls
+NGTL,2021 Interim,2021-01-01,2021-05-31,System,Group 2,Average FT-D Demand,natural gas,7.73,CA$ per GJ per month,0.2541369863,CA$ per GJ - illustrative tolls
+NGTL,2021 Interim,2021-01-01,2021-05-31,System,Group 3,Average FT-D Demand,natural gas,9.27,CA$ per GJ per month,0.3047671232,CA$ per GJ - illustrative tolls
+NGTL,2022 Interim,2022-01-01,2022-05-31,Receipt,System,Average Firm Service Receipt,natural gas,254.54,CA$ per thousand cubic metres per month,0.22435491571486257,CA$ per GJ - illustrative tolls
+NGTL,2022 Interim,2022-01-01,2022-05-31,System,Group 1,Average FT-D Demand,natural gas,5.77,CA$ per GJ per month,0.1896986301,CA$ per GJ - illustrative tolls
+NGTL,2022 Interim,2022-01-01,2022-05-31,System,Group 2,Average FT-D Demand,natural gas,7.97,CA$ per GJ per month,0.2620273972,CA$ per GJ - illustrative tolls
+NGTL,2022 Interim,2022-01-01,2022-05-31,System,Group 3,Average FT-D Demand,natural gas,9.56,CA$ per GJ per month,0.3143013698,CA$ per GJ - illustrative tolls
 EnbridgeMainline,Tariff 317,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",Transportation,condensate,12.9405,US$ per cubic metre,2.057378612992,US$ per barrel
 EnbridgeMainline,Tariff 317,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Corunna or Sarnia Terminal, Ontario",Transportation,condensate,23.5878,US$ per cubic metre,3.750166936945,US$ per barrel
 EnbridgeMainline,Tariff 317,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",Transportation,condensate,21.1172,US$ per cubic metre,3.357372253489,US$ per barrel
@@ -9133,550 +9133,114 @@ TQM,2020 Final,2020-01-01,2020-12-31,System,System,OT-1,natural gas,0.0,CA$ per 
 TQM,2020 Final,2020-01-01,2020-12-31,System,System,T-1,natural gas,7689167.0,CA$ per month,,
 TQM,2021 Final,2021-01-01,2021-12-31,System,System,OT-1,natural gas,0.0,CA$ per month,,
 TQM,2021 Final,2021-01-01,2021-12-31,System,System,T-1,natural gas,7421333.0,CA$ per month,,
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,14.933,CA$ per cubic metre,2.374161340583,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.252,CA$ per cubic metre,0.835002702788,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,14.594,CA$ per cubic metre,2.320264555311,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.252,CA$ per cubic metre,0.835002702788,CA$ per barrel
 Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,17.92,CA$ per cubic metre,2.849057203726,CA$ per barrel
 Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,17.92,CA$ per cubic metre,2.849057203726,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.034,CA$ per cubic metre,2.072243950523,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.252,CA$ per cubic metre,0.835002702788,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.045,CA$ per cubic metre,2.550955515278,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.361,CA$ per cubic metre,2.124232884988,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.68,CA$ per cubic metre,0.585074247193,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.022,CA$ per cubic metre,2.070336099717,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.68,CA$ per cubic metre,0.585074247193,CA$ per barrel
 Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.033,CA$ per cubic metre,2.549047664472,CA$ per barrel
 Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.033,CA$ per cubic metre,2.549047664472,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.462,CA$ per cubic metre,1.822315494928,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.68,CA$ per cubic metre,0.585074247193,CA$ per barrel
-Keystone,Tariff 10,2014-01-03,2014-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.159,CA$ per cubic metre,2.251104963591,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.166,CA$ per cubic metre,2.411205443734,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,14.827,CA$ per cubic metre,2.357308658462,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
 Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.199,CA$ per cubic metre,2.893414734967,CA$ per barrel
 Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.199,CA$ per cubic metre,2.893414734967,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.267,CA$ per cubic metre,2.109288053674,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.325,CA$ per cubic metre,2.595472034086,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.518,CA$ per cubic metre,2.149193933034,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.179,CA$ per cubic metre,2.095297147763,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
 Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.222,CA$ per cubic metre,2.579096314668,CA$ per barrel
 Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.222,CA$ per cubic metre,2.579096314668,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.619,CA$ per cubic metre,1.847276542974,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
-Keystone,Tariff 14,2015-01-01,2015-10-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.347,CA$ per cubic metre,2.28099462622,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.166,CA$ per cubic metre,2.411205443734,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,14.827,CA$ per cubic metre,2.357308658462,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
 Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.199,CA$ per cubic metre,2.893414734967,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",heavy crude,15.549,CA$ per cubic metre,2.472097681961,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
 Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.199,CA$ per cubic metre,2.893414734967,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.267,CA$ per cubic metre,2.109288053674,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.485,CA$ per cubic metre,0.872046805939,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.325,CA$ per cubic metre,2.595472034086,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.518,CA$ per cubic metre,2.149193933034,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.179,CA$ per cubic metre,2.095297147763,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
 Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.222,CA$ per cubic metre,2.579096314668,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",light crude,13.901,CA$ per cubic metre,2.210086171261,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
 Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.222,CA$ per cubic metre,2.579096314668,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.619,CA$ per cubic metre,1.847276542974,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.837,CA$ per cubic metre,0.610035295239,CA$ per barrel
-Keystone,Tariff 16,2015-11-01,2015-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.347,CA$ per cubic metre,2.28099462622,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.354,CA$ per cubic metre,2.441095106362,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,15.015,CA$ per cubic metre,2.387198321091,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
 Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.425,CA$ per cubic metre,2.929345925148,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",heavy crude,15.737,CA$ per cubic metre,2.501987344589,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
 Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.425,CA$ per cubic metre,2.929345925148,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.455,CA$ per cubic metre,2.139177716302,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.55,CA$ per cubic metre,2.6312442367,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.65,CA$ per cubic metre,2.170180291901,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.311,CA$ per cubic metre,2.116283506629,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
 Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.38,CA$ per cubic metre,2.604216350281,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",light crude,14.033,CA$ per cubic metre,2.231072530128,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
 Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.38,CA$ per cubic metre,2.604216350281,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.751,CA$ per cubic metre,1.868262901841,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
-Keystone,Tariff 17,2016-01-01,2016-07-01,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.506,CA$ per cubic metre,2.3062736494,CA$ per barrel
-Keystone,Tariff 18,2016-03-01,2016-03-14,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 18,2016-03-01,2016-03-14,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 19,2016-03-15,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 19,2016-03-15,2016-07-01,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba","Committed, Term, Fixed Contract",heavy crude,4.761,CA$ per cubic metre,0.756939807307,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba","Committed, Term, Total Contract",heavy crude,9.375,CA$ per cubic metre,1.490508442239,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba","Committed, Term, Variable Contract",heavy crude,4.614,CA$ per cubic metre,0.733568634932,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba",Uncommitted,heavy crude,11.25,CA$ per cubic metre,1.788610130687,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba","Committed, Term, Fixed Contract",light crude,4.761,CA$ per cubic metre,0.756939807307,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba","Committed, Term, Total Contract",light crude,7.991,CA$ per cubic metre,1.270469649273,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba","Committed, Term, Variable Contract",light crude,3.23,CA$ per cubic metre,0.513529841966,CA$ per barrel
-Keystone,Tariff 2,2010-04-15,2011-01-31,"Hardisty, Alberta","International Boundary at or near Haskett, Manitoba",Uncommitted,light crude,9.589,CA$ per cubic metre,1.524531781614,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.354,CA$ per cubic metre,2.441095106362,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,15.015,CA$ per cubic metre,2.387198321091,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.425,CA$ per cubic metre,2.929345925148,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Total Contract",heavy crude,15.737,CA$ per cubic metre,2.501987344589,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,heavy crude,18.425,CA$ per cubic metre,2.929345925148,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",heavy crude,15.737,CA$ per cubic metre,2.501987344589,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.425,CA$ per cubic metre,2.929345925148,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.455,CA$ per cubic metre,2.139177716302,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.673,CA$ per cubic metre,0.901936468568,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.55,CA$ per cubic metre,2.6312442367,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.65,CA$ per cubic metre,2.170180291901,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.311,CA$ per cubic metre,2.116283506629,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.38,CA$ per cubic metre,2.604216350281,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Total Contract",light crude,14.033,CA$ per cubic metre,2.231072530128,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,light crude,16.38,CA$ per cubic metre,2.604216350281,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",light crude,14.033,CA$ per cubic metre,2.231072530128,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
 Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.38,CA$ per cubic metre,2.604216350281,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.751,CA$ per cubic metre,1.868262901841,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.969,CA$ per cubic metre,0.631021654106,CA$ per barrel
-Keystone,Tariff 20,2016-07-02,2016-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.506,CA$ per cubic metre,2.3062736494,CA$ per barrel
-Keystone,Tariff 22,2016-07-02,2016-11-09,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 22,2016-07-02,2016-11-09,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 22,2016-07-02,2016-11-09,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 22,2016-07-02,2016-11-09,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 24,2016-11-10,2017-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 24,2016-11-10,2017-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 24,2016-11-10,2017-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 24,2016-11-10,2017-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.644,CA$ per cubic metre,2.487201500842,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,15.305,CA$ per cubic metre,2.433304715571,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.733,CA$ per cubic metre,2.978314095837,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Total Contract",heavy crude,16.027,CA$ per cubic metre,2.548093739069,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas",Uncommitted,heavy crude,18.733,CA$ per cubic metre,2.978314095837,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",heavy crude,16.027,CA$ per cubic metre,2.548093739069,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.733,CA$ per cubic metre,2.978314095837,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.745,CA$ per cubic metre,2.185284110782,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.898,CA$ per cubic metre,2.686571910076,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.855,CA$ per cubic metre,2.202772743171,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.516,CA$ per cubic metre,2.1488759579,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.626,CA$ per cubic metre,2.643327291805,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Total Contract",light crude,14.238,CA$ per cubic metre,2.263664981398,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Houston, Texas",Uncommitted,light crude,16.626,CA$ per cubic metre,2.643327291805,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Total Contract",light crude,14.238,CA$ per cubic metre,2.263664981398,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
 Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.626,CA$ per cubic metre,2.643327291805,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.956,CA$ per cubic metre,1.900855353111,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
-Keystone,Tariff 25,2017-01-01,2017-11-30,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.752,CA$ per cubic metre,2.345384590924,CA$ per barrel
-Keystone,Tariff 26,2017-07-01,2018-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 26,2017-07-01,2018-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,7.73,US$ per barrel,7.73,US$ per barrel
-Keystone,Tariff 26,2017-07-01,2018-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 26,2017-07-01,2018-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.113,US$ per barrel,7.113,US$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.644,CA$ per cubic metre,2.487201500842,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,15.305,CA$ per cubic metre,2.433304715571,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.733,CA$ per cubic metre,2.978314095837,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Total Contract",heavy crude,16.027,CA$ per cubic metre,2.548093739069,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Fixed Contract",heavy crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Total Contract",heavy crude,14.555,CA$ per cubic metre,2.314064040192,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,heavy crude,18.733,CA$ per cubic metre,2.978314095837,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Total Contract",heavy crude,16.027,CA$ per cubic metre,2.548093739069,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Fixed Contract",heavy crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Total Contract",heavy crude,14.555,CA$ per cubic metre,2.314064040192,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.733,CA$ per cubic metre,2.978314095837,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.745,CA$ per cubic metre,2.185284110782,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.963,CA$ per cubic metre,0.948042863048,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.898,CA$ per cubic metre,2.686571910076,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.855,CA$ per cubic metre,2.202772743171,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.516,CA$ per cubic metre,2.1488759579,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.626,CA$ per cubic metre,2.643327291805,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Total Contract",light crude,14.238,CA$ per cubic metre,2.263664981398,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Fixed Contract",light crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Total Contract",light crude,12.766,CA$ per cubic metre,2.02963528252,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,light crude,16.626,CA$ per cubic metre,2.643327291805,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Total Contract",light crude,14.238,CA$ per cubic metre,2.263664981398,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Fixed Contract",light crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Total Contract",light crude,12.766,CA$ per cubic metre,2.02963528252,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
 Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.626,CA$ per cubic metre,2.643327291805,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.956,CA$ per cubic metre,1.900855353111,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,4.174,CA$ per cubic metre,0.663614105376,CA$ per barrel
-Keystone,Tariff 27,2017-12-01,2017-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.752,CA$ per cubic metre,2.345384590924,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,15.487,CA$ per cubic metre,2.462240452796,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,15.148,CA$ per cubic metre,2.408343667525,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,18.584,CA$ per cubic metre,2.954624948329,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Total Contract",heavy crude,15.87,CA$ per cubic metre,2.523132691023,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Fixed Contract",heavy crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Total Contract",heavy crude,14.398,CA$ per cubic metre,2.289102992146,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,heavy crude,18.584,CA$ per cubic metre,2.954624948329,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Total Contract",heavy crude,15.87,CA$ per cubic metre,2.523132691023,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Fixed Contract",heavy crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Total Contract",heavy crude,14.398,CA$ per cubic metre,2.289102992146,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,18.584,CA$ per cubic metre,2.954624948329,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.588,CA$ per cubic metre,2.160323062736,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.806,CA$ per cubic metre,0.923081815002,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.71,CA$ per cubic metre,2.656682247448,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.745,CA$ per cubic metre,2.185284110782,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.406,CA$ per cubic metre,2.131387325511,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.494,CA$ per cubic metre,2.622340932939,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Total Contract",light crude,14.128,CA$ per cubic metre,2.246176349009,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Fixed Contract",light crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Total Contract",light crude,12.656,CA$ per cubic metre,2.012146650131,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,light crude,16.494,CA$ per cubic metre,2.622340932939,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Total Contract",light crude,14.128,CA$ per cubic metre,2.246176349009,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Fixed Contract",light crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Total Contract",light crude,12.656,CA$ per cubic metre,2.012146650131,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
 Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,16.494,CA$ per cubic metre,2.622340932939,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.846,CA$ per cubic metre,1.883366720722,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,4.064,CA$ per cubic metre,0.646125472988,CA$ per barrel
-Keystone,Tariff 28,2018-01-01,2018-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.62,CA$ per cubic metre,2.324398232058,CA$ per barrel
-Keystone,Tariff 29,2018-02-01,2018-02-28,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,12.75,US$ per barrel,12.75,US$ per barrel
-Keystone,Tariff 29,2018-02-01,2018-02-28,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,12.75,US$ per barrel,12.75,US$ per barrel
-Keystone,Tariff 29,2018-02-01,2018-02-28,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,11.73,US$ per barrel,11.73,US$ per barrel
-Keystone,Tariff 29,2018-02-01,2018-02-28,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,11.73,US$ per barrel,11.73,US$ per barrel
-Keystone,Tariff 31,2018-06-01,2018-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,10.5,US$ per barrel,10.5,US$ per barrel
-Keystone,Tariff 31,2018-06-01,2018-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,10.5,US$ per barrel,10.5,US$ per barrel
-Keystone,Tariff 31,2018-06-01,2018-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,9.66,US$ per barrel,9.66,US$ per barrel
-Keystone,Tariff 31,2018-06-01,2018-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,9.66,US$ per barrel,9.66,US$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,16.148,CA$ per cubic metre,2.567331234697,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,15.809,CA$ per cubic metre,2.513434449426,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,19.378,CA$ per cubic metre,3.080861076663,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Total Contract",heavy crude,16.531,CA$ per cubic metre,2.628223472924,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Fixed Contract",heavy crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Total Contract",heavy crude,15.059,CA$ per cubic metre,2.394193774046,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,heavy crude,19.378,CA$ per cubic metre,3.080861076663,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Fixed Contract",heavy crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Total Contract",heavy crude,16.531,CA$ per cubic metre,2.628223472924,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Fixed Contract",heavy crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Total Contract",heavy crude,15.059,CA$ per cubic metre,2.394193774046,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,heavy crude,19.378,CA$ per cubic metre,3.080861076663,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,14.249,CA$ per cubic metre,2.265413844637,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,6.467,CA$ per cubic metre,1.028172596902,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,17.503,CA$ per cubic metre,2.782759388215,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,14.208,CA$ per cubic metre,2.258895354383,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.869,CA$ per cubic metre,2.204998569111,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,17.05,CA$ per cubic metre,2.710738020286,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Total Contract",light crude,14.591,CA$ per cubic metre,2.31978759261,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr A Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Fixed Contract",light crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Total Contract",light crude,13.119,CA$ per cubic metre,2.085757893732,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas","Committed, 20 yr B Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Houston, Texas",Uncommitted,light crude,17.05,CA$ per cubic metre,2.710738020286,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Fixed Contract",light crude,10.064,CA$ per cubic metre,1.600050876021,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Total Contract",light crude,14.591,CA$ per cubic metre,2.31978759261,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr A Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Fixed Contract",light crude,8.592,CA$ per cubic metre,1.366021177143,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Total Contract",light crude,13.119,CA$ per cubic metre,2.085757893732,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas","Committed, 20 yr B Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
 Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Port Arthur, Texas",Uncommitted,light crude,17.05,CA$ per cubic metre,2.710738020286,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,12.309,CA$ per cubic metre,1.956977964323,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,4.527,CA$ per cubic metre,0.719736716588,CA$ per barrel
-Keystone,Tariff 34,2019-01-01,2021-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,15.175,CA$ per cubic metre,2.412636331838,CA$ per barrel
-Keystone,Tariff 35,2019-02-01,2019-02-28,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 35,2019-02-01,2019-02-28,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 35,2019-02-01,2019-02-28,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 35,2019-02-01,2019-02-28,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 36,2019-03-01,2019-03-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,9.0,US$ per barrel,9.0,US$ per barrel
-Keystone,Tariff 36,2019-03-01,2019-03-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,9.0,US$ per barrel,9.0,US$ per barrel
-Keystone,Tariff 36,2019-03-01,2019-03-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,8.28,US$ per barrel,8.28,US$ per barrel
-Keystone,Tariff 36,2019-03-01,2019-03-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,8.28,US$ per barrel,8.28,US$ per barrel
-Keystone,Tariff 37,2019-04-01,2019-04-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 37,2019-04-01,2019-04-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 37,2019-04-01,2019-04-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 37,2019-04-01,2019-04-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 38,2019-05-01,2019-05-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,8.75,US$ per barrel,8.75,US$ per barrel
-Keystone,Tariff 38,2019-05-01,2019-05-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,8.75,US$ per barrel,8.75,US$ per barrel
-Keystone,Tariff 38,2019-05-01,2019-05-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,8.05,US$ per barrel,8.05,US$ per barrel
-Keystone,Tariff 38,2019-05-01,2019-05-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,8.05,US$ per barrel,8.05,US$ per barrel
-Keystone,Tariff 39,2019-06-01,2019-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,12.0,US$ per barrel,12.0,US$ per barrel
-Keystone,Tariff 39,2019-06-01,2019-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,12.0,US$ per barrel,12.0,US$ per barrel
-Keystone,Tariff 39,2019-06-01,2019-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,11.04,US$ per barrel,11.04,US$ per barrel
-Keystone,Tariff 39,2019-06-01,2019-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,11.04,US$ per barrel,11.04,US$ per barrel
-Keystone,Tariff 41,2019-07-01,2019-07-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,13.0,US$ per barrel,13.0,US$ per barrel
-Keystone,Tariff 41,2019-07-01,2019-07-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,13.0,US$ per barrel,13.0,US$ per barrel
-Keystone,Tariff 41,2019-07-01,2019-07-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,11.96,US$ per barrel,11.96,US$ per barrel
-Keystone,Tariff 41,2019-07-01,2019-07-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,11.96,US$ per barrel,11.96,US$ per barrel
-Keystone,Tariff 42,2019-08-01,2019-09-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,9.0,US$ per barrel,9.0,US$ per barrel
-Keystone,Tariff 42,2019-08-01,2019-09-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,9.0,US$ per barrel,9.0,US$ per barrel
-Keystone,Tariff 42,2019-08-01,2019-09-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,8.28,US$ per barrel,8.28,US$ per barrel
-Keystone,Tariff 42,2019-08-01,2019-09-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,8.28,US$ per barrel,8.28,US$ per barrel
-Keystone,Tariff 43,2019-10-01,2019-12-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,7.99,US$ per barrel,7.99,US$ per barrel
-Keystone,Tariff 43,2019-10-01,2019-12-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,7.99,US$ per barrel,7.99,US$ per barrel
-Keystone,Tariff 43,2019-10-01,2019-12-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,7.351,US$ per barrel,7.351,US$ per barrel
-Keystone,Tariff 43,2019-10-01,2019-12-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.351,US$ per barrel,7.351,US$ per barrel
-Keystone,Tariff 45,2020-01-01,2020-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 45,2020-01-01,2020-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 45,2020-01-01,2020-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 45,2020-01-01,2020-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 46,2020-02-01,2020-02-29,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,12.5,US$ per barrel,12.5,US$ per barrel
-Keystone,Tariff 46,2020-02-01,2020-02-29,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,12.5,US$ per barrel,12.5,US$ per barrel
-Keystone,Tariff 46,2020-02-01,2020-02-29,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,11.5,US$ per barrel,11.5,US$ per barrel
-Keystone,Tariff 46,2020-02-01,2020-02-29,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,11.5,US$ per barrel,11.5,US$ per barrel
-Keystone,Tariff 47,2020-03-01,2020-03-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,12.62,US$ per barrel,12.62,US$ per barrel
-Keystone,Tariff 47,2020-03-01,2020-03-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,12.62,US$ per barrel,12.62,US$ per barrel
-Keystone,Tariff 47,2020-03-01,2020-03-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,11.61,US$ per barrel,11.61,US$ per barrel
-Keystone,Tariff 47,2020-03-01,2020-03-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,11.61,US$ per barrel,11.61,US$ per barrel
-Keystone,Tariff 48,2020-04-01,2020-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,8.75,US$ per barrel,8.75,US$ per barrel
-Keystone,Tariff 48,2020-04-01,2020-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,8.75,US$ per barrel,8.75,US$ per barrel
-Keystone,Tariff 48,2020-04-01,2020-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,8.05,US$ per barrel,8.05,US$ per barrel
-Keystone,Tariff 48,2020-04-01,2020-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,8.05,US$ per barrel,8.05,US$ per barrel
-Keystone,Tariff 49,2020-07-01,2021-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,8.75,US$ per barrel,8.75,US$ per barrel
-Keystone,Tariff 49,2020-07-01,2021-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,8.75,US$ per barrel,8.75,US$ per barrel
-Keystone,Tariff 49,2020-07-01,2021-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,8.05,US$ per barrel,8.05,US$ per barrel
-Keystone,Tariff 49,2020-07-01,2021-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,8.05,US$ per barrel,8.05,US$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,8.804,CA$ per cubic metre,1.399726541384,CA$ per barrel
 Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,12.864,CA$ per cubic metre,2.045216064103,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,8.496,CA$ per cubic metre,1.350758370695,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,12.556,CA$ per cubic metre,1.996247893414,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
 Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,15.437,CA$ per cubic metre,2.454291074437,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,6.281,CA$ per cubic metre,0.998600909408,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,10.341,CA$ per cubic metre,1.644090432128,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,12.736,CA$ per cubic metre,2.024865655505,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,8.804,CA$ per cubic metre,1.399726541384,CA$ per barrel
 Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,11.646,CA$ per cubic metre,1.851569207287,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,8.496,CA$ per cubic metre,1.350758370695,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,11.338,CA$ per cubic metre,1.802601036598,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
 Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,13.975,CA$ per cubic metre,2.221851251232,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,6.281,CA$ per cubic metre,0.998600909408,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,9.123,CA$ per cubic metre,1.450443575312,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
-Keystone,Tariff 5,2011-02-01,2011-04-30,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,11.274,CA$ per cubic metre,1.792425832299,CA$ per barrel
-Keystone,Tariff 51,2021-02-01,2021-02-28,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,11.5,US$ per barrel,11.5,US$ per barrel
-Keystone,Tariff 51,2021-02-01,2021-02-28,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,11.5,US$ per barrel,11.5,US$ per barrel
-Keystone,Tariff 51,2021-02-01,2021-02-28,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,10.58,US$ per barrel,10.58,US$ per barrel
-Keystone,Tariff 51,2021-02-01,2021-02-28,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,10.58,US$ per barrel,10.58,US$ per barrel
-Keystone,Tariff 52,2021-03-01,2021-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 52,2021-03-01,2021-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,10.0,US$ per barrel,10.0,US$ per barrel
-Keystone,Tariff 52,2021-03-01,2021-06-30,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 52,2021-03-01,2021-06-30,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,9.2,US$ per barrel,9.2,US$ per barrel
-Keystone,Tariff 53,2021-07-01,2022-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,8.5,US$ per barrel,8.5,US$ per barrel
-Keystone,Tariff 53,2021-07-01,2022-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,8.5,US$ per barrel,8.5,US$ per barrel
-Keystone,Tariff 53,2021-07-01,2022-01-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,7.82,US$ per barrel,7.82,US$ per barrel
-Keystone,Tariff 53,2021-07-01,2022-01-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.82,US$ per barrel,7.82,US$ per barrel
-Keystone,Tariff 55,2022-02-01,2022-03-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,heavy crude,8.5,US$ per barrel,8.5,US$ per barrel
-Keystone,Tariff 55,2022-02-01,2022-03-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,heavy crude,8.5,US$ per barrel,8.5,US$ per barrel
-Keystone,Tariff 55,2022-02-01,2022-03-31,"Hardisty, Alberta","Houston, Texas",International Joint Uncommitted,light crude,7.82,US$ per barrel,7.82,US$ per barrel
-Keystone,Tariff 55,2022-02-01,2022-03-31,"Hardisty, Alberta","Port Arthur, Texas",International Joint Uncommitted,light crude,7.82,US$ per barrel,7.82,US$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,8.804,CA$ per cubic metre,1.399726541384,CA$ per barrel
 Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,12.864,CA$ per cubic metre,2.045216064103,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,8.496,CA$ per cubic metre,1.350758370695,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,12.556,CA$ per cubic metre,1.996247893414,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
 Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,15.437,CA$ per cubic metre,2.454291074437,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,11.842,CA$ per cubic metre,1.882730770453,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,14.615,CA$ per cubic metre,2.323603294222,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,8.804,CA$ per cubic metre,1.399726541384,CA$ per barrel
 Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,11.646,CA$ per cubic metre,1.851569207287,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,8.496,CA$ per cubic metre,1.350758370695,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,11.338,CA$ per cubic metre,1.802601036598,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
 Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,13.975,CA$ per cubic metre,2.221851251232,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,10.624,CA$ per cubic metre,1.689083913637,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
-Keystone,Tariff 6,2011-05-01,2012-06-30,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,13.153,CA$ per cubic metre,2.091163471016,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,13.741,CA$ per cubic metre,2.184648160513,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,13.402,CA$ per cubic metre,2.130751375242,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
 Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,16.489,CA$ per cubic metre,2.621545995103,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,11.842,CA$ per cubic metre,1.882730770453,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,4.06,CA$ per cubic metre,0.645489522719,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,14.615,CA$ per cubic metre,2.323603294222,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,12.523,CA$ per cubic metre,1.991001303698,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,12.184,CA$ per cubic metre,1.937104518426,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
 Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,15.028,CA$ per cubic metre,2.389265159464,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,10.624,CA$ per cubic metre,1.689083913637,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,2.842,CA$ per cubic metre,0.451842665903,CA$ per barrel
-Keystone,Tariff 7,2012-07-01,2012-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,13.153,CA$ per cubic metre,2.091163471016,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,14.191,CA$ per cubic metre,2.256192565741,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,4.51,CA$ per cubic metre,0.717033927946,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,13.852,CA$ per cubic metre,2.202295780469,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,4.51,CA$ per cubic metre,0.717033927946,CA$ per barrel
 Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,17.029,CA$ per cubic metre,2.707399281376,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,12.292,CA$ per cubic metre,1.954275175681,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,4.51,CA$ per cubic metre,0.717033927946,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,15.155,CA$ per cubic metre,2.409456580495,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,12.838,CA$ per cubic metre,2.041082387357,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.157,CA$ per cubic metre,0.501923749562,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,12.499,CA$ per cubic metre,1.987185602085,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.157,CA$ per cubic metre,0.501923749562,CA$ per barrel
 Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,15.406,CA$ per cubic metre,2.449362459855,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,10.939,CA$ per cubic metre,1.739164997297,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.157,CA$ per cubic metre,0.501923749562,CA$ per barrel
-Keystone,Tariff 8,2013-01-01,2013-12-31,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,13.531,CA$ per cubic metre,2.151260771407,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",heavy crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",heavy crude,14.933,CA$ per cubic metre,2.374161340583,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",heavy crude,5.252,CA$ per cubic metre,0.835002702788,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",heavy crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",heavy crude,14.594,CA$ per cubic metre,2.320264555311,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",heavy crude,5.252,CA$ per cubic metre,0.835002702788,CA$ per barrel
 Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,heavy crude,17.92,CA$ per cubic metre,2.849057203726,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",heavy crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",heavy crude,13.034,CA$ per cubic metre,2.072243950523,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",heavy crude,5.252,CA$ per cubic metre,0.835002702788,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,heavy crude,16.045,CA$ per cubic metre,2.550955515278,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Fixed Contract",light crude,9.681,CA$ per cubic metre,1.539158637794,CA$ per barrel
 Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Total Contract",light crude,13.361,CA$ per cubic metre,2.124232884988,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 10 yr Term, Variable Contract",light crude,3.68,CA$ per cubic metre,0.585074247193,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Fixed Contract",light crude,9.342,CA$ per cubic metre,1.485261852523,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Total Contract",light crude,13.022,CA$ per cubic metre,2.070336099717,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma","Committed, 20 yr Term, Variable Contract",light crude,3.68,CA$ per cubic metre,0.585074247193,CA$ per barrel
 Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Cushing, Oklahoma",Uncommitted,light crude,16.033,CA$ per cubic metre,2.549047664472,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Fixed Contract",light crude,7.782,CA$ per cubic metre,1.237241247734,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Total Contract",light crude,11.462,CA$ per cubic metre,1.822315494928,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois","Committed, 20 yr Term, Variable Contract",light crude,3.68,CA$ per cubic metre,0.585074247193,CA$ per barrel
-Keystone,Tariff 9,2014-01-01,2014-01-02,"Hardisty, Alberta","Wood River or Patoka, Illinois",Uncommitted,light crude,14.159,CA$ per cubic metre,2.251104963591,CA$ per barrel
 Westcoast,2010 Final,2010-07-01,2010-12-31,T-North,Long Haul,1 year,natural gas,111.08,CA$ per thousand cubic metres per month,0.09790737816298783,CA$ per GJ
 Westcoast,2010 Final,2010-07-01,2010-12-31,T-North,Long Haul,2 years,natural gas,107.84,CA$ per thousand cubic metres per month,0.09505159939770082,CA$ per GJ
 Westcoast,2010 Final,2010-07-01,2010-12-31,T-North,Long Haul,3 years,natural gas,104.61,CA$ per thousand cubic metres per month,0.09220463476440559,CA$ per GJ

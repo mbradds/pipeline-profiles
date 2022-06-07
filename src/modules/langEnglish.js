@@ -379,7 +379,7 @@ export const englishDashboard = {
       sw: "southwest",
     },
     fiveYr: {
-      lastYrName: (lastYear) => `${lastYear} Throughput (last year of data)`,
+      lastYrName: (lastYear) => `${lastYear} Throughput`,
       avgName: "Five-Year Average",
       rangeName: (min, max) => `Five-Year Range (${min + 1}-${max - 1})`,
       notEnough: "Not enough data to calculate five-year average",

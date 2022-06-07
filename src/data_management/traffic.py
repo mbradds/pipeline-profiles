@@ -24,7 +24,9 @@ def apply_trade_id(df):
              "diluent (committed)": "dic",
              "diluent (uncommitted)": "diu",
              "Diluent - Committed": "dic",
+             "Diluent-Committed": "dic",
              "Diluent - Uncommitted": "diu",
+             "Diluent-Uncommitted": "diu",
              "Diluent - Uncomitted": "diu",
              "southeast sask (SES) crude": "ses",
              "SES – Crude Volume": "ses",
@@ -160,7 +162,7 @@ def meta_trend(df_c, commodity):
         this_trend = {}
         try:
             if old_through > 0:
-                pct = int(round((new_through-old_through)/abs(old_through)*100, 0))
+                pct = round((new_through-old_through)/abs(old_through)*100, 1)
             else:
                 pct = None
             this_trend["throughChange"] = {"pct": pct,
@@ -228,10 +230,6 @@ def process_company(df, company, commodity, points, units, save):
     else:
         frequency = "m"
 
-    if company in ["Montreal"]:
-        applyNone = False
-    else:
-        applyNone = True
     meta["frequency"] = frequency
     meta['defaultPoint'] = get_default_point(company)
     this_company_data = {}
@@ -279,9 +277,9 @@ def process_company(df, company, commodity, points, units, save):
                 t, c = float(t), float(c)
 
                 if trade in traffic_types:
-                    traffic_types[trade] = push_traffic(t, traffic_types[trade], rounding, applyNone)
+                    traffic_types[trade] = push_traffic(t, traffic_types[trade], rounding, False)
                 else:
-                    traffic_types[trade] = push_traffic(t, [], rounding, applyNone)
+                    traffic_types[trade] = push_traffic(t, [], rounding, False)
 
                 if date not in date_added and trade != "im":
                     point_capacity = push_traffic(c, point_capacity, rounding, True)
@@ -429,5 +427,5 @@ def combined_traffic(save=True, sql=True):
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    combined_traffic(save=True, sql=False)
+    combined_traffic(save=True, sql=True)
     print('completed throughput!')

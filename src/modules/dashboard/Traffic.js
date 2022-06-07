@@ -305,7 +305,10 @@ export class Traffic {
           "border-top: 1px dashed grey"
         );
       }
-      if (Object.prototype.hasOwnProperty.call(section, "capacity")) {
+      if (
+        Object.prototype.hasOwnProperty.call(section, "capacity") &&
+        section.capacity[0]
+      ) {
         toolText += section.capacity[0];
         toolText += this.addToolRow(
           {
