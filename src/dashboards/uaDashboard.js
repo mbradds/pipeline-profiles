@@ -31,9 +31,9 @@ export async function mainUa(uaData, metaData, lang) {
       filters: mapFilters,
       minRadius: 14000,
       divId: "unauthorized-activities-map",
-      toolTipFields: ["y", "et", "eqt", "wpc"],
+      toolTipFields: undefined,
       lang: mapLang,
-      regdocsClick: true,
+      regdocsClick: false,
     });
     map.addBaseMap();
     map.processEventsData(events);
