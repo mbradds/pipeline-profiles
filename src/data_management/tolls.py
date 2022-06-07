@@ -4,7 +4,7 @@ import re
 import platform
 import numpy as np
 import pandas as pd
-from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script
+from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script, replace_nulls_with_none
 set_cwd_to_script()
 
 
@@ -153,9 +153,7 @@ def company_filter(df, company):
     df = df.copy().reset_index(drop=True)
     df = df.sort_values(by=["Path", "Service", "Effective Start"])
     df = round_values(df)
-    df = df.where(pd.notnull(df), None)
-    if platform.system() == "Linux":
-        df = df.replace({np.nan: None})
+    df = replace_nulls_with_none(df)
     shown_paths = len(list(set(df["Path"])))
     return df, selected_paths, selected_services, path_filter, split_default, [shown_paths, total_paths]
 

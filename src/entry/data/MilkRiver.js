@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/Plains.json";
 import tollsData from "../../data_output/tolls/MilkRiver.json";
 import oandmData from "../../data_output/oandm/Plains.json";
 import remediationData from "../../data_output/remediation/Plains.json";
+import uaData from "../../data_output/unauthorized_activities/MilkRiver.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

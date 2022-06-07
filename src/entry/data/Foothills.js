@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/Foothills.json";
 import tollsData from "../../data_output/tolls/Foothills.json";
 import oandmData from "../../data_output/oandm/Foothills.json";
 import remediationData from "../../data_output/remediation/Foothills.json";
+import uaData from "../../data_output/unauthorized_activities/Foothills.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

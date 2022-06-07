@@ -6,6 +6,7 @@ import apportionData from "../../data_output/apportionment/SouthernLights.json";
 import tollsData from "../../data_output/tolls/SouthernLights.json";
 import oandmData from "../../data_output/oandm/SouthernLights.json";
 import remediationData from "../../data_output/remediation/SouthernLights.json";
+import uaData from "../../data_output/unauthorized_activities/SouthernLights.json";
 
 export const data = {
   canadaMap,
@@ -16,4 +17,5 @@ export const data = {
   tollsData,
   oandmData,
   remediationData,
+  uaData,
 };

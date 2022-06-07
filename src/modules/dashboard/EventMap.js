@@ -394,30 +394,70 @@ export class EventMap {
       "#ffffff",
       "#ffffff",
     ];
-    const volumes = data.map((row) => row.vol);
-    const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
-    const maxRad = radiusCalc(maxVol);
-    let years = []; // piggyback on data processing pass to get the year colors
-    /** @type {L.Circle[]} */
-    const allCircles = [];
-    data.forEach((row) => {
-      years.push(row.y);
-      let radiusVol = (row.vol - minVol) / (maxVol - minVol);
-      radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
-      if (row.loc[0] && row.loc[0] > 0) {
-        allCircles.push(
-          this.addCircle(
-            row.loc[0],
-            row.loc[1],
-            cerPalette["Cool Grey"],
-            this.applyColor(row[this.field], this.field), // fillColor
-            radiusVol,
-            row
-          )
-        );
+
+    const getCircleFunction = (firstRow) => {
+      const currentDashboard = this;
+      if (firstRow.hasOwnProperty("vol")) {
+        return function circleWithVol(d) {
+          const volumes = d.map((row) => row.vol);
+          const [maxVol, minVol] = [Math.max(...volumes), Math.min(...volumes)];
+          const maxRad = radiusCalc(maxVol);
+          const years = []; // piggyback on data processing pass to get the year colors
+          /** @type {L.Circle[]} */
+          const allCircles = [];
+          d.forEach((row) => {
+            years.push(row.y);
+            let radiusVol = (row.vol - minVol) / (maxVol - minVol);
+            radiusVol = Math.sqrt(radiusVol / Math.PI) * maxRad + 1000;
+            if (row.loc[0] && row.loc[0] > 0) {
+              allCircles.push(
+                currentDashboard.addCircle(
+                  row.loc[0],
+                  row.loc[1],
+                  cerPalette["Cool Grey"],
+                  currentDashboard.applyColor(
+                    row[currentDashboard.field],
+                    currentDashboard.field
+                  ), // fillColor
+                  radiusVol,
+                  row
+                )
+              );
+            }
+          });
+          return [allCircles, years];
+        };
       }
-      // return false;
-    });
+      return function circleWithoutVol(d) {
+        const years = []; // piggyback on data processing pass to get the year colors
+        /** @type {L.Circle[]} */
+        const allCircles = [];
+        d.forEach((row) => {
+          years.push(row.y);
+          if (row.loc[0] && row.loc[0] > 0) {
+            allCircles.push(
+              currentDashboard.addCircle(
+                row.loc[0],
+                row.loc[1],
+                cerPalette["Cool Grey"],
+                currentDashboard.applyColor(
+                  row[currentDashboard.field],
+                  currentDashboard.field
+                ),
+                undefined,
+                row
+              )
+            );
+          }
+        });
+        return [allCircles, years];
+      };
+    };
+
+    // console.log(data, this.eventType);
+    const circleFunction = getCircleFunction(data[0]);
+    let [allCircles, years] = circleFunction(data);
+
     years = years.filter((v, i, a) => a.indexOf(v) === i); // get unique years
     years = years.sort((a, b) => b - a);
     const yearColors = {};

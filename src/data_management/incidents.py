@@ -207,16 +207,15 @@ def process_incidents(remote=False, companies=False, test=False):
                 df_vol = optimize_json(df_vol)
                 this_company_data['events'] = df_vol.to_dict(orient='records')
                 this_company_data['meta']['build'] = True
-                if not test:
-                    with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
-                        json.dump(this_company_data, fp)
             else:
                 # there are no product release incidents
                 this_company_data['events'] = df_vol.to_dict(orient='records')
                 this_company_data['meta'] = {"companyName": company, "build": False}
-                if not test:
-                    with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
-                        json.dump(this_company_data, fp)
+            
+            if not test:
+                with open('../data_output/incidents/'+folder_name+'.json', 'w') as fp:
+                    json.dump(this_company_data, fp)
+                    
             print("completed: "+company)
         except:
             print("incidents error: "+company)
@@ -226,5 +225,5 @@ def process_incidents(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df_, volume_, meta_ = process_incidents(remote=True, test=False)
+    df_, volume_, meta_ = process_incidents(remote=False, test=False)
     print('completed incidents!')

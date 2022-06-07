@@ -74,7 +74,7 @@ export class EventTrend {
   }
 
   static dummyYears(yearList, dataFormat = "object") {
-    let uniqueYears = yearList;
+    let uniqueYears = yearList.filter((x) => x);
     const currentYear = new Date().getFullYear();
     const maxYear = uniqueYears.slice(-1)[0];
 

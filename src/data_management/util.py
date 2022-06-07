@@ -1,5 +1,6 @@
 import io
 import os
+import platform
 import pandas as pd
 import numpy as np
 from connection import cer_connection
@@ -9,7 +10,7 @@ from errors import IdError, IdLengthError
 def set_cwd_to_script():
     dname = os.path.dirname(os.path.abspath(__file__))
     os.chdir(dname)
-    
+
 
 set_cwd_to_script()
 
@@ -145,9 +146,9 @@ def most_common(df,
 #     return df
 
 
-def normalize_dates(df, date_list, short_date=False):
+def normalize_dates(df, date_list, short_date=False, errors="raise"):
     for date_col in date_list:
-        df[date_col] = pd.to_datetime(df[date_col], errors='raise')
+        df[date_col] = pd.to_datetime(df[date_col], errors=errors)
         if short_date:
             df[date_col] = df[date_col].dt.date
     return df
@@ -160,9 +161,9 @@ def normalize_text(df, text_list):
     return df
 
 
-def normalize_numeric(df, num_list, decimals):
+def normalize_numeric(df, num_list, decimals, errors="coerce"):
     for num_col in num_list:
-        df[num_col] = pd.to_numeric(df[num_col], errors='coerce')
+        df[num_col] = pd.to_numeric(df[num_col], errors=errors)
         df[num_col] = df[num_col].round(decimals)
     return df
 
@@ -272,3 +273,10 @@ def prepare_ids(df):
     for key, e, f in zip(df.id, df.e, df.f):
         id_save[key] = {"e": e, "f": f}
     return id_save
+
+
+def replace_nulls_with_none(df):
+    df = df.where(pd.notnull(df), None)
+    if platform.system() == "Linux":
+        df = df.replace({np.nan: None})
+    return df
