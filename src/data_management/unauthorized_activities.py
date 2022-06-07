@@ -23,9 +23,21 @@ def optimize_json(df):
     return df
 
 
-def process_ua(companies=False):
-    path = "./raw_data/Damage Prevention Regulation Contravention Reports.xlsx"
-    df = pd.read_excel(path, sheet_name="UA Data (Eng)", engine="openpyxl")
+def process_ua(companies=False, remote=True, test=False, save=True):
+    
+    if test:
+        print("No tests yet for unauthorized activities")
+        return
+    elif remote:
+        print("reading remote UA data")
+        df = pd.read_csv("https://www.cer-rec.gc.ca/open/operations/damage-prevention-regulation-contravention-reports.csv",
+                         encoding="latin-1",
+                         engine="python")
+        df.to_csv("./raw_data/unauthorized_activities.csv")
+    else:
+        print("reading local UA file")
+        df = pd.read_csv("./raw_data/unauthorized_activities.csv")
+    
     df = normalize_numeric(df, ["Latitude", "Longitude"], 2)
     df = normalize_dates(df, ["Date Event Occurred"], False, "coerce")
     df["Year"] = df["Date Event Occurred"].dt.year
@@ -76,5 +88,5 @@ def process_ua(companies=False):
 
 if __name__ == '__main__':
     print('starting unauthorized activities...')
-    df_ = process_ua()
+    df_ = process_ua(remote=False, save=True)
     print('completed unauthorized activities!')

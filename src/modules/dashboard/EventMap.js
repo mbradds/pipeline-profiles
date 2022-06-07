@@ -462,7 +462,7 @@ export class EventMap {
     years = years.sort((a, b) => b - a);
     const yearColors = {};
     years.forEach((yr, i) => {
-      if (yr < 0) {
+      if (yr < 0 || !yr) {
         yearColors[yr] = { c: cerPalette["Dim Grey"], n: "n/a" };
       } else {
         yearColors[yr] = { c: colors[i], n: yr };

@@ -96,8 +96,14 @@ export class EventNavigator {
     const seriesProps = (colors) => {
       if (colors) {
         return function hasColors(key, value) {
+          let colorName = key;
+          if (colors[key]) {
+            colorName = Object.prototype.hasOwnProperty.call(colors[key], "n")
+              ? colors[key].n
+              : key;
+          }
           return {
-            name: colors[key].n,
+            name: colorName,
             id: key,
             data: [{ name, y: value[yVal] }],
             filter: yVal,

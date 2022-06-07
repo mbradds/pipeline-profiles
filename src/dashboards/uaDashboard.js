@@ -74,7 +74,7 @@ export async function mainUa(uaData, metaData, lang) {
   function buildDashboard() {
     if (metaData.build) {
       const thisMap = uaMap(uaData, field, filters, lang.dashboard);
-      const bars = uaBar(uaData.events, thisMap, lang.dashboard.pillTitles);
+      const bars = uaBar(uaData, thisMap, lang.dashboard.pillTitles);
 
       uaTimeSeries(field, filters);
 
