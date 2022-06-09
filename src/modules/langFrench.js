@@ -51,6 +51,11 @@ const dashboardError = {
     "Essayez d'actualiser la page. Veuillez envoyer un courriel à energy.markets@cer-rec.gc.ca si le problème persiste.",
 };
 
+const nullInfo = {
+  null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
+  ns: { n: "Non fournie", c: cerPalette["Dim Grey"] },
+};
+
 const regionInfo = {
   ab: { c: cerPalette.Sun, n: "Alberta" },
   bc: { c: cerPalette.Forest, n: "Colombie-Britannique" },
@@ -64,11 +69,13 @@ const regionInfo = {
   pe: { c: cerPalette.hcRed, n: "Prince Edward Island" },
   nu: { c: cerPalette.hcPurple, n: "Nunavut" },
   yt: { c: cerPalette.hcGreen, n: "Yukon" },
+  ...nullInfo,
 };
 
 const yesNoInfo = {
   y: { c: cerPalette.Sun, n: "Oui" },
   n: { c: cerPalette["Night Sky"], n: "Non" },
+  ...nullInfo,
 };
 
 const units = {
@@ -320,11 +327,13 @@ export const frenchDashboard = {
           diesel: { c: cerPalette.hcRed, n: "Carburant diesel" },
           gas: { c: cerPalette.Flame, n: "Essence" },
           Other: { c: cerPalette.Aubergine, n: "Autre" },
+          ...nullInfo,
         },
         s: {
           is: { c: cerPalette.Flame, n: "Initialement soumis" },
           c: { c: cerPalette["Cool Grey"], n: "Fermé" },
           s: { c: cerPalette.Ocean, n: "Soumis" },
+          ...nullInfo,
         },
         p: regionInfo,
         why: {
@@ -341,6 +350,7 @@ export const frenchDashboard = {
           ip: { c: cerPalette.Aubergine, n: "Approvisionnement inadéquat" },
           is: { c: cerPalette["Dim Grey"], n: "Supervision insuffisante" },
           fc: { c: cerPalette.hcPink, n: "Problème de communication" },
+          ...nullInfo,
         },
         what: {
           cc: { c: cerPalette.Aubergine, n: "Corrosion et fissuration" },
@@ -354,6 +364,7 @@ export const frenchDashboard = {
           io: { c: cerPalette["Night Sky"], n: "Erreur d’ exploitation" },
           ei: { c: cerPalette.Ocean, n: "Interférences extérieures" },
           tbd: { c: cerPalette.Sun, n: "À déterminer" },
+          ...nullInfo,
         },
       },
     },
@@ -538,24 +549,24 @@ export const frenchDashboard = {
           p: { n: "Pipeline", c: cerPalette["Night Sky"] },
           f: { n: "Installation", c: cerPalette.Ocean },
           pf: { n: "Pipeline et installation", c: cerPalette.Flame },
-          ns: { n: "Non fournie", c: cerPalette["Dim Grey"] },
+          ...nullInfo,
         },
         w: {
           true: { c: cerPalette.Sun, n: "Vrai" },
           false: { c: cerPalette["Night Sky"], n: "Faux" },
-          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
+          ...nullInfo,
         },
         s: {
           prm: {
             c: cerPalette.Forest,
             n: "Après la surveillance de l'assainissement",
           },
-          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
           rm: { c: cerPalette.Ocean, n: "Gestion du risque" },
           sa: { c: cerPalette.Aubergine, n: "Évaluation du site" },
           fm: { c: cerPalette.hcBlue, n: "Surveillance des installations" },
           or: { c: cerPalette["Cool Grey"], n: "Mesures correctives" },
           m: { c: cerPalette.Sun, n: "Surveillance" },
+          ...nullInfo,
         },
         p: regionInfo, // Province
         use: {
@@ -584,14 +595,14 @@ export const frenchDashboard = {
           al: { c: cerPalette.Ocean, n: "Terres agricoles" },
           pa: { c: cerPalette.Forest, n: "Aire protégée" },
           ndl: { c: cerPalette.Flame, n: "Terrain non mis en valeur" },
-          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
+          ...nullInfo,
         },
         a: {
           m: { c: cerPalette["Night Sky"], n: "Entretien" },
           o: { c: cerPalette.Flame, n: "Exploitation" },
           c: { c: cerPalette.Ocean, n: "Construction" },
           a: { c: cerPalette.Aubergine, n: "Cessation d'exploitation" },
-          null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
+          ...nullInfo,
         },
         c: {
           1: { n: "Autre" },
@@ -670,7 +681,90 @@ export const frenchDashboard = {
     companyToSystem,
     noEvents,
     dashboard: {
-      eventName: "unauthorized activities",
+      eventName: "unauthorized-activities",
+      resetMap,
+      trendYTitle,
+      pillTitles: {
+        titles: {
+          et: "Event Type",
+          eqt: "Equipment Type",
+          wpc: "Was Pipe Contacted",
+          mod: "Method Of Discovery",
+          y: "Year",
+        },
+        click,
+      },
+      seriesInfo: {
+        et: {
+          "Construction of a Facility": {
+            c: cerPalette.Aubergine,
+            n: "Construction of a Facility",
+          },
+          "Construction of a Facility; Ground Disturbance": {
+            c: cerPalette["Cool Grey"],
+            n: "Construction of a Facility; Ground Disturbance",
+          },
+          "Construction of a Facility; Ground Disturbance; Vehicle Crossing": {
+            c: cerPalette.Flame,
+            n: "Construction of a Facility; Ground Disturbance; Vehicle Crossing",
+          },
+          "Construction of a Facility; Vehicle Crossing": {
+            c: cerPalette.Forest,
+            n: "Construction of a Facility; Vehicle Crossing",
+          },
+          "Ground Disturbance": {
+            c: cerPalette["Night Sky"],
+            n: "Ground Disturbance",
+          },
+          "Ground Disturbance; Vehicle Crossing": {
+            c: cerPalette.Ocean,
+            n: "Ground Disturbance; Vehicle Crossing",
+          },
+          "Vehicle Crossing": {
+            c: cerPalette.Sun,
+            n: "Vehicle Crossing",
+          },
+          "Damage to Pipe": {
+            c: cerPalette.hcAqua,
+            n: "Damage to Pipe",
+          },
+          "Damage to Pipe; Ground Disturbance": {
+            c: cerPalette.hcAqua,
+            n: "Damage to Pipe; Ground Disturbance",
+          },
+          ...nullInfo,
+        },
+        eqt: {
+          "Auger Digger": { c: cerPalette["Dim Grey"], n: "Auger Digger" },
+          Backhoe: { c: cerPalette["Dim Grey"], n: "Backhoe" },
+          Combine: { c: cerPalette["Dim Grey"], n: "Combine" },
+          Crane: { c: cerPalette["Dim Grey"], n: "Crane" },
+          "Directional Drill": {
+            c: cerPalette["Dim Grey"],
+            n: "Directional Drill",
+          },
+          "Front End Loader": {
+            c: cerPalette["Dim Grey"],
+            n: "Front End Loader",
+          },
+          "Hydro Vactor": { c: cerPalette["Dim Grey"], n: "Hydro Vactor" },
+          "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
+          "Vehicle <= 1 ton": {
+            c: cerPalette["Dim Grey"],
+            n: "Vehicle <= 1 ton",
+          },
+          "Vehicle > 1 ton": {
+            c: cerPalette["Dim Grey"],
+            n: "Vehicle > 1 ton",
+          },
+          ...nullInfo,
+        },
+        wpc: {
+          Yes: { c: cerPalette["Dim Grey"], n: "Yes" },
+          No: { c: cerPalette["Dim Grey"], n: "No" },
+          ...nullInfo,
+        },
+      },
     },
   },
 };

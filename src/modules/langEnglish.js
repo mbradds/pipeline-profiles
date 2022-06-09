@@ -51,6 +51,12 @@ const dashboardError = {
     "Try refreshing the page. Please email energy.markets@cer-rec.gc.ca if the problem persists.",
 };
 
+const nullInfo = {
+  "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
+  null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+  ns: { n: "Not Specified", c: cerPalette["Dim Grey"] },
+};
+
 const regionInfo = {
   ab: { c: cerPalette.Sun, n: "Alberta" },
   bc: { c: cerPalette.Forest, n: "British Columbia" },
@@ -64,11 +70,13 @@ const regionInfo = {
   pe: { c: cerPalette.hcRed, n: "Prince Edward Island" },
   nu: { c: cerPalette.hcPurple, n: "Nunavut" },
   yt: { c: cerPalette.hcGreen, n: "Yukon" },
+  ...nullInfo,
 };
 
 const yesNoInfo = {
   y: { c: cerPalette.Sun, n: "Yes" },
   n: { c: cerPalette["Night Sky"], n: "No" },
+  ...nullInfo,
 };
 
 const units = {
@@ -311,7 +319,6 @@ export const englishDashboard = {
       findBtnTitle: nearbyMe.findBtnTitle("Incidents"),
       nearbyHeader: nearbyMe.nearbyHeader,
       seriesInfo: {
-        // Substance
         sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
           ngsweet: { c: cerPalette.Flame, n: "Natural Gas - Sweet" },
@@ -326,12 +333,14 @@ export const englishDashboard = {
           diesel: { c: cerPalette.hcRed, n: "Diesel Fuel" },
           gas: { c: cerPalette.Flame, n: "Gasoline" },
           Other: { c: cerPalette.Aubergine, n: "Other" },
+          ...nullInfo,
         },
         // Status
         s: {
           is: { c: cerPalette.Flame, n: "Initially Submitted" },
           c: { c: cerPalette["Cool Grey"], n: "Closed" },
           s: { c: cerPalette.Ocean, n: "Submitted" },
+          ...nullInfo,
         },
         p: regionInfo, // Province
         why: {
@@ -345,6 +354,7 @@ export const englishDashboard = {
           ip: { c: cerPalette.Aubergine, n: "Inadequate Procurement" },
           is: { c: cerPalette["Dim Grey"], n: "Inadequate Supervision" },
           fc: { c: cerPalette.hcPink, n: "Failure in communication" },
+          ...nullInfo,
         },
         what: {
           cc: { c: cerPalette.Aubergine, n: "Corrosion and Cracking" },
@@ -355,6 +365,7 @@ export const englishDashboard = {
           io: { c: cerPalette["Night Sky"], n: "Incorrect Operation" },
           ei: { c: cerPalette.Ocean, n: "External Interference" },
           tbd: { c: cerPalette.Sun, n: "To be determined" },
+          ...nullInfo,
         },
       },
     },
@@ -536,12 +547,12 @@ export const englishDashboard = {
           p: { n: "Pipeline", c: cerPalette["Night Sky"] },
           f: { n: "Facility", c: cerPalette.Ocean },
           pf: { n: "Pipeline and Facility", c: cerPalette.Flame },
-          ns: { n: "Not specified", c: cerPalette["Dim Grey"] },
+          ...nullInfo,
         },
         w: {
           true: { c: cerPalette.Sun, n: "True" },
           false: { c: cerPalette["Night Sky"], n: "False" },
-          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          ...nullInfo,
         },
         s: {
           prm: { c: cerPalette.Flame, n: "Post-remediation monitoring" },
@@ -551,6 +562,7 @@ export const englishDashboard = {
           fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
           or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
           m: { c: cerPalette.Sun, n: "Monitored" },
+          ...nullInfo,
         },
         p: regionInfo, // Province
         use: {
@@ -576,14 +588,14 @@ export const englishDashboard = {
           al: { c: cerPalette.Ocean, n: "Agricultural Land" },
           pa: { c: cerPalette.Forest, n: "Protected Area" },
           ndl: { c: cerPalette.Flame, n: "Non-developed Land" },
-          null: { c: cerPalette["Dim Grey"], n: "Not provided" },
+          ...nullInfo,
         },
         a: {
           m: { c: cerPalette["Night Sky"], n: "Maintenance" },
           o: { c: cerPalette.Flame, n: "Operation" },
           c: { c: cerPalette.Ocean, n: "Construction" },
           a: { c: cerPalette.Aubergine, n: "Abandonment" },
-          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+          ...nullInfo,
         },
         c: {
           1: { n: "Other" },
@@ -711,9 +723,9 @@ export const englishDashboard = {
             c: cerPalette.hcAqua,
             n: "Damage to Pipe; Ground Disturbance",
           },
+          ...nullInfo,
         },
         eqt: {
-          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
           "Auger Digger": { c: cerPalette["Dim Grey"], n: "Auger Digger" },
           Backhoe: { c: cerPalette["Dim Grey"], n: "Backhoe" },
           Combine: { c: cerPalette["Dim Grey"], n: "Combine" },
@@ -736,12 +748,12 @@ export const englishDashboard = {
             c: cerPalette["Dim Grey"],
             n: "Vehicle > 1 ton",
           },
+          ...nullInfo,
         },
         wpc: {
           Yes: { c: cerPalette["Dim Grey"], n: "Yes" },
           No: { c: cerPalette["Dim Grey"], n: "No" },
-          "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
-          null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
+          ...nullInfo,
         },
       },
     },
