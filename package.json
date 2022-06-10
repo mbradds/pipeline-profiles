@@ -13,7 +13,6 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "build-azure": "webpack --config webpack.azure.js",
     "deploy": "conda run -n pipeline-profiles python deploy/make_production_files.py",
     "analyze-build": "webpack --config webpack.analyze.js",
     "start": "node server.js",
@@ -50,21 +49,21 @@
     "haversine": "^1.1.1",
     "highcharts": "^9.3.3",
     "leaflet": "^1.7.1",
-    "mapshaper": "^0.6.0"
+    "mapshaper": "^0.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/plugin-proposal-class-properties": "^7.17.12",
     "@babel/plugin-transform-runtime": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
-    "ava": "^4.2.0",
+    "ava": "^4.3.0",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
-    "core-js": "^3.22.7",
+    "core-js": "^3.22.8",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
-    "eslint": "^8.16.0",
+    "eslint": "^8.17.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -77,10 +76,10 @@
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "2.6.2",
     "style-loader": "^3.3.1",
-    "webpack": "^5.72.1",
+    "webpack": "^5.73.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0",
+    "webpack-dev-server": "^4.9.2",
     "webpack-merge": "^5.8.0"
   },
   "engines": {
