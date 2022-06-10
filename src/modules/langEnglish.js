@@ -751,8 +751,8 @@ export const englishDashboard = {
           ...nullInfo,
         },
         wpc: {
-          Yes: { c: cerPalette["Dim Grey"], n: "Yes" },
-          No: { c: cerPalette["Dim Grey"], n: "No" },
+          Yes: { c: cerPalette.Sun, n: "Yes" },
+          No: { c: cerPalette["Night Sky"], n: "No" },
           ...nullInfo,
         },
       },

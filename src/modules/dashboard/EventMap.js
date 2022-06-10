@@ -259,7 +259,7 @@ export class EventMap {
     };
 
     const rowName = getNameText(this.field, this.lang.pillTitles.titles);
-    const bubbleName = this.colors[this.field][eventParams[this.field]].n;
+    const bubbleName = this.applyName(eventParams[this.field], this.field);
     let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${eventParams.id}</strong></p>`;
     toolTipText += `<table><tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
 
@@ -352,11 +352,25 @@ export class EventMap {
     }
   }
 
+  /**
+   *
+   * @param {string} rowValue dataset column value
+   * @param {string} field dataset column
+   * @returns color
+   */
   applyColor(rowValue, field) {
     try {
       return this.colors[field][rowValue].c;
     } catch (err) {
-      return undefined;
+      return "red";
+    }
+  }
+
+  applyName(rowValue, field) {
+    try {
+      return this.colors[field][rowValue].n;
+    } catch (err) {
+      return rowValue;
     }
   }
 
@@ -647,8 +661,10 @@ export class EventMap {
     this.field = newField;
     const currentDashboard = this;
     this.circles.eachLayer((/** @type {L.Circle} */ layer) => {
-      const newFill =
-        this.colors[newField][layer.options.eventParams[newField]].c;
+      const newFill = this.applyColor(
+        layer.options.eventParams[newField],
+        newField
+      );
       layer.setStyle({
         fillColor: newFill,
       });

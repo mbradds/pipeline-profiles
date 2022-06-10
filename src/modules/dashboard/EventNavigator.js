@@ -335,10 +335,24 @@ export class EventNavigator {
     const activeDiv = document.getElementById(bar.div);
     if (chart) {
       const colors = this.barColors[bar.name];
-      chart.series.forEach((s, i) => {
-        chart.series[i].options.color = colors[s.options.id].c;
-        chart.series[i].update(chart.series[i].options);
-      });
+      if (colors) {
+        chart.series.forEach((s, i) => {
+          if (Object.prototype.hasOwnProperty.call(colors, s.options.id)) {
+            chart.series[i].options.color = colors[s.options.id].c;
+          } else {
+            this.barColors[bar.name][s.options.id] = {
+              c: cerPalette.Forest,
+              n: s.options.id,
+            };
+            chart.series[i].options.color =
+              this.barColors[bar.name][s.options.id].c;
+            console.warn(
+              `no color set for ${s.options.id} on ${bar.name} column`
+            );
+          }
+          chart.series[i].update(chart.series[i].options);
+        });
+      }
 
       chart.update({
         chart: {
