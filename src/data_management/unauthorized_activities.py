@@ -39,8 +39,9 @@ def process_ua(companies=False, remote=True, test=False, save=True):
         df = pd.read_csv("./raw_data/unauthorized_activities.csv")
     
     df = normalize_numeric(df, ["Latitude", "Longitude"], 2)
-    df = normalize_dates(df, ["Date Event Occurred"], False, "coerce")
-    df["Year"] = df["Date Event Occurred"].dt.year
+    date_col = "Final Submission Date"
+    df = normalize_dates(df, [date_col], False, "coerce")
+    df["Year"] = df[date_col].dt.year
     df = normalize_text(df, ["Company Name"])
     df["Company Name"] = df["Company Name"].replace(company_rename())
     df = apply_system_id(df, "Company Name")
