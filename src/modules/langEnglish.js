@@ -678,7 +678,7 @@ export const englishDashboard = {
       pillTitles: {
         titles: {
           et: "Event Type",
-          eqt: "Equipment Type",
+          wpd: "Was Pipe Damaged",
           wpc: "Was Pipe Contacted",
           mod: "Method Of Discovery",
           y: "Year",
@@ -725,29 +725,9 @@ export const englishDashboard = {
           },
           ...nullInfo,
         },
-        eqt: {
-          "Auger Digger": { c: cerPalette["Dim Grey"], n: "Auger Digger" },
-          Backhoe: { c: cerPalette["Dim Grey"], n: "Backhoe" },
-          Combine: { c: cerPalette["Dim Grey"], n: "Combine" },
-          Crane: { c: cerPalette["Dim Grey"], n: "Crane" },
-          "Directional Drill": {
-            c: cerPalette["Dim Grey"],
-            n: "Directional Drill",
-          },
-          "Front End Loader": {
-            c: cerPalette["Dim Grey"],
-            n: "Front End Loader",
-          },
-          "Hydro Vactor": { c: cerPalette["Dim Grey"], n: "Hydro Vactor" },
-          "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
-          "Vehicle <= 1 ton": {
-            c: cerPalette["Dim Grey"],
-            n: "Vehicle <= 1 ton",
-          },
-          "Vehicle > 1 ton": {
-            c: cerPalette["Dim Grey"],
-            n: "Vehicle > 1 ton",
-          },
+        wpd: {
+          Yes: { c: cerPalette.Sun, n: "Yes" },
+          No: { c: cerPalette["Night Sky"], n: "No" },
           ...nullInfo,
         },
         wpc: {

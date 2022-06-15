@@ -487,10 +487,10 @@ const en = {
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
-          "ua-year-bar",
           "ua-contact-bar",
+          "ua-damage-bar",
+          "ua-year-bar",
           "ua-type-bar",
-          "ua-equipment-bar",
         ],
         chartPillIds: [
           "ua-status-trend",
@@ -974,10 +974,10 @@ const fr = {
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
-          "ua-year-bar",
           "ua-contact-bar",
+          "ua-year-bar",
           "ua-type-bar",
-          "ua-equipment-bar",
+          "ua-damage-bar",
         ],
         chartPillIds: [
           "ua-status-trend",

@@ -12,7 +12,7 @@ def optimize_json(df):
     df = replace_nulls_with_none(df)
     df = df.rename(columns={"Event Number": "id",
                             "Event Type": "et",
-                            "Equipment Type": "eqt",
+                            "Was Pipe Damaged": "wpd",
                             "Was Pipe Contacted": "wpc",
                             "Method Of Discovery": "mod",
                             "Year": "y"})
@@ -48,7 +48,7 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     df = df[["Event Number",
               "Event Type",
               "Company Name",
-              "Equipment Type",
+              "Was Pipe Damaged",
               "Was Pipe Contacted",
               "Date Event Occurred",
               "Latitude",

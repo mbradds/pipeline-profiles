@@ -1,1 +1,1 @@
-{"meta": {"companyName": "Westspur", "build": true}, "events": [{"id": "UX2017-204", "et": "Ground Disturbance", "eqt": null, "wpc": "No", "y": 2017, "mod": null, "loc": [49.65, -101.43]}]}
+{"meta": {"companyName": "Westspur", "build": true}, "events": [{"id": "UX2017-204", "et": "Ground Disturbance", "wpd": null, "wpc": "No", "y": 2017, "mod": null, "loc": [49.65, -101.43]}]}

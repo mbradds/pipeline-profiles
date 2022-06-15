@@ -16,10 +16,10 @@ export async function mainUa(uaData, metaData, lang) {
       langPillTitles,
       data: events,
     });
-    barNav.makeBar("y", "ua-year-bar", "activated");
+    barNav.makeBar("wpc", "ua-contact-bar", "activated");
+    barNav.makeBar("y", "ua-year-bar", "deactivated");
     barNav.makeBar("et", "ua-type-bar", "deactivated");
-    barNav.makeBar("eqt", "ua-equipment-bar", "deactivated");
-    barNav.makeBar("wpc", "ua-contact-bar", "deactivated");
+    barNav.makeBar("wpd", "ua-damage-bar", "deactivated");
     barNav.divEvents();
     return barNav;
   };
@@ -31,7 +31,7 @@ export async function mainUa(uaData, metaData, lang) {
       filters: mapFilters,
       minRadius: 14000,
       divId: "unauthorized-activities-map",
-      toolTipFields: undefined,
+      toolTipFields: ["et"],
       lang: mapLang,
       regdocsClick: false,
     });
