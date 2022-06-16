@@ -1,1 +1,1 @@
-{"meta": {"companyName": "Vector", "build": true}, "events": [{"id": "UX2015-009", "et": "Ground Disturbance", "wpd": null, "wpc": "No", "y": 2015, "mod": null, "loc": [42.79, -82.43]}]}
+{"meta": {"companyName": "Vector", "build": true}, "events": [{"id": "UX2015-009", "et": "Ground Disturbance", "wpd": null, "wpc": "No", "y": 2015, "wci": "No", "ic": null, "mod": null, "loc": [42.79, -82.43]}]}

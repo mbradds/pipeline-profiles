@@ -6,7 +6,6 @@ import { noEventsFlag } from "./dashboardUtil.js";
 
 export async function mainUa(uaData, metaData, lang) {
   const eventType = "unauthorized-activities";
-  const field = "w"; // within 30m of a water body
   const filters = { type: "frequency" };
 
   const uaBar = (events, map, langPillTitles) => {
@@ -18,34 +17,32 @@ export async function mainUa(uaData, metaData, lang) {
     });
     barNav.makeBar("wpc", "ua-contact-bar", "activated");
     barNav.makeBar("y", "ua-year-bar", "deactivated");
-    barNav.makeBar("et", "ua-type-bar", "deactivated");
+    barNav.makeBar("ic", "ua-concern-var", "deactivated");
     barNav.makeBar("wpd", "ua-damage-bar", "deactivated");
     barNav.divEvents();
     return barNav;
   };
 
-  const uaMap = (events, mapField, mapFilters, mapLang) => {
+  const uaMap = (events, mapFilters, mapLang) => {
     const map = new EventMap({
       eventType,
-      field: mapField,
       filters: mapFilters,
       minRadius: 14000,
       divId: "unauthorized-activities-map",
-      toolTipFields: ["et"],
+      toolTipFields: ["et", "mod"],
       lang: mapLang,
       regdocsClick: false,
     });
     map.addBaseMap();
     map.processEventsData(events);
     map.lookForSize();
-    // map.addMapDisclaimer("volume");
     return map;
   };
 
-  const uaTimeSeries = (timeField, timeFilters) => {
+  const uaTimeSeries = (timeFilters) => {
     const timeSeries = new EventTrend({
       eventType,
-      field: timeField,
+      field: undefined,
       filters: timeFilters,
       data: uaData,
       divId: "unauthorized-activities-time-series",
@@ -73,10 +70,10 @@ export async function mainUa(uaData, metaData, lang) {
 
   function buildDashboard() {
     if (metaData.build) {
-      const thisMap = uaMap(uaData, field, filters, lang.dashboard);
+      const thisMap = uaMap(uaData, filters, lang.dashboard);
       const bars = uaBar(uaData, thisMap, lang.dashboard.pillTitles);
 
-      uaTimeSeries(field, filters);
+      uaTimeSeries(filters);
 
       thisMap.switchDashboards(bars);
       thisMap.nearbySlider(

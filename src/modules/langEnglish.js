@@ -678,51 +678,18 @@ export const englishDashboard = {
       pillTitles: {
         titles: {
           et: "Event Type",
-          wpd: "Was Pipe Damaged",
-          wpc: "Was Pipe Contacted",
+          wpd: "Was Pipe Damaged?",
+          wpc: "Was Pipe Contacted?",
           mod: "Method Of Discovery",
           y: "Year",
+          ic: "Immediate Concern For Safety Of Pipeline Employee Or General Public?",
         },
         click,
       },
       seriesInfo: {
-        et: {
-          "Construction of a Facility": {
-            c: cerPalette.Aubergine,
-            n: "Construction of a Facility",
-          },
-          "Construction of a Facility; Ground Disturbance": {
-            c: cerPalette["Cool Grey"],
-            n: "Construction of a Facility; Ground Disturbance",
-          },
-          "Construction of a Facility; Ground Disturbance; Vehicle Crossing": {
-            c: cerPalette.Flame,
-            n: "Construction of a Facility; Ground Disturbance; Vehicle Crossing",
-          },
-          "Construction of a Facility; Vehicle Crossing": {
-            c: cerPalette.Forest,
-            n: "Construction of a Facility; Vehicle Crossing",
-          },
-          "Ground Disturbance": {
-            c: cerPalette["Night Sky"],
-            n: "Ground Disturbance",
-          },
-          "Ground Disturbance; Vehicle Crossing": {
-            c: cerPalette.Ocean,
-            n: "Ground Disturbance; Vehicle Crossing",
-          },
-          "Vehicle Crossing": {
-            c: cerPalette.Sun,
-            n: "Vehicle Crossing",
-          },
-          "Damage to Pipe": {
-            c: cerPalette.hcAqua,
-            n: "Damage to Pipe",
-          },
-          "Damage to Pipe; Ground Disturbance": {
-            c: cerPalette.hcAqua,
-            n: "Damage to Pipe; Ground Disturbance",
-          },
+        ic: {
+          Yes: { c: cerPalette.Sun, n: "Yes" },
+          No: { c: cerPalette["Night Sky"], n: "No" },
           ...nullInfo,
         },
         wpd: {

@@ -6,7 +6,6 @@ import { noEventsFlag } from "./dashboardUtil.js";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
-  const field = "sub"; // Substance
   const filters = { type: "frequency" };
 
   const setTitle = (language, meta) => {
@@ -29,10 +28,9 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return barNav;
   };
 
-  const incidentMap = (mapField, mapFilters, mapLang) => {
+  const incidentMap = (mapFilters, mapLang) => {
     const map = new EventMap({
       eventType,
-      field: mapField,
       filters: mapFilters,
       minRadius: 14000,
       divId: "incidents-map",
@@ -46,10 +44,10 @@ export async function mainIncidents(incidentData, metaData, lang) {
     return map;
   };
 
-  const incidentTimeSeries = (timeField, timeFilters) => {
+  const incidentTimeSeries = (timeFilters) => {
     const timeSeries = new EventTrend({
       eventType,
-      field: timeField,
+      field: undefined,
       filters: timeFilters,
       data: incidentData,
       divId: "incidents-time-series",
@@ -131,13 +129,13 @@ export async function mainIncidents(incidentData, metaData, lang) {
       lang.dynamicText("system-incidents-paragraph", chartParams);
 
       setTitle(lang, chartParams);
-      const thisMap = incidentMap(field, filters, lang.dashboard);
+      const thisMap = incidentMap(filters, lang.dashboard);
       const bars = incidentBar(
         incidentData,
         thisMap,
         lang.dashboard.pillTitles
       );
-      const trends = incidentTimeSeries(field, filters);
+      const trends = incidentTimeSeries(filters);
       // user selection to show volume or incident frequency
       const volumeBtn = document.getElementById("incidents-volume-btn");
       document

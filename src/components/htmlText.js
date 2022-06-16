@@ -490,7 +490,7 @@ const en = {
           "ua-contact-bar",
           "ua-damage-bar",
           "ua-year-bar",
-          "ua-type-bar",
+          "ua-concern-var",
         ],
         chartPillIds: [
           "ua-status-trend",
@@ -976,7 +976,7 @@ const fr = {
         mapPillIds: [
           "ua-contact-bar",
           "ua-year-bar",
-          "ua-type-bar",
+          "ua-concern-var",
           "ua-damage-bar",
         ],
         chartPillIds: [

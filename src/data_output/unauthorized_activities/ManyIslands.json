@@ -1,1 +1,1 @@
-{"meta": {"companyName": "ManyIslands", "build": true}, "events": [{"id": "DPR2021-142", "et": "Damage to Pipe", "wpd": "Yes", "wpc": null, "y": 2021, "mod": "Other", "loc": [54.33, -109.75]}]}
+{"meta": {"companyName": "ManyIslands", "build": true}, "events": [{"id": "DPR2021-142", "et": "Damage to Pipe", "wpd": "Yes", "wpc": null, "y": 2021, "wci": null, "ic": "No", "mod": "Other", "loc": [54.33, -109.75]}]}
