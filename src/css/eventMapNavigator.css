@@ -37,7 +37,7 @@
 }
 .event-title-nav {
   text-align: center !important;
-  width: inherit !important;
+  width: 100% !important;
   margin-bottom: 0px !important;
   font-size: 17px !important;
   line-height: 1.4375 !important;

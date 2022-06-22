@@ -17,8 +17,8 @@ export async function mainUa(uaData, metaData, lang) {
     });
     barNav.makeBar("wpc", "ua-contact-bar", "activated");
     barNav.makeBar("y", "ua-year-bar", "deactivated");
-    barNav.makeBar("ic", "ua-concern-var", "deactivated");
     barNav.makeBar("wpd", "ua-damage-bar", "deactivated");
+    barNav.makeBar("ic", "ua-concern-var", "deactivated");
     barNav.divEvents();
     return barNav;
   };

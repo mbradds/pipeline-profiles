@@ -157,9 +157,6 @@ export class EventNavigator {
       },
 
       title: {
-        style: {
-          fontWeight: "normal",
-        },
         margin: 0,
       },
 
@@ -303,7 +300,6 @@ export class EventNavigator {
       chart.update({
         title: {
           text: this.pillName(bar.name, clickText),
-          align: "center",
         },
         plotOptions: {
           series: {
