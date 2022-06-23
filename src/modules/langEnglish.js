@@ -35,6 +35,7 @@ const companyToSystem = {
   SouthernLights: "Southern Lights Pipeline",
   Brunswick: "Brunswick Pipeline",
   Plains: "Plains Midstream Canada ULC",
+  MilkRiver: "Milk River Pipeline",
   Genesis: "Genesis Pipeline",
   Montreal: "Montreal Pipeline",
   Westspur: "Westspur Pipeline",
@@ -165,8 +166,10 @@ const noEvents = {
 };
 
 export const englishDashboard = {
-  plains:
-    "Plains Midstream Canada ULC includes the Milk River and Wascana pipelines",
+  disclaimers: {
+    MilkRiver: "Milk River Disclaimer",
+    Wascana: "Wascana Disclaimer",
+  },
 
   conditions: {
     dashboardError,

@@ -31,7 +31,7 @@ window.openTab = openTab;
 generalTheme();
 frenchTheme();
 
-export function loadAllCharts(data, plains = false) {
+export function loadAllCharts(data, disclaimer = undefined) {
   mainTraffic(
     data.trafficData.traffic,
     data.trafficData.meta,
@@ -59,8 +59,11 @@ export function loadAllCharts(data, plains = false) {
     mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
   }
 
-  if (plains) {
-    plainsMidstreamProfile(frenchDashboard, "plains_disclaimer");
+  if (disclaimer) {
+    plainsMidstreamProfile(
+      frenchDashboard.disclaimers[disclaimer],
+      "plains_disclaimer"
+    );
   }
   // console.timeEnd(`first content loading`);
 }

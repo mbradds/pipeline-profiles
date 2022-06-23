@@ -45,7 +45,7 @@ window.openTab = openTab;
 generalTheme();
 
 // TODO: try to share this function between eng and fra
-export function loadAllCharts(data, plains = false) {
+export function loadAllCharts(data, disclaimer = undefined) {
   mainTraffic(
     data.trafficData.traffic,
     data.trafficData.meta,
@@ -73,8 +73,11 @@ export function loadAllCharts(data, plains = false) {
     mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);
   }
 
-  if (plains) {
-    plainsMidstreamProfile(englishDashboard, "plains_disclaimer");
+  if (disclaimer) {
+    plainsMidstreamProfile(
+      englishDashboard.disclaimers[disclaimer],
+      "plains_disclaimer"
+    );
   }
   // console.timeEnd(`first content loading`);
 }

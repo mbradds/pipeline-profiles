@@ -200,12 +200,12 @@ export function loadChartError(errorDiv, lang, err = false) {
 
 /**
  *
- * @param {object} lang - Top level language object. Should contain {plains: string}.
+ * @param {string} message - Text to display in disclaimer.
  * @param {string} div - HTML class for all plains disclaimers.
  */
-export function plainsMidstreamProfile(lang, div) {
+export function plainsMidstreamProfile(message, div) {
   Array.from(document.querySelectorAll(`.${div}`)).forEach((warn) => {
-    warn.innerHTML = `<section class="alert alert-warning" style="margin-bottom: 0px"><small>${lang.plains}</small></section>`;
+    warn.innerHTML = `<section class="alert alert-info" style="margin-bottom: 0px"><small>${message}</small></section>`;
   });
 }
 

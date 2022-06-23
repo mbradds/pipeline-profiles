@@ -32,9 +32,10 @@ const companyToSystem = {
   Alliance: "Gazoduc Alliance",
   Cochin: "Pipeline Cochin",
   Foothills: "Réseau de Foothills",
-  SouthernLights: "Pipeline Southern Lights",
+  SouthernLights: "Pipeline Southern Lights",
   Brunswick: "Gazoduc Brunswick",
   Plains: "Plains Midstream Canada ULC",
+  MilkRiver: "Pipeline Milk River",
   Genesis: "Pipeline Genesis",
   Montreal: "Pipeline Montréal",
   Westspur: "Pipeline Westspur",
@@ -165,8 +166,10 @@ const noEvents = {
 };
 
 export const frenchDashboard = {
-  plains:
-    "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana",
+  disclaimers: {
+    MilkRiver: "FR: Milk River Disclaimer",
+    Wascana: "FR: Wascana Disclaimer",
+  },
 
   conditions: {
     dashboardError,
