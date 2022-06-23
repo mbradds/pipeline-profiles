@@ -167,8 +167,10 @@ const noEvents = {
 
 export const englishDashboard = {
   disclaimers: {
-    MilkRiver: "Milk River Disclaimer",
-    Wascana: "Wascana Disclaimer",
+    MilkRiver:
+      "Data is not available for the Milk River Pipeline prior to June 2021.",
+    Wascana:
+      "Prior to June 2021, data for Wascana includes both the Wascana and Milk River pipelines.",
   },
 
   conditions: {
