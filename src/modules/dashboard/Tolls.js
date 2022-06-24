@@ -337,7 +337,7 @@ export class Tolls {
   }
 
   addSplitButtons() {
-    if (this.currentSplit) {
+    if (this.currentSplit && this.metaData.split.buttons.length > 1) {
       const btnGroup = document.getElementById("tolls-split-btn");
       this.metaData.split.buttons.forEach((point) => {
         btnGroup.insertAdjacentHTML(
@@ -377,6 +377,8 @@ export class Tolls {
           });
         }
       });
+    } else if (this.currentSplit && this.metaData.split.buttons.length === 1) {
+      console.warn("tolls split but only one option detected");
     } else {
       visibility(["tolls-split-btn"], "hide");
     }

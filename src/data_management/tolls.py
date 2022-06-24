@@ -81,17 +81,11 @@ def company_filter(df, company):
         path_filter = [True, "radio"]
     elif company == "Keystone":
         df = df[df["Path"] != "All-All"].copy()
-        df["split"] = ["Keystone International" if "International" in x else "Keystone Local Tolls" for x in df["Service"]]
-        split_default = "Keystone Local Tolls"
-        selected_paths = {"Keystone International": ["Hardisty, Alberta-Houston, Texas",
-                                                      "Hardisty, Alberta-Port Arthur, Texas"],
-                          "Keystone Local Tolls": ["Hardisty, Alberta-Cushing, Oklahoma",
-                                                   "Hardisty, Alberta-Houston, Texas",
-                                                   "Hardisty, Alberta-Port Arthur, Texas",
-                                                   "Hardisty, Alberta-Wood River or Patoka, Illinois"]}
-
-        selected_services = {"Keystone International": "International Joint Uncommitted Rates",
-                             "Keystone Local Tolls": "Uncommitted"}
+        df = df[df["Service"].isin(["Uncommitted",
+                                    "Committed, 20 yr A Term, Total Contract",
+                                    "Committed, 20 yr B Term, Total Contract"])].copy()
+        selected_paths = ["Hardisty, Alberta-Houston, Texas"]
+        path_filter = [True, "radio"]
     elif company == "NGTL":
         df = df[df["Service"].isin(["Average FT-D Demand", "Average Firm Service Receipt"])].copy()
         df["split"] = ["Average Firm Transportation - Delivery (FT-D)" if "FT-D" in x else "Average Firm Transportation - Receipt (FT-R)" for x in df["Service"]]
@@ -341,7 +335,6 @@ def process_tolls(sql=True, companies=False, save=True):
 
         # hard code the series column
         if company in ["Westcoast",
-                       "Keystone",
                        "Aurora",
                        "NGTL",
                        "Brunswick",
@@ -363,6 +356,7 @@ def process_tolls(sql=True, companies=False, save=True):
                          "EnbridgeBakken",
                          "EnbridgeLine9",
                          "Express",
+                         "Keystone",
                          "SouthernLights"]:
             series_col = "Service"
         elif company in ["TransMountain", "MilkRiver"]:
@@ -468,6 +462,6 @@ def process_tolls(sql=True, companies=False, save=True):
 if __name__ == "__main__":
     print("starting tolls...")
     df_, this_company_data_ = process_tolls(sql=False,
-                                            # companies = ["EnbridgeMainline"],
+                                            companies = ["Keystone"],
                                             )
     print("done tolls")
