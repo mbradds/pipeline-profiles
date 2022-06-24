@@ -647,6 +647,7 @@ export const englishDashboard = {
     noEvents,
     eventName: "tolls",
     dashboard: {
+      numberFormat,
       lang: "e",
       tooltip: {
         toll: "Toll:",

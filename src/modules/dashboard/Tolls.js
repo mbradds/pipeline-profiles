@@ -15,6 +15,7 @@ export class Tolls {
     this.chartDiv = chartDiv;
     this.currentSplit = metaData.split.default ? metaData.split.default : false;
     this.unitsSelector = 0;
+    this.onlySystem = false;
     this.getDefaults();
   }
 
@@ -140,7 +141,7 @@ export class Tolls {
     toolText += `<table>`;
     toolText += tableRow(
       this.lang.tooltip.toll,
-      `${event.y} (${event.series.userOptions.units})`
+      `${this.lang.numberFormat(event.y)} (${event.series.userOptions.units})`
     );
 
     const optionalSections = {
@@ -164,10 +165,13 @@ export class Tolls {
         toolText += optionalSections[row];
       }
     });
-    toolText += tableRow(
-      seriesCol,
-      this.substituteTranslation(event.series.userOptions.name)
-    );
+    if (!this.onlySystem && seriesCol !== "Path") {
+      toolText += tableRow(
+        seriesCol,
+        this.substituteTranslation(event.series.userOptions.name)
+      );
+    }
+
     toolText += `</table>`;
     return toolText;
   }
@@ -194,6 +198,19 @@ export class Tolls {
 
   buildTollsChart(series) {
     const dashboard = this;
+    let legend = {
+      title: {
+        text: dashboard.seriesCol,
+      },
+      labelFormatter() {
+        return dashboard.substituteTranslation(this.name);
+      },
+    };
+
+    if (this.onlySystem) {
+      legend = { enabled: false };
+    }
+
     this.chart = Highcharts.chart({
       chart: {
         renderTo: dashboard.chartDiv,
@@ -215,14 +232,7 @@ export class Tolls {
           },
         },
       },
-      legend: {
-        title: {
-          text: dashboard.seriesCol,
-        },
-        labelFormatter() {
-          return dashboard.substituteTranslation(this.name);
-        },
-      },
+      legend,
       plotOptions: {
         series: {
           connectNulls: false,
@@ -398,6 +408,7 @@ export class Tolls {
     const paths = this.currentPath ? [[this.currentPath, true]] : this.points;
     const series = Tolls.buildSeries(this.currentData, units);
     let selected = addAll(paths, series);
+    this.onlySystem = !!(paths.length === 1 && paths[0][0] === "System-System");
 
     if (this.currentProduct) {
       selected = selected.filter((s) => s.product === this.currentProduct);

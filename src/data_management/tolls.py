@@ -13,7 +13,16 @@ def get_tolls_data(sql=True):
                   "tolls_converted.sql",
                   db="PipelineInformation",
                   sql=sql)
-    df["Path"] = [str(r)+"-"+str(d) for r, d in zip(df["Receipt Point"], df["Delivery Point"])]
+
+    path = []
+    for r, d in zip(df["Receipt Point"], df["Delivery Point"]):
+        if r != d:
+            path.append(str(r)+"-"+str(d))
+        else:
+            path.append(str(r))
+
+    df["Path"] = path
+    # df["Path"] = [str(r)+"-"+str(d) for r, d in zip(df["Receipt Point"], df["Delivery Point"])]
 
     descriptions = get_data(os.getcwd(),
                             "tolls_description.sql",
@@ -124,7 +133,7 @@ def company_filter(df, company):
         path_filter = [True, "radio"]
         selected_paths = ["Edmonton-Westridge"]
     elif company == "TQM":
-        tqmPaths = ["System-System"]
+        tqmPaths = ["System"]
         df = df[df["Path"].isin(tqmPaths)].copy()
         df = df[df["Service"] == "T-1"].copy()
         selected_paths = tqmPaths
@@ -199,7 +208,7 @@ def process_path(df, series_col, minimize=True):
 
 def round_values(df):
     for value_col in ["Original Toll Value", "Converted Toll Value"]:
-        df[value_col] = df[value_col].round(2)
+        df[value_col] = df[value_col].round(3)
     return df
 
 
@@ -462,6 +471,6 @@ def process_tolls(sql=True, companies=False, save=True):
 if __name__ == "__main__":
     print("starting tolls...")
     df_, this_company_data_ = process_tolls(sql=False,
-                                            companies = ["Keystone"],
+                                            companies = ["TQM"],
                                             )
     print("done tolls")
