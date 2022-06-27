@@ -168,7 +168,7 @@ export class Tolls {
         toolText += optionalSections[row];
       }
     });
-    if (!this.onlySystem && seriesCol !== "Path") {
+    if (!this.onlySystem) {
       toolText += tableRow(
         seriesCol,
         this.substituteTranslation(event.series.userOptions.name)
