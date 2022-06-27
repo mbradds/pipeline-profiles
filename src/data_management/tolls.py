@@ -98,9 +98,10 @@ def company_filter(df, company):
     elif company == "NGTL":
         df = df[df["Service"].isin(["Average FT-D Demand", "Average Firm Service Receipt"])].copy()
         df["split"] = ["Average Firm Transportation - Delivery (FT-D)" if "FT-D" in x else "Average Firm Transportation - Receipt (FT-R)" for x in df["Service"]]
-        selected_paths = {"Average Firm Transportation - Delivery (FT-D)": ["System-Group 1",
-                                                                            "System-Group 2",
-                                                                            "System-Group 3"],
+        df["Path"] = [x.replace("System-", "").strip() for x in df["Path"]]
+        selected_paths = {"Average Firm Transportation - Delivery (FT-D)": ["Group 1",
+                                                                            "Group 2",
+                                                                            "Group 3"],
                          "Average Firm Transportation - Receipt (FT-R)": ["Receipt-System"]}
         split_default = "Average Firm Transportation - Delivery (FT-D)"
     elif company == "TCPL":
@@ -130,6 +131,7 @@ def company_filter(df, company):
         selected_paths = list(set(df["Path"]))
     elif company == "TransMountain":
         df = df[df["Service"] == "Tank Metered, Net Toll"].copy()
+        df = df[df["Path"] != "Edmonton"].copy()
         path_filter = [True, "radio"]
         selected_paths = ["Edmonton-Westridge"]
     elif company == "TQM":
