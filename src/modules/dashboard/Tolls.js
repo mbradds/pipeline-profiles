@@ -122,6 +122,16 @@ export class Tolls {
   }
 
   toolTipTolls(event, seriesCol) {
+    let currentTollOrder = "";
+    if (this.metaData.commodity === "Liquid") {
+      this.tollNum.forEach((tollOrder) => {
+        if (event.x >= tollOrder.s && event.x <= tollOrder.e) {
+          currentTollOrder = tollOrder.id;
+        }
+      });
+      currentTollOrder = ` - ${currentTollOrder}`;
+    }
+
     // get the toll number from lookup
     const tableRow = (label, value) =>
       `<tr><td>${label}&nbsp;</td><td><strong>${value}</strong></td></tr>`;
@@ -129,12 +139,12 @@ export class Tolls {
     let toolText = `<strong>${Highcharts.dateFormat(
       "%b %d, %Y",
       event.x
-    )}</strong>`;
+    )}${currentTollOrder}</strong>`;
 
     toolText += `<table>`;
     toolText += tableRow(
       this.lang.tooltip.toll,
-      `${this.lang.numberFormat(event.y)} (${event.series.userOptions.units})`
+      `${this.lang.numberFormat(event.y)} (${this.currentUnits})`
     );
 
     const optionalSections = {

@@ -289,7 +289,7 @@ def translate(df, lookup):
     return this_company
 
 
-def process_tolls(sql=True, companies=False, save=True):
+def process_tolls(commodity, sql=True, companies=False, save=True):
 
     def generate_path_series(df, paths, series_col, selected_paths, split):
         path_series = []
@@ -385,7 +385,7 @@ def process_tolls(sql=True, companies=False, save=True):
     df = normalize_dates(df, ["Effective Start", "Effective End"])
     df = df[~df["Effective Start"].isnull()].copy().reset_index(drop=True)
 
-    company_files = get_company_list()
+    company_files = get_company_list(commodity)
     process_description(descriptions, save)
 
     if companies:
@@ -401,6 +401,7 @@ def process_tolls(sql=True, companies=False, save=True):
         company_translations = translate(df_c.copy(), translation_lookup)
         meta = {"companyName": company}
         meta["translations"] = company_translations
+        meta["commodity"] = commodity
         if not df_c.empty:
             meta["build"] = True
             meta["pathTotals"] = path_totals
@@ -470,7 +471,6 @@ def process_tolls(sql=True, companies=False, save=True):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    df_, this_company_data_ = process_tolls(sql=False,
-                                            companies = ["TQM"],
-                                            )
+    df_, this_company_data_ = process_tolls("Liquid", sql=False)
+    df_, this_company_data_ = process_tolls("Gas", sql=False)
     print("done tolls")
