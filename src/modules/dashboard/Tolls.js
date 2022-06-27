@@ -123,20 +123,13 @@ export class Tolls {
 
   toolTipTolls(event, seriesCol) {
     // get the toll number from lookup
-    let currentTollOrder = "";
-    this.tollNum.forEach((tollOrder) => {
-      if (event.x >= tollOrder.s && event.x <= tollOrder.e) {
-        currentTollOrder = tollOrder.id;
-      }
-    });
-
     const tableRow = (label, value) =>
       `<tr><td>${label}&nbsp;</td><td><strong>${value}</strong></td></tr>`;
 
     let toolText = `<strong>${Highcharts.dateFormat(
       "%b %d, %Y",
       event.x
-    )} - ${currentTollOrder}</strong>`;
+    )}</strong>`;
 
     toolText += `<table>`;
     toolText += tableRow(
