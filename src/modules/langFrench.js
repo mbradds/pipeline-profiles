@@ -659,10 +659,11 @@ export const frenchDashboard = {
       numberFormat,
       lang: "f",
       tooltip: {
-        toll: "Droit :",
-        path: "Chemin :",
-        product: "Produit :",
-        service: "Service:",
+        space: " :",
+        toll: "Droit",
+        path: "Chemin",
+        product: "Produit",
+        service: "Service",
       },
       filters: {
         product: "Choisir un produit :",

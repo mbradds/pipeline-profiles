@@ -134,7 +134,7 @@ export class Tolls {
 
     // get the toll number from lookup
     const tableRow = (label, value) =>
-      `<tr><td>${label}&nbsp;</td><td><strong>${value}</strong></td></tr>`;
+      `<tr><td>${label}${this.lang.tooltip.space}&nbsp;</td><td><strong>${value}</strong></td></tr>`;
 
     let toolText = `<strong>${Highcharts.dateFormat(
       "%b %d, %Y",

@@ -650,10 +650,11 @@ export const englishDashboard = {
       numberFormat,
       lang: "e",
       tooltip: {
-        toll: "Toll:",
-        path: "Path:",
-        product: "Product:",
-        service: "Service:",
+        space: ":",
+        toll: "Toll",
+        path: "Path",
+        product: "Product",
+        service: "Service",
       },
       filters: {
         product: "Select product:",
