@@ -477,5 +477,5 @@ if __name__ == "__main__":
     print("starting tolls...")
     # df_, this_company_data_ = process_tolls("Liquid", sql=False)
     # df_, this_company_data_ = process_tolls("Gas", sql=False)
-    df_, this_company_data_ = process_tolls("Liquid", sql=True, companies=["Keystone"])
+    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["Keystone"])
     print("done tolls")
