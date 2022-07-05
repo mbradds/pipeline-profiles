@@ -1,8 +1,6 @@
 import os
 import json
 import re
-import platform
-import numpy as np
 import pandas as pd
 from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script, replace_nulls_with_none
 set_cwd_to_script()
@@ -22,8 +20,6 @@ def get_tolls_data(sql=True):
             path.append(str(r))
 
     df["Path"] = path
-    # df["Path"] = [str(r)+"-"+str(d) for r, d in zip(df["Receipt Point"], df["Delivery Point"])]
-
     descriptions = get_data(os.getcwd(),
                             "tolls_description.sql",
                             db="PipelineInformation",
@@ -33,6 +29,9 @@ def get_tolls_data(sql=True):
                     "tolls_numbers.sql",
                     db="PipelineInformation",
                     sql=sql)
+    
+    for col in ["f", "d"]:
+        toll_nums[col] = [x.split("/")[-1] for x in toll_nums[col]]
 
     translations = get_data(os.getcwd(),
                             "tolls_translation.sql",
@@ -476,6 +475,7 @@ def process_tolls(commodity, sql=True, companies=False, save=True):
 
 if __name__ == "__main__":
     print("starting tolls...")
-    df_, this_company_data_ = process_tolls("Liquid", sql=False)
-    df_, this_company_data_ = process_tolls("Gas", sql=False)
+    # df_, this_company_data_ = process_tolls("Liquid", sql=False)
+    # df_, this_company_data_ = process_tolls("Gas", sql=False)
+    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["Keystone"])
     print("done tolls")

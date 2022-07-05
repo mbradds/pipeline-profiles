@@ -5,6 +5,7 @@ import {
   visibility,
   removeAllSeries,
 } from "../util.js";
+import { addRenderer } from "../../dashboards/dashboardUtil.js";
 import { fillBetween } from "../datestone.js";
 
 export class Tolls {
@@ -16,6 +17,9 @@ export class Tolls {
     this.currentSplit = metaData.split.default ? metaData.split.default : false;
     this.unitsSelector = 0;
     this.onlySystem = false;
+    this.folder = undefined;
+    this.download = undefined;
+    this.tollOrder = undefined;
     this.getDefaults();
   }
 
@@ -123,13 +127,17 @@ export class Tolls {
 
   toolTipTolls(event, seriesCol) {
     let currentTollOrder = "";
-    if (this.metaData.commodity === "Liquid") {
-      this.tollNum.forEach((tollOrder) => {
-        if (event.x >= tollOrder.s && event.x <= tollOrder.e) {
-          currentTollOrder = tollOrder.id;
-        }
-      });
-      currentTollOrder = ` - ${currentTollOrder}`;
+    this.tollNum.forEach((tollOrder) => {
+      if (event.x >= tollOrder.s && event.x <= tollOrder.e) {
+        this.tollOrder = tollOrder.id;
+        this.folder = tollOrder.f;
+        this.download = tollOrder.d;
+      }
+    });
+    currentTollOrder = ` - ${this.tollOrder}`;
+
+    if (this.metaData.commodity !== "Liquid") {
+      currentTollOrder = "";
     }
 
     // get the toll number from lookup
@@ -174,8 +182,8 @@ export class Tolls {
         this.substituteTranslation(event.series.userOptions.name)
       );
     }
-
     toolText += `</table>`;
+    toolText += `<i>Click chart for REGDOCS info</i>`;
     return toolText;
   }
 
@@ -200,6 +208,16 @@ export class Tolls {
   }
 
   buildTollsChart(series) {
+    function regdocsClick(chart, dashboard) {
+      if (chart.customTooltip) {
+        chart.customTooltip.destroy();
+      }
+      const folderLink = `<a href="https://apps.cer-rec.gc.ca/REGDOCS/Item/View/${dashboard.folder}" target="_blank">Folder</a>`;
+      const downloadLink = `<a href="https://apps.cer-rec.gc.ca/REGDOCS/File/Download/${dashboard.download}" target="_blank">Download</a>`;
+      const text = `REGDOCS (${dashboard.tollOrder}): ${folderLink} ${downloadLink}`;
+      chart.customTooltip = addRenderer(chart, text, "black");
+    }
+
     const dashboard = this;
     let legend = {
       title: {
@@ -219,6 +237,11 @@ export class Tolls {
         renderTo: dashboard.chartDiv,
         zoomType: "x",
         animation: false,
+        events: {
+          click() {
+            regdocsClick(this, dashboard);
+          },
+        },
       },
       title: { text: "" },
       xAxis: {
@@ -245,6 +268,9 @@ export class Tolls {
           events: {
             legendItemClick() {
               return false;
+            },
+            click() {
+              regdocsClick(this.chart, dashboard);
             },
           },
           states: {
