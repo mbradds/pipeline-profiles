@@ -493,8 +493,8 @@ const en = {
           "ua-concern-var",
         ],
         chartPillIds: [
-          "ua-status-trend",
-          "ua-activity-trend",
+          "ua-type-trend",
+          "ua-damage-trend",
           "ua-pipeline-trend",
           "ua-contaminant-trend",
         ],
@@ -980,8 +980,8 @@ const fr = {
           "ua-damage-bar",
         ],
         chartPillIds: [
-          "ua-status-trend",
-          "ua-activity-trend",
+          "ua-type-trend",
+          "ua-damage-trend",
           "ua-pipeline-trend",
           "ua-contaminant-trend",
         ],

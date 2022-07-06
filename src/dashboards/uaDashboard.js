@@ -59,9 +59,9 @@ export async function mainUa(uaData, metaData, lang) {
       numberOfPills: 4,
       langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
     });
-    trendNav.makeBar("et", "ua-status-trend", "activated");
-    trendNav.makeBar("eqt", "ua-activity-trend", "deactivated");
+    trendNav.makeBar("et", "ua-type-trend", "activated");
     trendNav.makeBar("wpc", "ua-pipeline-trend", "deactivated");
+    trendNav.makeBar("wpd", "ua-damage-trend", "deactivated");
     trendNav.makeBar("mod", "ua-contaminant-trend", "deactivated");
     trendNav.divEvents();
 

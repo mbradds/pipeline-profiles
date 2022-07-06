@@ -709,6 +709,12 @@ export const englishDashboard = {
           No: { c: cerPalette["Night Sky"], n: "No" },
           ...nullInfo,
         },
+        mod: {
+          ...nullInfo,
+        },
+        et: {
+          ...nullInfo,
+        },
       },
     },
   },
