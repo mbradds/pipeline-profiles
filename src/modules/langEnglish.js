@@ -678,6 +678,7 @@ export const englishDashboard = {
     dateFormat,
     companyToSystem,
     noEvents,
+    title: (company) => `Dashboard: ${company} - Unauthorized Activites`,
     dashboard: {
       eventName: "unauthorized-activities",
       resetMap,
@@ -689,7 +690,7 @@ export const englishDashboard = {
           wpc: "Was Pipe Contacted?",
           mod: "Method Of Discovery",
           y: "Year",
-          ic: "Immediate Concern For Safety Of <br> Pipeline Employee Or General Public?",
+          ic: "Immediate Concern For Safety Of Pipeline <br> Employee Or General Public?",
         },
         click,
       },

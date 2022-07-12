@@ -2,7 +2,7 @@ import { EventMap } from "../modules/dashboard/EventMap.js";
 import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
 import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
-import { noEventsFlag } from "./dashboardUtil.js";
+import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
 export async function mainUa(uaData, metaData, lang) {
   const eventType = "unauthorized-activities";
@@ -70,11 +70,14 @@ export async function mainUa(uaData, metaData, lang) {
 
   function buildDashboard() {
     if (metaData.build) {
+      addDashboardTitle(
+        "unauthorized-activities-dashboard-title",
+        lang,
+        metaData.companyName
+      );
       const thisMap = uaMap(uaData, filters, lang.dashboard);
       const bars = uaBar(uaData, thisMap, lang.dashboard.pillTitles);
-
       uaTimeSeries(filters);
-
       thisMap.switchDashboards(bars);
       thisMap.nearbySlider(
         lang.dashboard.rangeTitle,

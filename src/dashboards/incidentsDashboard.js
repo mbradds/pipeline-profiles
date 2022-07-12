@@ -2,16 +2,16 @@ import { EventMap } from "../modules/dashboard/EventMap.js";
 import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
 import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
-import { noEventsFlag } from "./dashboardUtil.js";
+import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
 export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
   const filters = { type: "frequency" };
 
-  const setTitle = (language, meta) => {
-    document.getElementById("incidents-dashboard-title").innerHTML =
-      language.title(meta.systemName);
-  };
+  // const setTitle = (language, meta) => {
+  //   document.getElementById("incidents-dashboard-title").innerHTML =
+  //     language.title(meta.systemName);
+  // };
 
   const incidentBar = (data, map, langPillTitles) => {
     const barNav = new EventNavigator({
@@ -110,25 +110,17 @@ export async function mainIncidents(incidentData, metaData, lang) {
   function buildDashboard() {
     if (metaData.build) {
       const chartParams = metaData;
-      // add the system name to chartParams
-      if (
-        Object.prototype.hasOwnProperty.call(
-          lang.companyToSystem,
-          metaData.companyName
-        )
-      ) {
-        chartParams.systemName = lang.companyToSystem[metaData.companyName];
-      } else {
-        chartParams.systemName = metaData.companyName;
-      }
-
       const langParams = langCommon();
       chartParams.mostCommonSubstance = langParams.substance;
       chartParams.mostCommonWhat = langParams.what;
       chartParams.mostCommonWhy = langParams.why;
+      chartParams.systemName = addDashboardTitle(
+        "incidents-dashboard-title",
+        lang,
+        metaData.companyName
+      );
       lang.dynamicText("system-incidents-paragraph", chartParams);
 
-      setTitle(lang, chartParams);
       const thisMap = incidentMap(filters, lang.dashboard);
       const bars = incidentBar(
         incidentData,

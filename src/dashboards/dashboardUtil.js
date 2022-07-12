@@ -278,3 +278,20 @@ export function addRenderer(chart, text, color) {
   );
   return label;
 }
+
+/**
+ * Sets the dashboard title
+ * @param {string} id HTML id for the chart title
+ * @param {Object} lang full language object (not just for the dashboard section)
+ * @param {string | undefined} metaCompany the company name in the metadata
+ * @returns {string} The company name to be used in the dashboard
+ */
+export function addDashboardTitle(id, lang, metaCompany) {
+  const titleElement = document.getElementById(id);
+  if (Object.prototype.hasOwnProperty.call(lang.companyToSystem, metaCompany)) {
+    titleElement.innerText = lang.title(lang.companyToSystem[metaCompany]);
+    return lang.companyToSystem[metaCompany];
+  }
+  titleElement.innerHTML = lang.title(metaCompany);
+  return metaCompany;
+}

@@ -25,7 +25,7 @@ const sourceAndDescFr = "Source et description de la figure";
 const dataSourceEn = "Data Source:";
 const dataSourceFr = "Source de données :";
 const descriptionEn = "Description: ";
-const descriptionFr = "Description : ";
+const descriptionFr = "Description : ";
 const sourceTextEn = "Open Government";
 const sourceTextFr = "Gouvernement ouvert";
 
@@ -120,11 +120,11 @@ const en = {
       ua: "Unauthorized Activities",
     },
     updated: {
-      conditions: "Section updated March 2022",
-      incidents: "Section updated March 2022",
-      oandm: "Section updated March 2022",
-      remediation: "Section updated March 2022",
-      ua: "Section updated March 2022",
+      conditions: "Section updated July 2022",
+      incidents: "Section updated July 2022",
+      oandm: "Section updated July 2022",
+      remediation: "Section updated July 2022",
+      ua: "Section updated July 2022",
     },
     conditions: {
       p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
@@ -484,6 +484,9 @@ const en = {
       },
     },
     ua: {
+      p1: "CER regulations apply to any activity that disturbs the soil near federally regulated pipelines or federally regulated power lines. Under the Canadian Energy Regulator Act (CER Act), the responsibility to prevent pipeline damage is shared between anyone who plans to conduct an activity near a pipeline and the pipeline company. Pipeline companies are required to ensure that people know how to safely conduct activities near pipelines, and people planning activities near pipelines are required to confirm the location of pipelines and meet all conditions for authorization before they start any activities.",
+      p2: "The CER's Damage Prevention Regulations (DPR) specifies which activites require consent from the pipeline company to proceed. For example, a gardener digging less than 30cm below the surface within the pipelines prescribed area (the prescribed area is 30 m measured on both sides from the centreline of the pipe, and includes the right-of-way) does not need to ask the pipeline company beforehand. However activities such as driving a vehicle or building a structure on the right of way does require consent from the pipeline company beforehand.",
+      p3: "Pipeline companies must immediately report contraventions of the DPR. These contraventions are commonly referred to as unauthorized activities. An example of a contravention would be someone digging below 30cm within a pipelines prescribed area, without first obtaining consent from the company. Each reported contravention is reviewed by the CER, and follow up action may be taken. The map and charts below highlight some of the key aspects of these unauthorized activities.",
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
@@ -525,7 +528,7 @@ const en = {
   },
   tolls: {
     header: "Tolls (in progress)",
-    updated: "Section updated February 2022",
+    updated: "Section updated July 2022",
     descriptionHeader: "System Tolls Description",
   },
 };
@@ -604,11 +607,11 @@ const fr = {
       ua: "Unauthorized Activities FR",
     },
     updated: {
-      conditions: "Mise à jour : mars 2022",
-      incidents: "Mise à jour : mars 2022",
-      oandm: "Mise à jour : mars 2022",
-      remediation: "Mise à jour : mars 2022",
-      ua: "Mise à jour : mars 2022",
+      conditions: "Mise à jour : juillet 2022",
+      incidents: "Mise à jour : juillet 2022",
+      oandm: "Mise à jour : juillet 2022",
+      remediation: "Mise à jour : juillet 2022",
+      ua: "Mise à jour : juillet 2022",
     },
     conditions: {
       p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
@@ -971,13 +974,16 @@ const fr = {
       },
     },
     ua: {
+      p1: "",
+      p2: "",
+      p3: "",
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
           "ua-contact-bar",
+          "ua-damage-bar",
           "ua-year-bar",
           "ua-concern-var",
-          "ua-damage-bar",
         ],
         chartPillIds: [
           "ua-type-trend",
@@ -989,7 +995,7 @@ const fr = {
         mapBtn: "Unauthorized Activities Map",
         trendBtn: "Unauthorized Activities Trends",
         nearby: {
-          type: "unauthorized activities",
+          type: "unauthorized-activities",
           header: "Are there any unauthorized activities near me?",
           selectRange: "Select range (100km):",
           find: "Find activities within 100km",
@@ -1012,7 +1018,7 @@ const fr = {
   },
   tolls: {
     header: "Droits",
-    updated: "FR: Section updated September 2021",
+    updated: "FR: Section updated July 2022",
     descriptionHeader: "Description des droits du réseau",
   },
 };

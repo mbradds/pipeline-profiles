@@ -1,7 +1,7 @@
 import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
 import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
-import { noEventsFlag } from "./dashboardUtil.js";
+import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
 // TODO: add regdocs folder for all company oandm submissions
 // TODO: add some more stuff from the oamdm filing guide
@@ -9,26 +9,6 @@ export async function mainOandM(eventData, lang) {
   const eventType = "oandm";
   const field = "p";
   const filters = { type: "frequency" };
-
-  function addDashboardTitle() {
-    const titleElement = document.getElementById("oandm-dashboard-title");
-    const dataWithCompany = eventData;
-    if (
-      Object.prototype.hasOwnProperty.call(
-        lang.companyToSystem,
-        eventData.meta.company
-      )
-    ) {
-      dataWithCompany.meta.system =
-        lang.companyToSystem[eventData.meta.company];
-      titleElement.innerText = lang.title(
-        lang.companyToSystem[eventData.meta.company]
-      );
-    } else {
-      dataWithCompany.meta.system = eventData.meta.company;
-      titleElement.innerHTML = lang.title(eventData.meta.company);
-    }
-  }
 
   const incidentTimeSeries = (timeField, timeFilters) => {
     const timeSeries = new EventTrend({
@@ -61,7 +41,11 @@ export async function mainOandM(eventData, lang) {
 
   function buildDecision() {
     if (eventData.build) {
-      addDashboardTitle();
+      eventData.meta.system = addDashboardTitle(
+        "oandm-dashboard-title",
+        lang,
+        eventData.meta.company
+      );
       lang.dynamicText(eventData.meta, lang);
       incidentTimeSeries(field, filters);
     } else {

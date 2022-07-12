@@ -2,17 +2,12 @@ import { EventMap } from "../modules/dashboard/EventMap.js";
 import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
 import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
-import { noEventsFlag } from "./dashboardUtil.js";
+import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
 export async function mainRemediation(data, lang) {
   const eventType = "remediation";
   const field = "w"; // within 30m of a water body
   const filters = { type: "frequency" };
-
-  const setTitle = (language, meta) => {
-    document.getElementById("remediation-dashboard-title").innerHTML =
-      language.title(meta.systemName);
-  };
 
   const remediationBar = (events, map, langPillTitles) => {
     const barNav = new EventNavigator({
@@ -72,28 +67,19 @@ export async function mainRemediation(data, lang) {
     trendNav.makeBar("ps", "rem-pipeline-trend", "deactivated");
     trendNav.makeBar("c", "rem-contaminant-trend", "deactivated");
     trendNav.divEvents();
-
     return timeSeries;
   };
 
   function buildDashboard() {
     if (data.data.length > 0) {
       const chartParams = data.meta;
-      if (
-        Object.prototype.hasOwnProperty.call(
-          lang.companyToSystem,
-          data.meta.companyName
-        )
-      ) {
-        chartParams.systemName = lang.companyToSystem[data.meta.companyName];
-      } else {
-        chartParams.systemName = data.meta.companyName;
-      }
-
-      // chartParams.cutoffDate = lang.dateFormat(new Date(2018, 7, 15));
+      chartParams.systemName = addDashboardTitle(
+        "remediation-dashboard-title",
+        lang,
+        data.meta.companyName
+      );
       lang.dynamicText(chartParams, lang);
 
-      setTitle(lang, chartParams);
       const thisMap = remediationMap(data.data, field, filters, lang.dashboard);
       const bars = remediationBar(
         data.data,
