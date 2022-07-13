@@ -678,7 +678,8 @@ export const englishDashboard = {
     dateFormat,
     companyToSystem,
     noEvents,
-    title: (company) => `Dashboard: ${company} - Unauthorized Activites`,
+    title: (company) =>
+      `Dashboard: ${company} - Unauthorized Activites (post 2015)`,
     dashboard: {
       eventName: "unauthorized-activities",
       resetMap,
@@ -687,7 +688,7 @@ export const englishDashboard = {
         titles: {
           et: "Event Type",
           wpd: "Was Pipe Damaged?",
-          wpc: "Was Pipe Contacted?",
+          wgd: "Was There a Ground Disturbance?",
           mod: "Method Of Discovery",
           y: "Year",
           ic: "Immediate Concern For Safety Of Pipeline <br> Employee Or General Public?",
@@ -705,7 +706,7 @@ export const englishDashboard = {
           No: { c: cerPalette["Night Sky"], n: "No" },
           ...nullInfo,
         },
-        wpc: {
+        wgd: {
           Yes: { c: cerPalette.Sun, n: "Yes" },
           No: { c: cerPalette["Night Sky"], n: "No" },
           ...nullInfo,

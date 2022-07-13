@@ -13,7 +13,7 @@ def optimize_json(df):
     df = df.rename(columns={"Event Number": "id",
                             "Event Type": "et",
                             "Was Pipe Damaged": "wpd",
-                            "Was Pipe Contacted": "wpc",
+                            "Was there a ground disturbance": "wgd",
                             "Method Of Discovery": "mod",
                             "Written Consent Issued": "wci",
                             "Is There Immediate Concern For Safety Of Pipeline Employee Or General Public": "ic",
@@ -44,14 +44,16 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     date_col = "Final Submission Date"
     df = normalize_dates(df, [date_col], False, "coerce")
     df["Year"] = df[date_col].dt.year
+    df = df[df["Year"] >= 2015].copy()
     df = normalize_text(df, ["Company Name"])
     df["Company Name"] = df["Company Name"].replace(company_rename())
     df = apply_system_id(df, "Company Name")
+    df["Was there a ground disturbance"] = ["Yes" if "Ground Disturbance" in x else "No" for x in df["Event Type"]]
     df = df[["Event Number",
               "Event Type",
               "Company Name",
               "Was Pipe Damaged",
-              "Was Pipe Contacted",
+              "Was there a ground disturbance",
               "Date Event Occurred",
               "Latitude",
               "Longitude",
@@ -64,8 +66,6 @@ def process_ua(companies=False, remote=True, test=False, save=True):
         company_files = companies
     else:
         company_files = get_company_list("all")
-        
-    print(sorted(list(set(df["Was Pipe Contacted"].astype(str)))))
 
     for company in company_files:
         try:

@@ -15,9 +15,9 @@ export async function mainUa(uaData, metaData, lang) {
       langPillTitles,
       data: events,
     });
-    barNav.makeBar("wpc", "ua-contact-bar", "activated");
+    barNav.makeBar("wpd", "ua-damage-bar", "activated");
+    barNav.makeBar("wgd", "ua-disturbance-bar", "deactivated");
     barNav.makeBar("y", "ua-year-bar", "deactivated");
-    barNav.makeBar("wpd", "ua-damage-bar", "deactivated");
     barNav.makeBar("ic", "ua-concern-var", "deactivated");
     barNav.divEvents();
     return barNav;
@@ -60,11 +60,10 @@ export async function mainUa(uaData, metaData, lang) {
       langPillTitles: { titles: lang.dashboard.pillTitles.titles }, // Remove click text from pill
     });
     trendNav.makeBar("et", "ua-type-trend", "activated");
-    trendNav.makeBar("wpc", "ua-pipeline-trend", "deactivated");
+    trendNav.makeBar("wgd", "ua-disturbance-trend", "deactivated");
     trendNav.makeBar("wpd", "ua-damage-trend", "deactivated");
     trendNav.makeBar("mod", "ua-contaminant-trend", "deactivated");
     trendNav.divEvents();
-
     return timeSeries;
   };
 

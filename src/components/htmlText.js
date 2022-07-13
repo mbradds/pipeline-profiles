@@ -490,15 +490,15 @@ const en = {
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
-          "ua-contact-bar",
           "ua-damage-bar",
+          "ua-disturbance-bar",
           "ua-year-bar",
           "ua-concern-var",
         ],
         chartPillIds: [
           "ua-type-trend",
           "ua-damage-trend",
-          "ua-pipeline-trend",
+          "ua-disturbance-trend",
           "ua-contaminant-trend",
         ],
         hasRadio: false,
@@ -980,15 +980,15 @@ const fr = {
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
-          "ua-contact-bar",
           "ua-damage-bar",
+          "ua-disturbance-bar",
           "ua-year-bar",
           "ua-concern-var",
         ],
         chartPillIds: [
           "ua-type-trend",
           "ua-damage-trend",
-          "ua-pipeline-trend",
+          "ua-disturbance-trend",
           "ua-contaminant-trend",
         ],
         hasRadio: false,
