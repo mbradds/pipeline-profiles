@@ -365,3 +365,13 @@ export function remediationTextFra(meta, lang) {
   document.getElementById("remediation-dynamic-text").innerHTML =
     firstParagraph;
 }
+
+export function uaTextEng(meta, lang) {
+  const firstParagraph = `<span></span>`;
+  document.getElementById("ua-dynamic-text").innerHTML = firstParagraph;
+}
+
+export function uaTextFra(meta, lang) {
+  const firstParagraph = `<span></span>`;
+  document.getElementById("ua-dynamic-text").innerHTML = firstParagraph;
+}

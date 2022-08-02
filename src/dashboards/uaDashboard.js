@@ -5,6 +5,7 @@ import { loadChartError } from "../modules/util.js";
 import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
 export async function mainUa(uaData, metaData, lang) {
+  // console.log(metaData);
   const eventType = "unauthorized-activities";
   const filters = { type: "frequency" };
 
@@ -47,7 +48,7 @@ export async function mainUa(uaData, metaData, lang) {
       data: uaData,
       divId: "unauthorized-activities-time-series",
       legendClickText: { enabled: true, text: lang.dashboard.legendClick },
-      oneToMany: {},
+      oneToMany: { et: true },
       lang: lang.dashboard,
       definitions: {},
       seriesed: false,
@@ -69,6 +70,7 @@ export async function mainUa(uaData, metaData, lang) {
 
   function buildDashboard() {
     if (metaData.build) {
+      lang.dynamicText(metaData, lang);
       addDashboardTitle(
         "unauthorized-activities-dashboard-title",
         lang,

@@ -8,11 +8,6 @@ export async function mainIncidents(incidentData, metaData, lang) {
   const eventType = "incidents";
   const filters = { type: "frequency" };
 
-  // const setTitle = (language, meta) => {
-  //   document.getElementById("incidents-dashboard-title").innerHTML =
-  //     language.title(meta.systemName);
-  // };
-
   const incidentBar = (data, map, langPillTitles) => {
     const barNav = new EventNavigator({
       plot: map,

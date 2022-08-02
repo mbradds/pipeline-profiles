@@ -12,6 +12,7 @@ import {
   trafficTrendTextEng,
   oandmTextEng,
   remediationTextEng,
+  uaTextEng,
 } from "./dynamicText.js";
 
 import points from "../data_output/traffic/points/en.json";
@@ -678,12 +679,14 @@ export const englishDashboard = {
     dateFormat,
     companyToSystem,
     noEvents,
+    dynamicText: uaTextEng,
     title: (company) =>
       `Dashboard: ${company} - Unauthorized Activites (post 2015)`,
     dashboard: {
       eventName: "unauthorized-activities",
       resetMap,
       trendYTitle,
+      countDisclaimer,
       pillTitles: {
         titles: {
           et: "Event Type",

@@ -4,8 +4,21 @@ import json
 set_cwd_to_script()
 
 
-def ua_meta_data(df, company):
-    return {}
+def ua_meta_data(df, meta_data):
+    #count number of ground disturbances
+    ground_disturbance_count = 0
+    for x in df["Was there a ground disturbance"]:
+        if x == "Yes":
+            ground_disturbance_count = ground_disturbance_count + 1
+    meta_data["ground_disturbance_count"] = ground_disturbance_count
+    
+    #immediate concern events
+    dfi = df[df["Is There Immediate Concern For Safety Of Pipeline Employee Or General Public"] == "Yes"].copy()
+    if not dfi.empty:
+        meta_data["concern_events"] = list(dfi["Event Number"])
+    else:
+        meta_data["concern_events"] = None
+    return meta_data
 
 
 def optimize_json(df):
@@ -49,6 +62,13 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     df["Company Name"] = df["Company Name"].replace(company_rename())
     df = apply_system_id(df, "Company Name")
     df["Was there a ground disturbance"] = ["Yes" if "Ground Disturbance" in x else "No" for x in df["Event Type"]]
+    event_list = []
+    for event in df["Event Type"]:
+        event = event.split(";")
+        event = [x.strip() for x in event]
+        event_list.append(event)
+    df["Event Type"] = event_list
+
     df = df[["Event Number",
               "Event Type",
               "Company Name",
@@ -75,7 +95,7 @@ def process_ua(companies=False, remote=True, test=False, save=True):
             this_company_data["meta"] = {}
             this_company_data["meta"]["companyName"] = company
             if not df_c.empty:
-                # this_company_data["meta"] = ua_meta_data(df_c)
+                this_company_data["meta"] = ua_meta_data(df_c, this_company_data["meta"])
                 this_company_data["meta"]["build"] = True
                 for delete in ["Date Event Occurred", "Company Name"]:
                     del df_c[delete]
