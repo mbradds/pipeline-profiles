@@ -572,6 +572,15 @@ export const frenchDashboard = {
           fm: { c: cerPalette.hcBlue, n: "Surveillance des installations" },
           or: { c: cerPalette["Cool Grey"], n: "Mesures correctives" },
           m: { c: cerPalette.Sun, n: "Surveillance" },
+          tpc: { c: cerPalette["Night Sky"], n: "Contamination par un tiers" },
+          cs: {
+            c: cerPalette.hcAqua,
+            n: "Etat de fermeture en attente d'examen par la REC",
+          },
+          rap: {
+            c: cerPalette.hcBlue,
+            n: "Plan de mesures correctives - en attente d'examen par la REC",
+          },
           ...nullInfo,
         },
         p: regionInfo, // Province

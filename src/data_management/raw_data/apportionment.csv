@@ -347,6 +347,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-01-01,EnbridgeMainline,KP0000,,750.86,649.25,
 2022-02-01,EnbridgeMainline,KP0000,,709.85,654.49,
 2022-03-01,EnbridgeMainline,KP0000,,410.99,583.93,
+2022-04-01,EnbridgeMainline,KP0000,,582.62,582.62,
+2022-05-01,EnbridgeMainline,KP0000,,577.65,577.65,
+2022-06-01,EnbridgeMainline,KP0000,,575.18,575.18,
 2016-01-01,EnbridgeMainline,KP0047,,136.88,,0.03
 2017-12-01,EnbridgeMainline,KP0047,,178.53,,0.05
 2019-10-01,EnbridgeMainline,KP0048,,197.53,,0.1
@@ -813,6 +816,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-01-01,NormanWells,KP0044,2.6,1.24,,0.0
 2022-02-01,NormanWells,KP0044,2.6,1.35,,0.0
 2022-03-01,NormanWells,KP0044,2.6,1.25,,0.0
+2022-04-01,NormanWells,KP0044,2.6,1.57,,0.0
+2022-05-01,NormanWells,KP0044,2.6,1.01,,0.0
+2022-06-01,NormanWells,KP0044,2.6,1.29,,0.0
 2006-01-01,TransMountain,KP0000,35.0,43.0,,0.19
 2006-02-01,TransMountain,KP0000,36.0,74.0,,0.52
 2006-03-01,TransMountain,KP0000,37.0,106.0,,0.65

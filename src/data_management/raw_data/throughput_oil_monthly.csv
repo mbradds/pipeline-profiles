@@ -291,6 +291,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2021-10-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2021-11-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2021-12-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
+2022-06-01,EnbridgeMainline,KP0006,east,foreign light,0.9098,
 2014-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,62.0,
 2014-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,66.9,
 2014-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,68.0,
@@ -390,6 +391,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,86.9,
 2022-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,83.4,
 2022-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,79.2526,
+2022-04-01,EnbridgeMainline,KP0015,east,domestic light / ngl,70.7948,
+2022-05-01,EnbridgeMainline,KP0015,east,domestic light / ngl,74.996,
+2022-06-01,EnbridgeMainline,KP0015,east,domestic light / ngl,74.1043,
 2007-01-01,EnbridgeMainline,KP0016,east,domestic heavy,139.2885,288.1
 2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.1858,288.1
 2007-02-01,EnbridgeMainline,KP0016,east,domestic heavy,132.5969,291.3
@@ -841,6 +845,13 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.5,523.59
 2022-03-01,EnbridgeMainline,KP0016,east,domestic heavy,324.6454,520.963
 2022-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.33,520.963
+2022-04-01,EnbridgeMainline,KP0016,east,domestic heavy,301.832,511.423
+2022-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.2223,511.423
+2022-05-01,EnbridgeMainline,KP0016,east,domestic heavy,323.6598,507.675
+2022-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.2799,507.675
+2022-06-01,EnbridgeMainline,KP0016,east,domestic heavy,313.0192,527.559
+2022-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.7879,527.559
+2022-06-01,EnbridgeMainline,KP0016,east,foreign light,0.9098,527.559
 2007-01-01,EnbridgeMainline,KP0021,east,domestic heavy,13.4401,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,domestic light / ngl,48.7528,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,foreign light,3.8013,118.5
@@ -1386,6 +1397,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-03-01,EnbridgeMainline,KP0021,east,domestic heavy,21.8516,173.013
 2022-03-01,EnbridgeMainline,KP0021,east,domestic light / ngl,71.3796,173.013
 2022-03-01,EnbridgeMainline,KP0021,east,foreign light,9.9494,173.013
+2022-04-01,EnbridgeMainline,KP0021,east,domestic heavy,15.2477,170.408
+2022-04-01,EnbridgeMainline,KP0021,east,domestic light / ngl,63.7741,170.408
+2022-04-01,EnbridgeMainline,KP0021,east,foreign light,11.7819,170.408
+2022-05-01,EnbridgeMainline,KP0021,east,domestic heavy,31.6939,170.655
+2022-05-01,EnbridgeMainline,KP0021,east,domestic light / ngl,73.9996,170.655
+2022-05-01,EnbridgeMainline,KP0021,east,foreign light,11.1943,170.655
+2022-06-01,EnbridgeMainline,KP0021,east,domestic heavy,31.9597,164.328
+2022-06-01,EnbridgeMainline,KP0021,east,domestic light / ngl,72.0544,164.328
+2022-06-01,EnbridgeMainline,KP0021,east,foreign light,7.6444,164.328
 2022-01-01,EnbridgeMainline,KP0044,south,domestic light,1.1537,
 2022-02-01,EnbridgeMainline,KP0044,south,domestic light,1.3272,
 2022-03-01,EnbridgeMainline,KP0044,south,domestic light,1.2453,
@@ -1926,6 +1946,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-01-01,NormanWells,KP0044,south,domestic light,1.1537,2.6
 2022-02-01,NormanWells,KP0044,south,domestic light,1.3272,2.6
 2022-03-01,NormanWells,KP0044,south,domestic light,1.2453,2.6
+2022-04-01,NormanWells,KP0044,south,domestic light,1.4933,2.6
+2022-05-01,NormanWells,KP0044,south,domestic light,1.023,2.6
+2022-06-01,NormanWells,KP0044,south,domestic light,1.3341,2.6
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,7.2357,
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0,
 2011-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,11.5812,
@@ -1951,13 +1974,13 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2013-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,16.4708,
 2013-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,1.0215,
 2014-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,19.6698,
-2014-03-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,0.5064,
+2014-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.5064,
 2014-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,21.4306,
-2014-06-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,3.2814,
+2014-06-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,3.2814,
 2014-09-01,SouthernLights,KP0000,north-west,Diluent - Committed,15.3238,
-2014-09-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,0.0234,
+2014-09-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0234,
 2014-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,16.9181,
-2014-12-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,0.0866,
+2014-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0866,
 2015-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,14.5576,
 2015-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0038,
 2015-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,14.9652,
@@ -1967,21 +1990,21 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2015-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,17.6395,
 2015-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.2926,
 2016-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,20.5989,
-2016-03-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,2.5408,
+2016-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,2.5408,
 2016-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,21.0438,
-2016-06-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,2.4055,
+2016-06-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,2.4055,
 2016-09-01,SouthernLights,KP0000,north-west,Diluent - Committed,19.4851,
-2016-09-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,1.5517,
+2016-09-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,1.5517,
 2016-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,17.3418,
-2016-12-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,1.3898,
+2016-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,1.3898,
 2017-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,24.4475,
-2017-03-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,1.0344,
+2017-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,1.0344,
 2017-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,23.4723,
-2017-06-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,0.8804,
+2017-06-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.8804,
 2017-09-01,SouthernLights,KP0000,north-west,Diluent - Committed,16.9335,
-2017-09-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,0.659,
+2017-09-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.659,
 2017-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,18.2873,
-2017-12-01,SouthernLights,KP0000,north-west,Diluent - Uncomitted,0.4956,
+2017-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.4956,
 2018-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,23.1283,
 2018-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,1.9793,
 2018-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,22.6015,
@@ -2006,14 +2029,14 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2020-09-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.1835,
 2020-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,19.042,
 2020-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.4832,
-2021-03-01,SouthernLights,KP0000,north-west,Diluent-Committed,20.8035,
-2021-03-01,SouthernLights,KP0000,north-west,Diluent-Uncommitted,1.1253,
-2021-06-01,SouthernLights,KP0000,north-west,Diluent-Committed,20.972,
-2021-06-01,SouthernLights,KP0000,north-west,Diluent-Uncommitted,2.1598,
-2021-09-01,SouthernLights,KP0000,north-west,Diluent-Committed,17.4909,
-2021-09-01,SouthernLights,KP0000,north-west,Diluent-Uncommitted,0.1034,
-2021-12-01,SouthernLights,KP0000,north-west,Diluent-Committed,21.7368,
-2021-12-01,SouthernLights,KP0000,north-west,Diluent-Uncommitted,0.3035,
+2021-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,20.8035,
+2021-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,1.1253,
+2021-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,20.972,
+2021-06-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,2.1598,
+2021-09-01,SouthernLights,KP0000,north-west,Diluent - Committed,17.4909,
+2021-09-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.1034,
+2021-12-01,SouthernLights,KP0000,north-west,Diluent - Committed,21.7368,
+2021-12-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.3035,
 2006-01-01,TransMountain,KP0003,west,domestic heavy,0.0,35.0
 2006-01-01,TransMountain,KP0003,west,domestic light,8.0,35.0
 2006-01-01,TransMountain,KP0003,west,refined petroleum products,13.0,35.0

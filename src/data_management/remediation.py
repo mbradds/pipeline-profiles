@@ -136,7 +136,10 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
         "facility monitoring": "fm",
         "ongoing remediation": "or",
         "site assessment": "sa",
-        "risk managed": "rm"
+        "risk managed": "rm",
+        "third party contamination": "tpc",
+        "closure status awaiting cer review": "cs",
+        "rap/rmp awaiting cer review": "rap"
         }
 
     activity_ids = {

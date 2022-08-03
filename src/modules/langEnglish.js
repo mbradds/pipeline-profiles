@@ -568,6 +568,9 @@ export const englishDashboard = {
           fm: { c: cerPalette.hcBlue, n: "Facility monitoring" },
           or: { c: cerPalette["Cool Grey"], n: "Ongoing remediation" },
           m: { c: cerPalette.Sun, n: "Monitored" },
+          tpc: { c: cerPalette["Night Sky"], n: "Third party contamination" },
+          cs: { c: cerPalette.hcAqua, n: "Closure status awaiting CER review" },
+          rap: { c: cerPalette.hcBlue, n: "RAP/RMP awaiting CER review" },
           ...nullInfo,
         },
         p: regionInfo, // Province
