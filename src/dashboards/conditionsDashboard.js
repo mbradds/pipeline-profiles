@@ -234,15 +234,12 @@ export async function mainConditions(
     if (filters.column === "In Progress") {
       return {
         min: 1,
-        minColor: "#ececff",
-        maxColor: "#060619",
+        minColor: "#EEEEFF",
+        maxColor: "#000022",
         stops: [
-          [0, "#ececff"],
-          [0.2, "#b4b4ff"],
-          [0.4, "#7c7cff"],
-          [0.6, "#4444ff"],
-          [0.8, "#0A4409"],
-          [1, "#060619"],
+          [0, "#EFEFFF"],
+          [0.67, "#4444FF"],
+          [1, "#000022"],
         ],
       };
     }

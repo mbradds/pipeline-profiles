@@ -200,7 +200,9 @@ def condition_meta_data(df, project_names):
                             values='condition id',
                             index=['id'],
                             columns='Condition Status').reset_index()
-
+    
+    # this fixes the map color index being thrown off by non map conditions
+    df_all = df_all[df_all["id"] != "-1"].copy()
     return df_all, meta
 
 
