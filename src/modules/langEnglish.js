@@ -684,7 +684,7 @@ export const englishDashboard = {
     noEvents,
     dynamicText: uaTextEng,
     title: (company) =>
-      `Dashboard: ${company} - Unauthorized Activites (post 2015)`,
+      `Dashboard: ${company} - DPR Contravention Reports (post 2015)`,
     dashboard: {
       eventName: "unauthorized-activities",
       resetMap,

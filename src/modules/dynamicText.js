@@ -367,7 +367,16 @@ export function remediationTextFra(meta, lang) {
 }
 
 export function uaTextEng(meta, lang) {
-  const firstParagraph = `<span></span>`;
+  const concern = meta.concern_events
+    ? `${dynamicValue(meta.concern_events)}`
+    : "no";
+  const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
+    meta.ground_disturbance_count
+  )} ground disturbance events reported for the ${
+    meta.systemName
+  } and ${dynamicValue(
+    meta.damage_count
+  )} events have caused physical damage to the pipeline such as dent or gouge. A ground disturbance contravention happens when someone digs below 30 cm within the pipelines prescribed area without first getting consent from the pipeline company. These events can be considered as near-miss events that could have led to a more serious pipeline incident. There has been ${concern} reported events that have caused an immediate concern for the safety of a pipeline employee or the general public. </p>`;
   document.getElementById("ua-dynamic-text").innerHTML = firstParagraph;
 }
 

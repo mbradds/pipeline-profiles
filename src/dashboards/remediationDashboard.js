@@ -79,7 +79,6 @@ export async function mainRemediation(data, lang) {
         data.meta.companyName
       );
       lang.dynamicText(chartParams, lang);
-
       const thisMap = remediationMap(data.data, field, filters, lang.dashboard);
       const bars = remediationBar(
         data.data,

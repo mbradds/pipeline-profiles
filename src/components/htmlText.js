@@ -117,7 +117,7 @@ const en = {
       incidents: "Reported Incidents",
       oandm: "Operations and Maintenance Activities",
       remediation: "Contaminated Sites and Remediation",
-      ua: "Unauthorized Activities",
+      ua: "Damage Prevention Regulation Contravention Reports",
     },
     updated: {
       conditions: "Section updated August 2022",

@@ -70,12 +70,13 @@ export async function mainUa(uaData, metaData, lang) {
 
   function buildDashboard() {
     if (metaData.build) {
-      lang.dynamicText(metaData, lang);
-      addDashboardTitle(
+      const chartParams = metaData;
+      chartParams.systemName = addDashboardTitle(
         "unauthorized-activities-dashboard-title",
         lang,
         metaData.companyName
       );
+      lang.dynamicText(chartParams, lang);
       const thisMap = uaMap(uaData, filters, lang.dashboard);
       const bars = uaBar(uaData, thisMap, lang.dashboard.pillTitles);
       uaTimeSeries(filters);

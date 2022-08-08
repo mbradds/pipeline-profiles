@@ -4,15 +4,21 @@ import json
 set_cwd_to_script()
 
 
-def ua_meta_data(df, meta_data):
-    #count number of ground disturbances
-    ground_disturbance_count = 0
-    for x in df["Was there a ground disturbance"]:
+def count_events(df, col):
+    event_count = 0
+    for x in df[col]:
         if x == "Yes":
-            ground_disturbance_count = ground_disturbance_count + 1
-    meta_data["ground_disturbance_count"] = ground_disturbance_count
+            event_count = event_count + 1
+    return event_count
+
+
+def ua_meta_data(df, meta_data):
+    # count number of ground disturbances
+    meta_data["ground_disturbance_count"] = count_events(df, "Was there a ground disturbance")
+    # count number of pipe damages
+    meta_data["damage_count"] = count_events(df, "Was Pipe Damaged")
     
-    #immediate concern events
+    # immediate concern events
     dfi = df[df["Is There Immediate Concern For Safety Of Pipeline Employee Or General Public"] == "Yes"].copy()
     if not dfi.empty:
         meta_data["concern_events"] = list(dfi["Event Number"])
