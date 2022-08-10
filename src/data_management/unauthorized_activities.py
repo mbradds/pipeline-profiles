@@ -13,17 +13,14 @@ def count_events(df, col):
 
 
 def ua_meta_data(df, meta_data):
+    # total events
+    meta_data["total_events"] = len(df)
     # count number of ground disturbances
     meta_data["ground_disturbance_count"] = count_events(df, "Was there a ground disturbance")
     # count number of pipe damages
     meta_data["damage_count"] = count_events(df, "Was Pipe Damaged")
-    
-    # immediate concern events
-    dfi = df[df["Is There Immediate Concern For Safety Of Pipeline Employee Or General Public"] == "Yes"].copy()
-    if not dfi.empty:
-        meta_data["concern_events"] = list(dfi["Event Number"])
-    else:
-        meta_data["concern_events"] = None
+    # further action required by the company
+    meta_data["further_action_required"] = count_events(df, "Further Action Required")
     return meta_data
 
 
@@ -39,7 +36,7 @@ def optimize_json(df):
                             "Year": "y"})
     df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])]
     df = df.sort_values(by=['y'])
-    for delete in ['Latitude', 'Longitude']:
+    for delete in ['Latitude', 'Longitude', 'Further Action Required']:
         del df[delete]
     return df
 
@@ -81,6 +78,7 @@ def process_ua(companies=False, remote=True, test=False, save=True):
               "Was Pipe Damaged",
               "Was there a ground disturbance",
               "Date Event Occurred",
+              "Further Action Required",
               "Latitude",
               "Longitude",
               "Year",

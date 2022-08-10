@@ -686,7 +686,7 @@ export const englishDashboard = {
     title: (company) =>
       `Dashboard: ${company} - DPR Contravention Reports (post 2015)`,
     dashboard: {
-      eventName: "unauthorized-activities",
+      eventName: "DPR Contravention Reports",
       resetMap,
       trendYTitle,
       countDisclaimer,
