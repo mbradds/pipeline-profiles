@@ -697,14 +697,24 @@ export const englishDashboard = {
           wgd: "Was There a Ground Disturbance?",
           mod: "Method Of Discovery",
           y: "Year",
-          ic: "Immediate Concern For Safety Of Pipeline <br> Employee Or General Public?",
+          wdi: "Who Discovered The Event",
         },
         click,
       },
       seriesInfo: {
-        ic: {
-          Yes: { c: cerPalette.Sun, n: "Yes" },
-          No: { c: cerPalette["Night Sky"], n: "No" },
+        wdi: {
+          "1st party (regulated company)": {
+            c: cerPalette.Sun,
+            n: "1st party (regulated company)",
+          },
+          "2nd party (contractor working for the regulated company)": {
+            c: cerPalette["Night Sky"],
+            n: "2nd party (contractor working for the regulated company)",
+          },
+          "3rd party (no connection to the regulated company)": {
+            c: cerPalette.Forest,
+            n: "3rd party (no connection to the regulated company)",
+          },
           ...nullInfo,
         },
         wpd: {

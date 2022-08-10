@@ -31,8 +31,7 @@ def optimize_json(df):
                             "Was Pipe Damaged": "wpd",
                             "Was there a ground disturbance": "wgd",
                             "Method Of Discovery": "mod",
-                            "Written Consent Issued": "wci",
-                            "Is There Immediate Concern For Safety Of Pipeline Employee Or General Public": "ic",
+                            "Who Discovered The Event": "wdi",
                             "Year": "y"})
     df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])]
     df = df.sort_values(by=['y'])
@@ -82,8 +81,7 @@ def process_ua(companies=False, remote=True, test=False, save=True):
               "Latitude",
               "Longitude",
               "Year",
-              "Written Consent Issued",
-              "Is There Immediate Concern For Safety Of Pipeline Employee Or General Public",
+              "Who Discovered The Event",
               "Method Of Discovery"]].copy()
 
     if companies:
