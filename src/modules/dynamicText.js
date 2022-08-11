@@ -367,8 +367,9 @@ export function remediationTextFra(meta, lang) {
 }
 
 export function uaTextEng(meta, lang) {
-  // console.log(meta);
-  const firstParagraph = `<p>Since 2015, there have been a total of ${dynamicValue(
+  const firstParagraph = `<p>From ${meta.first_year} to ${
+    meta.current_year
+  }, there have been a total of ${dynamicValue(
     meta.total_events
   )} contraventions reported for the ${
     meta.systemName
@@ -378,7 +379,9 @@ export function uaTextEng(meta, lang) {
     meta.damage_count
   )} have caused physical damage to the pipeline such as dent or gouge. A ground disturbance contravention happens when someone digs below 30 cm within the pipelines prescribed area without first getting consent from the pipeline company. These events can be considered as near-miss events that could have led to a more serious pipeline incident.</p>`;
 
-  const secondParagraph = `<p>The CER reviews all contravention reports submitted by regulated companies, and further action may be required of the company. In the past five years, ${dynamicValue(
+  const secondParagraph = `<p>The CER reviews all contravention reports submitted by regulated companies, and further action may be required of the company. From ${
+    meta.first_year
+  } to ${meta.current_year}, ${dynamicValue(
     meta.further_action_required
   )} contraventions have required additional action.</p>`;
   document.getElementById("ua-dynamic-text").innerHTML =

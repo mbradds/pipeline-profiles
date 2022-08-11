@@ -468,7 +468,6 @@ export class EventMap {
       };
     };
 
-    // console.log(data, this.eventType);
     const circleFunction = getCircleFunction(data[0]);
     let [allCircles, years] = circleFunction(data);
 
@@ -583,6 +582,7 @@ export class EventMap {
         }
         nearbyAll += layer.options.eventParams.vol;
       });
+
       let nearbyText = `<section class="alert alert-info"><h4>${this.lang.nearbyHeader(
         nearbyCircles.length,
         range,
@@ -790,7 +790,7 @@ export class EventMap {
               this.nearbyIncidents(range);
               clearTimeout(loadDisclaimer);
               this.removeMapDisclaimer("location");
-              resetBtn.className = "btn btn-primary notice-me-btn";
+              resetBtn.className = "btn btn-primary btn-lg notice-me-btn";
             })
             .catch(() => {
               const incidentFlag = document.getElementById(
@@ -802,7 +802,7 @@ export class EventMap {
             });
         } else {
           this.nearbyIncidents(range);
-          resetBtn.className = "btn btn-primary notice-me-btn";
+          resetBtn.className = "btn btn-primary btn-lg notice-me-btn";
         }
       });
   }
@@ -815,7 +815,7 @@ export class EventMap {
     const resetBtn = document.getElementById(resetBtnDiv);
     resetBtn.addEventListener("click", () => {
       this.resetMap();
-      resetBtn.className = "btn btn-default";
+      resetBtn.className = "btn btn-default btn-block btn-lg";
       document.getElementById(`nearby-${this.eventType}-flag`).innerHTML = ``;
     });
   }

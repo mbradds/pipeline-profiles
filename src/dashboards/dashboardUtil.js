@@ -284,14 +284,20 @@ export function addRenderer(chart, text, color) {
  * @param {string} id HTML id for the chart title
  * @param {Object} lang full language object (not just for the dashboard section)
  * @param {string | undefined} metaCompany the company name in the metadata
+ * @param {string} appendToTitle additional text to append to the end of the title
  * @returns {string} The company name to be used in the dashboard
  */
-export function addDashboardTitle(id, lang, metaCompany) {
+export function addDashboardTitle(id, lang, metaCompany, appendToTitle = "") {
   const titleElement = document.getElementById(id);
   if (Object.prototype.hasOwnProperty.call(lang.companyToSystem, metaCompany)) {
-    titleElement.innerText = lang.title(lang.companyToSystem[metaCompany]);
+    titleElement.innerText = `${lang.title(
+      lang.companyToSystem[metaCompany]
+    )}${appendToTitle}`;
     return lang.companyToSystem[metaCompany];
   }
-  titleElement.innerHTML = lang.title(metaCompany);
+
+  titleElement.innerHTML = appendToTitle
+    ? `${lang.title(metaCompany)}${appendToTitle}`
+    : lang.title(metaCompany);
   return metaCompany;
 }

@@ -74,7 +74,8 @@ export async function mainUa(uaData, metaData, lang) {
       chartParams.systemName = addDashboardTitle(
         "unauthorized-activities-dashboard-title",
         lang,
-        metaData.companyName
+        metaData.companyName,
+        ` (${metaData.first_year}-${metaData.current_year})`
       );
       lang.dynamicText(chartParams, lang);
       const thisMap = uaMap(uaData, filters, lang.dashboard);

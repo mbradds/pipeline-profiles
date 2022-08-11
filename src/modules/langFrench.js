@@ -698,13 +698,17 @@ export const frenchDashboard = {
     companyToSystem,
     noEvents,
     dynamicText: uaTextFra,
-    title: (company) =>
-      `Dashboard: ${company} - DPR Contravention Reports (post 2015)`,
+    title: (company) => `Dashboard: ${company} - DPR Contravention Reports`,
     dashboard: {
       eventName: "DPR Contravention Reports",
       resetMap,
       trendYTitle,
       countDisclaimer,
+      noNearby: nearbyMe.noNearby,
+      rangeTitle: nearbyMe.rangeTitle,
+      findBtnTitle: nearbyMe.findBtnTitle("sites"),
+      nearbyHeader: nearbyMe.nearbyHeader,
+      exploreOther,
       pillTitles: {
         titles: {
           et: "Event Type",

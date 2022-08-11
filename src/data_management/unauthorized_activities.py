@@ -1,7 +1,15 @@
 import pandas as pd
 from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none
 import json
+from datetime import datetime
 set_cwd_to_script()
+
+
+def filter_last_five_years(df):
+    current_year = datetime.now().year
+    first_year = current_year - 5
+    df = df[df["Year"] >= first_year].copy()
+    return df, current_year, first_year
 
 
 def count_events(df, col):
@@ -41,7 +49,7 @@ def optimize_json(df):
 
 
 def process_ua(companies=False, remote=True, test=False, save=True):
-    
+
     if test:
         print("No tests yet for unauthorized activities")
         return
@@ -54,12 +62,12 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     else:
         print("reading local UA file")
         df = pd.read_csv("./raw_data/unauthorized_activities.csv")
-    
+
     df = normalize_numeric(df, ["Latitude", "Longitude"], 2)
     date_col = "Final Submission Date"
     df = normalize_dates(df, [date_col], False, "coerce")
     df["Year"] = df[date_col].dt.year
-    df = df[df["Year"] >= 2015].copy()
+    df, current_year, first_year = filter_last_five_years(df)
     df = normalize_text(df, ["Company Name"])
     df["Company Name"] = df["Company Name"].replace(company_rename())
     df = apply_system_id(df, "Company Name")
@@ -96,6 +104,8 @@ def process_ua(companies=False, remote=True, test=False, save=True):
             this_company_data = {}
             this_company_data["meta"] = {}
             this_company_data["meta"]["companyName"] = company
+            this_company_data["meta"]["first_year"] = first_year
+            this_company_data["meta"]["current_year"] = current_year
             if not df_c.empty:
                 this_company_data["meta"] = ua_meta_data(df_c, this_company_data["meta"])
                 this_company_data["meta"]["build"] = True
