@@ -3,8 +3,7 @@
     <div class="col-md-12">
       <h3>{{text.safety.buttons.incidents}}</h3>
       <p class="small">{{text.safety.updated.incidents}}</p>
-      <p>{{text.safety.incidents.p1}}</p>
-      <p>{{text.safety.incidents.p2}}</p>
+      {{> shared/safetyEnvText text=text.safety.incidents}}
       {{> shared/details text=text.safety.incidents.details1}}
       {{> shared/details text=text.safety.incidents.details2}}
       <details>

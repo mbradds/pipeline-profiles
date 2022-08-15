@@ -127,10 +127,12 @@ const en = {
       ua: "Section updated August 2022",
     },
     conditions: {
-      p1: "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
-      p2: `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
-      p3: `Conditions can be related to a specific region, or apply to the pipeline project as a whole. The map below displays the number of in progress and closed conditions mapped to economic regions as defined by <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm">Statistics Canada.</a>`,
-      p4: "Conditions can typically be either in-progress or closed. The CER follows up on in-progress conditions.",
+      paragraphs: [
+        "Every pipeline company in Canada must meet federal, provincial or territorial, and local requirements. This includes Acts, Regulations, rules, bylaws, and zoning restrictions. Pipelines are also bound by technical, safety, and environmental standards along with company rules, protocols and management systems. In addition to these requirements, the Commission may add conditions to regulatory instruments that each company must meet. Conditions are project-specific and are designed to protect public and the environment by reducing possible risks identified during the application process.",
+        `Condition compliance is part of the CER's oversight and <a href="/en/safety-environment/compliance-enforcement/index.html">enforcement</a> action is taken when required.`,
+        `Conditions can be related to a specific region, or apply to the pipeline project as a whole. The map below displays the number of in progress and closed conditions mapped to economic regions as defined by <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-eng.cfm">Statistics Canada.</a>`,
+        "Conditions can typically be either in-progress or closed. The CER follows up on in-progress conditions.",
+      ],
       details1: {
         listType: "ul",
         summary: "In-Progress",
@@ -190,21 +192,23 @@ const en = {
       },
     },
     incidents: {
-      p1: `The information presented here is based on CER data (2008 to current) for incidents reported under the
-    <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html">Onshore Pipeline
-      Regulations</a>
-    and the
-    <a href="https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-39/index.html">Processing Plant
-      Regulations</a>. New data is added quarterly.
-    <a href="/en/safety-environment/industry-performance/infographic/index.html">Learn more</a>
-    on how incident data collection has evolved since the NEB (now the CER)
-    was established in 1959.`,
-      p2: `Companies must report events, such as incidents, to the CER in
+      paragraphs: [
+        `The information presented here is based on CER data (2008 to current) for incidents reported under the
+      <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html">Onshore Pipeline
+        Regulations</a>
+      and the
+      <a href="https://laws-lois.justice.gc.ca/eng/regulations/SOR-2003-39/index.html">Processing Plant
+        Regulations</a>. New data is added quarterly.
+      <a href="/en/safety-environment/industry-performance/infographic/index.html">Learn more</a>
+      on how incident data collection has evolved since the NEB (now the CER)
+      was established in 1959.`,
+        `Companies must report events, such as incidents, to the CER in
     accordance with the CER
     <a
       href="/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/canada-energy-regulator-event-reporting-guidelines/index.html">Event
       Reporting Guidelines</a>. Knowing what happened, and why, helps us find ways to prevent them
     from happening again.`,
+      ],
       details1: {
         listType: "ol",
         summary: "What is an incident? (Onshore Pipeline Regulations (OPR))",
@@ -331,21 +335,23 @@ const en = {
       viz: `Have you checked out the CER's <a href="https://apps2.cer-rec.gc.ca/pipeline-incidents/">interactive incident data visualization</a>? This tool offers a deep dive into the CER's incident data trends, exploring incidents across all CER regulated companies.`,
     },
     remediation: {
-      p1: "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
-      p2: `After the NOC is submitted, companies must demonstrate they are
-      actively managing the contamination according to the
-      <a href="/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress and current status of remediation at the
-      contaminated site are captured in the annual
-      update submitted by a company each year for a contaminated site.`,
-      p3: "Third party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
-      p4: `The dashboard below contains information that is contained in the NOC's
-      and annual updates found in REGDOCS. The CER publishes NOCs that have
-      been submitted to the CER since August 2018, when the CER started
-      collecting this information electronically and annual updates that have
-      been submitted since 2021. For information on contaminated sites for
-      which NOCs were submitted prior to August 2018, email
-      <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
-      p5: "There are many different methods and approaches to remediate contamination. Thus, when a company submits a plan for remediation (i.e., remedial action plan) for CER review, they are required to include an options analysis to support the remedial method chosen, select appropriate remediation criteria and demonstrate engagement with potentially affected persons, among other requirements. CER analysts also review closure reports submitted by the company once the remediation is completed to ensure remediation has been completed appropriately.",
+      paragraphs: [
+        "As part of the CER’s environmental protection activities, we require companies to manage and remediate contamination throughout the lifecycle of the facilities. As a first step, regulated companies are required to report contamination to the CER through the online submission of the Notification of Contamination (NOC).",
+        `After the NOC is submitted, companies must demonstrate they are
+        actively managing the contamination according to the
+        <a href="/en/safety-environment/environment/remediation/remediation-process-guide-2020/index.html">Remediation Process Guide</a>. The progress and current status of remediation at the
+        contaminated site are captured in the annual
+        update submitted by a company each year for a contaminated site.`,
+        "Third party contamination is on-site contamination that is shown to not be emanating or migrating from the company’s facilities or company-owned or leased lands or Right-of-Way. While third-party contamination is not the result of company activities, the CER still requires that this contamination is reported to the CER through the submission of the NOC.",
+        `The dashboard below contains information that is contained in the NOC's
+        and annual updates found in REGDOCS. The CER publishes NOCs that have
+        been submitted to the CER since August 2018, when the CER started
+        collecting this information electronically and annual updates that have
+        been submitted since 2021. For information on contaminated sites for
+        which NOCs were submitted prior to August 2018, email
+        <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
+        "There are many different methods and approaches to remediate contamination. Thus, when a company submits a plan for remediation (i.e., remedial action plan) for CER review, they are required to include an options analysis to support the remedial method chosen, select appropriate remediation criteria and demonstrate engagement with potentially affected persons, among other requirements. CER analysts also review closure reports submitted by the company once the remediation is completed to ensure remediation has been completed appropriately.",
+      ],
       dashboard: {
         id: "remediation",
         mapPillIds: [
@@ -386,8 +392,10 @@ const en = {
       },
     },
     oandm: {
-      p1: "Oil and gas pipeline companies regularly conduct routine operations and maintenance (O&#38;M) activities on CER regulated pipelines. These activities include things such as pipeline repairs, investigative and integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
-      p2: 'Companies are required to adhere to <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"><i>Canadian Energy Regulator Act’s Onshore Pipeline Regulations</i></a> and operate their facilities in a manner that is safe and protects the environment. Authorizations for pipelines typically allow companies to construct and operate a facility, and companies are not required to apply for additional approval to undertake most O&#38;M activities. In certain circumstances, companies are required to notify the CER in advance with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (ROW) or adjacent property.',
+      paragraphs: [
+        "Oil and gas pipeline companies regularly conduct routine operations and maintenance (O&#38;M) activities on CER regulated pipelines. These activities include things such as pipeline repairs, investigative and integrity digs, and many other activities while promoting safety, security, environmental protection, economic efficiency, and respect for the rights of those that may be affected.",
+        'Companies are required to adhere to <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"><i>Canadian Energy Regulator Act’s Onshore Pipeline Regulations</i></a> and operate their facilities in a manner that is safe and protects the environment. Authorizations for pipelines typically allow companies to construct and operate a facility, and companies are not required to apply for additional approval to undertake most O&#38;M activities. In certain circumstances, companies are required to notify the CER in advance with sufficient information to make a determination as to whether to inspect O&#38;M activities that could result in safety consequences to landowners or the public, environmental consequences, or a negative impact on normal third-party use of the right-of-way (ROW) or adjacent property.',
+      ],
       details1: {
         listType: "ol",
         summary:
@@ -484,9 +492,12 @@ const en = {
       },
     },
     ua: {
-      p1: "CER regulations apply to any activity that disturbs the soil near federally regulated pipelines or federally regulated power lines. Under the Canadian Energy Regulator Act (CER Act), the responsibility to prevent pipeline damage is shared between anyone who plans to conduct an activity near a pipeline and the pipeline company. Pipeline companies are required to ensure that people know how to safely conduct activities near pipelines, and people planning activities near pipelines are required to confirm the location of pipelines and meet all conditions for authorization before they start any activities.",
-      p2: "The CER's Damage Prevention Regulations (DPR) specifies which activites require consent from the pipeline company to proceed. For example, a gardener digging less than 30cm below the surface within the pipelines prescribed area (the prescribed area is 30 m measured on both sides from the centreline of the pipe, and includes the right-of-way) does not need to ask the pipeline company beforehand. However activities such as driving a vehicle or building a structure on the right of way does require consent from the pipeline company beforehand.",
-      p3: "Pipeline companies must immediately report contraventions of the DPR. These contraventions are commonly referred to as unauthorized activities. An example of a contravention would be someone digging below 30cm within a pipelines prescribed area, without first obtaining consent from the company. Each reported contravention is reviewed by the CER, and follow up action may be taken. The map and charts below highlight some of the key aspects of these unauthorized activities.",
+      paragraphs: [
+        "Everyone is responsible for preventing damage to pipelines. Preventing damage is important because it can prevent dangerous pipeline incidents that cause harm to safety and the environment. Pipelines can be found all across the country, including underneath roads, cities, farms, and parks. Normal activities, from construction projects to installing a new backyard fence, occur regularly near pipelines. The first step toward damage prevention is to always click before you dig or call a one-call notification service in your area to have a technician mark the exact location of buried pipes and cables. The CER also has Damage Prevention Regulations (DPR) that outline what needs to happen before any soil is disturbed near federally regulated pipelines or federally regulated power lines.",
+        "The responsibility to prevent pipeline damage is shared between anyone who plans to conduct an activity near a pipeline and the pipeline company. Pipeline companies are required to ensure that people know how to safely conduct activities near pipelines, and people planning activities near pipelines are required to confirm the location of pipelines and meet all conditions for authorization before they start any activities.",
+        "The DPR specifies which activities require consent from the pipeline company to proceed. For example, a gardener digging less than 30cm below the surface within the pipelines prescribed area does not need to ask the pipeline company beforehand. However building a structure on the right of way does require consent from the pipeline company beforehand.",
+        "Pipeline companies must immediately report to the CER any activity near their pipeline that does not follow the rules and specifications set out in the DPR. These violations are called contravention reports. Contravention reports contain personal information, and are therefore not available to the public on REGDOCS or the CER website, however the CER provides an Open Government dataset containing information on each reported contravention. Some summary statistics and a dashboard displaying this data is available below.",
+      ],
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
@@ -614,10 +625,12 @@ const fr = {
       ua: "Mise à jour : aout 2022",
     },
     conditions: {
-      p1: "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
-      p2: `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des <a href="/fr/securite-environnement/conformite-execution/index.html">mesures d’exécution</a> sont prises au besoin.`,
-      p3: `Les conditions peuvent viser une région précise ou s’appliquer au projet pipelinier dans son ensemble. La carte ci-dessous montre le nombre de conditions en cours et remplies en fonction des régions économiques définies par <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-fra.cfm">Statistique Canada.</a>`,
-      p4: "Les conditions sont habituellement en cours ou remplies. La Régie assure un suivi des conditions en cours.",
+      paragraphs: [
+        "Au Canada, les sociétés pipelinières sont tenues de satisfaire à des exigences fédérales, provinciales ou territoriales et locales, qu’il s’agisse notamment de lois, de règlements municipaux ou autres, de règles ou de restrictions de zonage. Les pipelines doivent aussi respecter des normes techniques, des normes relatives à la sécurité et à la protection de l’environnement, sans oublier les règles internes de la société, ses protocoles et ses systèmes de gestion. La Commission peut aussi intégrer des conditions aux instruments réglementaires qui lient les sociétés. Particulières à chaque projet, ces conditions sont conçues pour protéger le public et l’environnement par l’atténuation des risques possibles relevés durant le processus d’examen de la demande.",
+        `La conformité aux conditions fait partie des activités de surveillance de la Régie, et des <a href="/fr/securite-environnement/conformite-execution/index.html">mesures d’exécution</a> sont prises au besoin.`,
+        `Les conditions peuvent viser une région précise ou s’appliquer au projet pipelinier dans son ensemble. La carte ci-dessous montre le nombre de conditions en cours et remplies en fonction des régions économiques définies par <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-fra.cfm">Statistique Canada.</a>`,
+        "Les conditions sont habituellement en cours ou remplies. La Régie assure un suivi des conditions en cours.",
+      ],
       details1: {
         listType: "ul",
         summary: "En cours",
@@ -677,33 +690,35 @@ const fr = {
       },
     },
     incidents: {
-      p1: `L’information présentée ici provient des données de la Régie de
-    l’énergie du Canada de 2008 à aujourd’hui sur les incidents signalés en
-    application du
-    <a
-      href="https://laws-lois.justice.gc.ca/fra/reglements/DORS-99-294/index.html"
-      >Règlement de la Régie canadienne de l’énergie sur les pipelines
-      terrestres</a
-    >
-    et du
-    <a
-      href="https://laws-lois.justice.gc.ca/fra/reglements/DORS-2003-39/index.html"
-      >Règlement sur les usines de traitement</a
-    >. De nouvelles données sont ajoutées tous les trimestres.
-    <a
-      href="/fr/securite-environnement/rendement-lindustrie/infographie/index.html"
-      >Obtenez plus d’information</a
-    >
-    sur l’évolution des méthodes de collecte de données sur les incidents
-    depuis la création de l’Office national de l’énergie (maintenant la
-    Régie) en 1959.`,
-      p2: `Les sociétés doivent signaler les événements comme les incidents à la
+      paragraphs: [
+        `L’information présentée ici provient des données de la Régie de
+      l’énergie du Canada de 2008 à aujourd’hui sur les incidents signalés en
+      application du
+      <a
+        href="https://laws-lois.justice.gc.ca/fra/reglements/DORS-99-294/index.html"
+        >Règlement de la Régie canadienne de l’énergie sur les pipelines
+        terrestres</a
+      >
+      et du
+      <a
+        href="https://laws-lois.justice.gc.ca/fra/reglements/DORS-2003-39/index.html"
+        >Règlement sur les usines de traitement</a
+      >. De nouvelles données sont ajoutées tous les trimestres.
+      <a
+        href="/fr/securite-environnement/rendement-lindustrie/infographie/index.html"
+        >Obtenez plus d’information</a
+      >
+      sur l’évolution des méthodes de collecte de données sur les incidents
+      depuis la création de l’Office national de l’énergie (maintenant la
+      Régie) en 1959.`,
+        `Les sociétés doivent signaler les événements comme les incidents à la
     Régie conformément aux
     <a
       href="/fr/regie/lois-reglements/loi-regie-canadienne-lenergie-reglements-notes-dorientation-documents-connexes/regie-energie-canada-lignes-directrices-rapports-evenement/index.html"
       >Lignes directrices sur les rapports d’événement</a
     >. Le fait de savoir et de comprendre ce qui s’est passé nous aide à
     trouver des moyens de prévenir d’autres incidents similaires.`,
+      ],
       details1: {
         listType: "ol",
         summary:
@@ -831,14 +846,16 @@ const fr = {
       viz: `Avez-vous consulté la <a href="https://apps2.cer-rec.gc.ca/incidents-pipeliniers/"> visualisation interactive des données sur les incidents</a> de la Régie? Cet outil permet un examen détaillé des tendances relatives aux données sur les incidents de la Régie, et ce, pour les incidents liés à l’ensemble des sociétés réglementées par la Régie.`,
     },
     remediation: {
-      p1: "Dans le cadre de ses activités de protection de l’environnement, la Régie exige des sociétés qu’elles gèrent les contaminations et y remédient tout au long du cycle de vie des installations. Comme première étape, les sociétés réglementées sont tenues de signaler toute contamination à la Régie au moyen d’un avis de contamination en ligne.",
-      p2: `Une fois l’avis déposé, les sociétés doivent démontrer qu’elles gèrent activement la contamination conformément au
-      <a href="/fr/securite-environnement/environnement/assainissement/guide-processus-assainissement-2020/index.html"><i>Guide sur le processus d’assainissement</i></a>. Les progrès réalisés sur le site contaminé et l’état du processus d’assainissement sont présentés dans les mises à jour annuelles de la société.`,
-      p3: "La contamination par des tiers est une contamination sur un site qui ne provient pas des installations de la société ou qui ne s’étend pas à l’extérieur des installations de celle-ci ou des terrains qu’elle possède ou loue ou de l’emprise. Bien que la contamination par des tiers ne résulte pas des activités de la société, la Régie exige tout de même qu’elle soit signalée au moyen d’un avis de contamination.",
-      p4: `Le tableau de bord ci-dessous renferme l’information contenue dans les avis de contamination et les mises à jour annuelles qui se trouvent dans REGDOCS. La Régie publie dans REGDOCS les avis de contamination qui lui ont été transmis depuis août 2018, moment à partir duquel elle a commencé à recueillir cette information de façon électronique, ainsi que les mises à jour annuelles jusqu’en 2021.
-      Pour obtenir des renseignements sur les sites contaminés pour lesquels des avis de contamination ont été soumis avant août 2018, envoyez un courriel à
-      <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
-      p5: "Il existe de nombreuses méthodes et approches différentes pour assainir un site contaminé. Ainsi, lorsqu’une société soumet à l’examen de la Régie un plan d’assainissement, elle doit inclure une analyse des options à l’appui de la méthode d’assainissement choisie, sélectionner les critères de remédiation appropriés et démontrer qu’elle a consulté les personnes susceptibles d’être touchées, entre autres exigences. Les analystes de la Régie examinent également les rapports de clôture soumis par la société une fois l’assainissement terminé pour s’assurer qu’il a été effectué correctement.",
+      paragraphs: [
+        "Dans le cadre de ses activités de protection de l’environnement, la Régie exige des sociétés qu’elles gèrent les contaminations et y remédient tout au long du cycle de vie des installations. Comme première étape, les sociétés réglementées sont tenues de signaler toute contamination à la Régie au moyen d’un avis de contamination en ligne.",
+        `Une fois l’avis déposé, les sociétés doivent démontrer qu’elles gèrent activement la contamination conformément au
+        <a href="/fr/securite-environnement/environnement/assainissement/guide-processus-assainissement-2020/index.html"><i>Guide sur le processus d’assainissement</i></a>. Les progrès réalisés sur le site contaminé et l’état du processus d’assainissement sont présentés dans les mises à jour annuelles de la société.`,
+        "La contamination par des tiers est une contamination sur un site qui ne provient pas des installations de la société ou qui ne s’étend pas à l’extérieur des installations de celle-ci ou des terrains qu’elle possède ou loue ou de l’emprise. Bien que la contamination par des tiers ne résulte pas des activités de la société, la Régie exige tout de même qu’elle soit signalée au moyen d’un avis de contamination.",
+        `Le tableau de bord ci-dessous renferme l’information contenue dans les avis de contamination et les mises à jour annuelles qui se trouvent dans REGDOCS. La Régie publie dans REGDOCS les avis de contamination qui lui ont été transmis depuis août 2018, moment à partir duquel elle a commencé à recueillir cette information de façon électronique, ainsi que les mises à jour annuelles jusqu’en 2021.
+        Pour obtenir des renseignements sur les sites contaminés pour lesquels des avis de contamination ont été soumis avant août 2018, envoyez un courriel à
+        <a href="mailto:remediation@cer-rec.gc.ca">remediation@cer-rec.gc.ca</a>.`,
+        "Il existe de nombreuses méthodes et approches différentes pour assainir un site contaminé. Ainsi, lorsqu’une société soumet à l’examen de la Régie un plan d’assainissement, elle doit inclure une analyse des options à l’appui de la méthode d’assainissement choisie, sélectionner les critères de remédiation appropriés et démontrer qu’elle a consulté les personnes susceptibles d’être touchées, entre autres exigences. Les analystes de la Régie examinent également les rapports de clôture soumis par la société une fois l’assainissement terminé pour s’assurer qu’il a été effectué correctement.",
+      ],
       dashboard: {
         id: "remediation",
         mapPillIds: [
@@ -879,8 +896,10 @@ const fr = {
       },
     },
     oandm: {
-      p1: "Les sociétés d’oléoducs et de gazoducs mènent régulièrement des activités d’exploitation et d’entretien sur les pipelines réglementés par la Régie. Ces activités comprennent la réparation du pipeline, les fouilles exploratoires et d’intégrité, ainsi que de nombreuses autres activités. Elles favorisent la sécurité, la sûreté, la protection de l’environnement, l’efficience économique et le respect des droits des personnes susceptibles d’être touchées.",
-      p2: 'Les sociétés sont tenues de se conformer au <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"><i>Règlement de la Régie canadienne de l’énergie sur les pipelines terrestres</i></a> et d’exploiter leurs installations en toute sécurité et de manière à protéger l’environnement. Les autorisations relatives aux pipelines permettent habituellement aux sociétés de construire et d’exploiter une installation, et elles ne sont pas tenues de demander des approbations supplémentaires pour entreprendre la plupart des activités d’exploitation et d’entretien. Dans certaines circonstances, les compagnies sont tenues de fournir au préalable à la Régie des renseignements suffisants pour qu’elle décide s’il y a lieu ou non d’inspecter des activités d’exploitation et d’entretien qui pourraient avoir des conséquences sur la sécurité des propriétaires fonciers ou du public ou sur l’environnement, ou des effets néfastes pour l’utilisation normale de l’emprise ou d’une propriété adjacente par une tierce partie.',
+      paragraphs: [
+        "Les sociétés d’oléoducs et de gazoducs mènent régulièrement des activités d’exploitation et d’entretien sur les pipelines réglementés par la Régie. Ces activités comprennent la réparation du pipeline, les fouilles exploratoires et d’intégrité, ainsi que de nombreuses autres activités. Elles favorisent la sécurité, la sûreté, la protection de l’environnement, l’efficience économique et le respect des droits des personnes susceptibles d’être touchées.",
+        'Les sociétés sont tenues de se conformer au <a href="https://laws-lois.justice.gc.ca/eng/regulations/sor-99-294/index.html"><i>Règlement de la Régie canadienne de l’énergie sur les pipelines terrestres</i></a> et d’exploiter leurs installations en toute sécurité et de manière à protéger l’environnement. Les autorisations relatives aux pipelines permettent habituellement aux sociétés de construire et d’exploiter une installation, et elles ne sont pas tenues de demander des approbations supplémentaires pour entreprendre la plupart des activités d’exploitation et d’entretien. Dans certaines circonstances, les compagnies sont tenues de fournir au préalable à la Régie des renseignements suffisants pour qu’elle décide s’il y a lieu ou non d’inspecter des activités d’exploitation et d’entretien qui pourraient avoir des conséquences sur la sécurité des propriétaires fonciers ou du public ou sur l’environnement, ou des effets néfastes pour l’utilisation normale de l’emprise ou d’une propriété adjacente par une tierce partie.',
+      ],
       details1: {
         listType: "ol",
         summary:
@@ -974,9 +993,7 @@ const fr = {
       },
     },
     ua: {
-      p1: "",
-      p2: "",
-      p3: "",
+      paragraphs: undefined,
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [

@@ -3,10 +3,7 @@
     <div class="col-md-12">
       <h3>{{text.safety.buttons.conditions}}</h3>
       <p class="small">{{text.safety.updated.conditions}}</p>
-      <p>{{text.safety.conditions.p1}}</p>
-      <p>{{text.safety.conditions.p2}}</p>
-      <p>{{text.safety.conditions.p3}}</p>
-      <p>{{text.safety.conditions.p4}}</p>
+      {{> shared/safetyEnvText text=text.safety.conditions}}
       {{> shared/details text=text.safety.conditions.details1}}
       {{> shared/details text=text.safety.conditions.details2}}
       <div class="plains_disclaimer"></div>

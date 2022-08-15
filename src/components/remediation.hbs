@@ -3,12 +3,8 @@
     <div class="col-md-12">
       <h3>{{text.safety.buttons.remediation}}</h3>
       <p class="small">{{text.safety.updated.remediation}}</p>
-      <p>{{text.safety.remediation.p1}}</p>
-      <p>{{text.safety.remediation.p2}}</p>
-      <p>{{text.safety.remediation.p3}}</p>
-      <p>{{text.safety.remediation.p4}}</p>
+      {{> shared/safetyEnvText text=text.safety.remediation}}
       <div id="remediation-dynamic-text"></div>
-      <p class="mrgn-bttm-0">{{text.safety.remediation.p5}}</p>
     </div>
   </div>
   {{> shared/eventDashboard text=text.safety.remediation.dashboard}}
