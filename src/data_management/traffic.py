@@ -161,10 +161,14 @@ def meta_trend(df_c, commodity):
 
         this_trend = {}
         try:
-            if old_through > 0:
-                pct = round((new_through-old_through)/abs(old_through)*100, 1)
-            else:
+            if old_through == 0 and new_through == 0:
                 pct = None
+            elif old_through == 0 and new_through > 0:
+                pct = 100
+            elif old_through > 0 and new_through == 0:
+                pct = -100
+            else:
+                pct = round((new_through-old_through)/abs(old_through)*100, 1)
             this_trend["throughChange"] = {"pct": pct,
                                           "from": round(old_through, rounding),
                                           "to": round(new_through, rounding)}
@@ -420,12 +424,12 @@ def get_points(sql):
 def combined_traffic(save=True, sql=True):
     points = get_points(sql)
     process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m') # , companies=["TCPL"])
-    process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['Montreal'])
+    process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['EnbridgeMainline'])
 
 
 # TODO: enforce case on text columns
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    combined_traffic(save=True, sql=True)
+    combined_traffic(save=True, sql=False)
     print('completed throughput!')

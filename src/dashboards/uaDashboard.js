@@ -5,7 +5,6 @@ import { loadChartError } from "../modules/util.js";
 import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
 export async function mainUa(uaData, metaData, lang) {
-  // console.log(metaData);
   const eventType = "unauthorized-activities";
   const filters = { type: "frequency" };
 
