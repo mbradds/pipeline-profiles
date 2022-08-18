@@ -169,9 +169,9 @@ const noEvents = {
 export const frenchDashboard = {
   disclaimers: {
     MilkRiver:
-      "Les données ne sont pas disponibles pour le pipeline Milk River avant juin 2021.",
+      "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana.",
     Wascana:
-      "Avant juin 2021, les données pour Wascana comprennent les pipelines Wascana et Milk River.",
+      "Plains Midstream Canada ULC comprend les pipelines Milk River et Wascana.",
   },
 
   conditions: {
