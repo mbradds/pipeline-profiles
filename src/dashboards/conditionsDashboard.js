@@ -47,16 +47,22 @@ export async function mainConditions(
   };
   const statusInit = (metaData) => {
     const inProgress = document.getElementById("in-progress-btn");
+    const closed = document.getElementById("closed-btn");
+    const noLocation = document.getElementById("no-location-btn");
     if (metaData.summary["In Progress"] > 0) {
       inProgress.classList.add("active");
+    } else if (
+      metaData.summary["In Progress"] === 0 &&
+      metaData.summary.Closed === 0
+    ) {
+      inProgress.disabled = true;
+      closed.disabled = true;
+      noLocation.click();
+      noLocation.classList.add("active");
     } else if (metaData.summary["In Progress"] === 0) {
       inProgress.disabled = true;
-      document.getElementById("closed-btn").classList.add("active");
+      closed.classList.add("active");
     }
-    const conditionsFilter = {
-      column: metaData.summary["In Progress"] > 0 ? "In Progress" : "Closed",
-    };
-    return conditionsFilter;
   };
 
   const fillSummary = (summary) => {
@@ -178,7 +184,10 @@ export async function mainConditions(
     return {
       name: "Conditions",
       data: processMapMetadata(mapMeta, filter),
-      mapData: Highcharts.geojson(mapRegions),
+      mapData:
+        Object.keys(mapRegions).length === 0
+          ? false
+          : Highcharts.geojson(mapRegions),
       joinBy: ["id", "id"],
       type: "map",
       zIndex: 1,
@@ -430,6 +439,62 @@ export async function mainConditions(
       series: [regions, baseMap],
     });
 
+  const btnGroupListener = (chart, chartParams, baseMap, zooms) => {
+    document
+      .getElementById("conditions-nav-group")
+      .addEventListener("click", (event) => {
+        btnGroupClick("conditions-nav-group", event);
+        const btnValue = event.target.value;
+        chartParams.conditionsFilter.column = btnValue;
+        if (btnValue !== "not-shown") {
+          destroyInsert(chart);
+          visibility(["no-location-info", "conditions-definitions"], "hide");
+          visibility(["container-map"], "show");
+        } else {
+          visibility(["no-location-info"], "show");
+          visibility(["container-map", "conditions-definitions"], "hide");
+        }
+        setTitle("conditions-map-title", chartParams);
+        chart.update(
+          {
+            plotOptions: {
+              series: {
+                point: {
+                  events: {
+                    click() {
+                      popUp(this, chartParams, selectedMeta(chartParams));
+                    },
+                  },
+                },
+              },
+            },
+            series: [
+              generateRegionSeries(
+                mapMetaData,
+                econRegions,
+                chartParams.conditionsFilter
+              ),
+              baseMap,
+            ],
+            colorAxis: colorRange(chartParams.conditionsFilter),
+          },
+          false
+        );
+
+        chart.mapZoom(undefined, undefined, undefined);
+        removeNoConditions(chart);
+        if (chartParams.conditionsFilter.column === "Closed") {
+          zoomToGeoJson(chart, zooms.Closed);
+        } else {
+          zoomToGeoJson(chart, zooms["In Progress"]);
+        }
+      });
+  };
+
+  const setConditionsFilter = (metaData) => ({
+    column: metaData.summary["In Progress"] > 0 ? "In Progress" : "Closed",
+  });
+
   // main conditions map
   function buildDashboard() {
     if (meta.build) {
@@ -445,7 +510,7 @@ export async function mainConditions(
         chartParams.systemName = meta.summary.companyName;
       }
       chartParams.colNames = lang.colNames;
-      chartParams.conditionsFilter = statusInit(meta);
+      chartParams.conditionsFilter = setConditionsFilter(meta);
       setTitle("conditions-map-title", chartParams);
       fillSummary(chartParams.summary);
       noLocationSummary(chartParams);
@@ -474,55 +539,8 @@ export async function mainConditions(
         zooms
       );
 
-      document
-        .getElementById("conditions-nav-group")
-        .addEventListener("click", (event) => {
-          btnGroupClick("conditions-nav-group", event);
-          const btnValue = event.target.value;
-          chartParams.conditionsFilter.column = btnValue;
-          if (btnValue !== "not-shown") {
-            destroyInsert(chart);
-            visibility(["no-location-info", "conditions-definitions"], "hide");
-            visibility(["container-map"], "show");
-          } else {
-            visibility(["no-location-info"], "show");
-            visibility(["container-map", "conditions-definitions"], "hide");
-          }
-          setTitle("conditions-map-title", chartParams);
-          chart.update(
-            {
-              plotOptions: {
-                series: {
-                  point: {
-                    events: {
-                      click() {
-                        popUp(this, chartParams, selectedMeta(chartParams));
-                      },
-                    },
-                  },
-                },
-              },
-              series: [
-                generateRegionSeries(
-                  mapMetaData,
-                  econRegions,
-                  chartParams.conditionsFilter
-                ),
-                baseMap,
-              ],
-              colorAxis: colorRange(chartParams.conditionsFilter),
-            },
-            false
-          );
-
-          chart.mapZoom(undefined, undefined, undefined);
-          removeNoConditions(chart);
-          if (chartParams.conditionsFilter.column === "Closed") {
-            zoomToGeoJson(chart, zooms.Closed);
-          } else {
-            zoomToGeoJson(chart, zooms["In Progress"]);
-          }
-        });
+      btnGroupListener(chart, chartParams, baseMap, zooms);
+      statusInit(meta);
     } else {
       noEventsFlag(
         lang.noEvents.header(lang.conditions),
