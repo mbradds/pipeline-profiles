@@ -34,6 +34,8 @@ import { mainUa } from "../dashboards/uaDashboard.js";
 import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { plainsMidstreamProfile, openTab } from "../modules/util.js";
+// pipeline shape promise
+import { getPipelineShape } from "../modules/getPipelineShape.js";
 
 import "../css/main.css";
 
@@ -43,6 +45,8 @@ window.openTab = openTab;
 // console.time(`first content loading`);
 
 generalTheme();
+
+const pipelineShape = getPipelineShape();
 
 // TODO: try to share this function between eng and fra
 export function loadAllCharts(data, disclaimer = undefined) {
@@ -63,7 +67,8 @@ export function loadAllCharts(data, disclaimer = undefined) {
   mainIncidents(
     data.incidentData.events,
     data.incidentData.meta,
-    englishDashboard.incidents
+    englishDashboard.incidents,
+    pipelineShape
   );
   mainOandM(data.oandmData, englishDashboard.oandm);
   mainRemediation(data.remediationData, englishDashboard.remediation);
