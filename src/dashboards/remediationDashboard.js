@@ -4,7 +4,7 @@ import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
 import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
-export async function mainRemediation(data, lang) {
+export async function mainRemediation(data, lang, pipelineShape) {
   const eventType = "remediation";
   const field = "w"; // within 30m of a water body
   const filters = { type: "frequency" };
@@ -34,11 +34,13 @@ export async function mainRemediation(data, lang) {
       toolTipFields: ["vol", "use", "c", "ps"],
       lang: mapLang,
       regdocsClick: true,
+      pipelineShape,
     });
     map.addBaseMap();
     map.processEventsData(events);
     map.lookForSize();
     map.addMapDisclaimer("volume");
+    map.addPipelineShape();
     return map;
   };
 

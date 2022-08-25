@@ -242,34 +242,22 @@ export class EventMap {
 
   async addPipelineShape() {
     if (this.pipelineShape) {
-      const response = await this.pipelineShape;
-      const data = await response.json();
-      const pipeGeoJson = data.features[0];
-      pipeGeoJson.type = "Feature";
-      pipeGeoJson.geometry.type = "MultiLineString";
-      pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
-      const pipelineLayer = L.geoJSON(pipeGeoJson, {
-        color: cerPalette["Cool Grey"],
-        opacity: 0.7,
-      }).addTo(this.map);
-      pipelineLayer.bringToBack();
-      this.map.fitBounds(pipelineLayer.getBounds());
+      try {
+        const data = await this.pipelineShape;
+        const pipeGeoJson = data.features[0];
+        pipeGeoJson.type = "Feature";
+        pipeGeoJson.geometry.type = "MultiLineString";
+        pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
+        const pipelineLayer = L.geoJSON(pipeGeoJson, {
+          color: "black",
+          opacity: 0.4,
+        }).addTo(this.map);
+        pipelineLayer.bringToBack();
+        this.map.fitBounds(pipelineLayer.getBounds());
+      } catch (err) {
+        console.log("cant add pipeline layer");
+      }
     }
-
-    // if (this.pipelineShape) {
-    //   this.pipelineShape.then((pipe) => {
-    // const pipeGeoJson = pipe.features[0];
-    // pipeGeoJson.type = "Feature";
-    // pipeGeoJson.geometry.type = "MultiLineString";
-    // pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
-    // console.log(pipeGeoJson);
-    // const pipelineLayer = L.geoJSON(pipeGeoJson, { color: "red" }).addTo(
-    //   this.map
-    // );
-    // this.map.fitBounds(pipelineLayer.getBounds());
-    // console.log(pipelineLayer);
-    //   });
-    // }
   }
 
   toolTip(eventParams, fillColor) {

@@ -4,7 +4,7 @@ import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
 import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
-export async function mainUa(uaData, metaData, lang) {
+export async function mainUa(uaData, metaData, lang, pipelineShape) {
   const eventType = "unauthorized-activities";
   const filters = { type: "frequency" };
 
@@ -32,10 +32,12 @@ export async function mainUa(uaData, metaData, lang) {
       toolTipFields: ["et", "mod"],
       lang: mapLang,
       regdocsClick: false,
+      pipelineShape,
     });
     map.addBaseMap();
     map.processEventsData(events);
     map.lookForSize();
+    map.addPipelineShape();
     return map;
   };
 

@@ -21,6 +21,8 @@ import { mainUa } from "../dashboards/uaDashboard.js";
 import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { plainsMidstreamProfile, openTab } from "../modules/util.js";
+// pipeline shape promise
+import { getPipelineShape } from "../modules/getPipelineShape.js";
 
 import "../css/main.css";
 
@@ -32,6 +34,7 @@ generalTheme();
 frenchTheme();
 
 export function loadAllCharts(data, disclaimer = undefined) {
+  const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
   mainTraffic(
     data.trafficData.traffic,
     data.trafficData.meta,
@@ -49,11 +52,21 @@ export function loadAllCharts(data, disclaimer = undefined) {
   mainIncidents(
     data.incidentData.events,
     data.incidentData.meta,
-    frenchDashboard.incidents
+    frenchDashboard.incidents,
+    pipelineShape
   );
   mainOandM(data.oandmData, frenchDashboard.oandm);
-  mainRemediation(data.remediationData, frenchDashboard.remediation);
-  mainUa(data.uaData.events, data.uaData.meta, frenchDashboard.ua);
+  mainRemediation(
+    data.remediationData,
+    frenchDashboard.remediation,
+    pipelineShape
+  );
+  mainUa(
+    data.uaData.events,
+    data.uaData.meta,
+    frenchDashboard.ua,
+    pipelineShape
+  );
 
   if (data.tcplRevenues) {
     mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
