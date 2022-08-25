@@ -43,6 +43,7 @@ export class EventMap {
    * @param {string[]} [constr.toolTipFields=[]] - Add the columns that should appear in the tooltip, extra to the selected column.
    * @param {Object} constr.lang - En/Fr language object from ./langEnglish.js or ./langFrench.js
    * @param {boolean} constr.regdocsClick - Adds on click event to circle + tooltip instructions for opening regdocs event info in new tab. Searches regdocs based on dataset "id" column.
+   * @param {any} constr.pipelineShape
    *
    */
 
@@ -56,6 +57,7 @@ export class EventMap {
     toolTipFields = [],
     lang = {},
     regdocsClick = false,
+    pipelineShape = undefined,
   }) {
     this.eventType = eventType;
     this.filters = filters;
@@ -68,6 +70,7 @@ export class EventMap {
     this.toolTipFields = toolTipFields;
     this.lang = lang;
     this.regdocsClick = regdocsClick;
+    this.pipelineShape = pipelineShape;
     this.mapDisclaimer = undefined;
     this.findPlotHeight();
   }
@@ -235,6 +238,26 @@ export class EventMap {
       return resetDiv;
     };
     info.addTo(this.map);
+  }
+
+  async addPipelineShape() {
+    if (this.pipelineShape) {
+      try {
+        const data = await this.pipelineShape;
+        const pipeGeoJson = data.features[0];
+        pipeGeoJson.type = "Feature";
+        pipeGeoJson.geometry.type = "MultiLineString";
+        pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
+        const pipelineLayer = L.geoJSON(pipeGeoJson, {
+          color: "black",
+          opacity: 0.4,
+        }).addTo(this.map);
+        pipelineLayer.bringToBack();
+        this.map.fitBounds(pipelineLayer.getBounds());
+      } catch (err) {
+        console.log("cant add pipeline layer");
+      }
+    }
   }
 
   toolTip(eventParams, fillColor) {

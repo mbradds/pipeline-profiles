@@ -4,7 +4,12 @@ import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
 import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
 
-export async function mainIncidents(incidentData, metaData, lang) {
+export async function mainIncidents(
+  incidentData,
+  metaData,
+  lang,
+  pipelineShape
+) {
   const eventType = "incidents";
   const filters = { type: "frequency" };
 
@@ -32,10 +37,12 @@ export async function mainIncidents(incidentData, metaData, lang) {
       toolTipFields: ["vol", "what", "why"],
       lang: mapLang,
       regdocsClick: false,
+      pipelineShape,
     });
     map.addBaseMap();
     map.processEventsData(incidentData);
     map.lookForSize();
+    map.addPipelineShape();
     return map;
   };
 
