@@ -92,8 +92,8 @@ export class KeyPointMap {
     map.setMaxZoom(this.maxZoom);
     map.dragging.disable();
     map.doubleClickZoom.disable();
-    this.addPipelineShape();
     this.map = map;
+    this.addPipelineShape();
   }
 
   reZoom(zoomIn = true) {
@@ -145,7 +145,7 @@ export class KeyPointMap {
         toFront = true;
       } else {
         pointColor = this.colors.deactivated;
-        pointOpacity = 0.5;
+        pointOpacity = 0.7;
         toFront = false;
       }
       return this.addCircle(

@@ -10,7 +10,7 @@ export async function mainTraffic(trafficData, metaData, lang, pipelineShape) {
         lang,
         pipelineShape,
       });
-      await traffic.buildDashboard();
+      traffic.buildDashboard();
       traffic.keyPointListener();
       traffic.unitsListener();
       traffic.mapZoomListener();

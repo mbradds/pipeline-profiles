@@ -263,7 +263,6 @@ export async function addPipelineShape() {
         opacity: 0.4,
       }).addTo(this.map);
       pipelineLayer.bringToBack();
-      this.map.fitBounds(pipelineLayer.getBounds());
       return pipelineLayer;
     } catch (err) {
       console.log(err);
