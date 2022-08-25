@@ -38,7 +38,8 @@ export function loadAllCharts(data, disclaimer = undefined) {
   mainTraffic(
     data.trafficData.traffic,
     data.trafficData.meta,
-    frenchDashboard.traffic
+    frenchDashboard.traffic,
+    pipelineShape
   );
   mainApportion(data.apportionData, frenchDashboard.apportion);
   mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);

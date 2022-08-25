@@ -70,11 +70,18 @@ const sharedHcParams = {
 };
 
 export class Traffic {
-  constructor({ trafficData, metaData, lang, rounding = 2 }) {
+  constructor({
+    trafficData,
+    metaData,
+    lang,
+    rounding = 2,
+    pipelineShape = undefined,
+  }) {
     this.trafficData = trafficData;
     this.metaData = metaData;
     this.lang = lang;
     this.rounding = rounding;
+    this.pipelineShape = pipelineShape;
     this.params = this.getDashboardParameters();
     this.sharedHcParams = sharedHcParams;
   }
@@ -207,12 +214,14 @@ export class Traffic {
   buildPointMap() {
     let pointMap;
     if (this.params.defaultPoint.id !== "KP0000") {
+      const { pipelineShape } = this;
       pointMap = new KeyPointMap({
         points: this.params.points,
         selected: !this.params.tm
           ? [this.params.defaultPoint]
           : this.params.points,
         companyName: this.params.companyName,
+        pipelineShape,
       });
       // KP0000 = system. These pipelines should be using trafficNoMap.hbs
       if (this.params.points.length === 1) {

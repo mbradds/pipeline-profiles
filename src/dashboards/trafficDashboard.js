@@ -1,11 +1,16 @@
 import { loadChartError, visibility } from "../modules/util.js";
 import { Traffic } from "../modules/dashboard/Traffic.js";
 
-export async function mainTraffic(trafficData, metaData, lang) {
+export async function mainTraffic(trafficData, metaData, lang, pipelineShape) {
   if (metaData.build) {
     try {
-      const traffic = new Traffic({ trafficData, metaData, lang });
-      traffic.buildDashboard();
+      const traffic = new Traffic({
+        trafficData,
+        metaData,
+        lang,
+        pipelineShape,
+      });
+      await traffic.buildDashboard();
       traffic.keyPointListener();
       traffic.unitsListener();
       traffic.mapZoomListener();

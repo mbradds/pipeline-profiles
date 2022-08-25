@@ -4,7 +4,7 @@
 
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { cerPalette, leafletBaseMap } from "../util.js";
+import { cerPalette, leafletBaseMap, addPipelineShape } from "../util.js";
 
 /**
  * Class for generating a very simple leaflet bubble map showing one or more selected bubbles, with large zoom in/out functionality
@@ -19,6 +19,7 @@ export class KeyPointMap {
    * @param {number[]} [constr.initZoomTo=[60, -97]] - Initial lat long for map before zooming to points.
    * @param {string} [constr.companyName=""] - Used to get initial zooms and padding for specific companies.
    * @param {Object} [constr.lang={}] - Object holding language switching items.
+   * @param {any} constr.pipelineShape
    */
   constructor({
     points,
@@ -27,6 +28,7 @@ export class KeyPointMap {
     initZoomTo = [60, -97],
     companyName = "",
     lang = {},
+    pipelineShape = undefined,
   }) {
     this.points = points;
     this.selected = KeyPointMap.selectedPointNames(selected);
@@ -40,6 +42,9 @@ export class KeyPointMap {
       deactivated: cerPalette["Cool Grey"],
     };
     this.getInits(companyName, points);
+    this.pipelineShape = pipelineShape;
+    this.addPipelineShape = addPipelineShape;
+    this.pipelineLayer = undefined;
   }
 
   static selectedPointNames(s) {
@@ -87,6 +92,7 @@ export class KeyPointMap {
     map.setMaxZoom(this.maxZoom);
     map.dragging.disable();
     map.doubleClickZoom.disable();
+    this.addPipelineShape();
     this.map = map;
   }
 

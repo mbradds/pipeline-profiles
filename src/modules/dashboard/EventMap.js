@@ -22,6 +22,7 @@ import {
   leafletBaseMap,
   visibility,
   btnGroupClick,
+  addPipelineShape,
 } from "../util.js";
 
 /**
@@ -73,6 +74,7 @@ export class EventMap {
     this.pipelineShape = pipelineShape;
     this.mapDisclaimer = undefined;
     this.findPlotHeight();
+    this.addPipelineShape = addPipelineShape;
   }
 
   findPlotHeight() {
@@ -240,25 +242,25 @@ export class EventMap {
     info.addTo(this.map);
   }
 
-  async addPipelineShape() {
-    if (this.pipelineShape) {
-      try {
-        const data = await this.pipelineShape;
-        const pipeGeoJson = data.features[0];
-        pipeGeoJson.type = "Feature";
-        pipeGeoJson.geometry.type = "MultiLineString";
-        pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
-        const pipelineLayer = L.geoJSON(pipeGeoJson, {
-          color: "black",
-          opacity: 0.4,
-        }).addTo(this.map);
-        pipelineLayer.bringToBack();
-        this.map.fitBounds(pipelineLayer.getBounds());
-      } catch (err) {
-        console.log("cant add pipeline layer");
-      }
-    }
-  }
+  // async addPipelineShape() {
+  //   if (this.pipelineShape) {
+  //     try {
+  //       const data = await this.pipelineShape;
+  //       const pipeGeoJson = data.features[0];
+  //       pipeGeoJson.type = "Feature";
+  //       pipeGeoJson.geometry.type = "MultiLineString";
+  //       pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
+  //       const pipelineLayer = L.geoJSON(pipeGeoJson, {
+  //         color: "black",
+  //         opacity: 0.4,
+  //       }).addTo(this.map);
+  //       pipelineLayer.bringToBack();
+  //       this.map.fitBounds(pipelineLayer.getBounds());
+  //     } catch (err) {
+  //       console.log("cant add pipeline layer");
+  //     }
+  //   }
+  // }
 
   toolTip(eventParams, fillColor) {
     const getNameText = (val, lookup, hash) => {
