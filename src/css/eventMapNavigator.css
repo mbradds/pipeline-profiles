@@ -6,6 +6,9 @@
   position: relative;
   height: 515px;
   margin-right: -15px;
+  /* border-radius: 5px;
+  border-color: rgba(140, 140, 150, 1);
+  border-style: solid; */
 }
 .time-series {
   height: 400px;

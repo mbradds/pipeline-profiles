@@ -35,7 +35,7 @@ import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { plainsMidstreamProfile, openTab } from "../modules/util.js";
 // pipeline shape promise
-import { getPipelineShape } from "../modules/getPipelineShape.js";
+import { getPipelineShape } from "../modules/pipelineShape.js";
 
 import "../css/main.css";
 

@@ -22,8 +22,8 @@ import {
   leafletBaseMap,
   visibility,
   btnGroupClick,
-  addPipelineShape,
 } from "../util.js";
+import { addPipelineShape } from "../pipelineShape.js";
 
 /**
  * Class defining functionality for a leaflet map that can update colors, tooltip, show events close to user location, etc.

@@ -3,8 +3,6 @@
  * general functions. Higher level functions more specific to the dashboards should be placed in src/dashboards/dashboardUtils.js
  */
 
-import * as L from "leaflet";
-
 export const cerPalette = {
   "Night Sky": "#054169",
   Sun: "#FFBE4B",
@@ -247,29 +245,5 @@ export function removeAllSeries(
 ) {
   while (chart.series.length) {
     chart.series[0].remove(redraw, animation, withEvent);
-  }
-}
-
-export async function addPipelineShape() {
-  if (this.pipelineShape) {
-    try {
-      const data = await this.pipelineShape;
-      const pipeGeoJson = data.features[0];
-      pipeGeoJson.type = "Feature";
-      pipeGeoJson.geometry.type = "MultiLineString";
-      pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
-      const pipelineLayer = L.geoJSON(pipeGeoJson, {
-        color: "black",
-        opacity: 0.4,
-      }).addTo(this.map);
-      pipelineLayer.bringToBack();
-      return pipelineLayer;
-    } catch (err) {
-      console.log(err);
-      console.log("cant add pipeline layer");
-      return undefined;
-    }
-  } else {
-    return undefined;
   }
 }
