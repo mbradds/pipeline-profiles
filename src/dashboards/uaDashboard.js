@@ -29,7 +29,7 @@ export async function mainUa(uaData, metaData, lang, pipelineShape) {
       filters: mapFilters,
       minRadius: 14000,
       divId: "unauthorized-activities-map",
-      toolTipFields: ["et", "mod"],
+      toolTipFields: ["et", "mod", "bc"],
       lang: mapLang,
       regdocsClick: false,
       pipelineShape,

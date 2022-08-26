@@ -697,7 +697,7 @@ export const frenchDashboard = {
     dateFormat,
     companyToSystem,
     noEvents,
-    dynamicText: uaTextFra,
+    dynamicText: uaTextEng,
     title: (company) => `Dashboard: ${company} - DPR Contravention Reports`,
     dashboard: {
       eventName: "DPR Contravention Reports",
@@ -717,6 +717,7 @@ export const frenchDashboard = {
           mod: "Method Of Discovery",
           y: "Year",
           wdi: "Who Discovered The Event",
+          bc: "Basic Causes",
         },
         click,
       },

@@ -16,6 +16,9 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.event-map-and-nav {
+  display: flex;
+}
 .time-series {
   height: 400px;
   margin-right: -15px;

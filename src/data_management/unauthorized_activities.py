@@ -39,6 +39,7 @@ def optimize_json(df):
                             "Was Pipe Damaged": "wpd",
                             "Was there a ground disturbance": "wgd",
                             "Method Of Discovery": "mod",
+                            "Basic Causes": "bc",
                             "Who Discovered The Event": "wdi",
                             "Year": "y"})
     df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])]
@@ -72,6 +73,14 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     df["Company Name"] = df["Company Name"].replace(company_rename())
     df = apply_system_id(df, "Company Name")
     df["Was there a ground disturbance"] = ["Yes" if "Ground Disturbance" in x else "No" for x in df["Event Type"]]
+    
+    cause_list = []
+    for cause in df["Basic Causes"]:
+        cause = str(cause).split("-")
+        cause = [x.strip() for x in cause]
+        cause_list.append(cause)    
+    df["Basic Causes"] = cause_list
+
     event_list = []
     for event in df["Event Type"]:
         event = event.split(";")
@@ -89,6 +98,7 @@ def process_ua(companies=False, remote=True, test=False, save=True):
               "Latitude",
               "Longitude",
               "Year",
+              "Basic Causes",
               "Who Discovered The Event",
               "Method Of Discovery"]].copy()
 

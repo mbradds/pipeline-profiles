@@ -242,26 +242,6 @@ export class EventMap {
     info.addTo(this.map);
   }
 
-  // async addPipelineShape() {
-  //   if (this.pipelineShape) {
-  //     try {
-  //       const data = await this.pipelineShape;
-  //       const pipeGeoJson = data.features[0];
-  //       pipeGeoJson.type = "Feature";
-  //       pipeGeoJson.geometry.type = "MultiLineString";
-  //       pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
-  //       const pipelineLayer = L.geoJSON(pipeGeoJson, {
-  //         color: "black",
-  //         opacity: 0.4,
-  //       }).addTo(this.map);
-  //       pipelineLayer.bringToBack();
-  //       this.map.fitBounds(pipelineLayer.getBounds());
-  //     } catch (err) {
-  //       console.log("cant add pipeline layer");
-  //     }
-  //   }
-  // }
-
   toolTip(eventParams, fillColor) {
     const getNameText = (val, lookup, hash) => {
       if (lookup && Object.prototype.hasOwnProperty.call(lookup, val)) {
@@ -285,7 +265,7 @@ export class EventMap {
 
     const rowName = getNameText(this.field, this.lang.pillTitles.titles);
     const bubbleName = this.applyName(eventParams[this.field], this.field);
-    let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center"><strong>${eventParams.id}</strong></p>`;
+    let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center;"><strong>${eventParams.id}</strong></p>`;
     toolTipText += `<table><tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
 
     this.toolTipFields.forEach((toolCol) => {
@@ -312,7 +292,6 @@ export class EventMap {
     if (this.regdocsClick) {
       toolTipText += `<i class="center-footer">${this.lang.mapClick} ${eventParams.id}</i>`;
     }
-
     return toolTipText;
   }
 
