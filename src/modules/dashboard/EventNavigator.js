@@ -323,7 +323,7 @@ export class EventNavigator {
     activeDiv.style.borderStyle = "solid";
     activeDiv.style.borderColor = cerPalette["Dim Grey"];
     activeDiv.style.borderRadius = "5px";
-    activeDiv.style.opacity = "0.4";
+    activeDiv.style.opacity = "0.3";
   }
 
   activateChart(bar) {
@@ -379,7 +379,7 @@ export class EventNavigator {
     }
     this.currentActive = bar;
     activeDiv.style.borderStyle = "solid";
-    activeDiv.style.borderColor = cerPalette["Cool Grey"];
+    activeDiv.style.borderColor = "rgba(66, 70, 75, 0.8)"; // cerPalette["Cool Grey"];
     activeDiv.style.borderRadius = "5px";
     activeDiv.style.opacity = "1";
     this.plot.fieldChange(bar.name);
@@ -404,7 +404,7 @@ export class EventNavigator {
 
     function mouseOut() {
       if (currentBar.status !== "activated") {
-        barDiv.style.opacity = "0.4";
+        barDiv.style.opacity = "0.3";
         if (currentBar.chart) {
           currentBar.chart.update({
             chart: {

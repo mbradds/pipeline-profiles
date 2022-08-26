@@ -6,9 +6,15 @@
   position: relative;
   height: 515px;
   margin-right: -15px;
-  /* border-radius: 5px;
-  border-color: rgba(140, 140, 150, 1);
-  border-style: solid; */
+  border-radius: 5px;
+  border-color: rgba(66, 70, 75, 0.8);
+  border-style: solid;
+  box-shadow: 0 0 3px rgba(33, 33, 33, 0.2);
+}
+.event-navigator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .time-series {
   height: 400px;
@@ -33,10 +39,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 0px rgb(255, 255, 255);
+  box-shadow: 0 0 3px rgba(33, 33, 33, 0.2);
 }
 .event-filter-nav:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.3);
 }
 .event-title-nav {
   text-align: center !important;
