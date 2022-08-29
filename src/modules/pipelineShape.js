@@ -16,18 +16,21 @@ export async function addPipelineShape() {
     try {
       const data = await this.pipelineShape;
       const pipeGeoJson = data.features[0];
-      pipeGeoJson.type = "Feature";
-      pipeGeoJson.geometry.type = "MultiLineString";
-      pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
-      const pipelineLayer = L.geoJSON(pipeGeoJson, {
-        color: "black",
-        opacity: 0.4,
-      }).addTo(this.map);
-      pipelineLayer.bringToBack();
-      return pipelineLayer;
+      if (pipeGeoJson) {
+        pipeGeoJson.type = "Feature";
+        pipeGeoJson.geometry.type = "MultiLineString";
+        pipeGeoJson.geometry.coordinates = pipeGeoJson.geometry.paths;
+        const pipelineLayer = L.geoJSON(pipeGeoJson, {
+          color: "black",
+          opacity: 0.4,
+        }).addTo(this.map);
+        pipelineLayer.bringToBack();
+        return pipelineLayer;
+      }
+      console.warn("pipeline shape API returned no data");
+      return undefined;
     } catch (err) {
-      console.log(err);
-      console.log("cant add pipeline layer");
+      console.warn(err);
       return undefined;
     }
   } else {

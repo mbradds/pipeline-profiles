@@ -495,7 +495,7 @@ const en = {
       paragraphs: [
         "Damage prevention is where people and pipelines meet; it is the proactive process that keeps people, the environment and pipelines safe.",
         "The CER takes action to protect Canadians and the environment. Some of these actions include the regulation of activities near the pipelines that we regulate. Unauthorized activities on or around pipelines are unsafe and illegal. If pipelines are contacted or damaged, the result could be very serious.",
-        "The CER Damage Prevention Regulations (DPRs) outline the obligations of the pipeline companies to have robust damage prevention and public awareness programs that provide people living and working near pipelines the information to ensure those activities near their pipelines are done safely with respect to the pipeline. The DPRs also outline the requirements for people living and working near pipelines to communicate with pipeline companies when they are planning any construction activity (digging, building, driving on the right-of-way) and to follow the instructions that the pipeline company gives them.",
+        "The <a href='https://www.cer-rec.gc.ca/en/about/acts-regulations/cer-act-regulations-guidance-notes-related-documents/damage-prevention-regulations/index.html'>CER Damage Prevention Regulations (DPRs)</a> outline the obligations of the pipeline companies to have robust damage prevention and public awareness programs that provide people living and working near pipelines the information to ensure those activities near their pipelines are done safely with respect to the pipeline. The DPRs also outline the requirements for people living and working near pipelines to communicate with pipeline companies when they are planning any construction activity (digging, building, driving on the right-of-way) and to follow the instructions that the pipeline company gives them.",
         "Damage prevention is a shared responsibility, and we all play a part in making sure that everyone stays safe when working near a pipeline.",
         "Pipeline companies must immediately report to the CER any activity near their pipeline that does not follow the rules and specifications set out in the DPRs. These violations are called contravention reports. The CER provides an Open Government dataset containing information on each reported contravention. Some summary statistics and a dashboard displaying this data is available below.",
       ],
@@ -528,10 +528,11 @@ const en = {
           dataSourceTitle: dataSourceEn,
           descriptionTitle: descriptionEn,
           sourceText: sourceTextEn,
-          sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
+          sourceLink:
+            "https://open.canada.ca/data/en/dataset/43c4a4ea-6da8-4b02-8f07-986caafd9223",
           description: "Coming soon!",
           openGov: openGovLink(
-            "https://open.canada.ca/data/en/organization/cer-rec",
+            "https://open.canada.ca/data/en/dataset/43c4a4ea-6da8-4b02-8f07-986caafd9223",
             "en"
           ),
         },
