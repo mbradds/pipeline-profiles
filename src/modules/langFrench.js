@@ -709,6 +709,11 @@ export const frenchDashboard = {
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
       nearbyHeader: nearbyMe.nearbyHeader,
       exploreOther,
+      trendDisclaimer: {
+        wpd: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+        wdi: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+        mod: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+      },
       pillTitles: {
         titles: {
           et: "Event Type",

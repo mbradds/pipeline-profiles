@@ -242,24 +242,35 @@ export class EventTrend {
     return this.field;
   }
 
-  oneToManyDisclaimer() {
+  addTrendDisclaimer() {
+    const updatedTitle = (titleText) => ({
+      text: `<div class="alert alert-warning count-disclaimer"><p>${titleText}</p></div>`,
+      useHTML: true,
+      widthAdjust: 0,
+      align: "left",
+      margin: 0,
+      style: {
+        fontSize: "14px",
+        fontWeight: "normal",
+      },
+    });
     if (this.oneToMany[this.field]) {
       this.chart.update({
-        title: {
-          text: `<div class="alert alert-warning count-disclaimer"><p>${this.lang.countDisclaimer(
+        title: updatedTitle(
+          this.lang.countDisclaimer(
             capitalize(this.lang.eventName),
             this.pillNameSubstitution()
-          )}</p></div>`,
-          useHTML: true,
-          widthAdjust: 0,
-          align: "left",
-          margin: 0,
-          style: {
-            fontSize: "14px",
-            fontWeight: "normal",
-          },
-        },
+          )
+        ),
       });
+    } else if (
+      Object.prototype.hasOwnProperty.call(this.lang, "trendDisclaimer")
+    ) {
+      if (this.lang.trendDisclaimer[this.field]) {
+        this.chart.update({
+          title: updatedTitle(this.lang.trendDisclaimer[this.field]),
+        });
+      }
     } else {
       this.chart.update({
         title: {
@@ -376,7 +387,7 @@ export class EventTrend {
       this.generateSeries(this.data, this.field).forEach((series) => {
         this.chart.addSeries(series, false);
       });
-      this.oneToManyDisclaimer();
+      this.addTrendDisclaimer();
       this.hasDefintion = this.displayDefinitions();
       this.chart.redraw();
     }
