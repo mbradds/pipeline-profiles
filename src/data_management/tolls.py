@@ -118,7 +118,6 @@ def company_filter(df, company):
                          "Union Parkway Belt-Iroquois",
                          "Union Parkway Belt-Union SWDA"]
         df = df[df["Path"].isin(selected_paths)].copy()
-        df = df[df["Service"] == "Daily FT Toll"].copy()
     elif company == "Express":
         selected_paths = ["Hardisty, Alberta-International Boundary near Wild Horse, Alberta"]
         df = df[df["Path"].isin(selected_paths)].copy()
@@ -142,19 +141,21 @@ def company_filter(df, company):
         df = df[df["Service"] == "T-1"].copy()
         selected_paths = tqmPaths
     elif company == "TransNorthern":
-        selected_paths = ["Montreal, East Quebec-Kingston, Ontario",
-                         "Montreal, East Quebec-North Toronto, Ontario",
-                         "Montreal, East Quebec-Ottawa, Ontario",
+        selected_paths = ["Montreal East, Quebec-Kingston, Ontario",
+                         "Montreal East, Quebec-North Toronto, Ontario",
+                         "Montreal East, Quebec-Ottawa, Ontario",
                          "Nanticoke, Ontario-North Toronto, Ontario"]
+        df = df[df["Service"] != "Abandonment Surcharges"].copy()
         df = df[df["Path"].isin(selected_paths)].copy()
     elif company == "SouthernLights":
-        selected_paths = ["International Boundary near Gretna, Manitoba-Edmonton, Alberta; Hardisty, Alberta; Kerrobert, Saskatchewan"]
+        selected_paths = ["International Boundary near Gretna, Manitoba-Edmonton, Alberta"]
         df = df[df["Path"].isin(selected_paths)].copy()
     elif company == "Westcoast":
         selected_paths = list(set(df["Path"]))
         selected_services = "1 year"
     elif company == "Westspur":
-        df = df[df["Service"] == "Toll"].copy()
+        # path_filter = [True, "checkbox"]
+        selected_services = "TOLLS"
         selected_paths = list(set(df["Path"]))
 
     df = df.copy().reset_index(drop=True)
@@ -361,6 +362,7 @@ def process_tolls(commodity, sql=True, companies=False, save=True):
                        "TQM",
                        "TransNorthern",
                        "Vector",
+                       "Westspur",
                        "Westcoast",
                        "Wascana"]:
             series_col = "Path"
@@ -477,5 +479,5 @@ if __name__ == "__main__":
     print("starting tolls...")
     # df_, this_company_data_ = process_tolls("Liquid", sql=False)
     # df_, this_company_data_ = process_tolls("Gas", sql=False)
-    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["Keystone"])
+    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["Westspur"])
     print("done tolls")
