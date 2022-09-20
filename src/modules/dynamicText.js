@@ -377,7 +377,7 @@ export function uaTextEng(meta, lang) {
     meta.ground_disturbance_count
   )} have included a ground disturbance, and ${dynamicValue(
     meta.damage_count
-  )} have caused physical damage to the pipeline such as dent or gouge. A ground disturbance contravention happens when someone digs below 30 cm within the pipelines prescribed area without first getting consent from the pipeline company or when a locate request hasnt been made. These events can be considered as near-miss events that could have led to a more serious pipeline incident.</p>`;
+  )} have caused physical damage to the pipeline such as dent or gouge. A ground disturbance contravention happens when someone digs below 30 cm within the pipelines prescribed area without first getting consent from the pipeline company or when a locate request hasn't been made. These events can be considered as near-miss events that could have led to a more serious pipeline incident.</p>`;
 
   const secondParagraph = `<p>The CER reviews all contravention reports submitted by regulated companies, and further action may be required of the company. From ${
     meta.first_year

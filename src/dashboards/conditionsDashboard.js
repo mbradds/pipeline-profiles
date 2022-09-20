@@ -32,9 +32,7 @@ export async function mainConditions(
   const noLocationSummary = (params) => {
     let infohtml = `<p><strong>${lang.noLocation.title}</strong></p>`;
     if (params.summary.notOnMap.total > 0) {
-      infohtml += `<p>${lang.noLocation.summary(
-        params.summary.companyName
-      )}</p><ul>`;
+      infohtml += `<p>${lang.noLocation.summary(params.systemName)}</p><ul>`;
       Object.keys(params.summary.notOnMap.status).forEach((status) => {
         const count = params.summary.notOnMap.status[status];
         infohtml += `<li>${params.colNames[status]} ${lang.conditions}: ${count}</li>`;

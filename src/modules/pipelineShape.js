@@ -1,6 +1,6 @@
 import * as L from "leaflet";
 
-export async function getPipelineShape(PipelineID) {
+async function apiRequest(PipelineID) {
   try {
     const url = `https://services5.arcgis.com/vNzamREXvX2WcX6d/ArcGIS/rest/services/CER_Pipeline_Systems_WGS84_view/FeatureServer/3/query?where=PipelineID='${PipelineID}'&f=json`;
     const response = await fetch(url);
@@ -9,6 +9,26 @@ export async function getPipelineShape(PipelineID) {
   } catch (err) {
     return undefined;
   }
+}
+
+export async function getPipelineShape(PipelineID) {
+  // these pipelines are not ready
+  const dontGet = ["Westcoast", "EnbridgeBakken"];
+  if (dontGet.includes(PipelineID)) {
+    return undefined;
+  }
+  // enbridge corner case
+  if (PipelineID === "EnbridgeMainline") {
+    const mainline = await apiRequest(PipelineID);
+    const line9 = await apiRequest("EnbridgeLine9");
+    mainline.features[0].geometry.paths =
+      mainline.features[0].geometry.paths.concat(
+        line9.features[0].geometry.paths
+      );
+    return mainline;
+  }
+  const data = apiRequest(PipelineID);
+  return data;
 }
 
 export async function addPipelineShape() {

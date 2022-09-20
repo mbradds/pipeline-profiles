@@ -169,7 +169,7 @@ const noEvents = {
 export const englishDashboard = {
   disclaimers: {
     MilkRiver:
-      "Data is not available for the Milk River Pipeline prior to June 2021.",
+      "The information in this section reflects data belonging to Milk River Pipeline Ltd. To view data belonging to the previous owners, download the data found under “Source and Description” for each dashboard. Then, sort by “Company” and select “Plains Midstream Canada ULC.“",
     Wascana:
       "Prior to June 2021, data for Wascana includes both the Wascana and Milk River pipelines.",
   },
