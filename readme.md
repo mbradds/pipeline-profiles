@@ -9,9 +9,9 @@
   <a>
     <img src="https://snyk.io/test/github/mbradds/pipeline-profiles/badge.svg?targetFile=package.json" alt="Vulnerabilities" />
   </a>
-  <!-- Heroku -->
+  <!-- Azure website -->
   <a>
-    <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https://pipeline-profiles.herokuapp.com/" alt="heroku" />
+    <img src="https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https://lively-desert-05b6cc51e.1.azurestaticapps.net/" alt="AzureApp" />
   </a>
   <!-- AVA unit tests -->
   <a>
@@ -29,8 +29,8 @@
 
 <div align="center">
   <h3>
-    <a href="https://pipeline-profiles.herokuapp.com/">
-      Heroku WebApp
+    <a href="https://lively-desert-05b6cc51e.1.azurestaticapps.net/">
+      Azure Static Web App
     </a>
     <span> | </span>
     <a href="https://github.com/mbradds/pipeline-profiles/projects/1">
@@ -96,7 +96,7 @@ Sections being added:
 ```
 pipeline_profiles
 │   README.md (you are here!)
-│   server.js (express js server configuration for heroku)
+│   server.js (express js server configuration for npm start)
 |   environment.yml (cross platform conda python 3 environment used in ./src/data_management)
 │   webpack.common.js (functionality for creating clean ../dist folder in english and french)
 |   webpack.dev.js (webpack dev server functionality)
@@ -204,11 +204,10 @@ Create a new release on GitHub and add the compressed dist folder. Ask the web t
 
 ### Remotes
 
-There are three remote repositories.
+There are two remote repositories.
 
 1. **GitHub** This should continue to be the main repo for my development + managing other contributors pull requests.
 2. **Azure Dev Ops** This is the main repo for "work" and will eventually serve as the main ci/cd pipeline for deployment once the CER can handle such things.
-3. **Heroku** The heroku git client isnt allowed on CER infrastructure, so I'll continue to manage the heroku deployments.
 
 I've added some convenient npm scripts for switching remotes:
 
@@ -577,9 +576,9 @@ npm run test-frontend
 - [highcharts](https://www.npmjs.com/package/highcharts)
 - [leaflet](https://www.npmjs.com/package/leaflet)
 - [@babel/runtime](https://babeljs.io/docs/en/babel-runtime) Helps reduce bundle size by a few KB.
-- [compression](https://www.npmjs.com/package/compression) Used only for heroku website.
+- [compression](https://www.npmjs.com/package/compression) Used only for `npm start`.
 - [datestone](https://www.npmjs.com/package/datestone) Save network size (over 50%) when dealing with time series data.
-- [express](https://www.npmjs.com/package/express) Used only for heroku website.
+- [express](https://www.npmjs.com/package/express) Used only for `npm start`.
 - [haversine](https://www.npmjs.com/package/haversine) For finding distance between user and Incidents.
 - [mapshaper](https://www.npmjs.com/package/mapshaper) Simplifies the maps used in the Conditions map. Reduces Canada base map file size by >99.9%!
 
@@ -659,6 +658,5 @@ Take a look at the issues tab for a more up to date list. I dont update this sec
 - The radio button functionality has changed for incidents. Try to get rid of the "click" methods, or only apply click if not checked. There might be some data processing going down behind the scenes that isnt needed when switching from map to trends. Take a look at crude-runs units radio.
 - Try to dynamically compute pill height in `src/modules/dashboard.js` instead of hard coding the height. This will make it easier to add pills, and optimize this style of dashboard for mobile/smaller screens.
 - Look into the inheritance pattern in `src/modules/dashboard.js`. This might be adding more complexity than its worth.
-- Specify npm engine/version in package.json for heroku
 - Split `src/modules/dashboard.js` into a folder with one file for each class.
 - Move `src/profile.hbs` into `src/components`. All templates should be kept together for readability.
