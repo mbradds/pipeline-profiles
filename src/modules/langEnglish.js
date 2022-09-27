@@ -54,9 +54,9 @@ const dashboardError = {
 };
 
 const nullInfo = {
-  "Not Specified": { c: cerPalette["Dim Grey"], n: "Not Specified" },
+  "Not Specified": { c: cerPalette["Cool Grey"], n: "Not Specified" },
   null: { c: cerPalette["Dim Grey"], n: "Not Provided" },
-  ns: { n: "Not Specified", c: cerPalette["Dim Grey"] },
+  ns: { c: cerPalette["Cool Grey"], n: "Not Specified" },
 };
 
 const regionInfo = {
@@ -713,30 +713,22 @@ export const englishDashboard = {
       },
       seriesInfo: {
         wdi: {
-          "1st party (regulated company)": {
+          1: {
             c: cerPalette.Sun,
             n: "1st party (regulated company)",
           },
-          "2nd party (contractor working for the regulated company)": {
+          2: {
             c: cerPalette["Night Sky"],
             n: "2nd party (contractor working for the regulated company)",
           },
-          "3rd party (no connection to the regulated company)": {
+          3: {
             c: cerPalette.Forest,
             n: "3rd party (no connection to the regulated company)",
           },
           ...nullInfo,
         },
-        wpd: {
-          Yes: { c: cerPalette.Sun, n: "Yes" },
-          No: { c: cerPalette["Night Sky"], n: "No" },
-          ...nullInfo,
-        },
-        wgd: {
-          Yes: { c: cerPalette.Sun, n: "Yes" },
-          No: { c: cerPalette["Night Sky"], n: "No" },
-          ...nullInfo,
-        },
+        wpd: yesNoInfo,
+        wgd: yesNoInfo,
         mod: {
           ...nullInfo,
         },

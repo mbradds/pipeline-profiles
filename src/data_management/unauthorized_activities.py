@@ -34,6 +34,13 @@ def ua_meta_data(df, meta_data):
 
 def optimize_json(df):
     df = replace_nulls_with_none(df)
+    for yes_no in ["Was Pipe Damaged", "Was there a ground disturbance"]:
+        df[yes_no] = df[yes_no].replace({"Yes":"y", "No": "n"})
+    
+    df["Who Discovered The Event"] = df["Who Discovered The Event"].replace({"1st party (regulated company)": "1",
+                                                                             "2nd party (contractor working for the regulated company)": "2",
+                                                                             "3rd party (no connection to the regulated company)": "3"})
+
     df = df.rename(columns={"Event Number": "id",
                             "Event Type": "et",
                             "Was Pipe Damaged": "wpd",
@@ -42,7 +49,7 @@ def optimize_json(df):
                             "Basic Causes": "bc",
                             "Who Discovered The Event": "wdi",
                             "Year": "y"})
-    df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])]
+    df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])] 
     df = df.sort_values(by=['y'])
     for delete in ['Latitude', 'Longitude', 'Further Action Required']:
         del df[delete]

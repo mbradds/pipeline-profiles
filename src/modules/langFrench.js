@@ -54,8 +54,9 @@ const dashboardError = {
 };
 
 const nullInfo = {
+  "Not Specified": { c: cerPalette["Cool Grey"], n: "Not Specified" },
   null: { c: cerPalette["Dim Grey"], n: "Non fournie" },
-  ns: { n: "Non fournie", c: cerPalette["Dim Grey"] },
+  ns: { c: cerPalette["Cool Grey"], n: "Non fournie" },
 };
 
 const regionInfo = {
@@ -698,9 +699,9 @@ export const frenchDashboard = {
     companyToSystem,
     noEvents,
     dynamicText: uaTextFra,
-    title: (company) => `Dashboard: ${company} - DPR Contravention Reports`,
+    title: (company) => `FR: Dashboard: ${company} - DPR Contravention Reports`,
     dashboard: {
-      eventName: "DPR Contravention Reports",
+      eventName: "FR: DPR Contravention Reports",
       resetMap,
       trendYTitle,
       countDisclaimer,
@@ -710,48 +711,40 @@ export const frenchDashboard = {
       nearbyHeader: nearbyMe.nearbyHeader,
       exploreOther,
       trendDisclaimer: {
-        wpd: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
-        wdi: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
-        mod: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+        wpd: "FR: Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+        wdi: "FR: Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+        mod: "FR:Reporting requirements were updated in 2020. Data is not available prior to 2020.",
       },
       pillTitles: {
         titles: {
-          et: "Event Type",
-          wpd: "Was Pipe Damaged?",
-          wgd: "Was There a Ground Disturbance?",
-          mod: "Method Of Discovery",
-          y: "Year",
-          wdi: "Who Discovered The Event",
-          bc: "Basic Causes",
+          et: "FR: Event Type",
+          wpd: "FR: Was Pipe Damaged?",
+          wgd: "FR: Was There a Ground Disturbance?",
+          mod: "FR: Method Of Discovery",
+          y: "FR: Year",
+          wdi: "FR: Who Discovered The Event",
+          bc: "FR: Basic Causes",
         },
         click,
       },
       seriesInfo: {
         wdi: {
-          "1st party (regulated company)": {
+          1: {
             c: cerPalette.Sun,
-            n: "1st party (regulated company)",
+            n: "FR: 1st party (regulated company)",
           },
-          "2nd party (contractor working for the regulated company)": {
+          2: {
             c: cerPalette["Night Sky"],
-            n: "2nd party (contractor working for the regulated company)",
+            n: "FR: 2nd party (contractor working for the regulated company)",
           },
-          "3rd party (no connection to the regulated company)": {
+          3: {
             c: cerPalette.Forest,
-            n: "3rd party (no connection to the regulated company)",
+            n: "FR: 3rd party (no connection to the regulated company)",
           },
           ...nullInfo,
         },
-        wpd: {
-          Yes: { c: cerPalette.Sun, n: "Yes" },
-          No: { c: cerPalette["Night Sky"], n: "No" },
-          ...nullInfo,
-        },
-        wgd: {
-          Yes: { c: cerPalette.Sun, n: "Yes" },
-          No: { c: cerPalette["Night Sky"], n: "No" },
-          ...nullInfo,
-        },
+        wpd: yesNoInfo,
+        wgd: yesNoInfo,
         mod: {
           ...nullInfo,
         },
