@@ -36,7 +36,7 @@ def optimize_json(df):
     df = replace_nulls_with_none(df)
     for yes_no in ["Was Pipe Damaged", "Was there a ground disturbance"]:
         df[yes_no] = df[yes_no].replace({"Yes":"y", "No": "n"})
-    
+
     df["Who Discovered The Event"] = df["Who Discovered The Event"].replace({"1st party (regulated company)": "1",
                                                                              "2nd party (contractor working for the regulated company)": "2",
                                                                              "3rd party (no connection to the regulated company)": "3"})
@@ -49,10 +49,16 @@ def optimize_json(df):
                             "Basic Causes": "bc",
                             "Who Discovered The Event": "wdi",
                             "Year": "y"})
-    df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])] 
+    df["loc"] = [[lat, long] for lat, long in zip(df['Latitude'], df['Longitude'])]
     df = df.sort_values(by=['y'])
     for delete in ['Latitude', 'Longitude', 'Further Action Required']:
         del df[delete]
+    return df
+
+
+def apply_not_specified(df, col):
+    df[col] = df[col].fillna("ns")
+    df[col] = df[col].replace({"Not Specified": "ns"})
     return df
 
 
@@ -80,12 +86,12 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     df["Company Name"] = df["Company Name"].replace(company_rename())
     df = apply_system_id(df, "Company Name")
     df["Was there a ground disturbance"] = ["Yes" if "Ground Disturbance" in x else "No" for x in df["Event Type"]]
-    
+
     cause_list = []
     for cause in df["Basic Causes"]:
         cause = str(cause).split("-")
         cause = [x.strip() for x in cause]
-        cause_list.append(cause)    
+        cause_list.append(cause)
     df["Basic Causes"] = cause_list
 
     event_list = []
@@ -94,6 +100,10 @@ def process_ua(companies=False, remote=True, test=False, save=True):
         event = [x.strip() for x in event]
         event_list.append(event)
     df["Event Type"] = event_list
+
+    df = apply_not_specified(df, "Was Pipe Damaged")
+    df = apply_not_specified(df, "Who Discovered The Event")
+    df = apply_not_specified(df, "Method Of Discovery")
 
     df = df[["Event Number",
               "Event Type",
