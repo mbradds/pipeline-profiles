@@ -95,7 +95,7 @@ def company_filter(df, company):
         selected_paths = ["Hardisty, Alberta-Houston, Texas"]
         path_filter = [True, "radio"]
     elif company == "NGTL":
-        df = df[df["Service"].isin(["Average FT-D Demand", "Average Firm Service Receipt"])].copy()
+        df = df[df["Service"].isin(["Average FT-D", "Average Firm Service Receipt"])].copy()
         df["split"] = ["Average Firm Transportation - Delivery (FT-D)" if "FT-D" in x else "Average Firm Transportation - Receipt (FT-R)" for x in df["Service"]]
         df["Path"] = [x.replace("System-", "").strip() for x in df["Path"]]
         selected_paths = {"Average Firm Transportation - Delivery (FT-D)": ["Group 1",
@@ -131,7 +131,7 @@ def company_filter(df, company):
     elif company in ["Genesis", "ManyIslands", "MilkRiver", "NormanWells"]:
         selected_paths = list(set(df["Path"]))
     elif company == "TransMountain":
-        df = df[df["Service"] == "Tank Metered, Net Toll"].copy()
+        df = df[df["Service"] == "Tank Metered"].copy()
         df = df[df["Path"] != "Edmonton"].copy()
         path_filter = [True, "radio"]
         selected_paths = ["Edmonton-Westridge"]
@@ -479,5 +479,5 @@ if __name__ == "__main__":
     print("starting tolls...")
     # df_, this_company_data_ = process_tolls("Liquid", sql=False)
     # df_, this_company_data_ = process_tolls("Gas", sql=False)
-    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["Westspur"])
+    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["TransMountain"])
     print("done tolls")
