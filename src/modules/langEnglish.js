@@ -166,6 +166,30 @@ const noEvents = {
   },
 };
 
+const allSections = {
+  dashboardError,
+  dateFormat,
+  numberFormat,
+  companyToSystem,
+  lang: "e",
+  noEvents,
+};
+const allLeafletDashboards = {
+  numberFormat,
+  userPopUp,
+  locationError,
+  legendClick,
+  barClick,
+  locationDisclaimer,
+  countDisclaimer,
+  resetMap,
+  exploreOther,
+  trendYTitle,
+  noNearby: nearbyMe.noNearby,
+  rangeTitle: nearbyMe.rangeTitle,
+  nearbyHeader: nearbyMe.nearbyHeader,
+};
+
 export const englishDashboard = {
   disclaimers: {
     MilkRiver:
@@ -175,10 +199,7 @@ export const englishDashboard = {
   },
 
   conditions: {
-    dashboardError,
-    dateFormat,
-    companyToSystem,
-    lang: "e",
+    ...allSections,
     colNames: { "In Progress": "In Progress", Closed: "Closed" },
     conditions: "conditions",
     popUpTotal: ":",
@@ -252,12 +273,10 @@ export const englishDashboard = {
       "Sunset Clause":
         "Conditions that ensure projects begin within a specific period of time.",
     },
-    noEvents,
   },
   incidents: {
-    dashboardError,
+    ...allSections,
     dynamicText: incidentsTextEng,
-    companyToSystem,
     title: (systemName) =>
       `Dashboard: ${systemName} - Incidents with a product release`,
     definitions: {
@@ -290,17 +309,8 @@ export const englishDashboard = {
       },
     },
     dashboard: {
-      numberFormat,
-      userPopUp,
-      locationError,
-      legendClick,
-      barClick,
-      locationDisclaimer,
-      countDisclaimer,
-      resetMap,
+      ...allLeafletDashboards,
       eventName: "incidents",
-      exploreOther,
-      trendYTitle,
       cf: units.cf,
       bbl: units.bbl,
       pillTitles: {
@@ -320,10 +330,7 @@ export const englishDashboard = {
       gasRelease: "Estimated gas volume released:",
       liquidRelease: "Estimated liquid volume released:",
       otherRelease: "Estimated miscellaneous release:",
-      noNearby: nearbyMe.noNearby,
-      rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("Incidents"),
-      nearbyHeader: nearbyMe.nearbyHeader,
       seriesInfo: {
         sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
@@ -341,14 +348,13 @@ export const englishDashboard = {
           Other: { c: cerPalette.Aubergine, n: "Other" },
           ...nullInfo,
         },
-        // Status
         s: {
           is: { c: cerPalette.Flame, n: "Initially Submitted" },
           c: { c: cerPalette["Cool Grey"], n: "Closed" },
           s: { c: cerPalette.Ocean, n: "Submitted" },
           ...nullInfo,
         },
-        p: regionInfo, // Province
+        p: regionInfo,
         why: {
           sp: { c: cerPalette.Flame, n: "Standards and Procedures" },
           te: { c: cerPalette.Forest, n: "Tools and Equipment" },
@@ -375,14 +381,12 @@ export const englishDashboard = {
         },
       },
     },
-    noEvents,
   },
   traffic: {
-    dashboardError,
+    ...allSections,
     unitsDisclaimerText,
     units,
     dynamicText: trafficTrendTextEng,
-    numberFormat,
     points,
     total: "Total",
     directions: {
@@ -452,11 +456,10 @@ export const englishDashboard = {
     annualTitle: "Annual Average Throughput:",
   },
   apportion: {
-    dashboardError,
+    ...allSections,
     unitsDisclaimerText,
     units,
     points,
-    numberFormat,
     title: {
       enbridge:
         "Total system original nominations and total system accepted nominations",
@@ -471,15 +474,12 @@ export const englishDashboard = {
     },
   },
   oandm: {
-    dashboardError,
-    numberFormat,
+    ...allSections,
     legendClick,
-    companyToSystem,
     dynamicText: oandmTextEng,
     eventName: "O&M Activities",
     title: (pipeline) => `Dashboard: ${pipeline} - O&M Activites by Year`,
     trendYTitle,
-    lang: "e",
     pillTitles: {
       titles: {
         id: "Integrity Dig?",
@@ -502,36 +502,20 @@ export const englishDashboard = {
       is: "Indicates if there will be any in-stream work at activity site.",
       sr: "Indicates if there are species present which are listed on schedule 1 of the <i>Species At Risk Act</i> at the activity site.",
     },
-    noEvents,
   },
   remediation: {
-    dashboardError,
-    numberFormat,
-    dateFormat,
-    companyToSystem,
+    ...allSections,
     title: (company) =>
       `Dashboard: ${company} - Contaminated Sites (post Aug 15, 2018)`,
     dynamicText: remediationTextEng,
     dashboard: {
-      userPopUp,
-      locationError,
-      numberFormat,
-      exploreOther,
-      legendClick,
-      countDisclaimer,
-      barClick,
-      locationDisclaimer,
-      resetMap,
+      ...allLeafletDashboards,
       volumeDisclaimer:
         "Bubble size illustrates the approximate site location and does not indicate the size of the contaminated area",
       eventName: "contaminated sites",
-      trendYTitle,
       cf: units.cf,
       bbl: units.bbl,
-      noNearby: nearbyMe.noNearby,
-      rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
-      nearbyHeader: nearbyMe.nearbyHeader,
       mapClick: "Click circle to open REGDOCS search for",
       regdocsLink: "https://apps.cer-rec.gc.ca/REGDOCS/Search?txthl=",
       pillTitles: {
@@ -642,13 +626,9 @@ export const englishDashboard = {
         c: "The type of contaminants that were identified at the time of NOC submission.",
       },
     },
-    noEvents,
   },
   tolls: {
-    dashboardError,
-    numberFormat,
-    companyToSystem,
-    noEvents,
+    ...allSections,
     eventName: "tolls",
     dashboard: {
       numberFormat,
@@ -677,23 +657,13 @@ export const englishDashboard = {
     numberFormat,
   },
   ua: {
-    dashboardError,
-    numberFormat,
-    dateFormat,
-    companyToSystem,
-    noEvents,
+    ...allSections,
     dynamicText: uaTextEng,
     title: (company) => `Dashboard: ${company} - DPR Contravention Reports`,
     dashboard: {
+      ...allLeafletDashboards,
       eventName: "DPR Contravention Reports",
-      resetMap,
-      trendYTitle,
-      countDisclaimer,
-      noNearby: nearbyMe.noNearby,
-      rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
-      nearbyHeader: nearbyMe.nearbyHeader,
-      exploreOther,
       trendDisclaimer: {
         wpd: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",
         wdi: "Reporting requirements were updated in 2020. Data is not available prior to 2020.",

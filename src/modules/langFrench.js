@@ -167,6 +167,30 @@ const noEvents = {
   },
 };
 
+const allSections = {
+  dashboardError,
+  dateFormat,
+  numberFormat,
+  companyToSystem,
+  lang: "f",
+  noEvents,
+};
+const allLeafletDashboards = {
+  numberFormat,
+  userPopUp,
+  locationError,
+  legendClick,
+  barClick,
+  locationDisclaimer,
+  countDisclaimer,
+  resetMap,
+  exploreOther,
+  trendYTitle,
+  noNearby: nearbyMe.noNearby,
+  rangeTitle: nearbyMe.rangeTitle,
+  nearbyHeader: nearbyMe.nearbyHeader,
+};
+
 export const frenchDashboard = {
   disclaimers: {
     MilkRiver:
@@ -176,10 +200,7 @@ export const frenchDashboard = {
   },
 
   conditions: {
-    dashboardError,
-    dateFormat,
-    companyToSystem,
-    lang: "f",
+    ...allSections,
     colNames: { "In Progress": "En cours", Closed: "Remplies" },
     conditions: "conditions",
     popUpTotal: " :",
@@ -247,12 +268,10 @@ export const frenchDashboard = {
       "Système de gestion":
         "Conditions particulières imposées à une société afin de s’assurer qu’une démarche efficace est utilisée pour gérer et réduire le risque. Remarque : un système de gestion n’est pas propre à un projet.",
     },
-    noEvents,
   },
   incidents: {
-    dashboardError,
+    ...allSections,
     dynamicText: incidentsTextFra,
-    companyToSystem,
     title: (systemName) =>
       `Tableau de bord: ${systemName} - Incidents entraînant un rejet de produit`,
     definitions: {
@@ -285,16 +304,8 @@ export const frenchDashboard = {
       },
     },
     dashboard: {
-      numberFormat,
-      legendClick,
-      userPopUp,
-      locationError,
-      barClick,
-      locationDisclaimer,
-      countDisclaimer,
-      resetMap,
+      ...allLeafletDashboards,
       eventName: "incidents",
-      exploreOther,
       cf: units.cf,
       bbl: units.bbl,
       pillTitles: {
@@ -314,11 +325,7 @@ export const frenchDashboard = {
       gasRelease: "Estimation du volume de gaz rejeté:",
       liquidRelease: "Estimation du volume de liquide déversé:",
       otherRelease: "Estimation du rejet (divers):",
-      nearbyHeader: nearbyMe.nearbyHeader,
-      noNearby: nearbyMe.noNearby,
-      rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("incidents"),
-      trendYTitle,
       seriesInfo: {
         sub: {
           pro: { c: cerPalette.Forest, n: "Propane" },
@@ -375,15 +382,13 @@ export const frenchDashboard = {
         },
       },
     },
-    noEvents,
   },
   traffic: {
-    dashboardError,
+    ...allSections,
     unitsDisclaimerText,
     units,
     points,
     dynamicText: trafficTrendTextFra,
-    numberFormat,
     total: "Le total",
     directions: {
       n: "nord",
@@ -453,11 +458,10 @@ export const frenchDashboard = {
     annualTitle: "Débit annuel moyen :",
   },
   apportion: {
-    dashboardError,
+    ...allSections,
     unitsDisclaimerText,
     units,
     points,
-    numberFormat,
     title: {
       enbridge:
         "Nombre total de commandes originales et nombre total de commandes acceptées sur le réseau",
@@ -472,16 +476,13 @@ export const frenchDashboard = {
     },
   },
   oandm: {
-    dashboardError,
-    numberFormat,
+    ...allSections,
     legendClick,
-    companyToSystem,
     dynamicText: oandmTextFra,
     eventName: "activités d’exploitation et d’entretien",
     title: (pipeline) =>
       `Tableau de bord : ${pipeline} - Activités d’exploitation et d’entretien par année`,
     trendYTitle,
-    lang: "f",
     pillTitles: {
       titles: {
         id: "Fouille d’intégrité",
@@ -504,36 +505,20 @@ export const frenchDashboard = {
       is: "Indique s’il y aura des travaux dans un cours d’eau sur le site de l’activité.",
       sr: "Indique s’il y a des espèces en péril répertoriées à l’annexe 1 de la <i>Loi sur les espèces en péril</i>.",
     },
-    noEvents,
   },
   remediation: {
-    dashboardError,
-    numberFormat,
-    dateFormat,
-    companyToSystem,
+    ...allSections,
     title: (company) =>
       `Tableau de bord : ${company} - Sites contaminés (après le 15 août 2018)`,
     dynamicText: remediationTextFra,
     dashboard: {
-      userPopUp,
-      numberFormat,
-      exploreOther,
-      locationError,
-      legendClick,
-      countDisclaimer,
-      barClick,
-      locationDisclaimer,
-      resetMap,
+      ...allLeafletDashboards,
       volumeDisclaimer:
         "La taille des bulles illustre l’emplacement approximative du site, mais n’indique pas la totalité de la zone contaminée",
       eventName: "Sites contaminés",
-      trendYTitle,
       cf: units.cf,
       bbl: units.bbl,
-      noNearby: nearbyMe.noNearby,
-      rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
-      nearbyHeader: nearbyMe.nearbyHeader,
       mapClick:
         "Cliquez sur le cercle pour ouvrir la recherche<br>REGDOCS pour",
       regdocsLink: "https://apps.cer-rec.gc.ca/REGDOCS/Recherche/Index/?txthl=",
@@ -658,13 +643,9 @@ export const frenchDashboard = {
         c: "Type de contaminants relevés au moment du dépôt de l’avis de contamination.",
       },
     },
-    noEvents,
   },
   tolls: {
-    dashboardError,
-    numberFormat,
-    companyToSystem,
-    noEvents,
+    ...allSections,
     eventName: "Droits",
     dashboard: {
       numberFormat,
@@ -693,23 +674,13 @@ export const frenchDashboard = {
     numberFormat,
   },
   ua: {
-    dashboardError,
-    numberFormat,
-    dateFormat,
-    companyToSystem,
-    noEvents,
+    ...allSections,
     dynamicText: uaTextFra,
     title: (company) => `FR: Dashboard: ${company} - DPR Contravention Reports`,
     dashboard: {
+      ...allLeafletDashboards,
       eventName: "FR: DPR Contravention Reports",
-      resetMap,
-      trendYTitle,
-      countDisclaimer,
-      noNearby: nearbyMe.noNearby,
-      rangeTitle: nearbyMe.rangeTitle,
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
-      nearbyHeader: nearbyMe.nearbyHeader,
-      exploreOther,
       trendDisclaimer: {
         wpd: "FR: Reporting requirements were updated in 2020. Data is not available prior to 2020.",
         wdi: "FR: Reporting requirements were updated in 2020. Data is not available prior to 2020.",
