@@ -120,11 +120,11 @@ const en = {
       ua: "Damage Prevention Regulations Contravention Reports",
     },
     updated: {
-      conditions: "Section updated August 2022",
-      incidents: "Section updated August 2022",
-      oandm: "Section updated August 2022",
-      remediation: "Section updated August 2022",
-      ua: "Section updated August 2022",
+      conditions: "Section updated September 2022",
+      incidents: "Section updated September 2022",
+      oandm: "Section updated September 2022",
+      remediation: "Section updated September 2022",
+      ua: "Section updated September 2022",
     },
     conditions: {
       paragraphs: [
@@ -621,11 +621,11 @@ const fr = {
       ua: "Unauthorized Activities FR",
     },
     updated: {
-      conditions: "Mise à jour : aout 2022",
-      incidents: "Mise à jour : aout 2022",
-      oandm: "Mise à jour : aout 2022",
-      remediation: "Mise à jour : aout 2022",
-      ua: "Mise à jour : aout 2022",
+      conditions: "Mise à jour : septembre 2022",
+      incidents: "Mise à jour : septembre 2022",
+      oandm: "Mise à jour : septembre 2022",
+      remediation: "Mise à jour : septembre 2022",
+      ua: "Mise à jour : septembre 2022",
     },
     conditions: {
       paragraphs: [
