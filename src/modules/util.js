@@ -146,15 +146,17 @@ export function listOrParagraph(itter, textCol) {
  * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
  * @returns leaflet map object.
  */
-export function leafletBaseMap(config, L) {
+export function leafletBaseMap(config, L, pipelineShape = undefined) {
+  const attribution = pipelineShape
+    ? `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, GDM`
+    : `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`;
   const map = L.map(config.div, {
     zoomSnap: config.zoomSnap,
     zoomDelta: config.zoomDelta,
     zoomControl: config.zoomControl,
   }).setView(config.initZoomTo, config.initZoomLevel);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution,
   }).addTo(map);
   map.setMinZoom(config.minZoom);
   return map;
