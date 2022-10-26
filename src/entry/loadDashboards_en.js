@@ -33,7 +33,7 @@ import { mainUa } from "../dashboards/uaDashboard.js";
 // tcpl revenues
 import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
-import { plainsMidstreamProfile, openTab } from "../modules/util.js";
+import { openTab } from "../modules/util.js";
 // pipeline shape promise
 import { getPipelineShape } from "../modules/pipelineShape.js";
 
@@ -47,7 +47,7 @@ window.openTab = openTab;
 generalTheme();
 
 // TODO: try to share this function between eng and fra
-export function loadAllCharts(data, disclaimer = undefined) {
+export function loadAllCharts(data) {
   const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
   mainTraffic(
     data.trafficData.traffic,
@@ -85,13 +85,6 @@ export function loadAllCharts(data, disclaimer = undefined) {
 
   if (data.tcplRevenues) {
     mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);
-  }
-
-  if (disclaimer) {
-    plainsMidstreamProfile(
-      englishDashboard.disclaimers[disclaimer],
-      "plains_disclaimer"
-    );
   }
   // console.timeEnd(`first content loading`);
 }

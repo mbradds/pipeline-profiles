@@ -107,8 +107,7 @@ export class EventMap {
         initZoomLevel: 5,
         minZoom: 4,
       },
-      L,
-      this.pipelineShape
+      L
     );
     this.addResetBtn();
   }

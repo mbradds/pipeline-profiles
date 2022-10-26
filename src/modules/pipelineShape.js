@@ -45,6 +45,9 @@ export async function addPipelineShape() {
           opacity: 0.4,
         }).addTo(this.map);
         pipelineLayer.bringToBack();
+        this.map.attributionControl.addAttribution(
+          '<a href="https://gdm-inc.com/">GDM</a>'
+        );
         return pipelineLayer;
       }
       console.warn("pipeline shape API returned no data");

@@ -20,7 +20,7 @@ import { mainUa } from "../dashboards/uaDashboard.js";
 // tcpl revenues
 import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
-import { plainsMidstreamProfile, openTab } from "../modules/util.js";
+import { openTab } from "../modules/util.js";
 // pipeline shape promise
 import { getPipelineShape } from "../modules/pipelineShape.js";
 
@@ -33,7 +33,7 @@ window.openTab = openTab;
 generalTheme();
 frenchTheme();
 
-export function loadAllCharts(data, disclaimer = undefined) {
+export function loadAllCharts(data) {
   const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
   mainTraffic(
     data.trafficData.traffic,
@@ -73,11 +73,5 @@ export function loadAllCharts(data, disclaimer = undefined) {
     mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
   }
 
-  if (disclaimer) {
-    plainsMidstreamProfile(
-      frenchDashboard.disclaimers[disclaimer],
-      "plains_disclaimer"
-    );
-  }
   // console.timeEnd(`first content loading`);
 }

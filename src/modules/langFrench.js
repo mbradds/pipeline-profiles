@@ -192,13 +192,6 @@ const allLeafletDashboards = {
 };
 
 export const frenchDashboard = {
-  disclaimers: {
-    MilkRiver:
-      "Les données ne sont pas disponibles pour le pipeline Milk River avant juin 2021.",
-    Wascana:
-      "Avant juin 2021, les données pour Wascana comprennent les pipelines Wascana et Milk River.",
-  },
-
   conditions: {
     ...allSections,
     colNames: { "In Progress": "En cours", Closed: "Remplies" },

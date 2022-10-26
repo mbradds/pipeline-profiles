@@ -191,13 +191,6 @@ const allLeafletDashboards = {
 };
 
 export const englishDashboard = {
-  disclaimers: {
-    MilkRiver:
-      "The information in this section reflects data belonging to Milk River Pipeline Ltd. To view data belonging to the previous owners, download the data found under “Source and Description” for each dashboard. Then, sort by “Company” and select “Plains Midstream Canada ULC.“",
-    Wascana:
-      "Prior to June 2021, data for Wascana includes both the Wascana and Milk River pipelines.",
-  },
-
   conditions: {
     ...allSections,
     colNames: { "In Progress": "In Progress", Closed: "Closed" },

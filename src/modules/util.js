@@ -146,17 +146,14 @@ export function listOrParagraph(itter, textCol) {
  * @param {number} config.minZoom - Conttols how far the map can be zoomed out.
  * @returns leaflet map object.
  */
-export function leafletBaseMap(config, L, pipelineShape = undefined) {
-  const attribution = pipelineShape
-    ? `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, GDM`
-    : `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`;
+export function leafletBaseMap(config, L) {
   const map = L.map(config.div, {
     zoomSnap: config.zoomSnap,
     zoomDelta: config.zoomDelta,
     zoomControl: config.zoomControl,
   }).setView(config.initZoomTo, config.initZoomLevel);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution,
+    attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`,
   }).addTo(map);
   map.setMinZoom(config.minZoom);
   return map;
@@ -198,17 +195,6 @@ export function loadChartError(errorDiv, lang, err = false) {
     errorDiv
   ).innerHTML = `<section class="alert alert-danger"><h3>${lang.title}</h3>${lang.message}</section>`;
   return false;
-}
-
-/**
- *
- * @param {string} message - Text to display in disclaimer.
- * @param {string} div - HTML class for all plains disclaimers.
- */
-export function plainsMidstreamProfile(message, div) {
-  Array.from(document.querySelectorAll(`.${div}`)).forEach((warn) => {
-    warn.innerHTML = `<section class="alert alert-info" style="margin-bottom: 0px"><small>${message}</small></section>`;
-  });
 }
 
 /**
