@@ -5544,6 +5544,14 @@ EnbridgeLocal,Tariff 393,2016-07-01,2016-08-31,"Cromer Terminal, Manitoba","Inte
 EnbridgeLocal,Tariff 393,2016-07-01,2016-08-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,18.65,CA$ per cubic metre,2.965118127762,CA$ per barrel
 EnbridgeLocal,Tariff 393,2016-07-01,2016-08-31,"International Boundary near Sarnia, Ontario","Corunna or Sarnia Terminal, Ontario",TRANSMISSION AND TERMINALLING,natural gas liquids,0.613,CA$ per cubic metre,0.097459378676,CA$ per barrel
 EnbridgeLocal,Tariff 393,2016-07-01,2016-08-31,"Kerrobert Station, Saskatchewan","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,12.834,CA$ per cubic metre,2.040446437088,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Edmonton Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,2.438,CA$ per cubic metre,0.387611688765,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Gretna Station, Manitoba",TRANSMISSION AND TERMINALLING,condensate,13.854,CA$ per cubic metre,2.202613755604,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,4.994,CA$ per cubic metre,0.793983910458,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,19.163,CA$ per cubic metre,3.046678749721,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,condensate,6.455,CA$ per cubic metre,1.026264746096,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Milden, Saskatchewan",TRANSMISSION AND TERMINALLING,condensate,7.403,CA$ per cubic metre,1.176984959776,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Regina Terminal, Saskatchewan",TRANSMISSION AND TERMINALLING,condensate,9.387,CA$ per cubic metre,1.492416293045,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Stony Beach Takeoff, Saskatchewan",TRANSMISSION AND TERMINALLING,condensate,9.387,CA$ per cubic metre,1.492416293045,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,1.57,CA$ per cubic metre,0.24961048046,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,condensate,3.03,CA$ per cubic metre,0.481732328531,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Regina Terminal, Saskatchewan",TRANSMISSION AND TERMINALLING,condensate,5.962,CA$ per cubic metre,0.94788387548,CA$ per barrel
@@ -5557,6 +5565,12 @@ EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Sarnia Terminal, Ontario","Corun
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Sarnia Terminal, Ontario","International Boundary near Chippawa, Ontario",TRANSMISSION AND TERMINALLING,condensate,3.545,CA$ per cubic metre,0.563610925625,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Sarnia Terminal, Ontario","Nanticoke, Ontario",TRANSMISSION AND TERMINALLING,condensate,3.803,CA$ per cubic metre,0.604629717956,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Cromer Terminal, Manitoba","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,7.997,CA$ per cubic metre,1.271423574676,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Edmonton Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,2.438,CA$ per cubic metre,0.387611688765,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,5.456,CA$ per cubic metre,0.867436166491,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,24.109,CA$ per cubic metre,3.833031256955,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,heavy petroleum,7.384,CA$ per cubic metre,1.173964195999,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Regina Terminal, Saskatchewan",TRANSMISSION AND TERMINALLING,heavy petroleum,11.246,CA$ per cubic metre,1.787974180419,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Stony Beach Takeoff, Saskatchewan",TRANSMISSION AND TERMINALLING,heavy petroleum,11.246,CA$ per cubic metre,1.787974180419,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,1.57,CA$ per cubic metre,0.24961048046,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,19.556,CA$ per cubic metre,3.10916086362,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,heavy petroleum,3.497,CA$ per cubic metre,0.555979522401,CA$ per barrel
@@ -5571,6 +5585,14 @@ EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Kerrobert Station, Saskatchewan"
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Regina Terminal, Saskatchewan","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,11.759,CA$ per cubic metre,1.869534802378,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Regina Terminal, Saskatchewan","Regina Terminal, Saskatchewan",TRANSMISSION AND TERMINALLING,heavy petroleum,1.57,CA$ per cubic metre,0.24961048046,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Cromer Terminal, Manitoba","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,6.755,CA$ per cubic metre,1.073961016248,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Edmonton Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,2.438,CA$ per cubic metre,0.387611688765,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Gretna Station, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,14.728,CA$ per cubic metre,2.341568889312,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,5.117,CA$ per cubic metre,0.81353938122,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,20.348,CA$ per cubic metre,3.23507901682,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,light petroleum,6.704,CA$ per cubic metre,1.065852650322,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Milden, Saskatchewan",TRANSMISSION AND TERMINALLING,light petroleum,7.73,CA$ per cubic metre,1.228973894241,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Regina Terminal, Saskatchewan",TRANSMISSION AND TERMINALLING,light petroleum,9.882,CA$ per cubic metre,1.571115138796,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Stony Beach Takeoff, Saskatchewan",TRANSMISSION AND TERMINALLING,light petroleum,9.882,CA$ per cubic metre,1.571115138796,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,1.57,CA$ per cubic metre,0.24961048046,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,16.258,CA$ per cubic metre,2.584819867086,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,light petroleum,3.153,CA$ per cubic metre,0.501287799294,CA$ per barrel
@@ -5592,6 +5614,12 @@ EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Sarnia Terminal, Ontario","Nanti
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Westover, Ontario","International Boundary near Chippawa, Ontario",TRANSMISSION AND TERMINALLING,light petroleum,0.934,CA$ per cubic metre,0.148494387738,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Westover, Ontario","Nanticoke, Ontario",TRANSMISSION AND TERMINALLING,light petroleum,1.183,CA$ per cubic metre,0.188082291964,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Cromer Terminal, Manitoba","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,7.204,CA$ per cubic metre,1.145346433908,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Edmonton Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,2.438,CA$ per cubic metre,0.387611688765,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,5.24,CA$ per cubic metre,0.833094851982,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,21.716,CA$ per cubic metre,3.452574008712,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,medium petroleum,6.951,CA$ per cubic metre,1.105122579414,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Regina Terminal, Saskatchewan",TRANSMISSION AND TERMINALLING,medium petroleum,10.379,CA$ per cubic metre,1.65013195968,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","Stony Beach Takeoff, Saskatchewan",TRANSMISSION AND TERMINALLING,medium petroleum,10.379,CA$ per cubic metre,1.65013195968,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,1.57,CA$ per cubic metre,0.24961048046,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,17.457,CA$ per cubic metre,2.775445960125,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Hardisty Terminal, Alberta","Kerrobert Station, Saskatchewan",TRANSMISSION AND TERMINALLING,medium petroleum,3.279,CA$ per cubic metre,0.521320232757,CA$ per barrel
@@ -5603,6 +5631,7 @@ EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"International Boundary near Sarn
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Westover, Ontario","International Boundary near Chippawa, Ontario",TRANSMISSION AND TERMINALLING,medium petroleum,1.008,CA$ per cubic metre,0.160259467709,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Westover, Ontario","Nanticoke, Ontario",TRANSMISSION AND TERMINALLING,medium petroleum,1.238,CA$ per cubic metre,0.196826608159,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Cromer Terminal, Manitoba","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,6.192,CA$ per cubic metre,0.98445101593,CA$ per barrel
+EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,18.64,CA$ per cubic metre,2.96352825209,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"International Boundary near Sarnia, Ontario","Corunna or Sarnia Terminal, Ontario",TRANSMISSION AND TERMINALLING,natural gas liquids,0.613,CA$ per cubic metre,0.097459378676,CA$ per barrel
 EnbridgeLocal,Tariff 401,2016-09-01,2017-06-30,"Kerrobert Station, Saskatchewan","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,12.834,CA$ per cubic metre,2.040446437088,CA$ per barrel
 EnbridgeLocal,Tariff 413,2017-07-01,2017-11-30,"Edmonton Terminal, Alberta","Edmonton Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,2.447,CA$ per cubic metre,0.38904257687,CA$ per barrel
@@ -9522,10 +9551,16 @@ Alliance,4168495,2021-11-01,2022-03-10,Zone 2,CA/US border,Firm 5Yr Demand Charg
 Alliance,4203544,2022-03-11,2022-12-01,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
 Alliance,4203544,2022-03-11,2022-12-01,Zone 2,CA/US border,Firm 3Yr Demand Charge,natural gas,901.05,CA$ per thousand cubic metres per month,0.726601953491178,CA$ per GJ
 Alliance,4203544,2022-03-11,2022-12-01,Zone 2,CA/US border,Firm 5Yr Demand Charge,natural gas,868.37,CA$ per thousand cubic metres per month,0.700248974366465,CA$ per GJ
+Alliance,4264662,2022-11-01,2022-09-20,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
+Alliance,4264662,2022-11-01,2022-09-20,Zone 2,CA/US border,Firm 3Yr Demand Charge,natural gas,901.05,CA$ per thousand cubic metres per month,0.726601953491178,CA$ per GJ
+Alliance,4264662,2022-11-01,2022-09-20,Zone 2,CA/US border,Firm 5Yr Demand Charge,natural gas,868.37,CA$ per thousand cubic metres per month,0.700248974366465,CA$ per GJ
+Alliance,4265133,2000-01-01,2000-01-01,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
+Alliance,4265133,2000-01-01,2000-01-01,Zone 2,CA/US border,Firm 3Yr Demand Charge,natural gas,901.05,CA$ per thousand cubic metres per month,0.726601953491178,CA$ per GJ
+Alliance,4265133,2000-01-01,2000-01-01,Zone 2,CA/US border,Firm 5Yr Demand Charge,natural gas,868.37,CA$ per thousand cubic metres per month,0.700248974366465,CA$ per GJ
 Alliance,439100,2007-01-01,2007-12-31,System,CA/US border,Firm Demand Charge,natural gas,833.87,CA$ per thousand cubic metres per month,0.672428356869698,CA$ per GJ
 Alliance,484260,2008-01-01,2008-12-31,System,CA/US border,Firm Demand Charge,natural gas,922.71,CA$ per thousand cubic metres per month,0.744068462910575,CA$ per GJ
 Alliance,538451,2009-01-01,2009-12-31,System,CA/US border,Firm Demand Charge,natural gas,926.54,CA$ per thousand cubic metres per month,0.747156954650301,CA$ per GJ
-Alliance,578437,2010-01-01,2010-12-31,System,CA/US border,Firm Demand Charge,natural gas,960.29,CA$ per thousand cubic metres per month,0.774372776114301,CA$ per GJ
+Alliance,578437,2022-09-21,2022-12-31,System,CA/US border,Firm Demand Charge,natural gas,960.29,CA$ per thousand cubic metres per month,0.774372776114301,CA$ per GJ
 Alliance,647371,2011-01-01,2011-12-31,System,CA/US border,Firm Demand Charge,natural gas,981.16,CA$ per thousand cubic metres per month,0.791202233713315,CA$ per GJ
 Alliance,746072,2012-01-01,2012-12-31,System,CA/US border,Firm Demand Charge,natural gas,993.16,CA$ per thousand cubic metres per month,0.800878970233643,CA$ per GJ
 Alliance,880322,2013-01-01,2013-04-30,System,CA/US border,Firm Demand Charge,natural gas,1014.2,CA$ per thousand cubic metres per month,0.81784551493315,CA$ per GJ
@@ -11194,72 +11229,74 @@ Genesis,Tariff 7,1994-03-01,2009-02-28,"International Border, near Sarnia, Ontar
 Genesis,Tariff 7,1994-03-01,2009-02-28,"Shell Isolation Point, LaSalle Road, Lambton County, Ont.",Dow Storage,FT,propane and butane,0.079017,CA$ per barrel,0.4970011266,CA$ per cubic metre
 Genesis,Tariff 7,1994-03-01,2009-02-28,"Shell Isolation Point, LaSalle Road, Lambton County, Ont.","E.D.S. Delivery Point, Corunna Lambton County, Ontario",FT,propane and butane,0.1539,CA$ per barrel,0.96800022,CA$ per cubic metre
 Genesis,Tariff 7,1994-03-01,2009-02-28,"Shell Isolation Point, LaSalle Road, Lambton County, Ont.","International Border, near Sarnia, Ontario",FT,propane and butane,0.041814,CA$ per barrel,0.2630016972,CA$ per cubic metre
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.1593,CA$ per GJ per month,0.0052372602,CA$ per GJ
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.0725,CA$ per GJ per month,0.0023835616,CA$ per GJ
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.1364,CA$ per GJ per month,0.0044843835,CA$ per GJ
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,6.4628,CA$ per GJ per month,0.2124756164,CA$ per GJ
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,1.3369,CA$ per GJ per month,0.0439528767,CA$ per GJ
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
-ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,8.9415,CA$ per GJ per month,0.2939671232,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.1871,CA$ per GJ per month,0.0061512328,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.1202,CA$ per GJ per month,0.0039517808,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.1274,CA$ per GJ per month,0.0041884931,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,6.2457,CA$ per GJ per month,0.2053380821,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,1.5484,CA$ per GJ per month,0.0509063013,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
-ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,9.0091,CA$ per GJ per month,0.296189589,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3257,CA$ per GJ per month,0.0107079452,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3147,CA$ per GJ per month,0.0103463013,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.1504,CA$ per GJ per month,0.0049446575,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,8.3163,CA$ per GJ per month,0.2734126027,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,3.6802,CA$ per GJ per month,0.1209928767,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
-ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,9.0883,CA$ per GJ per month,0.2987934246,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3257,CA$ per GJ per month,0.0107079452,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3147,CA$ per GJ per month,0.0103463013,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.2752,CA$ per GJ per month,0.0090476712,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,8.3163,CA$ per GJ per month,0.2734126027,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,3.6802,CA$ per GJ per month,0.1209928767,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
-ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,9.0883,CA$ per GJ per month,0.2987934246,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3257,CA$ per GJ per month,0.0107079452,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3147,CA$ per GJ per month,0.0103463013,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.6344,CA$ per GJ per month,0.0208569863,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,8.3163,CA$ per GJ per month,0.2734126027,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,3.6802,CA$ per GJ per month,0.1209928767,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
-ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,9.0883,CA$ per GJ per month,0.2987934246,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,1.0036,CA$ per GJ per month,0.0329950684,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3462,CA$ per GJ per month,0.0113819178,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.6978,CA$ per GJ per month,0.0229413698,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,29.0488,CA$ per GJ per month,0.955029041,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,3.7828,CA$ per GJ per month,0.1243660273,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
-ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,9.9971,CA$ per GJ per month,0.3286717808,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.2002,CA$ per GJ per month,0.0065819178,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Cold Lake-Beacon Hill,Simple capacity/commodity tolled pipelines,natural gas,0.2898,CA$ per GJ per month,0.0095276712,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.3808,CA$ per GJ per month,0.012519452,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.7302,CA$ per GJ per month,0.0240065753,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,21.239,CA$ per GJ per month,0.6982684931,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,1.9703,CA$ per GJ per month,0.0647769863,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,0.9676,CA$ per GJ per month,0.0318115068,CA$ per GJ
-ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,10.9968,CA$ per GJ per month,0.3615386301,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,0.2225,CA$ per GJ per month,0.0073150684,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Cold Lake-Beacon Hill,Simple capacity/commodity tolled pipelines,natural gas,1.7602,CA$ per GJ per month,0.057869589,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.4189,CA$ per GJ per month,0.0137720547,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.598,CA$ per GJ per month,0.0196602739,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,25.939,CA$ per GJ per month,0.852789041,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,2.1127,CA$ per GJ per month,0.0694586301,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,0.8612,CA$ per GJ per month,0.0283134246,CA$ per GJ
-ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,12.0965,CA$ per GJ per month,0.3976931506,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Bronson Lake,Simple capacity/commodity tolled pipelines,natural gas,2.8349,CA$ per GJ per month,0.0932021917,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Cold Lake-Beacon Hill,Simple capacity/commodity tolled pipelines,natural gas,3.5563,CA$ per GJ per month,0.116919452,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Frog Lake,Simple capacity/commodity tolled pipelines,natural gas,0.4608,CA$ per GJ per month,0.015149589,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Lloydminister,Simple capacity/commodity tolled pipelines,natural gas,0.6578,CA$ per GJ per month,0.0216263013,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Marwayne,Simple capacity/commodity tolled pipelines,natural gas,121.2588,CA$ per GJ per month,3.9865906849,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Shaunavon ,Simple capacity/commodity tolled pipelines,natural gas,2.2209,CA$ per GJ per month,0.0730158904,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Steelman-Portal ,Simple capacity/commodity tolled pipelines,natural gas,1.0682,CA$ per GJ per month,0.0351189041,CA$ per GJ
-ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Swan Valley,Simple capacity/commodity tolled pipelines,natural gas,13.3061,CA$ per GJ per month,0.4374608219,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Antelope,FS,natural gas,0.1693,CA$ per GJ per month,0.0055660273,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Bronson Lake,FS,natural gas,0.1593,CA$ per GJ per month,0.0052372602,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Frog Lake,FS,natural gas,0.0725,CA$ per GJ per month,0.0023835616,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Lloydminster,FS,natural gas,0.1364,CA$ per GJ per month,0.0044843835,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Marwayne,FS,natural gas,6.4628,CA$ per GJ per month,0.2124756164,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Shaunavon Pipeline,FS,natural gas,1.3369,CA$ per GJ per month,0.0439528767,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Steelman/Portal,FS,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
+ManyIslands,2005 Final,2005-01-01,2008-04-30,System,Swan Valley,FS,natural gas,8.9415,CA$ per GJ per month,0.2939671232,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Bronson Lake,FS,natural gas,0.1871,CA$ per GJ per month,0.0061512328,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Frog Lake,FS,natural gas,0.1202,CA$ per GJ per month,0.0039517808,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Lloydminster,FS,natural gas,0.1274,CA$ per GJ per month,0.0041884931,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Marwayne,FS,natural gas,6.2457,CA$ per GJ per month,0.2053380821,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Shaunavon Pipeline,FS,natural gas,1.5484,CA$ per GJ per month,0.0509063013,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Steelman/Portal,FS,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
+ManyIslands,2008 Final,2008-05-01,2009-12-31,System,Swan Valley,FS,natural gas,9.0091,CA$ per GJ per month,0.296189589,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Bronson Lake,FS,natural gas,0.3257,CA$ per GJ per month,0.0107079452,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Frog Lake,FS,natural gas,0.3147,CA$ per GJ per month,0.0103463013,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Lloydminster,FS,natural gas,0.1504,CA$ per GJ per month,0.0049446575,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Marwayne,FS,natural gas,8.3163,CA$ per GJ per month,0.2734126027,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Shaunavon Pipeline,FS,natural gas,3.6802,CA$ per GJ per month,0.1209928767,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Steelman/Portal,FS,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
+ManyIslands,2010 Final,2010-01-01,2015-08-31,System,Swan Valley,FS,natural gas,9.0883,CA$ per GJ per month,0.2987934246,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Bronson Lake,FS,natural gas,0.3257,CA$ per GJ per month,0.0107079452,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Frog Lake,FS,natural gas,0.3147,CA$ per GJ per month,0.0103463013,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Lloydminster,FS,natural gas,0.2752,CA$ per GJ per month,0.0090476712,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Marwayne,FS,natural gas,8.3163,CA$ per GJ per month,0.2734126027,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Shaunavon Pipeline,FS,natural gas,3.6802,CA$ per GJ per month,0.1209928767,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Steelman/Portal,FS,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
+ManyIslands,2015 Final,2015-09-01,2016-09-30,System,Swan Valley,FS,natural gas,9.0883,CA$ per GJ per month,0.2987934246,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Bronson Lake,FS,natural gas,0.3257,CA$ per GJ per month,0.0107079452,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Frog Lake,FS,natural gas,0.3147,CA$ per GJ per month,0.0103463013,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Lloydminster,FS,natural gas,0.6344,CA$ per GJ per month,0.0208569863,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Marwayne,FS,natural gas,8.3163,CA$ per GJ per month,0.2734126027,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Shaunavon Pipeline,FS,natural gas,3.6802,CA$ per GJ per month,0.1209928767,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Steelman/Portal,FS,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
+ManyIslands,2016 Final,2016-10-01,2019-05-31,System,Swan Valley,FS,natural gas,9.0883,CA$ per GJ per month,0.2987934246,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Bronson Lake,FS,natural gas,1.0036,CA$ per GJ per month,0.0329950684,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Frog Lake,FS,natural gas,0.3462,CA$ per GJ per month,0.0113819178,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Lloydminster,FS,natural gas,0.6978,CA$ per GJ per month,0.0229413698,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Marwayne,FS,natural gas,29.0488,CA$ per GJ per month,0.955029041,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Shaunavon Pipeline,FS,natural gas,3.7828,CA$ per GJ per month,0.1243660273,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Steelman/Portal,FS,natural gas,2.3948,CA$ per GJ per month,0.0787331506,CA$ per GJ
+ManyIslands,2019 Final,2019-06-01,2020-03-31,System,Swan Valley,FS,natural gas,9.9971,CA$ per GJ per month,0.3286717808,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Bronson Lake,FS,natural gas,0.2002,CA$ per GJ per month,0.0065819178,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Cold Lake-Beacon Hill,FS,natural gas,0.2898,CA$ per GJ per month,0.0095276712,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Frog Lake,FS,natural gas,0.3808,CA$ per GJ per month,0.012519452,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Lloydminster,FS,natural gas,0.7302,CA$ per GJ per month,0.0240065753,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Marwayne,FS,natural gas,21.239,CA$ per GJ per month,0.6982684931,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Shaunavon Pipeline,FS,natural gas,1.9703,CA$ per GJ per month,0.0647769863,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Steelman/Portal,FS,natural gas,0.9676,CA$ per GJ per month,0.0318115068,CA$ per GJ
+ManyIslands,2020 Final,2020-04-01,2021-03-31,System,Swan Valley,FS,natural gas,10.9968,CA$ per GJ per month,0.3615386301,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Bronson Lake,FS,natural gas,0.2225,CA$ per GJ per month,0.0073150684,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Cold Lake-Beacon Hill,FS,natural gas,1.7602,CA$ per GJ per month,0.057869589,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Frog Lake,FS,natural gas,0.4189,CA$ per GJ per month,0.0137720547,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Lloydminster,FS,natural gas,0.598,CA$ per GJ per month,0.0196602739,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Marwayne,FS,natural gas,25.939,CA$ per GJ per month,0.852789041,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Shaunavon Pipeline,FS,natural gas,2.1127,CA$ per GJ per month,0.0694586301,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Steelman/Portal,FS,natural gas,0.8612,CA$ per GJ per month,0.0283134246,CA$ per GJ
+ManyIslands,2021 Final,2021-04-01,2022-03-31,System,Swan Valley,FS,natural gas,12.0965,CA$ per GJ per month,0.3976931506,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Bronson Lake,FS,natural gas,2.8349,CA$ per GJ per month,0.0932021917,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Esther-Smiley,FS,natural gas,1.3032,CA$ per GJ per month,0.0428449315,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Frog Lake,FS,natural gas,0.4608,CA$ per GJ per month,0.015149589,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Lloydminster,FS,natural gas,0.6578,CA$ per GJ per month,0.0216263013,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Marwayne,FS,natural gas,121.2588,CA$ per GJ per month,3.9865906849,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Pierceland-Cold Lake,FS,natural gas,3.5563,CA$ per GJ per month,0.116919452,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Shaunavon,FS,natural gas,2.2209,CA$ per GJ per month,0.0730158904,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Steelman-North Portal,FS,natural gas,1.0682,CA$ per GJ per month,0.0351189041,CA$ per GJ
+ManyIslands,2022 Final,2022-04-01,2023-03-31,System,Swan River,FS,natural gas,13.3061,CA$ per GJ per month,0.4374608219,CA$ per GJ
 MilkRiver,Tariff 101,2017-01-01,2017-12-31,Milk River Station,The International Boundary (via the Milk River Pipe Line),FT,heavy crude,2.25,CA$ per cubic metre,0.357722026137,CA$ per barrel
 MilkRiver,Tariff 101,2017-01-01,2017-12-31,Milk River Station,The International Boundary (via the Milk River Pipe Line),FT,medium crude,2.25,CA$ per cubic metre,0.357722026137,CA$ per barrel
 MilkRiver,Tariff 119,2018-01-01,2018-09-15,Milk River Station,The International Boundary (via the Milk River Pipe Line),FT,heavy crude,2.3,CA$ per cubic metre,0.365671404496,CA$ per barrel
