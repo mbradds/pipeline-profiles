@@ -1,11 +1,11 @@
-<h2 id="throughput">{{text.traffic.header}}</h2>
-{{#ifeq text.pipelineName.id "EnbridgeLine9"}}
-<p class="small">{{text.trafficUpdatedLine9}}</p>
-{{/ifeq}}
-{{#ifnoteq text.pipelineName.id "EnbridgeLine9"}}
-<p class="small">{{text.trafficUpdated}}</p>
-{{/ifnoteq}}
 <div id="traffic-section">
+  <h2 id="throughput">{{text.traffic.header}}</h2>
+  {{#ifeq text.pipelineName.id "EnbridgeLine9"}}
+    <p class="small">{{text.trafficUpdatedLine9}}</p>
+  {{/ifeq}}
+  {{#ifnoteq text.pipelineName.id "EnbridgeLine9"}}
+    <p class="small">{{text.trafficUpdated}}</p>
+  {{/ifnoteq}}
   <div class="row dashboard-style">
     <div class="col-md-12">
       <span class="cerlabel mrgn-tp-md" id="select-units-title">

@@ -1,6 +1,6 @@
-<h2 id="throughput">{{text.traffic.header}}</h2>
-<p class="small">{{text.trafficUpdated}}</p>
 <div id="traffic-section">
+  <h2 id="throughput">{{text.traffic.header}}</h2>
+  <p class="small">{{text.trafficUpdated}}</p>
   <div class="row dashboard-style">
     <div class="col-md-12">
       <p class="cerlabel" id="key-point-title">
@@ -10,10 +10,7 @@
     </div>
   </div>
   <div class="row dashboard-style">
-    <div
-      class="col-md-8 col-sm-8 col-xs-12 traffic-hc-column-map"
-      id="traffic-hc-column"
-    >
+    <div class="col-md-8 col-sm-8 col-xs-12 traffic-hc-column-map" id="traffic-hc-column">
       <div class="traffic-hc-shared" id="traffic-hc"></div>
       <div class="traffic-hc-shared" id="traffic-hc-range"></div>
     </div>
@@ -32,11 +29,7 @@
           <div class="traffic-map-shared" id="traffic-map"></div>
           <div class="btn-group btn-group-justified" id="key-point-zoom-btn">
             <div class="btn-group btn-map">
-              <button
-                type="button"
-                value="zoom-in"
-                class="btn btn-default active"
-              >
+              <button type="button" value="zoom-in" class="btn btn-default active">
                 {{text.traffic.zoomIn}}
               </button>
             </div>
