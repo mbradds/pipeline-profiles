@@ -21,9 +21,13 @@ export async function getPipelineShape(PipelineID) {
   if (PipelineID === "EnbridgeMainline") {
     const mainline = await apiRequest(PipelineID);
     const line9 = await apiRequest("EnbridgeLine9");
+    const line7 = await apiRequest("EnbridgeLine7");
+    const line11 = await apiRequest("EnbridgeLine11");
     mainline.features[0].geometry.paths =
       mainline.features[0].geometry.paths.concat(
-        line9.features[0].geometry.paths
+        line9.features[0].geometry.paths,
+        line7.features[0].geometry.paths,
+        line11.features[0].geometry.paths
       );
     return mainline;
   }

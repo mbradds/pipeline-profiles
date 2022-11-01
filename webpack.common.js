@@ -59,7 +59,6 @@ export const profileWebpackConfig = (function config() {
           })
         );
       }
-      // );
     });
     html.push(
       new HtmlWebpackPlugin({
