@@ -13,35 +13,6 @@ const __dirname = path.dirname(__filename);
 export const profileWebpackConfig = (function config() {
   const language = ["en", "fr"];
 
-  const htmlFileNames = [
-    ["NGTL", "natural-gas", "NOVA Gas Transmission Ltd. (NGTL)"],
-    ["Alliance", "natural-gas", "Alliance Pipeline"],
-    ["TCPL", "natural-gas", "TransCanada’s Canadian Mainline"],
-    ["Westcoast", "natural-gas", "Westcoast Pipeline"],
-    ["Brunswick", "natural-gas", "Emera Brunswick"],
-    ["MNP", "natural-gas", "Maritimes &amp; Northeast"],
-    ["ManyIslands", "natural-gas", "Many Islands"],
-    ["TQM", "natural-gas", "Trans Québec &amp; Maritimes"],
-    ["Vector", "natural-gas", "Vector"],
-    ["Foothills", "natural-gas", "Foothills"],
-    ["EnbridgeMainline", "oil-and-liquids", "Enbridge Canadian Mainline"],
-    ["EnbridgeLine9", "oil-and-liquids", "Enbridge Line 9"],
-    ["Keystone", "oil-and-liquids", "Keystone Pipeline"],
-    ["TransMountain", "oil-and-liquids", "Trans Mountain"],
-    ["Cochin", "oil-and-liquids", "Cochin Pipeline"],
-    ["SouthernLights", "oil-and-liquids", "Southern Lights"],
-    ["EnbridgeBakken", "oil-and-liquids", "Enbridge Bakken"],
-    ["NormanWells", "oil-and-liquids", "Enbridge Norman Wells"],
-    ["Express", "oil-and-liquids", "Express"],
-    ["TransNorthern", "oil-and-liquids", "Trans-Northern"],
-    ["Genesis", "oil-and-liquids", "Genesis"],
-    ["Montreal", "oil-and-liquids", "Montreal"],
-    ["Westspur", "oil-and-liquids", "Westspur"],
-    ["Aurora", "oil-and-liquids", "Aurora"],
-    ["MilkRiver", "oil-and-liquids", "Milk River"],
-    ["Wascana", "oil-and-liquids", "Wascana"],
-  ];
-
   function htmlWebpack() {
     const html = [];
     const indexLinks = {
@@ -49,28 +20,30 @@ export const profileWebpackConfig = (function config() {
       fr: { "oil-and-liquids": [], "natural-gas": [] },
     };
     language.forEach((lang) => {
-      htmlFileNames.forEach((name) => {
-        const pageData = { ...pm[name[0]] };
+      for (const [key, value] of Object.entries(pm)) {
+        const pageData = { ...pm[key] };
         if (lang === "en") {
           pageData.lang = { en: true, fr: false };
         } else if (lang === "fr") {
           pageData.lang = { en: false, fr: true };
         }
         pageData.text = profileText[lang];
-        pageData.text.pipelineName = { id: name[0] };
-        pageData.text.commodity = name[1];
-        pageData.text.tollDescription =
-          profileText.tollsDescription[name[0]][lang];
-        const htmlFileName = `${lang}/${name[1]}/${name[0]}_${lang}.html`;
-        indexLinks[lang][name[1]].push({ link: htmlFileName, name: name[2] });
+        pageData.text.pipelineName = { id: key };
+        pageData.text.commodity = value.commodity;
+        pageData.text.tollDescription = profileText.tollsDescription[key][lang];
+        const htmlFileName = `${lang}/${value.commodity}/${key}_${lang}.html`;
+        indexLinks[lang][value.commodity].push({
+          link: htmlFileName,
+          name: value.name,
+        });
         html.push(
           new HtmlWebpackPlugin({
             page: JSON.parse(JSON.stringify(pageData)),
             filename: htmlFileName,
             chunks: [
-              `${lang}/${name[1]}/js/entry_${name[0]}`,
+              `${lang}/${value.commodity}/js/entry_${key}`,
               `${lang}/profile_code_${lang}`,
-              `data/data_${name[0]}`,
+              `data/data_${key}`,
             ],
             chunksSortMode: "auto",
             template: `src/components/profile.hbs`,
@@ -85,7 +58,8 @@ export const profileWebpackConfig = (function config() {
             },
           })
         );
-      });
+      }
+      // );
     });
     html.push(
       new HtmlWebpackPlugin({
@@ -103,22 +77,22 @@ export const profileWebpackConfig = (function config() {
     language.forEach((lang) => {
       // order of script addition to "entryPoints" matters for chunkSortMode
       sections.forEach((section) => {
-        htmlFileNames.forEach((name) => {
-          const folderName = name[0];
+        for (const [key, value] of Object.entries(pm)) {
+          const folderName = key;
           // data entry point
           entryPoints[
-            `${section}/${section}_${name[0]}`
+            `${section}/${section}_${key}`
           ] = `./src/entry/data/${folderName}.js`;
 
           // main entry point
-          entryPoints[`${lang}/${name[1]}/js/entry_${name[0]}`] = {
+          entryPoints[`${lang}/${value.commodity}/js/entry_${key}`] = {
             import: `./src/entry/${lang}/${folderName}/index.js`,
             dependOn: [
-              `${section}/${section}_${name[0]}`,
+              `${section}/${section}_${key}`,
               `${lang}/profile_code_${lang}`,
             ],
           };
-        });
+        }
       });
       entryPoints[
         `${lang}/profile_code_${lang}`
