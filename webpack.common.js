@@ -5,7 +5,7 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { profileText } from "./src/components/htmlText.js";
-import { pm } from "./src/components/profileManager.js";
+import { pm } from "./profileManager.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

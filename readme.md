@@ -97,6 +97,7 @@ Sections being added:
 pipeline_profiles
 │   README.md (you are here!)
 │   server.js (express js server configuration for npm start)
+|   profileManager.js (controls which sections and profiles are displayed)
 |   environment.yml (cross platform conda python 3 environment used in ./src/data_management)
 │   webpack.common.js (functionality for creating clean ../dist folder in english and french)
 |   webpack.dev.js (webpack dev server functionality)
@@ -123,7 +124,7 @@ pipeline_profiles
 |   |   |   raw_data/ (pre-prepared data used by python when not pulling from remote locations)
 │   |   │   ... other python files for pipeline datasets
 |   |
-|   └───components (handlebars partials + JavaScript logic for building a new profile section)
+|   └───components (handlebars partials)
 |   |
 |   └───css (main.css, transferred over to dist/css/main[contenthash].css via MiniCssExtract)
 |   |
@@ -498,7 +499,7 @@ Conditional handlebars templates are used to control which sections get loaded f
 
 7. Create a new handlebars template here: `src/components/new_section.hbs`. For now, ignore the templates, and just write html with english text/paragraphs.
 
-8. Add this new template to the profile manager here: `src/components/profileManager.js`. It doesnt matter what you call the section, but remember it for the handlebars conditional later. It seems obvious that this file should be automatically generated based on which profiles have data for a given section, but i would prefer to leave this step manual. It adds an extra layer of protection agains sections getting rendered by mistake, and its easy to updata/maintain.
+8. Add this new template to the profile manager here: `profileManager.js`. It doesnt matter what you call the section, but remember it for the handlebars conditional later. It seems obvious that this file should be automatically generated based on which profiles have data for a given section, but i would prefer to leave this step manual. It adds an extra layer of protection agains sections getting rendered by mistake, and its easy to updata/maintain.
 
 ```javascript
 const profileSections = {
@@ -605,7 +606,7 @@ npm run test-frontend
 - [webpack-cli](https://www.npmjs.com/package/webpack-cli)
 - [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)
 
-Note: the html-webpack-plugin and handlebars-loader is instrumental for this project. Older versions of this repo only had two templates, one for english and one for french. As the project grew, I needed a tempalte engine. A good example of this need is the apportionment section. There are only around 5 oil pipeline profiles with apportionment data (there could be more in the future though!) so i dont want to include the apportionment html in 20 profiles that dont need it, and then hide/show divs conditionally after the dom is ready. This probably causes layout thrashing. With handlebars, i can conditionally render components/sections based on the logic in `src/profileManager.js`. Even better, with handlebars-loader, one html is compiled for each profile (web team can only handle html) and html-webpack-plugin still injects all the scripts.
+Note: the html-webpack-plugin and handlebars-loader is instrumental for this project. Older versions of this repo only had two templates, one for english and one for french. As the project grew, I needed a tempalte engine. A good example of this need is the apportionment section. There are only around 5 oil pipeline profiles with apportionment data (there could be more in the future though!) so i dont want to include the apportionment html in 20 profiles that dont need it, and then hide/show divs conditionally after the dom is ready. This probably causes layout thrashing. With handlebars, i can conditionally render components/sections based on the logic in `profileManager.js`. Even better, with handlebars-loader, one html is compiled for each profile (web team can only handle html) and html-webpack-plugin still injects all the scripts.
 
 This was the old way before handlebars:
 Each pipeline profile webpage is essentially the same, but with different data. The two templates `src/profile_en.html` and `src/profile_fr.html` contain all the text and web resources (css, scripts tags) and the plugin injects the appropriate script tags for the profile. Changes made to these templates will appear on all 25 profile pages in english and french.

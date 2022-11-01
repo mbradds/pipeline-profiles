@@ -3,6 +3,6 @@
     "checkJs": true,
     "sourceMap": false
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "profileManager.js"],
   "exclude": ["node_modules", "**/node_modules/*"]
 }
