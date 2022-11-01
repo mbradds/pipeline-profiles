@@ -1,6 +1,6 @@
-<h2 id="apportionment">{{text.apportion.header}}</h2>
-<p class="small">{{text.trafficUpdated}}</p>
 <div id="apportionment-section">
+  <h2 id="apportionment">{{text.apportion.header}}</h2>
+  <p class="small">{{text.trafficUpdated}}</p>
   <div class="row">
     <div class="col-md-12">
       <p>{{text.apportion.p1}}</p>
@@ -21,10 +21,10 @@
         <div class="mrgn-tp-sm" id="apportion-hc"></div>
         <div id="apportion-point-panel"></div>
         {{#ifeq text.pipelineName.id "EnbridgeMainline"}}
-        {{> shared/source text=text.apportion.source description=text.apportion.description.enbridge}}
+          {{> shared/source text=text.apportion.source description=text.apportion.description.enbridge}}
         {{/ifeq}}
         {{#ifnoteq text.pipelineName.id "EnbridgeMainline"}}
-        {{> shared/source text=text.apportion.source description=text.apportion.description.other}}
+          {{> shared/source text=text.apportion.source description=text.apportion.description.other}}
         {{/ifnoteq}}
       </div>
     </div>

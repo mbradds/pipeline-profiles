@@ -23,6 +23,8 @@
 
 export const pm = {
   NGTL: {
+    commodity: "natural-gas",
+    name: "NOVA Gas Transmission Ltd. (NGTL)",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
@@ -31,6 +33,8 @@ export const pm = {
     },
   },
   Alliance: {
+    commodity: "natural-gas",
+    name: "Alliance Pipeline",
     sections: {
       traffic: { map: true, noMap: false },
       tolls: true,
@@ -39,6 +43,8 @@ export const pm = {
     },
   },
   TCPL: {
+    commodity: "natural-gas",
+    name: "TransCanada’s Canadian Mainline",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
@@ -47,6 +53,8 @@ export const pm = {
     },
   },
   Westcoast: {
+    commodity: "natural-gas",
+    name: "Westcoast Pipeline",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
@@ -55,6 +63,8 @@ export const pm = {
     },
   },
   Brunswick: {
+    commodity: "natural-gas",
+    name: "Emera Brunswick",
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
@@ -63,6 +73,8 @@ export const pm = {
     },
   },
   MNP: {
+    commodity: "natural-gas",
+    name: "Maritimes &amp; Northeast",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
@@ -71,6 +83,8 @@ export const pm = {
     },
   },
   ManyIslands: {
+    commodity: "natural-gas",
+    name: "Many Islands",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -79,6 +93,8 @@ export const pm = {
     },
   },
   TQM: {
+    commodity: "natural-gas",
+    name: "Trans Québec &amp; Maritimes",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
@@ -87,6 +103,8 @@ export const pm = {
     },
   },
   Vector: {
+    commodity: "natural-gas",
+    name: "Vector",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -95,6 +113,8 @@ export const pm = {
     },
   },
   Foothills: {
+    commodity: "natural-gas",
+    name: "Foothills",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: false,
@@ -103,6 +123,8 @@ export const pm = {
     },
   },
   EnbridgeMainline: {
+    commodity: "oil-and-liquids",
+    name: "Enbridge Canadian Mainline",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
@@ -111,6 +133,8 @@ export const pm = {
     },
   },
   EnbridgeLine9: {
+    commodity: "oil-and-liquids",
+    name: "Enbridge Line 9",
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
@@ -119,6 +143,8 @@ export const pm = {
     },
   },
   Keystone: {
+    commodity: "oil-and-liquids",
+    name: "Keystone Pipeline",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
@@ -127,6 +153,8 @@ export const pm = {
     },
   },
   TransMountain: {
+    commodity: "oil-and-liquids",
+    name: "Trans Mountain",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
@@ -135,6 +163,8 @@ export const pm = {
     },
   },
   Cochin: {
+    commodity: "oil-and-liquids",
+    name: "Cochin Pipeline",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
@@ -143,6 +173,8 @@ export const pm = {
     },
   },
   SouthernLights: {
+    commodity: "oil-and-liquids",
+    name: "Southern Lights",
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
@@ -151,6 +183,8 @@ export const pm = {
     },
   },
   EnbridgeBakken: {
+    commodity: "oil-and-liquids",
+    name: "Enbridge Bakken",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -159,6 +193,8 @@ export const pm = {
     },
   },
   NormanWells: {
+    commodity: "oil-and-liquids",
+    name: "Enbridge Norman Wells",
     sections: {
       traffic: { map: true, noMap: false },
       apportion: true,
@@ -167,6 +203,8 @@ export const pm = {
     },
   },
   Express: {
+    commodity: "oil-and-liquids",
+    name: "Express",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -175,6 +213,8 @@ export const pm = {
     },
   },
   TransNorthern: {
+    commodity: "oil-and-liquids",
+    name: "Trans-Northern",
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
@@ -183,6 +223,8 @@ export const pm = {
     },
   },
   Genesis: {
+    commodity: "oil-and-liquids",
+    name: "Genesis",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -191,6 +233,8 @@ export const pm = {
     },
   },
   Montreal: {
+    commodity: "oil-and-liquids",
+    name: "Montreal",
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
@@ -199,6 +243,8 @@ export const pm = {
     },
   },
   Westspur: {
+    commodity: "oil-and-liquids",
+    name: "Westspur",
     sections: {
       traffic: { map: false, noMap: true },
       apportion: false,
@@ -207,6 +253,8 @@ export const pm = {
     },
   },
   Aurora: {
+    commodity: "oil-and-liquids",
+    name: "Aurora",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -215,6 +263,8 @@ export const pm = {
     },
   },
   MilkRiver: {
+    commodity: "oil-and-liquids",
+    name: "Milk River",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
@@ -223,6 +273,8 @@ export const pm = {
     },
   },
   Wascana: {
+    commodity: "oil-and-liquids",
+    name: "Wascana",
     sections: {
       traffic: { map: false, noMap: false },
       apportion: false,
