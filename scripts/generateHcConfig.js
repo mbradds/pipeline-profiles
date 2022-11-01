@@ -2,27 +2,37 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { pm } from "../src/components/profileManager.js";
-import { profileWebpackConfig } from "../webpack.common.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function configJson(profileInfo) {
   const highchartConfigJson = [];
-  Object.entries(profileInfo).forEach(
-    // const commodityExt = profileWebpackConfig.htmlFile
 
-    ([key, value]) =>
-      highchartConfigJson.push({
-        PipelineId: key,
-        EnUrl: "en/natural-gas/Alliance_en.html",
-        FrUrl: "fr/natural-gas/Alliance_fr.html",
-      })
-    // console.log(key, value)
-  );
-  // console.log(highchartConfigJson);
+  Object.entries(profileInfo).forEach(([key, value]) => {
+    const sections = [];
+    if (value.sections.traffic.map || value.sections.traffic.noMap) {
+      sections.push("Traffic");
+    }
+    if (value.sections.apportion) {
+      sections.push("Apportionment");
+    }
+    if (value.sections.tolls) {
+      sections.push("Tolls");
+    }
+    if (value.sections.safety) {
+      sections.push("safety-Environment");
+    }
+
+    highchartConfigJson.push({
+      PipelineId: key,
+      EnUrl: `en/${value.commodity}/${key}_en.html`,
+      FrUrl: `fr/${value.commodity}/${key}_fr.html`,
+      Sections: sections,
+    });
+  });
+
   const savePath = path.join(__dirname, "..", "dist", "highchartconfig.json");
-  console.log(savePath);
   fs.writeFile(savePath, JSON.stringify(highchartConfigJson), (err) => {
     if (err) throw err;
   });
