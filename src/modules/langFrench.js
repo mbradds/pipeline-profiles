@@ -669,25 +669,25 @@ export const frenchDashboard = {
   ua: {
     ...allSections,
     dynamicText: uaTextFra,
-    title: (company) => `FR: Dashboard: ${company} - DPR Contravention Reports`,
+    title: (company) =>
+      `Tableau de bord :  ${company} - Rapports de contravention au RPD`,
     dashboard: {
       ...allLeafletDashboards,
-      eventName: "FR: DPR Contravention Reports",
+      eventName: "Rapports de contravention au RPD",
       findBtnTitle: nearbyMe.findBtnTitle("sites"),
       trendDisclaimer: {
-        wpd: "FR: Reporting requirements were updated in 2020. Data is not available prior to 2020.",
-        wdi: "FR: Reporting requirements were updated in 2020. Data is not available prior to 2020.",
-        mod: "FR:Reporting requirements were updated in 2020. Data is not available prior to 2020.",
+        wpd: "Les exigences concernant les rapports ont été mises à jour en 2020. Données non disponibles avant 2020",
+        wdi: "Les exigences concernant les rapports ont été mises à jour en 2020. Données non disponibles avant 2020",
+        mod: "Les exigences concernant les rapports ont été mises à jour en 2020. Données non disponibles avant 2020",
       },
       pillTitles: {
         titles: {
-          et: "FR: Event Type",
-          wpd: "FR: Was Pipe Damaged?",
-          wgd: "FR: Was There a Ground Disturbance?",
-          mod: "FR: Method Of Discovery",
-          y: "FR: Year",
-          wdi: "FR: Who Discovered The Event",
-          bc: "FR: Basic Causes",
+          et: "Type d’événement",
+          wpd: "La conduite a-t-elle été endommagée?",
+          wgd: "Y a-t-il eu remuement du sol?",
+          mod: "Méthode de découverte",
+          y: "Année",
+          wdi: "Qui a découvert l’événement?",
         },
         click,
       },
@@ -695,15 +695,15 @@ export const frenchDashboard = {
         wdi: {
           1: {
             c: cerPalette.Sun,
-            n: "FR: 1st party (regulated company)",
+            n: "Première partie (société réglementée)",
           },
           2: {
             c: cerPalette["Night Sky"],
-            n: "FR: 2nd party (contractor working for the regulated company)",
+            n: "Deuxième partie (entrepreneur travaillant pour la société réglementée)",
           },
           3: {
             c: cerPalette.Forest,
-            n: "FR: 3rd party (no connection to the regulated company)",
+            n: "Troisième partie (aucun lien avec la société pipelinière)",
           },
           ...nullInfo,
         },

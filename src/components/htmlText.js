@@ -618,7 +618,7 @@ const fr = {
       incidents: "Incidents signalés",
       oandm: "Activités d’exploitation et d’entretien",
       remediation: "Sites contaminés et assainissement",
-      ua: "Unauthorized Activities FR",
+      ua: "Signalement des contraventions au Règlement sur la prévention des dommages",
     },
     updated: {
       conditions: "Mise à jour : octobre 2022",
@@ -996,7 +996,13 @@ const fr = {
       },
     },
     ua: {
-      paragraphs: undefined,
+      paragraphs: [
+        "La prévention des dommages est le point de rencontre entre les personnes et les pipelines. Elle consiste en une démarche proactive qui assure la sécurité des personnes, de l’environnement et des pipelines.",
+        "La Régie prend des mesures pour protéger la population et l’environnement. Parmi celles-ci, on trouve des exigences en matière de sécurité visant les activités qui se déroulent près des pipelines de son ressort. Les activités non autorisées menées près des pipelines sont dangereuses et illégales. Un pipeline heurté ou endommagé peut avoir des conséquences très graves.",
+        "Le <a href='https://www.cer-rec.gc.ca/fr/regie/lois-reglements/loi-regie-canadienne-lenergie-reglements-notes-dorientation-documents-connexes/reglement-prevention-dommages/index.html'>Règlement de la Régie canadienne de l’énergie sur la prévention des dommages aux pipelines (« RPD »)</a> stipule que les sociétés pipelinières doivent disposer de programmes de prévention des dommages et de sensibilisation du public qui fournissent de l’information aux personnes vivant et travaillant près de pipelines pour veiller à ce que les activités menées à proximité de pipelines se déroulent en toute sécurité. Le RPD exige aussi des personnes qui vivent et travaillent à proximité d’un pipeline qu’elles informent les sociétés pipelinières de leur intention de se livrer à des activités de construction (excavation, construction, conduite d’un véhicule sur une emprise) et qu’elles se conforment aux instructions fournies par ces sociétés.",
+        "La prévention des dommages est l’affaire de tous et toutes, et tout le monde doit faire sa part en matière de sécurité lors d’activités à proximité d’un pipeline.",
+        "Les sociétés pipelinières doivent rapporter immédiatement à la Régie toute activité qui se déroule près de leurs pipelines et qui ne respectent pas les règles et les exigences techniques énoncées dans le RPD. Ces infractions sont appelées « rapports de contravention ». La Régie fournit un ensemble de données sur le site du gouvernement ouvert, qui renferme des renseignements sur chaque contravention signalée. Vous trouverez ci-dessous des statistiques sommaires et un tableau de bord présentant ces données.",
+      ],
       dashboard: {
         id: "unauthorized-activities",
         mapPillIds: [
@@ -1012,24 +1018,26 @@ const fr = {
           "ua-method-trend",
         ],
         hasRadio: false,
-        mapBtn: "Unauthorized Activities Map",
-        trendBtn: "Unauthorized Activities Trends",
+        mapBtn: "Carte des rapports de contravention au RPD",
+        trendBtn: "Tendance des rapports de contravention au RPD",
         nearby: {
           type: "unauthorized-activities",
-          header: "Are there any unauthorized activities near me?",
-          selectRange: "Select range (100km):",
-          find: "Find activities within 100km",
-          refill: "Refill Map Bubbles",
+          header: "Y a-t-il eu des contraventions au RPD près de chez moi?",
+          selectRange: "Sélectionner la plage (100 km) :",
+          find: "Trouver des activités dans un rayon de 100 km",
+          refill: "Remplir les bulles de la carte",
         },
         source: {
           sourceTitle: sourceAndDescEn,
           dataSourceTitle: dataSourceEn,
           descriptionTitle: descriptionEn,
           sourceText: sourceTextEn,
-          sourceLink: "https://open.canada.ca/data/en/organization/cer-rec",
-          description: "Coming soon!",
+          sourceLink:
+            "https://open.canada.ca/data/fr/dataset/43c4a4ea-6da8-4b02-8f07-986caafd9223",
+          description:
+            "La carte ci-dessus montre les emplacements où des rapports de contravention au RPD ont été faits pour le réseau pipelinier au cours des cinq dernières années et plus. Par défaut, la carte présente les rapports sous forme de bulles de couleur variant selon que le pipeline a été endommagé ou non. Les rapports peuvent être reclassés en fonction d’un remuement du sol ou non, de l’année et de la source de la découverte de l’événement. Il est aussi possible de sélectionner les données des rapports de contravention pour produire un graphique à barres empilées des événements au fil du temps en cliquant sur le bouton « Tendances des rapports de contravention » qui se trouve au-dessus de la carte. Les barres empilées représentent le nombre de rapports de contravention par année, les couleurs des barres correspondant aux divers types d’événements. Comme sur la carte, les rapports de contravention au RPD peuvent être reclassés en cliquant sur les boutons latéraux pour ventiler les événements en fonction de dommages ou non au pipeline, de la source du rapport et de la méthode ayant donné lieu à la découverte.",
           openGov: openGovLink(
-            "https://open.canada.ca/data/en/organization/cer-rec",
+            "https://open.canada.ca/data/fr/dataset/43c4a4ea-6da8-4b02-8f07-986caafd9223",
             "en"
           ),
         },

@@ -670,7 +670,6 @@ export const englishDashboard = {
           mod: "Method Of Discovery",
           y: "Year",
           wdi: "Who Discovered The Event",
-          bc: "Basic Causes",
         },
         click,
       },

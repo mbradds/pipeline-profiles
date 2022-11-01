@@ -370,25 +370,44 @@ export function uaTextEng(meta, lang) {
   const firstParagraph = `<p>From ${meta.first_year} to ${
     meta.current_year
   }, there have been a total of ${dynamicValue(
-    meta.total_events
-  )} contraventions reported for the ${
+    lang.numberFormat(meta.total_events, 0)
+  )} contraventions reported for the ${formatCompanyName(
     meta.systemName
-  }. Of these, ${dynamicValue(
-    meta.ground_disturbance_count
+  )}. Of these, ${dynamicValue(
+    lang.numberFormat(meta.ground_disturbance_count, 0)
   )} have included a ground disturbance, and ${dynamicValue(
-    meta.damage_count
+    lang.numberFormat(meta.damage_count, 0)
   )} have caused physical damage to the pipeline such as dent or gouge. A ground disturbance contravention happens when someone digs below 30 cm within the pipelines prescribed area without first getting consent from the pipeline company or when a locate request hasn't been made. These events can be considered as near-miss events that could have led to a more serious pipeline incident.</p>`;
 
   const secondParagraph = `<p>The CER reviews all contravention reports submitted by regulated companies, and further action may be required of the company. From ${
     meta.first_year
   } to ${meta.current_year}, ${dynamicValue(
-    meta.further_action_required
+    lang.numberFormat(meta.further_action_required, 0)
   )} contraventions have required additional action.</p>`;
   document.getElementById("ua-dynamic-text").innerHTML =
     firstParagraph + secondParagraph;
 }
 
 export function uaTextFra(meta, lang) {
-  const firstParagraph = `<span></span>`;
-  document.getElementById("ua-dynamic-text").innerHTML = firstParagraph;
+  const firstParagraph = `<p>De ${meta.first_year} à ${
+    meta.current_year
+  }, ${dynamicValue(
+    lang.numberFormat(meta.total_events, 0)
+  )} contraventions ont été signalées pour le ${formatCompanyName(
+    meta.systemName
+  )}. De ce nombre, ${dynamicValue(
+    lang.numberFormat(meta.ground_disturbance_count, 0)
+  )} concernaient un remuement du sol et ${dynamicValue(
+    lang.numberFormat(meta.damage_count, 0)
+  )} ont causé des dommages physiques au pipeline, comme des bosselures ou des rainures. Une infraction liée à un remuement du sol survient quand une personne mène des travaux d’excavation à plus de 30 cm de profondeur dans la zone réglementaire d’un pipeline sans avoir d’abord obtenu le consentement de la société pipelinière ou avoir présenté une demande de localisation. Ces événements peuvent être considérés comme des quasi-incidents qui auraient pu entraîner à un incident plus grave.</p>`;
+
+  const secondParagraph = `<p>La Régie analyse tous les rapports de contravention qui lui sont transmis par les sociétés de son ressort et peut exiger que la société concernée prenne des mesures supplémentaires. De ${
+    meta.first_year
+  } à ${
+    meta.current_year
+  }, de telles mesures ont été exigées dans ${dynamicValue(
+    lang.numberFormat(meta.further_action_required, 0)
+  )} cas.</p>`;
+  document.getElementById("ua-dynamic-text").innerHTML =
+    firstParagraph + secondParagraph;
 }
