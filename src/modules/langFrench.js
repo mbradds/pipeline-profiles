@@ -688,6 +688,7 @@ export const frenchDashboard = {
           mod: "Méthode de découverte",
           y: "Année",
           wdi: "Qui a découvert l’événement?",
+          bc: "Causes fondamentales",
         },
         click,
       },
