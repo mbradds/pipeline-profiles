@@ -4,7 +4,7 @@ import datetime
 import ssl
 import numpy as np
 import pandas as pd
-from util import get_data, idify, company_rename, get_company_list, normalize_text, apply_system_id, set_cwd_to_script
+from util import get_data, idify, company_rename, get_company_list, normalize_text, apply_system_id, set_cwd_to_script, updated_month_year
 ssl._create_default_https_context = ssl._create_unverified_context
 set_cwd_to_script()
 # all data before August 15, 2018 is unreliable and should be cut out
@@ -233,7 +233,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
             print("remediation error: "+company)
             raise
 
-
+    updated_month_year("remediation")
     return df, this_company_data
 
 

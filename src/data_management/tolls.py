@@ -2,7 +2,7 @@ import os
 import json
 import re
 import pandas as pd
-from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script, replace_nulls_with_none
+from util import normalize_text, normalize_dates, get_company_list, get_data, set_cwd_to_script, replace_nulls_with_none, updated_month_year
 set_cwd_to_script()
 
 
@@ -472,6 +472,7 @@ def process_tolls(commodity, sql=True, companies=False, save=True):
             with open('../data_output/tolls/'+company+'.json', 'w') as fp:
                 json.dump(this_company_data, fp, default=str)
 
+    updated_month_year("tolls")
     return df_c, this_company_data
 
 
@@ -479,5 +480,5 @@ if __name__ == "__main__":
     print("starting tolls...")
     # df_, this_company_data_ = process_tolls("Liquid", sql=False)
     # df_, this_company_data_ = process_tolls("Gas", sql=False)
-    df_, this_company_data_ = process_tolls("Liquid", sql=False, companies=["TransMountain"])
+    df_, this_company_data_ = process_tolls("Liquid", sql=True)
     print("done tolls")

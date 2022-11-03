@@ -3,6 +3,8 @@ import os
 import platform
 import pandas as pd
 import numpy as np
+import json
+from datetime import datetime
 from connection import cer_connection
 from errors import IdError, IdLengthError
 
@@ -280,3 +282,17 @@ def replace_nulls_with_none(df):
     if platform.system() == "Linux":
         df = df.replace({np.nan: None})
     return df
+
+
+def updated_month_year(section):
+    try:
+        now = datetime.now()
+        with open('update_tracker.json', 'r') as f:
+                strings = json.load(f)
+        strings[section] = [now.month, now.year]
+        with open('update_tracker.json', 'w') as f:
+                json.dump(strings, f)
+    except:
+        raise
+        print("Cant set new update time for: ", section)
+    

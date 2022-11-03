@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, most_common, idify, get_company_list, apply_system_id, set_cwd_to_script
+from util import company_rename, most_common, idify, get_company_list, apply_system_id, set_cwd_to_script, updated_month_year
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -219,7 +219,8 @@ def process_incidents(remote=False, companies=False, test=False):
             print("completed: "+company)
         except:
             print("incidents error: "+company)
-
+            
+    updated_month_year("incidents")
     return df_c, df_vol, meta
 
 

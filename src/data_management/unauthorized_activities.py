@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none
+from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year
 import json
 from datetime import datetime
 set_cwd_to_script()
@@ -148,6 +148,7 @@ def process_ua(companies=False, remote=True, test=False, save=True):
                 json.dump(this_company_data, fp)
         except:
             raise
+    updated_month_year("ua")
     return df_c
 
 if __name__ == '__main__':
