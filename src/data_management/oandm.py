@@ -2,7 +2,7 @@ import ssl
 import json
 from datetime import datetime
 import pandas as pd
-from util import company_rename, most_common, strip_cols, idify, get_company_list, apply_system_id, set_cwd_to_script
+from util import company_rename, most_common, strip_cols, idify, get_company_list, apply_system_id, set_cwd_to_script, updated_month_year
 ssl._create_default_https_context = ssl._create_unverified_context
 set_cwd_to_script()
 
@@ -243,6 +243,8 @@ def process_oandm(remote=False, companies=False, test=False):
         except:
             print("o&m error: "+company)
             raise
+    
+    updated_month_year("oandm")
     return this_company_data
 
 

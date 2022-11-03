@@ -19,6 +19,7 @@ import { createRequire } from "module";
 
 const require = createRequire(import.meta.url);
 const tollsDescription = require("../data_output/tolls/descriptions.json");
+const updateTimes = require("../data_management/update_tracker.json");
 
 const sourceAndDescEn = "Source and description";
 const sourceAndDescFr = "Source et description de la figure";
@@ -28,6 +29,50 @@ const descriptionEn = "Description: ";
 const descriptionFr = "Description : ";
 const sourceTextEn = "Open Government";
 const sourceTextFr = "Gouvernement ouvert";
+
+const englishMonths = {
+  1: "January",
+  2: "February",
+  3: "March",
+  4: "April",
+  5: "May",
+  6: "June",
+  7: "July",
+  8: "August",
+  9: "September",
+  10: "October",
+  11: "November",
+  12: "December",
+};
+
+export const frenchMonths = {
+  1: "janvier",
+  2: "février",
+  3: "mars",
+  4: "avril",
+  5: "mai",
+  6: "juin",
+  7: "juillet",
+  8: "aout",
+  9: "septembre",
+  10: "octobre",
+  11: "novembre",
+  12: "décembre",
+};
+
+const getUpdatedTime = (section, months, updateLookup, text) => {
+  try {
+    const update = updateLookup[section];
+    if (update && update.length === 2) {
+      const month = months[update[0]];
+      const year = update[1];
+      return `${text} ${month} ${year}`;
+    }
+    return "";
+  } catch (err) {
+    return "";
+  }
+};
 
 const openGovLink = (link, lang) => {
   let [p1, p2] = ["", ""];
@@ -120,11 +165,31 @@ const en = {
       ua: "Damage Prevention Regulations Contravention Reports",
     },
     updated: {
-      conditions: "Section updated October 2022",
-      incidents: "Section updated October 2022",
-      oandm: "Section updated October 2022",
-      remediation: "Section updated October 2022",
-      ua: "Section updated October 2022",
+      conditions: getUpdatedTime(
+        "conditions",
+        englishMonths,
+        updateTimes,
+        "Section updated"
+      ),
+      incidents: getUpdatedTime(
+        "incidents",
+        englishMonths,
+        updateTimes,
+        "Section updated"
+      ),
+      oandm: getUpdatedTime(
+        "oandm",
+        englishMonths,
+        updateTimes,
+        "Section updated"
+      ),
+      remediation: getUpdatedTime(
+        "remediation",
+        englishMonths,
+        updateTimes,
+        "Section updated"
+      ),
+      ua: getUpdatedTime("ua", englishMonths, updateTimes, "Section updated"),
     },
     conditions: {
       paragraphs: [
@@ -542,7 +607,12 @@ const en = {
   },
   tolls: {
     header: "Tolls (in progress)",
-    updated: "Section updated July 2022",
+    updated: getUpdatedTime(
+      "tolls",
+      englishMonths,
+      updateTimes,
+      "Section updated"
+    ),
     descriptionHeader: "System Tolls Description",
   },
 };
@@ -621,11 +691,31 @@ const fr = {
       ua: "Signalement des contraventions au Règlement sur la prévention des dommages",
     },
     updated: {
-      conditions: "Mise à jour : octobre 2022",
-      incidents: "Mise à jour : octobre 2022",
-      oandm: "Mise à jour : octobre 2022",
-      remediation: "Mise à jour : octobre 2022",
-      ua: "Mise à jour : octobre 2022",
+      conditions: getUpdatedTime(
+        "conditions",
+        frenchMonths,
+        updateTimes,
+        "Mise à jour :"
+      ),
+      incidents: getUpdatedTime(
+        "incidents",
+        frenchMonths,
+        updateTimes,
+        "Mise à jour :"
+      ),
+      oandm: getUpdatedTime(
+        "oandm",
+        frenchMonths,
+        updateTimes,
+        "Mise à jour :"
+      ),
+      remediation: getUpdatedTime(
+        "remediation",
+        frenchMonths,
+        updateTimes,
+        "Mise à jour :"
+      ),
+      ua: getUpdatedTime("ua", frenchMonths, updateTimes, "Mise à jour :"),
     },
     conditions: {
       paragraphs: [
@@ -1046,7 +1136,12 @@ const fr = {
   },
   tolls: {
     header: "Droits",
-    updated: "FR: Section updated July 2022",
+    updated: getUpdatedTime(
+      "tolls",
+      frenchMonths,
+      updateTimes,
+      "Mise à jour :"
+    ),
     descriptionHeader: "Description des droits du réseau",
   },
 };

@@ -4,7 +4,7 @@ import ssl
 from datetime import date
 import pandas as pd
 import geopandas as gpd
-from util import execute_sql, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id, set_cwd_to_script
+from util import execute_sql, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id, set_cwd_to_script, updated_month_year
 import numpy as np
 ssl._create_default_https_context = ssl._create_unverified_context
 set_cwd_to_script()
@@ -393,11 +393,12 @@ def process_conditions(remote=False,
         except:
             print("conditions error: "+company)
             raise
-
+    
+    updated_month_year("conditions")
     return df_c, shp, dfmeta, meta
 
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df_, regions_, map_meta_, meta_ = process_conditions(remote=True, save=True, sql=False)
+    df_, regions_, map_meta_, meta_ = process_conditions(remote=False, save=True, sql=False)
     print('completed conditions!')
