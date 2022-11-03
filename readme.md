@@ -54,12 +54,6 @@
 - [Software prerequisites](#software-prerequisites)
 - [Quick start for contributing](#quick-start-for-contributing)
 - [Quick start for updating data](#quick-start-for-updating-data)
-  - [Dataset 1: Incidents](#dataset-1-incidents)
-  - [Dataset 2: Conditions](#dataset-2-conditions)
-  - [Dataset 3: Traffic](#dataset-3-traffic)
-  - [Dataset 4: Apportionment](#dataset-4-apportionment)
-  - [Dataset 5: Operations and Maintenance Activities](#dataset-5-operations-and-maintenance-activities)
-  - [Dataset 6: Contaminated sites and Remediation](#dataset-6-contaminated-sites-and-remediation)
 - [Deploying to CER production server](#deploying-to-cer-production-server)
 - [Adding a new profile section](#adding-a-new-profile-section)
 - [Tests](#tests)
@@ -86,7 +80,7 @@ Sections being added:
   2. Reported Incidents (Released, March 31, 2021)
   3. Operations & Maintenance Activities (Oct 25, 2021, completed)
   4. Contaminated Sites/Remediation (Oct 25, 2021, completed)
-  5. Unauthorized Activities (TBD, under development)
+  5. Unauthorized Activities (DPRCR) (Dec 5, 2022)
 - **Traffic (Pipeline Throughput & Capacity)** (Released, May 25, 2021)
 - **Oil Pipeline Apportionment** (Released, May 25, 2021)
 - **Pipeline Tolls** (December 2021/January 2022, under development)
@@ -221,181 +215,48 @@ npm run switch-remote-work
 
 ### Are you using windows?
 
-Some scripts in `scripts/` have a `.sh` extension and will need to be run in the git windows client shell. These scripts are mainly optional. When running update data commands, eg: `npm run update-conditions-data`, you will need to run all of these with the Anaconda Prompt shell so that conda is recognized!
+Unless you are running the code through an IDE, you will need to use the Anaconda Prompt to run the scripts, otherwise you will get the following error: 'conda' is not recognized as an internal or external command, operable program or batch file.
 
-### Are you connecting to CER databases?
+1. clone repo into your documents and set up repo.
+
+```bash
+cd Documents
+git clone https://github.com/mbradds/pipeline-profiles.git
+npm install
+```
+
+2. Set up CER database connection strings.
 
 Several datasets are pulled directly from CER internal databases. A single python file `src/data_management/connection.py` handles the sqlalchemy connection parameters and strings. An untracked json file `src/data_management/connection_strings.json` contains the hard coded database connection strings. A template file `src/data_management/connection_strings.example.py` file is included with the connection strings left blank. Before running or contributing to the python code, you will need to open this file, add the connection strings, and save the file here: `src/data_management/connection_strings.json` to ensure that connection info remains untracked.
 
-### Have you set up the pipeline-profiles conda environment?
+3. Set up the pipeline-profiles conda environment and run the update-all-data command.
 
-It is highly recommended that you first create the conda python environment described in [environment.yml](environment.yml). The npm scripts for data updates expect a conda python environment called pipeline-profiles.
-
-Update individual datasets:
+It is highly recommended that you first create the conda python environment described in [environment.yml](environment.yml). The npm scripts for data updates expect a conda python environment called pipeline-profiles. The easiest way to run the update data operation is through the anaconda prompt comand line. Using the Anaconda Prompt, run the following operations.
 
 ```bash
-npm run update-incidents-data
-npm run update-conditions-data
-npm run update-traffic-data
-npm run update-apportionment-data
-npm run update-oandm-data
-```
-
-### Update all datasets at once (recommended)
-
-```bash
+cd Documents
+cd pipeline-profiles
+conda env create --file=environment.yml
 npm run update-all-data
 ```
 
-This command calls a python file (`src/data_management/updateAll.py`) hard coded to pull the latest remote/sql files instead of the users local files. <strong>This is probably the best way to update the data because the dataset specific python files dont need to be modified</strong>. The specific instructions below can be ignored when updating all data at once.
+The last operation `npm run update-all-data` may take a few minutes to run. Once its completed, you will see all the output at once. If an error is encountered, the program will stop and display the error message. Feel free to try and fix the error or ask me.
 
-Note: depending on several factors, including the current state of the python scripts called with the above command, this may not actually update the data you want. Take a look at the sub sections below for update instructions specific to the dataset. Follow these instructions below when not running `npm run update-all-data`
+4. Make sure the code can compile, and then push new data to main.
 
-### Dataset 1: Incidents
+You can re-use the same Anaconda Prompt shell from the last step. Run the following command to compile the front end code + the new json data. The code should complile, otherwise there is some kind of compatibility error between the data and the JavaScript code. This is usually the result of null values not being encoded properly. Feel free to fix the error in the python code and re-run step 3, or ask me to fix it.
 
-Incident data is updated every month on open gov. When new data becomes available, it can be pulled directly from the CER website and build into seperate json datasets for each profile with npm run data, after the steps described below.
-
-Note that the data output is language (en/fr) agnostic, so only the english dataset needs to be used.
-
-#### Option 1 (recommended): Pull incident data directly from CER website
-
-1. Open the [incidents.py](./src/data_management/incidents.py) file.
-
-2. Make sure that the open gov link is correct. Its a permanent link, so it shouldnt change often.
-
-```diff
-
-def process_incidents(remote=False, land=False, company_names=False, companies=False, test=False):
-    if remote:
--       link = "https://www.cer-rec.gc.ca/open/incident/pipeline-incidents-data.csv"
-+       link = "new link from open gov"
-        process_func = process_english
-        print('downloading remote incidents file')
+```
+npm run build
 ```
 
-3. Make sure that the python script is configured to point to these remote files, as opposed to the raw data files in `src/data_mangagement/raw_data`.
+If the code compiles, then push the changes to main, and the test website will update after a few minutes.
 
-```diff
-if __name__ == '__main__':
-    print('starting incidents...')
--    df, volume, meta = process_incidents(remote=False, test=False)
-+    df, volume, meta = process_incidents(remote=True, test=False)
-    print('completed incidents!')
 ```
-
-4. `npm run update-incidents-data && npm run build`
-
-#### Option 2: Use local CSV in your possession for update
-
-Alternatively, if the remote data fetch doesnt work, or you have the incident data before its uploaded onto the web, then the new incident data csv files can be placed into the `src/data_mangagement/raw_data` folder, overwriting the <i>incidents_en.csv</i> that are already there.
-
-1. Open the [incidents.py](./src/data_management/incidents.py) file.
-
-2. Make sure that the python script is configured to pull data from `src/data_mangagement/raw_data`
-
-```diff
-if __name__ == '__main__':
-    print('starting incidents...')
--    df, volume, meta = process_incidents(remote=True, test=False)
-+    df, volume, meta = process_incidents(remote=False, test=False)
-    print('completed incidents!')
+git add .
+git commit -m 'updated data'
+git push
 ```
-
-3. `npm run update-incidents-data && npm run build`
-
-### Dataset 2: Conditions
-
-Condition data is updated every day on open gov through the CER's incident data viz ETL.
-
-Note that the data output is language (en/fr) agnostic, so only the english dataset needs to be used.
-
-#### Option 1 (recommended): Pull conditions data directly from Open Government website
-
-1. Open the [conditions.py](./src/data_management/conditions) file.
-
-2. Similiar to incidents on open gov, the link shouldnt change, but if the process fails check that the link is ok.
-
-3. Make sure that the python script is configured to point to the remote open gov files, as opposed to the raw data files in `src/data_mangagement/raw_data`.
-
-```diff
-if __name__ == "__main__":
-    print('starting conditions...')
--    df, regions, mapMeta, meta = process_conditions(remote=False, save=True)
-+    df, regions, mapMeta, meta = process_conditions(remote=True, save=True)
-    print('completed conditions!')
-```
-
-4. `npm run update-conditions-data && npm run build`
-
-#### Option 2: Use local CSV in your possession for update
-
-Alternatively, if the remote data fetch doesnt work, then the new conditions data csv files can be placed into `src/data_mangagement/raw_data`, overwriting the <i>conditions_en.csv</i> that are already there.
-
-1. Open the [conditions.py](./src/data_management/conditions.py) file.
-
-2. Make sure that the python script is configured to pull data from `src/data_mangagement/raw_data`
-
-```diff
-if __name__ == "__main__":
-    print('starting conditions...')
--    df, regions, mapMeta, meta = process_conditions(remote=True, save=True)
-+    df, regions, mapMeta, meta = process_conditions(remote=False, save=True)
-    print('completed conditions!')
-```
-
-3. `npm run update-conditions-data && npm run build`
-
-### Dataset 3: Traffic
-
-Traffic data is updated every quarter (early March, mid-May, mid-August and mid-November) on open gov and PipelineInformation database. When new data becomes available, it can be pulled directly from psql22cap/PipelineInformation and build into seperate json datasets for each profile with npm run data, after the steps described below.
-
-Note that the data output is language (en/fr) agnostic.
-
-1. Make sure that you have entered all the connection strings in `src/data_management/connection_strings.json` and confirm that you have read permission on CERSEI.
-
-2. Make sure that `src/data_management/traffic.py` is configured to pull from SQL.
-
-```python
-if __name__ == "__main__":
-    print('starting throughput...')
-    traffic, df = process_throughput(test=False, sql=True, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=True, commodity='oil')
-    print('completed throughput!')
-```
-
-if this doesnt work, then get the CERSEI data through other means, and read from local files in `src/data_management/raw_data/throughput_gas_monthly.csv` and `src/data_management/raw_data/throughput_oil_monthly.csv`
-
-```python
-if __name__ == "__main__":
-    print('starting throughput...')
-    traffic, df = process_throughput(test=False, sql=False, commodity='gas', frequency='monthly')
-    traffic, df = process_throughput(test=False, sql=False, commodity='oil')
-    print('completed throughput!')
-```
-
-3.
-
-```bash
-npm run update-traffic-data && npm run build
-```
-
-### Dataset 4: Apportionment
-
-Pretty much the same as traffic, but using `src/data_management/apportionment.py`
-
-```bash
-npm run update-apportionment data
-```
-
-### Dataset 5: Operations and Maintenance Activities
-
-```bash
-npm run update-oandm-data
-```
-
-### Dataset 6: Contaminated sites and Remediation
-
-Instructions coming soon!
 
 ## Deploying to CER production server
 
