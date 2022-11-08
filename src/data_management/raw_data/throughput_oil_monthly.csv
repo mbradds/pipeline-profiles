@@ -300,6 +300,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-04-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2022-05-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2022-06-01,EnbridgeMainline,KP0006,east,foreign light,0.9098,
+2022-07-01,EnbridgeMainline,KP0006,east,foreign light,0.7177,
+2022-08-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
+2022-09-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2014-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,62.0,
 2014-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,66.9,
 2014-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,68.0,
@@ -402,6 +405,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-04-01,EnbridgeMainline,KP0015,east,domestic light / ngl,70.7948,
 2022-05-01,EnbridgeMainline,KP0015,east,domestic light / ngl,74.996,
 2022-06-01,EnbridgeMainline,KP0015,east,domestic light / ngl,74.1043,
+2022-07-01,EnbridgeMainline,KP0015,east,domestic light / ngl,85.1137,
+2022-08-01,EnbridgeMainline,KP0015,east,domestic light / ngl,86.4603,
+2022-09-01,EnbridgeMainline,KP0015,east,domestic light / ngl,82.3932,
 2007-01-01,EnbridgeMainline,KP0016,east,domestic heavy,139.2885,288.1
 2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.0929,288.1
 2007-02-01,EnbridgeMainline,KP0016,east,domestic heavy,132.5969,291.3
@@ -860,6 +866,13 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-06-01,EnbridgeMainline,KP0016,east,domestic heavy,313.0192,527.559
 2022-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.394,527.559
 2022-06-01,EnbridgeMainline,KP0016,east,foreign light,0.9098,527.559
+2022-07-01,EnbridgeMainline,KP0016,east,domestic heavy,326.8707,520.6
+2022-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.6402,520.6
+2022-07-01,EnbridgeMainline,KP0016,east,foreign light,0.7177,520.6
+2022-08-01,EnbridgeMainline,KP0016,east,domestic heavy,326.0043,504.499
+2022-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,68.8841,504.499
+2022-09-01,EnbridgeMainline,KP0016,east,domestic heavy,339.1536,511.637
+2022-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.6144,511.637
 2007-01-01,EnbridgeMainline,KP0021,east,domestic heavy,13.4401,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,domestic light / ngl,48.7528,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,foreign light,3.8013,118.5
@@ -1414,6 +1427,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-06-01,EnbridgeMainline,KP0021,east,domestic heavy,31.9597,164.328
 2022-06-01,EnbridgeMainline,KP0021,east,domestic light / ngl,72.0544,164.328
 2022-06-01,EnbridgeMainline,KP0021,east,foreign light,7.6444,164.328
+2022-07-01,EnbridgeMainline,KP0021,east,domestic heavy,26.8309,173.448
+2022-07-01,EnbridgeMainline,KP0021,east,domestic light / ngl,81.7059,173.448
+2022-07-01,EnbridgeMainline,KP0021,east,foreign light,8.5775,173.448
+2022-08-01,EnbridgeMainline,KP0021,east,domestic heavy,29.0101,171.658
+2022-08-01,EnbridgeMainline,KP0021,east,domestic light / ngl,82.2663,171.658
+2022-08-01,EnbridgeMainline,KP0021,east,foreign light,8.8379,171.658
+2022-09-01,EnbridgeMainline,KP0021,east,domestic heavy,29.1206,173.448
+2022-09-01,EnbridgeMainline,KP0021,east,domestic light / ngl,80.5973,173.448
+2022-09-01,EnbridgeMainline,KP0021,east,foreign light,12.4183,173.448
 2010-07-01,Keystone,KP0020,south,domestic heavy,15.0724,18.1136
 2010-07-01,Keystone,KP0020,south,domestic light,3.0412,18.1136
 2010-08-01,Keystone,KP0020,south,domestic heavy,15.1294,15.1294
@@ -1774,6 +1796,11 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-02-01,Montreal,KP0000,north-west,petroleum,0.4768,
 2022-03-01,Montreal,KP0000,north-west,petroleum,0.4855,
 2022-04-01,Montreal,KP0000,north-west,petroleum,0.0,
+2022-05-01,Montreal,KP0000,north-west,petroleum,3.6147,
+2022-06-01,Montreal,KP0000,north-west,petroleum,0.0,
+2022-07-01,Montreal,KP0000,north-west,petroleum,0.0,
+2022-08-01,Montreal,KP0000,north-west,petroleum,0.0,
+2022-09-01,Montreal,KP0000,north-west,petroleum,3.7651,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.5732,5.4737
 2007-02-01,NormanWells,KP0044,south,domestic light,3.274,5.4737
 2007-03-01,NormanWells,KP0044,south,domestic light,3.6936,5.4737
@@ -1960,6 +1987,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-04-01,NormanWells,KP0044,south,domestic light,1.4933,2.6
 2022-05-01,NormanWells,KP0044,south,domestic light,1.023,2.6
 2022-06-01,NormanWells,KP0044,south,domestic light,1.3341,2.6
+2022-07-01,NormanWells,KP0044,south,domestic light,1.4,2.6
+2022-08-01,NormanWells,KP0044,south,domestic light,1.1,2.6
+2022-09-01,NormanWells,KP0044,south,domestic light,1.0,2.6
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,7.2357,
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0,
 2011-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,11.5812,
@@ -3827,3 +3857,18 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-04-01,Westspur,KP0000,north-east,MSM – Crude,6.6766,
 2022-04-01,Westspur,KP0000,north-east,NGL,0.3025,
 2022-04-01,Westspur,KP0000,north-east,SES – Crude,15.1324,
+2022-05-01,Westspur,KP0000,north-east,MSM – Crude,6.7537,
+2022-05-01,Westspur,KP0000,north-east,NGL,0.3044,
+2022-05-01,Westspur,KP0000,north-east,SES – Crude,15.3047,
+2022-06-01,Westspur,KP0000,north-east,MSM – Crude,6.5845,
+2022-06-01,Westspur,KP0000,north-east,NGL,0.3517,
+2022-06-01,Westspur,KP0000,north-east,SES – Crude,15.3368,
+2022-07-01,Westspur,KP0000,north-east,MSM – Crude,7.0675,
+2022-07-01,Westspur,KP0000,north-east,NGL,0.3323,
+2022-07-01,Westspur,KP0000,north-east,SES – Crude,14.643,
+2022-08-01,Westspur,KP0000,north-east,MSM – Crude,6.9024,
+2022-08-01,Westspur,KP0000,north-east,NGL,0.4094,
+2022-08-01,Westspur,KP0000,north-east,SES – Crude,15.8478,
+2022-09-01,Westspur,KP0000,north-east,MSM – Crude,7.0385,
+2022-09-01,Westspur,KP0000,north-east,NGL,0.3374,
+2022-09-01,Westspur,KP0000,north-east,SES – Crude,16.0668,

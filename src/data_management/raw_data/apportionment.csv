@@ -353,6 +353,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-04-01,EnbridgeMainline,KP0000,,582.62,582.62,
 2022-05-01,EnbridgeMainline,KP0000,,577.65,577.65,
 2022-06-01,EnbridgeMainline,KP0000,,575.18,575.18,
+2022-07-01,EnbridgeMainline,KP0000,,595.85,595.85,
+2022-08-01,EnbridgeMainline,KP0000,,620.83,611.67,
+2022-09-01,EnbridgeMainline,KP0000,,655.03,625.91,
 2016-01-01,EnbridgeMainline,KP0047,,136.88,,0.03
 2017-12-01,EnbridgeMainline,KP0047,,178.53,,0.05
 2019-10-01,EnbridgeMainline,KP0048,,197.53,,0.1
@@ -403,6 +406,8 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2021-12-01,EnbridgeMainline,KP0055,,113.11,,0.13
 2022-01-01,EnbridgeMainline,KP0055,,150.32,,0.17
 2022-02-01,EnbridgeMainline,KP0055,,127.8,,0.11
+2022-08-01,EnbridgeMainline,KP0055,,107.56,,0.02
+2022-09-01,EnbridgeMainline,KP0055,,113.14,,0.06
 2016-01-01,EnbridgeMainline,KP0056,,304.2,,0.16
 2016-02-01,EnbridgeMainline,KP0056,,297.35,,0.14
 2016-03-01,EnbridgeMainline,KP0056,,254.44,,0.02
@@ -493,6 +498,8 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2021-11-01,EnbridgeMainline,KP0072,,414.96,,0.12
 2021-12-01,EnbridgeMainline,KP0072,,446.63,,0.09
 2022-02-01,EnbridgeMainline,KP0072,,410.99,,0.1
+2022-08-01,EnbridgeMainline,KP0072,,350.33,,0.02
+2022-09-01,EnbridgeMainline,KP0072,,372.03,,0.06
 2021-12-01,EnbridgeMainline,KP0073,,361.47,,0.18
 2022-01-01,EnbridgeMainline,KP0073,,361.93,,0.21
 2010-07-01,Keystone,KP0020,18.11,16.32,,0.0
@@ -825,6 +832,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-04-01,NormanWells,KP0044,2.6,1.57,,0.0
 2022-05-01,NormanWells,KP0044,2.6,1.01,,0.0
 2022-06-01,NormanWells,KP0044,2.6,1.29,,0.0
+2022-07-01,NormanWells,KP0044,2.6,1.4,,0.0
+2022-08-01,NormanWells,KP0044,2.6,1.2,,0.0
+2022-09-01,NormanWells,KP0044,2.6,1.0,,0.0
 2006-01-01,TransMountain,KP0000,35.0,43.0,,0.19
 2006-02-01,TransMountain,KP0000,36.0,74.0,,0.52
 2006-03-01,TransMountain,KP0000,37.0,106.0,,0.65
