@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, most_common, idify, get_company_list, apply_system_id, set_cwd_to_script, updated_month_year
+from util import company_rename, most_common, idify, get_company_list, apply_system_id, set_cwd_to_script, updated_month_year, replace_what_why
 import ssl
 import json
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -48,17 +48,6 @@ def fix_columns(df):
 
 
 def process_english(df):
-
-    def replace_what_why(df, col_name, values):
-        new_col = []
-        for what in df[col_name]:
-            what = what.split(",")
-            what = [x.strip() for x in what]
-            what = [values[x] for x in what]
-            new_col.append(what)
-
-        df[col_name] = new_col
-        return df
 
     df = fix_columns(df)
     df['Substance'] = df['Substance'].replace({'Butane': 'Natural Gas Liquids'})

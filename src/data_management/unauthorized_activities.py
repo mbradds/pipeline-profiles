@@ -1,5 +1,5 @@
 import pandas as pd
-from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year
+from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year, replace_what_why
 import json
 from datetime import datetime
 set_cwd_to_script()
@@ -40,6 +40,11 @@ def optimize_json(df):
     df["Who Discovered The Event"] = df["Who Discovered The Event"].replace({"1st party (regulated company)": "1",
                                                                              "2nd party (contractor working for the regulated company)": "2",
                                                                              "3rd party (no connection to the regulated company)": "3"})
+    
+    df["Method Of Discovery"] = df["Method Of Discovery"].replace({"Aerial patrol": "a",
+                                                                   "Ground patrol": "g",
+                                                                   "Site visit": "s",
+                                                                   "Other": "o"})
 
     df = df.rename(columns={"Event Number": "id",
                             "Event Type": "et",
@@ -94,12 +99,12 @@ def process_ua(companies=False, remote=True, test=False, save=True):
         cause_list.append(cause)
     df["Basic Causes"] = cause_list
 
-    event_list = []
-    for event in df["Event Type"]:
-        event = event.split(";")
-        event = [x.strip() for x in event]
-        event_list.append(event)
-    df["Event Type"] = event_list
+
+    event_types = {"Vehicle Crossing": "v",
+                   "Ground Disturbance": "g",
+                   "Construction of a Facility": "c",
+                   "Damage to Pipe": "d"}
+    df = replace_what_why(df, "Event Type", event_types, ";")
 
     df = apply_not_specified(df, "Was Pipe Damaged")
     df = apply_not_specified(df, "Who Discovered The Event")

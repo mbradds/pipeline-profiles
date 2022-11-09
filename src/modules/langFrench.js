@@ -693,6 +693,13 @@ export const frenchDashboard = {
         click,
       },
       seriesInfo: {
+        et: {
+          v: { c: cerPalette.Sun, n: "Franchissement avec un véhicule" },
+          g: { c: cerPalette.Ocean, n: "Perturbation du sol" },
+          c: { c: cerPalette.Forest, n: "Construction d’une installation" },
+          d: { c: cerPalette.Flame, n: "Dommages à la conduite" },
+          ...nullInfo,
+        },
         wdi: {
           1: {
             c: cerPalette.Sun,
@@ -708,14 +715,15 @@ export const frenchDashboard = {
           },
           ...nullInfo,
         },
+        mod: {
+          a: { c: cerPalette.Ocean, n: "Patrouille aérienne" },
+          g: { c: cerPalette.Forest, n: "Patrouille au sol" },
+          s: { c: cerPalette.Sun, n: "Visite des lieux" },
+          o: { c: cerPalette.Aubergine, n: "Autre" },
+          ...nullInfo,
+        },
         wpd: yesNoInfo,
         wgd: yesNoInfo,
-        mod: {
-          ...nullInfo,
-        },
-        et: {
-          ...nullInfo,
-        },
       },
     },
   },

@@ -295,4 +295,15 @@ def updated_month_year(section):
     except:
         raise
         print("Cant set new update time for: ", section)
-    
+        
+        
+def replace_what_why(df, col_name, values, splitter=","):
+    new_col = []
+    for what in df[col_name]:
+        what = what.split(splitter)
+        what = [x.strip() for x in what]
+        what = [values[x] for x in what]
+        new_col.append(what)
+
+    df[col_name] = new_col
+    return df

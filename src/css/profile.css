@@ -15,8 +15,16 @@ General styles for all dashboards/sections
   font-size: 17px !important;
   line-height: 1.4375 !important;
 }
+#safety-env-navigation {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+.tab {
+  width: 100% !important;
+}
 .tablinks {
-  height: 91px !important;
+  height: 100% !important;
 }
 .profile-hide {
   display: none;

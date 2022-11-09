@@ -675,6 +675,13 @@ export const englishDashboard = {
         click,
       },
       seriesInfo: {
+        et: {
+          v: { c: cerPalette.Sun, n: "Vehicle Crossing" },
+          g: { c: cerPalette.Ocean, n: "Ground Disturbance" },
+          c: { c: cerPalette.Forest, n: "Construction of a Facility" },
+          d: { c: cerPalette.Flame, n: "Damage to Pipe" },
+          ...nullInfo,
+        },
         wdi: {
           1: {
             c: cerPalette.Sun,
@@ -690,14 +697,15 @@ export const englishDashboard = {
           },
           ...nullInfo,
         },
+        mod: {
+          a: { c: cerPalette.Ocean, n: "Aerial patrol" },
+          g: { c: cerPalette.Forest, n: "Ground patrol" },
+          s: { c: cerPalette.Sun, n: "Site visit" },
+          o: { c: cerPalette.Aubergine, n: "Other" },
+          ...nullInfo,
+        },
         wpd: yesNoInfo,
         wgd: yesNoInfo,
-        mod: {
-          ...nullInfo,
-        },
-        et: {
-          ...nullInfo,
-        },
       },
     },
   },
