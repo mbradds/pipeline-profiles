@@ -40,6 +40,10 @@ export const mapInits = {
     "In Progress": -2,
     Closed: -2,
   },
+  Brunswick: {
+    "In Progress": -1,
+    Closed: -1,
+  },
 };
 
 /**
