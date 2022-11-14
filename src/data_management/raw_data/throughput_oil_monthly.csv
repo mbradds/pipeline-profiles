@@ -409,470 +409,470 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-08-01,EnbridgeMainline,KP0015,east,domestic light / ngl,86.4603,
 2022-09-01,EnbridgeMainline,KP0015,east,domestic light / ngl,82.3932,
 2007-01-01,EnbridgeMainline,KP0016,east,domestic heavy,139.2885,288.1
-2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.0929,288.1
+2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.1858,576.2
 2007-02-01,EnbridgeMainline,KP0016,east,domestic heavy,132.5969,291.3
-2007-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.642,291.3
+2007-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,103.2841,582.6
 2007-03-01,EnbridgeMainline,KP0016,east,domestic heavy,118.5328,298.1
-2007-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.0103,298.1
+2007-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,112.0205,596.2
 2007-04-01,EnbridgeMainline,KP0016,east,domestic heavy,123.1216,293.0
-2007-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.3178,293.0
+2007-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.6356,586.0
 2007-05-01,EnbridgeMainline,KP0016,east,domestic heavy,127.2341,287.3
-2007-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,46.6536,287.3
+2007-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,93.3073,574.6
 2007-06-01,EnbridgeMainline,KP0016,east,domestic heavy,119.9855,278.0
-2007-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,47.3064,278.0
+2007-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,94.6127,556.0
 2007-07-01,EnbridgeMainline,KP0016,east,domestic heavy,127.762,276.1
-2007-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,49.2188,276.1
+2007-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,98.4377,552.2
 2007-08-01,EnbridgeMainline,KP0016,east,domestic heavy,123.7135,281.2
-2007-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.9376,281.2
+2007-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,103.8753,562.4
 2007-09-01,EnbridgeMainline,KP0016,east,domestic heavy,116.4316,281.7
-2007-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.4783,281.7
+2007-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.9566,563.4
 2007-10-01,EnbridgeMainline,KP0016,east,domestic heavy,120.8509,279.8
-2007-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.224,279.8
+2007-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,102.4481,559.6
 2007-11-01,EnbridgeMainline,KP0016,east,domestic heavy,125.0873,287.7
-2007-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.6739,287.7
+2007-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.3479,575.4
 2007-12-01,EnbridgeMainline,KP0016,east,domestic heavy,134.1027,288.0
-2007-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.7842,288.0
+2007-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,111.5683,576.0
 2008-01-01,EnbridgeMainline,KP0016,east,domestic heavy,136.4272,288.1
-2008-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.4645,288.1
+2008-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,112.929,576.2
 2008-02-01,EnbridgeMainline,KP0016,east,domestic heavy,141.0421,285.0
-2008-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,52.6881,285.0
+2008-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,105.3761,570.0
 2008-03-01,EnbridgeMainline,KP0016,east,domestic heavy,132.7328,285.9
-2008-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.9235,285.9
+2008-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,103.8471,571.8
 2008-04-01,EnbridgeMainline,KP0016,east,domestic heavy,135.1944,282.8
-2008-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,50.3552,282.8
+2008-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,100.7104,565.6
 2008-05-01,EnbridgeMainline,KP0016,east,domestic heavy,141.4441,275.3
-2008-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,43.6491,275.3
+2008-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,87.2983,550.6
 2008-06-01,EnbridgeMainline,KP0016,east,domestic heavy,134.2921,279.7
-2008-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,47.7119,279.7
+2008-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,95.4238,559.4
 2008-07-01,EnbridgeMainline,KP0016,east,domestic heavy,127.3313,286.6
-2008-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,50.266,286.6
+2008-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,100.532,573.2
 2008-08-01,EnbridgeMainline,KP0016,east,domestic heavy,132.0225,291.9
-2008-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.6017,291.9
+2008-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,109.2034,583.8
 2008-09-01,EnbridgeMainline,KP0016,east,domestic heavy,125.4597,285.0
-2008-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.3306,285.0
+2008-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.6613,570.0
 2008-10-01,EnbridgeMainline,KP0016,east,domestic heavy,136.2436,284.0
-2008-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.9976,284.0
+2008-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,113.9951,568.0
 2008-11-01,EnbridgeMainline,KP0016,east,domestic heavy,138.0188,297.2
-2008-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,60.753,297.2
+2008-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,121.5059,594.4
 2008-12-01,EnbridgeMainline,KP0016,east,domestic heavy,138.9709,298.6
-2008-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.5844,298.6
+2008-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.1687,597.2
 2009-01-01,EnbridgeMainline,KP0016,east,domestic heavy,140.5785,298.1
-2009-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.5306,298.1
+2009-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,113.0613,596.2
 2009-02-01,EnbridgeMainline,KP0016,east,domestic heavy,133.8855,290.3
-2009-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,53.8489,290.3
+2009-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,107.6977,580.6
 2009-03-01,EnbridgeMainline,KP0016,east,domestic heavy,132.7639,322.9
-2009-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,50.0238,322.9
+2009-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,100.0476,645.8
 2009-04-01,EnbridgeMainline,KP0016,east,domestic heavy,126.7706,313.5
-2009-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,49.2282,313.5
+2009-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,98.4563,627.0
 2009-05-01,EnbridgeMainline,KP0016,east,domestic heavy,129.7955,323.7
-2009-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,50.6143,323.7
+2009-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,101.2286,647.4
 2009-06-01,EnbridgeMainline,KP0016,east,domestic heavy,138.0206,326.3
-2009-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.3471,326.3
+2009-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.6942,652.6
 2009-07-01,EnbridgeMainline,KP0016,east,domestic heavy,139.8177,320.7
-2009-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.8158,320.7
+2009-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,129.6317,641.4
 2009-08-01,EnbridgeMainline,KP0016,east,domestic heavy,135.4815,325.9
-2009-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,59.9521,325.9
+2009-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,119.9043,651.8
 2009-09-01,EnbridgeMainline,KP0016,east,domestic heavy,123.9818,320.4
-2009-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.607,320.4
+2009-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,125.2141,640.8
 2009-10-01,EnbridgeMainline,KP0016,east,domestic heavy,118.8219,304.9
-2009-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.7679,304.9
+2009-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.5357,609.8
 2009-11-01,EnbridgeMainline,KP0016,east,domestic heavy,126.0799,319.7
-2009-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.5903,319.7
+2009-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,127.1806,639.4
 2009-12-01,EnbridgeMainline,KP0016,east,domestic heavy,136.9859,316.1
-2009-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.3848,316.1
+2009-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,124.7697,632.2
 2010-01-01,EnbridgeMainline,KP0016,east,domestic heavy,134.1084,326.6
-2010-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,53.847,326.6
+2010-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,107.694,653.2
 2010-02-01,EnbridgeMainline,KP0016,east,domestic heavy,139.641,324.0
-2010-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,48.2061,324.0
+2010-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,96.4122,648.0
 2010-03-01,EnbridgeMainline,KP0016,east,domestic heavy,149.7803,322.5
-2010-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,47.541,322.5
+2010-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,95.082,645.0
 2010-04-01,EnbridgeMainline,KP0016,east,domestic heavy,146.7503,324.6
-2010-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,46.9959,324.6
+2010-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,93.9918,649.2
 2010-05-01,EnbridgeMainline,KP0016,east,domestic heavy,155.4624,320.4
-2010-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.9331,320.4
+2010-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,111.8663,640.8
 2010-06-01,EnbridgeMainline,KP0016,east,domestic heavy,142.1086,322.9
-2010-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.4528,322.9
+2010-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.9056,645.8
 2010-07-01,EnbridgeMainline,KP0016,east,domestic heavy,137.6919,314.7
-2010-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.379,314.7
+2010-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.758,629.4
 2010-08-01,EnbridgeMainline,KP0016,east,domestic heavy,112.4569,309.6
-2010-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.0081,309.6
+2010-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,112.0162,619.2
 2010-09-01,EnbridgeMainline,KP0016,east,domestic heavy,95.2203,303.7
-2010-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.011,303.7
+2010-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.022,607.4
 2010-10-01,EnbridgeMainline,KP0016,east,domestic heavy,126.6832,366.9
-2010-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,50.1796,366.9
+2010-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,100.3592,733.8
 2010-11-01,EnbridgeMainline,KP0016,east,domestic heavy,127.8787,393.9
-2010-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,59.0647,393.9
+2010-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,118.1294,787.8
 2010-12-01,EnbridgeMainline,KP0016,east,domestic heavy,132.7944,369.9
-2010-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.3479,369.9
+2010-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.6959,739.8
 2011-01-01,EnbridgeMainline,KP0016,east,domestic heavy,136.2687,357.9
-2011-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,57.495,357.9
+2011-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,114.9901,715.8
 2011-02-01,EnbridgeMainline,KP0016,east,domestic heavy,148.9843,354.0
-2011-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,59.6645,354.0
+2011-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,119.3291,708.0
 2011-03-01,EnbridgeMainline,KP0016,east,domestic heavy,137.3436,348.1
-2011-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.3062,348.1
+2011-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,108.6125,696.2
 2011-04-01,EnbridgeMainline,KP0016,east,domestic heavy,125.1436,355.0
-2011-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,50.2321,355.0
+2011-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,100.4642,710.0
 2011-05-01,EnbridgeMainline,KP0016,east,domestic heavy,128.0357,361.1
-2011-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.0631,361.1
+2011-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,102.1262,722.2
 2011-06-01,EnbridgeMainline,KP0016,east,domestic heavy,129.9692,349.7
-2011-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.5972,349.7
+2011-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,109.1944,699.4
 2011-07-01,EnbridgeMainline,KP0016,east,domestic heavy,141.2809,332.1
-2011-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,52.956,332.1
+2011-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,105.912,664.2
 2011-08-01,EnbridgeMainline,KP0016,east,domestic heavy,146.8141,331.2
-2011-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.7501,331.2
+2011-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,109.5002,662.4
 2011-09-01,EnbridgeMainline,KP0016,east,domestic heavy,133.992,321.9
-2011-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.2591,321.9
+2011-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,108.5182,643.8
 2011-10-01,EnbridgeMainline,KP0016,east,domestic heavy,136.2492,345.0
-2011-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,57.3376,345.0
+2011-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,114.6753,690.0
 2011-11-01,EnbridgeMainline,KP0016,east,domestic heavy,137.8738,344.9
-2011-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.5253,344.9
+2011-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,111.0505,689.8
 2011-12-01,EnbridgeMainline,KP0016,east,domestic heavy,140.272,339.1
-2011-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,60.0507,339.1
+2011-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,120.1014,678.2
 2012-01-01,EnbridgeMainline,KP0016,east,domestic heavy,143.6225,360.9
-2012-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.0987,360.9
+2012-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,124.1973,721.8
 2012-02-01,EnbridgeMainline,KP0016,east,domestic heavy,146.6526,355.1
-2012-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.7856,355.1
+2012-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,125.5712,710.2
 2012-03-01,EnbridgeMainline,KP0016,east,domestic heavy,138.1311,342.2
-2012-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.4031,342.2
+2012-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.8063,684.4
 2012-04-01,EnbridgeMainline,KP0016,east,domestic heavy,135.347,360.1
-2012-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.9875,360.1
+2012-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,125.975,720.2
 2012-05-01,EnbridgeMainline,KP0016,east,domestic heavy,143.3573,357.1
-2012-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,57.6389,357.1
+2012-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,115.2777,714.2
 2012-06-01,EnbridgeMainline,KP0016,east,domestic heavy,145.3698,346.1
-2012-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.0852,346.1
+2012-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.1705,692.2
 2012-07-01,EnbridgeMainline,KP0016,east,domestic heavy,150.8072,345.3
-2012-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.601,345.3
+2012-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,111.2019,690.6
 2012-08-01,EnbridgeMainline,KP0016,east,domestic heavy,134.3923,332.3
-2012-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.4842,332.3
+2012-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.9683,664.6
 2012-09-01,EnbridgeMainline,KP0016,east,domestic heavy,115.7699,329.9
-2012-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.0019,329.9
+2012-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.0038,659.8
 2012-10-01,EnbridgeMainline,KP0016,east,domestic heavy,124.2624,315.8
-2012-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.3231,315.8
+2012-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,112.6462,631.6
 2012-11-01,EnbridgeMainline,KP0016,east,domestic heavy,136.0242,316.2
-2012-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,60.1348,316.2
+2012-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,120.2695,632.4
 2012-12-01,EnbridgeMainline,KP0016,east,domestic heavy,147.9228,337.5
-2012-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.3343,337.5
+2012-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.6686,675.0
 2013-01-01,EnbridgeMainline,KP0016,east,domestic heavy,154.3013,340.0
-2013-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.4499,340.0
+2013-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,128.8999,680.0
 2013-02-01,EnbridgeMainline,KP0016,east,domestic heavy,161.499,352.8
-2013-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.9069,352.8
+2013-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,127.8137,705.6
 2013-03-01,EnbridgeMainline,KP0016,east,domestic heavy,152.899,349.8
-2013-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.7179,349.8
+2013-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,125.4358,699.6
 2013-04-01,EnbridgeMainline,KP0016,east,domestic heavy,142.2584,356.3
-2013-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,53.4118,356.3
+2013-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,106.8237,712.6
 2013-05-01,EnbridgeMainline,KP0016,east,domestic heavy,132.4634,351.6
-2013-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.1154,351.6
+2013-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,108.2307,703.2
 2013-05-01,EnbridgeMainline,KP0016,east,foreign light,0.0,351.6
 2013-06-01,EnbridgeMainline,KP0016,east,domestic heavy,150.9076,353.9
-2013-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.3115,353.9
+2013-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,124.6229,707.8
 2013-07-01,EnbridgeMainline,KP0016,east,domestic heavy,146.2505,348.8
-2013-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,65.2867,348.8
+2013-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,130.5733,697.6
 2013-08-01,EnbridgeMainline,KP0016,east,domestic heavy,149.6267,347.521
-2013-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.6605,347.521
+2013-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,127.321,695.042
 2013-09-01,EnbridgeMainline,KP0016,east,domestic heavy,141.9586,354.0
-2013-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.0777,354.0
+2013-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.1553,708.0
 2013-10-01,EnbridgeMainline,KP0016,east,domestic heavy,155.8499,350.8
-2013-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.6506,350.8
+2013-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,133.3011,701.6
 2013-11-01,EnbridgeMainline,KP0016,east,domestic heavy,146.663,355.9
-2013-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.5059,355.9
+2013-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.0118,711.8
 2013-12-01,EnbridgeMainline,KP0016,east,domestic heavy,152.063,350.2
-2013-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.1677,350.2
+2013-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,144.3354,700.4
 2014-01-01,EnbridgeMainline,KP0016,east,domestic heavy,157.2,357.003
-2014-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.85,357.003
+2014-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.7,714.006
 2014-02-01,EnbridgeMainline,KP0016,east,domestic heavy,158.1,366.735
-2014-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.3,366.735
+2014-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.6,733.47
 2014-03-01,EnbridgeMainline,KP0016,east,domestic heavy,173.2,374.579
-2014-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.35,374.579
+2014-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,134.7,749.158
 2014-04-01,EnbridgeMainline,KP0016,east,domestic heavy,168.4,374.967
-2014-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.6,374.967
+2014-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,129.2,749.934
 2014-05-01,EnbridgeMainline,KP0016,east,domestic heavy,176.5,375.205
-2014-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.35,375.205
+2014-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,134.7,750.41
 2014-06-01,EnbridgeMainline,KP0016,east,domestic heavy,191.4,382.477
-2014-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.3,382.477
+2014-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.6,764.954
 2014-07-01,EnbridgeMainline,KP0016,east,domestic heavy,188.4,365.219
-2014-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.75,365.219
+2014-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.5,730.438
 2014-08-01,EnbridgeMainline,KP0016,east,domestic heavy,182.2,365.317
-2014-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,71.3,365.317
+2014-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,142.6,730.634
 2014-09-01,EnbridgeMainline,KP0016,east,domestic heavy,187.4,371.565
-2014-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,68.25,371.565
+2014-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,136.5,743.13
 2014-10-01,EnbridgeMainline,KP0016,east,domestic heavy,166.3,378.894
-2014-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.9,378.894
+2014-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.8,757.788
 2014-11-01,EnbridgeMainline,KP0016,east,domestic heavy,183.5,383.313
-2014-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.05,383.313
+2014-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,144.1,766.626
 2014-12-01,EnbridgeMainline,KP0016,east,domestic heavy,200.9,374.089
-2014-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,75.4,374.089
+2014-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,150.8,748.178
 2015-01-01,EnbridgeMainline,KP0016,east,domestic heavy,199.4,378.214
-2015-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,75.8,378.214
+2015-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,151.6,756.428
 2015-01-01,EnbridgeMainline,KP0016,east,foreign light,4.2,378.214
 2015-02-01,EnbridgeMainline,KP0016,east,domestic heavy,198.7,371.017
-2015-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.5,371.017
+2015-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.0,742.034
 2015-02-01,EnbridgeMainline,KP0016,east,foreign light,8.9,371.017
 2015-03-01,EnbridgeMainline,KP0016,east,domestic heavy,192.7,385.767
-2015-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,70.45,385.767
+2015-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,140.9,771.534
 2015-03-01,EnbridgeMainline,KP0016,east,foreign light,13.0,385.767
 2015-04-01,EnbridgeMainline,KP0016,east,domestic heavy,216.0,376.57
-2015-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.75,376.57
+2015-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,127.5,753.14
 2015-04-01,EnbridgeMainline,KP0016,east,foreign light,8.0,376.57
 2015-05-01,EnbridgeMainline,KP0016,east,domestic heavy,204.6,384.333
-2015-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.35,384.333
+2015-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,102.7,768.666
 2015-05-01,EnbridgeMainline,KP0016,east,foreign light,11.3,384.333
 2015-06-01,EnbridgeMainline,KP0016,east,domestic heavy,199.5,378.931
-2015-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.2,378.931
+2015-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,108.4,757.862
 2015-06-01,EnbridgeMainline,KP0016,east,foreign light,11.4,378.931
 2015-07-01,EnbridgeMainline,KP0016,east,domestic heavy,212.2,414.886
-2015-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,57.4,414.886
+2015-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,114.8,829.772
 2015-07-01,EnbridgeMainline,KP0016,east,foreign light,9.7,414.886
 2015-08-01,EnbridgeMainline,KP0016,east,domestic heavy,227.2,427.72
-2015-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.8,427.72
+2015-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,129.6,855.44
 2015-08-01,EnbridgeMainline,KP0016,east,foreign light,8.4,427.72
 2015-09-01,EnbridgeMainline,KP0016,east,domestic heavy,237.6,404.504
-2015-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.05,404.504
+2015-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.1,809.008
 2015-09-01,EnbridgeMainline,KP0016,east,foreign light,5.3,404.504
 2015-10-01,EnbridgeMainline,KP0016,east,domestic heavy,205.1,416.674
-2015-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.1,416.674
+2015-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,108.2,833.348
 2015-10-01,EnbridgeMainline,KP0016,east,foreign light,5.8,416.674
 2015-11-01,EnbridgeMainline,KP0016,east,domestic heavy,230.8,427.419
-2015-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,59.5,427.419
+2015-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,119.0,854.838
 2015-11-01,EnbridgeMainline,KP0016,east,foreign light,10.3,427.419
 2015-12-01,EnbridgeMainline,KP0016,east,domestic heavy,235.2,441.374
-2015-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.4,441.374
+2015-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,134.8,882.748
 2015-12-01,EnbridgeMainline,KP0016,east,foreign light,20.8,441.374
 2016-01-01,EnbridgeMainline,KP0016,east,domestic heavy,250.3,447.073
-2016-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,71.0,447.073
+2016-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,142.0,894.146
 2016-01-01,EnbridgeMainline,KP0016,east,foreign light,19.1,447.073
 2016-02-01,EnbridgeMainline,KP0016,east,domestic heavy,237.4,449.798
-2016-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.3,449.798
+2016-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,144.6,899.596
 2016-02-01,EnbridgeMainline,KP0016,east,foreign light,20.3,449.798
 2016-03-01,EnbridgeMainline,KP0016,east,domestic heavy,238.4,435.837
-2016-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.85,435.837
+2016-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.7,871.674
 2016-03-01,EnbridgeMainline,KP0016,east,foreign light,21.0,435.837
 2016-04-01,EnbridgeMainline,KP0016,east,domestic heavy,242.0,450.73
-2016-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,56.35,450.73
+2016-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,112.7,901.46
 2016-04-01,EnbridgeMainline,KP0016,east,foreign light,21.3,450.73
 2016-05-01,EnbridgeMainline,KP0016,east,domestic heavy,217.3,442.031
-2016-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,53.9,442.031
+2016-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,107.8,884.062
 2016-05-01,EnbridgeMainline,KP0016,east,foreign light,18.0,442.031
 2016-06-01,EnbridgeMainline,KP0016,east,domestic heavy,227.0,439.247
-2016-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,49.05,439.247
+2016-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,98.1,878.494
 2016-06-01,EnbridgeMainline,KP0016,east,foreign light,25.5,439.247
 2016-07-01,EnbridgeMainline,KP0016,east,domestic heavy,232.2,450.748
-2016-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.65,450.748
+2016-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,109.3,901.496
 2016-07-01,EnbridgeMainline,KP0016,east,foreign light,23.2,450.748
 2016-08-01,EnbridgeMainline,KP0016,east,domestic heavy,246.6,424.251
-2016-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,58.8,424.251
+2016-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,117.6,848.502
 2016-08-01,EnbridgeMainline,KP0016,east,foreign light,20.0,424.251
 2016-09-01,EnbridgeMainline,KP0016,east,domestic heavy,229.3,414.165
-2016-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,60.8,414.165
+2016-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,121.6,828.33
 2016-09-01,EnbridgeMainline,KP0016,east,foreign light,22.7,414.165
 2016-10-01,EnbridgeMainline,KP0016,east,domestic heavy,223.5,430.813
-2016-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,60.55,430.813
+2016-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,121.1,861.626
 2016-10-01,EnbridgeMainline,KP0016,east,foreign light,21.3,430.813
 2016-11-01,EnbridgeMainline,KP0016,east,domestic heavy,246.5,436.491
-2016-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,65.9,436.491
+2016-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.8,872.982
 2016-11-01,EnbridgeMainline,KP0016,east,foreign light,22.9,436.491
 2016-12-01,EnbridgeMainline,KP0016,east,domestic heavy,252.9,444.74
-2016-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,70.45,444.74
+2016-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,140.9,889.48
 2016-12-01,EnbridgeMainline,KP0016,east,foreign light,22.5,444.74
 2017-01-01,EnbridgeMainline,KP0016,east,domestic heavy,261.2,446.348
-2017-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.95,446.348
+2017-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.9,892.696
 2017-01-01,EnbridgeMainline,KP0016,east,foreign light,23.3,446.348
 2017-02-01,EnbridgeMainline,KP0016,east,domestic heavy,250.5,448.784
-2017-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.05,448.784
+2017-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,134.1,897.568
 2017-02-01,EnbridgeMainline,KP0016,east,foreign light,21.3,448.784
 2017-03-01,EnbridgeMainline,KP0016,east,domestic heavy,259.5,452.398
-2017-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.1,452.398
+2017-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.2,904.796
 2017-03-01,EnbridgeMainline,KP0016,east,foreign light,23.7,452.398
 2017-04-01,EnbridgeMainline,KP0016,east,domestic heavy,269.9,457.049
-2017-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,54.5,457.049
+2017-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,109.0,914.098
 2017-04-01,EnbridgeMainline,KP0016,east,foreign light,24.3,457.049
 2017-05-01,EnbridgeMainline,KP0016,east,domestic heavy,254.9,444.138
-2017-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,59.55,444.138
+2017-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,119.1,888.276
 2017-05-01,EnbridgeMainline,KP0016,east,foreign light,17.7,444.138
 2017-06-01,EnbridgeMainline,KP0016,east,domestic heavy,243.7,450.612
-2017-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.6,450.612
+2017-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,111.2,901.224
 2017-06-01,EnbridgeMainline,KP0016,east,foreign light,17.6,450.612
 2017-07-01,EnbridgeMainline,KP0016,east,domestic heavy,253.2,454.0
-2017-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.7,454.0
+2017-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,127.4,908.0
 2017-07-01,EnbridgeMainline,KP0016,east,foreign light,20.2,454.0
 2017-08-01,EnbridgeMainline,KP0016,east,domestic heavy,257.2,444.0
-2017-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.55,444.0
+2017-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.1,888.0
 2017-08-01,EnbridgeMainline,KP0016,east,foreign light,15.5,444.0
 2017-09-01,EnbridgeMainline,KP0016,east,domestic heavy,262.0,424.0
-2017-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,57.65,424.0
+2017-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,115.3,848.0
 2017-09-01,EnbridgeMainline,KP0016,east,foreign light,13.9,424.0
 2017-10-01,EnbridgeMainline,KP0016,east,domestic heavy,256.6,448.0
-2017-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.6,448.0
+2017-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,111.2,896.0
 2017-10-01,EnbridgeMainline,KP0016,east,foreign light,16.5,448.0
 2017-11-01,EnbridgeMainline,KP0016,east,domestic heavy,274.5,455.0
-2017-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.75,455.0
+2017-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.5,910.0
 2017-11-01,EnbridgeMainline,KP0016,east,foreign light,16.7,455.0
 2017-12-01,EnbridgeMainline,KP0016,east,domestic heavy,283.0,446.0
-2017-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,65.9,446.0
+2017-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.8,892.0
 2017-12-01,EnbridgeMainline,KP0016,east,foreign light,19.5,446.0
 2018-01-01,EnbridgeMainline,KP0016,east,domestic heavy,271.7,458.0
-2018-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.15,458.0
+2018-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.3,916.0
 2018-01-01,EnbridgeMainline,KP0016,east,foreign light,13.3,458.0
 2018-02-01,EnbridgeMainline,KP0016,east,domestic heavy,267.1,440.0
-2018-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.65,440.0
+2018-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.3,880.0
 2018-02-01,EnbridgeMainline,KP0016,east,foreign light,10.6,440.0
 2018-03-01,EnbridgeMainline,KP0016,east,domestic heavy,265.8,440.0
-2018-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,70.7,440.0
+2018-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,141.4,880.0
 2018-03-01,EnbridgeMainline,KP0016,east,foreign light,3.9,440.0
 2018-04-01,EnbridgeMainline,KP0016,east,domestic heavy,265.4,439.0
-2018-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,74.1,439.0
+2018-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,148.2,878.0
 2018-04-01,EnbridgeMainline,KP0016,east,foreign light,6.4,439.0
 2018-05-01,EnbridgeMainline,KP0016,east,domestic heavy,281.7,439.0
-2018-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,63.15,439.0
+2018-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,126.3,878.0
 2018-05-01,EnbridgeMainline,KP0016,east,foreign light,8.2,439.0
 2018-06-01,EnbridgeMainline,KP0016,east,domestic heavy,279.7,432.0
-2018-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.7,432.0
+2018-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,129.4,864.0
 2018-06-01,EnbridgeMainline,KP0016,east,foreign light,11.4,432.0
 2018-07-01,EnbridgeMainline,KP0016,east,domestic heavy,269.4,437.005
-2018-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.95,437.005
+2018-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.9,874.01
 2018-07-01,EnbridgeMainline,KP0016,east,foreign light,8.2,437.005
 2018-08-01,EnbridgeMainline,KP0016,east,domestic heavy,261.5,432.39
-2018-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,70.5,432.39
+2018-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,141.0,864.78
 2018-08-01,EnbridgeMainline,KP0016,east,foreign light,8.6,432.39
 2018-09-01,EnbridgeMainline,KP0016,east,domestic heavy,255.1,430.771
-2018-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.8,430.771
+2018-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.6,861.542
 2018-09-01,EnbridgeMainline,KP0016,east,foreign light,9.6,430.771
 2018-10-01,EnbridgeMainline,KP0016,east,domestic heavy,257.9,448.581
-2018-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,71.85,448.581
+2018-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,143.7,897.162
 2018-10-01,EnbridgeMainline,KP0016,east,foreign light,6.6,448.581
 2018-11-01,EnbridgeMainline,KP0016,east,domestic heavy,273.1,448.2
-2018-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,82.25,448.2
+2018-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,164.5,896.4
 2018-11-01,EnbridgeMainline,KP0016,east,foreign light,5.1,448.2
 2018-12-01,EnbridgeMainline,KP0016,east,domestic heavy,267.2,453.422
-2018-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,78.05,453.422
+2018-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,156.1,906.844
 2018-12-01,EnbridgeMainline,KP0016,east,foreign light,6.1,453.422
 2019-01-01,EnbridgeMainline,KP0016,east,domestic heavy,265.2,446.0
-2019-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,78.1,446.0
+2019-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,156.2,892.0
 2019-01-01,EnbridgeMainline,KP0016,east,foreign light,11.8,446.0
 2019-02-01,EnbridgeMainline,KP0016,east,domestic heavy,258.0,453.0
-2019-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,78.7,453.0
+2019-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,157.4,906.0
 2019-02-01,EnbridgeMainline,KP0016,east,foreign light,11.6,453.0
 2019-03-01,EnbridgeMainline,KP0016,east,domestic heavy,272.7,446.0
-2019-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,76.4,446.0
+2019-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,152.8,892.0
 2019-03-01,EnbridgeMainline,KP0016,east,foreign light,9.3,446.0
 2019-04-01,EnbridgeMainline,KP0016,east,domestic heavy,263.9,445.0
-2019-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.3,445.0
+2019-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,144.6,890.0
 2019-04-01,EnbridgeMainline,KP0016,east,foreign light,6.8,445.0
 2019-05-01,EnbridgeMainline,KP0016,east,domestic heavy,256.5,443.0
-2019-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.9,443.0
+2019-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.8,886.0
 2019-05-01,EnbridgeMainline,KP0016,east,foreign light,10.1,443.0
 2019-06-01,EnbridgeMainline,KP0016,east,domestic heavy,278.8,458.0
-2019-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,75.55,458.0
+2019-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,151.1,916.0
 2019-06-01,EnbridgeMainline,KP0016,east,foreign light,11.7,458.0
 2019-07-01,EnbridgeMainline,KP0016,east,domestic heavy,279.3937,460.905
-2019-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,77.3863,460.905
+2019-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,154.7725,921.81
 2019-07-01,EnbridgeMainline,KP0016,east,foreign light,13.7618,460.905
 2019-08-01,EnbridgeMainline,KP0016,east,domestic heavy,266.4228,446.715
-2019-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,78.8088,446.715
+2019-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,157.6175,893.43
 2019-08-01,EnbridgeMainline,KP0016,east,foreign light,15.7942,446.715
 2019-09-01,EnbridgeMainline,KP0016,east,domestic heavy,249.5672,453.097
-2019-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,71.1316,453.097
+2019-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,142.2631,906.194
 2019-09-01,EnbridgeMainline,KP0016,east,foreign light,13.3615,453.097
 2019-10-01,EnbridgeMainline,KP0016,east,domestic heavy,264.0,443.0
-2019-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.7,443.0
+2019-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.4,886.0
 2019-10-01,EnbridgeMainline,KP0016,east,foreign light,20.1,443.0
 2019-11-01,EnbridgeMainline,KP0016,east,domestic heavy,275.5,441.0
-2019-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,65.65,441.0
+2019-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.3,882.0
 2019-11-01,EnbridgeMainline,KP0016,east,foreign light,22.0,441.0
 2019-12-01,EnbridgeMainline,KP0016,east,domestic heavy,274.7,454.0
-2019-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,80.35,454.0
+2019-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,160.7,908.0
 2019-12-01,EnbridgeMainline,KP0016,east,foreign light,16.7,454.0
 2020-01-01,EnbridgeMainline,KP0016,east,domestic heavy,275.5762,473.0
-2020-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,79.2713,473.0
+2020-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,158.5425,946.0
 2020-01-01,EnbridgeMainline,KP0016,east,foreign light,8.8933,473.0
 2020-02-01,EnbridgeMainline,KP0016,east,domestic heavy,288.1714,462.0
-2020-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,81.079,462.0
+2020-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,162.158,924.0
 2020-02-01,EnbridgeMainline,KP0016,east,foreign light,13.8774,462.0
 2020-03-01,EnbridgeMainline,KP0016,east,domestic heavy,283.0202,475.0
-2020-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,79.2181,475.0
+2020-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,158.4363,950.0
 2020-03-01,EnbridgeMainline,KP0016,east,foreign light,7.6872,475.0
 2020-04-01,EnbridgeMainline,KP0016,east,domestic heavy,247.6397,460.474
-2020-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.3662,460.474
+2020-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,128.7324,920.948
 2020-04-01,EnbridgeMainline,KP0016,east,foreign light,8.6426,460.474
 2020-05-01,EnbridgeMainline,KP0016,east,domestic heavy,227.6119,473.332
-2020-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,76.1273,473.332
+2020-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,152.2546,946.664
 2020-05-01,EnbridgeMainline,KP0016,east,foreign light,10.3629,473.332
 2020-06-01,EnbridgeMainline,KP0016,east,domestic heavy,255.1825,469.789
-2020-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,64.7526,469.789
+2020-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,129.5052,939.578
 2020-06-01,EnbridgeMainline,KP0016,east,foreign light,2.7089,469.789
 2020-07-01,EnbridgeMainline,KP0016,east,domestic heavy,267.6273,468.066
-2020-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,73.2698,468.066
+2020-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,146.5395,936.132
 2020-07-01,EnbridgeMainline,KP0016,east,foreign light,3.7874,468.066
 2020-08-01,EnbridgeMainline,KP0016,east,domestic heavy,256.4449,452.892
-2020-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,73.0992,452.892
+2020-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,146.1985,905.784
 2020-08-01,EnbridgeMainline,KP0016,east,foreign light,12.5809,452.892
 2020-09-01,EnbridgeMainline,KP0016,east,domestic heavy,246.1806,446.854
-2020-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.7582,446.854
+2020-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.5164,893.708
 2020-09-01,EnbridgeMainline,KP0016,east,foreign light,15.2451,446.854
 2020-10-01,EnbridgeMainline,KP0016,east,domestic heavy,285.5465,458.05
-2020-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,55.1796,458.05
+2020-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.3592,916.1
 2020-10-01,EnbridgeMainline,KP0016,east,foreign light,9.4316,458.05
 2020-11-01,EnbridgeMainline,KP0016,east,domestic heavy,293.9325,457.323
-2020-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.8976,457.323
+2020-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.7952,914.646
 2020-11-01,EnbridgeMainline,KP0016,east,foreign light,9.5487,457.323
 2020-12-01,EnbridgeMainline,KP0016,east,domestic heavy,285.9008,458.348
-2020-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,70.1762,458.348
+2020-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,140.3524,916.696
 2020-12-01,EnbridgeMainline,KP0016,east,foreign light,5.1696,458.348
 2021-01-01,EnbridgeMainline,KP0016,east,domestic heavy,304.5031,468.569
-2021-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.7065,468.569
+2021-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.413,937.138
 2021-01-01,EnbridgeMainline,KP0016,east,foreign light,1.8718,468.569
 2021-02-01,EnbridgeMainline,KP0016,east,domestic heavy,290.8334,459.491
-2021-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,74.2908,459.491
+2021-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,148.5817,918.982
 2021-02-01,EnbridgeMainline,KP0016,east,foreign light,2.1476,459.491
 2021-03-01,EnbridgeMainline,KP0016,east,domestic heavy,290.0473,452.113
-2021-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,62.2479,452.113
+2021-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,124.4959,904.226
 2021-03-01,EnbridgeMainline,KP0016,east,foreign light,1.5688,452.113
 2021-04-01,EnbridgeMainline,KP0016,east,domestic heavy,284.6545,453.07
-2021-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,51.4136,453.07
+2021-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,102.8272,906.14
 2021-04-01,EnbridgeMainline,KP0016,east,foreign light,2.373,453.07
 2021-05-01,EnbridgeMainline,KP0016,east,domestic heavy,305.858,454.473
-2021-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,58.6625,454.473
+2021-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,117.3251,908.946
 2021-05-01,EnbridgeMainline,KP0016,east,foreign light,3.5567,454.473
 2021-06-01,EnbridgeMainline,KP0016,east,domestic heavy,299.1955,459.691
-2021-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,65.9786,459.691
+2021-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.9572,919.382
 2021-06-01,EnbridgeMainline,KP0016,east,foreign light,2.6256,459.691
 2021-07-01,EnbridgeMainline,KP0016,east,domestic heavy,300.0449,461.419
-2021-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.2558,461.419
+2021-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.5117,922.838
 2021-07-01,EnbridgeMainline,KP0016,east,foreign light,2.5414,461.419
 2021-08-01,EnbridgeMainline,KP0016,east,domestic heavy,279.5963,437.283
-2021-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,67.8705,437.283
+2021-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.7411,874.566
 2021-08-01,EnbridgeMainline,KP0016,east,foreign light,2.524,437.283
 2021-09-01,EnbridgeMainline,KP0016,east,domestic heavy,282.0277,447.152
-2021-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.3098,447.152
+2021-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.6197,894.304
 2021-09-01,EnbridgeMainline,KP0016,east,foreign light,0.3347,447.152
 2021-10-01,EnbridgeMainline,KP0016,east,domestic heavy,297.5,476.523
-2021-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.85,476.523
+2021-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.7,953.046
 2021-10-01,EnbridgeMainline,KP0016,east,foreign light,0.0,476.523
 2021-11-01,EnbridgeMainline,KP0016,east,domestic heavy,343.7,516.661
-2021-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,76.05,516.661
+2021-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,152.1,1033.322
 2021-11-01,EnbridgeMainline,KP0016,east,foreign light,0.0,516.661
 2021-12-01,EnbridgeMainline,KP0016,east,domestic heavy,359.4,519.931
-2021-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.55,519.931
+2021-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.1,1039.862
 2021-12-01,EnbridgeMainline,KP0016,east,foreign light,0.0,519.931
 2022-01-01,EnbridgeMainline,KP0016,east,domestic heavy,352.3,519.082
-2022-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.8,519.082
+2022-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.6,1038.164
 2022-02-01,EnbridgeMainline,KP0016,east,domestic heavy,325.8,523.59
-2022-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.75,523.59
+2022-02-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.5,1047.18
 2022-03-01,EnbridgeMainline,KP0016,east,domestic heavy,324.6454,520.963
-2022-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.165,520.963
+2022-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,138.33,1041.926
 2022-04-01,EnbridgeMainline,KP0016,east,domestic heavy,301.832,511.423
-2022-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,61.6111,511.423
+2022-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,123.2223,1022.846
 2022-05-01,EnbridgeMainline,KP0016,east,domestic heavy,323.6598,507.675
-2022-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,65.64,507.675
+2022-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,131.2799,1015.35
 2022-06-01,EnbridgeMainline,KP0016,east,domestic heavy,313.0192,527.559
-2022-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,66.394,527.559
+2022-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,132.7879,1055.118
 2022-06-01,EnbridgeMainline,KP0016,east,foreign light,0.9098,527.559
 2022-07-01,EnbridgeMainline,KP0016,east,domestic heavy,326.8707,520.6
-2022-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,69.6402,520.6
+2022-07-01,EnbridgeMainline,KP0016,east,domestic light / ngl,139.2805,1041.2
 2022-07-01,EnbridgeMainline,KP0016,east,foreign light,0.7177,520.6
 2022-08-01,EnbridgeMainline,KP0016,east,domestic heavy,326.0043,504.499
-2022-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,68.8841,504.499
+2022-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,137.7683,1008.998
 2022-09-01,EnbridgeMainline,KP0016,east,domestic heavy,339.1536,511.637
-2022-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,72.6144,511.637
+2022-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.2288,1023.274
 2007-01-01,EnbridgeMainline,KP0021,east,domestic heavy,13.4401,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,domestic light / ngl,48.7528,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,foreign light,3.8013,118.5
@@ -2672,6 +2672,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-06-01,TransMountain,KP0003,west,domestic heavy,0.0,54.0
 2022-06-01,TransMountain,KP0003,west,domestic light,8.0,54.0
 2022-06-01,TransMountain,KP0003,west,refined petroleum products,3.0,54.0
+2022-07-01,TransMountain,KP0003,west,domestic heavy,0.0,52.0
+2022-07-01,TransMountain,KP0003,west,domestic light,8.0,52.0
+2022-07-01,TransMountain,KP0003,west,refined petroleum products,6.0,52.0
+2022-08-01,TransMountain,KP0003,west,domestic heavy,0.0,58.0
+2022-08-01,TransMountain,KP0003,west,domestic light,9.0,58.0
+2022-08-01,TransMountain,KP0003,west,refined petroleum products,4.0,58.0
+2022-09-01,TransMountain,KP0003,west,domestic heavy,0.0,49.0
+2022-09-01,TransMountain,KP0003,west,domestic light,9.0,49.0
+2022-09-01,TransMountain,KP0003,west,refined petroleum products,4.0,49.0
 2006-01-01,TransMountain,KP0038,south,domestic heavy,1.0,35.0
 2006-01-01,TransMountain,KP0038,south,domestic light,15.0,35.0
 2006-02-01,TransMountain,KP0038,south,domestic heavy,2.0,36.0
@@ -3068,6 +3077,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-05-01,TransMountain,KP0038,south,domestic light,38.0,55.0
 2022-06-01,TransMountain,KP0038,south,domestic heavy,0.0,54.0
 2022-06-01,TransMountain,KP0038,south,domestic light,38.0,54.0
+2022-07-01,TransMountain,KP0038,south,domestic heavy,0.0,52.0
+2022-07-01,TransMountain,KP0038,south,domestic light,41.0,52.0
+2022-08-01,TransMountain,KP0038,south,domestic heavy,0.0,58.0
+2022-08-01,TransMountain,KP0038,south,domestic light,39.0,58.0
+2022-09-01,TransMountain,KP0038,south,domestic heavy,0.0,49.0
+2022-09-01,TransMountain,KP0038,south,domestic light,28.0,49.0
 2006-01-01,TransMountain,KP0042,west,domestic heavy,4.0,35.0
 2006-01-01,TransMountain,KP0042,west,domestic light,0.0,35.0
 2006-02-01,TransMountain,KP0042,west,domestic heavy,3.0,36.0
@@ -3464,6 +3479,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-05-01,TransMountain,KP0042,west,domestic light,0.0,55.0
 2022-06-01,TransMountain,KP0042,west,domestic heavy,5.0,54.0
 2022-06-01,TransMountain,KP0042,west,domestic light,0.0,54.0
+2022-07-01,TransMountain,KP0042,west,domestic heavy,1.0,52.0
+2022-07-01,TransMountain,KP0042,west,domestic light,2.0,52.0
+2022-08-01,TransMountain,KP0042,west,domestic heavy,0.0,58.0
+2022-08-01,TransMountain,KP0042,west,domestic light,1.0,58.0
+2022-09-01,TransMountain,KP0042,west,domestic heavy,6.0,49.0
+2022-09-01,TransMountain,KP0042,west,domestic light,4.0,49.0
 2006-01-01,TransNorthern,KP0000,not available,refined petroleum products,34.4516,
 2006-02-01,TransNorthern,KP0000,not available,refined petroleum products,34.8214,
 2006-03-01,TransNorthern,KP0000,not available,refined petroleum products,33.8065,

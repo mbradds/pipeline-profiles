@@ -113,7 +113,7 @@ class TestConditions(unittest.TestCase):
         self.assertEqual(total, 1569)
 
     def testMapMeta(self):
-        red_deer = self.mapMeta[self.mapMeta['id'] == "29"].copy().reset_index(drop=True)
+        red_deer = self.mapMeta[self.mapMeta['id'] == "30"].copy().reset_index(drop=True)
         self.assertEqual(red_deer.loc[0, "In Progress"], 9)
         self.assertEqual(red_deer.loc[0, "Closed"], 35)
 

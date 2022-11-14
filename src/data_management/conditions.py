@@ -395,5 +395,6 @@ def process_conditions(remote=False,
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df_, regions_, map_meta_, meta_ = process_conditions(remote=False, save=True, sql=True)
+    df_, regions_, map_meta_, meta_ = process_conditions(remote=False, save=True, sql=True, companies=["NGTL"])
+    # company_df, regions, mapMeta, meta = process_conditions(remote=False, companies=['NGTL'], test=True)
     print('completed conditions!')

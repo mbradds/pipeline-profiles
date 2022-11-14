@@ -19,8 +19,16 @@ throughput.[PipelineID],
 throughput.[KeyPointID],
 throughput.[Direction of Flow],
 throughput.[Product],
-avg([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
-avg(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
+case when throughput.PipelineID = 'Westspur' then
+avg([Throughput (1000 m3/d)])
+else sum([Throughput (1000 m3/d)])
+end as [Throughput (1000 m3/d)],
+
+case when throughput.PipelineID = 'Westspur' then
+avg(capacity.[Available Capacity (1000 m3/d)])
+else sum(capacity.[Available Capacity (1000 m3/d)])
+end as [Available Capacity (1000 m3/d)]
+
 FROM [PipelineInformation].[dbo].[Throughput_Oil] as throughput
 left join [PipelineInformation].[dbo].[Capacity_Oil] as capacity on
 throughput.[Date] = capacity.[Date]
@@ -37,8 +45,8 @@ throughput.[PipelineID],
 throughput.[KeyPointID],
 throughput.[Direction of Flow],
 throughput.[Product],
-avg([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
-avg(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
+sum([Throughput (1000 m3/d)]) as [Throughput (1000 m3/d)],
+sum(capacity.[Available Capacity (1000 m3/d)]) as [Available Capacity (1000 m3/d)]
 FROM [PipelineInformation].[dbo].[Throughput_Oil] as throughput
 left join [PipelineInformation].[dbo].[Capacity_Oil] as capacity on 
 throughput.[Date] = capacity.[Date]

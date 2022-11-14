@@ -431,5 +431,5 @@ def combined_traffic(save=True, sql=True):
 # TODO: add warnings in case id replace doesnt cover everything in column
 if __name__ == "__main__":
     print('starting throughput...')
-    combined_traffic(save=True, sql=False)
+    combined_traffic(save=True, sql=True)
     print('completed throughput!')
