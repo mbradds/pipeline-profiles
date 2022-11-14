@@ -1,8 +1,19 @@
 import pandas as pd
-from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year, replace_what_why
+import os
+from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, get_data
+from util import normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year, replace_what_why
 import json
 from datetime import datetime
 set_cwd_to_script()
+
+
+def idify_basic_causes(df):
+    df_causes = get_data(os.getcwd(),
+                  "basic_causes.sql",
+                  db="tsql23cap",
+                  sql=True)
+    
+    return df_causes
 
 
 def filter_last_five_years(df):
