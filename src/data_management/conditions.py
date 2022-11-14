@@ -4,22 +4,22 @@ import ssl
 from datetime import date
 import pandas as pd
 import geopandas as gpd
-from util import execute_sql, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id, set_cwd_to_script, updated_month_year
+from util import get_data, normalize_text, get_company_names, company_rename, get_company_list, prepare_ids, apply_system_id, set_cwd_to_script, updated_month_year
 import numpy as np
 ssl._create_default_https_context = ssl._create_unverified_context
 set_cwd_to_script()
 
 
-def get_sql(sql=False, query='projects_regdocs.sql'):
-    csv_name = query.replace(".sql", ".csv")
-    if sql:
-        print('reading sql '+query)
-        df = execute_sql(os.path.join(os.getcwd(), "queries"), query)
-        df.to_csv('raw_data/'+csv_name, index=False)
-    else:
-        print('reading local csv '+csv_name)
-        df = pd.read_csv('raw_data/'+csv_name)
-    return df
+# def get_sql(sql=False, query='projects_regdocs.sql'):
+#     csv_name = query.replace(".sql", ".csv")
+#     if sql:
+#         print('reading sql '+query)
+#         df = execute_sql(os.path.join(os.getcwd(), "queries"), query)
+#         df.to_csv('raw_data/'+csv_name, index=False)
+#     else:
+#         print('reading local csv '+csv_name)
+#         df = pd.read_csv('raw_data/'+csv_name)
+#     return df
 
 
 def import_simplified(replace, name='economic_regions.json'):
@@ -200,14 +200,14 @@ def condition_meta_data(df, project_names):
                             values='condition id',
                             index=['id'],
                             columns='Condition Status').reset_index()
-    
+
     # this fixes the map color index being thrown off by non map conditions
     df_all = df_all[df_all["id"] != "-1"].copy()
     return df_all, meta
 
 
 def add_links(df, sql):
-    df_links = get_sql(sql)
+    df_links = get_data(os.getcwd(), "projects_regdocs.sql", db='tsql23cap', sql=sql)
     l = {}
     for name, folder in zip(df_links['EnglishProjectName'], df_links['CS10FolderId']):
         l[name] = folder
@@ -246,14 +246,9 @@ def idify_conditions(df, sql):
         df[column] = new_themes
         return df
 
-    projects = get_sql(sql, "conditionProjects.sql")
-    themes = get_sql(sql, "conditionThemes.sql")
-    regions = get_sql(sql, "conditionRegions.sql")
-
-    # fix the Northeast db error
-    regions = regions.reset_index()
-    del regions['id']
-    regions = regions.rename(columns={"index": "id"})
+    projects = get_data(os.getcwd(), "conditionProjects.sql", "tsql23cap", sql)
+    themes = get_data(os.getcwd(), "conditionThemes.sql", "tsql23cap", sql)
+    regions = get_data(os.getcwd(), "conditionRegions.sql", "tsql23cap", sql)
 
     for ids in [projects, themes, regions]:
         ids['id'] = [str(x) for x in ids['id']]
@@ -393,12 +388,12 @@ def process_conditions(remote=False,
         except:
             print("conditions error: "+company)
             raise
-    
+
     updated_month_year("conditions")
     return df_c, shp, dfmeta, meta
 
 
 if __name__ == "__main__":
     print('starting conditions...')
-    df_, regions_, map_meta_, meta_ = process_conditions(remote=False, save=True, sql=False)
+    df_, regions_, map_meta_, meta_ = process_conditions(remote=False, save=True, sql=True)
     print('completed conditions!')

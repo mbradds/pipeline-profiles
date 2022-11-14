@@ -29,7 +29,7 @@ def get_tolls_data(sql=True):
                     "tolls_numbers.sql",
                     db="PipelineInformation",
                     sql=sql)
-    
+
     for col in ["f", "d"]:
         toll_nums[col] = [x.split("/")[-1] for x in toll_nums[col]]
 

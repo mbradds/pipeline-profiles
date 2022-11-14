@@ -1,8 +1,25 @@
 import pandas as pd
-from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year, replace_what_why
+import os
+from util import company_rename, get_company_list, apply_system_id, set_cwd_to_script, normalize_numeric, get_data
+from util import normalize_dates, normalize_text, replace_nulls_with_none, updated_month_year, replace_what_why, list_id, prepare_ids
 import json
 from datetime import datetime
 set_cwd_to_script()
+
+
+def idify_basic_causes(df):
+    df["Basic Causes"] = [str(x) for x in df["Basic Causes"]]
+    df["Basic Causes"] = [x.replace(";", "-") for x in df["Basic Causes"]]
+    ids = get_data(os.getcwd(),
+                  "basic_causes.sql",
+                   db="tsql23cap",
+                   sql=True)
+    ids['id'] = [str(x) for x in ids['id']]
+    replace = {value: key for key, value in zip(ids['id'], ids['e'])}
+    df = list_id(df, "Basic Causes", replace, "-", None)
+    with open('../data_output/unauthorized_activities/metadata/'+'basic_causes'+'.json', 'w') as fp:
+            json.dump(prepare_ids(ids), fp)
+    return df
 
 
 def filter_last_five_years(df):
@@ -40,7 +57,7 @@ def optimize_json(df):
     df["Who Discovered The Event"] = df["Who Discovered The Event"].replace({"1st party (regulated company)": "1",
                                                                              "2nd party (contractor working for the regulated company)": "2",
                                                                              "3rd party (no connection to the regulated company)": "3"})
-    
+
     df["Method Of Discovery"] = df["Method Of Discovery"].replace({"Aerial patrol": "a",
                                                                    "Ground patrol": "g",
                                                                    "Site visit": "s",
@@ -92,13 +109,8 @@ def process_ua(companies=False, remote=True, test=False, save=True):
     df = apply_system_id(df, "Company Name")
     df["Was there a ground disturbance"] = ["Yes" if "Ground Disturbance" in x else "No" for x in df["Event Type"]]
 
-    cause_list = []
-    for cause in df["Basic Causes"]:
-        cause = str(cause).split("-")
-        cause = [x.strip() for x in cause]
-        cause_list.append(cause)
-    df["Basic Causes"] = cause_list
 
+    df = idify_basic_causes(df)
 
     event_types = {"Vehicle Crossing": "v",
                    "Ground Disturbance": "g",
