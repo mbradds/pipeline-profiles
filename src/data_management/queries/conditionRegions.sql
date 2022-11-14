@@ -1,5 +1,6 @@
 select 
-regions.Region_SKey as [id],
+--regions.Region_SKey as [id],
+ROW_NUMBER() OVER (ORDER BY regions.Region_SKey asc) as [id],
 rtrim(ltrim(RegionEnglish))+'/'+province_keys.ProvinceEnglish as [e],
 rtrim(ltrim(RegionFrench))+'/'+province_keys.ProvinceFrench as [f]
 FROM [Regulatory_Untrusted].[B-05584].[Region] as regions

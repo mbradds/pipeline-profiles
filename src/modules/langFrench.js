@@ -724,6 +724,7 @@ export const frenchDashboard = {
         },
         wpd: yesNoInfo,
         wgd: yesNoInfo,
+        bc: nullInfo,
       },
     },
   },

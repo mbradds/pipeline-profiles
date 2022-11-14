@@ -295,8 +295,8 @@ def updated_month_year(section):
     except:
         raise
         print("Cant set new update time for: ", section)
-        
-        
+
+
 def replace_what_why(df, col_name, values, splitter=","):
     new_col = []
     for what in df[col_name]:
@@ -306,4 +306,21 @@ def replace_what_why(df, col_name, values, splitter=","):
         new_col.append(what)
 
     df[col_name] = new_col
+    return df
+
+
+def list_id(df, column, toReplace, delimiter=",", no_value="-1"):
+    new_themes = []
+    for t in df[column]:
+        if delimiter in t:
+            t = [x.strip() for x in t.split(delimiter)]
+            t = [toReplace[x] for x in t]
+            new_themes.append(t)
+        else:
+            try:
+                new_themes.append([toReplace[t.strip()]])
+            except:
+                new_themes.append([no_value])
+
+    df[column] = new_themes
     return df

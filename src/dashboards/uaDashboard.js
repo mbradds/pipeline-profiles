@@ -3,10 +3,28 @@ import { EventNavigator } from "../modules/dashboard/EventNavigator.js";
 import { EventTrend } from "../modules/dashboard/EventTrend.js";
 import { loadChartError } from "../modules/util.js";
 import { noEventsFlag, addDashboardTitle } from "./dashboardUtil.js";
+import basicCauses from "../data_output/unauthorized_activities/metadata/basic_causes.json";
 
 export async function mainUa(uaData, metaData, lang, pipelineShape) {
   const eventType = "unauthorized-activities";
   const filters = { type: "frequency" };
+
+  const applyBasicCauses = (data, lookup) => {
+    try {
+      data.map((row) => {
+        row.bc = row.bc.map((cause) => {
+          if (lookup[cause]) {
+            return lookup[cause][lang.lang];
+          }
+          return "ns";
+        });
+        return row;
+      });
+      return data;
+    } catch (err) {
+      return data;
+    }
+  };
 
   const uaBar = (events, map, langPillTitles) => {
     const barNav = new EventNavigator({
@@ -71,6 +89,7 @@ export async function mainUa(uaData, metaData, lang, pipelineShape) {
 
   function buildDashboard() {
     if (metaData.build) {
+      const uaDataTranslated = applyBasicCauses(uaData, basicCauses);
       const chartParams = metaData;
       chartParams.systemName = addDashboardTitle(
         "unauthorized-activities-dashboard-title",
@@ -79,8 +98,8 @@ export async function mainUa(uaData, metaData, lang, pipelineShape) {
         ` (${metaData.first_year}-${metaData.current_year})`
       );
       lang.dynamicText(chartParams, lang);
-      const thisMap = uaMap(uaData, filters, lang.dashboard);
-      const bars = uaBar(uaData, thisMap, lang.dashboard.pillTitles);
+      const thisMap = uaMap(uaDataTranslated, filters, lang.dashboard);
+      const bars = uaBar(uaDataTranslated, thisMap, lang.dashboard.pillTitles);
       uaTimeSeries(filters);
       thisMap.switchDashboards(bars);
       thisMap.nearbySlider(

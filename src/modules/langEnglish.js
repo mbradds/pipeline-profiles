@@ -706,6 +706,7 @@ export const englishDashboard = {
         },
         wpd: yesNoInfo,
         wgd: yesNoInfo,
+        bc: nullInfo,
       },
     },
   },

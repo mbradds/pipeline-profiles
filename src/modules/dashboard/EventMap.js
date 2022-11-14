@@ -265,6 +265,7 @@ export class EventMap {
 
     const rowName = getNameText(this.field, this.lang.pillTitles.titles);
     const bubbleName = this.applyName(eventParams[this.field], this.field);
+
     let toolTipText = `<div class="map-tooltip"><p style="font-size:15px; font-family:Arial; text-align:center;"><strong>${eventParams.id}</strong></p>`;
     toolTipText += `<table><tr><td>${rowName}</td><td style="color:${fillColor}">&nbsp;<strong>${bubbleName}</strong></td></tr>`;
 
