@@ -95,6 +95,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-04-01,Cochin,KP0018,west,condensate,16.2698,15.1038
 2022-05-01,Cochin,KP0018,west,condensate,15.2629,15.1038
 2022-06-01,Cochin,KP0018,west,condensate,16.0194,15.1038
+2022-07-01,Cochin,KP0018,west,condensate,16.9287,15.1038
+2022-08-01,Cochin,KP0018,west,condensate,16.7014,15.1038
+2022-09-01,Cochin,KP0018,west,condensate,16.1327,15.1038
 2014-07-01,Cochin,KP0034,east,refined petroleum products,0.0146,
 2014-07-01,Cochin,KP0043,east,refined petroleum products,0.0014,12.083
 2014-08-01,Cochin,KP0043,east,refined petroleum products,0.0,12.083
@@ -1720,10 +1723,16 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-03-01,Keystone,KP0020,south,domestic light,0.0,97.21
 2022-04-01,Keystone,KP0020,south,domestic heavy,96.86,96.98
 2022-04-01,Keystone,KP0020,south,domestic light,0.0,96.98
-2022-05-01,Keystone,KP0020,south,domestic heavy,96.62,96.98
-2022-05-01,Keystone,KP0020,south,domestic light,0.0,96.98
-2022-06-01,Keystone,KP0020,south,domestic heavy,95.7,95.7
-2022-06-01,Keystone,KP0020,south,domestic light,0.0,95.7
+2022-05-01,Keystone,KP0020,south,domestic heavy,95.11,96.98
+2022-05-01,Keystone,KP0020,south,domestic light,1.51,96.98
+2022-06-01,Keystone,KP0020,south,domestic heavy,94.14,95.7
+2022-06-01,Keystone,KP0020,south,domestic light,1.56,95.7
+2022-07-01,Keystone,KP0020,south,domestic heavy,90.78,93.24
+2022-07-01,Keystone,KP0020,south,domestic light,0.0,93.24
+2022-08-01,Keystone,KP0020,south,domestic heavy,92.99,92.99
+2022-08-01,Keystone,KP0020,south,domestic light,0.0,92.99
+2022-09-01,Keystone,KP0020,south,domestic heavy,101.62,101.62
+2022-09-01,Keystone,KP0020,south,domestic light,0.0,101.62
 2016-05-01,Montreal,KP0000,north-west,petroleum,1.9894,
 2016-06-01,Montreal,KP0000,north-west,petroleum,4.0521,
 2016-07-01,Montreal,KP0000,north-west,petroleum,6.8462,
