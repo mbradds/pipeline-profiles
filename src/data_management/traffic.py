@@ -202,7 +202,7 @@ def get_default_point(company):
                 'Westcoast': 'KPWESC',
                 'TCPL': 'KP0033',
                 'Alliance': 'KP0002',
-                'TQM': 'KP0035',
+                'TQM': 'KP0074',
                 'Foothills': 'KP0023',
                 'MNP': 'KP0001',
                 'EnbridgeMainline': 'KP0016',
