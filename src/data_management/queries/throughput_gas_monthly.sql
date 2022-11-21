@@ -5,6 +5,8 @@ case when kp.KeyPointID = 'KP0017'
 then 'KPWESC'
 when kp.KeyPointID = 'KP0019'
 then 'KPWESC'
+when kp.KeyPointID = 'KP0035'
+then 'KP0074'
 else kp.KeyPointID
 end as [KeyPointID],
 [Direction of Flow],

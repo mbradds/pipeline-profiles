@@ -10,7 +10,7 @@ PipelineID as [Pipeline Name],
 [Description],
 [Description FRA]
 FROM [PipelineInformation].[dbo].[KeyPoint]
-where [KeyPointID] not in ('KP0000', 'KP0064', 'KP0067', 'KP0065', 'KP0062', 'KP0063', 'KP0066')
+where [KeyPointID] not in ('KP0000', 'KP0064', 'KP0067', 'KP0065', 'KP0062', 'KP0063', 'KP0066', 'KP0035')
 union all
 SELECT
 'KPWESC' as KeyPointID,
