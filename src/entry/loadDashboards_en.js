@@ -22,16 +22,10 @@ import { englishDashboard } from "../modules/langEnglish.js";
 import { mainTraffic } from "../dashboards/trafficDashboard.js";
 // apportionment
 import { mainApportion } from "../dashboards/apportionmentDashboard.js";
-// tolls
-import { mainTolls } from "../dashboards/tollsDashboard.js";
 // operations and maintenance activities
 import { mainOandM } from "../dashboards/oandmDashboard.js";
 // contaminated sites and remediation
 import { mainRemediation } from "../dashboards/remediationDashboard.js";
-// unauthorized activities
-import { mainUa } from "../dashboards/uaDashboard.js";
-// tcpl revenues
-import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
 // plains disclaimers and safety & env tab click
 import { openTab } from "../modules/util.js";
 // pipeline shape promise
@@ -56,7 +50,6 @@ export function loadAllCharts(data) {
     pipelineShape
   );
   mainApportion(data.apportionData, englishDashboard.apportion);
-  mainTolls(data.tollsData.tolls, data.tollsData.meta, englishDashboard.tolls);
   mainConditions(
     JSON.parse(data.conditionsData.regions),
     data.canadaMap,
@@ -76,15 +69,5 @@ export function loadAllCharts(data) {
     englishDashboard.remediation,
     pipelineShape
   );
-  mainUa(
-    data.uaData.events,
-    data.uaData.meta,
-    englishDashboard.ua,
-    pipelineShape
-  );
-
-  if (data.tcplRevenues) {
-    mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);
-  }
   // console.timeEnd(`first content loading`);
 }
