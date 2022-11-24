@@ -1118,17 +1118,17 @@ const fr = {
           refill: "Remplir les bulles de la carte",
         },
         source: {
-          sourceTitle: sourceAndDescEn,
-          dataSourceTitle: dataSourceEn,
-          descriptionTitle: descriptionEn,
-          sourceText: sourceTextEn,
+          sourceTitle: sourceAndDescFr,
+          dataSourceTitle: dataSourceFr,
+          descriptionTitle: descriptionFr,
+          sourceText: sourceTextFr,
           sourceLink:
             "https://open.canada.ca/data/fr/dataset/43c4a4ea-6da8-4b02-8f07-986caafd9223",
           description:
             "La carte ci-dessus montre les emplacements où des rapports de contravention au RPD ont été faits pour le réseau pipelinier au cours des cinq dernières années et plus. Par défaut, la carte présente les rapports sous forme de bulles de couleur variant selon que le pipeline a été endommagé ou non. Les rapports peuvent être reclassés en fonction d’un remuement du sol ou non, de l’année et de la source de la découverte de l’événement. Il est aussi possible de sélectionner les données des rapports de contravention pour produire un graphique à barres empilées des événements au fil du temps en cliquant sur le bouton « Tendances des rapports de contravention » qui se trouve au-dessus de la carte. Les barres empilées représentent le nombre de rapports de contravention par année, les couleurs des barres correspondant aux divers types d’événements. Comme sur la carte, les rapports de contravention au RPD peuvent être reclassés en cliquant sur les boutons latéraux pour ventiler les événements en fonction de dommages ou non au pipeline, de la source du rapport et de la méthode ayant donné lieu à la découverte.",
           openGov: openGovLink(
             "https://open.canada.ca/data/fr/dataset/43c4a4ea-6da8-4b02-8f07-986caafd9223",
-            "en"
+            "fr"
           ),
         },
       },
