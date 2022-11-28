@@ -164,6 +164,10 @@ const en = {
       remediation: "Contaminated Sites and Remediation",
       ua: "Damage Prevention Regulations Contravention Reports",
     },
+    milkRiverDisclaimer:
+      "The information in this section reflects data belonging to Milk River Pipeline Ltd. To view data belonging to the previous owners, download the data found under “Source and Description” for each dashboard. Then, sort by “Company” and select “Plains Midstream Canada ULC.”",
+    wascanaDisclaimer:
+      "Data in this section is available at the regulated company level only, ie. Plains Midstream Canada ULC (PMC). The CER regulates several pipelines owned by PMC, one of which is Wascana pipeline. Data in the dashboards below is for all PMC pipelines.",
     updated: {
       conditions: getUpdatedTime(
         "conditions",
@@ -690,6 +694,10 @@ const fr = {
       remediation: "Sites contaminés et assainissement",
       ua: "Signalement des contraventions au Règlement sur la prévention des dommages",
     },
+    milkRiverDisclaimer:
+      "L’information contenue dans cette section reflète les données appartenant à Milk River Pipeline Ltd. Pour consulter les données appartenant aux propriétaires précédents, téléchargez les données qui se trouvent sous « Source et description » pour chaque tableau de bord. Triez ensuite par « société » et sélectionnez « Plains Midstream Canada ULC ».",
+    wascanaDisclaimer:
+      "Les données présentées dans cette section ne sont accessibles que par la société réglementée concernée, c.-à-d. Plains Midstream Canada ULC (« PMC »). La Régie réglemente plusieurs pipelines appartenant à PMC, dont le pipeline Wascana. Les données présentées dans les tableaux de bord ci-dessous concernent tous les pipelines de PMC.",
     updated: {
       conditions: getUpdatedTime(
         "conditions",

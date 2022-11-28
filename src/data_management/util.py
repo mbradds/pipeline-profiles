@@ -136,18 +136,6 @@ def most_common(df,
     return meta
 
 
-# def normalize_bool(df, cols, normType="Y/N"):
-#     for col in cols:
-#         df[col] = [str(x).strip() for x in df[col]]
-#         if normType == "T/F":
-#             df[col] = df[col].replace({"True": "T",
-#                                        "False": "F"})
-#         elif normType == "Y/N":
-#             df[col] = df[col].replace({"True": "Yes",
-#                                        "False": "No"})
-#     return df
-
-
 def normalize_dates(df, date_list, short_date=False, errors="raise"):
     for date_col in date_list:
         df[date_col] = pd.to_datetime(df[date_col], errors=errors)
@@ -178,19 +166,6 @@ def pipeline_names():
     df['new name'] = [x.strip() for x in df['Suggested Pipeline Name for ALL Future External Publications']]
     return {old_name: new_name for old_name, new_name in zip(df['old name'],
                                                              df['new name'])}
-
-
-# def days_in_year(year):
-#     d1 = date(year, 1, 1)
-#     d2 = date(year + 1, 1, 1)
-#     return (d2 - d1).days
-
-
-# def save_json(df, write_path, precision=2):
-#     df.to_json(write_path,
-#                orient='records',
-#                double_precision=precision,
-#                compression='infer')
 
 
 def get_company_names(col):
@@ -309,11 +284,13 @@ def replace_what_why(df, col_name, values, splitter=","):
     return df
 
 
-def list_id(df, column, toReplace, delimiter=",", no_value="-1"):
+def list_id(df, column, toReplace, delimiter=",", no_value="-1", unique_only=False):
     new_themes = []
     for t in df[column]:
         if delimiter in t:
             t = [x.strip() for x in t.split(delimiter)]
+            if unique_only:
+                t = list(set(t))
             t = [toReplace[x] for x in t]
             new_themes.append(t)
         else:
