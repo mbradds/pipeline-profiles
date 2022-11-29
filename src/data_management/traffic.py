@@ -94,7 +94,7 @@ def meta_throughput(df_c, meta, data):
     df_meta = df_c[['KeyPointID', 'Direction of Flow', 'Trade Type']].copy()
     if data == "oil":
         df_meta['Trade Type'] = [x.split("-")[-1].strip() for x in df_meta['Trade Type']]
-    df_meta = df_meta.drop_duplicates().reset_index(drop=True)
+    # df_meta = df_meta.drop_duplicates().reset_index(drop=True)
     df_meta = df_meta.sort_values(by=['KeyPointID', 'Trade Type'])
     df_meta = df_meta.groupby(['KeyPointID']).agg(direction=("Direction of Flow", set),
                                                   trade=("Trade Type", set))
@@ -115,7 +115,7 @@ def meta_throughput(df_c, meta, data):
                     'southeast': 'se',
                     'southwest': 'sw'
                    }
-    df_meta['direction'] = [direction_list(x) for x in df_meta['direction']]
+    # df_meta['direction'] = [direction_list(x) for x in df_meta['direction']]
     for key, flow in zip(df_meta['KeyPointID'], df_meta['direction']):
         try:
             directions[key] = [direction_id[x.lower()] for x in flow]
@@ -449,8 +449,8 @@ def get_points(sql):
 
 def combined_traffic(save=True, sql=True):
     points = get_points(sql)
-    process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m') #, companies=["Westcoast"])
-    # process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['EnbridgeMainline'])
+    process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m') # , companies=["Westcoast"])
+    process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['EnbridgeMainline'])
 
 
 # TODO: enforce case on text columns
