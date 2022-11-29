@@ -291,7 +291,7 @@ def process_company(df, company, commodity, points, units, save):
                 bidirectional = False
                 axis1 = trade_types[0]
                 axis2 = False
-                
+            
             
             if p == "KP0016":
                 df_p = df_p.sort_values(by=['Trade Type', 'Date'], ascending=[True, True])
@@ -332,7 +332,7 @@ def process_company(df, company, commodity, points, units, save):
                                           "bidirectional": bidirectional,
                                           "yAxis": yAxis,
                                           "color": apply_colors(tt),
-                                          "type": "throughput",
+                                          "data_type": "throughput",
                                           "data": data})
 
             if len(point_import_capacity) > 0:
@@ -340,13 +340,13 @@ def process_company(df, company, commodity, points, units, save):
                                           "bidirectional": bidirectional,
                                           "yAxis": 1,
                                           "color": "#FFBE4B",
-                                          "type": "capacity",
+                                          "data_type": "capacity-2",
                                           "data": point_import_capacity})
                 throughput_series.append({"id": cap1,
                                           "bidirectional": bidirectional,
                                           "yAxis": 0,
                                           "color": "#FFBE4B",
-                                          "type": "capacity",
+                                          "data_type": "capacity",
                                           "data": point_capacity})
             else:
                 # check if there is at least one non null in the data
@@ -361,7 +361,7 @@ def process_company(df, company, commodity, points, units, save):
                                               "bidirectional": bidirectional,
                                               "yAxis": 0,
                                               "color": "#FFBE4B",
-                                              "type": "capacity",
+                                              "data_type": "capacity",
                                               "data": point_capacity})
 
             point_data[p] = throughput_series
@@ -449,7 +449,7 @@ def get_points(sql):
 
 def combined_traffic(save=True, sql=True):
     points = get_points(sql)
-    process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m', companies=["Westcoast"])
+    process_throughput(points, save=save, sql=sql, commodity='Gas', frequency='m') #, companies=["Westcoast"])
     # process_throughput(points, save=save, sql=sql, commodity='Liquid', frequency='m') # , companies=['EnbridgeMainline'])
 
 
