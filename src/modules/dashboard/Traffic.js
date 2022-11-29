@@ -341,7 +341,7 @@ export class Traffic {
     };
     let hasImports = false;
     event.points.forEach((p) => {
-      if (p.series.options.id === "im") {
+      if (p.series.options.bidirectional) {
         hasImports = true;
         textHolder.imports.traffic.push([
           this.addToolRow(p, units, this.rounding),
@@ -352,10 +352,7 @@ export class Traffic {
           this.addToolRow(p, units, this.rounding),
           p.y,
         ];
-      } else if (
-        p.series.options.id === "cap" ||
-        p.series.options.id === "ecap"
-      ) {
+      } else if (p.series.options.type === "capacity") {
         textHolder.other.capacity = [
           this.addToolRow(p, units, this.rounding),
           p.y,
@@ -615,7 +612,7 @@ export class Traffic {
     const total = {};
     let seriesCounter = 0;
     series.forEach((s) => {
-      if (!isCapacity(s.id)) {
+      if (!isCapacity(s.type)) {
         seriesCounter += 1;
         const annual = {};
         s.data.forEach((row) => {
@@ -773,7 +770,7 @@ export class Traffic {
       } else {
         chart.addSeries(newS, false, true);
       }
-      if (newS.id === "im") {
+      if (newS.id === "im" || newS.bidirectional) {
         updateImports = true;
       }
     });
