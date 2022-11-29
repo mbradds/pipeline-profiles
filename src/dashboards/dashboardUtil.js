@@ -52,7 +52,7 @@ export const mapInits = {
  * @returns {boolean}
  */
 export const isCapacity = (seriesId) =>
-  !!(seriesId === "cap" || seriesId === "icap" || seriesId === "ecap");
+  !!(seriesId === "capacity" || seriesId === "capacity-2");
 
 /**
  *
@@ -123,7 +123,7 @@ export function addSeriesParams(
 
     nextSeries.data = mapDates(s.data, startd, frequency, "forward", transform);
     if (section === "traffic") {
-      if (isCapacity(s.id)) {
+      if (isCapacity(s.data_type)) {
         nextSeries.type = "line";
         nextSeries.zIndex = 6;
         nextSeries.lineWidth = 3;
