@@ -516,6 +516,16 @@ export class Traffic {
   hasImportsRedraw() {
     const currentDashboard = this;
     const chart = this.trafficChart;
+    const getAxisTitle = (axis) => {
+      let axisName = "";
+      chart.yAxis[axis].series.forEach((s) => {
+        if (s.userOptions.data_type === "throughput" && s.visible) {
+          axisName = s.name;
+        }
+      });
+      return axisName;
+    };
+
     chart.update(
       {
         title: {
@@ -524,7 +534,7 @@ export class Traffic {
         yAxis: [
           {
             title: {
-              text: this.lang.exportAxis(this.params.unitsHolder.current),
+              text: `${getAxisTitle(0)} (${this.params.unitsHolder.current})`,
             },
             height: "45%",
             max: undefined,
@@ -538,7 +548,7 @@ export class Traffic {
               },
             },
             title: {
-              text: this.lang.importAxis(this.params.unitsHolder.current),
+              text: `${getAxisTitle(1)} (${this.params.unitsHolder.current})`,
             },
             top: "50%",
             height: "45%",

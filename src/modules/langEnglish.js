@@ -398,8 +398,6 @@ export const englishDashboard = {
       rangeName: (min, max) => `Five-Year Range (${min + 1}-${max - 1})`,
       notEnough: "Not enough data to calculate five-year average",
     },
-    exportAxis: (unit) => `Exports (${unit})`,
-    importAxis: (unit) => `Imports (${unit})`,
     fiveYrTitle: (pointText) => `${pointText} - five-year average & range`,
     trafficTitle: (pointText, dirText, frequency = "m") => {
       const freqLookup = { m: "monthly", q: "quarterly" };

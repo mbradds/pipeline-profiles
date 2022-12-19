@@ -399,8 +399,6 @@ export const frenchDashboard = {
       rangeName: (min, max) => `Plage de cinq ans (${min + 1}-${max - 1})`,
       notEnough: "Données insuffisantes pour calculer la moyenne sur cinq ans",
     },
-    exportAxis: (unit) => `Exportations (${unit})`,
-    importAxis: (unit) => `Importations (${unit})`,
     fiveYrTitle: (pointText) =>
       `${pointText} - période de cinq ans et fourchette`,
     trafficTitle: (pointText, dirText, frequency = "m") => {
