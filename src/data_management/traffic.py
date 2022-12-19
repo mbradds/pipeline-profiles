@@ -137,7 +137,7 @@ def get_rounding(point):
     return rounding
 
 
-def meta_trend(df_c, commodity):
+def meta_trend(df, commodity, meta_trends, point, rounding, axis2, axis1):
 
     def group_trends(df):
         df = df.groupby(['Date', 'Pipeline Name', 'KeyPointID']).agg({'Capacity': 'mean', 'Throughput': 'sum'})
@@ -163,11 +163,13 @@ def meta_trend(df_c, commodity):
 
         this_trend = {}
         try:
-            if old_through == 0 and new_through == 0:
+            old_number = round(old_through, 3)
+            new_number = round(new_through, 3)
+            if old_number == 0 and new_number == 0:
                 pct = None
-            elif old_through == 0 and new_through > 0:
+            elif old_number == 0 and new_number > 0:
                 pct = 100
-            elif old_through > 0 and new_through == 0:
+            elif old_number > 0 and new_number == 0:
                 pct = -100
             else:
                 pct = round((new_through-old_through)/abs(old_through)*100, 1)
@@ -183,19 +185,14 @@ def meta_trend(df_c, commodity):
         meta_trends[point].append(this_trend)
         return meta_trends
 
-    meta_trends = {}
-    for point in list(set(df_c['KeyPointID'])):
-        rounding = get_rounding(point)
-        df_t = df_c.copy()
-        df_p = df_t[df_t['KeyPointID'] == point].copy().reset_index(drop=True)
-        meta_trends[point] = []
-        if "im" in list(df_p['Trade Type']):
-            df_import = df_p[df_p['Trade Type'] == "im"].copy()
-            df_other = df_p[df_p['Trade Type'] != "im"].copy()
-            meta_trends = calculate_trend(df_other, meta_trends, point, "ex", commodity)
-            meta_trends = calculate_trend(df_import, meta_trends, point, "im", commodity)
-        else:
-            meta_trends = calculate_trend(df_p, meta_trends, point, "default", commodity)
+    meta_trends[point] = []
+    if axis2:
+        df_import = df[df['Trade Type'] == axis2].copy()
+        df_other = df[df['Trade Type'] != axis2].copy()
+        meta_trends = calculate_trend(df_other, meta_trends, point, axis1, commodity)
+        meta_trends = calculate_trend(df_import, meta_trends, point, axis2, commodity)
+    else:
+        meta_trends = calculate_trend(df, meta_trends, point, "default", commodity)
     return meta_trends
 
 
@@ -243,17 +240,13 @@ def process_company(df, company, commodity, points, units, save):
     df_c = df[df['Pipeline Name'] == company].copy().reset_index(drop=True)
     if not df_c.empty:
         meta["build"] = True
-        trend = meta_trend(df_c, commodity)
-        meta["trendText"] = trend
+        trends = {}
         meta = meta_throughput(df_c, meta, commodity)
         this_key_points = points[points['Pipeline Name'] == company].copy().reset_index(drop=True)
         this_key_points['loc'] = [[lat, long] for lat, long in zip(this_key_points['Latitude'], this_key_points['Longitude'])]
         for delete in ['Pipeline Name', 'Latitude', 'Longitude', 'Description', 'Description FRA', 'Key Point']:
             del this_key_points[delete]
         meta['keyPoints'] = this_key_points.to_dict(orient='records')
-        for delete in ['Direction of Flow']:
-            del df_c[delete]
-
         point_data = {}
         points_list = sorted(list(set(df_c['KeyPointID'])))
         # points_list = ["KP0029"]
@@ -261,13 +254,27 @@ def process_company(df, company, commodity, points, units, save):
             rounding = get_rounding(p)
             point_capacity, point_import_capacity = [], []
             df_p = df_c[df_c['KeyPointID'] == p].copy().reset_index(drop=True)
+            trade_types = sorted(list(set(df_p['Trade Type'])))
+            
+            if "im" in trade_types or p == "KP0029":
+                bidirectional = True
+                axis1 = trade_types[0]
+                axis2 = trade_types[-1]
+                cap1 = axis1+"-cap"
+                cap2 = axis2+"-cap"
+            else:
+                bidirectional = False
+                axis1 = trade_types[0]
+                axis2 = False
+
+            trends = meta_trend(df_p, commodity, trends, p, rounding, axis2, axis1)
             df_p = df_p.groupby(['Date', 'KeyPointID', 'Trade Type']).agg({'Capacity':'mean','Throughput':'sum'}).reset_index()
             traffic_types = {}
             counter = 0
             point_dates = sorted(list(set(df_p['Date'])))
             df_p = df_p.drop_duplicates(subset=['Date', 'KeyPointID', 'Trade Type'], ignore_index=True)
             trade_data, date_added = [], []
-            trade_types = sorted(list(set(df_p['Trade Type'])))
+            
 
             for tr in trade_types:
                 df_p_t = df_p[df_p['Trade Type'] == tr].copy()
@@ -280,17 +287,6 @@ def process_company(df, company, commodity, points, units, save):
                     df_p_t[num_fill] = df_p_t[num_fill].fillna(0)
                 trade_data.append(df_p_t)
             df_p = pd.concat(trade_data, ignore_index=True).copy()
-            
-            if "im" in trade_types or p == "KP0029":
-                bidirectional = True
-                axis1 = trade_types[0]
-                axis2 = trade_types[-1]
-                cap1 = axis1+"-cap"
-                cap2 = axis2+"-cap"
-            else:
-                bidirectional = False
-                axis1 = trade_types[0]
-                axis2 = False
             
             
             if p == "KP0016":
@@ -367,6 +363,7 @@ def process_company(df, company, commodity, points, units, save):
             point_data[p] = throughput_series
 
         this_company_data["traffic"] = point_data
+        meta["trendText"] = trends
         this_company_data['meta'] = meta
         if save:
             with open('../data_output/traffic/'+folder_name+'.json', 'w') as fp:
