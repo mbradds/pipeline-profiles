@@ -3,7 +3,6 @@ import conditionsData from "../../data_output/conditions/Vector.json";
 import incidentData from "../../data_output/incidents/Vector.json";
 import trafficData from "../../data_output/traffic/Vector.json";
 import apportionData from "../../data_output/apportionment/Vector.json";
-import tollsData from "../../data_output/tolls/Vector.json";
 import oandmData from "../../data_output/oandm/Vector.json";
 import remediationData from "../../data_output/remediation/Vector.json";
 import uaData from "../../data_output/unauthorized_activities/Vector.json";
@@ -14,7 +13,6 @@ export const data = {
   incidentData,
   trafficData,
   apportionData,
-  tollsData,
   oandmData,
   remediationData,
   uaData,

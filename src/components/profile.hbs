@@ -1,49 +1,39 @@
 <!DOCTYPE html>
 {{#if htmlWebpackPlugin.options.page.lang.en}}
-<html lang="en">
+  <html lang="en">
 {{else if htmlWebpackPlugin.options.page.lang.fr}}
-<html lang="fr">
+  <html lang="fr">
 {{/if}}
+
 <head>
   {{> head}}
 </head>
+
 <body>
   <div class="container">
-  {{#if htmlWebpackPlugin.options.page.sections.traffic.map}}
-  <!-- Start Throughput and capacity -->
-    {{> traffic/map text=htmlWebpackPlugin.options.page.text}}
-
-  <!-- End Throughput and capacity -->
-  {{/if}}
-  {{!-- pipeline has traffic data, but no leaflet map. Trans-Northern/group2 --}}
-  {{#if htmlWebpackPlugin.options.page.sections.traffic.noMap}}
-  <!-- Start Throughput and capacity -->
-    {{> traffic/noMap text=htmlWebpackPlugin.options.page.text}}
-
-  <!-- End Throughput and capacity -->
-  {{/if}}
-  {{#if htmlWebpackPlugin.options.page.sections.apportion}}
-  <!-- Start Apportionment -->
-    {{> apportion text=htmlWebpackPlugin.options.page.text}}
-
-  <!-- End Apportionment -->
-  {{/if}}
-  {{#if htmlWebpackPlugin.options.page.sections.tolls}}
-  <!-- Start tolls -->
-    {{> tolls text=htmlWebpackPlugin.options.page.text}}
-
-  <!-- End tolls -->
-  {{/if}}
-  {{#if htmlWebpackPlugin.options.page.sections.safety}}
-  <!-- Start Safety and Environment -->
-    {{> safety text=htmlWebpackPlugin.options.page.text}}
-
-  <!-- End Safety and Environment -->
-  {{/if}}
-  {{#ifeq htmlWebpackPlugin.options.page.text.pipelineName.id "TCPL"}}
-        {{> tcplRevenues}}
-  {{/ifeq}}
+    {{#if htmlWebpackPlugin.options.page.sections.traffic.map}}
+      <!-- Start Throughput and capacity -->
+      {{> traffic/map text=htmlWebpackPlugin.options.page.text}}
+      <!-- End Throughput and capacity -->
+    {{/if}}
+    {{!-- pipeline has traffic data, but no leaflet map. Trans-Northern/group2 --}}
+    {{#if htmlWebpackPlugin.options.page.sections.traffic.noMap}}
+      <!-- Start Throughput and capacity -->
+      {{> traffic/noMap text=htmlWebpackPlugin.options.page.text}}
+      <!-- End Throughput and capacity -->
+    {{/if}}
+    {{#if htmlWebpackPlugin.options.page.sections.apportion}}
+      <!-- Start Apportionment -->
+      {{> apportion text=htmlWebpackPlugin.options.page.text}}
+      <!-- End Apportionment -->
+    {{/if}}
+    {{#if htmlWebpackPlugin.options.page.sections.safety}}
+      <!-- Start Safety and Environment -->
+      {{> safety text=htmlWebpackPlugin.options.page.text}}
+      <!-- End Safety and Environment -->
+    {{/if}}
   </div>
   {{> footer}}
 </body>
+
 </html>
