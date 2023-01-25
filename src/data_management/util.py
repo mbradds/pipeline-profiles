@@ -52,7 +52,6 @@ def company_rename():
     names = {'Westcoast Energy Inc., carrying on business as Spectra Energy Transmission': 'Westcoast Energy Inc.',
              'Kingston Midstream Limited': 'Kingston Midstream Westspur Limited',
              'Enbridge Pipelines (Westspur) Inc.': 'Kingston Midstream Westspur Limited',
-             'Imperial Oil Resources N.W.T. Limited': 'Enbridge Pipelines (NW) Inc.',
              'TransCanada Energy Ltd.': 'TransCanada PipeLines Limited',
              "Trans Quebec and Maritimes Pipeline Inc.": "Trans Québec and Maritimes Pipeline Inc.",
              'Trans QuÃ©bec and Maritimes Pipeline Inc.': 'Trans Québec and Maritimes Pipeline Inc.',

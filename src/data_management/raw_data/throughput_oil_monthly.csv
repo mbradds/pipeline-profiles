@@ -1812,6 +1812,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-09-01,Montreal,KP0000,north-west,petroleum,3.7651,
 2022-10-01,Montreal,KP0000,north-west,petroleum,0.0,
 2022-11-01,Montreal,KP0000,north-west,petroleum,0.0,
+2022-12-01,Montreal,KP0000,north-west,petroleum,3.6311,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.5732,5.4737
 2007-02-01,NormanWells,KP0044,south,domestic light,3.274,5.4737
 2007-03-01,NormanWells,KP0044,south,domestic light,3.6936,5.4737
