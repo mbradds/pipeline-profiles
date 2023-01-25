@@ -145,16 +145,26 @@ TCPL,2021 Final,2021-01-01,2021-12-31,Union Parkway Belt,Enbridge CDA,FT,natural
 TCPL,2021 Final,2021-01-01,2021-12-31,Union Parkway Belt,Énergir EDA (formerly called GMIT EDA),FT,natural gas,0.5141,CA$ per GJ,,
 TCPL,2021 Final,2021-01-01,2021-12-31,Union Parkway Belt,Iroquois,FT,natural gas,0.3741,CA$ per GJ,,
 TCPL,2021 Final,2021-01-01,2021-12-31,Union Parkway Belt,Union SWDA,FT,natural gas,0.2452,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Empress,Emerson 2,FT,natural gas,0.4225,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Empress,Enbridge CDA,FT,natural gas,1.2392,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Empress,Énergir EDA (formerly called GMIT EDA),FT,natural gas,1.4496,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Empress,Iroquois,FT,natural gas,1.3155,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Empress,Union SWDA,FT,natural gas,1.0516,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Union Parkway Belt,Emerson 2,FT,natural gas,0.8617,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Union Parkway Belt,Enbridge CDA,FT,natural gas,0.1499,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Union Parkway Belt,Énergir EDA (formerly called GMIT EDA),FT,natural gas,0.5141,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Union Parkway Belt,Iroquois,FT,natural gas,0.3741,CA$ per GJ,,
-TCPL,2022-2026 Final,2022-01-01,2026-12-31,Union Parkway Belt,Union SWDA,FT,natural gas,0.2452,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Empress,Emerson 2,FT,natural gas,0.4225,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Empress,Enbridge CDA,FT,natural gas,1.2392,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Empress,Énergir EDA (formerly called GMIT EDA),FT,natural gas,1.4496,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Empress,Iroquois,FT,natural gas,1.3155,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Empress,Union SWDA,FT,natural gas,1.0516,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Union Parkway Belt,Emerson 2,FT,natural gas,0.8617,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Union Parkway Belt,Enbridge CDA,FT,natural gas,0.1499,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Union Parkway Belt,Énergir EDA (formerly called GMIT EDA),FT,natural gas,0.5141,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Union Parkway Belt,Iroquois,FT,natural gas,0.3741,CA$ per GJ,,
+TCPL,2022-2026 Final,2022-01-01,2022-12-31,Union Parkway Belt,Union SWDA,FT,natural gas,0.2452,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Empress,Emerson 2,FT,natural gas,0.3358,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Empress,Enbridge CDA,FT,natural gas,1.0439,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Empress,Énergir EDA (formerly called GMIT EDA),FT,natural gas,1.2549,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Empress,Iroquois,FT,natural gas,1.1208,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Empress,Union SWDA,FT,natural gas,0.8563,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Union Parkway Belt,Emerson 2,FT,natural gas,0.7374,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Union Parkway Belt,Enbridge CDA,FT,natural gas,0.1499,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Union Parkway Belt,Énergir EDA (formerly called GMIT EDA),FT,natural gas,0.5141,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Union Parkway Belt,Iroquois,FT,natural gas,0.3741,CA$ per GJ,,
+TCPL,2023 Rate Riders,2023-01-01,2023-12-31,Union Parkway Belt,Union SWDA,FT,natural gas,0.2452,CA$ per GJ,,
 MNP,2004 Final,2004-01-01,2004-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.6444,CA$ per GJ,,
 MNP,2005 Final,2005-01-01,2005-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.6643,CA$ per GJ,,
 MNP,2006 Final,2006-01-01,2006-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.6725,CA$ per GJ,,
@@ -10548,36 +10558,96 @@ Westcoast,2021 Interim,2021-01-01,2021-03-31,T-South,PNG Delivery Point,2 years,
 Westcoast,2021 Interim,2021-01-01,2021-03-31,T-South,PNG Delivery Point,3 years,natural gas,141.87,CA$ per thousand cubic metres per month,0.1250460905652059,CA$ per GJ
 Westcoast,2021 Interim,2021-01-01,2021-03-31,T-South,PNG Delivery Point,4 years,natural gas,140.41,CA$ per thousand cubic metres per month,0.1237592272944286,CA$ per GJ
 Westcoast,2021 Interim,2021-01-01,2021-03-31,T-South,PNG Delivery Point,5 years or more,natural gas,138.94,CA$ per thousand cubic metres per month,0.1224635498916595,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Long Haul,1 year,natural gas,340.09,CA$ per thousand cubic metres per month,0.2997598149032282,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Long Haul,2 years,natural gas,330.97,CA$ per thousand cubic metres per month,0.29172132652686444,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Long Haul,3 years,natural gas,321.04,CA$ per thousand cubic metres per month,0.2829688934591793,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Long Haul,4 years,natural gas,317.73,CA$ per thousand cubic metres per month,0.28005141576995113,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Long Haul,5 years or more,natural gas,314.42,CA$ per thousand cubic metres per month,0.2771339380807226,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Short Haul,1 year,natural gas,23.67,CA$ per thousand cubic metres per month,0.020863050424179946,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Short Haul,2 years,natural gas,22.98,CA$ per thousand cubic metres per month,0.020254875316757587,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Short Haul,3 years,natural gas,22.29,CA$ per thousand cubic metres per month,0.019646700209335562,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Short Haul,4 years,natural gas,22.06,CA$ per thousand cubic metres per month,0.01944397517352822,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-North,Short Haul,5 years or more,natural gas,21.83,CA$ per thousand cubic metres per month,0.019241250137720548,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,FortisBC Kingsvale to Huntingdon,1 year,natural gas,339.09,CA$ per thousand cubic metres per month,0.2988784017040652,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,FortisBC Kingsvale to Huntingdon,2 years,natural gas,329.21,CA$ per thousand cubic metres per month,0.2901700392963383,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,FortisBC Kingsvale to Huntingdon,3 years,natural gas,319.33,CA$ per thousand cubic metres per month,0.2814616768886114,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,FortisBC Kingsvale to Huntingdon,4 years,natural gas,316.04,CA$ per thousand cubic metres per month,0.27856182746336616,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,FortisBC Kingsvale to Huntingdon,5 years or more,natural gas,312.75,CA$ per thousand cubic metres per month,0.27566197803812087,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Huntingdon Delivery Area,1 year,natural gas,772.74,CA$ per thousand cubic metres per month,0.6811032355209518,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Huntingdon Delivery Area,2 years,natural gas,750.23,CA$ per thousand cubic metres per month,0.6612626244078004,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Huntingdon Delivery Area,3 years,natural gas,727.72,CA$ per thousand cubic metres per month,0.6414220132946489,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Huntingdon Delivery Area,4 years,natural gas,720.22,CA$ per thousand cubic metres per month,0.634811414300929,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Huntingdon Delivery Area,5 years or more,natural gas,712.72,CA$ per thousand cubic metres per month,0.6282008153072091,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Inland Delivery Area,1 year,natural gas,433.65,CA$ per thousand cubic metres per month,0.38222483381688627,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Inland Delivery Area,2 years,natural gas,421.02,CA$ per thousand cubic metres per month,0.37109258511146204,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Inland Delivery Area,3 years,natural gas,408.39,CA$ per thousand cubic metres per month,0.3599603364060375,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Inland Delivery Area,4 years,natural gas,404.18,CA$ per thousand cubic metres per month,0.35624958683756286,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,Inland Delivery Area,5 years or more,natural gas,399.97,CA$ per thousand cubic metres per month,0.3525388372690879,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,PNG Delivery Point,1 year,natural gas,175.09,CA$ per thousand cubic metres per month,0.1543266370413896,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,PNG Delivery Point,2 years,natural gas,169.99,CA$ per thousand cubic metres per month,0.14983142972565994,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,PNG Delivery Point,3 years,natural gas,164.89,CA$ per thousand cubic metres per month,0.1453362224099303,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,PNG Delivery Point,4 years,natural gas,163.19,CA$ per thousand cubic metres per month,0.14383781997135386,CA$ per GJ
-Westcoast,2022 Interim,2022-01-01,2022-08-31,T-South,PNG Delivery Point,5 years or more,natural gas,161.49,CA$ per thousand cubic metres per month,0.14233941753277743,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Long Haul,1 year,natural gas,340.09,CA$ per thousand cubic metres per month,0.2997598149032282,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Long Haul,2 years,natural gas,330.97,CA$ per thousand cubic metres per month,0.29172132652686444,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Long Haul,3 years,natural gas,321.04,CA$ per thousand cubic metres per month,0.2829688934591793,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Long Haul,4 years,natural gas,317.73,CA$ per thousand cubic metres per month,0.28005141576995113,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Long Haul,5 years or more,natural gas,314.42,CA$ per thousand cubic metres per month,0.2771339380807226,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Short Haul,1 year,natural gas,23.67,CA$ per thousand cubic metres per month,0.020863050424179946,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Short Haul,2 years,natural gas,22.98,CA$ per thousand cubic metres per month,0.020254875316757587,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Short Haul,3 years,natural gas,22.29,CA$ per thousand cubic metres per month,0.019646700209335562,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Short Haul,4 years,natural gas,22.06,CA$ per thousand cubic metres per month,0.01944397517352822,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-North,Short Haul,5 years or more,natural gas,21.83,CA$ per thousand cubic metres per month,0.019241250137720548,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,FortisBC Kingsvale to Huntingdon,1 year,natural gas,339.09,CA$ per thousand cubic metres per month,0.2988784017040652,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,FortisBC Kingsvale to Huntingdon,2 years,natural gas,329.21,CA$ per thousand cubic metres per month,0.2901700392963383,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,FortisBC Kingsvale to Huntingdon,3 years,natural gas,319.33,CA$ per thousand cubic metres per month,0.2814616768886114,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,FortisBC Kingsvale to Huntingdon,4 years,natural gas,316.04,CA$ per thousand cubic metres per month,0.27856182746336616,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,FortisBC Kingsvale to Huntingdon,5 years or more,natural gas,312.75,CA$ per thousand cubic metres per month,0.27566197803812087,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Huntingdon Delivery Area,1 year,natural gas,772.74,CA$ per thousand cubic metres per month,0.6811032355209518,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Huntingdon Delivery Area,2 years,natural gas,750.23,CA$ per thousand cubic metres per month,0.6612626244078004,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Huntingdon Delivery Area,3 years,natural gas,727.72,CA$ per thousand cubic metres per month,0.6414220132946489,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Huntingdon Delivery Area,4 years,natural gas,720.22,CA$ per thousand cubic metres per month,0.634811414300929,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Huntingdon Delivery Area,5 years or more,natural gas,712.72,CA$ per thousand cubic metres per month,0.6282008153072091,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Inland Delivery Area,1 year,natural gas,433.65,CA$ per thousand cubic metres per month,0.38222483381688627,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Inland Delivery Area,2 years,natural gas,421.02,CA$ per thousand cubic metres per month,0.37109258511146204,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Inland Delivery Area,3 years,natural gas,408.39,CA$ per thousand cubic metres per month,0.3599603364060375,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Inland Delivery Area,4 years,natural gas,404.18,CA$ per thousand cubic metres per month,0.35624958683756286,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,Inland Delivery Area,5 years or more,natural gas,399.97,CA$ per thousand cubic metres per month,0.3525388372690879,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,PNG Delivery Point,1 year,natural gas,175.09,CA$ per thousand cubic metres per month,0.1543266370413896,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,PNG Delivery Point,2 years,natural gas,169.99,CA$ per thousand cubic metres per month,0.14983142972565994,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,PNG Delivery Point,3 years,natural gas,164.89,CA$ per thousand cubic metres per month,0.1453362224099303,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,PNG Delivery Point,4 years,natural gas,163.19,CA$ per thousand cubic metres per month,0.14383781997135386,CA$ per GJ
+Westcoast,2022 Final,2022-11-09,2022-12-31,T-South,PNG Delivery Point,5 years or more,natural gas,161.49,CA$ per thousand cubic metres per month,0.14233941753277743,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Long Haul,1 year,natural gas,340.09,CA$ per thousand cubic metres per month,0.2997598149032282,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Long Haul,2 years,natural gas,330.97,CA$ per thousand cubic metres per month,0.29172132652686444,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Long Haul,3 years,natural gas,321.04,CA$ per thousand cubic metres per month,0.2829688934591793,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Long Haul,4 years,natural gas,317.73,CA$ per thousand cubic metres per month,0.28005141576995113,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Long Haul,5 years or more,natural gas,314.42,CA$ per thousand cubic metres per month,0.2771339380807226,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Short Haul,1 year,natural gas,23.67,CA$ per thousand cubic metres per month,0.020863050424179946,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Short Haul,2 years,natural gas,22.98,CA$ per thousand cubic metres per month,0.020254875316757587,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Short Haul,3 years,natural gas,22.29,CA$ per thousand cubic metres per month,0.019646700209335562,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Short Haul,4 years,natural gas,22.06,CA$ per thousand cubic metres per month,0.01944397517352822,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-North,Short Haul,5 years or more,natural gas,21.83,CA$ per thousand cubic metres per month,0.019241250137720548,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,FortisBC Kingsvale to Huntingdon,1 year,natural gas,339.09,CA$ per thousand cubic metres per month,0.2988784017040652,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,FortisBC Kingsvale to Huntingdon,2 years,natural gas,329.21,CA$ per thousand cubic metres per month,0.2901700392963383,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,FortisBC Kingsvale to Huntingdon,3 years,natural gas,319.33,CA$ per thousand cubic metres per month,0.2814616768886114,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,FortisBC Kingsvale to Huntingdon,4 years,natural gas,316.04,CA$ per thousand cubic metres per month,0.27856182746336616,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,FortisBC Kingsvale to Huntingdon,5 years or more,natural gas,312.75,CA$ per thousand cubic metres per month,0.27566197803812087,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Huntingdon Delivery Area,1 year,natural gas,772.74,CA$ per thousand cubic metres per month,0.6811032355209518,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Huntingdon Delivery Area,2 years,natural gas,750.23,CA$ per thousand cubic metres per month,0.6612626244078004,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Huntingdon Delivery Area,3 years,natural gas,727.72,CA$ per thousand cubic metres per month,0.6414220132946489,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Huntingdon Delivery Area,4 years,natural gas,720.22,CA$ per thousand cubic metres per month,0.634811414300929,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Huntingdon Delivery Area,5 years or more,natural gas,712.72,CA$ per thousand cubic metres per month,0.6282008153072091,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Inland Delivery Area,1 year,natural gas,433.65,CA$ per thousand cubic metres per month,0.38222483381688627,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Inland Delivery Area,2 years,natural gas,421.02,CA$ per thousand cubic metres per month,0.37109258511146204,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Inland Delivery Area,3 years,natural gas,408.39,CA$ per thousand cubic metres per month,0.3599603364060375,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Inland Delivery Area,4 years,natural gas,404.18,CA$ per thousand cubic metres per month,0.35624958683756286,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,Inland Delivery Area,5 years or more,natural gas,399.97,CA$ per thousand cubic metres per month,0.3525388372690879,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,PNG Delivery Point,1 year,natural gas,175.09,CA$ per thousand cubic metres per month,0.1543266370413896,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,PNG Delivery Point,2 years,natural gas,169.99,CA$ per thousand cubic metres per month,0.14983142972565994,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,PNG Delivery Point,3 years,natural gas,164.89,CA$ per thousand cubic metres per month,0.1453362224099303,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,PNG Delivery Point,4 years,natural gas,163.19,CA$ per thousand cubic metres per month,0.14383781997135386,CA$ per GJ
+Westcoast,2022 Interim,2022-01-01,2022-11-08,T-South,PNG Delivery Point,5 years or more,natural gas,161.49,CA$ per thousand cubic metres per month,0.14233941753277743,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Long Haul,1 year,natural gas,286.06,CA$ per thousand cubic metres per month,0.2521370597524695,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Long Haul,2 years,natural gas,277.73,CA$ per thousand cubic metres per month,0.2447948878034446,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Long Haul,3 years,natural gas,269.4,CA$ per thousand cubic metres per month,0.23745271585441974,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Long Haul,4 years,natural gas,266.62,CA$ per thousand cubic metres per month,0.23500238716074773,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Long Haul,5 years or more,natural gas,263.84,CA$ per thousand cubic metres per month,0.23255205846707538,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Short Haul,1 year,natural gas,19.87,CA$ per thousand cubic metres per month,0.017513680267361754,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Short Haul,2 years,natural gas,19.29,CA$ per thousand cubic metres per month,0.017002460611847344,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Short Haul,3 years,natural gas,18.71,CA$ per thousand cubic metres per month,0.01649124095633326,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Short Haul,4 years,natural gas,18.52,CA$ per thousand cubic metres per month,0.016323772448492382,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-North,Short Haul,5 years or more,natural gas,18.32,CA$ per thousand cubic metres per month,0.016147489808659727,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,FortisBC Kingsvale to Huntingdon,1 year,natural gas,358.9,CA$ per thousand cubic metres per month,0.3163391971794776,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,FortisBC Kingsvale to Huntingdon,2 years,natural gas,348344.0,CA$ per thousand cubic metres per month,307.03499944911675,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,FortisBC Kingsvale to Huntingdon,3 years,natural gas,337.99,CA$ per thousand cubic metres per month,0.2979088471849864,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,FortisBC Kingsvale to Huntingdon,4 years,natural gas,334.5,CA$ per thousand cubic metres per month,0.29483271511990883,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,FortisBC Kingsvale to Huntingdon,5 years or more,natural gas,331.02,CA$ per thousand cubic metres per month,0.2917653971868227,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Huntingdon Delivery Area,1 year,natural gas,798.76,CA$ per thousand cubic metres per month,0.7040376069631641,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Huntingdon Delivery Area,2 years,natural gas,775.49,CA$ per thousand cubic metres per month,0.683527121818649,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Huntingdon Delivery Area,3 years,natural gas,752.23,CA$ per thousand cubic metres per month,0.6630254508061256,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Huntingdon Delivery Area,4 years,natural gas,744.47,CA$ per thousand cubic metres per month,0.6561856843806233,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Huntingdon Delivery Area,5 years or more,natural gas,736.72,CA$ per thousand cubic metres per month,0.6493547320871129,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Inland Delivery Area,1 year,natural gas,439.86,CA$ per thousand cubic metres per month,0.38769840978368647,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Inland Delivery Area,2 years,natural gas,427.05,CA$ per thousand cubic metres per month,0.3764075067024128,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Inland Delivery Area,3 years,natural gas,414.24,CA$ per thousand cubic metres per month,0.3651166036211392,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Inland Delivery Area,4 years,natural gas,409.97,CA$ per thousand cubic metres per month,0.36135296926071453,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,Inland Delivery Area,5 years or more,natural gas,405.7,CA$ per thousand cubic metres per month,0.3575893349002899,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,PNG Delivery Point,1 year,natural gas,180.99,CA$ per thousand cubic metres per month,0.1595269749164492,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,PNG Delivery Point,2 years,natural gas,175.72,CA$ per thousand cubic metres per month,0.15488192735686193,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,PNG Delivery Point,3 years,natural gas,170.44,CA$ per thousand cubic metres per month,0.15022806566528318,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,PNG Delivery Point,4 years,natural gas,168.69,CA$ per thousand cubic metres per month,0.1486855925667485,CA$ per GJ
+Westcoast,2023 Interim,2023-01-01,2023-12-31,T-South,PNG Delivery Point,5 years or more,natural gas,166.93,CA$ per thousand cubic metres per month,0.14713430533622235,CA$ per GJ
 TransMountain,Tariff 100,2016-05-01,2017-04-30,Edmonton,Sumas,Tank Metered,heavy,14.8453,CA$ per cubic metre,2.360218130942,CA$ per barrel
 TransMountain,Tariff 100,2016-05-01,2017-04-30,Edmonton,Westridge,Tank Metered,heavy,18.6764,CA$ per cubic metre,2.969315399535,CA$ per barrel
 TransMountain,Tariff 100,2016-05-01,2017-04-30,Kamloops,Sumas,Tank Metered,heavy,5.4581,CA$ per cubic metre,0.867770040382,CA$ per barrel
