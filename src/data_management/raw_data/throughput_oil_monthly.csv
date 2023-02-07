@@ -306,6 +306,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-07-01,EnbridgeMainline,KP0006,east,foreign light,0.7177,
 2022-08-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
 2022-09-01,EnbridgeMainline,KP0006,east,foreign light,0.0,
+2022-10-01,EnbridgeMainline,KP0006,east,foreign light,0.6327,
+2022-11-01,EnbridgeMainline,KP0006,east,foreign light,0.9901,
+2022-12-01,EnbridgeMainline,KP0006,east,foreign light,0.5836,
 2014-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,62.0,
 2014-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,66.9,
 2014-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,68.0,
@@ -411,6 +414,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-07-01,EnbridgeMainline,KP0015,east,domestic light / ngl,85.1137,
 2022-08-01,EnbridgeMainline,KP0015,east,domestic light / ngl,86.4603,
 2022-09-01,EnbridgeMainline,KP0015,east,domestic light / ngl,82.3932,
+2022-10-01,EnbridgeMainline,KP0015,east,domestic light / ngl,83.1455,
+2022-11-01,EnbridgeMainline,KP0015,east,domestic light / ngl,90.4372,
+2022-12-01,EnbridgeMainline,KP0015,east,domestic light / ngl,95.6116,
 2007-01-01,EnbridgeMainline,KP0016,east,domestic heavy,139.2885,288.1
 2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.1858,576.2
 2007-02-01,EnbridgeMainline,KP0016,east,domestic heavy,132.5969,291.3
@@ -876,6 +882,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-08-01,EnbridgeMainline,KP0016,east,domestic light / ngl,137.7683,1008.998
 2022-09-01,EnbridgeMainline,KP0016,east,domestic heavy,339.1536,511.637
 2022-09-01,EnbridgeMainline,KP0016,east,domestic light / ngl,145.2288,1023.274
+2022-10-01,EnbridgeMainline,KP0016,east,domestic heavy,332.7716,512.338
+2022-10-01,EnbridgeMainline,KP0016,east,domestic light / ngl,144.233,1024.676
+2022-10-01,EnbridgeMainline,KP0016,east,foreign light,0.6327,512.338
+2022-11-01,EnbridgeMainline,KP0016,east,domestic heavy,333.3128,522.219
+2022-11-01,EnbridgeMainline,KP0016,east,domestic light / ngl,152.2652,1044.438
+2022-11-01,EnbridgeMainline,KP0016,east,foreign light,0.9901,522.219
+2022-12-01,EnbridgeMainline,KP0016,east,domestic heavy,349.4129,507.763
+2022-12-01,EnbridgeMainline,KP0016,east,domestic light / ngl,153.5861,1015.526
+2022-12-01,EnbridgeMainline,KP0016,east,foreign light,0.5836,507.763
 2007-01-01,EnbridgeMainline,KP0021,east,domestic heavy,13.4401,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,domestic light / ngl,48.7528,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,foreign light,3.8013,118.5
@@ -1439,6 +1454,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-09-01,EnbridgeMainline,KP0021,east,domestic heavy,29.1206,173.448
 2022-09-01,EnbridgeMainline,KP0021,east,domestic light / ngl,80.5973,173.448
 2022-09-01,EnbridgeMainline,KP0021,east,foreign light,12.4183,173.448
+2022-10-01,EnbridgeMainline,KP0021,east,domestic heavy,31.1126,171.487
+2022-10-01,EnbridgeMainline,KP0021,east,domestic light / ngl,78.8563,171.487
+2022-10-01,EnbridgeMainline,KP0021,east,foreign light,12.3832,171.487
+2022-11-01,EnbridgeMainline,KP0021,east,domestic heavy,30.6835,173.448
+2022-11-01,EnbridgeMainline,KP0021,east,domestic light / ngl,89.4505,173.448
+2022-11-01,EnbridgeMainline,KP0021,east,foreign light,10.9056,173.448
+2022-12-01,EnbridgeMainline,KP0021,east,domestic heavy,30.4049,172.577
+2022-12-01,EnbridgeMainline,KP0021,east,domestic light / ngl,92.312,172.577
+2022-12-01,EnbridgeMainline,KP0021,east,foreign light,11.9793,172.577
 2010-07-01,Keystone,KP0020,south,domestic heavy,15.0724,18.1136
 2010-07-01,Keystone,KP0020,south,domestic light,3.0412,18.1136
 2010-08-01,Keystone,KP0020,south,domestic heavy,15.1294,15.1294
@@ -2002,6 +2026,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-07-01,NormanWells,KP0044,south,domestic light,1.4,2.6
 2022-08-01,NormanWells,KP0044,south,domestic light,1.1,2.6
 2022-09-01,NormanWells,KP0044,south,domestic light,1.0,2.6
+2022-10-01,NormanWells,KP0044,south,domestic light,0.9371,2.6
+2022-11-01,NormanWells,KP0044,south,domestic light,1.005,2.6
+2022-12-01,NormanWells,KP0044,south,domestic light,0.8844,2.6
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,7.2357,
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0,
 2011-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,11.5812,
