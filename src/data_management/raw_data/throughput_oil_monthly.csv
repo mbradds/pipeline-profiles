@@ -98,6 +98,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-07-01,Cochin,KP0018,west,condensate,16.9287,15.1038
 2022-08-01,Cochin,KP0018,west,condensate,16.7014,15.1038
 2022-09-01,Cochin,KP0018,west,condensate,16.1327,15.1038
+2022-10-01,Cochin,KP0018,west,condensate,16.4556,15.1038
+2022-11-01,Cochin,KP0018,west,condensate,15.7624,15.1038
+2022-12-01,Cochin,KP0018,west,condensate,16.8054,15.1038
 2014-07-01,Cochin,KP0034,east,refined petroleum products,0.0146,
 2014-07-01,Cochin,KP0043,east,refined petroleum products,0.0014,12.083
 2014-08-01,Cochin,KP0043,east,refined petroleum products,0.0,12.083
@@ -1755,8 +1758,14 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-07-01,Keystone,KP0020,south,domestic light,0.0,93.24
 2022-08-01,Keystone,KP0020,south,domestic heavy,92.99,92.99
 2022-08-01,Keystone,KP0020,south,domestic light,0.0,92.99
-2022-09-01,Keystone,KP0020,south,domestic heavy,101.62,101.62
-2022-09-01,Keystone,KP0020,south,domestic light,0.0,101.62
+2022-09-01,Keystone,KP0020,south,domestic heavy,102.23,102.23
+2022-09-01,Keystone,KP0020,south,domestic light,0.0,102.23
+2022-10-01,Keystone,KP0020,south,domestic heavy,100.84,100.84
+2022-10-01,Keystone,KP0020,south,domestic light,0.0,100.84
+2022-11-01,Keystone,KP0020,south,domestic heavy,95.48,99.69
+2022-11-01,Keystone,KP0020,south,domestic light,0.0,99.69
+2022-12-01,Keystone,KP0020,south,domestic heavy,53.22,98.89
+2022-12-01,Keystone,KP0020,south,domestic light,0.47,98.89
 2016-05-01,Montreal,KP0000,north-west,petroleum,1.9894,
 2016-06-01,Montreal,KP0000,north-west,petroleum,4.0521,
 2016-07-01,Montreal,KP0000,north-west,petroleum,6.8462,
@@ -1837,6 +1846,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-10-01,Montreal,KP0000,north-west,petroleum,0.0,
 2022-11-01,Montreal,KP0000,north-west,petroleum,0.0,
 2022-12-01,Montreal,KP0000,north-west,petroleum,3.6311,
+2023-01-01,Montreal,KP0000,north-west,petroleum,0.0,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.5732,5.4737
 2007-02-01,NormanWells,KP0044,south,domestic light,3.274,5.4737
 2007-03-01,NormanWells,KP0044,south,domestic light,3.6936,5.4737
@@ -2720,6 +2730,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-09-01,TransMountain,KP0003,west,domestic heavy,0.0,49.0
 2022-09-01,TransMountain,KP0003,west,domestic light,9.0,49.0
 2022-09-01,TransMountain,KP0003,west,refined petroleum products,4.0,49.0
+2022-10-01,TransMountain,KP0003,west,domestic heavy,0.0,53.0
+2022-10-01,TransMountain,KP0003,west,domestic light,9.0,53.0
+2022-10-01,TransMountain,KP0003,west,refined petroleum products,4.0,53.0
+2022-11-01,TransMountain,KP0003,west,domestic heavy,0.0,48.0
+2022-11-01,TransMountain,KP0003,west,domestic light,9.0,48.0
+2022-11-01,TransMountain,KP0003,west,refined petroleum products,4.0,48.0
+2022-12-01,TransMountain,KP0003,west,domestic heavy,0.0,55.0
+2022-12-01,TransMountain,KP0003,west,domestic light,10.0,55.0
+2022-12-01,TransMountain,KP0003,west,refined petroleum products,4.0,55.0
 2006-01-01,TransMountain,KP0038,south,domestic heavy,1.0,35.0
 2006-01-01,TransMountain,KP0038,south,domestic light,15.0,35.0
 2006-02-01,TransMountain,KP0038,south,domestic heavy,2.0,36.0
@@ -3122,6 +3141,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-08-01,TransMountain,KP0038,south,domestic light,39.0,58.0
 2022-09-01,TransMountain,KP0038,south,domestic heavy,0.0,49.0
 2022-09-01,TransMountain,KP0038,south,domestic light,28.0,49.0
+2022-10-01,TransMountain,KP0038,south,domestic heavy,0.0,53.0
+2022-10-01,TransMountain,KP0038,south,domestic light,30.0,53.0
+2022-11-01,TransMountain,KP0038,south,domestic heavy,0.0,48.0
+2022-11-01,TransMountain,KP0038,south,domestic light,32.0,48.0
+2022-12-01,TransMountain,KP0038,south,domestic heavy,0.0,55.0
+2022-12-01,TransMountain,KP0038,south,domestic light,40.0,55.0
 2006-01-01,TransMountain,KP0042,west,domestic heavy,4.0,35.0
 2006-01-01,TransMountain,KP0042,west,domestic light,0.0,35.0
 2006-02-01,TransMountain,KP0042,west,domestic heavy,3.0,36.0
@@ -3524,6 +3549,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-08-01,TransMountain,KP0042,west,domestic light,1.0,58.0
 2022-09-01,TransMountain,KP0042,west,domestic heavy,6.0,49.0
 2022-09-01,TransMountain,KP0042,west,domestic light,4.0,49.0
+2022-10-01,TransMountain,KP0042,west,domestic heavy,8.0,53.0
+2022-10-01,TransMountain,KP0042,west,domestic light,0.0,53.0
+2022-11-01,TransMountain,KP0042,west,domestic heavy,0.0,48.0
+2022-11-01,TransMountain,KP0042,west,domestic light,0.0,48.0
+2022-12-01,TransMountain,KP0042,west,domestic heavy,3.0,55.0
+2022-12-01,TransMountain,KP0042,west,domestic light,0.0,55.0
 2006-01-01,TransNorthern,KP0000,not available,refined petroleum products,34.4516,
 2006-02-01,TransNorthern,KP0000,not available,refined petroleum products,34.8214,
 2006-03-01,TransNorthern,KP0000,not available,refined petroleum products,33.8065,
@@ -3725,6 +3756,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-07-01,TransNorthern,KP0000,not available,refined petroleum products,24.9,
 2022-08-01,TransNorthern,KP0000,not available,refined petroleum products,25.1,
 2022-09-01,TransNorthern,KP0000,not available,refined petroleum products,24.2,
+2022-10-01,TransNorthern,KP0000,not available,refined petroleum products,24.4,
+2022-11-01,TransNorthern,KP0000,not available,refined petroleum products,22.7,
+2022-12-01,TransNorthern,KP0000,not available,refined petroleum products,25.7,
 2016-12-01,Westspur,KP0000,north-east,MSM – Crude,6.4036,
 2016-12-01,Westspur,KP0000,north-east,NGL,0.2675,
 2016-12-01,Westspur,KP0000,north-east,SES – Crude,21.5238,
@@ -3941,3 +3975,6 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-11-01,Westspur,KP0000,north-east,MSM – Crude,7.3262,
 2022-11-01,Westspur,KP0000,north-east,NGL,0.3404,
 2022-11-01,Westspur,KP0000,north-east,SES – Crude,16.3811,
+2022-12-01,Westspur,KP0000,north-east,MSM – Crude,6.8922,
+2022-12-01,Westspur,KP0000,north-east,NGL,0.3416,
+2022-12-01,Westspur,KP0000,north-east,SES – Crude,16.4961,

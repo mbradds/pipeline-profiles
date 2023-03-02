@@ -98,6 +98,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-07-01,Cochin,KP0018,15.1,18.07,,0.6985
 2022-08-01,Cochin,KP0018,15.1,19.55,,0.5531
 2022-09-01,Cochin,KP0018,15.1,21.78,,0.6286
+2022-10-01,Cochin,KP0018,15.1,26.38,,0.7242
+2022-11-01,Cochin,KP0018,15.1,32.49,,0.8408
+2022-12-01,Cochin,KP0018,15.1,39.9,,0.8894
 2016-01-01,EnbridgeLine9,KP0000,47.7,,,
 2016-02-01,EnbridgeLine9,KP0000,47.7,,,
 2016-03-01,EnbridgeLine9,KP0000,47.7,,,
@@ -352,11 +355,11 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2021-12-01,EnbridgeMainline,KP0000,,728.2,638.18,
 2022-01-01,EnbridgeMainline,KP0000,,750.86,649.25,
 2022-02-01,EnbridgeMainline,KP0000,,709.85,654.69,
-2022-03-01,EnbridgeMainline,KP0000,,410.99,583.93,
-2022-04-01,EnbridgeMainline,KP0000,,410.99,582.62,
-2022-05-01,EnbridgeMainline,KP0000,,410.99,577.65,
-2022-06-01,EnbridgeMainline,KP0000,,410.99,575.18,
-2022-07-01,EnbridgeMainline,KP0000,,410.99,595.85,
+2022-03-01,EnbridgeMainline,KP0000,,583.93,583.93,
+2022-04-01,EnbridgeMainline,KP0000,,582.62,582.62,
+2022-05-01,EnbridgeMainline,KP0000,,577.65,577.65,
+2022-06-01,EnbridgeMainline,KP0000,,575.18,575.18,
+2022-07-01,EnbridgeMainline,KP0000,,595.85,595.85,
 2022-08-01,EnbridgeMainline,KP0000,,620.83,611.67,
 2022-09-01,EnbridgeMainline,KP0000,,655.03,625.91,
 2022-10-01,EnbridgeMainline,KP0000,,646.63,637.37,
@@ -661,7 +664,10 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-06-01,Keystone,KP0020,95.7,110.75,,0.14
 2022-07-01,Keystone,KP0020,93.24,279.82,,0.67
 2022-08-01,Keystone,KP0020,92.99,294.7,,0.68
-2022-09-01,Keystone,KP0020,101.62,212.63,,0.52
+2022-09-01,Keystone,KP0020,102.23,212.63,,0.52
+2022-10-01,Keystone,KP0020,100.84,212.02,,0.52
+2022-11-01,Keystone,KP0020,99.69,205.96,,0.52
+2022-12-01,Keystone,KP0020,98.89,582.02,,0.83
 2007-01-01,NormanWells,KP0044,5.47,3.7,,0.0
 2007-02-01,NormanWells,KP0044,5.47,3.5,,0.0
 2007-03-01,NormanWells,KP0044,5.47,3.7,,0.0
@@ -1055,3 +1061,6 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-07-01,TransMountain,KP0000,52.0,59.0,,0.12
 2022-08-01,TransMountain,KP0000,58.0,66.0,,0.13
 2022-09-01,TransMountain,KP0000,49.0,53.0,,0.08
+2022-10-01,TransMountain,KP0000,53.0,59.0,,0.11
+2022-11-01,TransMountain,KP0000,48.0,56.0,,0.15
+2022-12-01,TransMountain,KP0000,55.0,66.0,,0.17
