@@ -73,7 +73,7 @@ Tolls,Receipt Point,East Hereford,East Hereford
 Tolls,Receipt Point,ECA Towerlake 03-07,ECA Towerlake 03-07
 Tolls,Receipt Point,Edmonton,Edmonton
 Tolls,Receipt Point,"Edmonton Terminal, Alberta","Terminal Edmonton, Alberta"
-Tolls,Receipt Point,"Edmonton, Alberta",Edmonton (Alberta)
+Tolls,Receipt Point,"Edmonton, Alberta","Edmonton, Alberta"
 Tolls,Receipt Point,"EDS Delivery Point, Corunna, Lambton County, Ontario","Point de livraison du réseau de livraison de l’Est, Corunna, comté de Lambton, Ontario"
 Tolls,Receipt Point,Edson,Edson
 Tolls,Receipt Point,Emerson 1,Emerson 1
@@ -102,8 +102,8 @@ Tolls,Receipt Point,"International Boundary near Alameda, Saskatchewan","Fronti�
 Tolls,Receipt Point,Iroquois,Iroquois
 Tolls,Receipt Point,Kamloops,Kamloops
 Tolls,Receipt Point,"Kerrobert Station, Saskatchewan","Terminal Kerrobert, Saskatchewan"
-Tolls,Receipt Point,"Kerrobert, Saskatchewan",Kerrobert (Saskatchewan)
-Tolls,Receipt Point,Kilometre Post 839.2,"Borne kilométrique 839,2"
+Tolls,Receipt Point,"Kerrobert, Saskatchewan","Kerrobert, Saskatchewan"
+Tolls,Receipt Point,"Kilometre Post 839.2, Alberta","Borne kilométrique 839,2, Alberta"
 Tolls,Receipt Point,Kirkwall,Kirkwall
 Tolls,Receipt Point,KPUC EDA,ZLE de KPUC
 Tolls,Receipt Point,Lachenaie,Lachenaie
@@ -122,16 +122,16 @@ Tolls,Receipt Point,NEBC Pipeline,Gazoduc NEBC
 Tolls,Receipt Point,Niagara Falls,Niagara Falls
 Tolls,Receipt Point,Nipigon WDA,ZLO de Nipigon
 Tolls,Receipt Point,None,Rien
-Tolls,Receipt Point,"Norman Wells, Northwest Territories","Norman Wells, Territoires du Nord-Ouest"
+Tolls,Receipt Point,"Norman Wells, NWT","Norman Wells, Territoires du Nord-Ouest"
 Tolls,Receipt Point,North Bay Junction,North Bay Junction
 Tolls,Receipt Point,"North Toronto, Ontario","Nord de Toronto, Ontario"
-Tolls,Receipt Point,"Oakville, Ontario",Oakville (Ontario)
+Tolls,Receipt Point,"Oakville, Ontario","Oakville, Ontario"
 Tolls,Receipt Point,Philipsburg,Philipsburg
 Tolls,Receipt Point,"Points in the Province of Alberta, Canada","Points dans la province de l’Alberta, Canada"
 Tolls,Receipt Point,Pouce Coupe Pipeline,Pipeline Pouce Coupé
 Tolls,Receipt Point,Receipt,Point de réception
 Tolls,Receipt Point,"Regina Terminal, Saskatchewan","Terminal Regina, à Regina, en Saskatchewan"
-Tolls,Receipt Point,"Regina, Saskatchewan",Regina (Saskatchewan)
+Tolls,Receipt Point,"Regina, Saskatchewan","Regina, Saskatchewan"
 Tolls,Receipt Point,Richmound,Richmound
 Tolls,Receipt Point,Sainte-Genevieve-de-Berthier,Sainte-Geneviève-de-Berthier
 Tolls,Receipt Point,"Sarnia Terminal, Ontario","Terminal de Sarnia, en Ontario"
@@ -145,7 +145,6 @@ Tolls,Receipt Point,Steelman,Steelman
 Tolls,Receipt Point,Steelman Terminal,Terminal Steelman
 Tolls,Receipt Point,Success,Réussite
 Tolls,Receipt Point,Suffield 2,Suffield 2
-Tolls,Receipt Point,System,Système
 Tolls,Receipt Point,T-North,T-Nord
 Tolls,Receipt Point,T-South,T-Sud
 Tolls,Receipt Point,"The International Boundary near Regway, Saskatchewan","Frontière internationale près de Regway, Saskatchewan"
@@ -197,7 +196,7 @@ Tolls,Delivery Point,"Clearbrook, Minnesota","Clearbrook, Minnesota"
 Tolls,Delivery Point,Cold Lake-Beacon Hill,Cold Lake-Beacon Hill
 Tolls,Delivery Point,Connection with Glacier Pipe Line Company at a point on the International Boundary near Carway Alberta ,"Raccordement avec Glacier Pipe Line Company, point sur la frontière internationale près de Carway, en Alberta "
 Tolls,Delivery Point,Cornwall,Cornwall
-Tolls,Delivery Point,"Cornwall, Ontario",Cornwall (Ontario)
+Tolls,Delivery Point,"Cornwall, Ontario","Cornwall, Ontario"
 Tolls,Delivery Point,"Corunna or Sarnia Terminal, Ontario","Terminal de Sarnia ou de Corunna, Ontario"
 Tolls,Delivery Point,"Cromer, Manitoba","Cromer, Manitoba"
 Tolls,Delivery Point,"Cushing, Oklahoma","Cushing, en Oklahoma"
@@ -209,7 +208,7 @@ Tolls,Delivery Point,East Hereford,East Hereford
 Tolls,Delivery Point,Eastern Zone,Région de l’Est
 Tolls,Delivery Point,Edmonton,Edmonton
 Tolls,Delivery Point,"Edmonton Terminal, Alberta","Terminal Edmonton, Alberta"
-Tolls,Delivery Point,"Edmonton, Alberta",Edmonton (Alberta)
+Tolls,Delivery Point,"Edmonton, Alberta","Edmonton, Alberta"
 Tolls,Delivery Point,"Edmonton, Alberta; Hardisty, Alberta","Terminal Edmonton, Edmonton, Alberta"
 Tolls,Delivery Point,"Edmonton, Alberta; Hardisty, Alberta; Kerrobert, Saskatchewan","Edmonton, Alberta; Hardisty, Alberta, Kerrobert, Saskatchewan"
 Tolls,Delivery Point,"EDS Delivery Point, Corunna, Lambton County, Ontario","Point de livraison du réseau de livraison de l’Est, Corunna, comté de Lambton, Ontario"
@@ -235,8 +234,8 @@ Tolls,Delivery Point,Group 1,Groupe 1
 Tolls,Delivery Point,Group 2,Groupe 2
 Tolls,Delivery Point,Group 3,Groupe 3
 Tolls,Delivery Point,"Hardisty Terminal, Alberta","Terminal Hardisty, Alberta"
-Tolls,Delivery Point,"Hardisty, Alberta ","Hardisty, Alberta "
-Tolls,Delivery Point,"Houston, Texas",Houston (Texas)
+Tolls,Delivery Point,"Hardisty, Alberta ","Hardisty, Alberta"
+Tolls,Delivery Point,"Houston, Texas","Houston, Texas"
 Tolls,Delivery Point,"International Border, near Sarnia, Ontario","Frontière internationale, près de Sarnia, Ontario"
 Tolls,Delivery Point,"International Boundary at or near Haskett, Manitoba","Frontière internationale, près de Haskett, Manitoba"
 Tolls,Delivery Point,"International Boundary near Chippawa, Ontario","Frontière internationale près de Chippawa, Ontario"
@@ -246,7 +245,7 @@ Tolls,Delivery Point,"The International Boundary near Wild Horse, Alberta","Fron
 Tolls,Delivery Point,Iroquois,Iroquois
 Tolls,Delivery Point,Kamloops,Kamloops
 Tolls,Delivery Point,"Kerrobert Station, Saskatchewan","Terminal Kerrobert, Saskatchewan"
-Tolls,Delivery Point,"Kingston, Ontario",Kingston (Ontario)
+Tolls,Delivery Point,"Kingston, Ontario","Kingston, Ontario"
 Tolls,Delivery Point,Kirkwall,Kirkwall
 Tolls,Delivery Point,KPUC EDA,ZLE de KPUC
 Tolls,Delivery Point,Lloydminister,Lloydminister
@@ -259,11 +258,9 @@ Tolls,Delivery Point,Mid-Continent,Centre du continent
 Tolls,Delivery Point,"Milden, Saskatchewan","Milden, Saskatchewan"
 Tolls,Delivery Point,MN365,Droits MN365
 Tolls,Delivery Point,"Mokena, Illinois","Mokena, Illinois"
-Tolls,Delivery Point,"Montreal East, Quebec ","Montréal Est, Québec "
+Tolls,Delivery Point,"Montreal East, Quebec ","Montréal Est, Québec"
 Tolls,Delivery Point,"Montreal, Quebec","Montréal, Québec"
-Tolls,Delivery Point,"MONTREAL, QUEBEC","MONTRÉAL, QUÉBEC"
 Tolls,Delivery Point,"Nanticoke, Ontario","Nanticoke, Ontario"
-Tolls,Delivery Point,"NANTICOKE, ONTARIO","NANTICOKE, ONTARIO"
 Tolls,Delivery Point,Napierville,Napierville
 Tolls,Delivery Point,Niagara Falls,Niagara Falls
 Tolls,Delivery Point,Nipigon WDA,ZLO de Nipigon
@@ -273,14 +270,14 @@ Tolls,Delivery Point,Short Haul,Courte distance
 Tolls,Delivery Point,North Bay Junction,North Bay Junction
 Tolls,Delivery Point,"North Toronto, Ontario","Nord de Toronto, Ontario"
 Tolls,Delivery Point,Northern Zone,Zone du Nord
-Tolls,Delivery Point,"Oakville, Ontario",Oakville (Ontario)
-Tolls,Delivery Point,"Ottawa, Ontario",Ottawa (Ontario)
+Tolls,Delivery Point,"Oakville, Ontario","Oakville, Ontario"
+Tolls,Delivery Point,"Ottawa, Ontario","Ottawa, Ontario"
 Tolls,Delivery Point,Peace Pipeline,Pipeline Peace
 Tolls,Delivery Point,Philipsburg,Philipsburg
 Tolls,Delivery Point,"Port Arthur, Texas","Port Arthur, Texas"
 Tolls,Delivery Point,"Rapid River, Michigan","Rapid River, Michigan"
 Tolls,Delivery Point,"Regina Terminal, Saskatchewan","Terminal Regina, à Regina, en Saskatchewan"
-Tolls,Delivery Point,"Regina, Saskatchewan",Regina (Saskatchewan)
+Tolls,Delivery Point,"Regina, Saskatchewan","Regina, Saskatchewan"
 Tolls,Delivery Point,Saskatchewan Zone,Zone du Saskatchewan
 Tolls,Delivery Point,Schomberg CDA,ZLC de Schomberg
 Tolls,Delivery Point,Shaunavon ,Shaunavon 
@@ -500,12 +497,11 @@ Tolls,Service,TS Injection Fees - Commodity,TS Frais d’injection – Produit d
 Tolls,Service,TS Storage Fees - Monthly,TS Frais de stockage – Mensuels
 Tolls,Service,TS-SCGM Injection Fees - Commodity,TS Frais d’injection  – Taux au volume – Produit de base
 Tolls,Service,TS-SCGM Storage Fees - Monthly,TS Frais de stockage – Taux au volume – Mensuels
-Tolls,Service,UNCOMMITTED,CAPACITÉ NON SOUSCRITE
 Tolls,Service,Uncommitted,Capacité non souscrite
 Tolls,Service,Uncommitted Joint Rate  ,Taux conjoint non souscrit  
 Tolls,Service,Uncommitted Rates,Taux non souscrits
 Tolls,Service,"Uncommitted, Uncommitted","Capacité non souscrite, taux non souscrit"
-Tolls,Service,Usage Charge Outside Tolerances,Frais d’utilisation hors tolérance
+Tolls,Service,MN365 - Usage Charge Outside Tolerances,MN365 - Frais d’utilisation hors tolérance
 Tolls,Service,Usage Charge Within Tolerances,Frais d’utilisation dans la tolérance
 Tolls,Service,Volume Incentive Rate,Taux incitatif relatif au volume
 Tolls,Units,$ per barrel,$ par baril
@@ -519,7 +515,6 @@ Tolls,Units,$/10³m³/month,$/1000 m3/mois
 Tolls,Units,$/barrel,$ par baril
 Tolls,Units,$/GJ,$/GJ
 Tolls,Units,$/GJ / month,$/GJ/mois
-Tolls,Units,$/GJ/month,$/GJ/mois
 Tolls,Units,$/GJ/Day,$/GJ/jour
 Tolls,Units,$/GJ/Km,$/GJ/kilomètre
 Tolls,Units,$/GJ/Km/Month,$/GJ/kilomètre/mois
@@ -531,7 +526,6 @@ Tolls,Units,103m3/mo,1000 m3/mois
 Tolls,Units,10³m³/mo,1000 m3/mois
 Tolls,Units,CAD DOLLARS PER CUBIC METRE,CAD$ par mètre cube
 Tolls,Units,CAN $/GJ,CAN $/GJ
-Tolls,Units,Canadian Dollars per Cubic Metre,CAD$ par mètre cube
 Tolls,Units,Canadian Dollars per cubic metre,CAD$ par mètre cube
 Tolls,Units,CN$/m3,CAD$ par mètre cube
 Tolls,Units,cubic metre,mètre cube
@@ -548,3 +542,72 @@ Tolls,Units,US$/m3,US$ par mètre cube
 Tolls,Units,US$/gallon,US$/gallon
 Tolls,Units,US/MMBtu,US/MMBtu
 Tolls,Units,USD$ per barrel,US$ par baril
+Tolls,Units,$/GJ/mo,$/GJ/mois
+Tolls,Service,Average FT-D,Moyenne de SG-L
+Tolls,Service,"Committed, International Joint","Volumes souscrits, tarif commun"
+Tolls,Service,"Uncommitted, International Joint","Capacité non souscrite, tarif commun"
+Tolls,Service,"All, Local",Tout tarif local
+Tolls,Receipt Point,"Sarnia, Ontario","Sarnia, Ontario"
+Tolls,Service,"Committed, Local","Volumes souscrits, tarif local"
+Tolls,Service,"Uncommitted, Local","Capacité non souscrite, tarif local"
+Tolls,Delivery Point,various terminals/refineries in Texas,divers terminaux/raffineries au Texas
+Tolls,Service,Firm Demand Charge,"Service d’accès complet garanti, droit lié à la demande"
+Tolls,Product,super-heavy petroleum,pétrole extra lourd
+Tolls,Product,light crude oil,pétrole brut léger
+Tolls,Receipt Point,ALTAGAS HOLDINGS FORTSTJOHN,Altagas Holdings Fort St. John
+Tolls,Receipt Point,"Berthold (Ward County), North Dakota","Berthold (Ward County), Dakota du Nord"
+Tolls,Receipt Point,BOUNDARY LK S 06-09,BOUNDARY LK S 06-09
+Tolls,Receipt Point,BOUNDARY LK S 06-09-08-13W6,BOUNDARY LK S 06-09-08-13W6
+Tolls,Receipt Point,CAN/US Border,Frontière canado-américaine
+Tolls,Receipt Point,"International Border near North Portal, Saskatchewan","Frontière internationale, près de North Portal, Saskatchewan"
+Tolls,Receipt Point,POUCE COUPÉ SYSTEM,Système Pouce Coupé
+Tolls,Receipt Point,"SEEP, Saskatchewan",usine d’extraction d’éthane de Saskatchewan (UEES)
+Tolls,Delivery Point,Antelope,Antelope
+Tolls,Delivery Point,"Connection with Glacier Pipe Line Company at a point on the International Boundary near Carway, Alberta","Raccordement avec Glacier Pipe Line Company, point sur la frontière internationale près de Carway, en Alberta "
+Tolls,Delivery Point,"E.D.S. Delivery Point, Corunna Lambton County, Ontario","Point de livraison du réseau de livraison de l’Est, Corunna, comté de Lambton, Ontario"
+Tolls,Delivery Point,Énergir EDA (formerly called GMIT EDA),ZLE d’Energir (anciennement appelé) ZLE de GMIT
+Tolls,Delivery Point,Esther-Smiley,Esther-Smiley
+Tolls,Delivery Point,"Keyera Fort Saskatchewan Facility, Alberta","Installation de Keyera Fort Saskatchewan, Alberta"
+Tolls,Delivery Point,Lloydminster,Lloydminster
+Tolls,Delivery Point,"Pembina Fort Saskatchewan Facility, Alberta","Pembina Fort Saskatchewan Facility, Alberta"
+Tolls,Delivery Point,Pierceland-Cold Lake,Pierceland-Cold Lake
+Tolls,Delivery Point,"Plains Fort Saskatchewan Facility, Alberta","Installation de Plains Fort Saskatchewan, Alberta"
+Tolls,Delivery Point,Steelman-North Portal,Steelman-Nord Portal
+Tolls,Delivery Point,Steelman/Portal,Steelman/Portal
+Tolls,Delivery Point,Swan River,Swan River
+Tolls,Units,CANADIAN DOLLARS PER BARREL,CAD$ par baril
+Tolls,Units,$/103m3/mo,$/1000 m3/mois
+Tolls,Units,CAN $/GJ/month,CAN $/GJ/mois
+Tolls,Units,Dollars per Barrel Payable in United States Currency,US$ par baril
+Tolls,Units,CA$ per cubic metre,CAD$ par mètre cube
+Tolls,Service,DISCOUNTED TOLLS,Droits réduits
+Tolls,Service,Firm 1Yr Demand Charge,"Service d’accès complet garanti, droit lié à la demande mensuelle pour 1 ans"
+Tolls,Service,Firm 3Yr Demand Charge,"Service d’accès complet garanti, droit lié à la demande mensuelle pour 3 ans"
+Tolls,Service,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, 49 999 ou moins"
+Tolls,Service,"10 Year Commitment (>=40,000 bpd)","Engagement de 10 ans (>=40,000 barils)"
+Tolls,Service,5 to 9 Year,5 à 9 ans
+Tolls,Service,Committed Shipper A Volume Incentive,"Volumes souscrits Shipper A, tarif incitatif"
+Tolls,Service,Firm 5Yr Demand Charge,"Service d’accès complet garanti, droit lié à la demande mensuelle pour 5 ans"
+Tolls,Service,Committed Shipper A Joint,"Volumes souscrits Shipper A, tarif commun"
+Tolls,Service,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 20 ans, de 50 000 à 99 999"
+Tolls,Service,Base Tariff,tarif de base
+Tolls,Service,FS,SG
+Tolls,Service,Committed Volume Incentive,Taux incitatif relatif au volume souscrits
+Tolls,Service,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 49 999 ou moins"
+Tolls,Service,Net Tariff,Droit net
+Tolls,Service,10 or more Year,10 ans ou plus
+Tolls,Service,TOLLS,Droits
+Tolls,Service,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +","1er APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 50 000 ou plus"
+Tolls,Service,Abandonment Surcharges,Supplément perçu au titre de la cessation d’exploitation
+Tolls,Service,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, de 50 000 à 99 999"
+Tolls,Service,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less","1er APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, 99 999 ou moins"
+Tolls,Service,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999","2e APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 10 ans, de 50 000 à 99 999"
+Tolls,Service,Committed Joint,"Volumes souscrits, tarif commun"
+Tolls,Service,Tank Metered,Réservoirs munis de compteurs
+Tolls,Service,"10 Year Commitment (<40,000 bpd)","Engagement de 10 ans (<40,000 barils)"
+Tolls,Service,5 Year Commitment,Engagement de 5 ans
+Tolls,Service,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less","1er APPEL DE SOUMISSIONS – VOLUMES SOUSCRITS, 15 ans, 49 999 ou moins"
+Tolls,Service,Uncommitted Joint,Taux conjoint non souscrit
+Tolls,Receipt Point,System,Système
+Tolls,Delivery Point,"Kerrobert, Saskatchewan","Kerrobert, Saskatchewan"
+Tolls,Receipt Point,"Montreal East, Quebec","Montréal Est, Québec"
