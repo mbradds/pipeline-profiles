@@ -41,7 +41,6 @@ export async function mainIncidents(
     });
     map.addBaseMap();
     map.processEventsData(incidentData);
-    map.lookForSize();
     map.addPipelineShape();
     return map;
   };

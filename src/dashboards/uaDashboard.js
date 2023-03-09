@@ -54,7 +54,6 @@ export async function mainUa(uaData, metaData, lang, pipelineShape) {
     });
     map.addBaseMap();
     map.processEventsData(events);
-    map.lookForSize();
     map.addPipelineShape();
     return map;
   };

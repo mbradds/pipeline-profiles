@@ -19,15 +19,11 @@ import { mainRemediation } from "../dashboards/remediationDashboard.js";
 import { mainUa } from "../dashboards/uaDashboard.js";
 // tcpl revenues
 import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
-// plains disclaimers and safety & env tab click
-import { openTab } from "../modules/util.js";
 // pipeline shape promise
 import { getPipelineShape } from "../modules/pipelineShape.js";
 
 import "../css/main.css";
 
-// set up default click
-window.openTab = openTab;
 // console.time(`first content loading`);
 
 generalTheme();

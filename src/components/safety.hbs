@@ -10,7 +10,31 @@
       <p>{{text.safety.wascanaDisclaimer}}</p>
     </div>
   {{/ifeq}}
-  <div class="btn-group btn-group-justified mrgn-tp-lg section-nav" id="safety-env-navigation">
+  <div class="wb-tabs ignore-session">
+    <div class="tabpanels">
+      <details id="details-panel10">
+        <summary>{{text.safety.buttons.conditions}}</summary>
+        {{> conditions text=text}}
+      </details>
+      <details id="details-panel20">
+        <summary>{{text.safety.buttons.incidents}}</summary>
+        {{> incidents text=text}}
+      </details>
+      <details id="details-panel30">
+        <summary>{{text.safety.buttons.oandm}}</summary>
+        {{> oandm text=text}}
+      </details>
+      <details id="details-panel40">
+        <summary>{{text.safety.buttons.remediation}}</summary>
+        {{> remediation text=text}}
+      </details>
+      <details id="details-panel50">
+        <summary>{{text.safety.buttons.ua}}</summary>
+        {{> unauthorizedActivities text=text}}
+      </details>
+    </div>
+  </div>
+  {{!-- <div class="btn-group btn-group-justified mrgn-tp-lg section-nav" id="safety-env-navigation">
     <div class="btn-group tab">
       <button type="button" class="btn btn-default tablinks active" onclick="openTab(event, 'condition-compliance')">
         {{text.safety.buttons.conditions}}
@@ -36,10 +60,10 @@
         {{text.safety.buttons.ua}}
       </button>
     </div>
-  </div>
-  {{> conditions text=text}}
-  {{> incidents text=text}}
-  {{> oandm text=text}}
+  </div> --}}
+  {{!-- {{> conditions text=text}}
+  {{> incidents text=text}} --}}
+  {{!-- {{> oandm text=text}}
   {{> remediation text=text}}
-  {{> unauthorizedActivities text=text}}
+  {{> unauthorizedActivities text=text}} --}}
 </div>

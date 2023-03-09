@@ -42,26 +42,6 @@ export function rangeInclusive(start, end) {
 
 /**
  *
- * @param {PointerEvent} evt
- * @param {string} sectionName
- */
-export function openTab(evt, sectionName) {
-  const sections = document.querySelectorAll(".profile-section");
-  Array.from(sections).forEach((section) => {
-    section.classList.remove("profile-show");
-    section.classList.add("profile-hide");
-  });
-  const tablinks = document.getElementsByClassName("tablinks");
-  Array.from(tablinks).forEach((tab) => {
-    tab.className = tab.className.replace(" active", "");
-  });
-  const currentSection = document.getElementById(sectionName);
-  currentSection.classList.add("profile-show");
-  evt.currentTarget.classList.add("active");
-}
-
-/**
- *
  * @param {Object[]} obj - JSON style list of objects with a common numeric column to sort.
  * @param {string} [colName="value"] - JSON column identifier to sort.
  * @returns {Object[]} - Descending sorted JSON list of objects.

@@ -492,6 +492,7 @@ export class EventMap {
     this.map.on("zoom", () => {
       currentDashboard.updateRadius();
     });
+    this.reZoom();
   }
 
   async findUser() {
@@ -677,28 +678,6 @@ export class EventMap {
         currentDashboard.toolTip(layer.options.eventParams, newFill)
       );
     });
-  }
-
-  /**
-   * Listens for a Window resize event, or top button navigation event so that invalidateSize() and reZoom() are called to ensure proper sizing.
-   */
-  lookForSize() {
-    const currentDashboard = this;
-    let resize = false;
-    window.addEventListener("resize", () => {
-      resize = true;
-    });
-    document
-      .getElementById("safety-env-navigation")
-      .addEventListener("click", () => {
-        if (resize) {
-          currentDashboard.map.invalidateSize(true);
-          resize = false;
-        } else {
-          currentDashboard.map.invalidateSize(false);
-        }
-        currentDashboard.reZoom();
-      });
   }
 
   /**
