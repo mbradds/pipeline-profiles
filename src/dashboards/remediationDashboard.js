@@ -38,7 +38,6 @@ export async function mainRemediation(data, lang, pipelineShape) {
     });
     map.addBaseMap();
     map.processEventsData(events);
-    map.lookForSize();
     map.addMapDisclaimer("volume");
     map.addPipelineShape();
     return map;

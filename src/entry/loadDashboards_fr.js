@@ -19,59 +19,57 @@ import { mainRemediation } from "../dashboards/remediationDashboard.js";
 import { mainUa } from "../dashboards/uaDashboard.js";
 // tcpl revenues
 import { mainTcplRevenues } from "../dashboards/tcplRevenuesDashboard.js";
-// plains disclaimers and safety & env tab click
-import { openTab } from "../modules/util.js";
 // pipeline shape promise
 import { getPipelineShape } from "../modules/pipelineShape.js";
 
 import "../css/main.css";
 
-// set up default click
-window.openTab = openTab;
 // console.time(`first content loading`);
 
 generalTheme();
 frenchTheme();
 
 export function loadAllCharts(data) {
-  const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
-  mainTraffic(
-    data.trafficData.traffic,
-    data.trafficData.meta,
-    frenchDashboard.traffic,
-    pipelineShape
-  );
-  mainApportion(data.apportionData, frenchDashboard.apportion);
-  mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);
-  mainConditions(
-    JSON.parse(data.conditionsData.regions),
-    data.canadaMap,
-    data.conditionsData.mapMeta,
-    data.conditionsData.meta,
-    frenchDashboard.conditions
-  );
-  mainIncidents(
-    data.incidentData.events,
-    data.incidentData.meta,
-    frenchDashboard.incidents,
-    pipelineShape
-  );
-  mainOandM(data.oandmData, frenchDashboard.oandm);
-  mainRemediation(
-    data.remediationData,
-    frenchDashboard.remediation,
-    pipelineShape
-  );
-  mainUa(
-    data.uaData.events,
-    data.uaData.meta,
-    frenchDashboard.ua,
-    pipelineShape
-  );
+  $(document).on("wb-ready.wb", (event) => {
+    const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
+    mainTraffic(
+      data.trafficData.traffic,
+      data.trafficData.meta,
+      frenchDashboard.traffic,
+      pipelineShape
+    );
+    mainApportion(data.apportionData, frenchDashboard.apportion);
+    mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);
+    mainConditions(
+      JSON.parse(data.conditionsData.regions),
+      data.canadaMap,
+      data.conditionsData.mapMeta,
+      data.conditionsData.meta,
+      frenchDashboard.conditions
+    );
+    mainIncidents(
+      data.incidentData.events,
+      data.incidentData.meta,
+      frenchDashboard.incidents,
+      pipelineShape
+    );
+    mainOandM(data.oandmData, frenchDashboard.oandm);
+    mainRemediation(
+      data.remediationData,
+      frenchDashboard.remediation,
+      pipelineShape
+    );
+    mainUa(
+      data.uaData.events,
+      data.uaData.meta,
+      frenchDashboard.ua,
+      pipelineShape
+    );
 
-  if (data.tcplRevenues) {
-    mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
-  }
+    if (data.tcplRevenues) {
+      mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
+    }
 
-  // console.timeEnd(`first content loading`);
+    // console.timeEnd(`first content loading`);
+  });
 }
