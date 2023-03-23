@@ -136,10 +136,10 @@ class TestTraffic(unittest.TestCase):
         # check one data point for traffic and capacity
         # traffic
         self.assertEqual(point[1]["id"], "in")
-        self.assertEqual(point[1]["data"][0], 5.7092)
+        self.assertEqual(point[1]["data"][0], 5.70924)
         # capacity
         self.assertEqual(point[2]["id"], "cap")
-        self.assertEqual(point[2]["data"][0], 6.6208)
+        self.assertEqual(point[2]["data"][0], 6.62076)
 
 
 class TestOandm(unittest.TestCase):
