@@ -107,7 +107,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
         elif pipe != na and section == na:
             pipe_section.append("p") # Pipeline
         elif pipe != na and section != na:
-            pipe_section.append("pf") # Pipeline and Facility
+            pipe_section.append("f") # Pipeline and Facility, See issue #158
         else:
             print("error here!")
 
