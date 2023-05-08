@@ -196,7 +196,8 @@ EnbridgeLine9,4248485,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4248484,https
 EnbridgeLine9,4257834,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4257927,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4257834,2022-09-01,2022-09-30
 EnbridgeLine9,4264990,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4264988,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4264990,2022-10-01,2023-01-31
 EnbridgeLine9,4303403,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4303402,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4303403,2023-02-01,2023-02-28
-EnbridgeLine9,4306704,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4306325,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4306704,2023-03-01,2023-06-30
+EnbridgeLine9,4306704,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4306325,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4306704,2023-03-01,2023-04-30
+EnbridgeLine9,4364844,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4364460,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4364844,2023-05-01,2023-06-30
 EnbridgeLocal,2478750,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2478081,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2478750,2014-07-01,2015-03-31
 EnbridgeLocal,2696250,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2696249,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2696250,2000-01-01,2000-01-01
 EnbridgeLocal,2705227,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2704898,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2705227,2015-04-01,2015-06-30
@@ -553,9 +554,10 @@ TQM,3892383,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3892382,https://apps.ce
 TQM,3912809,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3912808,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3912809,2020-01-01,2020-12-31
 TQM,4025958,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4025957,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4025958,2000-01-01,2000-01-01
 TQM,4085517,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4085516,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4085517,2021-01-01,2021-12-31
-TQM,4166518,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4167237,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166518,2000-01-01,2000-01-01
+TQM,4166518,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4167237,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166518,2022-01-01,2022-12-31
 TQM,4243213,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4243007,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4243213,2022-01-01,2022-12-31
 TQM,4290683,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4291912,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4290683,2023-01-01,2023-12-31
+TQM,4361145,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360710,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4361145,2023-01-01,2023-12-31
 TQM,655175,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/655251,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/655175,2000-01-01,2000-01-01
 TQM,686958,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/686957,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/686958,2011-01-01,2011-12-31
 TQM,768108,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/768179,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/768108,2000-01-01,2000-01-01
@@ -567,8 +569,7 @@ TransMountain,3913009,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3913007,https
 TransMountain,4085210,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4085467,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4085210,2021-05-01,2021-11-30
 TransMountain,4162219,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4162217,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4162219,2021-12-01,2022-04-30
 TransMountain,4239816,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4239815,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4239816,2022-05-01,2023-04-30
-TransMountain,4360719,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360834,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360719,2000-01-01,2000-01-01
-TransMountain,4360720,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360834,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360720,2000-01-01,2000-01-01
+TransMountain,4360719,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360834,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360719,2023-05-01,2023-12-31
 TransMountain,Tariff 100,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2938202,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2938754,2016-05-01,2017-04-30
 TransMountain,Tariff 101,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3225939,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3225607,2017-05-01,2018-04-30
 TransMountain,Tariff 103,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3541779,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3542012,2018-05-01,2019-04-30
@@ -707,6 +708,5 @@ Westspur,4251644,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4251731,https://ap
 Westspur,4279047,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4276910,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4279047,2022-10-21,2023-01-31
 Westspur,4297927,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4297470,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4297927,2023-02-01,2023-03-31
 Westspur,4332395,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4332064,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4332395,2023-04-01,2023-12-31
-Westspur,4360683,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360682,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360683,2000-01-01,2000-01-01
 Westspur,939503,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/939694,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/939503,2013-04-01,2013-05-31
 Westspur,956486,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/956706,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/956486,2013-06-01,2014-03-31
