@@ -674,23 +674,40 @@ EnbridgeMainline,4303181,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","Fla
 EnbridgeMainline,4303181,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,41.5099,US$ per cubic metre,6.599558014563,US$ per barrel
 EnbridgeMainline,4303181,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,25.1975,US$ per cubic metre,4.006089223822,US$ per barrel
 EnbridgeMainline,4303181,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,22.1477,US$ per cubic metre,3.52120894146,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,19.3484,US$ per cubic metre,3.076155044675,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,31.1,US$ per cubic metre,4.944513339056,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,37.8361,US$ per cubic metre,6.015469490285,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,22.8138,US$ per cubic metre,3.627110559954,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,23.2176,US$ per cubic metre,3.691309739578,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,37.057,US$ per cubic metre,5.891602276701,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,45.1134,US$ per cubic metre,7.172469712868,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,27.2855,US$ per cubic metre,4.338055264078,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,20.2703,US$ per cubic metre,3.222725682851,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,32.046,US$ per cubic metre,5.094915577601,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,38.9957,US$ per cubic metre,6.199831473178,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,23.7429,US$ per cubic metre,3.774825908613,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,21.3413,US$ per cubic metre,3.393001367293,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,33.8669,US$ per cubic metre,5.384416038665,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,41.221,US$ per cubic metre,6.553626506407,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,25.0315,US$ per cubic metre,3.979697287672,US$ per barrel
-EnbridgeMainline,4306323,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,21.9817,US$ per cubic metre,3.49481700531,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,19.3484,US$ per cubic metre,3.076155044675,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,31.1,US$ per cubic metre,4.944513339056,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,37.8361,US$ per cubic metre,6.015469490285,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,22.8138,US$ per cubic metre,3.627110559954,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,23.2176,US$ per cubic metre,3.691309739578,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,37.057,US$ per cubic metre,5.891602276701,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,45.1134,US$ per cubic metre,7.172469712868,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,27.2855,US$ per cubic metre,4.338055264078,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,20.2703,US$ per cubic metre,3.222725682851,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,32.046,US$ per cubic metre,5.094915577601,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,38.9957,US$ per cubic metre,6.199831473178,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,23.7429,US$ per cubic metre,3.774825908613,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,21.3413,US$ per cubic metre,3.393001367293,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,33.8669,US$ per cubic metre,5.384416038665,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,41.221,US$ per cubic metre,6.553626506407,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,25.0315,US$ per cubic metre,3.979697287672,US$ per barrel
+EnbridgeMainline,4306323,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,21.9817,US$ per cubic metre,3.49481700531,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,19.2109,US$ per cubic metre,3.054294254189,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,30.8634,US$ per cubic metre,4.906896880663,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,37.5472,US$ per cubic metre,5.969537982129,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,22.6477,US$ per cubic metre,3.600702725046,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,23.0801,US$ per cubic metre,3.669448949092,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,36.8204,US$ per cubic metre,5.853985818309,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,44.8245,US$ per cubic metre,7.126538204712,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,27.1194,US$ per cubic metre,4.311647429171,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,20.1328,US$ per cubic metre,3.200864892365,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,31.8094,US$ per cubic metre,5.057299119208,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,38.7068,US$ per cubic metre,6.153899965022,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,23.5768,US$ per cubic metre,3.748418073706,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,21.2038,US$ per cubic metre,3.371140576806,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,33.6303,US$ per cubic metre,5.346799580272,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,40.9321,US$ per cubic metre,6.507694998251,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,24.8654,US$ per cubic metre,3.953289452764,US$ per barrel
+EnbridgeMainline,4364456,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,21.8156,US$ per cubic metre,3.468409170402,US$ per barrel
 EnbridgeMainline,685265,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,12.9405,US$ per cubic metre,2.057378612992,US$ per barrel
 EnbridgeMainline,685265,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,21.1172,US$ per cubic metre,3.357372253489,US$ per barrel
 EnbridgeMainline,685265,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,25.675,US$ per cubic metre,4.082005787147,US$ per barrel
@@ -1603,15 +1620,24 @@ EnbridgeLocal,4303182,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","Intern
 EnbridgeLocal,4303182,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,6.42,CA$ per cubic metre,1.020700181245,CA$ per barrel
 EnbridgeLocal,4303182,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,44.289,CA$ per cubic metre,7.041400362491,CA$ per barrel
 EnbridgeLocal,4303182,2023-02-01,2023-02-28,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,38.136,CA$ per cubic metre,6.06314986168,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,6.121,CA$ per cubic metre,0.973162898661,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,38.971,CA$ per cubic metre,6.195904480269,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,6.622,CA$ per cubic metre,1.052815669814,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,48.869,CA$ per cubic metre,7.76956342014,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,6.253,CA$ per cubic metre,0.994149257528,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,41.348,CA$ per cubic metre,6.573817927438,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,6.387,CA$ per cubic metre,1.015453591529,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,44.082,CA$ per cubic metre,7.008489936086,CA$ per barrel
-EnbridgeLocal,4306324,2023-03-01,2023-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,37.929,CA$ per cubic metre,6.030239435276,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,6.121,CA$ per cubic metre,0.973162898661,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,38.971,CA$ per cubic metre,6.195904480269,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,6.622,CA$ per cubic metre,1.052815669814,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,48.869,CA$ per cubic metre,7.76956342014,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,6.253,CA$ per cubic metre,0.994149257528,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,41.348,CA$ per cubic metre,6.573817927438,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,6.387,CA$ per cubic metre,1.015453591529,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,44.082,CA$ per cubic metre,7.008489936086,CA$ per barrel
+EnbridgeLocal,4306324,2023-03-01,2023-04-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,37.929,CA$ per cubic metre,6.030239435276,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,6.114,CA$ per cubic metre,0.972049985691,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,38.883,CA$ per cubic metre,6.181913574358,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,6.615,CA$ per cubic metre,1.051702756844,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,48.781,CA$ per cubic metre,7.755572514229,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,6.246,CA$ per cubic metre,0.993036344557,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,41.26,CA$ per cubic metre,6.559827021526,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,6.38,CA$ per cubic metre,1.014340678558,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,43.994,CA$ per cubic metre,6.994499030175,CA$ per barrel
+EnbridgeLocal,4364457,2023-05-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,37.841,CA$ per cubic metre,6.016248529365,CA$ per barrel
 EnbridgeFSP,Tariff 353,2014-12-01,2014-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,6.69,US$ per barrel,,
 EnbridgeFSP,Tariff 353,2014-12-01,2014-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,6.52,US$ per barrel,,
 EnbridgeFSP,Tariff 353,2014-12-01,2014-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,6.1,US$ per barrel,,
@@ -4762,123 +4788,358 @@ EnbridgeFSP,Tariff 515,2022-11-01,2023-01-31,"Hardisty, Alberta",various termina
 EnbridgeFSP,Tariff 515,2022-11-01,2023-01-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.523,US$ per barrel,,
 EnbridgeFSP,Tariff 515,2022-11-01,2023-01-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.2697,US$ per barrel,,
 EnbridgeFSP,Tariff 515,2022-11-01,2023-01-31,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.147,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,7.7116,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,7.5161,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,6.9363,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,6.6525,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.2971,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.4253,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,6.9288,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,6.6639,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,8.8549,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,9.1341,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.9382,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.3395,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.0556,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.7196,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.8284,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.3396,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,8.0863,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,11.2222,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.8061,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.6106,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.0161,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7323,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.3917,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.5051,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.0118,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.7585,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.5833,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.7089,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.5132,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.9199,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.6362,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.2945,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.409,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.9144,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.6611,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.1642,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.203,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.0072,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.421,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.1371,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7886,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.91,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.4085,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.1553,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,9.4041,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,6.8568,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.6637,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.1868,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,5.9029,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.448,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.6758,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.1073,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,5.8235,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.3671,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.7717,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.5786,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,7.1017,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.8179,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.3628,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.5907,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,7.0221,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.7384,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,10.4255,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.5051,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.3119,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.8351,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.5511,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.0963,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.3242,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.7557,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.4717,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.843,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.3861,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.1931,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.7161,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.4323,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.9775,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.2052,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.6368,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.3528,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.4806,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.1484,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.9554,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.4785,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.1945,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.7397,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.9673,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.3988,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.115,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.8341,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,7.3906,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,7.1948,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,6.8075,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.5237,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.9761,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,6.2965,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,6.6077,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,6.3429,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,medium crude,8.5443,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.6111,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.4122,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.9031,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.6191,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,8.1933,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.392,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.8133,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.5601,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.715,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.3174,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.1218,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.6154,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.3316,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.9029,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.1044,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.523,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.2697,US$ per barrel,,
-EnbridgeFSP,Tariff 519,2023-02-01,2023-06-30,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.112,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,7.7116,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,7.5161,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,6.9363,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,6.6525,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.2971,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.4253,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,6.9288,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,6.6639,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,8.8549,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,9.1341,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.9382,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.3395,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.0556,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.7196,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.8284,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.3396,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,8.0863,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,11.2222,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.8061,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.6106,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.0161,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7323,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.3917,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.5051,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.0118,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.7585,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.5833,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.7089,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.5132,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.9199,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.6362,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.2945,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.409,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.9144,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.6611,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.1642,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.203,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.0072,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.421,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.1371,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7886,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.91,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.4085,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.1553,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,9.4041,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,6.8568,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.6637,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.1868,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,5.9029,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.448,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.6758,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.1073,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,5.8235,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.3671,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.7717,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.5786,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,7.1017,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.8179,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.3628,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.5907,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,7.0221,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.7384,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,10.4255,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.5051,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.3119,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.8351,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.5511,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.0963,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.3242,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.7557,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.4717,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.843,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.3861,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.1931,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.7161,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.4323,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.9775,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.2052,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.6368,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.3528,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.4806,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.1484,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.9554,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.4785,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.1945,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.7397,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.9673,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.3988,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.115,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.8341,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,7.3906,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,7.1948,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,6.8075,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.5237,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.9761,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,6.2965,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,6.6077,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,6.3429,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,medium crude,8.5443,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.6111,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.4122,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.9031,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.6191,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,8.1933,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.392,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.8133,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.5601,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.715,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.3174,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.1218,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.6154,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.3316,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.9029,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.1044,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.523,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.2697,US$ per barrel,,
+EnbridgeFSP,Tariff 519,2023-02-01,2023-02-28,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.112,US$ per barrel,,
+EnbridgeFSP,Tariff 520,2023-03-01,2023-04-30,,,,,,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,7.7116,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,7.5161,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,6.9363,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,6.6525,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.2971,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.4253,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,6.9288,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,6.6639,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,8.8316,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,9.1341,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.9382,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.3395,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.0556,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.7196,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.8284,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.3396,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,8.0863,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,11.1846,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.8061,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.6106,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.0161,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7323,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.3917,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.5051,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.0118,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.7585,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.5483,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.7089,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.5132,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.9199,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.6362,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.2945,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.409,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.9144,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.6611,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.1319,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.203,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.0072,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.421,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.1371,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7886,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.91,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.4085,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.1553,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,9.377,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,6.8568,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.6637,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.1868,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,5.9029,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.448,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.6758,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.1073,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,5.8235,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.3438,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.7717,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.5786,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,7.1017,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.8179,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.3628,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.5907,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,7.0221,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.7384,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,10.3879,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.5051,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.3119,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.8351,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.5511,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.0963,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.3242,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.7557,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.4717,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.808,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.3861,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.1931,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.7161,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.4323,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.9775,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.2052,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.6368,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.3528,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.4483,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.1484,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.9554,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.4785,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.1945,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.7397,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.9673,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.3988,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.115,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.807,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,7.3906,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,7.1948,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,6.8075,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.5237,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.9761,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,6.2965,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,6.6077,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,6.3429,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,medium crude,8.521,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.6111,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.4122,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.9031,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.6191,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,8.1933,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.392,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.8133,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.5601,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.6774,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.3174,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.1218,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.6154,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.3316,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.9029,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.1044,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.523,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.2697,US$ per barrel,,
+EnbridgeFSP,Tariff 524,2023-03-01,2023-04-30,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.077,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,7.7116,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,7.5161,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,6.9363,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,6.6525,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.2971,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.4253,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,6.9288,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,6.6639,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,8.8083,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,9.1341,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.9382,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.3395,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.0556,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.7196,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.8284,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.3396,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,8.0863,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,11.147,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.8061,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.6106,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,8.0161,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7323,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.3917,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.5051,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,8.0118,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.7585,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.5133,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.7089,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.5132,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.9199,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.6362,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,8.2945,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,7.409,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.9144,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.6611,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,10.0995,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,8.203,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,8.0072,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,7.421,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.1371,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",heavy crude,7.7886,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",heavy crude,6.91,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",heavy crude,7.4085,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",heavy crude,7.1553,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,heavy crude,9.3499,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,6.8568,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.6637,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.1868,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,5.9029,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.448,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.6758,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.1073,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,5.8235,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.3206,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.7717,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.5786,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,7.1017,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.8179,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.3628,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.5907,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,7.0221,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.7384,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,10.3503,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.5051,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.3119,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.8351,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.5511,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,7.0963,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.3242,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.7557,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.4717,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.773,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.3861,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,7.1931,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.7161,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.4323,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.9775,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,6.2052,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.6368,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.3528,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Kerrobert, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,9.4159,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",light crude,7.1484,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",light crude,6.9554,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",light crude,6.4785,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.1945,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",light crude,6.7397,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",light crude,5.9673,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",light crude,6.3988,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",light crude,6.115,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Regina, Saskatchewan",various terminals/refineries in Texas,UNCOMMITTED,light crude,8.7799,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,7.3906,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,7.1948,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,6.8075,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.5237,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,6.9761,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,6.2965,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,6.6077,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,6.3429,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,UNCOMMITTED,medium crude,8.4977,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.6111,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.4122,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.9031,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.6191,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,8.1933,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.392,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.8133,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.5601,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Edmonton, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.6398,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",medium crude,8.3174,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",medium crude,8.1218,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",medium crude,7.6154,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.3316,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 49,999 or less",medium crude,7.9029,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 15 Years, 50,000 +",medium crude,7.1044,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 15 Years, 50,000 – 99,999",medium crude,7.523,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 20 Years, 50,000 – 99,999",medium crude,7.2697,US$ per barrel,,
+EnbridgeFSP,Tariff 528,2023-05-01,2023-12-31,"Hardisty, Alberta",various terminals/refineries in Texas,UNCOMMITTED,medium crude,10.042,US$ per barrel,,
 Alliance,1057796,2014-01-01,2014-12-31,System,CA/US border,Firm Demand Charge,natural gas,1034.5152,CA$ per thousand cubic metres per month,0.834227584746739,CA$ per GJ
 Alliance,2544000,2015-01-01,2015-11-30,System,CA/US border,Firm Demand Charge,natural gas,1076.8011,CA$ per thousand cubic metres per month,0.868326710816547,CA$ per GJ
 Alliance,2839566,2015-12-01,2016-10-31,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
@@ -6599,8 +6860,12 @@ Express,Tariff 181,2022-04-01,2023-03-31,"Hardisty, Alberta","International Boun
 Express,Tariff 181,2022-04-01,2023-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,light petroleum,4.6546,US$ per cubic metre,0.740023530159,US$ per barrel
 Express,Tariff 181,2022-04-01,2023-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,medium petroleum,5.027,US$ per cubic metre,0.799230500174,US$ per barrel
 Express,Tariff 181,2022-04-01,2023-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,super-heavy petroleum,5.9113,US$ per cubic metre,0.939823205825,US$ per barrel
-Express,Tariff 183,2022-07-01,2023-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",10 or more Year,petroleum,7.0597,US$ per cubic metre,1.122404527965,US$ per barrel
-Express,Tariff 183,2022-07-01,2023-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",5 to 9 Year,petroleum,7.5105,US$ per cubic metre,1.194076123247,US$ per barrel
+Express,Tariff 183,2022-07-01,2023-06-30,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",10 or more Year,petroleum,7.0597,US$ per cubic metre,1.122404527965,US$ per barrel
+Express,Tariff 183,2022-07-01,2023-06-30,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",5 to 9 Year,petroleum,7.5105,US$ per cubic metre,1.194076123247,US$ per barrel
+Express,Tariff 185,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,heavy petroleum,5.7922,US$ per cubic metre,0.920887786575,US$ per barrel
+Express,Tariff 185,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,light petroleum,4.7477,US$ per cubic metre,0.754825272663,US$ per barrel
+Express,Tariff 185,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,medium petroleum,5.1275,US$ per cubic metre,0.815208750675,US$ per barrel
+Express,Tariff 185,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,super-heavy petroleum,6.0295,US$ per cubic metre,0.958615536265,US$ per barrel
 Genesis,Tariff 11,2009-03-01,2023-12-31,"International Border, near Sarnia, Ontario","E.D.S. Delivery Point, Corunna Lambton County, Ontario",FT,propane and butane,0.1798,CA$ per barrel,1.13090604,CA$ per cubic metre
 Genesis,Tariff 5,1993-03-01,2009-02-28,"International Border, near Sarnia, Ontario","E.D.S. Delivery Point, Corunna Lambton County, Ontario",FT,natural gas liquids,0.19582,CA$ per barrel,1.231668636,CA$ per cubic metre
 Genesis,Tariff 7,1994-03-01,2009-02-28,"International Border, near Sarnia, Ontario","E.D.S. Delivery Point, Corunna Lambton County, Ontario",FT,propane and butane,0.195873,CA$ per barrel,1.2320019954,CA$ per cubic metre
@@ -7060,13 +7325,13 @@ Westspur,3894518,2020-02-01,2020-06-30,Midale Terminal,"Cromer, Manitoba",Discou
 Westspur,3894518,2020-02-01,2020-06-30,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.255,CA$ per cubic metre,0.994467232662,CA$ per barrel
 Westspur,3894518,2020-02-01,2020-06-30,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.059,CA$ per cubic metre,0.804318102324,CA$ per barrel
 Westspur,3894518,2020-02-01,2020-06-30,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.273,CA$ per cubic metre,0.838341441699,CA$ per barrel
-Westspur,3926731,2020-07-01,2021-01-31,Alida Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,4.286,CA$ per cubic metre,0.6814207129,CA$ per barrel
+Westspur,3926731,2020-07-01,2021-01-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,4.286,CA$ per cubic metre,0.6814207129,CA$ per barrel
 Westspur,3926731,2020-07-01,2021-01-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,4.63,CA$ per cubic metre,0.736112436007,CA$ per barrel
-Westspur,3926731,2020-07-01,2021-01-31,Bryant Injection Point,"Cromer, Manitoba",Discounted Tolls,crude petroleum,5.824,CA$ per cubic metre,0.925943591211,CA$ per barrel
+Westspur,3926731,2020-07-01,2021-01-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.824,CA$ per cubic metre,0.925943591211,CA$ per barrel
 Westspur,3926731,2020-07-01,2021-01-31,Bryant Injection Point,"Cromer, Manitoba",Tolls,crude petroleum,6.236,CA$ per cubic metre,0.991446468886,CA$ per barrel
-Westspur,3926731,2020-07-01,2021-01-31,Midale Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,6.127,CA$ per cubic metre,0.974116824064,CA$ per barrel
+Westspur,3926731,2020-07-01,2021-01-31,Midale Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.127,CA$ per cubic metre,0.974116824064,CA$ per barrel
 Westspur,3926731,2020-07-01,2021-01-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.553,CA$ per cubic metre,1.041845527679,CA$ per barrel
-Westspur,3926731,2020-07-01,2021-01-31,Steelman Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,5.208,CA$ per cubic metre,0.828007249833,CA$ per barrel
+Westspur,3926731,2020-07-01,2021-01-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.208,CA$ per cubic metre,0.828007249833,CA$ per barrel
 Westspur,3926731,2020-07-01,2021-01-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.553,CA$ per cubic metre,0.882857960507,CA$ per barrel
 Westspur,4031919,2021-02-01,2021-03-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,4.73,CA$ per cubic metre,0.752011192724,CA$ per barrel
 Westspur,4031919,2021-02-01,2021-03-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.115,CA$ per cubic metre,0.813221406086,CA$ per barrel
@@ -7140,21 +7405,21 @@ Westspur,4279047,2022-10-21,2023-01-31,Midale Terminal,"Cromer, Manitoba",Discou
 Westspur,4279047,2022-10-21,2023-01-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,7.686,CA$ per cubic metre,1.221978441285,CA$ per barrel
 Westspur,4279047,2022-10-21,2023-01-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.109,CA$ per cubic metre,0.971255047855,CA$ per barrel
 Westspur,4279047,2022-10-21,2023-01-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.514,CA$ per cubic metre,1.03564501256,CA$ per barrel
-Westspur,4297927,2023-02-01,2023-03-31,Alida Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,5.118,CA$ per cubic metre,0.813698368787,CA$ per barrel
+Westspur,4297927,2023-02-01,2023-03-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.118,CA$ per cubic metre,0.813698368787,CA$ per barrel
 Westspur,4297927,2023-02-01,2023-03-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.525,CA$ per cubic metre,0.878406308626,CA$ per barrel
-Westspur,4297927,2023-02-01,2023-03-31,Bryant Injection Point,"Cromer, Manitoba",Discounted Tolls,crude petroleum,7.029,CA$ per cubic metre,1.117523609653,CA$ per barrel
+Westspur,4297927,2023-02-01,2023-03-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.029,CA$ per cubic metre,1.117523609653,CA$ per barrel
 Westspur,4297927,2023-02-01,2023-03-31,Bryant Injection Point,"Cromer, Manitoba",Tolls,crude petroleum,7.519,CA$ per cubic metre,1.195427517568,CA$ per barrel
-Westspur,4297927,2023-02-01,2023-03-31,Midale Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,7.404,CA$ per cubic metre,1.177143947343,CA$ per barrel
+Westspur,4297927,2023-02-01,2023-03-31,Midale Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.404,CA$ per cubic metre,1.177143947343,CA$ per barrel
 Westspur,4297927,2023-02-01,2023-03-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,7.911,CA$ per cubic metre,1.257750643899,CA$ per barrel
-Westspur,4297927,2023-02-01,2023-03-31,Steelman Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,6.261,CA$ per cubic metre,0.995421158065,CA$ per barrel
+Westspur,4297927,2023-02-01,2023-03-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.261,CA$ per cubic metre,0.995421158065,CA$ per barrel
 Westspur,4297927,2023-02-01,2023-03-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.669,CA$ per cubic metre,1.060288085471,CA$ per barrel
-Westspur,4332395,2023-04-01,2023-12-31,Alida Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,5.207,CA$ per cubic metre,0.827848262265,CA$ per barrel
+Westspur,4332395,2023-04-01,2023-12-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.207,CA$ per cubic metre,0.827848262265,CA$ per barrel
 Westspur,4332395,2023-04-01,2023-12-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.624,CA$ per cubic metre,0.894146077776,CA$ per barrel
-Westspur,4332395,2023-04-01,2023-12-31,Bryant Injection Point,"Cromer, Manitoba",Discounted Tolls,crude petroleum,7.146,CA$ per cubic metre,1.136125155012,CA$ per barrel
+Westspur,4332395,2023-04-01,2023-12-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.146,CA$ per cubic metre,1.136125155012,CA$ per barrel
 Westspur,4332395,2023-04-01,2023-12-31,Bryant Injection Point,"Cromer, Manitoba",Tolls,crude petroleum,7.649,CA$ per cubic metre,1.2160959013,CA$ per barrel
-Westspur,4332395,2023-04-01,2023-12-31,Midale Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,7.528,CA$ per cubic metre,1.196858405672,CA$ per barrel
+Westspur,4332395,2023-04-01,2023-12-31,Midale Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.528,CA$ per cubic metre,1.196858405672,CA$ per barrel
 Westspur,4332395,2023-04-01,2023-12-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,8.047,CA$ per cubic metre,1.279372953035,CA$ per barrel
-Westspur,4332395,2023-04-01,2023-12-31,Steelman Terminal,"Cromer, Manitoba",Discounted Tolls,crude petroleum,6.367,CA$ per cubic metre,1.012273840185,CA$ per barrel
+Westspur,4332395,2023-04-01,2023-12-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.367,CA$ per cubic metre,1.012273840185,CA$ per barrel
 Westspur,4332395,2023-04-01,2023-12-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.786,CA$ per cubic metre,1.07888963083,CA$ per barrel
 Westspur,939503,2013-04-01,2013-05-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,3.33,CA$ per cubic metre,0.529428598683,CA$ per barrel
 Westspur,939503,2013-04-01,2013-05-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,3.52,CA$ per cubic metre,0.559636236446,CA$ per barrel
@@ -7187,120 +7452,65 @@ Cochin,2981855,2016-07-01,2017-01-31,"Cochin Terminal in Kankakee County, Illino
 Cochin,3179825,2017-02-01,2017-04-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.1769,US$ per barrel,,
 Cochin,3179825,2017-02-01,2017-04-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.7269,US$ per barrel,,
 Cochin,3179825,2017-02-01,2017-04-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.4004,US$ per barrel,,
-Cochin,3179825,2017-02-01,2017-04-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.1769,US$ per barrel,,
-Cochin,3179825,2017-02-01,2017-04-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.7269,US$ per barrel,,
-Cochin,3179825,2017-02-01,2017-04-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.4004,US$ per barrel,,
 Cochin,3253367,2017-05-01,2017-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.1769,US$ per barrel,,
 Cochin,3253367,2017-05-01,2017-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.7269,US$ per barrel,,
 Cochin,3253367,2017-05-01,2017-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.4004,US$ per barrel,,
-Cochin,3253367,2017-05-01,2017-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.1769,US$ per barrel,,
-Cochin,3253367,2017-05-01,2017-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.7269,US$ per barrel,,
-Cochin,3253367,2017-05-01,2017-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.4004,US$ per barrel,,
 Cochin,3268477,2017-07-01,2018-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.1872,US$ per barrel,,
 Cochin,3268477,2017-07-01,2018-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.7372,US$ per barrel,,
 Cochin,3268477,2017-07-01,2018-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.4851,US$ per barrel,,
-Cochin,3268477,2017-07-01,2018-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.1872,US$ per barrel,,
-Cochin,3268477,2017-07-01,2018-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.7372,US$ per barrel,,
-Cochin,3268477,2017-07-01,2018-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.4851,US$ per barrel,,
+Cochin,3464212,2018-03-01,2018-06-30,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.5,US$ per barrel,,
+Cochin,3557895,2018-07-01,2019-05-27,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.6543,US$ per barrel,,
 Cochin,3561180,2018-07-01,2018-07-19,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.4159,US$ per barrel,,
 Cochin,3561180,2018-07-01,2018-07-19,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.9659,US$ per barrel,,
 Cochin,3561180,2018-07-01,2018-07-19,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
-Cochin,3561180,2018-07-01,2018-07-19,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.4159,US$ per barrel,,
-Cochin,3561180,2018-07-01,2018-07-19,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.9659,US$ per barrel,,
-Cochin,3561180,2018-07-01,2018-07-19,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
 Cochin,3579306,2018-07-20,2019-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.4159,US$ per barrel,,
 Cochin,3579306,2018-07-20,2019-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,3.75,US$ per barrel,,
 Cochin,3579306,2018-07-20,2019-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
-Cochin,3579306,2018-07-20,2019-01-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,5.4159,US$ per barrel,,
-Cochin,3579306,2018-07-20,2019-01-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,3.75,US$ per barrel,,
-Cochin,3579306,2018-07-20,2019-01-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
 Cochin,3745097,2019-02-01,2019-05-27,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.4159,US$ per barrel,,
 Cochin,3745097,2019-02-01,2019-05-27,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,4.9659,US$ per barrel,,
 Cochin,3745097,2019-02-01,2019-05-27,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
-Cochin,3745097,2019-02-01,2019-05-27,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.4159,US$ per barrel,,
-Cochin,3745097,2019-02-01,2019-05-27,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,4.9659,US$ per barrel,,
-Cochin,3745097,2019-02-01,2019-05-27,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
+Cochin,3745559,2019-02-01,2019-05-27,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.5,US$ per barrel,,
+Cochin,3771074,2019-05-28,2019-06-30,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.6543,US$ per barrel,,
 Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.4159,US$ per barrel,,
 Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,4.9659,US$ per barrel,,
 Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
-Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.4159,US$ per barrel,,
-Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,4.9659,US$ per barrel,,
-Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
-Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.4159,US$ per barrel,,
-Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,4.9659,US$ per barrel,,
-Cochin,3771075,2019-05-28,2019-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.7556,US$ per barrel,,
+Cochin,3771077,2019-05-28,2019-06-30,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.5,US$ per barrel,,
 Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
 Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
 Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
-Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
-Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
-Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
-Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
-Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
-Cochin,3779378,2019-07-01,2020-01-14,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
+Cochin,3779380,2019-07-01,2020-01-14,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.8118,US$ per barrel,,
+Cochin,3779461,2019-07-01,2020-01-14,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.7802,US$ per barrel,,
+Cochin,3898842,2020-01-15,2020-06-30,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.8118,US$ per barrel,,
+Cochin,3899034,2020-01-15,2020-06-30,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.7802,US$ per barrel,,
 Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
 Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
 Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
-Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
-Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
-Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
-Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
-Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
-Cochin,3899431,2020-01-15,2020-04-12,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
 Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
 Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
 Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
-Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
-Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
-Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
-Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.6494,US$ per barrel,,
-Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.1994,US$ per barrel,,
-Cochin,3912065,2020-04-13,2020-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.032,US$ per barrel,,
 Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
 Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
 Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2097,US$ per barrel,,
-Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
-Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
-Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2097,US$ per barrel,,
-Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
-Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
-Cochin,3931404,2020-07-01,2021-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2097,US$ per barrel,,
+Cochin,3931406,2020-07-01,2021-06-30,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.8886,US$ per barrel,,
+Cochin,3931408,2020-07-01,2021-06-30,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.9167,US$ per barrel,,
+Cochin,4098551,2021-07-01,2022-02-28,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.8765,US$ per barrel,,
 Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
 Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
 Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2654,US$ per barrel,,
-Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
-Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
-Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2654,US$ per barrel,,
-Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
-Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
-Cochin,4099565,2021-07-01,2022-02-28,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2654,US$ per barrel,,
+Cochin,4099567,2021-07-01,2022-02-28,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.866,US$ per barrel,,
+Cochin,4200496,2022-03-01,2022-06-30,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,6.808,US$ per barrel,,
+Cochin,4202080,2022-03-01,2022-06-30,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,3.8275,US$ per barrel,,
 Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
 Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
 Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2173,US$ per barrel,,
-Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
-Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
-Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2173,US$ per barrel,,
-Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,5.7632,US$ per barrel,,
-Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.3132,US$ per barrel,,
-Cochin,4202184,2022-03-01,2022-06-30,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.2173,US$ per barrel,,
+Cochin,4247189,2022-07-01,2023-12-31,"Clinton, Iowa","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.401,US$ per barrel,,
 Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,6.2652,US$ per barrel,,
 Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.8152,US$ per barrel,,
 Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.7195,US$ per barrel,,
-Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,6.2652,US$ per barrel,,
-Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.8152,US$ per barrel,,
-Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.7195,US$ per barrel,,
-Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,6.2652,US$ per barrel,,
-Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.8152,US$ per barrel,,
-Cochin,4247752,2022-07-01,2023-01-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.7195,US$ per barrel,,
+Cochin,4247754,2022-07-01,2023-12-31,"Maxbass, North Dakota","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,4.1609,US$ per barrel,,
 Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,6.2652,US$ per barrel,,
 Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.8152,US$ per barrel,,
 Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.7195,US$ per barrel,,
-Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,6.2652,US$ per barrel,,
-Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.8152,US$ per barrel,,
-Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Pembina Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.7195,US$ per barrel,,
-Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,6.2652,US$ per barrel,,
-Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,5.8152,US$ per barrel,,
-Cochin,4293007,2023-02-01,2023-12-31,"Cochin Terminal in Kankakee County, Illinois","Plains Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.7195,US$ per barrel,,
 Cochin,Tariff 173,2015-01-01,2015-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,4.95,US$ per barrel,,
 Cochin,Tariff 173,2015-01-01,2015-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.5,US$ per barrel,,
 Cochin,Tariff 173,2015-01-01,2015-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.5,US$ per barrel,,
@@ -7504,10 +7714,18 @@ TransNorthern,Tariff 70,2022-01-01,2022-12-31,"Montreal East, Quebec","Ottawa, O
 TransNorthern,Tariff 70,2022-01-01,2022-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Abandonment Surcharges,refined petroleum products,0.369,CA$ per cubic metre,0.058666412286,CA$ per barrel
 TransNorthern,Tariff 70,2022-01-01,2022-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Base Tariff,refined petroleum products,12.116,CA$ per cubic metre,1.926293363858,CA$ per barrel
 TransNorthern,Tariff 70,2022-01-01,2022-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Net Tariff,refined petroleum products,12.485,CA$ per cubic metre,1.984959776145,CA$ per barrel
-TransNorthern,Tariff 71,2023-01-01,2023-12-31,"Montreal East, Quebec","Kingston, Ontario",Net Tariff,refined petroleum products,30.4,CA$ per cubic metre,4.833222042036,CA$ per barrel
-TransNorthern,Tariff 71,2023-01-01,2023-12-31,"Montreal East, Quebec","North Toronto, Ontario",Net Tariff,refined petroleum products,51.92,CA$ per cubic metre,8.254634487583,CA$ per barrel
-TransNorthern,Tariff 71,2023-01-01,2023-12-31,"Montreal East, Quebec","Ottawa, Ontario",Net Tariff,refined petroleum products,23.26,CA$ per cubic metre,3.698050812426,CA$ per barrel
-TransNorthern,Tariff 71,2023-01-01,2023-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Net Tariff,refined petroleum products,16.217,CA$ per cubic metre,2.578301376832,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","Kingston, Ontario",Abandonment Surcharges,refined petroleum products,0.581,CA$ per cubic metre,0.092371776527,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","Kingston, Ontario",Base Tariff,refined petroleum products,29.724,CA$ per cubic metre,4.725746446627,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","Kingston, Ontario",Net Tariff,refined petroleum products,30.305,CA$ per cubic metre,4.818118223154,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","North Toronto, Ontario",Abandonment Surcharges,refined petroleum products,0.884,CA$ per cubic metre,0.14054500938,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","North Toronto, Ontario",Base Tariff,refined petroleum products,50.861,CA$ per cubic metre,8.086266653947,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","North Toronto, Ontario",Net Tariff,refined petroleum products,51.745,CA$ per cubic metre,8.226811663327,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","Ottawa, Ontario",Abandonment Surcharges,refined petroleum products,0.48,CA$ per cubic metre,0.076314032242,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","Ottawa, Ontario",Base Tariff,refined petroleum products,22.712,CA$ per cubic metre,3.610925625616,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Montreal East, Quebec","Ottawa, Ontario",Net Tariff,refined petroleum products,23.192,CA$ per cubic metre,3.687239657858,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Abandonment Surcharges,refined petroleum products,0.381,CA$ per cubic metre,0.060574263092,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Base Tariff,refined petroleum products,15.793,CA$ per cubic metre,2.510890648351,CA$ per barrel
+TransNorthern,Tariff 72,2023-01-01,2023-12-31,"Nanticoke, Ontario","North Toronto, Ontario",Net Tariff,refined petroleum products,16.174,CA$ per cubic metre,2.571464911443,CA$ per barrel
 PouceCoupe,Tariff 1 PouceCoupe,2016-06-01,2018-01-25,POUCE COUPÉ SYSTEM,Peace Pipeline,FT,crude/condensate,0.5,CA$ per cubic metre,0.079493783586,CA$ per barrel
 PouceCoupe,Tariff 10 Northern,2022-01-01,2022-07-31,GORDONDALE GAS PLANT,Belloy Block Valve,FT,ethane plus,3.58,CA$ per cubic metre,0.569175490476,CA$ per barrel
 PouceCoupe,Tariff 10 Northern,2022-01-01,2022-07-31,YOUNGER PLANT,Belloy Block Valve,FT,ethane plus,13.66,CA$ per cubic metre,2.171770167572,CA$ per barrel

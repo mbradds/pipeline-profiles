@@ -101,6 +101,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-10-01,Cochin,KP0018,15.1,26.38,,0.7242
 2022-11-01,Cochin,KP0018,15.1,32.49,,0.8408
 2022-12-01,Cochin,KP0018,15.1,39.9,,0.8894
+2023-01-01,Cochin,KP0018,15.1,50.92,,0.9175
+2023-02-01,Cochin,KP0018,16.69,55.74,,0.9597
+2023-03-01,Cochin,KP0018,16.69,58.06,,0.9622
 2016-01-01,EnbridgeLine9,KP0000,47.7,,,
 2016-02-01,EnbridgeLine9,KP0000,47.7,,,
 2016-03-01,EnbridgeLine9,KP0000,47.7,,,
@@ -1088,3 +1091,6 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-10-01,TransMountain,KP0000,53.0,59.0,,0.11
 2022-11-01,TransMountain,KP0000,48.0,56.0,,0.15
 2022-12-01,TransMountain,KP0000,55.0,66.0,,0.17
+2023-01-01,TransMountain,KP0000,54.0,62.0,,0.13
+2023-02-01,TransMountain,KP0000,55.0,55.0,,0.0
+2023-03-01,TransMountain,KP0000,55.0,55.0,,0.0
