@@ -692,6 +692,9 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2022-10-01,Keystone,KP0020,100.84,212.02,,0.52
 2022-11-01,Keystone,KP0020,99.69,205.96,,0.52
 2022-12-01,Keystone,KP0020,98.89,582.02,,0.83
+2023-01-01,Keystone,KP0020,92.97,273.71,,0.66
+2023-02-01,Keystone,KP0020,92.97,393.62,,0.76
+2023-03-01,Keystone,KP0020,93.64,211.04,,0.56
 2007-01-01,NormanWells,KP0044,5.47,3.7,,0.0
 2007-02-01,NormanWells,KP0044,5.47,3.5,,0.0
 2007-03-01,NormanWells,KP0044,5.47,3.7,,0.0

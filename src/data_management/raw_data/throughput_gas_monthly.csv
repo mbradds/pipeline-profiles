@@ -1399,6 +1399,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2022-11-01,MNP,KP0001,north,import,13334.9,4322.5333
 2022-12-01,MNP,KP0001,south,export,13334.9,1.7097
 2022-12-01,MNP,KP0001,north,import,13334.9,3826.871
+2023-01-01,MNP,KP0001,south,export,13334.9,0.0
+2023-01-01,MNP,KP0001,north,import,13334.9,4821.9355
+2023-02-01,MNP,KP0001,south,export,13334.9,1.3929
+2023-02-01,MNP,KP0001,north,import,13334.9,6027.2857
+2023-03-01,MNP,KP0001,south,export,13334.9,1.4194
+2023-03-01,MNP,KP0001,north,import,13334.9,5749.871
 2011-11-01,NGTL,KP0004,west & south,intracanada,,14845.4655
 2011-12-01,NGTL,KP0004,west & south,intracanada,,14995.0409
 2012-01-01,NGTL,KP0004,west & south,intracanada,,17120.3682
