@@ -53,6 +53,8 @@ def apply_contaminant_ids(df, cont, col_name="Contaminants at the Site"):
             what = [x.strip() for x in what]
             what = [values[x] for x in what]
             new_col.append(what)
+        elif what in list(values.keys()):
+            new_col.append(values[what])
         else:
             new_col.append(None)
     df[col_name] = new_col
@@ -105,7 +107,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
         elif pipe != na and section == na:
             pipe_section.append("p") # Pipeline
         elif pipe != na and section != na:
-            pipe_section.append("pf") # Pipeline and Facility
+            pipe_section.append("f") # Pipeline and Facility
         else:
             print("error here!")
 
