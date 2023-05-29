@@ -1,59 +1,64 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>{{text.safety.buttons.incidents}}</h3>
+    <p class="small">{{text.safety.updated.incidents}}</p>
+    {{> shared/safetyEnvText text=text.safety.incidents}}
+    {{> shared/details text=text.safety.incidents.details1}}
+    {{> shared/details text=text.safety.incidents.details2}}
+    <details>
+      <summary>{{text.safety.incidents.details3.one}}</summary>
+      <p>{{text.safety.incidents.details3.two}}</p>
+      <p>{{text.safety.incidents.details3.three}}</p>
+      <section class="panel panel-default">
+        <header class="panel-heading">
+          <h5 class="panel-title">
+            {{text.safety.incidents.details3.four}}
+          </h5>
+        </header>
+        <div class="panel-body">
+          <ul class="lst-spcd">
+            <li>{{text.safety.incidents.details3.five}}</li>
+            <li>{{text.safety.incidents.details3.six}}</li>
+            <li>{{text.safety.incidents.details3.seven}}</li>
+          </ul>
+        </div>
+      </section>
+    </details>
+    <details class="mrgn-bttm-0">
+      <summary>{{text.safety.incidents.details4.one}}</summary>
+      <ul class="lst-spcd">
+        <li>{{text.safety.incidents.details4.two}}</li>
+        <li>{{text.safety.incidents.details4.three}}</li>
+        <li>{{text.safety.incidents.details4.four}}</li>
+        <li>{{text.safety.incidents.details4.five}}</li>
+        <li>{{text.safety.incidents.details4.six}}</li>
+        <li>
+          <p>{{text.safety.incidents.details4.seven}}</p>
+          <ul class="lst-spcd">
+            <li>{{text.safety.incidents.details4.eight}}</li>
+            <li>{{text.safety.incidents.details4.nine}}</li>
+            <li>{{text.safety.incidents.details4.ten}}</li>
+            <li>{{text.safety.incidents.details4.eleven}}</li>
+            <li>{{text.safety.incidents.details4.twelve}}</li>
+          </ul>
+          <p>{{text.safety.incidents.details4.thirteen}}</p>
+        </li>
+        <li>{{text.safety.incidents.details4.fourteen}}</li>
+      </ul>
+    </details>
+  </div>
+</div>
 <div id="pipeline-incidents" class="profile-section tabcontent">
   <div class="row">
     <div class="col-md-12">
-      <h3>{{text.safety.buttons.incidents}}</h3>
-      <p class="small">{{text.safety.updated.incidents}}</p>
-      {{> shared/safetyEnvText text=text.safety.incidents}}
-      {{> shared/details text=text.safety.incidents.details1}}
-      {{> shared/details text=text.safety.incidents.details2}}
-      <details>
-        <summary>{{text.safety.incidents.details3.one}}</summary>
-        <p>{{text.safety.incidents.details3.two}}</p>
-        <p>{{text.safety.incidents.details3.three}}</p>
-        <section class="panel panel-default">
-          <header class="panel-heading">
-            <h5 class="panel-title">
-              {{text.safety.incidents.details3.four}}
-            </h5>
-          </header>
-          <div class="panel-body">
-            <ul class="lst-spcd">
-              <li>{{text.safety.incidents.details3.five}}</li>
-              <li>{{text.safety.incidents.details3.six}}</li>
-              <li>{{text.safety.incidents.details3.seven}}</li>
-            </ul>
-          </div>
-        </section>
-      </details>
       <div class="mrgn-tp-md mrgn-bttm-md" id="system-incidents-paragraph"></div>
-      <details class="mrgn-bttm-0">
-        <summary>{{text.safety.incidents.details4.one}}</summary>
-        <ul class="lst-spcd">
-          <li>{{text.safety.incidents.details4.two}}</li>
-          <li>{{text.safety.incidents.details4.three}}</li>
-          <li>{{text.safety.incidents.details4.four}}</li>
-          <li>{{text.safety.incidents.details4.five}}</li>
-          <li>{{text.safety.incidents.details4.six}}</li>
-          <li>
-            <p>{{text.safety.incidents.details4.seven}}</p>
-            <ul class="lst-spcd">
-              <li>{{text.safety.incidents.details4.eight}}</li>
-              <li>{{text.safety.incidents.details4.nine}}</li>
-              <li>{{text.safety.incidents.details4.ten}}</li>
-              <li>{{text.safety.incidents.details4.eleven}}</li>
-              <li>{{text.safety.incidents.details4.twelve}}</li>
-            </ul>
-            <p>{{text.safety.incidents.details4.thirteen}}</p>
-          </li>
-          <li>{{text.safety.incidents.details4.fourteen}}</li>
-        </ul>
-      </details>
     </div>
   </div>
   {{> shared/eventDashboard text=text.safety.incidents.dashboard}}
-  <div class="row">
-    <div class="col-md-12">
-      <p>{{text.safety.incidents.viz}}</p>
-    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{> shared/source text=text.safety.incidents.dashboard.source}}
+    <p>{{text.safety.incidents.viz}}</p>
   </div>
 </div>

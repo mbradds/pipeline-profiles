@@ -1,12 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>{{text.safety.buttons.oandm}}</h3>
+    <p class="small">{{text.safety.updated.oandm}}</p>
+    {{> shared/safetyEnvText text=text.safety.oandm}}
+    {{> shared/details text=text.safety.oandm.details1}}
+    {{> shared/details text=text.safety.oandm.details2}}
+    {{> shared/details text=text.safety.oandm.details3}}
+  </div>
+</div>
 <div id="operations-maintenance" class="profile-section tabcontent">
   <div class="row">
     <div class="col-md-12">
-      <h3>{{text.safety.buttons.oandm}}</h3>
-      <p class="small">{{text.safety.updated.oandm}}</p>
-      {{> shared/safetyEnvText text=text.safety.oandm}}
-      {{> shared/details text=text.safety.oandm.details1}}
-      {{> shared/details text=text.safety.oandm.details2}}
-      {{> shared/details text=text.safety.oandm.details3}}
       <div id="oandm-dashboard">
         <div class="alert alert-warning mrgn-tp-md disclaimer-style" id="oandm-reported-disclaimer">
           <small>{{text.safety.oandm.alert}}</small>
@@ -17,9 +21,13 @@
           <h3 class="dashboard-title" id="oandm-dashboard-title"></h3>
         </div>
         {{> shared/timeSeries text=text.safety.oandm.dashboard}}
-        {{> shared/source text=text.safety.oandm.source}}
       </div>
-      <p>{{text.safety.oandm.guidelines}}</p>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{> shared/source text=text.safety.oandm.source}}
+    <p>{{text.safety.oandm.guidelines}}</p>
   </div>
 </div>

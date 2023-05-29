@@ -1,11 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>{{text.safety.buttons.remediation}}</h3>
+    <p class="small">{{text.safety.updated.remediation}}</p>
+    {{> shared/safetyEnvText text=text.safety.remediation}}
+  </div>
+</div>
 <div id="remediation" class="profile-section tabcontent">
   <div class="row">
     <div class="col-md-12">
-      <h3>{{text.safety.buttons.remediation}}</h3>
-      <p class="small">{{text.safety.updated.remediation}}</p>
-      {{> shared/safetyEnvText text=text.safety.remediation}}
       <div id="remediation-dynamic-text"></div>
     </div>
   </div>
   {{> shared/eventDashboard text=text.safety.remediation.dashboard}}
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{> shared/source text=text.safety.remediation.dashboard.source}}
+  </div>
 </div>
