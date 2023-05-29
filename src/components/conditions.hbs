@@ -1,11 +1,15 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>{{text.safety.buttons.conditions}}</h3>
+    <p class="small">{{text.safety.updated.conditions}}</p>
+    {{> shared/safetyEnvText text=text.safety.conditions}}
+    {{> shared/details text=text.safety.conditions.details1}}
+    {{> shared/details text=text.safety.conditions.details2}}
+  </div>
+</div>
 <div id="condition-compliance" class="profile-section tabcontent">
   <div class="row">
     <div class="col-md-12">
-      <h3>{{text.safety.buttons.conditions}}</h3>
-      <p class="small">{{text.safety.updated.conditions}}</p>
-      {{> shared/safetyEnvText text=text.safety.conditions}}
-      {{> shared/details text=text.safety.conditions.details1}}
-      {{> shared/details text=text.safety.conditions.details2}}
       <div class="plains_disclaimer"></div>
       <div id="conditions-dashboard" class="mrgn-tp-md">
         <div class="row">
@@ -44,23 +48,23 @@
             <div class="container-chart-map" id="container-map"></div>
             <div class="alert alert-info profile-hide" id="conditions-definitions"></div>
             <div class="alert alert-info profile-hide" id="no-location-info"></div>
-            <details>
-              <summary>{{text.instructions}}</summary>
-              <ol class="lst-spcd">
-                <li>{{text.safety.conditions.instructions.one}}</li>
-                <li>{{text.safety.conditions.instructions.two}}</li>
-              </ol>
-              <p><strong>{{text.note}}</strong> {{text.safety.conditions.instructions.three}}</p>
-            </details>
-            {{> shared/source text=text.safety.conditions.source}}
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <p>{{text.safety.conditions.viz}}</p>
-        </div>
-      </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <details>
+      <summary>{{text.instructions}}</summary>
+      <ol class="lst-spcd">
+        <li>{{text.safety.conditions.instructions.one}}</li>
+        <li>{{text.safety.conditions.instructions.two}}</li>
+      </ol>
+      <p><strong>{{text.note}}</strong> {{text.safety.conditions.instructions.three}}</p>
+    </details>
+    {{> shared/source text=text.safety.conditions.source}}
+    <p>{{text.safety.conditions.viz}}</p>
   </div>
 </div>
