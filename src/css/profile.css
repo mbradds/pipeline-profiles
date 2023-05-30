@@ -24,3 +24,6 @@ General styles for all dashboards/sections
 .disclaimer-style {
   line-height: 1.25em !important;
 }
+.disclaimer-style small {
+  position: relative !important;
+}
