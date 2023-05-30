@@ -24,6 +24,11 @@ General styles for all dashboards/sections
 .disclaimer-style {
   line-height: 1.25em !important;
 }
+/* this fixes the style clash on the o and m dashboard dislcaimer */
 .disclaimer-style small {
   position: relative !important;
+}
+/* this gets rid of the auto scroll bar under the safety and env tabs */
+.tabpanels details {
+  overflow: visible !important;
 }
