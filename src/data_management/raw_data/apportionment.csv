@@ -383,8 +383,8 @@ Date,Pipeline Name,KeyPointID,Available Capacity (1000 m3/d),Original Nomination
 2023-01-01,EnbridgeMainline,KP0000,,751.09,657.76,
 2023-02-01,EnbridgeMainline,KP0000,,741.89,640.44,
 2023-03-01,EnbridgeMainline,KP0000,,653.39,643.75,
-2023-04-01,EnbridgeMainline,KP0000,,0.0,574.81,
-2023-05-01,EnbridgeMainline,KP0000,,0.0,607.93,
+2023-04-01,EnbridgeMainline,KP0000,,574.81,574.81,
+2023-05-01,EnbridgeMainline,KP0000,,607.93,607.93,
 2023-06-01,EnbridgeMainline,KP0000,,638.64,629.13,
 2016-01-01,EnbridgeMainline,KP0047,,136.88,,0.03
 2017-12-01,EnbridgeMainline,KP0047,,178.53,,0.05
