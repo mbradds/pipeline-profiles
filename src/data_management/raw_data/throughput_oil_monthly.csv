@@ -330,6 +330,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-01-01,EnbridgeMainline,KP0006,east,foreign light,1.665,
 2023-02-01,EnbridgeMainline,KP0006,east,foreign light,1.7975,
 2023-03-01,EnbridgeMainline,KP0006,east,foreign light,0.6781,
+2023-04-01,EnbridgeMainline,KP0006,east,foreign light,1.3365,
+2023-05-01,EnbridgeMainline,KP0006,east,foreign light,1.3,
+2023-06-01,EnbridgeMainline,KP0006,east,foreign light,0.3252,
 2014-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,62.0,
 2014-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,66.9,
 2014-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,68.0,
@@ -441,6 +444,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-01-01,EnbridgeMainline,KP0015,east,domestic light / ngl,89.1109,
 2023-02-01,EnbridgeMainline,KP0015,east,domestic light / ngl,83.6173,
 2023-03-01,EnbridgeMainline,KP0015,east,domestic light / ngl,92.9242,
+2023-04-01,EnbridgeMainline,KP0015,east,domestic light / ngl,81.0436,
+2023-05-01,EnbridgeMainline,KP0015,east,domestic light / ngl,70.9913,
+2023-06-01,EnbridgeMainline,KP0015,east,domestic light / ngl,77.0935,
 2007-01-01,EnbridgeMainline,KP0016,east,domestic heavy,139.2885,288.1
 2007-01-01,EnbridgeMainline,KP0016,east,domestic light / ngl,110.1858,576.2
 2007-02-01,EnbridgeMainline,KP0016,east,domestic heavy,132.5969,291.3
@@ -924,6 +930,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-03-01,EnbridgeMainline,KP0016,east,domestic heavy,327.0433,520.907
 2023-03-01,EnbridgeMainline,KP0016,east,domestic light / ngl,156.0345,1041.814
 2023-03-01,EnbridgeMainline,KP0016,east,foreign light,0.6781,520.907
+2023-04-01,EnbridgeMainline,KP0016,east,domestic heavy,328.0799,513.911
+2023-04-01,EnbridgeMainline,KP0016,east,domestic light / ngl,135.8974,1027.822
+2023-04-01,EnbridgeMainline,KP0016,east,foreign light,1.3365,513.911
+2023-05-01,EnbridgeMainline,KP0016,east,domestic heavy,350.7042,510.767
+2023-05-01,EnbridgeMainline,KP0016,east,domestic light / ngl,129.5221,1021.534
+2023-05-01,EnbridgeMainline,KP0016,east,foreign light,1.3,510.767
+2023-06-01,EnbridgeMainline,KP0016,east,domestic heavy,332.1796,516.347
+2023-06-01,EnbridgeMainline,KP0016,east,domestic light / ngl,146.6023,1032.694
+2023-06-01,EnbridgeMainline,KP0016,east,foreign light,0.3252,516.347
 2007-01-01,EnbridgeMainline,KP0021,east,domestic heavy,13.4401,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,domestic light / ngl,48.7528,118.5
 2007-01-01,EnbridgeMainline,KP0021,east,foreign light,3.8013,118.5
@@ -1505,6 +1520,15 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-03-01,EnbridgeMainline,KP0021,east,domestic heavy,26.0069,173.013
 2023-03-01,EnbridgeMainline,KP0021,east,domestic light / ngl,88.0039,173.013
 2023-03-01,EnbridgeMainline,KP0021,east,foreign light,9.8144,173.013
+2023-04-01,EnbridgeMainline,KP0021,east,domestic heavy,26.3199,173.261
+2023-04-01,EnbridgeMainline,KP0021,east,domestic light / ngl,77.6608,173.261
+2023-04-01,EnbridgeMainline,KP0021,east,foreign light,13.3722,173.261
+2023-05-01,EnbridgeMainline,KP0021,east,domestic heavy,26.9315,171.401
+2023-05-01,EnbridgeMainline,KP0021,east,domestic light / ngl,69.4936,171.401
+2023-05-01,EnbridgeMainline,KP0021,east,foreign light,15.839,171.401
+2023-06-01,EnbridgeMainline,KP0021,east,domestic heavy,29.7183,173.181
+2023-06-01,EnbridgeMainline,KP0021,east,domestic light / ngl,72.8563,173.181
+2023-06-01,EnbridgeMainline,KP0021,east,foreign light,19.5312,173.181
 2010-07-01,Keystone,KP0020,south,domestic heavy,15.0724,18.1136
 2010-07-01,Keystone,KP0020,south,domestic light,3.0412,18.1136
 2010-08-01,Keystone,KP0020,south,domestic heavy,15.1294,15.1294
@@ -1895,6 +1919,8 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-02-01,Montreal,KP0000,north-west,petroleum,4.0655,
 2023-03-01,Montreal,KP0000,north-west,petroleum,0.0,
 2023-04-01,Montreal,KP0000,north-west,petroleum,0.0,
+2023-05-01,Montreal,KP0000,north-west,petroleum,0.0,
+2023-06-01,Montreal,KP0000,north-west,petroleum,0.0,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.5732,5.4737
 2007-02-01,NormanWells,KP0044,south,domestic light,3.274,5.4737
 2007-03-01,NormanWells,KP0044,south,domestic light,3.6936,5.4737
@@ -2090,6 +2116,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-01-01,NormanWells,KP0044,south,domestic light,0.9935,2.6
 2023-02-01,NormanWells,KP0044,south,domestic light,0.4885,2.6
 2023-03-01,NormanWells,KP0044,south,domestic light,0.6834,2.6
+2023-04-01,NormanWells,KP0044,south,domestic light,0.733,2.6
+2023-05-01,NormanWells,KP0044,south,domestic light,0.9634,2.6
+2023-06-01,NormanWells,KP0044,south,domestic light,0.7886,2.6
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Committed,7.2357,
 2011-03-01,SouthernLights,KP0000,north-west,Diluent - Uncommitted,0.0,
 2011-06-01,SouthernLights,KP0000,north-west,Diluent - Committed,11.5812,
@@ -4070,3 +4099,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-03-01,Westspur,KP0000,north-east,MSM – Crude,6.7543,
 2023-03-01,Westspur,KP0000,north-east,NGL,0.3926,
 2023-03-01,Westspur,KP0000,north-east,SES – Crude,16.5773,
+2023-04-01,Westspur,KP0000,north-east,MSM – Crude,7.0533,
+2023-04-01,Westspur,KP0000,north-east,NGL,0.4193,
+2023-04-01,Westspur,KP0000,north-east,SES – Crude,14.9212,
+2023-05-01,Westspur,KP0000,north-east,MSM – Crude,7.0888,
+2023-05-01,Westspur,KP0000,north-east,NGL,0.3251,
+2023-05-01,Westspur,KP0000,north-east,SES – Crude,15.2423,

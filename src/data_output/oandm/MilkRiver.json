@@ -1,1 +1,1 @@
-{"data": [], "meta": {"companyName": "MilkRiver"}, "build": false}
+{"meta": {"totalEvents": 1, "totalDigs": 1, "nearby": null, "atRisk": 0, "company": "MilkRiver"}, "build": true, "data": {"id": {"year": [2023], "data": [{"id": "y", "data": [1]}]}, "p": {"year": [2023], "data": [{"id": "ab", "data": [1]}]}, "fp": {"year": [2023], "data": [{"id": "n", "data": [1]}]}, "is": {"year": [2023], "data": [{"id": "n", "data": [1]}]}, "sr": {"year": [2023], "data": [{"id": "n", "data": [1]}]}}}
