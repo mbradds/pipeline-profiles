@@ -611,3 +611,52 @@ Tolls,Service,Uncommitted Joint,Taux conjoint non souscrit
 Tolls,Receipt Point,System,Système
 Tolls,Delivery Point,"Kerrobert, Saskatchewan","Kerrobert, Saskatchewan"
 Tolls,Receipt Point,"Montreal East, Quebec","Montréal Est, Québec"
+Surveillance_Report,Classification,Revenues (million $),Revenus (en millions de dollars)
+Surveillance_Report,Classification,Rate Base (million $),Base tarifaire (en millions de dollars)
+Surveillance_Report,Classification,ROE (%),Rendement des capitaux propres (en pourcentage)
+Surveillance_Report,Classification,Revenue (million $),Revenus (en millions de dollars)
+Surveillance_Report,Classification,Deemed equity ratio (%),Ratio présumé des capitaux propres (en pourcentage)
+Surveillance_Report,Classification,Operating Income (million $),Bénéfice d’exploitation (en millions de dollars)
+Surveillance_Report,Classification,All Assets (million $),Actif (en millions de dollars)
+Surveillance_Report,Classification,Net income (million $),Bénéfice net (en millions de dollars)
+Surveillance_Report,Classification,Assets (million $),Actif (en millions de dollars)
+Surveillance_Report,Classification,Expenses (million $),Dépenses (en millions de dollars)
+Surveillance_Report,Classification,Return on Rate Base (%),Taux de rendement de la base tarifaire (en pourcentage)
+Surveillance_Report,Classification,Fixed costs (million $),Coûts fixes (en millions de dollars)
+Surveillance_Report,Classification,After-Tax Weighted Average Cost Of Capital (ATWACC) (%),Coût moyen pondéré du capital après impôt (%)
+Surveillance_Report,Classification,Return On Common Equity (million $),Taux de rendement de l’avoir des actionnaires ordinaires (en pourcentage)
+Surveillance_Report,Classification,Assets (thousand $),Actif (en milliers de dollars)
+Surveillance_Report,Classification,Expenses (thousand $),Dépenses (en milliers de dollars)
+Surveillance_Report,Classification,Revenue (thousand $),Revenus (en milliers de dollars)
+Surveillance_Report,Classification,Net income (thousand $),Bénéfice net (en milliers de dollars)
+Surveillance_Report,Classification,Return on Net Plant (%),Rendement de la valeur nette des installations (en pourcentage)
+Surveillance_Report,Classification,Revenue Requirement (million $),Besoins en produits (en millions de dollars)
+Credit_Rating,Rating,A (low),A (faible)
+Credit_Rating,Rating,Discontinued rating,Note réduite
+Credit_Rating,Rating,BBB,BBB
+Credit_Rating,Rating,Baa1,Baa1
+Credit_Rating,Rating,Baa2,Baa2
+Credit_Rating,Rating,BBB+,BBB+
+Credit_Rating,Rating,A3,A3
+Credit_Rating,Rating,A,A
+Credit_Rating,Rating,A-,A-
+Credit_Rating,Rating,Baa3,Baa3
+Credit_Rating,Rating,BBB (high),BBB (élevée)
+Credit_Rating,Rating,Discontinued,Note réduite
+Credit_Rating,Rating,AA (High),AA (élevée)
+Credit_Rating,Rating,AA (low),AA (faible)
+Credit_Rating,Rating,AA,AA
+Credit_Rating,Rating,AAA,AAA
+Credit_Rating,Rating,AA+,AA+
+Credit_Rating,Rating,AA-,AA-
+Credit_Rating,Rating,Aa1,Aa1
+Credit_Rating,Rating,Aa2,Aa2
+Credit_Rating,Rating,A+,A+
+Credit_Rating,Rating,BBB (low),BBB (faible)
+Credit_Rating,Rating,Ba1,Ba1
+Credit_Rating,Rating,Ba2,Ba2
+Credit_Rating,Rating,BB+,BB+
+Credit_Rating,Rating,BB-,BB-
+Credit_Rating,Rating,BB,BB
+Credit_Rating,Rating,BBB-,BBB-
+Credit_Rating,Rating,Not rated,Non coté
