@@ -5217,9 +5217,9 @@ Alliance,4203544,2022-03-11,2022-10-31,Zone 2,CA/US border,Firm 5Yr Demand Charg
 Alliance,4264662,2022-11-01,2023-05-31,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
 Alliance,4264662,2022-11-01,2023-05-31,Zone 2,CA/US border,Firm 3Yr Demand Charge,natural gas,901.05,CA$ per thousand cubic metres per month,0.726601953491178,CA$ per GJ
 Alliance,4264662,2022-11-01,2023-05-31,Zone 2,CA/US border,Firm 5Yr Demand Charge,natural gas,868.37,CA$ per thousand cubic metres per month,0.700248974366465,CA$ per GJ
-Alliance,4370592,2023-06-01,2023-12-31,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
-Alliance,4370592,2023-06-01,2023-12-31,Zone 2,CA/US border,Firm 3Yr Demand Charge,natural gas,901.05,CA$ per thousand cubic metres per month,0.726601953491178,CA$ per GJ
-Alliance,4370592,2023-06-01,2023-12-31,Zone 2,CA/US border,Firm 5Yr Demand Charge,natural gas,868.37,CA$ per thousand cubic metres per month,0.700248974366465,CA$ per GJ
+Alliance,4370592,2023-06-01,2023-10-31,Zone 2,CA/US border,Firm 1Yr Demand Charge,natural gas,966.41,CA$ per thousand cubic metres per month,0.779307911739945,CA$ per GJ
+Alliance,4370592,2023-06-01,2023-10-31,Zone 2,CA/US border,Firm 3Yr Demand Charge,natural gas,901.05,CA$ per thousand cubic metres per month,0.726601953491178,CA$ per GJ
+Alliance,4370592,2023-06-01,2023-10-31,Zone 2,CA/US border,Firm 5Yr Demand Charge,natural gas,868.37,CA$ per thousand cubic metres per month,0.700248974366465,CA$ per GJ
 Alliance,439100,2007-01-01,2007-12-31,System,CA/US border,Firm Demand Charge,natural gas,833.87,CA$ per thousand cubic metres per month,0.672428356869698,CA$ per GJ
 Alliance,484260,2008-01-01,2008-12-31,System,CA/US border,Firm Demand Charge,natural gas,922.71,CA$ per thousand cubic metres per month,0.744068462910575,CA$ per GJ
 Alliance,538451,2009-01-01,2009-12-31,System,CA/US border,Firm Demand Charge,natural gas,926.54,CA$ per thousand cubic metres per month,0.747156954650301,CA$ per GJ

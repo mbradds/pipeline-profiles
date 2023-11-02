@@ -37,7 +37,8 @@ def apply_trade_id(df):
              "westspur midale (MSM) crude": "msm",
              "MSM – Crude Volume": "msm",
              "MSM – Crude": "msm",
-             "aggregate of heavy, medium, light crude petroleum": "agg"}
+             "aggregate of heavy, medium, light crude petroleum": "agg",
+             "total": "t"}
     df = idify(df, "Trade Type", trade, False)
     return df
 
@@ -61,7 +62,8 @@ def apply_colors(trade_type):
               "pet": "#054169",
               "dic": "#054169",
               "diu": "#FF821E",
-              "agg": "#054169"}
+              "agg": "#054169",
+              "t": "#054169"}
     return colors[trade_type]
 
 

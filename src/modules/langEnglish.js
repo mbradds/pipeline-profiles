@@ -522,7 +522,7 @@ export const englishDashboard = {
           a: "Activity at time of discovery",
           c: "Category of Contaminants",
           ps: "Pipeline or Facility?",
-          s: "Site Status",
+          s: "Status",
           y: "Year",
         },
         click,
@@ -550,6 +550,8 @@ export const englishDashboard = {
           tpc: { c: cerPalette["Night Sky"], n: "Third party contamination" },
           cs: { c: cerPalette.hcAqua, n: "Closure status awaiting CER review" },
           rap: { c: cerPalette.hcBlue, n: "RAP/RMP awaiting CER review" },
+          s: {c: cerPalette.Sun, n: "Submitted"},
+          c: {c: cerPalette["Cool Grey"], n: "Closed"},
           ...nullInfo,
         },
         p: regionInfo, // Province
