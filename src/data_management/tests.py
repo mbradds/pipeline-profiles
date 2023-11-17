@@ -172,11 +172,11 @@ class TestRemediation(unittest.TestCase):
     def testMeta(self):
         self.assertEqual(self.this_company_data["meta"]["companyName"], "NGTL")
         self.assertEqual(self.this_company_data["meta"]["old"], 68)
-        self.assertEqual(self.this_company_data["meta"]["new"], 14)
+        self.assertEqual(self.this_company_data["meta"]["new"], 15)
         self.assertEqual(self.this_company_data["meta"]["new"], len(self.this_company_data["data"]))
 
     def testData(self):
-        self.assertEqual(len(self.this_company_data["data"]), 14)
+        self.assertEqual(len(self.this_company_data["data"]), 15)
 
 
 if __name__ == "__main__":

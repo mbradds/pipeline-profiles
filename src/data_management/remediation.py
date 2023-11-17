@@ -243,5 +243,5 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
 
 if __name__ == "__main__":
     print('starting remediation...')
-    df_ = process_remediation(sql=False, remote=True)
+    df_ = process_remediation(sql=False, remote=False)
     print('completed remediation!')
