@@ -394,7 +394,9 @@ def process_throughput(points,
         df = get_traffic_data(sql, query)
         # Emera has a missing value in 2009 that messes things up
         df['Date'] = pd.to_datetime(df['Date'])
-        df = df[(df['Pipeline Name'] == 'Brunswick') & (df['Date'] >= '2010-01-01')]
+        emera_data = df[(df['Pipeline Name'] == 'Brunswick') & (df['Date'] >= '2010-01-01')]
+        other_data = df[df['Pipeline Name'] != 'Brunswick']
+        df = pd.concat([emera_data, other_data])
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
 
