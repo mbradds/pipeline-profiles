@@ -526,7 +526,7 @@ export const frenchDashboard = {
           a: "Activité au moment de la découverte",
           c: "Catégorie de contaminants",
           ps: "Pipeline ou installation",
-          s: "État du site",
+          s: "Situation",
           y: "Année",
         },
         click,
@@ -562,6 +562,8 @@ export const frenchDashboard = {
             c: cerPalette.hcBlue,
             n: "Plan de mesures correctives - en attente d'examen par la REC",
           },
+          s: {c: cerPalette.Sun, n: "Soumis"},
+          c: {c: cerPalette["Cool Grey"], n: "Fermé"},
           ...nullInfo,
         },
         p: regionInfo, // Province

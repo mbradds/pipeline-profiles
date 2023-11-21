@@ -37,7 +37,8 @@ def apply_trade_id(df):
              "westspur midale (MSM) crude": "msm",
              "MSM – Crude Volume": "msm",
              "MSM – Crude": "msm",
-             "aggregate of heavy, medium, light crude petroleum": "agg"}
+             "aggregate of heavy, medium, light crude petroleum": "agg",
+             "total": "t"}
     df = idify(df, "Trade Type", trade, False)
     return df
 
@@ -61,7 +62,8 @@ def apply_colors(trade_type):
               "pet": "#054169",
               "dic": "#054169",
               "diu": "#FF821E",
-              "agg": "#054169"}
+              "agg": "#054169",
+              "t": "#054169"}
     return colors[trade_type]
 
 
@@ -390,6 +392,11 @@ def process_throughput(points,
             query = 'throughput_gas_monthly.sql'
 
         df = get_traffic_data(sql, query)
+        # Emera has a missing value in 2009 that messes things up
+        df['Date'] = pd.to_datetime(df['Date'])
+        emera_data = df[(df['Pipeline Name'] == 'Brunswick') & (df['Date'] >= '2010-01-01')]
+        other_data = df[df['Pipeline Name'] != 'Brunswick']
+        df = pd.concat([emera_data, other_data])
         df = df.rename(columns={'Capacity (1000 m3/d)': 'Capacity',
                                 'Throughput (1000 m3/d)': 'Throughput'})
 

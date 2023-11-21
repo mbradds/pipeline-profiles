@@ -617,15 +617,15 @@ Surveillance_Report,Classification,ROE (%),Rendement des capitaux propres (en po
 Surveillance_Report,Classification,Revenue (million $),Revenus (en millions de dollars)
 Surveillance_Report,Classification,Deemed equity ratio (%),Ratio présumé des capitaux propres (en pourcentage)
 Surveillance_Report,Classification,Operating Income (million $),Bénéfice d’exploitation (en millions de dollars)
-Surveillance_Report,Classification,All Assets (million $),Actif (en millions de dollars)
+Surveillance_Report,Classification,All Assets (million $),Tous les actifs (en millions de dollars)
 Surveillance_Report,Classification,Net income (million $),Bénéfice net (en millions de dollars)
-Surveillance_Report,Classification,Assets (million $),Actif (en millions de dollars)
+Surveillance_Report,Classification,Assets (million $),Actifs (en millions de dollars)
 Surveillance_Report,Classification,Expenses (million $),Dépenses (en millions de dollars)
 Surveillance_Report,Classification,Return on Rate Base (%),Taux de rendement de la base tarifaire (en pourcentage)
 Surveillance_Report,Classification,Fixed costs (million $),Coûts fixes (en millions de dollars)
 Surveillance_Report,Classification,After-Tax Weighted Average Cost Of Capital (ATWACC) (%),Coût moyen pondéré du capital après impôt (%)
 Surveillance_Report,Classification,Return On Common Equity (million $),Taux de rendement de l’avoir des actionnaires ordinaires (en pourcentage)
-Surveillance_Report,Classification,Assets (thousand $),Actif (en milliers de dollars)
+Surveillance_Report,Classification,Assets (thousand $),Actifs (en milliers de dollars)
 Surveillance_Report,Classification,Expenses (thousand $),Dépenses (en milliers de dollars)
 Surveillance_Report,Classification,Revenue (thousand $),Revenus (en milliers de dollars)
 Surveillance_Report,Classification,Net income (thousand $),Bénéfice net (en milliers de dollars)
@@ -660,3 +660,6 @@ Credit_Rating,Rating,BB-,BB-
 Credit_Rating,Rating,BB,BB
 Credit_Rating,Rating,BBB-,BBB-
 Credit_Rating,Rating,Not rated,Non coté
+Surveillance_Report,Classification,ROE on Deemed Equity Ratio (%),Placeholder - ROE on Deemed Equity Ratio (%)
+Surveillance_Report,Classification,Actual Equity Ratio (%),Placeholder - Actual Equity Ratio (%)
+Surveillance_Report,Classification,ROE on Actual Equity Ratio (%),Placeholder - ROE on Actual Equity Ratio (%)

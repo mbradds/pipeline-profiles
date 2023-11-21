@@ -136,10 +136,10 @@ class TestTraffic(unittest.TestCase):
         # check one data point for traffic and capacity
         # traffic
         self.assertEqual(point[1]["id"], "in")
-        self.assertEqual(point[1]["data"][0], 5.7092)
+        self.assertEqual(point[1]["data"][0], 5.70924)
         # capacity
         self.assertEqual(point[2]["id"], "cap")
-        self.assertEqual(point[2]["data"][0], 6.6208)
+        self.assertEqual(point[2]["data"][0], 6.62076)
 
 
 class TestOandm(unittest.TestCase):
@@ -172,11 +172,11 @@ class TestRemediation(unittest.TestCase):
     def testMeta(self):
         self.assertEqual(self.this_company_data["meta"]["companyName"], "NGTL")
         self.assertEqual(self.this_company_data["meta"]["old"], 68)
-        self.assertEqual(self.this_company_data["meta"]["new"], 14)
+        self.assertEqual(self.this_company_data["meta"]["new"], 15)
         self.assertEqual(self.this_company_data["meta"]["new"], len(self.this_company_data["data"]))
 
     def testData(self):
-        self.assertEqual(len(self.this_company_data["data"]), 14)
+        self.assertEqual(len(self.this_company_data["data"]), 15)
 
 
 if __name__ == "__main__":
