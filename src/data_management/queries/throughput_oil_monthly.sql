@@ -55,4 +55,5 @@ where throughput.PipelineId = 'TransMountain'
 group by year(throughput.[Date]), month(throughput.[Date]), throughput.[PipelineID], throughput.[KeyPointID], throughput.[Direction of Flow], throughput.Product
 ) as hc
 left join [PipelineInformation].[dbo].[KeyPoint] as kp on hc.KeyPointId = kp.KeyPointId
+WHERE NOT (hc.PipelineID = 'Keystone' AND hc.Product = 'total')
 order by hc.PipelineID, kp.[Key Point], [Date]
