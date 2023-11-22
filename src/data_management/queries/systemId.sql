@@ -16,3 +16,11 @@ select
 'Plains Midstream Canada ULC' as companyEng,
 'Plains Midstream Canada ULC' as companyFra,
 'Liquid' as Commodity
+union all
+select
+'TCPL' as PipelineID,
+'TC Canadian Mainline' as pipeEng,
+'Réseau de TC au Canada' as pipeFra,
+'TransCanada PipeLines Limited' as companyEng,
+'TransCanada PipeLines Limited' as companyFra,
+'Gas' as Commodity

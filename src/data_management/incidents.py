@@ -197,6 +197,7 @@ def process_incidents(remote=False, companies=False, test=False):
                 this_company_data['events'] = df_vol.to_dict(orient='records')
                 this_company_data['meta']['build'] = True
             else:
+                meta = None
                 # there are no product release incidents
                 this_company_data['events'] = df_vol.to_dict(orient='records')
                 this_company_data['meta'] = {"companyName": company, "build": False}
@@ -215,5 +216,5 @@ def process_incidents(remote=False, companies=False, test=False):
 
 if __name__ == '__main__':
     print('starting incidents...')
-    df_, volume_, meta_ = process_incidents(remote=False, test=False)
+    df_, volume_, meta_ = process_incidents(remote=False, test=False, companies=["TCPL"])
     print('completed incidents!')
