@@ -16,10 +16,6 @@ steps:
     displayName: "npm install"
     
   - script: |
-      npm run dev
-    displayName: "npm run dev"
-    
-  - script: |
       npm run build
     displayName: "npm run build"
     
