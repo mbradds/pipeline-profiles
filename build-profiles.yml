@@ -11,16 +11,20 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - task: NodeTool@1
+  - task: Npm@1
     inputs:
-      versionSpec: "16.x"
-    displayName: "Install Node.js"
+      command: 'install'
+    displayName: "npm install"
 
-  - script: |
-      npm install
-      npm run dev
-    displayName: "npm install and build"
-
+  - task: Npm@1
+    inputs:
+      command: 'run dev'
+    displayName: "npm run dev"
+  - task: Npm@1
+    inputs:
+      command: 'run build'
+    displayName: "npm run build"
+    
   - task: CopyFiles@2
     inputs:
       sourceFolder: "$(Build.SourcesDirectory)/dist"
