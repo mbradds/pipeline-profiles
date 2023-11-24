@@ -27,15 +27,10 @@ steps:
       targetFolder: '$(Build.ArtifactStagingDirectory)/dist'
     displayName: "Copy /dist directory"
 
-  - task: VariableSetTask@2
-    inputs:
-      variableName: 'Build.Buildnumber'
-      value: '$(Date:yyyyMMdd).$(Rev.r)'
-
   - task: PublishBuildArtifacts@1
     inputs:
       artifactName: 'dist'  
       pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
       publishLocation: FilePath
-      TargetPath: '\\nbs-a5-001\Drops\HighCharts\HC-$(Build.Buildnumber)'
+      TargetPath: '\\nbs-a5-001\Drops\HighCharts\HC-$(Date)'
     displayName: "Publish Artifact: HighCharts"
