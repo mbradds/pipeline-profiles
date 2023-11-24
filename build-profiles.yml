@@ -23,12 +23,12 @@ steps:
     inputs:
       sourceFolder: "$(Build.SourcesDirectory)/dist"
       contents: "**"
-      targetFolder: $(Build.ArtifactStagingDirectory)
+      targetFolder: $(Build.ArtifactStagingDirectory)/dist
     displayName: "Copy /dist directory"
 
   - task: PublishBuildArtifacts@1
     inputs:
       artifactName: dist  
-      pathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
       publishLocation: 'pipeline'
     displayName: "Publish dist artifact"
