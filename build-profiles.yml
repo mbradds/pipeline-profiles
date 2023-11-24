@@ -3,8 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+name: HighCharts Build 
 trigger:
-  - main
+  - ReleaseBuild
 
 pool:
   vmImage: ubuntu-latest
@@ -19,22 +20,6 @@ steps:
       npm install
       npm run build
     displayName: "npm install and build"
-
-  - bash: echo "##vso[task.prependpath]$CONDA/bin"
-    displayName: Add conda to PATH
-
-  - script: conda env create --quiet --file environment.yml --name anacondaEnvironment
-    displayName: Create Anaconda environment
-
-  - bash: |
-      source activate anacondaEnvironment
-      conda install --yes --quiet --name anacondaEnvironment scipy
-    displayName: Install Anaconda packages
-
-  - bash: |
-      source activate anacondaEnvironment
-      conda npm run update-all-data
-    displayName: conda update data
 
   - task: CopyFiles@2
     inputs:
