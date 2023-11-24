@@ -19,13 +19,13 @@ steps:
   - task: Npm@1
     inputs:
       command: 'custom'
-      customCommand: 'npm run dev'
+      customCommand: 'run dev'
     displayName: "npm run dev"
     
   - task: Npm@1
     inputs:
       command: 'custom'
-      customCommand: 'npm run build'
+      customCommand: 'run build'
     displayName: "npm run build"
     
   - task: CopyFiles@2
