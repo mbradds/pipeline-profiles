@@ -29,8 +29,8 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      artifactName: '_HighCharts'  
+      artifactName: 'dist'  
       pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
       publishLocation: FilePath
-      TargetPath: '\\nbs-a5-001\Drops\HighChart\$(Build.BuildNumber)\dist'
+      TargetPath: '\\nbs-a5-001\Drops\HighChart\$(Date:yyyyMMdd).$(Rev:r)'
     displayName: "Publish Artifact: HighChart"
