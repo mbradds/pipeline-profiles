@@ -8,7 +8,7 @@ trigger:
   - ReleaseBuild
 
 pool:
-  vmImage: ubuntu-latest
+  name: CERPool
 
 steps:
   - script: |
