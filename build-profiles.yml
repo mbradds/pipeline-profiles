@@ -13,7 +13,6 @@ pool:
 steps:
   - script: |
       npm install
-      command: 'install'
     displayName: "npm install"
     
   - script: |
