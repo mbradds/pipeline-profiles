@@ -18,17 +18,11 @@ steps:
   - script: |
       npm run build
     displayName: "npm run build"
-    
-  - task: CopyFiles@2
-    inputs:
-      sourceFolder: "$(Build.SourcesDirectory)/dist"
-      contents: "**"
-      targetFolder: $(Build.ArtifactStagingDirectory)/dist
-    displayName: "Copy /dist directory"
 
   - task: PublishBuildArtifacts@1
     inputs:
       artifactName: dist  
-      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
-      publishLocation: 'pipeline'
-    displayName: "Publish dist artifact"
+      pathtoPublish: "$(Build.SourcesDirectory)/dist"
+      publishLocation: FilePath
+      TargetPath: '\\nbs-a5-001\Drops\HighChart\$(Build.BuildNumber)'
+    displayName: "Publish Artifact: HighChart"
