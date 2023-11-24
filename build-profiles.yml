@@ -21,15 +21,16 @@ steps:
     
   - task: CopyFiles@2
     inputs:
-      sourceFolder: "$(Build.SourcesDirectory)/dist"
-      contents: "**"
-      targetFolder: "$(Build.ArtifactStagingDirectory)/dist"
+      sourceFolder: '$(Build.SourcesDirectory)/dist'
+      contents: |
+        **
+      targetFolder: '$(Build.ArtifactStagingDirectory)/dist'
     displayName: "Copy /dist directory"
 
   - task: PublishBuildArtifacts@1
     inputs:
-      artifactName: dist  
-      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
+      artifactName: '_HighCharts'  
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
       publishLocation: FilePath
-      TargetPath: '\\nbs-a5-001\Drops\HighChart\$(Build.BuildNumber)\'
+      TargetPath: '\\nbs-a5-001\Drops\HighChart\$(Build.BuildNumber)\dist'
     displayName: "Publish Artifact: HighChart"
