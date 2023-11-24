@@ -30,7 +30,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-    artifactName: dist  
-    pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
-    publishLocation: 'pipeline'
+      artifactName: dist  
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
+      publishLocation: 'pipeline'
     displayName: "Publish dist artifact"
