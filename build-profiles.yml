@@ -11,33 +11,29 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - task: Npm@1
-    inputs:
+  - script: |
+      npm install
       command: 'install'
     displayName: "npm install"
     
-  - task: Npm@1
-    inputs:
-      command: 'custom'
-      customCommand: 'run dev'
+  - script: |
+      npm run dev
     displayName: "npm run dev"
     
-  - task: Npm@1
-    inputs:
-      command: 'custom'
-      customCommand: 'run build'
+  - script: |
+      npm run build
     displayName: "npm run build"
     
   - task: CopyFiles@2
     inputs:
       sourceFolder: "$(Build.SourcesDirectory)/dist"
       contents: "**"
-      targetFolder: $(Build.ArtifactStagingDirectory)/dist
+      targetFolder: $(Build.ArtifactStagingDirectory)
     displayName: "Copy /dist directory"
 
   - task: PublishBuildArtifacts@1
     inputs:
       artifactName: dist  
-      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)"
       publishLocation: 'pipeline'
     displayName: "Publish dist artifact"
