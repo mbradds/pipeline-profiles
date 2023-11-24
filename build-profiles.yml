@@ -20,6 +20,22 @@ steps:
       npm run build
     displayName: "npm install and build"
 
+  - bash: echo "##vso[task.prependpath]$CONDA/bin"
+    displayName: Add conda to PATH
+
+  - script: conda env create --quiet --file environment.yml --name anacondaEnvironment
+    displayName: Create Anaconda environment
+
+  - bash: |
+      source activate anacondaEnvironment
+      conda install --yes --quiet --name anacondaEnvironment scipy
+    displayName: Install Anaconda packages
+
+  - bash: |
+      source activate anacondaEnvironment
+      conda npm run update-all-data
+    displayName: conda update data
+
   - task: CopyFiles@2
     inputs:
       sourceFolder: "$(Build.SourcesDirectory)/dist"
