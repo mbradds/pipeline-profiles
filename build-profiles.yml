@@ -3,32 +3,34 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+name: HighCharts
 trigger:
   - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: CERPool
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: "12.x"
-    displayName: "Install Node.js"
-
   - script: |
       npm install
+    displayName: "npm install"
+    
+  - script: |
       npm run build
-    displayName: "npm install and build"
-
+    displayName: "npm run build"
+    
   - task: CopyFiles@2
     inputs:
-      sourceFolder: "$(Build.SourcesDirectory)/dist"
-      contents: "**"
-      targetFolder: $(Build.ArtifactStagingDirectory)/dist
+      sourceFolder: '$(Build.SourcesDirectory)/dist'
+      contents: |
+        **
+      targetFolder: '$(Build.ArtifactStagingDirectory)/dist'
     displayName: "Copy /dist directory"
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: "$(Build.ArtifactStagingDirectory)/dist"
-      artifactName: dist
-    displayName: "Publish dist artifact"
+      artifactName: 'dist'  
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+      publishLocation: FilePath
+      TargetPath: '\\nbs-a5-001\Drops\HighCharts\HC-$(Build.BuildId)'
+    displayName: "Publish Artifact: HighCharts"
