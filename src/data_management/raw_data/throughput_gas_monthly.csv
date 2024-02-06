@@ -3054,6 +3054,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2023-04-01,Suffield,KP0069,east,intracanada,5380.0,1962.6833
 2023-05-01,Suffield,KP0069,east,intracanada,5380.0,1973.9581
 2023-06-01,Suffield,KP0069,east,intracanada,5380.0,1939.34
+2023-07-01,Suffield,KP0069,east,intracanada,5380.0,1929.8968
+2023-08-01,Suffield,KP0069,east,intracanada,5380.0,1923.9419
+2023-09-01,Suffield,KP0069,east,intracanada,5380.0,1902.1067
 2018-01-01,Suffield,KP0070,east,intracanada,4955.0,2032.3226
 2018-02-01,Suffield,KP0070,east,intracanada,4955.0,1921.4464
 2018-03-01,Suffield,KP0070,east,intracanada,4955.0,1823.3774
@@ -3120,6 +3123,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2023-04-01,Suffield,KP0070,east,intracanada,4955.0,1757.8233
 2023-05-01,Suffield,KP0070,east,intracanada,4955.0,1872.8161
 2023-06-01,Suffield,KP0070,east,intracanada,4955.0,1799.1733
+2023-07-01,Suffield,KP0070,east,intracanada,4955.0,1769.0032
+2023-08-01,Suffield,KP0070,east,intracanada,4955.0,1744.2742
+2023-09-01,Suffield,KP0070,east,intracanada,4955.0,1762.6167
 2006-01-01,TCPL,KP0005,east,export,13226.6667,6931.6774
 2006-02-01,TCPL,KP0005,east,export,13226.6667,8861.8443
 2006-03-01,TCPL,KP0005,east,export,13226.6667,8757.3281

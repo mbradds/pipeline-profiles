@@ -660,6 +660,9 @@ Credit_Rating,Rating,BB-,BB-
 Credit_Rating,Rating,BB,BB
 Credit_Rating,Rating,BBB-,BBB-
 Credit_Rating,Rating,Not rated,Non coté
-Surveillance_Report,Classification,ROE on Deemed Equity Ratio (%),Placeholder - ROE on Deemed Equity Ratio (%)
-Surveillance_Report,Classification,Actual Equity Ratio (%),Placeholder - Actual Equity Ratio (%)
-Surveillance_Report,Classification,ROE on Actual Equity Ratio (%),Placeholder - ROE on Actual Equity Ratio (%)
+Surveillance_Report,Classification,ROE on Deemed Equity Ratio (%),RCP sur le ratio des capitaux propres réputé (%)
+Surveillance_Report,Classification,Actual Equity Ratio (%),Ratio réel des capitaux propres (%)
+Surveillance_Report,Classification,ROE on Actual Equity Ratio (%),RCP sur le ratio des capitaux propres réel (%)
+Surveillance_Report,Classification,Net plant (million $),Valeur nette des installations (en millions de dollars)
+Surveillance_Report,Classification,Net plant in service (million $),Valeur nette des installations en service (en millions de dollars)
+Surveillance_Report,Classification,Average rate base (million $),Base tarifaire moyenne (en millions de dollars)

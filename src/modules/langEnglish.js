@@ -550,8 +550,8 @@ export const englishDashboard = {
           tpc: { c: cerPalette["Night Sky"], n: "Third party contamination" },
           cs: { c: cerPalette.hcAqua, n: "Closure status awaiting CER review" },
           rap: { c: cerPalette.hcBlue, n: "RAP/RMP awaiting CER review" },
-          s: {c: cerPalette.Sun, n: "Submitted"},
-          c: {c: cerPalette["Cool Grey"], n: "Closed"},
+          s: { c: cerPalette.Sun, n: "Submitted" },
+          c: { c: cerPalette["Cool Grey"], n: "Closed" },
           ...nullInfo,
         },
         p: regionInfo, // Province
@@ -560,6 +560,10 @@ export const englishDashboard = {
           dls: {
             c: cerPalette["Night Sky"],
             n: "Developed Land - Small Commercial",
+          },
+          dlc: {
+            c: cerPalette["Night Sky"],
+            n: "Developed Land - Commercial",
           },
           dlr: {
             c: cerPalette.Aubergine,
