@@ -110,6 +110,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-07-01,Cochin,KP0018,west,condensate,15.3995,17.49
 2023-08-01,Cochin,KP0018,west,condensate,18.2928,17.49
 2023-09-01,Cochin,KP0018,west,condensate,17.2058,17.49
+2023-10-01,Cochin,KP0018,west,condensate,17.7079,17.49
+2023-11-01,Cochin,KP0018,west,condensate,17.6515,17.49
+2023-12-01,Cochin,KP0018,west,condensate,18.3791,17.49
 2014-07-01,Cochin,KP0034,east,refined petroleum products,0.0146,
 2014-07-01,Cochin,KP0043,east,refined petroleum products,0.0014,12.083
 2014-08-01,Cochin,KP0043,east,refined petroleum products,0.0,12.083
@@ -237,6 +240,18 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2022-10-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",30.0619,47.6963
 2022-11-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",34.4425,47.6963
 2022-12-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",41.0534,47.6963
+2023-01-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",42.9808,47.6963
+2023-02-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",38.525,47.6963
+2023-03-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",41.7738,47.6963
+2023-04-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",34.2606,47.6963
+2023-05-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",30.7335,47.6963
+2023-06-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",34.463,47.6963
+2023-07-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",31.4097,47.6963
+2023-08-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",33.2075,47.6963
+2023-09-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",32.6523,47.6963
+2023-10-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",33.4057,47.6963
+2023-11-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",39.1302,47.6963
+2023-12-01,EnbridgeLine9,KP0000,east,"aggregate of heavy, medium, light crude petroleum",41.4202,47.6963
 2015-01-01,EnbridgeMainline,KP0006,east,foreign light,4.2,
 2015-02-01,EnbridgeMainline,KP0006,east,foreign light,8.9,
 2015-03-01,EnbridgeMainline,KP0006,east,foreign light,13.0,
@@ -1895,12 +1910,18 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-05-01,Keystone,KP0020,south,domestic light,2.27,94.52
 2023-06-01,Keystone,KP0020,south,domestic heavy,95.86,95.87
 2023-06-01,Keystone,KP0020,south,domestic light,0.0,95.87
-2023-07-01,Keystone,KP0020,south,domestic heavy,95.07,95.07
-2023-07-01,Keystone,KP0020,south,domestic light,0.0,95.07
-2023-08-01,Keystone,KP0020,south,domestic heavy,94.55,95.04
-2023-08-01,Keystone,KP0020,south,domestic light,0.49,95.04
-2023-09-01,Keystone,KP0020,south,domestic heavy,95.6,96.08
-2023-09-01,Keystone,KP0020,south,domestic light,0.48,96.08
+2023-07-01,Keystone,KP0020,south,domestic heavy,95.09,95.09
+2023-07-01,Keystone,KP0020,south,domestic light,0.0,95.09
+2023-08-01,Keystone,KP0020,south,domestic heavy,94.71,95.2
+2023-08-01,Keystone,KP0020,south,domestic light,0.49,95.2
+2023-09-01,Keystone,KP0020,south,domestic heavy,95.6,96.09
+2023-09-01,Keystone,KP0020,south,domestic light,0.48,96.09
+2023-10-01,Keystone,KP0020,south,domestic heavy,96.38,96.38
+2023-10-01,Keystone,KP0020,south,domestic light,0.0,96.38
+2023-11-01,Keystone,KP0020,south,domestic heavy,97.61,97.61
+2023-11-01,Keystone,KP0020,south,domestic light,0.0,97.61
+2023-12-01,Keystone,KP0020,south,domestic heavy,98.91,98.91
+2023-12-01,Keystone,KP0020,south,domestic light,0.0,98.91
 2016-05-01,Montreal,KP0000,north-west,petroleum,1.9894,
 2016-06-01,Montreal,KP0000,north-west,petroleum,4.0521,
 2016-07-01,Montreal,KP0000,north-west,petroleum,6.8462,
@@ -1993,6 +2014,7 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-10-01,Montreal,KP0000,north-west,petroleum,1.5565,
 2023-11-01,Montreal,KP0000,north-west,petroleum,2.0611,
 2023-12-01,Montreal,KP0000,north-west,petroleum,0.3358,
+2024-01-01,Montreal,KP0000,north-west,petroleum,3.6236,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.5732,5.4737
 2007-02-01,NormanWells,KP0044,south,domestic light,3.274,5.4737
 2007-03-01,NormanWells,KP0044,south,domestic light,3.6936,5.4737
@@ -4018,6 +4040,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-07-01,TransNorthern,KP0000,not available,refined petroleum products,23.1,
 2023-08-01,TransNorthern,KP0000,not available,refined petroleum products,26.7,
 2023-09-01,TransNorthern,KP0000,not available,refined petroleum products,26.1,
+2023-10-01,TransNorthern,KP0000,not available,refined petroleum products,24.8,
+2023-11-01,TransNorthern,KP0000,not available,refined petroleum products,23.3,
+2023-12-01,TransNorthern,KP0000,not available,refined petroleum products,22.3,
 2016-12-01,Westspur,KP0000,north-east,MSM – Crude,6.4036,
 2016-12-01,Westspur,KP0000,north-east,NGL,0.2675,
 2016-12-01,Westspur,KP0000,north-east,SES – Crude,21.5238,
@@ -4270,3 +4295,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-11-01,Westspur,KP0000,north-east,MSM – Crude,6.9908,
 2023-11-01,Westspur,KP0000,north-east,NGL,0.3896,
 2023-11-01,Westspur,KP0000,north-east,SES – Crude,17.2142,
+2023-12-01,Westspur,KP0000,north-east,MSM – Crude,7.0034,
+2023-12-01,Westspur,KP0000,north-east,NGL,0.3889,
+2023-12-01,Westspur,KP0000,north-east,SES – Crude,16.2967,
+2024-01-01,Westspur,KP0000,north-east,MSM – Crude,6.8902,
+2024-01-01,Westspur,KP0000,north-east,NGL,0.3502,
+2024-01-01,Westspur,KP0000,north-east,SES – Crude,16.0074,

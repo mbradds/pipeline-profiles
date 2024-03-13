@@ -22,7 +22,7 @@ Alliance,4264662,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4265255,https://ap
 Alliance,4265133,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4265132,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4265133,2000-01-01,2000-01-01
 Alliance,4370592,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370503,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4370592,2023-06-01,2023-10-31
 Alliance,439100,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/439099,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/439100,2007-01-01,2007-12-31
-Alliance,4403671,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4403669,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4403671,2023-11-01,2023-12-31
+Alliance,4403671,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4403669,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4403671,2023-11-01,2024-10-31
 Alliance,484260,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/484042,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/484260,2008-01-01,2008-12-31
 Alliance,538451,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/538450,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/538451,2009-01-01,2009-12-31
 Alliance,578437,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/578436,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/578437,2010-01-01,2010-12-31
@@ -30,16 +30,17 @@ Alliance,647371,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/647313,https://apps
 Alliance,746072,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/746071,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/746072,2012-01-01,2012-12-31
 Alliance,880322,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/880143,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/880322,2013-01-01,2013-04-30
 Alliance,939621,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/939411,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/939621,2013-05-01,2013-12-31
-Aurora,Tariff 10,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3393284,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3390620,2018-01-01,2018-09-15
-Aurora,Tariff 12,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3610497,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3612148,2018-09-16,2018-12-31
-Aurora,Tariff 14,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3700256,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3700257,2019-01-01,2019-12-31
-Aurora,Tariff 16,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3892379,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3892381,2020-01-01,2020-12-31
-Aurora,Tariff 17,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4013760,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4013762,2021-01-01,2021-12-31
-Aurora,Tariff 19,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4165796,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4165710,2022-01-01,2022-12-31
-Aurora,Tariff 20,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4289376,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4289173,2023-01-01,2023-12-31
-Aurora,Tariff 3,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/542586,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/542587,2009-01-01,2012-12-31
-Aurora,Tariff 5,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/893427,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/893528,2013-01-01,2014-12-31
-Aurora,Tariff 7,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578984,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578865,2015-01-01,2017-12-31
+Aurora,2578865,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578984,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578865,2015-01-01,2017-12-31
+Aurora,3390620,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3393284,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3390620,2018-01-01,2018-09-15
+Aurora,3612148,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3610497,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3612148,2018-09-16,2018-12-31
+Aurora,3700257,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3700256,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3700257,2019-01-01,2019-12-31
+Aurora,3892381,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3892379,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3892381,2020-01-01,2020-12-31
+Aurora,4013762,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4013760,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4013762,2021-01-01,2021-12-31
+Aurora,4165710,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4165796,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4165710,2022-01-01,2022-12-31
+Aurora,4289173,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4289376,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4289173,2023-01-01,2023-12-31
+Aurora,4422711,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422709,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4422711,2024-01-01,2024-12-31
+Aurora,542587,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/542586,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/542587,2009-01-01,2012-12-31
+Aurora,893528,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/893427,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/893528,2013-01-01,2014-12-31
 Brunswick,2009 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2486087,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2486864,2009-07-16,2014-07-15
 Brunswick,2014 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2486087,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2486864,2014-07-16,2024-07-15
 Brunswick,2024 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2486087,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2486864,2024-07-16,2034-07-15
@@ -101,6 +102,7 @@ Cochin,4305792,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4305792,https://apps
 Cochin,4370613,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370887,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4370613,2023-07-01,2023-07-01
 Cochin,4371082,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4371007,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4371082,2023-07-01,2024-01-31
 Cochin,4427109,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4427238,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4427109,2024-02-01,2024-12-31
+Cochin,4437833,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4437937,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4437833,2000-01-01,2000-01-01
 Cochin,Tariff 172,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2579013,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2579014,2015-01-01,2015-06-30
 Cochin,Tariff 173,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2579013,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2579014,2015-01-01,2015-06-30
 EnbridgeBakken,2398182,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2398057,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2398182,2014-02-09,2014-06-30
@@ -131,8 +133,8 @@ EnbridgeBakken,4098548,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4099272,http
 EnbridgeBakken,4098785,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4099470,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4098785,2021-07-01,2022-02-28
 EnbridgeBakken,4206100,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4206098,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4206100,2022-03-01,2022-06-30
 EnbridgeBakken,4247177,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4247175,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4247177,2022-07-01,2023-06-30
-EnbridgeBakken,4247352,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4247730,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4247352,2022-07-01,2023-03-31
-EnbridgeBakken,4371081,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370881,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4371081,2023-07-01,2023-12-31
+EnbridgeBakken,4247352,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4247730,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4247352,2022-07-01,2024-06-30
+EnbridgeBakken,4371081,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370881,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4371081,2023-07-01,2024-06-30
 EnbridgeBakken,895691,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/895318,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/895691,2013-01-15,2013-01-30
 EnbridgeBakken,895851,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/895318,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/895851,2013-01-15,2013-06-30
 EnbridgeBakken,914624,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/915071,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/914624,2013-01-31,2013-02-28
@@ -236,7 +238,7 @@ EnbridgeLocal,4109396,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4111305,https
 EnbridgeLocal,4153298,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4153296,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4153298,2021-10-01,2022-06-30
 EnbridgeLocal,4248478,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4251374,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4248478,2022-07-01,2022-08-31
 EnbridgeLocal,4258028,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4257648,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4258028,2022-09-01,2022-09-30
-EnbridgeLocal,4265180,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4265076,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4265180,2022-10-01,2022-12-31
+EnbridgeLocal,4265180,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4265076,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4265180,2022-10-01,2023-01-01
 EnbridgeLocal,4303182,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4302849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4303182,2023-02-01,2023-02-28
 EnbridgeLocal,4306324,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4306702,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4306324,2023-03-01,2023-04-30
 EnbridgeLocal,4364457,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4364454,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4364457,2023-05-01,2023-06-30
@@ -276,12 +278,23 @@ EnbridgeMainline,4265179,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4265076,ht
 EnbridgeMainline,4303181,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4302849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4303181,2023-02-01,2023-02-28
 EnbridgeMainline,4306323,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4306702,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4306323,2023-03-01,2023-04-30
 EnbridgeMainline,4364456,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4364454,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4364456,2023-05-01,2023-06-30
-EnbridgeMainline,4370602,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370729,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4370602,2023-07-01,2023-12-31
+EnbridgeMainline,4370602,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370729,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4370602,2023-07-01,2023-11-30
 EnbridgeMainline,4417935,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4417460,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4417935,2023-12-01,2023-12-31
 EnbridgeMainline,4424524,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4424239,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4424524,2024-01-01,2024-06-30
 EnbridgeMainline,685265,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/685706,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/685265,2011-07-01,2012-06-30
 EnbridgeMainline,821909,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/821842,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/821909,2012-07-01,2013-06-30
 EnbridgeMainline,960272,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/959969,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/960272,2013-07-01,2014-06-30
+Express,3891500,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891500,2020-01-01,2020-03-31
+Express,3891501,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891501,2020-01-01,2020-06-30
+Express,3910147,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3909593,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3910147,2020-04-01,2021-03-31
+Express,3931011,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3931009,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3931011,2020-07-01,2021-06-30
+Express,4050319,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4049980,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4050319,2021-04-01,2022-03-31
+Express,4097814,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4097673,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4097814,2021-07-01,2022-06-30
+Express,4205589,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4208327,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4205589,2022-04-01,2023-03-31
+Express,4246984,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4247454,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4246984,2022-07-01,2023-06-30
+Express,4328612,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4328257,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4328612,2023-04-01,2024-03-31
+Express,4370726,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370724,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4370726,2023-07-01,2024-06-30
+Express,4437837,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4439278,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4437837,2000-01-01,2000-01-01
 Express,Tariff 115,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/673367,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/673168,2011-04-01,2012-03-31
 Express,Tariff 117,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/793793,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/793797,2012-04-01,2013-03-31
 Express,Tariff 119,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/926510,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/926514,2013-04-01,2013-05-14
@@ -303,15 +316,6 @@ Express,Tariff 155,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3705521,https://
 Express,Tariff 157,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3755106,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3755108,2019-04-01,2019-09-30
 Express,Tariff 158,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3783789,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3783681,2019-07-01,2019-12-31
 Express,Tariff 162,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3817542,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3817633,2019-10-01,2019-12-31
-Express,Tariff 164,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891500,2020-01-01,2020-03-31
-Express,Tariff 166,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891501,2020-01-01,2020-06-30
-Express,Tariff 170,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3909593,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3910147,2020-04-01,2021-03-31
-Express,Tariff 172,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3931009,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3931011,2020-07-01,2021-06-30
-Express,Tariff 176,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4049980,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4050319,2021-04-01,2022-03-31
-Express,Tariff 178,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4097673,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4097814,2021-07-01,2022-06-30
-Express,Tariff 181,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4208327,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4205589,2022-04-01,2023-03-31
-Express,Tariff 183,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4247454,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4246984,2022-07-01,2023-06-30
-Express,Tariff 185,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4328257,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4328612,2023-04-01,2024-03-31
 Foothills,1040884,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/1040952,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/880069,2013-11-09,2013-12-31
 Foothills,1057999,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/1057791,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/1057999,2014-01-01,2014-12-31
 Foothills,2543721,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2543305,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2543721,2015-01-01,2015-12-31
@@ -324,6 +328,7 @@ Foothills,3880825,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3881003,https://a
 Foothills,4010640,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4009844,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4010640,2021-01-01,2021-12-31
 Foothills,4163043,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4163042,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4163043,2022-01-01,2022-12-31
 Foothills,4285949,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4285948,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4285949,2023-01-01,2023-12-31
+Foothills,4416629,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4416628,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4416629,2024-01-01,2024-12-31
 Foothills,486985,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/486896,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/486985,2008-01-01,2008-03-31
 Foothills,502590,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/502589,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/502590,2008-04-01,2008-12-31
 Foothills,541631,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/541581,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/541631,2009-01-01,2009-12-31
@@ -333,12 +338,12 @@ Foothills,655048,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/655047,https://app
 Foothills,746166,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/746046,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/746166,2012-01-01,2012-10-31
 Foothills,880069,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/880226,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/880069,2013-01-01,2013-11-08
 Foothills,880346,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/880153,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/746166,2012-11-01,2012-12-31
-Genesis,Tariff 10,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,2009-03-01,2023-12-31
-Genesis,Tariff 11,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,2009-03-01,2023-12-31
+Genesis,Tariff 10,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,2009-03-01,2024-12-31
+Genesis,Tariff 11,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,2009-03-01,2024-12-31
 Genesis,Tariff 5,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,1993-03-01,2009-02-28
 Genesis,Tariff 6,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,1993-04-01,2009-02-28
 Genesis,Tariff 7,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,1994-03-01,2009-02-28
-Genesis,Tariff 9,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,2009-03-01,2023-12-31
+Genesis,Tariff 9,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/545696,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/545697,2009-03-01,2024-12-31
 Keystone,2381708,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2381044,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2381708,2014-01-01,2014-01-02
 Keystone,2385280,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2392969,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2385280,2014-01-03,2014-12-31
 Keystone,2579047,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578163,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2579047,2015-01-01,2015-10-31
@@ -358,7 +363,7 @@ Keystone,3464424,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3464208,https://ap
 Keystone,3558295,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3559395,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3558295,2018-06-01,2018-06-30
 Keystone,3571244,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3574873,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3571244,2018-07-01,2000-01-01
 Keystone,3573773,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3574878,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3573773,2018-07-01,2000-01-01
-Keystone,3705252,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3705251,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3705252,2019-01-01,2022-12-31
+Keystone,3705252,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3705251,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3705252,2019-01-01,2024-12-31
 Keystone,3745773,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3745772,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3745773,2019-02-01,2019-02-28
 Keystone,3754152,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3750878,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3754152,2019-03-01,2019-03-31
 Keystone,3755022,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3755021,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3755022,2019-04-01,2019-04-30
@@ -383,11 +388,12 @@ Keystone,4194660,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4193890,https://ap
 Keystone,4247766,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4247765,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4247766,2022-07-01,2022-07-31
 Keystone,4251647,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4251646,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4251647,2022-08-01,2022-12-31
 Keystone,4292129,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292128,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292129,2023-01-01,2023-12-31
-Keystone,4292566,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292115,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292566,2023-01-01,2023-12-31
+Keystone,4292566,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292115,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292566,2023-01-01,2000-01-01
 Keystone,4371059,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4370992,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4371059,2023-07-01,2023-05-30
-Keystone,4422524,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422523,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4422524,2000-01-01,2000-01-01
-Keystone,4423081,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4423080,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4423081,2000-01-01,2000-01-01
-Keystone,4423165,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422526,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4423165,2000-01-01,2000-01-01
+Keystone,4415563,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4414917,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4415563,2023-12-01,2023-12-31
+Keystone,4422524,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422523,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4422524,2024-01-01,2000-01-01
+Keystone,4423081,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4423080,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4423081,2024-01-01,2000-01-01
+Keystone,4423165,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422526,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4423165,2024-01-01,2024-12-31
 Keystone,613216,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/613215,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/613216,2010-04-15,2011-01-31
 Keystone,660008,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/660007,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/660008,2011-02-01,2011-04-30
 Keystone,678991,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/678990,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/678991,2011-05-01,2012-06-30
@@ -401,25 +407,27 @@ ManyIslands,3779808,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3779270,https:/
 ManyIslands,3912993,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3913354,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3912993,2020-04-01,2021-03-31
 ManyIslands,4082629,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4082628,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4082629,2021-04-01,2022-03-31
 ManyIslands,4239535,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4239534,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4239535,2022-04-01,2023-03-31
+ManyIslands,4360620,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360619,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360620,2023-04-01,2024-03-31
 ManyIslands,508901,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/508976,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/508901,2008-05-01,2009-12-31
 ManyIslands,587868,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/587849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/587868,2010-01-01,2015-08-31
-MilkRiver,Tariff 101,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3118214,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3118429,2017-01-01,2017-12-31
-MilkRiver,Tariff 119,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3391626,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3390299,2018-01-01,2018-09-15
-MilkRiver,Tariff 137,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3611488,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3613138 ,2018-09-16,2018-12-31
-MilkRiver,Tariff 142,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3700040,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3700261,2019-01-01,2019-12-31
-MilkRiver,Tariff 157,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891912,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891914,2020-01-01,2020-12-31
-MilkRiver,Tariff 172,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4013683,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4013685,2021-01-01,2021-05-31
-MilkRiver,Tariff 173,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4095105,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4094484,2021-06-01,2021-12-31
-MilkRiver,Tariff 174,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4167172,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166930,2022-01-01,2022-12-31
-MilkRiver,Tariff 175,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292120,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292800,2023-01-01,2023-12-31
-MilkRiver,Tariff 31,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/893232,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/893233,2013-01-01,2013-12-31
-MilkRiver,Tariff 50,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2384353,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2384249,2014-01-01,2014-08-31
-MilkRiver,Tariff 58,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2490997,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2490783,2014-09-01,2014-12-31
-MilkRiver,Tariff 64,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578217,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578322,2015-01-01,2015-07-31
-MilkRiver,Tariff 78,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2788338,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2789387,2015-08-01,2015-12-31
-MilkRiver,Tariff 81,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2858683,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2858007,2016-01-01,2016-02-29
-MilkRiver,Tariff 86,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2909454,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2908397,2016-03-01,2016-05-31
-MilkRiver,Tariff 98,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2954760,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2954761,2016-06-01,2016-12-31
+MilkRiver,2384249,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2384353,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2384249,2014-01-01,2014-08-31
+MilkRiver,2490783,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2490997,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2490783,2014-09-01,2014-12-31
+MilkRiver,2578322,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578217,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578322,2015-01-01,2015-07-31
+MilkRiver,2789387,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2788338,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2789387,2015-08-01,2015-12-31
+MilkRiver,2858007,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2858683,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2858007,2016-01-01,2016-02-29
+MilkRiver,2908397,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2909454,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2908397,2016-03-01,2016-05-31
+MilkRiver,2954761,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2954760,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2954761,2016-06-01,2016-12-31
+MilkRiver,3118429,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3118214,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3118429,2017-01-01,2017-12-31
+MilkRiver,3390299,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3391626,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3390299,2018-01-01,2018-09-15
+MilkRiver,3613138,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3611488,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3613138 ,2018-09-16,2018-12-31
+MilkRiver,3700261,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3700040,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3700261,2019-01-01,2019-12-31
+MilkRiver,3891914,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891912,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891914,2020-01-01,2020-12-31
+MilkRiver,4013685,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4013683,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4013685,2021-01-01,2021-05-31
+MilkRiver,4094484,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4095105,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4094484,2021-06-01,2021-12-31
+MilkRiver,4166930,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4167172,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166930,2022-01-01,2022-12-31
+MilkRiver,4292800,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292120,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292800,2023-01-01,2023-12-31
+MilkRiver,4422973,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422844,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4422973,2024-01-01,2024-12-31
+MilkRiver,893233,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/893232,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/893233,2013-01-01,2013-12-31
 MNP,2452205,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2452323,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2452205,2014-04-01,2014-12-31
 MNP,2672023,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2671360,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2672023,2015-01-01,2015-12-31
 MNP,2909296,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2908459,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2909296,2016-01-01,2018-03-31
@@ -432,6 +440,7 @@ MNP,396247,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/396240,https://apps.cer-
 MNP,4039719,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4038940,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4039719,2021-01-01,2021-12-31
 MNP,4207934,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4208226,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4207934,2022-01-01,2022-12-31
 MNP,4305412,https://apps.cer-rec.gc.ca/REGDOCS/Item/Filing/C23073,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4305412,2023-01-01,2023-12-31
+MNP,4438340,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4438451,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4438340,2000-01-01,2000-01-01
 MNP,451871,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/451864,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/451871,2007-01-01,2007-12-31
 MNP,495319,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/495421,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/495319,2008-01-01,2008-12-31
 MNP,552129,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/552128,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/552129,2009-01-01,2009-04-30
@@ -442,25 +451,17 @@ MNP,785057,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/784968,https://apps.cer-
 MNP,915664,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/915458,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/915664,2013-01-01,2014-03-31
 Montreal,2385067,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2384958,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2385067,2014-01-01,2014-06-30
 Montreal,2477659,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2480333,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2477659,2014-07-01,2014-12-31
-Montreal,2478761,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2480333,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2478761,2000-01-01,2000-01-01
 Montreal,2578297,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578296,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578297,2015-01-01,2015-06-30
 Montreal,2786567,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2786765,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2786567,2015-07-01,2015-12-31
-Montreal,2787103,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2786765,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2787103,2000-01-01,2000-01-01
-Montreal,2855967,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2856353,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2855967,2000-01-01,2000-01-01
 Montreal,2856062,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2856543,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2856062,2016-01-01,2016-07-18
-Montreal,2856154,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2856545,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2856154,2000-01-01,2000-01-01
 Montreal,3006053,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3006647,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3006053,2016-07-19,2016-12-31
 Montreal,3096873,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3096653,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3096873,2017-01-01,2017-09-30
 Montreal,3320583,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3322560,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3320583 ,2017-10-01,2017-12-31
 Montreal,3392172,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3393283 ,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3392172,2018-01-01,2018-03-31
 Montreal,3491712,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3490943,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3491712,2018-04-01,2018-12-31
 Montreal,367149,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/367145,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/367149,2005-07-01,2005-12-31
-Montreal,367152,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/367145,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/367152,2000-01-01,2000-01-01
-Montreal,367367,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/367145,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/367367,2000-01-01,2000-01-01
 Montreal,3717153,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3718259,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3717153 ,2019-01-01,2019-12-31
-Montreal,385345,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/385468,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/385345,2000-01-01,2000-01-01
 Montreal,385478,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/385468,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/385478,2006-01-01,2006-06-30
-Montreal,385481,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/385468,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/385481,2000-01-01,2000-01-01
 Montreal,3891892,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891890,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3891892,2020-01-01,2020-12-31
 Montreal,4016028,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4014883,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4016028,2021-01-01,2021-05-31
 Montreal,4091476,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4091474,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4091476,2021-06-01,2021-12-31
@@ -472,32 +473,15 @@ Montreal,442571,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/442640,https://apps
 Montreal,463403,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/463177,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/463403,2007-07-01,2007-12-31
 Montreal,486695,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/486694,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/486695,2008-01-01,2008-06-30
 Montreal,516101,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/515918,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/516101,2008-07-01,2008-12-31
-Montreal,541318,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/541314,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/541318,2000-01-01,2000-01-01
-Montreal,541321,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/541314,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/541321,2000-01-01,2000-01-01
-Montreal,541324,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/541314,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/541324,2000-01-01,2000-01-01
 Montreal,543679,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/543675,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/543679,2009-01-01,2009-06-30
 Montreal,558403,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/558399,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/558403,2009-07-01,2009-12-31
-Montreal,558406,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/558399,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/558406,2000-01-01,2000-01-01
-Montreal,558409,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/558399,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/558409,2000-01-01,2000-01-01
 Montreal,583269,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/583265,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/583269,2010-01-01,2010-06-30
-Montreal,583272,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/583265,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/583272,2000-01-01,2000-01-01
-Montreal,583275,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/583265,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/583275,2000-01-01,2000-01-01
 Montreal,620622,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/620621,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/620622,2010-07-01,2010-12-31
-Montreal,620625,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/620621,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/620625,2000-01-01,2000-01-01
-Montreal,620716,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/620621,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/620716,2000-01-01,2000-01-01
-Montreal,654852,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/655095,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/654852,2000-01-01,2000-01-01
-Montreal,654855,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/655095,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/654855,2000-01-01,2000-01-01
 Montreal,654955,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/655095,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/654955,2011-01-01,2011-06-30
 Montreal,690813,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/690812,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/690813,2011-07-01,2011-12-31
 Montreal,767882,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/767878,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/767882,2012-01-01,2012-06-30
-Montreal,767885,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/767878,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/767885,2000-01-01,2000-01-01
-Montreal,767888,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/767878,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/767888,2000-01-01,2000-01-01
 Montreal,823636,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/823632,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/823636,2012-07-01,2012-12-31
-Montreal,823639,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/823632,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/823639,2000-01-01,2000-01-01
-Montreal,823642,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/823632,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/823642,2000-01-01,2000-01-01
 Montreal,895212,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/895099,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/895212,2013-01-01,2013-12-31
-Montreal,895267,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/895099,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/895267,2000-01-01,2000-01-01
-Montreal,895270,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/895099,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/895270,2000-01-01,2000-01-01
 Montreal,Tariff 107,Library Document ,Library Document ,2004-01-01,2004-06-30
 Montreal,Tariff 109,Library Document ,Library Document ,2004-07-01,2004-12-31
 Montreal,Tariff 112,Library Document ,Library Document ,2005-01-01,2005-06-30
@@ -516,7 +500,9 @@ NGTL,2021 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4092043,https://app
 NGTL,2021 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4009848,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4009849,2021-01-01,2021-05-31
 NGTL,2022 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4245946,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4245947,2022-06-01,2022-12-31
 NGTL,2022 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4157580,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4162438,2022-01-01,2022-05-31
+NGTL,2023 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4366390,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4366077,2023-06-01,2023-12-31
 NGTL,2023 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4281437,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4281343,2023-01-01,2023-05-31
+NGTL,2024 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4417206,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4417207,2024-01-01,2024-05-31
 NormanWells,2381621,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2381620,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2381621,2014-01-01,2014-12-31
 NormanWells,2578602,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578930,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578602,2015-01-01,2015-12-31
 NormanWells,2858304,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2858702,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2858304,2016-01-01,2016-12-31
@@ -570,6 +556,7 @@ SouthernLights,4026562,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4026654,http
 SouthernLights,4167022,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4167248,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4167022,2022-01-01,2022-12-31
 SouthernLights,4292321,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292765,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292321,2000-01-01,2000-01-01
 SouthernLights,4292557,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4292330,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4292557,2023-01-01,2023-12-31
+SouthernLights,4422842,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422840,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4422842,2024-01-01,2024-12-31
 SouthernLights,620754,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/620533,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/620754,2010-07-01,2010-12-31
 SouthernLights,655851,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/656024,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/655851,2011-01-01,2011-12-31
 SouthernLights,771783,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/771779,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/771783,2012-01-01,2012-04-18
@@ -599,6 +586,7 @@ TCPL,2018-2020 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3746953,https:
 TCPL,2021 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4009853,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4009854,2021-01-01,2021-12-31
 TCPL,2022-2026 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4009853,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4009854,2022-01-01,2022-12-31
 TCPL,2023 Rate Riders,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4297421,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4296987,2023-01-01,2023-12-31
+TCPL,2024 Rate Riders,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4422394,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4422395,2024-01-01,2024-12-31
 TQM,2376339,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2377221,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2376339,2000-01-01,2000-01-01
 TQM,2435439,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2435115,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2435439,2014-01-01,2014-12-31
 TQM,2558106,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2564732,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2558106,2000-01-01,2000-01-01
@@ -631,7 +619,7 @@ TransMountain,3913009,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3913007,https
 TransMountain,4085210,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4085467,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4085210,2021-05-01,2021-11-30
 TransMountain,4162219,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4162217,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4162219,2021-12-01,2022-04-30
 TransMountain,4239816,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4239815,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4239816,2022-05-01,2023-04-30
-TransMountain,4360719,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360834,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360719,2023-05-01,2023-12-31
+TransMountain,4360719,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360834,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4360719,2023-05-01,2024-04-30
 TransMountain,Tariff 100,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2938202,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2938754,2016-05-01,2017-04-30
 TransMountain,Tariff 101,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3225939,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3225607,2017-05-01,2018-04-30
 TransMountain,Tariff 103,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3541779,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3542012,2018-05-01,2019-04-30
@@ -679,29 +667,48 @@ Vantage,Tariff 4,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3716608,https://ap
 Vantage,Tariff 5,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891882,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3892103,2020-01-01,2020-12-31
 Vantage,Tariff 7,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4025767,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4025660,2021-01-01,2021-12-31
 Vantage,Tariff 9,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4176290,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4176497,2022-01-01,2022-12-31
-Vector,2001 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/287172,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/287173,2001-01-01,2001-12-31
-Vector,2002 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/287172,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/287173,2002-01-01,2002-12-31
-Vector,2003 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/287172,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/287173,2003-01-01,2003-12-31
-Vector,2004 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/315498,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/315508,2004-01-01,2004-12-31
-Vector,2005 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/357772,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/357773,2005-01-01,2005-12-31
-Vector,2006 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/401263,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/401264,2006-01-01,2006-12-31
-Vector,2007 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/457949,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/457950,2007-01-01,2007-12-31
-Vector,2008 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/504904,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/504802,2008-01-01,2008-12-31
-Vector,2009 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/552081,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/552082,2009-01-01,2009-12-31
-Vector,2010 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/604901,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/604996,2010-01-01,2010-12-31
-Vector,2011 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/677686,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/677687,2011-01-01,2011-12-31
-Vector,2012 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/801348,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/801349,2012-01-01,2012-12-31
-Vector,2013 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/938763,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/938405,2013-01-01,2013-12-31
-Vector,2014 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2396585,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2396586,2014-01-01,2014-12-31
-Vector,2015 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2714717,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2714718,2015-01-01,2015-12-31
-Vector,2016 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2936098,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2936099,2016-01-01,2016-12-31
-Vector,2017 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3210163,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3210059,2017-01-01,2017-12-31
-Vector,2018 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3540202,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3537125,2018-01-01,2018-12-31
-Vector,2019 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3756140,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3756141 ,2019-01-01,2019-12-31
-Vector,2020 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3911328,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3911441 ,2020-01-01,2020-12-31
-Vector,2021 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4050289,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4081114,2021-01-01,2021-12-31
-Vector,2022 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4229849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4229850,2022-01-01,2022-12-31
-Vector,2023 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4297855,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4297635,2023-01-01,2023-12-31
+Vector,2396586,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2396585,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2396586,2014-01-01,2014-03-31
+Vector,2445675,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2445567,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2445675,2014-04-01,2014-12-31
+Vector,2583640,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2585401,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2583640,2015-01-01,2015-03-31
+Vector,2714718,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2714717,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2714718,2015-04-01,2015-12-31
+Vector,287173,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/287172,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/287173,2001-01-01,2003-12-31
+Vector,2887523,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2887120,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2887523,2016-01-01,2016-03-31
+Vector,2936099,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2936098,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2936099,2016-04-01,2016-12-31
+Vector,306541,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/306540,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/306541,2004-01-01,2004-03-31
+Vector,3096375,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3096471,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3096375,2017-01-01,2017-03-31
+Vector,315508,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/315498,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/315508,2004-04-01,2004-12-31
+Vector,3210059,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3210163,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3210059,2017-04-01,2017-12-31
+Vector,3402367,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3398969,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3402367,2018-01-01,2018-03-31
+Vector,342874,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/342873,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/342874,2005-01-01,2005-03-31
+Vector,3537125,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3540202,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3537125,2018-04-01,2018-12-31
+Vector,357773,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/357772,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/357773,2005-04-01,2005-12-31
+Vector,3737721,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3737720,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3737721,2019-01-01,2019-03-31
+Vector,3756141,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3756140,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3756141 ,2019-04-01,2019-12-31
+Vector,387613,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/387570,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/387613,2006-01-01,2006-03-31
+Vector,3894752,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3894352,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3894752,2020-01-01,2020-03-31
+Vector,3911441,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3911328,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3911441 ,2020-04-01,2020-12-31
+Vector,401264,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/401263,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/401264,2006-04-01,2006-12-31
+Vector,4031350,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4031349,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4031350,2021-01-01,2021-03-31
+Vector,4081114,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4050289,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4081114,2021-04-01,2021-12-31
+Vector,4171824,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4171823,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4171824,2022-01-01,2022-03-31
+Vector,4229850,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4229849,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4229850,2022-04-01,2022-12-31
+Vector,4297635,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4297855,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4297635,2023-01-01,2023-03-31
+Vector,4334460,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4333769,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4334460,2023-04-01,2023-12-31
+Vector,4427305,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4427202,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4427305,2024-01-01,2024-03-31
+Vector,445182,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/445181,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/445182,2007-01-01,2007-03-31
+Vector,457950,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/457949,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/457950,2007-04-01,2007-12-31
+Vector,488558,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/488351,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/488558,2008-01-01,2008-03-31
+Vector,504802,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/504904,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/504802,2008-04-01,2008-12-31
+Vector,543956,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/543955,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/543956,2009-01-01,2009-03-31
+Vector,552082,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/552081,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/552082,2009-04-01,2009-12-31
+Vector,587231,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/587230,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/587231,2010-01-01,2010-03-31
+Vector,604996,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/604901,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/604996,2010-04-01,2010-12-31
+Vector,658532,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/658429,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/658532,2011-01-01,2011-03-31
+Vector,677687,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/677686,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/677687,2011-04-01,2011-12-31
+Vector,773889,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/773888,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/773889,2012-01-01,2012-03-31
+Vector,801349,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/801348,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/801349,2012-04-01,2012-12-31
+Vector,896500,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/896273,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/896500,2013-01-01,2013-03-31
+Vector,938405,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/938763,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/938405,2013-04-01,2013-12-31
 Wascana,Tariff 53,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2445207,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2450445,2014-04-01,2014-08-31
 Wascana,Tariff 57,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2490997,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2491105,2014-09-01,2014-12-31
 Wascana,Tariff 66,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2578098,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2578641,2015-01-01,2015-12-31
@@ -723,18 +730,23 @@ Westcoast,2016 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2950019,https:
 Westcoast,2016 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2883278,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2883387,2016-01-01,2016-04-30
 Westcoast,2017 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3210286,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3210069,2017-04-01,2017-12-31
 Westcoast,2017 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3084975,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3084976,2017-01-01,2017-03-31
-Westcoast,2018 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3612038,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3611612,2018-04-01,2018-12-31
-Westcoast,2018 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3390278,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3391495,2018-01-01,2018-03-31
-Westcoast,2019 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3756452,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3756841,2019-04-01,2019-12-31
 Westcoast,2019 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3716790,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3716993,2019-01-01,2019-03-31
 Westcoast,2020 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3948323,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3948325,2020-04-01,2020-12-31
-Westcoast,2020 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891462,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3892451,2020-01-01,2020-03-31
-Westcoast,2021 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4083006,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4082555,2021-04-01,2021-12-31
-Westcoast,2021 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4015979,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4015980,2021-01-01,2021-03-31
 Westcoast,2022 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4166934,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166839,2022-11-09,2022-12-31
-Westcoast,2022 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4166934,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166839,2022-01-01,2022-11-08
 Westcoast,2023 Final,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4360541,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4288841,2023-04-01,2023-12-31
-Westcoast,2023 Interim,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4289272,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4288841,2023-01-01,2023-03-31
+Westcoast,3391495,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3390278,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3391495,2018-01-01,2018-03-31
+Westcoast,3489742,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3490182,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3489742,2018-04-01,2018-12-31
+Westcoast,3611612,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3612038,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3611612,2018-04-01,2018-12-31
+Westcoast,3756841,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3756452,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3756841,2019-04-01,2019-12-31
+Westcoast,3767546,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3767545,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3767546,2000-01-01,2000-01-01
+Westcoast,3767547,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3767545,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3767547,2000-01-01,2000-01-01
+Westcoast,3892451,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3891462,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3892451,2020-01-01,2020-03-31
+Westcoast,3912646,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/3912480,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/3912646,2020-04-01,2020-12-31
+Westcoast,4015980,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4015979,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4015980,2021-01-01,2021-03-31
+Westcoast,4082555,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4083006,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4082555,2021-04-01,2021-12-31
+Westcoast,4166839,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4166934,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4166839,2022-01-01,2022-11-08
+Westcoast,4288841,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4289272,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4288841,2023-01-01,2023-03-31
+Westcoast,4417947,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4417945,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4417947,2024-01-01,2024-03-31
 Westspur,2445995,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2445559,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2445995,2014-04-01,2014-05-31
 Westspur,2480236,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2478753,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2480236,2014-06-01,2014-06-30
 Westspur,2484326,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/2483854,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/2484326,2014-07-01,2014-07-13
@@ -773,5 +785,6 @@ Westspur,4297927,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4297470,https://ap
 Westspur,4332395,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4332064,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4332395,2023-04-01,2023-07-31
 Westspur,4387923,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4387816,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4387923,2023-08-01,2024-02-29
 Westspur,4429720,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4429409,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4429720,2024-03-01,2024-12-31
+Westspur,4438011,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/4438338,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/4438011,2000-01-01,2000-01-01
 Westspur,939503,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/939694,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/939503,2013-04-01,2013-05-31
 Westspur,956486,https://apps.cer-rec.gc.ca/REGDOCS/Item/View/956706,https://apps.cer-rec.gc.ca/REGDOCS/File/Download/956486,2013-06-01,2014-03-31
