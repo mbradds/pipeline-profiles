@@ -92,7 +92,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
     df["Contaminants at the Site"] = [["18"] if x == None else x for x in df["Contaminants at the Site"]]
     df["Site Within 30 Meters Of Waterbody"] = [True if x == "Yes" else False for x in df["Site Within 30 Meters Of Waterbody"]]
     df = normalize_text(df, ['Applicable Land Use',
-                             'Status',
+                             'Site Status',
                              'Activity At Time Of Discovery',
                              'Pipeline Name',
                              'Facility Name'])
@@ -120,6 +120,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
         "developed land - industrial": "dli",
         "developed land - small commercial": "dls",
         "developed land - residential": "dlr",
+        "developed land - commercial": "dlc",
         "barren land": "bl",
         "shrub land": "sl",
         "vegetative barren": "vb",
@@ -155,7 +156,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
 
     df = idify(df, "Applicable Land Use", land_use_ids)
     df = idify(df, "Province", "region")
-    df = idify(df, "Status", status_ids)
+    df = idify(df, "Site Status", status_ids)
     df = idify(df, "Activity At Time Of Discovery", activity_ids)
 
     df['Final Submission Date'] = pd.to_datetime(df['Final Submission Date'])
@@ -167,7 +168,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
                'Contaminants at the Site',
                'Initial Estimate of Contaminated Soil (m3)',
                'Site Within 30 Meters Of Waterbody',
-               'Status',
+               'Site Status',
                'Latitude',
                'Longitude']:
 
@@ -188,7 +189,7 @@ def process_remediation(sql=False, remote=True, companies=False, test=False, sav
     del df['Latitude']
     del df['Longitude']
     columns={"Event ID": "id",
-             "Status": "s",
+             "Site Status": "s",
              "Activity At Time Of Discovery": "a",
              "Province": "p",
              "Applicable Land Use": "use",

@@ -1,1 +1,1 @@
-{"meta": {"companyName": "Westspur", "first_year": 2018, "current_year": 2023, "build": false}, "events": null}
+{"meta": {"companyName": "Westspur", "first_year": 2019, "current_year": 2024, "total_events": 1, "ground_disturbance_count": 1, "damage_count": 0, "further_action_required": 0, "build": true}, "events": [{"id": "DPR2023-325", "et": ["g", "v"], "wpd": "ns", "wgd": "y", "y": 2023, "bc": ["21903", "21712", "21752", "21756", "21903", "21708", "21716", "21713", "21779", "21826"], "wdi": "1", "mod": "s", "loc": [49.41, -101.92]}]}

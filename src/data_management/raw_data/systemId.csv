@@ -1,30 +1,53 @@
 PipelineID,pipeEng,pipeFra,companyEng,companyFra,Commodity
-Alliance,Alliance pipeline,Gazoduc Alliance,Alliance Pipeline Ltd.,Alliance Pipeline Ltd.,Gas
-Aurora,Aurora pipeline,Pipeline Aurora,Aurora Pipe Line Company Ltd.,Aurora Pipeline Company Ltd.,Liquid
-Brunswick,Emera Brunswick pipeline,Gazoduc Emera Brunswick,Emera Brunswick Pipeline Company Ltd.,Emera Brunswick Pipeline Company Ltd.,Gas
+Alliance,Alliance pipeline,"Pipeline Alliance
+",Alliance Pipeline Ltd.,Alliance Pipeline Ltd.,Gas
+Aurora,Aurora pipeline,"Pipeline Aurora
+",Aurora Pipe Line Company Ltd.,Aurora Pipeline Company Ltd.,Liquid
+Brunswick,"Brunswick pipeline
+","Gazoduc Brunswick
+",Emera Brunswick Pipeline Company Ltd.,Emera Brunswick Pipeline Company Ltd.,Gas
 Cochin,Cochin pipeline,Pipeline Cochin,PKM Cochin ULC,PKM Cochin ULC,Liquid
-EnbridgeBakken,Enbridge Bakken system,Réseau Bakken d’Enbridge,"Enbridge Bakken Pipeline Company Inc., on behalf of Enbridge Bakken Pipeline Limited Partnership","Enbridge Bakken Pipeline Company Inc., au nom d’Enbridge Bakken Pipeline Partnership",Liquid
-EnbridgeLine9,Enbridge Line 9,Canalisation 9 d’Enbridge,Enbridge Pipelines Inc.,Pipelines Enbridge Inc.,Liquid
-EnbridgeMainline,Enbridge Canadian Mainline,Réseau d’Enbridge au Canada,Enbridge Pipelines Inc.,Pipelines Enbridge Inc.,Liquid
+EnbridgeBakken,"Enbridge Bakken pipeline
+","Pipeline Bakken d'Enbridge
+","Enbridge Bakken Pipeline Company Inc., on behalf of Enbridge Bakken Pipeline Limited Partnership","Enbridge Bakken Pipeline Company Inc., au nom d’Enbridge Bakken Pipeline Partnership",Liquid
+EnbridgeLine9,"Enbridge Line 9 pipeline
+",Canalisation 9 d’Enbridge,Enbridge Pipelines Inc.,Pipelines Enbridge Inc.,Liquid
+EnbridgeMainline,"Enbridge Canadian Mainline system
+","Réseau principal au Canada d'Enbridge
+",Enbridge Pipelines Inc.,Pipelines Enbridge Inc.,Liquid
 Express,Express pipeline,Pipeline Express,Express Pipeline Ltd.,Express Pipeline Ltd.,Liquid
 Foothills,Foothills system,Réseau de Foothills,Foothills Pipe Lines Ltd.,Foothills Pipe Lines Ltd.,Gas
 Genesis,Genesis pipeline,Pipeline Genesis,Genesis Pipeline Canada Ltd.,Genesis Pipeline Canada Ltd. ,Liquid
 Keystone,Keystone pipeline,Pipeline Keystone,TransCanada Keystone Pipeline GP Ltd.,TransCanada Keystone Pipeline GP Ltd.,Liquid
-ManyIslands,Many Islands pipeline,Gazoduc Many Islands,Many Islands Pipe Lines (Canada) Limited,Many Islands Pipe Lines (Canada) Limited,Gas
+ManyIslands,"Many Islands system
+","Réseau de Many Islands
+",Many Islands Pipe Lines (Canada) Limited,Many Islands Pipe Lines (Canada) Limited,Gas
 MilkRiver,Milk River pipeline,Pipeline Milk River,Milk River Pipeline Ltd. ,Milk River Pipeline Ltd. ,Liquid
-MNP,M&NP,M&NP,Maritimes & Northeast Pipeline Management Ltd.,Maritimes & Northeast Pipeline Management Ltd.,Gas
+MNP,"Maritimes & Northeast Pipeline (M&NP) system
+","Réseau de Maritimes & Northeast Pipeline (« M&NP »)
+",Maritimes & Northeast Pipeline Management Ltd.,Maritimes & Northeast Pipeline Management Ltd.,Gas
 Montreal,Montreal pipeline,Pipeline Montréal,Montreal Pipe Line Limited,Pipe-lines Montréal limitée,Liquid
-NGTL,NGTL system,Réseau de NGTL,NOVA Gas Transmission Ltd.,NOVA Gas Transmission Ltd.,Gas
-NormanWells,Norman Wells pipeline,Pipeline Norman Wells,Enbridge Pipelines (NW) Inc.,Enbridge Pipelines (NW) Inc.,Liquid
+NGTL,"NOVA Gas Transmission Ltd. (NGTL) system
+","Réseau de NOVA Gas Transmission Ltd. (« NGTL »)
+",NOVA Gas Transmission Ltd.,NOVA Gas Transmission Ltd.,Gas
+NormanWells,"Enbridge Norman Wells pipeline
+","Pipeline Norman Wells d'Enbridge
+",Enbridge Pipelines (NW) Inc.,Enbridge Pipelines (NW) Inc.,Liquid
 SouthernLights,Southern Lights pipeline,Pipeline Southern Lights,Enbridge Southern Lights GP Inc. on behalf of Enbridge Southern Lights LP,"Enbridge Southern Lights GP, au nom d’Enbridge Southern Lights LP",Liquid
 Suffield,Suffield pipeline,Gazoduc Suffield,Campus Energy Partners Operations Inc.,Campus Energy Partners Operations Inc.,Gas
-TCPL,TC Canadian Mainline,Réseau de TC au Canada,TransCanada PipeLines Limited (TCPL),TransCanada PipeLines Limited,Gas
-TQM,TQM pipeline,Gazoduc TQM,Trans Québec and Maritimes Pipeline Inc.,Gazoduc Trans Québec & Maritimes Inc.,Gas
+TCPL,"TransCanada (TC) Canadian Mainline pipeline
+","Réseau principal au Canada de TransCanada (« TC »)
+",TransCanada PipeLines Limited (TCPL),TransCanada PipeLines Limited,Gas
+TQM,"Trans Québec & Maritimes (TQM) pipeline
+","Gazoduc Trans Québec & Maritimes (« TMQ »)
+",Trans Québec and Maritimes Pipeline Inc.,Gazoduc Trans Québec & Maritimes Inc.,Gas
 TransMountain,Trans Mountain pipeline,Pipeline Trans Mountain,Trans Mountain Pipeline ULC,Trans Mountain Pipeline ULC,Liquid
 TransNorthern,Trans-Northern pipeline,Pipeline Trans-Nord,Trans-Northern Pipelines Inc.,Pipelines Trans-Nord Inc,Liquid
 Vector,Vector pipeline,Gazoduc Vector,Vector Pipeline Limited Partnership,Vector Pipeline Limited Partnership,Gas
 Wascana,Wascana pipeline,Pipeline Wascana,Plains Midstream Canada ULC,Plains Midstream Canada ULC,Liquid
-Westcoast,Westcoast / Enbridge BC pipeline,Gazoduc Westcoast / BC d’Enbridge,Westcoast Energy Inc.,Westcoast Energy Inc.,Gas
+Westcoast,"Westcoast or BC Pipeline system
+","Réseau de Westcoast ou de BC Pipeline
+",Westcoast Energy Inc.,Westcoast Energy Inc.,Gas
 Westspur,Westspur pipeline,Pipeline Westspur,Kingston Midstream Westspur Limited,Kingston Midstream Westspur Limited,Liquid
 Plains,Plains Midstream,Plains Midstream,Plains Midstream Canada ULC,Plains Midstream Canada ULC,Liquid
 TCPL,TC Canadian Mainline,Réseau de TC au Canada,TransCanada PipeLines Limited,TransCanada PipeLines Limited,Gas

@@ -562,8 +562,8 @@ export const frenchDashboard = {
             c: cerPalette.hcBlue,
             n: "Plan de mesures correctives - en attente d'examen par la REC",
           },
-          s: {c: cerPalette.Sun, n: "Soumis"},
-          c: {c: cerPalette["Cool Grey"], n: "Fermé"},
+          s: { c: cerPalette.Sun, n: "Soumis" },
+          c: { c: cerPalette["Cool Grey"], n: "Fermé" },
           ...nullInfo,
         },
         p: regionInfo, // Province
@@ -575,6 +575,10 @@ export const frenchDashboard = {
           dls: {
             c: cerPalette["Night Sky"],
             n: "Terrain aménagé - Petit commerce",
+          },
+          dlc: {
+            c: cerPalette["Night Sky"],
+            n: "Terrain aménagé - Commerce",
           },
           dlr: {
             c: cerPalette.Aubergine,
