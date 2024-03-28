@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      <strong>{{text.note}}</strong>
+      {{text.traffic.capacityNote}}
+    </p>
+    <details>
+      <summary>{{text.instructions}}</summary>
+      <ul class="lst-spcd">
+        <li>{{text.traffic.instructions.one}}</li>
+        <li>{{text.traffic.instructions.two}}</li>
+        <li>{{text.traffic.instructions.three}}</li>
+        <li>{{text.traffic.instructions.four}}</li>
+      </ul>
+      <p>
+        <strong>{{text.note}}</strong>
+        {{text.traffic.instructions.five}}
+      </p>
+      {{#ifeq text.commodity "natural-gas"}}
+        <p class="mrgn-tp-sm">{{text.traffic.dailyData}}</p>
+      {{/ifeq}}
+    </details>
+    {{> ../shared/source text=text.traffic.source}}
+  </div>
+</div>
