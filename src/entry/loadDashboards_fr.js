@@ -39,32 +39,33 @@ export function loadAllCharts(data) {
   );
   mainApportion(data.apportionData, frenchDashboard.apportion);
   mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);
-  mainConditions(
-    JSON.parse(data.conditionsData.regions),
-    data.canadaMap,
-    data.conditionsData.mapMeta,
-    data.conditionsData.meta,
-    frenchDashboard.conditions
-  );
-  mainIncidents(
-    data.incidentData.events,
-    data.incidentData.meta,
-    frenchDashboard.incidents,
-    pipelineShape
-  );
-  mainOandM(data.oandmData, frenchDashboard.oandm);
-  mainRemediation(
-    data.remediationData,
-    frenchDashboard.remediation,
-    pipelineShape
-  );
-  mainUa(
-    data.uaData.events,
-    data.uaData.meta,
-    frenchDashboard.ua,
-    pipelineShape
-  );
-
+  $(document).on("wb-ready.wb", function () {
+    mainConditions(
+      JSON.parse(data.conditionsData.regions),
+      data.canadaMap,
+      data.conditionsData.mapMeta,
+      data.conditionsData.meta,
+      frenchDashboard.conditions
+    );
+    mainIncidents(
+      data.incidentData.events,
+      data.incidentData.meta,
+      frenchDashboard.incidents,
+      pipelineShape
+    );
+    mainOandM(data.oandmData, frenchDashboard.oandm);
+    mainRemediation(
+      data.remediationData,
+      frenchDashboard.remediation,
+      pipelineShape
+    );
+    mainUa(
+      data.uaData.events,
+      data.uaData.meta,
+      frenchDashboard.ua,
+      pipelineShape
+    );
+  });
   if (data.tcplRevenues) {
     mainTcplRevenues(data.tcplRevenues, frenchDashboard.tcplRevenues);
   }

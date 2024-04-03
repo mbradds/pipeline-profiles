@@ -52,31 +52,33 @@ export function loadAllCharts(data) {
   );
   mainApportion(data.apportionData, englishDashboard.apportion);
   mainTolls(data.tollsData.tolls, data.tollsData.meta, englishDashboard.tolls);
-  mainConditions(
-    JSON.parse(data.conditionsData.regions),
-    data.canadaMap,
-    data.conditionsData.mapMeta,
-    data.conditionsData.meta,
-    englishDashboard.conditions
-  );
-  mainIncidents(
-    data.incidentData.events,
-    data.incidentData.meta,
-    englishDashboard.incidents,
-    pipelineShape
-  );
-  mainOandM(data.oandmData, englishDashboard.oandm);
-  mainRemediation(
-    data.remediationData,
-    englishDashboard.remediation,
-    pipelineShape
-  );
-  mainUa(
-    data.uaData.events,
-    data.uaData.meta,
-    englishDashboard.ua,
-    pipelineShape
-  );
+  $(document).on("wb-ready.wb", function () {
+    mainConditions(
+      JSON.parse(data.conditionsData.regions),
+      data.canadaMap,
+      data.conditionsData.mapMeta,
+      data.conditionsData.meta,
+      englishDashboard.conditions
+    );
+    mainIncidents(
+      data.incidentData.events,
+      data.incidentData.meta,
+      englishDashboard.incidents,
+      pipelineShape
+    );
+    mainOandM(data.oandmData, englishDashboard.oandm);
+    mainRemediation(
+      data.remediationData,
+      englishDashboard.remediation,
+      pipelineShape
+    );
+    mainUa(
+      data.uaData.events,
+      data.uaData.meta,
+      englishDashboard.ua,
+      pipelineShape
+    );
+  });
 
   if (data.tcplRevenues) {
     mainTcplRevenues(data.tcplRevenues, englishDashboard.tcplRevenues);
