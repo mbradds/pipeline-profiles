@@ -31,15 +31,16 @@ frenchTheme();
 
 export function loadAllCharts(data) {
   const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
-  mainTraffic(
-    data.trafficData.traffic,
-    data.trafficData.meta,
-    frenchDashboard.traffic,
-    pipelineShape
-  );
-  mainApportion(data.apportionData, frenchDashboard.apportion);
   mainTolls(data.tollsData.tolls, data.tollsData.meta, frenchDashboard.tolls);
+
   $(document).on("wb-ready.wb", function () {
+    mainTraffic(
+      data.trafficData.traffic,
+      data.trafficData.meta,
+      frenchDashboard.traffic,
+      pipelineShape
+    );
+    mainApportion(data.apportionData, frenchDashboard.apportion);
     mainConditions(
       JSON.parse(data.conditionsData.regions),
       data.canadaMap,
