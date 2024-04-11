@@ -43,17 +43,16 @@ generalTheme();
 
 // TODO: try to share this function between eng and fra
 export function loadAllCharts(data) {
-  const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
-  mainTraffic(
-    data.trafficData.traffic,
-    data.trafficData.meta,
-    englishDashboard.traffic,
-    pipelineShape
-  );
-  mainApportion(data.apportionData, englishDashboard.apportion);
-  mainTolls(data.tollsData.tolls, data.tollsData.meta, englishDashboard.tolls);
-
+  //mainTolls(data.tollsData.tolls, data.tollsData.meta, englishDashboard.tolls);
   $(document).on("wb-ready.wb", function () {
+    const pipelineShape = getPipelineShape(data.incidentData.meta.companyName);
+    mainTraffic(
+      data.trafficData.traffic,
+      data.trafficData.meta,
+      englishDashboard.traffic,
+      pipelineShape
+    );
+    mainApportion(data.apportionData, englishDashboard.apportion);
     mainConditions(
       JSON.parse(data.conditionsData.regions),
       data.canadaMap,
