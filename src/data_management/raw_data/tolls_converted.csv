@@ -187,6 +187,7 @@ MNP,396247,2006-01-01,2006-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolera
 MNP,4039719,2021-01-01,2021-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.8084,CA$ per GJ,,
 MNP,4207934,2022-01-01,2022-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.4135,CA$ per GJ,,
 MNP,4305412,2023-01-01,2023-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.718,CA$ per GJ,,
+MNP,4438340,2024-01-01,2024-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.4562,CA$ per GJ,,
 MNP,451871,2007-01-01,2007-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.71,CA$ per GJ,,
 MNP,495319,2008-01-01,2008-12-31,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.7598,CA$ per GJ,,
 MNP,552129,2009-01-01,2009-04-30,MN365,MN365,MN365 - Usage Charge Outside Tolerances,natural gas,0.7633,CA$ per GJ,,
@@ -794,40 +795,74 @@ EnbridgeMainline,4417935,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Sup
 EnbridgeMainline,4417935,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,9.9038,US$ per cubic metre,1.57458106776,US$ per barrel
 EnbridgeMainline,4417935,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,9.3455,US$ per cubic metre,1.485818309008,US$ per barrel
 EnbridgeMainline,4417935,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,8.9465,US$ per cubic metre,1.422382269706,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,9.5236,US$ per cubic metre,1.514133994721,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,5.4443,US$ per cubic metre,0.865576011955,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,9.5236,US$ per cubic metre,1.514133994721,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,17.3749,US$ per cubic metre,2.762393080861,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,11.9731,US$ per cubic metre,1.90357404051,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,20.7076,US$ per cubic metre,3.292250945976,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,9.5236,US$ per cubic metre,1.514133994721,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,8.8868,US$ per cubic metre,1.412890711946,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,12.1946,US$ per cubic metre,1.938789786638,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,6.1089,US$ per cubic metre,0.971239149098,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,12.1946,US$ per cubic metre,1.938789786638,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,21.2654,US$ per cubic metre,3.380934210944,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,15.2469,US$ per cubic metre,2.424067537918,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,25.4403,US$ per cubic metre,4.044691405132,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,12.1946,US$ per cubic metre,1.938789786638,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,10.4823,US$ per cubic metre,1.666555375369,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,10.2359,US$ per cubic metre,1.627380838818,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,5.6214,US$ per cubic metre,0.893732710102,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,10.2359,US$ per cubic metre,1.627380838818,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,18.4124,US$ per cubic metre,2.927342681802,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,12.8461,US$ per cubic metre,2.042370186651,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,21.9696,US$ per cubic metre,3.492893255747,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,10.2359,US$ per cubic metre,1.627380838818,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,9.3122,US$ per cubic metre,1.480524023021,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,10.9481,US$ per cubic metre,1.740611784158,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,5.7988,US$ per cubic metre,0.921937104518,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,10.9481,US$ per cubic metre,1.740611784158,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,19.4499,US$ per cubic metre,3.092292282743,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,13.7191,US$ per cubic metre,2.181166332792,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,23.2318,US$ per cubic metre,3.693567363032,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,10.9481,US$ per cubic metre,1.740611784158,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,9.7377,US$ per cubic metre,1.548173232853,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,9.3455,US$ per cubic metre,1.485818309008,US$ per barrel
-EnbridgeMainline,4424524,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,8.7804,US$ per cubic metre,1.395974434799,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,9.5236,US$ per cubic metre,1.514133994721,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,5.4443,US$ per cubic metre,0.865576011955,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,9.5236,US$ per cubic metre,1.514133994721,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,17.3749,US$ per cubic metre,2.762393080861,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,11.9731,US$ per cubic metre,1.90357404051,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,20.7076,US$ per cubic metre,3.292250945976,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,9.5236,US$ per cubic metre,1.514133994721,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,8.8868,US$ per cubic metre,1.412890711946,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,12.1946,US$ per cubic metre,1.938789786638,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,6.1089,US$ per cubic metre,0.971239149098,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,12.1946,US$ per cubic metre,1.938789786638,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,21.2654,US$ per cubic metre,3.380934210944,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,15.2469,US$ per cubic metre,2.424067537918,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,25.4403,US$ per cubic metre,4.044691405132,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,12.1946,US$ per cubic metre,1.938789786638,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,10.4823,US$ per cubic metre,1.666555375369,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,10.2359,US$ per cubic metre,1.627380838818,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,5.6214,US$ per cubic metre,0.893732710102,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,10.2359,US$ per cubic metre,1.627380838818,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,18.4124,US$ per cubic metre,2.927342681802,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,12.8461,US$ per cubic metre,2.042370186651,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,21.9696,US$ per cubic metre,3.492893255747,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,10.2359,US$ per cubic metre,1.627380838818,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,9.3122,US$ per cubic metre,1.480524023021,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,10.9481,US$ per cubic metre,1.740611784158,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,5.7988,US$ per cubic metre,0.921937104518,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,10.9481,US$ per cubic metre,1.740611784158,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,19.4499,US$ per cubic metre,3.092292282743,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,13.7191,US$ per cubic metre,2.181166332792,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,23.2318,US$ per cubic metre,3.693567363032,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,10.9481,US$ per cubic metre,1.740611784158,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,9.7377,US$ per cubic metre,1.548173232853,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,9.3455,US$ per cubic metre,1.485818309008,US$ per barrel
+EnbridgeMainline,4424524,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,8.7804,US$ per cubic metre,1.395974434799,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,8.8086,US$ per cubic metre,1.400457884193,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,5.4443,US$ per cubic metre,0.865576011955,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,8.8086,US$ per cubic metre,1.400457884193,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,17.3749,US$ per cubic metre,2.762393080861,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,11.0967,US$ per cubic metre,1.76423733664,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,20.7076,US$ per cubic metre,3.292250945976,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,8.8086,US$ per cubic metre,1.400457884193,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,condensate,8.8868,US$ per cubic metre,1.412890711946,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,11.2464,US$ per cubic metre,1.788037775445,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,heavy petroleum,6.1089,US$ per cubic metre,0.971239149098,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,11.2464,US$ per cubic metre,1.788037775445,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,heavy petroleum,21.2654,US$ per cubic metre,3.380934210944,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,14.0847,US$ per cubic metre,2.23929218735,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,heavy petroleum,25.4403,US$ per cubic metre,4.044691405132,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,11.2464,US$ per cubic metre,1.788037775445,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,heavy petroleum,10.4823,US$ per cubic metre,1.666555375369,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,9.4587,US$ per cubic metre,1.503815701612,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,light petroleum,5.6214,US$ per cubic metre,0.893732710102,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,9.4587,US$ per cubic metre,1.503815701612,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,light petroleum,18.4124,US$ per cubic metre,2.927342681802,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,11.8935,US$ per cubic metre,1.890918630163,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,light petroleum,21.9696,US$ per cubic metre,3.492893255747,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,9.4587,US$ per cubic metre,1.503815701612,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,light petroleum,9.3122,US$ per cubic metre,1.480524023021,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,10.1087,US$ per cubic metre,1.607157620274,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,medium petroleum,5.7988,US$ per cubic metre,0.921937104518,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,10.1087,US$ per cubic metre,1.607157620274,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,medium petroleum,19.4499,US$ per cubic metre,3.092292282743,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,12.6903,US$ per cubic metre,2.017599923685,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,medium petroleum,23.2318,US$ per cubic metre,3.693567363032,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,10.1087,US$ per cubic metre,1.607157620274,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,medium petroleum,9.7377,US$ per cubic metre,1.548173232853,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,8.646,US$ per cubic metre,1.374606505771,US$ per barrel
+EnbridgeMainline,4439433,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Superior, Wisconsin",FT,natural gas liquids,8.7804,US$ per cubic metre,1.395974434799,US$ per barrel
 EnbridgeMainline,685265,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Clearbrook, Minnesota",FT,condensate,12.9405,US$ per cubic metre,2.057378612992,US$ per barrel
 EnbridgeMainline,685265,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Flanagan, Illinois",FT,condensate,21.1172,US$ per cubic metre,3.357372253489,US$ per barrel
 EnbridgeMainline,685265,2011-07-01,2012-06-30,"Edmonton Terminal, Alberta","Nanticoke, Ontario",FT,condensate,25.675,US$ per cubic metre,4.082005787147,US$ per barrel
@@ -1620,33 +1655,60 @@ EnbridgeLine9,4418308,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Nantic
 EnbridgeLine9,4418308,2023-12-01,2023-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,49.451,US$ per cubic metre,7.862094184234,US$ per barrel
 EnbridgeLine9,4418308,2023-12-01,2023-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,52.3807,US$ per cubic metre,8.327880059779,US$ per barrel
 EnbridgeLine9,4418308,2023-12-01,2023-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,41.2676,US$ per cubic metre,6.561035327037,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",heavy crude,41.8155,US$ per cubic metre,6.648144615091,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",heavy crude,50.8224,US$ per cubic metre,8.080129733854,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",heavy crude,33.315,US$ per cubic metre,5.296670800343,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",heavy crude,58.7431,US$ per cubic metre,9.339422557156,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",heavy crude,59.316,US$ per cubic metre,9.430506534389,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",heavy crude,49.5314,US$ per cubic metre,7.874876784635,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",heavy crude,54.1571,US$ per cubic metre,8.610305574104,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",heavy crude,57.8121,US$ per cubic metre,9.191405132118,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",heavy crude,45.107,US$ per cubic metre,7.171452192438,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",light crude,35.9009,US$ per cubic metre,5.707796750294,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",light crude,42.8593,US$ per cubic metre,6.814095837705,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",light crude,28.6331,US$ per cubic metre,4.552306909599,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",light crude,50.3887,US$ per cubic metre,8.011176825972,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",light crude,50.234,US$ per cubic metre,7.98658144933,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",light crude,42.6711,US$ per cubic metre,6.784174377563,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",light crude,46.3943,US$ per cubic metre,7.376116887659,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",light crude,48.9342,US$ per cubic metre,7.77992940952,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",light crude,38.6442,US$ per cubic metre,6.143947343317,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",medium crude,38.1189,US$ per cubic metre,6.060431174282,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",medium crude,45.7259,US$ per cubic metre,7.269849597761,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",medium crude,30.3362,US$ per cubic metre,4.82307863525,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,53.4939,US$ per cubic metre,8.504865019555,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,53.5076,US$ per cubic metre,8.507043149225,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,45.1665,US$ per cubic metre,7.180911952685,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,49.2039,US$ per cubic metre,7.822808356386,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,52.1336,US$ per cubic metre,8.288594231931,US$ per barrel
-EnbridgeLine9,4424433,2024-01-01,2024-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,40.9952,US$ per cubic metre,6.517727113739,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",heavy crude,41.8155,US$ per cubic metre,6.648144615091,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",heavy crude,50.8224,US$ per cubic metre,8.080129733854,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",heavy crude,33.315,US$ per cubic metre,5.296670800343,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",heavy crude,58.7431,US$ per cubic metre,9.339422557156,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",heavy crude,59.316,US$ per cubic metre,9.430506534389,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",heavy crude,49.5314,US$ per cubic metre,7.874876784635,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",heavy crude,54.1571,US$ per cubic metre,8.610305574104,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",heavy crude,57.8121,US$ per cubic metre,9.191405132118,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",heavy crude,45.107,US$ per cubic metre,7.171452192438,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",light crude,35.9009,US$ per cubic metre,5.707796750294,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",light crude,42.8593,US$ per cubic metre,6.814095837705,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",light crude,28.6331,US$ per cubic metre,4.552306909599,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",light crude,50.3887,US$ per cubic metre,8.011176825972,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",light crude,50.234,US$ per cubic metre,7.98658144933,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",light crude,42.6711,US$ per cubic metre,6.784174377563,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",light crude,46.3943,US$ per cubic metre,7.376116887659,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",light crude,48.9342,US$ per cubic metre,7.77992940952,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",light crude,38.6442,US$ per cubic metre,6.143947343317,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",medium crude,38.1189,US$ per cubic metre,6.060431174282,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",medium crude,45.7259,US$ per cubic metre,7.269849597761,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",medium crude,30.3362,US$ per cubic metre,4.82307863525,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,53.4939,US$ per cubic metre,8.504865019555,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,53.5076,US$ per cubic metre,8.507043149225,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,45.1665,US$ per cubic metre,7.180911952685,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,49.2039,US$ per cubic metre,7.822808356386,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,52.1336,US$ per cubic metre,8.288594231931,US$ per barrel
+EnbridgeLine9,4424433,2024-01-01,2024-03-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,40.9952,US$ per cubic metre,6.517727113739,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",heavy crude,41.8155,US$ per cubic metre,6.648144615091,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",heavy crude,50.6506,US$ per cubic metre,8.052815669814,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",heavy crude,33.315,US$ per cubic metre,5.296670800343,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",heavy crude,58.7431,US$ per cubic metre,9.339422557156,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",heavy crude,58.5959,US$ per cubic metre,9.316019587268,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",heavy crude,49.5314,US$ per cubic metre,7.874876784635,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",heavy crude,54.1571,US$ per cubic metre,8.610305574104,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",heavy crude,57.192,US$ per cubic metre,9.092816941715,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",heavy crude,45.107,US$ per cubic metre,7.171452192438,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",light crude,38.1189,US$ per cubic metre,6.060431174282,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",light crude,45.5737,US$ per cubic metre,7.245651690037,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",light crude,28.6331,US$ per cubic metre,4.552306909599,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",light crude,53.4939,US$ per cubic metre,8.504865019555,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",light crude,52.8699,US$ per cubic metre,8.405656777639,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",light crude,42.6711,US$ per cubic metre,6.784174377563,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",light crude,49.2039,US$ per cubic metre,7.822808356386,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",light crude,51.5845,US$ per cubic metre,8.201294158796,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",light crude,38.6442,US$ per cubic metre,6.143947343317,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Committed, International Joint",medium crude,38.1189,US$ per cubic metre,6.060431174282,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Montreal, Quebec","Uncommitted, International Joint",medium crude,45.5737,US$ per cubic metre,7.245651690037,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Cromer Terminal, Manitoba","Nanticoke, Ontario","Committed, International Joint",medium crude,30.3362,US$ per cubic metre,4.82307863525,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,53.4939,US$ per cubic metre,8.504865019555,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,52.8699,US$ per cubic metre,8.405656777639,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,45.1665,US$ per cubic metre,7.180911952685,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Committed, International Joint",medium crude,49.2039,US$ per cubic metre,7.822808356386,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Montreal, Quebec","Uncommitted, International Joint",medium crude,51.5845,US$ per cubic metre,8.201294158796,US$ per barrel
+EnbridgeLine9,4439361,2024-04-01,2024-12-31,"Hardisty Terminal, Alberta","Nanticoke, Ontario","Committed, International Joint",medium crude,40.9952,US$ per cubic metre,6.517727113739,US$ per barrel
 EnbridgeLocal,2478750,2014-07-01,2015-03-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,2.946,CA$ per cubic metre,0.468377372889,CA$ per barrel
 EnbridgeLocal,2478750,2014-07-01,2015-03-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,12.613,CA$ per cubic metre,2.005310184743,CA$ per barrel
 EnbridgeLocal,2478750,2014-07-01,2015-03-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,3.4,CA$ per cubic metre,0.540557728385,CA$ per barrel
@@ -1863,15 +1925,24 @@ EnbridgeLocal,4417936,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Intern
 EnbridgeLocal,4417936,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,3.8349,CA$ per cubic metre,0.609701421348,CA$ per barrel
 EnbridgeLocal,4417936,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,27.376,CA$ per cubic metre,4.352443638907,CA$ per barrel
 EnbridgeLocal,4417936,2023-12-01,2023-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,23.6702,CA$ per cubic metre,3.76326751248,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,3.6116,CA$ per cubic metre,0.574199497599,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,23.9193,CA$ per cubic metre,3.802871315463,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,3.987,CA$ per cubic metre,0.633883430315,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,30.0956,CA$ per cubic metre,4.784826226589,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,3.7118,CA$ per cubic metre,0.590130051829,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,25.5663,CA$ per cubic metre,4.064723838595,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,3.8118,CA$ per cubic metre,0.606028808547,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,27.2133,CA$ per cubic metre,4.326576361728,CA$ per barrel
-EnbridgeLocal,4424436,2024-01-01,2024-06-30,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,23.5075,CA$ per cubic metre,3.737400235301,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,3.6116,CA$ per cubic metre,0.574199497599,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,23.9193,CA$ per cubic metre,3.802871315463,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,3.987,CA$ per cubic metre,0.633883430315,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,30.0956,CA$ per cubic metre,4.784826226589,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,3.7118,CA$ per cubic metre,0.590130051829,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,25.5663,CA$ per cubic metre,4.064723838595,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,3.8118,CA$ per cubic metre,0.606028808547,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,27.2133,CA$ per cubic metre,4.326576361728,CA$ per barrel
+EnbridgeLocal,4424436,2024-01-01,2024-03-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,23.5075,CA$ per cubic metre,3.737400235301,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,condensate,2.9745,CA$ per cubic metre,0.472908518553,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,condensate,19.3871,CA$ per cubic metre,3.082307863525,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,heavy petroleum,3.1422,CA$ per cubic metre,0.499570733568,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,heavy petroleum,24.0856,CA$ per cubic metre,3.829310947883,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,light petroleum,3.0194,CA$ per cubic metre,0.480047060319,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,light petroleum,20.64,CA$ per cubic metre,3.281503386435,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","Hardisty Terminal, Alberta",TRANSMISSION AND TERMINALLING,medium petroleum,3.064,CA$ per cubic metre,0.487137905815,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,medium petroleum,21.8929,CA$ per cubic metre,3.480698909345,CA$ per barrel
+EnbridgeLocal,4439434,2024-04-01,2024-12-31,"Edmonton Terminal, Alberta","International Boundary near Gretna, Manitoba",TRANSMISSION AND TERMINALLING,natural gas liquids,19.0739,CA$ per cubic metre,3.032512957486,CA$ per barrel
 EnbridgeFSP,Tariff 353,2014-12-01,2014-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 49,999 or less",heavy crude,6.69,US$ per barrel,,
 EnbridgeFSP,Tariff 353,2014-12-01,2014-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"2nd OPEN SEASON, COMMITTED, 10 Years, 50,000 – 99,999",heavy crude,6.52,US$ per barrel,,
 EnbridgeFSP,Tariff 353,2014-12-01,2014-12-31,"Cromer, Manitoba",various terminals/refineries in Texas,"1st OPEN SEASON, COMMITTED, 10 Years, 99,999 or less",heavy crude,6.1,US$ per barrel,,
@@ -5526,6 +5597,7 @@ TQM,3912809,2020-01-01,2020-12-31,System,System,T-1,natural gas,7689167.0,CA$ pe
 TQM,4085517,2021-01-01,2021-12-31,System,System,T-1,natural gas,7421333.0,CA$ per month,,
 TQM,4243213,2022-01-01,2022-12-31,System,System,T-1,natural gas,10803000.0,CA$ per month,,
 TQM,4361145,2023-01-01,2023-12-31,System,System,T-1,natural gas,12046000.0,CA$ per month,,
+TQM,4442226,2024-01-01,2024-12-31,System,System,T-1,natural gas,11842167.0,CA$ per month,,
 TQM,686958,2011-01-01,2011-12-31,System,System,T-1,natural gas,6480000.0,CA$ per month,,
 TQM,826334,2012-01-01,2012-12-31,System,System,T-1,natural gas,6992000.0,CA$ per month,,
 TQM,940703,2013-01-01,2013-12-31,System,System,T-1,natural gas,6367000.0,CA$ per month,,
@@ -6551,36 +6623,37 @@ Westcoast,4288841,2023-01-01,2023-03-31,T-South,PNG Delivery Point,2 years,natur
 Westcoast,4288841,2023-01-01,2023-03-31,T-South,PNG Delivery Point,3 years,natural gas,170.44,CA$ per thousand cubic metres per month,0.15022806566528318,CA$ per GJ
 Westcoast,4288841,2023-01-01,2023-03-31,T-South,PNG Delivery Point,4 years,natural gas,168.69,CA$ per thousand cubic metres per month,0.1486855925667485,CA$ per GJ
 Westcoast,4288841,2023-01-01,2023-03-31,T-South,PNG Delivery Point,5 years or more,natural gas,166.93,CA$ per thousand cubic metres per month,0.14713430533622235,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Long Haul,1 year,natural gas,356.81,CA$ per thousand cubic metres per month,0.3144970435932276,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Long Haul,2 years,natural gas,346.42,CA$ per thousand cubic metres per month,0.3053391604539278,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Long Haul,3 years,natural gas,336.03,CA$ per thousand cubic metres per month,0.2961812773146276,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Long Haul,4 years,natural gas,332.56,CA$ per thousand cubic metres per month,0.2931227735135333,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Long Haul,5 years or more,natural gas,329.1,CA$ per thousand cubic metres per month,0.29007308384443037,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Short Haul,1 year,natural gas,24.78,CA$ per thousand cubic metres per month,0.021841419075250522,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Short Haul,2 years,natural gas,24.06,CA$ per thousand cubic metres per month,0.02120680157185348,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Short Haul,3 years,natural gas,23.34,CA$ per thousand cubic metres per month,0.02057218406845611,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Short Haul,4 years,natural gas,23.09,CA$ per thousand cubic metres per month,0.020351830768665535,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-North,Short Haul,5 years or more,natural gas,22.85,CA$ per thousand cubic metres per month,0.02014029160086641,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,FortisBC Kingsvale to Huntingdon,1 year,natural gas,359.07,CA$ per thousand cubic metres per month,0.31648903742333523,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,FortisBC Kingsvale to Huntingdon,2 years,natural gas,348.61,CA$ per thousand cubic metres per month,0.3072694553600939,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,FortisBC Kingsvale to Huntingdon,3 years,natural gas,338.15,CA$ per thousand cubic metres per month,0.2980498732968526,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,FortisBC Kingsvale to Huntingdon,4 years,natural gas,334.67,CA$ per thousand cubic metres per month,0.29498255536376644,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,FortisBC Kingsvale to Huntingdon,5 years or more,natural gas,331.18,CA$ per thousand cubic metres per month,0.2919064232986889,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Huntingdon Delivery Area,1 year,natural gas,798.45,CA$ per thousand cubic metres per month,0.7037643688714238,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Huntingdon Delivery Area,2 years,natural gas,775.19,CA$ per thousand cubic metres per month,0.6832626978589003,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Huntingdon Delivery Area,3 years,natural gas,751.94,CA$ per thousand cubic metres per month,0.6627698409783686,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Huntingdon Delivery Area,4 years,natural gas,744.19,CA$ per thousand cubic metres per month,0.6559388886848577,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Huntingdon Delivery Area,5 years or more,natural gas,736.43,CA$ per thousand cubic metres per month,0.6490991222593555,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Inland Delivery Area,1 year,natural gas,439.38,CA$ per thousand cubic metres per month,0.38727533144808823,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Inland Delivery Area,2 years,natural gas,426.58,CA$ per thousand cubic metres per month,0.37599324249880633,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Inland Delivery Area,3 years,natural gas,413.79,CA$ per thousand cubic metres per month,0.36471996768151593,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Inland Delivery Area,4 years,natural gas,409.52,CA$ per thousand cubic metres per month,0.3609563333210913,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,Inland Delivery Area,5 years or more,natural gas,405.25,CA$ per thousand cubic metres per month,0.35719269896066663,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,PNG Delivery Point,1 year,natural gas,180.93,CA$ per thousand cubic metres per month,0.1594740901244995,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,PNG Delivery Point,2 years,natural gas,175.66,CA$ per thousand cubic metres per month,0.15482904256491223,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,PNG Delivery Point,3 years,natural gas,170.39,CA$ per thousand cubic metres per month,0.15018399500532492,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,PNG Delivery Point,4 years,natural gas,168.63,CA$ per thousand cubic metres per month,0.14863270777479878,CA$ per GJ
-Westcoast,4417947,2024-01-01,2024-03-31,T-South,PNG Delivery Point,5 years or more,natural gas,166.87,CA$ per thousand cubic metres per month,0.14708142054427234,CA$ per GJ
+Westcoast,4417947,2024-01-01,2024-03-31,,,,,,CA$ per thousand cubic metres per month,,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Long Haul,1 year,natural gas,352.99,CA$ per thousand cubic metres per month,0.3111300451724262,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Long Haul,2 years,natural gas,342.71,CA$ per thousand cubic metres per month,0.3020691174850343,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Long Haul,3 years,natural gas,332.43,CA$ per thousand cubic metres per month,0.2930081897976421,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Long Haul,4 years,natural gas,329.0,CA$ per thousand cubic metres per month,0.2899849425245142,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Long Haul,5 years or more,natural gas,325.57,CA$ per thousand cubic metres per month,0.2869616952513863,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Short Haul,1 year,natural gas,24.51,CA$ per thousand cubic metres per month,0.02160343751147671,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Short Haul,2 years,natural gas,23.8,CA$ per thousand cubic metres per month,0.020977634140071123,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Short Haul,3 years,natural gas,23.09,CA$ per thousand cubic metres per month,0.020351830768665535,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Short Haul,4 years,natural gas,22.85,CA$ per thousand cubic metres per month,0.02014029160086641,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-North,Short Haul,5 years or more,natural gas,22.61,CA$ per thousand cubic metres per month,0.019928752433067617,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,FortisBC Kingsvale to Huntingdon,1 year,natural gas,342.29,CA$ per thousand cubic metres per month,0.30169892394138575,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,FortisBC Kingsvale to Huntingdon,2 years,natural gas,332.32,CA$ per thousand cubic metres per month,0.29291123434573413,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,FortisBC Kingsvale to Huntingdon,3 years,natural gas,322.35,CA$ per thousand cubic metres per month,0.2841235447500825,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,FortisBC Kingsvale to Huntingdon,4 years,natural gas,319.03,CA$ per thousand cubic metres per month,0.28119725292886255,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,FortisBC Kingsvale to Huntingdon,5 years or more,natural gas,315.71,CA$ per thousand cubic metres per month,0.2782709611076423,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Huntingdon Delivery Area,1 year,natural gas,761.16,CA$ per thousand cubic metres per month,0.6708964706746481,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Huntingdon Delivery Area,2 years,natural gas,738.99,CA$ per thousand cubic metres per month,0.6513555400492119,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Huntingdon Delivery Area,3 years,natural gas,716.82,CA$ per thousand cubic metres per month,0.6318146094237761,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Huntingdon Delivery Area,4 years,natural gas,709.43,CA$ per thousand cubic metres per month,0.6253009658819638,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Huntingdon Delivery Area,5 years or more,natural gas,702.04,CA$ per thousand cubic metres per month,0.6187873223401519,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Inland Delivery Area,1 year,natural gas,418.87,CA$ per thousand cubic metres per month,0.36919754673326205,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Inland Delivery Area,2 years,natural gas,406.67,CA$ per thousand cubic metres per month,0.3584443057034778,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Inland Delivery Area,3 years,natural gas,394.47,CA$ per thousand cubic metres per month,0.34769106467369326,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Inland Delivery Area,4 years,natural gas,390.4,CA$ per thousand cubic metres per month,0.34410371295310127,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,Inland Delivery Area,5 years or more,natural gas,386.33,CA$ per thousand cubic metres per month,0.3405163612325093,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,PNG Delivery Point,1 year,natural gas,172.48,CA$ per thousand cubic metres per month,0.1520261485915749,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,PNG Delivery Point,2 years,natural gas,167.46,CA$ per thousand cubic metres per month,0.14760145433177851,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,PNG Delivery Point,3 years,natural gas,162.43,CA$ per thousand cubic metres per month,0.14316794593999035,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,PNG Delivery Point,4 years,natural gas,160.76,CA$ per thousand cubic metres per month,0.1416959858973886,CA$ per GJ
+Westcoast,4442646,2024-01-01,2024-12-31,T-South,PNG Delivery Point,5 years or more,natural gas,159.08,CA$ per thousand cubic metres per month,0.14021521172279539,CA$ per GJ
 TransMountain,3884423,2020-01-01,2020-04-30,Edmonton,Sumas,Tank Metered,heavy,21.9264,CA$ per cubic metre,3.486024992845,CA$ per barrel
 TransMountain,3884423,2020-01-01,2020-04-30,Edmonton,Westridge,Tank Metered,heavy,25.3169,CA$ per cubic metre,4.025072339343,CA$ per barrel
 TransMountain,3884423,2020-01-01,2020-04-30,Kamloops,Sumas,Tank Metered,heavy,7.8882,CA$ per cubic metre,1.254125727368,CA$ per barrel
@@ -7084,6 +7157,10 @@ Express,4328612,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundar
 Express,4328612,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,medium petroleum,5.1275,US$ per cubic metre,0.815208750675,US$ per barrel
 Express,4328612,2023-04-01,2024-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,super-heavy petroleum,6.0295,US$ per cubic metre,0.958615536265,US$ per barrel
 Express,4370726,2023-07-01,2024-06-30,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",10 or more Year,petroleum,7.2715,US$ per cubic metre,1.156078094692,US$ per barrel
+Express,4437837,2024-04-01,2025-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,heavy petroleum,5.908,US$ per cubic metre,0.939298546853,US$ per barrel
+Express,4437837,2024-04-01,2025-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,light petroleum,4.8427,US$ per cubic metre,0.769929091545,US$ per barrel
+Express,4437837,2024-04-01,2025-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,medium petroleum,5.2301,US$ per cubic metre,0.831520875067,US$ per barrel
+Express,4437837,2024-04-01,2025-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,super-heavy petroleum,6.1501,US$ per cubic metre,0.977789436866,US$ per barrel
 Express,Tariff 115,2011-04-01,2012-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,heavy petroleum,4.5669,US$ per cubic metre,0.726080320518,US$ per barrel
 Express,Tariff 115,2011-04-01,2012-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,light petroleum,3.7434,US$ per cubic metre,0.595154058952,US$ per barrel
 Express,Tariff 115,2011-04-01,2012-03-31,"Hardisty, Alberta","International Boundary near Wild Horse, Alberta",Uncommitted,medium petroleum,4.0429,US$ per cubic metre,0.64277083532,US$ per barrel
@@ -7231,6 +7308,13 @@ ManyIslands,4360620,2023-04-01,2024-03-31,System,Pierceland-Cold Lake**,FS,natur
 ManyIslands,4360620,2023-04-01,2024-03-31,System,Shaunavon***,FS,natural gas,2.5351,CA$ per GJ per month,0.0833457534,CA$ per GJ
 ManyIslands,4360620,2023-04-01,2024-03-31,System,Steelman-North Portal,FS,natural gas,1.2426,CA$ per GJ per month,0.0408526027,CA$ per GJ
 ManyIslands,4360620,2023-04-01,2024-03-31,System,Swan River,FS,natural gas,14.8629,CA$ per GJ per month,0.4886432876,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Bronson Lake,FS,natural gas,4.5148,CA$ per GJ per month,0.1484317808,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Frog Lake,FS,natural gas,0.5662,CA$ per GJ per month,0.0186147945,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Lloydminster*,FS,natural gas,0.8083,CA$ per GJ per month,0.0265742465,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Marwayne,FS,natural gas,177.8357,CA$ per GJ per month,5.8466531506,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Shaunavon**,FS,natural gas,2.6825,CA$ per GJ per month,0.0881917808,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Steelman-North Portal,FS,natural gas,1.4059,CA$ per GJ per month,0.0462213698,CA$ per GJ
+ManyIslands,4442640,2024-04-01,2025-03-31,System,Swan River,FS,natural gas,16.3492,CA$ per GJ per month,0.5375079452,CA$ per GJ
 ManyIslands,508901,2008-05-01,2009-12-31,System,Bronson Lake,FS,natural gas,0.1871,CA$ per GJ per month,0.0061512328,CA$ per GJ
 ManyIslands,508901,2008-05-01,2009-12-31,System,Frog Lake,FS,natural gas,0.1202,CA$ per GJ per month,0.0039517808,CA$ per GJ
 ManyIslands,508901,2008-05-01,2009-12-31,System,Lloydminster,FS,natural gas,0.1274,CA$ per GJ per month,0.0041884931,CA$ per GJ
@@ -7451,6 +7535,7 @@ Vector,4229850,2022-04-01,2022-12-31,System,System,FT,natural gas,0.1916,CA$ per
 Vector,4297635,2023-01-01,2023-03-31,System,System,FT,natural gas,0.2403,CA$ per GJ per month,0.0079002739,CA$ per GJ
 Vector,4334460,2023-04-01,2023-12-31,System,System,FT,natural gas,0.2403,CA$ per GJ per month,0.0079002739,CA$ per GJ
 Vector,4427305,2024-01-01,2024-03-31,System,System,FT,natural gas,0.2373,CA$ per GJ per month,0.0078016438,CA$ per GJ
+Vector,4442453,2024-04-01,2024-12-31,System,System,FT,natural gas,0.2373,CA$ per GJ per month,0.0078016438,CA$ per GJ
 Vector,445182,2007-01-01,2007-03-31,System,System,FT,natural gas,0.5705,CA$ per GJ per month,0.0187561643,CA$ per GJ
 Vector,457950,2007-04-01,2007-12-31,System,System,FT,natural gas,0.5705,CA$ per GJ per month,0.0187561643,CA$ per GJ
 Vector,488558,2008-01-01,2008-03-31,System,System,FT,natural gas,0.5705,CA$ per GJ per month,0.0187561643,CA$ per GJ
@@ -7757,14 +7842,22 @@ Westspur,4387923,2023-08-01,2024-02-29,Midale Terminal,"Cromer, Manitoba",Discou
 Westspur,4387923,2023-08-01,2024-02-29,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,7.857,CA$ per cubic metre,1.249165315272,CA$ per barrel
 Westspur,4387923,2023-08-01,2024-02-29,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.222,CA$ per cubic metre,0.989220642945,CA$ per barrel
 Westspur,4387923,2023-08-01,2024-02-29,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.626,CA$ per cubic metre,1.053451620083,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.289,CA$ per cubic metre,0.840885242774,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.711,CA$ per cubic metre,0.90797799612,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.165,CA$ per cubic metre,1.139145918789,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Bryant Injection Point,"Cromer, Manitoba",Tolls,crude petroleum,7.768,CA$ per cubic metre,1.235015421794,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Midale Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.548,CA$ per cubic metre,1.200038157016,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,8.173,CA$ per cubic metre,1.299405386498,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.384,CA$ per cubic metre,1.014976628827,CA$ per barrel
-Westspur,4429720,2024-03-01,2024-12-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.892,CA$ per cubic metre,1.095742312951,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.289,CA$ per cubic metre,0.840885242774,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.711,CA$ per cubic metre,0.90797799612,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.165,CA$ per cubic metre,1.139145918789,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Bryant Injection Point,"Cromer, Manitoba",Tolls,crude petroleum,7.768,CA$ per cubic metre,1.235015421794,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Midale Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.548,CA$ per cubic metre,1.200038157016,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,8.173,CA$ per cubic metre,1.299405386498,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.384,CA$ per cubic metre,1.014976628827,CA$ per barrel
+Westspur,4429720,2024-03-01,2024-03-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,6.892,CA$ per cubic metre,1.095742312951,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,5.522,CA$ per cubic metre,0.877929345925,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,5.951,CA$ per cubic metre,0.946135012242,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,7.675,CA$ per cubic metre,1.220229578046,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Bryant Injection Point,"Cromer, Manitoba",Tolls,crude petroleum,8.192,CA$ per cubic metre,1.302426150275,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Midale Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,8.097,CA$ per cubic metre,1.287322331393,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Midale Terminal,"Cromer, Manitoba",Tolls,crude petroleum,8.63,CA$ per cubic metre,1.372062704696,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Steelman Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,6.803,CA$ per cubic metre,1.081592419472,CA$ per barrel
+Westspur,4438011,2024-04-01,2024-12-31,Steelman Terminal,"Cromer, Manitoba",Tolls,crude petroleum,7.234,CA$ per cubic metre,1.150116060924,CA$ per barrel
 Westspur,939503,2013-04-01,2013-05-31,Alida Terminal,"Cromer, Manitoba",Discounted tolls,crude petroleum,3.33,CA$ per cubic metre,0.529428598683,CA$ per barrel
 Westspur,939503,2013-04-01,2013-05-31,Alida Terminal,"Cromer, Manitoba",Tolls,crude petroleum,3.52,CA$ per cubic metre,0.559636236446,CA$ per barrel
 Westspur,939503,2013-04-01,2013-05-31,Bryant Injection Point,"Cromer, Manitoba",Discounted tolls,crude petroleum,4.59,CA$ per cubic metre,0.72975293332,CA$ per barrel
@@ -7861,9 +7954,12 @@ Cochin,4305792,2023-04-01,2023-06-30,"Cochin Terminal in Kankakee County, Illino
 Cochin,4371082,2023-07-01,2024-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,7.0997,US$ per barrel,,
 Cochin,4371082,2023-07-01,2024-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,6.6497,US$ per barrel,,
 Cochin,4371082,2023-07-01,2024-01-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,9.4994,US$ per barrel,,
-Cochin,4427109,2024-02-01,2024-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,7.0997,US$ per barrel,,
-Cochin,4427109,2024-02-01,2024-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,6.6497,US$ per barrel,,
-Cochin,4427109,2024-02-01,2024-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,9.4994,US$ per barrel,,
+Cochin,4427109,2024-02-01,2024-03-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,7.0997,US$ per barrel,,
+Cochin,4427109,2024-02-01,2024-03-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,6.6497,US$ per barrel,,
+Cochin,4427109,2024-02-01,2024-03-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,9.4994,US$ per barrel,,
+Cochin,4437833,2024-04-01,2024-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Joint,light condensate,7.0997,US$ per barrel,,
+Cochin,4437833,2024-04-01,2024-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Shipper A Volume Incentive,light condensate,6.6497,US$ per barrel,,
+Cochin,4437833,2024-04-01,2024-12-31,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,8.5,US$ per barrel,,
 Cochin,Tariff 173,2015-01-01,2015-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Joint,light condensate,4.95,US$ per barrel,,
 Cochin,Tariff 173,2015-01-01,2015-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Committed Volume Incentive,light condensate,4.5,US$ per barrel,,
 Cochin,Tariff 173,2015-01-01,2015-06-30,"Cochin Terminal in Kankakee County, Illinois","Keyera Fort Saskatchewan Facility, Alberta",Uncommitted Joint,light condensate,7.5,US$ per barrel,,

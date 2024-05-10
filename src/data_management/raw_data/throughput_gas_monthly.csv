@@ -604,6 +604,8 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Trade Type,Capacity (1000 m3/d),
 2023-10-01,Brunswick,KP0000,west,export,,329.5908
 2023-11-01,Brunswick,KP0000,west,export,,501.5167
 2023-12-01,Brunswick,KP0000,west,export,,732.4498
+2024-01-01,Brunswick,KP0000,west,export,,7443.6986
+2024-02-01,Brunswick,KP0000,west,export,,745.7602
 2006-01-01,Foothills,KP0023,south,export,85000.0,44015.0
 2006-02-01,Foothills,KP0023,south,export,85000.0,48229.7857
 2006-03-01,Foothills,KP0023,south,export,85000.0,53214.4839
