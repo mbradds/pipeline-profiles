@@ -113,6 +113,9 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-10-01,Cochin,KP0018,west,condensate,17.7079,17.49
 2023-11-01,Cochin,KP0018,west,condensate,17.6515,17.49
 2023-12-01,Cochin,KP0018,west,condensate,18.3791,17.49
+2024-01-01,Cochin,KP0018,west,condensate,15.311,17.49
+2024-02-01,Cochin,KP0018,west,condensate,16.0486,17.49
+2024-03-01,Cochin,KP0018,west,condensate,15.0632,17.49
 2014-07-01,Cochin,KP0034,east,refined petroleum products,0.0146,
 2014-07-01,Cochin,KP0043,east,refined petroleum products,0.0014,12.083
 2014-08-01,Cochin,KP0043,east,refined petroleum products,0.0,12.083
@@ -1946,6 +1949,12 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-11-01,Keystone,KP0020,south,domestic light,0.0,97.61
 2023-12-01,Keystone,KP0020,south,domestic heavy,98.91,98.91
 2023-12-01,Keystone,KP0020,south,domestic light,0.0,98.91
+2024-01-01,Keystone,KP0020,south,domestic heavy,98.02,101.75
+2024-01-01,Keystone,KP0020,south,domestic light,3.62,101.75
+2024-02-01,Keystone,KP0020,south,domestic heavy,97.36,100.02
+2024-02-01,Keystone,KP0020,south,domestic light,2.67,100.02
+2024-03-01,Keystone,KP0020,south,domestic heavy,102.21,102.21
+2024-03-01,Keystone,KP0020,south,domestic light,0.0,102.21
 2016-05-01,Montreal,KP0000,north-west,petroleum,1.9894,
 2016-06-01,Montreal,KP0000,north-west,petroleum,4.0521,
 2016-07-01,Montreal,KP0000,north-west,petroleum,6.8462,
@@ -2040,6 +2049,8 @@ Date,Pipeline Name,KeyPointID,Direction of Flow,Product,Throughput (1000 m3/d),A
 2023-12-01,Montreal,KP0000,north-west,petroleum,0.3358,
 2024-01-01,Montreal,KP0000,north-west,petroleum,3.6236,
 2024-02-01,Montreal,KP0000,north-west,petroleum,0.0,
+2024-03-01,Montreal,KP0000,north-west,petroleum,0.0,
+2024-04-01,Montreal,KP0000,north-west,petroleum,3.7111,
 2007-01-01,NormanWells,KP0044,south,domestic light,3.5732,5.4737
 2007-02-01,NormanWells,KP0044,south,domestic light,3.274,5.4737
 2007-03-01,NormanWells,KP0044,south,domestic light,3.6936,5.4737
