@@ -18,5 +18,5 @@ if __name__ == "__main__":
     process_oandm(remote=True, test=False)
     process_remediation(sql=True, remote=True, save=True, test=False)
     process_ua(remote=True, save=True)
-    process_tolls("Liquid", sql=True)
-    process_tolls("Gas", sql=True)
+    # process_tolls("Liquid", sql=True)
+    # process_tolls("Gas", sql=True)
